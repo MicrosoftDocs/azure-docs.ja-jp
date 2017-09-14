@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Azure Service Bus のクォータと制限 | Microsoft Docs"
-description: "Azure Service Bus の制限とクォータ"
+description: "Azure Service Bus の制限とクォータについて説明します。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/28/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d86a6fb09e5b26dde749f2c3be0e3c4dc6d3179a
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9a364adad3342b211a647eb743776a47812b75f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---

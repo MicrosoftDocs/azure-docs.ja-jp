@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 19a95e0299f49d908fa666f23637f5a4cc1d9c96
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 486e6a27fa28ec63001d824fe9f59c03a7aea5a7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/27/2017
 
 接続する前に、次のヒントを確認してください。
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-* Premium Storage を使用するには、Premium Storage に対応した VM サイズ (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* Premium Storage を使用するには、Premium Storage に対応した VM サイズ (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。

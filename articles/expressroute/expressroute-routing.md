@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 07/31/2017
 ms.author: osamam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 0bb4999aa511e002d6088d69400ba4eececd8cf1
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: e6e2009717430a692528cd3ec3a2c6e46a12fe03
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
-ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。 
+ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
 
 接続を容易にするために設定する必要があるルーティング セッションの説明については、[回線とルーティング ドメイン](expressroute-circuit-peerings.md)に関する記事をご覧ください。
 
@@ -66,8 +65,10 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
   * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
 
 ## <a name="public-ip-address-requirement"></a>パブリック IP アドレス要件
+
 ### <a name="private-peering"></a>プライベート ピアリング
 パブリックまたはプライベート IPv4 アドレスをプライベート ピアリングに使用することもできます。 プライベート ピアリングの場合に他の顧客とのアドレスの重複が発生しないように、トラフィックのエンド ツー エンドの分離が提供されます。 これらのアドレスはインターネットにはアドバタイズされません。 
+
 
 ### <a name="public-peering"></a>パブリック ピアリング
 Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。 たとえば、 [ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるサービスや Microsoft Azure で ISV によりホストされているサービスです。 パブリック ピアリングでの Microsoft Azure への接続は常にネットワークから Microsoft ネットワークに対して開始されます。 Microsoft ネットワークに送信されるトラフィックには、パブリック IP アドレスを使用する必要があります。
@@ -119,7 +120,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 > 
 > 
 
-## <a name="support-for-bgp-communities"></a>BGP コミュニティのサポート
+## <a name="bgp"></a>BGP コミュニティのサポート
 ここでは、ExpressRoute で BGP コミュニティがどのように使用されるかについて概説します。 Microsoft は、パブリックおよび Microsoft ピアリング パスのルートに適切なコミュニティ値をタグ付けしてアドバタイズします。 その理由とコミュニティ値の詳細については以降に示します。 ただし、Microsoft は、Microsoft にアドバタイズされるルートにタグ付けされたすべてのコミュニティ値を無視します。
 
 地理的リージョン内の任意の 1 つのピアリングの場所で ExpressRoute を介して Microsoft に接続する場合、地理的境界内のすべてのリージョンですべての Microsoft クラウド サービスにアクセスできます。 

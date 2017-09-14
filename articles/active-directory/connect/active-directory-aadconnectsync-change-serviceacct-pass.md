@@ -13,14 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4e9412caa9fed15f42a04260f12fa802caf7a2e2
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
@@ -115,3 +114,4 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+

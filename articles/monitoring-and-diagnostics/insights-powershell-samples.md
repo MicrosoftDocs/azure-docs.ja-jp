@@ -2,7 +2,7 @@
 title: "Azure Monitor の PowerShell クイック スタート サンプル | Microsoft Docs"
 description: "PowerShell を使って、自動スケール、アラート、webhook、アクティビティ ログの検索などの Azure Monitor の機能にアクセスします。"
 author: kamathashwin
-manager: carolz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/09/2017
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8165147d9ff811b26f7fe2626c892f2aba5bb4f8
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f06e5dd7d17c1d7795fb1f112e649cd42d7dd6d4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
 
 > [!NOTE]
-> Azure Monitor は、2016 年 9 月 25 日まで "Azure Insights" と呼ばれていたサービスの新しい名前です。 ただし、名前空間と、それに伴って以下のコマンドには引き続き "insights" が含まれています。
+> Azure Monitor は、2016 年 9 月 25 日まで "Azure Insights" と呼ばれていたサービスの新しい名前です。 ただし、名前空間と、それに伴って次のコマンドには、引き続き "insights" が含まれています。
 > 
 > 
 
 ## <a name="set-up-powershell"></a>PowerShell のセットアップ
-コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」をご覧ください。
+コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/overview)に関するページを参照してください。
 
 ## <a name="examples-in-this-article"></a>この記事の例
 この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
@@ -56,7 +56,7 @@ Set-AzureRmContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>サブスクリプションのアクティビティ ログの取得
-`Get-AzureRmLog` コマンドレットを使用します。  一般的な例を以下に示します。
+`Get-AzureRmLog` コマンドレットを使用します。  一般的な例を次に示します。
 
 指定した日時のログ エントリを取得します。
 
@@ -139,14 +139,11 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 
 `Get-AzureRmAlertRule` は、他のパラメーターもサポートしています。 詳細については、「 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) 」をご覧ください。
 
-## <a name="create-alert-rules"></a>アラート ルールの作成
+## <a name="create-metric-alerts"></a>メトリック アラートの作成
 `Add-AlertRule` コマンドレットを使用して、アラート ルールを作成、更新、または無効化できます。
 
 電子メール プロパティと webhook プロパティは、それぞれ `New-AzureRmAlertRuleEmail` と `New-AzureRmAlertRuleWebhook` を使用して作成できます。 アラート ルール コマンドレットでは、これらをアラート ルールの **Actions** プロパティにアクションとして割り当てます。
 
-次のセクションには、さまざまなパラメーターを指定してアラート ルールを作成する方法を示すサンプルが記載されています。
-
-### <a name="alert-rule-on-a-metric"></a>メトリックのアラート ルール
 メトリックを使用するアラートを作成する際に使用されるパラメーターと値を次の表に示します。
 
 | パラメーター | 値 |
@@ -155,7 +152,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 | このアラート ルールの場所 |米国東部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 作成されたアラートの MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. 正確なメトリック名を取得する方法については、後述の `Get-MetricDefinitions` コマンドレットをご覧ください。 |
+| 作成されたアラートの MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. 正確なメトリック名を取得する方法については、`Get-MetricDefinitions` コマンドレットをご覧ください。 |
 | operator |GreaterThan |
 | しきい値 (このメトリックの場合、数/秒) |1 |
 | WindowSize (hh:mm:ss 形式) |00:05:00 |
@@ -189,40 +186,6 @@ Get-AzureRmAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 
 Add アラート コマンドレットは、指定されたプロパティのアラート ルールが既に存在する場合に、そのルールの更新も実行します。 アラート ルールを無効にするには、 **-DisableRule**パラメーターを含めます。
 
-### <a name="alert-on-activity-log-event"></a>アクティビティ ログのイベントのアラート
-> [!NOTE]
-> この機能はプレビュー段階で、今後ある時点で削除されます (置き換えられます)。
-> 
-> 
-
-このシナリオでは、リソース グループ *abhingrgtest123*において、ユーザーのサブスクリプションで Web サイトが正常に開始されたときに電子メールを送信します。
-
-電子メール ルールを設定する
-
-```PowerShell
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-```
-
-Webhook ルールを設定する
-
-```PowerShell
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
-```
-
-イベントのルールを作成する
-
-```PowerShell
-Add-AzureRmLogAlertRule -Name superalert1 -Location "East US" -ResourceGroup myrg1 -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup abhingrgtest123 -Actions $actionEmail, $actionWebhook
-```
-
-アラート ルールを取得する
-
-```PowerShell
-Get-AzureRmAlertRule -Name superalert1 -ResourceGroup myrg1 -DetailedOutput
-```
-
-`Add-AlertRule` コマンドレットでは、他にもさまざまなパラメーターを使用できます。 詳細については、「 [Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」を参照してください。
-
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>アラートで使用可能なメトリックのリストの取得
 `Get-AzureRmMetricDefinition` コマンドレットを使用して、特定のリソースのすべてのメトリックのリストを表示できます。
 
@@ -239,7 +202,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 `Get-AzureRmMetricDefinition` で使用できるオプションの詳細な一覧については、「 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」を参照してください。
 
 ## <a name="create-and-manage-autoscale-settings"></a>自動スケール設定の作成と管理
-Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
+Web Apps、VM、Cloud Services、仮想マシン スケール セットなどのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
 ただし、各自動スケール設定では複数のプロファイルを使用できます。 たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。 各プロファイルには、複数のルールを構成できます。 自動スケールの詳細については、 [アプリケーションの自動スケールの方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。
 
 ここでは、次の手順を使用します。
@@ -249,7 +212,7 @@ Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、その�
 3. 省略可能: Webhook プロパティと電子メール プロパティを構成して、自動スケールの通知を作成します。
 4. これまでの手順で作成したプロファイルと通知をマッピングし、ターゲット リソースでの名前を指定して自動スケール設定を作成します。
 
-以下の例は、CPU 使用率メトリックを使用して、Windows オペレーティング システム ベースの VM スケール セットの自動スケール設定を作成する方法を示しています。
+以下の例は、CPU 使用率メトリックを使用して、Windows オペレーティング システム ベースの仮想マシン スケール セットの自動スケール設定を作成する方法を示しています。
 
 まず、インスタンス数を増やしてスケールアウトするルールを作成します。
 

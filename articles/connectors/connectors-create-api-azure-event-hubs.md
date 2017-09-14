@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fd691f898e26bea0a304bcf52e5df9ee7db8b818
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 2ca27fb8269d1796fb1181fc4d0a8744a592d548
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -123,8 +123,9 @@ ms.lasthandoff: 05/10/2017
 
     これで、ロジック アプリからイベントを送信するアクションの設定が完了しました。 
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/eventhubs/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/eventhubs/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="get-help"></a>問い合わせ
 

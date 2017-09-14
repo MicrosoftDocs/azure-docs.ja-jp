@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: markvi;andkjell
+ms.date: 07/17/2017
+ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 08df9939eb31c224d62d96a0d034d1cda10ba270
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 32b5e5a8025be3381e20aad0b22289b2c641f74e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
@@ -54,6 +53,7 @@ ms.lasthandoff: 05/12/2017
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | assistant |○ |○ | | |
+| altRecipient |○ | | |Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
 | authOrig |○ |○ |○ | |
 | c |○ |○ | | |
 | cn |○ | |○ | |
@@ -432,6 +432,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msExchUCVoiceMailSettings |○ | | |ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。 |
 | msExchUserHoldPolicies |○ | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。 |
 | proxyAddresses |○ |○ |○ |Exchange Online の x500 アドレスのみが挿入されます。 |
+| publicDelegates |○ | | |オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できます。 Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange メールのパブリック フォルダー
 次の属性は、**Exchange メールのパブリック フォルダー**を有効にすると、オンプレミス Active Directory から Azure AD に同期されます。

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 06/15/2017
 ms.author: hkanna
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cbc33fa15d069b55844cc6e4356ca5a01b40c199
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 613fd0c1164ac34d36d5f21d07dfdf00c8aad614
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 ---
 
@@ -228,7 +229,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 -   NetBackup データベースは、サーバーにローカルである必要があります。StorSimple ボリューム上に配置しないでください。
 -   障害復旧のために、NetBackup データベースは StorSimple ボリューム上にバックアップします。
--   このソリューションについて、Microsoft では NetBackup の完全バックアップと増分バックアップをサポートしています。 合成バックアップや差分バックアップは使用しないことをお勧めします。
+-   このソリューションでは、NetBackup のフル バックアップと増分バックアップ (NetBackup では差分バックアップとも呼ばれます) をサポートします。 合成バックアップや累積増分バックアップは使用しないことをお勧めします。
 -   バックアップ データ ファイルに含めるデータは、特定のジョブのものだけに限定する必要があります。 たとえば、複数のジョブにまたがってメディアを追加することはできません。
 
 これらの要件を実装するための最新の NetBackup 設定およびベスト プラクティスについては、[www.veritas.com](https://www.veritas.com) の NetBackup ドキュメントを参照してください。

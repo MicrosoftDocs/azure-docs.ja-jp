@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 07/06/2017
 ms.author: nini
-translationtype: Human Translation
-ms.sourcegitcommit: 6d20dc322a2493b9dd9a3fd843512befc1e90100
-ms.openlocfilehash: a822e7eb85eca42cba85d191e1effd7240deb1af
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>PowerShell を使用して Azure Service Fabric アプリケーションとマイクロ サービスを評価する
@@ -28,34 +28,45 @@ ms.lasthandoff: 02/28/2017
 >
 >
 
-この記事では、Log Analytics で Service Fabric ソリューションを使用して、Service Fabric ノードのパフォーマンス、およびアプリケーションとマイクロサービスの実行の可視性を実現することにより、Service Fabric クラスター全体にわたる問題の特定と解決に役立てる方法を説明します。
 
-Service Fabric ソリューションでは Service Fabric VM からの Azure 診断データを使用しますが、このデータは Azure WAD テーブルから収集されます。 Log Analytics は**Reliable Service イベント**、**アクター イベント**、**操作イベント**、および**カスタム ETW イベント**を含む Service Fabric フレームワークのイベントを読み取ります。 Service Fabric ソリューション ダッシュボードに、Service Fabric 環境における注目すべき問題や関連イベントが表示されます。
+![Service Fabric のシンボル](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
+
+この記事では、Log Analytics で Service Fabric のソリューションを使用して、Service Fabric クラスター全体でのトラブルシューティングに役立てる方法について説明します。 この記事は、Service Fabric ノードや、アプリケーションおよびマイクロ サービスがどのように動作するかを確認するうえで役に立ちます。
+
+Service Fabric ソリューションでは Service Fabric VM からの Azure 診断データを使用しますが、このデータは Azure WAD テーブルから収集されます。 その後、Log Analytics は、Service Fabric フレームワークのイベントを読み取ります。
+
+- **Reliable Service イベント**
+- **アクター イベント**
+- **操作イベント**
+- **カスタム ETW イベント**
+
+Service Fabric ソリューション ダッシュボードに、Service Fabric 環境における注目すべき問題や関連イベントが表示されます。
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
-次の簡単な&3; つの手順に従って、ソリューションのインストールと構成を行います。
+次の簡単な 3 つの手順に従って、ソリューションのインストールと構成を行います。
 
-1. ご使用の OMS ワークスペースが、ストレージ アカウントを含むすべてのクラスター リソースの作成に使用したものと同じ Azure サブスクリプションに関連付けられていることを確認します。 OMS ワークスペースの作成の詳細については、「[Get started with Log Analytics](log-analytics-get-started.md) (Log Analytics を使ってみる)」を参照してください。
-2. Service Fabric ログを収集して表示するように OMS を構成します。
+1. すべてのクラスター リソース (ストレージ アカウントを含む) を作成するときに使用した Azure サブスクリプションを、使用しているワークスペースに関連付けます。 Log Analytics ワークスペースの作成の詳細については、[Log Analytics を使った作業の開始](log-analytics-get-started.md)に関するページを参照してください。
+2. Service Fabric ログを収集して表示するように Log Analytics を構成します。
 3. Service Fabric ソリューションをワークスペースで有効にします。
 
-## <a name="configure-oms-to-collect-and-view-service-fabric-logs"></a>Service Fabric ログを収集して表示するように OMS を構成する
-このセクションでは、Service Fabric ログを取得するように OMS を構成する方法を学習します。 ログにより、OMS ポータルを使用して、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題を表示、分析、解決することができます。
+## <a name="configure-log-analytics-to-collect-and-view-service-fabric-logs"></a>Service Fabric ログを収集して表示するように Log Analytics を構成する
+このセクションでは、Service Fabric ログを取得するように Log Analytics を構成する方法を学習します。 ログにより、OMS ポータルを使用して、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題を表示、分析、解決することができます。
 
 > [!NOTE]
-> OMS が検索するものと同じストレージ テーブルにログをアップロードするように、Azure 診断拡張機能を構成する必要があります。 ログを収集する方法の詳細については、「[How to collect logs with Azure Diagnostics](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md) (Azure 診断を使用してログを収集する方法)」を参照してください。 この記事の構成設定例では、ストレージ テーブルの名前の付け方を示します。 Azure 診断をクラスターにセットアップし、ログがストレージ アカウントにアップロードされるようになったら、次に、これらのログを収集するように OMS を構成します。
+> ストレージ テーブルのログがアップロードされるように Azure 診断拡張機能を構成してください。 テーブルは、Log Analytics の検索対象と一致する必要があります。 詳細については、[Azure 診断でログを収集する方法](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md)に関するページを参照してください。 この記事の構成設定例では、ストレージ テーブルの名前の付け方を示します。 Azure 診断をクラスターにセットアップし、ログがストレージ アカウントにアップロードされるようになったら、次に、これらのログを収集するように Log Analytics を構成します。
 >
 >
 
-**template.json** ファイルの **EtwEventSourceProviderConfiguration** セクションを更新して、新しい EventSource のエントリを追加してから、**deploy.ps1** を実行して構成の更新を適用するようにします。 アップロードのテーブルは (ETWEventTable) と同じです。 現時点では、OMS は、アプリケーションによって生成された ETW イベントをこのテーブルからのみ読み取ることができます。 カスタム ETW テーブルのサポートは、現在開発中です。
+**template.json** ファイルの **EtwEventSourceProviderConfiguration** セクションを更新して、新しい EventSource のエントリを追加してから、**deploy.ps1** を実行して構成の更新を適用するようにします。 アップロードのテーブルは (ETWEventTable) と同じです。 現時点では、Log Analytics は、アプリケーションによって生成された ETW イベントを *WADETWEventTable* テーブルからのみ読み取ることができます。
 
 次のツールは、このセクションの操作の一部を実行するために使用されます。
 
 * Azure PowerShell
 * [Operations Management Suite](http://www.microsoft.com/oms)
 
-### <a name="configure-an-oms-workspace-to-show-the-cluster-logs"></a>クラスター ログを表示するように OMS ワークスペースを構成する
-前述のように OMS ワークスペースを作成したら、次に、診断拡張機能によってクラスターからアップロードされる Azure Storage テーブルのログを取得するようにワークスペースを構成します。 これを行うためには、次の PowerShell スクリプトを実行します。
+### <a name="configure-a-log-analytics-workspace-to-show-the-cluster-logs"></a>クラスター ログを表示するように Log Analytics ワークスペースを構成する
+
+Log Analytics ワークスペースを作成したら、Azure Storage テーブルからログがプルされるようにワークスペースを構成します。 その後、次の PowerShell スクリプトを実行します。
 
 ```
 <#
@@ -63,8 +74,8 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
     It will enable all supported data types (currently Service Fabric Events, ETW Events and IIS Logs).
     It supports Resource Manager storage accounts.
     If you have more than one Azure Subscription, you will be prompted for the subscription to configure.
-    If you have more than one OMS workspace you will be prompted for the workspace to configure.
-    It will then look through your Service Fabric clusters, and configure your OMS workspace to read Diagnostics from storage accounts that are connected to that cluster and have diagnostics enabled.
+    If you have more than one Log Analytics workspace you will be prompted for the workspace to configure.
+    It will then look through your Service Fabric clusters, and configure your Log Analytics workspace to read Diagnostics from storage accounts that are connected to that cluster and have diagnostics enabled.
 #>
 
 try
@@ -88,12 +99,12 @@ function Select-Subscription {
 
             $count = 1
             foreach ($subscription in $allSubscriptions) {
-                $uiPrompt += "$count. " + $subscription.SubscriptionName + " (" + $subscription.SubscriptionId + ")`n"
+                $uiPrompt += "$count. " + $subscription.Name + " (" + $subscription.Id + ")`n"
                 $count++
             }
             $answer = (Read-Host -Prompt $uiPrompt) - 1
             $subscription = $allSubscriptions[$answer]
-             Write-Host $subscription.SubscriptionId
+             Write-Host $subscription.Id
         }  
     }
     return $subscription
@@ -135,7 +146,7 @@ function Check-ETWProviderLogging {
          }  
          elseif ( $table -ne $expectedTable )
          {
-             Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by OMS")
+             Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
          }  
          else
          {
@@ -244,7 +255,7 @@ function Select-StorageAccount {
                             {
                                 $existingConfig = Get-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -ErrorAction Stop
                             }
-                        catch [Hyak.Common.CloudException]
+                        catch
                             {
                                 # HTTP Not Found is returned if the storage insight doesn't exist
                             }
@@ -287,12 +298,12 @@ $workspace = Select-Workspace
 $storageAccount = Select-StorageAccount
 ```
 
-ご使用のストレージ アカウントの Azure テーブルから読み取るように OMS ワークスペースを構成したら、Azure Portal にログインして、**すべてのリソース**から OMS ワークスペースを選択します。 選択すると、OMS ワークスペースに接続されているストレージ アカウントのログ数が表示されます。 **[Storage account logs] \(ストレージ アカウント ログ)** タイルを選択して、ストレージ アカウント ログの一覧から、ご使用のストレージ アカウントが OMS ワークスペースに接続されていることを確認します。
+使用しているストレージ アカウントの Azure テーブルから読み取るように Log Analytics ワークスペースを構成したら、Azure Portal にログインします。 **[すべてのリソース]** から Log Analytics ワークスペースを選択すると、 ワークスペースに接続されているストレージ アカウントのログ数が表示されます。 **[ストレージ アカウント ログ]** タイルを選択します。 ストレージ アカウント ログの一覧で、使用しているストレージ アカウントが、適切なワークスペースに接続されていることを確認します。
 
 ![ストレージ アカウント ログ](./media/log-analytics-service-fabric/sf1.png)
 
 ## <a name="enable-the-service-fabric-solution"></a>Service Fabric ソリューションを有効にする
-次のスクリプトを使用して、ソリューションを OMS ワークスペースに追加します。 Service Fabric ソリューションを有効にする OMS ワークスペースに関連付けられている Azure サブスクリプションを使用して、PowerShell でスクリプトを実行します。
+次のスクリプトを使用して、ソリューションを Log Analytics ワークスペースに追加します。 Service Fabric ソリューションを有効にする Log Analytics ワークスペースに関連付けられている Azure サブスクリプションを使用して、PowerShell でスクリプトを実行します。
 
 ```
 function Select-Subscription {
@@ -337,26 +348,26 @@ function Select-Workspace {
     return $workspace
 }
 $subscription = Select-Subscription
-$subscriptionId = $subscription.SubscriptionId
+$subscriptionId = $subscription.Id
 $subscription = Select-AzureRmSubscription -SubscriptionId $subscriptionId
 $workspace = Select-Workspace
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -IntelligencePackName "ServiceFabric" -Enabled $true
 ```
 
-ソリューションを有効にすると、[Service Fabric] タイルがご使用の OMS の [概要] ページに追加され、runAsync の失敗やキャンセルなどの、過去 24 時間以内に発生した注目すべき問題が表示されます。
+ソリューションを有効にすると、[Service Fabric] タイルが Log Analytics の *[概要]* ページに追加されます。 このページには、runAsync の失敗、キャンセルなど、過去 24 時間以内に発生した注目すべき問題が表示されます。
 
 ![[Service Fabric] タイル](./media/log-analytics-service-fabric/sf2.png)
 
 ### <a name="view-service-fabric-events"></a>Service Fabric イベントの表示
-**[Service Fabric]** タイルをクリックして、Service Fabric ダッシュボードを開きます。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間範囲について、その列の基準に該当するイベント数の上位&10; 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+**[Service Fabric]** タイルをクリックして、Service Fabric ダッシュボードを開きます。 ダッシュボードの列を次の表に示します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | **Service Fabric イベント** | **description** |
 | --- | --- |
-| Notable Issues (注目すべき問題) |runAsync の失敗やキャンセル、およびノードの停止などの問題の表示。 |
-| 操作イベント |アプリケーションのアップグレードや展開などの注目すべき操作イベント。 |
-| Reliable Service イベント |runAsync の呼び出しなどの注目すべき Reliable Service イベント。 |
-| アクター イベント |アクター メソッドによってスローされた例外、アクターのアクティブ化と非アクティブ化などのマイクロ サービスによって生成された、注目すべきアクター イベント。 |
-| アプリケーション イベント |アプリケーションによって生成されたすべてのカスタム ETW イベント。 |
+| Notable Issues (注目すべき問題) | RunAsyncFailures、RunAsynCancellations、ノードの停止などの問題が表示されます。 |
+| 操作イベント | アプリケーションのアップグレードやデプロイなど、注目すべき操作イベントが表示されます。 |
+| Reliable Service イベント | Runasyncinvocations など、信頼できる注目すべきサービス イベントが表示されます。 |
+| アクター イベント | マイクロ サービスによって生成された、注目すべきアクター イベントが表示されます。 このイベントには、アクター メソッドによってスローされた例外、アクターのアクティブ化と非アクティブ化などがあります。 |
+| アプリケーション イベント | アプリケーションによって生成されたすべてのカスタム ETW イベントが表示されます。 |
 
 ![Service Fabric ダッシュ ボード](./media/log-analytics-service-fabric/sf3.png)
 
@@ -364,24 +375,28 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
 
 次の表は、Service Fabric のデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![いいえ](./media/log-analytics-malware/oms-bullet-red.png) |![あり](./media/log-analytics-malware/oms-bullet-green.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |10 分 |
+| Windows |  |  | &#8226; |  |  |10 分 |
 
 > [!NOTE]
-> ダッシュボードの上部にある **[Data based on last 7 days] \(過去 7 日間に基づくデータ)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
+> ダッシュボードの上部に表示されている**過去 7 日間に基づくデータ**を含むイベントの範囲を変更できます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
 >
 >
 
-## <a name="troubleshoot-your-service-fabric-and-oms-configuration"></a>Service Fabric と OMS の構成のトラブルシューティング
-OMS でイベント データが表示できないために OMS の構成を確認する必要がある場合は、次のスクリプトを使用します。 Service Fabric 診断の構成が読み込まれ、テーブルに書き込まれるデータがチェックされて、テーブルから読み取るように OMS が構成されているか確認されます。
+## <a name="troubleshoot-your-service-fabric-and-log-analytics-configuration"></a>Service Fabric と Log Analytics の構成のトラブルシューティングを行う
+Log Analytics でイベント データを表示できないために Log Analytics の構成を確認する必要がある場合は、次のスクリプトを使用します。 次の処理が実行されます。
+
+1. Service Fabric 診断の構成が読み込まれます
+2. テーブルに書き込まれるデータがチェックされます
+3. テーブルから読み取りを行うように Log Analytics が構成されていることが確認されます
 
 ```
 <#
-    Verify Service Fabric and OMS configuration
+    Verify Service Fabric and Log Analytics configuration
     1. Read Service Fabric diagnostics configuration
     2. Check for data being written into the tables
-    3. Verify OMS is configured to read from the tables
+    3. Verify Log Analytics is configured to read from the tables
 
     Supported tables:
     WADServiceFabricReliableActorEventTable
@@ -505,7 +520,7 @@ function Check-ETWProviderLogging {
         }
         elseif ( $table -ne $expectedTable )
         {
-            Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by OMS")
+            Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
         }
         else
         {
@@ -604,7 +619,7 @@ $OMSworkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.Operational
 
 if ($OMSworkspace.Name -ne $workspaceName)
 {
-    Write-Error ("Unable to find OMS Workspace " + $workspaceName)
+    Write-Error ("Unable to find Log Analytics Workspace " + $workspaceName)
 }
 
 $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"})

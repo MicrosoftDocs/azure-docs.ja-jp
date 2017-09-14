@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0dd751d9c824f27bdb25681908cb0dca5116100b
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 61bfbedfd4f1e84b6976099323a32f3a720634c0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -88,8 +88,9 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 
 この段階で、別のアクション (たとえば、新しいファイルまたは変更されたファイルの内容を SQL データベース テーブルに挿入する [[SQL Server - insert row (SQL Server - 行を挿入する)]](connectors-create-api-sqlazure.md) アクション) を追加することができます。  
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/ftpconnector/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/ftpconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)

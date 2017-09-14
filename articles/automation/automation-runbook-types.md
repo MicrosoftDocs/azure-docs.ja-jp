@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/11/2016
+ms.date: 06/01/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: dd6b2fa2a1ca003578eaee82ef42741b9b1bf2a4
-ms.openlocfilehash: b509629ba0d6bbaea3de979a4e67f5c444e5e9e0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e859aef473b433fbf4efb639962f3a3ce0a23d7b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -51,7 +53,7 @@ PowerShell Runbook は、Windows PowerShell に基づきます。  Azure ポー�
 
 ### <a name="advantages"></a>長所
 * すべての複雑なロジックを PowerShell コードで実装でき、PowerShell ワークフローに関する複雑さが加わることはありません。 
-* 実行前にコンパイルする必要がないため、グラフィカル Runbook または PowerShell ワークフロー Runbook より開始に時間がかかりません。
+* 実行前にコンパイルする必要がないため、PowerShell ワークフロー Runbook より開始に時間がかかりません。
 
 ### <a name="limitations"></a>制限事項
 * 作成者は、PowerShell スクリプトに熟知している必要があります。
@@ -92,10 +94,5 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 * グラフィカル Runbook 作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 * Runbook を作成またはインポートする方法については、「 [Runbook の作成またはインポート](automation-creating-importing-runbook.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

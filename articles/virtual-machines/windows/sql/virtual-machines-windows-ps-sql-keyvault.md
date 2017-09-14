@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/14/2017
+ms.date: 06/23/2017
 ms.author: jroth
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 7dd5261960d3f93f01e221c5f5d7a397bc77d590
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/25/2017
 
 

@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 08/23/2017
 ms.author: saysa
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 71e3d130f22515d22dc7f486f3dede936b874049
-ms.lasthandoff: 03/25/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 32d39e2c19348bc4a1ba218cfc411a70f9f212e3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Jenkins を使用した Linux Java アプリケーションのビルドとデプロイ
@@ -30,7 +30,7 @@ Jenkins は、アプリの継続的な統合とデプロイを行うための一
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>Service Fabric クラスター内での Jenkins のセットアップ
 
-Jenkins は、Service Fabric クラスター内外でセットアップできます。 次のセクションでは、クラスター内でセットアップする方法について説明します。
+Jenkins は、Service Fabric クラスター内外でセットアップできます。 次のセクションでは、Azure Storage アカウントを使用してコンテナー インスタンスの状態を保存する際にクラスター内部で Jenkins をセットアップする方法について説明します。
 
 ### <a name="prerequisites"></a>前提条件
 1. Service Fabric Linux クラスターを用意します。 Azure Portal で作成された Service Fabric クラスターには、Docker が既にインストールされています。 クラスターをローカルで実行している場合、コマンド ``docker info`` を使用して、Docker がインストールされているかどうかを確認してください。 Docker がインストールされていない場合、次のコマンドを使用して適宜インストールします。
@@ -42,9 +42,25 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 2. 次の手順を使用して、Service Fabric コンテナー アプリケーションをクラスターにデプロイします。
 
   ```sh
-git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git -b JenkinsDocker
+git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
 cd service-fabric-java-getting-started/Services/JenkinsDocker/
-azure servicefabric cluster connect http://PublicIPorFQDN:19080   # Azure CLI cluster connect command
+```
+
+3. Jenkins コンテナー インスタンスの状態を保持する Azure Storage ファイル共有の接続オプションの詳細が必要です。 同様に Microsoft Azure Portal を使用している場合は、Azure Storage アカウント (例: ``sfjenkinsstorage1``) の作成の手順に従ってください。 そのストレージ アカウントの下に、**ファイル共有** (例: ``sfjenkins``) を作成します。 そのファイル共有の **[接続]** をクリックして、**[Linux からの接続]** の下に表示される値をメモします。たとえば、次のように表示されています。
+```sh
+sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
+```
+
+4. ```setupentrypoint.sh``` スクリプトのプレースホルダーの値を、対応する Azure Storage の内容に更新します。
+```sh
+vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
+```
+``[REMOTE_FILE_SHARE_LOCATION]`` を、上記 3 の接続の出力にある値 ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` に置き換えます。
+``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` を上記 3 の値 ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` に置き換えます。
+
+5. クラスターに接続し、コンテナー アプリケーションをインストールします。
+```azurecli
+sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
 bash Scripts/install.sh
 ```
 これでクラスターに Jenkins コンテナーがインストールされます。このコンテナーは Service Fabric Explorer を使用して監視できます。
@@ -102,7 +118,7 @@ Docker がインストールされている必要があります。 ターミナ
   5. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。
         * GitHub によって提供されている手順を使用して、SSH キーを生成し、リポジトリをホストする GitHub アカウントにその SSH キーを追加します。
         * (ホストではなく) Jenkins Docker シェルで、前のリンク先に記載されているコマンドを実行します。
-        * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
+      * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
 
       ```sh
       docker exec -t -i [first-four-digits-of-container-ID] /bin/bash

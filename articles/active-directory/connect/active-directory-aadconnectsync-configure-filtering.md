@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a78679782f538121c2451a6e2d1519f457ad057c
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 064642ebb9cafb0c6e1b3ff306241182a95215cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -254,7 +254,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
 2. **[スタート]** メニューから、**同期規則エディター**を起動します。
 3. **[規則の種類]** の **[送信]** をクリックします。
-4. **[Out to AAD – User Join SOAInAD]**という規則を探して **[編集]** クリックします。
+4. **[Out to AAD – User Join]** という規則を探し、**[編集]** をクリックします。
 5. ポップアップで **[はい]** を選択して規則のコピーを作成します。
 6. **[説明]** ページの **[優先順位]** の値を、まだ使用していない値 (50 など) に設定します。
 7. 左側のナビゲーションにある **[スコープ フィルター]** をクリックし、**[句の追加]** をクリックします。 **[属性]** で **[mail]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** で「**@contoso.com**」を入力し、**[句の追加]** をクリックします。 **[属性]** で **[userPrincipalName]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「**@contoso.com**」を入力します。
@@ -297,6 +297,8 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 
 ## <a name="group-based-filtering"></a>グループベースのフィルター処理
 グループベースのフィルター処理は、[カスタム インストール](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)を使用して Azure AD Connect を初めてインストールするときに構成できます。 このフィルター処理は、同期が必要なオブジェクトがごく少数であるパイロット デプロイで使用するためのものです。 グループベースのフィルター処理は、一度無効にすると再び有効にすることができません。 カスタム構成でのグループベースのフィルター処理は、*サポートされていません*。 この機能を構成できるのは、インストール ウィザードを使用する場合のみです。 パイロットが完了したら、このトピックで説明されているいずれかの他のフィルター処理オプションを使用する必要があります。 OU ベースのフィルター処理とグループ ベースのフィルター処理を組み合わせて使用する場合は、グループとそのメンバーが配置されている OU を追加する必要があります。
+
+複数の AD フォレストを同期すると、各 AD コネクタに別のグループを指定することで、グループベースのフィルター処理を構成できます。 1 つの AD フォレストでユーザーを同期する場合、同じユーザーが他の AD フォレストで 1 つ以上の対応する FSP (外部セキュリティ プリンシパル) オブジェクトを持つとき、ユーザー オブジェクトとそれに対応するすべての FSP オブジェクトがグループベースのフィルター処理のスコープ内にあることを確認してください。 グループベースのフィルター処理で 1 つ以上の FSP オブジェクトが除外された場合、ユーザー オブジェクトは Azure AD に同期されません。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の詳細を確認してください。

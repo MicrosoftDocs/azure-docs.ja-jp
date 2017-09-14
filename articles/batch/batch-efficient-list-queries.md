@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 08/02/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 791b7a22e5b7edd2e31f6ab01131530a8053ac2b
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
@@ -27,6 +27,13 @@ ms.lasthandoff: 02/28/2017
 ここでは、Azure Batch アプリケーションから [Batch .NET][api_net] ライブラリを使ってジョブやタスク、コンピューティング ノードを照会するときにサービスから返されるデータの量を減らすことでパフォーマンスを強化する方法について説明しています。
 
 ほぼすべての Batch アプリケーションでは、Batch サービスに対して問い合わせを行う操作 (各種の監視など) が定期的に、それもかなりの頻度で必要となります。 たとえば、ジョブのキューにタスクが残っているかどうかを調べるためには、ジョブ内のすべてのタスクに関するデータを取得する必要があります。 プール内のノードの状態を調べるためには、そのプールに存在するすべてのノードのデータを取得する必要があります。 この記事では、このようなクエリを最も効率的な方法で実行する方法について説明します。
+
+> [!NOTE]
+> Batch サービスは、ジョブ内のタスクをカウントする一般的なシナリオ用の特別な API をサポートしています。 これらに対してリスト クエリを使用する代わりに、[Get Task Counts][rest_get_task_counts] 操作を呼び出すことができます。 Get Task Counts は、保留中、実行中、または完了したタスクの数と、成功または失敗したタスクの数を示します。 Get Task Counts は、リスト クエリよりも効率的です。 詳細については、[ジョブのタスクの状態別カウント (プレビュー)](batch-get-task-counts.md) に関する記事を参照してください。 
+>
+> Get Task Counts 操作は 2017-06-01.5.1.1 より前のバージョンの Batch サービスでは使用できません。 古いバージョンのサービスを使用している場合は、代わりにリスト クエリを使用してジョブ内のタスクをカウントしてください。
+>
+> 
 
 ## <a name="meet-the-detaillevel"></a>DetailLevel での条件指定
 運用環境の Batch アプリケーションでは、ジョブ、タスク、コンピューティング ノードのようなエンティティは数千単位になることがあります。 これらのリソースに関する情報を要求する場合、クエリのたびに Batch サービスからアプリケーションに大量のデータが送信される可能性があります。 クエリによって返される情報の項目数と種類を制限することで、クエリの時間を短縮し、それによってアプリケーションのパフォーマンスを向上させることができます。
@@ -53,7 +60,7 @@ IPagedEnumerable<CloudTask> completedTasks =
     batchClient.JobOperations.ListTasks("job-001", detailLevel);
 ```
 
-この例のシナリオでジョブに何千ものタスクがある場合、通常は&2; つ目のクエリの結果は最初のものより速く返されます。 Batch .NET API を使って項目をリストするときの ODATADetailLevel の使い方については、 [以下](#efficient-querying-in-batch-net)で詳しく説明しています。
+この例のシナリオでジョブに何千ものタスクがある場合、通常は 2 つ目のクエリの結果は最初のものより速く返されます。 Batch .NET API を使って項目をリストするときの ODATADetailLevel の使い方については、 [以下](#efficient-querying-in-batch-net)で詳しく説明しています。
 
 > [!IMPORTANT]
 > アプリケーションの最大限の効率とパフォーマンスを確保するために、.NET API リスト呼び出しには " *常に* " ODATADetailLevel オブジェクトを指定することを強くお勧めします。 詳細レベルを指定することによって、Batch サービスの応答時間の短縮、ネットワーク使用率の改善、クライアント アプリケーションによるメモリ使用量の最小化といった効果が期待できます。
@@ -63,20 +70,20 @@ IPagedEnumerable<CloudTask> completedTasks =
 ## <a name="filter-select-and-expand"></a>filter、select、expand
 [Batch .NET][api_net] と [Batch REST][api_rest] API には、リストとして返される項目の数と、クエリごとに返される情報の量を減らす機能が用意されています。 これを行うには、リスト クエリの実行時に **filter**、**select**、**expand 文字列**を指定します。
 
-### <a name="filter"></a>[フィルター]
+### <a name="filter"></a>filter
 filter 文字列は、返される項目の数を減らす式です。 たとえば、あるジョブの実行中のタスクのみ、またはタスクの実行準備が完了しているコンピューティング ノードのみをリストします。
 
-* filter 文字列は、プロパティ名、演算子、値で構成される&1; つ以上の式から成ります。 指定できるプロパティは、クエリする各エンティティ型に固有です。各エンティティでサポートされる演算子も同様です。
+* filter 文字列は、プロパティ名、演算子、値で構成される 1 つ以上の式から成ります。 指定できるプロパティは、クエリする各エンティティ型に固有です。各エンティティでサポートされる演算子も同様です。
 * 論理演算子の `and` と `or` を使用して、複数の式を結合できます。
 * たとえば、実行中の "レンダリング" タスクのみをリストする場合の filter 文字列は `(state eq 'running') and startswith(id, 'renderTask')`となります。
 
-### <a name="select"></a>Select
+### <a name="select"></a>elect
 select 文字列は、各項目に対して返されるプロパティの値を制限します。 プロパティ名の一覧を指定すると、指定されたプロパティ値のみがクエリ結果で返されます。
 
 * select 文字列は、プロパティ名のコンマ区切りリストで構成されます。 クエリするエンティティ型のすべてのプロパティを指定できます。
-* たとえば、各タスクで&3; つのプロパティのみを返すように指定する場合の select 文字列は `id, state, stateTransitionTime`になります。
+* たとえば、各タスクで 3 つのプロパティのみを返すように指定する場合の select 文字列は `id, state, stateTransitionTime`になります。
 
-### <a name="expand"></a>Expand
+### <a name="expand"></a>expand
 expand 文字列は、特定の情報を取得するために必要な API 呼び出しの数を減らします。 expand 文字列を使用すると、1 つの API 呼び出しで各項目の情報をより多く取得できます。 最初にエンティティの一覧を取得し、次に一覧の各項目の情報を要求する代わりに、expand 文字列を使用して、1 つの API 呼び出しで同じ情報を取得します。 API 呼び出しの少なさは、パフォーマンスの向上を意味します。
 
 * select 文字列と同様に、expand 文字列はリスト クエリ結果に特定のデータを含めるかどうかを制御します。
@@ -92,7 +99,7 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 ### <a name="rules-for-filter-select-and-expand-strings"></a>filter、select、expand 文字列の規則
 * filter、select、expand 文字列に指定されるプロパティ名は、[Batch REST][api_rest] API に表示される場合のプロパティ名に相当します。これは、[Batch .NET][api_net] や他のいずれかの Batch SDK を使用する場合も同様です。
 * すべてのプロパティ名では大文字と小文字が区別されますが、プロパティの値は大文字と小文字を区別しません。
-* 日付/時刻文字列は、次の&2; つの形式のいずれかを使用でき、前に `DateTime`を付ける必要があります。
+* 日付/時刻文字列は、次の 2 つの形式のいずれかを使用でき、前に `DateTime`を付ける必要があります。
   
   * W3C-DTF 形式の例: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
   * RFC 1123 形式の例: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
@@ -239,7 +246,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 
 ## <a name="next-steps"></a>次のステップ
 ### <a name="parallel-node-tasks"></a>並列ノード タスク
-[同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」があります。 ワークロードの種類によっては、並列タスクの実行環境となるコンピューティング ノードの規模を大きくしてノード数を減らすことによってパフォーマンス上のメリットが得られる場合があります。 同記事の「 [サンプル シナリオ](batch-parallel-node-tasks.md#example-scenario) 」で、そのようなシナリオについて詳しく説明されています。
+「[同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」があります。 ワークロードの種類によっては、並列タスクの実行環境となるコンピューティング ノードの規模を大きくしてノード数を減らすことによってパフォーマンス上のメリットが得られる場合があります。 同記事の「 [サンプル シナリオ](batch-parallel-node-tasks.md#example-scenario) 」で、そのようなシナリオについて詳しく説明されています。
 
 ### <a name="batch-forum"></a>Batch フォーラム
 MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッションやサービスに関する質問を行うことができる優れた場所です。 役立つ "sticky" 投稿を参照したり、Batch ソリューションの構築中に湧いた質問を投稿したりできます。
@@ -293,3 +300,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
+[rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job

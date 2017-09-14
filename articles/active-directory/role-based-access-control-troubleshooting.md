@@ -3,27 +3,27 @@ title: "Azure RBAC のトラブルシューティング | Microsoft Docs"
 description: "ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。"
 services: azure-portal
 documentationcenter: na
-author: kgremban
+author: andredm7
 manager: femila
-editor: 
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
-ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 32b335d8a1f84348ab28bcc081cc42fd79fb08fc
-ms.lasthandoff: 03/04/2017
-
+ms.date: 07/12/2017
+ms.author: andredm
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9ad194308d30ca652b32ec3b76750b0e838472f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="role-based-access-control-troubleshooting"></a>ロールベースのアクセス制御のトラブルシューティング
 
-この記事では、ロールで付与される特定のアクセス権に関する一般的な質問に答えて、Azure Portal でロールを使ったときに予想されることをユーザーが理解し、アクセスの問題をトラブルシューティングできるようにします。 次の&3; つのロールは、すべてのリソースの種類に対応しています。
+この記事では、ロールで付与される特定のアクセス権に関する一般的な質問に答えて、Azure Portal でロールを使ったときに予想されることをユーザーが理解し、アクセスの問題をトラブルシューティングできるようにします。 次の 3 つのロールは、すべてのリソースの種類に対応しています。
 
 * 所有者  
 * 共同作成者  
@@ -46,14 +46,14 @@ ms.lasthandoff: 03/04/2017
 * Web テスト
 * 仮想ネットワーク (書き込みアクセス権を持つユーザーが仮想ネットワークを事前に構成している場合のみ閲覧者が参照できる)。
 
-これらのいずれかのタイルにアクセスできない場合、管理者に問い合わせて Web アプリに対する共同作成者アクセス権を得る必要があります。
+これらのタイルのいずれにもアクセスできない場合、管理者に問い合わせて Web アプリに対する共同作成者アクセス権を得る必要があります。
 
 ### <a name="dealing-with-related-resources"></a>関連リソースの処理
 相互作用する数種類のリソースがあると、Web アプリは複雑になります。 複数の Web サイトが対になっている代表的なリソース グループを以下に示します。
 
 ![Web アプリ リソース グループ](./media/role-based-access-control-troubleshooting/website-resource-model.png)
 
-結果として、Web アプリのみに対するアクセス権を付与すると、Azure ポータルの Web サイト ブレード上の多数の機能が使用できなくなります。
+結果として、Web アプリのみに対するアクセス権を付与すると、Azure Portal の Web サイト ブレード上の多数の機能が使用できなくなります。
 
 以下の項目には、Web サイトに対応する **App Service プランへ**の**書き込み**アクセス権が必要です。  
 
@@ -87,7 +87,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 * 負荷分散セット  
 * アラート ルール  
 
-これらのいずれかのタイルにアクセスできない場合、管理者に問い合わせてリソース グループに対する共同作成者アクセス権を得る必要があります。
+これらのタイルのいずれにもアクセスできない場合、管理者に問い合わせてリソース グループに対する共同作成者アクセス権を入手してください。
 
 ## <a name="see-more"></a>関連項目
 * [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。

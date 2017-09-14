@@ -4,7 +4,7 @@ description: "診断図機能を使用してセルフサービスのトラブル
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: d87841cd-c59f-4a46-b46e-8b904fdc12e9
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0aa754ee248b98395bfc9c7fd53187ef702a6d1e
-ms.lasthandoff: 11/17/2016
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 820b73a5dbf9bb108e189313cf6ee2b924ab04c7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="visualize-and-troubleshoot-stream-analytics-jobs"></a>Stream Analytics ジョブの視覚化とトラブルシューティング
@@ -28,7 +28,7 @@ Stream Analytics では、他のクラウドベースのテクノロジと同様
 視覚化パネルでは、入力が表示されるだけでなく、実行中のクエリとクエリの結果として構成されたすべての出力が表示されます。 接続や構成の問題を明らかにすることができ、構成を視覚的に表示する際にも役立ちます。
 
 ## <a name="using-the-diagnosis-diagram-tool"></a>診断図ツールの使用
-このビジュアライザーにアクセスするには、Stream Analytics ジョブの [設定] ブレードで [診断図] をクリックします。
+このビジュアライザーにアクセスするには、Stream Analytics ジョブの [設定] 領域で [診断図] をクリックします。
 
 ![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram1.png)
 
@@ -42,7 +42,7 @@ Stream Analytics では、他のクラウドベースのテクノロジと同様
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

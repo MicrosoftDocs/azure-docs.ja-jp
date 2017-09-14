@@ -1,6 +1,6 @@
 ---
 title: Create a plan in Azure Stack | Microsoft Docs
-description: As a service administrator, create a plan that lets subscribers provision virtual machines.
+description: As a cloud administrator, create a plan that lets subscribers provision virtual machines.
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,59 +12,57 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/1/2017
+ms.date: 7/10/2017
 ms.author: erikje
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 732d25201b51f540b7f15ed408a669d75566f068
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ff34bcd6ba485806baf7963e11393633dd893fa7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Create a plan in Azure Stack
 [Plans](azure-stack-key-features.md) are groupings of one or more services. As a provider, you can create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
 
-1. In an internet browser, navigate to https://adminportal.local.azurestack.external.
-2. [Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack Portal as a service administrator. Enter the credentials for the account that you created during step 5 of the [Run the PowerShell script](azure-stack-run-powershell-script.md) section.
+1. Sign in to the Azure Stack administrator portal (https://adminportal.local.azurestack.external). Enter the credentials for the account that you created during step 5 of the [Run the PowerShell script](azure-stack-run-powershell-script.md) section.
 
-   Service administrators can create offers and plans, and manage users.
-3. To create a plan and offer that tenants can subscribe to, click **New** > **Tenant Offers + Plans** > **Plan**.
+2. To create a plan and offer that tenants can subscribe to, click **New** > **Tenant Offers + Plans** > **Plan**.
 
    ![](media/azure-stack-create-plan/image01.png)
-4. In the **New Plan** blade, fill in **Display Name** and **Resource Name**. The Display Name is the plan's friendly name that tenants see. Only the admin can see the Resource Name. It's the name that admins use to work with the plan as an Azure Resource Manager resource.
+3. In the **New Plan** blade, fill in **Display Name** and **Resource Name**. The Display Name is the plan's friendly name that tenants see. Only the admin can see the Resource Name. It's the name that admins use to work with the plan as an Azure Resource Manager resource.
 
    ![](media/azure-stack-create-plan/image02.png)
-5. Create a new **Resource Group**, or select an existing one, as a container for the plan.
+4. Create a new **Resource Group**, or select an existing one, as a container for the plan.
 
    ![](media/azure-stack-create-plan/image02a.png)
-6. Click **Services**, select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**, and then click **Select**.
+5. Click **Services**, select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**, and then click **Select**.
 
    ![](media/azure-stack-create-plan/image03.png)
-7. Click **Quotas**, click **Microsoft.Storage (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+6. Click **Quotas**, click **Microsoft.Storage (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
 
    ![](media/azure-stack-create-plan/image04.png)
-8. Type a name for the quota, click **Quota Settings**, set the quota values and click **OK**, and then click **OK**.
+7. If you're creating a new quota, enter a name for the quota > set the quota values > click **OK** > click the name of the new quota.
 
    ![](media/azure-stack-create-plan/image06.png)
-9. Click **Microsoft.Network (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+8. Click **Microsoft.Network (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
 
     ![](media/azure-stack-create-plan/image07.png)
-10. Type a name for the quota, click **Quota Settings**, set the quota values and click **OK**, and then click **OK**.
+9. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
 
     ![](media/azure-stack-create-plan/image08.png)
-11. Click **Microsoft.Compute (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+10. Click **Microsoft.Compute (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
 
     ![](media/azure-stack-create-plan/image09.png)
-12. Type a name for the quota, click **Quota Settings**, set the quota values and click **OK**, and then click **OK**.
+11. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
 
     ![](media/azure-stack-create-plan/image10.png)
-13. In the **Quotas** blade, click **OK**, and then in the **New Plan** blade, click **Create** to create the plan.
+12. In the **Quotas** blade, click **OK**, and then in the **New Plan** blade, click **Create** to create the plan.
 
     ![](media/azure-stack-create-plan/image11.png)
-14. To see your new plan, click **All resources**, then search for the plan and click its name.
+13. To see your new plan, click **All resources**, then search for the plan and click its name.
 
     ![](media/azure-stack-create-plan/image12.png)
 
-## <a name="next-steps"></a>Next steps
+### <a name="next-steps"></a>Next steps
 [Create an offer](azure-stack-create-offer.md)
 

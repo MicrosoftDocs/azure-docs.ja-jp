@@ -14,23 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7e8aed4f56471bb2946c610ca63b0ec50ee1b57e
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ
 
 Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この 2 つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。
-
-前提条件:
-
-- Azure Data Lake Analytics アカウント。 [Azure Data Lake Analytics の使用開始](data-lake-analytics-get-started-portal.md)に関するページを参照してください。
-- Azure Data Lake Tools for Visual Studio。 [Data Lake Tools for Visual Studio を使用した U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)に関するページを参照してください。
-- U-SQL スクリプトの開発経験。 [Azure Data Lake Analytics の使用開始](data-lake-analytics-get-started-portal.md)に関するページを参照してください。
-
 
 ## <a name="understand-the-data-root-folder-and-the-file-path"></a>データルート フォルダーとファイル パスについて
 
@@ -114,11 +108,6 @@ Visual Studio を使用してローカルで U-SQL スクリプトを実行す�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-* U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
-* U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-* 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
-* 診断情報のログについては、「[Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)」を参照してください。
 * より複雑なクエリを表示する場合は、[Azure Data Lake Analytics を使用した Web サイトのログの分析](data-lake-analytics-analyze-weblogs.md)に関するページをご覧ください。
 * ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。
 * 頂点実行ビューの使用方法については、「[Data Lake Tools for Visual Studio での頂点実行ビューの使用](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。

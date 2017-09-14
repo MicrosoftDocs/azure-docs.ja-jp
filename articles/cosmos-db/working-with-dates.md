@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 2fb537bff683fe99b268b310914e9926629fe1b0
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: b6a77e33eea24000037ffb31d7aae3cb1d345ce9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ モデルにより、スキーマの柔軟性と豊富なインデックス機能を提供します。 データベース、コレクション、ドキュメント、ストアド プロシージャを含むすべての Azure Cosmos DB リソースは、JSON ドキュメントとしてモデル化されて保存されます。 ポータブルであることが求められる JSON (および Azure Cosmos DB) では、少数の基本的な型 (String、Number、Boolean、Array、Object、Null) しかサポートされません。 ただし、JSON は柔軟性が高いため、開発者およびフレームワークは、これらのプリミティブ型を使用したり、オブジェクトまたは配列として作成したりすることにより、複雑な型を表現できます。 
 
-基本の型の他に、多くのアプリケーションでは日付やタイムスタンプを表す [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) 型が必要です。 この記事では、開発者が、.NET SDK を使用して Cosmos DB で日付の格納、取得、クエリを行う方法を説明します。
+基本の型の他に、多くのアプリケーションでは日付やタイムスタンプを表す [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) 型が必要です。 この記事では、開発者が、.NET SDK を使用して Azure Cosmos DB で日付の格納、取得、クエリを行う方法を説明します。
 
 ## <a name="storing-datetimes"></a>DateTimes の格納
 既定では、[Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) は DateTime 値を [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874) 文字列としてシリアル化します。 ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
@@ -33,7 +32,7 @@ Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ �
 * 文字列は比較することができます。DateTime 値が文字列に変換されるとき、値の相対的な順序は維持されます。 
 * この方法では、JSON 変換のためのカスタム コードまたは属性は必要ありません。
 * JSON に格納されている日付を人間が判読できます。
-* この方法では、高速クエリ パフォーマンスのために Cosmos DB のインデックスを利用できます。
+* この方法では、高速クエリ パフォーマンスのために Azure Cosmos DB のインデックスを利用できます。
 
 たとえば、次のスニペットは、.NET SDK を使用して 2 つの DateTime プロパティ (`ShipDate` と `OrderDate`) を含む`Order` オブジェクトをドキュメントとして格納します。
 
@@ -55,7 +54,7 @@ Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ �
             Total = 113.39
         });
 
-このドキュメントは Cosmos DB に次のように格納されます。
+このドキュメントは、Azure Cosmos DB に次のように格納されます。
 
     {
         "id": "09152014101",
@@ -65,7 +64,7 @@ Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ �
     }
     
 
-または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 Cosmos DB の内部 Timestamp (`_ts`) プロパティはこの方法を使用しています。 [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) クラスを使用して、DateTime を数値としてシリアル化できます。 
+または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 Azure Cosmos DB の内部 Timestamp (`_ts`) プロパティは、この方法を使用しています。 [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) クラスを使用して、DateTime を数値としてシリアル化できます。 
 
 ## <a name="indexing-datetimes-for-range-queries"></a>範囲クエリ用の DateTimes のインデックス作成
 範囲クエリは DateTime 値でよく使用されます。 たとえば、昨日からのすべての注文を探す必要がある場合、または 5 分以内に出荷されたすべての注文を探す必要がある場合は、範囲クエリを実行します。 このようなクエリを効率的に実行するには、文字列に対する範囲インデックス作成用のコレクションを構成する必要があります。
@@ -74,20 +73,20 @@ Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ �
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-インデックス作成ポリシーを構成する方法の詳細については、「[Cosmos DB インデックス 作成ポリシー](indexing-policies.md)」を参照してください。
+インデックス作成ポリシーを構成する方法の詳細については、「[Azure Cosmos DB のインデックス作成ポリシー](indexing-policies.md)」を参照してください。
 
 ## <a name="querying-datetimes-in-linq"></a>LINQ での DateTime のクエリ
-DocumentDB .NET SDK は、LINQ 経由で DocumentDB に格納されたデータのクエリを自動的にサポートします。 たとえば、次のスニペットは、3 日以内に出荷された注文をフィルター処理する LINQ クエリです。
+DocumentDB .NET SDK は、LINQ 経由で Azure Cosmos DB に格納されたデータのクエリを自動的にサポートします。 たとえば、次のスニペットは、3 日以内に出荷された注文をフィルター処理する LINQ クエリです。
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
           
-    // Translated to the following SQL statement and executed on Cosmos DB
+    // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Cosmos DB の SQL 言語と LINQ プロバイダーについては、[Cosmos DB のクエリ](documentdb-sql-query.md)に関する記事を参照してください。
+Azure Cosmos DB の SQL クエリ言語と LINQ プロバイダーについては、[Cosmos DB のクエリ](documentdb-sql-query.md)に関する記事を参照してください。
 
-この記事では、Cosmos DB での DateTime の格納、インデックス作成、クエリの方法について説明しました。
+この記事では、Azure Cosmos DB での DateTime の格納、インデックス作成、クエリの方法について説明しました。
 
 ## <a name="next-steps"></a>次のステップ
 * [GitHub のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)のダウンロードと実行

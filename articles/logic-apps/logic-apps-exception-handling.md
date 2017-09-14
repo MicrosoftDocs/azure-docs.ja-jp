@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ddb7c2fd9437cb342e68b5a1ad47f9bd06ec476b
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---

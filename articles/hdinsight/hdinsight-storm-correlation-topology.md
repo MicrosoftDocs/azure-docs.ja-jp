@@ -13,14 +13,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/01/2017
+ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 21ce246fab787e06576a295ec4ea45ae3fdfc379
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 06630096383601e48e8f69f8553314cee42f5f3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Storm と HBase を使用して別々の時刻に到着するイベントを関連付ける
@@ -35,13 +35,13 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 
 * HDInsight クラスターの Apache Storm (Windows ベース)。
 
-  > [!IMPORTANT]
-  > SCP.NET トポロジは、2016 年 10 月 28 日以降に作成された Linux ベース Storm クラスタでサポートされます。2016 年 10 月 28 日以降に入手可能な HBase SDK for .NET パッケージは Linux では正常に作動しません。
+  > [!WARNING]
+  > SCP.NET トポロジは、2016 年 10 月 28 日以降に作成された Linux ベース Storm クラスタでサポートされます。2016 年 10 月 28 日以降に入手可能な HBase SDK for .NET パッケージは Linux ベースの HDInsight では正常に作動しません。
 
 * HDInsight クラスター (Linux または Windows ベース) の Apache HBase。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * 開発環境での [Java](https://java.com) 1.7 以降 Java を使用して、HDInsight クラスターへの送信時にトポロジをパッケージ化します。
 

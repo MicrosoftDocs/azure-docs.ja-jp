@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 52c095c9d3c92e32961927ac34770bb34fc768d5
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: cab019480a14de1a1481abee800553c6545add70
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="performance-tips-for-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスに関するヒント
@@ -49,7 +48,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
      Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
 
-     ゲートウェイ モードで TCP を使用する場合は、TCP ポート 443 が Cosmos DB のポート、10250 が MongoDB API のポートになります。 直接モードで TCP を使用する場合は、Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。
+     ゲートウェイ モードで TCP を使用している場合、TCP ポート 443 は Cosmos DB ポートであり、10255 は MongoDB API ポートです。 直接モードで TCP を使用する場合は、Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。
 
      接続モードは、ConnectionPolicy パラメーターを使用して DocumentClient インスタンスの作成時に構成されます。 直接モードを使用する場合、ConnectionPolicy パラメーター内でプロトコルも設定できます。
 
@@ -98,15 +97,13 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     ゲートウェイ モードを使用するときは Cosmos DB の要求は HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、Cosmos DB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxConnections を 100 ～ 1000 に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。この値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) をより大きな値に設定します。   
 4. **パーティション分割コレクションに対する並列クエリを調整する**
 
-     DocumentDB .NET SDK Version 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます (詳細については、 [SDK の操作](documentdb-partition-data.md#working-with-the-documentdb-sdks)」と、関連する[コード例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)を参照してください)。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、ユーザーが要件に合わせて調整できる 2 つのパラメーターが用意されています。(a) MaxDegreeOfParallelism は、並列でクエリを実行できるパーティションの最大数を制御します。(b) MaxBufferedItemCount は、プリフェッチされる結果の数を制御します。
+     DocumentDB .NET SDK Version 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます (詳細については、 [SDK の操作](documentdb-partition-data.md#working-with-the-azure-cosmos-db-sdks)」と、関連する[コード例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)を参照してください)。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、ユーザーが要件に合わせて調整できる 2 つのパラメーターが用意されています。(a) MaxDegreeOfParallelism は、並列でクエリを実行できるパーティションの最大数を制御します。(b) MaxBufferedItemCount は、プリフェッチされる結果の数を制御します。
 
-    (a) ***MaxDegreeOfParallelism の調整\:***
-    並列クエリは、複数のパーティションに並列してクエリを実行することで機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、MaxDegreeOfParallelism をパーティションの数に設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、MaxDegreeOfParallelism に大きな数を設定できます。システムが最小値 (パーティションの数、ユーザー指定の入力) を MaxDegreeOfParallelism として選択します。
+    (a) ***MaxDegreeOfParallelism の調整\:***並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、MaxDegreeOfParallelism をパーティションの数に設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、MaxDegreeOfParallelism に大きな数を設定できます。システムが最小値 (パーティションの数、ユーザー指定の入力) を MaxDegreeOfParallelism として選択します。
 
     並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、クエリのパフォーマンスに関してこれらのパーティションがボトルネックになるでしょう。
 
-    (b) ***MaxBufferedItemCount の調整\:***
-    並列クエリは、結果の現在のバッチがクライアントに処理されている間に結果をプリフェッチするように設計されています。 プリフェッチは、クエリの全体的な遅延の削減に役立ちます。 MaxBufferedItemCount は、プリフェッチされる結果の量を制限するパラメーターです。 MaxBufferedItemCount を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
+    (b) ***MaxBufferedItemCount の調整\:***並列クエリは、結果の現在のバッチがクライアントによって処理されている間に結果をプリフェッチするように設計されています。 プリフェッチは、クエリの全体的な遅延の削減に役立ちます。 MaxBufferedItemCount は、プリフェッチされる結果の量を制限するパラメーターです。 MaxBufferedItemCount を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
 
     プリフェッチは MaxDegreeOfParallelism とは無関係に同じように動作し、すべてのパーティションからのデータに対して単一のバッファーを持つことに注意してください。  
 5. **サーバー側の GC を有効にする**

@@ -9,19 +9,18 @@ editor:
 tags: 
 ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
-ms.custom: security-access
+ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 05/05/2017
+ms.date: 07/10/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f018e265d008cc06631034cea417109c71e7786f
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 61a52813769891aa63373437e9300d4f8f47fab2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
@@ -76,20 +75,20 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 次の 2 つの手順は、Azure Portal と PowerShell を使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングする方法を示しています。
 
 ### <a name="azure-portal"></a>Azure Portal
-1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします  (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。
-   
-    ![choose-ad][8]
-2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** を選択した後、**[SQL Server]** ブレードの上部にある **[設定]** をクリックします。
-   
-    ![ad settings][9]
-3. **[設定]** ブレードで **[Active Directory 管理者]** をクリックします。
-4. **[Active Directory 管理者]** ブレードで、**[Active Directory 管理者]** をクリックし、上部にある **[管理者の設定]** をクリックします。
-5. **[管理者の追加]** ブレードで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** をクリックします。 [Active Directory 管理者] ブレードには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (サポートされている管理者の一覧については、上記の「**Azure AD の機能と制限事項**」を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
-6. **[Active Directory 管理者]** ブレードの上部にある **[保存]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします  (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。   
+    ![choose-ad][8]   
+    
+2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** を選択した後、**[SQL Server]** ブレードで、**[Active Directory 管理者]** をクリックします。   
+3. **[Active Directory 管理者]** ブレードで、**[管理者の設定]** をクリックします。   
+    ![Active Directory を選択する](./media/sql-database-aad-authentication/select-active-directory.png)  
+    
+4. **[管理者の追加]** ブレードで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** をクリックします。 [Active Directory 管理者] ブレードには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](sql-database-aad-authentication.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。   
+    ![管理者を選択する](./media/sql-database-aad-authentication/select-admin.png)  
+    
+5. **[Active Directory 管理者]** ブレードの上部にある **[保存]** をクリックします。   
+    ![管理者を保存する](./media/sql-database-aad-authentication/save-admin.png)   
 
-    ![choose admin][10]
-   
-    管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 **[Active Directory 管理者]** ボックスに新しい管理者が表示されます。
+管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 **[Active Directory 管理者]** ボックスに新しい管理者が表示されます。
 
    > [!NOTE]
    > Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想マスター データベースに既に存在していてはいけません。 存在する場合、Azure AD 管理者のセットアップは失敗します。その作成をロールバックされ、そのような管理者 (名前) が既に存在していることが示されます。 そのような SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してサーバーに接続しようとしても失敗します。
@@ -153,6 +152,18 @@ Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23
 ```
 
 Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、「 [Service Management REST API リファレンスと Azure SQL Database の操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+
+### <a name="cli"></a>CLI  
+以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングすることもできます。
+| コマンド | Description |
+| --- | --- |
+|[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#create) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
+|[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#delete) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
+|[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#list) |現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
+|[az sql server ad-admin update](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#update) |Azure SQL Server または Azure SQL Data Warehouse の Active Directory 管理者を更新します。 |
+
+CLI コマンドの詳細については、「[SQL - az sql](https://docs.microsoft.com/cli/azure/sql/server)」を参照してください。  
+
 
 ## <a name="configure-your-client-computers"></a>クライアント コンピューターを構成する
 Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Warehouse に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
@@ -219,14 +230,14 @@ Azure Active Directory の ID に基づく包含データベース ユーザー�
 > データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL_USER) 、グループはタイプ X (EXTERNAL_GROUPS) でマークされます。 詳細については、「[sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)」を参照してください。 
 >
 
-## <a name="connect-to-the-user-database-or-data-warehouse-by-using-sql-server-management-studio-or-sql-server-data-tools"></a>SQL Server Management Studio または SQL Server Data Tools を使用してユーザーのデータベースまたはデータ ウェアハウスに接続する
+## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>SSMS または SSDT を使用して、ユーザー データベースまたはデータ ウェアハウスに接続する  
 Azure AD 管理者が正しく設定されていることを確認するには、Azure AD の管理者アカウントを使用して **master** データベースに接続します。
 Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。
 
 > [!IMPORTANT]
 > Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
  
-## <a name="using-an-azure-ad-identity-to-connect-using-sql-server-management-studio-or-sql-server-database-tools"></a>SQL Server Management Studio または SQL Server Database Tools での Azure AD の ID を使用した接続
+## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD の ID で SSMS または SSDT を利用して接続する  
 
 次の手順は、SQL Server Management Studio または SQL Server Database Tools で Azure AD の ID を使用して SQL Database に接続する方法を示しています。
 
@@ -234,10 +245,10 @@ Azure AD ベースの包含データベース ユーザー (データベース�
 
 フェデレーション ドメインから Azure Active Directory の資格情報を使用して Windows にログオンしている場合は、この方法を使用します。
 
-1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory 統合認証]** を選択します。 接続用の既存の資格情報が表示されるため、パスワードは不要であるか、入力できません。   
+1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory - 統合]** を選択します。 接続用の既存の資格情報が表示されるため、パスワードは不要であるか、入力できません。   
 
     ![AD 統合認証を選択する][11]
-2. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。   
+2. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。 **[AD ドメインの名前またはテナントの ID]** オプションは **MFA ユニバーサル接続**オプションでのみサポートされており、それ以外の場合はグレーで表示されます。  
 
     ![データベース名を選択する][13]
 
@@ -247,7 +258,7 @@ Azure AD の管理対象ドメインを使用して Azure AD のプリンシパ�
 
 この方法を使用するのは、Azure とフェデレーションされていないドメインの資格情報を使用して Windows にログオンしている場合や、初期ドメインまたはクライアント ドメインに基づく Azure AD で Azure AD 認証を使用する場合です。
 
-1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory パスワード認証]** を選択します。
+1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory - パスワード]** を選択します。
 2. **[ユーザー名]** ボックスに、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。 これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
 
@@ -320,8 +331,6 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 - データベース プリンシパルの詳細については、「[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)」を参照してください。
 - データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関するページを参照してください。
 - SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
-- SQL Server 認証の使用に関するチュートリアルについては、[SQL の認証と許可](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
-- Azure Active Directory 認証の使用に関するチュートリアルについては、[Azure AD の認証と許可](sql-database-control-access-aad-authentication-get-started.md)に関するページを参照してください。
 
 <!--Image references-->
 
@@ -333,10 +342,9 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 [6]: ./media/sql-database-aad-authentication/6edit-directory-select.png
 [7]: ./media/sql-database-aad-authentication/7edit-directory-confirm.png
 [8]: ./media/sql-database-aad-authentication/8choose-ad.png
-[9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
-[11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
-[12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
-[13]: ./media/sql-database-aad-authentication/13connect-to-db.png
+[11]: ./media/sql-database-aad-authentication/active-directory-integrated.png
+[12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth2.png
+[13]: ./media/sql-database-aad-authentication/13connect-to-db2.png
 
 

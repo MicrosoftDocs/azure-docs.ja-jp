@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 24c2b27948e9373bc3957f706ed802cc36c04148
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを作成するためのベスト プラクティス
@@ -32,7 +31,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 * 一意である必要がないリソース名。ただし、コンテキストに基づいてリソースを識別するのに役立つ名前を選択します。
 * 一般的なものでよいリソース名
 
-命名規則の策定については、[Azure インフラストラクチャの名前付けのガイドライン](../virtual-machines/windows/infrastructure-naming-guidelines.md)に関する記事をご覧ください。 リソース名の制限事項については、「 [Azure リソースの推奨される名前付け規則](../guidance/guidance-naming-conventions.md)」を参照してください。
+ リソース名の制限事項については、「 [Azure リソースの推奨される名前付け規則](../guidance/guidance-naming-conventions.md)」を参照してください。
 
 ### <a name="unique-resource-names"></a>一意のリソース名
 データ アクセス エンドポイントを持つリソースの種類に対しては、一意のリソース名を付ける必要があります。 一意の名前にする必要がある一般的なリソースの種類には次のようなものがあります。
@@ -396,8 +395,7 @@ JSON 検証ツールを使用してテンプレートを渡すことをお勧め
 
 ## <a name="next-steps"></a>次のステップ
 * 仮想マシン用のソリューションの構築に関するガイダンスについては、「[Run a Windows VM in Azure (Azure での Windows VM の実行)](../guidance/guidance-compute-single-vm.md)」および「[Run a Linux VM in Azure (Azure での Linux VM の実行)](../guidance/guidance-compute-single-vm-linux.md)」を参照してください。
-* ストレージ アカウントのセットアップのガイダンスについては、[Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)に関するページをご覧ください。
-* 仮想ネットワークについては、[ネットワーク インフラストラクチャのガイドライン](../virtual-machines/windows/infrastructure-networking-guidelines.md)を参照してください。
+* ストレージ アカウントのセットアップのガイダンスについては、[Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関するページをご覧ください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス](resource-manager-subscription-governance.md)」を参照してください。
 
 

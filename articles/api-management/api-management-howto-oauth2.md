@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: e43027cdea291f34aa60ad123e0de86b385efb30
-ms.lasthandoff: 01/31/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a19c453bb3271374b587f3d0b35adad55863b490
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
@@ -66,7 +67,7 @@ ms.lasthandoff: 01/31/2017
 
 **[Authorization endpoint URL (認証エンドポイント URL)]** を入力します。 Azure Active Directory では、この URL は以下の URL のようになります。ここで、`<client_id>` は、使用するアプリケーションを OAuth 2.0 サーバーが識別するためのクライアント ID に置き換えてください。
 
-`https://login.windows.net/<client_id>/oauth2/authorize`
+`https://login.microsoftonline.com/<client_id>/oauth2/authorize`
 
 **[認証要求方式 (Authorization request method)]** は、認証要求が OAuth 2.0 サーバーに送信される方法を指定します。 既定では **[GET]** が選択されています。
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 01/31/2017
 
 Azure Active Directory OAuth 2.0 サーバーでは、**[Token endpoint URL (トークン エンドポイント URL)]** の形式が以下のようになります。ここで、`<APPID>` の形式は `yourapp.onmicrosoft.com` です。
 
-`https://login.windows.net/<APPID>/oauth2/token`
+`https://login.microsoftonline.com/<APPID>/oauth2/token`
 
 既定の設定は、**[Client authentication methods (クライアント認証方式)]** が **[Basic (基本)]**、**[Access token sending method (アクセス トークン送信方式)]** が **[Authorization header (承認ヘッダー)]** です。 これらの値は、 **[既定のスコープ (Default scope)]**と共に、フォームのこのセクションで構成されます。
 
@@ -109,7 +110,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 ![[Echo API]][api-management-apis-echo-api]
 
 > [!NOTE]
-> アカウントに対して構成されている (またはアカウントから見える) API が&1; つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+> アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
 > 
 > 
 

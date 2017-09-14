@@ -4,7 +4,7 @@ description: "U-SQL スクリプトで Python コードを実行する方法"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: sukvg
+manager: jhubbard
 editor: cgronlun
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
+ms.date: 06/20/2017
 ms.author: saveenr
-translationtype: Human Translation
-ms.sourcegitcommit: 624b0370a85827cb9feaa48924bfa76d9ae19d0f
-ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 6f3477b67b27a30e6b69f6015e9063bfa27834f7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -25,10 +26,10 @@ ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
 
 U-SQL 用の Python 拡張機能では、開発者が Python コードの膨大な並列実行を実行できるようにします。 基本的な手順を以下の例で示します。
 
-* REFERENCE ASSEMBLY ステートメントを使用して U-SQL スクリプトの Python 拡張機能を有効にします
-* REDUCE 操作を使用してキーの入力データをパーティション化します
-* U-SQL 用の Python 拡張機能には、レジューサー (Extension.Python.Reducer) が組み込まれており、レジューサーに割り当てられている各頂点で Python コードを実行します
-* U-SQL スクリプトには、 "usqlml_main" という機能を持つ埋め込み型 Python コードが含まれています。この機能は、入力として pandas DataFrame を受け入れ、出力として pandas DataFrame を返します。
+* `REFERENCE ASSEMBLY` ステートメントを使用して、U-SQL スクリプト用の Python 拡張機能を有効にします
+* `REDUCE` 操作を使用してキーの入力データをパーティション化します
+* U-SQL 用の Python 拡張機能には、レジューサ (`Extension.Python.Reducer`) が組み込まれており、レジューサに割り当てられている各頂点で Python コードを実行します
+* U-SQL スクリプトには、 "`usqlml_main`" という機能を持つ埋め込み型 Python コードが含まれています。この機能は、入力として pandas DataFrame を受け入れ、出力として pandas DataFrame を返します。
 
 --
 
@@ -68,7 +69,7 @@ U-SQL 用の Python 拡張機能では、開発者が Python コードの膨大�
 ### <a name="datatypes"></a>データ型
 
 * U-SQL の文字列と数値列は、Pandas および U SQL のどちらかそのままの状態で変換されます
-* U-SQL の Null は Pandas の "NA" 値に双方向で変換されます
+* U-SQL の Null は Pandas の "`NA`" 値に双方向で変換されます
 
 ### <a name="schemas"></a>スキーマ
 
@@ -99,10 +100,5 @@ Python 3.5.1 (Windows 用にコンパイル) のみサポートされていま�
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

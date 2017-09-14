@@ -12,19 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 08/15/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: d50d25e4ea594b5231d29a862f3a98f07de70324
-ms.lasthandoff: 03/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 97368f0b9e89ffd0cd982b6e8670d5a1f62ad42c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションを使用して Active Directory 環境を最適化する
 
-Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストールして使用するために役立ちます。
+![AD 評価のシンボル](./media/log-analytics-ad-assessment/ad-assessment-symbol.png)
+
+Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事では、潜在的な問題の修正措置を実行できるように、ソリューションをインストールして使用します。
 
 このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 4 つの対象領域に分類されているので、すばやくリスクを把握し、アクションを実行できます。
 
@@ -51,13 +53,27 @@ Active Directory 評価ソリューションを使用して、サーバー環境
   >
 
 ## <a name="active-directory-assessment-data-collection-details"></a>Active Directory 評価データ収集の詳細
-Active Directory 評価では、有効になっているエージェントを使用して、WMI データ、レジストリ データ、パフォーマンス データを収集します。
+
+Active Directory Assessment では、有効にしたエージェントを使用して、次のソースからデータを収集します。
+
+- レジストリ コレクター
+- LDAP コレクター
+- .NET Framework
+- イベント ログ コレクター
+- Active Directory サービス インターフェイス (ADSI)
+- Windows PowerShell
+- ファイル データ コレクター
+- Windows Management Instrumentation (WMI)
+- DCDIAG ツール API
+- ファイル レプリケーション サービス (NTFRS) API
+- カスタム C# コード
+
 
 次の表に、エージェントのデータ収集方法、Operations Manager (SCOM) が必要であるかどうか、およびどのくらいの頻度でデータがエージェントによって収集されるかを示します。
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![なし](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![いいえ](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 日 |
+| Windows |&#8226; |&#8226; |  |  |&#8226; |7 日 |
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>推奨事項の優先順位設定方法について
 提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な 10 個の推奨事項のみが表示されます。
@@ -65,7 +81,7 @@ Active Directory 評価では、有効になっているエージェントを使
 ### <a name="how-weights-are-calculated"></a>重み付けの計算方法
 重み付けは、次の 3 つの重要な要因に基づく集計値です。
 
-* 識別された注意点によって問題が発生する *確率* 。 確率が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
+* 識別された注意点によって問題が発生する "*確率*"。 確率が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
 * 問題が発生する原因となった場合の注意点の組織への *影響度* 。 影響度が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
 * 推奨実行を実装するために必要な *作業量* 。 作業量が多いほど、推奨事項に割り当てられる総合スコアが小さくなります。
 
@@ -95,7 +111,7 @@ OMS の評価ソリューションを使用するには、ソリューション�
 2. **[評価]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 3. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。  
     ![評価に関する推奨事項の画像](./media/log-analytics-ad-assessment/ad-focus.png)
-4. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+4. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 無視する推奨事項がある場合は、OMS が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
@@ -106,6 +122,10 @@ OMS の評価ソリューションを使用するには、ソリューション�
    ```
    Type=ADAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+>
+> `ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
    ログ検索のクエリを示すスクリーン ショットを次に示します。![失敗した推奨事項](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
 2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
@@ -125,6 +145,11 @@ OMS の評価ソリューションを使用するには、ソリューション�
     ```
     Type=ADAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+>
+> `ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
+
 2. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
 ## <a name="ad-assessment-solutions-faq"></a>AD 評価ソリューションに関する FAQ
@@ -151,13 +176,6 @@ OMS の評価ソリューションを使用するには、ソリューション�
 *データの収集にはどれくらいの時間がかかりますか?*
 
 * サーバー上での実際のデータ収集には約 1 時間かかります。 Active Directory サーバーの数が多いサーバーでは、もっと長くなる可能性があります。
-
-*どのような種類のデータが収集されますか?*
-
-* 次の種類のデータが収集されます。
-  * WMI
-  * レジストリ
-  * パフォーマンス カウンター
 
 *データが収集されるタイミングを構成する方法はありますか?*
 

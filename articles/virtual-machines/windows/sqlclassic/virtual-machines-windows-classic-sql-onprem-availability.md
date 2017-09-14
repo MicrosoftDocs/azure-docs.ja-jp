@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/03/2017
+ms.date: 05/31/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 59ca9514c4cac97e8dd6dafc7a59406925b7b2df
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 50326a093adaf3558c56dfd0b38544f0e60be460
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -31,7 +32,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 * 有効な Azure サブスクリプション [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/)できます。
 * 既存のオンプレミスの AlwaysOn 可用性グループ。 可用性グループの詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
-* オンプレミスのネットワークと、Azure Virtual Network 間の接続。 この仮想ネットワークを作成する方法の詳細については、「 [Azure クラシック ポータルでのサイト間 VPN の構成](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
+* オンプレミスのネットワークと、Azure Virtual Network 間の接続。 この仮想ネットワークを作成する方法の詳細については、「[Azure Portal を使用してサイト間接続を作成する (クラシック)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)」を参照してください。
 
 > [!IMPORTANT] 
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
@@ -44,7 +45,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 1. SQL Server Management Studio で、**[AlwaysOn 高可用性]**、 > **[可用性グループ]**、 > **[<可用性グループの名前>]** の順に展開します。
 2. **[可用性レプリカ]** を右クリックし、**[レプリカの追加]** をクリックします。
-3. 既定では、 **可用性グループへのレプリカの追加ウィザード** が表示されます。 **[次へ]**をクリックします。  このウィザードを以前に起動したときにページの下部にある **[次回からこのページを表示しない]** チェック ボックスをオンにした場合は、この画面は表示されません。
+3. 既定では、 **可用性グループへのレプリカの追加ウィザード** が表示されます。 **[次へ]** をクリックします。  このウィザードを以前に起動したときにページの下部にある **[次回からこのページを表示しない]** チェック ボックスをオンにした場合は、この画面は表示されません。
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 4. 既存のすべてのセカンダリ レプリカに接続する必要があります。 各レプリカの横にある **[接続...]** をクリックするか、画面下部の **[Connect All... (すべて接続...)]** をクリックできます。 認証後、 **[次へ]** をクリックして、次の画面に進みます。
@@ -74,9 +75,9 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 10. **[レプリカの指定]** ページが再び表示されます。 **[レプリカ]**、**[エンドポイント]**、および **[バックアップの設定]** の各タブで新しい Azure レプリカの設定を確認します。 ビジネス要件に合わせて設定を変更します。  これらのタブに表示されるパラメーターについて詳しくは、「[[レプリカの指定] ページ (新しい可用性グループ ウィザード/レプリカの追加ウィザード)](https://msdn.microsoft.com/library/hh213088.aspx)」をご覧ください。Azure レプリカを含む可用性グループのリスナーは [リスナー] タブを使用して作成できないのでご注意ください。 また、ウィザードを起動する前にリスナーを既に作成している場合は、そのリスナーが Azure ではサポートされないことを示すメッセージが表示されます。 リスナーを作成する方法については、「**可用性グループ リスナーの作成**」セクションで説明します。
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
-11. **[次へ]**をクリックします。
+11. **[次へ]** をクリックします。
 12. **[最初のデータの同期を選択]** ページで、使用するデータの同期方法を選択し、**[次へ]** をクリックします。 ほとんどのシナリオでは、 **[完全データ同期]**を選択します。 データ同期方法の詳細については、「 [[最初のデータの同期を選択] ページ (AlwaysOn 可用性グループ ウィザード)](https://msdn.microsoft.com/library/hh231021.aspx)」をご覧ください。
-13. **[検証]** ページで結果を確認します。 未解決の問題を修正し、必要に応じて、検証を再実行します。 **[次へ]**をクリックします。
+13. **[検証]** ページで結果を確認します。 未解決の問題を修正し、必要に応じて、検証を再実行します。 **[次へ]** をクリックします。
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
 14. **[概要]** ページで設定を確認し、**[完了]** をクリックします。

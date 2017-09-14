@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/28/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 0c727a47d6b947484f9a5cd678fef14d6fe2b4ab
-ms.lasthandoff: 03/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
+
 Microsoft Azure Service Bus は、信頼性の高いメッセージ キュー機能や永続的なパブリッシュ/サブスクライブ メッセージング機能など、クラウドベースのメッセージ指向ミドルウェアの一連のテクノロジをサポートしています。 このような "仲介型" メッセージング機能は、分離されたメッセージング機能と考えることができます。これは、Service Bus メッセージング ファブリックを使用するパブリッシュ/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。 分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
 
 Service Bus のメッセージング機能の中核を形成するメッセージング エンティティは、キュー、トピックおよびサブスクリプション、ルール/アクション、ルール/アクションです。
 
 ## <a name="queues"></a>キュー
+
 キューでは、コンシューマーが競合している場合のメッセージ配信に*先入れ先出し法 (FIFO)* を使用します。 つまり、通常、メッセージは、キューに追加された順番で受信され、処理されると予想されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。 キューを使用する主な利点は、アプリケーション コンポーネントの "一時的な切り離し" を達成することです。 言い換えると、メッセージはキューに永続的に格納されるため、プロデューサー (送信者) とコンシューマー (受信者) が同時にメッセージを送受信する必要はありません。 さらに、プロデューサーは、メッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。
 
 関連する利点として "負荷平準化" があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。 仲介のメッセージ プロデューサーとコンシューマーでキューを使用する場合、コンシューマー側アプリケーションに必要なのは、ピーク時の負荷ではなく平均的な負荷を処理できるようにプロビジョニングしておくことだけです。 キューの深さは、受信の負荷の変化に応じて増減します。 このため、アプリケーション負荷への対応に必要なインフラストラクチャに関して直接費用を節約できます。 負荷の増大に合わせて、キューからの読み取りのためにワーカー プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。 さらに、このプルベースの負荷分散では、各ワーカー コンピューターがそれぞれ独自の最大レートでメッセージをプルするため、それらのコンピューターの処理能力が異なる場合であっても使用を最適化できます。 このパターンは、"競合コンシューマー" パターンと呼ばれることもあります。
@@ -162,7 +164,7 @@ Service Bus のメッセージングの使用の詳細と例については、�
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus ブローカー メッセージングに関する .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
 * [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
-* [トピック フィルターのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
+* [トピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)
 * [ブローカー メッセージング: 高度なフィルターのサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
 

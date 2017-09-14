@@ -3,7 +3,7 @@ title: "Application Insights の .NET トレース ログを調べる"
 description: "Trace、NLog、または Log4Net で生成されたログを検索します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
@@ -11,14 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/3/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1b0c902adff1d60a04fb3cddef5862256d54f813
+ms.date: 05/03/2017
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 91ffe6fa182f0d5e4294031787b853c33ea460df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Application Insights の .NET トレース ログを調べる
@@ -97,6 +96,19 @@ Application Insights にトレースとして送信する [System.Diagnostics.Tr
  * `Level` では、収集するログ レベルを指定します。 `Critical`、`Error`、`Informational`、`LogAlways`、`Verbose`、`Warning` のいずれかを指定できます。
  * `Keywords` (省略可能) では、使用するキーワードの組み合わせの整数値を指定します。
 
+## <a name="using-diagnosticsource-events"></a>DiagnosticSource イベントの使用
+Application Insights にトレースとして送信する [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) イベントを構成できます。 まず、[`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
+
+```xml
+    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+      <Sources>
+        <Add Name="MyDiagnosticSourceName" />
+      </Sources>
+    </Add>
+```
+
+トレースする DiagnosticSource ごとに、DiagnosticSource の名前に設定された `Name` 属性を持つエントリを追加します。
+
 ## <a name="using-etw-events"></a>ETW イベントを使用する
 Application Insights にトレースとして送信される ETW イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EtwCollector` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
 
@@ -173,7 +185,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 ### <a name="no-log-adapter-option-in-the-configuration-tool"></a>構成ツールにログ アダプターのオプションがありません
 * まずログ記録フレームワークをインストールする必要があります。
 * System.Diagnostics.Trace を使用している場合は、[`web.config`で構成済み](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)であることを確認します。
-* 最新バージョンの Application Insights を使用しているか確認します。 Visual Studio の **[ツール]** メニューで **[拡張機能と更新プログラム]** を選択し、**[更新]** タブを開きます。 Developer Analytics Tools が表示されていたら、クリックして更新します。
+* 最新バージョンの Application Insights を使用しているか確認します。 Visual Studio の **[ツール]** メニューで **[拡張機能と更新プログラム]** を選択し、**[更新]** タブを開きます。Developer Analytics Tools が表示されていたら、クリックして更新します。
 
 ### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。
@@ -184,7 +196,7 @@ Application Insights をインストールしないでログ アダプターの 
 すべてのイベントと要求がパイプラインを通過するまで時間がかかることがあります。
 
 ### <a name="limits"></a>保持されるデータの量はどのくらいですか
-各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは 7 日間保持されます。
+保持されるデータの量には、さまざまな要因が影響します。 詳細については、カスタムのイベント メトリックに関するページの「[制限](app-insights-api-custom-events-metrics.md#limits)」セクションを参照してください。 
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>予期されるログ エントリの一部が表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)

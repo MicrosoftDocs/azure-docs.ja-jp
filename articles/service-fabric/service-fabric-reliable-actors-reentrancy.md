@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: eb1738296844aec0066496a368b9e896ba63cfa8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 00fcccb379bf1ba3875fbaba57a05b00fa228622
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -111,8 +112,5 @@ static class Program
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
-* [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)で再入についてさらに学習してください
 

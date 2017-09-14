@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9b2947d9ce00083c168635811395bc86b3e60b78
-ms.lasthandoff: 04/26/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: a68a8fdc3976ade0d1036d5ed58c8b2eb6d32a5d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>予測的なメンテナンスの構成済みソリューションのチュートリアル
 
-## <a name="introduction"></a>はじめに
-
-IoT Suite の予測的なメンテナンスの構成済みソリューションは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 この構成済みソリューションを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 このソリューションは、IoT Hub、Stream Analytics、[Azure Machine Learning][lnk-machine-learning] ワークスペースなどの主要な Azure IoT Suite サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
+予測的なメンテナンスの構成済みソリューションは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 この構成済みソリューションを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 このソリューションは、IoT Hub、Stream Analytics、[Azure Machine Learning][lnk-machine-learning] ワークスペースなどの主要な Azure IoT Suite サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
@@ -34,7 +32,7 @@ IoT Suite の予測的なメンテナンスの構成済みソリューション�
 
 ![][img-architecture]
 
-青色の項目は、構成済みのソリューションをプロビジョニングするために選択したリージョンに、プロビジョニングされている Azure サービスです。 構成済みソリューションをデプロイできるリージョンの一覧は、[プロビジョニング ページ][lnk-azureiotsuite]に表示されます。
+青色の項目は、構成済みのソリューションをデプロイしたリージョンにプロビジョニングされた Azure サービスです。 構成済みソリューションをデプロイできるリージョンの一覧は、[プロビジョニング ページ][lnk-azureiotsuite]に表示されます。
 
 緑色の項目は、シミュレートされている航空機エンジン デバイスです。 これらのシミュレートされているデバイスの詳細については、次のセクションを参照してください。
 
@@ -58,13 +56,17 @@ IoT Suite の予測的なメンテナンスの構成済みソリューション�
 IoT Hub は、デバイスのコマンドの受信確認を渡します。
 
 ## <a name="azure-stream-analytics-job"></a>Azure Stream Analytics ジョブ
-**ジョブ: テレメトリ** は、2 つのステートメントを使用して、デバイスのテレメトリの受信ストリームに対して動作します。 1 つ目では、デバイスからのすべてのテレメトリを選択し、Web アプリで視覚化されるデータが格納される Blob Storage に送信します。 2 つ目のステートメントは 2 分間のスライディング ウィンドウに渡る平均センサー値を計算し、このデータを Event Hub を介して **イベント プロセッサ**に送信します。
+
+**ジョブ: テレメトリ**は、次の 2 つのステートメントを使用して、デバイスのテレメトリの受信ストリームに対して動作します。
+
+* 1 つ目では、デバイスからのすべてのテレメトリを選択し、このデータを Blob Storage に送信します。 ここから、Web アプリで視覚化されます。
+* 2 つ目では、2 分間のスライディング ウィンドウに渡る平均センサー値を計算し、このデータを Event Hub を介して**イベント プロセッサ**に送信します。
 
 ## <a name="event-processor"></a>イベント プロセッサ
 **イベント プロセッサ ホスト**は、Azure Web Job で実行されます。 **イベント プロセッサ** は、完了したサイクルの平均センサー値を受け取ります。 それらの値は、トレーニングされたモデルを公開する API に渡され、エンジンの RUL が計算されます。 この API は、ソリューションの一部としてプロビジョニングされた Machine Learning ワークスペースによって公開されます。
 
 ## <a name="machine-learning"></a>Machine Learning
-Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 Machine Learning ワークスペースには、プロビジョニングしたソリューションの状態が**準備完了**である場合に、そのソリューションの [azureiotsuite.com][lnk-azureiotsuite] ページのタイルから移動できます。
+Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 この Machine Learning ワークスペースには、プロビジョニングしたソリューションの [azureiotsuite.com][lnk-azureiotsuite] ページのタイルから移動することも可能です。 このタイルは、ソリューションが**準備完了**の状態の場合に使用できます。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -21,7 +21,6 @@ ms.openlocfilehash: 4a80252f139d653ff8788b3c1a6a075448cb48e7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/14/2017
 
-
 ---
 # <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>Azure AD と Apache Cordova アプリとの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -146,7 +145,7 @@ Cordova アプリケーションを作成するには、複数の方法を使用
 最初に、アプリを識別するために Azure AD が使用するプロトコル値と対象のリソースをコードに設定する必要があります。 これらの値は、後でトークン要求を作成するために使用されます。 index.js ファイルの最上部に、次のスニペットを挿入します。
 
 ```javascript
-var authority = "https://login.windows.net/common",
+var authority = "https://login.microsoftonline.com/common",
     redirectUri = "http://MyDirectorySearcherApp",
     resourceUri = "https://graph.windows.net",
     clientId = "a5d92493-ae5a-4a9f-bcbf-9f1d354067d3",

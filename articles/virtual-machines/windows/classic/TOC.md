@@ -1,6 +1,6 @@
 # 概要
 ## [仮想マシンについて](../../virtual-machines-windows-about.md)
-## [ディスクと VHD](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## [ディスクと VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)
 ## [FAQ](faq.md)
 ## [VM、Web サイト、およびクラウド サービスの比較](../../../app-service-web/choose-web-site-cloud-service-vm.md)
@@ -43,8 +43,9 @@
 ### [Trend Micro Deep Security をサービスとしてインストールおよび構成する](install-trend.md)
 ### [可用性セットを構成する](configure-availability.md)
 ### [クラシック デプロイメント モデルで作成された Windows VM のサイズ変更](resize-vm.md)
+### [メンテナンス](planned-maintenance-schedule.md)
 
-## [管理]
+## 管理
 ### [クラシックから Resource Manager への移行](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 ### [Azure PowerShell を使用した仮想マシンの管理](manage-psh.md)
 ### [VM エージェントおよび拡張機能について](agents-and-extensions.md)
@@ -55,7 +56,6 @@
 ## プラン
 ### [イメージについて](about-images.md)
 ### [VM のサイズ](../../virtual-machines-windows-sizes.md)
-#### [H シリーズとコンピューティング集中型 A シリーズの VM について](../../virtual-machines-windows-a8-a9-a10-a11-specs.md)
 ### [Azure VM の計画的なメンテナンス](../../virtual-machines-windows-planned-maintenance.md)
 ### [Azure インフラストラクチャ サービス実装ガイドライン](../../virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md)
 
@@ -70,11 +70,7 @@
 #### [オンプレミスから Azure へのジョブ送信](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MongoDB](install-mongodb.md)
 ### [MySQL](mysql-2008r2.md)
-### [Oracle](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)
-####[Azure 用の Oracle Data Guard の構成](configure-oracle-data-guard.md)
-####[Azure 用の Oracle GoldenGate の構成](configure-oracle-goldengate.md)
-####[イメージに関するその他の考慮事項](oracle-considerations.md)
-####[Oracle VM イメージの一覧](oracle-images.md)
+### [Oracle](../../workloads/oracle/oracle-considerations.md)
 ### [SAP](sap-get-started.md)
 ### [SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [Tomcat](java-run-tomcat-app-server.md)
@@ -85,7 +81,8 @@
 ### [アプリケーションへのアクセス](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [新しい VM の作成に関するクラシック デプロイの問題](troubleshoot-deployment-new-vm.md)
 ### [既存の VM の再起動またはサイズ変更に関するクラシック デプロイの問題](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-## [RDP パスワードをリセットする](reset-rdp.md)
+### [RDP パスワードをリセットする](reset-rdp.md)
+### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
 ## [PowerShell](/powershell/azure/overview)
@@ -99,7 +96,9 @@
 ## [Storage REST](/rest/api/storageservices)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)

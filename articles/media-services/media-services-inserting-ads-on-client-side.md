@@ -4,7 +4,7 @@ description: "このトピックでは、クライアント側で広告を挿入
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
 ms.service: media-services
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: aaa0e2757875d8f9ac6a19f218bfb19bf9870b0d
-ms.openlocfilehash: 54cf700463ff0a08f5f28a3d2b66c8814ab0a764
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
@@ -30,7 +31,7 @@ ms.openlocfilehash: 54cf700463ff0a08f5f28a3d2b66c8814ab0a764
 > 
 > 
 
-## <a name="a-idinsertadsintomediaainserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>メディアへの広告の挿入
+## <a id="insert_ads_into_media"></a>メディアへの広告の挿入
 Azure Media Services では、Windows メディア プラットフォームのプレーヤー フレームワークを通じて広告の挿入がサポートされています。 広告がサポートされるプレーヤー フレームワークは、Windows 8、Silverlight、Windows Phone 8、iOS デバイスで使用できます。 各プレーヤー フレームワークには、プレーヤー アプリケーションの実装方法を示すサンプル コードが含まれています。メディアには、3 種類の広告を挿入できます。
 
 * **線形** – メイン ビデオを一時停止するフル フレーム広告
@@ -154,7 +155,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </Creative>
 
 
-<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResouce**>、<**IFrameResource**>、または <**HTMLResouce**> です。 <**StaticResource**> は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
+<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResouce**>、<**IFrameResource**>、または <**HTMLResouce**> です。 <**StaticResource** は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
 
 Image/gif、image/jpeg、image/png – リソースが HTML <**img**> タグで表示されます。
 
@@ -791,10 +792,5 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 ## <a name="see-also"></a>関連項目
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

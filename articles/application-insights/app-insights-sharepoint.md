@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/24/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
 ms.openlocfilehash: 3977cbc0f111de39621a875cce2d6714559a73fd
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Application Insights で SharePoint を監視する

@@ -15,14 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 08/23/2017
 ms.author: jgao
 ms.translationtype: Human Translation
 ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
 ms.openlocfilehash: d24c92b90d7d8e43554fcd77278bf7d23a963c02
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/13/2017
-
 
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Hive クエリの実行

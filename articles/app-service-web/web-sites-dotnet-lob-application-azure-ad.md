@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: a00e3c5ed41aff48a6845c2f07ea3e43580045ee
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6eadf0a521a32c5bc580908e4e4b7f4305e2bf7e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用した基幹業務 Azure アプリの作成
@@ -76,7 +76,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="configure-authentication-and-directory-access"></a>認証とディレクトリ アクセスを構成する
 1. [Azure ポータル](https://portal.azure.com)にログインします。
-2. 左側のメニューで、**[App Services]**  >  ** &lt;*アプリ名*>**  >  **[認証/承認]** をクリックします。
+2. 左側のメニューで、**[App Services]** > **&lt;*アプリ名*>** > **[認証/承認]** をクリックします。
    
     ![](./media/web-sites-dotnet-lob-application-azure-ad/5-app-service-authentication.png)
 3. **[オン]**  >  **[Azure Active Directory]**  >  **[高速]**  >  **[OK]** の順にクリックして、Azure Active Directory 認証をオンにします。
@@ -113,7 +113,7 @@ ms.lasthandoff: 03/01/2017
 12. ページの上部にある **[読み取り/書き込み]** をクリックして、Azure リソース エクスプローラーで変更を行います。
     
     ![](./media/web-sites-dotnet-lob-application-azure-ad/12-resource-manager-writable.png)
-13. アプリの認証設定を見つけます。[subscriptions] > **&lt;*サブスクリプション名*>** > **[resourceGroups]**  >  **&lt;*リソース グループ名*>**  >  **[providers]**  >  **[Microsoft.Web]**  >  **[sites]**  >  **&lt;*アプリ名*>**  >  **[config]**  >  **[authsettings]** を展開します。
+13. アプリの認証設定を見つけます。[サブスクリプション] > **&lt;*サブスクリプション名*>** > **[resourceGroups]** > **&lt;*リソース グループ名*>** > **[プロバイダー]** > **[Microsoft.Web]** > **[sites]** > **&lt;*アプリ名*>** > **[config]** > **[authsettings]** を展開します。
 14. **[編集]**をクリックします。
     
     ![](./media/web-sites-dotnet-lob-application-azure-ad/13-edit-authsettings.png)
@@ -175,18 +175,26 @@ ms.lasthandoff: 03/01/2017
    <pre class="prettyprint">
    @model WebApplication1.Models.WorkItem
    
-   @{  ViewBag.Title = &quot;Create&quot;; }
+   @{
+    ViewBag.Title = &quot;Create&quot;;
+   }
    
    &lt;h2&gt;Create&lt;/h2&gt;
    
-   @using (Html.BeginForm(<mark>&quot;Create&quot;, &quot;WorkItems&quot;, FormMethod.Post, new { id = &quot;main-form&quot; }</mark>)) {  @Html.AntiForgeryToken()
+   @using (Html.BeginForm(<mark>&quot;Create&quot;, &quot;WorkItems&quot;, FormMethod.Post, new { id = &quot;main-form&quot; }</mark>)) 
+   {
+    @Html.AntiForgeryToken()
    
     &lt;div class=&quot;form-horizontal&quot;&gt;
         &lt;h4&gt;WorkItem&lt;/h4&gt;
         &lt;hr /&gt;
-        @Html.ValidationSummary(true, &quot;&quot;, new { @class = &quot;text-danger&quot; })      &lt;div class=&quot;form-group&quot;&gt;
-            @Html.LabelFor(model =&gt; model.AssignedToID, htmlAttributes: new { @class = &quot;control-label col-md-2&quot; })          &lt;div class=&quot;col-md-10&quot;&gt;
-                @Html.EditorFor(model =&gt; model.AssignedToID, new { htmlAttributes = new { @class = &quot;form-control&quot;<mark>, @type = &quot;hidden&quot;</mark> } })              @Html.ValidationMessageFor(model =&gt; model.AssignedToID, &quot;&quot;, new { @class = &quot;text-danger&quot; })          &lt;/div&gt;
+        @Html.ValidationSummary(true, &quot;&quot;, new { @class = &quot;text-danger&quot; })
+        &lt;div class=&quot;form-group&quot;&gt;
+            @Html.LabelFor(model =&gt; model.AssignedToID, htmlAttributes: new { @class = &quot;control-label col-md-2&quot; })
+            &lt;div class=&quot;col-md-10&quot;&gt;
+                @Html.EditorFor(model =&gt; model.AssignedToID, new { htmlAttributes = new { @class = &quot;form-control&quot;<mark>, @type = &quot;hidden&quot;</mark> } })
+                @Html.ValidationMessageFor(model =&gt; model.AssignedToID, &quot;&quot;, new { @class = &quot;text-danger&quot; })
+            &lt;/div&gt;
         &lt;/div&gt;
    
         &lt;div class=&quot;form-group&quot;&gt;
@@ -222,10 +230,15 @@ ms.lasthandoff: 03/01/2017
    }
    
    &lt;div&gt;
-    @Html.ActionLink(&quot;Back to List&quot;, &quot;Index&quot;) &lt;/div&gt;
+    @Html.ActionLink(&quot;Back to List&quot;, &quot;Index&quot;)
+   &lt;/div&gt;
    
-   @section Scripts {  @Scripts.Render(&quot;~/bundles/jqueryval&quot;)  <mark>&lt;script&gt;
-        // People/Group Picker Code      var maxResultsPerPage = 14;      var input = document.getElementById(&quot;AssignedToName&quot;);
+   @section Scripts {
+    @Scripts.Render(&quot;~/bundles/jqueryval&quot;)
+    <mark>&lt;script&gt;
+        // People/Group Picker Code
+        var maxResultsPerPage = 14;
+        var input = document.getElementById(&quot;AssignedToName&quot;);
    
         // Access token from request header, and tenantID from claims identity
         var token = &quot;@Request.Headers[&quot;X-MS-TOKEN-AAD-ACCESS-TOKEN&quot;]&quot;;
@@ -241,7 +254,8 @@ ms.lasthandoff: 03/01/2017
                 return;
             $(&quot;#main-form&quot;).get()[0].elements[&quot;AssignedToID&quot;].value = picker.Selected().objectId;
         });
-    &lt;/script&gt;</mark> }
+    &lt;/script&gt;</mark>
+   }
    </pre>
    
    Azure Active Directory Graph API の呼び出しを行うために、`AadPicker` オブジェクトで `token` と `tenant` が使用されていることに注意してください。 後で `AadPicker` を追加します。     
@@ -265,7 +279,12 @@ ms.lasthandoff: 03/01/2017
 13. ~\App_Start\BundleConfig.cs を開き、次の強調表示された変更を加えます。  
     
     <pre class="prettyprint">
-    public static void RegisterBundles(BundleCollection bundles) { bundles.Add(new ScriptBundle(&quot;~/bundles/jquery&quot;).Include( &quot;~/Scripts/jquery-{version}.js&quot;<mark>, &quot;~/Scripts/jquery-ui-{version}.js&quot;, &quot;~/Scripts/AadPickerLibrary.js&quot;</mark>));
+    public static void RegisterBundles(BundleCollection bundles)
+    {
+        bundles.Add(new ScriptBundle(&quot;~/bundles/jquery&quot;).Include(
+                    &quot;~/Scripts/jquery-{version}.js&quot;<mark>,
+                    &quot;~/Scripts/jquery-ui-{version}.js&quot;,
+                    &quot;~/Scripts/AadPickerLibrary.js&quot;</mark>));
     
         bundles.Add(new ScriptBundle(&quot;~/bundles/jqueryval&quot;).Include(
                     &quot;~/Scripts/jquery.validate*&quot;));
@@ -328,6 +347,4 @@ ms.lasthandoff: 03/01/2017
 * [App Service Auth and the Azure AD Graph API (App Service の認証と Azure AD Graph API)](https://cgillum.tech/2016/03/25/app-service-auth-aad-graph-api/)
 * [Microsoft Azure Active Directory のサンプルとドキュメント](https://github.com/AzureADSamples)
 * [Azure Active Directory がサポートしているトークンと要求の種類](http://msdn.microsoft.com/library/azure/dn195587.aspx)
-
-[Protect the Application with SSL and the Authorize Attribute]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
 

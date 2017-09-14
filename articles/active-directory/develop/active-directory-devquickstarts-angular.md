@@ -3,7 +3,7 @@ title: "Azure AD AngularJS の概要 | Microsoft Docs"
 description: "サインインに関して Azure AD と連携し、Azure AD で保護されている API を OAuth を使用して呼び出す AngularJS シングルページ アプリケーションを構築する方法。"
 services: active-directory
 documentationcenter: 
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
@@ -13,10 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: a9997b6a6d30fbd2d21dee5d9c1e3ea92dfa97ab
-ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
+ms.author: jmprieur
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 797b6236afad45e3e308ce073a8beb90cb7e94a1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -29,6 +32,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 ブラウザーで実行される JavaScript アプリケーションに対しては、Active Directory 認証ライブラリ (ADAL) である adal.js が用意されています。 adal.js の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。 それがどれほど簡単であるかを示すために、ここで、次のような、AngularJS To Do List アプリケーションを構築します。
 
 * Azure AD を ID プロバイダーとして使用し、ユーザーがアプリにサインインする処理を実行します。
+
 * ユーザーについての、いくつかの情報を表示します。
 * Azure AD から提供されるベアラー トークンを使用して、アプリの To Do List API を安全に呼び出します。
 * アプリからユーザーがサインアウトする処理を実行します。
@@ -45,7 +49,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 アプリがユーザーを認証し、トークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録する必要があります。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
+2. 複数のディレクトリにサインインしている場合は、適切なディレクトリを表示していることを確認する必要があります。 これを行うには、上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. 画面の指示に従い、新しい Web アプリケーションや Web API を作成します。
@@ -61,6 +65,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>手順 2: ADAL をインストールし、シングルページ アプリを構成する
 アプリケーションを Azure AD に登録したので、adal.js をインストールし、ID 関連のコードを記述できます。
 
+### <a name="configure-the-javascript-client"></a>JavaScript クライアントを構成する
 まず、パッケージ マネージャー コンソールを使用して、adal.js を TodoSPA プロジェクトに追加します。
   1. [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) をダウンロードし、`App/Scripts/` プロジェクト ディレクトリに追加します。
   2. [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) をダウンロードし、`App/Scripts/` プロジェクト ディレクトリに追加します。
@@ -73,6 +78,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
     ...
     ```
 
+### <a name="configure-the-back-end-server"></a>バック エンド サーバーを構成する
 シングルページ アプリのバックエンド To Do List API がブラウザーからトークンを受け入れることができるように、バックエンドにアプリの登録に関する構成情報が必要です。 TodoSPA プロジェクトで、 `web.config`を開きます。 `<appSettings>` セクションの要素の値を、Azure Portal で使用した値に置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
   * `ida:Tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
   * `ida:Audience` は、ポータルからコピーしたアプリケーションのクライアント ID です。
@@ -102,7 +108,7 @@ adal.js には AngularJS ルートと HTTP プロバイダーが組み込まれ�
       $httpProvider
     );
     ```
-3. アプリの `TodoList` ビューの保護をサポートします。使用するコードは、`requireADLogin` の&1; 行のみです。
+3. アプリの `TodoList` ビューの保護をサポートします。使用するコードは、`requireADLogin` の 1 行のみです。
 
     ```js
     ...
@@ -146,7 +152,7 @@ adal.js には AngularJS ルートと HTTP プロバイダーが組み込まれ�
     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
     ```
 
-Azure AD と統合されたシングルページ アプリは、ユーザーの認証処理を行い、OAuth 2.0 を使用してバックエンドを安全に呼び出し、ユーザーについての基本情報を取得することができます。 テナントに一連のユーザーを設定します (設定していない場合)。 To Do List シングルページ アプリを実行し、ユーザーの&1; 人としてサインインします。 タスクをユーザーの To Do List に追加し、サインアウトして、再びサインインします。
+Azure AD と統合されたシングルページ アプリは、ユーザーの認証処理を行い、OAuth 2.0 を使用してバックエンドを安全に呼び出し、ユーザーについての基本情報を取得することができます。 テナントに一連のユーザーを設定します (設定していない場合)。 To Do List シングルページ アプリを実行し、ユーザーの 1 人としてサインインします。 タスクをユーザーの To Do List に追加し、サインアウトして、再びサインインします。
 
 adal.js を使用すると、共通 ID 機能を容易にアプリケーションに組み込むことができます。 キャッシュ管理、OAuth プロトコル サポート、サインイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。
 
@@ -156,9 +162,4 @@ adal.js を使用すると、共通 ID 機能を容易にアプリケーショ�
 ここからは、さらなるシナリオに進むことができます。 [シングルページ アプリからの CORS Web API の呼び出し](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)を試してみてください。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c1614eeac922a4fc496be77b4d1d1588f28b4284
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 57ba0e46139bda2d74c9f7db0ffab2f2122b0df2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション
@@ -41,7 +42,7 @@ ms.openlocfilehash: c1614eeac922a4fc496be77b4d1d1588f28b4284
 
 要するに、拡張性の高いサービスを提供するための考慮事項が多数ありながら、多くのマルチテナント アプリケーション間に共通する目標と要件も多数あります。 一部の目標と要件はシナリオに固有のものではなく、それらの重要性がシナリオによって変わります。 マルチテナント アプリケーションのプロバイダーとして、そのほかにも目標と要件が生じます。たとえば、テナントの目標と要件の達成、収益性、課金、複数のサービス レベル、プロビジョニング、保守容易性の監視、自動化などです。
 
-マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)][Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト) (Azure 上のマルチテナント アプリケーションのホスト)]」を参照してください。 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。 
+マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「[Azure 上のマルチテナント アプリケーションのホスト][Hosting a Multi-Tenant Application on Azure]」を参照してください。 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。 
 
 Azure には、マルチテナント システムの設計時に発生する主要な問題に対処できる、多数の機能が用意されています。
 
@@ -50,7 +51,7 @@ Azure には、マルチテナント システムの設計時に発生する主�
 * ホスト ヘッダー内の SSL 通信の有無で Web サイト テナントを分割する。
 * クエリ パラメーター別に Web サイト テナントを分割する。
 * worker ロールで Web サービスを実行する。
-  * Worker ロールは 通常、アプリケーションのバックエンドでデータを処理します。
+  * Worker ロールは、 通常アプリケーションのバックエンドでデータを処理します。
   * Web ロールは通常、アプリケーションのフロントエンドとして動作します。
 
 **Storage**
@@ -90,11 +91,6 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト) (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/library/hh534480.aspx
-[Azure 上のマルチテナント アプリケーションの設計]: http://msdn.microsoft.com/library/windowsazure/hh689716
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
+[Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 

@@ -14,15 +14,14 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 07/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: b7bc7ff8342cdd51f4513e40e98f2a2659009d2b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 36285fbaf1da3c566d338bd5612eebad327eaf50
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
@@ -178,7 +177,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
 
 ### <a name="add-plug-ins"></a>プラグインの追加
 
-Java で実行した Apache Storm トポロジの場合、[Exec Maven プラグイン](http://mojo.codehaus.org/exec-maven-plugin/)が便利です。Exec Maven プラグインを使用すると、開発環境でトポロジをローカルに実行することが簡単にできます。 `pom.xml` ファイルの `<plugins>` セクションに次の内容を追加して Exec Maven プラグインを追加します。
+Java で実行した Apache Storm トポロジの場合、[Exec Maven プラグイン](http://www.mojohaus.org/exec-maven-plugin/)が便利です。Exec Maven プラグインを使用すると、開発環境でトポロジをローカルに実行することが簡単にできます。 `pom.xml` ファイルの `<plugins>` セクションに次の内容を追加して Exec Maven プラグインを追加します。
 
 ```xml
 <plugin>

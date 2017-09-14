@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 03/07/2017
+ms.date: 07/06/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: df65c08a56596af2341b9cad4c89b5d18f6c6404
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9ccdb3fbca21264065eeb1c4e46314c62af4c2e8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="detailed-ssh-troubleshooting-steps"></a>SSH の詳細なトラブルシューティング手順
-SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
+# <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
+SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
 
 ## <a name="take-preliminary-steps"></a>準備作業を行う
 次の図は、関係しているコンポーネントを示しています。
@@ -33,28 +33,14 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 次の手順は、エラーの原因を分離し、解決策や回避策を見つけ出すのに役立ちます。
 
-まず、ポータルで VM の状態を確認します。
+1. ポータルで VM の状態を確認します。
+   [[Azure Portal ]](https://portal.azure.com) で **[仮想マシン]** > *[VM 名]* の順に選択します。
 
-[Azure ポータル](https://portal.azure.com)で次の操作を行います。
+   VM の状態ウィンドウには、" **実行中**" と表示されます。 コンピューティング、ストレージ、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
 
-1. Resource Manager モデルを使用して作成された VM の場合は、**[仮想マシン]** > *[VM 名]* の順に選択します。
-   
-    - または -
-   
-    クラシック デプロイ モデルを使用して作成された VM の場合は、**[仮想マシン (クラシック)]** > *[VM 名]* の順に選択します。
-   
-    VM の状態ウィンドウには、" **実行中**" と表示されます。 コンピューティング、ストレージ、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
+2. エンドポイント、IP アドレス、ネットワーク セキュリティ グループなどの設定を確認するには、**[設定]** を選択します。
 
-2. エンドポイント、IP アドレスなどの設定を確認するには、 **[設定]** を選択します。
-   
-    Resource Manager を使用して作成された VM のエンドポイントを識別するには、 [ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md) が定義されていることを確認します。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることも確認します。
-
-[Azure クラシック ポータル](https://manage.windowsazure.com)で、クラシック デプロイメント モデルを使用して作成された VM について、次の手順を実行します。
-
-1. エンドポイント、IP アドレスなどの設定を確認するには、 **[仮想マシン]** > *VM 名*の順に選択します。
-2. VM の **ダッシュボード** を選択して、その状態を確認します。
-3. **[監視]** を選択して、コンピューティング、ストレージ、ネットワークの各リソースの最近のアクティビティを確認します。
-4. **[エンドポイント]** を選択して、SSH トラフィックのエンドポイントがあることを確認します。
+   VM には、**[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/virtual-networks-nsg.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることも確認します。
 
 ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に到達できるかどうかを確認します。
 
@@ -95,7 +81,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![組織の境界デバイスを示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成して使用します。 詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
+インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成して使用します。 詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](quick-create-cli.md)」を参照してください。 テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
 
 インターネットに直接接続されているコンピューターとの SSH 接続を作成できる場合は、組織のエッジ デバイスで以下を確認してください。
 
@@ -113,11 +99,11 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![クラウド サービス エンドポイントと ACL を示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-同じ仮想ネットワーク内に別の VM がない場合、VM を簡単に作成することができます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 テストの完了後に、追加した VM を削除してください。
+同じ仮想ネットワーク内に別の VM がない場合、VM を簡単に作成することができます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](quick-create-cli.md)」をご覧ください。 テストの完了後に、追加した VM を削除してください。
 
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
-* **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります  (既定のポートは 22 です)。 Resource Manager デプロイ モデルを使用して作成された VM では、Azure Portal で **[仮想マシン]** > *[VM 名]* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
+* **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります  (既定のポートは 22 です)。 Azure Portal で **[仮想マシン]** > *[VM 名]* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
 * **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](../../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
 
 問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
@@ -127,6 +113,8 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 ## <a name="source-4-network-security-groups"></a>ソース 4: ネットワーク セキュリティ グループ
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。 ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。
 詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+
+NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>ソース 5: Linux ベースの Azure 仮想マシン
 最後に考えられる問題のソースは、Azure 仮想マシン自体に関連するものです。
@@ -143,6 +131,5 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたはネットワーク監視ソフトウェアが、SSH 接続を妨げている。
 
 ## <a name="additional-resources"></a>その他のリソース
-アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-
+アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](troubleshoot-app-connection.md)」を参照してください。
 

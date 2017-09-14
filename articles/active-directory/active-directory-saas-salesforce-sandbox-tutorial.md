@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 5d37dbcce06ac979f3cabef1220e5f1fe8e67931
-ms.openlocfilehash: 6c0cd8aeaaa094a6bf046d47a96eddffc6430d44
-ms.lasthandoff: 03/01/2017
-
+ms.reviewer: jeedes
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 32835e79188806bb2ff319eea23b1b52ab585ab1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
@@ -113,7 +114,7 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
  5. **[SAML ID の種類]** として、**[アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。 
  6. **[SAML Identity Location (SAML ID の場所)]** で、**[Identity is in the NameIdentifier element of the Subject statement (ID は Subject ステートメントの NameIdentifier 要素にあります)]** を選択します。
  7. Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダーのログイン URL]** ボックスに貼り付けます。 
- 8. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Identity Provider Logout URL (ID プロバイダー ログアウト URL)]** ボックスに「https://login.windows.net/common/wsfederation?wa=wsignout1.0」を貼り付けます。
+ 8. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Identity Provider Logout URL]\(ID プロバイダー ログアウト URL\)** ボックスに「https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0」を貼り付けます。
  9. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP POST]** を選択します。 
  10. **[保存]**をクリックします。
 11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
@@ -177,7 +178,7 @@ URL の値を取得するには、前のセクションで作成した SSO プ�
 **ユーザーを Salesforce Sandbox に割り当てるには、次の手順に従います。**
 
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **Salesforce Sandbox** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2. **Salesforce Sandbox **アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
    ![ユーザーの割り当て](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769574.png "Assign users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。

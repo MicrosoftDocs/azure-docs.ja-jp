@@ -2,7 +2,7 @@
 title: "Azure Devtest Labs のドキュメント - チュートリアル | Microsoft Docs"
 description: "再利用可能なアーティファクトを使用して、アプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアルやビデオなどで、ラボを作成、管理、保護する方法を紹介します。"
 services: devtest-lab
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

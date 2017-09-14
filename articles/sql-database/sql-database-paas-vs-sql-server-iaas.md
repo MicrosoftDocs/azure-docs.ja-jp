@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: d7506c8abb6eca7e2681764b2bedc2f4755b768a
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: d136b71c9587d4035009a2ef2296fd93f9e984fe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
@@ -66,7 +65,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 |  |開発とマーケティングに時間的制約があるクラウド設計の新しいアプリケーション。 |変更を最小限に抑えてクラウドに迅速に移行する必要がある既存のアプリケーション。 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 |
 |  | 高可用性、障害復旧、アップグレードが組み込まれたデータベースを必要とするチーム。 |SQL Server の高可用性、障害復旧、修正プログラムの適用を構成して管理できるチーム。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 | |
 |  | 基盤のオペレーティング システムと構成設定の管理を回避したいチーム。 |完全な管理者アクセス権がある、カスタマイズされた環境を必要としている。 | |
-|  | 1 TB までのデータベース、またはスケールアウト パターンを使用して [水平または垂直方向にパーティション分割](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) できる、より大きなデータベース。 |記憶域が 64 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 | |
+|  | 4 TB までのデータベース、またはスケールアウト パターンを使用して [水平または垂直方向にパーティション分割](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) できる、より大きなデータベース。 |記憶域が 64 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 | |
 |  | [サービスとしてのソフトウェア (SaaS) アプリケーションの構築](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 |エンタープライズ アプリケーションとハイブリッド アプリケーションの移行と構築。 | |
 |  | | |
 | **リソース:** |基盤となるインフラストラクチャの構成と管理のために IT リソースを使用するつもりがなく、アプリケーション層に的を絞りたい。 |構成と管理のための IT リソースが存在する。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 |
@@ -140,7 +139,7 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 次の状況に該当する場合は、 **Azure VM 上の SQL Server** を選択します。
 
-* クラウドに移行または拡張したい既存のオンプレミス アプリケーションがある場合、または 1 TB を超えるエンタープライズ アプリケーションを構築したい場合。 このアプローチでは、100% の SQL 互換性、大規模なデータベース容量、SQL Server と Windows に対する完全な制御、オンプレミスへの安全なトンネリングの利点を活かすことができます。 このアプローチを使用すると、既存のアプリケーションの開発と修正にかかるコストを最小限に抑えられます。
+* クラウドに移行または拡張したい既存のオンプレミス アプリケーションがある場合、または 4 TB を超えるエンタープライズ アプリケーションを構築したい場合。 このアプローチでは、100% の SQL 互換性、大規模なデータベース容量、SQL Server と Windows に対する完全な制御、オンプレミスへの安全なトンネリングの利点を活かすことができます。 このアプローチを使用すると、既存のアプリケーションの開発と修正にかかるコストを最小限に抑えられます。
 * 既存の IT リソースがあり、最終的には修正プログラムの適用、バックアップ、データベースの高可用性の実現を自身で行える場合。 いくつかの自動化された機能によって、これらの操作を大幅に簡素化できることにご注目ください。 
 
 ## <a name="next-steps"></a>次のステップ

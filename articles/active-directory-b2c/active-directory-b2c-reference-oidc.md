@@ -1,41 +1,42 @@
 ---
-title: Azure Active Directory B2C | Microsoft Docs
-description: "Azure Active Directory で導入された OpenID Connect 認証プロトコルを利用した Web アプリケーションの構築。"
+title: "OpenID Connect による Web サインイン- Azure AD B2C | Microsoft Docs"
+description: "OpenID Connect 認証プロトコルの Azure Active Directory 実装を使用した Web アプリケーションの構築"
 services: active-directory-b2c
 documentationcenter: 
-author: dstrockis
-manager: mbaldwin
-editor: 
+author: saeedakhter-msft
+manager: krassk
+editor: parakhj
 ms.assetid: 21d420c8-3c10-4319-b681-adf2e89e7ede
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9a4ccad94520bd0d811ba9dcfd6f7cc680c89a1f
-
+ms.date: 08/16/2017
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b0c33a47dd0cae79eab32ac578448fae8bf59be5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: OpenID Connect による Web サインイン
-OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用されます。  Azure Active Directory (Azure AD) B2C で導入された OpenID Connect を利用することで、Web アプリケーションのサインアップ、サインイン、その他の ID 管理を Azure AD に外注できます。 このガイドでは、言語に依存しない方法でこれを実行する方法を説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
+OpenID Connect は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*承認*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 OpenID Connect を使うことで OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、`id_token` の概念が導入されています。クライアントは、このセキュリティ トークンによってユーザーの本人性を確認し、そのユーザーに関する基本的なプロファイル情報を取得することができます。
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*承認*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 OpenID Connect を使うことで OAuth を使用したシングル サインオンを行うことができます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにするセキュリティ トークンである *ID トークン*の概念が導入されています。
 
-OAuth 2.0 を拡張したものであるため、アプリで安全に **access_tokens** を取得することもできます。 access_token を使用すると、[承認サーバー](active-directory-b2c-reference-protocols.md#the-basics)によってセキュリティ保護されたリソースにアクセスできます。 サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。
+これは OAuth 2.0 の拡張であるため、アプリが*アクセス トークン*を安全に取得することも可能になります。 access_token を使用すると、[承認サーバー](active-directory-b2c-reference-protocols.md#the-basics)によってセキュリティ保護されたリソースにアクセスできます。 サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。
 
-Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 [**ポリシー パラメーター**](active-directory-b2c-reference-policies.md)を導入しており、このパラメーターにより、OpenID Connect を利用し、サインアップ、サインイン、プロファイル管理などのユーザー操作をアプリに追加できます。 ここでは、OpenID Connect とポリシーを使用して、Web アプリケーションに各種のユーザー操作を導入する方法について説明します。 Web API にアクセスするための access_token を取得する方法についても説明します。
+Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これにより、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリに追加できるようにする[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ここでは、OpenID Connect とポリシーを使用してこれらの各エクスペリエンスを Web アプリケーション内に実装する方法について説明します。 また、Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
 
-下記の HTTP 要求例では、サンプル B2C ディレクトリの **fabrikamb2c.onmicrosoft.com**、サンプル アプリケーションの **https://aadb2cplayground.azurewebsites.net**、ポリシーを利用します。 これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。
+次のセクションにある HTTP 要求例では、サンプル B2C ディレクトリ fabrikamb2c.onmicrosoft.com のほか、サンプル アプリケーション https://aadb2cplayground.azurewebsites.net およびポリシーを使用します。 これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。
 [独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について学習してください。
 
 ## <a name="send-authentication-requests"></a>認証要求を送信する
-Web アプリでユーザーを認証し、ポリシーを実行する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。 これはフローの対話部分であり、実際、ユーザーはポリシーに基づいて操作します。
+Web アプリでユーザーを認証し、ポリシーを実行する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。 これは、ユーザーがポリシーに応じてアクションを実行する、フローの対話的な部分です。
 
-この要求では、クライアントはユーザーから取得する必要があるアクセス許可を `scope` パラメーターで示し、実行するポリシーを `p` パラメーターで示します。 3 つの例を以下に示します (読みやすいように改行してあります)。それぞれ異なるポリシーが使用されています。 各要求の動作を感覚的に理解するために、要求をブラウザーに貼り付け、実行してみてください。
+この要求では、クライアントはユーザーから取得する必要があるアクセス許可を `scope` パラメーターで示し、実行するポリシーを `p` パラメーターで示します。 次のセクションでは、それぞれ異なるポリシーを使用する 3 つの例が (読みやすいように改行して) 示されています。 各要求の動作を感覚的に理解するために、要求をブラウザーに貼り付け、実行してみてください。
 
 #### <a name="use-a-sign-in-policy"></a>サインイン ポリシーを使用する
 ```
@@ -76,21 +77,21 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
-| response_type |必須 |応答の種類。OpenID Connect の `id_token` を含む必要があります。 Web アプリで Web API を呼び出すためのトークンも必要になる場合、ここで行ったように、`code+id_token` を利用できます。 |
-| redirect_uri |推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
-| scope |必須 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 `openid` スコープは、ユーザーをサインインさせ、**id_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します (これについては後で詳しく説明します)。 Web アプリの場合、 `offline_access` スコープは任意です。 リソースに長期アクセスするためにアプリは **refresh_token** を必要とすることを示します。 |
-| response_mode |推奨 |結果として得られた authorization_code をアプリに返すときに使用するメソッド。 'query'、'form_post'、'fragment' のいずれかを指定できます。  セキュリティを保持するためには、'form_post' をお勧めします。 |
-| state |推奨 |要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 クロスサイト リクエスト フォージェリ攻撃を防ぐために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページなど) に関する情報をエンコードする目的にも使用されます。 |
-| nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な id_token に要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 |
-| p |必須 |実行されるポリシー。 B2C テナントに作成されたポリシーの名前です。 ポリシー名の値は、"b2c\_1\_" で始まっている必要があります。 ポリシーの詳細については、「 [拡張ポリシー フレームワーク](active-directory-b2c-reference-policies.md)」を参照してください。 |
-| prompt |省略可能 |ユーザーとの必要な対話の種類。 現時点で有効な値は 'login' のみです。この場合ユーザーは要求時に、その資格情報を入力する必要があります。 シングル サインオンは作用しません。 |
+| response_type |必須 |応答の種類。これには、OpenID Connect の ID トークンが含まれている必要があります。 Web アプリが Web API を呼び出すためのトークンも必要とする場合は、ここで行なったように `code+id_token` を使用できます。 |
+| redirect_uri |推奨 |アプリの `redirect_uri` パラメーター。これにより、アプリは認証応答を送受信できます。 これは、URL でエンコードされている必要がある点を除き、ポータルで登録した `redirect_uri` パラメーターのいずれかに正確に一致している必要があります。 |
+| scope |必須 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 `openid` スコープは、ユーザーをサインインさせ、ユーザーに関するデータを ID トークンの形式で取得するためのアクセス許可を示します (これについては後で詳細に説明します)。 Web アプリの場合、 `offline_access` スコープは任意です。 これは、アプリがリソースに長時間アクセスするには*更新トークン*が必要になることを示します。 |
+| response_mode |推奨 |結果として得られた承認コードをアプリに送り返すために使用すべき方法。 これは `query`、`form_post`、`fragment` のいずれかにできます。  最高のセキュリティを得るには、`form_post` 応答モードをお勧めします。 |
+| state |推奨 |要求に含まれ、トークンの応答として返される値。 任意の文字列を指定することができます。 クロスサイト リクエスト フォージェリ攻撃を防ぐために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページなど) に関する情報をエンコードする目的にも使用されます。 |
+| nonce |必須 |結果として得られる ID トークンに要求として含まれる、要求に含まれている (アプリによって生成された) 値。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 この値は通常、要求の送信元を識別するために使用できるランダム化された一意の文字列です。 |
+| p |必須 |実行されるポリシー。 B2C テナントに作成されたポリシーの名前です。 ポリシー名の値は `b2c\_1\_` で始まる必要があります。 ポリシーおよび[拡張ポリシー フレームワーク](active-directory-b2c-reference-policies.md)の詳細を学習してください。 |
+| prompt |省略可能 |ユーザーとの必要な対話の種類。 現時点で有効な値は `login` だけです。これはユーザーに、その要求に関する資格情報を強制的に入力させます。 シングル サインオンは作用しません。 |
 
-この時点で、ユーザーにポリシーのワークフローの完了が求められます。 たとえば、ユーザー名とパスワードを入力したり、ソーシャル ID でサインインしたり、ディレクトリにサインアップしたりする必要があります。他にも、ポリシーの定義に基づき、多数の手順があります。
+この時点で、ユーザーはポリシーのワークフローを完了するよう求められます。 それには、ポリシーの定義方法に応じて、ユーザーがユーザー名とパスワードの入力、ソーシャル ID でのサインイン、ディレクトリへのサインアップ、またはその他の複数の手順を実行することが必要になる場合があります。
 
-ユーザーがポリシーを完了すると、Azure AD は `response_mode` パラメーターに指定されたメソッドを使い、指定された `redirect_uri` でアプリに応答を返します。 実行されたポリシーに関係なく、上記のすべての例で応答はまったく同じになります。
+ユーザーがポリシーを完了した後、Azure AD は `response_mode` パラメーターで指定された方法を使用して、示されている `redirect_uri` パラメーターでアプリに応答を返します。 実行されているポリシーには関係なく、応答は前の各ケースについて同じです。
 
 `response_mode=fragment` を使用した場合の正常な応答は次のようになります。
 
@@ -101,13 +102,13 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
-| id_token |アプリが要求した id_token。 この id_token を使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 id_token とその内容の詳細については、「[Azure AD B2C: トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。 |
-| code |`response_type=code+id_token` を使用した場合、アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースの access_token を要求します。 authorization_code は非常に短命です。 通常、約 10 分で期限が切れます。 |
-| state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
+| id_token |アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容に関する詳細は、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」に含まれています。 |
+| code |アプリが要求した承認コード (`response_type=code+id_token` を使用した場合)。 アプリは、承認コードを使用してターゲット リソースのアクセス トークンを要求できます。 承認コードの有効期間は非常に短時間です。 通常、約 10 分で期限が切れます。 |
+| state |要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリは、要求と応答の中の `state` 値が同一であることを検証する必要があります。 |
 
-アプリ側でエラーを適切に処理できるよう、 `redirect_uri` にはエラー応答も送信されます。
+アプリがエラーを適切に処理できるように、`redirect_uri` パラメーターにはエラー応答も送信されます。
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -116,50 +117,50 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
-| error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
-| state |前の表の詳しい説明を参照してください。 要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
+| state |詳細についてはこのセクションの最初の表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
 
-## <a name="validate-the-idtoken"></a>id_token を検証する
-単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。 Azure AD B2C は、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
+## <a name="validate-the-id-token"></a>ID トークンの検証
+ユーザーを認証するには、ID トークンを受信するだけでは不十分です。 ID トークンの署名を検証し、アプリの要件ごとにトークン内の要求を確認する必要があります。 Azure AD B2C は、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
 優先言語にもよりますが、JWT を検証するためのさまざまなオープンソース ライブラリを入手できます。 独自の検証ロジックを実装するより、オープンソース ライブラリを試してみることをお勧めします。 ライブラリを正しく利用する方法を模索するとき、ここにある情報が役に立つでしょう。
 
-Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあって、アプリは、このエンドポイントを使用することで、Azure AD B2C に関する情報を実行時にフェッチすることができます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 B2C テナントにはポリシー別の JSON メタデータ ドキュメントがあります。 たとえば、`fabrikamb2c.onmicrosoft.com` の `b2c_1_sign_in` ポリシーのメタデータ ドキュメントは次の場所にあります。
+Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあって、アプリは、このエンドポイントを使用することで、Azure AD B2C に関する情報を実行時にフェッチすることができます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 B2C テナントにはポリシー別の JSON メタデータ ドキュメントがあります。 たとえば、`fabrikamb2c.onmicrosoft.com` 内の `b2c_1_sign_in` ポリシーのメタデータ ドキュメントは次の場所にあります。
 
 `https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
 
-この構成ドキュメントのプロパティの 1 つに `jwks_uri` があります。この値は同じポリシーで次のようになります。
+この構成ドキュメントのプロパティの 1 つに `jwks_uri` があります。同じポリシーに対するこの値は次のようになります。
 
-`https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
+`https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`」を参照してください。
 
-id_token の署名で使用されたポリシー (とメタデータのフェッチ場所) は 2 つの方法で判断できます。 最初の方法です。ポリシー名が id_token の `acr` 要求に含まれています。 id_token の要求を解析する方法については、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。 もう 1 つの方法です。要求を発行するとき、`state` パラメーターの値に含まれるポリシーを符号化し、それから復号化して使用されたポリシーを判断します。 いずれの方法も完全に有効です。
+ID トークンの署名でどのポリシーが使用されたか (また、メタデータをどこからフェッチするか) を判定するには、2 つのオプションがあります。 最初に、ポリシー名が ID トークン内の `acr` 要求に含まれています。 ID トークンの要求を解析する方法については、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。 もう 1 つの方法です。要求を発行するとき、`state` パラメーターの値に含まれるポリシーを符号化し、それから復号化して使用されたポリシーを判断します。 どちらの方法も有効です。
 
-OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA 256 公開鍵を利用し、id_token の署名を検証できます。 このエンドポイントには常時、複数のキーがリストされており、それぞれのキーは `kid`で識別されます。 id_token のヘッダーにはさらに `kid` 要求が格納されていて、複数のキーのうち、どのキーが id_token の署名に使用されたかが、この要求によって示されます。 [トークンの検証](active-directory-b2c-reference-tokens.md#token-validation)を含む詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
+OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得した後、このエンドポイントにある RSA 256 公開キーを使用して ID トークンの署名を検証できます。 このエンドポイントには、特定の時点で (それぞれ `kid` 要求によって識別される) 複数のキーが一覧表示されている可能性があります。 また、ID トークンのヘッダーには、これらのキーのうちのどれが ID トークンの署名に使用されたかを示す `kid` 要求も含まれています。 詳細については、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」(特に、[トークンの検証](active-directory-b2c-reference-tokens.md#token-validation)に関するセクション) を参照してください。
 <!--TODO: Improve the information on this-->
 
-id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。たとえば、次のようなものです。
+ID トークンの署名を検証した後、確認する必要のあるいくつかの要求が存在します。 次に例を示します。
 
 * トークン再生攻撃を防止するために、`nonce` 要求を検証する必要があります。 その値が、サインイン要求で指定した値と一致していることが必要です。
-* id_token が確実に自分のアプリに対して発行されたものであることを確認するために、`aud` 要求を検証する必要があります。 その値がアプリのアプリケーション ID と一致している必要があります。
-* id_token の有効期限が切れていないことを確認するために、`iat` 要求と `exp` 要求を検証する必要があります。
+* ID トークンが自分のアプリに対して発行されたことを確認するために、`aud` 要求を検証する必要があります。 その値がアプリのアプリケーション ID と一致している必要があります。
+* ID トークンが期限切れになっていないことを確認するために、`iat` および `exp` 要求を検証する必要があります。
 
-他にも実行する必要がある検証がいくつかあります。これについては、[OpenID Connect Core の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で詳しく説明されています。  シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
+また、実行する必要のあるその他の検証もいつくか存在します。 これらは、「[OpenID Connect Core Spec (OpenID Connect コアの仕様)](http://openid.net/specs/openid-connect-core-1_0.html)」で詳細に説明されています。シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
 
 * ユーザー/組織がアプリにサインアップ済みであることを確認する。
 * 適切な承認/特権がユーザーにあることを確認する。
 * Azure Multi-Factor Authentication など特定の強度の認証が行われたことを確認する。
 
-id_token に含まれる要求の詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
+ID トークン内の要求の詳細については、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。
 
-id_token を十分検証したら、ユーザーとのセッションを開始し、id_token に含まれる要求を使ってそのユーザーに関する情報をアプリの中で取得することができます。 取得した情報は、表示、記録、承認などに利用することができます。
+ID トークンを検証した後、ユーザーとのセッションを開始できます。 ID トークン内の要求を使用して、アプリでユーザーに関する情報を取得できます。 この情報の使用には、表示、記録、および承認が含まれます。
 
 ## <a name="get-a-token"></a>トークンを取得する
-Web アプリに必要なことがポリシーの実行だけであれば、以降のセクションを一部省略できます。 以降のセクションは、Web アプリで Web API を認証呼び出しする必要があり、その呼び出しも Azure AD B2C で保護する場合にのみ適用されます。
+Web アプリがポリシーの実行にのみ必要な場合は、次のいくつかのセクションを省略できます。 これらのセクションは、Web API への認証された呼び出しを行う必要があり、かつそれ自体も Azure AD B2C によって保護されている Web アプリにのみ適用できます。
 
-`POST` 要求を `/token` エンドポイントに送信することで、(`response_type=code+id_token` を利用し) トークンに取得した authorization_code を任意のリソースに適用できます。 現在、トークンを要求できる唯一のリソースはアプリの独自のバックエンド Web API です。 自身のトークンを要求するには、アプリのクライアント ID をスコープとして使用します。
+トークン用に (`response_type=code+id_token` を使用して) 取得した承認コードは、`POST` 要求を `/token` エンドポイントに送信することによって目的のリソースに利用できます。 現在、トークンを要求できる唯一のリソースは、アプリの独自のバックエンド Web API です。 自身のトークンを要求するには、アプリのクライアント ID をスコープとして使用します。
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -170,15 +171,15 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
-| p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" **クエリ文字列**" に追加することに注意してください。 |
+| p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは `POST` 本文ではなく、クエリ文字列に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
 | grant_type |必須 |許可の種類。承認コード フローでは `authorization_code` を指定する必要があります。 |
-| scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 `openid` スコープは、ユーザーをサインインさせ、**id_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します。 クライアントと同じアプリケーション ID で表され、アプリの独自のバックエンド Web API にトークンを届けるために利用できます。 `offline_access` スコープは、リソースに長期アクセスするためにアプリは **refresh_token** を必要とすることを示します。 |
-| code |必須 |フローの最初の段階で取得した authorization_code。 |
-| redirect_uri |必須 |authorization_code を受け取った、アプリケーションの redirect_uri。 |
-| client_secret |必須 |[Azure Portal](https://portal.azure.com/) で生成したアプリケーション シークレット。 このアプリケーション シークレットは、重要なセキュリティ アーティファクトです。 サーバーに安全に保管する必要があります。 また、慎重を期して、このクライアント シークレットを定期的に変更してください。 |
+| scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 `openid` スコープは、ユーザーをサインインさせ、ユーザーに関するデータを id_token パラメーターの形式で取得するためのアクセス許可を示します。 これを使用すると、クライアントと同じアプリケーション ID で表される、アプリの独自のバックエンド Web API にトークンを送信できます。 `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。 |
+| code |必須 |フローの最初の段階で取得した承認コード。 |
+| redirect_uri |必須 |承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
+| client_secret |必須 |[Azure Portal](https://portal.azure.com/) で生成したアプリケーション シークレット。 このアプリケーション シークレットは、重要なセキュリティ アーティファクトです。 サーバーに安全に保管する必要があります。 また、このクライアント シークレットを定期的にローテーションすることも必要です。 |
 
 正常なトークン応答は次のようになります。
 
@@ -192,14 +193,14 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
-| token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
+| token_type |トークン タイプ値。 Azure AD でサポートされるのは `Bearer` のみです。 |
 | access_token |要求した署名付きの JWT トークン。 |
-| scope |トークンの有効スコープ。後の利用のためにトークンのキャッシュに利用できます。 |
-| expires_in |access_token が有効な時間の長さ (秒単位)。 |
-| refresh_token |OAuth 2.0 の refresh_token。 現在のトークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のトークンを取得します。  refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 詳細については、 [B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。 refresh_token を受け取るには、承認要求とトークン要求の両方でスコープ `offline_access` を使用していなければなりません。 |
+| scope |トークンが有効なスコープ。 これらは、後で使用するためにトークンをキャッシュするときに使用できます。 |
+| expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
+| refresh_token |OAuth 2.0 更新トークン。 現在のトークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のトークンを取得します。 更新トークンは有効期間が長いため、リソースへのアクセスを長時間にわたって保持するために使用できます。 詳細については、「[B2C token reference (B2C トークン リファレンス)](active-directory-b2c-reference-tokens.md)」を参照してください。 更新トークンを受信するには、承認要求とトークン要求の両方でスコープ `offline_access` を使用している必要があることに注意してください。 |
 
 エラー応答は次のようになります。
 
@@ -210,13 +211,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
-| error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 ## <a name="use-the-token"></a>トークンを使用する
-`access_token` を正常に取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、バックエンド Web API への要求に使用することができます。
+これでアクセス トークンを正常に取得できたので、そのトークンを `Authorization` ヘッダー内に含めることによって、それをバックエンド Web API への要求で使用できます。
 
 ```
 GET /tasks
@@ -225,7 +226,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ## <a name="refresh-the-token"></a>トークンを更新する
-id_token は短命です。 リソースに引き続きアクセスできるようにするには、有効期限が切れた後で更新する必要があります。 トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。 このとき、`code` の代わりに `refresh_token` を指定します。
+ID トークンの有効期間は短時間です。 リソースに引き続きアクセスできるようにするには、有効期限が切れた後で更新する必要があります。 トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。 今回は、`code` パラメーターの代わりに `refresh_token` パラメーターを指定します。
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -235,15 +236,15 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
-| p |必須 |元の refresh_token の取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" **クエリ文字列**" に追加することに注意してください。 |
+| p |必須 |元の更新トークンの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは POST 本文ではなく、クエリ文字列に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
-| grant_type |必須 |許可の種類。承認コード フローのこのレッグの `refresh_token` を指定する必要があります。 |
-| scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 `openid` スコープは、ユーザーをサインインさせ、**id_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します。 クライアントと同じアプリケーション ID で表され、アプリの独自のバックエンド Web API にトークンを届けるために利用できます。 `offline_access` スコープは、リソースに長期アクセスするためにアプリは **refresh_token** を必要とすることを示します。 |
-| redirect_uri |推奨 |authorization_code を受け取った、アプリケーションの redirect_uri。 |
-| refresh_token |必須 |フローの第 2 段階で取得した元の refresh_token。 refresh_token を受け取るには、承認要求とトークン要求の両方でスコープ `offline_access` を使用していなければなりません。 |
-| client_secret |必須 |[Azure Portal](https://portal.azure.com/) で生成したアプリケーション シークレット。 このアプリケーション シークレットは、重要なセキュリティ アーティファクトです。 サーバーに安全に保管する必要があります。 また、慎重を期して、このクライアント シークレットを定期的に変更してください。 |
+| grant_type |必須 |付与の種類。承認コード フローのこの段階では、これは更新トークンである必要があります。 |
+| scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 `openid` スコープは、ユーザーをサインインさせ、ユーザーに関するデータを ID トークンの形式で取得するためのアクセス許可を示します。 これを使用すると、クライアントと同じアプリケーション ID で表される、アプリの独自のバックエンド Web API にトークンを送信できます。 `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。 |
+| redirect_uri |推奨 |承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
+| refresh_token |必須 |フローの第 2 段階で取得した元の更新トークン。 更新トークンを受信するには、承認要求とトークン要求の両方でスコープ `offline_access` を使用している必要があることに注意してください。 |
+| client_secret |必須 |[Azure Portal](https://portal.azure.com/) で生成したアプリケーション シークレット。 このアプリケーション シークレットは、重要なセキュリティ アーティファクトです。 サーバーに安全に保管する必要があります。 また、このクライアント シークレットを定期的にローテーションすることも必要です。 |
 
 正常なトークン応答は次のようになります。
 
@@ -257,14 +258,14 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
-| token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
+| token_type |トークン タイプ値。 Azure AD でサポートされるのは `Bearer` のみです。 |
 | access_token |要求した署名付きの JWT トークン。 |
-| scope |トークンの有効スコープ。後の利用のためにトークンのキャッシュに利用できます。 |
-| expires_in |access_token が有効な時間の長さ (秒単位)。 |
-| refresh_token |OAuth 2.0 の refresh_token。 現在のトークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のトークンを取得します。  refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 詳細については、 [B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。 |
+| scope |トークンが有効なスコープ。これは、後で使用するためにトークンをキャッシュするときに使用できます。 |
+| expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
+| refresh_token |OAuth 2.0 更新トークン。 現在のトークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のトークンを取得します。  更新トークンは有効期間が長いため、リソースへのアクセスを長時間にわたって保持するために使用できます。 詳細については、 [B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。 |
 
 エラー応答は次のようになります。
 
@@ -275,15 +276,15 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
-| error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
-ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトするには、ユーザーを Azure AD にリダイレクトする必要もあります。 そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
+ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトするには、ユーザーを Azure AD にリダイレクトする必要もあります。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
 
-前述の「id_token を検証する」セクションで説明したものと同じ OpenID Connect メタデータ ドキュメントの一覧にある `end_session_endpoint` にユーザーをリダイレクトできます。
+前に「ID トークンの検証」のセクションで説明した OpenID Connect メタデータ ドキュメントに一覧表示されている `end_session` エンドポイントに単純にユーザーをリダイレクトできます。
 
 ```
 GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
@@ -291,26 +292,21 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 | p |必須 |ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
-| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。 指定しない場合、Azure AD B2C はユーザーに汎用メッセージを表示します。 |
+| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
 
 > [!NOTE]
-> ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD B2C のユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。 ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。 ユーザーが B2C アプリケーションからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。 ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。
+> ユーザーを `end_session` エンドポイントにリダイレクトすると、そのユーザーの Azure AD B2C でのシングル サインオン状態の一部がクリアされますが、そのユーザーが自分のソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。 ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。 ユーザーが B2C アプリケーションからサインアウトしようとする場合、そのユーザーは必ずしも自分の Facebook アカウントからサインアウトしようとしているとは限りません。 ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。
 > 
 > 
 
 ## <a name="use-your-own-b2c-tenant"></a>独自の B2C テナントを使用する
-これらの要求を自分で試す場合、最初に次の 3 つの手順を実行し、上記のサンプルの値を独自の値に置換する必要があります。
+これらの要求を自分で試してみようとする場合は、最初に次の 3 つの手順を実行した後、前に説明した例の値を独自の値に置き換える必要があります。
 
-* [B2C テナントを作成し](active-directory-b2c-get-started.md)、要求でテナントの名前を使用します。
-* [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect_uri を取得します。 アプリに **web app/web api** を追加し、必要に応じて、**アプリケーション シークレット**を作成します。
-* [ポリシーを作成し](active-directory-b2c-reference-policies.md) 、ポリシー名を取得します。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
+1. [B2C テナントを作成し](active-directory-b2c-get-started.md)、要求でテナントの名前を使用します。
+2. [アプリケーションを作成](active-directory-b2c-app-registration.md)して、アプリケーション ID を取得します。 アプリ内に Web アプリ/Web API を含めます。 必要に応じて、アプリケーション シークレットを作成します。
+3. [ポリシーを作成し](active-directory-b2c-reference-policies.md) 、ポリシー名を取得します。
 
 

@@ -3,22 +3,22 @@ title: "Azure Portal におけるロールベースのアクセス制御 | Micro
 description: "Azure ポータルでのロールベースのアクセス制御を使用したアクセス管理の基本について説明します。 ロールの割り当てを使用して、リソースに対するアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
-editor: 
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2017
-ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 9fb0fdf1a2a48c5c9daf7d0ec22e85221bfb6b28
-ms.lasthandoff: 04/07/2017
-
+ms.date: 07/17/2017
+ms.author: andredm
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: aff943e797da93e95563c3de3f064dbbfc30a384
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する
@@ -41,7 +41,7 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure のアク
    
     ![Users blade - inherited vs assigned access screenshot](./media/role-based-access-control-configure/view-access.png)
 
-アクセス権が**割り当て済み**になっているユーザーと**継承済み**になっているユーザーがいることに注目してください。 アクセス権は、リソース グループに明示的に割り当てられる場合と、親サブスクリプションへの割り当てから継承される場合があります。
+ロールには、スコープが **[このリソース]** に設定されているものもあれば、別のスコープから **[継承]** に設定されているものもあることに注目してください。 アクセス権は、リソース グループに明示的に割り当てられる場合と、親サブスクリプションへの割り当てから継承される場合があります。
 
 > [!NOTE]
 > 従来のサブスクリプションの管理者と共同管理者は、新しい RBAC モデルではサブスクリプションの所有者と見なされます。
@@ -60,9 +60,10 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure のアク
 ロールの割り当てが正常に追加されると、 **[ユーザー]** ブレードに表示されます。
 
 ## <a name="remove-access"></a>アクセス権の削除
-1. アクセス制御ブレードのチェック ボックスを使用して、ロールの割り当てを 1 つ以上選択します。
+1. 削除したい割り当ての名前にカーソルを合わせます。 名前の横にチェック ボックスが表示されます。
+2. チェック ボックスを使用して、ロールの割り当てを 1 つまたは複数選択します。
 2. **[削除]** を選択します。  
-3. アクションの確定を求めるボックスがポップアップ表示されます。 **[はい]** を選択してロールの割り当てを削除します。
+3. **[はい]** を選択して削除を確定します。
 
 継承された割り当ては削除できません。 継承された割り当てを削除する必要がある場合は、ロールの割り当てが作成されたスコープで削除する必要があります。 **[スコープ]** 列の **[継承済み]** の横に、このロールが割り当てられているリソースへのリンクが表示されています。 そこにリストされているリソースにアクセスして、ロールの割り当てを削除してください。
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2017
+ms.date: 7/26/2017
 ms.author: v-six
-translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 47a9736fd6498d15305fb2296446c61e709ad0b8
-ms.lasthandoff: 03/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e55009c72b977ee4a30f6c71043bde483849f78f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>ロールのリサイクルを引き起こす一般的な問題
@@ -52,7 +52,7 @@ Azure は 64 ビット環境です。 そのため、32 ビット ターゲッ�
 
 * Azure 内の有効なストレージ アカウントが `DiagnosticsConnectionString` の設定に指定されていること。  
   既定では、エミュレートされたストレージ アカウントが指定されているため、アプリケーション パッケージをデプロイする前に、この設定を明示的に変更する必要があります。 この設定を変更しなかった場合、ロール インスタンスが診断モニターを起動しようとしたときに例外がスローされます。 ロール インスタンスが無限にリサイクルされる原因となる場合があります。
-* 接続文字列は次の [形式](../storage/storage-configure-connection-string.md)で指定します。 (プロトコルには HTTPS を指定する必要があります。)*MyAccountName* には該当するストレージ アカウントの名前を、*MyAccountKey* には該当するアクセス キーを指定してください。    
+* 接続文字列は次の [形式](../storage/common/storage-configure-connection-string.md)で指定します。 (プロトコルには HTTPS を指定する必要があります。)*MyAccountName* には該当するストレージ アカウントの名前を、*MyAccountKey* には該当するアクセス キーを指定してください。    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 

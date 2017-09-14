@@ -12,62 +12,77 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 07/13/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 3ef5dcbcb5f8f6a57de575af20028875b9f920ea
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: a1c7afab747b917ae979a41e63739a4f726265fc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Azure Redis Cache の監視方法
-Azure Redis Cache には、キャッシュのインスタンスを監視するためのオプションがいくつか用意されています。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。
+Azure Redis Cache は [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するためのオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。
 
-キャッシュ診断を有効にすると、Azure Redis Cache インスタンスのメトリックが約 30 秒ごとに収集されます。格納されたメトリックはメトリック グラフに表示され、アラート ルールで評価されます。
+Azure Redis Cache インスタンスのメトリックが Redis [INFO](http://redis.io/commands/info) コマンドを約 1 分に 2 回使用して収集され、自動的に 30 日間格納されるため (異なる保持ポリシーを構成するには[キャッシュ メトリックのエクスポート](#export-cache-metrics)に関する記事をご覧ください)、それらをメトリック グラフで表示してアラート ルールで評価できます。 各キャッシュ メトリックで使用される各種 INFO コマンドの詳細については、「 [使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」を参照してください。
 
-キャッシュ メトリックは、Redis の [INFO](http://redis.io/commands/info) コマンドを使用して収集されます。 各キャッシュ メトリックで使用される各種 INFO コマンドの詳細については、「 [使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」を参照してください。
+<a name="view-cache-metrics"></a>
 
-キャッシュ メトリックを確認するには、[Azure Portal](https://portal.azure.com) で対象のキャッシュ インスタンスに[移動](cache-configure.md#configure-redis-cache-settings)します。 Azure Redis Cache インスタンスのメトリックは、 **[Redis メトリック]** ブレードからアクセスします。
+キャッシュ メトリックを確認するには、[Azure Portal](https://portal.azure.com) で対象のキャッシュ インスタンスに[移動](cache-configure.md#configure-redis-cache-settings)します。  Azure Redis Cache の **[概要]** ブレードと **[Redis メトリック]** ブレードには組み込みのグラフがいくつか用意されています。 各グラフは、メトリックの追加や削除、レポート期間の変更など、カスタマイズすることができます。
 
-![[Redis メトリック]][redis-cache-redis-metrics-blade]
+![[Redis メトリック]](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
-> [!IMPORTANT]
-> **[Redis メトリック]** ブレードに次のメッセージが表示された場合は、「 [キャッシュ診断の有効化](#enable-cache-diagnostics) 」セクションの手順に従ってキャッシュ診断を有効にします。
-> 
-> `Monitoring may not be enabled. Click here to turn on Diagnostics.`
-> 
-> 
+## <a name="view-pre-configured-metrics-charts"></a>事前に構成されているメトリック グラフを表示する
 
-キャッシュのメトリックは、**[Redis メトリック]** ブレードの **[監視]** グラフに表示されます。 各グラフは、メトリックの追加や削除、レポート期間の変更など、カスタマイズすることができます。 処理とアラートを表示および構成するために、**[Redis Cache]** ブレードの **[操作]** セクションには、キャッシュの**イベント**と**アラート ルール**が表示されます。
+**[概要]** ブレードには、事前に構成されている次の監視グラフが用意されています。
 
-## <a name="enable-cache-diagnostics"></a>キャッシュ診断の有効化
-Azure Redis Cache には診断データをストレージ アカウントに格納する機能が用意されており、任意のツールを使用してそのデータにアクセスしてデータを直接処理できます。 キャッシュ診断を Azure ポータルで収集、格納、および表示するには、ストレージ アカウントを構成する必要があります。 同じリージョンおよびサブスクリプションにあるキャッシュは同じ診断ストレージ アカウントを共有するため、構成の変更は、そのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
+* [監視グラフ](#monitoring-charts)
+* [使用状況グラフ](#usage-charts)
 
-キャッシュ診断を有効化および構成するには、対象のキャッシュ インスタンスの **[Redis Cache]** ブレードに移動します。 診断が有効になっていない場合は、診断のグラフではなくメッセージが表示されます。
+### <a name="monitoring-charts"></a>監視グラフ
+**[概要]** ブレードの **[監視]** セクションには、**[ヒット数とミス数]**、**[取得数と設定数]**、**[接続数]**、および **[コマンド合計数]** のグラフがあります。
 
-![キャッシュ診断の有効化][redis-cache-enable-diagnostics]
+![監視グラフ](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
-メッセージをクリックして **[メトリック]** ブレードを表示し、**[診断設定]** をクリックしてキャッシュ サービス インスタンスの診断設定を有効化および構成します。
+### <a name="usage-charts"></a>使用状況グラフ
+**[概要]** ブレードの **[使用状況]** セクションには、**[Redis サーバーの負荷]**、**[メモリ使用量]**、**[ネットワーク帯域幅]**、および **[CPU 使用率]** のグラフのほか、キャッシュ インスタンスの **[価格レベル]** も表示されます。
 
-![診断設定][redis-cache-diagnostic-settings]
+![使用状況グラフ](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
-![診断の構成][redis-cache-configure-diagnostics]
+**[価格レベル]** にはキャッシュの価格レベルが表示され、キャッシュを別の価格レベルに [スケーリング](cache-how-to-scale.md) するために使用できます。
 
-**[オン]** ボタンをクリックするとキャッシュ診断が有効になり、診断の構成が表示されます。
+## <a name="view-metrics-with-azure-monitor"></a>Azure Monitor でメトリックを表示する
+Azure Monitor を使用して Redis のメトリックを表示し、カスタム グラフを作成するには、**[リソース] メニュー**で **[メトリック]** をクリックし、目的のメトリック、レポート間隔、グラフの種類などを使用してグラフをカスタマイズします。
 
-**[ストレージ アカウント]** の右側にある矢印をクリックして、診断データを保持するストレージ アカウントを選択します。 パフォーマンス最適化のために、キャッシュと同じリージョンにあるストレージ アカウントを選択します。
+![[Redis メトリック]](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-診断設定の構成が完了したら、 **[保存]** をクリックして構成を保存します。 変更が有効になるまでに数分かかる場合があります。
+Azure Monitor を使用してメトリックを操作する方法について詳しくは、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」をご覧ください。
 
-> [!IMPORTANT]
-> 同じリージョンおよびサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断の有効化/無効化、またはストレージ アカウントの変更) と、変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
-> 
-> 
+<a name="how-to-view-metrics-and-customize-chart"></a>
+<a name="enable-cache-diagnostics"></a>
+## <a name="export-cache-metrics"></a>キャッシュ メトリックをエクスポートする
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの**[リテンション期間 (日数)]** ポリシーを指定します。 
 
-格納されたメトリックを表示するには、ストレージ アカウントにあるテーブルで `WADMetrics`で始まる名前を確認します。 Azure ポータル外に格納されたメトリックにアクセスする方法の詳細については、 [Redis Cache の監視データへのアクセスに関するページ](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) のサンプルを参照してください。
+対象のキャッシュ メトリックのストレージ アカウントを構成するには:
+
+1. **[Redis キャッシュ]** ブレードの **[リソース] メニュー**から **[診断]** をクリックします。
+2. **[オン]** をクリックします。
+3. **[ストレージ アカウントへのアーカイブ]** をオンにします。
+4. キャッシュ メトリックを格納するストレージ アカウントを選択します。
+5. **[1 分]** チェック ボックスをオンにして **[リテンション期間 (日数)]** ポリシーを指定します。 リテンション期間ポリシーを適用せず、データを永続的に保持する場合は、**[リテンション期間 (日数)]** を **0** に設定します。
+6. [ **Save**] をクリックします。
+
+![Redis 診断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
+
+>[!NOTE]
+>キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーミングしたり、Log Analytics に送信したり](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics)できます。
+>
+>
+
+メトリックにアクセスするには、この記事に説明されているようにメトリックを Azure Portal に表示するか、[Azure Monitor Metrics REST API](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api) を使用してアクセスすることもできます。
 
 > [!NOTE]
-> Azure ポータルに表示されるのは、選択したストレージ アカウントに格納されているメトリックのみです。 ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータは引き続きダウンロードできますが、Azure ポータルには表示されなくなります。  
+> ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータは引き続きダウンロードできますが、Azure ポータルには表示されなくなります。  
 > 
 > 
 
@@ -88,6 +103,7 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 | 接続されているクライアント数 |指定したレポート期間中に、キャッシュに接続されるクライアントの数。 これは Redis INFO コマンドの `connected_clients` にマッピングされます。 [接続の上限](cache-configure.md#default-redis-server-configuration) に達すると、それ以降のキャッシュへの接続の試行は失敗します。 アクティブなクライアント アプリケーションがない場合でも、内部処理や接続によって接続されたクライアントのインスタンスが少数見つかることがあります。 |
 | 削除されたキー数 |指定したレポート期間中に、 `maxmemory` の制限によってキャッシュから削除された項目の数。 これは Redis INFO コマンドの `evicted_keys` にマッピングされます。 |
 | 期限切れキー数 |指定したレポート期間中に、期限が切れたキャッシュの項目の数。 この値は Redis INFO コマンドの `expired_keys` にマッピングされます。 |
+| 合計キー数  | 過去のレポート期間におけるキャッシュ内のキーの最大数。 これは Redis INFO コマンドの `keyspace` にマッピングされます。 基礎となるメトリック システムの制限により、クラスタリングが有効になっているキャッシュでキー合計が返すキーの最大数は、レポート期間中にキーの数が最大のシャードのキーの最大数になります。  |
 | 取得数 |指定したレポート期間中に、キャッシュから実行された取得操作の数。 この値は、Redis INFO のすべてのコマンド (`cmdstat_get`、`cmdstat_hget`、`cmdstat_hgetall`、`cmdstat_hmget`、`cmdstat_mget`、`cmdstat_getbit`、および `cmdstat_getrange`) からの値の合計で、レポート期間中のキャッシュ ヒット数とキャッシュ ミス数の合計と同じです。 |
 | Redis サーバーの負荷 |Redis サーバーの処理がビジーで、アイドル状態でメッセージを待機していないサイクルの割合。 このカウンタが 100 に達すると、Redis サーバーのパフォーマンスが上限に達したことを意味し、これ以上 CPU を高速で処理できないことを表します。 Redis サーバーの負荷が高い場合は、クライアントでタイムアウトの例外が表示されます。 この場合は、スケールアップまたはデータを複数のキャッシュにパーティション分割することを検討してください。 |
 | 設定数 |指定したレポート期間中に、キャッシュから実行された設定操作の数。 この値は、Redis INFO のすべてのコマンド (`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange`、および `cmdstat_setnx`) からの値の合計です。 |
@@ -98,218 +114,40 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 | キャッシュの読み取り |指定したレポート期間中にキャッシュから読み取られた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。 この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 **この値は、このキャッシュで使用されるネットワーク帯域幅に対応しています。サーバー側のネットワーク帯域幅の制限に対してアラートを設定する場合は、この `Cache Read` カウンターを使用してアラートを作成します。キャッシュのさまざまな価格レベルとサイズで観測された帯域幅の制限値については、[こちらの表](cache-faq.md#cache-performance)を参照してください。** |
 | キャッシュの書き込み |指定したレポート期間中にキャッシュに書き込まれた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。 この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 この値は、クライアントからキャッシュに送信されるデータのネットワーク帯域幅に対応しています。 |
 
-## <a name="how-to-view-metrics-and-customize-charts"></a>メトリックの確認方法とグラフのカスタマイズ方法
-キャッシュのメトリックの概要は **[Redis メトリック]** ブレードで確認できます。 **[Redis メトリック]** ブレードにアクセスするには、**[すべての設定]** > **[Redis メトリック]** の順に選択します。
+<a name="operations-and-alerts"></a>
+## <a name="alerts"></a>アラート
+メトリックとアクティビティ ログに基づいてアラートを受け取るように設定できます。 Azure Monitor では、アラートがトリガーされたときに次の処理を実行するように構成することができます。
 
-![[Redis メトリック]][redis-cache-redis-metrics]
+* 電子メール通知を送信する
+* Webhook を呼び出す
+* Azure Logic App を呼び出す
 
-**[Redis メトリック]** ブレードには次のグラフがあります。
+対象のキャッシュのアラート ルールを構成するには、**[リソース] メニュー**で **[アラート ルール]** をクリックします。
 
-| Redis メトリック グラフ | 表示されるメトリック |
-| --- | --- |
-| キャッシュの読み取りとキャッシュの書き込み |キャッシュの読み取り |
-| キャッシュの書き込み | |
-| 接続されているクライアント数 |接続されているクライアント数 |
-| ヒット数とミス数 |キャッシュ ヒット数 |
-| キャッシュ ミス数 | |
-| コマンド合計数 |合計処理数 |
-| 取得数と設定数 |取得数 |
-| 設定数 | |
-| CPU 使用率 |CPU |
-| メモリ使用量 |メモリ使用量 |
-| RSS メモリ使用量 | |
-| Redis サーバーの負荷 |サーバーの負荷 |
-| キー数 |合計キー数 |
-| 削除されたキー数 | |
-| 期限切れキー数 | |
+![監視](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-特定のグラフのメトリックの詳細を確認してグラフをカスタマイズするには、**[Redis メトリック]** ブレードから目的のグラフを選択して、そのグラフの **[メトリック]** ブレードを表示します。
+アラートを構成して使用する方法について詳しくは、[アラートの概要](../monitoring-and-diagnostics/insights-alerts-portal.md)に関する記事をご覧ください。
 
-![[メトリック] ブレード][redis-cache-metric-blade]
-
-グラフに表示されるメトリックに設定されているアラートは、そのグラフの **[メトリック]** ブレードの下部に一覧表示されます。
-
-メトリックを追加または削除する、またはレポートの期間を変更するには、 **[グラフの編集]**をクリックします。
-
-グラフにメトリックを追加する、またはグラフからメトリックを削除するには、メトリックの名前の横にあるチェックボックスをオンにします。 レポートの期間を変更するには、目的の期間をクリックします。 **グラフの種類**を変更するには、目的のスタイルをクリックします。 必要な変更を加えたら、 **[保存]**をクリックします。 
-
-![[グラフの編集]][redis-cache-edit-chart]
-
-**[保存]** をクリックすると、**[メトリック]** ブレードを閉じるまでは変更内容が維持されます。 後でもう一度このブレードを表示すると、変更前のメトリックと期間が表示されます。 グラフのカスタマイズの詳細については、[サービス メトリックの監視](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)に関するページを参照してください。
-
-グラフの特定の期間におけるメトリックを表示するには、特定のバーの上か、目的の時間に対応するグラフ上の点にマウス ポインターを置きます。
-
-![グラフの詳細を表示][redis-cache-view-chart-details]
-
-## <a name="how-to-monitor-a-premium-cache-with-clustering"></a>クラスタリングを使用した Premium キャッシュの監視方法
-[クラスタリング](cache-how-to-premium-clustering.md) が有効になっている Premium キャッシュでは、最大で 10 個のシャードを使用できます。 各シャードには独自のメトリックがあり、これらのメトリックが集約されて、キャッシュ全体としてのメトリックが提供されます。 各メトリックには 2 つのバージョンがあります。 1 つ目のメトリックは、キャッシュ全体のパフォーマンスを測定し、名前に `(Shard 0-9)` が含まれる 2 つ目のバージョンのメトリックは、キャッシュ内の 1 つのシャードのパフォーマンスを測定します。 たとえば、キャッシュに 3 つのシャードがある場合、`Cache Hits` はキャッシュ全体の総ヒット数で、`Cache Hits (Shard 2)` はキャッシュの当該シャードのヒット数のみになります。
-
-各監視グラフには、キャッシュ シャードごとのメトリックと、キャッシュの最上位レベルのメトリックが表示されます。
-
-![監視][redis-cache-premium-monitor]
-
-データ ポイントの上にカーソルを合わせると、その時点での詳細が表示されます。 
-
-![監視][redis-cache-premium-point-summary]
-
-概して、大きな値はキャッシュの集計値であり、小さい値はシャードの個々のメトリックです。 この例では、3 つのシャードがあり、キャッシュ ヒットはシャード間で均等に分散されます。
-
-![監視][redis-cache-premium-point-shard]
-
-詳細を確認するには、グラフをクリックして **[メトリック]** ブレードで展開ビューを表示してください。
-
-![監視][redis-cache-premium-chart-detail]
-
-既定では、各グラフには個々のシャードのパフォーマンス カウンターと共に、最上位レベルのキャッシュのパフォーマンス カウンターが含まれます。 これらは **[グラフの編集]** ブレードでカスタマイズできます。
-
-![監視][redis-cache-premium-edit]
-
-使用可能なパフォーマンス カウンターの詳細については、「 [使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」をご覧ください。
-
-## <a name="operations-and-alerts"></a>処理とアラート
-**[Redis Cache]** ブレードの **[操作]** セクションには、**[イベント]** セクションと **[アラート ルール]** セクションがあります。
-
-![処理][redis-cache-operations-events]
-
-最近のキャッシュ処理の一覧を確認するには、**[イベント]** グラフをクリックして **[イベント]** ブレードを表示します。 処理の例として、アクセス キーの取得と再生成、アラート ルールのアクティブ化と解決などが挙げられます。 各イベントの詳細については、 **[イベント]** ブレードのイベントをクリックします。
-
-イベントの詳細については、[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)に関するページを参照してください。
-
-**[アラート ルール]** セクションには、キャッシュ インスタンスのアラートの数が表示されます。 アラート ルールを使用すると、キャッシュ インスタンスを監視して、特定のメトリック値がルールで定義されたしきい値に達するたびに電子メールを受け取るように設定できます。 
-
-アラート ルールは約 5 分ごとに評価され、アラート ルールがアクティブになると構成済みの通知が送信されます。 アラート ルールのアクティブ化と通知は瞬時には処理されないため、アクティブ化と通知の送信に数分の遅延が発生する可能性があります。
-
-アラート ルールは、特定の監視グラフの **[メトリック]** ブレードか、**[アラート ルール]** ブレードから確認および設定できます。
-
-アラート ルールには次のプロパティがあります。
-
-| アラート ルールのプロパティ | Description |
-| --- | --- |
-| リソース |アラート ルールで評価するリソース。 Redis Cache からアラート ルールを作成する場合は、キャッシュがリソースになります。 |
-| 名前 |現在のキャッシュ インスタンスでアラート ルールを一意に識別する名前。 |
-| Description |アラート ルールに関する追加の説明。 |
-| [メトリック] |アラート ルールで監視するメトリック。 キャッシュ メトリックの一覧は、「使用可能なメトリックとレポート期間」を参照してください。 |
-| 条件 |アラート ルールの条件演算子。 「より大きい」、「より大きいまたは等しい」、「より小さい」、または「より小さいまたは等しい」を使用できます。 |
-| しきい値 |条件プロパティで指定した演算子を使用してメトリックと比較する値。 この値はメトリックによって、バイト数/秒、バイト数、パーセンテージ、カウント数などと変わります。 |
-| 期間 |アラート ルールの比較に使用する、メトリックの平均値を算出する期間を指定します。 たとえば、期間を [過去 1 時間] に設定すると、過去 1 時間のメトリックの平均値が比較に使用されます。 アクティビティ内のスパイクによってしきい値が満たされたときに通知を受け取る場合は、短い期間が適しています。 継続的なアクティビティがしきい値を超えたときに通知を受け取る場合は、長い期間を指定してください。 |
-| 電子メール サービスと共同管理者 |true に設定すると、アラートが生成された際にサービス管理者と共同管理者が電子メールを受け取ります。 |
-| 追加の管理者の電子メール アドレス |アラートがアクティブ化された際に通知を受け取る追加の管理者の電子メール アドレス。 |
-
-各アラート ルールのアクティブ化の際に送信される通知は 1 通のみです。 一度ルールのしきい値を超えて通知が送信されると、メトリックがしきい値を下回るまでルールは再評価されません。 その後再度メトリックがしきい値を超えると、アラートが再度アクティブ化され、新しい通知が送信されます。
-
-キャッシュ インスタンスのすべてのアラート ルールを表示するには、**[Redis Cache]** ブレードの **[アラート ルール]** パーツをクリックします。 特定のメトリックを使用するアラート ルールのみを表示するには、そのメトリックが含まれるグラフの **[メトリック]** ブレードに移動します。
-
-![アラート ルール][redis-cache-alert-rules]
-
-アラート ルールを追加するには、**[メトリック]** ブレードまたは **[アラート ルール]** ブレードで **[アラートの追加]** をクリックします。 
-
-必要なルール条件を **[アラート ルールの追加]** ブレードに入力して **[OK]** をクリックします。 
-
-![アラート ルールの追加][redis-cache-add-alert]
+## <a name="activity-logs"></a>アクティビティ ログ
+アクティビティ ログは、Azure Redis Cache インスタンスで実行された操作に関する情報を提供します。 以前は "監査ログ" や "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、Azure Redis Cache インスタンスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 
 
 > [!NOTE]
-> **[メトリック]** ブレードで **[アラートの追加]** をクリックしてアラート ルールを作成すると、そのブレードのグラフに表示されるメトリックのみが **[メトリック]** ボックスの一覧に表示されます。 **[アラート ルール]** ブレードで **[アラートの追加]** をクリックしてアラート ルールを作成すると、すべてのメトリックを **[メトリック]** ボックスの一覧から選択できます。
-> 
-> 
+> アクティビティ ログには、読み取り (GET) 操作は含まれません。
+>
+>
 
-アラート ルールを保存すると、**[アラート ルール]** ブレードのほか、そのアラート ルールで使用されるメトリックを表示する **[メトリック]** ブレードのすべてのグラフにそのアラート ルールが表示されます。 アラート ルールを編集するには、アラート ルールの名前をクリックして **[ルールの編集]** ブレードを表示します。 **[ルールの編集]** ブレードでは、ルールのプロパティの編集、アラート ルールの削除と無効化、または無効なルールの再有効化を行うことができます。
+対象のキャッシュのアクティビティ ログを表示するには、**[リソース] メニュー**で **[アクティビティ ログ]** をクリックします。
 
-> [!NOTE]
-> ルールのプロパティに加えたあらゆる変更が **[アラート ルール]** ブレードや **[メトリック]** ブレードに反映されるまでには時間がかかるア場合があります。
-> 
-> 
-
-アラート ルールがアクティブになると、アラート ルールの構成によっては電子メールが送信され、**[Redis Cache]** ブレードの **[アラート ルール]** パーツにアラート アイコンが表示されます。
-
-アラート ルールは、アラート条件が true に評価されなくなった時点で解決したと見なされます。 アラート ルールの条件が解決されると、アラート アイコンはチェック マークに置き換えられます。 アラートのアクティブ化と解決方法の詳細については、**[Redis Cache]** ブレードの **[イベント]** パーツをクリックして、**[イベント]** ブレードのイベントを確認します。
-
-Azure のアラートの詳細については、[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)に関するページを参照してください。
-
-## <a name="metrics-on-the-redis-cache-blade"></a>[Redis Cache] ブレードのメトリック
-**[Redis Cache]** ブレードには、次のメトリック カテゴリが表示されます。
-
-* [監視グラフ](#monitoring-charts)
-* [使用状況グラフ](#usage-charts)
-
-### <a name="monitoring-charts"></a>監視グラフ
-**[監視]** セクションには、**[ヒット数とミス数]**、**[取得数と設定数]**、**[接続数]**、および **[コマンド合計数]** のグラフがあります。
-
-![監視グラフ][redis-cache-monitoring-part]
-
-**監視** グラフには次のメトリックが表示されます。
-
-| 監視グラフ | キャッシュ メトリック |
-| --- | --- |
-| ヒット数とミス数 |キャッシュ ヒット数 |
-| キャッシュ ミス数 | |
-| 取得数と設定数 |取得数 |
-| 設定数 | |
-| 接続 |接続されているクライアント数 |
-| コマンド合計数 |合計処理数 |
-
-このセクションで紹介したメトリックの表示方法と個々のグラフをカスタマイズする方法の詳細については、「 [メトリックの確認方法とグラフのカスタマイズ方法](#how-to-view-metrics-and-customize-charts) 」のセクションを参照してください。
-
-### <a name="usage-charts"></a>使用状況グラフ
-**[使用状況]** セクションには、**[Redis サーバーの負荷]**、**[メモリ使用量]**、**[ネットワーク帯域幅]**、および **[CPU 使用率]** のグラフのほか、キャッシュ インスタンスの **[価格レベル]** も表示されます。
-
-![使用状況グラフ][redis-cache-usage-part]
-
-**[価格レベル]** にはキャッシュの価格レベルが表示され、キャッシュを別の価格レベルに [スケーリング](cache-how-to-scale.md) するために使用できます。
-
-**使用状況** グラフには次のメトリックが表示されます。
-
-| 使用状況グラフ | キャッシュ メトリック |
-| --- | --- |
-| Redis サーバーの負荷 |サーバーの負荷 |
-| メモリ使用量 |メモリ使用量 |
-| ネットワーク帯域幅 |キャッシュの書き込み |
-| CPU 使用率 |CPU |
-
-このセクションで紹介したメトリックの表示方法と個々のグラフをカスタマイズする方法の詳細については、「 [メトリックの確認方法とグラフのカスタマイズ方法](#how-to-view-metrics-and-customize-charts) 」のセクションを参照してください。
-
-<!-- IMAGES -->
-
-[redis-cache-enable-diagnostics]: ./media/cache-how-to-monitor/redis-cache-enable-diagnostics.png
-
-[redis-cache-diagnostic-settings]: ./media/cache-how-to-monitor/redis-cache-diagnostic-settings.png
-
-[redis-cache-configure-diagnostics]: ./media/cache-how-to-monitor/redis-cache-configure-diagnostics.png
-
-[redis-cache-monitoring-part]: ./media/cache-how-to-monitor/redis-cache-monitoring-part.png
-
-[redis-cache-usage-part]: ./media/cache-how-to-monitor/redis-cache-usage-part.png
-
-[redis-cache-metric-blade]: ./media/cache-how-to-monitor/redis-cache-metric-blade.png
-
-[redis-cache-edit-chart]: ./media/cache-how-to-monitor/redis-cache-edit-chart.png
-
-[redis-cache-view-chart-details]: ./media/cache-how-to-monitor/redis-cache-view-chart-details.png
-
-[redis-cache-operations-events]: ./media/cache-how-to-monitor/redis-cache-operations-events.png
-
-[redis-cache-alert-rules]: ./media/cache-how-to-monitor/redis-cache-alert-rules.png
-
-[redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
-
-[redis-cache-premium-monitor]: ./media/cache-how-to-monitor/redis-cache-premium-monitor.png
-
-[redis-cache-premium-edit]: ./media/cache-how-to-monitor/redis-cache-premium-edit.png
-
-[redis-cache-premium-chart-detail]: ./media/cache-how-to-monitor/redis-cache-premium-chart-detail.png
-
-[redis-cache-premium-point-summary]: ./media/cache-how-to-monitor/redis-cache-premium-point-summary.png
-
-[redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
-
-[redis-cache-redis-metrics]: ./media/cache-how-to-monitor/redis-cache-redis-metrics.png
-
-[redis-cache-redis-metrics-blade]: ./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png
+アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。
 
 
 
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+
+
+
 
 

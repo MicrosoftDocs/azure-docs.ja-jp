@@ -3,7 +3,7 @@ title: "Azure API Management の高度なポリシー | Microsoft Docs"
 description: "Azure API Management で使用できる高度なポリシーについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 8a13348b-7856-428f-8e35-9e4273d94323
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: bfadac7b34eca2ef1f9bcabc6e267ca9572990b8
-ms.lasthandoff: 03/18/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
@@ -27,7 +28,9 @@ ms.lasthandoff: 03/18/2017
   
 -   [制御フロー](api-management-advanced-policies.md#choose) - ブール[式](api-management-policy-expressions.md)の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。  
   
--   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。  
+-   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。
+
+-   [同時実行を制限する](#LimitConcurrency) - 含まれているポリシーが指定された数を超える要求によって同時に実行されないようにします。
   
 -   [イベント ハブにログを記録する](#log-to-eventhub) - 指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 
 
@@ -35,18 +38,20 @@ ms.lasthandoff: 03/18/2017
   
 -   [再試行](#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。 実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。  
   
--   [応答を返す](#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。  
+-   [応答を返す](#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。 
   
 -   [1 方向の要求を送信する](#SendOneWayRequest) - 指定された URL に要求を送信します。応答は待機しません。  
   
 -   [要求を送信する](#SendRequest) - 指定された URL に要求を送信します。  
-  
--   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。  
-  
+
+-   [HTTP プロキシを設定する](#SetHttpProxy) - HTTP プロキシ経由で、転送された要求をルーティングできます。  
+
 -   [要求メソッドを設定する](#SetRequestMethod) - 要求の HTTP メソッドを変更できます。  
   
 -   [状態コードを設定する](#SetStatus) - HTTP 状態コードを指定された値に変更します。  
   
+-   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。  
+
 -   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。  
   
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
@@ -133,7 +138,7 @@ ms.lasthandoff: 03/18/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |choose|ルート要素。|はい|  
 |when|`choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。|はい|  
@@ -141,7 +146,7 @@ ms.lasthandoff: 03/18/2017
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |condition="ブール式 &#124; ブール型定数"|含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。|はい|  
   
@@ -245,13 +250,13 @@ ms.lasthandoff: 03/18/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |forward-request|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |timeout="整数"|バックエンド サービスの呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ|タイムアウトなし|  
 |follow-redirects="true &#124; false"|バックエンド サービスからのリダイレクトについて、その後にゲートウェイが続くか、それとも呼び出し元に返されるかを指定します。|なし|false|  
@@ -263,6 +268,56 @@ ms.lasthandoff: 03/18/2017
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
+##  <a name="LimitConcurrency"></a>同時実行を制限する  
+ `limit-concurrency` ポリシーは、含まれているポリシーが特定の時点で指定された数を超える要求によって実行されないようにします。 しきい値を超えた場合、新しい要求は、キューの最大長に達するまでキューに追加されます。 キューがいっぱいになると、新しい要求はすぐに失敗します。
+  
+###  <a name="LimitConcurrencyStatement"></a> ポリシー ステートメント  
+  
+```xml  
+<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+        <!— nested policy statements -->  
+</limit-concurrency>
+``` 
+
+### <a name="examples"></a>例  
+  
+####  <a name="ChooseExample"></a> 例  
+ 次の例は、コンテキスト変数の値に基づいてバックエンドに転送される要求の数を制限する方法を示しています。
+ 
+```xml  
+<policies>
+  <inbound>…</inbound>
+  <backend>
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+      <forward-request timeout="120"/>
+    <limit-concurrency/>
+  </backend>
+  <outbound>…</outbound>
+</policies>
+```
+
+### <a name="elements"></a>要素  
+  
+|要素|説明|必須|  
+|-------------|-----------------|--------------|    
+|limit-concurrency|ルート要素。|はい|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|説明|必須|既定値|  
+|---------------|-----------------|--------------|--------------|  
+|key|文字列。 式を使用できます。 同時実行スコープを指定します。 複数のポリシーで共有できます。|あり|該当なし|  
+|max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|あり|該当なし|  
+|timeout|整数。 式を使用できます。 要求がスコープに入るまでに待機する必要がある秒数を指定します。この秒数を経過すると、要求は "429 要求が多すぎます" で失敗します。|いいえ|Infinity|  
+|max-queue-length|整数。 式を使用できます。 キューの最大長を指定します。 キューがいっぱいになっている場合、このポリシーに入ろうとしている受信した要求は、"429 要求が多すぎます" で終了します。|いいえ|Infinity|  
+  
+###  <a name="ChooseUsage"></a> 使用法  
+ このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+  
+-   **ポリシー セクション:** inbound、outbound、backend、on-error  
+  
+-   **ポリシー スコープ:** すべてのスコープ  
+
 ##  <a name="log-to-eventhub"></a> イベント ハブにログを記録する  
  `log-to-eventhub` ポリシーは、指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 その名前が示すように、このポリシーは、オンラインまたはオフライン分析のために、選択された要求または応答コンテキスト情報を保存するために使用します。  
   
@@ -295,13 +350,13 @@ ms.lasthandoff: 03/18/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |log-to-eventhub|ルート要素。 この要素の値は、イベント ハブに記録する文字列です。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |logger-id|API Management サービスに登録されているロガーの ID。|はい|  
 |partition-id|メッセージが送信されるパーティションのインデックスを指定します。|省略可能。 `partition-key` を使用する場合はこの属性を使用できません。|  
@@ -338,13 +393,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |mock-response|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|--------------|  
 |status-code|応答の状態コードを指定し、対応する例またはスキーマを選択するために使用します。|なし|200|  
 |content-type|`Content-Type` 応答のヘッダー値を指定し、対応する例またはスキーマを選択するために使用します。|なし|なし|  
@@ -394,13 +449,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |retry|ルート要素。 他のポリシーを子要素として含めることができます。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |condition|再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。|はい|該当なし|  
 |count|最大再試行回数を指定する正の数。|はい|該当なし|  
@@ -449,7 +504,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |return-response|ルート要素。|はい|  
 |set-header|[set-header](api-management-transformation-policies.md#SetHTTPheader) ポリシー ステートメント。|いいえ|  
@@ -458,7 +513,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |response-variable-name|たとえば、アップストリームの [send-request](api-management-advanced-policies.md#SendRequest) ポリシーから参照され、`Response` オブジェクトを含むコンテキスト変数の名前|省略可能。|  
   
@@ -515,7 +570,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |send-one-way-request|ルート要素。|はい|  
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|  
@@ -525,7 +580,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ|新規|  
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|  
@@ -594,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |send-request|ルート要素。|はい|  
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|  
@@ -604,7 +659,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ|新規|  
 |response-variable-name="文字列"|存在しない場合、`context.Response` が使用されます。|なし|該当なし|  
@@ -620,6 +675,144 @@ status code and media type. If no example or schema found, the content is empty.
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
+##  <a name="SetHttpProxy"></a> HTTP プロキシの設定  
+ `proxy` ポリシーにより、HTTP プロキシ経由でバックエンドに転送されるように要求をルーティングできます。 ゲートウェイとプロキシ間は、HTTP (HTTPS ではなく) のみがサポートされます。 基本認証と NTLM 認証のみ。
+  
+### <a name="policy-statement"></a>ポリシー ステートメント  
+  
+```xml  
+<proxy url="http://hostname-or-ip:port" username="username" password="password" />  
+  
+```  
+  
+### <a name="example"></a>例  
+ポリシー ドキュメントに機密情報を保存しないようにするため、ユーザー名とパスワードの値としての[プロパティ](api-management-howto-properties.md)の使用に注意してください。  
+  
+```xml  
+<proxy url="http://192.168.1.1:8080" username={{username}} password={{password}} />
+  
+```  
+  
+### <a name="elements"></a>要素  
+  
+|要素|説明|必須|  
+|-------------|-----------------|--------------|  
+|proxy|ルート要素|あり|  
+
+### <a name="attributes"></a>属性  
+  
+|属性|説明|必須|既定値|  
+|---------------|-----------------|--------------|-------------|  
+|url="string"|http://host:port の形式のプロキシ URL。|あり|該当なし |  
+|username="string"|プロキシで認証に使用するユーザー名。|いいえ|該当なし |  
+|password="string"|プロキシで認証に使用するパスワード。|いいえ|該当なし |  
+
+### <a name="usage"></a>使用法  
+ このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+  
+-   **ポリシー セクション:** inbound  
+  
+-   **ポリシー スコープ:** すべてのスコープ  
+
+##  <a name="SetRequestMethod"></a> 要求メソッドを設定する  
+ `set-method` ポリシーでは、要求の HTTP 要求メソッドを変更できます。  
+  
+### <a name="policy-statement"></a>ポリシー ステートメント  
+  
+```xml  
+<set-method>METHOD</set-method>  
+  
+```  
+  
+### <a name="example"></a>例  
+ このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
+  
+```xml  
+<choose>  
+    <when condition="@(context.Response.StatusCode >= 500)">  
+      <send-one-way-request mode="new">  
+        <set-url>https://hooks.slack.com/services/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</set-url>  
+        <set-method>POST</set-method>  
+        <set-body>@{  
+                return new JObject(  
+                        new JProperty("username","APIM Alert"),  
+                        new JProperty("icon_emoji", ":ghost:"),  
+                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",  
+                                                context.Request.Method,  
+                                                context.Request.Url.Path + context.Request.Url.QueryString,  
+                                                context.Request.Url.Host,  
+                                                context.Response.StatusCode,  
+                                                context.Response.StatusReason,  
+                                                context.User.Email  
+                                                ))  
+                        ).ToString();  
+            }</set-body>  
+      </send-one-way-request>  
+    </when>  
+</choose>  
+  
+```  
+  
+### <a name="elements"></a>要素  
+  
+|要素|説明|必須|  
+|-------------|-----------------|--------------|  
+|set-method|ルート要素。 要素の値は、HTTP メソッドを指定します。|はい|  
+  
+### <a name="usage"></a>使用法  
+ このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+  
+-   **ポリシー セクション:** inbound、on-error  
+  
+-   **ポリシー スコープ:** すべてのスコープ  
+  
+##  <a name="SetStatus"></a> 状態コードを設定する  
+ `set-status` ポリシーは、HTTP 状態コードを指定された値に変更します。  
+  
+### <a name="policy-statement"></a>ポリシー ステートメント  
+  
+```xml  
+<set-status code="" reason=""/>  
+  
+```  
+  
+### <a name="example"></a>例  
+ この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
+  
+```xml  
+<choose>  
+  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
+    <return-response response-variable-name="existing response variable">  
+      <set-status code="401" reason="Unauthorized" />  
+      <set-header name="WWW-Authenticate" exists-action="override">  
+        <value>Bearer error="invalid_token"</value>  
+      </set-header>  
+    </return-response>  
+  </when>  
+</choose>  
+  
+```  
+  
+### <a name="elements"></a>要素  
+  
+|要素|説明|必須|  
+|-------------|-----------------|--------------|  
+|set-status|ルート要素。|はい|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|説明|必須|既定値|  
+|---------------|-----------------|--------------|-------------|  
+|code="整数"|返される HTTP 状態コード。|はい|該当なし|  
+|reason="文字列"|状態コードを返す理由の説明。|はい|該当なし|  
+  
+### <a name="usage"></a>使用法  
+ このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+  
+-   **ポリシー セクション:** outbound、backend、on-error  
+  
+-   **ポリシー スコープ:** すべてのスコープ  
+
 ##  <a name="set-variable"></a> 変数の設定  
  `set-variable` ポリシーは、[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を宣言し、[式](api-management-policy-expressions.md)または文字列リテラルによって指定された値をこの変数に割り当てます。 リテラルが含まれている式は文字列に変換され、値の型は `System.String` になります。  
   
@@ -638,13 +831,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |set-variable|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |name|変数の名前。|はい|  
 |値|変数の値。 式またはリテラル値を指定できます。|はい|  
@@ -720,106 +913,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.Char?  
   
 -   System.DateTime?  
-  
-##  <a name="SetRequestMethod"></a> 要求メソッドを設定する  
- `set-method` ポリシーでは、要求の HTTP 要求メソッドを変更できます。  
-  
-### <a name="policy-statement"></a>ポリシー ステートメント  
-  
-```xml  
-<set-method>METHOD</set-method>  
-  
-```  
-  
-### <a name="example"></a>例  
- このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
-  
-```xml  
-<choose>  
-    <when condition="@(context.Response.StatusCode >= 500)">  
-      <send-one-way-request mode="new">  
-        <set-url>https://hooks.slack.com/services/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</set-url>  
-        <set-method>POST</set-method>  
-        <set-body>@{  
-                return new JObject(  
-                        new JProperty("username","APIM Alert"),  
-                        new JProperty("icon_emoji", ":ghost:"),  
-                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",  
-                                                context.Request.Method,  
-                                                context.Request.Url.Path + context.Request.Url.QueryString,  
-                                                context.Request.Url.Host,  
-                                                context.Response.StatusCode,  
-                                                context.Response.StatusReason,  
-                                                context.User.Email  
-                                                ))  
-                        ).ToString();  
-            }</set-body>  
-      </send-one-way-request>  
-    </when>  
-</choose>  
-  
-```  
-  
-### <a name="elements"></a>要素  
-  
-|要素|Description|必須|  
-|-------------|-----------------|--------------|  
-|set-method|ルート要素。 要素の値は、HTTP メソッドを指定します。|はい|  
-  
-### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
-  
--   **ポリシー セクション:** inbound、on-error  
-  
--   **ポリシー スコープ:** すべてのスコープ  
-  
-##  <a name="SetStatus"></a> 状態コードを設定する  
- `set-status` ポリシーは、HTTP 状態コードを指定された値に変更します。  
-  
-### <a name="policy-statement"></a>ポリシー ステートメント  
-  
-```xml  
-<set-status code="" reason=""/>  
-  
-```  
-  
-### <a name="example"></a>例  
- この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
-  
-```xml  
-<choose>  
-  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
-    <return-response response-variable-name="existing response variable">  
-      <set-status code="401" reason="Unauthorized" />  
-      <set-header name="WWW-Authenticate" exists-action="override">  
-        <value>Bearer error="invalid_token"</value>  
-      </set-header>  
-    </return-response>  
-  </when>  
-</choose>  
-  
-```  
-  
-### <a name="elements"></a>要素  
-  
-|要素|Description|必須|  
-|-------------|-----------------|--------------|  
-|set-status|ルート要素。|はい|  
-  
-### <a name="attributes"></a>属性  
-  
-|Attribute|Description|必須|既定値|  
-|---------------|-----------------|--------------|-------------|  
-|code="整数"|返される HTTP 状態コード。|はい|該当なし|  
-|reason="文字列"|状態コードを返す理由の説明。|はい|該当なし|  
-  
-### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
-  
--   **ポリシー セクション:** outbound、backend、on-error  
-  
--   **ポリシー スコープ:** すべてのスコープ  
-  
+
 ##  <a name="Trace"></a> トレース  
  `trace` ポリシーは、[API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。 このポリシーは、トレースがトリガーされたときにのみ実行されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、`true` に設定されている場合、および `Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、管理者アカウントに関連付けられた有効なキーを保持している場合が該当します。  
   
@@ -835,13 +929,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |trace|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|はい|該当なし|  
   
@@ -902,13 +996,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |wait|ルート要素。 `send-request` ポリシー、`cache-lookup-value` ポリシー、および `choose` ポリシーのみを子要素として含めることができます。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |for|`wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> -   `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。|いいえ|すべて|  
   
@@ -921,6 +1015,6 @@ status code and media type. If no example or schema found, the content is empty.
   
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
--    [API Management のポリシー](api-management-howto-policies.md) 
--    [ポリシー式](api-management-policy-expressions.md)
+-   [API Management のポリシー](api-management-howto-policies.md) 
+-   [ポリシー式](api-management-policy-expressions.md)
 

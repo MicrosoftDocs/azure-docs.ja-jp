@@ -1,5 +1,5 @@
 ---
-title: "Azure HDInsight、Hadoop テクノロジ スタック、クラスターとは | Microsoft Docs"
+title: "HDInsight、Hadoop テクノロジ スタック、クラスターとは - Azure | Microsoft Docs"
 description: "ビッグ データの分析用の Spark、Kafka、Hive、HBase を含む、HDInsight および Hadoop テクノロジ スタックおよびコンポーネントの概要。"
 keywords: "Azure Hadoop, Hadoop Azure, Hadoop の紹介, Hadoop の概要, Hadoop テクノロジ スタック, Hadoop の概説, Hadoop 入門, Hadoop クラスターとは, Hadoop クラスターについて, Hadoop の使用目的"
 services: hdinsight
@@ -14,64 +14,57 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/11/2017
+ms.date: 07/20/2017
 ms.author: cgronlun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 7d1f52550ca2b50e9536606d0f0099f4bf0f1e5e
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: b413b6f1a6c73251dfdbe6bf9d23cdfa6510839a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="introduction-to-azure-hdinsight-the-hadoop-technology-stack-and-hadoop-clusters"></a>Azure HDInsight、Hadoop テクノロジ スタック、Hadoop クラスターの概要
  この記事では、Hadoop テクノロジ スタックのクラウド ディストリビューションである Azure HDInsight について概説します。 さらに、Hadoop クラスターとは何であるかや、いつ Hadoop クラスターを使用するかについても説明します。 
 
 ## <a name="what-is-hdinsight-and-the-hadoop-technology-stack"></a>HDInsight および Hadoop テクノロジ スタックとは 
-Azure HDInsight は、**Hortonworks Data Platform (HDP)** の Hadoop コンポーネントのクラウド ディストリビューションです。 [Apache Hadoop](http://hadoop.apache.org/) は、本来、コンピューターのクラスターでのビッグ データ セットの分散処理および分析のためのオープン ソース フレームワークでした。 
+Azure HDInsight は、[Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/) の Hadoop コンポーネントのクラウド ディストリビューションです。 [Apache Hadoop](http://hadoop.apache.org/) は、本来、コンピューターのクラスターでのビッグ データ セットの分散処理および分析のためのオープン ソース フレームワークでした。 
 
-HDInsight は、Hadoop テクノロジを使いやすくしたもので、次の特徴を備えています。
 
-*    簡単なセットアップと構成。 [HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
-*    高い可用性と信頼性。 [HDInsight の可用性と信頼性](hdinsight-high-availability-linux.md)に関するページを参照してください。
-*    Active Directory との統合を通じたセキュリティとガバナンス。 [ドメインに参加しているクラスター](hdinsight-domain-joined-introduction.md)に関するページを参照してください。
-*    ジョブの中断のない動的スケーリング
-*   コンポーネントの更新と現在のバージョン。 [HDInsight での Hadoop のコンポーネントとバージョン][component-versioning]に関するページを参照してください。
-*   [Web Apps](https://docs.microsoft.com/azure/app-service-web/) や [SQL Database](https://docs.microsoft.com/azure/sql-database/) などの他の Azure サービスとの統合
-
-Hadoop テクノロジ スタックには、Apache Hive、HBase、Spark、Kafka、その他の多くの関連するソフトウェアおよびユーティリティが含まれます。 HDInsight の Hadoop については、[HDInsight 向けの Azure の機能](https://azure.microsoft.com/services/hdinsight/)に関するページを参照してください。
+Hadoop テクノロジ スタックには、Apache Hive、HBase、Spark、Kafka、その他の多くの関連するソフトウェアおよびユーティリティが含まれます。 HDInsight で利用可能な Hadoop テクノロジ スタック コンポーネントを確認するには、[HDInsight で利用可能なコンポーネントとバージョン][component-versioning]に関する記事を参照してください。 HDInsight の Hadoop については、[HDInsight 向けの Azure の機能](https://azure.microsoft.com/services/hdinsight/)に関するページを参照してください。
 
 ## <a name="what-is-a-hadoop-cluster-and-when-do-you-use-it"></a>Hadoop クラスターとは何か、いつ使用するか
-*Hadoop* という用語は、次の機能を備えたクラスターの種類も表します。
+*Hadoop* とは、次の機能を備えたクラスターの種類でもあります。
 
-* Hadoop 分散ファイル システム (HDFS)
 * ジョブのスケジュール設定およびリソース管理のための YARN
 * 並列処理のための MapReduce
+* Hadoop 分散ファイル システム (HDFS)
   
-Hadoop クラスターは、保存されているデータのバッチ処理に最もよく使用されます。 HDInsight の他の種類のクラスターは、より高速なメモリ内の処理やメッセージ キューのストリーミング用の処理などの追加の機能を備えます。 詳細については、「[HDInsight でのクラスターの種類](#overview)」を参照してください。
+Hadoop クラスターは、保存されているデータのバッチ処理に最もよく使用されます。 HDInsight の他の種類のクラスターには、追加の機能があります。Spark は高速なメモリ内処理により人気が上がっています。 詳細については、「[HDInsight でのクラスターの種類](#overview)」を参照してください。
 
 ## <a name="what-is-big-data"></a>ビッグ データとは
 ビッグ データは、次のような大量のデジタル情報を記述します。
 
-* Twitter のニュース フィード
 * 工業設備からのセンサー データ
 * Web サイトから収集された顧客アクティビティ
+* Twitter のニュース フィード
 
-ビッグ データの種類には、履歴データ (つまり、保存されたデータ) とリアルタイム データ (つまり、ソースからストリーミングされるデータ) があります。 収集されたビッグ データは、かつてない規模に膨れ上がっています。その勢いはしだいに増し、形式も多様化しています。
+収集されたビッグ データは、膨れ上がっています。その勢いはしだいに増し、形式も多様化しています。 ビッグ データの種類には、履歴データ (つまり、保存されたデータ) とリアルタイム データ (つまり、ソースからストリーミングされるデータ) があります。 
 
 ## <a name="overview"></a>HDInsight でのクラスターの種類
-HDInsight は、急速に拡大を続けているビッグ データ分析用 Apache Hadoop テクノロジ スタックの Microsoft Azure でのクラウド ディストリビューションです。 これには、特定のクラスターの種類と、コンポーネント、ユーティリティ、および言語の追加などのクラスター カスタマイズ機能が含まれています。
+HDInsight には、特定のクラスターの種類のほか、コンポーネント、ユーティリティ、および言語の追加などのクラスター カスタマイズ機能が含まれています。
 
 ### <a name="spark-kafka-interactive-hive-hbase-customized-and-other-cluster-types"></a>Spark、Kafka、Interactive Hive、HBase、カスタマイズ、その他のクラスターの種類
 HDInsight は、次のクラスターの種類を提供します。
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: [HDFS](#hdfs)、[YARN](#yarn) によるリソース管理、およびシンプルな [MapReduce](#mapreduce) プログラミング モデルを使用して、データを同時に処理および分析します。
+* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: [HDFS](#hdfs)、[YARN](#yarn) によるリソース管理、およびシンプルな [MapReduce](#mapreduce) プログラミング モデルを使用して、バッチ データを同時に処理および分析します。
 * **[Apache Spark](http://spark.apache.org/)**: ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワークです。Spark は、SQL、ストリーミング データ、機械学習に対応します。 [HDInsight での Apache Spark の概要](hdinsight-apache-spark-overview.md)に関する記事を参照してください。
 * **[Apache HBase](http://hbase.apache.org/)**: Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](hdinsight-hbase-overview.md)に関する記事を参照してください。
 * **[Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver)**: 並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)に関するページを参照してください。
 * **[Apache Storm](https://storm.incubator.apache.org/)**: 大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)」を参照してください。
 * **[Apache Interactive Hive プレビュー (別名: Live Long and Process)](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: 対話型で高速な Hive クエリを実現するメモリ内キャッシュです。 「[HDInsight での対話型 Hive の使用](hdinsight-hadoop-use-interactive-hive.md)」を参照してください。
 * **[Apache Kafka](https://kafka.apache.org/)**: ストリーミング データ パイプラインおよびアプリケーションを構築するためのオープン ソースのプラットフォームです。 Kafka には、データ ストリームの発行とサブスクライブを可能にするメッセージ キュー機能も用意されています。 「[HDInsight での Apache Kafka の概要](hdinsight-apache-kafka-introduction.md)」を参照してください。
+
+次の方法を使用してクラスターを構成することもできます。
 * **[ドメイン参加クラスター プレビュー](hdinsight-domain-joined-introduction.md)**: Active Directory ドメインに参加しているクラスターです。アクセスを制御し、データのガバナンスを提供することができます。
 * **[スクリプト アクションを使用するカスタム クラスター](hdinsight-hadoop-customize-cluster-linux.md)**: プロビジョニング中に実行されて追加のコンポーネントをインストールするスクリプトを使用するクラスターです。
 
@@ -120,7 +113,7 @@ Hadoop 分散ファイル システム (HDFS) は、YARN と MapReduce と共に
 ### <a name="hive"></a>Hive と HCatalog
 <a target="_blank" href="http://hive.apache.org/">Apache Hive</a> は、Hadoop に組み込まれているデータ ウェアハウス ソフトウェアで、HiveQL と呼ばれる SQL に似た言語を使って分散ストレージ内の大量のデータセットに対するクエリと管理を可能にします。 Hive は、Pig と同様、MapReduce の上位にあって抽象化を担当するものであり、クエリを一連の MapReduce ジョブに変換します。 Hive は、Pig よりもリレーショナル データベース管理システムに近いため、より構造化されたデータに対して使用されます。 非構造化データを操作する場合は Pig が適しています。 「 [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
 
-<a target="_blank" href="https://cwiki.apache.org/confluence/display/Hive/HCatalog/">Apache HCatalog</a> は、Hadoop のテーブルおよびストレージを管理するレイヤーであり、ユーザーにデータのリレーショナル ビューを提供します。 HCatalog では、Hive SerDe (シリアライザー - デシリアライザー) を書き込める任意の形式で、ファイルの読み取りおよび書き込みを実行できます。
+<a target="_blank" href="https://cwiki.apache.org/confluence/display/Hive/HCatalog/">Apache HCatalog</a> は、Hadoop のテーブルおよびストレージを管理するレイヤーであり、ユーザーにデータのリレーショナル ビューを提供します。 HCatalog では、Hive SerDe (シリアライザー - デシリアライザー) で利用できるあらゆる形式のファイルを読み書きできます。
 
 ### <a name="mahout"></a>Mahout
 <a target="_blank" href="https://mahout.apache.org/">Apache Mahout</a> は、Hadoop 上で実行される機械学習アルゴリズムのライブラリです。 統計の原則を使用して、機械学習アプリケーションは、データから学習すること、および過去の結果から将来の動作を決めることをシステムに教えます。 「 [HDInsight (Hadoop) で Apache Mahout を使用して映画のリコメンデーションを生成する](hdinsight-mahout.md)」を参照してください。
@@ -161,7 +154,7 @@ HDInsight クラスター (Spark、HBase、Kafka、Hadoop、およびその他�
 [スクリプト アクション](hdinsight-hadoop-script-actions-linux.md)を使用して他の言語をインストールできます。
 
 ### <a name="java-virtual-machine-jvm-languages"></a>Java 仮想マシン (JVM) 言語
-Java 以外の多くの言語を Java 仮想マシン (JVM) を使用して実行できます。ただし、一部の言語では、クラスターに追加コンポーネントをインストールする必要があります。
+Java 以外の多くの言語を Java 仮想マシン (JVM) で実行できます。ただし、一部の言語では、クラスターに追加コンポーネントをインストールする必要があります。
 
 次の JVM ベースの言語が HDInsight クラスターでサポートされます。
 
@@ -181,7 +174,7 @@ HDInsight は、ビッグ データのクラウド サービスを Standard と 
 ## <a name="microsoft-business-intelligence-and-hdinsight"></a>Microsoft ビジネス インテリジェンスおよび HDInsight
 Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用すれば、使い慣れたビジネス インテリジェンス (BI) ツールを HDInsight と連携して、データの取得、分析、レポート生成を行うことができます。
 
-* [Power Query を使用した Excel から Hadoop への接続](hdinsight-connect-excel-power-query.md)- Microsoft Power Query for Excel を使用して、HDInsight クラスターに関連付けられたデータを格納する Azure Storage アカウントに Excel を接続する方法を説明します。 Windows ワークステーションが必要です。 
+* [Power Query を使用した Excel から Hadoop への接続](hdinsight-connect-excel-power-query.md): Microsoft Power Query for Excel を使用して、HDInsight クラスターのデータを格納する Azure ストレージ アカウントに Excel を接続する方法を説明します。 Windows ワークステーションが必要です。 
 * [Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](hdinsight-connect-excel-hive-odbc-driver.md): Microsoft Hive ODBC ドライバーを使用して、HDInsight からデータをインポートする方法について説明します。 Windows ワークステーションが必要です。 
 * [Microsoft Cloud プラットフォーム](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx)- Power BI for Office 365 の詳細、SQL Server 評価版のダウンロード、SharePoint Server 2013 と SQL Server BI のセットアップについて説明します。
 * [SQL Server Analysis Services](http://msdn.microsoft.com/library/hh231701.aspx)

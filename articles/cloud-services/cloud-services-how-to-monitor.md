@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2015
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: ab97962175f4498200db428736a1cbd124fac285
-ms.openlocfilehash: aab8f3233191c9b3f839e3358902f72499d93ee5
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c369b22cf068a473343b006eb1b06fdd350d31db
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-monitor-cloud-services"></a>クラウド サービスの監視方法
@@ -39,7 +41,7 @@ Azure クラシック ポータルの監視画面は自由に構成できます�
 以下の手順を使用して、Azure クラシック ポータルで詳細監視または最小監視を構成します。 
 
 ### <a name="before-you-begin"></a>開始する前に
-* 監視データを保存する "*従来の*" ストレージ アカウントを作成します。 異なるロールには異なるストレージ アカウントを使用できます。 詳細については、[ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md#create-a-storage-account)に関するページをご覧ください。
+* 監視データを保存する "*従来の*" ストレージ アカウントを作成します。 異なるロールには異なるストレージ アカウントを使用できます。 詳細については、[ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するページをご覧ください。
 * クラウド サービス ロールの Azure 診断を有効にします。 「 [デプロイ前にクラウド サービス プロジェクトで診断を有効にする](cloud-services-dotnet-diagnostics.md)」を参照してください。
 
 診断接続文字列がロール構成にあることを確認します。 Azure 診断を有効にして、ロール構成に診断接続文字列を含めるまで、詳細監視を有効にすることはできません。   
@@ -97,7 +99,7 @@ Azure クラシック ポータルの監視画面は自由に構成できます�
         > 
         
         ![[メトリックの追加] の検索](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
-3. メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
+3. メトリックの選択が終了したら [OK] \(チェックマーク) をクリックします。
    
     下図のように、選択したメトリックがメトリック テーブルに追加されます。
    
@@ -146,7 +148,7 @@ Azure クラシック ポータルの監視画面は自由に構成できます�
 1. クラウド サービスのダッシュボードを開きます。
 2. チャートのメトリックを追加または削除します。
    
-   * 新しいメトリックをプロットするには、チャートのヘッダー部でメトリックのチェック ボックスをオンにします。 幅の狭い画面では、**[*n* metrics (n 個のメトリック)]** ボックスの横にある下向き矢印をクリックして、チャートのヘッダー部に表示できないメトリックをプロットします。
+   * 新しいメトリックをプロットするには、チャートのヘッダー部でメトリックのチェック ボックスをオンにします。 幅の狭い画面では、**[ *n* ??metrics]\(n 個のメトリック\)** ボックスの横にある下向き矢印をクリックして、チャートのヘッダー部に表示できないメトリックをプロットします。
    * チャートにプロットされているメトリックを削除するには、そのヘッダーにあるチェック ボックスをオフにします。
    
 3. **[相対]** 表示と **[絶対]** 表示を切り替えます。
@@ -175,9 +177,4 @@ WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRTable (hourly aggregations for the role)
 
 WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
 ```
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

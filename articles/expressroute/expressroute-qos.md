@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 07/25/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9e74127e3140ec9973753fb5f29151c406326c36
-
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: c097a9ccba91f59b323215d42d37e6d85e0981ce
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
@@ -35,7 +36,7 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 | **トラフィック クラス** | **処理 (DSCP マーキング)** | **Skype for Business ワークロード** |
 | --- | --- | --- |
 | **音声** |EF (46) |Skype / Lync 音声 |
-| **対話** |AF41 (34) |ビデオ |
+| **対話** |AF41 (34) |ビデオ、VBSS |
 | AF21 (18) |アプリ共有 | |
 | **既定値** |AF11 (10) |ファイル転送 |
 | CS0 (0) |その他 | |
@@ -51,10 +52,5 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
   * [ルーティングの構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

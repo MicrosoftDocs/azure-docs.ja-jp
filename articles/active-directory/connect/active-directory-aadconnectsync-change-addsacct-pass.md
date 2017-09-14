@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 427070021ac547058c2f18be0e58ef6d81822b8a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更

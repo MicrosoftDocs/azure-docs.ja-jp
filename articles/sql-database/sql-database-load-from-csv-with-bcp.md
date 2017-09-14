@@ -8,18 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
-ms.custom: move data
+ms.custom: load & move data
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 36748312506a08ed7932a6bb355a5dc7393bb002
-ms.openlocfilehash: 5e15f8a0ebb8cab5dce5b3c1cf6b62dee362a8d0
-ms.lasthandoff: 01/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 84bebab7763bb21f73880a6c8b367a62b0c137d3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>CSV から Azure SQL Database へのデータの読み込み (フラット ファイル)
@@ -27,7 +27,7 @@ bcp コマンドライン ユーティリティを使用して、CSV ファイ�
 
 ## <a name="before-you-begin"></a>開始する前に
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを進めるには、次が必要です。
+この記事の手順を完了するには、次のものが必要です。
 
 * Azure SQL Database の論理サーバーとデータベース
 * インストールされた bcp コマンド ライン ユーティリティ
@@ -56,7 +56,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>手順&2;.ソース データ ファイルを作成する
+## <a name="2-create-a-source-data-file"></a>手順 2.ソース データ ファイルを作成する
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。 このデータは ASCII 形式です。
 
 ```
@@ -76,20 +76,20 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 (オプション) 自身のデータを SQL Server データベースからエクスポートするには、コマンド プロンプトを開き、次のコマンドを実行します。 TableName、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えてください。
 
-```sql
-bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
+```bcp
+bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
 ## <a name="3-load-the-data"></a>3.データを読み込む
 データを読み込むには、コマンド プロンプトを開き、次のコマンドを実行します。ここでは、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えます。
 
-```sql
-bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
+```bcp
+bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ,
 ```
 
 次のコマンドを使用して、データが正しく読み込まれたことを確認します。
 
-```sql
+```bcp
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 

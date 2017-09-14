@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/30/2017
+ms.date: 07/27/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: db851023c8620bec6583184326029d1a3e99ad88
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 3dfc026490093523446650c510dbebdd660e8b6b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="how-to-use-azure-redis-cache"></a>Azure Redis Cache の使用方法
@@ -38,7 +37,7 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 
 * **Basic** – 単一ノード。 複数のサイズ、最大 53 GB
 * **Standard** – 2 ノード (プライマリ/レプリカ)。 複数のサイズ、最大 53 GB 99.9% の SLA。
-* **Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。 6 GB から 530 GB までの複数のサイズ Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。 99.9% の SLA。
+* **Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。 6 GB から 530 GB までの複数のサイズ。 Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。 99.9% の SLA。
 
 各レベルは、機能と価格ごとに異なります。 価格の詳細については、[Cache の価格詳細][Cache Pricing Details]に関するページをご覧ください。
 
@@ -170,6 +169,17 @@ Redis では、ほとんどのデータが Redis 文字列として保存され�
         cache.StringSet("key1", value);
     }
 
+次の例で示すように、`RedisValue` も使用できます。 `RedisValue` には整数データ型を扱うための暗黙的な演算子があるので、`null` がキャッシュ項目で想定される値である場合に役立ちます。
+
+
+    RedisValue value = cache.StringGet("key1");
+    if (!value.HasValue)
+    {
+        value = GetValueFromDataSource();
+        cache.StringSet("key1", value);
+    }
+
+
 キャッシュ内の項目の有効期限を指定するには、`StringSet` の `TimeSpan` パラメーターを使用します。
 
     cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
@@ -205,7 +215,7 @@ Azure Redis Cache は .NET オブジェクトとプリミティブ データ型�
 * Azure Redis Cache の ASP.NET プロバイダーを参照してください。
   * [Azure Redis セッション状態プロバイダー](cache-aspnet-session-state-provider.md)
   * [Azure Redis Cache ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
-* [キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。 Azure ポータルでメトリックを表示できますが、任意のツールを使用して、メトリックを [ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) することも可能です。
+* [キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。 Azure Portal でメトリックを表示できますが、任意のツールを使用して、メトリックを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 * [StackExchange.Redis キャッシュ クライアントのドキュメント][StackExchange.Redis cache client documentation]を参照してください。
   * Azure Redis Cache は、さまざまな Redis クライアントや開発言語からアクセスできます。 詳細については、[http://redis.io/clients][http://redis.io/clients] を参照してください。
 * Azure Redis Cache は、Redsmin や Redis Desktop Manager などのサードパーティのサービスやツールと共に使用することもできます。

@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center で Endpoint Protection をインストールする | Microsoft Docs"
-description: "このドキュメントでは、&quot;**Endpoint Protection をインストールします**&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、\"**Endpoint Protection をインストールします**\" という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,41 +12,48 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 06/16/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: b8a69d89f335c00c5ddc3c201e33a66e1dea1da5
-ms.openlocfilehash: 6ccb5367b1c7c6cae7b9d35b6a5471c8edfe6f85
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: efb86a0ae362c30a6772c391a499154b7ae2a697
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="install-endpoint-protection-in-azure-security-center"></a>Azure Security Center で Endpoint Protection をインストールする
-マルウェア対策を有効にしていない場合、Azure Security Center では、マルウェア対策プログラムを Azure 仮想マシン (VM) にプロビジョニングするよう推奨されます。 この推奨事項は、Windows VM にのみ適用されます。 現在、この推奨事項では、Windows Defender または TrendMicro Deep Security のいずれかが存在するかどうかをチェックします。 エンドポイント保護のその他のソリューションは、将来追加される予定です。
+Azure Security Center では、Endpoint Protection がまだ有効でない場合、Azure 仮想マシン (VM) に Endpoint Protection をインストールすることが推奨されます。 この推奨事項は、Windows VM にのみ適用されます。
 
 > [!NOTE]
-> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
+> このデプロイの例では、Microsoft マルウェア対策を使用します。 Security Center と統合されるパートナーの一覧については、「[Azure Security Center でのパートナー統合](security-center-partner-integration.md#partners-that-integrate-with-security-center)」を参照してください。  
 >
 >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
+
+> [!NOTE]
+> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  このドキュメントはステップ バイ ステップ ガイドではありません。
+>
+>
+
 1. **[推奨事項]** ブレードで、**[Endpoint Protection をインストールします]** を選択します。
    ![Select Install Endpoint Protection][1]
-2. **[Endpoint Protection をインストールします]** ブレードが開き、マルウェア対策が有効になっていない VM の一覧が表示されます。 マルウェア対策をインストールする VM を一覧から選択し、 **[VM にインストール]**をクリックします。
-   ![Select VMs to install antimalware on][2]
-3. **[Select Endpoint Protection (Endpoint Protection の選択)]** ブレードが開き、使用するマルウェア対策ソリューションを選択できます。 この例では、 **[Microsoft マルウェア対策]**を選択します。
+2. **[Endpoint Protection をインストールします]** ブレードが開き、Endpoint Protection がインストールされていない VM の一覧が表示されます。 Endpoint Protection をインストールする VM を一覧から選択し、**[VM にインストール]** をクリックします。
+   ![Endpoint Protection をインストールする VM を選択する][2]
+3. **[Endpoint Protection の選択]** ブレードが開き、使用する Endpoint Protection ソリューションを選択できます。 この例では、 **[Microsoft マルウェア対策]**を選択します。
    ![[[Select Endpoint Protection (Endpoint Protection の選択)] (Endpoint Protection の選択)]][3]
-4. マルウェア対策ソリューションに関する追加情報が表示されます。 **[作成]**を選択します。
+4. Endpoint Protection ソリューションに関する追加情報が表示されます。 **[作成]**を選択します。
    ![マルウェア対策ソリューションの作成][4]
 5. **[拡張機能の追加]** ブレードで必要な構成設定を入力し、**[OK]** を選択します。 構成設定の詳細については、「 [マルウェア対策の既定の構成とカスタム構成](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration)」を参照してください。
 
 [[Microsoft マルウェア対策]](../security/azure-security-antimalware.md) が、選択した VM でアクティブになりました。
 
 ## <a name="see-also"></a>関連項目
-この記事では、"Endpoint Protection をインストールします" という Security Center の推奨事項を実装する方法について説明しました。 Azure でのマルウェア対策プログラムの有効化について詳しくは、以下を参照してください。
+この記事では、"Endpoint Protection をインストールします" という Security Center の推奨事項を実装する方法について説明しました。 Azure での Microsoft マルウェア対策の有効化の詳細については、次のドキュメントを参照してください。
 
-* 「[Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/azure-security-antimalware.md)」-- Microsoft マルウェア対策をデプロイする方法を説明しています。
+* [Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/azure-security-antimalware.md) - Microsoft マルウェア対策をデプロイする方法を説明しています。
 
-セキュリティ センターの詳細については、次を参照してください。
+Security Center の詳細については、次のドキュメントを参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- セキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
@@ -61,9 +68,4 @@ ms.openlocfilehash: 6ccb5367b1c7c6cae7b9d35b6a5471c8edfe6f85
 [2]:./media/security-center-install-endpoint-protection/install-endpoint-protection-blade.png
 [3]:./media/security-center-install-endpoint-protection/select-endpoint-protection.png
 [4]:./media/security-center-install-endpoint-protection/create-antimalware-solution.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

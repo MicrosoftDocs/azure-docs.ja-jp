@@ -3,7 +3,7 @@ title: "Azure Cosmos DB の一貫性レベル | Microsoft Docs"
 description: "Azure Cosmos DB には、結果的な一貫性、可用性、待機時間のトレードオフを調整できる 5 つの一貫性レベルがあります。"
 keywords: "eventual 一貫性, azure cosmos db, azure, Microsoft azure"
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: cgronlun
 documentationcenter: 
@@ -13,19 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
-ms.author: syamk
+ms.date: 06/16/2017
+ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b4f4a32a19c2145a18557a54d5a495ef0c8dec75
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a1ebec2285982c70aa9dc49950769fe18e2e2d0d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の調整可能なデータの一貫性レベル
-Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証、可用性が 99.99% の SLA、明確に定義された複数の緩やかな一貫性モデルが提供されます。 Azure Cosmos DB では現在、Strong、Bounded-Staleness、Session、Eventual の 5 つの一貫性レベルが用意されています。 
+Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証、可用性が 99.99% の SLA、明確に定義された複数の緩やかな一貫性モデルが提供されます。 現在、Azure Cosmos DB では、厳密、有界整合性制約、セッション、最終的の 5 つの整合性レベルが用意されています。 
 
 分散データベースが一般的に提供している **Strong** と **Eventual の一貫性**モデルに加え、Azure Cosmos DB では、注意深く体系化、運用化された一貫性モデルがさらに 3 つ提供されます。現実のユース ケースに対するその有用性は Azure Cosmos DB によって検証されています。 これらは、**Bounded Staleness**、**Session**、および **Consistent Prefix** 一貫性レベルです。 これら 5 つの一貫性レベルが揃っているため、一貫性、可用性、待機時間の最適なトレードオフを根拠を持って検討することができます。 
 
@@ -40,13 +39,13 @@ Azure Cosmos DB は、すべてのデータ モデルについて、最初から
  
 **整合性レベルと保証内容**
 
-| 整合性レベル    | 保証内容 |
+| 整合性レベル | 保証内容 |
 | --- | --- |
 | Strong | 線形化可能性 |
-| Bounded Staleness    | 一貫性のあるプレフィックス。 読み取りが、書き込みからプレフィックス k または間隔 t ごとに実行される |
-| Session    | 一貫性のあるプレフィックス。 単調読み取り、単調書き込み、書き込み後の読み取り、読み取り後の書き込み |
-| 一貫性のあるプレフィックス    | 返される更新が、それ以外の全更新の一部のプレフィックスとなる (ギャップなし) |
-| Eventual    | 読み取りは順不同 |
+| Bounded Staleness | 一貫性のあるプレフィックス。 読み取りが、書き込みからプレフィックス k または間隔 t ごとに実行される |
+| Session   | 一貫性のあるプレフィックス。 単調読み取り、単調書き込み、書き込み後の読み取り、読み取り後の書き込み |
+| 一貫性のあるプレフィックス | 返される更新が、それ以外の全更新の一部のプレフィックスとなる (ギャップなし) |
+| Eventual  | 読み取りは順不同 |
 
 Cosmos DB アカウントには、既定の整合性レベルを構成できます (さらに、後から特定の読み取り要求について既定の整合性を無視することもできます)。 内部的には、複数のリージョンにまたがる可能性があるパーティション セット内のデータに対して、既定の整合性レベルが適用されます。 約 73% のテナントが Session 一貫性を使用し、20% が Bounded Staleness を使用しています。 顧客の約 3% が、アプリケーション用に特定の一貫性の設定を選択する前に、さまざまな一貫性レベルを試していることがわかっています。 また、テナントのわずか 2% が、要求ベースで一貫性レベルをオーバーライドしていることもわかっています。 
 

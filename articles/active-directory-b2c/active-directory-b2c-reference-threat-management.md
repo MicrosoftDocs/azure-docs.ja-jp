@@ -1,6 +1,6 @@
 ---
-title: "Azure B2C の脅威の管理 |Microsoft ドキュメント"
-description: "DOS 攻撃とパスワード攻撃を検出し軽減する Azure B2C の手法です。"
+title: "Azure Active Directory B2C: 脅威の管理 | Microsoft Docs"
+description: "Azure Active Directory B2C でのサービス拒否攻撃やパスワード攻撃を検出して軽減する手法について説明します。"
 services: active-directory-b2c
 documentationcenter: 
 author: vigunase
@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2016
 ms.author: 
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5cca5fcd445e70b4eab9197258bb783e20016f76
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9472cb01eb713e297053727b1a314293574bb657
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-ad-b2c-threat-management"></a>Azure AD B2C: 脅威の管理
-脅威の管理には、システムおよびネットワークの攻撃からの保護が含まれています。 サービス拒否 (DOS) を受けると、システムの可用性に影響が生じて目的のユーザーがリソースを使用できなくなります。 パスワード攻撃は、リソースへの不正アクセスにつながります。 Microsoft Azure Active Directory B2C には、これらの脅威から複数の方法でデータを保護する組み込み機能があります。 
+# <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: 脅威の管理
 
-## <a name="denial-of-service-attack"></a>サービス拒否攻撃
+脅威の管理には、システムおよびネットワークを攻撃から保護する計画が含まれています。 サービス拒否攻撃により、目的のユーザーがリソースを使用できなくなることがあります。 パスワード攻撃は、リソースへの不正アクセスにつながります。 Azure Active Directory B2C (Azure AD B2C) には、これらの脅威から複数の方法でデータを保護するうえで役立つ組み込み機能があります。
 
-Azure AD B2C は、SYN cookie や速度と接続の制限などの検出と軽減策の手法を使用して、これらの攻撃から基になるリソースを保護します。  
+## <a name="denial-of-service-attacks"></a>サービス拒否攻撃
+
+Azure AD B2C は、SYN cookie や速度と接続の制限などの検出と軽減策の手法を使用して、サービス拒否攻撃から基になるリソースを保護します。
 
 ## <a name="password-attacks"></a>パスワード攻撃
 
-Azure AD B2C は、パスワード攻撃に対する軽減策も備えています。  この方法は、ブルート フォース パスワード攻撃とディクショナリ パスワード攻撃の両方に対処します。  ユーザーが設定したパスワードには、合理的な複雑さが必要です。  Azure AD B2C では、想定されるユーザーと、ハッカーやボットネットとの違いをインテリジェントに区別するために、要求の整合性をさまざまな信号を使用して分析します。 B2C は、攻撃の公算に応じて、入力したパスワードに基づいてアカウントをロックする高度な戦略を提供します。
+Azure AD B2C は、パスワード攻撃に対する軽減策も備えています。 軽減策は、ブルート フォース パスワード攻撃とディクショナリ パスワード攻撃の両方に対処します。 ユーザーが設定したパスワードには、合理的な複雑さが必要です。 Azure AD B2C では、さまざまな信号を使用して、要求の整合性を分析します。 Azure AD B2C は、ハッカーやボットネットから目的のユーザーをインテリジェントに区別するように設計されています。 Azure AD B2C は、攻撃の公算に応じて、入力したパスワードに基づいてアカウントをロックする高度な戦略を提供します。
 
-[マイクロソフトの脅威の管理に関する詳細情報](https://www.microsoft.com/trustcenter/security/threatmanagement)
+詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter/security/threatmanagement)を参照してください。
+

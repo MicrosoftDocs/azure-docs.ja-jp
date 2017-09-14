@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cfa0320b6c83cf169c64eb5f1932e96bd172f827
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 6f43423096f0e74f41afea275e4ec9801dc2cea5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/19/2017
 
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する
@@ -38,12 +38,9 @@ Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレ
 
 HDInsight で Data Lake Store を使用するための重要な考慮事項を次に示します。
 
-* Data Lake Store にアクセスできる HDInsight クラスターを既定のストレージとして作成するオプションは、HDInsight バージョン 3.5 で使用できます。
+* Data Lake Store にアクセスできる HDInsight クラスターを既定のストレージとして作成するオプションは、HDInsight バージョン 3.5 と 3.6 で使うことができます。
 
-* Data Lake Store にアクセスできる HDInsight クラスターを追加のストレージとして作成するオプションは、HDInsight バージョン 3.2、3.4、3.5 で使用できます。
-
-* HBase クラスター (Windows および Linux) の場合、Data Lake Store は、既定のストレージとしても追加のストレージとしても**使用できません**。
-
+* Data Lake Store にアクセスできる HDInsight クラスターを追加のストレージとして作成するオプションは、HDInsight バージョン 3.2、3.4、3.5、3.6 で使うことができます。
 
 この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。 既定のストレージとして Data Lake Store を使用する Hadoop クラスターの作成方法については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 

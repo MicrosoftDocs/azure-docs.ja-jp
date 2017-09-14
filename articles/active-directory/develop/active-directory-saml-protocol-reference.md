@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 07/21/2017
 ms.author: priyamo
 ms.custom: aaddev
+ms.reviewer: dastrock
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
 ms.openlocfilehash: dceaab3f89675ae8e046419aaa5173c2733b0660
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Azure Active Directory での SAML プロトコルの使用方法

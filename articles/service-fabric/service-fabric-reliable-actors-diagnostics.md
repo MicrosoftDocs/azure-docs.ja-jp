@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 06/29/2017
 ms.author: abhisram
-translationtype: Human Translation
-ms.sourcegitcommit: 3ed67788fbbe0c4fb820cfd1525d8c9ee5154446
-ms.openlocfilehash: 1a8a36d3b6f14c75965afca970be808015059dbb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -116,7 +118,7 @@ Reliable Actors ランタイムは、同時実行に関連する次のパフォ�
 
 | カテゴリ名 | カウンター名 | 説明 |
 | --- | --- | --- |
-| Service Fabric アクター |# アクター ロックを待機しているアクター呼び出し数 |ターンベースの同時実行を強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数。 |
+| Service Fabric アクター |アクター ロックを待機しているアクター呼び出し数 |ターンベースの同時実行を強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数。 |
 | Service Fabric アクター |ロック待機あたりの平均時間 (ミリ秒) |ターンベースの同時実行を強制するアクターごとのロックの取得にかかった時間 (ミリ秒単位) |
 | Service Fabric アクター |アクター ロック保持の平均時間 (ミリ秒) |アクターごとのロックが保持される時間 (ミリ秒単位) |
 
@@ -162,7 +164,7 @@ Reliable Actors ランタイムは、アクターのアクティブ化と非ア�
 
 | カテゴリ名 | カウンター名 | 説明 |
 | --- | --- | --- |
-| Service Fabric アクター |# 未処理の要求の数 |サービスで処理中の要求の数 |
+| Service Fabric アクター |未処理の要求の数 |サービスで処理中の要求の数 |
 | Service Fabric アクター |要求あたりの平均時間 (ミリ秒) |サービスで要求の処理にかかった時間 (ミリ秒単位) |
 | Service Fabric アクター |要求の逆シリアル化の平均時間 (ミリ秒) |サービスで受信されたときに、アクターの要求メッセージの逆シリアル化にかかった時間 (ミリ秒単位) |
 | Service Fabric アクター |応答のシリアル化の平均時間 (ミリ秒) |クライアントに応答を送信する前に、サービスでアクターの応答メッセージをシリアル化するのにかかった時間 (ミリ秒単位) |
@@ -172,9 +174,4 @@ Reliable Actors ランタイムは、アクターのアクティブ化と非ア�
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [コード サンプル](https://github.com/Azure/servicefabric-samples)
 * [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

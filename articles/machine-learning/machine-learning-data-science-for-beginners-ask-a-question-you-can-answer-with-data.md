@@ -1,5 +1,5 @@
 ---
-title: "データが回答できる質問をする - データ サイエンスの問題 - Azure | Microsoft Docs"
+title: "データが回答できる質問をする - データ サイエンスの問題 - Azure Machine Learning | Microsoft Docs"
 description: "初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。"
 keywords: "データ サイエンスの問題,データ サイエンスの質問,質問の考案,回帰の質問,分類の質問,シャープな質問"
 services: machine-learning
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 403c496d4f032d1f373dacc16868abb40f968b6f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
@@ -26,13 +27,14 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの問題を質問として考案する方法について説明します。 このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
 >
 >
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -41,7 +43,7 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト: データで回答できる質問をする
-"初心者向けデータ サイエンス" シリーズの&3; 番目のビデオへようこそ。  
+"初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
 
@@ -65,7 +67,7 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 質問が "全車両の中でどの車が最初に故障しますか" の場合は、 データにこれまでの障害に関する情報が含まれているかどうかを確認する必要があります。
 
-![ターゲット データ - 回答の例。 データ サイエンスの質問を考案する。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-target-data.png)
+![ターゲット データ - 回答の例。 データ サイエンスの質問を考案する。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
 これらの回答の例をターゲットと呼びます。 ターゲットとは、将来のデータ ポイントについて予測する対象のことで、カテゴリであることも数値であることもあります。
 
@@ -78,11 +80,11 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 "どのくらいの量か"  または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
 
-これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から&1; つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
+これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から 1 つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
 
 ただし、この質問は、"このリストの各記事はこの読者にとってどのくらい興味深いか" と言い換えると回答が簡単になります。 これで各記事に数値のスコアを付けることができるようになります。スコアの点数が最も高い記事を特定するのは簡単です。 これは、分類に関する質問を回帰的な質問つまり "どの程度か" に言い換えたことになります。
 
-![質問を考え直す。 分類の質問と回帰の質問。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-classification-question-vs-regression-question.png)
+![質問を考え直す。 分類の質問と回帰の質問。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
 質問方法は、どのアルゴリズムなら回答が得られるかを知るための手掛かりになります。
 
@@ -97,9 +99,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

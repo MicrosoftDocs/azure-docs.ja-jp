@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での MapReduce と Hadoop の Curl の使用 | Microsoft Docs"
+title: "HDInsight での MapReduce と Hadoop の Curl の使用 - Azure | Microsoft Docs"
 description: "Curl を使用して HDInsight の Hadoop で MapReduce ジョブをリモートで実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/11/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: ee7f4536a2d58966f0bcecf19f2a5fec5df68bc2
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8238bb829df95dcb8c99c0b7fff53c627a56f47c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>REST を使用して HDInsight の Hadoop で MapReduce ジョブを実行
@@ -97,7 +97,7 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
 
 4. ジョブの状態が `SUCCEEDED` に変化したら、Azure Blob ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。 この例では、場所は `/example/curl` です。 このアドレスは、`/example/curl` にあるクラスターの既定ストレージにジョブの出力を格納します。
 
-これらのファイルを一覧表示およびダウンロードするには [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用します。 Azure CLI から Blob を操作することの詳細については、「[Azure Storage での Azure CLI 2.0 の使用](../storage/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
+これらのファイルを一覧表示およびダウンロードするには [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用します。 Azure CLI から Blob を操作することの詳細については、「[Azure Storage での Azure CLI 2.0 の使用](../storage/common/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
 

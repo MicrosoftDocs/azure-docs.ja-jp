@@ -6,9 +6,9 @@ author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.custom: tutorial, mvc
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4

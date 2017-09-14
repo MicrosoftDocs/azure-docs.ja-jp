@@ -1,5 +1,5 @@
 ---
-title: "Azure DevTest Labs でラボに Git アーティファクト リポジトリを追加する | Microsoft Docs"
+title: "Azure DevTest Labs 内のラボへの Git レポジトリの追加 | Microsoft Docs"
 description: "Azure DevTest Labs でカスタム アーティファクト ソースに GitHub または Visual Studio Team Services Git リポジトリを追加する"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 55b8b97a8cabedf86e2b92d9490be74c72a5fb09
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 053f92a65f9ae29154d471fd22ee842620b4f273
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="add-a-git-repository-to-store-custom-artifacts-and-azure-resource-manager-templates-for-use-in-azure-devtest-labs"></a>Azure DevTest Labs で使用するカスタム アーティファクトおよび Azure Resource Manager テンプレートを格納するための Git レポジトリの追加
+# <a name="add-a-git-repository-to-store-custom-artifacts-and-azure-resource-manager-templates"></a>カスタム アーティファクトおよび Azure Resource Manager テンプレートを格納するための Git リポジトリの追加
 
 ラボ内の VM 用の[カスタム アーティファクトを作成する](devtest-lab-artifact-author.md)か、または [Azure Resource Manager テンプレートを使用してカスタム テスト環境を作成する](devtest-lab-create-environment-from-arm.md)場合は、チームが作成するアーティファクトまたは Azure Resource Manager テンプレートを格納するためのプライベート Git レポジトリも追加する必要があります。 リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services (VSTS)](https://visualstudio.com) 上にホストできます。
 
@@ -73,15 +73,15 @@ Visual Studio Team Services リポジトリのクローン URL と個人用ア�
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。
 
 ## <a name="connect-your-lab-to-the-repository"></a>ラボのレポジトリへの接続
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。   
-4. ラボのブレードで、**[構成とポリシー]** を選択します。
-5. ラボの **[構成とポリシー]** ブレードで、**[レポジトリ]** を選択します。
-6. **[レポジトリ]** ブレードで、**[+ 追加]** を選択します。
+4. 左側のパネルで、**[Configuration and policies]\(構成とポリシー\)** を選択します。
+5. ラボの **[Configuration and policies]\(構成とポリシー\)** 領域で、**[レポジトリ]** を選択します。
+6. **[レポジトリ]** 領域で、**[+ 追加]** を選択します。
 
     ![レポジトリの追加ボタン](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
-7. 2 番目の **[レポジトリ]** ブレードで、次を指定します。
+7. 2 番目の **[レポジトリ]** ページで、以下の情報を指定します。
 
    * **名前** - リポジトリの名前を入力します。
    * **Git クローン URL** - 先ほど GitHub または Visual Studio Team Services からコピーした Git HTTPS クローン URL を入力します。
@@ -89,7 +89,7 @@ Visual Studio Team Services リポジトリのクローン URL と個人用ア�
    * **個人用アクセス トークン** - 先ほど GitHub、または Visual Studio Team Services で取得した個人用アクセス トークンを入力します。
    * **フォルダ パス** - アーティファクトまたは Azure Resource Manager テンプレート定義を含む複製 URL を基準とした少なくとも 1 つのフォルダ パスを入力します。 サブディレクトリを指定する場合は、フォルダ パスにフォワードスラッシュを含めるようにしてください。
 
-     ![レポジトリ ブレード](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+     ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 8. [ **保存**] を選択します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -97,11 +97,11 @@ Visual Studio Team Services リポジトリのクローン URL と個人用ア�
 * [カスタム アーティファクト](devtest-lab-artifact-author.md)を格納します。これは、後で新しい VM を作成するために使用できます。
 * [Azure Resource Manager テンプレートを使用して複数 VM 環境および PaaS リソースを作成](devtest-lab-create-environment-from-arm.md)してから、それらのテンプレートをプライベート レポジトリ内に格納します。
 
-VM を作成した場合は、アーティファクトまたはテンプレートが Git レポジトリに追加されたことを確認できるようになります。 これらはアーティファクトまたはテンプレートのリストで直ちに使用可能になり、ソースを指定する列にプライベート レポジトリの名前が表示されます。 
+VM を作成するときに、アーティファクトまたはテンプレートが Git レポジトリに追加されることを確認できます。 これらはアーティファクトまたはテンプレートのリストで直ちに使用可能になり、ソースを指定する列にプライベート レポジトリの名前が表示されます。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="related-blog-posts"></a>関連するブログ記事
-* [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
-* [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Azure DevTest Labs でアーティファクトの失敗をトラブルシューティングする方法](devtest-lab-troubleshoot-artifact-failure.md)
+* [Azure DevTest Labs で Resource Manager テンプレートを使用して既存の AD ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6bc820657da4a72455d76f38dbdb06fe50b0c895
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 9b5556fabd2ccfc026037a411a2f8e83f97ffb81
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断

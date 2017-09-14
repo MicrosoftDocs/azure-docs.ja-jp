@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/20/2017
 ms.author: asmalser
+ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 18415c92d50a00c14823685857ab7e2624334ec7
 ms.openlocfilehash: b4a1bb3211da8c02d48ebad69d5e1cbb4de2c45d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成
@@ -48,12 +49,12 @@ ms.lasthandoff: 03/01/2017
 
 ![][2]
 
-このようにアプリケーションを追加することで、事前に統合されたアプリケーションで使用可能なものによく似たエクスペリエンスが提供されます。 作業を開始するには、 **[シングル サインオンの構成]**を選択します。 次の画面には、以降のセクションで説明されているシングル サインオンを構成するための&3; つのオプションが示されています。
+このようにアプリケーションを追加することで、事前に統合されたアプリケーションで使用可能なものによく似たエクスペリエンスが提供されます。 作業を開始するには、 **[シングル サインオンの構成]**を選択します。 次の画面には、以降のセクションで説明されているシングル サインオンを構成するための 3 つのオプションが示されています。
 
 ![][3]
 
 ## <a name="azure-ad-single-sign-on"></a>Azure AD Single Sign-On
-アプリケーションの SAML ベースの認証を構成するには、このオプションを選択します。 その場合、アプリケーションで SAML 2.0 がサポートされている必要があり、ユーザーは作業を続行する前に、アプリケーションの SAML 機能の使用方法に関する情報を収集する必要があります。 **[次へ]**を選択すると、アプリケーションの SAML エンドポイントに対応する&3; つの異なる URL を入力するように求められます。 
+アプリケーションの SAML ベースの認証を構成するには、このオプションを選択します。 その場合、アプリケーションで SAML 2.0 がサポートされている必要があり、ユーザーは作業を続行する前に、アプリケーションの SAML 機能の使用方法に関する情報を収集する必要があります。 **[次へ]**を選択すると、アプリケーションの SAML エンドポイントに対応する 3 つの異なる URL を入力するように求められます。 
 
 ![][4]
 
@@ -101,7 +102,7 @@ SAML ベースの ID プロバイダーとして Azure AD を使用するよう�
 
 ![][7]
 
-SAML トークンで発行された要求の編集が必要になる場合がある理由として&2; つが考えられます。1 つは、異なる要求 URL または要求値のセットを必要とするようにアプリケーションが作成されているという理由です。もう&1; つは、Azure Active Directory に格納されているユーザー名 (ユーザー プリンシパル名ともいう) 以外の名前にするために NameIdentifier 要求を必要とする方法でアプリケーションがデプロイされているという理由です。 
+SAML トークンで発行された要求の編集が必要になる場合がある理由として 2 つが考えられます。1 つは、異なる要求 URL または要求値のセットを必要とするようにアプリケーションが作成されているという理由です。もう 1 つは、Azure Active Directory に格納されているユーザー名 (ユーザー プリンシパル名ともいう) 以外の名前にするために NameIdentifier 要求を必要とする方法でアプリケーションがデプロイされているという理由です。 
 
 これらのシナリオの要求を追加および編集する方法の詳細については、この [要求のカスタマイズに関する記事](active-directory-saml-claims-customization.md)を参照してください。 
 

@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2016
+ms.date: 07/20/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 7d0c5f83d907af9109e27d69806d6106d4bc3214
-ms.lasthandoff: 03/28/2017
-
+ms.custom: aaddev
+ms.reviewer: anchitn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: d1d72932d8156fdada44ad6f375fe81c0428846c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (パブリック プレビュー)
@@ -73,8 +75,8 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 | --- | --- | --- | --- | --- | --- |
 | Access Token Lifetime |AccessTokenLifetime |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
 | Refresh Token Max Inactive Time |MaxInactiveTime |更新トークン |14 日 |10 分 |90 日間 |
-| Single-Factor Refresh Token Max Age |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |90 日間 |10 分 |Until-revoked<sup>1</sup> |
-| Multi-Factor Refresh Token Max Age |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |90 日間 |10 分 |Until-revoked<sup>1</sup> |
+| Single-Factor Refresh Token Max Age |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| Multi-Factor Refresh Token Max Age |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 | Single-Factor Session Token Max Age |MaxAgeSessionSingleFactor<sup>2</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 | Multi-Factor Session Token Max Age |MaxAgeSessionMultiFactor<sup>3</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 
@@ -85,9 +87,11 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 ### <a name="exceptions"></a>例外
 | プロパティ | 影響 | 既定値 |
 | --- | --- | --- |
-| Refresh Token Max Inactive Time (失効情報が不十分なフェデレーション ユーザーに発行) |更新トークン (失効情報が不十分なフェデレーション ユーザーに発行) |12 時間 |
+| Refresh Token Max Age (失効情報が不十分なフェデレーション ユーザーに発行<sup>1</sup>) |Refresh Token (失効情報が不十分なフェデレーション ユーザーに発行<sup>1</sup>) |12 時間 |
 | Refresh Token Max Inactive Time (Confidential クライアントに発行) |更新トークン (Confidential クライアントに発行) |90 日間 |
 | Refresh token Max Age (Confidential クライアントに発行) |更新トークン (Confidential クライアントに発行) |Until-revoked |
+
+* <sup>1</sup>失効情報が不十分なフェデレーション ユーザーには、"LastPasswordChangeTimestamp" 属性が同期されないすべてのユーザーが含まれます。 これらのユーザーにはこの短い Max Age が与えられます。その理由は、AAD は、古い資格情報 (変更済みのパスワードなど) に関連付けられたトークンを取り消すタイミングを確認できず、ユーザーおよび関連付けられているトークンがまだ良好であることをより頻繁に確認する必要があるためです。 このエクスペリエンスを向上させるには、テナント管理者は、"LastPasswordChangeTimestamp" 属性 (Powershell または AADSync を使用してユーザー オブジェクトに設定できる) が同期されていることを確認する必要があります。
 
 ### <a name="policy-evaluation-and-prioritization"></a>ポリシーの評価と優先順位付け
 トークン有効期間ポリシーを作成して、特定のアプリケーション、組織、およびサービス プリンシパルに割り当てることができます。 複数のポリシーを、特定のアプリケーションに適用できます。 有効なトークン有効期間ポリシーは、次の規則に従います。

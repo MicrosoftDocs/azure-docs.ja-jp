@@ -1,8 +1,8 @@
-﻿---
+---
 title: "Azure Monitor の使用 | Microsoft Docs"
 description: "Azure Monitor を使用してリソースの動作を把握し、データに基づいてアクションを実行します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 6e1a1f522b9632c7d162d36ad5baa23d6130f8b6
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="get-started-with-azure-monitor"></a>Azure Monitor の使用

@@ -10,14 +10,19 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
-
-## Manage
+### [CDN にカスタム ドメインをマップする](cdn-map-content-to-custom-domain.md)
 ### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
+## コンテンツの最適化
+### [最適化の概要](cdn-optimization-overview.md)
+####[大きなファイルの最適化](cdn-large-file-optimization.md)
+####[メディア ストリーミングの最適化](cdn-media-streaming-optimization.md)
+####[動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
+ 
+## 管理
 ### [PowerShell で管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
 #### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Storage Blob service のコンテンツ](cdn-manage-expiration-of-blob-content.md)
-### [CDN にカスタム ドメインをマップする](cdn-map-content-to-custom-domain.md)
 ### [国ごとにアクセスを制限する](cdn-restrict-access-by-country.md)
 ### [ファイル圧縮によるパフォーマンスの向上](cdn-improve-performance.md)
 ### クエリ文字列別にコンテンツをキャッシュする
@@ -47,6 +52,7 @@
 ### [ファイル圧縮](cdn-troubleshoot-compression.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
@@ -55,11 +61,14 @@
 # リソース
 ##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)
 ### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
-### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
 ### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
+### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
 ## [Azure CDN の POP の場所](cdn-pop-locations.md)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cdn)
-## [料金](https://azure.microsoft.com/pricing/details/cdn/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [料金](https://azure.microsoft.com/pricing/details/cdn/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cdn)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+

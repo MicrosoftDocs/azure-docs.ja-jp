@@ -13,19 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 1/23/2017
+ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 52d83b21f2f2346bfeb8d469a9bfb1b64dd4ba23
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 6955e3d8c7b032ee898be11e611080905b5069ba
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
-Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure リソース マネージャー テンプレートの一部として拡張機能を含めることによって、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
+Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure リソース マネージャー テンプレートの一部として拡張機能を含めることによって、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure 診断の拡張機能を追加する
 Windows 仮想マシンで診断の拡張機能を有効にするには、リソース マネージャー テンプレートで拡張機能を VM のリソースとして追加する必要があります。
@@ -74,7 +73,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 **Microsoft.Azure.Diagnostics** の *publisher* プロパティや *type* プロパティの **IaaSDiagnostics** によって、Azure 診断の拡張機能が一意に識別されます。
 
-リソース グループの拡張機能を参照するには、 *name* プロパティの値を使用することができます。 このプロパティを具体的に **Microsoft.Insights.VMDiagnosticsSettings** に設定することで、Azure クラシック ポータルでの識別が簡単になり、Azure クラシック ポータルで監視グラフが正しく表示されるようになります。
+リソース グループの拡張機能を参照するには、 *name* プロパティの値を使用することができます。 このプロパティを具体的に **Microsoft.Insights.VMDiagnosticsSettings** に設定することで、Azure ポータルでの識別が簡単になり、Azure ポータルで監視グラフが正しく表示されるようになります。
 
 *typeHandlerVersion* は使用する拡張機能のバージョンを指定します。 *autoUpgradeMinorVersion* を **true** に設定することで、使用できる拡張機能で最新のマイナー バージョンが表示されるようになります。 新機能とバグの修正がすべて含まれる、最新の診断の拡張機能を常に使用できるように、 *autoUpgradeMinorVersion* は常に **true** に設定することを強くお勧めします。 
 
@@ -168,7 +167,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 
 ## <a name="next-steps"></a>次のステップ
 * 診断の拡張機能を含む Windows 仮想マシンの完全なサンプル テンプレートは、「 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* [Azure PowerShell](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure コマンド ライン](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用してリソース マネージャー テンプレートをデプロイします
+* [Azure PowerShell](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure コマンド ライン](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用してリソース マネージャー テンプレートをデプロイします
 * [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md)
 
 

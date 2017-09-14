@@ -12,52 +12,59 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/15/2017
+ms.date: 07/13/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 54b8e16504e1170058dd021f7f7e2fba7b99bba7
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
-Azure Search サービスはホスト型のクラウド検索サービスであり、これを利用すれば、優れた検索機能を簡単に提供できます。 検索を可能にするには、先に Azure Search インデックスにデータを入力する必要があります。 データが Azure SQL Database に存在する場合は、新しい **Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。 これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
 
-この記事ではインデクサー使用のしくみだけでなく、Azure SQL データベースでのみ使用できる機能 (統合された変更追跡など) についても説明します。 Azure Search では、Azure Cosmos DB、Blob Storage、Table Storage など、他のデータ ソースもサポートされます。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
+[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Search インデックスにデータを入力する必要があります。 データが Azure SQL Database に存在する場合は、**Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
+
+この記事では[インデクサー](search-indexer-overview.md)使用のしくみだけでなく、Azure SQL データベースでのみ使用できる機能 (統合された変更追跡など) についても説明します。 
+
+Azure SQL データベースだけでなく、Azure Searchでは [Azure Cosmos DB](search-howto-index-documentdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
 
 ## <a name="indexers-and-data-sources"></a>インデクサーとデータ ソース
-Azure SQL インデクサーのセットアップと構成には次を使用できます。
 
-* [Azure Portal](https://portal.azure.com) のデータのインポート ウィザード
-* Azure Search [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)
-* Azure Search [REST API](http://go.microsoft.com/fwlink/p/?LinkID=528173)
+**データ ソース**では、インデックスを作成するデータ、データにアクセスするための資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは、複数のインデクサーで使用できるように、独立したリソースとして定義します。
 
-この記事では、REST API を使用して、**インデクサー**と**データソース**を作成および管理する方法について説明します。
-
-**データ ソース**では、インデックスを作成するデータ、データにアクセスするために必要な資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは、複数のインデクサーで使用できるように、独立したリソースとして定義します。
-
-**インデクサー** は、データ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。
+**インデクサー**は、単一のデータ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。
 
 * 1 回限りのデータのコピーを実行して、インデックスを作成する。
 * スケジュールに従ってデータ ソースの変更とインデックスを更新する。
 * 必要に応じて実行し、インデックスを更新する。
 
-## <a name="when-to-use-azure-sql-indexer"></a>Azure SQL インデクサーを使用するとき
+1 つのインデクサーで使用できるのは、1 つのテーブルまたはビューのみですが、複数の検索インデックスを設定する必要がある場合は、複数のインデクサーを作成することができます。 概念については、「[インデクサー操作: 一般的なワークフロー](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow)」をご覧ください。
+
+Azure SQL インデクサーのセットアップと構成には次を使用できます。
+
+* [Azure Portal](https://portal.azure.com) のデータのインポート ウィザード
+* Azure Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Search [REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/indexer-operations)
+
+この記事では、REST API を使用して、**インデクサー**と**データソース**を作成します。
+
+## <a name="when-to-use-azure-sql-indexer"></a>Azure SQL インデクサーの使用に適した場合
 データに関連する複数の要因により、Azure SQL インデクサーを使用するのが適切な場合と、適切ではない場合があります。 データが次の要件を満たす場合、Azure SQL インデクサーを使用できます。
 
-* すべてのデータが単一のテーブルまたはビューのものであること
-  * データが複数のテーブルに分散している場合は、ビューを 1 つ作成して、そのビューをインデクサーで使用できます。 ただし、ビューを使用する場合は、SQL Server の統合変更検出を使用することはできません。 詳細については、[こちらのセクション](#CaptureChangedRows)をご覧ください。
-* データ ソースで使用されているデータ型をインデクサーがサポートしていること。 SQL のほとんどの型がサポートされていますが、すべてではありません。 詳細については、「 [Data type map for indexers in Azure Search (Azure Search のインデクサーに愛するデータ型のマッピング)](http://go.microsoft.com/fwlink/p/?LinkID=528105)」を参照してください。
-* 行の変更に対して、インデックスをほぼリアルタイムで更新する必要がないこと。
-  * インデクサーがテーブルのインデックスを作成しなおすのに、最大で 5 分かかります。 データが頻繁に変更され、秒単位または 1 分以内に変更をインデックスに反映する必要がある場合は、 [Azure Search Index API](https://msdn.microsoft.com/library/azure/dn798930.aspx) を直接使用することをお勧めします。
-* データ セットが大きく、スケジュールに従ってインデクサーを実行する場合は、スキーマを使用することで、変更された行 (および該当する場合は削除された行) を効率的に特定できます。 詳細については、後の「新しい行、変更された行、削除された行の取得」を参照してください。
-* 1 つの行でインデックスを作成されるフィールドのサイズが、Azure Search インデックス作成要求の最大サイズである 16 MB を超えないこと。
+| 条件 | 詳細 |
+|----------|---------|
+| データが単一のテーブルまたはビューのものである | データが複数のテーブルに分散している場合は、データの 1 つのビューを作成できます。 ただし、ビューを使用する場合は、SQL Server の統合変更検出を使用して、インデックスを増分変更で更新することはできません。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
+| データ型に互換性がある | Azure Search インデックスでは、SQL のほとんどの型がサポートされていますが、すべてではありません。 一覧については、「[データ型間のマッピング](#TypeMapping)」を参照してください。 |
+| リアルタイムのデータ同期は必要ない | インデクサーがテーブルのインデックスを作成し直すのに、最大で 5 分かかります。 データが頻繁に変更され、秒単位または 1 分以内に変更をインデックスに反映する必要がある場合は、[REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) または [.NET SDK](search-import-data-dotnet.md) を使用して、更新された行を直接プッシュすることをお勧めします。 |
+| インデックスの増分作成が可能 | データ セットが大きく、スケジュールに従ってインデクサーを実行する場合は、Azure Search により、新しい、変更された、または削除された行を効率的に特定できます。 非増分のインデックス作成は、オンデマンドでインデックスを作成 (スケジュールされていない) するか、100,000 未満の行のインデックスを作成する場合にのみ使用できます。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
 
-## <a name="create-and-use-an-azure-sql-indexer"></a>Azure SQL インデクサーの作成と使用
-最初に、データ ソースを作成します。
+## <a name="create-an-azure-sql-indexer"></a>Azure SQL インデクサーの作成
 
+1. データ ソースを作成します。
+
+   ```
     POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: admin-key
@@ -68,14 +75,15 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
         "credentials" : { "connectionString" : "Server=tcp:<your server>.database.windows.net,1433;Database=<your database>;User ID=<your user name>;Password=<your password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" },
         "container" : { "name" : "name of the table or view that you want to index" }
     }
+   ```
 
+   [Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
 
-[Azure クラシック ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
+2. まだない場合は、ターゲットの Azure Search インデックスを作成します。 インデックスを作成するには、[ポータル](https://portal.azure.com)または[インデックス作成 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) を使用します。 ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。「[SQL データ型と Azure Search データ型間のマッピング](#TypeMapping)」を参照してください。
 
-その後、ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。 インデックスを作成するには、[ポータル UI](https://portal.azure.com) または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用します。 ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。「[SQL データ型と Azure Search データ型間のマッピング](#TypeMapping)」を参照してください。
+3. 名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
-最後に、名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
-
+    ```
     POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
     api-key: admin-key
@@ -85,15 +93,16 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
+    ```
 
 この方法で作成されたインデクサーには、スケジュールがありません。 作成すると自動的に 1 回実行されます。 **インデクサー実行** 要求を使用して、いつでも再び実行できます。
 
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
     api-key: admin-key
 
-インデクサーの動作の一部 (バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など) をカスタマイズできます。 詳細については、[インデクサーの作成 API](https://msdn.microsoft.com/library/azure/dn946899.aspx) に関するページをご覧ください。
+インデクサーの動作の一部 (バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など) をカスタマイズできます。 詳細については、[インデクサーの作成 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) に関するページをご覧ください。
 
-Azure サービスにデータベースへの接続を許可することが必要な場合があります。 方法については、「 [Azure からの接続](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) 」を参照してください。
+Azure サービスにデータベースへの接続を許可することが必要な場合があります。 方法については、「 [Azure からの接続](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) 」を参照してください。
 
 インデクサーの状態および実行履歴 (インデックスを作成された項目の数、エラーなど) を監視するには、 **インデクサーの状態** 要求を使用します。
 
@@ -171,20 +180,23 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 <a name="CaptureChangedRows"></a>
 
-## <a name="capturing-new-changed-and-deleted-rows"></a>新しい行、変更された行、削除された行の取得
-テーブルに多数の行が含まれる場合は、データ変更検出ポリシーを使用します。 変更検出により新しいまたは変更された行のみを効率的に取得できます。このとき、テーブル全体のインデックスを再作成する必要はありません。
+## <a name="capture-new-changed-and-deleted-rows"></a>新しい行、変更された行、削除された行の取得
+
+Azure Search では**増分インデックス作成**を使用することで、インデクサーを実行するたびにテーブルまたはビュー全体のインデックスを再作成する必要を回避できます。 Azure Search は、増分インデックス作成をサポートする 2 つの変更検出ポリシーを備えています。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 統合変更追跡ポリシー
-SQL データベースが [変更追跡](https://msdn.microsoft.com/library/bb933875.aspx)をサポートする場合、 **SQL 統合変更追跡ポリシー**の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Search で削除済み行を特定できます。
+SQL データベースが [変更追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)をサポートする場合、 **SQL 統合変更追跡ポリシー**の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Search で削除済み行を特定できます。
 
-統合変更追跡は、次の SQL Server データベース バージョン以降でサポートされます。
+#### <a name="requirements"></a>必要条件 
 
-* Azure VM で SQL Server を使用している場合は、SQL Server 2008 R2 以降。
-* Azure SQL Database を使用している場合は、Azure SQL Database V12。
++ データベースのバージョンの要件:
+  * Azure VM で SQL Server を使用している場合は、SQL Server 2012 SP3 以降。
+  * Azure SQL Database を使用している場合は、Azure SQL Database V12。
++ テーブルのみ (ビューなし)。 
++ データベースでテーブルの[変更の追跡を有効にしている](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
++ テーブルに複合主キー (複数の列を含む主キー) がない。  
 
-SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。
-
-このポリシーはテーブルでのみ使用できます。ビューで使用することはできません。 このポリシーを使用する前に、使用しているテーブルの変更追跡を有効にする必要があります。 指示については、「[変更の追跡の有効化と無効化](https://msdn.microsoft.com/library/bb964713.aspx)」をご覧ください。
+#### <a name="usage"></a>使用法
 
 このポリシーを使用するには、データ ソースを次のように作成または更新します。
 
@@ -198,18 +210,25 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
       }
     }
 
+SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。 ただし、削除が "自動的に" 検出されるためには、検索インデックスのドキュメント キーが SQL テーブルの主キーと同じである必要があります。 
+
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>高基準値変更検出ポリシー
-SQL 統合変更追跡ポリシーが推奨されますが、このポリシーはテーブルでのみ使用可能で、ビューでは使用できません。 ビューを使っている場合は、高基準ポリシーの使用を検討します。 このポリシーは、次の条件を満たす列がテーブルまたはビューに含まれる場合に使用できます。
+
+この変更検出ポリシーは、行が最後に更新されたときのバージョンまたは時刻を取得する "高基準" 列に依存します。 ビューを使う場合は、高基準ポリシーを使用する必要があります。 高基準列では、次の要件を満たす必要があります。
+
+#### <a name="requirements"></a>必要条件 
 
 * すべての挿入は列の値を指定します。
 * 項目を更新すると、列の値も変更されます。
 * この列の値は挿入または更新のたびに増加します。
-* `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]` など、WHERE 句および ORDER BY 句を使用するクエリを効率的に実行できます。
+* 次の WHERE 句および ORDER BY 句のあるクエリを効率的に実行できます。`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> 変更の追跡には、**rowversion** 列を使用することを強くお勧めします。 その他のデータ型を使用した場合、インデクサー クエリと同時に実行されるトランザクションが存在するところでは、変更の追跡でのすべての変更の捕捉は保証されません。
+> 高基準列には、[rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) データ型を使用することを強くお勧めします。 その他のデータ型を使用した場合、インデクサー クエリと同時に実行されるトランザクションが存在するところでは、変更の追跡でのすべての変更の捕捉は保証されません。 読み取り専用のレプリカのある構成で **rowversion** を使用する場合、インデクサーはプライマリ レプリカをポイントする必要があります。 プライマリ レプリカを使用できるのは、データ同期のシナリオのみです。
+
+#### <a name="usage"></a>使用法
 
 高基準値ポリシーを使用するには、データ ソースを次のように作成または更新します。
 
@@ -265,7 +284,7 @@ SQL 統合変更追跡ポリシーが推奨されますが、このポリシー�
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-data-types-and-azure-search-data-types"></a>SQL データ型と Azure Search データ型間のマッピング
+## <a name="mapping-between-sql-and-azure-search-data-types"></a>SQL データ型と Azure Search データ型間のマッピング
 | SQL データ型 | ターゲット インデックス フィールドに許可される型 | メモ |
 | --- | --- | --- |
 | ビット |Edm.Boolean、Edm.String | |
@@ -296,24 +315,47 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-**Q:** Azure の IaaS VM で実行する SQL Database で Azure SQL インデクサーを使用できますか?
+## <a name="faq"></a>FAQ
 
-A: はい。 ただし、Search サービスに対してデータベースへの接続を許可する必要があります。 詳細については、「[Azure VM での Azure Search インデクサーから SQL Server への接続の構成](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)」を参照してください。
+**Q: Azure の IaaS VM で実行する SQL Database で Azure SQL インデクサーを使用できますか?**
 
-**Q:** オンプレミスで実行する SQL Database で Azure SQL インデクサーを使用できますか?
+はい。 ただし、Search サービスに対してデータベースへの接続を許可する必要があります。 詳細については、「[Azure VM での Azure Search インデクサーから SQL Server への接続の構成](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)」を参照してください。
 
-A: この方法は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。
+**Q: オンプレミスで実行する SQL Database で Azure SQL インデクサーを使用できますか?**
 
-**Q:** Azure の IaaS で実行している SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?
+直接無効にすることはできません。 直接接続は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。 Azure Data Factory などのブリッジ テクノロジを使用してこのシナリオで成功した事例があります。 詳しくは、「[Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)」を参照してください。
 
-A: SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
+**Q: Azure の IaaS で実行している SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
 
-**Q:** スケジュールに従って実行する複数のインデクサーを作成できますか?
+いいえ。 SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
 
-A: はい。 ただし、1 つのノードで一度に実行できるインデクサーは 1 つだけです。 複数のインデクサーを同時に実行する必要がある場合は、複数の検索単位に検索サービスを拡大することを検討してください。
+**Q: スケジュールに従って実行する複数のインデクサーを作成できますか?**
 
-**Q:** インデクサーを実行するとクエリのワークロードに影響しますか?
+はい。 ただし、1 つのノードで一度に実行できるインデクサーは 1 つだけです。 複数のインデクサーを同時に実行する必要がある場合は、複数の検索単位に検索サービスを拡大することを検討してください。
 
-A: はい。 インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。 大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、検索サービスのスケールアップを検討してください。
+**Q: インデクサーを実行するとクエリのワークロードに影響しますか?**
+
+はい。 インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。 大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、[検索サービスのスケールアップ](search-capacity-planning.md)を検討してください。
+
+**Q: [フェールオーバー クラスター](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
+
+一概には言えません。 テーブルまたはビューのインデックスの完全作成の場合、セカンダリ レプリカを使用できます。 
+
+インデックスの増分作成の場合、Azure Search では 2 つの変更検出ポリシーをサポートしています。1 つは SQL 統合変更追跡ポリシーで、もう 1 つは高基準値ポリシーです。
+
+読み取り専用のレプリカでは、SQL データベースは統合変更追跡に対応しません。 そのため、高基準値ポリシーを使用する必要があります。 
+
+標準推奨事項として、高基準列には、rowversion データ型を使用することをお勧めします。 ただし、rowversion の使用は、読み取り専用のレプリカでサポートされていない、SQL Database の `MIN_ACTIVE_ROWVERSION` 関数に依存します。 そのため、rowversion を使用する場合は、インデクサーはプライマリ レプリカを指す必要があります。
+
+読み取り専用レプリカで rowversion の使用を試みると、次のようなエラーが表示されます。 
+
+    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+
+**Q: 高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
+
+それはお勧めしません。 信頼性の高いデータ同期を実行できるのは、**rowversion** のみです。 ただし、アプリケーション ロジックによっては、次の条件を満たせば、その信頼性が高まる可能性があります。
+
++ インデクサーの実行時に、インデックスが作成されるテーブルに未処理のトランザクションがない (すべてのテーブルの更新がスケジュールに従ってバッチ操作として実行され、Azure Search インデクサーのスケジュールがテーブル更新スケジュールと重ならないように設定されているなど)。  
+
++ 列が実行されないことを防ぐために、インデックスの完全な再作成を定期的に実行している。 
 

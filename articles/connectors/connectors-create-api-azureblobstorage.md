@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 05/02/2017
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a52cc8d5685fad849bf8ea2a4c4f8fde3f340bde
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: bc7908868828bd1628633cf9e57f8c44f8000827
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -71,9 +71,9 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 > [!TIP]
 > [ストレージ エクスプローラー](http://storageexplorer.com/)は、複数のストレージ アカウントを管理するための優れたツールです。
 
-## <a name="view-the-swagger"></a>Swagger の表示
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[Swagger の詳細](/connectors/azureblobconnector/)を参照してください。 
+[コネクタの詳細](/connectors/azureblobconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。

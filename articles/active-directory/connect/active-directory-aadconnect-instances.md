@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
-ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
-ms.lasthandoff: 01/31/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 37df8d66d0a3ce738db2960d4283bdc672fb0fc4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: インスタンスに関する特別な考慮事項
@@ -39,7 +39,7 @@ Microsoft Cloud Germany に現在ない機能:
 
 * **Azure AD Connect Health** は使用できません。
 * **自動更新**は使用できません。
-* **パスワード ライトバック**は使用できません。
+* **パスワード ライトバック**は、Azure AD Connect バージョン 1.1.570.0 以降のプレビューで利用できます。
 * その他の Azure AD Premium サービスは使用できません。
 
 ## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure Government クラウド
@@ -50,6 +50,7 @@ Microsoft Cloud Germany に現在ない機能:
 | プロキシ サーバーで開く URL |
 | --- |
 | \*.microsoftonline.com |
+| \*.microsoftonline.us |
 | \*.gov.us.microsoftonline.com |
 | +証明書の失効リスト |
 
@@ -64,7 +65,7 @@ Microsoft Azure Government クラウドに現在ない機能:
 
 * **Azure AD Connect Health** は使用できません。
 * **自動更新**は使用できません。
-* **パスワード ライトバック**は使用できません。
+* **パスワード ライトバック**は、Azure AD Connect バージョン 1.1.570.0 以降のプレビューで利用できます。
 * その他の Azure AD Premium サービスは使用できません。
 
 ## <a name="next-steps"></a>次のステップ

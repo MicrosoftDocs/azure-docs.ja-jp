@@ -1,25 +1,24 @@
-﻿---
+---
 title: "RBAC を使用したアクセスとアクセス許可の管理 - Azure RBAC | Microsoft Docs"
 description: "Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
-editor: 
 ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2017
-ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 06daecfe8cd61cbb3ab9d2307acb07e30270d921
+ms.date: 07/13/2017
+ms.author: andredm
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 68213a40755ae7dc675556c595da032b408be261
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure Portal でのロールベースの Access Control の基礎を確認する
@@ -48,7 +47,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 [RBAC: 組み込みのロール](role-based-access-built-in-roles.md) 」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)を作成する方法を参照してください。
 
 ## <a name="resource-hierarchy-and-access-inheritance"></a>リソース階層とアクセス権の継承
-* Azure 内の各 **サブスクリプション** は、1 つのディレクトリのみに属しています。
+* Azure 内の各 **サブスクリプション** は、1 つのディレクトリのみに属しています。 (ただし、1 つのディレクトリに複数のサブスクリプションが含まれることはあります。)
 * 各 **リソース グループ** は、1 つのサブスクリプションのみに属しています。
 * 各 **リソース** は、1 つのリソース グループのみに属しています。
 

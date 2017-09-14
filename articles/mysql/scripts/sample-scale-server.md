@@ -5,73 +5,47 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
-ms.devlang: azurecli
-ms.topic: article
-ms.custom: sample
-ms.date: 05/10/2017
+ms.devlang: azure-cli
+ms.topic: sample
+ms.custom: mvc
+ms.date: 05/31/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c54262218e6174dc85905cb067c334cc6a401946
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 33316ff3db382d25a444d55772c6ee4d7b7ac418
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング
 このサンプル CLI スクリプトは、単一の Azure Database for MySQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
-```bash
-#!/bin/bash
-
-# Create a resource group
-az group create \
---name myresource \
---location westus
-
-# Create a MySQL server in the resource group
-# Name of a server maps to DNS name and is thus required to be globally unique in Azure.
-# Substitute the <server_admin_password> with your own value.
-az mysql server create \
---name mysqlserver4demo \
---resource-group myresource \
---location westus \
---admin-user myadmin \
---admin-password <server_admin_password> \
---performance-tier Basic \
---compute-units 50 \
-
-# Monitor usage metrics - Compute
-az monitor metrics list \
---resource-id "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresource/providers/Microsoft.DBforMySQL/servers/mysqlserver4demo" \
---metric-names compute_consumption_percent \
---time-grain PT1M
-
-# Monitor usage metrics - Storage
-az monitor metrics list \
---resource-id "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresource/providers/Microsoft.DBforMySQL/servers/mysqlserver4demo" \
---metric-names storage_used \
---time-grain PT1M
-
-# Scale up the server to provision more Compute Units within the same Tier
-az mysql server update \
---resource-group myresource \
---name mysqlserver4demo \
---compute-units 100
-```
+このサンプル スクリプトでは、強調表示された行を変更して、管理者のユーザー名とパスワードをカスタマイズします。 az モニター コマンドで使用するサブスクリプション ID を、自分のサブスクリプション ID で置き換えます。
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/scale-mysql-server/scale-mysql-server.sh?highlight=15-16 "Azure Database for MySQL を作成およびスケーリングします。")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
-```azurecli
-az group delete --name myresource
-```
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/scale-mysql-server/delete-mysql.sh  "リソース グループを削除します。")]
+
+## <a name="script-explanation"></a>スクリプトの説明
+このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+
+| **コマンド** | **メモ** |
+|---|---|
+| [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az mysql server create](/cli/azure/mysql/server#create) | データベースのホストとなる MySQL サーバーを作成します。 |
+| [az monitor metrics list](/cli/azure/monitor/metrics#list) | リソースのメトリック値を一覧表示します。 |
+| [az group delete](/cli/azure/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Database for MySQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure/overview)
+- 他のスクリプトを試す: [Azure Database for MySQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- スケーリングの詳細については、[サービス プラン](../concepts-service-tiers.md)に関するページおよび[コンピューティング ユニットとストレージ ユニット](../concepts-compute-unit-and-storage.md)に関するページを参照してください。
 

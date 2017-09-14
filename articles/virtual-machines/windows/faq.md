@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2b0e664be70cafe1b474382b939b4ceaa2eb80d9
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 64354c0064d3602c5d214d687cbc6bf73415f831
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -78,10 +77,10 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
-はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。
+はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、[名前付け規則と制約事項](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>リソース グループの名前に関する要件はありますか。
-はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの詳細については、[インフラストラクチャ リソース グループ ガイドライン](infrastructure-resource-groups-guidelines.md)を参照してください。
+はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの名前付けの詳細については、[名前付け規則と制約事項](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>VM を作成する際のユーザー名の要件は何ですか。
 
@@ -91,7 +90,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 次のユーザー名を指定することはできません。
 <table>
     <tr>
-        <td style="text-align:center">administrator </td><td style="text-align:center"> 管理者 </td><td style="text-align:center"> ユーザー </td><td style="text-align:center"> user1</td>
+        <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
     </tr>
     <tr>
         <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>

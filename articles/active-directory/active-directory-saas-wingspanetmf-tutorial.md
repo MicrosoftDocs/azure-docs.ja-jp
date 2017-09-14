@@ -108,7 +108,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_samlbase.png)
 
-3. **[Wingspan eTMF Domain and URLs] (Wingspan eTMF のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Wingspan eTMF Domain and URLs] \(Wingspan eTMF のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
 
@@ -204,7 +204,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルの [Wingspan eTMF] タイルをクリックすると、[Organization sign on] (組織のサイン オン) ページにリダイレクトされます。 ログインが成功すると、Wingspan eTMF アプリケーションにサイン オンします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)に関する記事を参照してください。
+アクセス パネルの [Wingspan eTMF] タイルをクリックすると、[Organization sign on] \(組織のサイン オン) ページにリダイレクトされます。 ログインが成功すると、Wingspan eTMF アプリケーションにサイン オンします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

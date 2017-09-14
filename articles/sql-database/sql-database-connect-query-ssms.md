@@ -14,15 +14,14 @@ ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 05/26/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 05cbc0c80a4e622f537772c698e2711a7a85c00d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2835a72fc90d1fd39af73c6907648908e5d9fdeb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/31/2017
 
 開始する前に、必ず最新バージョンの [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) をインストールしておいてください。 
 
-## <a name="get-connection-information"></a>接続情報の取得
+## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
@@ -47,7 +46,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの [**概要**] ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
-   ![接続情報](./media/sql-database-get-started-portal/server-name.png) 
+   ![接続情報](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。 
 
@@ -164,6 +163,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 ## <a name="next-steps"></a>次のステップ
 
+- Transact-SQL を使ったサーバーとデータベースの作成および管理については、[Azure SQL Database のサーバーとデータベース](sql-database-servers-databases.md)に関するページを参照してください。
 - SSMS については、「[Use SQL Server Management Studio (SQL Server Management Studio の使用)](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
 - Visual Studio Code を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
 - .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。

@@ -12,23 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/07/2017
 ms.author: clemensv;hillaryc;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9197e429f25f5431d7ea36170c3339cd4d4bc32d
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 2ef07d78a9d81fac933f2c3359e9ee48f86e6790
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
+# Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
 Advanced Message Queueing Protocol 1.0 は、2 つの当事者間でメッセージを非同期で、安全かつ確実に転送することを目的に標準化されたフレーミングと転送のためのプロトコルです。 Azure Service Bus メッセージングと Azure Event Hubs の主要なプロトコルとなっています。 どちらのサービスも HTTPS をサポートしています。 同じくサポートされている独自開発の SBMP プロトコルは今後、徐々に AMQP に置き換わっていく予定です。
 
 AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と各種メッセージング ミドルウェア ユーザー (金融サービス業界を代表する JP モルガン・チェースなど) とを結び付ける、あまねく業界の協業の成果として生まれました。 AMQP プロトコルと拡張仕様の技術的な標準化は OASIS が担っており、今や国際標準の ISO/IEC 19494 として正式に認定されるに至っています。
 
-## <a name="goals"></a>目標
+## 目標
 
 この記事は、AMQP 1.0 メッセージング仕様の核となる概念を、現在 OASIS AMQP 技術委員会で最終承認に向けて調整されている一部の拡張仕様の草案と併せて簡単に紹介したものです。また、それらの仕様が Azure Service Bus でどのように実装され、構築されているかについても説明します。
 
@@ -40,7 +39,7 @@ AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と�
 
 メッセージの読み取りやセッションの管理など、Azure Service Bus の高度な機能に触れる際は、AMQP の観点で説明しますが、これらの機能も、前提となる抽象化された API の上に階層化された擬似的な実装として解説します。
 
-## <a name="what-is-amqp"></a>AMQP とは何か
+## AMQP とは何か
 
 AMQP は、フレーミングと転送のプロトコルです。 フレーミングとは、ネットワーク接続のいずれかの方向に流れるバイナリ データ ストリームに構造を与えることです。 接続された当事者間で交換される、*フレーム*と呼ばれる個々のデータ ブロックには、この構造によって輪郭が与えられます。 フレームをいつ転送するかや何をもって転送の完了と見なすかについて、通信を行う両方の当事者が共有の認識を持てるようにするのが、転送機能の役割となります。
 
@@ -50,13 +49,13 @@ AMQP は、フレーミングと転送のプロトコルです。 フレーミ�
 
 AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、さらなる仕様によって、その機能を拡張できるようになっています。 この点に関して、このドキュメントでは 3 つの拡張仕様を紹介しています。 既存の HTTPS/WebSocket インフラストラクチャでは、ネイティブの AMQP TCP ポートを構成することが難しい場合があります。このようなインフラストラクチャを介した通信については、WebSocket 上に AMQP を階層化する方法が、バインディング仕様によって定義されています。 管理上の用途や高度な機能を実現することを目的とし、要求/応答の形式でメッセージング インフラストラクチャとやり取りするために必要な基本的な対話の要素は、AMQP Management 仕様に規定されています。 フェデレーション承認モデルの統合に関して、承認トークンをリンクに関連付けたり、リンクに関連付けられている承認トークンを更新したりする方法については、AMQP の CBS (Claims Based Security) 仕様で規定されています。
 
-## <a name="basic-amqp-scenarios"></a>基本的な AMQP のシナリオ
+## 基本的な AMQP のシナリオ
 
 このセクションでは、Azure Service Bus での AMQP 1.0 の基本的な処理について説明します。接続やセッション、リンクを作成したり、Service Bus の各種エンティティ (キュー、トピック、サブスクリプションなど) との間でメッセージをやり取りしたりする方法を見ていきましょう。
 
 AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちら][this video course]のビデオ コースをご覧ください。
 
-### <a name="connections-and-sessions"></a>接続とセッション
+### 接続とセッション
 
 AMQP は、"*コンテナー*" という通信プログラムを呼び出します。コンテナーには、その内部の通信エンティティである "*ノード*" が存在します。 キューは、そうしたノードの 1 つです。 AMQP は、多重化に対応しているため、1 本の接続をノード間の複数の通信経路で使用することが可能です。たとえばアプリケーション クライアントは、2 つのキューのうち、一方からは受信しながら、同時に同じネットワーク接続上でもう一方のキューに対して送信を行うことができます。
 
@@ -83,7 +82,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
 
-### <a name="links"></a>リンク
+### リンク
 
 AMQP では、メッセージがリンクを介して転送されます。 リンクは、メッセージを一方向に転送することを目的としてセッション上に形成される通信経路です。転送ステータスのネゴシエーションは、接続された当事者どうしがリンクを介し、双方向に実行します。
 
@@ -99,7 +98,7 @@ Service Bus におけるノードは、キューやトピック、サブスク�
 
 ローカル ノード名は、接続する側のクライアントがリンクを作成するときにも必要となります。つまり Service Bus は、こうしたノード名について関与せず、そもそもノード名を解釈しません。 AMQP 1.0 クライアント スタックが、そのクライアントのスコープにおいてこれらの短期ノード名に重複がないことを特定のスキームを使って保証するのが一般的です。
 
-### <a name="transfers"></a>転送
+### 転送
 
 リンクが確立されると、そのリンク上でメッセージを転送できる状態となります。 AMQP では、送信側からリンクを介して受信側にメッセージを移動する明示的なプロトコル ジェスチャ (*transfer* パフォーマティブ) によって転送が実行されます。 転送は、その結果についての共通認識が両者の間に確立されたことを意味する "settled (解決済み)" の状態になったときに完了します。
 
@@ -119,7 +118,7 @@ Service Bus は、リンクの復旧をサポートしていません。クラ�
 
 送信の重複のリスクを回避する手段として、Service Bus は、キューやトピックに対するオプション機能として重複検出をサポートしています。 重複検出では、ユーザー定義の時間内に受信したすべてのメッセージの ID が記録され、その時間内に同じ ID で送信されたメッセージはすべて警告なしで削除されます。
 
-### <a name="flow-control"></a>フロー制御
+### フロー制御
 
 これまで説明してきたセッション レベルのフロー制御モデルに加え、各リンクには独自のフロー制御モデルが存在します。 セッション レベルのフロー制御は、一度に処理すべきフレーム数が多くなりすぎないようコンテナーを保護するものです。これに対し、リンク レベルのフロー制御では、そのリンクから受け取るメッセージの数とそのタイミングが、アプリケーションの管理下に置かれます。
 
@@ -129,9 +128,9 @@ Service Bus は、リンクの復旧をサポートしていません。クラ�
 
 Service Bus は受信側ロールになるとすぐ、メッセージを直ちに送信できるよう送信側に対して十分なリンク クレジットを与えます。 リンク クレジットが使用される過程で、Service Bus は送信側に対して、ときどき *flow* パフォーマティブを送信し、リンク クレジットの残数を更新します。
 
-送信側ロールの Service Bus は、ひたむきにメッセージを送信し、未使用のリンク クレジットを消費します。
+送信側ロールの Service Bus はメッセージを送信し、未使用のリンク クレジットを消費します。
 
-API レベルでの "receive" 要求は、*flow* パフォーマティブに変換されて、クライアントから Service Bus に送信されます。Service Bus は、ロックされていない最初のメッセージをキューから取り出し、ロックして転送することによって、そのクレジットを消費します。 すぐに配信できるメッセージが存在しない場合、その特定のエンティティとの間で確立されたリンクごとの未使用クレジットが到着順に記録されます。配信できるメッセージが到着して、未使用クレジットを使用できる状態になると、メッセージはロックされて転送されます。
+API レベルでの "receive" 呼び出しは、*flow* パフォーマティブに変換されて、クライアントから Service Bus に送信されます。Service Bus は、ロックされていない最初のメッセージをキューから取り出し、ロックして転送することによって、そのクレジットを消費します。 すぐに配信できるメッセージが存在しない場合、その特定のエンティティとの間で確立されたリンクごとの未使用クレジットが到着順に記録されます。配信できるメッセージが到着して、未使用クレジットを使用できる状態になると、メッセージはロックされて転送されます。
 
 メッセージに対するロックは、その転送が *accepted*、*rejected*、*released* のいずれかの状態に解決されると解除されます。 終端の状態が *accepted* であるとき、メッセージは Service Bus から削除されます。 転送の状態がそれ以外になった場合、メッセージは Service Bus に残り、次の受信者に配信されます。 たび重なる reject または release でエンティティに割り当てられた最大配信カウントに達すると、メッセージは、Service Bus によって自動的にそのエンティティの配信不能キューに移動されます。
 
@@ -143,49 +142,49 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 
 次の表の矢印は、パフォーマティブのフロー方向を示しています。
 
-#### <a name="create-message-receiver"></a>メッセージの受信側の作成
+#### メッセージの受信側の作成
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link id}<br/>) |クライアントがエンティティに受信側として接続 |
 | Service Bus がそのリンクの終端を接続して応答 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link id}<br/>) |
 
-#### <a name="create-message-sender"></a>メッセージの送信側の作成
+#### メッセージの送信側の作成
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
 
-#### <a name="create-message-sender-error"></a>メッセージの送信側の作成 (エラー)
+#### メッセージの送信側の作成 (エラー)
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
-#### <a name="close-message-receiversender"></a>メッセージ受信側/送信側のクローズ
+#### メッセージ受信側/送信側のクローズ
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |アクションなし |
 | アクションなし |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
-#### <a name="send-success"></a>送信 (成功)
+#### 送信 (成功)
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
-#### <a name="send-error"></a>送信 (エラー)
+#### 送信 (エラー)
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
-#### <a name="receive"></a>受信
+#### 受信
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
@@ -193,7 +192,7 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=**receiver**,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
 
-#### <a name="multi-message-receive"></a>複数メッセージの受信
+#### 複数メッセージの受信
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
@@ -203,11 +202,11 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 | アクションなし |< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
 
-### <a name="messages"></a>メッセージ
+### メッセージ
 
 以降のセクションでは、標準 AMQP メッセージ セクションから、Service Bus でどのプロパティが使用され、Service Bus API セットに対してどのように対応付けられるかを説明します。
 
-#### <a name="header"></a>ヘッダー
+#### ヘッダー
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
@@ -217,7 +216,7 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### <a name="properties"></a>プロパティ
+#### プロパティ
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
@@ -235,7 +234,7 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 | group-sequence |セッション内のメッセージの相対シーケンス番号を識別するカウンター。 Service Bus では無視されます。 |Service Bus API を介してアクセスすることはできません。 |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
-## <a name="advanced-service-bus-capabilities"></a>Advanced Service Bus の機能
+## Advanced Service Bus の機能
 
 このセクションでは、現在 AMQP の OASIS 技術委員会で策定が進められている AMQP の拡張機能の草案に基づく Azure Service Bus の高度な機能について取り上げます。 Service Bus には、最新バージョンの草案が実装されています。変更は、草案が標準ステータスになった時点で採用される見込みです。
 
@@ -244,7 +243,7 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 > 
 > 
 
-### <a name="amqp-management"></a>AMQP Management
+### AMQP Management
 
 草案段階の拡張機能として、ここではまず AMQP Management 仕様について説明します。 この仕様には、メッセージング インフラストラクチャに対して AMQP を介して管理操作を行うための、AMQP プロトコル上に階層化された一連のプロトコル ジェスチャが定義されています。 仕様で定義されているのは、*create*、*read*、*update*、*delete* など、メッセージング インフラストラクチャ内のエンティティを管理するための一般的な操作と一連のクエリ操作です。
 
@@ -265,7 +264,7 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 
 Service Bus には現在、管理仕様の核となる機能が実装されていませんが、管理仕様によって定義されている要求/応答パターンは、CBS (Claims Based Security) 機能の基礎となるものです。以降のセクションで取り上げる高度な機能でも、ほぼ例外なくこのパターンが使用されています。
 
-### <a name="claims-based-authorization"></a>Claims-Based Authorization
+### Claims-Based Authorization
 
 AMQP Claims-Based-Authorization (CBS) 仕様草案は、管理仕様の要求/応答パターンをベースとし、フェデレーション方式のセキュリティ トークンを AMQP で使用するための一般的なモデルを規定しています。
 
@@ -274,7 +273,7 @@ AMQP Claims-Based-Authorization (CBS) 仕様草案は、管理仕様の要求/�
 AMQP への SASL の統合には、2 つの欠点があります。
 
 * すべての資格情報とトークンの適用範囲が、対象となる接続に限定される。 メッセージング インフラストラクチャでは、エンティティごとに差別化されたアクセス制御を提供する必要がある場合があります。たとえばトークンのベアラーに、キュー A に対する送信を許可しつつ、キュー B への送信を禁止するケースを考えてみましょう。承認コンテキストは接続に固定されるため、単一の接続を使用しながら、キュー A とキュー B に異なるアクセス トークンを使用することはできません。
-* 一般にアクセス トークンは有効期間が限られている。 ユーザーは、定期的にトークンを取得し直す必要があります。ユーザーのアクセス権が変更されている場合には、新しいトークンの発行を拒否する余地がトークンの発行者に与えられなければなりません。 AMQP の接続は、きわめて長時間にわたって持続する場合があります。 SASL モデルでは、トークンを設定する機会が接続時にしか用意されていません。つまり、メッセージング インフラストラクチャは、トークンの有効期限が切れたときにクライアントとの接続を切断するか、または、その間にアクセス権が失効されたクライアントとの接続をリスクを承知で維持するか、のどちらかを選ぶ必要があります。
+* 一般にアクセス トークンは有効期間が限られている。 ユーザーは、定期的にトークンを取得し直す必要があります。ユーザーのアクセス権が変更されている場合には、新しいトークンの発行を拒否する余地がトークンの発行者に与えられなければなりません。 AMQP の接続は、長時間にわたって持続する場合があります。 SASL モデルでは、トークンを設定する機会が接続時にしか用意されていません。つまり、メッセージング インフラストラクチャは、トークンの有効期限が切れたときにクライアントとの接続を切断するか、または、その間にアクセス権が失効されたクライアントとの接続をリスクを承知で維持するか、のどちらかを選ぶ必要があります。
 
 Service Bus には、AMQP CBS 仕様が実装されています。上に挙げた 2 つの問題は、この仕様によって見事にクリアされています。つまりクライアントは、個々のノードにアクセス トークンを関連付けたり、メッセージの流れを中断させることなく有効期限が切れる前にそれらのトークンを更新したりすることができます。
 
@@ -318,7 +317,7 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 以後トークンの期限を追跡する役割は、クライアントが果たすこととなります。 トークンの有効期限が切れるとすぐ、個々のエンティティとの間でその接続上に形成されていたリンクはすべて Service Bus によって破棄されます。 それを防ぐためにクライアントは随時、仮想 *$cbs* 管理ノードを介し、同じ *put-token* ジェスチャを使用して、ノードのトークンを新しいトークンに差し替えることができます。このとき、他のリンク上を流れるペイロード トラフィックに悪影響が生じることはありません。
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
 
 AMQP の詳細については、次のリンクを参照してください。
 

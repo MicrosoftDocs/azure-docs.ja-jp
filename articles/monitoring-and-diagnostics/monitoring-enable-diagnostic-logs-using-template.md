@@ -2,7 +2,7 @@
 title: "Resource Manager テンプレートを使用して診断設定を自動的に有効にする | Microsoft Docs"
 description: "Resource Manager テンプレートを使用して、診断ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできるようにするための診断設定を作成する方法について説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/14/2017
+ms.date: 8/30/2017
 ms.author: johnkem
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 87403d68bfb57645417d6255329af7fd0d757f50
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: dde2435e976bbd14ca35cccc714ea21dcc5817b7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/31/2017
 
 Resource Manager テンプレートを使用して診断ログを有効にする方法は、リソースの種類によって異なります。
 
-* **非コンピューティング** リソース (ネットワーク セキュリティ グループ、Logic Apps、Automation など) では、 [こちらの記事で説明する診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を使用します。
+* **非コンピューティング** リソース (ネットワーク セキュリティ グループ、Logic Apps、Automation など) では、 [こちらの記事で説明する診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)を使用します。
 * **コンピューティング** (WAD/LAD ベースの) リソースでは、 [こちらの記事で説明する WAD/LAD 構成ファイル](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)を使用します。
 
 この記事では、いずれかの方法を使用して診断を構成する方法について説明します。
@@ -53,13 +53,13 @@ Resource Manager テンプレートを使用して診断ログを有効にする
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Resource ID of the Service Bus Rule for the Service Bus Namespace in which the Event Hub should be created or streamed to."
       }
     },
     "workspaceId":{
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
       }
     }
     ```

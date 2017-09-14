@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: casoper
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 905357b9e2262b86cde31874287cc0b89eef4815
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9f6e1980bf5ea5b41da98a135d89f1c5159921a7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 ---
 
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Azure DevTest Labs の共有 IP アドレスについて
 
-Azure DevTest Labs では共有 IP アドレスを使用して、ラボの個別の VM へのアクセスに必要なパブリック IP アドレス数を最小限に抑えます。  この記事では、共有 IP アドレスの動作と、関連する構成オプションについて説明します。
+Azure DevTest Labs では、ラボの VM で同じパブリック IP アドレスを共有して、ラボの個別の VM へのアクセスに必要なパブリック IP アドレスの数を最小限に抑えます。  この記事では、共有 IP アドレスの動作と、関連する構成オプションについて説明します。
 
 ## <a name="shared-ip-setting"></a>共有 IP 設定
 
@@ -31,17 +32,25 @@ Azure DevTest Labs では共有 IP アドレスを使用して、ラボの個別
 
 ![新しいラボのサブネット](media/devtest-lab-shared-ip/lab-subnet.png)
 
+既存のラボの場合は、**[Configuration and policies]\(構成とポリシー\) > [Virtual Networks]\(仮想ネットワーク\)** を選択することで、このオプションを有効にできます。 その後、一覧から仮想ネットワークを選択して、選択したサブネットに **[ENABLE SHARED PUBLIC IP]\(共有パブリック IP を有効にする\)** を選択します。 また、ラボの VM 間でパブリック IP アドレスを共有しない場合は、いずれかのラボでこのオプションを無効にできます。
+
 このラボで作成された VM は、既定では共有 IP を使用するように設定されます。  VM の作成中、この設定は、**[詳細設定]** ブレードの **[IP アドレス構成]** で確認できます。
 
 ![新しい VM](media/devtest-lab-shared-ip/new-vm.png)
 
-共有 IP が有効になっている VM がサブネットに追加されると必ず、パブリック IP アドレスで TCP ポートが割り当てられ、VM の RDP ポートに転送されます。  
+- **共有:** **共有**として作成された VM はすべて、1 つのリソース グループ (RG) に配置されます。 その RG には 1 つの IP アドレスが割り当てられ、RG 内のすべての VM がその IP アドレスを使用します。
+- **パブリック:** 作成した VM はすべて独自の IP アドレスを持ち、独自のリソース グループに作成されます。
+- **プライベート:** 作成した VM はすべてプライベート IP アドレスを使用します。 リモート デスクトップで、インターネットから直接この VM に接続することはできません。
+
+共有 IP が有効になっている VM がサブネットに追加されると必ず、DevTest Lab によりロード バランサーに VM が自動的に追加され、パブリック IP アドレスで TCP ポート番号が割り当てられ、VM の RDP ポートに転送されます。  
 
 ## <a name="using-the-shared-ip"></a>共有 IP の使用
 
-RDP クライアントの VM のリモート デスクトップに接続するには、IP アドレスまたは完全修飾ドメイン名、コロン、ポート番号の順に指定します。  たとえば、次の図では、VM に接続するための RDP アドレスは `doclab-lab13998814308000.centralus.cloudapp.azure.com:51686` になります。  また、Azure Portal で **[接続]** ボタンを選択して、構成済み RDP ファイルをダウンロードすることもできます。
+- **Linux ユーザー:** SSH から VM に接続するには、IP アドレスまたは完全修飾ドメイン名、コロン、ポート番号の順に指定します。 たとえば、次の図では、VM に接続するための RDP アドレスは `doclab-lab13998814308000.centralus.cloudapp.azure.com:51686` になります。
 
-![VM の例](media/devtest-lab-shared-ip/vm-info.png)
+  ![VM の例](media/devtest-lab-shared-ip/vm-info.png)
+
+- **Windows ユーザー:** Azure Portal で **[接続]** ボタンを選択して、構成済み RDP ファイルをダウンロードして VM にアクセスします。
 
 ## <a name="next-steps"></a>次のステップ
 

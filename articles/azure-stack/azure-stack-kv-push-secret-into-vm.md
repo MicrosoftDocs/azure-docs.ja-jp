@@ -12,39 +12,37 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/06/2017
+ms.date: 08/03/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 16d57bfd8232c1d2f646bffef671aa0236b8c2f6
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 4b4bbf6aa612fe3eca5b860cbddaff8500e21f15
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
-# <a name="create-virtual-machines-and-include-certificates-retrieved-from-a-key-vault"></a>Create virtual machines and include certificates retrieved from a key vault
+# <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>Create a virtual machine and include certificate retrieved from a key vault
 
-> [!NOTE]
-> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+This article helps you to create a virtual machine in Azure Stack and push certificates onto it. 
 
 ## <a name="prerequisites"></a>Prerequisites
 
+* Azure Stack operators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
+* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
 * [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* Azure Stack administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
-* Tenants must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service. 
+* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)
 
 A key vault in Azure Stack is used to store certificates. Certificates are helpful in many different scenarios. For example, consider a scenario where you have a virtual machine in Azure Stack that is running an application that needs a certificate. This certificate can be used for encrypting, for authenticating to Active Directory, or for SSL on a website. Having the certificate in a key vault helps make sure that it's secure.
 
-In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack POC computer, or from a Windows-based external client if you are connected through VPN.
+In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN.
 
-## <a name="include-a-certificate-on-the-virtual-machine"></a>Include a certificate on the virtual machine
+The following steps describe the process required to push a certificate onto the virtual machine:
 
-The following steps describe the process to push a certificate onto the virtual machine:
+1. Create a Key Vault secret.
+2. Update the azuredeploy.parameters.json file.
+3. Deploy the template
 
-1. Create a certificate.
-2. Create a key vault.
-3. Upload the certificate into the key vault.
-4. Deploy a template to create a virtual machine and push the certificate onto it.
+## <a name="create-a-key-vault-secret"></a>Create a Key Vault secret
 
 The following script creates a certificate in the .pfx format, creates a key vault, and stores the certificate in the key vault as a secret. You must use the `-EnabledForDeployment` parameter when you're creating the key vault. This parameter makes sure that the key vault can be referenced from Azure Resource Manager templates.
 
@@ -61,8 +59,8 @@ $pwd = ConvertTo-SecureString `
   -AsPlainText
 
 Export-PfxCertificate `
-  -cert "cert:\localMachine\my\<Your certificate Thumbprint>" `
-  -FilePath "<Fully qualified path to the certificate>" `
+  -cert "cert:\localMachine\my\<Certificate Thumbprint that was created in the previous step>" `
+  -FilePath "<Fully qualified path where the exported certificate can be stored>" `
   -Password $pwd
 
 # Create a key vault and upload the certificate into the key vault as a secret
@@ -70,7 +68,7 @@ $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
 $location = "local"
 $secretName = "servicecert"
-$fileName = "<Fully qualified path to the certificate>"
+$fileName = "<Fully qualified path where the exported certificate can be stored>"
 $certPassword = "<Password used to export the certificate>"
 
 $fileContentBytes = get-content $fileName `
@@ -109,9 +107,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-When you run the previous script, the output includes the secret URI. Make a note of this URI. You have to reference it in the [Push certificate to Windows Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows). 
+When you run the previous script, the output includes the secret URI. Make a note of this URI. You have to reference it in the [Push certificate to Windows Resource Manager template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). Download the [vm-push-certificate-windows template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) folder onto your development computer. This folder contains the `azuredeploy.json` and `azuredeploy.parameters.json` files, which you will need in the next steps.
 
-Download this template onto your development computer and modify the `azuredeploy.parameters.json` file according to your environment values. The parameters of special interest are the vault name, the vault resource group, and the secret URI (as generated by the previous script). The following file is an example of a parameter file:
+Modify the `azuredeploy.parameters.json` file according to your environment values. The parameters of special interest are the vault name, the vault resource group, and the secret URI (as generated by the previous script). The following file is an example of a parameter file:
+
+## <a name="update-the-azuredeployparametersjson-file"></a>Update the azuredeploy.parameters.json file
+
+Update the azuredeploy.parameters.json file with the vaultName, secret URI, VmName, and other values as per your environment. The following JSON file shows an example of the template parameters file: 
 
 ```json
 {
@@ -140,11 +142,13 @@ Download this template onto your development computer and modify the `azuredeplo
       "value": "contosovaultrg"
     },
     "secretUrlWithVersion": {
-      "value": "<URI of the secret that was created in the previous section>"
+      "value": "https://testkv001.vault.local.azurestack.external/secrets/testcert002/82afeeb84f4442329ce06593502e7840"
     }
   }
 }
 ```
+
+## <a name="deploy-the-template"></a>Deploy the template
 
 Now deploy the template by using the following PowerShell script:
 
@@ -153,8 +157,8 @@ Now deploy the template by using the following PowerShell script:
 New-AzureRmResourceGroupDeployment `
   -Name KVDeployment `
   -ResourceGroupName $resourceGroup `
-  -TemplateFile C:\Users\AzureStackAdmin\Desktop\Test\azuredeploy.json `
-  -TemplateParameterFile C:\Users\AzureStackAdmin\Desktop\Test\azuredeploy.parameters.json
+  -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
+  -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
 
 When the template is deployed successfully, it results in the following output:

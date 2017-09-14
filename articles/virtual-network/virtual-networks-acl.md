@@ -1,11 +1,12 @@
 ---
-title: "ネットワーク アクセス制御リスト (ACL) とは"
-description: "ACL の概要"
+title: "Azure ネットワーク アクセス制御リストとは"
+description: "Azure のアクセス制御リストに関する詳細情報"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: tysonn
+manager: timlt
+editor: 
+tags: azure-service-management
 ms.assetid: 83d66c84-8f6b-4388-8767-cd2de3e72d76
 ms.service: virtual-network
 ms.devlang: na
@@ -14,31 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 66ddcea180395b830cdb5310446e1dbc02e7d784
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 9a0c85367968c9b38104012d75b1f3975be82cc1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="what-is-an-endpoint-access-control-list-acls"></a>エンドポイント アクセス制御リスト (ACL) とは
-エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。 ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。 このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。 エンドポイント用のネットワーク ACL のみを指定できます。 仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。
+# <a name="what-is-an-endpoint-access-control-list"></a>エンドポイント アクセス制御リストとは
 
 > [!IMPORTANT]
-> 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。 NSG の詳細については、「 [ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)」を参照してください。
-> 
-> 
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、Resource Manager デプロイメント モデルを使用することをお勧めします。 
 
-ACL は、PowerShell または管理ポータルを使用して構成できます。 PowerShell を使用してネットワーク ACL を構成するには、「 [PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。 管理ポータルを使用してネットワーク ACL を構成するには、「 [仮想マシンに対してエンドポイントを設定する方法](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
+エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。 ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。 このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。 エンドポイント用のネットワーク ACL のみを指定できます。 仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。 NSG の詳細については、「[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)」を参照してください。
+
+ACL は、PowerShell または Azure Portal のいずれかを使用して構成できます。 PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用してエンドポイントのアクセス制御リストを管理する](virtual-networks-acl-powershell.md)」を参照してください。 Azure Portal を使用してネットワーク ACL を構成するには、「[仮想マシンにエンドポイントをセットアップする方法](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ネットワーク ACL を使用すると、次の操作を実行できます。
 
 * リモート サブネット IPv4 アドレスの範囲に基づいて、仮想マシン入力エンドポイントに対する受信トラフィックを選択して許可または拒否する。
 * IP アドレスをブラックリストに登録する
 * 仮想マシンのエンドポイントごとに複数のルールを作成する
-* 仮想マシンのエンドポイントごとに最大で 50 個の ACL ルールを指定する
 * ルールの順序 (最低から最高) を使用して、特定の仮想マシン エンドポイントに適用される正しいルール セットを構成します。
 * 特定のリモート サブネットの IPv4 アドレスの ACL を指定します。
+
+ACL の制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事を参照してください。
 
 ## <a name="how-acls-work"></a>ACL のしくみ
 ACL は、ルールの一覧が格納されたオブジェクトです。 ACL を作成し、仮想マシン エンドポイントに適用すると、VM のホスト ノードでパケットのフィルター処理が実行されます。 つまり、リモート IP アドレスのトラフィックは、VM ではなく、一致する ACL ルールのホスト ノードでフィルター処理されます。 そのため、VM のパケット フィルター処理に貴重な CPU サイクルが使用されることを回避できます。
@@ -85,11 +87,11 @@ ACL は、ルールの一覧が格納されたオブジェクトです。 ACL �
 | 200 |175.0.0.0/8 |80 |許可 |
 
 ## <a name="network-acls-and-load-balanced-sets"></a>ネットワーク ACL と負荷分散セット
-負荷分散セット (LB セット) エンドポイントに対するネットワーク ACL を指定できます。 LB セットに対して ACL を指定すると、その LB セット内のすべての Virtual Machines に対してネットワーク ACL が適用されます。 たとえば、LB セットが "ポート 80" で作成され、LB セットに 3 つの VM が含まれている場合、1 つの VM のエンドポイント "ポート 80" に作成されたネットワーク ACL は、自動的に他の VM に適用されます。
+負荷分散セット エンドポイントに対するネットワーク ACL を指定できます。 負荷分散セットに対して ACL を指定すると、その負荷分散セット内のすべての Virtual Machines に対してネットワーク ACL が適用されます。 たとえば、負荷分散セットが "ポート 80" で作成され、負荷分散セットに 3 つの VM が含まれている場合、1 つの VM のエンドポイント "ポート 80" に作成されたネットワーク ACL は、自動的に他の VM に適用されます。
 
 ![ネットワーク ACL と負荷分散セット](./media/virtual-networks-acl/IC674733.png)
 
 ## <a name="next-steps"></a>次のステップ
-[PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](virtual-networks-acl-powershell.md)
+[PowerShell を使用してエンドポイントのアクセス制御リストを管理する](virtual-networks-acl-powershell.md)
 
 

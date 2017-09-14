@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
-translationtype: Human Translation
-ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
-ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
-ms.lasthandoff: 01/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 60d8dd45ecbd4a075721c25acadb21d4e2fd5448
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイを使用した BGP の概要
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/14/2017
 BGP は、2 つ以上のネットワーク間でルーティングと到達可能性の情報を交換するためにインターネット上で広く使用されている標準のルーティング プロトコルです。 Azure Virtual Networks のコンテキストでは、Azure VPN ゲートウェイとオンプレミスの VPN デバイス (BGP ピアまたは BGP 近隣ノードと呼ばれる) が BGP を使用して "ルート" を交換します。これによって、関連するゲートウェイまたはルーターの可用性と、BGP のプレフィックスが到達できる可能性に関する情報が両方のゲートウェイに伝達されます。 また、BGP では、BGP ゲートウェイが特定の BGP ピアから学習したルートを他のすべての BGP ピアに伝達することで、複数のネットワークでトランジット ルーティングを行うこともできます。 
 
 ## <a name="why-use-bgp"></a>BGP を使用する理由
-BGP は、Azure のルートベースの VPN ゲートウェイで使用できるオプションの機能です。 この機能を有効にするには、オンプレミスの VPN デバイスが BGP をサポートしていることを事前に確認する必要があります。 BGP を使用せずに Azure VPN ゲートウェイとオンプレミスの VPN デバイスを使用することもできます。 これ (BGP を使用しない方法) は静的ルートを使用するのと同等で、BGP を使用する方法はネットワークと ** Azure の間で動的ルーティングを使用するのに相当します。
+BGP は、Azure のルートベースの VPN ゲートウェイで使用できるオプションの機能です。 この機能を有効にするには、オンプレミスの VPN デバイスが BGP をサポートしていることを事前に確認する必要があります。 BGP を使用せずに Azure VPN ゲートウェイとオンプレミスの VPN デバイスを使用することもできます。 これ (BGP を使用しない方法) は静的ルートを使用するのと同等で、BGP を使用する方法はネットワーク *と* Azure の間で動的ルーティングを使用するのに相当します。
 
 BGP の使用に関して、いくつかの利点と新しい機能があります。
 

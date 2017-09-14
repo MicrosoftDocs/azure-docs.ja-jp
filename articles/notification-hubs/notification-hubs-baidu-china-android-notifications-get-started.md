@@ -14,18 +14,18 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
-ms.lasthandoff: 12/08/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: df3bbda15e1245b6068c2b8290d0c96856051f1f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概要
-Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。 このサービスは、さまざまなアプリケーション ストアやプッシュ サービスの存在に加え、GCM (Google Cloud Messaging) に接続されていることが少ない Android デバイスの可用性にも差があるために Android へのプッシュ通知の送信方法が複雑な中国では特に便利です。
+Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。 このサービスは、さまざまなアプリケーション ストアやプッシュ サービスの存在に加え、GCM (Google Cloud Messaging) に接続されていることが少ない Android デバイスの可用性にも差があるために Android へのプッシュ通知の送信方法が複雑な中国では便利です。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルには、次のものが必要です。
@@ -70,7 +70,7 @@ Baidu を使用するには、Baidu アカウントが必要です。 既にア�
 4. 次のページで、右上のメニューから **[注册开发者]** (**登録済み開発者**) をクリックします。
    
       ![][8]
-5. 確認用のテキスト メッセージを受信するために名前、説明、および携帯電話の番号を入力し、**[送验证码]** (**確認コードを送信する**) をクリックします。 国際電話番号の場合は、国コードをかっこで囲む必要があります。 たとえば、米国の電話番号の場合は、 **(1)1234567890**になります。
+5. 確認用のテキスト メッセージを受信するために名前、説明、および携帯電話の番号を入力し、**[送验证码]** (**確認コードを送信する**) をクリックします。 国際電話番号の場合は、国コードをかっこで囲む必要があります。 たとえば、米国の電話番号の場合は **(1)1234567890** になります。
    
       ![][9]
 6. その後、次の例に示すような、認証番号を含むテキスト メッセージが届きます。
@@ -237,7 +237,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
                 super.onCreate();
             }
         }
-13. **MyPushMessageReceiver.java**という名前の別の新しいクラスを追加し、それに次のコードを追加します。 これは、Baidu プッシュ サーバーから受信したプッシュ通知を処理するクラスです。
+13. **MyPushMessageReceiver.java** という名前の別の新しいクラスを追加し、それに次のコードを追加します。 これは、Baidu プッシュ サーバーから受信したプッシュ通知を処理するクラスです。
     
         import java.util.List;
         import android.content.Context;
@@ -355,17 +355,17 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
             import com.baidu.android.pushservice.PushManager;
 
 ## <a name="send-notifications-to-your-app"></a>アプリケーションに通知を送信する
-以下の画面に示すように、通知ハブの [[テスト送信]](https://portal.azure.com/) ボタンを使用して、 **Azure ポータル** で通知を送信し、アプリケーションで通知の受信テストをすばやく行うことができます。
+以下の画面に示すように、通知ハブの [[送信]](https://portal.azure.com/) ボタンを使用して、**Azure Portal** で通知を送信し、アプリケーションで通知の受信テストをすばやく行うことができます。
 
-![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
+![](./media/notification-hubs-baidu-get-started/notification-hub-test-send-baidu.png)
 
-プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドで利用できない場合、REST API を直接使用して通知メッセージを送信できます。
+プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 バックエンドでライブラリを利用できない場合、REST API を直接使用して通知メッセージを送信できます。
 
 このチュートリアルでは、バックエンド サービスではなく、コンソール アプリケーションの通知ハブに .NET SDK を使用して通知を送信することで例を単純にして、クライアント アプリのテスト手順のみを説明します。 ASP.NET バックエンドから通知を送信するには、次のステップとして「 [Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) 」を参照することをお勧めします。 ただし、通知の送信には、次の方法も使用できます。
 
 * **REST インターフェイス**: [REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
 * **Microsoft Azure Notification Hubs .NET SDK**: Nuget Package Manager for Visual Studio で、 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を実行します。
-* **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
+* **Node.js**: [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **Mobile Apps**: Notification Hubs に統合されている Azure App Service Mobile Apps のバックエンドから通知を送信する方法の例については、[モバイル アプリにプッシュ通知を追加](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)する方法を説明したページを参照してください。
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md)  |  [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
 
@@ -379,7 +379,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
+    この手順により、<a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 3. **Program.cs** ファイルを開き、次の using ステートメントを追加します。
@@ -399,9 +399,9 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
          Console.ReadLine();
 
 ## <a name="test-your-app"></a>アプリケーションをテストする
-実際の電話でこのアプリケーションをテストする場合は、USB ケーブルを使用してコンピューターに電話を接続するだけです。 これで、接続した電話にアプリケーションが読み込まれます。
+実際の電話でこのアプリケーションをテストする場合は、USB ケーブルを使用してコンピューターに電話を接続するだけです。 この操作によって、接続した電話にアプリケーションが読み込まれます。
 
-エミュレーターでこのアプリケーションをテストするには、上部の Eclipse ツール バーで **[実行]**をクリックし、アプリケーションを選択します。 これによりエミュレーターが起動し、アプリケーションが読み込まれて実行されます。
+エミュレーターでこのアプリケーションをテストするには、上部の Eclipse ツール バーで **[実行]** をクリックし、アプリケーションを選択します。エミュレーターが起動され、アプリが読み込まれて実行されます。
 
 アプリケーションが Baidu プッシュ通知サービスから 'userId' と 'channelId' を取得し、通知ハブに登録します。
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: aebe0b74c952045375e264bed88d33d936e34b92
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino Connector のテクニカル リファレンス
@@ -118,7 +118,7 @@ Lotus Domino Connector を作成するには、**Synchronization Service** で *
 [接続] ページで、Lotus Domino サーバー名を指定し、ログオン資格証明を入力します。  
 ![接続](./media/active-directory-aadconnectsync-connector-domino/connectivity.png)
 
-Domino Server のプロパティでは、サーバー名に次の&2; つの形式がサポートされています。
+Domino Server のプロパティでは、サーバー名に次の 2 つの形式がサポートされています。
 
 * ServerName
 * ServerName/DirectoryName
@@ -146,7 +146,7 @@ Domino Server のプロパティでは、サーバー名に次の&2; つの形�
 
 **[Domino サーバーのタイム ゾーン]** パラメーターでは Domino サーバーの場所を定義します。
 
-この構成オプションは、最後の&2; 回のインポート間の変更を同期サービスが特定するのを可能にするため、 **差分インポート** 操作で必要です。
+この構成オプションは、最後の 2 回のインポート間の変更を同期サービスが特定するのを可能にするため、 **差分インポート** 操作で必要です。
 
 >[!Note]
 2017 年 3 月の更新以降、ユーザーの削除中にユーザーのメール データベースを削除するためのオプションが [グローバル パラメーター] 画面に追加されています。
@@ -185,22 +185,22 @@ Domino の属性 **FullName** に複数の値がある場合、参照が解決�
 #### <a name="import-settings-conflict-object"></a>インポート設定および競合オブジェクト
 **競合するオブジェクトの除外**
 
-大規模な Domino の実装では、レプリケーションの問題により、複数のオブジェクトの DN が同じである場合があります。 このような場合、コネクタには UniversalID は同じですが DN は異なる&2; つのオブジェクトが示されます。 この競合により、コネクタ スペースに一時オブジェクトが作成されます。 コネクタは、Domino で選択したオブジェクトは、レプリケーション上作成されたものとして無視できます。 このチェックボックスはオンのままにしておくことをお勧めします。
+大規模な Domino の実装では、レプリケーションの問題により、複数のオブジェクトの DN が同じである場合があります。 このような場合、コネクタには UniversalID は同じですが DN は異なる 2 つのオブジェクトが示されます。 この競合により、コネクタ スペースに一時オブジェクトが作成されます。 コネクタは、Domino で選択したオブジェクトは、レプリケーション上作成されたものとして無視できます。 このチェックボックスはオンのままにしておくことをお勧めします。
 
 #### <a name="export-settings"></a>設定のエクスポート
 **[参照の更新に AdminP を使用する]** オプションがオンになっていない場合、メンバーなどの参照属性のエクスポートは、AdminP プロセスは使用しない、直接での呼び出しになります。 このオプションは、参照整合性を維持するために AdminP が構成されていない場合にのみ使用します。
 
 #### <a name="routing-information"></a>ルーティング情報
-Domino の参照属性には、DN へのルーティング情報をサフィックスとして埋め込むことが可能です。 たとえば、グループの member 属性に **CN=example/organization@ABC** を含めることができます。 サフィックス @ABC がルーティング情報です。 このルーティング情報は、Domino が (別の組織のシステムである場合もある) 正しい Domino システムに電子メールを送信する際に使用します。 [ルーティング情報] フィールドには、コネクタのスコープで組織が使用しているルーティング サフィックスを指定します。 これらのいずれかの値が参照属性のサフィックスとして検出される場合、ルーティング情報は参照から削除されます。 参照値のルーティング サフィックスが、指定した値の&1; つと一致しない場合は、\_Contact オブジェクトが作成されます。 これらの \_Contact オブジェクトは、DN に挿入された **RO=@<RoutingSuffix>** で作成されます。 これらの \_Contact オブジェクトには、必要に応じて実際のオブジェクトと結合できるようにする \_routingName、\_contactName、\_displayName、UniversalID のオブジェクトも追加されます。
+Domino の参照属性には、DN へのルーティング情報をサフィックスとして埋め込むことが可能です。 たとえば、グループの member 属性に **CN=example/organization@ABC** を含めることができます。 サフィックス @ABC がルーティング情報です。 このルーティング情報は、Domino が (別の組織のシステムである場合もある) 正しい Domino システムに電子メールを送信する際に使用します。 [ルーティング情報] フィールドには、コネクタのスコープで組織が使用しているルーティング サフィックスを指定します。 これらのいずれかの値が参照属性のサフィックスとして検出される場合、ルーティング情報は参照から削除されます。 参照値のルーティング サフィックスが、指定した値の 1 つと一致しない場合は、\_Contact オブジェクトが作成されます。 これらの \_Contact オブジェクトは、DN に挿入された **RO=@<RoutingSuffix>** で作成されます。 これらの \_Contact オブジェクトには、必要に応じて実際のオブジェクトと結合できるようにする \_routingName、\_contactName、\_displayName、UniversalID のオブジェクトも追加されます。
 
 #### <a name="additional-address-books"></a>その他のアドレス帳
 セカンダリ アドレス帳の名前を提供する **Directory Assistance** がインストールされていない場合、これらのアドレス帳を手動で入力できます。
 
 #### <a name="multivalued-transformation"></a>複数値の変換
-Lotus Domino の属性の多くには値が複数あります。 対応するメタバース属性の値は、通常&1; つです。 インポートおよびエクスポート操作オプションを構成すると、影響を受ける属性の変換をコネクタが支援するようになります。
+Lotus Domino の属性の多くには値が複数あります。 対応するメタバース属性の値は、通常 1 つです。 インポートおよびエクスポート操作オプションを構成すると、影響を受ける属性の変換をコネクタが支援するようになります。
 
 **エクスポート**  
-エクスポート操作には、次の&2; つのモードがあります。
+エクスポート操作には、次の 2 つのモードがあります。
 
 * 項目の追加
 * 項目の置換
@@ -230,7 +230,7 @@ Lotus Domino の属性の多くには値が複数あります。 対応するメ
 * CN=John Smith/OU=Contoso/O=Americas,NAB=names.nsf
 
 **インポート**  
-インポート操作オプションでは、次の&2; つのモードがサポートされています。
+インポート操作オプションでは、次の 2 つのモードがサポートされています。
 
 * 既定値
 * 複数値から単一値
@@ -281,7 +281,7 @@ Person オブジェクトとは、組織と組織単位内のユーザーです�
 * 組織および組織単位に特定のユーザーを登録するには、組織および組織単位の証明者 ID とパスワードが必要です。
 * person オブジェクトには、特定の Lotus Notes のプロパティ セットを設定する必要があります。 このプロパティは、person オブジェクトのプロビジョニングで使用されます。 詳細については、このドキュメントの後の「[Lotus Notes プロパティ](#lotus-notes-properties)」セクションを参照してください。
 * Person 用の初期 HTTP パスワードは属性で、プロビジョニング時に設定されます。
-* Person オブジェクトは、次の&3; つのサポートされている種類のいずれかである必要があります。
+* Person オブジェクトは、次の 3 つのサポートされている種類のいずれかである必要があります。
   1. メール ファイルおよびユーザー ID ファイルを持つ標準ユーザー
   2. ローミング ユーザー (すべてのローミング データベース ファイルを含む標準ユーザー)
   3. 連絡先 (ID ファイルを持たないユーザー)
@@ -296,7 +296,7 @@ Person (連絡先を除く) は、\_MMS\_IDRegType プロパティの値で定�
 これらのすべての操作は Lotus Domino で実行された後に、同期サービスにインポートされます。
 
 ### <a name="resources-and-rooms"></a>リソースおよびルーム
-リソースは Lotus Domino のもう&1; 種類のデータベースです。 リソースは、プロジェクターなど、さまざまな種類の機器がある会議室である場合があります。 リソースには Lotus Domino コネクタによってサポートされるサブタイプもあり、これはリソースの種類の属性によって定義されます。
+リソースは Lotus Domino のもう 1 種類のデータベースです。 リソースは、プロジェクターなど、さまざまな種類の機器がある会議室である場合があります。 リソースには Lotus Domino コネクタによってサポートされるサブタイプもあり、これはリソースの種類の属性によって定義されます。
 
 | リソースの種類 | リソースの種類の属性 |
 | --- | --- |
@@ -344,7 +344,7 @@ Lotus Domino のグループ管理の詳細な説明については、次を参�
 * [グループの名前変更](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_RENAMING_A_GROUP_STEPS.html)
 
 ### <a name="password-management"></a>パスワード管理
-登録済みの Lotus Domino ユーザーには、次の&2; 種類のパスワードがあります。
+登録済みの Lotus Domino ユーザーには、次の 2 種類のパスワードがあります。
 
 1. (User.id ファイルに格納されている) ユーザー パスワード
 2. インターネット/HTTP パスワード
@@ -376,7 +376,7 @@ Lotus Domino ディレクトリに Person オブジェクトをプロビジョ�
 | --- | --- |
 | \_MMS_AltFullName |ユーザーの別の完全名。 |
 | \_MMS_AltFullNameLanguage |ユーザーの別の完全名を指定するために使用する言語。 |
-| \_MMS_CertDaysToExpire |証明書が有効期限切れになる前の現在の日付からの日数。 これを指定しない場合、既定の日付は現在の日から&2; 年後になります。 |
+| \_MMS_CertDaysToExpire |証明書が有効期限切れになる前の現在の日付からの日数。 これを指定しない場合、既定の日付は現在の日から 2 年後になります。 |
 | \_MMS_Certifier |認証者の組織階層名が格納されたプロパティ。 例: OU=OrganizationUnit,O=Org,C=Country。 |
 | \_MMS_IDPath |このプロパティが空の場合、ユーザー ID ファイルが同期サーバーのローカルに作成されません。 プロパティにファイル名が含まれる場合、ユーザー ID ファイルがメタデータ フォルダーに作成されます。 このプロパティには、完全なパスを含めることもできます。 |
 | \_MMS_IDRegType |Person は、連絡先、米国ユーザー、および海外ユーザーに分類できます。 可能な値を次の表に示します。 <li>0 - 連絡先</li><li>1 - 米国ユーザー</li><li>2 - 海外ユーザー</li> |
@@ -472,7 +472,7 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
    * 更新された値でサブフォームを保存し、次を実行します。
      * 左のウィンドウから [Shared Code]、[Subforms] の順に選択します。
      * 新しいサブフォームを選択し、[Design - Design Properties] を選択します。
-     * 左から&3; 番目のタブをクリックし、 **[Propagate this prohibition of design change]**を選択します。
+     * 左から 3 番目のタブをクリックし、 **[Propagate this prohibition of design change]**を選択します。
 7. ${ObjectName}ExtensibleSchema サブフォームを開きます (ここで {ObjectName} は、Person などの既定の構造オブジェクト クラスです)。
 8. リソースを挿入し、サブフォーム (TestSubform など、自分で作成したもの) を選択し、${ObjectName}ExtensibleSchema サブフォームを保存します。
 9. [これらの手順](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)に従って、Domino Directory テンプレート {PUBNAMES.NTF} を、新しいカスタム テンプレート {CONTOSO.NTF} に置き換えます。

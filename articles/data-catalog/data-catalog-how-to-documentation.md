@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 08/03/2017
 ms.author: spelluru
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: a869c52c3e3574e4ffc958a82daaa12b2f6cb6c1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="document-data-sources"></a>データ ソースの文書化

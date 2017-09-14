@@ -3,7 +3,7 @@ title: "Azure API Management のページ テンプレート | Microsoft Docs"
 description: "Azure API Management のテンプレート セットを使用して開発者ポータル ページの内容をカスタマイズする方法について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API Management のページ テンプレート
@@ -33,7 +35,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
   
-##  <a name="a-namesignina-sign-in"></a><a name="SignIn"></a> サインイン  
+##  <a name="SignIn"></a> サインイン  
  **サインイン** テンプレートを使用すると、開発者ポータルでサインイン ページをカスタマイズすることができます。  
   
  ![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")  
@@ -132,7 +134,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-namesignupa-sign-up"></a><a name="SignUp"></a> サインアップ  
+##  <a name="SignUp"></a> サインアップ  
  **サインアップ** テンプレートを使用すると、開発者ポータルでサインアップ ページをカスタマイズすることができます。  
   
  ![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")  
@@ -180,7 +182,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-namepagenotfounda-page-not-found"></a><a name="PageNotFound"></a> ページが見つかりません  
+##  <a name="PageNotFound"></a> ページが見つかりません  
  **ページが見つかりません** テンプレートを使用すると、開発者ポータルでページが見つかりませんページをカスタマイズすることができます。  
   
  ![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")  
@@ -244,8 +246,3 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 ## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -1,6 +1,6 @@
 ---
-title: "SQL Data Warehouse のテーブルのデータ型 | Microsoft Docs"
-description: "Azure SQL Data Warehouse のテーブルのデータ型の概要です。"
+title: "データ型のガイダンス - Azure SQL Data Warehouse | Microsoft Docs"
+description: "SQL Data Warehouse と互換性のあるデータ型を定義する場合の推奨事項。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -13,51 +13,49 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 06/02/2017
 ms.author: shigu;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7757de96601c426ff07e94cfa0c12d4dec8f06f5
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
+ms.lasthandoff: 06/06/2017
 
 
 ---
-# <a name="data-types-for-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルのデータ型
-> [!div class="op_single_selector"]
-> * [概要][Overview]
-> * [データ型][Data Types]
-> * [分散][Distribute]
-> * [インデックス][Index]
-> * [パーティション][Partition]
-> * [統計][Statistics]
-> * [一時][Temporary]
-> 
-> 
+# <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのデータ型の定義に関するガイダンス
+SQL Data Warehouse と互換性のあるテーブルのデータ型を定義する場合は、以下の推奨事項を使用します。 互換性に加え、データ型のサイズを最小化することで、クエリのパフォーマンスが向上します。
 
-SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。  SQL Data Warehouse でサポートされるデータ型の一覧を以下に示します。  データ型のサポートについて詳しくは、[テーブルの作成][create table]に関するページをご覧ください。
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes)を参照してください。 
 
-| **サポートされているデータ型** |  |  |
-| --- | --- | --- |
-| [bigint][bigint] |[decimal][decimal] |[smallint][smallint] |
-| [binary][binary] |[float][float] |[smallmoney][smallmoney] |
-| [bit][bit] |[int][int] |[sysname][sysname] |
-| [char][char] |[money][money] |[time][time] |
-| [date][date] |[nchar][nchar] |[tinyint][tinyint] |
-| [datetime][datetime] |[nvarchar][nvarchar] |[uniqueidentifier][uniqueidentifier] |
-| [datetime2][datetime2] |[real][real] |[varbinary][varbinary] |
-| [datetimeoffset][datetimeoffset] |[smalldatetime][smalldatetime] |[varchar][varchar] |
 
-## <a name="data-type-best-practices"></a>データ型のベスト プラクティス
- 列の型を定義するときに、データをサポートする最小のデータ型を使用すると、クエリのパフォーマンスが向上します。 これは、CHAR および VARCHAR 列の場合に特に重要です。 列の最長の値が 25 文字の場合は、列を VARCHAR(25) として定義します。 すべての文字列を既定の長さで定義しないようにします。 さらに、VARCHAR で済む場合は、[NVARCHAR][NVARCHAR] を使用せずに、列を VARCHAR として定義します。  可能なときは、NVARCHAR(MAX) または VARCHAR(MAX) の代わりに、NVARCHAR(4000) または VARCHAR(8000) を使用します。
+## <a name="minimize-row-length"></a>行の長さを最小化する
+データ型のサイズを最小化すると、行の長さが短くなり、クエリのパフォーマンスの向上につながります。 データに適した最小のデータ型を使用します。 
 
-## <a name="polybase-limitation"></a>Polybase の制限事項
-テーブルの読み込みに Polybase を使用している場合は、データの長さが 1 MB を超えていないことを確認します。  この幅を超える可能性のある可変長データを含む行を定義し、BCP を含む行を読み込むことはできますが、Polybase を使用して、このデータを完全に読み込むことはできません。  
+- 既定の長さで文字列を定義しないようにしてください。 たとえば、最長値が 25 文字の場合は、列を VARCHAR(25) として定義します。 
+- VARCHAR のみが必要な場合は、[NVARCHAR][NVARCHAR] を使用しないようにしてください。
+- 可能であれば、NVARCHAR(MAX) または VARCHAR(MAX) の代わりに、NVARCHAR(4000) または VARCHAR(8000) を使用します。
 
-## <a name="unsupported-data-types"></a>サポートされていないデータ型
-Azure SQL Database などの別の SQL プラットフォームからデータベースを移行する場合は、一部のデータ型が SQL Data Warehouse でサポートされていない可能性があります。  以下に、サポートされていないデータ型とサポートされていないデータ型の代わりに使用できるデータ型をいくつか示します。
+テーブルの読み込みに Polybase を使用している場合は、テーブル行の定義された長さが 1 MB を超えることはできません。 可変長データを含む行が 1 MB を超える場合、BCP で行を読み込めますが、PolyBase では読み込めません。
 
-| データ型 | 対処法 |
+## <a name="identify-unsupported-data-types"></a>サポートされていないデータ型を識別する
+データベースを別の SQL データベースから移行する場合は、データ型が SQL Data Warehouse でサポートされていない可能性があります。 既存の SQL スキーマでサポートされていないデータ型を検出するには、このクエリを使用します。
+
+```sql
+SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
+FROM sys.tables  t
+JOIN sys.columns c on t.[object_id]    = c.[object_id]
+JOIN sys.types   y on c.[user_type_id] = y.[user_type_id]
+WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
+ AND  y.[is_user_defined] = 1;
+```
+
+
+## <a name="unsupported-data-types"></a>サポートされていないデータ型の対処法を使用する
+
+以下のリストには、SQL Data Warehouse でサポートされていないデータ型と、サポートされていないデータ型の代わりに使用できるデータ型が示されています。
+
+| サポートされていないデータ型 | 対処法 |
 | --- | --- |
 | [geometry][geometry] |[varbinary][varbinary] |
 | [geography][geography] |[varbinary][varbinary] |
@@ -69,22 +67,20 @@ Azure SQL Database などの別の SQL プラットフォームからデータ�
 | [table][table] |一時テーブルに変換します。 |
 | [timestamp][timestamp] |[datetime2][datetime2] と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。  定数のみが既定値としてサポートされているため、current_timestamp を既定の制約として定義できません。 timestamp で型指定された列から行バージョンの値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に [BINARY][BINARY](8) または [VARBINARY][BINARY](8) を使用します。 |
 | [xml][xml] |[varchar][varchar] |
-| [ユーザー定義型][user defined types] |可能な限り、ネイティブ型に変換します。 |
-| 既定値 |既定値では、リテラルと定数のみがサポートされます。  `GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。 |
+| [ユーザー定義型][user defined types] |可能な場合は、ネイティブ データ型に戻します。 |
+| 既定値 | 既定値では、リテラルと定数のみがサポートされます。  `GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。 |
 
-Azure SQL Data Warehouse でサポートされていない列を識別するために、現在の SQL データベースで以下の SQL を実行できます。
-
-```sql
-SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
-FROM sys.tables  t
-JOIN sys.columns c on t.[object_id]    = c.[object_id]
-JOIN sys.types   y on c.[user_type_id] = y.[user_type_id]
-WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
- AND  y.[is_user_defined] = 1;
-```
 
 ## <a name="next-steps"></a>次のステップ
-[テーブルの概要][Overview]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
+詳細については、次を参照してください。
+
+- [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]
+- [テーブルの概要][Overview]
+- [テーブルの分散][Distribute]
+- [テーブルのインデックス作成][Index]
+- [テーブルのパーティション分割][Partition]
+- [テーブル統計の維持][Statistics]
+- [一時テーブル][Temporary]
 
 <!--Image references-->
 

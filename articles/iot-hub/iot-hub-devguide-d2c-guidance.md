@@ -12,12 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 05/25/2017
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: aa3704fe844a41fef22b8cdd35838c68aebc7752
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: a36283053939ccd53856a394cd9efb66285271ae
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 03/10/2017
 デバイス アプリからソリューション バック エンドに情報を送信する場合、IoT Hub では、次の 3 つのオプションを公開します。
 
 * [device-to-cloud メッセージ][lnk-d2c]: 時系列のテレメトリとアラート用。
-* [報告されるプロパティ][lnk-twins]: 使用できる機能、状態、実行時間の長いワークフローの状態など、デバイスの状態情報のレポート用 (例: 構成とソフトウェアの更新)。 For example, configuration and software updates.
+* [報告されるプロパティ][lnk-twins]: 使用できる機能、状態、実行時間の長いワークフローの状態など、デバイスの状態情報のレポート用。 たとえば、構成とソフトウェアの更新など。
 * [ファイルのアップロード][lnk-fileupload]: 断続的に接続されるデバイスによってアップロードされたり、帯域幅を節約するために圧縮されているメディア ファイルと大容量のテレメトリ バッチ用。
 
 さまざまな device-to-cloud 通信オプションの詳細な比較を次に示します。
@@ -40,8 +41,8 @@ ms.lasthandoff: 03/10/2017
 
 アプリケーションは、情報を時系列のテレメトリまたはアラートとして送信することと、デバイス ツインで使用できるようにすることの両方を要求できます。 このシナリオでは、次のいずれかの方法を選ぶことができます。
 
-* デバイス アプリが device-to-cloud メッセージを送信し、プロパティの変更を報告する。 
-* または、ソリューション バックエンドが、メッセージを受信したときにデバイス ツインのタグに情報を格納する。 
+* デバイス アプリが device-to-cloud メッセージを送信し、プロパティの変更を報告する。
+* ソリューション バックエンドが、メッセージを受信したときにデバイス ツインのタグに情報を格納する。
 
 device-to-cloud メッセージのほうがデバイス ツインの更新よりもはるかにスループットが高いため、すべての device-to-cloud メッセージに対してデバイス ツインを更新することは避けることをお勧めします。
 
@@ -50,5 +51,5 @@ device-to-cloud メッセージのほうがデバイス ツインの更新より
 [lnk-fileupload]: iot-hub-devguide-file-upload.md
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-query]: iot-hub-devguide-query-language.md
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-d2c]: iot-hub-devguide-messages-d2c.md
 

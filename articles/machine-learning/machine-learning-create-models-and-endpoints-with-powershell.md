@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: garye;haining
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 069e662ce70f1ec78d796c29d8b5331fc8a5a3e7
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 21d8c1ee0877df8d317d5a14131dc574fa5303c4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する
@@ -97,7 +97,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>個別のトレーニング データセットを使用するように PowerShell を使ってエンドポイントを更新する
 次に、各顧客の個別のデータで独自にトレーニングされたモデルでエンドポイントを更新します。 ただし最初に、これらのモデルを **Bike Rental Training** Web サービスから生成する必要があります。 **Bike Rental Training** Web サービスに戻りましょう。 10 個の異なるモデルを作成するためには、対応する BES エンドポイントを 10 回、10 個の異なるトレーニング データセットで呼び出す必要があります。 ここでは、PowerShell コマンドレット **InovkeAmlWebServiceBESEndpoint** を使用してこの処理を実行します。
 
-また、Blob Storage アカウントの資格情報を `$configContent` (つまり、`AccountName`、`AccountKey`、`RelativeLocation` の各フィールド) に与える必要があります。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**従来の Azure 管理ポータル** (*[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../storage/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** ボタンをクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
+また、Blob Storage アカウントの資格情報を `$configContent` (つまり、`AccountName`、`AccountKey`、`RelativeLocation` の各フィールド) に与える必要があります。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**従来の Azure 管理ポータル** (*[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** ボタンをクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

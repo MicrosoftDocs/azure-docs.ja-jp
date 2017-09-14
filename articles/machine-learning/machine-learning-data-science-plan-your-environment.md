@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a712baabf2674bda0a53de63e7c204b08ba9d105
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9297b241c047bf9feb68ced8da467c62e7f5acca
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/27/2017
    
    * [分析用のストレージ環境にデータを読み込む](machine-learning-data-science-ingest-data.md)
    * [さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする](machine-learning-data-science-import-data.md)
-4. **データを定期的なスケジュールで移動したり移行中に変更したりする必要がありますか。** 特にオンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオに関連して、継続的にデータを移行する必要がある場合、および移行の過程でデータを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、Azure Data Factory (ADF) の使用を検討してください。 詳細については、「 [Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](machine-learning-data-science-move-sql-azure-adf.md)
+4. **データを定期的なスケジュールで移動したり移行中に変更したりする必要がありますか。** 特にオンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオに関連して、継続的にデータを移行する必要がある場合、および移行の過程でデータを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、Azure Data Factory (ADF) の使用を検討してください。 詳細については、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](machine-learning-data-science-move-sql-azure-adf.md)」を参照してください。
 5. **どのくらいの量のデータが Azure に移動されますか。** 非常に大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](machine-learning-data-science-sample-data.md)に関するページをご覧ください。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>データの特性の確認事項: 型、形式、およびサイズ

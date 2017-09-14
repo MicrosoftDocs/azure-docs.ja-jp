@@ -1,9 +1,9 @@
-﻿---
+---
 title: "Azure Automation のデータの管理 | Microsoft Docs"
 description: "この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation でのディザスター リカバリー が含まれています。"
 services: automation
 documentationcenter: 
-author: SnehaGunda
+author: mgoedtel
 manager: stevenka
 editor: tysonn
 ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2016
-ms.author: bwren;sngun
+ms.date: 06/02/201
+ms.author: magoedte;bwren;sngun
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8ac93de19685c11dd25fd746e69ba1066fb35af
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 92893edc4e02de148f6585e83c6861fd751401bb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -45,6 +45,8 @@ Azure Automation は、90 日を超えるジョブを自動的に削除した後
 
 保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。
 
+ただし、データを長期にわたって保持する必要がある場合は、Runbook ジョブのログを Log Analytics に転送できます。  詳しくは、「[OMS Log Analytics への Azure Automation ジョブ データの転送](automation-manage-send-joblogs-log-analytics.md)」をご覧ください。   
+
 ## <a name="backing-up-azure-automation"></a>Azure Automation のバックアップ
 Microsoft Azure でオートメーション アカウントを削除すると、Runbook、モジュール、構成、設定、ジョブ、資産など、アカウント内のすべてのオブジェクトが削除されます。 アカウントを削除した後にオブジェクトを修復することはできません。  削除する前に、以下の情報を使用してオートメーション アカウントの内容をバックアップできます。 
 
@@ -52,12 +54,12 @@ Microsoft Azure でオートメーション アカウントを削除すると、
 Microsoft Azure 管理ポータルまたは Windows PowerShell の [Get-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/library/dn690269.aspx) コマンドレットを使用して、Runbook をスクリプト ファイルにエクスポートできます。  「 [Runbook の作成またはインポート](https://msdn.microsoft.com/library/dn643637.aspx)」で説明されているように、このスクリプト ファイルは別のオートメーション アカウントにインポートできます。
 
 ### <a name="integration-modules"></a>統合モジュール
-Azure Automation から統合モジュールをエクスポートすることはできません。  Automation アカウントの外部で統合モジュールを使用できることを確認する必要があります。
+Azure Automation から統合モジュールをエクスポートすることはできません。  オートメーション アカウントの外部で統合モジュールを使用できることを確認する必要があります。
 
 ### <a name="assets"></a>資産
-Azure Automation から [資産](https://msdn.microsoft.com/library/dn939988.aspx) をエクスポートすることはできません。  Microsoft Azure 管理ポータルを使用して、変数、資格情報、証明書、接続、およびスケジュールの詳細を記録する必要があります。  その後、別の Automation にインポートする Runbook で使用されているすべての資産を手動で作成する必要があります。
+Azure Automation から [資産](https://msdn.microsoft.com/library/dn939988.aspx) をエクスポートすることはできません。  Microsoft Azure 管理ポータルを使用して、変数、資格情報、証明書、接続、およびスケジュールの詳細を記録する必要があります。  その後、別のオートメーションにインポートする Runbook で使用されているすべての資産を手動で作成する必要があります。
 
-[Azure コマンドレット](https://msdn.microsoft.com/library/dn690262.aspx) を使用して暗号化されていない資産の詳細を取得し、後で参照するために保存したり、同等の資産を別の Automation アカウントに作成したりできます。
+[Azure コマンドレット](https://msdn.microsoft.com/library/dn690262.aspx) を使用して暗号化されていない資産の詳細を取得し、後で参照するために保存したり、同等の資産を別のオートメーション アカウントに作成したりできます。
 
 暗号化されている変数または資格情報のパスワード フィールドの値を、コマンドレットを使用して取得することはできません。  これらの値がわからない場合は、[Get-AutomationVariable](https://msdn.microsoft.com/library/dn940012.aspx) および [Get-AutomationPSCredential](https://msdn.microsoft.com/library/dn940015.aspx) アクティビティを使用して Runbook から値を取得できます。
 

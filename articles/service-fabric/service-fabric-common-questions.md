@@ -3,7 +3,7 @@ title: "Microsoft Azure Service Fabric に関するよく寄せられる質問 |
 description: "Service Fabric に関してよく寄せられる質問とその回答"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: chackdan
 manager: timlt
 editor: 
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/10/2017
-ms.author: seanmck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2bfbb3b8f7282ec8ae8abe9597230a3485221ecf
+ms.date: 08/18/2017
+ms.author: chackdan
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -29,21 +29,28 @@ Service Fabric で実行できる内容とその使用方法に関してよく�
 
 ## <a name="cluster-setup-and-management"></a>クラスターのセットアップと管理
 
-### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions"></a>複数の Azure リージョンにまたがるクラスターを作成することはできますか?
+### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>複数の Azure リージョンまたは自らのデータセンターにまたがるクラスターを作成することはできますか?
 
-現時点ではできませんが、これは共通の要求であるため、引き続き調査が行われています。
+はい。 
 
-Service Fabric クラスタリング テクノロジの核心は、Azure リージョンとは無関係に、相互にネットワーク接続されているのであれば、世界中で実行されているコンピューターを組み合わせて使用できることです。 ただし、Azure での Service Fabric クラスター リソースは、クラスターが構築される仮想マシン スケール セットと同じように、地域に限定されています。 さらに、遠く離れて分散しているコンピューター間に強い一貫性のあるデータのレプリケーションを提供することに伴う固有の課題があります。 マイクロソフトでは、予測可能で妥当なパフォーマンスが確保された後で、地域間クラスターをサポートすることを目指しています。
+Service Fabric コア クラスタリング テクノロジを使用すると、相互にネットワーク接続されているのであれば、世界中で実行されているコンピューターを組み合わせることができます。 ただし、そのようなクラスターの構築と実行は複雑になる可能性があります。
+
+このシナリオに関心がある場合は、[Service Fabric Github 問題一覧](https://github.com/azure/service-fabric-issues)から、あるいはサポート窓口を通じて詳しいガイダンスを入手してください。 Service Fabric チームでは、このシナリオをさらに明確にし、ガイダンスや推奨事項を追加できるよう取り組んでいます。 
+
+以下の点を考慮してください。 
+
+1. 現在、Azure での Service Fabric クラスター リソースは、クラスターが構築される仮想マシン スケール セットと同じように、地域に限定されています。 つまり、地域的な障害が発生したとき、Azure Resource Manager または Azure Portal を使用してクラスターを管理できなくなることがあります。 クラスターが実行し続けていて、直接やり取りできる場合にも、そのような状況になることがあります。 また、現在の Azure では、地域にまたがって使用できる単独の仮想ネットワークは提供されていません。 つまり、Azure における複数リージョン クラスターは、[VM Scale Sets の各 VM のための Public IP Addresses](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) か [Azure VPN Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) を必要とします。 これらのネットワーク オプションにより、コストやパフォーマンスがさまざまな影響を受けます。ある程度まではアプリケーション設計にも影響があります。このため、このような環境を立ち上げるには、事前に注意深い分析と計画が必要です。
+2. 特に、異なるクラウド プロバイダーやオンプレミス リソースと Azure など、複数の環境の_タイプ_が混在する場合、これらのマシンのメンテナンス、管理、監視は複雑になります。 そのような環境で実稼働ワークロードを実行する前には、クラスターとアプリケーションの両方のアップグレード、監視、管理、診断についてよく理解する必要があります。 Azure または自身のデータセンターでこのような問題を解決した経験が豊富にある場合は、Service Fabric クラスターを構築または実行する際にも同じソリューションを適用できると考えられます。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric ノードでは、OS の更新は自動的に受信されますか?
 
-現時点ではそうではありませんが、これも共通の要求であり、今後提供する予定です。
+現時点ではそうではありませんが、これも共通の要求であり、今後 Azure で提供する予定です。
+
+それまでの間は、Service Fabric ノードのオペレーティング システムにパッチを適用して最新状態にするための[アプリケーションを提供](service-fabric-patch-orchestration-application.md)しています。
 
 OS の更新に伴う課題は、それを行うには通常はコンピューターを再起動する必要があり、それによって可用性が一時的に失われることです。 Service Fabric では可用性が失われたサービスのトラフィックを他のノードに自動的にリダイレクトするため、再起動自体は問題ではありません。 ただし、OS の更新がクラスター全体で連係されていなかった場合、多数のノードが一度にダウンする可能性があります。 このような再起動の同時発生によって、サービスの可用性が完全に失われるか、少なくとも (ステートフル サービス用の) 特定のパーティションの可用性が失われる可能性があります。
 
 今後、更新ドメイン間で連係する完全に自動化された OS 更新ポリシーをサポートして、再起動やその他の予想外の障害が発生した場合でも可用性が維持されることを保証する予定です。
-
-それまでの間は、クラスター管理者が安全に各ノードの修正プログラムの適用を手動で開始するために使うことができる[スクリプトが提供](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/)されています。
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>SF クラスターで大規模な仮想マシン スケール セットを使用できますか? 
 
@@ -77,9 +84,14 @@ OS の更新に伴う課題は、それを行うには通常はコンピュー�
 
 アプリケーションをデプロイする前にテスト用のクラスターを作成する場合は、[継続的インテグレーション/継続的配置パイプライン](service-fabric-set-up-continuous-integration.md)の一部としてこれらのクラスターを作成することをお勧めします。
 
+
+### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>オペレーティング システムはどのようにアップグレードすればいいですか? (Windows Server 2012 を 2016 にする場合など)
+
+Microsoft はエクスペリエンスの改善に取り組んでいますが、現時点ではお客様の責任でアップグレードを行っていただく必要があります。 クラスターの仮想マシンで OS イメージをアップグレードする場合は、一度に 1 つの VM で行う必要があります。 
+
 ## <a name="container-support"></a>コンテナー サポート
 
-### <a name="why-are-my-containers-that-are-deployed-to-sf-are-unable-to-resolve-dns-addresses"></a>SF にデプロイされたコンテナーが DNS アドレスを解決できないのはなぜですか?
+### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>SF にデプロイされたコンテナーが DNS アドレスを解決できないのはなぜですか?
 
 この問題は、5.6.204.9494 バージョンのクラスターで報告されています。 
 

@@ -2,7 +2,7 @@
 title: "Azure Traffic Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "アプリケーションのパフォーマンスを最適にするために着信トラフィックを管理する方法について説明します。 ドキュメントでは、Azure または外部サービス エンドポイントにトラフィックを分散する方法を紹介します。"
 services: traffic-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 17727bace2ffbe77123e8d027b4a49b6ca92669e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/18/2017
 
 ---

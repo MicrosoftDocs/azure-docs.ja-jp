@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kyliel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 7a92105f9d7be88311f2ecd89b22e35f3ad3bbac
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 918f454784a9676297077c2e94c3e49ab2872d2f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>FreeBSD VHD の作成と Azure へのアップロード
@@ -128,7 +127,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
    * ストレージ アカウントの URL で使用するサブドメイン名を **[URL]** フィールドに入力します。 文字数は 3 ～ 24 文字で、数字とアルファベット小文字を使用できます。 この名前は、対応するサブスクリプションの Azure Blob Storage リソース、Azure Queue Storage リソース、Azure Table Storage リソースのアドレス指定に使用される URL のホスト名になります。
    * **[場所/アフィニティ グループ]** ボックスの一覧から、ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。 アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータ センターに配置できます。
-   * **[レプリケーション]** フィールドで、ストレージ アカウントに **geo 冗長**レプリケーションを使用するかどうかを決めます。 geo レプリケーションは既定で有効です。 このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。 2 次拠点は自動的に割り当てられ、変更することはできません。 法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、geo レプリケーションを無効にすることができます。 ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。 Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。 ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、「[Azure Storage のレプリケーション](../../../storage/storage-redundancy.md)」をご覧ください。
+   * **[レプリケーション]** フィールドで、ストレージ アカウントに **geo 冗長**レプリケーションを使用するかどうかを決めます。 geo レプリケーションは既定で有効です。 このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。 2 次拠点は自動的に割り当てられ、変更することはできません。 法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、geo レプリケーションを無効にすることができます。 ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。 Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。 ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、「[Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md)」をご覧ください。
 
      ![ストレージ アカウントの詳細の入力](./media/freebsd-create-upload-vhd/Storage-create-account.png)
 5. **[ストレージ アカウントの作成]**を選択します。 作成したアカウントが **[ストレージ]**に表示されます。
@@ -164,12 +163,12 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ### <a name="use-the-certificate-method-to-upload-a-vhd-file"></a>証明書方式を使用して .vhd ファイルをアップロードするには
 1. Azure PowerShell コンソールを開きます。
-2. 次のコマンドを入力します:  `Get-AzurePublishSettingsFile`
+2. 「`Get-AzurePublishSettingsFile`」と入力します。
 3. ブラウザー ウィンドウが開き、.publishsettings ファイルをダウンロードするよう求められます。 このファイルには、Azure サブスクリプションについての情報と証明書が含まれています。
 
     ![ブラウザーのダウンロード ページ](./media/freebsd-create-upload-vhd/Browser_download_GetPublishSettingsFile.png)
 4. .publishsettings ファイルを保存します。
-5. 「 `Import-AzurePublishSettingsFile <PathToFile>`」と入力します。ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。
+5. 「`Import-AzurePublishSettingsFile <PathToFile>`」と入力します。ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。
 
    詳細については、「 [Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照してください。
 

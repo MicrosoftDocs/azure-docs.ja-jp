@@ -4,7 +4,7 @@ description: "Media Services REST API を利用し、コンテンツ キー承�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 7af5f9e2-8ed8-43f2-843b-580ce8759fd4
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
-ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 3f457b1b82d1f75ec8796152b5c93f852175e1a5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
@@ -31,7 +31,7 @@ Media Services で資産を暗号化する場合は、[こちら](media-services
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES か PlayReady でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token** (JWT) 形式のトークンがサポートされます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、**Simple Web トークン** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web トークン **(JWT) 形式のトークンがサポートされます。
 
 Media Services では、Secure Token Services は提供されません。 トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。 STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
@@ -58,7 +58,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 > 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+> に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
 > 
 > 
 
@@ -67,7 +67,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
 
-#### <a name="a-idcontentkeyauthorizationpoliciesacreate-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies"></a>ContentKeyAuthorizationPolicies を作成する
+#### <a id="ContentKeyAuthorizationPolicies"></a>ContentKeyAuthorizationPolicies を作成する
 要求:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -103,7 +103,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:db4593da-f4d1-4cc5-a92a-d20eacbabee4","Name":"Open Authorization Policy"}
 
-#### <a name="a-idcontentkeyauthorizationpolicyoptionsacreate-contentkeyauthorizationpolicyoptions"></a><a id="ContentKeyAuthorizationPolicyOptions"></a>ContentKeyAuthorizationPolicyOptions を作成する
+#### <a id="ContentKeyAuthorizationPolicyOptions"></a>ContentKeyAuthorizationPolicyOptions を作成する
 要求:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -139,7 +139,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:57829b17-1101-4797-919b-f816f4a007b7","Name":"policy","KeyDeliveryType":2,"KeyDeliveryConfiguration":"","Restrictions":[{"Name":"HLS Open Authorization Policy","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a name="a-idlinkcontentkeyauthorizationpolicieswithoptionsalink-contentkeyauthorizationpolicies-with-options"></a><a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>ContentKeyAuthorizationPolicies を Options にリンクする
+#### <a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>ContentKeyAuthorizationPolicies を Options にリンクする
 要求:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies('nb%3Ackpid%3AUUID%3A0baa438b-8ac2-4c40-a53c-4d4722b78715')/$links/Options HTTP/1.1
@@ -160,7 +160,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
     HTTP/1.1 204 No Content
 
-#### <a name="a-idaddauthorizationpolicytokeyaadd-authorization-policy-to-the-content-key"></a><a id="AddAuthorizationPolicyToKey"></a>承認ポリシーをコンテンツ キーに追加する
+#### <a id="AddAuthorizationPolicyToKey"></a>承認ポリシーをコンテンツ キーに追加する
 要求:
 
     PUT https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -186,7 +186,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
 
-#### <a name="a-idschemaatoken-restriction-schema"></a><a id="schema"></a>トークン制限スキーマ
+#### <a id="schema"></a>トークン制限スキーマ
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -286,14 +286,14 @@ Media Services では、Secure Token Services は提供されません。 トー
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
 
-PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の&1; つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 
+PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 
 
 ### <a name="open-restriction"></a>オープン制限
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
 
-#### <a name="a-idcontentkeyauthorizationpolicies2acreate-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies2"></a>ContentKeyAuthorizationPolicies を作成する
+#### <a id="ContentKeyAuthorizationPolicies2"></a>ContentKeyAuthorizationPolicies を作成する
 要求:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -420,8 +420,8 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 #### <a name="add-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
 [ここ](#AddAuthorizationPolicyToKey)を参照して AuthorizationPolicy を ContentKey に追加します。
 
-## <a name="a-idtypesatypes-used-when-defining-contentkeyauthorizationpolicy"></a><a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
-### <a name="a-idcontentkeyrestrictiontypeacontentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
+### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -429,7 +429,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         IPRestricted = 2,
     }
 
-### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
         None = 0,

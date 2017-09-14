@@ -2,7 +2,7 @@
 title: "Azure Analysis Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "クラウド内で Analysis Services を使用してデータ モデリングを設定する方法について説明します。 ドキュメントでは、表形式データを使用してエンタープライズ BI ソリューションを作成する方法を紹介します。"
 services: analysis-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: f5358e2395d5380841894e62a694a6d1253c9126
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
 
 ---

@@ -5,18 +5,20 @@ services: active-directory
 documentationcenter: 
 author: asmalser-msft
 writer: asmalser-msft
-manager: stevenpo
+manager: sakula
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 07/20/2017
 ms.author: asmalser-msft
-translationtype: Human Translation
+ms.reviewer: asmalser
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a3c339de98250f43c71f7dd9706888c6715ca2ef
 ms.openlocfilehash: e39f2202e83cdf66b85f1cc02a9320ec9e31472e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/08/2017
 
 ---
@@ -46,9 +48,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-slack"></a>ユーザーを Slack に割り当てる際の重要なヒント
 
-*    単一の Azure AD ユーザーを Slack に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+*   単一の Azure AD ユーザーを Slack に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*    ユーザーを Slack に割り当てるときに、割り当てのダイアログで**ユーザー**または "グループ" のロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+*   ユーザーを Slack に割り当てるときに、割り当てのダイアログで**ユーザー**または "グループ" のロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
 
 
 ## <a name="configuring-user-provisioning-to-slack"></a>Slack へのユーザー プロビジョニングの構成 
@@ -61,17 +63,17 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Azure AD で Slack への自動ユーザー アカウント プロビジョニングを構成するには
 
 
-1)    [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1)  [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
 2) シングル サインオンのために Slack を既に構成している場合は、検索フィールドで Slack のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Slack** を検索します。 検索結果から Slack を選択してアプリケーションの一覧に追加します。
 
-3)    Slack のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3)  Slack のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-4)    **[プロビジョニング モード]** を **[自動]** に設定します。
+4)  **[プロビジョニング モード]** を **[自動]** に設定します。
 
 ![Slack のプロビジョニング](./media/active-directory-saas-slack-provisioning-tutorial/Slack1.PNG)
 
-5)    **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 これで、ブラウザーの新しいウィンドウで Slack 承認ダイアログが開きます。 
+5)  **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 これで、ブラウザーの新しいウィンドウで Slack 承認ダイアログが開きます。 
 
 6) 新しいウィンドウで、Team Admin アカウントを使用して Slack にサインインします。 表示された承認ダイアログで、プロビジョニングを有効にしたい Slack チームを選択して **[承認する]** を選択します。 終わったら Azure Portal に戻り、プロビジョニング構成を完了します。
 

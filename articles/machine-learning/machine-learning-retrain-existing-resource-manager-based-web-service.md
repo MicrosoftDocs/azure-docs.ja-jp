@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: dc4716a26ba5c2ba93dda83890dbff81f22cbd2a
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: bdc994daf441d397157f8e6cbcf84d72584927f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
@@ -64,7 +64,7 @@ ms.lasthandoff: 03/02/2017
 
 再トレーニング API を呼び出すには:
 
-1. Visual Studio で C# コンソール アプリケーションを作成します (**[新規]** > **[プロジェクト]** > **[Windows デスクトップ]** > **[コンソール アプリケーション]**)。
+1. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
 2. Machine Learning Web サービス ポータルにサインインします。
 3. 使用する Web サービスをクリックします。
 4. **[Consume (使用)]**をクリックします。
@@ -142,7 +142,7 @@ Azure Storage 情報を更新するには、Azure クラシック ポータル�
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-既存の Web サービスのリソース グループ名を決定するには、パラメーターを指定しないで Get-AzureRmMlWebService コマンドレットを実行しサブスクリプションの Web サービスを表示します。 Web サービスを見つけて、その Web サービス ID を確認します。 リソース グループの名前は ID の&4; 番目の要素で、" *resourceGroups* " 要素の後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
+既存の Web サービスのリソース グループ名を決定するには、パラメーターを指定しないで Get-AzureRmMlWebService コマンドレットを実行しサブスクリプションの Web サービスを表示します。 Web サービスを見つけて、その Web サービス ID を確認します。 リソース グループの名前は ID の 4 番目の要素で、" *resourceGroups* " 要素の後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -151,7 +151,7 @@ Azure Storage 情報を更新するには、Azure クラシック ポータル�
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-または、既存の Web サービスのリソース グループ名を判断するには、Azure Machine Learning Web サービス ポータルにサインインします。 Web サービスを選択します。 リソース グループ名は Web サービスの URL の&5; 番目の要素で、" *resourceGroups* " 要素の直後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
+または、既存の Web サービスのリソース グループ名を判断するには、Azure Machine Learning Web サービス ポータルにサインインします。 Web サービスを選択します。 リソース グループ名は Web サービスの URL の 5 番目の要素で、" *resourceGroups* " 要素の直後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
 
     https://services.azureml.net/subscriptions/<subcription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 

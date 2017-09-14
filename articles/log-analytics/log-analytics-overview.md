@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 391870380280d6783223849ce383113bf1dd6d31
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9fcf23f5ff47bd7457e5afa69eb2b9b33e0bf0fe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="what-is-log-analytics"></a>Log Analytics とは

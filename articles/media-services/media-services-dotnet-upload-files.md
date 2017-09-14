@@ -4,7 +4,7 @@ description: "資産を作成し、アップロードすることによって、
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 08dfdb54db0655bc025f8c268988804b069f70c6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード

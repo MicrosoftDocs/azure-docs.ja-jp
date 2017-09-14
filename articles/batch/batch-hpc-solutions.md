@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0bab12648a31b416bd7ceca75f0f83f5da226bad
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d30c09d23a84200ba81df133c9de5b11910ffb61
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>大規模コンピューティング ワークロード用の Batch および HPC ソリューション
@@ -93,7 +93,7 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。 基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。 これらのインスタンスは、標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。 Azure では、CPU コア、メモリ、ディスク容量などの特性の構成が異なる [さまざまなインスタンス サイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) から選択できます。 ニーズに応じて何千ものコアまでインスタンスをスケールし、必要なリソースが減ったらスケールダウンできます。
 
 > [!NOTE]
-> Azure で [H シリーズなどのコンピューティング集中型インスタンス](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を活用すれば、HPC ワークロードのパフォーマンスとスケーラビリティを改善できます。 これらのインスタンスでは、待機時間が短くスループットの高いアプリケーション ネットワークが必要とされる並列 MPI アプリケーションもサポートされています。 NVIDIA GPU と共に [N シリーズ](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/) VM を使用することもできるため、Azure におけるコンピューティングと視覚化のシナリオの幅が広がります。  
+> Azure で [H シリーズなどのコンピューティング集中型インスタンス](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を活用すれば、HPC ワークロードのパフォーマンスとスケーラビリティを改善できます。 これらのインスタンスでは、待機時間が短くスループットの高いアプリケーション ネットワークが必要とされる並列 MPI アプリケーションもサポートされています。 NVIDIA GPU と共に [N シリーズ](../virtual-machines/windows/sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) VM を使用することもできるため、Azure におけるコンピューティングと視覚化のシナリオの幅が広がります。  
 > 
 > 
 
@@ -106,7 +106,7 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 ### <a name="storage-services"></a>ストレージ サービス
 ビッグ コンピューティング ソリューションは、通常、一連の入力データを処理して、結果のデータを生成します。 ビッグ コンピューティング ソリューションで使用される Azure ストレージ サービスには次のようなものがあります。
 
-* [BLOB、テーブル、キュー ストレージ](https://azure.microsoft.com/documentation/services/storage/) - ワークフローと通信のために大量の非構造化データ、NoSQL データ、およびメッセージを管理します。 たとえば、大きな技術的データ セットや、アプリケーションが処理する入力イメージまたはメディア ファイルには BLOB ストレージを使用する場合があります。 ソリューションでの非同期通信にはキューを使用する場合があります。 「 [Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
+* [BLOB、テーブル、キュー ストレージ](https://azure.microsoft.com/documentation/services/storage/) - ワークフローと通信のために大量の非構造化データ、NoSQL データ、およびメッセージを管理します。 たとえば、大きな技術的データ セットや、アプリケーションが処理する入力イメージまたはメディア ファイルには BLOB ストレージを使用する場合があります。 ソリューションでの非同期通信にはキューを使用する場合があります。 「 [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」を参照してください。
 * [Azure File Storage](https://azure.microsoft.com/services/storage/files/) - 一部の HPC クラスター ソリューションに必要な標準の SMB プロトコルを使用して Azure 内の一般的なファイルとデータを共有します。
 * [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) - クラウド向けのハイパースケール Apache Hadoop 分散ファイル システムで、バッチ分析、リアルタイム分析、インタラクティブ分析で高い利便性を発揮します。
 

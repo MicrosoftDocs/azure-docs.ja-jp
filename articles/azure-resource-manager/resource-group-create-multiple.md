@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2017
+ms.date: 06/26/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a8e35456af8c9f2cf1bf9e9c364e33641f29a477
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
-このトピックでは、Azure リソース マネージャー テンプレートで反復処理して、リソースの複数のインスタンスを作成する方法について説明します。
+このトピックでは、Azure Resource Manager テンプレートで反復処理して、リソースの複数のインスタンス、またはリソース上のプロパティの複数のインスタンスを作成する方法について説明します。
+
+テンプレートにロジックを追加してリソースをデプロイするかどうかを指定できるようにする必要がある場合、「[Conditionally deploy resource](#conditionally-deploy-resource) (リソースを条件付きでデプロイする)」を参照してください。
 
 ## <a name="resource-iteration"></a>リソースの反復
 あるリソース タイプのインスタンスを複数作成するには、そのリソース タイプに `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 リソース マネージャーは、並列でリソースを作成します。 そのため、作成される順序は保証されません。 反復処理されるリソースを順番に作成する場合は、「[シリアル コピー](#serial-copy)」を参照してください。 
@@ -256,6 +258,147 @@ mode プロパティでも **parallel** が既定値として使用されます�
 }
 ```
 
+## <a name="property-iteration"></a>プロパティの反復処理
+
+リソース上のプロパティに複数の値を作成するには、プロパティ要素に `copy` 配列を追加します。 この配列にはオブジェクトが含まれていて、各オブジェクトには次のプロパティがあります。
+
+* name - 複数の値を作成するプロパティの名前
+* count - 作成する値の数
+* input - プロパティに割り当てる値を格納するオブジェクト  
+
+次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2017-03-30",
+  "properties": {
+    "storageProfile": {
+      "copy": [{
+          "name": "dataDisks",
+          "count": 3,
+          "input": {
+              "lun": "[copyIndex('dataDisks')]",
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          }
+      }],
+      ...
+```
+
+プロパティの反復処理内で `copyIndex` を使用する場合、反復処理の名前を指定する必要があります。 リソースの反復処理で使用する場合には名前を指定する必要はありません。
+
+Resource Manager はデプロイ中に `copy` 配列を展開します。 配列の名前がプロパティの名前になります。 入力値がオブジェクトのプロパティになります。 デプロイされたテンプレートは次のようになります。
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2017-03-30",
+  "properties": {
+    "storageProfile": {
+      "dataDisks": [
+          {
+              "lun": 0,
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          },
+          {
+              "lun": 1,
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          },
+          {
+              "lun": 2,
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          }
+      }],
+      ...
+```
+
+リソースの反復処理とプロパティの反復処理は同時に使用できます。 プロパティの反復処理を名前で参照します。
+
+```json
+{
+    "type": "Microsoft.Network/virtualNetworks",
+    "name": "[concat(parameters('vnetname'), copyIndex())]",
+    "apiVersion": "2016-06-01",
+    "copy":{
+        "count": 2,
+        "name": "vnetloop"
+    },
+    "location": "[resourceGroup().location]",
+    "properties": {
+        "addressSpace": {
+            "addressPrefixes": [
+                "[parameters('addressPrefix')]"
+            ]
+        },
+        "copy": [
+            {
+                "name": "subnets",
+                "count": 2,
+                "input": {
+                    "name": "[concat('subnet-', copyIndex('subnets'))]",
+                    "properties": {
+                        "addressPrefix": "[variables('subnetAddressPrefix')[copyIndex('subnets')]]"
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+各リソースのプロパティには copy 要素を 1 つのみ含めることができます。 1 つの反復ループを複数のプロパティに指定するには、copy 配列内の複数のオブジェクトを定義します。 各オブジェクトは個別に反復処理されます。 たとえば、ロード バランサーで `frontendIPConfigurations` プロパティと `loadBalancingRules` プロパティの両方の複数インスタンスを作成するには、1 つの copy 要素に両方のオブジェクトを定義します。 
+
+```json
+{
+    "name": "[variables('loadBalancerName')]",
+    "type": "Microsoft.Network/loadBalancers",
+    "properties": {
+        "copy": [
+          {
+              "name": "frontendIPConfigurations",
+              "count": 2,
+              "input": {
+                  "name": "[concat('loadBalancerFrontEnd', copyIndex('frontendIPConfigurations', 1))]",
+                  "properties": {
+                      "publicIPAddress": {
+                          "id": "[variables(concat('publicIPAddressID', copyIndex('frontendIPConfigurations', 1)))]"
+                      }
+                  }
+              }
+          },
+          {
+              "name": "loadBalancingRules",
+              "count": 2,
+              "input": {
+                  "name": "[concat('LBRuleForVIP', copyIndex('loadBalancingRules', 1))]",
+                  "properties": {
+                      "frontendIPConfiguration": {
+                          "id": "[variables(concat('frontEndIPConfigID', copyIndex('loadBalancingRules', 1)))]"
+                      },
+                      "backendAddressPool": {
+                          "id": "[variables('lbBackendPoolID')]"
+                      },
+                      "protocol": "tcp",
+                      "frontendPort": "[variables(concat('frontEndPort' copyIndex('loadBalancingRules', 1))]",
+                      "backendPort": "[variables(concat('backEndPort' copyIndex('loadBalancingRules', 1))]",
+                      "probe": {
+                          "id": "[variables('lbProbeID')]"
+                      }
+                  }
+              }
+          }
+        ],
+        ...
+    }
+}
+```
+
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
 `dependsOn` 要素を使用することで、リソースを別のリソースの後にデプロイするよう指定することが可能です。 ループ内のリソースの集合に依存するリソースをデプロイするには、dependsOn 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 コピー要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
 
@@ -341,6 +484,29 @@ mode プロパティでも **parallel** が既定値として使用されます�
     ...
 }]
 ```
+
+## <a name="conditionally-deploy-resource"></a>条件付きでリソースをデプロイする
+
+リソースをデプロイするかどうかを指定するには、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースはデプロイされます。 値が false の場合、リソースはデプロイされません。 たとえば、新しいストレージ アカウントをデプロイするか、既存のストレージ アカウントを使用するかを指定するには、次のようにします。
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+新しいリソースを使用するか、既存のリソースを使用するかの例は、「[新規または既存の条件テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json)」の例を参照してください。
+
+仮想マシンのデプロイにパスワードを使用するか、SSH キーを使用するかの例は、「[ユーザー名または SSH 条件テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json)」の例を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。

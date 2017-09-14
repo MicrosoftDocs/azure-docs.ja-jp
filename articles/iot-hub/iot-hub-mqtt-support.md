@@ -12,24 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2017
+ms.date: 07/11/2017
 ms.author: kdotchko
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 94389b06fda751716e1d593a85232ce37dae0b57
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 886bf3ce3979b7ef52ca29b7731562c5768596a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
+
 IoT Hub により、デバイスは、ポート 8883 で [MQTT v3.1.1][lnk-mqtt-org] プロトコルを使用するか、ポート 443 で WebSocket プロトコル経由で MQTT v3.1.1 を使用して、IoT Hub デバイス エンドポイントと通信できます。 IoT Hub では、すべてのデバイスの通信を TLS/SSL を使用してセキュリティで保護する必要があります (したがって、IoT Hub では、ポート 1883 経由のセキュリティで保護されていない接続はサポートしません)。
 
 ## <a name="connecting-to-iot-hub"></a>IoT Hub への接続
+
 MQTT プロトコルを使用してデバイスを IoT ハブに接続するには、[Azure IoT SDK][lnk-device-sdks] のライブラリを使用するか、MQTT プロトコルを直接使用します。
 
 ## <a name="using-the-device-sdks"></a>デバイス SDK の使用
+
 MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は、Java、Node.js、C、C #、および Python に対応しています。 デバイス SDK では、標準的な IoT Hub 接続文字列を使用して、IoT ハブへの接続を確立します。 MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT**に設定する必要があります。 デバイス SDK は既定では、**CleanSession** フラグを **0** に設定して IoT ハブに接続し、IoT ハブとのメッセージ交換には **QoS 1** を使用します。
 
 デバイスは、IoT ハブに接続されると、デバイス SDK によって提供されるメソッドにより、IoT ハブとの間でメッセージの送受信ができるようになります。
@@ -45,6 +47,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 | [Python][lnk-sample-python] |IoTHubTransportProvider.MQTT |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>デバイス アプリの AMQP から MQTT への移行
+
 [デバイス SDK][lnk-device-sdks] を使用している場合、AMQP から MQTT に切り替えるには前述のようにクライアントの初期化でプロトコル パラメーターを変更する必要があります。
 
 これを行う際は、次の項目をご確認ください。
@@ -53,7 +56,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 * MQTT は、[クラウドからデバイスへのメッセージ][lnk-messaging]の受信時の "*拒否*" 操作をサポートしていません。 バックエンド アプリでデバイス アプリからの応答を受信する必要がある場合は、[ダイレクト メソッド][lnk-methods]の使用をご検討ください。
 
 ## <a name="using-the-mqtt-protocol-directly"></a>MQTT プロトコルの直接使用
-デバイスでデバイス SDK を使用できない場合でも、MQTT プロトコルを使用してデバイスをパブリックのデバイス エンドポイントに接続できます。 **接続** パケットで、デバイスは次の値を使用する必要があります。
+デバイスでデバイス SDK を使用できない場合でも、MQTT プロトコルをポート 8883 で使用して、デバイスをパブリックのデバイス エンドポイントに接続できます。 **接続** パケットで、デバイスは次の値を使用する必要があります。
 
 * **ClientId** フィールドには、**deviceId** を使用します。
 * **[Usename]** フィールドには、`{iothubhostname}/{device_id}/api-version=2016-11-14` を使用します。{iothubhostname} は IoT Hub の完全な CName です。
@@ -77,6 +80,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 MQTT の接続および切断パケットでは、IoT Hub は、**操作の監視**チャネルに関するイベントを、接続の問題をトラブルシューティングするために役立つ情報を追加して発行します。
 
 ### <a name="sending-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの送信
+
 接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 次に例を示します。
 
 ```
@@ -97,9 +101,10 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 詳細については、[メッセージング開発者ガイド][lnk-messaging]をご覧ください。
 
 ### <a name="receiving-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージの受信
+
 IoT Hub からメッセージを受信するには、デバイスで、`devices/{device_id}/messages/devicebound/#` を**トピック フィルター**として使用してサブスクライブする必要があります。 トピック フィルター内の複数レベルのワイルドカード **#** は、デバイスがトピック名の追加プロパティを受信できるようにするためにのみ使用されます。 IoT Hub では、**#** または **?**  ワイルドカードを使用してサブトピックをフィルター処理することはできません。 IoT Hub はパブリッシャーとサブスクライバー間の汎用メッセージング ブローカーではないため、ドキュメント化されたトピック名とトピック フィルターのみをサポートします。
 
-デバイスは、`devices/{device_id}/messages/devicebound/#` トピック フィルターで表されるデバイス固有のエンドポイントへのサブスクライブが成功するまで、IoT Hub からメッセージを受信することはありません。 サブスクリプションの成功が確立された後、デバイスは、サブスクリプション後に送信された C2D メッセージのみの受信を開始します。 デバイスが **CleanSession** フラグを **0** に設定した状態で接続している場合、サブスクリプションは複数のセッションで保持されます。 この場合、次回 **CleanSession 0** の状態で接続したときに、デバイスは、切断中にデバイスに対して送信された未処理メッセージを受信します。 ただし、デバイスが **CleanSession** フラグを **1** に設定して使用している場合は、デバイス エンドポイントにサブスクライブするまで、デバイスが IoT Hub からメッセージを受信することはありません。
+デバイスは、`devices/{device_id}/messages/devicebound/#` トピック フィルターで表されるデバイス固有のエンドポイントへのサブスクライブが成功するまで、IoT Hub からメッセージを受信することはありません。 サブスクリプションが成功した後、デバイスは、サブスクリプション後に送信された cloud-to-device メッセージのみの受信を開始します。 デバイスが **CleanSession** フラグを **0** に設定した状態で接続している場合、サブスクリプションは複数のセッションで保持されます。 この場合、次回 **CleanSession 0** の状態で接続したときに、デバイスは、切断中にデバイスに対して送信された未処理メッセージを受信します。 ただし、デバイスが **CleanSession** フラグを **1** に設定して使用している場合は、デバイス エンドポイントにサブスクライブするまで、デバイスが IoT Hub からメッセージを受信することはありません。
 
 IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` またはメッセージ プロパティがある場合は `devices/{device_id}/messages/devicebound/{property_bag}` のメッセージを配信します。 `{property_bag}` には、メッセージ プロパティの URL でエンコードされた値/キーのペアが含まれています。 プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。 システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
 
@@ -188,15 +193,15 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 
 最初に、デバイスは `$iothub/methods/POST/#` にサブスクライブする必要があります。 IoT Hub は、有効な JSON または空の本文と共にメソッド要求をトピック `$iothub/methods/POST/{method name}/?$rid={request id}` に送信します。
 
-デバイスは、応答するために、有効な JSON または空の本文と共にメソッド要求をトピック `$iothub/methods/res/{status}/?$rid={request id}` に送信します。ここで、**request id** は要求メッセージの要求 ID と一致する必要があり、**status** は整数である必要があります。
+デバイスは、応答するために、有効な JSON または空の本文と共にメッセージをトピック `$iothub/methods/res/{status}/?$rid={request id}` に送信します。ここで、**request id** は要求メッセージの要求 ID と一致する必要があり、**status** は整数である必要があります。
 
 詳細については、[ダイレクト メソッド開発者ガイド][lnk-methods]をご覧ください。
 
 ### <a name="additional-considerations"></a>追加の考慮事項
+
 最後の考慮事項として、MQTT プロトコルの動作をクライアント側でカスタマイズする必要がある場合は、[Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway]に関するページを確認してください。IoT Hub と直接やり取りする高性能のカスタム プロトコル ゲートウェイをデプロイできます。 Azure IoT プロトコル ゲートウェイでは、ブラウンフィールド MQTT デプロイメントまたは他のカスタム プロトコルに応じてデバイス プロトコルをカスタマイズすることができます。 ただし、このアプローチでは、カスタム プロトコル ゲートウェイを実行して運用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、IoT Hub 開発者ガイドの「[MQTT サポートに関する留意事項][lnk-mqtt-devguide]」を参照してください。
 
 MQTT プロトコルの詳細については、[MQTT のドキュメント][lnk-mqtt-docs]を参照してください。
 
@@ -222,7 +227,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
 [lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
-[lnk-mqtt-devguide]: iot-hub-devguide-messaging.md#notes-on-mqtt-support
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
 [lnk-devices]: https://catalog.azureiotsuite.com/

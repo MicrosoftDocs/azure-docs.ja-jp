@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: ad9759f20135a87356819d5b819eab357b688cdc
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 541722cb02dd991228726e62a2304b49cdd806f2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Docker と Compose を使用して Azure 内で複数コンテナー アプリケーションを定義して実行する
@@ -88,7 +87,7 @@ docker-compose --version
 
 
 ## <a name="create-a-docker-composeyml-configuration-file"></a>docker-compose.yml 構成ファイルの作成
-次に、 `docker-compose.yml` というテキスト構成ファイルを作成して、VM 上で実行される Docker コンテナーを定義します。 このファイルでは、各コンテナーで実行するイメージ (イメージは Dockerfile からのビルドも使用できます)、必要な環境変数と依存関係、ポート、コンテナー間のリンクを指定します。 yml ファイルの構文の詳細については、 [Compose ファイルのリファレンス](http://docs.docker.com/compose/yml/)をご覧ください。
+次に、 `docker-compose.yml` というテキスト構成ファイルを作成して、VM 上で実行される Docker コンテナーを定義します。 このファイルでは、各コンテナーで実行するイメージ (イメージは Dockerfile からのビルドも使用できます)、必要な環境変数と依存関係、ポート、コンテナー間のリンクを指定します。 yml ファイルの構文の詳細については、 [Compose ファイルのリファレンス](https://docs.docker.com/compose/compose-file/)をご覧ください。
 
 次のように *docker-compose.yml* ファイルを作成します。
 

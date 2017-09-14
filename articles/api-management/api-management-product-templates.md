@@ -3,7 +3,7 @@ title: "Azure API Management の製品テンプレート | Microsoft Docs"
 description: "Azure API Management で開発者ポータルの製品ページの内容をカスタマイズする方法について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: dae757231d8f2ff7fcd8e032d941c0fa9f192796
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management の製品テンプレート
@@ -31,7 +33,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
   
-##  <a name="a-nameproductlista-product-list"></a><a name="ProductList"></a> 製品リスト  
+##  <a name="ProductList"></a> 製品リスト  
  **製品リスト** テンプレートを使用すると、開発者ポータルで製品リスト ページの本文をカスタマイズすることができます。  
   
  ![Products list](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -117,7 +119,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-nameproducta-product"></a><a name="Product"></a> 製品  
+##  <a name="Product"></a> 製品  
  **製品** テンプレートを使用すると、開発者ポータルで製品 ページの本文をカスタマイズすることができます。  
   
  ![Developer portal product page](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -257,9 +259,4 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-
+テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

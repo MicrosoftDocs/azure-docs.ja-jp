@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 4394a5ddd17e635661cd89b42f76b0558ffa17ab
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 32c6d4ed5470077856d4ab175a5df5188b3690a6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/13/2017
 
 ---
 
@@ -67,7 +67,7 @@ Microsoft には、このような統合の破綻を自動的に検出するテ�
 
 -   Internet Explorer で有効になっているセキュリティ設定によっては、Web サイトが**信頼済みゾーン**の一部ではない場合、アプリケーションのスクリプトの実行がブロックされることがあります。
 
-  *  この問題を解決するには、**Internet Explorer のセキュリティ設定**で **[信頼済みサイト]** の一覧に**アプリケーションの Web サイトを追加する**ようユーザーに指示します。 詳細な手順については、[サイトを信頼済みサイトの一覧に追加する方法](https://answers.microsoft.com/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5)に関する記事をユーザーに参照してもらいます。
+  *  この問題を解決するには、**Internet Explorer のセキュリティ設定**で **[信頼済みサイト]** の一覧に**アプリケーションの Web サイトを追加する**ようユーザーに指示します。 詳細な手順については、[サイトを信頼済みサイトの一覧に追加する方法](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5)に関する記事をユーザーに参照してもらいます。
 
 -   まれに、Internet Explorer のセキュリティ検証のために、ページの読み込みがスクリプトの実行よりも遅くなる場合があります。
 
@@ -93,15 +93,15 @@ Microsoft には、このような統合の破綻を自動的に検出するテ�
 
 3.  ソフトウェアのインストールを確認するプロンプトで、**[今すぐインストール]** を選択します。
 
-4.  お使いのブラウザーに基づいて、ダウンロード リンクが表示されます。 ブラウザーに拡張機能を**追加**します。
+4.  お使いのブラウザーに基づいて、ダウンロード リンクが表示されます。 お使いのブラウザーに拡張機能を**追加**します。
 
-5.  ブラウザーに確認メッセージが表示されたら、拡張機能を **[有効にする]** と **[許可する]** のいずれかを選択します。
+5.  お使いのブラウザーに確認メッセージが表示されたら、拡張機能を **[有効にする]** または **[許可する]** のいずれかを選択します。
 
 6.  インストールが完了したら、ブラウザー セッションを**再起動**します。
 
 7.  アクセス パネルにサインインし、パスワード SSO アプリケーションを**起動**できるかどうかを確認します。
 
-以下のダイレクト リンクから、Chrome と Firefox 対応の拡張機能をダウンロードすることもできます。
+以下のダイレクト リンクから、Chrome および Firefox 対応の拡張機能をダウンロードすることもできます。
 
 -   [Chrome アクセス パネル拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 

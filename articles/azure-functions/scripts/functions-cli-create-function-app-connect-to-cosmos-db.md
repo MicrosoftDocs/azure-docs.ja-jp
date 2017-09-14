@@ -4,7 +4,7 @@ description: "Azure CLI スクリプトのサンプル - Azure Cosmos DB に接�
 services: functions
 documentationcenter: functions
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: functions
 ms.assetid: 
@@ -17,21 +17,21 @@ ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: dbe02fbc71f04c67ab03a84845bf8666333ce621
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: ba7e934f71824493f29b001cea6dd1c567ef3414
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成
 
 このサンプル スクリプトでは、Azure Function App を作成し、Azure Cosmos DB データベースに接続します。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

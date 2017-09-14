@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup: Azure Portal を使用して仮想マシンを復元する | Microsoft Docs"
-description: "Azure ポータルを使用して復旧ポイントから Azure 仮想マシンを復元する"
+description: "Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元する"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,20 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/12/2017
+ms.date: 8/15/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: ff505246bef15d180e3844558d68a425df60c35f
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: e1fe2b94d462a30f09cb23ab905542aa121ba46b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
-# <a name="use-azure-portal-to-restore-virtual-machines"></a>Azure ポータルを使用した仮想マシンの復元
+# <a name="use-azure-portal-to-restore-virtual-machines"></a>Azure Portal を使用した仮想マシンの復元
 > [!div class="op_single_selector"]
 > * [クラシック ポータルでの VM の復元](backup-azure-restore-vms.md)
-> * [Azure ポータルでの VM の復元](backup-azure-arm-restore-vms.md)
+> * [Azure Portal での VM の復元](backup-azure-arm-restore-vms.md)
 >
 >
 
@@ -45,7 +44,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 2. 復元タイプの選択 - 新しい VM を作成するかディスクを復元し、必要なパラメーターを指定する。 
 
 ## <a name="select-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
-1. [Azure ポータル](http://portal.azure.com/)
+1. [Azure Portal](http://portal.azure.com/)
 2. Azure メニューで **[参照]** をクリックし、サービスの一覧で「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
 
     ![Open Recovery Services vault](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
@@ -94,7 +93,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 9. 復元ポイントを設定すると、**[復元]** ブレードに **[復元の構成]** が自動的に開きます。
 
 ## <a name="choosing-a-vm-restore-configuration"></a>VM の復元構成の選択
-復元ポイントを選択したので、次に復元 VM の構成を選択します。 復元 VM の構成には、Azure ポータルまたは PowerShell を使用できます。
+復元ポイントを選択したので、次に復元 VM の構成を選択します。 復元 VM の構成には、Azure Portal または PowerShell を使用できます。
 
 1. 現在 **[復元]** ブレードを表示していない場合は、表示します。 いずれかの[復元ポイントが選択されている](#select-restore-point-for-restore)状態で、**[復元の構成]** をクリックして **[復元の構成]** ブレードを開きます。
 
@@ -118,7 +117,9 @@ VM バックアップから VM またはすべてのディスクを復元する�
 ![復元構成ウィザードが設定される](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
 
 > [!NOTE]
-> Resource Manager でデプロイされた VM を復元する場合は、仮想ネットワーク (VNET) を特定する必要があります。 クラシック VM の場合には、仮想ネットワーク (VNET) は省略可能です。
+> 1. Resource Manager でデプロイされた VM を復元する場合は、仮想ネットワーク (VNET) を特定する必要があります。 クラシック VM の場合には、仮想ネットワーク (VNET) は省略可能です。
+> 2. 管理対象ディスクを使用して VM を復元する場合は、選択したストレージ アカウントが その有効期間内に Storage Service Encryption (SSE) によって有効にされないことを確認します。
+> 3. 選択したストレージ アカウント (Premium または Standard) のストレージの種類に基づいて、復元されたすべてのディスクは Premium または Standard ディスクになります。 現在、復元時に混合モードはサポートされません。  
 >
 >
 
@@ -129,7 +130,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
 復元操作が完了すると、次のことができます。
 * [テンプレートを使用して、復元された VM をカスタマイズする](#use-templates-to-customize-restore-vm)
-* [復元ディスクを使用して、既存の仮想マシンにアタッチする](../virtual-machines/windows/attach-disk-portal.md)
+* [復元ディスクを使用して、既存の仮想マシンにアタッチする](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [PowerShell を使用して、復元されたディスクから新しい仮想マシンを作成する](./backup-azure-vms-automation.md#restore-an-azure-vm)
 
 **[復元の構成]** ブレードで **[OK]** をクリックして、復元の構成を完了します。 **[復元]** ブレードで **[復元]** をクリックして、復元操作を開始します。
@@ -170,19 +171,11 @@ VM バックアップから VM またはすべてのディスクを復元する�
 復元ディスクのオプションとして生成されたテンプレートを取得するには
 
 1. 復元ジョブに対応するジョブの詳細に移動します。 
-2. テンプレートをダウンロードできるテンプレート URI の一覧が表示されます。 この値の中でコンテナーの名前に注意してください。 
+2. 復元ジョブの詳細画面で、*[テンプレートのデプロイ]* ボタンをクリックして、テンプレートのデプロイを開始します。 
 
      ![復元ジョブのドリルダウン](./media/backup-azure-arm-restore-vms/restore-job-drill-down.png)
-     
-3. 対象のストレージ アカウント名、コンテナー名、BLOB テンプレートの URI をメモしておきます。 "*対象のストレージ アカウント > BLOB を選択 > コンテナー*" のファイルに移動し、名前が *azuredeploy* で始まるファイルをダウンロードします。
-
-    ![download-template-storage-account](./media/backup-azure-arm-restore-vms/download-template.png)
-    
-   または、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して、対応するサブスクリプション > 対象のストレージ アカウント > BLOB コンテナーの順に移動し、上記の手順でメモしておいたコンテナー名を選択します。 コンテナー内のファイルが表示されている右側のウィンドウで、名前が *azuredeploy* で始まるファイルをダウンロードします。 
    
-   ![download-template-storage-explorer](./media/backup-azure-arm-restore-vms/template-storage-explorer-download.png)
-     
-テンプレートがダウンロードされたら、テンプレート デプロイを使用して[テンプレートを編集およびデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)するか、デプロイする前に[テンプレートを作成](../azure-resource-manager/resource-group-authoring-templates.md)することで、さらにカスタマイズします。 [ファイルの読み込み] を使用すると、上記でダウンロードしたテンプレートをデプロイできます。 
+カスタム デプロイの [テンプレートのデプロイ] ブレードで、テンプレートのデプロイを使用して[テンプレートを編集およびデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)するか、デプロイの前に[テンプレートを作成](../azure-resource-manager/resource-group-authoring-templates.md)することによってさらにカスタマイズを追加します。 
 
    ![テンプレート デプロイの読み込み](./media/backup-azure-arm-restore-vms/loading-template.png)
    
@@ -194,7 +187,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM は、VMAccess 拡張機能を使用して [パスワードをリセット](../virtual-machines/linux/classic/reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
 * バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合、拡張機能を再インストールしてください。 
 * バックアップされる VM に静的 IP がある場合は、復元後、復元された VM を作成するときの競合を避けるため、復元される VM には動的 IP が設定されます。 [復元された VM に静的 IP を追加する](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)方法を参照してください。
-* 復元された VM には可用性の値が設定されていません。 復元ディスク オプションを使い、復元されたディスクを使って PowerShell またはテンプレートから VM を作成するときに[可用性セットを追加する](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set)ことをお勧めします。 
+* 復元された VM には可用性の値が設定されていません。 復元ディスク オプションを使い、復元されたディスクを使って PowerShell またはテンプレートから VM を作成するときに[可用性セットを追加する](../virtual-machines/windows/tutorial-availability-sets.md)ことをお勧めします。 
 
 
 ## <a name="backup-for-restored-vms"></a>復元された VM のバックアップ
@@ -202,6 +195,20 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
 ## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>Azure データ センターにおける障害発生時の VM の復元
 VM が稼働しているプライマリ データ センターが被災した場合、Backup コンテナーが geo 冗長に構成されていると、Azure Backup ではバックアップされた VM をペアのデータセンターに復元することができます。 このようなシナリオでは、ペアのデータ センター内に存在するストレージ アカウントを選択する必要があります。これ以外の復元処理は同じとなります。 Azure Backup では、ペアの geo からコンピューティング サービスを使って、復元された仮想マシンを作成します。 詳しくは、[Azure データ センターの回復性に関するページ](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)をご覧ください。
+
+## <a name="restoring-domain-controller-vms"></a>ドメイン コントローラー の VM の復元
+ドメイン コントローラー (DC) の仮想マシンのバックアップは、Azure Backup でサポートされているシナリオです。 ただし、この復元プロセスでは注意が必要です。 適切な復元プロセスは、ドメインの構造によって異なります。 最も単純なのは、1 つのドメインに 1 つの DC があるケースです。 運用環境の負荷としてより一般的なのは、1 つのドメインに複数の DC があるケースです。オンプレミスにいくつかの DC があるケースも考えられます。 そして、1 つのフォレストに複数のドメインがあるケースもあります。 
+
+Active Directory の観点からは、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、バックアップ コンテナーからの VM の復元が、BMR の代わりとなります。 Active Directory 復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 背景情報について詳しくは、「[Backup and Restore considerations for virtualized Domain Controllers (仮想化されたドメイン コントローラーのバックアップと復元についての考慮事項)](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)」と「[Planning for Active Directory Forest Recovery (Active Directory Forest Recovery の計画)](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)」をご覧ください。
+
+### <a name="single-dc-in-a-single-domain"></a>1 つのドメインに 1 つの DC がある
+VM は、(他の VM と同様に) Azure Portal から復元するか、または PowerShell を使用して復元することができます。
+
+### <a name="multiple-dcs-in-a-single-domain"></a>1 つのドメインに複数の DC がある
+同じドメインの他の DC に、ネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ドメインの最後の DC の場合や、分離ネットワークの回復を実行した場合は、フォレスト回復の手順に従う必要があります。
+
+### <a name="multiple-domains-in-one-forest"></a>1 つのフォレストに複数のドメインがある
+同じドメインの他の DC に、ネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ただし、それ以外の場合は、フォレストの回復をお勧めします。
 
 ## <a name="restoring-vms-with-special-network-configurations"></a>特別なネットワーク構成を持つ VM の復元
 次のような特別なネットワーク構成を持つ VM をバックアップして復元することができます。 ただし、これらの構成では、復元プロセスを実行するときにいくつかの特別な配慮が必要となります。

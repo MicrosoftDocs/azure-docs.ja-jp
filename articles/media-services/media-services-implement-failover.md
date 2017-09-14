@@ -4,7 +4,7 @@ description: "このトピックでは、フェールオーバー ストリー�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: eaa87671a90ab6b090fb04f346ef551edba4d173
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/15/2017
-
 
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Azure Media Services でのフェールオーバー ストリーミングの実装
@@ -458,7 +458,6 @@ ms.lasthandoff: 03/15/2017
             var targetContainer = targetBlobClient.GetContainerReference(targetContainerName);
             targetContainer.CreateIfNotExists();
 
-
             string blobToken = sourceContainer.GetSharedAccessSignature(new SharedAccessBlobPolicy()
             {
                 // Specify the expiration time for the signature.
@@ -466,7 +465,6 @@ ms.lasthandoff: 03/15/2017
                 // Specify the permissions granted by the signature.
                 Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read
             });
-
 
             foreach (var sourceBlob in sourceContainer.ListBlobs())
             {
@@ -941,7 +939,6 @@ ms.lasthandoff: 03/15/2017
             }
             return request;
         }
-
 
 ## <a name="next-steps"></a>次のステップ
 これで、Traffic Manager を使用して 2 つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。

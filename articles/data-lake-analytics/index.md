@@ -2,8 +2,8 @@
 title: "Azure Data Lake Analytics のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Data Lake Analytics によるビッグ データの分析について説明します。 チュートリアルでは、バッチ型、リアルタイム型、対話型の分析の実行方法と、U-SQL クエリの記述方法を紹介します。"
 services: data-lake-analytics
-author: saveenr
-manager: saveenr
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: data-lake-analytics

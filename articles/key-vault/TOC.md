@@ -14,22 +14,28 @@
 ### [サービスの制限](key-vault-service-limits.md)
 ### [HSM で保護されたキー](key-vault-hsm-protected-keys.md)
 ### [.NET 2.0 への移行](key-vault-dotnet2api-release-notes.md)
+### 概要
+#### [セキュリティ ワールド](key-vault-ovw-security-worlds.md)
+#### [論理的な削除](key-vault-ovw-soft-delete.md)
+#### [ストレージ アカウント キー](key-vault-ovw-storage-keys.md)
+#### [調整](key-vault-ovw-throttling.md)
 
-## 管理
+## Manage
 ### [Azure Key Vault のログ記録](key-vault-logging.md)
 ### [ファイアウォールの内側にアクセスする](key-vault-access-behind-firewall.md)
-### [テナント ID を変更する](key-vault-subscription-move-fix.md)
 ### [可用性と冗長性](key-vault-disaster-recovery-guidance.md)
+### [テナント ID を変更する](key-vault-subscription-move-fix.md)
+### [CLI 2.0 を使用した作成と管理](key-vault-manage-with-cli2.md)
+### [CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)
+### [PowerShell で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-powershell.md)
+### [グループを使用してアクセスを許可する](key-vault-group-permissions-for-apps.md)
 ### [キー コンテナーのセキュリティ保護](key-vault-secure-your-key-vault.md)
-### [セキュリティ ワールドの概要](key-vault-ovw-security-worlds.md)
-### [論理的な削除の概要](key-vault-ovw-soft-delete.md)
-### [ストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)
 
 ## 自動化
 ### [Azure Automation](automation-manage-key-vault.md)
-### [CLI 2.0 を使用した作成と管理](key-vault-manage-with-cli2.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
 ## [PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI 2](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
@@ -47,7 +53,9 @@
 
 # リソース
 ## [キー、シークレット、証明書について](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
-## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)
-## [料金](https://azure.microsoft.com/pricing/details/key-vault/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ブログ](http://blogs.technet.com/b/kv/)
+## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
+## [料金](https://azure.microsoft.com/pricing/details/key-vault/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

@@ -15,10 +15,10 @@ ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ea3fc801074bb6d7e7c32574bc94702c79a61185
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -259,7 +259,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 `name` - フィールドの名前を設定します。
 
-`type` - フィールドのデータ型を設定します。 サポートされる型の一覧については、「 [サポートされるデータ型](#DataTypes) 」を参照してください。
+`type` - フィールドのデータ型を設定します。
 
 `searchable` - フィールドをフルテキスト検索可能としてマークします。 これは、インデックス処理中に単語の区切りなどの分析が行われることを意味します。 `searchable` フィールドに "sunny day" のような値を設定した場合、個別トークン "sunny" と "day" に内部的に分割されます。 これにより、これらの語句をフルテキスト検索できます。 `Edm.String` 型または `Collection(Edm.String)` 型のフィールドは、既定で `searchable` になります。 他の型のフィールドは、 `searchable`にすることはできません。
 
@@ -1461,7 +1461,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 > 
 > 
 
-`$filter=[string]` (省略可能) - 標準の OData 構文で構造化された検索式。 Azure Search がサポートする OData 式の文法のサブセットの詳細については、「 [OData 式の構文](#ODataExpressionSyntax) 」を参照してください。
+`$filter=[string]` (省略可能) - 標準の OData 構文で構造化された検索式。
 
 > [!NOTE]
 > POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$filter` ではなく `filter` です。

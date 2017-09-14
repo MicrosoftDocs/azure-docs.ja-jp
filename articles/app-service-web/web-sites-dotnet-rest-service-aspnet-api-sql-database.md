@@ -15,10 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
-translationtype: Human Translation
-ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
-ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 64c18f2cfabbb7af6ffd89b4c2a9095fca1cf799
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -668,8 +669,6 @@ XSRF 攻撃はフィッシング攻撃とは異なります。 フィッシン�
 > 
 
 ## <a name="next-steps"></a>次のステップ
-実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。 「 [Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションのデプロイ)](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) 」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションをデプロイする方法について説明しています。
-
 Azure アプリケーションにデータを保存するには、Azure Storage を使用する方法もあります。Azure Storage には、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。 Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
 
 * [MVC を使った Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]

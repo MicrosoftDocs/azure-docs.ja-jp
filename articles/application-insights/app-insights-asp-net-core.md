@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 560db0f2a3ac6beb2664725514b0cbe4ae2be0d4
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 43e9e864a11cd6601ca9599f5a193793d344e0e5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights for ASP.NET Core

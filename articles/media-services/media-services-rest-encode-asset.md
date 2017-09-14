@@ -4,7 +4,7 @@ description: "Media Encoder Standard を使用して Azure Media Services でメ
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 4e56b8d97a650813dcea1fde9d74ddc29154605d
-ms.lasthandoff: 03/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 4ec324d94717fa1f93eda6f24d9dbd9fc0cdc455
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
@@ -39,14 +39,22 @@ ms.lasthandoff: 03/18/2017
 * タスクは、Job エンティティの Tasks ナビゲーション プロパティを使用して、インラインで定義できます。
 * OData バッチ処理を使用します。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
+ソース ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「[方法: アセットの配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
 
-> [!NOTE]
-> メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。 詳細については、[メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
->
->
+## <a name="considerations"></a>考慮事項
+
+Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+
+メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。 詳細については、[メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>1 つのエンコード タスクを持つジョブの作成
 > [!NOTE]
@@ -54,7 +62,7 @@ ms.lasthandoff: 03/18/2017
 >
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 >
-> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+> に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
 >
 > JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 >

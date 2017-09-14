@@ -4,7 +4,7 @@ description: "AMS REST API を使用したストレージ暗号化によるコ�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
 ms.service: media-services
@@ -12,17 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: d649ce6bcb5629cb820befd3478afa3f70293ccb
-ms.lasthandoff: 01/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 17cf10fe1edd46d84806ac4fe09b757c75730356
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
-# <a name="encrypting-your-content-with-storage-encryption-using-ams-rest-api"></a>AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化
-AES&256; ビット暗号化を使用してコンテンツをローカルに暗号化し、それを Azure Storage にアップロードすることをお勧めします。そうすることで、コンテンツが保存時に暗号化された状態で格納されます。
+# <a name="encrypting-your-content-with-storage-encryption"></a>ストレージ暗号化によるコンテンツの暗号化
+
+AES 256 ビット暗号化を使用してコンテンツをローカルに暗号化し、それを Azure Storage にアップロードすることをお勧めします。そうすることで、コンテンツが保存時に暗号化された状態で格納されます。
 
 この記事では、AMS ストレージの暗号化の概要を紹介し、ストレージ暗号化が実行されたコンテンツをアップロードする方法を示します。
 
@@ -33,22 +34,23 @@ AES&256; ビット暗号化を使用してコンテンツをローカルに暗�
 * コンテンツ キーを資産にリンクします。  
 * AssetFile エンティティで暗号化関連のパラメーターを設定します。
 
-> [!NOTE]
-> ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があります。 資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。 詳細については、「 [資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
-> 
-> [!NOTE]
-> Media Services REST API を使用する場合は、次のことに考慮します。
-> 
-> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
-> 
-> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
-> 
-> 
+## <a name="considerations"></a>考慮事項 
+
+ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があります。 資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。 詳細については、「 [資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
+
+Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。 
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="storage-encryption-overview"></a>ストレージ暗号化の概要
 AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗号化を適用します。  AES-CTR モードは、任意の長さのデータを暗号化できるブロック暗号です。埋め込みの必要はありません。 AES アルゴリズムを使用してカウンター ブロックを暗号化し、AES の出力と、暗号化または復号化するデータの排他論理和をとるという演算です。  使用されるカウンター ブロックを構築するには、InitializationVector の値をカウンター値のバイト 0 から 7 にコピーし、カウンター値のバイト 8 から 15 はゼロに設定します。 16 バイトのカウンター ブロックのうち、バイト 8 から 15 (つまり、下位バイト) は単純な符号なし 64 ビット整数として使用されます。それ以降に処理されるデータのブロックごとに 1 ずつ増分され、ネットワーク バイト順は維持されます。 整数が最大値 (0xFFFFFFFFFFFFFFFF) に達すると、増分によってゼロにリセットされます (バイト 8 から 15)。残りの 64 ビットのカウンター (バイト 0 から 7) には影響がありません。   AES-CTR モード暗号化のセキュリティを維持するには、コンテンツ キーごとに指定されたキー識別子の InitializationVector 値をファイルごとに一意にする必要があります。また、ファイルの長さを 2^64 ブロック未満にする必要があります。  これによって、カウンター値が特定のキーに再利用されないようにすることができます。 CTR モードの詳細については、[こちらの wiki ページ](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) ("InitializationVector" ではなく "Nonce" という用語を使用する wiki 記事) を参照してください。
 
-**ストレージ暗号化**で AES&256; ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージの暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
+**ストレージ暗号化**で AES 256 ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージの暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
 
 ストレージで暗号化された資産を配信するためには、資産の配信ポリシーを構成して、コンテンツの配信方法を Media Services に指示する必要があります。 資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシー (AES、共通暗号化、暗号化なしなど) を使用してコンテンツをストリーミングする必要があります。
 
@@ -92,8 +94,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
             return Convert.ToBase64String(retVal);
         }
 
-
-1. 前の手順で取得した **EncryptedContentKey** 値 (Base&64; エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
+1. 前の手順で取得した **EncryptedContentKey** 値 (Base 64 エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
 
     ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
 
@@ -120,7 +121,6 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
     x-ms-version: 2.11
     Host: media.windows.net
-
 
 応答:
 
@@ -153,8 +153,6 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
     x-ms-version: 2.11
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
-
-
 
 応答:
 
@@ -203,7 +201,6 @@ X.509 証明書を取得して、その公開キーを使ってコンテンツ �
     "Checksum":"calculated checksum"
     }
 
-
 応答:
 
     HTTP/1.1 201 Created
@@ -246,7 +243,6 @@ X.509 証明書を取得して、その公開キーを使ってコンテンツ �
     Host: media.windows.net
 
     {"Name":"BigBuckBunny" "Options":1}
-
 
 **HTTP 応答**
 
@@ -293,7 +289,6 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
     x-ms-version: 2.11
     Host: media.windows.net
 
-
     {"uri":"https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A01e6ea36-2285-4562-91f1-82c45736047c')"}
 
 応答:
@@ -301,9 +296,9 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
     HTTP/1.1 204 No Content 
 
 ## <a name="create-an-assetfile"></a>AssetFile を作成する
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には&1; つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には 1 つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
-**AssetFile** インスタンスと実際のメディア ファイルは次の&2; つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+**AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 デジタル メディア ファイルを BLOB コンテナーにアップロードした後、 **MERGE** HTTP 要求を使用して、メディア ファイルに関する情報とともに AssetFile を更新します (このトピックでは説明しません)。 
 

@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 06/28/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c30f58079c9d8b8077b65881517178fa0ae0e598
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8df8a4c6ff0897c821e13248e0494b17e1a4992d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Resource Manager - PowerShell](expressroute-howto-linkvnet-arm.md)
-> * [クラシック - PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [Azure ポータル](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [Azure CLI](howto-linkvnet-cli.md)
 > * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> 
-> 
+> * [PowerShell (クラシック)](expressroute-howto-linkvnet-classic.md)
+>
 
 この記事では、クラシック デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
 
@@ -159,6 +159,10 @@ ms.lasthandoff: 04/27/2017
     State VnetName
     ----- --------
     Provisioned SalesVNET1
+
+新たにリンクされた仮想ネットワークのサブスクリプションで、このコマンドを実行します。
+
+    New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

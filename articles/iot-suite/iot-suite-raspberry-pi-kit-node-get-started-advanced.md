@@ -12,14 +12,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 021bf7c3ce70d9857b14597a2d378d7baad5aab2
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 54503d5d6a636239d240509d7d09cf334234bac7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Node.js を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、リモート ファームウェア更新を有効にする
@@ -35,7 +34,6 @@ ms.lasthandoff: 05/03/2017
 
 - サンプル デバイスを実装するための Raspbian OS、Node.js プログラミング言語、Node.js 用 Microsoft Azure IoT SDK。
 - クラウド ベース バックエンドとしての IoT Suite リモート監視構成済みソリューション。
-
 
 ## <a name="overview"></a>概要
 
@@ -67,33 +65,44 @@ Raspberry Pi のリモート監視クライアント アプリケーションを
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 
-    `sudo apt-get update`
+    ```sh
+    sudo apt-get update
+    ```
 
 1. 次のコマンドを使用して、Node.js のバイナリを Raspberry Pi にダウンロードします。
 
-    `wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. 次のコマンドを使用して、バイナリをインストールします。
 
-    `sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. 次のコマンドを使用して、Node.js v6.10.2 が正常にインストールされたことを確認します。
 
-    `node --version`
+    ```sh
+    node --version
+    ```
 
 ### <a name="clone-the-repositories"></a>リポジトリの複製
 
 まだリポジトリを複製していない場合は、Pi 上で次のコマンドを実行して必要なリポジトリを複製します。
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git
+```
 
 ### <a name="update-the-device-connection-string"></a>デバイスの接続文字列を更新する
 
 次のコマンドを使用して、**nano** エディターのサンプル構成ファイルを開きます。
 
-`nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo`
+```sh
+nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo
+```
 
 プレースホルダーの値を、このチュートリアルの最初で作成し保存したデバイス ID と IoT Hub 情報に置き換えます。
 
@@ -110,13 +119,16 @@ HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=
 
 次のコマンドを実行して、サンプルの前提条件となるパッケージをインストールします。
 
-`cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0`
-
-`npm install`
+```sh
+cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0
+npm install
+```
 
 Raspberry Pi 上でサンプル プログラムを実行できます。 次のコマンドを入力します。
 
-`sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js`
+```sh
+sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js
+```
 
 次のサンプル出力は、Raspberry Pi 上のコマンド プロンプトに表示される出力の例です。
 
@@ -132,7 +144,7 @@ Raspberry Pi 上でサンプル プログラムを実行できます。 次の�
 
 1. **[メソッドの呼び出し]** ページで、**[方法]** ドロップダウンの **[InitiateFirmwareUpdate]** を選択します。
 
-1. **[FWPackageURI]** フィールドで、「**https://raw.githubusercontent.com/IoTChinaTeam/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**」と入力します。 このファイルには、ファームウェアのバージョン 2.0 の実装が含まれています。
+1. **[FWPackageURI]** フィールドで、「**https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**」と入力します。 このファイルには、ファームウェアのバージョン 2.0 の実装が含まれています。
 
 1. **[InvokeMethod]** を選択します。 Raspberry Pi 上のアプリは、ソリューション ダッシュボードに受信確認を送信します。 次に、ファームウェアの新しいバージョンをダウンロードしてファームウェアの更新プロセスが開始します。
 

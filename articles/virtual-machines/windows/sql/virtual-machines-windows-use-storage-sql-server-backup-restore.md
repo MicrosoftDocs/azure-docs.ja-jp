@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 3cfeed9d10cba8e51e8609fe2a0a2a3228681850
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d3df6b25fe524c500cf1a1333ac136e8a29d1484
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
@@ -31,7 +32,7 @@ SQL Server 2016 に導入された新しい機能である [ファイル スナ�
 ## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>SQL Server のバックアップに Azure BLOB サービスを使用する利点
 SQL Server をバックアップするときに直面する課題はいくつかあります。 ストレージの管理、ストレージ障害のリスク、社外ストレージへのアクセス、ハードウェアの構成がその課題として挙げられます。 このような課題の多くは、SQL Server のバックアップに Azure BLOB ストア サービスを使用することで対処できます。 次の利点を考慮してください。
 
-* **使いやすさ**: Azure BLOB にバックアップを保存することで、社外ストレージへのアクセスが柔軟かつ簡単に行え、便利になります。 SQL Server のバックアップ用に社外ストレージを作成するのは、 **BACKUP TO URL** 構文を使用するように既存のスクリプトやジョブを変更するだけの簡単さです。 社外ストレージは通常、運用データベースから十分に離れた場所に設置して、一度の災害によって社外ストレージと運用データベースの両方が影響を受けないようにする必要があります。 [Azure BLOB の geo レプリケーション](../../../storage/storage-redundancy.md)を利用することで、リージョン全体に被害が及ぶような災害に対する防御措置を強化できます。
+* **使いやすさ**: Azure BLOB にバックアップを保存することで、社外ストレージへのアクセスが柔軟かつ簡単に行え、便利になります。 SQL Server のバックアップ用に社外ストレージを作成するのは、 **BACKUP TO URL** 構文を使用するように既存のスクリプトやジョブを変更するだけの簡単さです。 社外ストレージは通常、運用データベースから十分に離れた場所に設置して、一度の災害によって社外ストレージと運用データベースの両方が影響を受けないようにする必要があります。 [Azure BLOB の geo レプリケーション](../../../storage/common/storage-redundancy.md)を利用することで、リージョン全体に被害が及ぶような災害に対する防御措置を強化できます。
 * **バックアップ アーカイブ**: Azure Blob Storage サービスは、バックアップ アーカイブによく利用されているテープに代わる、優れた手法を提供しています。 テープ ストレージでは、場合によって社外設備への物理的な搬送やメディア保護の対策が必要です。 Azure Blob Storage へのバックアップの保存では、可用性と持続性に優れた高速アーカイブが可能です。
 * **ハードウェアの管理**: Azure サービスではハードウェア管理のオーバーヘッドはありません。 Azure サービスのハードウェア管理では、ハードウェア障害に対する冗長性実現と保護のためにgeo レプリケーションが行われます。
 * **無制限のストレージ**: Azure BLOB への直接バックアップを有効にすると、実質的に無制限のストレージにアクセスできます。 代わりに、Azure の仮想マシンのディスクにバックアップすると、マシンのサイズに基づく制限があります。 バックアップ用に Azure 仮想マシンにアタッチできるディスクの数には制限があります。 この制限はインスタンス サイズが XL の場合は 16 ディスクです。インスタンス サイズが小さくなるほど、このディスク数は少なくなります。
@@ -76,10 +77,5 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 問題がある場合は、「 [SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」をご覧ください。
 
 その他の SQL Server のバックアップと復元のオプションについては、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

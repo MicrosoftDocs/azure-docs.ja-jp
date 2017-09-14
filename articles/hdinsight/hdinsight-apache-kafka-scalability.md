@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/14/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 84c7048bbd608b0b99215d74f71960dc9d1158ef
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 880a186a3d9a23b013294b0121e8265270d160cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 06/16/2017
 
 HDInsight 上の Apache Kafka によって使われる複数の管理ディスクを構成する方法を説明します。
 
-HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのローカル ディスクを使います。 Kafka は I/O が非常に多いため、[Azure Managed Disks](../storage/storage-managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 従来の仮想ハード ドライブ (VHD) を Kafka 用に使う場合は、各ノードは 1 TB に制限されます。 管理ディスクの場合は、複数のディスクを使ってクラスターの各ノードを 16 TB にできます。
+HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのローカル ディスクを使います。 Kafka は I/O が非常に多いため、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 従来の仮想ハード ドライブ (VHD) を Kafka 用に使う場合は、各ノードは 1 TB に制限されます。 管理ディスクの場合は、複数のディスクを使ってクラスターの各ノードを 16 TB にできます。
 
 次の図は、管理ディスクを使う前と使った後の HDInsight 上の Kafka を比較したものです。
 
@@ -66,4 +66,4 @@ HDInsight 上の Kafka の操作の詳細については、次のドキュメン
 * [HDInsight での Kafka に Apache Spark を使用する](hdinsight-apache-spark-with-kafka.md)
 * [Azure 仮想ネットワーク経由で Kafka に接続する](hdinsight-apache-kafka-connect-vpn-gateway.md)
 
-* [Kafka での管理ディスクに関する HDInsight ブログ](https://azure.microsoft.com/blog/announcing-hdinsight-kafka-public-preview-with-azure-managed-disks)
+* [Kafka での管理ディスクに関する HDInsight ブログ](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)

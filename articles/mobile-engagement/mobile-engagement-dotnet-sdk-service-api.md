@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57b2abc37551a782cb7106b9fc4540ce2ba37732
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 6a497189268c5a1b7e269cc57904ebc77c1906fd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>.NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする
-Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、API のセットが公開されています。これらの API と対話するために、任意の言語の SDK を生成するツールと共に使用できる、[Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)も提供しています。 Swagger ファイルから SDK を生成するには、 [AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。 
+Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、API のセットが公開されています。これらの API と対話するために、任意の言語の SDK を生成するツールと共に使用できる、[Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)も提供しています。 Swagger ファイルから SDK を生成するには、 [AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。
+
+> [!NOTE]
+> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
 
 C# ラッパーを使用してこれらの API と対話できるようにするのと同様の方法で .NET SDK を作成しましたので、認証トークン ネゴシエーションを行ったり、自分で更新したりする必要はありません。  
 
@@ -119,9 +123,4 @@ C# ラッパーを使用してこれらの API と対話できるようにする
 <!-- Images. -->
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2017
+ms.date: 7/26/2017
 ms.author: v-six
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b49393ecfb6fe639825107c5f038906a36cde687
 ms.openlocfilehash: 3cddd9f9c4b978dfad7ec727be9f43f6ed7c7c8f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング

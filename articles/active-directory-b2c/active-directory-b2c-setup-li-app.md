@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: 3b22dee95d064de8190d7429cc4118884fb81172
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 1a6c4b19261aa34e668554ccad2b6340cddf9bf5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C: LinkedIn アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -45,7 +44,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedI
     ![LinkedIn - アプリの設定](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 
 ## <a name="configure-linkedin-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして LinkedIn を構成する
-1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
+1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
 2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「LI」などと入力します。

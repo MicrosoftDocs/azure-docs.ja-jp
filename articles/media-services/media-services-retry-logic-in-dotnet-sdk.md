@@ -2,7 +2,7 @@
 title: "Media Services SDK for .NET の再試行ロジック | Microsoft Docs"
 description: "このトピックでは、Media Services SDK for .NET の再試行ロジックの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 07/21/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e22a16c0929b28c475aa4caa0465651603713112
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック
@@ -47,7 +48,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 | StorageException |いいえ |あり |なし |いいえ |
 | IOException |いいえ |あり |なし |なし |
 
-### <a name="a-namewebexceptionstatusa-webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 状態コード
+### <a name="WebExceptionStatus"></a> WebException 状態コード
 次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) の列挙型は、状態コードを定義します。  
 
 | 状態 | Web Request | Storage | クエリ | SaveChanges |
@@ -65,7 +66,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 | タイムアウト |はい |あり |あり |なし |
 | ProtocolError <br/>ProtocolError の再試行は、HTTP 状態コード処理によって制御されます。 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |はい |あり |あり |はい |
 
-### <a name="a-namehttpstatuscodea-http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP エラー状態コード
+### <a name="HTTPStatusCode"></a> HTTP エラー状態コード
 Query および SaveChanges 操作が DataServiceClientException、DataServiceQueryException、または DataServiceQueryException をスローすると、StatusCode プロパティに HTTP エラー状態コードが返されます。  次の表では、再試行ロジックが実装されるエラー コードを示します。  
 
 | 状態 | Web Request | Storage | クエリ | SaveChanges |
@@ -86,10 +87,5 @@ Media Services SDK for .NET 再試行ロジックの実際の実装を確認す�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

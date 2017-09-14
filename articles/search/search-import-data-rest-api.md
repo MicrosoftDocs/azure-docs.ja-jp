@@ -1,5 +1,5 @@
 ---
-title: "REST API を使用した Azure Search でのデータ アップロード | Microsoft Docs"
+title: "データのアップロード (REST API - Azure Search) | Microsoft Docs"
 description: "REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
 services: search
 documentationcenter: 
@@ -15,10 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
-ms.lasthandoff: 02/16/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 

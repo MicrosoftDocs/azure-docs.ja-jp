@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e86af029422340bdfa38ba233f0ed61f6f1d8ca2
-ms.lasthandoff: 03/17/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 2412033daa1d97860dd9f380178622b1ddc590c0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-vm"></a>DevTest ラボ VM のカスタム アーティファクトの作成
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/17/2017
 次の例では、定義ファイルの基本構造を構成するセクションを示します。
 
     {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2015-01-01/dtlArtifacts.json",
+      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
       "title": "",
       "description": "",
       "iconUri": "",
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/17/2017
 | title |はい |ラボで表示されるアーティファクトの名前 |
 | Description |はい |ラボで表示されるアーティファクトの説明 |
 | iconUri |いいえ |ラボで表示されるアイコンの URI |
-| targetOsType |はい |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
+| targetOsType |あり |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
 | parameters |いいえ |アーティファクトのインストール コマンドがマシンで実行されるときに指定する値。 これは、アーティファクトのカスタマイズに役立ちます。 |
 | runCommand |はい |VM 上で実行されるアーティファクトのインストール コマンド。 |
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 03/17/2017
 
 | 要素名 | 必須 | Description |
 | --- | --- | --- |
-| type |はい |パラメーター値の型。 使用できる型については、下にある一覧を参照してください。 |
+| type |はい |パラメーター値の型。 許可されている型については、次の一覧を参照してください。 |
 | displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 | |
 | Description |はい |ラボで表示されるパラメーターの説明。 |
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 03/17/2017
 式は角かっこ ([ と ]) で囲み、アーティファクトのインストール時に評価されます。 式は、JSON 文字列値内の任意の場所に配置でき、常に別の JSON 値を返します。 角かっこ [ で始まるリテラル文字列を使用する必要がある場合は、2 つの角かっこ [[ を使用する必要があります。
 通常は、関数と共に式を使用して値を構成します。 JavaScript の場合と同様に、関数呼び出しは functionName(arg1,arg2,arg3) という形式になります。
 
-次に、一般的な関数を示します。
+次の一覧に、一般的な関数を示します。
 
 * parameters(parameterName) - アーティファクト コマンドの実行時に指定するパラメーター値を返します。
 * concat(arg1,arg2,arg3, ...) - 複数の文字列値を結合します。 この関数は、任意の数の引数を取ることができます。
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/17/2017
 次の例では、式と関数を使用して値を構成する方法を示します。
 
     runCommand": {
-         "commandToExecute": "[concat('powershell.exe -File startChocolatey.ps1'
+         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
     , ' -RawPackagesList ', parameters('packages')
     , ' -Username ', parameters('installUsername')
     , ' -Password ', parameters('installPassword'))]"
@@ -111,7 +111,7 @@ ms.lasthandoff: 03/17/2017
 1. JSON エディターのインストール - アーティファクト定義ファイルを操作するには、JSON エディターが必要です。 Windows、Linux、および OS X で使用可能な [Visual Studio Code](https://code.visualstudio.com/)を使用することをお勧めします。
 2. サンプルの artifactfile.json の取得 - [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)で、Azure DevTest Labs チームが作成したアーティファクトを確認します。このリポジトリには、独自のアーティファクトの作成に役立つ豊富なアーティファクト ライブラリが用意されています。 アーティファクト定義ファイルをダウンロードし、変更を加えて独自のアーティファクトを作成します。
 3. IntelliSense の利用 - IntelliSense を利用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、 **targetOsType** 要素を編集する際に、IntelliSense では Windows と Linux という 2 つの選択肢が表示されます。
-4. Git リポジトリへのアーティファクトの格納
+4. [Git リポジトリ](devtest-lab-add-artifact-repo.md)にアーティファクトを格納します。
    
    1. アーティファクトごとに個別のディレクトリを作成します。ディレクトリ名は、アーティファクト名と同じにします。
    2. 作成したディレクトリに、アーティファクト定義ファイル (artifactfile.json) を格納します。
@@ -120,13 +120,13 @@ ms.lasthandoff: 03/17/2017
       アーティファクト フォルダーの例を次に示します。
       
       ![Artifact git repo example](./media/devtest-lab-artifact-author/git-repo.png)
-5. ラボへのアーティファクト リポジトリの追加 - 「 [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)」を参照してください。
+5. ラボへのアーティファクト リポジトリの追加 - [アーティファクトおよびテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)に関する記事を参照してください。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>関連するブログ記事
-* [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
-* [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+## <a name="related-articles"></a>関連記事
+* [DevTest Labs でアーティファクトのエラーを診断する方法](devtest-lab-troubleshoot-artifact-failure.md)
+* [Azure DevTest Labs で Resource Manager テンプレートを使用して既存の AD ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>次のステップ
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。

@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 10: パー�
 description: "この Azure Analysis Services チュートリアル プロジェクトでパーティションを作成する方法を説明します。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

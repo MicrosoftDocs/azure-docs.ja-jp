@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 07/21/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: bc6749f583de752592b0b49548c5a42321cac7b3
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 49dd161049ac442081fe6d26cf8bd3a56a2e0687
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Azure HDInsight のデータ視覚化ツールを使用する Apache Spark BI
@@ -42,9 +41,11 @@ ms.lasthandoff: 05/16/2017
 
 ## <a name="hivetable"></a>Spark データ視覚化の準備
 
-このセクションでは、HDInsight Spark クラスターから [Jupyter](https://jupyter.org) Notebook を使用し、生サンプル データを処理してテーブルとして保存するジョブを実行します。 サンプル データは、すべてのクラスターにおいて既定で使用できる .csv ファイル (hvac.csv) です。
+このセクションでは、HDInsight Spark クラスターから [Jupyter](https://jupyter.org) Notebook を使用し、生サンプル データを処理してテーブルとして保存するジョブを実行します。 サンプル データは、すべてのクラスターにおいて既定で使用できる .csv ファイル (hvac.csv) です。 目的のデータをテーブルとして保存した後、その次のセクションで BI ツールを使ってそのテーブルにアクセスし、データの視覚化を実行します。
 
-目的のデータをテーブルとして保存した後、その次のセクションで BI ツールを使ってそのテーブルにアクセスし、データの視覚化を実行します。
+> [!NOTE]
+> 「[HDInsight Spark クラスターに対して対話型クエリを実行する](hdinsight-apache-spark-load-data-run-query.md)」の手順を実行した後にこの記事の手順を実行している場合は、以下の手順 8 まで進むことができます。
+>
 
 1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 05/16/2017
     次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 このスニペットは、**hvac** というテーブルにデータを登録します。
 
         # Create an RDD from sample data
-        hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+        hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
         # Create a schema for our data
         Entry = Row('Date', 'Time', 'TargetTemp', 'ActualTemp', 'BuildingID')
@@ -99,7 +100,7 @@ ms.lasthandoff: 05/16/2017
         +---------------+-------------+
         |tableName      |isTemporary  |
         +---------------+-------------+
-        |hvactemptable  |true         |
+        |hvactemptable  |true        |
         |hivesampletable|false        |
         |hvac           |false        |
         +---------------+-------------+
@@ -114,6 +115,11 @@ ms.lasthandoff: 05/16/2017
 9. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。
 
 ## <a name="powerbi"></a>Spark データ視覚化のための Power BI の使用
+
+> [!NOTE]
+> このセクションは、HDInsight 3.4 上の Spark 1.6 と、HDInsight 3.5 上の Spark 2.0 にのみ適用されます。
+>
+>
 
 テーブルとしてデータを保存した後は、Power BI を使用してデータに接続し、視覚化してレポートやダッシュボードなどを作成できます。
 
@@ -198,38 +204,11 @@ ms.lasthandoff: 05/16/2017
     ![Spark データ視覚化の Tableau 出力](./media/hdinsight-apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Spark データ視覚化の Tableau 出力")
 9. **[保存]** をクリックしてワークシートを保存します。 ダッシュボードを作成して 1 つまたは複数のシートを追加できます。
 
-## <a name="seealso"></a>関連項目
-* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
+## <a name="next-steps"></a>次のステップ
 
-### <a name="scenarios"></a>シナリオ
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+これまでに、クラスターを作成し、データを照会するための Spark データ フレームを作成し、BI ツールからそのデータにアクセスする方法を学習しました。 次は、クラスターのリソースを管理し、HDInsight Spark クラスターで実行されているジョブをデバッグする方法を見ていきましょう。
 
-### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
-* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-[hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-create-storageaccount]: storage-create-storage-account.md
 

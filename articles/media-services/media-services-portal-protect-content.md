@@ -4,7 +4,7 @@ description: "この記事では、Azure ポータルを使用してコンテン
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/25/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 4256201f2fd505ed86734e900496eb7364c9a575
-ms.lasthandoff: 01/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 67b3fa9936daebeafb7e87fe3a7b0c7e0105b3b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="configuring-content-protection-policies-using-the-azure-portal"></a>Azure ポータルを使用したコンテンツ保護ポリシーの構成
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/11/2017
 ## <a name="overview"></a>概要
 Microsoft Azure Media Services (AMS) を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady、Widevine DRM、Apple FairPlay を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。 
 
-AMS は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure ポータルでは、すべてのタイプの暗号化に対して&1; つの **キー/ライセンス承認ポリシー** を作成できます。
+AMS は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure ポータルでは、すべてのタイプの暗号化に対して 1 つの **キー/ライセンス承認ポリシー** を作成できます。
 
 この記事では、Azure ポータルでコンテンツ保護ポリシーを構成する方法を説明します。 また、動的な暗号化を資産に適用する方法についても説明します。
 
@@ -53,7 +53,7 @@ AMS は、承認されたクライアントに DRM ライセンスと AES クリ
 ## <a name="keylicense-authorization-policy"></a>キー/ライセンス承認ポリシー
 AMS では、キーまたはライセンスを要求するユーザーを承認する複数の方法がサポートされています。 キー/ライセンスがクライアントに配信されるには、自身で、またはクライアントがこのコンテンツ キー承認ポリシーを構成する必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。
 
-Azure ポータルでは、すべてのタイプの暗号化に対して&1; つの **キー/ライセンス承認ポリシー** を作成できます。
+Azure ポータルでは、すべてのタイプの暗号化に対して 1 つの **キー/ライセンス承認ポリシー** を作成できます。
 
 ### <a name="open"></a>オープン
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。 
@@ -103,7 +103,7 @@ FairPlay 暗号化を有効にするには、FairPlay 構成オプションを�
 ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>AES または DRM による暗号化
-資産で **[暗号化]** を押すと、**AES** または **DRM** の&2; つの選択肢が表示されます。 
+資産で **[暗号化]** を押すと、**AES** または **DRM** の 2 つの選択肢が表示されます。 
 
 #### <a name="aes"></a>AES
 AES クリア キーによる暗号化はすべてのストリーミング プロトコル (Smooth Streaming、HLS、MPEG-DASH) で有効になります。
@@ -124,6 +124,9 @@ FairPlay 暗号化を有効にするには、[コンテンツ保護] 設定ブ�
 ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
 暗号化を選択したら、 **[適用]**を押します。
+
+>[!NOTE] 
+>Safari で AES 暗号化された HLS を再生することを計画している場合には、[このブログ](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。

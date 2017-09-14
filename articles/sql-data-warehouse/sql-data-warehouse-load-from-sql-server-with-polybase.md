@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 4f6feb844774fba00e3c46438f686e61b52d03d3
-ms.lasthandoff: 01/30/2017
-
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 966100094f98bae41bf90df500d005fa78b31ec3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
@@ -253,7 +252,7 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
-[latest version of AzCopy]: ../storage/storage-use-azcopy.md
+[latest version of AzCopy]:../storage/common/storage-use-azcopy.md
 
 <!--External references-->
 [supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx

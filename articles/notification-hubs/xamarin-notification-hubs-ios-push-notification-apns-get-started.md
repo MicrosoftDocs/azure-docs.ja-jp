@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 426294e0dc3e877565bd57e899fdc79a1bd31c21
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 72a81fa0deb34ace77b8fb9b1a4e6b24ee164b35
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 06/14/2017
 > 
 
 このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。
-[Apple Push Notification サービス (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+[Apple Push Notification サービス (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、Notification Hubs を使用した簡単なプッシュ メッセージ ブロードキャスト シナリオのデモンストレーションを行います。
 
@@ -294,7 +294,7 @@ Apple の「 [Local and Push Notification Programming Guide (ローカルおよ�
 [Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
 [Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]:https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/

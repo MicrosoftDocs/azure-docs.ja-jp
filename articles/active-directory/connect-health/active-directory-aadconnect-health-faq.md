@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
-ms.openlocfilehash: 233691d19aa2553744f92af17f7ecf9fda2290e0
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 1f1c453267ea17d749a251539f4232131dae53d3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
@@ -138,6 +139,44 @@ Azure AD Connect Health では、過去 2 時間でサーバーから一部の�
 **Q: Azure AD Connect Health アラートはどのように解決すればよいですか。**
 
 Azure AD Connect Health アラートは、成功条件を満たすと解決されます。 Azure AD Connect Health エージェントは、定期的に成功条件を検出してサービスにレポートします。 一部のアラートは、時間に基づいて抑制されます。 つまり、アラートの生成から 72 時間以内に同じエラー条件が観察されない場合、アラートは自動的に解決されます。
+
+**Q: "テスト認証要求 (代理トランザクション) は、トークンの取得に失敗しました。" というアラートが表示されます。この問題をトラブルシューティングする方法を教えてください。**
+
+このアラートは、AD FS サーバーにインストールされている正常性エージェントが、正常性エージェントが開始する代理トランザクションの一環でトークンの取得に失敗した場合、Azure AD Connect Health for AD FS によって生成されます。 正常性エージェントは、ローカル システムのコンテキストを使用して、自己証明書利用者のトークンを取得しようとします。 これは、AD FS がトークンを発行できる状態であることを確認する包括的なテストです。
+
+このテストは多くの場合、正常性エージェントが AD FS ファーム名を解決できないために失敗します。 これは、AD FS サーバーがネットワーク ロード バランサーの背後にあり、要求が (ロード バランサーの前にある通常のクライアントではなく)、ロード バランサーの背後にあるノードから開始された場合に発生します。 これは、"C:\Windows\System32\drivers\etc" の下にある "hosts" ファイルを AD FS サーバーの IP アドレスまたは (sts.contoso.com など) AD FS ファーム名のループバック IP アドレス (127.0.0.1) を含めるよう更新して修正できます。 ホスト ファイルを追加すると、ネットワーク呼び出しが省かれ、正常性エージェントがトークンを取得できるようになります。
+
+**Q: 最近のランサムウェア攻撃の修正プログラムが自分のコンピューターに適用されていないと記載された電子メールを受信しました。なぜこの電子メールを受信したのですか。**
+
+Azure AD Connect Health サービスでは、必要な修正プログラムがインストールされていることを確認するため、監視するすべてのコンピューターをスキャンします。 重要な修正プログラムが最低 1 台のコンピューターにインストールされていない場合、そのテナント管理者にその電子メールが送信されます。 この判断には、次のロジックが使用されます。
+1. コンピューターにインストールされているすべての修正プログラムが検索されます。
+2. 定義済み一覧にある修正プログラムが少なくとも 1 つがあることが確認されます。
+3. ある場合、マシンは保護されています。 ない場合、マシンは攻撃される可能性があります。
+
+このチェックは、次の PowerShell スクリプトを使用して、手動で実行できます。 上記のロジックが実装されます。
+
+```
+Function CheckForMS17-010 ()
+{
+    $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
+
+    #checks the computer it's run on if any of the listed hotfixes are present
+    $hotfix = Get-HotFix -ComputerName $env:computername | Where-Object {$hotfixes -contains $_.HotfixID} | Select-Object -property "HotFixID"
+
+    #confirms whether hotfix is found or not
+    if (Get-HotFix | Where-Object {$hotfixes -contains $_.HotfixID})
+    {
+        "Found HotFix: " + $hotfix.HotFixID
+    } else {
+        "Didn't Find HotFix"
+    }
+}
+
+CheckForMS17-010
+
+```
+
+
 
 ## <a name="related-links"></a>関連リンク
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

@@ -12,75 +12,74 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9743711805d8502b60ee91bac5c91035a3cda5fe
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
-| コンピューターの信頼の境界 | <ul><li>[機密情報を含むバイナリを難読化する](#binaries-info)</li><li>[ユーザー固有の機密データを保護するために暗号化されたファイル システム (EFS) を使うことを検討する](#efs-user)</li><li>[アプリケーションによってファイル システムに保存される機密データを暗号化する](#filesystem)</li></ul> | 
-| Web Application | <ul><li>[機密コンテンツがブラウザーにキャッシュされないようにする](#cache-browser)</li><li>[Web アプリの構成ファイルの機密データを含むセクションを暗号化する](#encrypt-data)</li><li>[機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする](#autocomplete-input)</li><li>[ユーザーの画面に表示される機密データをマスクする](#data-mask)</li></ul> | 
-| データベース | <ul><li>[動的データ マスクを実装して、権限を持たないユーザーへの機密データの露出を制限する](#dynamic-users)</li><li>[パスワードを salt ハッシュ形式で保存する](#salted-hash)</li><li>[データベースの列の機密データを暗号化する](#db-encrypted)</li><li>[データベース レベルの暗号化 (TDE) を有効にする](#tde-enabled)</li><li>[データベースのバックアップを暗号化する](#backup)</li></ul> | 
-| Web API | <ul><li>[Web API に関連する機密データがブラウザーの記憶域に保存されないようにする](#api-browser)</li></ul> | 
-| Azure Document DB | <ul><li>[Azure Cosmos DB に保存される機密データを暗号化する](#encrypt-docdb)</li></ul> | 
-| Azure IaaS VM の信頼の境界 | <ul><li>[Virtual Machines によって使われるディスクを、Azure Disk Encryption を使って暗号化する](#disk-vm)</li></ul> | 
-| Service Fabric の信頼の境界 | <ul><li>[Service Fabric アプリケーションでシークレットを暗号化する](#fabric-apps)</li></ul> | 
-| Dynamics CRM | <ul><li>[セキュリティ モデリングを実行し、必要に応じて部署/チームを使う](#modeling-teams)</li><li>[重要なエンティティでの共有機能へのアクセスを最小限にする](#entities)</li><li>[Dynamics CRM の共有機能に関連するリスクおよび適切なセキュリティ プラクティスについてユーザーをトレーニングする](#good-practices)</li><li>[例外管理での構成の詳細の表示を禁止する開発標準規則を含める](#exception-mgmt)</li></ul> | 
-| Azure Storage (Azure Storage) | <ul><li>[Azure Storage Service Encryption (SSE) for Data at Rest (プレビュー) を使う](#sse-preview)</li><li>[クライアント側暗号化を使って、Azure Storage に機密データを保存する](#client-storage)</li></ul> | 
-| モバイル クライアント | <ul><li>[携帯電話のローカル ストレージに書き込まれた機密データまたは PII データを暗号化する](#pii-phones)</li><li>[生成されたバイナリをエンド ユーザーに配布する前に難読化する](#binaries-end)</li></ul> | 
-| WCF | <ul><li>[clientCredentialType を Certificate または Windows に設定する](#cert)</li><li>[WCF セキュリティ モードを有効にしない](#security)</li></ul> | 
+| **コンピューターの信頼の境界** | <ul><li>[機密情報を含むバイナリを難読化する](#binaries-info)</li><li>[ユーザー固有の機密データを保護するために暗号化されたファイル システム (EFS) を使うことを検討する](#efs-user)</li><li>[アプリケーションによってファイル システムに保存される機密データを暗号化する](#filesystem)</li></ul> | 
+| **Web アプリケーション** | <ul><li>[機密コンテンツがブラウザーにキャッシュされないようにする](#cache-browser)</li><li>[Web アプリの構成ファイルの機密データを含むセクションを暗号化する](#encrypt-data)</li><li>[機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする](#autocomplete-input)</li><li>[ユーザーの画面に表示される機密データをマスクする](#data-mask)</li></ul> | 
+| **データベース** | <ul><li>[動的データ マスクを実装して、権限を持たないユーザーへの機密データの露出を制限する](#dynamic-users)</li><li>[パスワードを salt ハッシュ形式で保存する](#salted-hash)</li><li>[データベースの列の機密データを暗号化する](#db-encrypted)</li><li>[データベース レベルの暗号化 (TDE) を有効にする](#tde-enabled)</li><li>[データベースのバックアップを暗号化する](#backup)</li></ul> | 
+| **Web API** | <ul><li>[Web API に関連する機密データがブラウザーの記憶域に保存されないようにする](#api-browser)</li></ul> | 
+| Azure Document DB | <ul><li>[DocumentDB に保存される機密データを暗号化する](#encrypt-docdb)</li></ul> | 
+| **Azure IaaS VM の信頼の境界** | <ul><li>[Virtual Machines によって使われるディスクを、Azure Disk Encryption を使って暗号化する](#disk-vm)</li></ul> | 
+| **Service Fabric の信頼の境界** | <ul><li>[Service Fabric アプリケーションでシークレットを暗号化する](#fabric-apps)</li></ul> | 
+| **Dynamics CRM** | <ul><li>[セキュリティ モデリングを実行し、必要に応じて部署/チームを使う](#modeling-teams)</li><li>[重要なエンティティでの共有機能へのアクセスを最小限にする](#entities)</li><li>[Dynamics CRM の共有機能に関連するリスクおよび適切なセキュリティ プラクティスについてユーザーをトレーニングする](#good-practices)</li><li>[例外管理での構成の詳細の表示を禁止する開発標準規則を含める](#exception-mgmt)</li></ul> | 
+| **Azure Storage** | <ul><li>[Azure Storage Service Encryption (SSE) for Data at Rest (プレビュー) を使う](#sse-preview)</li><li>[クライアント側暗号化を使って、Azure Storage に機密データを保存する](#client-storage)</li></ul> | 
+| **モバイル クライアント** | <ul><li>[携帯電話のローカル ストレージに書き込まれた機密データまたは PII データを暗号化する](#pii-phones)</li><li>[生成されたバイナリをエンド ユーザーに配布する前に難読化する](#binaries-end)</li></ul> | 
+| **WCF** | <ul><li>[clientCredentialType を Certificate または Windows に設定する](#cert)</li><li>[WCF セキュリティ モードを有効にしない](#security)</li></ul> | 
 
 ## <a id="binaries-info"></a>機密情報を含むバイナリを難読化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | コンピューターの信頼の境界 | 
-| SDL フェーズ               | デプロイ |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | 取引上の秘密や、リバース エンジニアリングされてはならない機密のビジネス ロジックなどの機密情報が含まれているバイナリを、難読化します。 これは、アセンブリのリバース エンジニアリングを停止するためです。 この目的には、CryptoObfuscator などのツールを使うことができます。 |
+| **コンポーネント**               | コンピューターの信頼の境界 | 
+| **SDL フェーズ**               | デプロイ |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | 取引上の秘密や、リバース エンジニアリングされてはならない機密のビジネス ロジックなどの機密情報が含まれているバイナリを、難読化します。 これは、アセンブリのリバース エンジニアリングを停止するためです。 この目的には、`CryptoObfuscator` などのツールを使うことができます。 |
 
 ## <a id="efs-user"></a>ユーザー固有の機密データを保護するために暗号化されたファイル システム (EFS) を使うことを検討する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | コンピューターの信頼の境界 | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | コンピューターに物理的にアクセスする敵対者からユーザー固有の機密データを保護するために、暗号化されたファイル システム (EFS) を使うことを検討します。 |
+| **コンポーネント**               | コンピューターの信頼の境界 | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | コンピューターに物理的にアクセスする敵対者からユーザー固有の機密データを保護するために、暗号化されたファイル システム (EFS) を使うことを検討します。 |
 
 ## <a id="filesystem"></a>アプリケーションによってファイル システムに保存される機密データを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | コンピューターの信頼の境界 | 
-| SDL フェーズ               | デプロイ |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | EFS を強制できない場合は、アプリケーションによってファイル システムに保存される機密データを暗号化します (DPAPI などを使用)。 |
+| **コンポーネント**               | コンピューターの信頼の境界 | 
+| **SDL フェーズ**               | デプロイ |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | EFS を強制できない場合は、アプリケーションによってファイル システムに保存される機密データを暗号化します (DPAPI などを使用)。 |
 
 ## <a id="cache-browser"></a>機密コンテンツがブラウザーにキャッシュされないようにする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Web Application | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック、Web フォーム、MVC5、MVC6 |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | ブラウザーは、キャッシュと履歴のために情報を保存できます。 これらのキャッシュされたファイルはフォルダーに保存されます (Internet Explorer の場合は Temporary Internet Files フォルダー)。 これらのページが再び参照されると、ブラウザーはキャッシュからページを表示します。 機密情報 (住所、クレジット カードの詳細、社会保障番号、ユーザー名など) がユーザーに表示された場合、この情報がブラウザーのキャッシュに保存されるので、ブラウザーのキャッシュを調べることで、または単にブラウザーの [戻る] ボタンをクリックすることで、情報を取得できる可能性があります。 すべてのページについて、cache-control 応答ヘッダーの値を "no-store" に設定します。 |
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック、Web フォーム、MVC5、MVC6 |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | ブラウザーは、キャッシュと履歴のために情報を保存できます。 これらのキャッシュされたファイルはフォルダーに保存されます (Internet Explorer の場合は Temporary Internet Files フォルダー)。 これらのページが再び参照されると、ブラウザーはキャッシュからページを表示します。 機密情報 (住所、クレジット カードの詳細、社会保障番号、ユーザー名など) がユーザーに表示された場合、この情報がブラウザーのキャッシュに保存されるので、ブラウザーのキャッシュを調べることで、または単にブラウザーの [戻る] ボタンをクリックすることで、情報を取得できる可能性があります。 すべてのページについて、cache-control 応答ヘッダーの値を "no-store" に設定します。 |
 
 ### <a name="example"></a>例
 ```XML
@@ -109,7 +108,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
             }
 
             var attributes = filterContext.ActionDescriptor.GetCustomAttributes(typeof(System.Web.Mvc.OutputCacheAttribute), false);
-            if (attributes == null || attributes.Count() == 0)
+            if (attributes == null || **Attributes**.Count() == 0)
             {
                 filterContext.HttpContext.Response.Cache.SetNoStore();
                 filterContext.HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -128,23 +127,23 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Web Application | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| 手順 | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a id="autocomplete-input"></a>機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Web Application | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [MSDN: autocomplete 属性](http://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](http://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](http://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
-| 手順 | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [MSDN: autocomplete 属性](http://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](http://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](http://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **手順** | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
 
 ### <a name="example"></a>例
 ```C#
@@ -158,78 +157,78 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Web Application | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | パスワード、クレジット カード番号、SSN などの機密データは、画面に表示するときにマスクする必要があります。 これは、承認されていない人物がデータにアクセスするのを防ぐためです (たとえば、サポート担当者が表示しているユーザーの SSN 番号を肩越しに見る、など)。 これらのデータ要素がプレーン テキストで表示されず、適切にマスクされるようにします。 このような対処は、入力を受け付けるときだけでなく (例:  input type = "password")、画面に再表示するときも行う必要があります (例: クレジット カード番号の末尾 4 桁だけを表示する)。 |
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | パスワード、クレジット カード番号、SSN などの機密データは、画面に表示するときにマスクする必要があります。 これは、承認されていない人物がデータにアクセスするのを防ぐためです (たとえば、サポート担当者が表示しているユーザーの SSN 番号を肩越しに見る、など)。 これらのデータ要素がプレーン テキストで表示されず、適切にマスクされるようにします。 このような対処は、入力を受け付けるときだけでなく (例:  input type = "password")、画面に再表示するときも行う必要があります (例: クレジット カード番号の末尾 4 桁だけを表示する)。 |
 
 ## <a id="dynamic-users"></a>動的データ マスクを実装して、権限を持たないユーザーへの機密データの露出を制限する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | データベース | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | SQL Azure、OnPrem |
-| 属性              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
-| 参照              | [動的データ マスク](https://msdn.microsoft.com/library/mt130841) |
-| 手順 | 動的データ マスクの目的は、機密データの露出を制限し、データにアクセスしてはならないユーザーがデータを見られないようにすることです。 動的データ マスクは、データベース ユーザーがデータベースに直接接続して機密データを公開する徹底的なクエリを実行できないようにすることが目的ではありません。 動的データ マスクは SQL Server の他のセキュリティ機能 (監査、暗号化、行レベルのセキュリティなど) を補完するものであり、この機能をそれらと併用して、データベースの機密データの保護を強化することを強くお勧めします。 この機能は SQL Server 2016 以降と Azure SQL Database によってのみサポートされることに注意してください。 |
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | SQL Azure、OnPrem |
+| **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
+| **参照**              | [動的データ マスク](https://msdn.microsoft.com/library/mt130841) |
+| **手順** | 動的データ マスクの目的は、機密データの露出を制限し、データにアクセスしてはならないユーザーがデータを見られないようにすることです。 動的データ マスクは、データベース ユーザーがデータベースに直接接続して機密データを公開する徹底的なクエリを実行できないようにすることが目的ではありません。 動的データ マスクは SQL Server の他のセキュリティ機能 (監査、暗号化、行レベルのセキュリティなど) を補完するものであり、この機能をそれらと併用して、データベースの機密データの保護を強化することを強くお勧めします。 この機能は SQL Server 2016 以降と Azure SQL Database によってのみサポートされることに注意してください。 |
 
 ## <a id="salted-hash"></a>パスワードを salt ハッシュ形式で保存する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | データベース | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [.NET Crypto API を使ったパスワードのハッシュ](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
-| 手順 | カスタム ユーザー ストア データベースにパスワードを保存してはなりません。 パスワード ハッシュは、代わりに salt 値を使って保存する必要があります。 ユーザーの salt が常に一意であることを確認し、パスワードを保存する前に 150,000 以上の作業因子反復回数で bcrypt、scrypt、または PBKDF2 を適用して、ブルート フォース攻撃を受けないようにします。| 
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [.NET Crypto API を使ったパスワードのハッシュ](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **手順** | カスタム ユーザー ストア データベースにパスワードを保存してはなりません。 パスワード ハッシュは、代わりに salt 値を使って保存する必要があります。 ユーザーの salt が常に一意であることを確認し、パスワードを保存する前に 150,000 以上の作業因子反復回数で b-crypt、s-crypt、または PBKDF2 を適用して、ブルート フォース攻撃を受けないようにします。| 
 
 ## <a id="db-encrypted"></a>データベースの列の機密データを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | データベース | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | SQL バージョン - すべて |
-| 参照              | [SQL Server での機微なデータの暗号化](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[方法: SQL Server でデータの列を暗号化する](https://msdn.microsoft.com/library/ms179331)、[証明書による暗号化](https://msdn.microsoft.com/library/ms188061) |
-| 手順 | クレジット カード番号などの機密データは、データベースで暗号化する必要があります。 データは、列レベルの暗号化を使って、または暗号化関数を使ってアプリケーション機能により、暗号化できます。 |
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | SQL バージョン - すべて |
+| **参照**              | [SQL Server での機微なデータの暗号化](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[方法: SQL Server でデータの列を暗号化する](https://msdn.microsoft.com/library/ms179331)、[証明書による暗号化](https://msdn.microsoft.com/library/ms188061) |
+| **手順** | クレジット カード番号などの機密データは、データベースで暗号化する必要があります。 データは、列レベルの暗号化を使って、または暗号化関数を使ってアプリケーション機能により、暗号化できます。 |
 
 ## <a id="tde-enabled"></a>データベース レベルの暗号化 (TDE) を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | データベース | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [SQL Server の透過的なデータ暗号化 (TDE) について](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
-| 手順 | SQL Server の Transparent Data Encryption (TDE) 機能は、データベースの機密データを暗号化し、証明書でデータを暗号化するために使われるキーを保護するのに役立ちます。 これにより、キーを持たないユーザーはデータを使うことができません。 TDE は、"保存" データ、つまりデータとログ ファイルを保護します。 多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。 |
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [SQL Server の透過的なデータ暗号化 (TDE) について](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **手順** | SQL Server の Transparent Data Encryption (TDE) 機能は、データベースの機密データを暗号化し、証明書でデータを暗号化するために使われるキーを保護するのに役立ちます。 これにより、キーを持たないユーザーはデータを使うことができません。 TDE は、"保存" データ、つまりデータとログ ファイルを保護します。 多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。 |
 
 ## <a id="backup"></a>データベースのバックアップを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | データベース | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | SQL Azure、OnPrem |
-| 属性              | SQL バージョン - V12、SQL バージョン - MsSQL2014 |
-| 参照              | [SQL データベース バックアップの暗号化](https://msdn.microsoft.com/library/dn449489) |
-| 手順 | SQL Server には、バックアップの作成中にデータを暗号化する機能があります。 バックアップを作成するときに暗号化アルゴリズムと暗号化機能 (証明書または非対称キー) を指定することで、暗号化されたバックアップ ファイルを作成できます。 |
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | SQL Azure、OnPrem |
+| **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2014 |
+| **参照**              | [SQL データベース バックアップの暗号化](https://msdn.microsoft.com/library/dn449489) |
+| **手順** | SQL Server には、バックアップの作成中にデータを暗号化する機能があります。 バックアップを作成するときに暗号化アルゴリズムと暗号化機能 (証明書または非対称キー) を指定することで、暗号化されたバックアップ ファイルを作成できます。 |
 
 ## <a id="api-browser"></a>Web API に関連する機密データがブラウザーの記憶域に保存されないようにする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Web API | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | MVC 5、MVC 6 |
-| 属性              | ID プロバイダー - ADFS、ID プロバイダー - Azure AD |
-| 参照              | 該当なし  |
-| 手順 | <p>一部の実装では、Web API の認証に関連する機密性の高いアーティファクトがブラウザーのローカル記憶域に格納されます。 たとえば、adal.idtoken、adal.nonce.idtoken、adal.access.token.key、adal.token.keys、adal.state.login、adal.session.state、adal.expiration.key などの Azure AD 認証アーティファクトです。</p><p>これらのアーティファクトはすべて、サインアウトした後またはブラウザーを終了した後でも使用可能です。 敵対者がこれらのアーティファクトにアクセスできた場合、それを再利用して保護されたリソース (API) にアクセスできます。 Web API に関連するすべての機密アーティファクトが、ブラウザーの記憶域に保存されないようにします。 クライアント側に記憶することが避けられない場合は (たとえば、Implicit OpenIdConnect/OAuth フローを利用するシングル ページ アプリケーション (SPA) は、アクセス トークンをローカルに保存する必要があります)、永続性のない記憶域の選択肢を使います。 たとえば、LocalStorage ではなく SessionStorage を選びます。</p>| 
+| **コンポーネント**               | Web API | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | MVC 5、MVC 6 |
+| **属性**              | ID プロバイダー - ADFS、ID プロバイダー - Azure AD |
+| **参照**              | 該当なし  |
+| **手順** | <p>一部の実装では、Web API の認証に関連する機密性の高いアーティファクトがブラウザーのローカル記憶域に格納されます。 たとえば、adal.idtoken、adal.nonce.idtoken、adal.access.token.key、adal.token.keys、adal.state.login、adal.session.state、adal.expiration.key などの Azure AD 認証アーティファクトです。</p><p>これらのアーティファクトはすべて、サインアウトした後またはブラウザーを終了した後でも使用可能です。 敵対者がこれらのアーティファクトにアクセスできた場合、それを再利用して保護されたリソース (API) にアクセスできます。 Web API に関連するすべての機密アーティファクトが、ブラウザーの記憶域に保存されないようにします。 クライアント側に記憶することが避けられない場合は (たとえば、Implicit OpenIdConnect/OAuth フローを利用するシングル ページ アプリケーション (SPA) は、アクセス トークンをローカルに保存する必要があります)、永続性のない記憶域の選択肢を使います。 たとえば、LocalStorage ではなく SessionStorage を選びます。</p>| 
 
 ### <a name="example"></a>例
 次の JavaScript のスニペットは、ローカル記憶域に認証アーティファクトを保存するカスタム認証ライブラリのものです。 このような実装は避ける必要があります。 
@@ -248,111 +247,111 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Azure Document DB | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | ドキュメント DB に保存する前にアプリケーション レベルで機密データを暗号化するか、または Azure Storage や Azure SQL のような他のストレージ ソリューションに機密データを保存します。| 
+| **コンポーネント**               | Azure Document DB | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | ドキュメント DB に保存する前にアプリケーション レベルで機密データを暗号化するか、または Azure Storage や Azure SQL のような他のストレージ ソリューションに機密データを保存します。| 
 
 ## <a id="disk-vm"></a>Virtual Machines によって使われるディスクを、Azure Disk Encryption を使って暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Azure IaaS VM の信頼の境界 | 
-| SDL フェーズ               | デプロイ |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| 手順 | <p>Azure Disk Encryption は、現在プレビュー段階の新しい機能です。 この機能を使用すると、IaaS Virtual Machine に使用される OS ディスクとデータ ディスクを暗号化できます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 DM-Crypt は Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 Azure Disk Encryption ソリューションでは、次の 3 つのユーザー暗号化シナリオがサポートされています。</p><ul><li>ユーザーが暗号化した VHD ファイルおよびユーザーが提供した暗号化キーから作成した新しい IaaS VM で暗号化を有効にして、キーを Azure Key Vault に保存します。</li><li>Azure Marketplace から作成された新しい IaaS VM での暗号化を有効にします。</li><li>Azure で既に実行されている既存の IaaS VM での暗号化を有効にします。</li></ul>| 
+| **コンポーネント**               | Azure IaaS VM の信頼の境界 | 
+| **SDL フェーズ**               | デプロイ |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **手順** | <p>Azure Disk Encryption は、現在プレビュー段階の新しい機能です。 この機能を使用すると、IaaS Virtual Machine に使用される OS ディスクとデータ ディスクを暗号化できます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 DM-Crypt は Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 Azure Disk Encryption ソリューションでは、次の 3 つのユーザー暗号化シナリオがサポートされています。</p><ul><li>ユーザーが暗号化した VHD ファイルおよびユーザーが提供した暗号化キーから作成した新しい IaaS VM で暗号化を有効にして、キーを Azure Key Vault に保存します。</li><li>Azure Marketplace から作成された新しい IaaS VM での暗号化を有効にします。</li><li>Azure で既に実行されている既存の IaaS VM での暗号化を有効にします。</li></ul>| 
 
 ## <a id="fabric-apps"></a>Service Fabric アプリケーションでシークレットを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Service Fabric の信頼の境界 | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 環境 - Azure |
-| 参照              | [Service Fabric アプリケーションでのシークレットの管理](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
-| 手順 | シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。 Azure Key Vault を使って、Service Fabric アプリケーションのキーやシークレットを管理します。 |
+| **コンポーネント**               | Service Fabric の信頼の境界 | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 環境 - Azure |
+| **参照**              | [Service Fabric アプリケーションでのシークレットの管理](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **手順** | シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。 Azure Key Vault を使って、Service Fabric アプリケーションのキーやシークレットを管理します。 |
 
 ## <a id="modeling-teams"></a>セキュリティ モデリングを実行し、必要に応じて部署/チームを使う
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Dynamics CRM | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | セキュリティ モデリングを実行し、必要に応じて部署/チームを使います。 |
+| **コンポーネント**               | Dynamics CRM | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | セキュリティ モデリングを実行し、必要に応じて部署/チームを使います。 |
 
 ## <a id="entities"></a>重要なエンティティでの共有機能へのアクセスを最小限にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Dynamics CRM | 
-| SDL フェーズ               | デプロイ |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | 重要なエンティティでの共有機能へのアクセスを最小限にします。 |
+| **コンポーネント**               | Dynamics CRM | 
+| **SDL フェーズ**               | デプロイ |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | 重要なエンティティでの共有機能へのアクセスを最小限にします。 |
 
 ## <a id="good-practices"></a>Dynamics CRM の共有機能に関連するリスクおよび適切なセキュリティ プラクティスについてユーザーをトレーニングする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Dynamics CRM | 
-| SDL フェーズ               | デプロイ |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | Dynamics CRM の共有機能に関連するリスクおよび適切なセキュリティ プラクティスについてユーザーをトレーニングします。 |
+| **コンポーネント**               | Dynamics CRM | 
+| **SDL フェーズ**               | デプロイ |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | Dynamics CRM の共有機能に関連するリスクおよび適切なセキュリティ プラクティスについてユーザーをトレーニングします。 |
 
 ## <a id="exception-mgmt"></a>例外管理での構成の詳細の表示を禁止する開発標準規則を含める
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Dynamics CRM | 
-| SDL フェーズ               | デプロイ |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | 該当なし  |
-| 手順 | 開発外部の例外管理で構成の詳細の表示を禁止する開発標準規則を含めます。 コード レビューまたは定期的な検査の一部として、これをテストします。|
+| **コンポーネント**               | Dynamics CRM | 
+| **SDL フェーズ**               | デプロイ |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | 該当なし  |
+| **手順** | 開発外部の例外管理で構成の詳細の表示を禁止する開発標準規則を含めます。 コード レビューまたは定期的な検査の一部として、これをテストします。|
 
 ## <a id="sse-preview"></a>Azure Storage Service Encryption (SSE) for Data at Rest (プレビュー) を使う
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Azure Storage (Azure Storage) | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | StorageType - BLOB |
-| 参照              | [Azure Storage Service Encryption for Data at Rest (プレビュー)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
-| 手順 | <p>Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たすのに役立ちます。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。 SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。 テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。</p><p>暗号化と復号化のワークフロー:</p><ul><li>ユーザーがストレージ アカウントで暗号化を有効にします</li><li>ユーザーが Blob Storage に新しいデータを書き込むと (PUT Blob、PUT Block、PUT Page など)、使用可能なものの中で最も強力なブロック暗号化の 1 つである 256 ビット AES 暗号化を使って、すべての書き込みが暗号化されます</li><li>ユーザーがデータにアクセスすると (GET Blob など)、データは自動的に復号化されてユーザーに返されます</li><li>暗号化が無効になっている場合は、新しい書き込みは暗号化されず、既存の暗号化されたデータはユーザーが書き込み直すまで暗号化された状態のままになります。 暗号化が有効になっている間、Blob Storage への書き込みは暗号化されます。 ユーザーがストレージ アカウントの暗号化の有効/無効を切り替えても、データの状態は変わりません</li><li>すべての暗号化キーは、Microsoft によって保管、暗号化、管理されます</li></ul><p>現時点では暗号化に使われるキーは Microsoft が管理していることに注意してください。 Microsoft は、社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。 将来的には、ユーザーが独自の暗号化キーを管理し、Microsoft が管理するキーからユーザーが管理するキーに移行する機能を追加する予定です。</p>| 
+| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | StorageType - BLOB |
+| **参照**              | [Azure Storage Service Encryption for Data at Rest (プレビュー)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **手順** | <p>Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たすのに役立ちます。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。 SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。 テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。</p><p>暗号化と復号化のワークフロー:</p><ul><li>ユーザーがストレージ アカウントで暗号化を有効にします</li><li>ユーザーが Blob Storage に新しいデータを書き込むと (PUT Blob、PUT Block、PUT Page など)、使用可能なものの中で最も強力なブロック暗号化の 1 つである 256 ビット AES 暗号化を使って、すべての書き込みが暗号化されます</li><li>ユーザーがデータにアクセスすると (GET Blob など)、データは自動的に復号化されてユーザーに返されます</li><li>暗号化が無効になっている場合は、新しい書き込みは暗号化されず、既存の暗号化されたデータはユーザーが書き込み直すまで暗号化された状態のままになります。 暗号化が有効になっている間、Blob Storage への書き込みは暗号化されます。 ユーザーがストレージ アカウントの暗号化の有効/無効を切り替えても、データの状態は変わりません</li><li>すべての暗号化キーは、Microsoft によって保管、暗号化、管理されます</li></ul><p>現時点では暗号化に使われるキーは Microsoft が管理していることに注意してください。 Microsoft は、社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。 将来的には、ユーザーが独自の暗号化キーを管理し、Microsoft が管理するキーからユーザーが管理するキーに移行する機能を追加する予定です。</p>| 
 
 ## <a id="client-storage"></a>クライアント側暗号化を使って、Azure Storage に機密データを保存する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | Azure Storage (Azure Storage) | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
-| 手順 | <p>.NET Nuget パッケージ用 Azure Storage クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。 ここでは、クライアント側暗号化のしくみを簡単に説明します。</p><ul><li>Azure ストレージ クライアント SDK は、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します</li><li>ユーザー データは、この CEK を使用して暗号化されます</li><li>CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。 Storage クライアント自体が KEK にアクセスすることはありません。 クライアントは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。 ユーザーは、必要に応じてキー ラップ/ラップ解除にカスタム プロバイダーを使うことができます</li><li>暗号化されたデータは、Azure Storage サービスにアップロードされます。 細かなレベルの実装の詳細については、「参照」セクションのリンクを参照してください。</li></ul>|
+| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **手順** | <p>.NET Nuget パッケージ用 Azure Storage クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。 ここでは、クライアント側暗号化のしくみを簡単に説明します。</p><ul><li>Azure ストレージ クライアント SDK は、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します</li><li>ユーザー データは、この CEK を使用して暗号化されます</li><li>CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。 Storage クライアント自体が KEK にアクセスすることはありません。 クライアントは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。 ユーザーは、必要に応じてキー ラップ/ラップ解除にカスタム プロバイダーを使うことができます</li><li>暗号化されたデータは、Azure Storage サービスにアップロードされます。 細かなレベルの実装の詳細については、「参照」セクションのリンクを参照してください。</li></ul>|
 
 ## <a id="pii-phones"></a>携帯電話のローカル ストレージに書き込まれた機密データまたは PII データを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | モバイル クライアント | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック、Xamarin  |
-| 属性              | 該当なし  |
-| 参照              | [Microsoft Intune ポリシーを使用してデバイスの設定と機能を管理する](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
-| 手順 | <p>アプリケーションがユーザーの PII (メール アドレス、電話番号、名、姓、個人設定など) のような機密情報をモバイル デバイスのファイル システムに書き込む場合、ローカル ファイル システムに書き込む前に暗号化する必要があります。 アプリケーションがエンタープライズ アプリケーションの場合は、Windows Intune を使ってアプリケーションを発行する可能性を調査します。</p>|
+| **コンポーネント**               | モバイル クライアント | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック、Xamarin  |
+| **属性**              | 該当なし  |
+| **参照**              | [Microsoft Intune ポリシーを使用してデバイスの設定と機能を管理する](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
+| **手順** | <p>アプリケーションがユーザーの PII (メール アドレス、電話番号、名、姓、個人設定など) のような機密情報をモバイル デバイスのファイル システムに書き込む場合、ローカル ファイル システムに書き込む前に暗号化する必要があります。 アプリケーションがエンタープライズ アプリケーションの場合は、Windows Intune を使ってアプリケーションを発行する可能性を調査します。</p>|
 
 ### <a name="example"></a>例
 Intune は、機密データを保護するように次のセキュリティ ポリシーで構成できます。 
@@ -397,23 +396,23 @@ Allow screen capture
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | モバイル クライアント | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック |
-| 属性              | 該当なし  |
-| 参照              | [Crypto Obfuscator For .Net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
-| 手順 | 生成されるバイナリ (apk 内のアセンブリ) は、アセンブリのリバース エンジニアリングを停止するために難読化する必要があります。この目的には、CryptoObfuscator などのツールを使うことができます。 |
+| **コンポーネント**               | モバイル クライアント | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック |
+| **属性**              | 該当なし  |
+| **参照**              | [Crypto Obfuscation For .Net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **手順** | 生成されるバイナリ (apk 内のアセンブリ) は、アセンブリのリバース エンジニアリングを止めるために難読化する必要があります。この目的には、`CryptoObfuscator` などのツールを使うことができます。 |
 
 ## <a id="cert"></a>clientCredentialType を Certificate または Windows に設定する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | WCF | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | .NET Framework 3 |
-| 属性              | 該当なし  |
-| 参照              | [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
-| 手順 | 暗号化されていないチャネルを介してプレーン テキスト パスワードで UsernameToken を使うと、攻撃者にパスワードが暴露され、SOAP メッセージを傍受できます。 UsernameToken を使うサービス プロバイダーは、プレーン テキストで送信されるパスワードを受け付ける場合があります。 暗号化されていないチャネル経由でプレーン テキスト パスワードを送信すると、資格情報が攻撃者に暴露されて SOAP メッセージを傍受できるようになります。 | 
+| **コンポーネント**               | WCF | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | .NET Framework 3 |
+| **属性**              | 該当なし  |
+| **参照**              | [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **手順** | 暗号化されていないチャネルを介してプレーン テキスト パスワードで UsernameToken を使うと、攻撃者にパスワードが暴露され、SOAP メッセージを傍受できます。 UsernameToken を使うサービス プロバイダーは、プレーン テキストで送信されるパスワードを受け付ける場合があります。 暗号化されていないチャネル経由でプレーン テキスト パスワードを送信すると、資格情報が攻撃者に暴露されて SOAP メッセージを傍受できるようになります。 | 
 
 ### <a name="example"></a>例
 次の WCF サービス プロバイダーの構成では、UsernameToken を使っています。 
@@ -427,12 +426,12 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| コンポーネント               | WCF | 
-| SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック、NET Framework 3 |
-| 属性              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
-| 参照              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
-| 手順 | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
+| **コンポーネント**               | WCF | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
+| **属性**              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
+| **手順** | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
 
 ### <a name="example"></a>例
 次の構成は、セキュリティ モードを None に設定します。 

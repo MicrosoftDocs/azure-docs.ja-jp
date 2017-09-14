@@ -1,10 +1,10 @@
 ---
-title: "メディア プロセッサを作成する方法 | Microsoft Docs"
+title: ".NET 用 Azure Media Services SDK を使用してメディア プロセッサを作成する方法 | Microsoft Docs"
 description: "メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: dbf9496f-c6f0-42a7-aa36-70f89dcb8ea2
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 88f6e1da090eb6088e54c6f81d0f83b1737d3c2c
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: cb14bebfaf073cb38bdc1f1718ef3d8c7f6c45fc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
@@ -31,21 +31,16 @@ ms.lasthandoff: 04/12/2017
 ## <a name="overview"></a>Overview
 メディア プロセッサは、Media Services のコンポーネントとして、メディア コンテンツのエンコード、形式変換、暗号化、復号化など、特定の処理タスクを担います。 通常、メディア コンテンツのエンコード、暗号化、形式変換を行うタスクの作成時にメディア プロセッサを作成します。
 
-次の表は、利用可能なメディア プロセッサの名前と説明の一覧です。
+## <a name="azure-media-processors"></a>Azure メディア プロセッサ 
 
-| メディア プロセッサ名 | Description | 詳細情報 |
-| --- | --- | --- |
-| メディア エンコーダー スタンダード |オンデマンド エンコードのための標準機能を備えています。 |[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md) |
-| メディア エンコーダー Premium ワークフロー |メディア エンコーダー Premium ワークフローを使用してエンコード タスクを実行できます。 |[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md) |
-| Azure Media Indexer |メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。 |[Azure Media Indexer](media-services-index-content.md) |
-| Azure Media Hyperlapse (プレビュー) |ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。 コンテンツをすばやく使用可能なクリップにすることもできます。 |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |非推奨 | |
-| Storage Decryption |非推奨 | |
-| Azure Media Packager |非推奨 | |
-| Azure Media Encryptor |非推奨 | |
+次のトピックは、メディア プロセッサの一覧です。
+
+* [Encoding メディア プロセッサ](scenarios-and-availability.md#encoding-media-processors)
+* [Analytics メディア プロセッサ](scenarios-and-availability.md#analytics-media-processors)
 
 ## <a name="get-media-processor"></a>メディア プロセッサの取得
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、[Media Services にプログラムから接続する方法](media-services-dotnet-connect-programmatically.md)に関するページで説明しているように、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。
+
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するページで説明しているように、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

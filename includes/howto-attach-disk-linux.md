@@ -1,5 +1,5 @@
 
-ディスクの詳細については、[仮想マシン用のディスクと VHD](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関するページを参照してください。
+ディスクの詳細については、[仮想マシン用のディスクと VHD](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関するページを参照してください。
 
 <a id="attachempty"></a>
 

@@ -12,17 +12,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/17/2017
+ms.date: 6/29/2017
 ms.author: sumukhs
-translationtype: Human Translation
-ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
-ms.openlocfilehash: 101b4e6a7bd5ded44334a4c3c9efee69669d9bcf
-ms.lasthandoff: 02/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fa77eaf44f4d90d1a78f5de69e36432a53d80ecd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
-Reliable Services の構成設定には&2; つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう&1; つは特定の Reliable Services に固有の設定です。
+Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
 
 ## <a name="global-configuration"></a>グローバル構成
 Reliable Services のグローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。

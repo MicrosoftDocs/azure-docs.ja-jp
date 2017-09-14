@@ -28,14 +28,15 @@
     これにより、プッシュ ハンドラー サービス プロセスからモバイル クライアント インスタンスにアクセスできるようになります。
 4. **MobileServiceClient** が作成された後で、次のコードを **OnCreate** メソッドに追加します。
    
-     // Set the current instance of TodoActivity.
-     instance = this;
+       // Set the current instance of TodoActivity.
+       instance = this;
    
-     // Make sure the GCM client is set up correctly.
-     GcmClient.CheckDevice(this); GcmClient.CheckManifest(this);
+       // Make sure the GCM client is set up correctly.
+       GcmClient.CheckDevice(this);
+       GcmClient.CheckManifest(this);
    
-     // Register the app for push notifications.
-     GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
+       // Register the app for push notifications.
+       GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
 
 これで、 **ToDoActivity** は、プッシュ通知を追加するための準備が整いました。
 

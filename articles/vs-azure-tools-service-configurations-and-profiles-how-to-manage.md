@@ -3,8 +3,8 @@ title: "サービス構成とプロファイルを管理する方法 | Microsoft
 description: "サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
 ms.service: multiple
@@ -12,16 +12,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c83d779797493f6ec48d61563aa7448db7c9b917
-
+ms.date: 8/11/2017
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: b939f2af75723739ffab16d9a75ea8f6484e5e05
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>サービス構成とプロファイルを管理する方法
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 クラウド サービスを発行すると、Visual Studio は、サービス構成とプロファイルという 2 種類の構成ファイルに構成情報を保存します。 サービス構成 (.cscfg ファイル) には、Azure クラウド サービスのデプロイ環境の設定が保存されます。 Azure は、クラウド サービスを管理するときに、これらの構成ファイルを使用します。 その一方で、プロファイル (.azurePubxml ファイル) には、クラウド サービスの発行設定が保存されます。 この設定は、発行ウィザードで選択された内容の記録であり、Visual Studio によってローカルで使用されます。 ここでは、両方の種類の構成ファイルを使用する方法について説明します。
 
 ## <a name="service-configurations"></a>サービス構成
@@ -60,7 +61,7 @@ ms.openlocfilehash: c83d779797493f6ec48d61563aa7448db7c9b917
     ソリューション エクスプローラーの Azure プロジェクトでサービス構成ファイルの名前が変更されます。
 
 ### <a name="to-change-a-service-configuration"></a>サービス構成を変更するには
-* サービス構成を変更する場合は、Azure プロジェクトで変更するロールのショートカット メニューを開き、 **[プロパティ]**を選択します。 詳細については、「 [方法: Visual Studio を使用した Azure クラウド サービスのロールの構成](https://msdn.microsoft.com/library/azure/hh369931.aspx) 」を参照してください。
+* サービス構成を変更する場合は、Azure プロジェクトで変更するロールのショートカット メニューを開き、 **[プロパティ]**を選択します。 詳細については、「 [方法: Visual Studio を使用した Azure クラウド サービスのロールの構成](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service) 」を参照してください。
 
 ## <a name="make-different-setting-combinations-by-using-profiles"></a>プロファイルを使用してさまざまな設定を組み合わせる
 プロファイルを使用すると、目的に応じて異なる設定の組み合わせを自動的に**発行ウィザード**に入力できます。 たとえば、デバッグ用にプロファイルを 1 つ作成し、リリース ビルド用に別のプロファイルを作成します。 その場合、**デバッグ** プロファイルでは **IntelliTrace** が有効になり、**デバッグ**構成が選択されます。**リリース** プロフィールでは **IntelliTrace** が無効になり、**リリース**構成が選択されます。 また、別のプロファイルを使用して、別のストレージ アカウントでサービスをデプロイすることもできます。
@@ -101,10 +102,5 @@ ms.openlocfilehash: c83d779797493f6ec48d61563aa7448db7c9b917
 
 ## <a name="next-steps"></a>次のステップ
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、 [Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

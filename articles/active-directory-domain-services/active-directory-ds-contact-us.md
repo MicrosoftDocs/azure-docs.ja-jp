@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/23/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddcd8baea7694d957820870b2f991a35200d0ca
-ms.lasthandoff: 12/29/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD ドメイン サービス - お問い合わせ
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/29/2016
 
 問題を調査できるよう、次を含めるようにしてください。
 
-* Azure AD ディレクトリの **テナント ID** 。 テナント ID は、ディレクトリの AAD ドメイン サービスを有効にした場所からページに移動するときに、ブラウザーのアドレス バーに表示される GUID です。
+* Azure AD ディレクトリの**テナント ID/ディレクトリ ID**。 このテナント ID は、[ディレクトリの [プロパティ] ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)の [ディレクトリ ID] フィールドに表示される GUID です。
 * AAD ドメイン サービスの管理対象ドメインに構成した **DNS ドメイン名** 。
 
 ## <a name="provide-feedback"></a>フィードバックの提供

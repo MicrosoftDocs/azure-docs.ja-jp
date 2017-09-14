@@ -4,7 +4,7 @@ description: "マルチサイトのサイト間接続を、既存の接続があ
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
@@ -16,18 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 9550b0076105b018bd8ede50519ac96bfb773001
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7ec57789ee76f4ec54e4f7b68ea75c19522f3d7c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
+
 > [!div class="op_single_selector"]
-> * [Resource Manager - ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [クラシック - PowerShell](vpn-gateway-multi-site.md)
-> 
+> * [Azure ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [PowerShell (クラシック)](vpn-gateway-multi-site.md)
+>
 > 
 
 この記事では、Azure Portal を使用して、既存の接続がある VPN ゲートウェイにサイト間 (S2S) 接続を追加する方法について説明します。 この種類の構成は、一般に "マルチサイト" 構成と呼ばれます。 既にサイト間接続、ポイント対サイト接続、またはVNet 間接続のある VNet にサイト間接続を追加できます。 接続を追加する際には、制限があります。 構成を始める前に、この記事の「[開始する前に](#before)」セクションで内容をご確認ください。 

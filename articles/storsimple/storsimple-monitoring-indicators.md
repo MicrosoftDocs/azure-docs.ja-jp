@@ -4,7 +4,7 @@ description: "StorSimple デバイスの状態を監視するための発光ダ�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 06/05/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0b8efafadee9bb7636bb204b55758f18a86cf049
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -135,7 +137,7 @@ StorSimple デバイスは、StorSimple デバイスのプライマリ コント
 ### <a name="controller-indicator-leds"></a>コントローラー インジケーター LED
 | LED | Description |
 | --- | --- |
-| ID LED (青) |モジュールが識別されていることを示します。 青色の LED が動作中のコントローラーで点滅している場合、そのコントローラーがアクティブ コントローラーで、もう一方がスタンバイ コントローラーです。 詳細については、「 [デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」をご覧ください。 |
+| ID LED (青) |モジュールが識別されていることを示します。 青色の LED が動作中のコントローラーで点滅している場合、そのコントローラーがアクティブ コントローラーで、もう一方がスタンバイ コントローラーです。 詳細については、「 [デバイスでのアクティブなコントローラーの識別](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)」をご覧ください。 |
 | 障害 LED (アンバー) |コントローラー内の障害を示します。 |
 | OK LED (緑) |緑色の点灯は、コントローラーが OK であることを示します。 緑色の点滅は、コントローラーの VPD 構成エラーを示します。 |
 | SAS アクティビティ LED (緑) |緑色の点灯は、現時点でのアクティビティがない接続を示します。 緑色の点滅は、現在進行中のアクティビティがある接続を示します。 |
@@ -209,12 +211,11 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 > * アラーム状態 S1 の場合、ミュート ボタンを押さないでいると、2 分後に状態が S2 または S3 に自動的に移行します。  
 > * アラーム状態 S1 ～ S4 は、障害状態が解消された後に S0 に戻ります。  
 > * 他のどの状態からも重大な障害状態 S4 に移行する可能性があります。  
-> 
-> 
 
-可聴アラームは OPS パネルのミュート ボタンを押すことでミュート状態にすることができます。 ミュート スイッチが手動で操作されなかった場合は、2 分後に自動ミュート機能が作動します。 アラームはミュート状態になっても、引き続き、短い断続的なビープ音を鳴らして問題がまだ存在することを示します。 すべての問題が解消されると、アラーム音は消えます。  
 
-次の表に、各種のアラーム状態を説明します。  
+可聴アラームは OPS パネルのミュート ボタンを押すことでミュート状態にすることができます。 ミュート スイッチが手動で操作されなかった場合は、2 分後に自動ミュート機能が作動します。 アラームはミュート状態になっても、引き続き、短い断続的なビープ音を鳴らして問題がまだ存在することを示します。 すべての問題が解消されると、アラーム音は消えます。
+
+次の表に、各種のアラーム状態を説明します。
 
 ### <a name="alarm-conditions"></a>アラーム状態
 | 状態 | 重大度 | アラーム | OPS パネル LED |
@@ -240,7 +241,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 | 電力供給が不十分である |警告 |なし |モジュール障害 |
 
 ## <a name="next-steps"></a>次のステップ
-[StorSimple ハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)の詳細を確認します。
+[StorSimple ハードウェア コンポーネントと状態](storsimple-8000-monitor-hardware-status.md)の詳細を確認します。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png
@@ -249,10 +250,5 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 [5]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE05.png
 [6]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE06.png
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

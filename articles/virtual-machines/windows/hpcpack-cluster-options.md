@@ -1,5 +1,5 @@
 ---
-title: "クラウドでの Windows HPC Pack クラスター オプション | Microsoft Docs"
+title: "Azure での Windows HPC Pack クラスター オプション | Microsoft Docs"
 description: "Microsoft HPC Pack を使用して Azure クラウドで Windows ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプションについて学習します。"
 services: virtual-machines-windows,cloud-services,batch
 documentationcenter: 
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/06/2017
+ms.date: 08/25/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 96a5520d8440af7d8a880c2675a5d4eb4121e9ab
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b82cb6cc3724af9306bc3b23125cf7cfa03df8ea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
-# <a name="options-with-hpc-pack-to-create-and-manage-a-windows-hpc-cluster-in-azure"></a>Azure で Windows HPC クラスターを作成して管理するために使用する HPC Pack のオプション
+# <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-windows-hpc-workloads-in-azure"></a>Azure で Windows HPC ワークロード用のクラスターを作成して管理するための HPC Pack のオプション
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
 この記事では、Windows ワークロードの実行に使用する HPC Pack クラスターを作成するためのオプションについて説明します。 また、[Linux HPC ワークロード](../linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を実行するのに使用する HPC Pack クラスターを作成するためのオプションもあります。
 
 
-## <a name="run-an-hpc-pack-cluster-in-azure-vms"></a>Azure VM での HPC Pack クラスターの実行
+## <a name="hpc-pack-cluster-in-azure-vms"></a>Azure VM の HPC Pack クラスター
 ### <a name="azure-templates"></a>Azure テンプレート
 * (GitHub) [HPC Pack 2016 クラスター テンプレート](https://github.com/MsHpcPack/HPCPack2016)
 * (Marketplace) [HPC Pack cluster for Windows workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/03/2017
 * [Windows Server 2012 R2 上の HPC Pack 2012 R2 コンピューティング ノード](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodeonwindowsserver2012r2/)
 * [Windows Server 2012 R2 上の HPC Pack コンピューティング ノードと Excel](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
 
-### <a name="powershell-deployment-script"></a>PowerShell デプロイメント スクリプト
+### <a name="powershell-deployment-script-for-hpc-pack-2012-r2"></a>HPC Pack 2012 R2 の PowerShell デプロイメント スクリプト
 * [HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ### <a name="tutorials"></a>Tutorials (チュートリアル)
@@ -60,17 +60,17 @@ ms.lasthandoff: 04/03/2017
 * [クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する](classic/hpcpack-cluster-node-autogrowshrink.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [HPC Pack でのジョブ管理](https://technet.microsoft.com/library/jj899585.aspx)
-* [Azure Active Directory を使用して Azure の HPC Pack クラスターを管理する](hpcpack-cluster-active-directory.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure Active Directory を使用して Azure の HPC Pack 2016 クラスターを管理する](hpcpack-cluster-active-directory.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a name="add-worker-role-nodes-to-an-hpc-pack-cluster"></a>HPC Pack クラスターへの worker ロールの追加
+## <a name="burst-with-worker-role-nodes"></a>worker ロール ノードでのバースト 
 * [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 * [Azure で HPC Pack を使用してハイブリッド クラスターをセットアップする](../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
 * [Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a name="integrate-with-azure-batch"></a>Azure Batch との統合
+## <a name="burst-with-azure-batch"></a>Azure Batch でのバースト
 * [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
-## <a name="create-rdma-clusters-for-mpi-workloads"></a>MPI ワークロードのための RDMA のクラスターの作成
+## <a name="rdma-clusters-for-mpi-workloads"></a>MPI ワークロードのための RDMA のクラスター
 * [HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 

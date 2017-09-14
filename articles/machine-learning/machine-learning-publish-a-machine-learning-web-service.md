@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5bcdb2cd11ffa633bce4e0faee4f49d9053a662b
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 39761f94efc530452a41ef9f2130976803cff711
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -118,7 +118,7 @@ Machine Learning Studio から Web サービスをデプロイすると、サー
 
 **[Consume (使用)]** ページでは、Web サービスへのアクセスに必要なすべての情報が提供されます。 たとえば、API キーは、サービスへの承認済みアクセスを許可するために提供されます。
 
-Machine Learning Web サービスへのアクセスの詳細については、 [デプロイされた Azure Machine Learning Web サービスの使用方法](machine-learning-consume-web-services.md)に関するページをご覧ください。
+Machine Learning Web サービスへのアクセスの詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 #### <a name="manage-your-new-web-service"></a>新しい Web サービスを管理する
 新しい Web サービスの Machine Learning Web サービス ポータルを管理することができます。 [メイン ポータル ページ](https://services.azureml-test.net/) で **[Web サービス]**をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]**をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]**をクリックします。
@@ -158,7 +158,7 @@ Machine Learning Studio から Web サービスをデプロイすると、サー
 
 ダッシュ ボードでは、Web サービスへのアクセスが必要なすべての情報が提供されます。 たとえば、サービスへの承認済みアクセスを許可する API キーや、コードの記述に役立つ API のヘルプ ページが提供されます。
 
-Machine Learning Web サービスへのアクセスの詳細については、 [デプロイされた Azure Machine Learning Web サービスの使用方法](machine-learning-consume-web-services.md)に関するページをご覧ください。
+Machine Learning Web サービスへのアクセスの詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 #### <a name="manage-your-classic-web-service"></a>従来の Web サービスを管理する
 Web サービスを監視するために実行できるさまざまな操作があります。 更新および削除することもできます。 デプロイ時に作成される既定のエンドポイントに加え、従来の Web サービスにさらにエンドポイントを追加することもできます。

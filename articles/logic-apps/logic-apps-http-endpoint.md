@@ -17,10 +17,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 32a5cfdb520c745dbd0fa5c433849bd3783a364e
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -32,9 +32,9 @@ HTTP エンドポイントを作成するには、ロジック アプリで受�
 
 * [要求](../connectors/connectors-native-reqres.md)
 
-* [API 接続 Webhook](logic-apps-workflow-actions-triggers.md#api-connection)
+* [API 接続 Webhook](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
 
-* [HTTP Webhook](../connectors/connectors-native-http.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
    > この例では**要求**トリガーを使用しますが、表示されているあらゆる HTTP トリガーを使用できます。また、すべての原則が他の種類のトリガーにも同様に適用されます。
@@ -211,7 +211,7 @@ HTTP エンドポイントを作成したら、完全な URL への `POST` メ�
 
 ## <a name="reference-content-from-an-incoming-request"></a>受信要求からコンテンツを参照する
 
-コンテンツの種類が `application/json` である場合は、受信要求からプロパティを参照できます。 それ以外の場合は、コンテンツは他の API に渡すことができる単一バイナリ ユニットとして扱われます。 このコンテンツを変換せずに、ワークフロー内でコンテンツを参照することはできません。 たとえば、`application/xml` コンテンツを渡す場合は、`@xpath()` を使用して XPath 抽出を行ったり、`@json()` を使用して XML から JSON に変換することができます。 詳しくは、[コンテンツの種類](../logic-apps/logic-apps-content-type.md)に関する記事をご覧ください。
+コンテンツの種類が `application/json` である場合は、受信要求からプロパティを参照できます。 それ以外の場合は、コンテンツは他の API に渡すことができる単一バイナリ ユニットとして扱われます。 ワークフロー内でコンテンツを参照するには、このコンテンツを変換する必要があります。 たとえば、`application/xml` コンテンツを渡す場合は、`@xpath()` を使用して XPath 抽出を行ったり、`@json()` を使用して XML から JSON に変換することができます。 詳しくは、[コンテンツの種類](../logic-apps/logic-apps-content-type.md)に関する記事をご覧ください。
 
 受信要求から出力を取得するには、`@triggerOutputs()` 関数を使用できます。 出力の例を次に示します。
 
@@ -277,9 +277,11 @@ HTTP エンドポイントを作成したら、完全な URL への `POST` メ�
 
 A: Azure では、ロジック アプリのコールバック URL が、Shared Access Signature (SAS) を使用して安全に生成されます。 この署名はクエリ パラメーターとして渡され、ロジック アプリが起動する前に検証される必要があります。 Azure では、ロジック アプリごとの秘密キー、トリガー名、および実行される操作の一意の組み合わせを使用して署名が生成されます。 そのため、ロジック アプリの秘密キーにアクセスできなければ、有効な署名を生成することはできません。
 
-   > [!NOTE]
-   > 実稼働/セキュリティで保護されたシステムでは、共有さアクセス キーが URL に含まれるためブラウザーから直接ロジック アプリを呼び出さないことをお勧めします。また、ロジック アプリのユーザー間でドメインが共有されるのでセキュリティで保護されたコンテンツ ポリシーを管理できなくなります。
-
+   > [!IMPORTANT]
+   > 運用環境のセキュリティで保護されたシステムでは、次の理由により、ブラウザーから直接ロジック アプリを呼び出さないことを強くお勧めします。
+   > 
+   > * 共有アクセス キーが URL に表示されます。
+   > * ロジック アプリのユーザー間でドメインが共有されるため、セキュリティで保護されたコンテンツ ポリシーを管理できません。
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>Q: HTTP エンドポイントをさらに構成することは可能でしょうか。
 

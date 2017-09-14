@@ -4,7 +4,7 @@ description: "プログラミング言語とバインドを問わず、Azure で
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "開発者向けガイド, Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ"
@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 05/30/2017
 ms.author: chrande
-translationtype: Human Translation
-ms.sourcegitcommit: bc96edb44dc8bbbbe4687806117990c9d3470fdc
-ms.openlocfilehash: adb70fc58321c11c0b57efc9810a44d0ab2c8a20
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
@@ -59,12 +59,12 @@ function.json ファイルは、関数バインドとその他の構成設定を
 | `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
-関数アプリは、Azure App Service でまとめて管理される&1; つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
+関数アプリは、Azure App Service でまとめて管理される 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
 
 ## <a name="runtime-script-host-and-web-host"></a>ランタイム (スクリプト ホストおよび Web ホスト)
 ランタイム (つまりスクリプト ホスト) は基になる WebJobs SDK ホストであり、イベントをリッスンし、データを収集して送信して、最終的にはコードを実行します。 
 
-HTTP トリガーを容易にするため、運用環境シナリオでスクリプト ホストの前に配置されるように設計されている Web ホストもあります。 ホストを&2; つ持つことで、Web ホストによって管理されるフロントエンド トラフィックからスクリプト ホストを分離できます。
+HTTP トリガーを容易にするため、運用環境シナリオでスクリプト ホストの前に配置されるように設計されている Web ホストもあります。 ホストを 2 つ持つことで、Web ホストによって管理されるフロントエンド トラフィックからスクリプト ホストを分離できます。
 
 ## <a name="folder-structure"></a>フォルダー構造
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
@@ -76,7 +76,7 @@ Azure App Service で関数アプリに関数をデプロイするためにプ�
 > 
 > 
 
-## <a name="a-idfileupdatea-how-to-update-function-app-files"></a><a id="fileupdate"></a> 関数アプリ ファイルを更新する方法
+## <a id="fileupdate"></a> 関数アプリ ファイルを更新する方法
 Azure ポータルに組み込まれている関数エディターでは、 *function.json* ファイルと関数のコード ファイルを更新できます。 *package.json* や *project.json* などのその他のファイルや依存関係をアップロードまたは更新するには、その他のデプロイ方法を使用する必要があります。
 
 関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md) はすべて、関数アプリでも利用できます。 ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。 
@@ -94,11 +94,9 @@ Azure ポータルに組み込まれている関数エディターでは、 *fun
 1. `https://<function_app_name>.scm.azurewebsites.net`に移動します。
 2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
 3. `D:\home\site\wwwroot\` に移動し、*host.json* または `D:\home\site\wwwroot\<function_name>` を更新し、関数のファイルを更新します。
-4. アップロードするファイルをファイル グリッドのフォルダーにドラッグアンドドロップします。 ファイルをドロップできるファイル グリッドには&2; つの領域があります。 *.zip* ファイルの場合は、[Drag here to upload and unzip (アップロードして解凍するにはここにドラッグしてください)] というラベルの付いたボックスが表示されます。 他の種類のファイルの場合は、ファイル グリッド内の [unzip (ファイルの解凍)] ボックスの外側にドロップします。
+4. アップロードするファイルをファイル グリッドのフォルダーにドラッグアンドドロップします。 ファイルをドロップできるファイル グリッドには 2 つの領域があります。 *.zip* ファイルの場合は、[Drag here to upload and unzip (アップロードして解凍するにはここにドラッグしてください)] というラベルの付いたボックスが表示されます。 他の種類のファイルの場合は、ファイル グリッド内の [unzip (ファイルの解凍)] ボックスの外側にドロップします。
 
-#### <a name="to-use-ftp"></a>FTP を使用するには
-1. [こちら](../app-service-web/web-sites-deploy.md#ftp) の指示に従って、FTP を構成します。
-2. 関数アプリのサイトに接続されたら、更新された *host.json* ファイルを `/site/wwwroot` にコピーするか、関数ファイルを `/site/wwwroot/<function_name>` にコピーします。
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
 
 #### <a name="to-use-continuous-deployment"></a>継続的なデプロイを使用するには
 「 [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」のトピックの手順に従ってください。
@@ -106,8 +104,9 @@ Azure ポータルに組み込まれている関数エディターでは、 *fun
 ## <a name="parallel-execution"></a>並列実行
 シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。  関数アプリが[従量課金ホスティング プラン](functions-scale.md#how-the-consumption-plan-works)を使用している場合、関数アプリは自動的にスケールアウトできます。  アプリが従量課金ホスティング プランと標準の [App Service ホスティング プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理します。  各関数アプリ インスタンスでの同時関数呼び出しの最大数は、使用されるトリガーの種類と、関数アプリ内の他の関数によって使用されるリソースに応じて異なります。
 
-## <a name="azure-functions-pulse"></a>Azure Functions パルス
-パルスは、関数の実行頻度と成功または失敗を示すライブ イベント ストリームです。 また、平均実行時間を監視することができます。 今後、さらに機能とカスタマイズが追加される予定です。 **[パルス]** ページには **[監視]** タブからアクセスできます。
+## <a name="functions-runtime-versioning"></a>Functions ランタイムのバージョン管理
+
+`FUNCTIONS_EXTENSION_VERSION` アプリ設定を使用して、Functions ランタイムのバージョンを構成できます。 たとえば、「~1」の値は、Function App がそのメジャー バージョンとして 1 を使用することを示します。 Function App は、リリースされたときにそれぞれの新しいマイナー バージョンにアップグレードされます。 Azure Portal の [**設定**] タブで、Function App の正確なバージョンを確認できます。
 
 ## <a name="repositories"></a>リポジトリ
 Azure Functions のコードはオープン ソースであり、GitHub リポジトリに保存されています。

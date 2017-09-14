@@ -14,6 +14,7 @@
 ### [スケール セット テンプレートについて](virtual-machine-scale-sets-mvss-start.md)
 ### [既存の仮想ネットワークの使用](virtual-machine-scale-sets-mvss-existing-vnet.md)
 ### [カスタム イメージの使用](virtual-machine-scale-sets-mvss-custom-image.md)
+### [Linux スケール セット テンプレートによるゲストベースの自動スケールの使用](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## デプロイ
 ### [ポータルでの作成](virtual-machine-scale-sets-portal-create.md)
@@ -32,10 +33,11 @@
 ## Manage
 ### [PowerShell を使用した Windows スケール セット](virtual-machine-scale-sets-windows-manage.md)
 ### [自動スケールとスケール セット](virtual-machine-scale-sets-autoscale-overview.md)
+### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [スケール セットのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)
-### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [DSC とスケール セットの使用](virtual-machine-scale-sets-dsc.md)
+### [スケール セットのネットワーク](virtual-machine-scale-sets-networking.md)
 ### [テンプレートを管理ディスクに変換する](virtual-machine-scale-sets-convert-template-to-md.md)
 
 ## トラブルシューティング
@@ -50,7 +52,9 @@
 ## [REST ()](/rest/api/virtualmachinescalesets/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## 価格 
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)

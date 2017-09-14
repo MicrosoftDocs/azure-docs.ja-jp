@@ -3,8 +3,8 @@ title: "複数のサービス構成を使用した Azure プロジェクトの�
 description: "ServiceDefinition.csdef および ServiceConfiguration.cscfg ファイルを変更して、Azure クラウド サービス プロジェクトを構成する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7e720b7d1f874f83d7d2ff516704f61b5e39601d
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 24b2530b23211c654072a6edc8a31e53989bf0a8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>複数のサービス構成を使用した Azure プロジェクトの構成
@@ -64,9 +65,9 @@ HTTPS エンドポイントを既に追加している場合は、既定で [HTT
 ### <a name="configuring-a-connection-string-to-a-storage-account"></a>ストレージ アカウントへの接続文字列の構成
 接続文字列とは、ストレージ エミュレーターまたは Azure ストレージ アカウントの接続情報と認証情報を提供する構成設定です。 ロール内で実行されているコードから Azure Storage サービス データ (BLOB データ、キュー データ、またはテーブル データ) にアクセスする必要がある場合、そのストレージ アカウントの接続文字列を定義する必要があります。
 
-Azure ストレージ アカウントを指す接続文字列には、定義された書式を使用する必要があります。 接続文字列の作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage/storage-configure-connection-string.md)」を参照してください。
+Azure ストレージ アカウントを指す接続文字列には、定義された書式を使用する必要があります。 接続文字列の作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage/common/storage-configure-connection-string.md)」を参照してください。
 
-Azure Storage サービスに対してサービスをテストする準備、またはクラウド サービスを Azure にデプロイする準備ができたら、Azure ストレージ アカウントを指すように任意の接続文字列の値を変更できます。 **[…]** を選択し、**[ストレージ アカウントの資格情報の入力]** を選択します。 アカウント名とアカウント キーを含むアカウント情報を入力します。 **[ストレージ アカウント接続文字列]** ダイアログ ボックスで、既定の HTTPS エンドポイント (既定のオプション)、既定の HTTP エンドポイント、カスタム エンドポイントのどれを使用するかを指定することもできます。 「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](storage/storage-custom-domain-name.md)」で説明されているように、サービスのカスタム ドメイン名を登録している場合は、カスタム エンドポイントを使用できます。
+Azure Storage サービスに対してサービスをテストする準備、またはクラウド サービスを Azure にデプロイする準備ができたら、Azure ストレージ アカウントを指すように任意の接続文字列の値を変更できます。 **[…]** を選択し、**[ストレージ アカウントの資格情報の入力]** を選択します。 アカウント名とアカウント キーを含むアカウント情報を入力します。 **[ストレージ アカウント接続文字列]** ダイアログ ボックスで、既定の HTTPS エンドポイント (既定のオプション)、既定の HTTP エンドポイント、カスタム エンドポイントのどれを使用するかを指定することもできます。 「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](storage/blobs/storage-custom-domain-name.md)」で説明されているように、サービスのカスタム ドメイン名を登録している場合は、カスタム エンドポイントを使用できます。
 
 > [!IMPORTANT]
 > サービスをデプロイする前に、Azure ストレージ アカウントを指すように接続文字列を変更する必要があります。 変更していないと、ロールの起動に失敗したり、初期化状態、ビジー状態、停止状態を順に繰り返す可能性があります。
@@ -105,10 +106,5 @@ Azure クラウド サービス プロジェクト全体に適用される設定
 | ビルド イベント |このページでは、ビルド前およびビルド後のイベントを設定できます。 |
 | 開発 |このページでは、ビルド構成の手順や、ビルド後イベントを実行する条件を指定できます。 |
 | Web |このページでは、Web サーバーに関連する設定を構成できます。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

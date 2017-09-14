@@ -72,20 +72,18 @@
 
 ## [Storage](azure-operations-guide.md#azure-storage)
 
-### [Azure BLOB Storage](../../storage/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [.NET を使用して Azure Blob Storage を使用する](../../storage/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Windows で Azure File Storage を使用する](../../storage/storage-dotnet-how-to-use-files.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
-### [Linux で Azure File Storage を使用する方法](../../storage/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure Table Storage を使用する](../../storage/storage-dotnet-how-to-use-tables.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure Queue Storage を使用する](../../storage/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [ストレージ アカウントの作成](../../storage/storage-create-storage-account.md#create-a-storage-account)
-### [Azure Storage での Azure PowerShell の使用](../../storage/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure Storage での Azure CLI の使用](../../storage/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Windows 用のストレージ インフラストラクチャのガイドライン](../../virtual-machines/windows/infrastructure-storage-solutions-guidelines.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Linux 用のストレージ インフラストラクチャのガイドライン](../../virtual-machines/linux/infrastructure-storage-solutions-guidelines.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure Storage クライアント ツール](../../storage/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure BLOB Storage](../../storage/blobs/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [.NET を使用して Azure Blob Storage を使用する](../../storage/blobs/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Windows で Azure File Storage を使用する](../../storage/files/storage-how-to-use-files-windows.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Queue Storage を使用する](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [Azure Storage での Azure PowerShell の使用](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Storage での Azure CLI の使用](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Storage クライアント ツール](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage サービスの REST API リファレンス](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)
-### [Shared Access Signatures の使用](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Shared Access Signatures の使用](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 
 
@@ -99,3 +97,6 @@
 #### [仮想ネットワークへのコンピューターの接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [次のステップ](azure-operations-guide.md#next-steps)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

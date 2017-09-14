@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: f139674f96793b8486c541c9e3f1ead751b97232
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 73d0dabe5b8b179cbc0847c2819947febd6ef4d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Azure Data Lake Store の診断ログへのアクセス
@@ -32,7 +31,7 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 * **Azure Data Lake Store アカウント**。 「 [Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Data Lake Store アカウントの診断ログを有効にする
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
 2. Data Lake Store アカウントを開き、Data Lake Store アカウントのブレードで **[設定]**、**[診断ログ]** の順にクリックします。
 3. **[診断ログ]** ブレードで、**[診断を有効にする]** をクリックします。
 
@@ -42,7 +41,7 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
    
     ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "診断ログの有効化")
    
-   * **[状態]** を **[オン]** に設定して診断ログを有効にします。
+   * **[名前]** には、診断ログ構成の値を入力します。
    * さまざまな方法でデータを格納および処理することができます。
      
         * **[Archive to a storage account (ストレージ アカウントへのアーカイブ)]** オプションを選択して、Azure ストレージ アカウントにログを保存します。 後日バッチ処理するデータをアーカイブする場合は、このオプションを使用します。 このオプションを選択する場合は、ログの保存先の Azure ストレージ アカウントを指定する必要があります。
@@ -71,7 +70,7 @@ Data Lake Store アカウントのログ データを確認する方法は 2 つ
    
    * 要求ログは、Data Lake Store アカウントで行われるすべての API 要求をキャプチャします。
    * 監査ログは、要求ログと同様ですが、Data Lake Store アカウントで実行される操作についてより詳しい内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
-3. 各ログ エントリに対する **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
+3. ログをダウンロードするには、各ログ エントリに対する **[ダウンロード]** リンクをクリックします。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
 1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
@@ -86,7 +85,7 @@ Data Lake Store アカウントのログ データを確認する方法は 2 つ
    
     たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    同様に、要求ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    同様に、要求ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json` のようになります。
 
 ## <a name="understand-the-structure-of-the-log-data"></a>ログ データの構造について
 監査ログと要求ログは JSON 形式で作成されます。 このセクションでは、要求ログと監査ログの JSON 構造を確認します。

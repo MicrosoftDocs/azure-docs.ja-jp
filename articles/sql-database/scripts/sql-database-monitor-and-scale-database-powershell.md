@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - 単一の SQL データベースの監視とスケーリング | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用して単一の SQL データベースを監視およびスケーリングする"
+title: "PowerShell サンプル - モニター - スケーリング - Azure SQL データベース | Microsoft Docs"
+description: "単一 Azure SQL データベースを監視し、スケーリングするための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: fab0994ff9ec4471e0a6814e681b2d3e36433301
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 0d0bceb32902a4ae506919f48302471543dd5162
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
-# <a name="monitor-and-scale-a-single-sql-database-using-powershell"></a>PowerShell を使用して単一の SQL データベースを監視およびスケーリングする
+# <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>PowerShell を使用して単一の SQL データベースを監視およびスケーリングする
 
-この PowerShell のサンプル スクリプトは、データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。 
+この PowerShell のサンプル スクリプトは、データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つに警告ルールを作成します。 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 4870d2a0bbe35f3980864d8b4f3d011a189b650e
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 3cc1bd293868b0bb093f617ac12e16c26780fc89
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
@@ -149,9 +148,9 @@ ms.lasthandoff: 04/10/2017
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)" です。 | いいえ |
 | requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET`です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | なし |
-| requestBody | HTTP 要求の本文。 | いいえ |
+| requestBody | HTTP 要求の本文。 | なし |
 | BlobSink の format | **HTTP エンドポイントからデータをそのまま取得する**だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合、サポートされている形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |なし |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |なし |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 ### <a name="example-using-the-get-default-method"></a>例: GET (既定) メソッドを使用する
 
@@ -208,7 +207,7 @@ ms.lasthandoff: 04/10/2017
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | いいえ。 既定値: 00:01:40 |
 
 ## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
-詳細については、[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)に関する記事を参照してください。
+詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」に関する記事を参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
@@ -307,7 +306,7 @@ ms.lasthandoff: 04/10/2017
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義では、**source** の種類が **HttpSource** に設定され、**sink** の種類が **BlobSink** に設定されています。
 
-HttpSource でサポートされているプロパティの一覧については、[HttpSource](#httpsource-in-copy-activity) に関するページを参照してください。
+HttpSource でサポートされているプロパティの一覧については、[HttpSource](#copy-activity-properties) に関するページを参照してください。
 
 ```JSON
 {  

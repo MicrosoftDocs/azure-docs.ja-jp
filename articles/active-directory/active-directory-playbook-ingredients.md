@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/12/2017
+ms.date: 04/12/2017
 ms.author: dstefan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 2a555326e5bb2eb7b89e80be721b20488c4f7a2d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-ingredients"></a>Azure Active Directory の概念実証戦略の成分 

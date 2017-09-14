@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 4e05b1cc41038b2239f9314c17b93d20eed33844
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -30,20 +29,20 @@ ms.lasthandoff: 04/19/2017
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
   * このライブラリは、処理済みイベントを追跡するための機能を追加します。これにより、最も簡単に Event Hub から読み取ることができます。
 
-## <a name="event-hub-client"></a>Event Hub クライアント
-[**EventHubClient**](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) は、イベントの送信、受信側の作成、ランタイム情報の取得に使用する主要オブジェクトです。 このクライアントは、特定の Event Hub にリンクされ、Event Hubs エンドポイントへの新しい接続を作成します。
+## <a name="event-hubs-client"></a>Event Hubs クライアント
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) は、イベントの送信、受信側の作成、ランタイム情報の取得に使用する主要オブジェクトです。 このクライアントは、特定の Event Hub にリンクされ、Event Hubs エンドポイントへの新しい接続を作成します。
 
-### <a name="create-an-event-hub-client"></a>Event Hub クライアントの作成
-[**EventHubClient**](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) オブジェクトは接続文字列から作成されます。 新しいクライアントを最も簡単にインスタンス化する方法を次の例に示します。
+### <a name="create-an-event-hubs-client"></a>Event Hub クライアントの作成
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) オブジェクトは接続文字列から作成されます。 新しいクライアントを最も簡単にインスタンス化する方法を次の例に示します。
 
 ```csharp
-var eventHubClient = EventHubClient.CreateFromConnectionString("{Event Hub connection string}");
+var eventHubClient = EventHubClient.CreateFromConnectionString("{Event Hubs connection string}");
 ```
 
-接続文字列をプログラムで編集するには、[**EventHubsConnectionStringBuilder**](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) クラスを使用して、接続文字列をパラメーターとして [**EventHubClient.CreateFromConnectionString**](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_) に渡します。
+接続文字列をプログラムで編集するには、[EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) クラスを使用して、接続文字列をパラメーターとして [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_) に渡します。
 
 ```csharp
-var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hub connection string}")
+var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hubs connection string}")
 {
     EntityPath = EhEntityPath
 };
@@ -52,7 +51,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 ```
 
 ### <a name="send-events"></a>送信イベント
-Event Hub にイベントを送信するには、[**EventData**](/dotnet/api/microsoft.azure.eventhubs.eventdata) クラスを使用します。 本文は `byte` 配列または `byte` 配列セグメントにする必要があります。
+Event Hub にイベントを送信するには、[EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) クラスを使用します。 本文は `byte` 配列または `byte` 配列セグメントにする必要があります。
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -63,14 +62,13 @@ data.Properties.Add("Type", "Informational");
 await eventHubClient.SendAsync(data);
 ```
 
-### <a name="receive-events"></a>イベントの受信
-Event Hubs からイベントを受信する場合は、[**EventProcessorHost**](##Event-Processor-Host-APIs) を使用することをお勧めします。これにより、オフセットとパーティション情報を自動的に追跡する機能を利用できます。 ただし、主要 Event Hubs ライブラリを使用して、柔軟にイベントを受信することもできます。
+### <a name="receive-events"></a>受信イベント
+Event Hubs からイベントを受信する場合は、[イベント プロセッサ ホスト](#event-processor-host-apis)を使用することをお勧めします。これにより、オフセットとパーティション情報を自動的に追跡する機能を利用できます。 ただし、主要 Event Hubs ライブラリを使用して、柔軟にイベントを受信することもできます。
 
 #### <a name="create-a-receiver"></a>受信側の作成
-受信側は特定のパーティションに関連付けられています。したがって、Event Hub のすべてのイベントを受信するには、複数のインスタンスを作成する必要があります。 一般に、パーティション情報は、パーティション ID をハード コーディングするのではなく、プログラムによって取得することをお勧めします。 それには、[**GetRuntimeInformationAsync**](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) メソッドを使用します。
+受信側は特定のパーティションに関連付けられています。したがって、Event Hub のすべてのイベントを受信するには、複数のインスタンスを作成する必要があります。 一般に、パーティション情報は、パーティション ID をハード コーディングするのではなく、プログラムによって取得することをお勧めします。 それには、[GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) メソッドを使用します。
 
 ```csharp
-
 // Create a list to keep track of the receivers
 var receivers = new List<PartitionReceiver>();
 // Use the eventHubClient created above to get the runtime information
@@ -90,7 +88,7 @@ foreach (var partitionId in runTimeInformation.PartitionIds)
 ```csharp
 // partitionId is assumed to come from GetRuntimeInformationAsync()
 
-// Using the constant 'PartitionReceiver.EndOfStream' will only receive all messages from this point forward.
+// Using the constant PartitionReceiver.EndOfStream only receives all messages from this point forward.
 var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, PartitionReceiver.EndOfStream);
 
 // All messages available
@@ -116,7 +114,7 @@ if (ehEvents != null)
         var customType = ehEvent.Properties["Type"];
         // Implement processing logic here
     }
-}        
+}       
 ```
 
 ## <a name="event-processor-host-apis"></a>イベント プロセッサ ホスト API
@@ -127,7 +125,7 @@ if (ehEvents != null)
 
 // Read these connection strings from a secure location
 var ehConnectionString = "{Event Hubs connection string}";
-var ehEntityPath = "{Event Hub path/name}";
+var ehEntityPath = "{event hub path/name}";
 var storageConnectionString = "{Storage connection string}";
 var storageContainerName = "{Storage account container name}";
 

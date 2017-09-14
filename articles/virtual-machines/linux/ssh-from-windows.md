@@ -3,7 +3,7 @@ title: "Windows での SSH キーを使用した Linux VM への接続 | Microso
 description: "Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: squillace
+author: dlepow
 manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
-ms.author: rasquill
+ms.author: danlep
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: 7f572adf499dd1fcd0db19500c9049af1e31cdea
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法

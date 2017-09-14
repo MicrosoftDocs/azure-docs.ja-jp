@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/17/2017
+ms.date: 08/02/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: c32f2ca2c799332652d38d882a4d6337bade4f93
+ms.reviewer: nigu
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 8ebc6f2dd7502fd75ffdd4d5d68338382cb1a46b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
@@ -40,6 +40,8 @@ ms.lasthandoff: 05/18/2017
 ## <a name="requirements"></a>必要条件
 
 証明書ベースの認証を構成するには、次の条件を満たしている必要があります。  
+
+- 証明書ベース認証 (CBA) は、フェデレーション環境で最新の認証 (ADAL) を使用するブラウザー アプリケーションやネイティブのクライアントのみに対しサポートされます。 この例外は、EXO 上 の Exchange Active Sync (EAS) で、これはフェデレーション アカウントと管理アカウントの両方に使用できます。 
 
 - ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。  
 

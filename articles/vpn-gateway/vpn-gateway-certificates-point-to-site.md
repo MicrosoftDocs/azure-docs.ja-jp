@@ -1,5 +1,5 @@
 ---
-title: "ポイント対サイトの証明書の作成とエクスポート: PowerShell: Azure | Microsoft Docs"
+title: "ポイント対サイトの証明書の生成とエクスポート: PowerShell: Azure | Microsoft Docs"
 description: "この記事では、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を Windows 10 で PowerShell を使用して行う手順について説明します。"
 services: vpn-gateway
 documentationcenter: na
@@ -13,40 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 1bfcb8683669770d6dd927cbde53a683bbc1d56e
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell"></a>PowerShell を使用したポイント対サイト接続の証明書の生成とエクスポート
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Windows 10 での PowerShell を使用したポイント対サイト接続の証明書の生成とエクスポート
 
-この記事では、自己署名ルート証明書の作成方法とクライアント証明書の生成方法について説明します。 この記事には、ポイント対サイト構成の手順や、ポイント対サイトについてよく寄せられる質問は含まれません。 これらの情報について、次のリストから「ポイント対サイトの構成」のいずれかの記事を選択してご覧ください。
+ポイント対サイト接続では、認証に証明書を使用します。 この記事では、Windows 10 で PowerShell を使用して、自己署名ルート証明書の作成方法とクライアント証明書の生成方法について説明します。 ルート証明書のアップロード方法など、ポイント対サイトの設定の手順をお探しの場合は、ポイント対サイトの構成に関する記事の 1 つを以下の一覧から選択してください。
 
 > [!div class="op_single_selector"]
 > * [自己署名証明書の作成 - PowerShell](vpn-gateway-certificates-point-to-site.md)
 > * [自己署名証明書の作成 - Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [ポイント対サイトの構成 - リソース マネージャー - Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [ポイント対サイトの構成 - Resource Manager - Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [ポイント対サイトの構成 - リソース マネージャー - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [ポイント対サイトの構成 - クラシック - Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 > 
 > 
 
-ポイント対サイト接続では、認証に証明書を使用します。 ポイント対サイト接続を構成するときに、ルート証明書の公開キー (.cer ファイル) を Azure にアップロードする必要があります。 さらに、クライアント証明書は、ルート証明書から生成され、VNet に接続する各クライアント コンピューターにインストールされる必要があります。 クライアント証明書を使用してクライアントを認証できます。
 
+この記事の手順は、Windows 10 を実行するコンピューターで実行する必要があります。 証明書の生成に使用する PowerShell コマンドレットは、Windows 10 オペレーティング システムの一部であり、その他のバージョンの Windows では機能しません。 Windows 10 コンピューターは、証明書の生成にのみ必要です。 証明書が生成されたら、それらをアップロードしたり、サポートされる任意のクライアント オペレーティング システムにインストールしたりできます。 
 
-> [!NOTE]
-> この記事の手順は、Windows 10 を実行するコンピューターで実行する必要があります。 証明書の生成に必要な PowerShell コマンドレットは、Windows 10 オペレーティング システムの一部であり、その他のバージョンの Windows では機能しません。 これらのコマンドレットは、証明書の生成にのみ使用します。 証明書は、生成されると、サポートされるクライアントのあらゆるオペレーティング システムにインストールできます。 Windows 10 のコンピューターを使用できない場合は、makecert を使用して証明書を生成できます。 ただし、makecert を使用して生成した証明書は、ポイント対サイトとの互換性はありますが、SHA-2 ではありません。 makecert の手順については、「[Create certificates using makecert (makecert を使用した証明書の作成)](vpn-gateway-certificates-point-to-site-makecert.md)」をご覧ください。 PowerShell または makecert のいずれかを使用して作成した証明書は、証明書の作成に使用したオペレーティング システムだけでなく、[サポートされるクライアントのあらゆるオペレーティング システム](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)にインストールできます。
-> 
->
+Windows 10 コンピューターを使用できない場合は、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) を使用して証明書を生成できます。 いずれかの方法を使用して生成した証明書は、[サポートされている](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)任意のクライアント オペレーティング システムにインストールです。
 
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 
-次の手順では、Windows 10 で PowerShell を使用して自己署名ルート証明書を作成する方法を説明します。 これらの手順で使用されているコマンドレットとパラメーターは、Windows 10 オペレーティング システムの一部であり、PowerShell バージョンの一部ではありません。 作成した証明書を Windows 10 にしかインストールできないという意味ではありません。 作成した証明書は、サポートされているあらゆるクライアントにインストールできます。 サポートされるクライアントの詳細については、「[ポイント対サイト接続に関してよく寄せられる質問](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)」を参照してください。
+New-SelfSignedCertificate コマンドレットを使用して、自己署名ルート証明書を作成します。 追加のパラメーターについては、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
 
 1. Windows 10 を実行しているコンピューターから、昇格された特権を使用して Windows PowerShell コンソールを開きます。
 2. 次の例を使用して、自己署名ルート証明書を作成します。 次の例では、"P2SRootCert" という名前の自己署名ルート証明書が作成され、"Certificates-Current User\Personal\Certificates" に自動的にインストールされます。 *certmgr.msc*、または*ユーザー証明書の管理*を開くと、証明書を表示できます。
@@ -62,7 +58,7 @@ ms.lasthandoff: 05/10/2017
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-エクスポートした .cer ファイルは Azure にアップロードする必要があります。 手順については、[ポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-rm-ps.md#upload)に関するページをご覧ください。
+エクスポートした .cer ファイルは Azure にアップロードする必要があります。 手順については、[ポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-rm-ps.md#upload)に関するページをご覧ください。 信頼されたルート証明書を追加するには、記事の[このセクション](vpn-gateway-howto-point-to-site-rm-ps.md#addremovecert)を参照してください。
 
 ### <a name="export-the-self-signed-root-certificate-and-public-key-to-store-it-optional"></a>自己署名ルート証明書と証明書を保存するための公開キーのエクスポート (省略可能)
 
@@ -74,7 +70,7 @@ ms.lasthandoff: 05/10/2017
 
 次の手順では、自己署名ルート証明書からクライアント証明書を生成する方法を示しています。 同じルート証明書から複数のクライアント証明書を生成できます。 以下の手順を使用してクライアント証明書を生成すると、証明書の生成に使用したコンピューターにクライアント証明書が自動的にインストールされます。 クライアント証明書を別のクライアント コンピューターにインストールする場合は、その証明書をエクスポートできます。
 
-Windows 10 では、次の PowerShell の手順を使用してクライアント証明書を生成する必要があります。 これらの手順で使用されているコマンドレットとパラメーターは、Windows 10 オペレーティング システムの一部であり、PowerShell バージョンの一部ではありません。 作成した証明書を Windows 10 にしかインストールできないという意味ではありません。 サポートされるクライアントの詳細については、「[ポイント対サイト接続に関してよく寄せられる質問](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)」を参照してください。
+例では、New-SelfSignedCertificate コマンドレットを使用して、1 年で期限切れになるクライアント証明書を生成しています。 クライアント証明書の別の有効期限値を設定するなど、追加のパラメーター情報については、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
 
 ### <a name="example-1"></a>例 1
 
@@ -101,12 +97,12 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
   ```
 2. 返された一覧でサブジェクト名を探し、その横にある拇印をテキスト ファイルにコピーします。 次の例では、2 つの証明書があります。 CN 名は、子証明書の生成元となる自己署名ルート証明書の名前です。 この場合は "P2SRootCert" です。
 
-        Thumbprint                                Subject
-
-        AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
-        7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
-
-
+  ```
+  Thumbprint                                Subject
+  
+  AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
+  7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
+  ```
 3. 前の手順の拇印を使用して、ルート証明書の変数を宣言します。 THUMBPRINT を、子証明書の生成元となるルート証明書の拇印に置き換えます。
 
   ```powershell
@@ -117,8 +113,7 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
-  ```    
-
+  ```
 4.  クライアント証明書を生成するには、例を変更して実行します。 次の例を変更せずに実行した場合、クライアント証明書の名前は "P2SChildCert" になります。 子証明書に別の名前を付ける場合は、CN 値を変更します。 この例を実行する際に TextExtension を変更しないでください。 生成したクライアント証明書は、コンピューターの "Certificates - Current User\Personal\Certificates" に自動的にインストールされます。
 
   ```powershell
@@ -132,7 +127,6 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 ## <a name="clientexport"></a>クライアント証明書のエクスポート   
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
-    
 
 ## <a name="install"></a>エクスポートしたクライアント証明書のインストール
 

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 07/06/2017
 ms.author: ganesr;cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: f708e7d53983551c578486ded9c5481048c7ee8b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 964ea38569062a7127f60dd6309b328db263bf6f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行
@@ -57,43 +56,6 @@ ExpressRoute 回線に接続されているリソースを移行する前に、E
 
 この操作では、ダウンタイムは発生しません。 移行操作中でも、オンプレミスと Microsoft の間で引き続きデータを転送できます。
 
-## <a name="prepare-your-virtual-network-for-migration"></a>移行のための仮想ネットワークの準備
-移行する仮想ネットワークのネットワークに不必要なアーティファクトがないことを確認する必要があります。 仮想ネットワークの構成をダウンロードし、必要に応じて更新するには、次の PowerShell コマンドレットを実行します。
-
-```powershell
-Add-AzureAccount
-Select-AzureSubscription -SubscriptionName <VNET Subscription>
-Get-AzureVNetConfig -ExportToFile C:\virtualnetworkconfig.xml
-```
-      
-移行する仮想ネットワークから &lt;ConnectionsToLocalNetwork&gt; に対するすべての参照が削除されていることを確認する必要があります。 サンプルのネットワーク構成を次のスニペットに示します。
-
-```
-    <VirtualNetworkSite name="MyVNet" Location="East US">
-        <AddressSpace>
-            <AddressPrefix>10.0.0.0/8</AddressPrefix>
-        </AddressSpace>
-        <Subnets>
-            <Subnet name="Subnet-1">
-                <AddressPrefix>10.0.0.0/11</AddressPrefix>
-            </Subnet>
-            <Subnet name="GatewaySubnet">
-                <AddressPrefix>10.32.0.0/28</AddressPrefix>
-            </Subnet>
-        </Subnets>
-        <Gateway>
-            <ConnectionsToLocalNetwork>
-            </ConnectionsToLocalNetwork>
-        </Gateway>
-    </VirtualNetworkSite>
-```
- 
-&lt;ConnectionsToLocalNetwork&gt; が空でない場合は、その下の参照を削除し、ネットワーク構成を再送信してください。 そのためには、次の PowerShell コマンドレットを実行します。
-
-```powershell
-Set-AzureVNetConfig -ConfigurationPath c:\virtualnetworkconfig.xml
-```
-
 ## <a name="migrate-virtual-networks-gateways-and-associated-deployments"></a>仮想ネットワーク、ゲートウェイ、および関連するデプロイの移行
 
 移行する手順は、リソースが同じサブスクリプションにあるか、別のサブスクリプションにあるか、またはその両方にあるかによって異なります。
@@ -121,71 +83,6 @@ Set-AzureVNetConfig -ConfigurationPath c:\virtualnetworkconfig.xml
 
   ```powershell
   Move-AzureVirtualNetwork -Abort $vnetName
-  ```
-
-### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-a-different-subscription-from-that-of-the-expressroute-circuit"></a>ExpressRoute 回線と異なるサブスクリプションの仮想ネットワーク、ゲートウェイ、および関連するデプロイの移行
-
-1. ExpressRoute 回線がクラシックから Resource Manager 環境に移動されていることを確認します。
-2. 仮想ネットワークが移行用に適切に準備されていることを確認します。
-3. ExpressRoute 回線がクラシック環境と Resource Manager 環境の両方で動作することを確認します。 クラシック環境と Resource Manager 環境の両方で回線を使用できるようにするには、次の PowerShell スクリプトを使用します。
-
-  ```powershell
-  Login-AzureRmAccount
-  Select-AzureRmSubscription -SubscriptionName <My subscription>
-  $circuit = Get-AzureRmExpressRouteCircuit -Name <CircuitName> -ResourceGroupName <ResourceGroup Name> 
-  $circuit.AllowClassicOperations = $true
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
-  ```
-4. Resource Manager 環境で承認を作成します。 承認の作成方法については、[仮想ネットワークを ExpressRoute 回線にリンクする方法](expressroute-howto-linkvnet-arm.md)に関するページを参照してください。 承認を作成するには、次の PowerShell スニペットを使用します。
-
-  ```powershell
-  circuit = Get-AzureRmExpressRouteCircuit -Name <CircuitName> -ResourceGroupName <ResourceGroup Name> 
-  Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "AuthorizationForMigration"
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
-  $circuit = Get-AzureRmExpressRouteCircuit -Name MigrateCircuit -ResourceGroupName MigrateRGWest
-
-  $id = $circuit.id 
-  $auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "AuthorizationForMigration"
-
-  $key=$auth1.AuthorizationKey 
- ```
-
-    回線 ID と承認キーを記録します。 これらの要素は、移行が完了した後で仮想ネットワークに回線を接続するために使用されます。
-  
-5. 仮想ネットワークに関連付けられている専用回線リンクを削除します。 クラシック環境で回線リンクを削除するには、次のコマンドレットを使用します。
-
-  ```powershell
-  $skey = Get-AzureDedicatedCircuit | select ServiceKey
-  Remove-AzureDedicatedCircuitLink -ServiceKey $skey -VNetName $vnetName
-  ```  
-
-6. リソースの移行用にサブスクリプションを登録します。 リソースの移行用にサブスクリプションを登録するには、次の PowerShell スニペットを使用します。
-
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  ```
-7. 検証、準備、および移行を行います。 仮想ネットワークを移動するには、次の PowerShell スニペットを使用します。
-
-  ```powershell
-  Move-AzureVirtualNetwork -Prepare $vnetName  
-  Move-AzureVirtualNetwork -Commit $vnetName
-  ```
-
-    次の PowerShell コマンドレットを実行すると、移行を中止できます。
-
-  ```powershell
-  Move-AzureVirtualNetwork -Abort $vnetName
-  ```
-8. 仮想ネットワークを再び ExpressRoute 回線に接続します。 次の PowerShell スニペットは、仮想ネットワークが作成されているサブスクリプションのコンテキストで実行されます。 このスニペットを回線が作成されているサブスクリプションで実行しないでください。 手順 4 で記録した、PeerID としての回線 ID と承認キーを使用します。
-
-  ```powershell
-  Select-AzureRMSubscription –SubscriptionName <customer subscription>  
-  $gw = Get-AzureRmVirtualNetworkGateway -Name $vnetName-Default-Gateway -ResourceGroupName ($vnetName + "-Migrated")
-  $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroup  ($vnetName + "-Migrated")  
-
-  New-AzureRmVirtualNetworkGatewayConnection -Name  ($vnetName + "-GwConn") -ResourceGroupName ($vnetName + "-Migrated")  -Location $vnet.Location -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey $key
   ```
 
 ## <a name="next-steps"></a>次のステップ

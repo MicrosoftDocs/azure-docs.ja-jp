@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/19/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a7e970f2a518f3484310cbada108a025e9a7fc6d
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 96fc1347604c0c6cc2c2463a5dbd83b560183a16
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -42,13 +42,14 @@ SharePoint Online コネクタを使用すると、SharePoint リストを管理
 
 
 ## <a name="use-a-sharepoint-online-action"></a>SharePoint Online アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
 
 > [!INCLUDE [Steps to create a SharePoint Online action](../../includes/connectors-create-api-sharepointonline-action.md)]
 
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/sharepoint/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/sharepoint/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)

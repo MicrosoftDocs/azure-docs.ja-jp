@@ -4,7 +4,7 @@ description: "この記事は、ストレージ アクセス キーをローリ�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2017
+ms.date: 08/09/2017
 ms.author: milanga;cenkdin;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8e0f0905748923177269b6d5df27be900770fece
 ms.openlocfilehash: a2802dbf1d8a22c33b20dd4e71fcf26d9780f86a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/27/2017
-
 
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/27/2017
 
 ## <a name="overview"></a>概要
 
-新しいストレージ アカウントが作成されると、Azure は、ストレージ アカウントへのアクセス認証に使用される 512 ビット ストレージ アクセス キーを 2 つ生成します。 ストレージの接続の安全性を高めるため、ストレージ アクセス キーを定期的に再生成して入れ換えることをお勧めします。 片方のアクセス キーでストレージ アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは&2; つ (プライマリとセカンダリ) 提供されます。 この手順は、「アクセス キーのローリング」とも呼ばれます。
+新しいストレージ アカウントが作成されると、Azure は、ストレージ アカウントへのアクセス認証に使用される 512 ビット ストレージ アクセス キーを 2 つ生成します。 ストレージの接続の安全性を高めるため、ストレージ アクセス キーを定期的に再生成して入れ換えることをお勧めします。 片方のアクセス キーでストレージ アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ (プライマリとセカンダリ) 提供されます。 この手順は、「アクセス キーのローリング」とも呼ばれます。
 
 Media Services は、指定されたストレージ キーに依存します。 特に、アセットのストリーミングやダウンロードに使用されるロケーターは指定されたアクセス キーに依存します。 AMS アカウントが作成されると、既定ではプライマリ ストレージ アクセス キーに依存しますが、ユーザーは AMS が使用するストレージ キーを更新できます。 このトピックで説明する次の手順に従って、どのキーを使用するかを Media Services に確実に認識させる必要があります。  
 

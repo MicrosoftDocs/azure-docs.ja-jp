@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: fab0a7b7ef3fd54194d719f49537a98416107e8a
-ms.lasthandoff: 05/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 37713db70f3ae837edafc997b78b16b121d0a885
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute 回線のピアリングの作成と変更 (クラシック)
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
-> * [Resource Manager - PowerShell](expressroute-howto-routing-arm.md)
-> * [クラシック- PowerShell](expressroute-howto-routing-classic.md)
+> * [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
+> * [Azure CLI](howto-routing-cli.md)
 > * [ビデオ - プライベート ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [ビデオ - パブリック ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [ビデオ - Microsoft ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> 
+> * [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 > 
 
 この記事では、PowerShell とクラシック デプロイ モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。 以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。
@@ -117,11 +117,11 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
      
     次のコマンドレットを実行して、回線用に Azure プライベート ピアリングを構成することができます。
      
-          New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
+        New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
      
     MD5 ハッシュを使用する場合は、以下のコマンドレットを使用できます。
      
-          New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
+        New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
      
      > [!IMPORTANT]
      > 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
@@ -207,11 +207,11 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
      
     次のコマンドレットを実行して、回線用に Azure パブリック ピアリングを構成することができます。
      
-          New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
+        New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
      
     MD5 ハッシュを使用する場合は、次のコマンドレットを使用することができます。
      
-          New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
+        New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
      
      > [!IMPORTANT]
      > 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
@@ -296,7 +296,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
      
     次のコマンドレットを実行して、回線用に Microsoft ピアリングを構成することができます。
      
-          New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
+        New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
 
 ### <a name="to-view-microsoft-peering-details"></a>Microsoft ピアリングの詳細を表示するには
 次のコマンドレットを使用して、構成の詳細を取得できます。

@@ -14,14 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 08/04/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: dabe1c2df99ab6070f2008d6eb980085390fb572
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 305c4060ad81458b254e66a4bad6dfd7bf69b28d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/18/2017
 Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。 Apache Storm では複数の言語がサポートされています。これにより、1 つのトポロジでの複数の言語からのコンポーネントの結合も可能になります。 Flux フレームワーク (Storm 0.10.0 で導入) では、Python コンポーネントを使用するソリューションを簡単に作成することができます。
 
 > [!IMPORTANT]
-> このドキュメントの情報は、HDInsight 3.5 で Storm を使用してテストされました。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの情報は、HDInsight 3.6 で Storm を使用してテストされました。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 このプロジェクトのコードは、[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) で入手できます。
 

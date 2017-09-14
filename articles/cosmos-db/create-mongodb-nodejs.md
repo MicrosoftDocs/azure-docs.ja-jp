@@ -12,15 +12,14 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 0265503689e189a3e2e30c2ae9fff39641647d0c
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: a26477d692cc98ed16c195233ade5434cc536a36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: 既存の Node.js MongoDB Web アプリを移行する 
@@ -93,30 +92,33 @@ az group create --name myResourceGroup --location "West Europe"
 
 [az cosmosdb create](/cli/azure/cosmosdb#create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
 
-次のコマンドの `<cosmosdb_name>` プレースホルダーを独自の一意の Cosmos DB アカウント名に置き換えます。 この一意の名前は、Azure Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure のすべての Azure Cosmos DB アカウントで一意である必要があります。 
+次のコマンドの `<cosmosdb-name>` プレースホルダーを独自の一意の Cosmos DB アカウント名に置き換えます。 この一意の名前は、Azure Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure のすべての Azure Cosmos DB アカウントで一意である必要があります。 
 
 ```azurecli-interactive
-az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
+az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
 `--kind MongoDB` パラメーターにより、MongoDB のクライアント接続が有効になります。
 
 Azure Cosmos DB アカウントが作成されると、Azure CLI によって次の例のような情報が表示されます。 
 
+> [!NOTE]
+> この例では、Azure CLI の出力形式として JSON を使用しています (既定)。 別の出力形式を使用する場合は、「[Azure CLI 2.0 コマンドの出力形式](https://docs.microsoft.com/cli/azure/format-output-azure-cli)」を参照してください。
+
 ```json
 {
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Document
-DB/databaseAccounts/<cosmosdb_name>",
+DB/databaseAccounts/<cosmosdb-name>",
   "kind": "MongoDB",
   "location": "West Europe",
-  "name": "<cosmosdb_name>",
+  "name": "<cosmosdb-name>",
   "readLocations": [
     {
-      "documentEndpoint": "https://<cosmosdb_name>-westeurope.documents.azure.com:443/",
+      "documentEndpoint": "https://<cosmosdb-name>-westeurope.documents.azure.com:443/",
       "failoverPriority": 0,
-      "id": "<cosmosdb_name>-westeurope",
+      "id": "<cosmosdb-name>-westeurope",
       "locationName": "West Europe",
       "provisioningState": "Succeeded"
     }
@@ -125,9 +127,9 @@ DB/databaseAccounts/<cosmosdb_name>",
   "type": "Microsoft.DocumentDB/databaseAccounts",
   "writeLocations": [
     {
-      "documentEndpoint": "https://<cosmosdb_name>-westeurope.documents.azure.com:443/",
+      "documentEndpoint": "https://<cosmosdb-name>-westeurope.documents.azure.com:443/",
       "failoverPriority": 0,
-      "id": "<cosmosdb_name>-westeurope",
+      "id": "<cosmosdb-name>-westeurope",
       "locationName": "West Europe",
       "provisioningState": "Succeeded"
     }
@@ -139,48 +141,38 @@ DB/databaseAccounts/<cosmosdb_name>",
 
 この手順では、MongoDB 接続文字列を使用して、MEAN.js サンプル アプリケーションを、先ほど作成した Azure Cosmos DB データベースに接続します。 
 
-## <a name="retrieve-the-key"></a>キーを取得する
-
-Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) コマンドを使用して、プライマリ キーを取得します。
-
-```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
-```
-
-Azure CLI によって次の例のような情報が出力されます。 
-
-```json
-{
-  "primaryMasterKey": "RUayjYjixJDWG5xTqIiXjC...",
-  "primaryReadonlyMasterKey": "...",
-  "secondaryMasterKey": "...",
-  "secondaryReadonlyMasterKey": "..."
-}
-```
-
-`primaryMasterKey` の値をテキスト エディターにコピーします。 この情報は、次の手順に必要です。
-
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
 MEAN.js リポジトリにある `config/env/local-development.js` を開きます。
 
-このファイルの内容を次のコードに置き換えます。 さらに、2 つの `<cosmosdb_name>` プレースホルダーを Azure Cosmos DB アカウント名に、`<primary_master_key>` プレースホルダーを前の手順でコピーしたキーに置き換えます。
+このファイルの内容を次のコードに置き換えます。 さらに、2 つの `<cosmosdb-name>` プレースホルダーを実際の Azure Cosmos DB のアカウント名に置き換えます。
 
 ```javascript
 'use strict';
 
 module.exports = {
   db: {
-    uri: 'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean-dev?ssl=true&sslverifycertificate=false'
+    uri: 'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false'
   }
 };
 ```
 
-> [!NOTE] 
-> [Azure Cosmos DBでは SSL が必須](connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
->
->
+## <a name="retrieve-the-key"></a>キーを取得する
+
+Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) コマンドを使用して、プライマリ キーを取得します。
+
+```azurecli-interactive
+az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+```
+
+Azure CLI によって次の例のような情報が出力されます。 
+
+```json
+"RUayjYjixJDWG5xTqIiXjC..."
+```
+
+`primaryMasterKey` の値をコピーします。 これを `local-development.js` の `<primary_master_key>` に上書きする形で貼り付けます。
 
 変更を保存します。
 
@@ -202,13 +194,13 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ## <a name="view-data-in-data-explorer"></a>データ エクスプローラーにデータを表示する
 
-Azure Cosmos DB によって格納されたデータは、Azure ポータルで表示、クエリ、およびビジネス ロジックを実行するために使用できます。
+Azure Cosmos DB によって格納されたデータは、Azure Portal で表示、クエリ、およびビジネス ロジックを実行するために使用できます。
 
-前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure ポータル](https://portal.azure.com)にログインします。
+前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure Portal](https://portal.azure.com) にログインします。
 
 上部の検索ボックスに、「Azure Cosmos DB」と入力します。 [Cosmos DB アカウント] ブレードが開いたら、自分の Cosmos DB アカウントを選択します。 左側のナビゲーションで、[データ エクスプローラー] をクリックします。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
-![Azure ポータルでのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
+![Azure Portal でのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Azure に Node.js アプリケーションをデプロイする
@@ -222,8 +214,13 @@ MEAN.js リポジトリにある `config/env/production.js` を開きます。
 次の例に示すように、`db` オブジェクトの `uri` の値を置き換えます。 前と同じように、必ずプレースホルダーを置き換えます。
 
 ```javascript
-'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
+'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10255/mean?ssl=true&sslverifycertificate=false',
 ```
+
+> [!NOTE] 
+> [Azure Cosmos DBでは SSL が必須](connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
+>
+>
 
 ターミナルで、すべての変更を Git にコミットします。 両方のコマンドをコピーして、それらをまとめて実行することができます。
 

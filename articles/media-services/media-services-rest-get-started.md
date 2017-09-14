@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure Media Services と REST 
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 09/05/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 93481fe9c3920ea4c578f3da326de9f9e8531a71
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 731c32970941c6a3963dcb48bf03ee0f53e0c7af
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
@@ -54,8 +54,10 @@ REST API を使用して Media Services での開発を始めるには、次の�
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
-
 このトピックで使用する AMS REST エンティティの詳細については、[Azure Media Services REST API リファレンス](/rest/api/media/services/azure-media-services-rest-api-reference)に関するページをご覧ください。 また、「[Azure Media Services の概念](media-services-concepts.md)」も参照してください。
+
+>[!NOTE]
+>Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Azure Portal を使用したストリーミング エンドポイントの開始
 
@@ -66,7 +68,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 ストリーミング エンドポイントを開始するには、次の操作を行います。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. [設定] ウィンドウで [ストリーミング エンドポイント] をクリックします。
 3. 既定のストリーミング エンドポイントをクリックします。
 
@@ -76,147 +78,18 @@ REST API を使用して Media Services での開発を始めるには、次の�
 5. [保存] をクリックして、変更を保存します。
 
 ## <a id="connect"></a>REST API で Media Services アカウントに接続する
-Azure Media Services にアクセスする際には、Azure Access Control Service (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の 2 つが必要です。 Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
 
-次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
-1. アクセス トークンを取得します。
-2. Media Services URI に接続します。  
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
-    https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
-3. 新しい URL に後続の API 呼び出しを投稿します。
-
-    たとえば、接続しようとした後に次のようなメッセージが表示されます。
-
-        HTTP/1.1 301 Moved Permanently
-        Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
-
-    この場合、続けて、「https://wamsbayclus001rest-hs.cloudapp.net/api/」へ API コールを行う必要があります。
-
-### <a name="getting-an-access-token"></a>アクセス トークンの取得
-REST API から直接 Media Services にアクセスするには、ACS からアクセス トークンを取得して、Media Services に行う各 HTTP 要求で使用します。 Media Services に直接接続するための前提条件は、これ以外にはありません。
-
-次の例は、トークンを取得するために使用される HTTP 要求のヘッダーと本文を示します。
-
-**ヘッダー**:
-
-    POST https://wamsprodglobal001acs.accesscontrol.windows.net/v2/OAuth2-13 HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
-    Host: wamsprodglobal001acs.accesscontrol.windows.net
-    Content-Length: 120
-    Expect: 100-continue
-    Connection: Keep-Alive
-    Accept: application/json
-
-
-**本文**:
-
-この要求の本文で、client_id と client_secret の値を指定する必要があります。client_id と client_secret はそれぞれ、AccountName と AccountKey の値に対応します。 Media Services では、アカウントを設定したときにこれらの値が提供されます。
-
-Media Services アカウントの AccountKey は、アクセス トークン要求で client_secret 値として使用されるときは URL エンコードされている必要があります。
-
-    grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
-
-
-For example:
-
-    grant_type=client_credentials&client_id=amstestaccount001&client_secret=wUNbKhNj07oqjqU3Ah9R9f4kqTJ9avPpfe6Pk3YZ7ng%3d&scope=urn%3aWindowsAzureMediaServices
-
-
-次の例は、本文にアクセス トークンを含む HTTP 応答を示します。
-
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache, no-store
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    Expires: -1
-    request-id: a65150f5-2784-4a01-a4b7-33456187ad83
-    X-Content-Type-Options: nosniff
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Thu, 15 Jan 2015 08:07:20 GMT
-    Content-Length: 670
-
-    {  
-       "token_type":"http://schemas.xmlsoap.org/ws/2009/11/swt-token-profile-1.0",
-       "access_token":"http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421330840&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=uf69n82KlqZmkJDNxhJkOxpyIpA2HDyeGUTtSnq1vlE%3d",
-       "expires_in":"21600",
-       "scope":"urn:WindowsAzureMediaServices"
-    }
-
-
-> [!NOTE]
-> "access_token" と "expires_in" (アクセス トークンの秒単位の有効時間) の値は外部ストレージにキャッシュすることをお勧めします。 後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。 これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
->
->
-
-アクセス トークンの "expires_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
-
-### <a name="connecting-to-the-media-services-uri"></a>Media Services URI への接続
-
-メディア サービスのルート URI は「https://media.windows.net/」です。 まず、この URI に接続して、301 リダイレクトが返された場合は続けて新しい URI にコールする必要があります。 加えて、要求に auto-redirect/follow ロジックを使うことはできません。 HTTP 動詞や応答本文はその新しい URI に転送されません。
-
-アセット ファイルをアップロードしたりダウンロードしたりするルート URI は「https://yourstorageaccount.blob.core.windows.net/」です。ストレージ アカウント名には、メディア サービス アカウントで設定したものと同じものが使われます。
-
-次の例は、Media Services ルート URI (https://media.windows.net/) への HTTP 要求を示します。 要求に対して 301 リダイレクトが返されています。 後続の要求では、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/) が使用されています。     
-
-**HTTP 要求**:
-
-    GET https://media.windows.net/ HTTP/1.1
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
-    x-ms-version: 2.11
-    Accept: application/json
-    Host: media.windows.net
-
-
-**HTTP 応答**:
+たとえば、接続しようとした後に次のようなメッセージが表示されます。
 
     HTTP/1.1 301 Moved Permanently
     Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
-    Server: Microsoft-IIS/8.5
-    request-id: 987d7652-497a-44e5-b815-f492e02aef97
-    x-ms-request-id: 987d7652-497a-44e5-b815-f492e02aef97
-    X-Powered-By: ASP.NET
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Sat, 17 Jan 2015 07:44:53 GMT
-    Content-Length: 164
 
-    <html><head><title>Object moved</title></head><body>
-    <h2>Object moved to <a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
-    </body></html>
-
-
-**HTTP 要求** (新しい URI を使用):
-
-    GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
-    x-ms-version: 2.11
-    Accept: application/json
-    Host: wamsbayclus001rest-hs.cloudapp.net
-
-
-**HTTP 応答**:
-
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Content-Length: 1250
-    Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-    Server: Microsoft-IIS/8.5
-    request-id: 5f52ea9d-177e-48fe-9709-24953d19f84a
-    x-ms-request-id: 5f52ea9d-177e-48fe-9709-24953d19f84a
-    X-Content-Type-Options: nosniff
-    DataServiceVersion: 3.0;
-    X-Powered-By: ASP.NET
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Sat, 17 Jan 2015 07:44:52 GMT
-
-    {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata","value":[{"name":"AccessPolicies","url":"AccessPolicies"},{"name":"Locators","url":"Locators"},{"name":"ContentKeys","url":"ContentKeys"},{"name":"ContentKeyAuthorizationPolicyOptions","url":"ContentKeyAuthorizationPolicyOptions"},{"name":"ContentKeyAuthorizationPolicies","url":"ContentKeyAuthorizationPolicies"},{"name":"Files","url":"Files"},{"name":"Assets","url":"Assets"},{"name":"AssetDeliveryPolicies","url":"AssetDeliveryPolicies"},{"name":"IngestManifestFiles","url":"IngestManifestFiles"},{"name":"IngestManifestAssets","url":"IngestManifestAssets"},{"name":"IngestManifests","url":"IngestManifests"},{"name":"StorageAccounts","url":"StorageAccounts"},{"name":"Tasks","url":"Tasks"},{"name":"NotificationEndPoints","url":"NotificationEndPoints"},{"name":"Jobs","url":"Jobs"},{"name":"TaskTemplates","url":"TaskTemplates"},{"name":"JobTemplates","url":"JobTemplates"},{"name":"MediaProcessors","url":"MediaProcessors"},{"name":"EncodingReservedUnitTypes","url":"EncodingReservedUnitTypes"},{"name":"Operations","url":"Operations"},{"name":"StreamingEndpoints","url":"StreamingEndpoints"},{"name":"Channels","url":"Channels"},{"name":"Programs","url":"Programs"}]}
-
-
-
-> [!NOTE]
-> このチュートリアルではこれ以降、新しい URI を使用します。
->
->
+この場合、続けて、「https://wamsbayclus001rest-hs.cloudapp.net/api/」へ API コールを行う必要があります。
 
 ## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
 
@@ -606,7 +479,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/Jobs HTTP/1.1
     DataServiceVersion: 1.0;NetFx
     MaxDataServiceVersion: 3.0;NetFx
-    Content-Type: application/json
+    Content-Type: application/json;odata=verbose
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
@@ -829,8 +702,6 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
        ]
     }
 
-
-
 ## <a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
 資産をストリーミングまたはダウンロードするにはまず、ロケーターを作成して資産を「発行」する必要があります。 資産に含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。 SAS ロケーターの詳細については、[こちら](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)のブログをご覧ください。
@@ -851,7 +722,6 @@ HLS のストリーミング URL の形式は次のとおりです。
 MPEG DASH のストリーミング URL の形式は次のとおりです。
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
-
 
 ファイルをダウンロードするための SAS URL の形式は次のとおりです。
 
@@ -946,7 +816,6 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
        }
     }
 
-
 返された **Path** プロパティには、SAS URL が含まれています。
 
 > [!NOTE]
@@ -981,7 +850,6 @@ Azure ストレージ BLOB の使用の詳細については、 [BLOB サービ�
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
-
 
 ### <a name="creating-a-streaming-url-for-streaming-content"></a>ストリーミング コンテンツのストリーミング URL を作成する
 次のコードは、ストリーミング URL ロケーターを作成する方法を示します。

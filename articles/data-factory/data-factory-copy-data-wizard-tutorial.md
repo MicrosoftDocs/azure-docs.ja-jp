@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/24/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 6a83d5e5939744137e11a441048ade407c63ee86
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/17/2017
-
 
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する

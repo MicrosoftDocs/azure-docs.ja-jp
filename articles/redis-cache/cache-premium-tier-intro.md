@@ -12,11 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 07/05/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 377d3f28a9de868744d6e85767ede1bdf59a184e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: c7a70e74f8b275ed9e10118b0ae9e81309f97ba3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -26,9 +28,9 @@ Azure Redis Cache は、データへの超高速アクセスを提供するこ�
 新しい Premium レベルは、Standard レベルの全機能に加えて、パフォーマンスの向上、ワークロードの増加、障害復旧、インポート/エクスポート、セキュリティの強化などを備えたエンタープライズ対応のレベルです。 Premium キャッシュ レベルの追加機能の詳細をお知りになりたい場合は、このドキュメントを引き続きお読みください。
 
 ## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Standard/Basic レベルを超えるパフォーマンス
-**Standard/Basic レベルを超えるパフォーマンス。**  Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。 
+**Standard/Basic レベルを超えるパフォーマンス。** Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。 
 
-**同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。**  たとえば、C6 (Standard) キャッシュのスループットが毎秒 15 万要求であるのに対し、53 GB の P4 (Premium) キャッシュは毎秒 25 万要求です。
+**同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。** たとえば、C6 (Standard) キャッシュのスループットが毎秒 15 万要求であるのに対し、53 GB の P4 (Premium) キャッシュは毎秒 25 万要求です。
 
 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「 [Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
@@ -68,6 +70,11 @@ Premium レベルでは、キャッシュの 1 つ以上のノードをオンデ
 
 詳細については、「[Reboot](cache-administration.md#reboot)」および「[再起動に関する FAQ](cache-administration.md#reboot-faq)」を参照してください。
 
+>[!NOTE]
+>再起動の機能は、すべての Azure Redis Cache 層で有効になりました。
+>
+>
+
 ## <a name="schedule-updates"></a>更新のスケジュール
 更新のスケジュール機能では、キャッシュのメンテナンス時間を指定できます。 メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。 メンテナンス時間を指定するには、目的の曜日をオンにして、曜日ごとにメンテナンス時間の開始時刻を指定します。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
@@ -77,6 +84,13 @@ Premium レベルでは、キャッシュの 1 つ以上のノードをオンデ
 > スケジュールされたメンテナンス時間に行われるのは、Redis サーバーの更新だけです。 メンテナンス時間は、Azure の更新や、VM のオペレーティング システムへの更新には適用されません。
 > 
 > 
+
+## <a name="geo-replication"></a>geo レプリケーション
+
+**geo レプリケーション** は、Premium 層の Azure Redis Cache の 2 つのインスタンスをリンクするメカニズムを用意しています。 一方のキャッシュはプライマリ リンク キャッシュとして、他方はセカンダリ リンク キャッシュとして指定されます。 セカンダリ リンク キャッシュは読み取り専用になり、プライマリ キャッシュに書き込まれたデータがセカンダリ リンク キャッシュにレプリケートされます。 この機能は、Azure リージョン間でキャッシュをレプリケートする際に使用できます。
+
+詳細については、[Azure Redis Cache の geo レプリケーションの構成方法](cache-how-to-geo-replication.md)に関するページを参照してください。
+
 
 ## <a name="to-scale-to-the-premium-tier"></a>Premium レベルにスケーリングするには
 Premium レベルにスケーリングするには、 **[価格レベルの変更]** ブレードで Premium レベルのいずれかを選択するだけです。 PowerShell および CLI を使用して、キャッシュを Premium レベルにスケーリングすることもできます。 手順については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」および「[スケーリング処理を自動化する方法](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」を参照してください。
@@ -89,10 +103,5 @@ Premium レベルにスケーリングするには、 **[価格レベルの変�
 * [How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
 * [Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)
 * [Azure Redis Cache を管理する方法](cache-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

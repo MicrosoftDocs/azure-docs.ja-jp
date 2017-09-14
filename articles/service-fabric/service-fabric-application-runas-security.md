@@ -12,17 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 06/30/2017
 ms.author: mfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ce1291261cd8f65d44873217345ae6efaa515534
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: e673b45a43a06d18040c3437caf8765704d5c36a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="configure-security-policies-for-your-application"></a>アプリケーションのセキュリティ ポリシーの構成
-Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護するのに役立てることができます。 また、Service Fabric は、そのユーザー アカウントでデプロイするときにアプリケーションによって使用されるリソース (ファイル、ディレクトリ、証明書など) を保護するためにも役立ちます。 これにより、実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより保護されます。
+Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 また、Service Fabric は、そのユーザー アカウントでデプロイするときにアプリケーションによって使用されるリソース (ファイル、ディレクトリ、証明書など) を保護するためにも役立ちます。 これにより、実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより保護されます。
 
 既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 また、Service Fabric では、アプリケーションのマニフェストで指定されているローカル ユーザー アカウントまたはローカル システム アカウントを使用して、アプリケーションを実行することもできます。 サポートされているローカル システム アカウントの種類は、**LocalUser**、**NetworkService**、**LocalService**、**LocalSystem** です。
 
@@ -202,7 +203,7 @@ Echo "Test console redirection which writes to the application log folder on the
 前の手順では、SetupEntryPoint に RunAs ポリシーを適用する方法を説明しました。 ここでは、サービス ポリシーとして適用できる別のプリンシパルを作成する方法をもう少し詳しく説明します。
 
 ### <a name="create-local-user-groups"></a>ローカル ユーザー グループの作成
-ユーザー グループを定義して作成し、1 人以上のユーザーをグループに追加できます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に、特に便利です。 次の例では、管理者特権を持つローカル グループ **LocalAdminGroup** を示します。 2 人のユーザー、Customer1 と Customer2 がこのローカル グループのメンバーになっています。
+ユーザー グループを定義して作成し、1 人以上のユーザーをグループに追加できます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に便利です。 次の例では、管理者特権を持つローカル グループ **LocalAdminGroup** を示します。 2 人のユーザー、Customer1 と Customer2 がこのローカル グループのメンバーになっています。
 
 ```xml
 <Principals>
@@ -330,7 +331,7 @@ Test-AdServiceAccount svc-Test$
 ```
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる
-サービスに RunAs ポリシーを適用し、サービス マニフェストで HTTP プロトコルを使用するエンドポイント リソースが宣言されている場合は、これらのエンドポイントに割り当てられているポートに、サービスが実行する RunAs ユーザー アカウントのアクセス制御リストが正しく適用されるように、**SecurityAccessPolicy** を指定する必要があります。 それ以外の場合は、 **http.sys** はサービスにアクセスできず、クライアントからの呼び出しで失敗します。 次の例では、Customer3 アカウントを **ServiceEndpointName** エンドポイントに適用し、フル アクセス権限を付与しています。
+サービスに RunAs ポリシーを適用し、サービス マニフェストで HTTP プロトコルを使用するエンドポイント リソースが宣言されている場合は、これらのエンドポイントに割り当てられているポートに、サービスが実行する RunAs ユーザー アカウントのアクセス制御リストが正しく適用されるように、**SecurityAccessPolicy** を指定する必要があります。 それ以外の場合は、 **http.sys** はサービスにアクセスできず、クライアントからの呼び出しで失敗します。 次の例では、Customer1 アカウントを **EndpointName** エンドポイントに適用し、フル アクセス権限を付与しています。
 
 ```xml
 <Policies>
@@ -351,7 +352,12 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
 ```
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>https エンドポイントを持つ複数のアプリケーションのアップグレード
+http**s** の使用時は、同じアプリケーションの異なるインスタンスに対して**同じポート**を使用しないように注意する必要があります。 その理由は、Service Fabric は任意の 1 つのアプリケーション インスタンスの証明書をアップグレードできないためです。 たとえば、アプリケーション 1 とアプリケーション 2 で証明書 1 を証明書 2 にアップグレードする必要があるとします。 アップグレードが発生した場合、もう一方のアプリケーションが使用中であるのにもかかわらず、Service Fabric が http.sys により証明書 1 の登録をクリーンアップしてている可能性があります。 これを回避するために、Service Fabric は、証明書を持つポートに登録された他のアプリケーション インスタンスが既にあることを検出し (http.sys により)、その操作を失敗させます。
 
+そのため、Service Fabric では、異なるアプリケーション インスタンスで**同じポート**を使用して 2 つの異なるサービスをアップグレードすることはできません。 つまり、同じポート上の異なるサービスで同じ証明書を使用することはできません。 同じポートで証明書を共有する必要がある場合は、必ずサービスを配置の制約がある異なるコンピューターに配置するようにしてください。 または、各アプリケーション インスタンスの各サービスに対して、可能であれば、Service Fabric 動的ポートを使用することを検討してください。 
+
+https でアップグレードが失敗した場合、"Windows HTTP Server API が、ポートを共有するアプリケーションに対して複数の証明書をサポートしていない" ことを示す警告が表示されます。
 
 ## <a name="a-complete-application-manifest-example"></a>完全なアプリケーション マニフェストの例
 次のアプリケーション マニフェストでは、さまざまな設定を示しています。

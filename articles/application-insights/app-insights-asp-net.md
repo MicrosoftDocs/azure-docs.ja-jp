@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: af932e111ebc60ee86c823e65000d39fa6ea81cb
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1960fa0e17ea9aa0ca15bc3ecb8ce5b1f6630a60
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
@@ -107,12 +106,12 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 
 詳細を表示するには、ポータルで任意のタイルまたはグラフをクリックします。
 
-[Azure ポータルでの Application Insights の使用方法の詳細については、こちらを参照してください](app-insights-dashboards.md)。
+[Azure Portal での Application Insights の使用方法の詳細については、こちらを参照してください](app-insights-dashboards.md)。
 
 ## <a name="step-4-publish-your-app"></a>手順 4: アプリを発行する
 IIS サーバーまたは Azure にアプリを発行します。 [ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream) を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
 
-Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](app-insights-dashboards.md)を設定したりすることができます。 強力な [Analytics クエリ言語](app-insights-analytics.md)を使って使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
+Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](app-insights-dashboards.md)を設定したりすることができます。 強力な [Log Analytics クエリ言語](https://docs.loganalytics.io/)を使って使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
 
 [Visual Studio](app-insights-visual-studio.md) から各種ツール (診断検索、[傾向](app-insights-visual-studio-trends.md)など) を使って継続的にテレメトリを分析することもできます。
 

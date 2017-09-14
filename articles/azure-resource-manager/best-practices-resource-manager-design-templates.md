@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: e2bfbdd5ca8ec178c2c32c7b52637a8ec7e88a4c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: dcc31f7a8c85a8f7fbd554371a66fb1e348bca17
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>複雑なソリューションをデプロイするときの Azure Resource Manager テンプレートの設計パターン
@@ -34,7 +33,7 @@ Azure リソース マネージャー テンプレートは、Azure リソース
 * ロールベースのアクセス制御 (RBAC) を適用し、ユーザー、グループ、サービスに適切なアクセス権を付与する。
 * タグの関連付けによって、請求額の集計などの作業を省力化する。
 
-この記事では、Microsoft の設計過程で明らかになった利用シナリオ、アーキテクチャ、実装パターンと、Azure Customer Advisory Team (AzureCAT) の顧客を対象とした実世界のテンプレートの実装について詳しく取り上げています。 決して学術的な内容ではありませんが、Linux をベースとする 12 個の代表的な OSS テクノロジ (Apache Kafka、Apache Spark、Cloudera、Couchbase、Hortonworks HDP、DataStax Enterprise (Apache Cassandra)、Elasticsearch、Jenkins、MongoDB、Nagios、PostgreSQL、Redis、Nagios など) を対象としたテンプレートの開発経験から得られた実績ある手法です。 
+この記事では、Microsoft の設計過程で明らかになった利用シナリオ、アーキテクチャ、実装パターンと、Azure Customer Advisory Team (AzureCAT) の顧客を対象とした実世界のテンプレートの実装について詳しく取り上げています。 決して学術的な内容ではありませんが、Linux をベースとする 12 個の代表的な OSS テクノロジ (Apache Kafka、Apache Spark、Cloudera、Couchbase、Hortonworks HDP、DataStax Enterprise (Apache Cassandra)、Elasticsearch、Jenkins、MongoDB、PostgreSQL、Redis、Nagios) を対象としたテンプレートの開発経験から得られた実績ある手法です。 
 
 この記事で紹介するのは、そこで培われた手法です。高品質の Azure リソース マネージャー テンプレートを設計する一助となればさいわいです。  
 

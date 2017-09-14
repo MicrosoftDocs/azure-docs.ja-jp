@@ -3,8 +3,8 @@ title: "Xamarin.iOS アプリに Azure App Service Mobile Apps を使用する |
 description: "このチュートリアルに従って、Xamarin.iOS 開発用の Azure Mobile Apps を使用します。"
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
 ms.service: app-service-mobile
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: ed289d0755bbad08de01b0f311d14f5514ce0631
-ms.lasthandoff: 02/16/2017
-
+ms.author: syntaxc4
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 8dc965df2cd45366970effb29f246b0045a94717
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS アプリを作成する
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、Azure Mobile Apps バックエンドを使用して Xamarin.iOS モバイル アプリにクラウドベースのバックエンド サービスを追加する方法を示します。  新しいモバイル アプリ バックエンドと、アプリのデータを Azure に保存する簡単な *Todo list* Xaamrin.iOS アプリの両方を作成します。
+このチュートリアルでは、Azure Mobile Apps バックエンドを使用して Xamarin.iOS モバイル アプリにクラウドベースのバックエンド サービスを追加する方法を示します。  新しいモバイル アプリ バックエンドと、アプリのデータを Azure に保存する簡単な *Todo list* Xamarin.iOS アプリの両方を作成します。
 
 このチュートリアルは、Azure App Service での Mobile Apps 機能の使用に関する他のすべての Xamarin.iOS チュートリアルを実行する前に完了しておく必要があります。
 
@@ -35,11 +35,6 @@ ms.lasthandoff: 02/16/2017
 * アクティブな Azure アカウント。 アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手します。このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx) 」をご覧ください。
 * Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。 [Visual Studio と Xamarin を対象にしたセットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)に関するページと「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」 (MSDN) を参照してください。
-
-> [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/mobile/)に関するページにアクセスしてください。 有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure モバイル アプリ バックエンドの作成
 モバイル アプリ バックエンドを作成するには、次の手順に従います。
@@ -56,24 +51,24 @@ ms.lasthandoff: 02/16/2017
 ## <a name="download-and-run-the-xamarinios-app"></a>Xamarin.iOS アプリのダウンロードと実行
 1. [Azure ポータル] をブラウザー ウィンドウで開きます。
 2. モバイル アプリの [設定] ブレードで、**[開始]**  >  **[Xamarin.iOS]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
-   
+
       モバイル バックエンドに接続されているクライアント アプリケーションがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 3. ダウンロードしたプロジェクトを抽出し、Xamarin Studio または Visual Studio で開きます。
-   
+
     ![][9]
-   
+
     ![][8]
 4. F5 キーを押してプロジェクトをビルドし、iPhone エミュレーターでアプリを起動します。
 5. アプリで、意味のあるテキスト (「"*Xamarin の学習*"」など) を入力し、**+** ボタンをクリックします。
-   
+
     ![][10]
-   
+
     要求のデータは TodoItem テーブルに挿入されます。 テーブルに格納された項目がモバイル アプリ バックエンドによって返され、データが一覧に表示されます。
 
 > [!NOTE]
 > モバイル アプリ バックエンドにアクセスして QSTodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリへのオフライン同期の追加](app-service-mobile-xamarin-ios-get-started-offline-data.md)

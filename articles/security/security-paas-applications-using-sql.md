@@ -1,5 +1,5 @@
 ---
-title: "SQL Database と SQL Data Warehouse を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する | Microsoft Docs"
+title: "Azure で Paas データベースをセキュリティで保護する | Microsoft Docs"
 description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure SQL Database と SQL Data Warehouse のセキュリティ ベスト プラクティスについて説明します。 "
 services: security
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 07/11/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: be00c1427d57b96506ec8b0ac881b7c1bd09e4de
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 18509b3fc3a73118f67583a0b087c58f0e51993c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="securing-paas-web-and-mobile-applications-using-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する
+# <a name="securing-paas-databases-in-azure"></a>Azure で Paas データベースをセキュリティで保護する
 
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) と [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
@@ -77,15 +77,15 @@ Azure SQL ファイアウォールと IP の制限については、次を参照
 - [Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](../sql-database/sql-database-configure-firewall-settings.md)
 
 ### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
-[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) は、SQL Server、Azure SQL Database、Azure SQL Data Warehouse などのデータ ファイルを暗号化します。これは、保存データの暗号化として知られています。 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護するいくつかの対策を講じることができます。 ただし、物理メディア (ドライブやバックアップ テープなど) が盗まれたシナリオでは、悪意のある第三者がデータベースを復元したりデータベースを乗っ取って、データを閲覧する可能性があります。 ソリューションの 1 つとして、データベース内の機密データを暗号化し、証明書を使用してデータを暗号化するために使用するキーを保護することが挙げられます。 これにより、キーを持たないユーザーによるデータの使用を防ぐことができます。ただし、このような保護は事前に計画する必要があります。
+[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) は既定で有効になっています。 TDE は SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータ ファイルとログ ファイルを透過的に暗号化します。 TDE はファイルやそのバックアップへの直接アクセスによる侵害から保護します。 これにより、既存のアプリケーションを変更することなく保存データを暗号化できます。 TDE は常に有効にしておく必要があります。ただし、通常のアクセス パスを使用する攻撃者を阻止することはできません。 TDE は多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。
 
-TDE は、保存データ、つまりデータとログ ファイルを保護します。 多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。 これにより、ソフトウェア開発者は既存のアプリケーションを変更することなく、業界標準の暗号化アルゴリズムを使用してデータを暗号化できます。
+Azure SQL は TDE のキーに関連する問題を管理します。 TDE については、データベースを移動する際には復旧可能性を確保するために、オンプレミスで特別な注意が必要です。 より高度なシナリオでは、Azure Key Vault で拡張可能なキー管理を通じてキーを明示的に管理できます ([Enable TDE on SQL Server Using EKM](/security/encryption/enable-tde-on-sql-server-using-ekm) (EKM を使用して SQL Server で TDE を有効にする) をご覧ください)。 またこれにより、Bring Your Own Key (BYOK) が Azure Key Vault の BYOK 機能を通じて有効になります。
 
-規制で明示的にこのような暗号化が指定されている場合は、TDE を使用してください。 ただし、通常のアクセス パスを使用する攻撃者を阻止することはできませんので注意してください。 TDE は、行や列に対する Azure SQL の提供する暗号化、またはアプリケーション レベルの暗号化のいずれかを通じて、追加のアプリケーション レベルの暗号化を使用する必要があるような、まれなケースに対する保護に使用されます。
+Azure SQL では [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を通じて列を暗号化できます。 これにより、許可されているアプリケーションのみが重要な列にアクセスできます。 このような暗号化を使用することで、暗号化された列に対する SQL クエリを等値ベースの値に制限します。
 
-アプリケーション レベルの暗号化は、選択したデータにも使用する必要があります。 データ主権の問題は、適切な国に保管されているキーを使ってデータを暗号化することにより緩和されます。 これにより、偶発的なデータ転送が問題を引き起こすことが防止されます。その理由は、強力なアルゴリズム (AES 256 など) が使用されていると仮定した場合、キーがなければデータの暗号化を解除することは不可能なためです。
+アプリケーション レベルの暗号化は、選択したデータにも使用する必要があります。 データ主権の問題は、適切な国に保管されているキーを使用してデータを暗号化することにより緩和されることがあります。 これにより、偶発的なデータ転送が問題を引き起こすことが防止されます。その理由は、強力なアルゴリズム (AES 256 など) が使用されていると仮定した場合、キーがなければデータの暗号化を解除することは不可能なためです。
 
-Azure SQL が提供する行や列に対する暗号化は、権限のある ([RBAC](../active-directory/role-based-access-built-in-roles.md)) ユーザーのみにアクセスを許可し、権限の低いユーザーによって列や行が閲覧されることを防ぎます。
+セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護する追加の対策を講じることができます。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、SQL Database と SQL Data Warehouse の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。

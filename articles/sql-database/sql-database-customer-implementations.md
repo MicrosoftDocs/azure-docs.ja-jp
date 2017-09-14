@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: b05b24bf9a14570b07c2c1ab3076835c7167b647
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3db5be35b3087bbbe87e623a623e7a10156b932f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL Database 顧客実装技術スタディ
@@ -32,3 +31,10 @@ ms.lasthandoff: 03/10/2017
 - [SnelStart](sql-database-implementation-snelstart.md): SnelStart 社 (以下 SnelStart) は、オランダの中堅・中小規模企業 (SMB) 向けに、定評ある財務/業務管理ソフトウェアを製造しています。 SnelStart では、IT スタッフ 35 人を含む 110 人の社員が 5 万 5,000 人の顧客に対応しています。 デスクトップ ソフトウェアから Azure 上に構築されたサービスとしてのソフトウェア (SaaS) の提供に移行して、管理を自動化するビルトイン サービスの大半を、使い慣れたC# 言語の環境を使用して作成しています。またエラスティック プールを使用することで、顧客企業へのプロビジョニングの過不足なく、パフォーマンスとスケーラビリティを最適化しています。 Azure の導入により、SnelStart は、顧客のオンプレミスとクラウド間の円滑な移動を実現しています。
 
 - [Umbraco](sql-database-implementation-umbraco.md): 顧客の環境を簡素化するため、Umbraco は、サービスとしてのソフトウェア (SaaS) の一種である、「サービスとしての Umbraco (UaaS)」 を追加しました。UaaS はオンプレミス環境の必要性をなくし、組み込み型拡張機能を提供して、ソリューション管理の手間を省き、開発者が製品のイノベーションに注力することで、管理費用を削減します。 Microsoft Azure の柔軟性に優れたサービスとしてのプラットフォーム (PaaS) モデルに依存することで、Umbraco はこれらのメリットを提供することが可能になりました。
+
+- [Quorum](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database): Quorum 社は、SQL Database を使用して DTU を 70% 下げながら、主要なデータベースのワークロードを 2 倍にしました。
+
+- [Quest](https://customers.microsoft.com/en-US/story/quest): Quest 社では 1 つの目標を念頭に置いて、Spotlight on SQL Server Enterprise サービスを提供しています。その目標とは、データの保護、そのデータの移動、およびデータベース操作の監視に使用できる最適なツールをデータベースの専門家に提供することです。 Spotlight と Microsoft Azure および Azure SQL Database を使用することで、SQL Server データベース管理者は職場や自宅などの場所を問わず、SQL Server におけるパフォーマンスの問題を監視、検出、診断でき、問題を解決するための方法を提供できます。
+
+- [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): この簡単なケース スタディは、完全に管理されたサービスとしてのソフトウェア (SaaS) オファリングをお客様に提供するために、Dynamics 365 for Operations 製品チームが Azure SQL Database に移行した経験から得たベスト プラクティスと教訓に重点を置いています。 Azure SQL Database を使用することで、Dynamics 365 for Operations チームは非常に少ない人員でサービスを管理および運営し、データベースの自動バックアップ、データベースのバックアップ保持、高可用性およびディザスター リカバリー機能など、すぐに使用できる管理容易性機能を利用して簡単にスケーリングすることができました。 単純な自動化によるデータベースのプロビジョニング機能と共に使用することで、Azure SQL Database は大規模なサービスに対応できる優れたプラットフォームとなりました。
+

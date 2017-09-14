@@ -1,156 +1,284 @@
 ---
-title: "チュートリアル: Azure Active Directory と FreshService の統合 | Microsoft Docs"
-description: "Azure Active Directory で FreshService を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+title: "チュートリアル: Azure Active Directory と Freshservice の統合 | Microsoft Docs"
+description: "Azure Active Directory と Freshservice の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/10/2017
+ms.date: 06/16/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 64421f1b7424751332b76508ae65d009a3e1f48b
-ms.openlocfilehash: df90d455f2c3bdbc59c38447fe65bf1b64979249
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: d32775fa91d3a49da1ef55e57d1d38990fa09346
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>チュートリアル: Azure Active Directory と FreshService の統合
-このチュートリアルでは、Azure と FreshService の統合について説明します。  
+# <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>チュートリアル: Azure Active Directory と Freshservice の統合
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Freshservice と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-* 有効な Azure サブスクリプション
-* FreshService でのシングル サインオン (SSO) が有効なサブスクリプション
+Freshservice と Azure AD の統合には、次の利点があります。
 
-このチュートリアルを完了すると、FreshService に割り当てた Azure AD ユーザーは、「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+- Freshservice にアクセスする Azure AD ユーザーを制御できます
+- ユーザーが自分の Azure AD アカウントで自動的に Freshservice にサインオン (シングル サインオン) できるようにします
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
-* FreshService のアプリケーション統合の有効化
-* シングル サインオンの構成
-* ユーザー プロビジョニングの構成
-* ユーザーの割り当て
+## <a name="prerequisites"></a>前提条件
 
-![シナリオ](./media/active-directory-saas-freshservice-tutorial/IC790807.png "Scenario")
+Azure AD と Freshservice の統合を構成するには、次のものが必要です。
 
-## <a name="enable-the-application-integration-for-freshservice"></a>FreshService のアプリケーション統合の有効化
-このセクションでは、FreshService のアプリケーション統合を有効にする方法について説明します。
+- Azure AD サブスクリプション
+- Freshservice でのシングル サインオンが有効なサブスクリプション
 
-**FreshService のアプリケーション統合を有効にするには、次の手順を実行します。**
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
-   
-   ![Active Directory](./media/active-directory-saas-freshservice-tutorial/IC700993.png "Active Directory")
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-   ![アプリケーション](./media/active-directory-saas-freshservice-tutorial/IC700994.png "Applications")
-4. ページの下部にある **[追加]** をクリックします。
-   
-   ![アプリケーションの追加](./media/active-directory-saas-freshservice-tutorial/IC749321.png "Add application")
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-   ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-freshservice-tutorial/IC749322.png "Add an application from gallerry")
-6. **検索ボックス**に、「**FreshService**」と入力します。
-   
-   ![アプリケーション ギャラリー](./media/active-directory-saas-freshservice-tutorial/IC790808.png "Application Gallery")
-7. 結果ウィンドウで **[FreshService]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-   ![Freshservice](./media/active-directory-saas-freshservice-tutorial/IC790809.png "Freshservice")
-   
-## <a name="configure-single-sign-on"></a>Configure single sign-on
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで FreshService に対する認証を行うことができるようにする方法を説明します。 
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
-FreshService にシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。 この手順に慣れていない場合は、「 [How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+1. ギャラリーからの Freshservice の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. Azure クラシック ポータルの **FreshService** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-freshservice-tutorial/IC790810.png "Configure Single Sign-On")
-2. **[ユーザーの FreshService へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-freshservice-tutorial/IC790811.png "Configure Single Sign-On")
-3. **[アプリケーション URL の構成]** ページの **[FreshService のサインオン URL]** ボックスに、ユーザーが FreshService アプリケーションにサインオンする際に使用する URL (例: **http://democompany.freshservice.com/**) を入力し、**[次へ]** をクリックします。
-   
-   ![アプリケーション URL の構成](./media/active-directory-saas-freshservice-tutorial/IC790812.png "Configure App URL")
-4. **[FreshService でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-freshservice-tutorial/IC790813.png "Configure Single Sign-On")
-5. 別の Web ブラウザー ウィンドウで、FreshService 企業サイトに管理者としてログインします。
-6. 上部のメニューで **[Admin]**をクリックします。
-   
-   ![管理](./media/active-directory-saas-freshservice-tutorial/IC790814.png "Admin")
-7. **[カスタマー ポータル]** で **[セキュリティ]** をクリックします。
-   
-   ![Security (セキュリティ)](./media/active-directory-saas-freshservice-tutorial/IC790815.png "Security")
-8. **[セキュリティ]** セクションで、次の手順を実行します。
-   
-   ![Single Sign On](./media/active-directory-saas-freshservice-tutorial/IC790816.png "Single Sign On")
-   
-   1. **[シングル サインオン]** を切り替えます。
-   2. **[SAML SSO]**を選択します。
-   3. Azure クラシック ポータルの **[FreshService でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[SAML ログイン URL]** ボックスに貼り付けます。
-   4. Azure クラシック ポータルの **[FreshService でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
-   5. エクスポートした証明書から **[拇印]** の値をコピーして、**[セキュリティ証明書フィンガープリント]** ボックスに貼り付けます。
-   
-      >[!TIP]
-      >詳細については、「 [How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)
-      >
-9. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-freshservice-tutorial/IC790817.png "Configure Single Sign-On")
-   
-## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
+## <a name="adding-freshservice-from-the-gallery"></a>ギャラリーからの Freshservice の追加
+Azure AD への Freshservice の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Freshservice を追加する必要があります。
 
-Azure AD ユーザーが FreshService にログインできるようにするには、そのユーザーを FreshService にプロビジョニングする必要があります。 FreshService の場合、プロビジョニングは手動で行います。
+**ギャラリーから Freshservice を追加するには、次の手順に従います。**
+
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+
+    ![Active Directory][1]
+
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+
+    ![アプリケーション][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+    ![アプリケーション][3]
+
+4. 検索ボックスに、「**Freshservice**」と入力します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_search.png)
+
+5. 結果ウィンドウで **Freshservice** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Freshservice で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Freshservice ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Freshservice の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+Freshservice で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+
+Freshservice で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Freshservice テスト ユーザーの作成](#creating-a-freshservice-test-user)** - Freshservice で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Freshservice アプリケーションでシングル サインオンを構成します。
+
+**Freshservice で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure Portal の **Freshservice** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![[シングル サインオンの構成]][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_samlbase.png)
+
+3. **[Freshservice のドメインと URL]** セクションで、次の手順を実行します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_url.png)
+
+    a. **[サインオン URL]** ボックスに、`https://<democompany>.freshservice.com` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスに、`https://<democompany>.freshservice.com` の形式で URL を入力します。
+
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Freshservice クライアント サポート チーム](https://support.freshservice.com/)に問い合わせてください。 
+ 
+4. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT** の値をコピーします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_certificate.png) 
+
+5. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshservice-tutorial/tutorial_general_400.png)
+
+6. **[Freshservice 構成]** セクションで、**[Freshservice の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_configure.png) 
+
+7. 別の Web ブラウザー ウィンドウで、Freshservice 企業サイトに管理者としてログインします。
+
+8. 上部のメニューで **[Admin]**をクリックします。
+   
+    ![管理](./media/active-directory-saas-freshservice-tutorial/ic790814.png "Admin")
+
+9. **[カスタマー ポータル]** で **[セキュリティ]** をクリックします。
+   
+    ![Security (セキュリティ)](./media/active-directory-saas-freshservice-tutorial/ic790815.png "Security")
+
+10. **[セキュリティ]** セクションで、次の手順を実行します。
+   
+    ![Single Sign On](./media/active-directory-saas-freshservice-tutorial/ic790816.png "Single Sign On")
+   
+    a. **[シングル サインオン]** を切り替えます。
+
+    b. **[SAML SSO]**を選択します。
+
+    c. **[SAML Login URL]\(SAML ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+
+    d. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
+
+    e. **[Security Certificate Fingerprint]\(セキュリティ証明書フィンガープリント\)** ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** の値を貼り付けます。
+
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[保存]**
+   
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][100]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshservice-tutorial/create_aaduser_01.png) 
+
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshservice-tutorial/create_aaduser_02.png) 
+
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshservice-tutorial/create_aaduser_03.png) 
+
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-freshservice-tutorial/create_aaduser_04.png) 
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+
+    d. ページの下部にある **[Create]**」を参照してください。
+ 
+### <a name="creating-a-freshservice-test-user"></a>Freshservice テスト ユーザーの作成
+
+Azure AD ユーザーが Freshservice にログインできるようにするには、そのユーザーを Freshservice にプロビジョニングする必要があります。 FreshService の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **FreshService** 企業サイトに管理者としてログインします。
+
 2. 上部のメニューで **[Admin]**をクリックします。
    
-   ![管理](./media/active-directory-saas-freshservice-tutorial/IC790814.png "Admin")
+    ![管理](./media/active-directory-saas-freshservice-tutorial/ic790814.png "Admin")
+
 3. **[ユーザー管理]** セクションで、**[要求者]** をクリックします。
    
-   ![Requesters](./media/active-directory-saas-freshservice-tutorial/IC790818.png "Requesters")
+    ![Requesters](./media/active-directory-saas-freshservice-tutorial/ic790818.png "Requesters")
+
 4. **[新しい要求者]**をクリックします。
    
-   ![New Requesters](./media/active-directory-saas-freshservice-tutorial/IC790819.png "New Requesters")
+    ![New Requesters](./media/active-directory-saas-freshservice-tutorial/ic790819.png "New Requesters")
+
 5. **[新しい要求者]** セクションで、次の手順を実行します。
    
-   ![New Requester](./media/active-directory-saas-freshservice-tutorial/IC790820.png "New Requester")   
-   1. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**および**メール**の属性を入力します。
-   2. [ **Save**] をクリックします。
+    ![New Requester](./media/active-directory-saas-freshservice-tutorial/ic790820.png "New Requester")   
+
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**および**メール**の属性を入力します。
+
+    b. [ **Save**] をクリックします。
    
     >[!NOTE]
-    >Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+    >Azure Active Directory のアカウント所有者は、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールを受け取ります。
     >  
 
 >[!NOTE]
 >FreshService から提供されている他の FreshService ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 >  
 
-## <a name="assign-users"></a>[ユーザーの割り当て]
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+![ユーザーの割り当て][200] 
 
-**ユーザーを FreshService に割り当てるには、次の手順を実行します。**
+**Britta Simon を Freshservice に割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **FreshService** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
-   
-   ![ユーザーの割り当て](./media/active-directory-saas-freshservice-tutorial/IC790821.png "Assign Users")
-3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
-   
-   ![はい](./media/active-directory-saas-freshservice-tutorial/IC767830.png "Yes")
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[Freshservice]** を選択します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshservice-tutorial/tutorial_freshservice_app.png) 
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![ユーザーの割り当て][202] 
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![ユーザーの割り当て][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで [Freshservice] タイルをクリックすると、Freshservice アプリケーションに自動的にサインオンします。
+
+## <a name="additional-resources"></a>その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-freshservice-tutorial/tutorial_general_203.png
 
 

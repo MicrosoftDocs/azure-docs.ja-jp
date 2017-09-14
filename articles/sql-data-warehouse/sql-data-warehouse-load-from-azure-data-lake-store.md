@@ -16,19 +16,16 @@ ms.custom: loading
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: cb2d789a53ee2fa16db8d2553086a18043d4976e
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 6f8d220a64e04b7dfa021aacf68dadf0d55393bf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
 このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要な手順を 1 つずつ説明します。
 外部テーブルを使用すると、ADLS に格納されているデータに対してアドホック クエリを実行できます。ただし、ベスト プラクティスとしては、SQL Data Warehouse にデータをインポートすることをお勧めします。
 予想所要時間: 10 分 (前提条件が満たされている場合)。
->
 このチュートリアルで学習する内容は次のとおりです。
 
 1. Azure Data Lake Store から読み込む外部データベース オブジェクトを作成する。
@@ -42,12 +39,13 @@ ms.lasthandoff: 05/09/2017
 
 >[!NOTE] 
 > SQL Data Warehouse から Azure Data Lake に接続するには、Active Directory アプリケーションのクライアント ID、キー、OAuth2.0 トークン エンドポイント値が必要です。 これらの値を取得する方法の詳細については、上記のリンクを参照してください。
+>Azure Active Directory アプリケーションの登録で "アプリケーション ID" をクライアント ID として使用するようにしてください。
 
 * SQL Server Management Studio または SQL Server Data Tools。SSMS をダウンロードして接続する方法については、[SSMS に対してクエリを実行する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)方法に関するページを参照してください。
 
 * Azure SQL Data Warehouse。作成方法については、https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision を参照してください。
 
-* 暗号化が有効になっていない Azure Data Lake Store。 作成方法については、https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal を参照してください。
+* 暗号化を有効または無効にした Azure Data Lake Store。 作成方法については、https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal を参照してください。
 
 
 
@@ -81,6 +79,12 @@ WITH
     SECRET = '<key>'
 ;
 
+-- It should look something like this:
+CREATE DATABASE SCOPED CREDENTIAL ADLCredential
+WITH
+    IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
+    SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
+;
 ```
 
 

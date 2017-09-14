@@ -1,10 +1,10 @@
 ---
 title: "ESP8266 をクラウドへ - Feather HUZZAH ESP8266 を Azure IoT Hub に接続する | Microsoft Docs"
-description: "Adafruit Feather HUZZAH ESP8266 と呼ばれる Arduino デバイスを、IoT 資産の管理に役立つ Microsoft クラウド サービスである Azure IoT Hub に接続する方法を説明します。"
+description: "このチュートリアルでは、Adafruit Feather HUZZAH ESP8266 を Azure IoT Hub に接続し、Azure クラウド プラットフォームにデータを送信する方法について説明します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: 
 ms.assetid: c505aacf-89a8-40ed-a853-493b75bec524
@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 06/15/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3650f628747f8a9e743711f5c7a175d2a2523565
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6a450579c848fe6030a328ddf410f139baae2324
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 をクラウドの Azure IoT Hub に接続する
@@ -57,14 +57,11 @@ Adafruit Feather HUZZAH ESP8266 を、作成する IoT Hub に接続します。
 
 また、開発環境に次のものが必要です。
 
+* 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 * Mac PC または Windows か Ubuntu をインストールした PC。
 * Feather HUZZAH ESP8266 を接続するワイヤレス ネットワーク。
 * 構成ツールをダウンロードするためのインターネット接続。
 * [Arduino IDE](https://www.arduino.cc/en/main/software) バージョン1.6.8 以降。 それより前のバージョンでは AzureIoT ライブラリを使用できません。
-
-
-
-
 
 次のものは、センサーがない場合のオプションです。 シミュレートされたセンサー データを使用するオプションもあります。
 
@@ -72,99 +69,8 @@ Adafruit Feather HUZZAH ESP8266 を、作成する IoT Hub に接続します。
 * ブレッドボード
 * M/M ジャンパー ワイヤ
 
-## <a name="create-an-iot-hub-and-register-a-device-for-feather-huzzah-esp8266"></a>IoT Hub を作成し、Feather HUZZAH ESP8266 のデバイスを登録する
 
-### <a name="to-create-your-iot-hub-in-the-azure-portal-follow-these-steps"></a>Azure Portal で IoT Hub を作成するには、次の手順に従います。
-
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-1. **[新規]** > **[モノのインターネット (IoT)]** > **[IoT Hub]** の順にクリックします。
-
-   ![IoT Hub を作成する](media/iot-hub-arduino-huzzah-esp8266-get-started/3_iot-hub-creation.png)
-
-1. **[IoT Hub]** ウィンドウで、IoT Hub に必要な情報を入力します。
-
-   ![IoT Hub を作成するための基本情報](media/iot-hub-arduino-huzzah-esp8266-get-started/4_iot-hub-provide-basic-info.png)
-
-   * **[名前]**: IoT Hub の名前。 入力した名前が有効である場合は、緑色のチェック マークが表示されます。
-   * **[価格とスケールティア]**: このデモでは、無料の F1 レベルを選択します。 [[pricing and scale tier] (価格とスケール レベル)](https://azure.microsoft.com/pricing/details/iot-hub/) を参照してください。
-   * **[リソース グループ]**: IoT Hub をホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)に関する記事をご覧ください。
-   * **[場所]**: IoT Hub が作成される場所に最も近い場所を選択します。
-   * **[ダッシュボードにピン留めする]**: ダッシュボードから IoT Hub に簡単にアクセスできるようにするには、このオプションをオンにします。
-
-1. **[作成]**をクリックします。 IoT Hub の作成には数分かかります。 **[通知]** ウィンドウで進行状況を確認できます。
-
-   ![[通知] ウィンドウで IoT Hub 作成の進行状況を監視する](media/iot-hub-arduino-huzzah-esp8266-get-started/5_iot-hub-monitor-creation-progress-notification-pane.png)
-
-1. IoT Hub が作成されたら、ダッシュボードで その IoT Hub をクリックします。 この記事の中で後で使用する **[ホスト名]** をメモしたら、**[共有アクセス ポリシー]** をクリックします。
-
-   ![IoT Hub のホスト名を取得する](media/iot-hub-arduino-huzzah-esp8266-get-started/6_iot-hub-get-hostname.png)
-
-1. **[共有アクセス ポリシー]** ウィンドウで、**[iothubowner]** ポリシーをクリックし、IoT Hub の **[接続文字列]** 値をコピーして保存します。 この値は、この記事の中で、後で使用します。 詳細については、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」を参照してください。
-
-   ![IoT Hub 接続文字列を取得する](media/iot-hub-arduino-huzzah-esp8266-get-started/7_iot-hub-get-connection-string.png)
-
-IoT Hub の作成は以上です。 **[ホスト名]** と **[接続文字列]** の値を保存したことを確認してください。 この記事の中で、後で使用します。
-
-
-### <a name="register-a-device-for-feather-huzzah-esp8266-in-your-iot-hub"></a>IoT Hub に Feather HUZZAH ESP8266 のデバイスを登録する
-
-すべての IoT Hub には、その IoT Hub への接続が許可されたデバイスに関する情報を保存する ID レジストリがあります。 デバイスを IoT Hub に接続できるようにするには、デバイスのエントリが IoT Hub の ID レジストリに存在する必要があります。
-
-
-このセクションでは、*iothub explorer* と呼ばれる CLI ツールを使用します。 このツールを使用して、Feather HUZZAH ESP8266 のデバイスを IoT Hub の ID レジストリに登録します。
-
-
-
-> [!NOTE]
-> iothub explorer を正しく動作させるには、Node.js 4.x 以降が必要です。
-
-Feather HUZZAH ESP8266 のデバイスを登録するには、次の手順に従います。
-
-1. NPM を含め Node.js の最新の LTS バージョンを[ダウンロード](https://nodejs.org/en/download/)しインストールします。
-1. NPM を使用して iothub-explorer をインストールします。
-
-   * Windows 7 以降:
-
-     管理者としてコマンド プロンプトを起動します。 次のコマンドを実行して、iothub-explorer をインストールします。
-
-     ```bash
-     npm install -g iothub-explorer
-     ```
-
-   * Ubuntu 16.04 以降:
-
-     キーボード ショートカットの Ctrl + Alt + T キーでターミナルを開き、次のコマンドを実行します。
-
-     ```bash
-     sudo npm install -g iothub-explorer
-     ```
-
-   * MacOS 10.1 以降:
-
-     ターミナルを開き、次のコマンドを実行します。
-
-     ```bash
-     npm install -g iothub-explorer
-     ```
-
-3. 次のコマンドを実行して、IoT Hub にログインします。
-
-   ```bash
-   iothub-explorer login [your IoT hub connection string]
-   ```
-
-4. 新しいデバイスを登録します。 次の例では、`deviceID` は `new-device` です。 次のコマンドを実行して、接続文字列を取得します。
-
-   ```bash
-   iothub-explorer create new-device --connection-string
-   ```
-
-登録したデバイスの接続文字列をメモします。 これは、後で使用します。
-
-
-> [!NOTE]
-> 登録したデバイスの接続文字列を表示するには、`iothub-explorer list` コマンドを実行します。
-
+[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>センサー付きの HUZZAH ESP8266 をコンピューターに接続する
 このセクションでは、センサーをボードに接続します。 その後、デバイスをコンピューターに接続して、さらに使用します。
@@ -175,7 +81,7 @@ Feather HUZZAH ESP8266 のデバイスを登録するには、次の手順に従
 ![接続の参照](media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
 
 
-センサー ピンでは次の配線を使用します。
+センサーの各ピンで、次のように接続します。
 
 
 | 開始 (センサー)           | 終了 (ボード)           | ケーブルの色   |
@@ -185,8 +91,6 @@ Feather HUZZAH ESP8266 のデバイスを登録するには、次の手順に従
 | GND (ピン 34F)            | GND (ピン 56I)          | 黒いケーブル   |
 
 詳細については、[Adafruit 社の DHT22 センサーの設定に関するページ](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor)と [Adafruit 社の Feather HUZZAH Esp8266 のピン配列に関するページ](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts)をご覧ください。
-
-
 
 
 

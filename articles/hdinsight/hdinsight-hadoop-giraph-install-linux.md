@@ -1,5 +1,5 @@
 ---
-title: "Linux ベースの HDInsight (Hadoop) に Giraph をインストールして使用する | Microsoft Docs"
+title: "HDInsight (Hadoop) に Giraph をインストールして使用する - Azure | Microsoft Docs"
 description: "スクリプト アクションを使用して Linux ベースの HDInsight クラスターに Giraph をインストールする方法について説明します。 スクリプト アクションでは、クラスター構成を変更するか、サービスとユーティリティをインストールすることで、クラスターを作成時にカスタマイズできます。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: c59da3ab9b02f4177272dc3a1194d46b6172a05e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 658616d1979e617a7d80a989b8e80246a9091fdf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/18/2017
 HDInsight クラスターで Apache Giraph をインストールする方法について説明します。 HDInsight のスクリプト アクション機能では、bash スクリプトを実行してクラスターをカスタマイズできます。 スクリプトを使用して、クラスターの作成時および作成後にクラスターをカスタマイズできます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="whatis"></a>Giraph とは
 
@@ -98,19 +97,21 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 1. SSH を使用して HDInsight クラスターに接続します。
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを使用して、**tiny_graph.txt** という名前のファイルを作成します。
 
-    ```
+    ```bash
     nano tiny_graph.txt
     ```
 
     このファイルの内容として、次のテキストを使用します。
 
-    ```
+    ```text
     [0,0,[[1,1],[3,3]]]
     [1,0,[[0,1],[2,2],[3,1]]]
     [2,0,[[1,2],[4,4]]]
@@ -128,13 +129,13 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 4. 次のコマンドを使用して、HDInsight クラスターのプライマリ ストレージにデータを格納します。
 
-    ```
+    ```bash
     hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
     ```
 
 5. 次のコマンドを使用して、サンプル SimpleShortestPathsComputation を実行します。
 
-    ```
+    ```bash
     yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
     ```
 
@@ -156,7 +157,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 6. ジョブが完了すると、結果が **/example/out/shotestpaths** ディレクトリに格納されます。 出力ファイルの名前の先頭は **part-m-**、末尾はファイルの順番を示す数字です。 次のコマンドを使用して、出力を表示します。
 
-    ```
+    ```bash
     hdfs dfs -text /example/output/shortestpaths/*
     ```
 

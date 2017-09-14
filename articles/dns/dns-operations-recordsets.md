@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 54389c0b6dfbe5483106ca74e379dff9091fb907
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 2962e30e5d9c60b8e786e2ba79647cabfc5925cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -26,7 +26,8 @@ ms.lasthandoff: 05/11/2017
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](dns-operations-recordsets-portal.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
+> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 この記事では、Azure PowerShell を使用して DNS ゾーンの DNS レコードを管理する方法について説明します。 DNS レコードは、クロスプラットフォームの [Azure CLI](dns-operations-recordsets-cli.md) または [Azure Portal](dns-operations-recordsets-portal.md) を使用して管理することもできます。
@@ -46,7 +47,7 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 
 新しいレコードの名前と種類が既存のレコードと同じである場合は、[そのレコードを既存のレコード セットに追加する](#add-a-record-to-an-existing-record-set)必要があります。 新しいレコードの名前と種類が既存のすべてのレコードと異なる場合は、新しいレコード セットを作成する必要があります。 
 
-### <a name="create-a-records-in-a-new-record-set"></a>新しいレコード セットの A レコードの作成
+### <a name="create-a-records-in-a-new-record-set"></a>新しいレコード セットの "A" レコードの作成
 
 レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。 レコード セットを作成する際には、レコード セット名、ゾーン、Time to Live (TTL)、レコードの種類、作成するレコードを指定する必要があります。
 
@@ -164,7 +165,7 @@ New-AzureRmDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com"
 $rs = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-このほか、"-Zone" パラメーターを使用して渡されるゾーン オブジェクトを使用してゾーンを指定する方法もあります。 
+このほか、`-Zone` パラメーターを使って渡されるゾーン オブジェクトを使ってゾーンを指定する方法もあります。
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"

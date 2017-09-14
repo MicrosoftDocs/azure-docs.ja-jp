@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/06/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 41f9742befcc034f46f166b1f3f3d81ef67f83e7
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -141,11 +142,7 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 ![Service Fabric デバッグ出力ウィンドウ][3]
 
 ## <a name="next-steps"></a>次のステップ
-* [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
-* [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
-* [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [コード サンプル](https://github.com/Azure/servicefabric-samples)
+「[Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)」で詳細を参照してください。
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG

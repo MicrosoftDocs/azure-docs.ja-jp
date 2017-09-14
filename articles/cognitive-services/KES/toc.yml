@@ -1,31 +1,36 @@
-- name: "Knowledge Exploration Service Documentation"
+- name: Knowledge Exploration Service Documentation
   href: ../index.md
-- name: "Overview"
+- name: Overview
   items: 
-  - name: "Learn about the Knowledge Exploration Service" 
+  - name: Learn about the Knowledge Exploration Service
+ 
     href: Overview.md
-- name: "Get started"
+- name: Get started
   items: 
-  - name: "Create a backend engine"
+  - name: Create a backend engine
     href: GettingStarted.md
-  - name: "Command line"
+  - name: Command line
     href: CommandLine.md
-  - name: "Schema format"
+  - name: Schema format
     href: SchemaFormat.md
-  - name: "Data format"
+  - name: Data format
     href: DataFormat.md
-  - name: "Grammar format"
+  - name: Grammar format
     href: GrammarFormat.md
-  - name: "Semantic interpretation"
+  - name: Semantic interpretation
     href: SemanticInterpretation.md
-  - name: "Web API interface"
+  - name: Web API interface
     href: WebAPI.md
     items:
-    - name: "calchistogram"
+    - name: calchistogram
       href: calchistogramMethod.md
-    - name: "evaluate"
+    - name: evaluate
       href: evaluateMethod.md
-    - name: "interpret"
+    - name: interpret
       href: interpretMethod.md
-  - name: "Structured query expressions"
+  - name: Structured query expressions
     href: Expressions.md
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/

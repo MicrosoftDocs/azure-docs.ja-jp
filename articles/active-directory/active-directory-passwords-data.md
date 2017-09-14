@@ -6,14 +6,14 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: f7ecb22ee46d83867453e035f8a639bc7f7f2d81
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
-
 
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする

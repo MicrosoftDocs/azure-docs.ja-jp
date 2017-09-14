@@ -16,12 +16,11 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 92c715015067363fa6d6b58f436891f4d38e19e5
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 34072574f83b51280e60e2f8766c6c5d5a33c307
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -31,7 +30,7 @@ Storm ダッシュボードでは、Web ブラウザーを使用して Apache St
 Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Storm REST API に依存し、これを使用して独自の監視と管理ソリューションを作成できます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、オペレーティング システムとして Windows を使用する HDInsight クラスター上の Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、オペレーティング システムとして Windows を使用する HDInsight クラスター上の Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > Linux を使用する HDInsight クラスターを使用して Storm トポロジをデプロイおよび管理する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)」を参照してください。
 
@@ -45,10 +44,9 @@ Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Stor
 
     下記いずれかのバージョンの Visual Studio
 
-  * Visual Studio 2012 ([Update 4](http://www.microsoft.com/download/details.aspx?id=39305))
+  * Visual Studio 2012 Update 4
 
-  * Visual Studio 2013 ([Update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
-  * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
+  * Visual Studio 2013 Update 4 または Visual Studio 2013 Community
 
   * Visual Studio 2015 (任意のエディション)
 
@@ -97,7 +95,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
   * **再調整**: トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。
 
-      詳しくは、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」(http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) をご覧ください。
+      詳しくは、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理) (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」をご覧ください。
 
   * **強制終了**: 指定したタイムアウト後に Storm トポロジを停止します。
 

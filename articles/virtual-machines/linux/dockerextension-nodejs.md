@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: fb84ca46bdb02df315c078889f49db545fee1d64
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Azure CLI 1.0 で Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
@@ -29,7 +28,7 @@ Docker マシンや Azure Container Service などの他のデプロイ方法に
 
 * アプリのプロトタイプを短時間で作成するには、[Docker マシン](docker-machine.md)を使って単一の Docker ホストを作成できます。
 * さらに大きくて安定した環境の場合は、Azure Docker VM 拡張機能を使うことができます。この拡張機能は、一貫したコンテナー デプロイメントを生成するための [Docker Compose](https://docs.docker.com/compose/overview/) もサポートします。 この記事では、Azure Docker VM 拡張機能の使用を詳しく説明します。
-* 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、[Azure Container Service に Docker Swarm クラスター](../../container-service/container-service-deployment.md)をデプロイできます。
+* 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、[Azure Container Service に Docker Swarm クラスター](../../container-service/dcos-swarm/container-service-deployment.md)をデプロイできます。
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
@@ -201,6 +200,6 @@ Azure での Docker のデプロイの他のオプションについて詳しく
 
 * [Docker マシンと Azure ドライバーを使用する](docker-machine.md)  
 * [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](docker-compose-quickstart.md)
-* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/container-service-deployment.md)
+* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)
 
 

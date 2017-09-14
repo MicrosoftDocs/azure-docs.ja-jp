@@ -11,15 +11,15 @@ ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 061e79be546a80d254f2915313d747cf69cee9d2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 52cb5f2569b6c3a5301752b1e8bfb6cea13ff7f6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
@@ -42,7 +42,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
  
 ## <a name="tables-in-azure-cosmos-db"></a>Azure Cosmos DB のテーブル 
 
-Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要とするアプリケーションのために [Table API](table-introduction.md) (プレビュー) が提供されます。 Azure Cosmos DB で [Azure Table Storage](../storage/storage-introduction.md) SDK および REST API を使用できます。 Azure Cosmos DB を使用して、高スループット要件のテーブルを作成できます。 Azure Cosmos DB ではスループットが最適化されたテーブル (通称 "Premium テーブル") がサポートされ、現在パブリック プレビューが行われています。 
+Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要とするアプリケーションのために [Table API](table-introduction.md) (プレビュー) が提供されます。 Azure Cosmos DB で [Azure Table Storage](../storage/common/storage-introduction.md) SDK および REST API を使用できます。 Azure Cosmos DB を使用して、高スループット要件のテーブルを作成できます。 Azure Cosmos DB ではスループットが最適化されたテーブル (通称 "Premium テーブル") がサポートされ、現在パブリック プレビューが行われています。 
 
 Azure Table Storage は、ストレージ要件が高くスループット要件が低いテーブルに対して、引き続き使用できます。 Azure Cosmos DB では、将来の更新時にストレージ最適化テーブルのサポートが導入される予定であり、既存および新規の Azure Table Storage アカウントは Azure Cosmos DB にシームレスにアップグレードされます。
 
@@ -64,7 +64,7 @@ Azure Table Storage の複雑なタスクについては、次を参照してく
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)の Table service リファレンス ドキュメント (利用可能な API の詳細について)
 
 ### <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルは、Azure Table Storage SDK の知識があり、Azure Cosmos DB を使用して提供される Premium 機能を使用する予定がある開発者が対象です。 「[.NET を使用して Azure Table Storage を使用する](../storage/storage-dotnet-how-to-use-tables.md)」に基づいて、セカンダリ インデックス、プロビジョニング済みスループット、マルチホームなどの追加機能を活用する方法を説明します。 Azure Portal を使用して Azure Cosmos DB アカウントを作成し、Table アプリケーションを構築およびデプロイする方法も説明します。 テーブルの作成と削除や、テーブル データの挿入、更新、削除、クエリを実行する .NET の例についても説明します。 
+このチュートリアルは、Azure Table Storage SDK の知識があり、Azure Cosmos DB を使用して提供される Premium 機能を使用する予定がある開発者が対象です。 「[.NET を使用して Azure Table Storage を使用する](table-storage-how-to-use-dotnet.md)」に基づいて、セカンダリ インデックス、プロビジョニング済みスループット、マルチホームなどの追加機能を活用する方法を説明します。 Azure Portal を使用して Azure Cosmos DB アカウントを作成し、Table アプリケーションを構築およびデプロイする方法も説明します。 テーブルの作成と削除や、テーブル データの挿入、更新、削除、クエリを実行する .NET の例についても説明します。 
 
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
@@ -77,7 +77,8 @@ Azure Table Storage の複雑なタスクについては、次を参照してく
 > [!TIP]
 > * もう Azure Cosmos DB アカウント作成しましたか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
 > * 既に Azure DocumentDB アカウントを持っていましたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。  
-> * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
+> * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。
+<!---Loc Comment: Please, check link [Set up your Visual Studio solution] since it's not redirecting to any location.---> 
 >
 >
 
@@ -105,7 +106,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 2. Visual Studio で app.config ファイルを開きます。 
 
-3. ポータルの URI 値をコピーし (コピー ボタンを使用して)、app.config の account-key の値に設定します。 app.config の account-name では、前に作成したアカウント名を使用します。
+3. ポータルの URI 値をコピーし (コピー ボタンを使用して)、app.config の account-key の値に設定します。app.config の account-name では、前に作成したアカウント名を使用します。
   
 ```
 <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;TableEndpoint=https://account-name.documents.azure.com" />

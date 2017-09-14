@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: b888f3e7fd56aaf8104c1b76264a3753ca37f7c9
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: b0d98688518acd2157905fda6a9a847763e45ae7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Application Insights で Docker アプリケーションを監視する

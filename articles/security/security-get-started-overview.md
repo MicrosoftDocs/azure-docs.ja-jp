@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a4e73e9c8a66fca132b1f26913ee8ef5e397269
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1303815755584e912891d501018b257b96e5f063
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -51,9 +53,4 @@ Azure セキュリティ情報サイトは、現在、次のカテゴリに対�
 >
 
 ご意見をお寄せください。 追加してほしいカテゴリがある場合は、お知らせください。 既存のカテゴリに追加してほしい記事がある場合も、お知らせください。 下のコメント セクションを使用するか、[azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com) までご連絡ください。ご意見を今後の計画に組み込むようにいたします。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

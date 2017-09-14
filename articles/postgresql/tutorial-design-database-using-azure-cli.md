@@ -5,19 +5,17 @@ services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql-database
-ms.custom: tutorial
-ms.tgt_pltfrm: portal
-ms.devlang: na
+editor: jasonwhowell
+ms.service: postgresql
+ms.custom: mvc
+ms.devlang: azure-cli
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 06/13/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fbac141243f0f36aab1a2ef9f28b4e107fd2d390
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 700c68f354c61cb975ae684d558e650631ff4d66
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Azure CLI を使用して最初の Azure Database for PostgreSQL を設計する 
@@ -31,33 +29,28 @@ ms.lasthandoff: 05/10/2017
 > * データの更新
 > * データの復元
 
-[!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
+このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI 2.0 をインストール]( /cli/azure/install-azure-cli)します。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
-```azurecli
-az login
-```
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
-```azurecli
+```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-
 [az group create](/cli/azure/group#create) コマンドで [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
-```azurecli
+```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
-
-**az postgres server create** コマンドを使用して、[Azure Database for PostgreSQL サーバー](overview.md)を作成します。 サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 
+[az postgres server create](/cli/azure/postgres/server#create) コマンドを使用して、[Azure Database for PostgreSQL サーバー](overview.md)を作成します。 サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 
 
 次の例では、サーバー管理者ログイン `mylogin` を使用して、リソース グループ `myresourcegroup` に `mypgserver-20170401` という名前のサーバーを作成します。 サーバーの名前は DNS 名にマップするため、Azure でグローバルに一意である必要があります。 `<server_admin_password>` は独自の値に置き換えます。
-```azurecli
+```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mypgserver-20170401 --location westus --admin-user mylogin --admin-password <server_admin_password> --performance-tier Basic --compute-units 50 --version 9.6
 ```
 
@@ -69,21 +62,21 @@ az postgres server create --resource-group myresourcegroup --name mypgserver-201
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
-**az postgres server firewall-rule create** コマンドで、Azure PostgreSQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、[psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) や [PgAdmin](https://www.pgadmin.org/) などの外部アプリケーションが、Azure PostgreSQL サービスのファイアウォールを経由してサーバーに接続できるようになります。 
+[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) コマンドで、Azure PostgreSQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、[psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) や [PgAdmin](https://www.pgadmin.org/) などの外部アプリケーションが、Azure PostgreSQL サービスのファイアウォールを経由してサーバーに接続できるようになります。 
 
-ネットワークからの接続が可能な IP 範囲を指定するファイアウォール規則を設定することができます。 次の例では、**az postgres server firewall-rule create** を使用して、IP アドレスの範囲を指定するファイアウォール規則 `AllowAllIps` を作成します。 すべての IP アドレスを開放するには、開始 IP アドレスとして 0.0.0.0 を、終了アドレスとして 255.255.255.255 を使用します。
-```azurecli
+ネットワークからの接続が可能な IP 範囲を指定するファイアウォール規則を設定することができます。 次の例では、[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) を使用して、IP アドレスの範囲を指定するファイアウォール規則 `AllowAllIps` を作成します。 すべての IP アドレスを開放するには、開始 IP アドレスとして 0.0.0.0 を、終了アドレスとして 255.255.255.255 を使用します。
+```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mypgserver-20170401 --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!NOTE]
-> Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
+> Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 Azure SQL Database サーバーに接続するには、会社の IT 部門にポート 5432 を開放してもらう必要があります。
 >
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
 
 サーバーに接続するには、ホスト情報とアクセス資格情報を提供する必要があります。
-```azurecli
+```azurecli-interactive
 az postgres server show --resource-group myresourcegroup --name mypgserver-20170401
 ```
 
@@ -113,27 +106,26 @@ az postgres server show --resource-group myresourcegroup --name mypgserver-20170
 ```
 
 ## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>psql を使用して Azure Database for PostgreSQL に接続する
-
-クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) のローカル インスタンスを使用して Azure PostgreSQL サーバーに接続できます。 ここでは psql コマンド ライン ユーティリティを使用して、Azure PostgreSQL サーバーに接続しましょう。
+クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) のローカル インスタンスまたは Azure Cloud Console を使用して Azure PostgreSQL サーバーに接続できます。 ここでは psql コマンド ライン ユーティリティを使用して、Azure Database for PostgreSQL サーバーに接続しましょう。
 
 1. 次の psql コマンドを実行して Azure Database for PostgreSQL に接続します。
-```bash
+```azurecli-interactive
 psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
 ```
 
   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mypgserver 20170401.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 パスワードの入力を求められたら、選択した `<server_admin_password>` を入力します。
   
-  ```bash
+  ```azurecli-interactive
 psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 ---dbname=postgres
 ```
 
 2.  サーバーに接続したら、プロンプトで空のデータベースを作成します。
-```bash
+```sql
 CREATE DATABASE mypgsqldb;
 ```
 
 3.  プロンプトで次のコマンドを実行し、新しく作成したデータベース **mypgsqldb** に接続を切り替えます。
-```bash
+```sql
 \c mypgsqldb
 ```
 
@@ -150,7 +142,7 @@ CREATE TABLE inventory (
 ```
 
 次のように入力すると、新しく作成されたテーブルが一覧に表示されます。
-```bash
+```sql
 \dt
 ```
 
@@ -182,18 +174,22 @@ SELECT * FROM inventory;
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>データベースを以前の状態に復元する
 テーブルを誤って削除した場合を想定してください。 データの復元は容易なことではありません。 Azure Database for PostgreSQL では、過去最長 7 日間 (Basic) または 35 日間 (Standard) の任意の時点に戻り、新しいデータベースに過去のデータを復元できます。 この新しいサーバーを使用して、削除されたデータを復元することができます。 次の手順を実行して、テーブルを追加する前の状態にサンプル データベースを復元します。
 
-復元するには、次の情報が必要です。
-- **復元ポイント**: サーバーが変更される前の日時を選択します。 ソース データベースの最も古いバックアップと同じか、それよりも前の値にする必要があります。
-- **対象サーバー:** 復元先の新しいサーバー名を指定します。
-- **ソース サーバー:** 復元するサーバーの名前を指定します。
-- **場所:** リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
-- **価格レベル:** サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
-
-```azurecli
-az postgres server restore --resource-group myResourceGroup --name mypgserver-20170401-restored --restore-point-in-time "2017-04-13 03:10" --source-server-name mypgserver-20170401
+```azurecli-interactive
+az postgres server restore --resource-group myResourceGroup --name mypgserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mypgserver-20170401
 ```
 
-[テーブルが削除される前の時点にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[サービス レベル](./concepts-service-tiers.md)の保有期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
+`az postgres server restore` コマンドには、次のパラメーターが必要です。
+| Setting | 推奨値 | Description  |
+| --- | --- | --- |
+| --resource-group |  myResourceGroup |  ソース サーバーが存在するリソース グループ。  |
+| --name | mypgserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
+| restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
+| --source-server | mypgserver-20170401 | 復元元のソース サーバーの名前または ID。 |
+
+特定の時点にサーバーを復元すると、新しいサーバーが作成され、指定した時点の元のサーバーがコピーされます。 復元されたサーバーの場所と価格レベルの値は、元のサーバーと同じです。
+
+コマンドは同期的であり、サーバーが復元された後に戻ります。 復元が終了した後、作成された新しいサーバーを調べます。 データが期待どおりに復元されたことを確認します。
+
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明しました。

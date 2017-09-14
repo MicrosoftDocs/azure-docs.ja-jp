@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 570011347f2c723f4a828f5f0229c14d6814f839
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b1164fbd816eea5189786850f096438e32f8f802
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Azure で実行されている Linux 仮想マシンをキャプチャする
-Resource Manager デプロイメント モデルの Azure Linux 仮想マシン (VM) を汎用化してキャプチャするには、この記事の手順に従います。 VM を汎用化すると、個人アカウント情報が削除されて、VM はイメージとして使われるように準備されます。 その後、OS の汎用化された仮想ハード ディスク (VHD) イメージ、接続されたデータ ディスクの VHD、および新しい VM デプロイの [Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md)をキャプチャします。 この記事では、非管理対象ディスクを使用する VM のために、Azure CLI 1.0 で VM イメージをキャプチャする方法について詳しく説明します。 また、[Azure CLI 2.0 で Azure Managed Disks を使用して VM をキャプチャ](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)することもできます。 Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 詳しくは、「[Azure Managed Disks overview](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Azure Managed Disks の概要) をご覧ください。 
+Resource Manager デプロイメント モデルの Azure Linux 仮想マシン (VM) を汎用化してキャプチャするには、この記事の手順に従います。 VM を汎用化すると、個人アカウント情報が削除されて、VM はイメージとして使われるように準備されます。 その後、OS の汎用化された仮想ハード ディスク (VHD) イメージ、接続されたデータ ディスクの VHD、および新しい VM デプロイの [Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md)をキャプチャします。 この記事では、非管理対象ディスクを使用する VM のために、Azure CLI 1.0 で VM イメージをキャプチャする方法について詳しく説明します。 また、[Azure CLI 2.0 で Azure Managed Disks を使用して VM をキャプチャ](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)することもできます。 Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 詳しくは、「[Azure Managed Disks overview](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Azure Managed Disks の概要) をご覧ください。 
 
 イメージを使って VM を作成するには、新しい各 VM のネットワーク リソースを設定し、テンプレート (JavaScript Object Notation または JSON ファイル) を使って、キャプチャされた VHD イメージからデプロイします。 この方法では、Azure Marketplace のイメージを使うときと同じように、現在のソフトウェア構成の VM をレプリケートできます。
 
@@ -39,7 +39,7 @@ Resource Manager デプロイメント モデルの Azure Linux 仮想マシン 
 ## <a name="before-you-begin"></a>開始する前に
 次の前提条件が満たされていることを確認します。
 
-* **Resource Manager デプロイメント モデルで作成された Azure VM** - Linux VM を作成していない場合は、[ポータル](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Azure CLI](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、または [Resource Manager テンプレート](cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使うことができます。 
+* **Resource Manager デプロイメント モデルで作成された Azure VM** - Linux VM を作成していない場合は、[ポータル](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Azure CLI](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、または [Resource Manager テンプレート](create-ssh-secured-vm-from-template.md)を使うことができます。 
   
     必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)し、更新プログラムを適用し、アプリケーションをインストールします。 
 * **Azure CLI** - [Azure CLI](../../cli-install-nodejs.md) をローカル コンピューターにインストールします。
@@ -205,6 +205,6 @@ azure vm create -g myResourceGroup1 -n myNewVM -l eastus -y Linux \
 追加のコマンド オプションについては、 `azure help vm create`を実行してください。
 
 ## <a name="next-steps"></a>次のステップ
-CLI を使用して VM を管理するには、「 [Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」に記載のタスクを参照してください。
+CLI を使用して VM を管理するには、「 [Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](create-ssh-secured-vm-from-template.md)」に記載のタスクを参照してください。
 
 

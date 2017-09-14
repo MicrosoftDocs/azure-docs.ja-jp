@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 6f91f732b7579c9f14458dab9be49c027debfac1
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 6b0fd60e79308b75c3a2797ff25065b8a500a3b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/10/2017
 
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD のフェデレーション互換性リスト
@@ -47,6 +46,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 * [CA SiteMinder 12.52](#ca-siteminder-1252-sp1-cumulative-release-4) 
 * [Centrify](#centrify) 
 * [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
+* [DigitalPersona Composite Authentication](#digitalpersona-composite-authentication)
 * [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
 * [IceWall Federation Version 3.0](#icewall-federation-version-30) 
 * [Memority](#memority)
@@ -61,7 +61,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 * [Sign&go 5.3](#signgo-53) 
 * [SoftBank Technology Online Service Gate](#softbank)
 * [VMware Workspace One](#vmware-workspace-one)
-* [VMware  Workspace Portal version 2.1](#vmware--workspace-portal-version-21) 
+
 
 
 > [!IMPORTANT]
@@ -82,7 +82,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 | Office 2016 などの ADAL を使用した最新のアプリケーション |サポートされています |なし |
 
-AD FS による Azure Active Directory の使用方法の詳細については、[Active Directory フェデレーション サービス (ADFS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) に関するページを参照してください。
+AD FS と共に Azure Active Directory を使用する方法の詳細については、[Active Directory フェデレーション サービス (AD FS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) に関するページを参照してください。
 
 パスワード同期による Azure Active Directory の使用方法の詳細については、 [Azure AD Connect](active-directory-aadconnect.md)に関するページを参照してください。
 
@@ -96,7 +96,7 @@ AD FS による Azure Active Directory の使用方法の詳細については�
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-詳細については、 [AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)
+詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関する説明を参照してください。
 
 
 ## <a name="big-ip-with-access-policy-manager-big-ip-ver-113x--116x"></a>BIG-IP と BIG-IP Access Policy Manager Version  11.3x ～ 11.6x
@@ -111,7 +111,7 @@ AD FS による Azure Active Directory の使用方法の詳細については�
 
 BIG-IP Access Policy Manager の詳細については、 [BIG-IP Access Policy Manager](https://f5.com/products/modules/access-policy-manager) 
 
-Active Directory ユーザーにシングル サインオン エクスペリエンスを提供するように BIG-IP Access Policy Manager でこの STS を構成する手順については、 [こちら](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf)
+Active Directory ユーザーにシングル サインオン エクスペリエンスを提供するように BIG-IP Access Policy Manager でこの STS を構成する手順については、[BIG-IP](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf) に関する PDF をダウンロードしてください。
 
 ## <a name="bitglass"></a>BitGlass
 
@@ -123,7 +123,7 @@ Active Directory ユーザーにシングル サインオン エクスペリエ�
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-BitGlass の詳細については、[こちら](http://www.bitglass.com )をご覧ください。
+BitGlass の詳細については、[BitGlass](http://www.bitglass.com) のページを参照してください。
 
 ## <a name="ca-secure-cloud"></a>CA Secure Cloud
 
@@ -135,7 +135,7 @@ BitGlass の詳細については、[こちら](http://www.bitglass.com )をご�
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-CA Secure Cloud の詳細については、 [CA Secure Cloud](http://www.ca.com/us/products/security-as-a-service.aspx)
+CA Secure Cloud の詳細については、[CA Secure Cloud](http://www.ca.com/us/products/security-as-a-service.aspx) のページを参照してください。
 
 ## <a name="ca-siteminder-1252-sp1-cumulative-release-4"></a>CA SiteMinder 12.52 SP1 Cumulative Release 4
 
@@ -147,7 +147,7 @@ CA Secure Cloud の詳細については、 [CA Secure Cloud](http://www.ca.com/
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-CA SiteMinder の詳細については、 [CA SiteMinder Federation](http://www.ca.com/us/products/ca-single-sign-on.html) 
+CA SiteMinder の詳細については、「[CA SiteMinder Federation](http://www.ca.com/us/products/ca-single-sign-on.html)」 (CA SiteMinder フェデレーション) を参照してください。 
 
 ## <a name="centrify"></a>Centrify
 
@@ -159,7 +159,7 @@ CA SiteMinder の詳細については、 [CA SiteMinder Federation](http://www.
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |クライアント アクセス制御はサポートされていません |
 
-Centrify の詳細については、 [こちら](http://www.centrify.com/cloud/apps/single-sign-on-for-office-365.asp)|
+Centrify の詳細については、[Centrify](http://www.centrify.com/cloud/apps/single-sign-on-for-office-365.asp) のページを参照してください。
 
 ## <a name="dell-one-identity-cloud-access-manager-v71"></a>Dell One Identity Cloud Access Manager v7.1
 
@@ -171,9 +171,22 @@ Centrify の詳細については、 [こちら](http://www.centrify.com/cloud/a
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-Dell One Identity Cloud Access Manager の詳細については、 [Dell One Identity の Cloud Access Manager](http://software.dell.com/products/cloud-access-manager)
+Dell One Identity Cloud Access Manager の詳細については、「[Dell One Identity Cloud Access Manager](http://software.dell.com/products/cloud-access-manager)」 (Dell One Identity の Cloud Access Manager) を参照してください。
 
- Office 365 ユーザーにシングル サインオン エクスペリエンスを提供するようにこの STS を構成する手順については、 [Office 365 ユーザーの構成](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365) 
+ Office 365 ユーザーにシングル サインオン エクスペリエンスを提供するようにこの STS を構成する手順については、「[Configure Office 365 Users](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365)」 (Office 365 ユーザーの構成) を参照してください。 
+
+## <a name="digitalpersona-composite-authentication"></a>DigitalPersona Composite Authentication  
+
+このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
+
+| クライアント | サポート | 例外 |
+| --- | --- | --- |
+| Exchange Web Access や SharePoint Online などの Web ベースのクライアント |サポートされています |統合 Windows 認証はサポートされていません|
+| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません|
+| Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
+
+詳細については、[DigitalPersona Composite Authentication](http://www.crossmatch.com/uploadedFiles/Support/Reference_Material/DigitalPersona-Office-365-Deployment-Guide.pdf) に関する説明を参照してください。
+
 
 ## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
 
@@ -185,7 +198,7 @@ Dell One Identity Cloud Access Manager の詳細については、 [Dell One Ide
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-IBM Tivoli Federated Identity Manager の詳細については、「 [IBM Security Access Manager for Microsoft Applications](http://www-01.ibm.com/support/docview.wss?uid=swg24029517)
+IBM Tivoli Federated Identity Manager の詳細については、「[IBM Security Access Manager for Microsoft Applications](http://www-01.ibm.com/support/docview.wss?uid=swg24029517)」を参照してください。
 
 ## <a name="icewall-federation-version-30"></a>IceWall Federation Version 3.0
 
@@ -197,7 +210,7 @@ IBM Tivoli Federated Identity Manager の詳細については、「 [IBM Securi
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-IceWall Federation の詳細については、[こちら](http://h50146.www5.hp.com/products/software/security/icewall/eng/federation/)と[こちら](http://h50146.www5.hp.com/products/software/security/icewall/federation/office365.html)を参照してください。
+IceWall Federation の詳細については、「[IceWall Federation Version 3.0](http://h50146.www5.hp.com/products/software/security/icewall/eng/federation/)」と「[IceWall Federation - Office 365 とのフェデレーション](http://h50146.www5.hp.com/products/software/security/icewall/federation/office365.html)」を参照してください。
 
 ## <a name="memority"></a>Memority
 
@@ -209,7 +222,7 @@ IceWall Federation の詳細については、[こちら](http://h50146.www5.hp.
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-Memority の使用方法の詳細については、[Memority](http://www.memority.com) のページをご覧ください。
+Memority の使用方法の詳細については、[Memority](http://www.memority.com) のページを参照してください。
 
 
 ## <a name="netiq-access-manager-4x"></a>NetIQ Access Manager 4.x
@@ -222,7 +235,7 @@ Memority の使用方法の詳細については、[Memority](http://www.memorit
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし|
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-詳しくは、「[NetIQ Access Manager](https://www.netiq.com/documentation/access-manager-43/admin/data/b65ogn0.html#b12iqp0m)」をご覧ください
+詳細については、「[NetIQ Access Manager](https://www.netiq.com/documentation/access-manager-43/admin/data/b65ogn0.html#b12iqp0m)」を参照してください。
 
 ## <a name="okta"></a>Okta
 
@@ -234,7 +247,7 @@ Memority の使用方法の詳細については、[Memority](http://www.memorit
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証 |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-Okta の詳細については、 [Okta](https://www.okta.com/)
+Okta の詳細については、[Okta](https://www.okta.com/) のページを参照してください。
 
 ## <a name="onelogin"></a>OneLogin
 
@@ -246,7 +259,7 @@ Okta の詳細については、 [Okta](https://www.okta.com/)
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証 |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-OneLogin の詳細については、 [OneLogin](https://www.onelogin.com/)
+OneLogin の詳細については、[OneLogin](https://www.onelogin.com/) のページを参照してください。
 
 ## <a name="optimal-idm-virtual-identity-server-federation-services"></a>Optimal IDM Virtual Identity Server Federation Services
 
@@ -258,7 +271,7 @@ OneLogin の詳細については、 [OneLogin](https://www.onelogin.com/)
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証 |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |
 
-クライアント アクセス ポリシーの詳細については、「[Limiting Access to Office 365 Services Based on the Location of the Client (クライアントの場所に基づいた Office 365 サービスへのアクセスの制限)](https://technet.microsoft.com/library/hh526961.aspx) |」をご覧ください。
+クライアント アクセス ポリシーの詳細については、「[Limiting Access to Office 365 Services Based on the Location of the Client](https://technet.microsoft.com/library/hh526961.aspx)」 (クライアントの場所に基づいた Office 365 サービスへのアクセスの制限) を参照してください。
 
 
 
@@ -290,7 +303,7 @@ Active Directory ユーザーにシングル サインオン エクスペリエ�
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証 |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-RadiantOne CFS の詳細については、 [RadiantOne CFS](http://www.radiantlogic.com/products/radiantone-cfs/)
+RadiantOne CFS の詳細については、[RadiantOne CFS](http://www.radiantlogic.com/products/radiantone-cfs/) のページを参照してください。
 
 ## <a name="sailpoint-identitynow"></a>Sailpoint IdentityNow
 
@@ -302,7 +315,7 @@ RadiantOne CFS の詳細については、 [RadiantOne CFS](http://www.radiantlo
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-詳細については、「[Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/)」を参照してください。
+詳細については、[Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/) のページを参照してください。
 
 ## <a name="secureauth-idp-720"></a>SecureAuth IdP 7.2.0
 
@@ -339,7 +352,7 @@ SecureAuth の詳細については、 [SecureAuth IdP](http://go.microsoft.com/
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-Sign&go 5.3 は、Kerberos Contract の構成を介した Kerberos 認証をサポートしています。  この構成に関するサポートについては、Ilex に問い合わせるか、 [こちら](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)
+Sign&go 5.3 は、Kerberos Contract の構成を介した Kerberos 認証をサポートしています。  この構成に関するサポートについては、Ilex に問い合わせるか、「[Sign&go](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)」セットアップ ガイドを参照してください。
 
 ## <a name="softbank-technology-online-service-gate"></a>SoftBank Technology Online Service Gate
 
@@ -351,7 +364,7 @@ Sign&go 5.3 は、Kerberos Contract の構成を介した Kerberos 認証をサ�
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-SoftBank Technology Online Service Gate の詳細については、[こちら](https://www.softbanktech.jp/service/list/osg-pro-ent/)をご覧ください。
+SoftBank Technology Online Service Gate の詳細については、[Softbank](https://www.softbanktech.jp/service/list/osg-pro-ent/) のページを参照してください。
 
 ## <a name="vmware-workspace-one"></a>VMware Workspace One
 
@@ -363,16 +376,6 @@ SoftBank Technology Online Service Gate の詳細については、[こちら](h
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
 | Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
 
-詳細については、[こちら](http://www.vmware.com/pdf/vidm-office365-saml.pdf)をご覧ください。
+詳細については、[VMware の Workspace One](http://www.vmware.com/pdf/vidm-office365-saml.pdf) のページを参照してください。
 
-## <a name="vmware--workspace-portal-version-21"></a>VMware  Workspace Portal version 2.1
 
-このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
-
-| クライアント | サポート | 例外 |
-| --- | --- | --- |
-| Exchange Web Access や SharePoint Online などの Web ベースのクライアント |サポートされています |統合 Windows 認証はサポートされていません |
-| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |統合 Windows 認証はサポートされていません |
-| Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
-
-VMware Workspace Portal Version 2.1 の詳細については、[こちら](http://pubs.vmware.com/workspace-portal-21/topic/com.vmware.ICbase/PDF/workspace-portal-21-resource.pdf)から PDF をダウンロードしてください。

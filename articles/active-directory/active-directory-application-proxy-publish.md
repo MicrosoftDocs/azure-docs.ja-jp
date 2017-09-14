@@ -5,27 +5,28 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/04/2017
+ms.date: 07/14/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
+ms.reviewer: harshja
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
+
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-proxy-publish-azure-portal.md)
+> * [Azure Portal](application-proxy-publish-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-application-proxy-publish.md)
 
 Azure AD アプリケーション プロキシでは、オンプレミスのアプリケーションを発行してインターネット経由でアクセスできるため、リモート ワーカーのサポートに役立ちます。 この記事を読んでいる時点では、既に [Azure クラシック ポータルでアプリケーション プロキシを有効にした](active-directory-application-proxy-enable.md)状態になっています。 この記事では、ローカル ネットワークで実行中のアプリケーションを発行し、ネットワークの外部からのセキュリティで保護されたリモート アクセスを有効にする手順について説明します。 この記事の手順を最後まで実行すると、個人用に設定した情報やセキュリティ要件でアプリケーションを構成する準備が整います。
@@ -62,9 +63,9 @@ Azure AD アプリケーション プロキシでは、オンプレミスのア�
 6. ウィザードを終了するには、画面下部にあるチェック マークをクリックします。 これで、アプリケーションが Azure AD で定義されました。
 
 ## <a name="assign-users-and-groups-to-the-application"></a>アプリケーションにユーザーとグループを割り当てる
-発行したアプリケーションにユーザーがアクセスできるようにするには、それらのユーザーを個別またはグループで割り当てる必要があります。 (自分自身へのアクセス権の割り当ても忘れずに行ってください)。これを実行するには、各ユーザーに Azure Basic 以上のライセンスが必要です。 ライセンスは個別に割り当てることも、グループに対して割り当てることもできます。 詳細については、 [アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md) に関するページを参照してください。 
+発行したアプリケーションにユーザーがアクセスできるようにするには、それらのユーザーを個別またはグループで割り当てる必要があります。 (自分自身へのアクセス権の割り当ても忘れずに行ってください)。割り当てる各ユーザーには Azure Basic 以上のライセンスが必要です。 ライセンスは個別に割り当てることも、グループに対して割り当てることもできます。 詳細については、[アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md)に関するページを参照してください。 
 
-事前認証を必要とするアプリの場合は、これによって、アプリを使用するためのアクセス許可がユーザーに付与されます。 事前認証を必要としないアプリの場合でも、ユーザーをアプリに割り当てることで、そのアプリが各ユーザーのアプリケーションの一覧 (MyApps など) に表示されるようになります。
+事前認証を必要とするアプリの場合、ユーザーの割り当てを行うことで、アプリケーションを使用するためのアクセス許可がユーザーに付与されます。 事前認証を必要としないアプリの場合、ユーザーの割り当てを行うことで、ユーザーがアクセス パネル経由でアプリケーションにアクセスできるようになります。
 
 1. アプリの追加ウィザードを終了すると、アプリケーションの [クイック スタート] ページが表示されます。 アプリにアクセスできるユーザーを管理するには、 **[ユーザーとグループ]**を選択します。
    
@@ -89,7 +90,7 @@ Azure AD アプリケーション プロキシでは、オンプレミスのア�
 
 Azure Active Directory アプリケーション プロキシを使用してアプリケーションを発行すると、それらのアプリケーションが Azure AD の [アプリケーション] リストに表示され、そこで管理できるようになります。
 
-アプリケーションの発行後にアプリケーション プロキシ サービスを無効にした場合、プライベート ネットワークの外部からは、そのアプリケーションにアクセスできなくなります。 これによって、アプリケーションが削除されることはありません。
+アプリケーションの発行後にアプリケーション プロキシ サービスを無効にした場合、プライベート ネットワークの外部からは、そのアプリケーションにアクセスできなくなります。 ただし、通常どおりオンプレミスではアプリケーションにアクセスできます。
 
 アプリケーションを表示し、アクセス可能かどうかを確認するには、そのアプリケーションの名前をダブルクリックします。 アプリケーション プロキシ サービスが無効になっていて、アプリケーションが使用できない場合は、画面上部に警告メッセージが表示されます。
 

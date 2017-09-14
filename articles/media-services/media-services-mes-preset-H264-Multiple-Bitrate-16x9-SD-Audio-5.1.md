@@ -2,7 +2,7 @@
 title: H264 Multiple Bitrate 16x9 SD Audio 5.1 | Microsoft Docs
 description: "このトピックでは、**H264 Multiple Bitrate 16x9 SD Audio 5.1** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 63e51feb8c88c6c294fb7b712c3cede10e7253d8
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/11/2017
 
 ---
 
@@ -233,9 +234,4 @@ ms.openlocfilehash: 63e51feb8c88c6c294fb7b712c3cede10e7253d8
   ]  
 }  
 ```
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

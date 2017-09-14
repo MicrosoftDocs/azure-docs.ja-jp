@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/25/2016
 ms.author: harikm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6366d42b91748963ec14c258f92746e5d2fde92
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 031b492df1f186087e7b91102cbb44f552999293
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -49,7 +51,7 @@ Android、iOS、または Windows 10 デバイスをお持ちの場合、MyDrivi
    
    2 つのアイテムがあります。 **[信頼されたユーザー]**で証明書をインストールします。 次にアプリをインストールします。
 
-*Windows 10 Mobile でのアプリの起動で問題が発生しますか?*  ご使用の携帯電話で、ここ 1 ～ 2 回の更新が行われていない可能性があります。 最新の更新プログラムが適用されていることを確認し、そうでない場合は以下をインストールしてください。
+*Windows 10 Mobile でのアプリの起動で問題が発生しますか?* ご使用の携帯電話で、ここ 1 ～ 2 回の更新が行われていない可能性があります。 最新の更新プログラムが適用されていることを確認し、そうでない場合は以下をインストールしてください。
 
 * [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx) 
 * [Microsoft.NET.Native.Runtime.1.1.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Runtime.1.1.appx) 
@@ -144,9 +146,4 @@ MyDriving アプリ内では、組み込みの HockeyApp フィードバック �
 [ScanTool OBDLink MX Wi-Fi: OBD Adapter/Diagnostic Scanner]: http://www.amazon.com/gp/product/B00OCYXTYY/ref=s9_simh_gw_g263_i1_r?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=desktop-2&pf_rd_r=1MWRMKXK4KK9VYMJ44MP
 [HockeyApp ポータル]: https://rink.hockeyapp.org
 [GitHub の Issue (イシュー)]: https://github.com/Azure-Samples/MyDriving/issues
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

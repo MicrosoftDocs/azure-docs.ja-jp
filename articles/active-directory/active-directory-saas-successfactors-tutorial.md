@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/22/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.reviewer: jeedes
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
 ms.openlocfilehash: a0a101c34ffd4adb6816d9db8313d10b0ffbb3ae
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル: Azure Active Directory と SuccessFactors の統合
@@ -45,12 +46,12 @@ SuccessFactors と Azure AD の統合を構成するには、次のものが必�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SuccessFactors の追加
 2. Azure AD シングル サインオンの構成とテスト

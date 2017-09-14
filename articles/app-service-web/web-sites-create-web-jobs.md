@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Web ジョブでバックグラウンド タスクを実行する"
 description: "Web アプリでバックグラウンド タスクを実行する方法について説明します。"
 services: app-service
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2016
 ms.author: glenga
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
 ms.openlocfilehash: 5d0d46447c3e0a3a1047e2bbedd44bbd46dd7f1b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="run-background-tasks-with-webjobs"></a>Web ジョブでバックグラウンド タスクを実行する
 ## <a name="overview"></a>概要
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の&3; とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の 3 とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
 
 [!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
@@ -74,14 +75,14 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 > 
 > 
 
-## <a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの WebJob を作成する
+## <a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの Web ジョブを作成する
 この方法は、Basic、Standard、または Premium モードで実行されている Web Apps に使用できます。この方法を使用するには、アプリで **Always On** 設定が有効になっている必要があります。
 
-オンデマンドの WebJob をスケジュール済みの WebJob に変換するには、単に WebJob zip ファイルの root に `settings.job` ファイルを追加します。 この JSON ファイルには、次の例のように `schedule` プロパティを [CRON 式](https://en.wikipedia.org/wiki/Cron)と共に含める必要があります。
+オンデマンドの Web ジョブ をスケジュール済みの Web ジョブ に変換するには、単に Web ジョブ zip ファイル root に `settings.job` ファイルを追加します。 この JSON ファイルには、次の例のように `schedule` プロパティを [CRON 式](https://en.wikipedia.org/wiki/Cron)と共に含める必要があります。
 
 CRON 式は 6 つのフィールド: `{second} {minute} {hour} {day} {month} {day of the week}`から成ります。
 
-たとえば、15 分ごとに WebJob をトリガーする場合、 `settings.job` は次のようになります。
+たとえば、15 分ごとに Web ジョブ をトリガーする場合、 `settings.job` は次のようになります。
 
 ```json
 {
@@ -96,10 +97,10 @@ CRON 式は 6 つのフィールド: `{second} {minute} {hour} {day} {month} {da
 * 毎日午前 9 時 30 分: `0 30 9 * * *`
 * 平日の毎日午前 9 時 30 分: `0 30 9 * * 1-5`
 
-**注**: WebJobを Visual Studio からデプロイする場合は、必ず `settings.job` ファイルのプロパティを [新しい場合はコピーする] に設定してください。
+**注**: Web ジョブを Visual Studio からデプロイする場合は、必ず `settings.job` ファイルのプロパティを [新しい場合はコピーする] に設定してください。
 
-## <a name="CreateScheduled"></a>Azure Scheduler を使用してスケジュール済みの WebJob を作成する
-次の代替の方法では、Azure Scheduler を使用します。 この場合、WebJob によってスケジュールは直接認識されません。 代わりに、スケジュールに基づいて WebJob をトリガーするように Azure Scheduler を構成します。 
+## <a name="CreateScheduled"></a>Azure Scheduler を使用してスケジュール済みの Web ジョブを作成する
+次の代替の方法では、Azure Scheduler を使用します。 この場合、Web ジョブによってスケジュールは直接認識されません。 代わりに、スケジュールに基づいて Web ジョブをトリガーするように Azure Scheduler を構成します。 
 
 Azure Portal には、スケジュールされた Web ジョブを作成する機能がまだありません。ただし、この機能が追加されるまで、[クラシック ポータル](http://manage.windowsazure.com)を使用して、これを行うことができます。
 

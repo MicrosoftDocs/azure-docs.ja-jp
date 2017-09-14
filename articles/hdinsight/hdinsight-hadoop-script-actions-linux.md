@@ -1,6 +1,6 @@
 ---
-title: "Linux ベースの HDInsight でのスクリプト アクション開発 | Microsoft Docs"
-description: "Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト アクションは、クラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。 "
+title: "Linux ベースの HDInsight でのスクリプト アクション開発 - Azure | Microsoft Docs"
+description: "Bash スクリプトを使用して Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 HDInsight のスクリプト アクション機能では、クラスターの作成中または作成後にスクリプトを実行できます。 スクリプトを使用して、クラスター構成設定を変更したり、追加のソフトウェアをインストールしたりできます。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,14 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: aaa5134fafea387e63fc9c9819422d24de6baed0
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 7f1a0bd8c7e60770d376f10eaea136a55c632c5e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/18/2017
 Bash スクリプトを使用して、HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト アクションは、クラスターの作成時または作成後に、HDInsight をカスタマイズする方法です。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="what-are-script-actions"></a>スクリプト アクションとは
 
@@ -38,7 +37,7 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 
 | この方法を使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
 | --- |:---:|:---:|
-| Azure ポータル |✓  |✓ |
+| Azure Portal |✓  |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -62,7 +61,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 * [再試行ロジックを使用して一時的なエラーから回復する](#bps9)
 
 > [!IMPORTANT]
-> スクリプト アクションは 60 分以内に完了する必要があります。 そのようにしないと、スクリプトは失敗します。 ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
+> スクリプト アクションは 60 分以内に完了する必要があります。そうでないと、プロセスは失敗します。 ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 
 ### <a name="bPS1"></a>Hadoop のバージョンを対象にする
 
@@ -120,11 +119,11 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 > [!IMPORTANT]
 > 使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
 
-たとえば、マイクロソフトから提供されるサンプルは、HDInsight チームによって管理される読み取り専用のパブリック コンテナーである、 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。
+たとえば、Microsoft から提供されるサンプルは、[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。 これは、HDInsight チームによって管理されている、読み取り専用のパブリック コンテナーです。
 
 ### <a name="bPS4"></a>プリコンパイル済みリソースの使用
 
-スクリプトの実行にかかる時間を短縮するために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。 リソースをプリコンパイルし、すぐにダウンロードできるように、それらを Azure Blob ストレージに保存します。
+スクリプトの実行にかかる時間を短縮するために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。 たとえば、リソースを事前にコンパイルし、HDInsight と同じデータ センターにある Azure Storage アカウント BLOB に格納します。
 
 ### <a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
 
@@ -134,7 +133,7 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 ### <a name="bPS5"></a>クラスターのアーキテクチャの高可用性を確保
 
-Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントにヘッド ノードを 1 つのみ予定する場合は、両方のヘッド ノードにコンポーネントをインストールしないでください。
+Linux ベースの HDInsight クラスターは、クラスター内でアクティブな 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントにヘッド ノードを 1 つのみ予定する場合は、両方のヘッド ノードにコンポーネントをインストールしないでください。
 
 > [!IMPORTANT]
 > HDInsight の一部として提供されるサービスは、必要に応じて 2 つのヘッド ノードの間でフェールオーバーするように設計されています。 この機能は、スクリプト アクションを使用してインストールするカスタム コンポーネントには拡張されません。 カスタム コンポーネントに高可用性が必要な場合は、独自のフェールオーバー メカニズムを実装する必要があります。
@@ -327,7 +326,7 @@ fi
 
 次のメソッドを使用して HDInsight クラスターをカスタマイズする場合、スクリプト アクションを使用できます。
 
-* Azure ポータル
+* Azure Portal
 * Azure PowerShell
 * Azure リソース マネージャーのテンプレート
 * HDInsight .NET SDK

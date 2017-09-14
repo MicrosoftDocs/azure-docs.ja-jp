@@ -23,7 +23,7 @@ Windows クライアント イメージについては、 MSDN Azure 特典の�
 
 リージョン内の現在の Azure ネットワークは、アフィニティ グループが不要になるように設計されています。 仮想ネットワークもリージョン スコープであるため、仮想ネットワークを使用するときにアフィニティ グループは不要になっています。 これらの改善により、一部のシナリオで制限を受ける可能性があるため、アフィニティ グループの使用は推奨されなくなりました。 アフィニティ グループを使用すると、VM が特定のハードウェアに不必要に関連付けられ、使用できる VM サイズの選択肢が制限されます。 また、アフィニティ グループに関連付けられている特定のハードウェアの容量がほぼいっぱいになった場合に新しい VM を追加しようとすると、容量に関連するエラーが発生する場合もあります。
 
-Azure Resource Manager デプロイメント モデルと Azure ポータルでは、アフィニティ グループの機能は既に使用されなくなっています。 クラシック Azure ポータルでのアフィニティ グループの作成とアフィニティ グループに固定されたストレージ リソースの作成はサポートされなくなります。 アフィニティ グループを使用する既存のクラウド サービスを変更する必要はありませんが、 Azure サポート担当者が推奨する場合を除き、新しいクラウド サービスではアフィニティ グループを使用しないでください。
+Azure Resource Manager デプロイメント モデルと Azure Portal では、アフィニティ グループの機能は既に使用されなくなっています。 クラシック Azure Portal でのアフィニティ グループの作成とアフィニティ グループに固定されたストレージ リソースの作成はサポートされなくなります。 アフィニティ グループを使用する既存のクラウド サービスを変更する必要はありませんが、 Azure サポート担当者が推奨する場合を除き、新しいクラウド サービスではアフィニティ グループを使用しないでください。
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
 各データ ディスクで最大 1 TB (テラバイト) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
@@ -125,7 +125,7 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 ## <a name="additional-resources"></a>その他のリソース
 [Azure Virtual Machines について](../articles/virtual-machines/virtual-machines-linux-about.md)
 
-[Linux 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/linux/creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Azure CLI を使用した Linux VM の作成と管理](../articles/virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/windows/creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Azure PowerShell を使用した Windows VM の作成と管理](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

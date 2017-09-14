@@ -1,5 +1,5 @@
 ---
-title: "REST を使用した HDInsight 内での Hadoop Pig の使用 | Microsoft Docs"
+title: "REST を使用した HDInsight 内での Hadoop Pig の使用 - Azure | Microsoft Docs"
 description: "REST を使用して Azure HDInsight の Hadoop クラスターで Pig Latin ジョブを実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 1c719a33001654755ec8d83f4bf43ca1fc52954e
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>REST を使用した HDInsight の Hadoop での Pig ジョブの実行
@@ -38,7 +37,7 @@ Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを�
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * [Curl](http://curl.haxx.se/)
 
@@ -106,7 +105,7 @@ Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを�
 
 ## <a id="results"></a>結果の表示
 
-ジョブのステータスが **SUCCEEDED** に変わったら、クラスターが使用する既定のストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/pigcurl` です。
+ジョブのステータスが **SUCCEEDED** に変わったら、ジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/pigcurl` です。
 
 HDInsight は、既定のデータ ストアとして Azure Storage または Azure Data Lake Store のいずれかを使用します。 どちらを使用するかによって、さまざまな方法でデータを取得できます。 詳細については、[Linux ベースの HDInsight について](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)ドキュメントのストレージの項を参照してください。
 

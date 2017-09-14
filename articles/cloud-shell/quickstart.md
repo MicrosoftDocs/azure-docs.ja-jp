@@ -7,18 +7,18 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/10/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 347984aae91a9fa99f88001effe2cba49f92deb9
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -29,8 +29,7 @@ ms.lasthandoff: 05/17/2017
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 1. Azure Portal 上部のナビゲーションから **Cloud Shell** を起動します。 <br>
 ![](media/shell-icon.png)
-2. ストレージ アカウントと Azure ファイル共有の作成に使用するサブスクリプションを選択します。 <br>
-![](media/storage-prompt.png)
+2. ストレージ アカウントと Azure ファイル共有の作成に使用するサブスクリプションを選択します。
 3. [Create storage]\(ストレージの作成\) を選択します。
 
 > [!TIP]
@@ -43,14 +42,14 @@ ms.lasthandoff: 05/17/2017
 `az account set --subscription my-subscription-name`
 
 > [!TIP]
-> 設定したサブスクリプションは、$Home ディレクトリに格納される `azureProfile.json` を使って今後のセッション用に記憶されます。
+> 設定したサブスクリプションは、`/home/<user>/.azure/azureProfile.json` を使って今後のセッション用に記憶されます。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 "MyRG" という名前の新しいリソース グループを WestUS に作成します。 <br>
 `az group create -l westus -n MyRG` <br>
 
 ### <a name="create-a-linux-vm"></a>Linux VM の作成
-新しいリソース グループに Ubuntu VM を作成します。 Azure CLI 2.0 によって ssh キーが作成され、そのキーを使って VM が設定されます。 <br>
+新しいリソース グループに Ubuntu VM を作成します。 Azure CLI 2.0 によって SSH キーが作成され、そのキーを使って VM が設定されます。 <br>
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
@@ -72,5 +71,6 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 `az group delete -n MyRG` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
-[Cloud Shell におけるストレージの永続化について](persisting-shell-storage.md) [Azure CLI 2.0 について] (https://docs.microsoft.com/cli/azure/) [Azure File Storage について] (https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) 
-
+[Cloud Shell でのストレージの永続化について](persisting-shell-storage.md) <br>
+[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
+[Azure File Storage について](../storage/files/storage-files-introduction.md) <br>

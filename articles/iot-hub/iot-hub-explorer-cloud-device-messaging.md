@@ -4,7 +4,7 @@ description: "iothub-explorer CLI ツールを使用して、Azure IoT Hub で D
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "iothub-explorer, クラウド デバイス メッセージング, IoT Hub C2D, C2D メッセージング"
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 08/24/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 38121cccc81ef82226e9ea7cbc197e294bb723e3
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a7abb8fb279e134b7f23df779f1c4548a9feb82d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
@@ -55,11 +55,11 @@ iothub-explorer を使用して、D2C メッセージを監視し、C2D メッ�
 1. 次のコマンドを実行します。
 
    ```bash
-   iothub-explorer monitor-events <device-id> --login <IoTHubConnectionString>
+   iothub-explorer monitor-events <device-id> --login "<IoTHubConnectionString>"
    ```
 
    > [!Note]
-   > IoT Hub から `<device-id>` と `<IoTHubConnectionString>` を取得します。 前のチュートリアルが完了していることを確認してください。
+   > IoT Hub から `<device-id>` と `<IoTHubConnectionString>` を取得します。 前のチュートリアルが完了していることを確認してください。 または `HostName`、`SharedAccessKeyName`、および `SharedAccessKey` がある場合は、`iothub-explorer monitor-events <device-id> --login "HostName=<my-hub>.azure-devices.net;SharedAccessKeyName=<my-policy>;SharedAccessKey=<my-policy-key>"` を使用してみることができます。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
@@ -69,7 +69,7 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 1. 次のコマンドを実行して、IoT Hub でセッションを開始します。
 
    ```bash
-   iothub-explorer login <IoTHubConnectionString>
+   iothub-explorer login `<IoTHubConnectionString>`
    ```
 
 1. 次のコマンドを実行して、メッセージをデバイスに送信します。
@@ -88,3 +88,4 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

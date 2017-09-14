@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 8a6a8027b93d0d5b353c41c103d2c9ad5faa70c1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/17/2017
-
 
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問

@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Backup Server を使用してワークロードを Azure にバックアップする | Microsoft Docs"
 description: "Azure Backup Server を使用してワークロードを保護し、Azure Portal にバックアップします。"
 services: backup
@@ -14,29 +13,26 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2017
+ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: e8838095d621957fe6b4ee50464154617e1c4740
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Azure Backup Server を使用してワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
-> * [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
-> * [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
 >
 >
 
 この記事では、Azure Backup Server を使用してワークロードをバックアップする環境の準備方法について説明します。 Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
 
 > [!NOTE]
-> Azure Backup Server は VMware VM を保護できるようになったため、セキュリティ機能が強化されています。 以下のセクションで説明するように製品をインストールし、Update 1 および最新の Azure Backup エージェントを適用します。 Azure Backup Server を使用した VMware バックアップの詳細については、[ハウツーブログ](https://azure.microsoft.com/blog/four-simple-steps-to-backup-vmware-vms-using-azure-backup-server/)を参照してください。 セキュリティ機能の詳細については、[Azure バックアップ セキュリティ機能のドキュメント](backup-azure-security-feature.md)を参照してください。
+> Azure Backup Server は VMware VM を保護できるようになったため、セキュリティ機能が強化されています。 以下のセクションで説明するように製品をインストールし、Update 1 および最新の Azure Backup エージェントを適用してください。 Azure Backup Server による VMware サーバーのバックアップに関する詳細については、「[Azure への VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)」をご覧ください。 セキュリティ機能の詳細については、[Azure バックアップ セキュリティ機能のドキュメント](backup-azure-security-feature.md)を参照してください。
 >
 >
 
@@ -55,7 +51,7 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
 Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンのデプロイ前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 ### <a name="using-an-on-premises-server"></a>オンプレミスに設置されたサーバーを使用する場合
 基本サーバーを Azure で実行したくない場合は、Hyper-V VM や VMware VM、物理ホストでサーバーを実行することができます。 サーバー ハードウェアに推奨される最小要件は 2 コア、4 GB RAM です。 サポートされるオペレーティング システムを以下の表に示します。
@@ -77,7 +73,7 @@ Windows Server の重複除去を使用して DPM ストレージの重複を除
 > - Exchange Server が実行されているコンピューター
 > - クラスターのノードであるコンピューター
 
-Azure Backup Server はドメインに参加させる必要があります。 サーバーを別のドメインに移動する場合には、Azure Backup Server のインストール前に新しいドメインにサーバーを参加させることをお勧めします。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
+Azure Backup Server は、常にドメインに参加させる必要があります。 サーバーを別のドメインに移動する場合には、Azure Backup Server のインストール前に新しいドメインにサーバーを参加させることをお勧めします。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
 
 ## <a name="2-recovery-services-vault"></a>2.Recovery Services コンテナー
 バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、ソフトウェアを Azure に接続する必要があります。 具体的には、Azure Backup Server マシンを Recovery Services コンテナーに登録する必要があります。
@@ -105,7 +101,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    コンテナーが作成されると、ポータルで開かれます。
 
 ### <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -152,7 +148,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     **バックアップ作業の開始**ウィザードが、Azure にワークロードを保護するための **[インフラストラクチャの準備]** オプションに切り替わります。
 
    > [!NOTE]
-   > ファイルとフォルダーだけを保護する場合は、Azure Backup エージェントを使用すること、および[ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)に関する記事のガイダンスに従って操作することをお勧めします。 ファイルやフォルダー以外を保護する場合、または将来的に保護のニーズを拡張する場合は、そのワークロードを選択します。
+   > ファイルとフォルダーだけをバックアップする場合は、Azure Backup エージェントを使用すること、および[ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)に関する記事のガイダンスに従って操作することをお勧めします。 ファイルやフォルダー以外を保護する場合、または将来的に保護のニーズを拡張する場合は、そのワークロードを選択します。
    >
    >
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB Java API、SDK、およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。"
+title: "Azure Cosmos DB: DocumentDB Java API、SDK、およびリソース | Microsoft Docs"
+description: "リリース日、提供終了日、Azure Cosmos DB DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。"
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 07/11/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 60c73f6ffb887337e6e52d20c42f316c355a8836
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 15e3f7ef3bfd6b1f61fe6081a378bdb29e0a1aa2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="documentdb-java-sdk-release-notes-and-resources"></a>DocumentDB Java SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-documentdb-java-sdk-release-notes-and-resources"></a>Azure Cosmos DB:DocumentDB Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET Change Feed](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.JS](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -40,21 +40,24 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**SDK のダウンロード**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](http://azure.github.io/azure-documentdb-java/)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
 <tr><td>**作業開始**</td><td>[Java SDK の開始](documentdb-java-get-started.md)</td></tr>
 
-<tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB による Web アプリケーション開発](documentdb-java-application.md)</td></tr>
+<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](documentdb-java-application.md)</td></tr>
 
 <tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
+* パーティション分割中に処理を要求する重要なバグ修正です。
+* Strong および BoundedStaleness 整合性レベルの問題を修正しました。
+
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* 1 分あたりの要求ユニット (RU/m) 機能のサポートが追加されました。
 * ConsistentPrefix と呼ばれている新しい一貫性レベルに対応するようになりました。
 * セッション モードのコレクション読み取りのバグを修正しました。
 
@@ -159,7 +162,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
 
 > [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Java は **2016 年 2 月 29 日**で提供が終了します。
+> バージョン **1.0.0** 以前のすべてのバージョンの DocumentDB SDK for Java は **2016 年 2 月 29 日**で提供が終了します。
 > 
 > 
 
@@ -167,6 +170,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.12.0](#1.12.0) |2017 年 7 月 11 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 5 月 10 日 |--- |
 | [1.10.0](#1.10.0) |2017 年 3 月 11 日 |--- |
 | [1.9.6](#1.9.6) |2017 年 2 月 21 日 |--- |

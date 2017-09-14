@@ -2,7 +2,7 @@
 title: "Azure CDN のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Content Delivery Network (CDN) を使用して、グローバル データ センターから任意のデバイスにコンテンツを配信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 services: cdn
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

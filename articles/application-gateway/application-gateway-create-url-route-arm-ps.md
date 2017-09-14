@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 76dfd1c2b2f17e6bc798f4313c4dc4817d2136a4
-ms.lasthandoff: 04/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: ba756d3262b9780c5701e69faad860ba32bba08b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-application-gateway-using-path-based-routing"></a>パスベースのルーティングを使用して Application Gateway を作成する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-url-route-portal.md)
+> * [Azure Portal](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
+> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。 Application Gateway に示されている URL に対して構成されたバックエンド プールへのルートがあるかどうかを調べて、定義されたバックエンド プールにネットワーク トラフィックを送信します。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。 その場合、Application Gateway に示されている URL に対して構成されたバックエンド プールへのルートがあるかどうかが調べられます。 その後、定義されたバックエンド プールにネットワーク トラフィックが送信されます。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
 
 URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。 Application Gateway には、basic と PathBasedRouting という 2 つのルールの種類があります。 basic は、バックエンド プールに対してラウンドロビン サービスを提供します。一方、PathBasedRouting はラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
 
@@ -110,7 +111,7 @@ $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US"
 $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
 ```
 
-Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。 アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
+Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 このリソース グループは、そのリソース グループ内のリソースの既定の場所として使用されます。 アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
 上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
@@ -121,11 +122,11 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
-次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。 この例では、アプリケーション ゲートウェイ用の VNET を作成します。 アプリケーション ゲートウェイには独自のサブネットが必要です。そのため、アプリケーション ゲートウェイ用に作成するサブネットは、VNET のアドレス空間よりも小さくします。 これにより、VNET を他のリソースのために活用できます。一例としては、同じ VNET 内で Web サーバーを構成できます。
+次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。 この例では、アプリケーション ゲートウェイ用の VNET を作成します。 Application Gateway には独自のサブネットが必要です。そのため、Application Gateway 用に作成するサブネットは、VNET のアドレス空間よりも小さくします。 これにより、VNET を他のリソースのために活用できます。一例としては、同じ VNET 内で Web サーバーを構成できます。
 
 ### <a name="step-1"></a>手順 1
 
-アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。  この手順ではアプリケーション ゲートウェイのサブネット構成オブジェクトを作成します。これは次のサンプル コードで使用します。
+アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。  この手順では、Application Gateway のサブネット構成オブジェクトを作成します。これは次のサンプル コードで使用します。
 
 ```powershell
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -217,7 +218,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 
 ### <a name="step-7"></a>手順 7.
 
-バックエンド プールの URL ルール パスを構成します。 この手順では、Application Gateway が使用する相対パスを構成します。これにより、URL パスと、着信トラフィックを処理するために割り当てられるバックエンド プールとの間のマッピングが定義されます。
+バックエンド プールの URL ルール パスを構成します。 この手順では、Application Gateway が使用する相対パスを構成し、URL パスと、着信トラフィックを処理するために割り当てられるバックエンド プールとのマッピングを定義します。
 
 > [!IMPORTANT]
 > 各パスは "/" で始まる必要があり、"\*" を配置できるのは末尾だけです。 有効な例としては、/xyz、/xyz*、または /xyz/* があります。 パス照合に提供する文字列では、最初の "?" または "#" の後にテキストを含めません (これらの文字は許可されません)。 
@@ -230,7 +231,7 @@ $imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -
 $videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule2" -Paths "/video/*" -BackendAddressPool $pool2 -BackendHttpSettings $poolSetting02
 ```
 
-パスがあらかじめ定義されているパス ルールのいずれとも一致しない場合、ルール パス マップ構成では、既定のバックエンド アドレス プールも構成します。 たとえば、http://contoso.com/shoppingcart/test.html は不一致のトラフィックの既定のプールとして定義されるため pool1 にルーティングされます。
+パスがあらかじめ定義されているパス ルールのいずれとも一致しない場合、ルール パス マップ構成では、既定のバックエンド アドレス プールも構成します。 たとえば、http://contoso.com/shoppingcart/test.html は pool1 にルーティングされます。このプールが、不一致のトラフィックの既定のプールとして定義されているためです。
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $videoPathRule, $imagePathRule -DefaultBackendAddressPool $pool1 -DefaultBackendHttpSettings $poolSetting02
@@ -238,7 +239,7 @@ $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -
 
 ### <a name="step-8"></a>手順 8.
 
-ルール設定を作成します。 この手順では、URL パスベースのルーティングを使用する Application Gateway を構成します。 前の手順で定義した `$urlPathMap` 変数を使用して、パス ベースのルールを作成します。 この手順では、リスナーを含むルールと前に作成した URL パス マッピングを関連付けます。
+ルール設定を作成します。 この手順では、URL パスベースのルーティングを使用する Application Gateway を構成します。 前の手順で定義した `$urlPathMap` 変数を使用して、パス ベースのルールを作成します。 この手順では、ルールをリスナーと前に作成した URL パス マッピングに関連付けます。
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
@@ -262,7 +263,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名の取得
 
-ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実に見つけられるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照できます。 次に、[Azure でのカスタム ドメイン名を構成します](../cloud-services/cloud-services-custom-domain-name-portal.md)。 フロントエンド IP CNAME レコードを構成するには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して、2 つの Web アプリケーションがこの DNS 名を指すように CNAME レコードを作成する必要があります。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
+ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実に見つけられるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照できます。 次に、[Azure でのカスタム ドメイン名を構成します](../cloud-services/cloud-services-custom-domain-name-portal.md)。 フロントエンド IP CNAME レコードを構成するには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 CNAME レコードを作成するには、アプリケーション ゲートウェイの DNS 名を使用する必要があります。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

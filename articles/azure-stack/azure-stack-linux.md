@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 7/10/2017
 ms.author: anajod
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f660e77de6df94bac5101a2693a3a7d85af5fd39
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 935cd31c4b38262b7e42271574a8a221377a3cec
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="deploy-linux-virtual-machines-on-azure-stack"></a>Deploy Linux virtual machines on Azure Stack
-You can deploy Linux virtual machines on the Azure Stack POC by adding a Linux-based image into the Azure Stack Marketplace. Several Linux vendors have provided images that can be added into an Azure Stack POC or you can build your own.
+You can deploy Linux virtual machines on the Azure Stack Development Kit by adding a Linux-based image into the Azure Stack Marketplace. Several Linux vendors have provided images that can be added into an Azure Stack Development Kit or you can build your own.
 
 ## <a name="download-an-image"></a>Download an image
 1. Download and extract an Azure Stack-compatible image from the following links, or prepare your own:
@@ -77,7 +77,7 @@ You can deploy Linux virtual machines on the Azure Stack POC by adding a Linux-b
      
      Systems with Python 2.x and Python 3.x installed side-by-side may need to run the following command:
      
-     # <a name="sudo-python3-setuppy-install---register-service"></a>sudo python3 setup.py install --register-service
+         sudo python3 setup.py install --register-service
      For more information, see the Azure Linux Agent [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
 3. [Add the image to the Marketplace](azure-stack-add-vm-image.md). Make sure that the `OSType` parameter is set to `Linux`.
 4. After you've added the image to the Marketplace, a Marketplace item is created and you can deploy a Linux virtual machine.

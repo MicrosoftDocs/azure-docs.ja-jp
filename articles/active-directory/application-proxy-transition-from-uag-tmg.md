@@ -11,39 +11,58 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 07/27/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: e9d5caa4d11012744ce9f26648166371f3aa17ba
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 6c9f70493155de6989b26fd4e8bcf1dff01c835c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 08/01/2017
 
 ---
-# <a name="upgrade-to-azure-ad-proxies-from-microsoft-forefront-or-unified-access-gateway"></a>Microsoft Forefront または Unified Access Gateway から Azure AD プロキシへのアップグレード
+# <a name="compare-remote-access-solutions"></a>リモート アクセス ソリューションを比較します
 
-この記事では、Microsoft Forefront の Threat Management Gateway (TMG) および Unified Access Gateway (UAG) ソリューションから Azure AD アプリケーション プロキシに移行する方法について説明します。
+Azure Active Directory アプリケーション プロキシは、Microsoft が提供する 2 つのリモート アクセス ソリューションの 1 つです。 もう 1 つは、オンプレミスのバージョンである Web アプリケーション プロキシです。 これら 2 つのソリューションは、Microsoft がこれまで提供していた Microsoft Forefront Threat Management Gateway (TMG) と Unified Access Gateway (UAG) の後継となるソリューションです。 この記事で、これら 4 つのソリューションを相互に比較する方法を把握できます。 非推奨の TMG または UAG ソリューションを使用しているユーザーは、この記事を活用して、どちらかのアプリケーション プロキシへの移行を計画してください。 
 
-Forefront の TMG および UAG からアプリケーション プロキシへの切り替えについて詳しくは、[Microsoft の関連するホワイト ペーパーをご覧ください](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)。
 
-## <a name="functionality-details-for-the-conversion"></a>変換に関する機能の詳細
+## <a name="feature-comparison"></a>機能の比較
 
-|**TMG/UAG の機能**|**最新のソリューション**|
-|:-----|:-----|
-|ブラウザー アプリケーションの選択的な HTTP の公開|Azure AD アプリケーション プロキシ|
-|Active Directory フェデレーション サービス (AD FS) 統合|Azure AD アプリケーション プロキシ|
-|さまざまなプロトコルでの公開 (Citrix、Lync、RDG など)|Azure AD アプリケーション プロキシ|
-|ポータル|Azure AD アプリケーション プロキシの Azure AD アクセス パネルまたは Office 365 アプリ起動ツール|
-|エンドポイントの正常性の検出|Intune または System Center|
-|SSL トンネリング|Windows SSL または VPN|
-|レイヤー 2/3 ファイアウォール|Windows Server|
-|ActiveSync (HTTP Basic) および RDG の事前認証|現在は Microsoft からのソリューションはありません|
-|Web アプリケーション ファイアウォール|現在、Microsoft のソリューションはありません。|
-|セキュリティ保護された Web ゲートウェイ (転送プロキシ)|現在、Microsoft のソリューションはありません。|
+この表を使用して、Threat Management Gateway (TMG)、Unified Access Gateway (UAG)、Web アプリケーション プロキシ (WAP)、および Azure AD アプリケーション プロキシ (AP) を相互に比較する方法を把握します。
+
+| 機能 | TMG | UAG | WAP | AP |
+| ------- | --- | --- | --- | --- |
+| 証明書認証 | あり | あり | - | - |
+| ブラウザー アプリの選択的な発行 | あり | あり | あり | あり |
+| 事前認証とシングル サインオン | あり | あり | あり | あり | 
+| レイヤー 2/3 ファイアウォール | あり | あり | - | - |
+| 転送プロキシ機能 | あり | - | - | - |
+| VPN 機能 | あり | あり | - | - |
+| プロトコルの豊富なサポート | - | あり | HTTP 経由で実行される場合はあり | HTTP 経由でまたはリモート デスクトップ ゲートウェイ経由で実行する場合はあり |
+| ADFS プロキシ サーバーとしてのサーバー | - | あり | あり | - |
+| アプリケーションにアクセスするための 1 つのポータル | - | あり | - | あり |
+| 応答本文のリンク変換 | あり | あり | - | あり | 
+| ヘッダーによる認証 | - | あり | - | あり。PingAccess を使用 | 
+| クラウド規模のセキュリティ | - | - | - | あり | 
+| 条件付きアクセス | - | あり | - | あり |
+| 非武装地帯 (DMZ) にコンポーネントが存在しない | - | - | - | あり |
+| 受信接続がない | - | - | - | あり |
+
+ほとんどのシナリオでは、最新のソリューションとして Azure AD アプリケーションをお勧めします。 Web アプリケーション プロキシは AD FS 用のプロキシ サーバーを必要とするシナリオにのみ推奨され、Azure Active Directory のカスタム ドメインを使用することはできません。 
+
+類似製品に比べ、Azure AD アプリケーション プロキシには、次に示す独自のメリットがあります。
+
+- オンプレミスのリソースへの Azure AD の拡張
+   - クラウド規模のセキュリティと保護
+   - 簡単に有効にできる条件付きアクセスや Multi-Factor Authentication などの機能
+- 非武装地帯にコンポーネントが存在しない
+- 受信接続は不要
+- ユーザーがすべてのアプリケーション (O365、Azure AD に統合された SaaS アプリ、オンプレミスの Web アプリなど) に 移動できる 1 つのアクセス パネル 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-[ブログ: Web アプリケーション プロキシ](https://blogs.technet.microsoft.com/applicationproxyblog/tag/web-application-proxy)<br>
-[ブログ: Azure AD アプリケーション プロキシ](https://blogs.technet.microsoft.com/applicationproxyblog/tag/aad-ap)
+- [Azure AD アプリケーション プロキシを使用してセキュリティで保護されたオンプレミス アプリケーションへのリモート アクセスを提供する](active-directory-application-proxy-get-started.md)
+- [Forefront TMG と UAG からアプリケーション プロキシに移行する](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)
 

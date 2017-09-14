@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 9c780d89093a6d29a22cd1e5504dcc36b39056ea
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,7 +31,7 @@ ScaleX Enterprise と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に ScaleX Enterprise にサインオン (シングル サインオン) する機能を有効にすることができます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md) を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、 「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -13,13 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: infrastructure
-ms.date: 04/21/2017
+ms.date: 07/07/2017
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5fc71943c2fdf1a6a64bf96176deb5f6bc4e26d7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 69a7753cc75b028e2bf093053d9a5fc0890562e8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "VM の簡易作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "VM の簡易作成")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -52,10 +52,10 @@ az group delete --name myResourceGroup
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) | Azure 仮想ネットワークとサブネットを作成します。 |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) | 静的 IP アドレスおよび関連付けられる DNS 名を指定してパブリック IP アドレスを作成します。 |
-| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Azure ネットワーク ロード バランサー (NLB) を作成します。 |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | NLB プローブを作成します。 NLB プローブは、NLB セット内の各 VM の監視に使用します。 アクセス不能になった VM には、トラフィックがルーティングされなくなります。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | NLB 規則を作成します。 このサンプルでは、ポート 80 に対する規則を作成します。 HTTP トラフィックが NLB で受信されると、NLB セット内のいずれかの VM のポート 80 にルーティングされます。 |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | NLB ネットワーク アドレス変換 (NAT) 規則を作成します。  NAT 規則により、NLB のポートを VM のポートにマッピングされます。 このサンプルでは、NLB セット内の各 VM への SSH トラフィックに対する NAT 規則を作成します。  |
+| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Azure ロード バランサーを作成します。 |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | ロード バランサー プローブを作成します。 ロード バランサー プローブは、ロード バランサー セット内の各 VM を監視するために使用されます。 アクセス不能になった VM には、トラフィックがルーティングされなくなります。 |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | ロード バランサー規則を作成します。 このサンプルでは、ポート 80 に対する規則を作成します。 HTTP トラフィックは、ロード バランサーに到着すると、LB セット内のいずれかの VM のポート 80 にルーティングされます。 |
+| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | ロード バランサーのネットワーク アドレス変換 (NAT) 規則を作成します。  NAT 規則により、ロード バランサーのポートが VM のポートにマッピングされます。 このサンプルでは、ロード バランサー セット内の各 VM への SSH トラフィックに対する NAT 規則を作成します。  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) | インターネットと仮想マシン間のセキュリティ境界となるネットワーク セキュリティ グループ (NSG) を作成します。 |
 | [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | 受信トラフィックを許可する NSG 規則を作成します。 このサンプルでは、SSH トラフィック用にポート 22 を開きます。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) | 仮想ネットワーク カードを作成し、作成したカードを仮想ネットワーク、サブネット、NSG に接続します。 |

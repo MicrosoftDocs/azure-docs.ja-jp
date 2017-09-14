@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f6848fef5b23a864496565334b22dc2e2e8d1492
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: f2428661af016071268b1c30a933226c1e804fbb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -32,17 +33,38 @@ Azure 診断拡張機能 1.5 では、シンクが導入されました。シン
 Application Insights のシンクの構成の例を以下に示します。
 
 ```XML
-    <SinksConfig>
-        <Sink name="ApplicationInsights">
-          <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
-          <Channels>
-            <Channel logLevel="Error" name="MyTopDiagData"  />
-            <Channel logLevel="Verbose" name="MyLogData"  />
-          </Channels>
-        </Sink>
-      </SinksConfig>
+<SinksConfig>
+    <Sink name="ApplicationInsights">
+      <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
+      <Channels>
+        <Channel logLevel="Error" name="MyTopDiagData"  />
+        <Channel logLevel="Verbose" name="MyLogData"  />
+      </Channels>
+    </Sink>
+</SinksConfig>
 ```
-
+```JSON
+"SinksConfig": {
+    "Sink": [
+        {
+            "name": "ApplicationInsights",
+            "ApplicationInsights": "{Insert InstrumentationKey}",
+            "Channels": {
+                "Channel": [
+                    {
+                        "logLevel": "Error",
+                        "name": "MyTopDiagData"
+                    },
+                    {
+                        "logLevel": "Error",
+                        "name": "MyLogData"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
 - **シンク**の *name* 属性は、シンクを一意に識別する文字列値です。
 
 - **ApplicationInsights** 要素では、Azure 診断データの送信先となる Application Insights リソースのインストルメンテーション キーを指定します。
@@ -79,9 +101,8 @@ Application Insights のシンクの構成の例を以下に示します。
        sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
     <DiagnosticInfrastructureLogs />
     <PerformanceCounters>
-      <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" sinks="ApplicationInsights.MyLogData/>
+      <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
       <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
-      <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\Bytes Total/Sec" sampleRate="PT3M" />
     </PerformanceCounters>
     <WindowsEventLog scheduledTransferPeriod="PT1M">
       <DataSource name="Application!*" />
@@ -101,7 +122,61 @@ Application Insights のシンクの構成の例を以下に示します。
   </SinksConfig>
 </WadCfg>
 ```
-
+```JSON
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+        "overallQuotaInMB": 4096,
+        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent to this channel",
+        "DiagnosticInfrastructureLogs": {
+        },
+        "PerformanceCounters": {
+            "PerformanceCounterConfiguration": [
+                {
+                    "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                    "sampleRate": "PT3M"
+                },
+                {
+                    "counterSpecifier": "\\Memory\\Available MBytes",
+                    "sampleRate": "PT3M"
+                }
+            ]
+        },
+        "WindowsEventLog": {
+            "scheduledTransferPeriod": "PT1M",
+            "DataSource": [
+                {
+                    "name": "Application!*"
+                }
+            ]
+        },
+        "Logs": {
+            "scheduledTransferPeriod": "PT1M",
+            "scheduledTransferLogLevelFilter": "Verbose",
+            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent to this channel"
+        }
+    },
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "ApplicationInsights",
+                "ApplicationInsights": "{Insert InstrumentationKey}",
+                "Channels": {
+                    "Channel": [
+                        {
+                            "logLevel": "Error",
+                            "name": "MyTopDiagData"
+                        },
+                        {
+                            "logLevel": "Verbose",
+                            "name": "MyLogData"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+```
 前の構成の以下の行には、次の意味があります。
 
 ### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Azure 診断によって収集されているすべてのデータを送信する
@@ -109,17 +184,35 @@ Application Insights のシンクの構成の例を以下に示します。
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
 ```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights",
+}
+```
 
 ### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Application Insights のシンクにエラー ログのみを送信する
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
 ```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights.MyTopDiagData",
+}
+```
 
 ### <a name="send-verbose-application-logs-to-application-insights"></a>Application Insights に詳細なアプリケーション ログを送信する
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
+```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights.MyLogData",
+}
 ```
 
 ## <a name="limitations"></a>制限事項
@@ -129,6 +222,7 @@ Application Insights のシンクの構成の例を以下に示します。
 - **Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## <a name="next-steps"></a>次のステップ
+* Application Insights で [Azure 診断情報を表示する](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events)方法について説明します。
 * [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 * [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 

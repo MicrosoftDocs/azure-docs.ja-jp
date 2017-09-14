@@ -12,18 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/26/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="find-data-using-log-searches"></a>ログ検索を使用してデータを探す
+# <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
+
+>[!NOTE]
+> この記事では、現行のクエリ言語を使用した Log Analytics のログ検索について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[Log Analytics でのログ検索について (新)](log-analytics-log-search-new.md) に関するページをご覧ください。
+
 
 Log Analytics の中心にあるのは、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較できるログ検索機能です。 各種のソリューションも、特定の問題領域に関するj測定基準を得るためのログ検索機能を備えています。
 
@@ -135,6 +137,24 @@ EventLog=Application OR EventLog=System AND Computer=SERVER1.contoso.com
 
 ```
 CounterName="% Processor Time"  AND InstanceName="_Total" AND (Computer=SERVER1.contoso.com OR Computer=SERVER2.contoso.com)
+```
+
+### <a name="field-types"></a>フィールドの型
+フィルターを作成するときは、ログ検索から返される各種フィールドの扱い方の違いを理解する必要があります。
+
+**検索可能フィールド**は、検索結果に青色で表示されます。  検索可能フィールドは、そのフィールドに固有の検索条件に使用できます。その例を次に示します。
+
+```
+Type: Event EventLevelName: "Error"
+Type: SecurityEvent Computer:Contains("contoso.com")
+Type: Event EventLevelName IN {"Error","Warning"}
+```
+
+**フリーテキスト検索可能フィールド**は、検索結果に灰色で表示されます。  検索可能フィールドのようにフィールド固有の検索条件で使用することはできません。  検索できるのは、全フィールドを対象にクエリを実行するときだけです。その例を次に示します。
+
+```
+"Error"
+Type: Event "Exception"
 ```
 
 

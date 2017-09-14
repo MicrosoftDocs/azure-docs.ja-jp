@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 08/24/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 944f67d1d5a56c3c478da0c3af0b1f9b8797eee1
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 12389b4be03b714d99edcf3fd621bd2d9c586540
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Azure IoT Hub と Azure Event Hubs の比較
@@ -34,7 +33,7 @@ ms.lasthandoff: 05/16/2017
 | デバイスのプロトコルのサポート |MQTT、MQTT over WebSockets、AMQP、AMQP over WebSockets、および HTTP をサポートします。 さらに、IoT Hub は [Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway] (カスタム プロトコルをサポートする、カスタマイズ可能なプロトコル ゲートウェイの実装) でも動作します。 |AMQP、AMQP over WebSockets、および HTTP をサポートします。 |
 | セキュリティ |デバイスごとの ID と取り消し可能なアクセス制御を提供します。 IoT Hub 開発者ガイドの「 [セキュリティ]」セクションを参照してください。 |Event Hubs 全体の[共有アクセス ポリシー][Event Hubs - security]を提供します。[発行元のポリシー][Event Hubs publisher policies]による取り消しが限定的にサポートされます。 IoT ソリューションでは、デバイスごとの資格情報となりすまし対策をサポートするために、カスタム ソリューションの実装が求められることがよくあります。 |
 | 操作の監視 |デバイス ID 管理および接続の豊富なイベント (個々のデバイス認証エラー、スロットル、および不適切な形式の例外など) を、IoT ソリューションでサブスクライブできるようにします。 これらのイベントを使用すれば、個々のデバイス レベルで接続の問題をすばやく識別することができます。 |集計メトリックのみを公開します。 |
-| スケール |同時接続された数百万のデバイスをサポートするように最適化されています。 |制限された数の同時接続をサポートできます。[Azure Service Bus のクォータ][Azure Service Bus quotas]に基づいて最大 5,000 の AMQP 接続をサポートします。 一方、Event Hubs を使用すると、送信される各メッセージのパーティションを指定できます。 |
+| スケール |同時接続された数百万のデバイスをサポートするように最適化されています。 |[Azure Event Hubs のクォータ][Azure Event Hubs quotas]に従って接続を測定します。 一方、Event Hubs を使用すると、送信される各メッセージのパーティションを指定できます。 |
 | デバイスの SDK |MQTT、AMQP、および HTTP API のほかに、さまざまなプラットフォームおよび言語用の[デバイス SDK][Azure IoT SDKs] が用意されています。 |AMQP と HTTP の送信インターフェイスのほかに、.NET、Java、および C でサポートされます。 |
 | ファイルのアップロード |IoT ソリューションでデバイスからクラウドにファイルをアップロードできるようにします。 ワークフロー統合用のファイル通知エンドポイントと、デバッグ サポート用の操作監視カテゴリが含まれます。 | サポートされていません。 |
 | 複数エンドポイントへのメッセージのルーティング | 最大 10 個のカスタム エンドポイントがサポートされます。 カスタム エンドポイントへのメッセージのルーティングの方法はルールにより決定されます。 詳細については、「[IoT Hub でのメッセージの送受信][lnk-devguide-messaging]」を参照してください。 | メッセージ ディスパッチ用のコードを別途作成してホストする必要があります。 |
@@ -59,7 +58,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [セキュリティ]: iot-hub-devguide-security.md
 [Event Hubs - security]: ../event-hubs/event-hubs-authentication-and-security-model-overview.md
 [Event Hubs publisher policies]: ../event-hubs/event-hubs-features.md#event-publishers
-[Azure Service Bus quotas]: ../service-bus-messaging/service-bus-quotas.md
+[Azure Event Hubs quotas]: ../event-hubs/event-hubs-quotas.md
 [Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 

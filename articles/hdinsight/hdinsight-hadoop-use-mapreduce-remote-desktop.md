@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop の MapReduce とリモート デスクトップの使用 | Microsoft Docs"
+title: "HDInsight での Hadoop の MapReduce とリモート デスクトップの使用 - Azure | Microsoft Docs"
 description: "リモート デスクトップを使用して、HDInsight で Hadoop に接続し、MapReduce ジョブを実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,11 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 5e91fd06fb2ae22496832d7afedb3f003edf7ea6
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>リモート デスクトップによる HDInsight での MapReduce と Hadoop の使用
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 この記事では、リモート デスクトップを使用して HDInsight クラスター上の Hadoop に接続し、Hive コマンドを使用して MapReduce ジョブを実行する方法について説明します。
 
 > [!IMPORTANT]
-> リモート デスクトップは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> リモート デスクトップは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上での HDInsight クラスターへの接続と MapReduce ジョブの実行に関する情報については、[SSH による MapReduce の使用](hdinsight-hadoop-use-mapreduce-ssh.md)に関するページを参照してください。
 
@@ -54,9 +53,9 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
    >
 2. **Hadoop** コマンドを使用してサンプルの MapReduce ジョブ実行するには、次のコマンドを使用します。
 
-        hadoop jar hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
+        hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。 入力として **wasbs://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasbs:///example/data/WordCountOutput** に格納されます。
+    これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。 入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
 
    > [!NOTE]
    > この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
@@ -68,9 +67,9 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. ジョブが完了したら、次のコマンドを使用して、**wasbs://example/data/WordCountOutput** に格納された出力ファイルを一覧表示します。
+4. ジョブが完了したら、次のコマンドを使用して、**wasb://example/data/WordCountOutput** に格納された出力ファイルを一覧表示します。
 
-        hadoop fs -ls wasbs:///example/data/WordCountOutput
+        hadoop fs -ls wasb:///example/data/WordCountOutput
 
     ここでは、**_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。 **part-r-00000** ファイルには、このジョブの出力が含まれています。
 
@@ -80,9 +79,9 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
    >
 5. 出力を表示するには、次のコマンドを使用します。
 
-        hadoop fs -cat wasbs:///example/data/WordCountOutput/part-r-00000
+        hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    **wasbs://example/data/gutenberg/davinci.txt** ファイルに含まれる文字の一覧と、各文字の出現回数が表示されます。 ファイルに含まれるデータの例を次に示します。
+    **wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる文字の一覧と、各文字の出現回数が表示されます。 ファイルに含まれるデータの例を次に示します。
 
         wreathed        3
         wreathing       1

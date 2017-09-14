@@ -9,16 +9,16 @@ editor:
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: 
+ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: edfdb04ad8afc28f5a89d41a45a1704c7a4c6098
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: ec1b34e4f539d2e95bb1f99fca3a6a0ec682ef51
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM を作成する
@@ -204,7 +204,6 @@ myAdminUser@myVM:~$
 ## <a name="next-steps"></a>次のステップ
 `azure vm quick-create` を使用すると、bash シェルにログインして作業できるように、VM をすばやくデプロイできます。 ただし、 `vm quick-create` を使用した場合、広範な制御を行ったり、より複雑な環境を作成したりすることはできません。  インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
 
-* [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](../windows/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

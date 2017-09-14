@@ -12,16 +12,19 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 06/12/2017
 ms.author: sethm;shvija
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 4a9a315f5b03e0fb5424713a3ff3757d928ba150
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: eb9a80eec0326aaa605cb8b21aecbaeec94ff212
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/13/2017
 
 
 ---
-# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
+
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
+
 この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブとコンシューマー グループをそれぞれ 1 つずつ含んだ Event Hubs タイプの名前空間を作成する方法について説明します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。

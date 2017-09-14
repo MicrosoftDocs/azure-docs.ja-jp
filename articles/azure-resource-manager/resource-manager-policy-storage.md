@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 07/05/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 75685a21ce4a212638016be62640badd4870454a
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="apply-resource-policies-to-storage-accounts"></a>ストレージ アカウントにリソース ポリシーを適用する
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="define-permitted-storage-account-types"></a>許可されているストレージ アカウントの種類の定義
 
-次のポリシーは、デプロイ可能な[ストレージ アカウントの種類](../storage/storage-redundancy.md)を制限します。
+次のポリシーは、デプロイ可能な[ストレージ アカウントの種類](../storage/common/storage-redundancy.md)を制限します。
 
 ```json
 {
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="define-permitted-access-tier"></a>許可されているアクセス層の定義
 
-次のポリシーは、ストレージ アカウントに対して指定可能な[アクセス層](../storage/storage-blob-storage-tiers.md)の種類を指定します。
+次のポリシーは、ストレージ アカウントに対して指定可能な[アクセス層](../storage/blobs/storage-blob-storage-tiers.md)の種類を指定します。
 
 ```json
 {
@@ -87,7 +87,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="ensure-encryption-is-enabled"></a>暗号化が有効になっていることの確認
 
-次のポリシーは、[ストレージ サービスの暗号化](../storage/storage-service-encryption.md)にすべてのストレージ アカウントを必要とします。
+次のポリシーは、[ストレージ サービスの暗号化](../storage/common/storage-service-encryption.md)にすべてのストレージ アカウントを必要とします。
 
 ```json
 {

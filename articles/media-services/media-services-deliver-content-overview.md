@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Media Services を使用したコ
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/13/2017
-
 
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信

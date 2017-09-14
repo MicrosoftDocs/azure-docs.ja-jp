@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 07/10/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 14fbfbc5abd6d95744832d9b39e377bbffe652ac
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
@@ -89,16 +89,18 @@ Visual Studio エディターでは、Resource Manager テンプレートの編�
 
 **storageType** パラメーターでは、許可する種類と既定の種類があらかじめ定義されています。 これらの値は、そのまま使用することも、シナリオに合わせて編集することもできます。 このテンプレートを使用して **Premium_LRS** ストレージ アカウントをデプロイするのをどのユーザーにも許可しない場合は、許可する種類からそれを削除します。 
 
-    "storageType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS"
-      ]
-    }
+```json
+"storageType": {
+  "type": "string",
+  "defaultValue": "Standard_LRS",
+  "allowedValues": [
+    "Standard_LRS",
+    "Standard_ZRS",
+    "Standard_GRS",
+    "Standard_RAGRS"
+  ]
+}
+```
 
 Visual Studio では、テンプレートの編集時にどんなプロパティが使用できるのかを容易に理解できるように intellisense を提供しています。 たとえば、App Service プランのプロパティを編集するには、**HostingPlan** リソースに移動し、**properties** の値を追加します。 Intellisense では、使用できる値を示し、その値に関する説明を提供します。
 
@@ -106,10 +108,12 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
 **numberOfWorkers** は 1 に設定することができます。
 
-    "properties": {
-      "name": "[parameters('hostingPlanName')]",
-      "numberOfWorkers": 1
-    }
+```json
+"properties": {
+  "name": "[parameters('hostingPlanName')]",
+  "numberOfWorkers": 1
+}
+```
 
 ## <a name="deploy-the-resource-group-project-to-azure"></a>リソース グループ プロジェクトを Azure にデプロイする
 これでプロジェクトをデプロイする準備が整いました。 Azure リソース グループ プロジェクトをデプロイするとき、そのデプロイ先は Azure リソース グループとなります。 リソース グループとは、共通のライフサイクルを持ったリソースの論理上のまとまりです。

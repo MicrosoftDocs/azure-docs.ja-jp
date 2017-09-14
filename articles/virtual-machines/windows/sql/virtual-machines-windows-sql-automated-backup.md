@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/24/2017
+ms.date: 07/05/2017
 ms.author: jroth
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: dcb7b326cbb4ed18769010d8061f80dc9f941c87
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: d95f193b5bb88f8d29110b67d8555a36a070888c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -39,6 +40,7 @@ ms.lasthandoff: 04/27/2017
 
 - Windows Server 2012
 - Windows Server 2012 R2
+- Windows Server 2016
 
 **SQL Server バージョン/エディション**:
 

@@ -12,16 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 08/11/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
-ms.lasthandoff: 11/17/2016
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 17072c4b6e4fdf6e4dc2b7a6a4ded7fa9f9f6fde
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/14/2017
 
 ---
 
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
+
+![VMware のシンボル](./media/log-analytics-vmware/vmware-symbol.png)
+
 Log Analytics の VMware の監視ソリューションは、大規模な VMware ログに対する一元化されたログ記録と監視のアプローチを作成するのに役立つソリューションです。 この記事では、このソリューションを使用して 1 つの場所で ESXi ホストのトラブルシューティング、キャプチャ、管理を行う方法を説明します。 このソリューションでは、すべての ESXi ホストの詳細なデータを 1 つの場所に表示できます。 ESXi ホストのログを通じて、VM および ESXi ホストの上位のイベント数、状態、傾向を知ることができます。 一元化された ESXi ホストのログを表示および検索して、トラブルシューティングを実行できます。 また、ログ検索クエリに基づくアラートを作成することもできます。
 
 このソリューションでは、ESXi ホストのネイティブの syslog 機能を使用して、OMS エージェントがインストールされたターゲット VM にデータをプッシュします。 ただし、ターゲット VM 内の syslog にはファイルは書き込まれません。 OMS エージェントがポート 1514 を開き、このポートをリッスンします。 OMS エージェントは、データを受信すると、OMS にデータをプッシュします。
@@ -77,7 +81,7 @@ VMware の監視ソリューションは、有効にしている OMS Agents for 
 
 | プラットフォーム | OMS Agent for Linux | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Linux |![[はい]](./media/log-analytics-vmware/oms-bullet-green.png) |![なし](./media/log-analytics-vmware/oms-bullet-red.png) |![いいえ](./media/log-analytics-vmware/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-vmware/oms-bullet-red.png) |3 分おき |
+| Linux |&#8226; |  |  |  |  |3 分おき |
 
 次の表は、VMware の監視ソリューションによって収集されるデータ フィールドの例を示しています。
 
@@ -147,7 +151,10 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 #### <a name="common-search-queries"></a>一般的な検索クエリ
 このソリューションには、ESXi ホストの管理に役立つその他の便利なクエリ (高いストレージ使用量、ストレージの待機時間、パスの障害など) も含まれています。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ![クエリ](./media/log-analytics-vmware/queries.png)
+
 
 #### <a name="save-queries"></a>クエリの保存
 検索クエリの保存は OMS の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、**[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](log-analytics-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。

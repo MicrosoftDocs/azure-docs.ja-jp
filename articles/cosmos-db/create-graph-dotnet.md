@@ -3,7 +3,7 @@ title: "Graph API を使用した Azure Cosmos DB .NET アプリケーション�
 description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET コード サンプルについて説明します"
 services: cosmos-db
 documentationcenter: 
-author: mimig1
+author: dennyglee
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
@@ -12,15 +12,14 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 05/21/2017
-ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 3491aa53a55d988876710c0ac19383e642dda27b
+ms.topic: quickstart
+ms.date: 07/28/2017
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 12c9bf626de8738fac95bd41965b0a2bf8758ed2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用した .NET アプリケーションの構築
@@ -55,7 +54,7 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
     ```
 
-3. 次に、Visual Studio でソリューション ファイルを開きます。 
+3. 次に、Visual Studio を開いてソリューション ファイルを開きます。 
 
 ## <a name="review-the-code"></a>コードの確認
 
@@ -104,17 +103,17 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、URI とプライマリ キーを `App.config` ファイルにコピーします。
+1. Visual Studio 2017 で App.config ファイルを開きます。 
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-dotnet/keys.png)
+2. Azure Portal で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 
 
-2. Visual Studio 2017 で、`App.config` ファイルを開きます。 
+    ![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-dotnet/keys.png)
 
-3. ポータルから (コピー ボタンを使用して) URI 値をコピーし、`App.config` の endpoint キーの値に設定します。 
+3. ポータルから **[URI]** の値をコピーし、App.config の Endpoint キーの値に設定します。前のスクリーンショットで示されているように、値のコピーにはコピー ボタンを使用できます。
 
-    `<add key="Endpoint" value="FILLME.documents.azure.com:443" />`
+    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
 
-4. 次に、ポータルから PRIMARY KEY 値をコピーし、`App.config` の authKey の値に設定します。 
+4. ポータルから **[プライマリ キー]** の値をコピーし、App.config の AuthKey キーの値に設定してから、変更を保存します。 
 
     `<add key="AuthKey" value="FILLME" />`
 
@@ -128,6 +127,8 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 3. 結果から、**Microsoft.Azure.Graphs** ライブラリをインストールします。 これにより、Azure Cosmos DB グラフ拡張機能ライブラリ パッケージとすべての依存関係がインストールされます。
 
+    ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
+
 4. Ctrl + F5 キーを押してアプリケーションを実行します。
 
    コンソール ウィンドウには、グラフに追加されている頂点と辺が表示されます。 スクリプトが完了したら、Enter キーを 2 度押してコンソール ウィンドウを閉じます。 
@@ -136,9 +137,13 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 次に、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データを参照しクエリできます。
 
-* データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **graphdb**、**graphcoll** の順に展開し、**[グラフ]** をクリックします。
+1. データ エクスプローラーで新しいデータベースが [グラフ] ウィンドウに表示されます。 **graphdb**、**graphcollz** の順に展開し、**[グラフ]** をクリックします。
 
-    サンプル アプリで生成されたデータは、[グラフ] ウィンドウに表示されます。
+2. **[フィルターの適用]** をクリックして、既定のクエリですべての頂点をグラフに表示します。 サンプル アプリで生成されたデータは、[グラフ] ウィンドウに表示されます。
+
+    グラフは拡大または縮小できます。また、グラフ表示領域の拡大、頂点の追加、表示画面上での頂点の移動が可能です。
+
+    ![Azure Portal のデータ エクスプローラーでのグラフ表示](./media/create-graph-dotnet/graph-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

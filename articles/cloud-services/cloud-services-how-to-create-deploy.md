@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
-ms.openlocfilehash: 71863e52dca951b1fc3847e1bba47977a6e49c7c
-ms.lasthandoff: 01/05/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2a2172a78bfd3ac923edbc9de366b035629dd27b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
@@ -28,12 +28,12 @@ ms.lasthandoff: 01/05/2017
 > 
 > 
 
-Azure クラシック ポータルには、クラウド サービスを作成してデプロイする方法として、"**簡易作成**" と "**カスタム作成**" の&2; つの方法が用意されています。
+Azure クラシック ポータルには、クラウド サービスを作成してデプロイする方法として、"**簡易作成**" と "**カスタム作成**" の 2 つの方法が用意されています。
 
 このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、 **[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure クラシック ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、 **[カスタム作成]**を使用して作成とデプロイを同時に実行できます。
 
 > [!NOTE]
-> Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、 **[クイック スタート]** またはダッシュボードから VSTS 発行を設定する必要があります。 詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信][TFSTutorialForCloudService]」を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
+> Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、**[簡易作成]** を使用した後、**[クイック スタート]** またはダッシュボードから VSTS 発行を設定する必要があります。
 > 
 > 
 
@@ -52,7 +52,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 ## <a name="prepare-your-app"></a>アプリケーションの準備
 クラウド サービスを展開する前に、アプリケーション コードとクラウド サービス構成ファイル (.cscfg) からクラウド サービス パッケージ (.cspkg) を作成する必要があります。 Azure SDK には、こういった必須のデプロイ ファイルを準備するためのツールが用意されています。 SDK は、 [Azure のダウンロード](https://azure.microsoft.com/downloads/) ページからアプリケーション コードの開発に使用する言語でインストールできます。
 
-サービス パッケージをエクスポートする前に、以下の&3; つのクラウド サービス機能について特別な構成が必要です。
+サービス パッケージをエクスポートする前に、以下の 3 つのクラウド サービス機能について特別な構成が必要です。
 
 * データ暗号化のために Secure Sockets Layer (SSL) を使用するクラウド サービスをデプロイする場合は、 [アプリケーションを SSL 用に構成](cloud-services-configure-ssl-certificate.md#step-2-modify-the-service-definition-and-configuration-files) します。
 * ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、リモート デスクトップ用に [ロールを構成](cloud-services-role-enable-remote-desktop.md) します。
@@ -102,7 +102,7 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 3. **[デプロイ ラベル]**に、新しいデプロイの名前を入力します (たとえば、MyCloudServicev4)。
 4. **[パッケージ]** で、**[参照]** を使って、使用するサービス パッケージ ファイル (.cspkg) を選択します。
 5. **[構成]** で、**[参照]** を使って、使用するサービス構成ファイル (.cscfg) を選択します。
-6. クラウド サービスにインスタンスが&1; つしかないロールがある場合は、 **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** チェック ボックスをオンにして、デプロイを有効にして続行します。
+6. クラウド サービスにインスタンスが 1 つしかないロールがある場合は、 **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** チェック ボックスをオンにして、デプロイを有効にして続行します。
    
     Azure でクラウド サービスの保守中およびサービス更新中に 99.95% のアクセスを保証できるのは、あらゆるロールに少なくとも 2 つのインスタンスがある場合だけです。 必要な場合、クラウド サービスをデプロイした後に、 **[スケール]** ページで、ロール インスタンスを追加できます。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 7. **[OK]** (チェックマーク) をクリックして、クラウド サービスのデプロイを開始します。
@@ -121,7 +121,6 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
    
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
-[TFSTutorialForCloudService]: cloud-services-continuous-delivery-use-vso.md
 
 ## <a name="next-steps"></a>次のステップ
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure.md)

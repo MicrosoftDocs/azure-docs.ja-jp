@@ -1,22 +1,20 @@
 ---
 title: "最初の Azure Database for MySQL データベースを設計する - Azure CLI | Microsoft Docs"
-description: "このチュートリアルでは、Azure CLI 2.0 を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。"
+description: "このチュートリアルでは、コマンド ラインから Azure CLI 2.0 を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。"
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: mysql-database
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: portal
-ms.date: 05/10/2017
+ms.service: mysql
+ms.devlang: azure-cli
+ms.topic: tutorial
+ms.date: 06/13/2017
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 99238b9c0bcc7fa80e8c72cda25f7ed809cc5195
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 590cba6cb58d0c0eaedb9f122ac048c33988004d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -26,29 +24,30 @@ Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Commun
 
 > [!div class="checklist"]
 > * Azure Database for MySQL の作成
-> * サーバーのファイアウォールの構成 [mysql コマンド ライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
+> * サーバーのファイアウォールの構成
+> * [mysql コマンド ライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
 > * サンプル データの読み込み
 > * データのクエリを実行する
 > * データの更新
 > * データの復元
 
-[!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
+このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI 2.0 をインストール]( /cli/azure/install-azure-cli)します。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-```azurecli
-az login
+複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
+```azurecli-interactive
+az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
-コマンド プロンプトの指示に従って URL https://aka.ms/devicelog をブラウザで開き、**コマンド プロンプト**で生成されたコードを入力します。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 [az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`mycliresource` という名前のリソース グループを `westus` の場所に作成します。
 
-```azurecli
+```azurecli-interactive
 az group create --name mycliresource --location westus
 ```
 
@@ -57,7 +56,7 @@ az mysql server create コマンドを使用して、Azure Database for MySQL �
 
 次の例は、`westus` にあるリソース グループ `mycliresource` に、`mycliserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ログインの名前は `myadmin`、パスワードは `Password01!` です。 サーバーのパフォーマンス レベルは **Basic**、**50** のコンピューティング ユニットを同じサーバー内のすべてのデータベースで共有します。 アプリケーションのニーズに応じて、コンピューティング ユニットとストレージは自由にスケーリングできます。
 
-```azurecli
+```azurecli-interactive
 az mysql server create --resource-group mycliresource --name mycliserver
 --location westus --user myadmin --password Password01!
 --performance-tier Basic --compute-units 50
@@ -68,16 +67,14 @@ az mysql server firewall-rule create コマンドで、Azure Database for MySQL 
 
 次の例は、定義済みのアドレス範囲を指定するファイアウォール規則を作成します。 ここでは、指定可能なすべての範囲の IP アドレスを示しています。
 
-```azurecli
-az mysql server firewall-rule create --resource-group mycliresource
---server mycliserver --name AllowYourIP --start-ip-address 0.0.0.0
---end-ip-address 255.255.255.255
+```azurecli-interactive
+az mysql server firewall-rule create --resource-group mycliresource --server mycliserver --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
 
 サーバーに接続するには、ホスト情報とアクセス資格情報を提供する必要があります。
-```azurecli
+```azurecli-interactive
 az mysql server show --resource-group mycliresource --name mycliserver
 ```
 
@@ -169,9 +166,8 @@ SELECT * FROM inventory;
 - 対象サーバー: 復元先の新しいサーバー名を指定します。
 - ソース サーバー: 復元するサーバーの名前を指定します。
 - 場所: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
-- 価格レベル: サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
 
-```azurecli
+```azurecli-interactive
 az mysql server restore --resource-group mycliresource --name mycliserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mycliserver
 ```
 
@@ -181,11 +177,13 @@ az mysql server restore --resource-group mycliresource --name mycliserver-restor
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure Database for MySQL の作成
-> * サーバーのファイアウォールの構成 [mysql コマンド ライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
+> * サーバーのファイアウォールの構成
+> * [mysql コマンド ライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
 > * サンプル データの読み込み
 > * データのクエリを実行する
 > * データの更新
 > * データの復元
 
-[Azure Database for MySQL - Azure CLI サンプル](./sample-scripts-azure-cli.md)
+> [!div class="nextstepaction"]
+> [Azure Database for MySQL - Azure CLI サンプル](./sample-scripts-azure-cli.md)
 

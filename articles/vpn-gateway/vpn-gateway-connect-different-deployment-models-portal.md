@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9e0dbb028c668aad182e2c1c54fb397ffe99a0a0
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1b7b67ec28986b7c20b3e990e3565265f74c28e6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
@@ -84,7 +84,16 @@ Connection name = RMtoClassic
 
 ## <a name="classicvnet"></a>1.クラシック VNet 設定を構成する
 
-このセクションでは、クラシック VNet のローカル ネットワーク (ローカル サイト) と仮想ネットワーク ゲートウェイを作成します。 クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。 VPN Gateway と共に VNet を既に使用している場合、そのゲートウェイが動的であることを確認してください。 静的である場合、まず、その VPN Gateway を削除してから進む必要があります。
+このセクションでは、クラシック VNet のローカル ネットワーク (ローカル サイト) と仮想ネットワーク ゲートウェイを作成します。 クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
+
+ポータルを使ってクラシック仮想ネットワークを作成するときは、以下の手順を使って仮想ネットワーク ブレードに移動する必要があります。そうしないと、クラシック仮想ネットワークを作成するオプションが表示されません。
+
+1. [+] をクリックして [新規作成] ブレードを開きます。
+2. [Marketplace を検索] フィールドに「仮想ネットワーク」と入力します。 代わりに、[ネットワーク] -> [仮想ネットワーク] を選ぶと、クラシック VNet を作成するオプションが表示されません。
+3. 検索結果の一覧から "仮想ネットワーク" を探してクリックし、[仮想ネットワーク] ブレードを開きます。 
+4. [仮想ネットワーク] ブレードで、[クラシック] を選んでクラシック VNet を作成します。 
+
+VPN Gateway と共に VNet を既に使用している場合、そのゲートウェイが動的であることを確認してください。 静的である場合、まず、その VPN Gateway を削除してから進む必要があります。
 
 スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
 

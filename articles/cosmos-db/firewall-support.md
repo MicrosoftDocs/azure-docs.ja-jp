@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: ankshah
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 9a17d9fe0c252e2327ffbd75fde38d1f97ce3cc9
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: e08c0ba9c1fc0bab72ae8c1158aafaad4f66920e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -50,14 +50,14 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 インターネット上のコンピューターから Azure Cosmos DB データベース アカウントにアクセスするときは、そのコンピューターのクライアント IP アドレスまたは IP アドレス範囲を Azure Cosmos DB データベース アカウントの IP アドレスの許可リストに追加する必要があります。 
 
 ## <a id="configure-ip-policy"></a> IP アクセス制御ポリシーの構成
-IP アクセス制御ポリシーは、Azure Portal で設定するか、[Azure CLI](cli-samples.md)、[Azure Powershell](powershell-samples.md)、または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して `ipRangeFilter` プロパティを更新することでプログラムによって設定できます。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 (例: "13.91.6.132,13.91.6.1/24")。 これらの方法でデータベース アカウントを更新するときは、既定の設定にリセットされないように、必ずすべてのプロパティを設定してください。
+IP アクセス制御ポリシーは、Azure Portal で設定するか、[Azure CLI](cli-samples.md)、[Azure Powershell](powershell-samples.md)、または [REST API](/rest/api/documentdb/) を使用して `ipRangeFilter` プロパティを更新することでプログラムによって設定できます。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 (例: "13.91.6.132,13.91.6.1/24")。 これらの方法でデータベース アカウントを更新するときは、既定の設定にリセットされないように、必ずすべてのプロパティを設定してください。
 
 > [!NOTE]
 > Azure Cosmos DB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 このモデルにより、ポータルからのデータ プレーン操作の閲覧もブロックされ、アクセス制御の整合性が確保されます。
 
 開発をシンプルにするために、Azure Portal では、クライアント コンピューターの IP アドレスを識別して許可リストに追加することができます。これにより、コンピューターで実行中のアプリが Azure Cosmos DB アカウントにアクセスすることができます。 ここでのクライアント IP アドレスは、ポータルから見た IP アドレスとして検出されることに注意してください。 コンピューターのクライアント IP アドレスである可能性がありますが、ネットワーク ゲートウェイの IP アドレスである可能性もあります。 運用環境にそれを移行する前に削除することを忘れないでください。
 
-Azure Portal で IP アクセス制御ポリシーを設定するには、Azure Cosmos DB アカウント ブレードに移動し、ナビゲーション メニューの **[ファイアウォール]** をクリックした後、**[ON] (オン)** をクリックします。 
+Azure Portal で IP アクセス制御ポリシーを設定するには、Azure Cosmos DB アカウント ブレードに移動し、ナビゲーション メニューの **[ファイアウォール]** をクリックした後、**[ON] \(オン)** をクリックします。 
 
 ![Azure Portal で [ファイアウォール] ブレードを開く方法を示しているスクリーンショット](./media/firewall-support/azure-portal-firewall.png)
 

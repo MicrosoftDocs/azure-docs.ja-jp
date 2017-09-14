@@ -10,7 +10,7 @@ tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.service: app-service
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 03/08/2017
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 5c995ca118676935f4f9b0c72c266b9d52c181cb
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル

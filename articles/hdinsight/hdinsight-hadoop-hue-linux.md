@@ -1,6 +1,7 @@
 ---
-title: "HDInsight Linux クラスターの Hadoop で Hue を使用する | Microsoft Docs"
-description: "HDInsight Linux の Hadoop クラスターに Hue をインストールし、使用する方法について説明します。"
+title: "Linux ベースの HDInsight クラスターの Hadoop で Hue を使用する - Azure | Microsoft Docs"
+description: "HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。 Hue を使用して、ストレージを参照したり Hive または Pig を実行したりします。"
+keywords: hue hadoop
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -8,19 +9,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 9e57fcca-e26c-479d-a745-7b80a9290447
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 66884a73a8ea1cbf72a48f9a776fa45ae1976591
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: bf68e9af7592d5abe5a4c9aba8c5061819cbc97a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
@@ -28,10 +28,10 @@ ms.lasthandoff: 05/18/2017
 HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="what-is-hue"></a>Hue とは
-Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。 Hue を利用して Hadoop クラスターに関連付けられているストレージを閲覧したり (HDInsight クラスターの場合、WASB)、Hive ジョブや Pig スクリプトを実行したりできます。HDInsight Hadoop クラスターにインストールした Hue では次のコンポーネントが利用可能です。
+Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。 Hue を使用すると、Hadoop クラスターに関連付けられているストレージ (HDInsight クラスターでは WASB) を参照したり、Hive ジョブや Pig スクリプトを実行したりすることができます。 HDInsight Hadoop クラスターにインストールした Hue では次のコンポーネントが利用可能です。
 
 * Beeswax Hive エディター
 * Pig
@@ -43,15 +43,15 @@ Hue は Hadoop クラスターとの情報のやりとりに使用される一�
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>スクリプト アクションを使用した Hue のインストール
 
-Linux ベースの HDInsight クラスターに Hue をインストールするためのスクリプトは、https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh で入手できます。 このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Store を使用してクラスターに Hue をインストールできます。
+Linux ベースの HDInsight クラスターに Hue をインストールするためのスクリプトは、https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh で入手できます。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Store を使用してクラスターに Hue をインストールできます。
 
-このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
+このセクションでは、Azure Portal を使ってクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
 > [!NOTE]
 > スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。 既に実行しているクラスターにスクリプト アクションを適用することもできます。 詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
@@ -104,7 +104,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 4. ブラウザーを使用して、Hue ポータル (http://HOSTNAME:8888) を開きます。 HOSTNAME は前の手順で取得した名前で置き換えてください。
 
    > [!NOTE]
-   > 初めてログインするときには、Hue ポータルにログインするためのアカウントを作成するよう求められます。 ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
+   > 初回ログイン時、Hue ポータルにログインするためのアカウントを作成するように促されます。 ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
    >
    >
 
@@ -128,7 +128,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 3. ファイルまたはフォルダーを右クリックし、利用可能な操作を表示します。 現在のディレクトリにファイルをアップロードするには、右隅にある **[アップロード]** ボタンを使用します。 新しいファイルやディレクトリを作成するには、 **[新規]** ボタンを使用します。
 
 > [!NOTE]
-> Hue ファイル ブラウザーは HDInsight クラスターに関連付けられている既定のコンテナーのコンテンツのみを表示できます。 追加のストレージ アカウント/コンテナーがクラスターに関連付けられている場合、ファイル ブラウザーではアクセスできません。 ただし、Hive ジョブの場合、クラスターに関連付けられている追加のコンテナーに常にアクセスできます。 たとえば、Hive エディターに `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` コマンドを入力すると、追加コンテナーのコンテンツを表示できます。 このコマンドで、 **newcontainer** はクラスターに関連付けられている既定のコンテナーではありません。
+> Hue ファイル ブラウザーは HDInsight クラスターに関連付けられている既定のコンテナーのコンテンツのみを表示できます。 追加のストレージ アカウント/コンテナーがクラスターに関連付けられている場合、ファイル ブラウザーではアクセスできません。 ただし、Hive ジョブの場合、クラスターに関連付けられている追加のコンテナーに常にアクセスできます。 たとえば、Hive エディターに `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` コマンドを入力すると、追加コンテナーのコンテンツを表示できます。 このコマンドで、 **newcontainer** はクラスターに関連付けられている既定のコンテナーではありません。
 >
 >
 
@@ -138,14 +138,14 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 2. インストール中、複数の Hadoop サービス (HDFS、YARN、MR2、Oozie) が再起動し、構成を更新します。 スクリプトが Hue のインストールを完了した後、他の Hadoop サービスが起動するまで少し時間がかかる場合があります。 最初はこれが Hue のパフォーマンスに影響を与えることがあります。 すべてのサービスが起動すると、Hue が完全に機能します。
 3. Hue は Hive の現在の既定である Tez ジョブを認識しません。 Hive 実行エンジンとして MapReduce を使用する場合、スクリプトで次のコマンドを使用するようにスクリプトを更新します。
 
-         set hive.execution.engine=mr;
+        set hive.execution.engine=mr;
 
 4. Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。 そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。 ただし、ジョブが完了したときにジョブの詳細を表示できます。
 
    ![Hue ポータル エラー](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue ポータル エラー")
 
    これは既知の問題によるものです。 この問題を回避するには、アクティブな Resource Manager もプライマリ ヘッドノードで実行されるように Ambari を変更します。
-5. HDInsight クラスターが `wasbs://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。 そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。 そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈するべきです。
+5. HDInsight クラスターが `wasb://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。 そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。 そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈するべきです。
 
 ## <a name="next-steps"></a>次のステップ
 * [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md) クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。

@@ -4,7 +4,7 @@ description: "Azure Functions Proxies の使用方法の概要"
 services: functions
 documentationcenter: 
 author: mattchenderson
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
 ms.openlocfilehash: 102e54627a8fee721d3ed85e86a8009e706bb5b1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="work-with-azure-functions-proxies-preview"></a>Azure Functions プロキシ (プレビュー) の操作

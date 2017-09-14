@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/15/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 9a298a5869d449c974267483eb779f45bc6b7abc
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: b897e81351ebee11c292e67ac76ba8202a6f0108
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure ポータル
 [Azure Portal](http://portal.azure.com/) では、サーバーの作成と削除、サーバー リソースの監視、サイズの変更、サーバーにアクセスできるユーザーの管理を行うことができます。  問題がある場合は、サポート要求を送信することもできます。
 
 ![Azure でサーバー名を取得する](./media/analysis-services-manage/aas-manage-portal.png)
@@ -48,7 +48,7 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
    
     ![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. SSMS の**オブジェクト エクスプローラー**で、**[接続]** > **[Analysis Services]** の順にクリックします。
-3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、**[認証]** で次のいずれかを選びます。
+3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、**[認証]** で次のいずれかの認証の種類を選びます。
    
     **[Windows 認証]**: <Windows ドメイン>\<ユーザー名> とパスワードを資格情報として使います。
 
@@ -59,11 +59,11 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
     ![SSMS で接続する](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>サーバー管理者とデータベース ユーザー
-Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの 2 種類があります。 両方のユーザーが Azure Active Directory に必要で、組織の電子メール アドレスまたは UPN で指定されている必要があります。 これは、Windows ドメイン ユーザー名でサーバー管理者とデータベース ユーザーをサポートする、オンプレミスの表形式モデル データベースとは異なります。 詳細については、「[Azure Analysis Services でのユーザーの管理](analysis-services-manage-users.md)」を参照してください。
+Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの 2 種類があります。 両方のユーザーが Azure Active Directory に必要で、組織の電子メール アドレスまたは UPN で指定されている必要があります。 詳しくは、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」をご覧ください。
 
 
 ## <a name="troubleshooting-connection-problems"></a>接続の問題のトラブルシューティング
-SSMS を使用して接続する際に問題が発生した場合、ログイン キャッシュをクリアすることが必要になることがあります。 ディスクには何もキャッシュされません。 キャッシュをクリアするには、接続プロセスを閉じてからもう一度開始してください。 
+SSMS を使用して接続する際に問題が発生した場合、ログイン キャッシュをクリアすることが必要になることがあります。 ディスクには何もキャッシュされません。キャッシュをクリアするには、接続プロセスを閉じてからもう一度開始してください。 
 
 ## <a name="next-steps"></a>次のステップ
 新しいサーバーに表形式モデルをまだデプロイしていない場合は、ここでやるのが絶好のタイミングです。 詳しくは、「[Azure Analysis Services にデプロイする](analysis-services-deploy.md)」をご覧ください。

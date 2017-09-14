@@ -4,7 +4,7 @@ description: "このドキュメントでは、OMS のセキュリティと監�
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 7d45a32b-1341-4bb5-a436-1f42a8a2590a
 ms.service: operations-management-suite
@@ -13,12 +13,13 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 06/13/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7161cacfd371aa73974e635a343793bbec76d858
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 0cf9b83d7023641ec445a59a5e61d3da038695fa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -83,7 +84,19 @@ OMS のセキュリティと監査ソリューションの **[Threat Intelligenc
 > [!NOTE]
 > インシデントへの対応プロセスでこの機能を使用する方法を示すデモンストレーションについては、Microsoft Ignite のプレゼンテーション「[Mitigate datacenter security threats with guided investigation using Operations Management Suite (Operations Management Suite を使ってガイド付き調査によってデータセンターのセキュリティの脅威を軽減する)](https://myignite.microsoft.com/videos/5000)」をご覧ください。
 > 
-> 
+
+### <a name="responding-to-distinct-malicious-ip-accessed"></a>アクセスした悪意のある個別の IP アドレスへの対応
+シナリオによっては、監視対象コンピューターからアクセスされた潜在的な悪意のある IP に気付くことがあります。
+
+![threat intel map](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+
+このアラートおよび同じカテゴリの他のアラートは、[Microsoft 脅威インテリジェンス](https://youtu.be/O4WtxgUrDc8)を利用して OMS Security によって生成されます。 脅威インテリジェンス データは、Microsoft によって収集されるだけでなく、大手の脅威インテリジェンス プロバイダーから購入されます。 このデータは頻繁に更新され、刻々と進化する脅威に適応されます。 その性質上、セキュリティ アラートを[調査](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)するときは、他のセキュリティ情報ソースと組み合わせる必要があります。 
+
+## <a name="customize-alerts-received-via-e-mail"></a>メールで届くアラートのカスタマイズ
+
+OMS Security によってセキュリティ アラートがトリガーされたときに組織内のどのユーザーに通知するかをカスタマイズすることができます。 このオプションには、OMS ダッシュボードの [概要] の [設定] からアクセスできます。
+
+![電子メール](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig7.png)
 
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、OMS のセキュリティと監査ソリューションの **[Threat Intelligence]** (脅威インテリジェンス) オプションを使用してセキュリティの警告に対応する方法について説明しました。 OMS セキュリティの詳細については、次の記事を参照してください。

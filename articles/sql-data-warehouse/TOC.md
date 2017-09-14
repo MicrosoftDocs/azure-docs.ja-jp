@@ -10,7 +10,7 @@
 ## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
-## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
+
 
 
 # 方法
@@ -50,6 +50,7 @@
 #### [インデックス](sql-data-warehouse-tables-index.md)
 #### [ID](sql-data-warehouse-tables-identity.md)
 #### [パーティション](sql-data-warehouse-tables-partition.md)
+#### [レプリケート テーブル](design-guidance-for-replicated-tables.md)
 #### [統計](sql-data-warehouse-tables-statistics.md)
 #### [一時](sql-data-warehouse-tables-temporary.md)
 
@@ -81,18 +82,22 @@
 
 ## Load
 
-### [概要](sql-data-warehouse-overview-load.md)
-### [サンプル データ](sql-data-warehouse-load-sample-databases.md)
-### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
-### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
-### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
-### [PolyBase ガイダンス](sql-data-warehouse-load-polybase-guide.md)
-### [Blob Storage からの PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [SQL Server からの PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
-### [RedGate](sql-data-warehouse-load-with-redgate.md)
-### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
+### 概念
+#### [概要](sql-data-warehouse-overview-load.md)
+#### [PolyBase ガイダンス](sql-data-warehouse-load-polybase-guide.md)
+
+### チュートリアル
+#### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
+
+### ハウツー ガイド
+#### [サンプル データ](sql-data-warehouse-load-sample-databases.md)
+#### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
+#### [BCP](sql-data-warehouse-load-with-bcp.md)
+#### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
+#### [Blob Storage からの PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+#### [SQL Server からの PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+#### [RedGate](sql-data-warehouse-load-with-redgate.md)
+#### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 
 ## 移行
 
@@ -134,16 +139,22 @@
 # リファレンス
 
 ## [容量制限](sql-data-warehouse-service-capacity-limits.md)
-## [T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)
-## [T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)
-## [T-SQL システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
+## T-SQL
+### [完全なリファレンス](https://docs.microsoft.com/sql/t-sql/language-reference/)
+### [SQL DW 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)
+### [SQL DW ステートメント](sql-data-warehouse-reference-tsql-statements.md)
+## [システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [料金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
-## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
-## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [サポート](sql-data-warehouse-get-started-create-support-ticket.md)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## パートナー

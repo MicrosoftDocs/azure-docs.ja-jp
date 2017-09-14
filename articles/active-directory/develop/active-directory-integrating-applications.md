@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 07/20/2017
 ms.author: lenalepa
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e8cc9b790224891a0770b18fe2edb8e1bbfd5b72
+ms.reviewer: luleon
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3be341bcb897a1481f145825429a1a94dfaae3b0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Azure Active Directory とアプリケーションの統合

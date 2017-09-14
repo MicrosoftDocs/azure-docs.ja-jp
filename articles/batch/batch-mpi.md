@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: 5/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d533dc2c49974f2ce4ef1d1f6dc12e23ec18877f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 77d12d6d48b22dfb3e7f09f273dffc11401bb15f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -96,7 +96,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>リモート ダイレクト メモリ アクセス (RDMA)
-Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。
+Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。
 
 次の記事で、"RDMA 対応" として指定されたサイズを確認してください。
 
@@ -199,7 +199,7 @@ Batch サービスによって、マルチインスタンス タスクで使用�
 ## <a name="resource-files"></a>リソース ファイル
 マルチインスタンス タスクには、考慮すべきリソース ファイルのセットが 2 つあります。"*すべてのタスク*" (プライマリ タスクとサブタスクの両方) でダウンロードされる**共通リソース ファイル**と、マルチインスタンス タスク自体に指定され、"*プライマリ タスクでのみ*" ダウンロードされる**リソース ファイル**です。
 
-タスクのマルチインスタンス設定で 1 つ以上の **共通リソース ファイル** を指定できます。 これらの共通リソース ファイルは、プライマリ タスクとすべてのサブタスクで、[Azure Storage](../storage/storage-introduction.md) から各ノードの**タスク共有ディレクトリ**にダウンロードされます。 タスク共有ディレクトリには、 `AZ_BATCH_TASK_SHARED_DIR` 環境変数を使用して、アプリケーション コマンド ラインと調整コマンド ラインからアクセスできます。 `AZ_BATCH_TASK_SHARED_DIR` パスは、マルチインスタンス タスクに割り当てられたすべてのノードで同じであり、そのため、プライマリ タスクとすべてのサブタスクで 1 つの調整コマンドを共有できます。 Batch は、リモート アクセスという意味ではディレクトリを "共有" しませんが、環境変数に関するヒントとして示したように、マウントまたは共有ポイントとして使用できます。
+タスクのマルチインスタンス設定で 1 つ以上の **共通リソース ファイル** を指定できます。 これらの共通リソース ファイルは、プライマリ タスクとすべてのサブタスクで、[Azure Storage](../storage/common/storage-introduction.md) から各ノードの**タスク共有ディレクトリ**にダウンロードされます。 タスク共有ディレクトリには、 `AZ_BATCH_TASK_SHARED_DIR` 環境変数を使用して、アプリケーション コマンド ラインと調整コマンド ラインからアクセスできます。 `AZ_BATCH_TASK_SHARED_DIR` パスは、マルチインスタンス タスクに割り当てられたすべてのノードで同じであり、そのため、プライマリ タスクとすべてのサブタスクで 1 つの調整コマンドを共有できます。 Batch は、リモート アクセスという意味ではディレクトリを "共有" しませんが、環境変数に関するヒントとして示したように、マウントまたは共有ポイントとして使用できます。
 
 マルチインスタンス タスク自体に指定したリソース ファイルは、既定では、タスクの作業ディレクトリである `AZ_BATCH_TASK_WORKING_DIR` にダウンロードされます。 既に説明したように、共通リソース ファイルとは異なり、マルチインスタンス タスク自体に指定したリソース ファイルは、プライマリ タスクのみがダウンロードします。
 

@@ -4,7 +4,7 @@ description: "Azure の使用制限のしくみと削除方法を説明します
 services: 
 documentationcenter: 
 author: genlin
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing
 ms.service: billing
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: genli
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 39ae134d8927f5123667b64bbd0c659cd5f62ffc
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: a2743ef34bde0faabb3afd2ace27acddd59d3d70
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
@@ -70,3 +70,4 @@ Azure の使用制限とは、Azure サブスクリプションを使用でき�
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+

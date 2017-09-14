@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 05/23/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 42f93a638ea0bb5139063b76b223fd811ba58fb4
-ms.openlocfilehash: 98bf824831f60a70877e8c41f8b60c339df173d6
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 149a493f7b369415f0a2726dd6a576f0195c13d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -81,7 +82,7 @@ SAML プロトコルに基づくフェデレーションを使用して、ユー
 
 1. エンタープライズ アプリから Box アプリを追加します。
 
-2. 次の手順に従って、シングル サインオンを構成します。
+2. 次の順序で、シングル サインオンを構成します。
 
   ![Box のシングル サインオンを構成する](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 

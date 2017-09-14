@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: dd4e4282d774c2c336889b1df887806bfe512c10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 
@@ -731,7 +731,7 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 
 ## <a name="table-action"></a>テーブル アクション
 
-`table` アクションを使用して、アイテムの配列を **CVS** または **HTML** テーブルに変換できます。
+`table` を使用して、アイテムの配列を **CSV** または **HTML** テーブルに変換できます。
 
 @triggerBody() が次であるとします。
 
@@ -761,7 +761,7 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 
 <table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>"
 
-テーブルをカスタマイズするには、列を明示的に指定できます。 次に例を示します。
+テーブルをカスタマイズするには、列を明示的に指定できます。 For example:
 
 ```json
 "ConvertToTable" : {
@@ -789,7 +789,7 @@ Webhook アクションに対する制限は、[HTTP 非同期制限](#asynchron
 |名前|必須|型|Description|
 |--------|------------|--------|---------------|
 |ファイル|はい|array|ソース配列です。|
-|BlobSink の format|はい|String|形式は、**CVS** または **HTML** のいずれかです。|
+|BlobSink の format|はい|String|形式は、**CSV** または **HTML** のいずれかです。|
 |columns|なし|array|列です。 テーブルの既定の図形を上書きできます。|
 |column header|いいえ|String|列のヘッダーです。|
 |column value|はい|String|列の値です。|

@@ -2,24 +2,23 @@
 title: "要求ユニットとスループットの推定 - Azure Cosmos DB | Microsoft Docs"
 description: "Azure Cosmos DB の要求ユニット要件を確認、指定、推定する方法について説明します。"
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
-ms.service: Azure Cosmos DB
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: syamk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f263aaad1ba2a902401d8210727f146cb92f4ea8
+ms.author: mimig
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 7a4efc0fb9b3855b9dbbe445768ceb2a9940d0b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
@@ -30,9 +29,9 @@ Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.c
 ## <a name="introduction"></a>はじめに
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、Microsoft が提供するグローバル分散型のマルチモデル データベースです。 Azure Cosmos DB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。 Microsoft のトップ エンジニアによって運用され、継続的な監視が行われる Azure Cosmos DB は、卓越した可用性、パフォーマンス、データ保護を提供します。 [DocumentDB SQL](documentdb-sql-query.md) (ドキュメント)、MongoDB (ドキュメント)、[Azure Table Storage](https://azure.microsoft.com/services/storage/tables/) (キー値)、[Gremlin](https://tinkerpop.apache.org/gremlin.html) (グラフ) などの API がネイティブにサポートされているため、お好きな API を利用してデータへアクセスできます。 Azure Cosmos DB の通貨は要求ユニット (RU) です。 RU を使用すると、読み取り、書き込み容量の予約や、CPU、メモリ、および IOPS のプロビジョニングが不要です。
 
-Azure Cosmos DB は、読み取り、書き込みから、複雑なグラフのクエリまで、さまざまな操作を行うための API を多数サポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、Azure Cosmos DB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。 
+Azure Cosmos DB は、単純な読み取りと書き込みから複雑なグラフのクエリまで、さまざまな操作を行うための API を多数サポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、Azure Cosmos DB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。 
 
-予測可能性を高めるには、100 RU/秒単位でスループットを予約する必要があります。 100 RU/秒ブロックごとに、1,000 RU/分ブロックを接続することができます。 1 秒あたりのプロビジョニングと 1 分あたりのプロビジョニングを組み合わせると、ピーク時のためのプロビジョニングが不要になるため非常に強力になり、1 秒あたりのプロビジョニングのみで動作しているサービスと比べて最大 75% のコストを節約できます。
+予測可能性を高めるには、100 RU/秒単位でスループットを予約する必要があります。 
 
 この記事を読むと、次の質問に回答できるようになります。  
 
@@ -46,7 +45,7 @@ Azure Cosmos DB はマルチモデル データベースであるため、ドキ
 ## <a name="request-units-and-request-charges"></a>要求ユニットと要求の使用量
 Azure Cosmos DB を使用して、アプリケーションのスループット ニーズを満たすリソースを "*予約*" することで、高速の予測可能なパフォーマンスが得られます。  アプリケーション負荷とアクセス パターンは時間と共に変化するため、Azure Cosmos DB はアプリケーションで利用できる予約済みスループットの量を簡単に増減できる機能を備えています。
 
-Azure Cosmos DB では、1 秒または 1 分 (アドオン) で処理する要求ユニットで、予約済みスループットを指定します。  要求ユニットはスループットの通貨と考えることができます。この通貨によって、アプリケーションで利用できる保証された要求ユニット量を秒単位または分単位で "*予約*" できます。  ドキュメントの作成、クエリの実行、ドキュメントの更新など、Azure Cosmos DB での各操作は、CPU、メモリ、IOPS を消費します。  つまり、それぞれの操作により、"*要求の使用量*" が発生し、それが "*要求ユニット*" で表されます。  アプリケーションのスループット要件と共に、要求ユニット使用量に影響を及ぼす要因を理解しておくと、できるだけコスト効率の高い方法でアプリケーションを実行できます。 また、クエリ エクスプローラーは、クエリの核となる部分をテストできるすばらしいツールでもあります。
+Azure Cosmos DB では、1 秒で処理する要求ユニットで、予約済みスループットを指定します。 要求ユニットはスループットの通貨と考えることができます。この通貨によって、アプリケーションで利用できる保証された要求ユニット量を秒単位で "*予約*" できます。  ドキュメントの作成、クエリの実行、ドキュメントの更新など、Azure Cosmos DB での各操作は、CPU、メモリ、IOPS を消費します。  つまり、それぞれの操作により、"*要求の使用量*" が発生し、それが "*要求ユニット*" で表されます。  アプリケーションのスループット要件と共に、要求ユニット使用量に影響を及ぼす要因を理解しておくと、できるだけコスト効率の高い方法でアプリケーションを実行できます。 また、クエリ エクスプローラーは、クエリの核となる部分をテストできるすばらしいツールでもあります。
 
 まずは以下のビデオを見ることをお勧めします。このビデオでは、Aravind Ramachandran が要求ユニットと Azure Cosmos DB での予測可能なパフォーマンスについて説明しています。
 
@@ -55,7 +54,7 @@ Azure Cosmos DB では、1 秒または 1 分 (アドオン) で処理する要�
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB での要求ユニット量の指定
-新しいコレクション、テーブル、またはグラフを開始するときに、予約する 1 秒あたりの要求ユニット数 (RU/秒) を指定します。 また、1 分あたりの RU を有効にするかどうかを決めることもできます。 有効にすると、1 秒あたりの RU のみを指定したときの 10 倍を取得できます。 プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はコレクションをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
+新しいコレクション、テーブル、またはグラフを開始するときに、予約する 1 秒あたりの要求ユニット数 (RU/秒) を指定します。 プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はコレクションをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
 
 Azure Cosmos DB では、2,500 以上の要求ユニットでコレクションがプロビジョニングされるとき、パーティション キーを指定する必要があります。 パーティション キーは、今後 2,500 要求ユニットを超えてコレクションのスループットをスケーリングするためにも必要です。 したがって、初期のスループットに関係なく、コンテナーの作成時に[パーティション キー](partition-data.md)を構成しておくことを強くお勧めします。 データが複数のパーティションに分割される場合があるため、コレクション/テーブル/グラフと要求が Azure Cosmos DB によって一様にスケールできるように、高基数 (数百から数百万の個別の値) のパーティション キーを選択する必要があります。 
 
@@ -192,7 +191,7 @@ Azure Cosmos DB コンテナー用に予約する要求ユニット数を推定�
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Azure Cosmos DB の "要求の使用量" 応答ヘッダーの使用
-Azure Cosmos DB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (`x-ms-request-charge`) が付きます。 このヘッダーには、DocumentDB SDK を介してアクセスすることもできます。 .NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。  Azure Portal の Azure Cosmos DB クエリ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
+Azure Cosmos DB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (`x-ms-request-charge`) が付きます。 このヘッダーには、Azure Cosmos DB SDK を介してアクセスすることもできます。 .NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。  Azure Portal の Azure Cosmos DB クエリ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
 
 ![Examining RU charges in the Query Explorer][1]
 
@@ -337,7 +336,7 @@ MongoDB データベース用 API の要求ユニットの適切な推定使用�
 この例では、平均スループット要件を 1,275 RU/s と想定しています。  100 の位で丸めて、このアプリケーションのコレクションに 1,300 RU/s をプロビジョニングすることになります。
 
 ## <a id="RequestRateTooLarge"></a> Azure Cosmos DB での予約されたスループット上限の超過
-1 分あたりの要求ユニットが無効になっている場合、または予算が空の場合、要求ユニットの消費は、1 秒あたりのレートとして評価されることを思い出してください。 コンテナーに対してプロビジョニングされた要求ユニット レートをアプリケーションが超過した場合、そのレートが予約されたレベルを下回るまで、コレクションに対する要求は制限されます。 スロットルが発生すると、サーバーはいち早く RequestRateTooLargeException (HTTP 状態コード 429) で要求を終了させ、x-ms-retry-after-ms ヘッダーを返して、ユーザーが要求の試行を再開できるまでに待機しなければならない時間をミリ秒で示します。
+予算が空の場合、要求ユニットの消費は、1 秒あたりのレートとして評価されることを思い出してください。 コンテナーに対してプロビジョニングされた要求ユニット レートをアプリケーションが超過した場合、そのレートが予約されたレベルを下回るまで、コレクションに対する要求は制限されます。 スロットルが発生すると、サーバーはいち早く RequestRateTooLargeException (HTTP 状態コード 429) で要求を終了させ、x-ms-retry-after-ms ヘッダーを返して、ユーザーが要求の試行を再開できるまでに待機しなければならない時間をミリ秒で示します。
 
     HTTP Status 429
     Status Line: RequestRateTooLarge

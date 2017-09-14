@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 08/15/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a3ba385e15510139929735adb5e50b6291846356
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 2b49c01153b1104612e6ebf9c88566fc40d1f635
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>PowerShell を使用した Event Hubs リソースの管理
 
-Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Event Hubs Resource Manager の PowerShell モジュール](/powershell/module/azurerm.eventhub) で、ローカルの Azure PowerShell コンソールまたはスクリプトを使用して Event Hubs エンティティ (名前空間、Event Hubs、およびコンシューマー グループ) をプロビジョニングおよび管理する方法について説明します。
+Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Event Hubs Resource Manager の PowerShell モジュール](/powershell/module/azurerm.eventhub) で、ローカルの Azure PowerShell コンソールまたはスクリプトを使用して Event Hubs エンティティ (名前空間、個々のイベント ハブ、およびコンシューマー グループ) をプロビジョニングおよび管理する方法について説明します。
 
 Azure Resource Manager テンプレートを使用して Event Hubs リソースを管理することもできます。 詳細については、記事「[イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する](event-hubs-resource-manager-namespace-event-hub.md)」を参照してください。
 
@@ -37,7 +37,7 @@ Azure Resource Manager テンプレートを使用して Event Hubs リソース
 
 ## <a name="get-started"></a>作業開始
 
-最初の手順では、PowerShell を使用して、Azure アカウントと Azure サブスクリプションにログインします。 「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/get-started-azureps)」の手順に従って Azure アカウントにログインし、Azure サブスクリプションのリソースを取得してアクセスします。
+最初の手順では、PowerShell を使用して、Azure アカウントと Azure サブスクリプションにログインします。 [「Get started with Azure PowerShell」](/powershell/azure/get-started-azureps) (Azure PowerShell コマンドレットの概要) の手順に従って Azure アカウントにログインし、Azure サブスクリプションのリソースを取得し、アクセスします。
 
 ## <a name="provision-an-event-hubs-namespace"></a>Event Hubs 名前空間のプロビジョニング
 
@@ -78,33 +78,33 @@ Event Hubs の名前空間を使用した操作では、[Get AzureRmEventHubName
     }
     ```
 
-## <a name="create-an-event-hub"></a>Event Hub を作成する
+## <a name="create-an-event-hub"></a>イベント ハブの作成
 
-Event Hub を作成するには、前のセクションのスクリプトを使用して名前空間の確認を実行します。 次に、New-[AzureRmEventHub](/powershell/module/azurerm.eventhub/new-azurermeventhub) コマンドレットを使用して Event Hub を作成します。
+イベント ハブを作成するには、前のセクションのスクリプトを使用して名前空間の確認を実行します。 次に、New-[AzureRmEventHub](/powershell/module/azurerm.eventhub/new-azurermeventhub) コマンドレットを使用してイベント ハブを作成します。
 
 ```powershell
-# Check if Event Hub already exists
+# Check if event hub already exists
 $CurrentEH = Get-AzureRMEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
 
 if($CurrentEH)
 {
-    Write-Host "The Event Hub $EventHubName already exists in the $Location region:"
+    Write-Host "The event hub $EventHubName already exists in the $Location region:"
     # Report what was found
     Get-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
 }
 else
 {
-    Write-Host "The $EventHubName Event Hub does not exist."
-    Write-Host "Creating the $EventHubName Event Hub in the $Location region..."
+    Write-Host "The $EventHubName event hub does not exist."
+    Write-Host "Creating the $EventHubName event hub in the $Location region..."
     New-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -Location $Location -MessageRetentionInDays 3
     $CurrentEH = Get-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
-    Write-Host "The $EventHubName Event Hub in Resource Group $ResGrpName in the $Location region has been successfully created."
+    Write-Host "The $EventHubName event hub in Resource Group $ResGrpName in the $Location region has been successfully created."
 }
 ```
 
 ### <a name="create-a-consumer-group"></a>コンシューマー グループの作成
 
-Event Hub 内でコンシューマー グループを作成するには、前のセクションのスクリプトを使用して名前空間と Event Hub の確認を実行します。 次に、[New-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup) コマンドレットを使用して Event Hub 内でコンシューマー グループを作成します。 For example:
+イベント ハブ内でコンシューマー グループを作成するには、前のセクションのスクリプトを使用して名前空間とイベント ハブの確認を実行します。 次に、[New-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup) コマンドレットを使用して、イベント ハブ内でコンシューマー グループを作成します。 次に例を示します。
 
 ```powershell
 # Check if consumer group already exists
@@ -112,7 +112,7 @@ $CurrentCG = Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -Na
 
 if($CurrentCG)
 {
-    Write-Host "The consumer group $ConsumerGroupName in Event Hub $EventHubName already exists in the $Location region:"
+    Write-Host "The consumer group $ConsumerGroupName in event hub $EventHubName already exists in the $Location region:"
     # Report what was found
     Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
 }
@@ -122,7 +122,7 @@ else
     Write-Host "Creating the $ConsumerGroupName consumer group in the $Location region..."
     New-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -ConsumerGroupName $ConsumerGroupName
     $CurrentCG = Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
-    Write-Host "The $ConsumerGroupName consumer group in Event Hub $EventHubName in Resource Group $ResGrpName in the $Location region has been successfully created."
+    Write-Host "The $ConsumerGroupName consumer group in event hub $EventHubName in Resource Group $ResGrpName in the $Location region has been successfully created."
 }
 ```
 
@@ -138,9 +138,9 @@ Set-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $
 Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -ConsumerGroupName $ConsumerGroupName
 ```
 
-## <a name="remove-event-hub"></a>Event Hub の削除
+## <a name="remove-event-hub"></a>イベント ハブの削除
 
-作成した Event Hubs エンティティを削除するには、`Remove-*` コマンドレットを、次の例のように使用できます。
+作成したイベント ハブを削除するには、`Remove-*` コマンドレットを、次の例のように使用できます。
 
 ```powershell
 # Clean up

@@ -12,7 +12,7 @@ Azure の Windows Server 上で実行される、利用可能な Oracle 仮想�
 * Windows Server 2012 の JDK 6
 
 ## <a name="oracle-linux-virtual-machine-images"></a>Oracle Linux 仮想マシン イメージ
-Azure の Oracle Linux 上で実行される、事前に構成された利用可能な Oracle 仮想マシン イメージの一覧を次に示します。 Oracle のライセンス料には、これらの事前構成された仮想マシン イメージの使用は含まれていません。これらのイメージについて、独自に所有するライセンスを使用しなければなりません。 独自のライセンスを持ち込んで、Windows または Linux のカスタム Virtual Machines に Oracle ソフトウェアをインストールして実行することもできます。 [Azure での Oracle ライセンス](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)の詳細を以下に説明します。 また、[独自のイメージ](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を使用した仮想マシン作成の詳細についても説明します。 これについて、また Oracle や他のワークロードを Azure へ移行する別の方法については、[Windows ベースの仮想マシンを作成するさまざまな方法](../articles/virtual-machines/windows/creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+Azure の Oracle Linux 上で実行される、事前に構成された利用可能な Oracle 仮想マシン イメージの一覧を次に示します。 Oracle のライセンス料には、これらの事前構成された仮想マシン イメージの使用は含まれていません。これらのイメージについて、独自に所有するライセンスを使用しなければなりません。 独自のライセンスを持ち込んで、Windows または Linux のカスタム Virtual Machines に Oracle ソフトウェアをインストールして実行することもできます。 [Azure での Oracle ライセンス](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)の詳細を以下に説明します。 また、[独自のイメージ](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を使用した仮想マシン作成の詳細についても説明します。
 
 * Oracle Database 12c Enterprise Edition on Oracle Linux
 * Oracle Database 12c Standard Edition on Oracle Linux

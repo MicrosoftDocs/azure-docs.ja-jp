@@ -12,27 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 07/10/2017
 ms.author: sngun
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: f659b66e716f5c0d20fbc5d122cd4ca47b077f27
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: cf250a20dee4c7b2a482f940f8c376e1a2af8600
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
 
 # <a name="manage-key-vault-in-azure-stack-using-the-portal"></a>Manage Key Vault in Azure Stack using the portal
 
-Starting in Technical Preview 3 (TP3), you can manage Key Vault in Azure Stack by using the Azure Stack portal. This article helps you get started to create and manage Key Vault in Azure Stack. 
-
->[!NOTE]
-> In TP3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, you should sign in to the user portal to manage key vaults, keys, and secrets.   
+You can manage Key Vault in Azure Stack by using the Azure Stack portal. This article helps you get started to create and manage Key Vault in Azure Stack. 
 
 ## <a name="prerequisites"></a>Prerequisites  
 
-* Azure Stack administrators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
-* Tenants must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
+* Azure Stack operators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
+* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
  
 ## <a name="create-a-key-vault"></a>Create a key vault 
 
@@ -50,13 +47,13 @@ Starting in Technical Preview 3 (TP3), you can manage Key Vault in Azure Stack b
 
 6. Select the **Pricing tier**.  
     >[!NOTE]
-    > At the TP3 release, key vault supports the **Standard** SKU only.
+    > Key vaults in Azure Stack Development Kit support **Standard** SKU only.
 
 7. Choose an existing **Access policies** or create a new one. Access policy allows you to grant permissions for a user, application, or a security group to perform operations with this vault.  
 
 8. Optionally, choose an **Advanced access policy** to enable the features like access to Virtual Machines for deployment, access to Resource Manager for template deployment and access to Azure Disk Encryption for volume encryption. 
   
-9.    After configuring the settings, click **OK** and then **Create**. This starts the key vault deployment. 
+9.  After configuring the settings, click **OK** and then **Create**. This starts the key vault deployment. 
 
 ## <a name="manage-keys-and-secrets"></a>Manage keys and secrets
 

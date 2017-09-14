@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 08/02/2017
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: d00235d788dbe1674eac219a7c708a8ecd53ccc5
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: d876bb1759600fa29a26730bfa8b4ec19db1e442
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>クラシック ポータルで一般的な Azure Backup ジョブを管理してアラートをトリガーする
@@ -32,9 +32,14 @@ ms.lasthandoff: 03/02/2017
 この記事では、Azure で保護されているクラシック モデル仮想マシンの、共通の管理および監視タスクに関する情報を提供します。  
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
 >
+> [!IMPORTANT]
+>2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。
 >
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 10 月 15 日以降は、PowerShell を使って Backup コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
+>- 残っているすべての Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 
 ## <a name="manage-protected-virtual-machines"></a>保護された仮想マシンを管理する
 以下では、保護された仮想マシンを管理する方法を説明します。
@@ -239,7 +244,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 イベント ベースのアラートには、次の制限事項が適用されます。
 
 1. アラートは、バックアップ コンテナー内のすべての仮想マシン上でトリガーされます。 バックアップ コンテナー内の特定の仮想マシンのセットのアラートを取得するようにカスタマイズすることはできません。
-2. この機能はプレビュー段階にあります。 [詳細情報](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
+2. この機能はプレビュー段階にあります。 [詳細情報](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
 3. "alerts-noreply@mail.windowsazure.com" からアラートを受け取ります。 現時点で、電子メールの送信者を変更することはできません。
 
 ## <a name="next-steps"></a>次のステップ

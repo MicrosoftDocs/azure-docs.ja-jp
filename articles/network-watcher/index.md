@@ -1,10 +1,22 @@
 ---
-layout: LandingPage
+title: "Azure Network Watcher のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Network Watcher を使用して、ネットワーク レベルで状態を監視して診断する方法について説明します。"
-translationtype: Human Translation
-ms.sourcegitcommit: 7b51e3df9aa449bb3fdabd28ce80ac9d4fd7a951
-ms.openlocfilehash: 3c390494f5e86eb82a3011b962217798feff5ca2
-ms.lasthandoff: 02/22/2017
+services: network-watcher
+author: czeumault
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: network-watcher
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 897f526801dc94f6f370dfa253f321f7b8f765e9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-network-watcher-documentation"></a>Azure Network Watcher のドキュメント

@@ -1,0 +1,2 @@
+> [!NOTE]
+> "[安全な転送が必須](../articles/storage/common/storage-require-secure-transfer.md)" 機能は、アカウントへのすべての要求が安全な接続を経由することを強制します。 この機能は、HDInsight クラスター バージョン 3.6 以降でのみサポートされます。 詳細については、「[Azure HDInsight の安全な転送のストレージ アカウントで Hadoop クラスターを作成する](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)」を参照してください。

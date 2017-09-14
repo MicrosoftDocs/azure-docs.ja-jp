@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: fed11346e43d460b2def53cd1c0addfe0557d480
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 5d566e7b84723bacf575ade8ea6947cfdaf8b606
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
@@ -91,7 +90,7 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
-        load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 8. 前の手順で作成したデータフレームからのデータは、以下のスニペットで表示できます。
    
@@ -118,7 +117,7 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
 * [HDInsight Linux の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージを使用する](hdinsight-apache-spark-python-package-installation.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 08/03/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 3eb1d4df7ab87ec692716339eb0ecb9df4c58732
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: df0feb51469333bac42c779d860192d46f24ac62
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>SSH を使用して HDInsight (Hadoop) に接続する
@@ -103,7 +102,7 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 
 | 作成方法 | 公開キーの使用方法 |
 | ------- | ------- |
-| **Azure ポータル** | __[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>![HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| **Azure Portal** | __[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>![HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
 | **Azure PowerShell** | `New-AzureRmHdinsightCluster` コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
 | **Azure CLI 1.0** | `azure hdinsight cluster create` コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
 | **Resource Manager テンプレート** | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
@@ -119,7 +118,7 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 
 | 作成方法 | パスワードの指定方法 |
 | --------------- | ---------------- |
-| **Azure ポータル** | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、__[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、__[SSH パスワード]__ フィールドにパスワードを入力します。</br>![HDInsight クラスター作成時の SSH パスワード ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| **Azure Portal** | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、__[クラスター ログインと同じパスワードを使用します]__ チェック ボックスをオフにし、__[SSH パスワード]__ フィールドにパスワードを入力します。</br>![HDInsight クラスター作成時の SSH パスワード ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
 | **Azure PowerShell** | `New-AzureRmHdinsightCluster` コマンドレットの `--SshCredential` パラメーターを使用して、SSH ユーザー アカウントの名前とパスワードを含む `PSCredential` オブジェクトを渡します。 |
 | **Azure CLI 1.0** | `azure hdinsight cluster create` コマンドの `--sshPassword` パラメーターを使用して、パスワードの値を提供します。 |
 | **Resource Manager テンプレート** | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
@@ -134,7 +133,34 @@ __ドメイン参加済み HDInsight クラスター__を使用している場�
 
 詳細については、[ドメイン参加済み HDInsight の構成](hdinsight-domain-joined-configure.md)に関する記事を参照してください。
 
-## <a name="connect-to-worker-and-zookeeper-nodes"></a>ワーカー ノードと Zookeeper ノードに接続する
+## <a name="connect-to-nodes"></a>ノードへの接続
+
+ヘッド ノードとエッジ ノード (存在する場合) には、インターネット経由で、ポート 22 および 23 でアクセスできます。
+
+* __ヘッド ノード__に接続する場合、プライマリ ヘッド ノードに接続するときはポート __22__ を使用し、セカンダリ ヘッド ノードに接続するときはポート __23__ を使用します。 使用する完全修飾ドメイン名は、`clustername-ssh.azurehdinsight.net` です。ここで、`clustername` は実際のクラスターの名前です。
+
+    ```bash
+    # Connect to primary head node
+    # port not specified since 22 is the default
+    ssh sshuser@clustername-ssh.azurehdinsight.net
+
+    # Connect to secondary head node
+    ssh -p 23 sshuser@clustername-ssh.azurehdinsight.net
+    ```
+    
+* __エッジ ノード__に接続するときは、ポート 22 を使用します。 完全修飾ドメイン名は、`edgenodename.clustername-ssh.azurehdinsight.net` です。ここで、`edgenodename` は、エッジ ノードを作成したときに指定した名前です。 `clustername` は、クラスターの名前です。
+
+    ```bash
+    # Connect to edge node
+    ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
+    ```
+
+> [!IMPORTANT]
+> 前の例では、パスワード認証が使用されていること、または証明書認証が自動的に行われていることを前提としています。 認証に SSH キー ペアを使用していて、証明書が自動的に使用されない場合は、`-i` パラメーターを使用して秘密キーを指定します。 たとえば、「`ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`」のように入力します。
+
+接続後はプロンプトが変更され、SSH ユーザー名と接続先ノードが示されます。 たとえば、プライマリ ヘッド ノードに `sshuser` として接続されている場合、プロンプトは `sshuser@hn0-clustername:~$` になります。
+
+### <a name="connect-to-worker-and-zookeeper-nodes"></a>ワーカー ノードと Zookeeper ノードに接続する
 
 worker ノードと Zookeeper ノードには、インターネットから直接アクセスすることはできません。 これらのノードには、クラスターのヘッド ノードまたはエッジ ノードからアクセスできます。 他のノードに接続するための一般的な手順は次のとおりです。
 
@@ -188,6 +214,33 @@ SSH アカウントが __SSH キー__を使用してセキュリティで保護�
     秘密キーを別のファイルに格納している場合は、 `~/.ssh/id_rsa` をそのファイルのパスに置き換えます。
 
 5. SSH を使用して、クラスターのエッジ ノードまたはヘッド ノードに接続します。 次に、SSH コマンドを使用して、ワーカー ノードまたは Zookeeper ノードに接続します。 転送されたキーを使用して、接続が確立します。
+
+## <a name="copy-files"></a>ファイルのコピー
+
+`scp` ユーティリティを使用すると、クラスター内の個々のノード間でファイルをコピーできます。 たとえば、次のコマンドは、ローカル システムの `test.txt` ディレクトリをプライマリ ヘッド ノードにコピーします。
+
+```bash
+scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
+```
+
+`:` の後にパスが指定されていないため、ファイルは `sshuser` ホーム ディレクトリに配置されます。
+
+次の例は、`test.txt` ファイルをプライマリ ヘッド ノードの `sshuser` ホーム ディレクトリからローカル システムにコピーします。
+
+```bash
+scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
+```
+
+> [!IMPORTANT]
+> `scp` は、クラスター内の個々のノードのファイル システムだけにアクセスできます。 クラスターの HDFS と互換性のあるストレージ内のデータにアクセスするために使用することはできません。
+>
+> SSH セッションから使用するためのリソースをアップロードする必要がある場合は、`scp` を使用します。 たとえば、Python スクリプトをアップロードし、SSH セッションからスクリプトを実行します。
+>
+> HDFS と互換性のあるストレージに直接データを読み込む方法の詳細については、以下のドキュメントを参照してください。
+>
+> * [Azure Storage を使用する HDInsight](hdinsight-hadoop-use-blob-storage.md)
+>
+> * [Azure Data Lake Store を使用する HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="next-steps"></a>次のステップ
 

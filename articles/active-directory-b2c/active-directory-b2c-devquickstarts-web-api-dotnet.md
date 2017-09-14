@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 7610ae44d8c9b828fb46333b143d7b1f6dc915eb
-ms.lasthandoff: 05/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: .NET Web アプリから .NET Web API を呼び出す
@@ -36,9 +36,9 @@ Web API を呼び出す Web アプリケーションを構築するには、次�
 
 1. [Azure AD B2C テナントを作成](active-directory-b2c-get-started.md)します。
 2. [Web API を登録](active-directory-b2c-app-registration.md#register-a-web-api)します。
-3. [Web アプリを登録](active-directory-b2c-app-registration.md#register-a-web-application)します。
+3. [Web アプリを登録](active-directory-b2c-app-registration.md#register-a-web-app)します。
 4. [ポリシーを設定](active-directory-b2c-reference-policies.md)します。
-5. [Web API を使用するためのアクセス許可を Web アプリに付与](active-directory-b2c-access-tokens.md#granting-permissions-to-a-web-api)します。
+5. [Web API を使用するためのアクセス許可を Web アプリに付与](active-directory-b2c-access-tokens.md#publishing-permissions)します。
 
 > [!IMPORTANT]
 > クライアント アプリケーションと Web API は、同じ Azure AD B2C ディレクトリを使用する必要があります。

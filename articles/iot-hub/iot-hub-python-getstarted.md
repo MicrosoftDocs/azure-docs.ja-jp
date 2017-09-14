@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub の使用 (Python) | Microsoft Docs"
-description: "この記事では、Azure IoT SDK for Python を使用して、シミュレートされたデバイスから Azure IoT ハブにメッセージを送信する方法について説明します。"
+description: "IoT SDK for Python を使用して Azure IoT Hub にデバイスからクラウドへのメッセージを送信する方法について説明します。 デバイスを登録し、メッセージを送信して、IoT ハブからメッセージを読み取るために、シミュレートされたデバイスとサービス アプリを作成します。"
 services: iot-hub
 author: dsk-2015
 manager: timlt
@@ -10,15 +10,14 @@ ms.devlang: python
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/22/2017
+ms.date: 08/25/2017
 ms.author: dkshir
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 572dfc8965957c4667d4124b045ffbb835786a94
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f0800b70620106f9ae9d19d63b60b726835e338f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Python を使用してシミュレートされたデバイスを IoT ハブに接続する
@@ -78,6 +77,8 @@ IoT Hub の作成は以上です。 以降の作業で IoT Hub ホスト名と I
     CONNECTION_STRING = "[IoTHub Connection String]"
     DEVICE_ID = "MyFirstPythonDevice"
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 3. いくつかのデバイス情報を出力する次の関数を追加します。
 
     ```python

@@ -1,12 +1,11 @@
 ---
-
 title: "Azure Portal を使用したストリーミング エンドポイントの管理 | Microsoft Docs"
 description: "このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。"
 services: media-services
 documentationcenter: 
 author: Juliako
 writer: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: bb1aca25-d23a-4520-8c45-44ef3ecd5371
 ms.service: media-services
@@ -14,13 +13,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 80ba024cd219b10bce8d88c9f11fd2d14d4ed34f
 ms.openlocfilehash: 223fee8930b1aebff94eddaeb82b5c0e364e067c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 
@@ -63,7 +62,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
     ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a name="a-idconfigurestreamingendpointsaconfiguring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
+## <a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 ストリーミング エンドポイントでは、次のプロパティを構成できます。
 
 * Access control
@@ -82,14 +81,14 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. [Maximum cache policy (最大キャッシュ ポリシー)]: このストリーミング エンドポイントから提供されるアセットのキャッシュの有効期間を構成するために使用します。 値を設定しない場合は、既定値が使用されます。 既定値は Azure ストレージで直接定義することもできます。 ストリーミング エンドポイントで Azure CDN を有効にする場合、キャッシュ ポリシーの値は 600 秒以上に設定してください。  
-2. [Allowed IP addresses (使用できる IP アドレス)]: 公開されているストリーミング エンドポイントへの接続を許可する IP アドレスを指定するために使用します。 IP アドレスが指定されていない場合、どの IP アドレスでも接続できます。 IP アドレスは、1 つの IP アドレス (例: ‘10.0.0.1’)、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1/22’)、IP アドレスとピリオドで区切られた&10; 進数のサブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1(255.255.255.0)’) のいずれかの形で指定できます。
+2. [Allowed IP addresses (使用できる IP アドレス)]: 公開されているストリーミング エンドポイントへの接続を許可する IP アドレスを指定するために使用します。 IP アドレスが指定されていない場合、どの IP アドレスでも接続できます。 IP アドレスは、1 つの IP アドレス (例: ‘10.0.0.1’)、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1/22’)、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1(255.255.255.0)’) のいずれかの形で指定できます。
 3. [Configuration for Akamai signature header authentication (Akamai 署名ヘッダー認証の構成)]: Akamai サーバーからの署名ヘッダー認証要求を構成する方法 を指定するために使用します。 有効期限は UTC 時間で指定します。
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを拡張する
 
 詳細については、 [こちらの](media-services-portal-scale-streaming-endpoints.md) トピックを参照してください。
 
-## <a name="a-idenablecdnaenable-azure-cdn-integration"></a><a id="enable_cdn"></a>Azure CDN 統合を有効にする
+## <a id="enable_cdn"></a>Azure CDN 統合を有効にする
 
 新しいアカウントを作成すると、既定のストリーミング エンドポイント Azure CDN 統合が既定で有効になります。
 

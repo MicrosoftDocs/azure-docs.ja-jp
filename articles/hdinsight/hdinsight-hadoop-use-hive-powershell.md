@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Hive と PowerShell の使用 | Microsoft Docs"
+title: "HDInsight での Hadoop Hive と PowerShell の使用 - Azure | Microsoft Docs"
 description: "PowerShell を使用して、HDInsight での Hadoop で Hive クエリを実行します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 897358e87937f9094d312cc88f630c81e7d46f4f
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: e1cb2e4a1fc82fb43082e79a5feba71b81b3eaa8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="run-hive-queries-using-powershell"></a>PowerShell を使用して Hive クエリを実行
@@ -37,7 +36,7 @@ ms.lasthandoff: 05/18/2017
 * **Azure HDInsight クラスター**: クラスターが Windows ベースか Linux ベースかは関係ありません。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
 
@@ -87,9 +86,9 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]
-   > より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。 次のスニペットでは、 **Invoke-Hive** コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。 HiveQL スクリプト ファイルは、wasbs:// にアップロードする必要があります。
+   > より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。 次のスニペットでは、 **Invoke-Hive** コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。 HiveQL スクリプト ファイルは、wasb:// にアップロードする必要があります。
    >
-   > `Invoke-AzureRmHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > **Here-Strings** の詳細については、<a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>に関するページをご覧ください。
 

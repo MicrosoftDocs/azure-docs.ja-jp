@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 05/29/2017
 ms.author: v-jysur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 283ae010aafe309bb09f7c49248b61717cb56dd0
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e4f2e0a23aa52a0e02e7047916b77fb15107defa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>ITSM 製品/サービスを IT Service Management Connector に追加する (プレビュー)
@@ -41,7 +41,7 @@ ms.lasthandoff: 04/28/2017
 - IT Service Management Connector がインストールされている。
 詳細については、「[構成](log-analytics-itsmc-overview.md#configuration)」をご覧ください。
 - Service Manager Web アプリケーション (Web アプリ) がデプロイされ構成されている。 Web アプリに関する情報については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
-- ハイブリッド接続が作成および構成されている。 詳細については、「[ハイブリッド接続の構成](#configure-the-hybrid-connector-role)」をご覧ください。
+- ハイブリッド接続が作成および構成されている。 詳細については、「[ハイブリッド接続の構成](#configure-the-hybrid-connection)」をご覧ください。
 - サポートされている Service Manager のバージョン (2012 R2 または 2016) を使用している。
 - ユーザー ロールが[上級オペレーター](https://technet.microsoft.com/library/ff461054.aspx)である。
 
@@ -95,9 +95,8 @@ System Center Service Manager インスタンスを IT Service Management Connec
 - リソース グループ名
 - 場所
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名とパスワード)
-- デプロイ先の URL
-- Web アプリのサイト名
-- BizTalk サービス名。
+- Web アプリのサイト名のプレフィックス
+- ServiceBus 名前空間。
 
 スクリプトによって、指定した名前で (一意の名前にするために文字列をいくつか追加して) Web アプリが作成されます。 また、スクリプトによって、**Web アプリの URL**、**クライアント ID**、**クライアント シークレット**が生成されます。
 
@@ -111,7 +110,7 @@ System Center Service Manager インスタンスを IT Service Management Connec
 
 ### <a name="configure-the-hybrid-connection"></a>ハイブリッド接続の構成
 
-Service Manager インスタンスを OMS の IT Service Management Connector に接続する役割のハイブリッド コネクタ ロールを接続するには、次の手順に従います。
+Service Manager インスタンスを OMS の IT Service Management Connector に接続するハイブリッド接続を構成するには、次の手順に従います。
 
 1. **[Azure リソース]** の下にある Service Manager Web アプリを見つけます。
 2. **[設定]** > **[ネットワーク]** の順にクリックします。
@@ -150,9 +149,9 @@ Service Manager インスタンスを OMS の IT Service Management Connector �
 
 1. **[ハイブリッド接続]** ブレードで、**[接続マネージャーのダウンロード]** をクリックし、System Center Service Manager インスタンスが実行中のコンピューターに接続マネージャーをインストールします。
 
-    インストールが完了すると、**[開始]** メニューにある **[Hybrid Connection Manager UI] (ハイブリッド接続マネージャー UI)** オプションが使用可能になります。
+    インストールが完了すると、**[開始]** メニューにある **[Hybrid Connection Manager UI] \(ハイブリッド接続マネージャー UI)** オプションが使用可能になります。
 
-2. **[Hybrid Connection Manager UI] (ハイブリッド接続マネージャー UI)** をクリックすると、Azure の資格情報の入力を求められます。
+2. **[Hybrid Connection Manager UI] \(ハイブリッド接続マネージャー UI)** をクリックすると、Azure の資格情報の入力を求められます。
 
 3. Azure の資格情報でログインし、ハイブリッド接続を作成したサブスクリプションを選択します。
 
@@ -178,10 +177,12 @@ Service Manager インスタンスを OMS の IT Service Management Connector �
 以下の前提条件を満たしていることを確認してください。
 
 - IT Service Management Connector がインストールされている。 詳細については、「[構成](log-analytics-itsmc-overview.md#configuration)」をご覧ください。
-- ServiceNow 製品のクライアント ID とクライアント シークレットが生成されており、使用可能である。  クライアント ID とシークレットを生成する方法については、「[OAuth Setup (OAuth のセットアップ)](http://wiki.servicenow.com/index.php?title=OAuth_Setup)」をご覧ください。
 - ServiceNow のバージョンがサポートされている ( Fuji、Geneva、Helsinki)。
-- Microsoft OMS 統合 のユーザー アプリ (ServiceNow アプリ) がインストールされており、統合ユーザー ロールが構成されている。 [詳細情報](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )。
-- ユーザー ロールが統合ユーザー ロールである。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。
+
+ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。
+- ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、「[OAuth Setup (OAuth のセットアップ)](http://wiki.servicenow.com/index.php?title=OAuth_Setup)」をご覧ください。
+- Microsoft OMS 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細情報](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )
+- インストールしたユーザー アプリの統合ユーザー ロールを作成します。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。
 
 
 ### <a name="connection-procedure"></a>**接続手順**
@@ -224,14 +225,14 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 次の手順に従います。
 
-1.    [ServiceNow ストア](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0)にアクセスし、**ServiceNow と Microsoft OMS 統合のユーザー アプリ**を ServiceNow インスタンスにインストールします。
-2.    インストール後に、ServiceNow インスタンスの左側のナビゲーション バーで、Microsoft OMS インテグレーターを検索し選択します。  
-3.    **[Installation Checklist] (インストールのチェックリスト)** をクリックします。
+1.  [ServiceNow ストア](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0)にアクセスし、**ServiceNow と Microsoft OMS 統合のユーザー アプリ**を ServiceNow インスタンスにインストールします。
+2.  インストール後に、ServiceNow インスタンスの左側のナビゲーション バーで、Microsoft OMS インテグレーターを検索し選択します。  
+3.  **[Installation Checklist] \(インストールのチェックリスト)** をクリックします。
 
     ユーザー ロールがまだ作成されていない場合は、**[完了していません]** と表示されます。
 
-4.    **[Create integration user] (統合ユーザーの作成)** の横にあるテキスト ボックスに、OMS の IT Service Management Connector に接続できるユーザーのユーザー名を入力します。
-5.    このユーザーのパスワードを入力し、**[OK]** をクリックします。  
+4.  **[Create integration user]\(統合ユーザーの作成\)** の横にあるテキスト ボックスに、OMS の IT Service Management Connector に接続できるユーザーのユーザー名を入力します。
+5.  このユーザーのパスワードを入力し、**[OK]** をクリックします。  
 
 >[!NOTE]
 
@@ -242,12 +243,12 @@ ServiceNow 接続を作成するには、次の手順に従います。
 既定のロール:
 - personalize_choices
 - import_transformer
--     x_mioms_microsoft.user
--     itil
--     template_editor
--     view_changer
+-   x_mioms_microsoft.user
+-   itil
+-   template_editor
+-   view_changer
 
-ユーザーが正常に作成されると、**[Check Installation Checklist] (インストールのチェックリストの確認)** のステータスが [完了] に移行し、そのアプリ用に作成したユーザー ロールの詳細が一覧表示されます。
+ユーザーが正常に作成されると、**[Check Installation Checklist] \(インストールのチェックリストの確認)** のステータスが [完了] に移行し、そのアプリ用に作成したユーザー ロールの詳細が一覧表示されます。
 
 > [!NOTE]
 
@@ -354,8 +355,8 @@ Cherwell 接続を作成するには、次の手順に従います。
 Cherwell のクライアント ID とキーを生成するには、次の手順に従います。
 
 1. Cherwell インスタンスに管理者としてログインします。
-2. **[セキュリティ]** > **[Edit REST API client settings] (REST API クライアント設定の編集)** の順にクリックします。
-3. **[Create new client] (クライアントの新規作成)** > **[クライアント シークレット]** の順に選択します。
+2. **[セキュリティ]** > **[Edit REST API client settings] \(REST API クライアント設定の編集)** の順にクリックします。
+3. **[Create new client] \(クライアントの新規作成)** > **[クライアント シークレット]** の順に選択します。
 
     ![Cherwell ユーザー ID](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
 

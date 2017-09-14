@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e6efa8c05c51b0438912738c3c5fcad4bc12b8f4
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 27ab2084cdb6506cbb807fc9c35b0e67630ad85f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights ポータルのナビゲーションおよびダッシュボード
@@ -64,7 +63,7 @@ ms.lasthandoff: 04/13/2017
 * 24 時間を超える時間範囲: (時間範囲)/60
 
 ### <a name="pin-any-query-in-analytics"></a>Analytics の任意のクエリをピン留めする
-[共有](#share-dashboards-with-your-team)ダッシュボードに [Analytics のグラフをピン留め](app-insights-analytics-using.md#pin-to-dashboard)することもできます。 これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。 (この機能は課金対象です。)
+[共有](#share-dashboards-with-your-team)ダッシュボードに [Analytics のグラフをピン留め](app-insights-analytics-using.md#pin-to-dashboard)することもできます。 これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。 
 
 結果は 1 時間ごとに自動的に再計算されます。 すぐに再計算するには、グラフ上の更新アイコンをクリックします。 (ブラウザーを更新しても再計算は実行されません)。
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 04/07/2017
 ms.author: sethm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 75dbbff8e666ed6c9b11fcfc1aa5be0eb759a0bb
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
-
 
 ---
 # <a name="create-applications-that-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する

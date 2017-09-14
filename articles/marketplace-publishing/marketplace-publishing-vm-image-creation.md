@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f18b8ef62c82e2b307173971a7251a3aa8f84d69
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 8f87f2c0caccded5b0f24052deee6cefaad08013
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
@@ -298,9 +298,9 @@ Linux または Windows ベースの VM イメージに適したオプション�
 Azure Marketplace の VHD を共有する複数の方法で、SAS URL を生成できます。
 以下は、3 つの推奨されるツールです。
 
-1.    Azure ストレージ エクスプローラー
-2.    Microsoft Storage Explorer
-3.    Azure CLI
+1.  Azure ストレージ エクスプローラー
+2.  Microsoft Storage Explorer
+3.  Azure CLI
 
 **Azure Storage Explorer (Windows ユーザーに推奨)**
 
@@ -331,15 +331,15 @@ Azure Storage Explorer を使用して SAS URL を生成するための手順を
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_06.png)
 
-8.    コンテナーで .vhd ファイルを選択した後、 **[セキュリティ]** タブをクリックします。
+8.  コンテナーで .vhd ファイルを選択した後、 **[セキュリティ]** タブをクリックします。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_07.png)
 
-9.    **[BLOB コンテナーのセキュリティ]** ダイアログ ボックスで、**[アクセス レベル]** タブの既定の設定はそのままにして、**[Shared Access Signature]** タブをクリックします。
+9.  **[BLOB コンテナーのセキュリティ]** ダイアログ ボックスで、**[アクセス レベル]** タブの既定の設定はそのままにして、**[Shared Access Signature]** タブをクリックします。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_08.png)
 
-10.    次の手順に従って、.vhd イメージの Shared Access Signature URI を生成します。
+10. 次の手順に従って、.vhd イメージの Shared Access Signature URI を生成します。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
@@ -355,50 +355,50 @@ Azure Storage Explorer を使用して SAS URL を生成するための手順を
 
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[このコンテナーの生成された Shared Access Signature URI]** で、上の図で強調表示されている部分について以下をチェックします。
 
-        - イメージ ファイル名および **".vhd"** が URI に含まれることを確認します。
-        - 署名の末尾に **"=rl"** があることを確認します。 これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
-        - 署名の一部に **"sr=c"** があることを確認します。 これは、コンテナー レベルのアクセスがあることを示します。
+       - イメージ ファイル名および **".vhd"** が URI に含まれることを確認します。
+       - 署名の末尾に **"=rl"** があることを確認します。 これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
+       - 署名の一部に **"sr=c"** があることを確認します。 これは、コンテナー レベルのアクセスがあることを示します。
 
-11.    生成された Shared Access Signature URI が動作することを確認するには、**[ブラウザーでテスト]** をクリックします。 ダウンロード プロセスが開始します。
+11. 生成された Shared Access Signature URI が動作することを確認するには、**[ブラウザーでテスト]** をクリックします。 ダウンロード プロセスが開始します。
 
-12.    Shared Access Signature URI をコピーします。 この URI を発行ポータルに貼り付けます。
+12. Shared Access Signature URI をコピーします。 この URI を発行ポータルに貼り付けます。
 
-13.    SKU 内の各 VHD に対して手順 6 ～ 10 を繰り返します。
+13. SKU 内の各 VHD に対して手順 6 ～ 10 を繰り返します。
 
 **Microsoft Azure Storage Explorer (Windows/MAC/Linux)**
 
 Microsoft Azure Storage Explorer を使用して SAS URL を生成するための手順を次に示します。
 
-1.    Microsoft Azure Storage Explorer を [http://storageexplorer.com/](http://storageexplorer.com/) Web サイトからダウンロードします。 [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) にアクセスして、**[Download for Windows]** (Windows 向けダウンロード) をクリックします。
+1.  Microsoft Azure Storage Explorer を [http://storageexplorer.com/](http://storageexplorer.com/) Web サイトからダウンロードします。 [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) にアクセスして、**[Download for Windows]** (Windows 向けダウンロード) をクリックします。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
-2.    インストールした後、アプリケーションを開きます。
+2.  インストールした後、アプリケーションを開きます。
 
-3.    **[アカウントの追加]**をクリックします。
+3.  **[アカウントの追加]**をクリックします。
 
-4.    自分のアカウントにサインインして、サブスクリプションに Microsoft Azure Storage Explorer を構成します。
+4.  自分のアカウントにサインインして、サブスクリプションに Microsoft Azure Storage Explorer を構成します。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
-5.    ストレージ アカウントに移動し、コンテナーを選択します。
+5.  ストレージ アカウントに移動し、コンテナーを選択します。
 
-6.    <seg>
+6.  <seg>
   **[Get Shared Access Signature..]** (Shared Access Signature の取得..) を選択します。</seg> **コンテナー**の右クリックを使用
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
-7.    [開始時刻]、[有効期限]、および [アクセス許可] を次のように更新します。
+7.  [開始時刻]、[有効期限]、および [アクセス許可] を次のように更新します。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.    **[開始時刻]:** UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
+    a.  **[開始時刻]:** UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
 
-    b.    **[有効期限]:** **[開始時刻]** の日付から少なくとも 3 週間後の日付を選択します。
+    b.  **[有効期限]:** **[開始時刻]** の日付から少なくとも 3 週間後の日付を選択します。
 
-    c.    **[アクセス許可]:** **[一覧]** および **[読み取り]** アクセス許可を選択します。
+    c.  **[アクセス許可]:** **[一覧]** および **[読み取り]** アクセス許可を選択します。
 
-8.    コンテナーの Shared Access Signature URI のコピー
+8.  コンテナーの Shared Access Signature URI のコピー
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_14.png)
 
@@ -418,21 +418,21 @@ Microsoft Azure Storage Explorer を使用して SAS URL を生成するため�
     - 署名の一部に **"sp=rl"** があることを確認します。 これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
     - 署名の一部に **"sr=c"** があることを確認します。 これは、コンテナー レベルのアクセスがあることを示します。
 
-9.    生成された Shared Access Signature URI が動作することを確認するために、ブラウザーでテストします。 ダウンロード プロセスが開始します。
+9.  生成された Shared Access Signature URI が動作することを確認するために、ブラウザーでテストします。 ダウンロード プロセスが開始します。
 
-10.    Shared Access Signature URI をコピーします。 この URI を発行ポータルに貼り付けます。
+10. Shared Access Signature URI をコピーします。 この URI を発行ポータルに貼り付けます。
 
-11.    SKU 内の各 VHD に対してこれらのステップを繰り返します。
+11. SKU 内の各 VHD に対してこれらのステップを繰り返します。
 
 **Azure CLI (非 Windows と継続的インテグレーションに推奨)**
 
 Azure CLI を使用して SAS URL を生成するための手順を次に示します。
 
-1.    Microsoft Azure CLI を[ここ](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)からダウンロードします。 **[Windows](http://aka.ms/webpi-azure-cli)** 向けと **[MAC OS](http://aka.ms/mac-azure-cli)** 向けのリンクがあります。
+1.  Microsoft Azure CLI を[ここ](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)からダウンロードします。 **[Windows](http://aka.ms/webpi-azure-cli)** 向けと **[MAC OS](http://aka.ms/mac-azure-cli)** 向けのリンクがあります。
 
-2.    ダウンロードしたら、インストールしてください。
+2.  ダウンロードしたら、インストールしてください。
 
-3.    次のコードで PowerShell ファイルを作成し、ローカルに保存します。
+3.  次のコードで PowerShell ファイルを作成し、ローカルに保存します。
 
           $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
           azure storage container list vhds -c $conn
@@ -454,21 +454,21 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
           azure storage container list vhds -c $conn
           azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
 
-4.    "管理者として実行" モードで Powershell エディターを開き、手順 3 のファイルを開きます。
+4.  "管理者として実行" モードで Powershell エディターを開き、手順 3 のファイルを開きます。
 
-5.    スクリプトを実行すると、コンテナー レベル アクセスのための SAS URL が生成されます。
+5.  スクリプトを実行すると、コンテナー レベル アクセスのための SAS URL が生成されます。
 
     SAS 署名の出力は次のようになります。メモ帳に強調表示されている部分をコピーします。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
 
-6.    コンテナー レベルの SAS URL を取得したところで、VHD の名前を追加する必要があります。
+6.  コンテナー レベルの SAS URL を取得したところで、VHD の名前を追加する必要があります。
 
     コンテナー レベルの SAS URL #
 
     `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-7.    次に示すように SAS URL のコンテナー名の後に VHD 名を挿入します。`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+7.  次に示すように SAS URL のコンテナー名の後に VHD 名を挿入します。`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     例:
 
@@ -477,14 +477,14 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     - イメージ ファイル名および ".vhd" が URI に含まれることを確認します。
-    -    署名の一部に "sp=rl" があることを確認します。 これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
-    -    署名の一部に "sr=c" があることを確認します。 これは、コンテナー レベルのアクセスがあることを示します。
+    -   署名の一部に "sp=rl" があることを確認します。 これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
+    -   署名の一部に "sr=c" があることを確認します。 これは、コンテナー レベルのアクセスがあることを示します。
 
-8.    生成された Shared Access Signature URI が動作することを確認するために、ブラウザーでテストします。 ダウンロード プロセスが開始します。
+8.  生成された Shared Access Signature URI が動作することを確認するために、ブラウザーでテストします。 ダウンロード プロセスが開始します。
 
-9.    Shared Access Signature URI をコピーします。 この URI を発行ポータルに貼り付けます。
+9.  Shared Access Signature URI をコピーします。 この URI を発行ポータルに貼り付けます。
 
-10.    SKU 内の各 VHD に対してこれらのステップを繰り返します。
+10. SKU 内の各 VHD に対してこれらのステップを繰り返します。
 
 
 ### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 VM イメージに関する情報の指定と発行ポータルでの証明書の要求
@@ -547,8 +547,8 @@ SKU の詳細について入力が完了したら、[Azure Marketplace のマー
 [link-pushstaging]:marketplace-publishing-push-to-staging.md
 [link-github-waagent]:https://github.com/Azure/WALinuxAgent
 [link-azure-codeplex]:https://azurestorageexplorer.codeplex.com/
-[link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2.md
-[link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1.md
+[link-azure-2]:../storage/blobs/storage-dotnet-shared-access-signature-part-2.md
+[link-azure-1]:../storage/common/storage-dotnet-shared-access-signature-part-1.md
 [link-msft-download]:http://www.microsoft.com/download/details.aspx?id=44299
 [link-technet-3]:https://technet.microsoft.com/library/hh846766.aspx
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx

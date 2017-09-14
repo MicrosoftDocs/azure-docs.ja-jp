@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/22/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 90c4cd42aa9dcef2cda4ec66e64393bf474b6a60
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2cf955b52010869a4e753c441e17bdd32fd2e63d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
@@ -71,7 +70,7 @@ Azure Storage を Azure Data Factory にリンクするときに使用できる�
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
-Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS 準拠の .NET ベースの型値をサポートしています。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
+Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS に準拠している .NET ベースの型値をサポートしています。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
 
 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 **AzureBlob** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
@@ -168,7 +167,7 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースのスキ�
 Azure Blob Storage との間でデータをすばやくコピーする方法を確認してみましょう。 このチュートリアルでは、コピー元データ ストアとコピー先データ ストアの両方の種類が Azure Blob Storage です。 このチュートリアルのパイプラインは、同じ BLOB コンテナー内のフォルダー間でデータをコピーします。 ここではチュートリアルを意図的にシンプルにして、Blob Storage をコピー元またはシンクとして使用するときの設定とプロパティを示しています。 
 
 ### <a name="prerequisites"></a>前提条件
-1. 汎用 **Azure ストレージ アカウント**を作成します (お持ちでない場合)。 このチュートリアルでは、**コピー元**データ ストアおよび**コピー先データ ストア**として Blob Storage を使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+1. 汎用 **Azure ストレージ アカウント**を作成します (お持ちでない場合)。 このチュートリアルでは、**コピー元**データ ストアおよび**コピー先データ ストア**として Blob Storage を使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
 2. ストレージ アカウントに **adfblobconnector** という名前の BLOB コンテナーを作成します。 
 4. **adfblobconnector** コンテナーに **input** という名前のフォルダーを作成します。
 5. 次のコンテンツを含む **emp.txt** という名前のファイルを作成し、[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使って、**input** フォルダーにアップロードします
@@ -223,16 +222,16 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     5. **[次へ]**をクリックします。
     ![コピー ツール - 入力ファイルまたはフォルダーの選択](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 
-    1. **[ファイル形式]** が **[テキスト形式]** に設定されていることを確認します。 ドロップダウン リストには、サポートされているすべての形式が表示されます。 例: JSON、Avro、ORC、Parquet。 
-    2. **[列区切り記号]** が `Comma (,)` に設定されていることを確認します。 ドロップダウン リストには、Data Factory でサポートされているその他の列区切り記号が表示されます。 また、独自の区切り記号を指定することもできます。 
-    3. **[行区切り記号]** が `Carriage Return + Line feed (\r\n)` に設定されていることを確認します。 ドロップダウン リストには、Data Factory でサポートされているその他の行区切り記号が表示されます。 また、独自の区切り記号を指定することもできます。 
-    4. **[skip line count (スキップ行数)]** が **0** に設定されていることを確認します。 ファイルの先頭で行をスキップする場合は、ここにその行数を入力します。 
-    5. **[The first data row contains column names (先頭データ行に列名を使用する)]** が設定されていないことを確認します。 コピー元ファイルの先頭行に列名が使用されている場合は、このオプションを選択します。 
-    6. **[Treat empty column value as null (空の列の値を null として処理する)]** オプションが設定されていることを確認します。 
-    7. **[詳細設定]** を展開して、利用可能な詳細オプションを表示します。 
-    8. ページの下部で、emp.txt ファイルのデータの**プレビュー**を確認します。 
-    9. 下部の **[スキーマ]** タブをクリックし、コピー元ファイルのデータからコピー ウィザードが推測したスキーマを確認します。 
-    10. 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。
+    1. 次のオプションを選択します。a.  **[ファイル形式]** を **[テキスト形式]** に設定します。 ドロップダウン リストには、サポートされているすべての形式が表示されます。 例: JSON、Avro、ORC、Parquet。
+        b. **[列区切り記号]** を `Comma (,)` に設定します。 ドロップダウン リストには、Data Factory でサポートされているその他の列区切り記号が表示されます。 また、独自の区切り記号を指定することもできます。
+        c. **[行区切り記号]** を `Carriage Return + Line feed (\r\n)` に設定します。 ドロップダウン リストには、Data Factory でサポートされているその他の行区切り記号が表示されます。 また、独自の区切り記号を指定することもできます。
+        d. **[skip line count]\(スキップ行数\)** を **0** に設定します。 ファイルの先頭で行をスキップする場合は、ここにその行数を入力します。
+        e.  **[The first data row contains column names]\(先頭データ行に列名を使用する\)** はオンにしません。 コピー元ファイルの先頭行に列名が使用されている場合は、このオプションを選択します。
+        f. **[Treat empty column value as null ]\(空の列の値を null として処理する\)** オプションをオンにします。
+    2. **[詳細設定]** を展開して、利用可能な詳細オプションを表示します。
+    3. ページの下部で、emp.txt ファイルのデータの**プレビュー**を確認します。
+    4. 下部の **[スキーマ]** タブをクリックし、コピー元ファイルのデータからコピー ウィザードが推測したスキーマを確認します。
+    5. 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。
     ![コピー ツール - ファイル形式の設定](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
 8. **[Destination data store (コピー先データ ストア)]** ページで **[Azure Blob Storage]** を選択し、**[次へ]** をクリックします。 このチュートリアルでは、コピー元データ ストアおよびコピー先データ ストアとして Azure Blob Storage を使用しています。    
     ![コピー ツール - コピー先データ ストアの選択](media/data-factory-azure-blob-connector/select-destination-data-store.png)
@@ -243,13 +242,13 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
    4. [Azure ストレージ アカウント] を選択します。 
    5. **[次へ]**をクリックします。     
 10. **[Choose the output file or folder (出力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。 
-    1. **[フォルダー パス]** で **adfblobconnector/output/{year}/{month}/{day}** を指定します。 **Tab** キーを押します。 
-    2. **[年]** では **[yyyy]** を選択します。 
-    3. **[月]** で、**[MM]** が設定されていることを確認します。 
-    4. **[日]** で、**[dd]** が設定されていることを確認します。 
-    5. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。 
-    6. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。  
-    7. **[次へ]**をクリックします。 
+    6. **[フォルダー パス]** で **adfblobconnector/output/{year}/{month}/{day}** を指定します。 **Tab** キーを押します。
+    7. **[年]** では **[yyyy]** を選択します。
+    8. **[月]** で、**[MM]** が設定されていることを確認します。
+    9. **[日]** で、**[dd]** が設定されていることを確認します。
+    10. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。
+    11. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。
+    12. **[次へ]**をクリックします。
     ![コピー ツール - 出力ファイルまたはフォルダーの選択](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. **[File format settings (ファイル形式設定)]** ページで設定を確認し、**[次へ]** をクリックします。 ここで使用できる追加オプションの 1 つが、ヘッダーを出力ファイルに追加するオプションです。 このオプションを選択すると、ヘッダー行が、コピー元のスキーマの列名で追加されます。 既定の列名は、コピー元のスキーマを表示するときに変更できます。 たとえば、最初の列を "名" に、2 番目の列を "姓" に変更できます。 その後、出力ファイルが生成され、そのファイルのヘッダーでは、この名前が列名として使用されます。 
     ![コピー ツール - コピー先のファイル形式の設定](media/data-factory-azure-blob-connector/file-format-destination.png)
@@ -263,8 +262,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 ### <a name="monitor-the-pipeline-copy-task"></a>パイプラインの監視 (コピー タスク)
 
 1. **[デプロイ]** ページで `Click here to monitor copy pipeline` リンクをクリックします。 
-2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。 
-    ![アプリの監視および管理](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。![アプリの監視および管理](media/data-factory-azure-blob-connector/monitor-manage-app.png)
 3. **開始**時間を `04/19/2017` に、**終了**時間を `04/27/2017` に変更し、**[適用]** をクリックします。 
 4. **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストに 5 つのアクティビティ ウィンドウが表示されます。 **[Window Start (ウィンドウの開始)]** 時間には、すべての日付のパイプライン開始時間からパイプライン終了時間が表示されます。 
 5. すべてのアクティビティ ウィンドウの状態が [準備完了] に設定されるまで、**[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストの **[更新]** を何度かクリックします。 

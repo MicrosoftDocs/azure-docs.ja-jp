@@ -13,29 +13,29 @@ ms.workload: multiple
 ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 06/01/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1c1591079bf09da6fbe50d848b05ec7791657e04
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cb1fc9a44dc9e57d9cc9f1c546ad937d67e63c2f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-a-lamp-app-using-the-azure-customscript-extension-for-linux"></a>Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した LAMP スタックのデプロイ方法については、[こちら](../create-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した LAMP スタックのデプロイ方法については、[こちら](../tutorial-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。 これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
-カスタム スクリプト拡張機能は、Azure クラシック ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
+カスタム スクリプト拡張機能は、Azure ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
 
 この記事では、Azure CLI を使って、クラシック デプロイ モデルを使用して作成された Ubuntu VM に単純な LAMP アプリケーションをデプロイします。
 
 ## <a name="prerequisites"></a>前提条件
 この例では、まず、Ubuntu 14.04 以降を実行している 2 つの Azure VM を作成します。 VM の名前は *script-vm* と *lamp-vm* です。 自分で VM を作成するときは、固有の名前を付けてください。 1 つは CLI コマンドの実行に使用し、もう 1 つは LAMP アプリのデプロイに使用します。
 
-また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure クラシック ポータルで取得できます)。
+また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure ポータルで取得できます)。
 
 Azure での Linux VM の作成については、「[Linux を実行する仮想マシンの作成](createportal.md)」をご覧ください。
 
@@ -104,7 +104,3 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 [Linux VM カスタム タスクをカスタム スクリプト拡張機能を使って自動化する](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
 
 [Azure Linux 拡張機能 (GitHub)](https://github.com/Azure/azure-linux-extensions)
-
-[Azure での Linux とオープン ソース コンピューティング](../opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-

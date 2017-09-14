@@ -1,3 +1,3 @@
-## <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する  
+## <a name="create-a-deployment-user"></a>デプロイ ユーザーの作成  
 
 [!INCLUDE [Configure a deployment user](configure-deployment-user-no-h.md)]

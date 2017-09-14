@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 05/5/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8a1ae2ef790455383118bb55c34f6ca10fe0169e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/17/2017
 
 このゲートウェイは、次のオンプレミスのデータ ソースへの接続をサポートします。
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   ファイル システム
 *   Informix
@@ -39,18 +38,18 @@ ms.lasthandoff: 05/17/2017
 *   PostgreSQL
 *   SAP アプリケーション サーバー 
 *   SAP メッセージ サーバー
-*   SharePoint (HTTP のみ。HTTPS は対象外)
+*   SharePoint
 *   SQL Server
 *   Teradata
 
 以下の手順は、[ゲートウェイとロジック アプリ間の接続を設定](./logic-apps-gateway-connection.md)する前にオンプレミス データ ゲートウェイをインストールする方法を示しています。 サポートされる接続の詳細については、[Azure Logic Apps のコネクタ](https://docs.microsoft.com/azure/connectors/apis-list)に関するページを参照してください。 
 
-他の Microsoft サービス向けのデータ ゲートウェイの詳細については、次の記事を参照してください。
+他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
-*   [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/): [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
 ## <a name="requirements"></a>必要条件
@@ -76,19 +75,22 @@ ms.lasthandoff: 05/17/2017
 
 * 電源がオフになる、スリープ状態に移行する、またはインターネットに接続していないコンピューターにはゲートウェイをインストールしないようにしてください。このような状況下では、ゲートウェイが動作しない場合があります。 また、ワイヤレス ネットワークではゲートウェイのパフォーマンスが低下する可能性もあります。
 
-* サインインは、Azure Active Directory (Azure AD) によって管理される職場または学校の電子メール アドレスを持っている Azure アカウントを使用してのみ実行できます。 このアカウントは、オンプレミス データ ゲートウェイを Azure AD ベースのアカウントの Azure サブスクリプションに関連付けるために必要です。
+* インストール時は、Microsoft アカウントではなく、Azure Active Directory (Azure AD) が管理する[職場または学校アカウント](https://docs.microsoft.com/azure/active-directory/sign-up-organization)でサインインする必要があります。 
 
-  > [!TIP] 
-  > @outlook.com などの Microsoft アカウントがある場合は、Azure アカウントを使用して[職場または学校の電子メール アドレスを作成](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)できます。 または、Office 365 プランにサインアップしたが、実際の職場の電子メール アドレスを指定しなかった場合、サインイン アドレスは jeff@contoso.onmicrosoft.com のようになります。 
+  後でゲートウェイ リソースを作成し、ゲートウェイのインストールと関連付けるときに、Azure ポータルで同じ職場または学校アカウントを使用する必要があります。 ロジック アプリとオンプレミス データベース ソース間に接続を作成するときに、このゲートウェイ リソースを選択します。 [Azure AD の職場または学校アカウントを使用する必要があるのはなぜですか?](#why-azure-work-school-account)
+
+  > [!TIP]
+  > Office 365 プランにサインアップして、実際の職場の電子メール アドレスを指定しなかった場合、サインイン アドレスは jeff@contoso.onmicrosoft.com のようになります。 
 
 * バージョンが 14.16.6317.4 より前のインストーラーで設定を行った既存のゲートウェイがある場合は、最新のインストーラーを実行してもゲートウェイの場所を変更することはできません。 ただし、最新のインストーラーを使用して、目的の場所に新しいゲートウェイを設定できます。
   
   バージョンが 14.16.6317.4 より前のゲートウェイ インストーラーはあるが、ゲートウェイをまだインストールしていない場合は、最新のインストーラーをダウンロードして使用できます。
 
 <a name="install-gateway"></a>
+
 ## <a name="install-the-data-gateway"></a>データ ゲートウェイをインストールする
 
-1.    [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして実行します](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+1.  [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして実行します](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
 
 2. 使用条件とプライバシーに関する声明を確認して同意します。
 
@@ -96,29 +98,38 @@ ms.lasthandoff: 05/17/2017
 
 4. 求められたら、Microsoft アカウントではなく、Azure の職場または学校のアカウントでサインインします。
 
-5. [ゲートウェイ クラウド サービス](#gateway-cloud-service)を使用して、ゲートウェイのインストールを登録します。 
+   ![Azure の職場または学校アカウントでサインインします](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-     ゲートウェイ クラウド サービスでは、データ ソースの資格情報とゲートウェイの詳細を暗号化して格納します。 
-     サービスは、クラウドのユーザー間のクエリとその結果もルーティングします (ロジック アプリ、オンプレミス データ ゲートウェイ、オンプレミスのデータ ソースなど)。
+5. [ゲートウェイ クラウド サービス](#gateway-cloud-service)を使用して、インストールされているゲートウェイを登録します。 **[このコンピューターに新しいゲートウェイを登録します]** を選択します。
 
-     1. ゲートウェイのインストールの名前を指定し、回復キーを作成します。 
-     回復キーを確認します。
+   ゲートウェイ クラウド サービスでは、データ ソースの資格情報とゲートウェイの詳細を暗号化して格納します。 
+   サービスは、ロジック アプリ、オンプレミス データ ゲートウェイ、オンプレミスのデータ ソース間のクエリとその結果もルーティングします。
 
-        > [!IMPORTANT] 
-        > 回復キーは、少なくとも 8 文字を含める必要があります。 このキーを安全な場所に保存してください。 既存のゲートウェイの移行、復元、または引き継ぎを行うときにもこのキーが必要です。
+6. ゲートウェイのインストールの名前を指定します。 回復キーを作成し、回復キーを確認します。 
 
-     2. ゲートウェイのインストールで使用されるゲートウェイ クラウド サービスと Azure Service Bus の既定のリージョンを変更するには、**[リージョンの変更]** を選択します。
+   > [!IMPORTANT] 
+   > 回復キーは、少なくとも 8 文字を含める必要があります。 このキーを安全な場所に保存してください。 既存のゲートウェイの移行、復元、または引き継ぎを行うときにもこのキーが必要です。
 
-        たとえば、ロジック アプリと同じリージョンを選択したり、待機時間を短縮するためにオンプレミスのデータ ソースに最も近いリージョンを選択したりできます。 ゲートウェイ リソースとロジック アプリの場所は、違っていてもかまいません。
+   1. ゲートウェイのインストールで使用されるゲートウェイ クラウド サービスと Azure Service Bus の既定のリージョンを変更するには、**[リージョンの変更]** を選択します。
 
-        > [!IMPORTANT]
-        > インストール後は、このリージョンを変更することはできません。 このリージョンは、ゲートウェイ向けの Azure リソースを作成できる場所を決定し、作成できる場所を限定します。 このため、Azure でゲートウェイ リソースを作成するときは、リソースの場所がゲートウェイのインストール中に選択したリージョンと一致していることを確認してください。
-        > 
-        > 後で、ゲートウェイ向けに別のリージョンを使用したくなった場合は、新しいゲートウェイを設定する必要があります。
+      ![リージョンの変更](./media/logic-apps-gateway-install/change-region-gateway-install.png)
 
-     3. 操作が完了したら、**[構成]** を選択します。
+      既定のリージョンは、Azure AD テナントに関連付けられているリージョンです。
 
-6. 次に、Azure ポータルで以下の手順に従って、[ゲートウェイ用の Azure リソースを作成](../logic-apps/logic-apps-gateway-connection.md)できます。 
+   2. 次のウィンドウで **[リージョンの選択]** を開き、別のリージョンを選択します。
+
+      ![別のリージョンの選択](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+
+      たとえば、ロジック アプリと同じリージョンを選択したり、待機時間を短縮するためにオンプレミスのデータ ソースに最も近いリージョンを選択したりできます。 ゲートウェイ リソースとロジック アプリの場所は、違っていてもかまいません。
+
+      > [!IMPORTANT]
+      > インストール後は、このリージョンを変更することはできません。 このリージョンは、ゲートウェイ向けの Azure リソースを作成できる場所を決定し、作成できる場所を限定します。 このため、Azure でゲートウェイ リソースを作成するときは、リソースの場所がゲートウェイのインストール中に選択したリージョンと一致していることを確認してください。
+      > 
+      > 後で、ゲートウェイ向けに別のリージョンを使用したくなった場合は、新しいゲートウェイを設定する必要があります。
+
+   3. 準備ができたら、**[完了]** を選択します。
+
+7. 次に、Azure ポータルで以下の手順に従って、[ゲートウェイ用の Azure リソースを作成](../logic-apps/logic-apps-gateway-connection.md)できます。 
 
 詳細については、[データ ゲートウェイのしくみ](#gateway-cloud-service)に関するセクションを参照してください。
 
@@ -127,7 +138,12 @@ ms.lasthandoff: 05/17/2017
 これらのタスクを実行するには、ゲートウェイのインストール時に指定した回復キーが必要です。
 
 1. コンピューターの [スタート] メニューから、**[オンプレミス データ ゲートウェイ]** を選択します。
-2. インストーラーが開いたら、移行、復元、または引き継ぎを行うゲートウェイの回復キーを指定します。
+
+2. インストーラーが開いたら、ゲートウェイのインストールに使用したものと同じ Azure の職場または学校アカウントでサインインします。
+
+3. **[Migrate, restore, or take over an existing gateway]\(既存のゲートウェイの移行、復元、または引き継ぎを行う\)** を選択します。
+
+4. 移行、復元、または引き継ぎを行うゲートウェイの名前と回復キーを指定します。
 
 <a name="restart-gateway"></a>
 ## <a name="restart-the-gateway"></a>ゲートウェイの再起動
@@ -199,7 +215,7 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 <a name="gateway-cloud-service"></a>
 ## <a name="how-does-the-data-gateway-work"></a>データ ゲートウェイの動作
 
-データ ゲートウェイは、ロジック アプリ、ゲートウェイ クラウド サービス、オンプレミスのデータ ソースなどのクラウドのユーザー間での迅速かつセキュリティで保護された通信を促進します。 
+データ ゲートウェイによって、ロジック アプリ、ゲートウェイ クラウド サービス、オンプレミスのデータ ソース間に迅速かつセキュリティで保護された通信が促進されます。 
 
 ![diagram-for-on-premises-data-gateway-flow](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -228,8 +244,10 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 **Q**: ゲートウェイはデータ ソースと同じコンピューターにインストールする必要がありますか? <br/>
 **A**: いいえ。 ゲートウェイは、指定された接続情報を使用してデータ ソースに接続します。 その意味ではゲートウェイをクライアント アプリケーションと見なすことができます。 ゲートウェイに必要なのは、指定されたサーバー名に接続する機能だけです。
 
+<a name="why-azure-work-school-account"></a>
+
 **Q**: サインインで Azure の職場または学校のアカウントを使用する必要があるのはなぜですか? <br/>
-**A**: オンプレミスのデータ ゲートウェイは、Azure の職場または学校のアカウントにのみ関連付けることができます。 サインイン アカウントは、Azure Active Directory (Azure AD) によって管理されるテナントに格納されます。 通常、Azure AD アカウントの UPN は電子メール アドレスと一致します。
+**A**: オンプレミスのデータ ゲートウェイをインストールするときに、Azure の職場または学校アカウントのみを使用することができます。 サインイン アカウントは、Azure Active Directory (Azure AD) によって管理されるテナントに格納されます。 通常、Azure AD アカウントのユーザー プリンシパル名 (UPN) は電子メール アドレスと一致します。
 
 **Q**: 自分の資格情報はどこに格納されますか? <br/>
 **A**: データ ソース用に入力した資格情報は、暗号化されてゲートウェイ クラウド サービスに格納されます。 資格情報の復号化はオンプレミス データ ゲートウェイで行われます。

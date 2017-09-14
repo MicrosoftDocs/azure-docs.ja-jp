@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 7: 主要�
 description: "Azure Analysis Services チュートリアル プロジェクトで主要業績評価指標を作成する方法を説明します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

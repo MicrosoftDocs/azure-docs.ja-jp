@@ -5,24 +5,28 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 2e97722b-eb4e-4078-b607-9fed210d8a0f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 07/23/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: c16e07925389cc17ff156cae767366223fefa18f
+ms.reviewer: harshja
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 463946256f9e335fa6d98fc904835e5c3dc2725e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="working-with-conditional-access-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでの条件付きアクセスの使用
+
+>[!NOTE]
+>この記事は、提供が終了した Azure クラシック ポータルに適用されます。 代わりに、[Azure Portal](https://portal.azure.com) を使うことをお勧めします。 Azure Portal のアプリケーション プロキシ アプリには、他の SaaS アプリと同じ条件付きアクセス機能があります。 条件付きアクセスについて詳しくは、「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」をご覧ください。
+
 アクセス規則を構成することによって、アプリケーション プロキシを使用して発行されたアプリケーションへの条件付きアクセスを許可できます。 これを使用すると、次のことができます。
 
 * アプリケーションごとに Mutli-Factor Authentication を要求する

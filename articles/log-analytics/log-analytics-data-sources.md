@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: cec0ceb0da57150e4bdd9f9a0f6d3e751c108523
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -44,10 +46,13 @@ Log Analytics の **[設定]** の **[データ]** メニューからデータ �
 
 ![Windows イベントの構成](./media/log-analytics-data-sources/configure-events.png)
 
-1. OMS コンソールで、 **[設定]** タイルを選択します。
+1. OMS コンソールで、画面上部にある **[設定]** タイルまたは **[設定]** ボタンをクリックします。
 2. **[データ]**を選択します。
 3. 構成するデータ ソースをクリックします。
 4. 構成の詳細については、上記の表のデータ ソース名をクリックして、リンク先のドキュメントを参照してください。
+
+> [!NOTE]
+> 現在、Azure Portal で Log Analytics データ ソースを構成することはできません。
 
 ## <a name="data-collection"></a>データ収集
 データ ソースの構成は、数分以内に Log Analytics に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Log Analytics に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
@@ -63,9 +68,4 @@ Log Analytics によって収集されたデータはすべて、レコードと
 * Log Analytics に機能を追加し、OMS リポジトリにデータを収集する [ソリューション](log-analytics-add-solutions.md) について学習します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](log-analytics-alerts.md)を構成します。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

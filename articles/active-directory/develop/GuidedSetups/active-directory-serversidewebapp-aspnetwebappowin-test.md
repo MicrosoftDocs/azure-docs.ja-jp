@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 77030e3e6375682c416d99ef22d754b908ad484d
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 00cb963e85111274c36c3a84489894811ad2dabd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -48,7 +49,7 @@ ms.lasthandoff: 05/10/2017
 | [件名]| {件名}|Web 上でユーザーのログオンを一意に識別する文字列|
 | テナント ID| {Guid}| ユーザーが所属する Azure Active Directory の組織を一意に表す *guid*|
 
-さらに、認証要求に含まれるすべてのユーザー要求が記載されたテーブルが表示されます。 ID トークンに含まれるすべての要求の一覧とその説明については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)をご覧ください。
+さらに、認証要求に含まれるすべてのユーザー要求が記載されたテーブルが表示されます。 ID トークンに含まれるすべての要求の一覧とその説明については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims "ID トークン内の要求の一覧")をご覧ください。
 
 
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>*[Authorize]* 属性を持つメソッドへのアクセスをテストする (省略可能)
@@ -82,6 +83,6 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 > 特定の組織の一覧に記載されたユーザーのみを許可するには、`ValidateIssuer` を true に設定し、`ValidIssuers` パラメーターを使用して組織の一覧を指定します。
 
-> または、IssuerValidator パラメーターを使用して発行者を検証するカスタム メソッドを実装することもできます。 `TokenValidationParameters` の詳細については、[こちらの MSDN 記事](https://msdn.microsoft.com/en-us/library/system.identitymodel.tokens.tokenvalidationparameters.aspx)をご覧ください。
+> または、IssuerValidator パラメーターを使用して発行者を検証するカスタム メソッドを実装することもできます。 `TokenValidationParameters` について詳しくは、[こちら](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "TokenValidationParameters に関する MSDN の記事")の MSDN 記事をご覧ください。
 
 

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: nigu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
-
 
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス

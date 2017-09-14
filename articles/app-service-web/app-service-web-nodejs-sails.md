@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 09ececc567c09ea4e0b77d4d37445b7c232de23c
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: deb9ce304069e6bd92518610a9953fb1f29cb555
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="deploy-a-sailsjs-web-app-to-azure-app-service"></a>Sails.js Web アプリを Azure App Service にデプロイする
@@ -73,7 +72,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
         logDirectory: iisnode
 
     これで、Azure App Service が Node.js アプリの実行のために使用する [iisnode](https://github.com/tjanczuk/iisnode) サーバーに対して、ログが有効になりました。 
-    このしくみの詳細については、「 [Azure App Service での Node.js Web アプリのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
+    このしくみの詳細については、「[Azure App Service での Node.js Web アプリのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
 
 2. 次に、Azure の環境変数を使用するように Sails.js アプリを構成します。 config/env/production.js を開いて運用環境を構成し、`port` と `hookTimeout` を設定します。
 
@@ -88,7 +87,7 @@ Sails.js の実用的な知識が必要です。 このチュートリアルは�
             ...
         };
 
-    これらの構成設定のドキュメントについては、 [Sails.js のドキュメント](http://sailsjs.org/documentation/reference/configuration/sails-config)のページをご覧ください。
+    これらの構成設定のドキュメントについては、[Sails.js のドキュメント](http://sailsjs.org/documentation/reference/configuration/sails-config)のページをご覧ください。
 
 4. 次に、使用する Node.js のバージョンをハードコードします。 package.json で、次の `engines` プロパティを追加して、Node.js バージョンを目的のバージョンに設定します。
 
@@ -188,7 +187,7 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
 
 1. [MongoDB プロトコル対応の Cosmos DB アカウントを作成します](../documentdb/documentdb-create-mongodb-account.md)。
 2. [Cosmos DB のコレクションとデータベースを作成します](../documentdb/documentdb-create-collection.md)。 コレクションの名前は重要ではありませんが、Sails.js からの接続時にデータベースの名前が必要になります。
-3. [Cosmos DB データベースの接続情報を取得します](../cosmos-db/connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
+3. [Cosmos DB データベースの接続情報を取得します](../cosmos-db/connect-mongodb-account.md#GetCustomConnection)。
 2. コマンド ライン ターミナルから、MongoDB アダプターをインストールします。
 
         npm install sails-mongo --save
@@ -245,7 +244,7 @@ Azure のデータベースに接続するには、Azure SQL Database、MySQL、
             migrate: 'alter'
         },
 
-    `migrate: 'alter'` を指定すると、データベース移行機能を使用して、データベースのコレクションやテーブルを簡単に作成したり更新することができます。 ただし、Sails.js では運用環境で `migrate: 'alter'` を使用することができないため ( [Sails.js のドキュメント](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)を参照)、Azure (運用) 環境では `migrate: 'safe'` が使用されます。
+    `migrate: 'alter'` を指定すると、データベース移行機能を使用して、データベースのコレクションやテーブルを簡単に作成したり更新することができます。 ただし、Sails.js では運用環境で `migrate: 'alter'` を使用することができないため ([Sails.js のドキュメント](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)を参照)、Azure (運用) 環境では `migrate: 'safe'` が使用されます。
 8. ターミナルから、通常と同様に Sails.js の [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) を[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate)し、`sails lift` を実行して、データベースを作成すると共に Sails.js データベースを移行します。 次に例を示します。
 
          sails generate api mywidget

@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8b823c42743bc477dceaa3270836de8ebd92c28f
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: bd14d9902f4061965c008454a14f91d3927f5b99
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>PowerShell とクラシック デプロイメント モデルを使用した Windows 仮想マシンの作成
 > [!div class="op_single_selector"]
-> * [Azure クラシック ポータル - Windows](tutorial.md)
+> * [Azure Portal - Windows](tutorial.md)
 > * [PowerShell - Windows](create-powershell.md)
 > 
 > 
@@ -164,7 +165,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
     New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure クラシック ポータルの [Cloud Services] ボックスの一覧か、Azure ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure クラシック ポータルの [Cloud Services] ボックスの一覧か、Azure Portal の [リソース グループ] ボックスの一覧に表示されます。
 
 オプション 2. 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -180,7 +181,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 * このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-* Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
+* Azure Portal の **[Automation アカウント]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 次に、Windows ベースの Azure Virtual Machines を作成するために、前の手順を使用して Azure PowerShell コマンド セットを構築する例を 2 つ示します。

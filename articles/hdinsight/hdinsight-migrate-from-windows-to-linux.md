@@ -1,5 +1,5 @@
 ---
-title: "Windows ベースの HDInsight から Linux ベースの HDInsight への移行 | Microsoft Docs"
+title: "Windows ベースの HDInsight から Linux ベースの HDInsight への移行 - Azure | Microsoft Docs"
 description: "Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/12/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f2c4956ba296781907498226a18708684281692b
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 2efd8e9981ac5d8f2ff28df9ffe1e6b5c01ba953
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -85,7 +85,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 6. SSH セッションで次のコマンドを使用して、リンクされたストレージ アカウントから新しい既定のストレージ アカウントにファイルをコピーします。 CONTAINER を、PowerShell によって返されたコンテナーの情報に置き換えます。 __ACCOUNTNAME__ を、アカウント名に置き換えます。 データへのパスをデータ ファイルへのパスに置き換えます。
 
     ```bash
-    hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
+    hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
     > [!NOTE]
@@ -280,9 +280,9 @@ Linux クラスター ノードで直接実行されるスクリプトの場合�
 * **クラスターにアップロードした後**: SSH セッションから Linux ベースのクラスターに次のコマンドを使用して、スクリプトを変更します。
 
     ```bash
-    hdfs dfs -get wasbs:///path/to/script.py oldscript.py
+    hdfs dfs -get wasb:///path/to/script.py oldscript.py
     tr -d '\r' < oldscript.py > script.py
-    hdfs dfs -put -f script.py wasbs:///path/to/script.py
+    hdfs dfs -put -f script.py wasb:///path/to/script.py
     ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -14,10 +14,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: b39cd142925be91bd7a90183cada7ba040a344c0
-ms.openlocfilehash: b8ebf6a2b3c8d2e5b173e429f39c9836e7d214ac
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
@@ -212,7 +213,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
 
-利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)」を参照してください。
+利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)」を参照してください。
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -265,10 +266,5 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の PowerShell コマンドレットを参照](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

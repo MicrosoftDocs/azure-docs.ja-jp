@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
-ms.openlocfilehash: 489037b0ff43c7041f3e12a49525184e7eda0290
-ms.lasthandoff: 12/19/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 18edabe267ec06c08074d7a7a6d71435cedc8489
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -96,5 +97,5 @@ Excel テンプレートをダウンロードできます。このテンプレ�
 * [Azure Machine Learning Web サービスの Excel アドイン](machine-learning-excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>REST ベースのクライアントから
-Azure Machine Learning Web サービスは、RESTful API です。 この API は、.NET、Python、R、Java など、さまざまなプラットフォームから使用できます。[Microsoft Azure Machine Learning Web サービス ポータル](https://services.azureml.net)の Web サービスの**使用**に関するページには、開始するときに役立つサンプル コードが用意されています。 詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+Azure Machine Learning Web サービスは、RESTful API です。 この API は、.NET、Python、R、Java など、さまざまなプラットフォームから使用できます。[Microsoft Azure Machine Learning Web サービス ポータル](https://services.azureml.net)の Web サービスの**使用**に関するページには、開始するときに役立つサンプル コードが用意されています。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
 

@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/24/2017
+ms.date: 08/14/2017
 ms.author: shlo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0850b42e15e2daf4868560a1518f7906c7ae0800
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: bfe86b8cfe9ad0fc9fbda7664873b2b590fc2805
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - お客様導入事例

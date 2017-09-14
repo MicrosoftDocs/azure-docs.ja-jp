@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/07/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 612fb681ab0c8fe77652041f8a1fc23ad0d3428a
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 1403184d96388cb03b2c767c4da342ec1c6fe236
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
-この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) 」も参照してください。
+この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus に関する一般的な質問
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus とは

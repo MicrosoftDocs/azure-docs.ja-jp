@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6e476e1dc550f246027c015dee75850236baa9a9
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: da848aec495a8248fd4791f350d439e937831d01
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -43,8 +44,10 @@ ms.lasthandoff: 04/27/2017
 1. **GitBash** (Windows) や **Bash** (Unix シェル) などのコマンド ライン ツールを起動します。 OS X システムでは、 **ターミナル** アプリケーションを使用してコマンド ラインにアクセスできます。
 2. デプロイするコンテンツが配置されるディレクトリに移動します。
 3. 次のコマンドを使用して、新しい Git リポジトリを初期化します。
-   
-        git init
+
+```bash  
+git init
+```
 
 ## <a name="Step2"></a>手順 2: コンテンツをコミットする
 App Service では、さまざまなプログラミング言語で作成されたアプリケーションをサポートしています。 
@@ -54,11 +57,15 @@ App Service では、さまざまなプログラミング言語で作成され�
    * テキスト エディターを使用して、Git リポジトリのルートに **index.html** という名前の新しいファイルを作成します。
    * index.html ファイルの内容として次のテキストを追加し、ファイルを保存します: *Hello Git!*
 2. コマンド ラインで、Git リポジトリのルートにいることを確認します。 次のコマンドを使用して、リポジトリにファイルを追加します。
-   
-        git add -A 
+
+```bash  
+git add -A
+```
 3. 次に、次のコマンドを使用して、リポジトリへの変更をコミットします。
-   
-        git commit -m "Hello Azure App Service"
+
+```bash  
+git commit -m "Hello Azure App Service"
+```  
 
 ## <a name="Step3"></a>手順 3: App Service アプリのリポジトリを有効にする
 次に示している手順を実行して、App Service アプリに対して Git リポジトリを有効にします。
@@ -88,10 +95,11 @@ App Service では、さまざまなプログラミング言語で作成され�
    > 
    > 
 4. 作成した新しい **azure** リモートを使用して、コンテンツを App Service にプッシュします。
-   
-        git push azure master
-   
-    Azure ポータルでデプロイメント資格情報をリセットしたときに作成したパスワードの入力を求められます。 パスワードを入力します (パスワードを入力しても Gitbash によってコンソールにアスタリスクはエコーされません)。 
+
+```bash  
+git push azure master
+```
+    You will be prompted for the password you created earlier when you reset your deployment credentials in the Azure Portal. Enter the password (note that Gitbash does not echo asterisks to the console as you type your password). 
 5. Azure ポータル内のアプリに戻ります。 最近使用したプッシュのログ エントリが **[デプロイ]** ブレードに表示されます。 
    
     ![](./media/app-service-deploy-local-git/deployment_history.png)
@@ -121,8 +129,9 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 **解決策**: master 分岐を指定して、もう一度 push 操作を実行します。 次に例を示します。
 
-    git push azure master
-
+```bash  
+git push azure master
+```
 - - -
 **症状**: src refspec [branchname] does not match any.
 
@@ -130,8 +139,9 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 **解決策**: master 分岐を指定して、もう一度 push 操作を実行します。 For example:
 
-    git push azure master
-
+```bash  
+git push azure master
+```
 - - -
 **症状**: RPC failed; result=22, HTTP code = 502
 
@@ -139,8 +149,9 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 **解決策**: ローカル コンピューター上の Git 構成を変更して postBuffer を増やします。
 
-    git config --global http.postBuffer 524288000
-
+```bash  
+git config --global http.postBuffer 524288000
+```
 - - -
 **症状**: エラー - 変更がリモート リポジトリにコミットされましたが、Web アプリは更新されていません。
 

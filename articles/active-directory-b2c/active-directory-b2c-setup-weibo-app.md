@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: b6fdb9311ca2be3752c4ef74c91fe7abe9a91210
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 00c5d3781455c80b33bdbb4c872ae354531baf3e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-weibo-accounts"></a>Azure Active Directory B2C: Weibo アカウントを使用するコンシューマーにサインアップとサインインを提供する
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Weibo �
 10. **[提交 (送信)]** をクリックします。  
 
 ## <a name="configure-weibo-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Weibo を構成する
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
+1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
 2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「Weibo」と入力します。

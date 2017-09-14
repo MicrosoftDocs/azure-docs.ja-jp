@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブのトラブルシューティング方�
 keywords: "トラブルシューティング ガイド"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 3fbaa005e21ffbbd1a71febc718d36c9231cbd26
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: dcff312e4a282b15e76ea32aadb1981a496a2446
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -58,7 +57,7 @@ Stream Analytics ジョブのトラブルシューティングで最善の結果
 
 7.  メトリックを使用してデバッグする。
     - 予想していた時間 (クエリに基づく) を過ぎても出力を取得できない場合は、次のことを試してください。
-        - **[監視]** タブで[**監視メトリック**](stream-analytics-monitoring.md)を確認します。 値が集計される関係上、メトリックは数分間遅延します。
+        - **[監視]** タブで[**監視メトリック**](stream-analytics-monitoring.md)を確認します。値が集計される関係上、メトリックは数分間遅延します。
             - 入力イベントが 0 より大きい場合、ジョブは入力データを読み取ることができます。 入力イベントが 0 以下の場合、次のことを行います。
                 - データ ソースに有効なデータがあるかどうか確認するために、[Service Bus エクスプローラー](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)を使用する。 この確認は、ジョブがイベント ハブを入力として使用している場合に必要になります。
                 - データのシリアル化形式とデータのエンコードが想定どおりであるかどうかを確認する。
@@ -91,12 +90,12 @@ Stream Analytics ジョブのトラブルシューティングで最善の結果
 
 ## <a name="get-help"></a>問い合わせ
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

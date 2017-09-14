@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 61e9cab7ba0b1b86a54b5282662bef3bdfba6e7d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -40,7 +39,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop",    
+      "name": "virtualMachineLoop", 
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -48,7 +47,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
     ], 
     "properties": { 
       "hardwareProfile": { 
-        "vmSize": "Standard_DS1_v2" 
+        "vmSize": "Standard_DS1" 
       }, 
       "osProfile": { 
         "computername": "[concat('myVM', copyindex())]", 
@@ -63,10 +62,10 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
           "version": "latest" 
         }, 
         "osDisk": { 
-          "name": "[concat('myOSDisk', copyindex())]" 
+          "name": "[concat('myOSDisk', copyindex())]",
           "caching": "ReadWrite", 
           "createOption": "FromImage" 
-        }
+        },
         "dataDisks": [
           {
             "name": "[concat('myDataDisk', copyindex())]",
@@ -80,15 +79,14 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
         "networkInterfaces": [ 
           { 
             "id": "[resourceId('Microsoft.Network/networkInterfaces',
-              concat('myNIC', copyindex())]" 
+              concat('myNIC', copyindex()))]" 
           } 
         ] 
-      }
+      },
       "diagnosticsProfile": {
         "bootDiagnostics": {
           "enabled": "true",
-          "storageUri": "[concat('https://', variables('storageName'), 
-            '.blob.core.windows.net"
+          "storageUri": "[concat('https://', variables('storageName'), '.blob.core.windows.net')]"
         }
       } 
     },
@@ -224,7 +222,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ```
 "copy": {
-  "name": "virtualMachineLoop",    
+  "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -233,7 +231,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
+  "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
 }
@@ -273,7 +271,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
       concat('myNIC', copyindex())]" 
   } ] 
-}
+},
 ```
 
 このプロパティを設定するには、ネットワーク インターフェイスが存在する必要があります。 したがって、依存関係が必要です。 1 つのリソース (子) が他のリソース (親) の中で定義されている場合も、依存関係を設定する必要があります。 たとえば、診断設定とカスタム スクリプト拡張機能は両方とも、仮想マシンの子リソースとして定義されています。 これらは、仮想マシンが存在しないうちは、作成することができません。 そのため、両方のリソースは、仮想マシンに依存しているとマークされます。
@@ -283,7 +281,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
 - [サイズ](sizes.md)
-- [名前](../linux/infrastructure-naming-guidelines.md)と資格情報
+- [名前](/architecture/best-practices/naming-conventions)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
 - [ネットワーク インターフェイス](../../virtual-network/virtual-networks-multiple-nics.md) 
 - ブート診断
@@ -323,7 +321,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
-}
+},
 ```
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>既存の管理ディスクから新しい仮想マシンを作成する
@@ -338,7 +336,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
   }, 
   "caching": "ReadWrite",
   "createOption": "Attach" 
-}
+},
 ```
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>管理イメージから新しい仮想マシンを作成する
@@ -356,7 +354,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
     "caching": "ReadWrite", 
     "createOption": "FromImage" 
   }
-}
+},
 ```
 
 ### <a name="attach-data-disks"></a>データ ディスクを接続する
@@ -372,7 +370,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
     "caching": "ReadWrite",
     "createOption": "Empty"
   }
-]
+],
 ```
 
 ## <a name="extensions"></a>拡張機能

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c0265490cfae733133b6e0c938f90f9b392da4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
@@ -50,9 +50,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 最初の手順は、Azure Active Directory アプリケーションの作成です。 API Management サービス インスタンスが含まれたサブスクリプションを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/) にログインし、既定の Azure Active Directory の **[アプリケーション]** タブに移動します。
 
 > [!NOTE]
-> Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。 既定のディレクトリを見つける方法の詳細については、「[Windows VM と共に使用する Azure Active Directory での職場または学校の ID を作成する](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の「Azure クラシック ポータルで既定のディレクトリを見つける」を参照してください。
->
->
+> Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。
 
 ![Azure Active Directory アプリケーションを作成する][api-management-add-aad-application]
 
@@ -82,7 +80,7 @@ namespace GetTokenResourceManagerRequests
     {
         static void Main(string[] args)
         {
-            var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
+            var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
             var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
 
             if (result == null) {

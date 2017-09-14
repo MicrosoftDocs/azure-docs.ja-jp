@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: f3154968710384e3f6186b277c4cae33b25c77d2
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: dcc97e1b7f6287bd7692c52bf068950065a26572
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-amazon-accounts"></a>Azure Active Directory B2C: Amazon アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -42,7 +41,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
     ![Amazon で新しいアプリケーションの JavaScript 生成元と戻り先 URL を提供する](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
 
 ## <a name="configure-amazon-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Amazon を構成する
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
+1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
 2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「Amzn」などと入力します。

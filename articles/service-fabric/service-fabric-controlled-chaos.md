@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2017
+ms.date: 08/09/2017
 ms.author: motanv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 00f703cf9e727cd5981c4f8254fc11330e41a470
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3b3b93bc9ec5ecdcfc289e5b62e84de6aa4172ed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
@@ -53,10 +52,6 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="important-configuration-options"></a>重要な構成オプション
 * **TimeToRun**: 混乱が正常に完了するまでの実行時間の合計。 実行中の混乱は、TimeToRun で指定された期間が経過する前に、StopChaos API で停止できます。
-
-> [!NOTE]
-> 混乱は、*TimeToRun* が発生したときにまだ実行されている場合があり、自動的に停止するまでに (MaxClusterStabilizationTime + MaxConcurrentFaults * WaitTimeBetweenFaults + WaitTimeBetweenIterations) 追加の時間がかかることがあります。
->
 
 * **MaxClusterStabilizationTimeout**: ValidationFailedEvent を生成する前に、クラスターが正常になるまで待機する最大時間。 この待機は、回復中のクラスターの負荷を軽減するためのものです。 次のチェックが実行されます。
   * クラスターの正常性に問題がないかどうか

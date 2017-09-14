@@ -6,20 +6,21 @@ keywords: "Active Directory パスワード管理, パスワード管理, Azure 
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 08/28/2017
 ms.author: joflore
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0c586692720512d2822e67994e22e1f6d50fd921
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4b35c5d126375735f070a7fe2331896c524b5a61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
@@ -103,7 +104,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
 ## <a name="set-or-check-password-policies-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
-操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)必要があります。 インストールした後、次の手順に従って各フィールドを構成できます。
+操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)必要があります。 インストールした後、次の手順に従って各フィールドを構成できます。
 
 ### <a name="how-to-check-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する方法
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。

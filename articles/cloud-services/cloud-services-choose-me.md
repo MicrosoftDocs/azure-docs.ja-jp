@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 26e2becf7810950fd5734fd70c1fed225149ec4d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 72ec71814d3c56d1f1df947329eaf66b7dc8f1cf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/24/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services と他のサービスのどちらを選択すればよいか
@@ -43,7 +42,7 @@ IIS を使用して自動的にアプリをデプロイおよびホストしま�
 * **worker ロール**  
 IIS を使用せず、アプリをスタンドアロンで実行します。
 
-たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/storage-introduction.md)を使用する可能性があります)。
+たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/common/storage-introduction.md)を使用する可能性があります)。
 
 上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale.md)します。
 

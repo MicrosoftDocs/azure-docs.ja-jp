@@ -1,8 +1,8 @@
 ---
 title: "自動スケール操作を使用して電子メールと webhook アラート通知を送信する | Microsoft Docs"
 description: "Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。 "
-author: kamathashwin
-manager: carolz
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
-ms.author: ashwink
+ms.author: ancav
 ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: f0ab9d4bea3a3f7f1e1a0af2206e7b5641be1288
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する

@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/23/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 469bd1d023ad51fc957aecca480eb192afc544a4
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 78613cc978b585a98d235245194c02371f7f3849
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションでは、グローバル管理者でなくても招待を送信できます。 それには、ポリシーを使用して、招待の送信が許可されているロールを持つユーザーに招待を委任します。 ゲスト ユーザーの招待を委任するための重要な新しい方法は、ゲストの招待元ロールを通じた方法です。
 
 ## <a name="guest-inviter-role"></a>ゲストの招待元ロール
-ゲストの招待元ロールにユーザーを割り当てて、招待を送信することができます。 全体管理者ロールのメンバーである必要はありません。 既定では、全体管理者が通常のユーザーの招待を無効にしていない限り、通常のユーザーも招待 API を呼び出すことができます。 この操作は Azure Portal または PowerShell から実行できます。
+ゲストの招待元ロールにユーザーを割り当てて、招待を送信することができます。 全体管理者ロールのメンバーである必要はありません。 既定では、全体管理者が通常のユーザーの招待を無効にしていない限り、通常のユーザーも招待 API を呼び出すことができます。 ユーザーは、Azure ポータルまたは PowerShell を使用して API を呼び出すこともできます。
 
 次の例は、PowerShell を使って、ゲストの招待元ロールにユーザーを追加する方法を示しています。
 

@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 20aed2689e360b46e643ab154f5446c3866b3eb5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: f40e0501eed8d5f296e7c79d8a35705a695ae6fd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -178,9 +180,4 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

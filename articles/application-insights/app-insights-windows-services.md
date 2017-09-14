@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 274e8db8e35243dc4b7ef20c3e7085f47975bb1c
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: e7b78907fafcee99c807bfe8f7b311986ba7ffcc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Application Insights を .NET アプリケーション用に手動で構成する

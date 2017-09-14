@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 49ac46d8a04e31df1e5c31a60e387c8cd0b93037
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD の認証シナリオ
@@ -239,7 +238,7 @@ AD 認証ライブラリを使用している場合は、ブラウザー ポッ�
 ##### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>委任ユーザー ID と OAuth 2.0 認証コード付与
 1. ユーザーは、認証メカニズムが Azure AD とは無関係の Web アプリケーションに既にサインインしています。
 2. Web アプリケーションは、アクセス トークンを取得するために認証コードを必要とします。そのため、認証の成功後、Web アプリケーションのアプリケーション ID とリダイレクト URI を提供して、Azure AD の認証エンドポイントにブラウザーを介して要求を発行します。 ユーザーが Azure AD にサインインします。
-3. Web アプリケーションのユーザーは、Web アプリケーションがユーザーに代わって Web API を呼び出すことを許可することにまだ同意していない場合、これに同意する必要があります。 アプリケーションが必要なアクセス許可を表示します。そのいずれかが管理者レベルのアクセス許可の場合、ディレクトリ内の通常のユーザーが同意することはできません。 シングル テナント アプリケーションには、必要なアクセス許可が既にあると考えられるので、この同意プロセスはマルチテナント アプリケーションにのみ適用されます。
+3. Web アプリケーションのユーザーは、Web アプリケーションがユーザーに代わって Web API を呼び出すことを許可することにまだ同意していない場合、これに同意する必要があります。 アプリケーションが必要なアクセス許可を表示します。そのいずれかが管理者レベルのアクセス許可の場合、ディレクトリ内の通常のユーザーが同意することはできません。 この同意は、シングル テナントおよびマルチ テナント アプリケーションに適用されます。  シングル テナントの場合、管理者は、そのユーザーに代わって管理者の同意を実行できます。  これは、[Azure Portal](https://portal.azure.com) で `Grant Permissions` ボタンをクリックして実行します。 
 4. ユーザーが同意したら、Web アプリケーションは、アクセス トークンを取得するために必要な認証コードを受信します。
 5. Azure AD によって発行された認証コードを使用して、Web アプリケーションは、認証コード、クライアント アプリケーションの詳細 (アプリケーション ID とリダイレクト URI)、目的のリソース (Web API のアプリケーション ID の URI) を要求に含めて Azure AD のトークン エンドポイントに送信します。
 6. 認証コードおよび Web アプリケーションと Web API に関する情報が Azure AD によって検証されます。 検証が正常に行われると、Azure AD は JWT アクセス トークンと JWT 更新トークンの 2 つのトークンを返します。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f0a1717219bfc33033bdb827e66e80dd18388e64
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ccadf55c492c097ef96f25e469dbf36fc87b6102
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
@@ -53,8 +53,8 @@ Azure 上で動作するすべてのディストリビューションは、プ�
 * OS ディスクにスワップ パーティションを構成しないでください。 Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。  このことに関する詳細については、次の手順を参照してください。
 * すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
-### <a name="installing-linux-without-hyper-v"></a>Hyper-V を使用しない Linux のインストール
-Linux インストーラーは、Linux が HYPER-V 環境を実行していることを検出しない限り、初期 RAM ディスク (initrd または initramfs) に HYPER-V 用のドライバーを含まない場合があります。  別の仮想化システム (Virtualbox、KVM など) を使用して Linux イメージを準備する場合は、少なくとも `hv_vmbus` と `hv_storvsc` のカーネル モジュールを初期 RAM ディスクで確実に使用できるように initrd の再構築が必要になる場合があります。  これは少なくとも、アップ ストリームの Red Hat ディストリビューションに基づくシステムの既知の問題です。
+### <a name="installing-kernel-modules-without-hyper-v"></a>Hyper-V を使用しないカーネル モジュールのインストール
+Azure は、Hyper-V ハイパーバイザーで実行されるため、Linux で Azure を実行するには特定のカーネル モジュールがインストールされている必要があります。 Hyper-V 以外で作成された VM を所有している場合、Linux インストーラーは、Linux が Hyper-V 環境を実行していることを検出しない限り、初期 RAM ディスク (initrd または initramfs) に Hyper-V 用のドライバーを含まない場合があります。 別の仮想化システム (Virtualbox、KVM など) を使用して Linux イメージを準備する場合は、少なくとも `hv_vmbus` と `hv_storvsc` のカーネル モジュールを初期 RAM ディスクで確実に使用できるように initrd の再構築が必要になる場合があります。  これは少なくとも、アップ ストリームの Red Hat ディストリビューションに基づくシステムの既知の問題です。
 
 initrd または initramfs イメージの再構築のためのメカニズムは、ディストリビューションによって異なる場合があります。 適切な手順については、使用しているディストリビューションのドキュメントまたはサポートを参照してください。  次は、 `mkinitrd` ユーティリティを使用して initrd を再構築する方法の 1 つの例です。
 

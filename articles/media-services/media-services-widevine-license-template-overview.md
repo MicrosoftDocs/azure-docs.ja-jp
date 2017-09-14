@@ -2,7 +2,7 @@
 title: "Widevine ライセンス テンプレートの概要 | Microsoft Docs"
 description: "このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5ef6e368a170816b7000c23cdf686644690fca45
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要
@@ -74,7 +74,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 | parse_only |ブール値。 true または false |ライセンス要求は解析されますが、ライセンスは発行されません。 ただし、応答でライセンス要求を構成する値が返されます。 |
 
 ## <a name="content-key-specs"></a>コンテンツ キーの仕様
-既存のポリシーが存在する場合は、"コンテンツ キーの仕様" に値を指定する必要はありません。  このコンテンツに関連付けられている既存のポリシーを使用して、HDCP や CGMS などの出力保護が決定されます。  既存のポリシーが Widevine ライセンス サーバーに登録されていない場合、コンテンツ プロバイダーはライセンス要求に値を挿入できます。   
+既存のポリシーが存在する場合は、"コンテンツ キーの仕様" に値を指定する必要はありません。このコンテンツに関連付けられている既存のポリシーを使用して、HDCP や CGMS などの出力保護が決定されます。  既存のポリシーが Widevine ライセンス サーバーに登録されていない場合、コンテンツ プロバイダーはライセンス要求に値を挿入できます。   
 
 オプション use_policy_overrides_exclusively に関係なく、各 content_key_specs がすべてのトラックに対して指定されている必要があります。 
 
@@ -83,7 +83,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 | content_key_specs track_type |string |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、過去 10 秒間を再生できません。 |
 | content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/> 1 - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/> 2 - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/> 3 - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/> 4 - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/> 5 - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
 | content_key_specs <br/> required_output_protection.hdc |文字列 - 次のいずれか 1 つ: HDCP_NONE、HDCP_V1、HDCP_V2 |HDCP が必須かどうかを示します |
-| content_key_specs <br/>key |Base64  <br/>でエンコードされた文字列 |このトラックで使用するコンテンツ キーです。 指定した場合、track_type または key_id が必要です。  このオプションを使用すると、Widevine ライセンス サーバーでキーを生成または検索する代わりに、コンテンツ プロバイダーがこのトラックのコンテンツ キーを挿入できます。 |
+| content_key_specs <br/>key |Base64  <br/>でエンコードされた文字列 |このトラックで使用するコンテンツ キーです。指定した場合、track_type または key_id が必要です。  このオプションを使用すると、Widevine ライセンス サーバーでキーを生成または検索する代わりに、コンテンツ プロバイダーがこのトラックのコンテンツ キーを挿入できます。 |
 | content_key_specs.key_id |Base64 でエンコードされた文字列バイナリ、16 バイト |キーの一意識別子です。 |
 
 ## <a name="policy-overrides"></a>ポリシーのオーバーライド

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: cceda131fc9eaa74f6328c8dd68a8e3885877061
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 479bbd207bcf715138c340f9e4d2634120bab85c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 

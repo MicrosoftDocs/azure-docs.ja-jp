@@ -12,18 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 7b267f11a2989b1e621906a46ea4e3bf7f58ca2b
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 5a663bc8290d056b89a929c17722e3c233cdbad7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 このトピックでは、Azure の仮想ネットワークの Azure 仮想マシン (VM) 上に、オンプレミス Active Directory ドメインの追加のドメイン コントローラー (レプリカ DC とも呼ばれます) をインストールする方法を説明します。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
 必要に応じて次の関連するトピックも参照してください。
 
@@ -81,7 +84,7 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
 VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続で、オンプレミス ネットワーク上のリソースに接続できることを確認します。 次に、Azure VM に AD DS をインストールします。 オンプレミス ネットワーク上に追加の DC をインストールするために使用するのと同じプロセス (UI、Windows PowerShell、応答ファイル) を使用できます。 AD DS をインストールするときには、AD データベース、ログ、SYSVOL の場所の新しいボリュームを必ず指定します。 AD DS のインストール方法がわからない場合は、「[Active Directory ドメイン サービスをインストールする (レベル 100)](https://technet.microsoft.com/library/hh472162.aspx)」、または、「[Windows Server 2012 のレプリカ ドメイン コントローラーを既存のドメインにインストールする (レベル 200)](https://technet.microsoft.com/library/jj574134.aspx)」をご覧ください。
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>仮想ネットワークの DNS サーバーを再構成する
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、仮想ネットワークの名前をクリックし、次に **[構成]** タブをクリックして、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](../virtual-network/virtual-networks-manage-dns-in-vnet.md)し、オンプレミス DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
+1. [Azure Portal](https://portal.azure.com) で、**[リソースを検索]** ボックスに「"*仮想ネットワーク*"」と入力し、検索結果で **[仮想ネットワーク (クラシック)]** をクリックします。 仮想ネットワークの名前をクリックし、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](../virtual-network/virtual-network-manage-network.md#dns-servers)して、オンプレミス DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
 2. 仮想ネットワークのすべてのレプリカ DC VM が仮想ネットワーク上の DNS サーバーを使用するように構成されていることを確認には、**[仮想マシン]** クリックし、VM ごとの [状態] 列をクリックして、**[再起動]** をクリックします。 サインインする前に、VM で **実行** 状態が表示されるまで待機します。
 
 ## <a name="create-vms-for-application-servers"></a>アプリケーション サーバー用の VM を作成する

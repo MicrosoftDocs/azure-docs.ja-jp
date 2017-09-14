@@ -3,9 +3,9 @@ title: "Mobile Apps を使用した Android アプリへのプッシュ通知の
 description: "Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: android
-manager: adrianha
+manager: syntaxc4
 editor: 
-author: ysxu
+author: ggailey777
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 10/12/2016
-ms.author: yuaxu
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ef43d1df2a64d85f256b28cd7db5a4f4356a7ec0
 ms.openlocfilehash: 055f55966de1e5c1bb41a6e0bf1c0da1758a3ed0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/13/2016
-
 
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する

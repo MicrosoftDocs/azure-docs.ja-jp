@@ -1,9 +1,9 @@
 ---
-title: "Azure Portal を使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
+title: "Azure Portal を使用した Azure Data Lake Analytics の管理 | Microsoft Docs"
 description: "Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブの管理方法について説明します。"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
+author: saveenr
 manager: jhubbard
 editor: cgronlun
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
@@ -14,242 +14,245 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 86711ba89442c3569b570bbf3ea2d1661a469011
-ms.openlocfilehash: 34be29749075b9953950ffd64d2526430307d33e
-
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/25/2017
 
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-portal"></a>Azure ポータルを使用して Azure Data Lake Analytics を管理する
+# <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure Portal を使用して、Azure Data Lake Analytics のアカウント、アカウント データ ソース、ユーザー、およびジョブを管理する方法について説明します。 他のツールを使用した管理のトピックを表示する場合は、ページの上部にあるタブ セレクターをクリックしてください。
-
-**前提条件**
-
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
-
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+Azure Portal を使用して、Azure Data Lake Analytics のアカウント、アカウント データ ソース、ユーザー、ジョブを管理する方法について説明します。 他のツールを使用した管理のトピックを表示する場合は、ページの上部にあるタブをクリックしてください。
 
 <!-- ################################ -->
 <!-- ################################ -->
-## <a name="manage-accounts"></a>アカウントの管理
-Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Azure HDInsight とは異なり、Data Lake Analytics アカウントではジョブの実行時にのみ課金されます。  ジョブの実行時にのみ課金されます。  詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。  
 
-**Data Lake Analytics アカウントを作成するには**
+## <a name="manage-data-lake-analytics-accounts"></a>Data Lake Analytics アカウントの管理
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. **[新規]**、**[インテリジェンス + 分析]**、**[Data Lake Analytics]** の順にクリックします。
-3. 次の値を入力または選択します。
-   
-    ![Azure Data Lake Analytics ポータルのブレード](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
-   
-   * **名前**: Data Lake Analytics アカウント名を指定します。
-   * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。 Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを&1; つのグループと見なして作業できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
-   * **場所**:  Data Lake Analytics アカウントの Azure データ センターを選択します。 
-   * **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
-4. **[作成]**をクリックします。 ポータルのホーム画面が表示されます。 新しいタイルはスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。 Data Lake Analytics アカウントの作成にはしばらく時間がかかります。 アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
+### <a name="create-an-account"></a>アカウントの作成
 
-Data Lake Analytics アカウントが作成されたら、Data Lake Store アカウントや Azure ストレージ アカウントを追加できます。 手順については、 [Data Lake Analytics アカウント データ ソースの管理](data-lake-analytics-manage-use-portal.md#manage-account-data-sources)に関する記述を参照してください。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. **[新規]** > **[インテリジェンス + 分析]** > **[Data Lake Analytics]** の順にクリックします。
+3. 次の項目の値を選択します。 
+   1. **[名前]**: Data Lake Analytics アカウントの名前。
+   2. **[サブスクリプション]**: アカウントに使用する Azure サブスクリプション。
+   3. **[リソース グループ]**: アカウントの作成先の Azure リソース グループ。 
+   4. **[場所]**: Data Lake Analytics アカウントの Azure データセンター。 
+   5. **[Data Lake Store]**: Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
+4. ページの下部にある **[Create]**」を参照してください。 
 
-<a name="access-adla-account"></a> **Data Lake Analytics アカウントにアクセスして開くには**
+### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントの削除
 
-1. [Azure ポータル](https://portal.azure.com/)にサインオンします。
-2. 左側のメニューで **[Data Lake Analytics]** をクリックします。  表示されていない場合は、**[その他のサービス]** をクリックし、**[インテリジェンス + 分析]** の下にある **[Data Lake Analytics]** をクリックします。
-3. アクセスする Data Lake Analytics アカウントをクリックします。 新しいブレードでアカウントが開きます。
+Data Lake Analytics アカウントを削除する前に、その既定の Data Lake Store アカウントを削除します。
 
-**Data Lake Analytics アカウントを削除するには**
-
-1. 削除する Data Lake Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. ブレードの上部にあるボタン メニューで、 **[削除]** をクリックします。
-3. アカウント名を入力してから、 **[削除]**をクリックします。
-
-Data Lake Analytics アカウントを削除しても、従属する Data Lake Store アカウントは削除されません。 Data Lake ストレージ アカウントを削除する手順については、 [Data Lake Store アカウントの削除](../data-lake-store/data-lake-store-get-started-portal.md#delete-azure-data-lake-store-account)に関する記述を参照してください。
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. [ **削除**] をクリックします。
+3. アカウント名を入力します。
+4. [ **削除**] をクリックします。
 
 <!-- ################################ -->
 <!-- ################################ -->
-## <a name="manage-account-data-sources"></a>アカウント データ ソースの管理
-Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/storage-introduction.md)
+## <a name="manage-data-sources"></a>データ ソースを管理する
 
-Data Lake Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Store アカウントを指定する必要があります。 既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 Data Lake Analytics アカウントを作成したら、さらに Data Lake Store アカウントや Azure ストレージ アカウントを追加することができます。 
+Data Lake Analytics では、次のデータ ソースがサポートされています。
 
-<a name="default-adl-account"></a>**既定の Data Lake ストレージ アカウントを検索するには**
+* Data Lake Store
+* Azure Storage (Azure Storage)
 
-* 管理する Data Lake Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。 既定の Data Lake Store は以下のように **[要点]**に表示されます。
-  
-    ![Azure Data Lake Analytics でのデータ ソースの追加](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-default-adl-storage-account.png)
+データ エクスプローラーを使用して、データ ソースを参照し、基本的なファイル管理操作を実行することができます。 
 
-**データ ソースをさらに追加するには**
+### <a name="add-a-data-source"></a>データ ソースの追加
 
-1. 管理する Data Lake Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. **[設定]** をクリックしてから、**[データ ソース]** をクリックします。 そこに既定の Data Lake Store アカウントがリストされます。 
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[データ ソース]** をクリックします。
 3. **[データ ソースの追加]**をクリックします。
-   
-    ![Azure Data Lake Analytics のデータ ソースの追加](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-add-data-source.png)
-   
-    Azure Data Lake Store アカウントを追加するには、アカウント名と、クエリを実行できるようアカウントへのアクセスが必要です。
-    Azure Blob Storage を追加するには、ストレージ アカウントとアカウント キーが必要です。これらは、ポータルでストレージ アカウントに移動して確認できます。
+    
+   * Data Lake Store アカウントを追加するには、アカウント名と、クエリを実行できるようにするためのアカウントへのアクセスが必要です。
+   * Azure Blob Storage を追加するには、ストレージ アカウントとアカウント キーが必要です。 それらを探すには、ポータルでストレージ アカウントに移動します。
 
-<a name="explore-data-sources"></a>**データ ソースを検索するには**    
+## <a name="set-up-firewall-rules"></a>ファイアウォール規則の設定
 
-1. 管理する Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. **[設定]** をクリックしてから、**[データ エクスプローラー]** をクリックします。 
-   
-    ![Azure Data Lake Analytics データ エクスプ ローラー](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-data-explorer.png)
-3. Data Lake Store アカウントをクリックしてアカウントを開きます。
-   
-    ![Azure Data Lake Analytics データ エクスプ ローラーのストレージ アカウント](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-explore-adls.png)
-   
-    Data Lake Store アカウントごとに、以下を行うことができます。
-   
-   * **新しいフォルダー**: 新しいフォルダーを追加します。
-   * **アップロード**: ワークステーションからストレージ アカウントにファイルをアップロードします。
-   * **アクセス**: アクセス許可を構成します。
-   * **フォルダー名の変更**: フォルダーの名前を変更します。
-   * **フォルダーのプロパティ**: WASB パス、WEBHDFS パス、最終変更時刻など、ファイルまたはフォルダーのプロパティを表示します。
-   * **フォルダーの削除**: フォルダーを削除します。
+Data Lake Analytics を使用すると、ネットワーク レベルで Data Lake Analytics アカウントへのアクセスをさらにロックダウンできます。 ファイアウォールを有効にして、IP アドレスを指定するか、信頼されているクライアントの IP アドレス範囲を定義することができます。 こうした方法を有効にすると、定義された範囲内の IP アドレスを使用しているクライアントだけがストアに接続できます。
 
-<a name="upload-data-to-adls"></a> **Data Lake Store アカウントにファイルをアップロードするには**
+Azure Data Factory や VM など、他の Azure サービスが Data Lake Analytics アカウントに接続する場合は、**[Allow Azure Services]\(Azure サービスを許可する\)** が **[オン]** になっていることを確認してください。 
 
-1. ポータルで、左側のメニューにある **[参照]** をクリックしてから **[Data Lake Store]** をクリックします。
-2. データをアップロードする Data Lake Store アカウントをクリックします。 既定の Data Lake ストレージ アカウントを検索する場合は、 [こちら](#default-adl-account)を参照してください。
-3. 上部のメニューにある **[データ エクスプローラー]** をクリックします。
-4. **[新しいディレクトリ]** をクリックして新しいフォルダーを作成するか、フォルダー名をクリックしてフォルダーを変更します。
-5. 上部のメニューにある **[アップロード]** をクリックしてファイルをアップロードします。
+### <a name="set-up-a-firewall-rule"></a>ファイアウォール規則の設定
 
-<a name="upload-data-to-wasb"></a> **Azure BLOB ストレージ アカウントにファイルをアップロードするには**
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. 左側のメニューで **[ファイアウォール]** をクリックします。
 
-「 [HDInsight での Hadoop ジョブ用データのアップロード](../hdinsight/hdinsight-upload-data.md)」を参照してください。  この情報は Data Lake Analytics に適用されます。
+## <a name="add-a-new-user"></a>新しいユーザーの追加
 
-## <a name="manage-users"></a>ユーザーの管理
-Data Lake Analytics では、Azure Active Directory でのロール ベースの Access Control を使用します。 Data Lake Analytics アカウントの作成時に、"サブスクリプション管理者" ロールがアカウントに追加されます。 以下のロールを持つユーザーとセキュリティ グループをさらに追加することができます。
+**ユーザー追加ウィザード**を使用すると、新しい Data Lake ユーザーを簡単にプロビジョニングできます。
 
-| 役割 | 説明 |
-| --- | --- |
-| 所有者 |リソースへのアクセスを含め、すべてを管理できます。 |
-| 共同作成者 |ポータルにアクセスし、ジョブを送信および監視します。 ジョブを送信するには、共同作成者に、Data Lake Store アカウントに対する読み取りアクセス許可または書き込みアクセス許可が必要になります。 |
-| DataLakeAnalyticsDeveloper |ジョブを送信、監視、キャンセルします。  これらのユーザーがキャンセルできるのは自分のジョブのみです。 ユーザーの追加、アクセス許可の変更、アカウントの削除などを行って、自分のアカウントを管理することはできません。 ジョブを実行するには、Data Lake Store アカウントに対する読み取りまたは書き込みアクセス許可が必要です。 |
-| 閲覧者 |すべてを表示できますが、変更することはできません。 |
-| DevTest Labs ユーザー |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます。 |
-| ユーザーアクセスの管理者 |Azure リソースに対するユーザー アクセスを管理します。 |
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. 左側の **[作業の開始]** で、**[ユーザー追加ウィザード]** をクリックします。
+3. ユーザーを選択し、**[選択]** をクリックします。
+4. ロールを選択し、**[選択]** をクリックします。 Azure Data Lake を使用する新しい開発者を設定するには、**Data Lake Analytics の開発者**ロールを選択します。
+5. U-SQL データベースのアクセス制御リスト (ACL) を選択します。 正しく選択できたら、**[選択]** をクリックします。
+6. ファイルの ACL を選択します。 既定のストアの場合は、ルート フォルダー "/" と /system フォルダーの ACL を変更しないでください。 **[選択]**をクリックします。
+7. 選択したすべての変更を確認し、**[実行]** をクリックします。
+8. ウィザードが終了したら、**[完了]** をクリックします。
 
-Azure Active Directory ユーザーとセキュリティ グループの作成については、「 [Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
+## <a name="manage-role-based-access-control"></a>ロールベースのアクセス制御の管理
 
-**Data Lake Analytics アカウントにユーザーまたはセキュリティ グループを追加するには**
+他の Azure サービスと同様に、ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御できます。
 
-1. 管理する Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. **[設定]** をクリックし、**[ユーザー]** をクリックします。 以下のスクリーンショットに示されているように、**[要点]** タイトル バーの **[アクセス]** をクリックすることもできます。
-   
-    ![Azure Data Lake Analytics アカウントのユーザーの追加](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-access-button.png)
-3. **[ユーザー]** ブレードで、**[追加]** をクリックします。
-4. ロールを選択し、ユーザーを追加してから **[OK]**をクリックします。
+標準の RBAC ロールには、次のような機能があります。
+* **所有者**: ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
+* **共同作成者**: ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
+* **閲覧者**: ジョブの監視を行えます。
+
+U-SQL 開発者が Data Lake Analytics サービスを使用できるようにするには、Data Lake Analytics の開発者ロールを使用します。 Data Lake Analytics の開発者ロールを使用すると、次の操作を行えます。
+* ジョブを送信する。
+* ジョブの状態と、任意のユーザーによって送信されたジョブの進行状況を監視する。
+* 任意のユーザーによって送信されたジョブの U-SQL スクリプトを確認する。
+* 自分のジョブだけを取り消す。
+
+### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントへのユーザーまたはセキュリティ グループの追加
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[アクセス制御 (IAM)]** > **[追加]** の順にクリックします。
+3. ロールを選択します。
+4. ユーザーを追加します。
+5. **[OK]**をクリックします。
 
 >[!NOTE]
->このユーザーまたはセキュリティ グループは、ジョブを送信する必要がある場合、Data Lake Store に対するアクセス許可も与えられている必要があります。 詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。
+>ユーザーまたはセキュリティ グループがジョブを送信する必要がある場合は、ストア アカウントに対するアクセス許可も必要です。 詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。
 >
 
 <!-- ################################ -->
 <!-- ################################ -->
+
 ## <a name="manage-jobs"></a>ジョブの管理
-U-SQL ジョブを実行するには、Data Lake Analytics アカウントが必要です。  詳細については、「 [Data Lake Analytics アカウントの管理](#manage-data-lake-analytics-accounts)」を参照してください。
 
-<a name="create-job"></a>**ジョブを作成するには**
+### <a name="submit-a-job"></a>ジョブの送信
 
-1. 管理する Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. **[新しいジョブ]**をクリックします。
-   
-    ![Azure Data Lake Analytics U-SQL ジョブの作成](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-create-job-button.png)
-   
-    次のような新しいブレードが表示されます。
-   
-    ![Azure Data Lake Analytics U-SQL ジョブの作成](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-new-job.png)
-   
-    ジョブごとに、以下を構成することができます。
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
 
-    |名前|説明|
-    |----|-----------|
-    |ジョブ名|ジョブの名前を入力します。|
-    |優先順位|数が小さいほど優先順位が高くなります。 2 つのジョブが両方ともキューに登録されている場合は、優先順位の低いものが最初に実行されます。|
-    |並列処理 |同時に発生する可能性があるコンピューティング プロセスの最大数。 この数を増やすことで、パフォーマンスを向上させることができますが、コストが増加することもあります。|
-    |スクリプト|ジョブの U-SQL スクリプトを入力します。|
+2. **[新しいジョブ]**をクリックします。 各ジョブで、以下の項目を構成します。
 
-    同じインターフェイスを使用して、リンク データ ソースを検索し、リンクされているデータ ソースにファイルをさらに追加することもできます。 
-1. ジョブを送信する場合は、 **[ジョブの送信]** をクリックします。
+    1. **[ジョブ名]**: ジョブの名前。
+    2. **[優先度]**: 数値が小さいほど優先度が高くなります。 2 つのジョブがキューに登録されている場合は、優先度の値が小さい方のジョブが先に実行されます。
+    3. **[並行処理]**: このジョブのために予約する計算プロセスの最大数。
 
-**ジョブを送信するには**
+3. **[ジョブの送信]**をクリックします。
 
-[Data Lake Analytics ジョブの作成](#create-job)に関する記述を参照してください。
+### <a name="monitor-jobs"></a>ジョブの監視
 
-<a name="monitor-jobs"></a>**ジョブを監視するには**
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[すべてのジョブの表示]** をクリックします。 アカウントのすべてのアクティブなジョブと最近終了したジョブの一覧が表示されます。
+3. 必要に応じて **[フィルター]** をクリックして、**[時間の範囲]**、**[ジョブ名]**、および **[作成者]** の値でジョブを見つけやすくします。 
 
-1. 管理する Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。 以下のように、[ジョブ管理] パネルには基本的なジョブ情報が示されます。
-   
-    ![Azure Data Lake Analytics U-SQL ジョブの管理](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-manage-jobs.png)
-2. 前述のスクリーンショットに示されている **[ジョブ管理]** をクリックします。
-   
-    ![Azure Data Lake Analytics U-SQL ジョブの管理](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-manage-jobs-details.png)
-3. リストのジョブをクリックします。 または、以下のように **[フィルター]** をクリックします。これは、ジョブを検索するのに役立ちます。
-   
-    ![Azure Data Lake Analytics U-SQL ジョブのフィルター処理](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-filter-jobs.png)
-   
-    ジョブは、**時間範囲**、**ジョブ名**、および**作成者**でフィルター処理できます。
-4. ジョブを再送信する場合は、 **[再送信]** をクリックします。
+### <a name="monitoring-pipeline-jobs"></a>パイプライン ジョブの監視
+パイプラインの一部であるジョブは、特定のシナリオを実現するために、通常は順次実行されます。 たとえば、Customer Insights 用に利用状況をクリーンアップ、抽出、変換、集約するパイプラインがあります。 パイプライン ジョブは、ジョブの送信時に "Pipeline" プロパティを使用して識別されます。 ADF V2 を使用してスケジュールされたジョブには、このプロパティが自動的に設定されます。 
 
-**ジョブを再送信するには**
+パイプラインの一部である U-SQL ジョブの一覧を表示するには、次の手順を実行します。 
 
-[Data Lake Analytics ジョブの監視](#monitor-jobs)に関する記述を参照してください。
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[ジョブ洞察]** をクリックします。 既定では [すべてのジョブ] タブに移動し、実行中のジョブ、キューに登録済みのジョブ、終了したジョブの一覧が表示されます。
+3. **[パイプライン ジョブ]** タブをクリックします。パイプライン ジョブの一覧が、各パイプラインの集計された統計と共に表示されます。
 
-## <a name="monitor-account-usage"></a>アカウントの使用状況の監視
-**アカウントの使用状況を監視するには**
+### <a name="monitoring-recurring-jobs"></a>定期的なジョブの監視
+定期的なジョブとは、ビジネス ロジックは同一で、入力データが実行するたびに異なるジョブです。 定期的なジョブは、常に成功し、実行時間も比較的安定していることが理想的です。定期的なジョブの動作を監視することは、ジョブの正常性を保つのに役立ちます。 定期的なジョブは、"Recurrence" プロパティを使用して識別されます。 ADF V2 を使用してスケジュールされたジョブには、このプロパティが自動的に設定されます。
 
-1. 管理する Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。 使用状況は、以下のように [使用状況] パネルに表示されます。
-   
-    ![Azure Data Lake Analytics 使用状況の監視](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-monitor-usage.png)
-2. ペインをダブルクリックすると、詳細が示されます。
+定期的に実行される U-SQL ジョブの一覧を表示するには、次の手順を実行します。 
 
-## <a name="view-u-sql-catalog"></a>U-SQL カタログの表示
-[U-SQL カタログ](data-lake-analytics-use-u-sql-catalog.md) を使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。 カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。 Azure Portal で、U-SQL カタログを表示することができます。
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[ジョブ洞察]** をクリックします。 既定では [すべてのジョブ] タブに移動し、実行中のジョブ、キューに登録済みのジョブ、終了したジョブの一覧が表示されます。
+3. **[定期的なジョブ]** タブをクリックします。定期的なジョブの一覧が、それぞれのジョブの集計された統計と共に表示されます。
 
-**U-SQL カタログを参照するには**
+## <a name="manage-policies"></a>ポリシーの管理
 
-1. 管理する Analytics アカウントを開きます。 手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. 上部のメニューにある **[データ エクスプローラー]** をクリックします。
-3. **[カタログ]**、**[master]** の順に展開し、**[テーブル]、**[テーブル値関数]** または **[アセンブリ]** を展開します。 次のスクリーンショットには、1 つのテーブル値関数が示されています。
-   
-    ![Azure Data Lake Analytics データ エクスプ ローラーのストレージ アカウント](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-explore-catalog.png)
+### <a name="account-level-policies"></a>アカウントレベルのポリシー
 
-<!-- ################################ -->
-<!-- ################################ -->
-## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
-アプリケーションは通常、Web アプリ、データベース、データベース サーバー、ストレージ、サードパーティのサービスなどの、複数のコンポーネントで構成されます。 Azure Resource Manager を使用すると、アプリケーション内の複数のリソースを&1; つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+これらのポリシーは、Data Lake Analytics アカウント内のすべてのジョブに適用されます。
 
-Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
+#### <a name="maximum-number-of-aus-in-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントでの AU の最大数
+ポリシーを使用して、Data Lake Analytics アカウントが使用できる Analytics ユニット (AU) の合計数を制御します。 既定では、値は 250 に設定されます。 たとえば、この値が 250 AU に設定されている場合、250 AU が割り当てられている 1 つのジョブを実行するか、それぞれ 25 AU が割り当てられている 10 個のジョブを実行することができます。 送信される追加のジョブは、実行中のジョブが完了するまで、キューに登録されます。 実行中のジョブが完了すると、キューに登録されているジョブを実行するために AU が解放されます。
 
-* Azure Data Lake Analytics アカウント
-* 必要な既定の Azure Data Lake Store アカウント
-* 追加の Azure Data Lake Store アカウント
-* 追加の Azure Storage アカウント
+Data Lake Analytics アカウントの AU の数を変更するには:
 
-管理しやすくするために&1; つの Resource Management グループの下にこれらすべてのコンポーネントを作成することができます。
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[プロパティ]**をクリックします。
+3. **[最大 AU]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。 
+4. [ **Save**] をクリックします。
 
-![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
+> [!NOTE]
+> 既定値 (250) より多い AU が必要な場合は、ポータルで **[ヘルプとサポート]** をクリックし、サポート要求を送信します。 Data Lake Analytics アカウントで利用できる AU の数は、増やすことができます。
+>
 
-Data Lake Analytics アカウントと従属するストレージ アカウントは同じ Azure データ センターに配置する必要があります。
-ただし、Resource Management グループは別のデータ センターに配置できます。  
+#### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>同時に実行できるジョブの最大数
+ポリシーを使用して、同時に実行できるジョブの数を制御します。 既定では、この値は 20 に設定されます。 Data Lake Analytics に利用可能な AU がある場合は、実行中のジョブの合計数がこのポリシーの値に達するまで、新しいジョブがすぐに実行されるようにスケジュールされます。 同時に実行できるジョブの最大数に達すると、後続のジョブは、1 つ以上の実行中のジョブ (使用できる AU に基づいて) が完了するまで、優先度に従ってキューに登録されます。
 
-## <a name="see-also"></a>関連項目
-* [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
+同時に実行できるジョブの最大数を変更するには:
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[プロパティ]**をクリックします。
+3. **[実行ジョブの最大数]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。 
+4. [ **Save**] をクリックします。
+
+> [!NOTE]
+> 既定値 (20) より多い数のジョブを実行する必要がある場合は、ポータルで **[ヘルプとサポート]** をクリックし、サポート要求を送信します。 Data Lake Analytics アカウントで同時に実行できるジョブの数は、増やすことができます。
+>
+
+#### <a name="how-long-to-keep-job-metadata-and-resources"></a>ジョブのメタデータとリソースを保持する期間 
+ユーザーが U-SQL ジョブを実行すると、Data Lake Analytics サービスは関連するすべてのファイルを保持します。 関連するファイルには、U-SQL スクリプト、U-SQL スクリプトで参照される DLL ファイル、コンパイルされたリソース、統計情報が含まれます。 ファイルは、既定の Azure Data Lake ストレージ アカウントの /system/ フォルダーにあります。 このポリシーでは、これらのリソースが格納されてから自動的に削除されるまでの期間を制御します (既定値は 30 日間です)。 これらのファイルは、デバッグのほか、今後再実行するジョブのパフォーマンス チューニングのために使用できます。
+
+ジョブのメタデータとリソースを保持する期間を変更するには:
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[プロパティ]**をクリックします。
+3. **[ジョブ クエリを保持する日数]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。  
+4. [ **Save**] をクリックします。
+
+### <a name="job-level-policies"></a>ジョブレベルのポリシー
+ジョブレベルのポリシーでは、個々のユーザー (または特定のセキュリティ グループのメンバー) が自分の送信するジョブに設定できる最大 AU と最大優先度を制御できます。 これで、ユーザーによって生じるコストを制御できます。 また、スケジュールされたジョブが同じ Data Lake Analytics アカウントで実行されている優先度の高い実稼働ジョブに与える可能性がある影響を制御することもできます。
+
+Data Lake Analytics には、ジョブ レベルで設定できる次の 2 つのポリシーがあります。
+
+* **ジョブあたりの AU 制限**: ユーザーは、最大でこの AU 数になる範囲でのみ、ジョブを送信できます。 既定では、この制限はアカウントの最大 AU 制限と同じです。
+* **優先度**: ユーザーは、優先度がこの値以下のジョブだけを送信できます。 値が大きいほど優先度が低くなることに注意してください。 既定では、1 に設定されています。これは、最も高い優先度です。
+
+すべてのアカウントに、既定のポリシー セットがあります。 既定のポリシーは、アカウントのすべてのユーザーに適用されます。 特定のユーザーとグループに対して、追加のポリシーを設定することができます。 
+
+> [!NOTE]
+> アカウントレベルのポリシーとジョブレベルのポリシーは、同時に適用されます。
+>
+
+#### <a name="add-a-policy-for-a-specific-user-or-group"></a>特定のユーザーまたはグループへのポリシーの追加
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[プロパティ]**をクリックします。
+3. **[ジョブの送信の制限]** で、**[ポリシーの追加]** ボタンをクリックします。 次に、以下の設定を選択するか入力します。
+    1. **[計算ポリシー名]**: ポリシーの目的がわかるようなポリシー名を入力します。
+    2. **[ユーザーまたはグループの選択]**: このポリシーの適用対象となるユーザーまたはグループを選択します。
+    3. **[ジョブ AU の制限を設定します]**: 選択したユーザーまたはグループに適用される AU の制限を設定します。
+    4. **[Set the Priority Limit]\(優先度の制限を設定します\)**: 選択したユーザーまたはグループに適用される優先度の制限を設定します。
+
+4. **[OK]**をクリックします。
+
+5. **[ジョブの送信の制限]** の下にある **[既定]** ポリシー テーブルの一覧に、新しいポリシーが表示されます。 
+
+#### <a name="delete-or-edit-an-existing-policy"></a>既存のポリシーの削除または編集
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[プロパティ]**をクリックします。
+3. **[ジョブの送信の制限]** で、編集するポリシーを検索します。
+4.  **[削除]** および **[編集]** オプションを表示するには、テーブルの右端の列で **[...]** をクリックします。
+
+### <a name="additional-resources-for-job-policies"></a>ジョブ ポリシーの追加リソース
+* [ポリシーの概要に関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
+* [アカウントレベルのポリシーに関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
+* [ジョブレベルのポリシーに関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
+
+## <a name="next-steps"></a>次のステップ
+
+* [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
-* [Azure ポータルを使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
+* [Azure PowerShell を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-powershell.md)
 
 

@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/28/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e74a04276810c52fef3ad62e7f2c56860ba4fbd1
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5ee9855e1428c7a2d871d9c215d302c5c3b7101a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>StorSimple Manager サービスを使用してバックアップ カタログを管理する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたはスケジュールされたバックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。 このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
 このチュートリアルでは、バックアップ セットを一覧表示、選択、削除する方法について説明します。 バックアップからデバイスを復元する方法については、「 [Restore your device from a backup set (バックアップ セットからデバイスを復元する)](storsimple-restore-from-backup-set.md)」をご覧ください。 ボリュームを複製する方法については、「 [StorSimple ボリュームの複製](storsimple-clone-volume.md)」をご覧ください。
@@ -52,7 +54,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
    1. 適切なデバイスを選択します。
    2. ドロップダウン リストで、ボリュームを選択し、相当するバックアップを表示します。
    3. 時間範囲を指定します。
-   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png)  をクリックしてこのクエリを実行します。
+   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
       
       選択したボリュームに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
@@ -66,7 +68,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
    1. 適切なデバイスを選択します。
    2. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
    3. 時間範囲を指定します。
-   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png)  をクリックしてこのクエリを実行します。
+   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
       
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 3. バックアップ セットを選択して展開します。 ページの下に **[復元]** および **[削除]** オプションが表示されます。 選択したバックアップ セットには、これらのアクションのいずれかを実行できます。
@@ -81,7 +83,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
    1. 適切なデバイスを選択します。
    2. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
    3. 時間範囲を指定します。
-   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png)  をクリックしてこのクエリを実行します。
+   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
       
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 3. バックアップ セットを選択して展開します。 ページの下に **[復元]** および **[削除]** オプションが表示されます。 [ **削除**] をクリックします。
@@ -90,10 +92,5 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 ## <a name="next-steps"></a>次のステップ
 * [[バックアップ カタログ] ページを使用してバックアップ セットからデバイスを復元する方法](storsimple-restore-from-backup-set.md)。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

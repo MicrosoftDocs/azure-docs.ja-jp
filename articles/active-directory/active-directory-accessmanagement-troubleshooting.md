@@ -12,18 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
-ms.openlocfilehash: 27f8d329c0dddd21cca7e3631594ab326f3610b2
+ms.reviewer: piotrci
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 8b4251c39a8883dfcb97ded8e4b533f073dce685
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>グループの動的メンバーシップのトラブルシューティング
-**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>**[構成]** タブで **[委任されたグループ管理の有効化]** 設定が **[はい]** に設定されていることを確認してください。 Azure Active Directory Premium ライセンスが割り当てられたユーザーとしてサインインした場合にのみ、この設定が表示されます。 ルールに使用しているユーザー属性の値を確認し、そのルールを満たすユーザーが存在することを確認してください。
+**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>**[構成]** タブで **[委任されたグループ管理の有効化]** 設定が **[はい]** に設定されていることを確認してください。Azure Active Directory Premium ライセンスが割り当てられたユーザーとしてサインインした場合にのみ、この設定が表示されます。 ルールに使用しているユーザー属性の値を確認し、そのルールを満たすユーザーが存在することを確認してください。
 
 **ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**<br/>これは正しい動作です。 ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。 ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。     
 

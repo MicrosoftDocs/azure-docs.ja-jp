@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Insights におけるカスタム ライブ メトリックと診断 | Microsoft Docs"
+title: "Azure Application Insights のカスタム メトリックと診断を使用した Live Metrics Stream | Microsoft Docs"
 description: "カスタム メトリックを使用して Web アプリをリアルタイムで監視し、エラー、トレース、イベントのライブ フィードを使用して問題を診断します。"
 services: application-insights
 documentationcenter: 
@@ -11,36 +11,69 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
-ms.author: cfreeman
+ms.date: 05/24/2017
+ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 86e01cf6cb14334e85da4102610fa7feb66cb543
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 68820f9c018b1076bae8dc0195906d0f34590748
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
-# <a name="custom-live-metrics-and-events-monitor--diagnose-with-1-second-latency"></a>カスタム ライブ メトリックとイベント： 1 秒の待機時間での監視と診断 
-Live Metrics Stream には、[Application Insights](app-insights-overview.md) のメトリックとイベントが、1 秒というほぼリアルタイムの待機時間で表示されます。 この即時監視により、検出と診断の平均時間が短縮され、SLA を満たすことができます。 そのための方法は次のとおりです。
-* カスタム ライブ KPI の監視: 既存の Application Insights Telemetry のフィルター、スライス、ダイスを試みて、最も関連性の高い KPI をポータルから瞬時に取得できます。 コードまたは構成の変更やデプロイは不要です。 送信する可能性のある任意のカスタム メトリックや測定も使用できます。
-* ライブ検出と診断: 発生した要求エラーや依存関係エラーを詳細な例外トレースと共に表示できます。 既知の問題を除外して、実際の問題や新たな問題に焦点を合わせることができます。
-* ライブ デバッグ: 問題を再現し、カスタム フィルターを適用して再現操作を識別する特定のセッション ID に絞り込むか、カスタム属性を使用して、関連するすべてのライブ テレメトリを表示できます。 あらゆるサーバーから情報を収集して、問題を早期に解決できます。
-* 負荷に対するリソース使用量の反応を瞬時に表示: 負荷テストを実行するときに、"*任意の*" Windows パフォーマンス カウンターをライブで監視できます。また、運用環境を監視して悪影響を受ける前に対策を講じることもできます。 構成の変更やデプロイは不要です。
-* リリースする修正プログラムを検証できます。 サービスを更新したときに、更新に問題がないことを確認します。 修正したエラーが発生しなくなっていることを検証します。
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断 
+
+[Application Insights](app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream は、[プロファイラー](app-insights-profiler.md)、[スナップショット デバッガー](app-insights-snapshot-debugger.md)、[パフォーマンス テスト](app-insights-monitor-web-app-availability.md#performance-tests)とともに、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを提供します。
+
+Live Metrics Stream を使用すると、次のことが可能になります。
+
+* 修正がリリースされている間に、パフォーマンスと失敗の数を確認して、修正を検証します。
+* テスト負荷の影響を監視し、問題をライブで診断します。 
+* 監視するメトリックを選択してフィルタリングすることにより、特定のテスト セッションに焦点を当てたり、既知の問題を除外したりできます。
+* 発生時に例外トレースを取得します。
+* フィルターを試して、最も関連性の高い KPI を検索します。
+* すべての Windows パフォーマンス カウンターをライブで監視します。
 * 問題が発生しているサーバーを簡単に特定し、すべての KPI/ライブ フィードをフィルター処理してそのサーバーだけに絞り込むことができます。
 
-Live Metrics & Events Stream のデータは無料です。請求には加算されません。 ポータル エクスペリエンスを開くと、サーバーからデータがオンデマンドでストリーミングされます。 データは、グラフが表示されている場合にのみ保持され、その後破棄されます。 従来の ASP.NET アプリケーションではすべての機能を使用できます。.NET Core アプリケーションでは、現在、ライブ メトリックとサンプル エラーの固定セットのみを使用できます。 Microsoft では、最新のライブ ストリーミング機能に対応するために、サポートされているすべての SDK が標準レベルに達するよう取り組んでいます。 
+[![Live Metrics Stream 動画](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-ライブ ストリームは、サンプリングの前またはカスタム TelemetryProcessors が適用される前に、アプリケーション インスタンスから収集されます。 
+Live Metrics Stream は現在、オンプレミスまたはクラウドで実行されている ASP.NET アプリケーションで使用できます。 
 
-![Live Metrics Stream のビデオ](./media/app-insights-live-stream/youtube.png)[Live Metrics Stream のビデオ](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+## <a name="get-started"></a>作業開始
 
-ライブ メトリックとイベントにアクセスするには、左側のオプションをクリックするか、[概要] ブレードのボタンをクリックします。
+1. ASP.NET Web アプリケーションまたは [Windows Server アプリケーション](app-insights-windows-services.md) に [Application Insights をインストール](app-insights-asp-net.md)していない場合は、今すぐインストールします。 
+2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。 [**更新プログラム**] タブを開き、[**リリース前のパッケージを含める**] をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
+
+    アプリケーションを再デプロイします。
+
+3. [Azure ポータル](https://portal.azure.com)で、アプリの Application Insights リソースを開いてから、Live Stream を開きます。
+
+4. フィルターに顧客名などの機密データを使用する場合は、[コントロール チャネルを保護](#secure-the-control-channel)します。
+
 
 ![概要ブレードで、[Live Stream (ライブ ストリーム)] をクリックします](./media/app-insights-live-stream/live-stream-2.png)
 
-## <a name="custom-live-kpi"></a>カスタム ライブ KPI
+### <a name="no-data-check-your-server-firewall"></a>データが表示されない場合 サーバーのファイアウォールを確認
+
+サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](app-insights-ip-addresses.md#outgoing-ports)が開いているか確認します。 
+
+
+## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Live Metrics Stream が メトリックス エクスプローラーや Analytics と異なる点
+
+| |Live Stream | メトリックス エクスプローラーと Analytics |
+|---|---|---|
+|待機時間|1 秒以内に表示されるデータ|数分間で集計|
+|リテンション期間なし|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](app-insights-data-retention-privacy.md#how-long-is-the-data-kept)|
+|オン デマンド|Live Metrics を開いている間、データはストリーミングされます|SDK がインストールされて有効になるたびに、データが送信されます|
+|無料|Live Stream データ用の料金は発生しません|[価格](app-insights-pricing.md)設定の対象
+|サンプリング|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](app-insights-api-filtering-sampling.md)されることがあります|
+|コントロール チャネル|フィルターの制御シグナルが SDK に送信されます。 [このチャネルをセキュリティで保護する](#secure-channel)ことをお勧めします。|通信はポータルへの一方向です|
+
+
+## <a name="select-and-filter-your-metrics"></a>メトリックの選択とフィルタリング
+
+(最新の SDK を使用する従来の ASP.NET アプリで利用可能。)
+
 ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。 
 
 ![カスタム要求 KPI](./media/app-insights-live-stream/live-stream-filteredMetric.png)
@@ -77,7 +110,7 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 ## <a name="sdk-requirements"></a>SDK の要件
 カスタムの Live Metrics Stream は、バージョン 2.4.0-beta2 以降の [Application Insights SDK for web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) で使用できます。 NuGet パッケージ マネージャーで [リリース前のパッケージを含める] を必ず選択してください。
 
-## <a name="authenticated-channel"></a>認証済みチャネル
+## <a name="secure-the-control-channel"></a>コントロール チャネルの保護
 指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。
 ### <a name="create-an-api-key"></a>API キーを作成する
 
@@ -108,6 +141,15 @@ applicationinsights.config ファイルで、AuthenticationApiKey を QuickPulse
 >フィルター条件に CustomerID などの機密情報を入力する前に、認証済みチャネルを設定することを強くお勧めします。
 >
 
+## <a name="generating-a-performance-test-load"></a>パフォーマンス テスト負荷の生成
+
+負荷増加の影響を確認するには、パフォーマンス テスト ブレードを使用します。 これは、複数の同時ユーザーからの要求をシミュレートします。 単一の URL の "手動テスト" (ping テスト) を実行することも、アップロードする[複数ステップの Web パフォーマンス テスト](app-insights-monitor-web-app-availability.md#multi-step-web-tests)を (可用性テストと同じ方法で) 実行することもできます。
+
+> [!TIP]
+> パフォーマンス テストを作成したあと、テストと Live Stream ブレードを別々のウィンドウで開きます。 キューに登録済みのパフォーマンス テストの開始を確認でき、同時にライブ ストリームを見ることができます。
+>
+
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合、Live Metrics Stream では他の Application Insights Telemetry とは異なる IP アドレスを使用します。 [これらの IP アドレス](app-insights-ip-addresses.md)がファイアウォールで開いていることを確認してください。
@@ -117,5 +159,6 @@ applicationinsights.config ファイルで、AuthenticationApiKey を QuickPulse
 ## <a name="next-steps"></a>次のステップ
 * [Application Insights による使用状況の監視](app-insights-web-track-usage.md)
 * [診断検索の使用](app-insights-diagnostic-search.md)
-
+* [プロファイラー](app-insights-profiler.md)
+* [スナップショット デバッガー](app-insights-snapshot-debugger.md)
 

@@ -3,7 +3,7 @@ title: "Azure Linux VM のサイズ - GPU | Microsoft Docs"
 description: "Azure の Linux 仮想マシンで使用できるさまざまな GPU 最適化済みのサイズを一覧表示します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
-ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: e0cd2a14b4102797024925a72783ecaf56919aec
+ms.date: 07/28/2017
+ms.author: jonbeck
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ec289cf53f2cfecd2744b739667ef831dafd59a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -28,11 +27,12 @@ ms.lasthandoff: 05/02/2017
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
-
-サポートされているオペレーティング システムとドライバーの要件については、[Linux 用の N シリーズ ドライバーのセットアップ](n-series-driver-setup.md)に関するページを参照してください。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+[!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
+
+ドライバーのインストールと検証手順については、「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](n-series-driver-setup.md)」を参照してください。
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 

@@ -3,22 +3,22 @@ title: "Azure PowerShell を使用したロールベースの Access Control (RB
 description: "Azure PowerShell を使用して RBAC を管理する方法 (ロールの表示、ロールの割り当て、ロール割り当ての削除など)。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
-editor: 
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/02/2017
-ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5de7b134d99a0b7887acb9d7f87991056e4d608a
-ms.lasthandoff: 04/27/2017
-
+ms.date: 07/12/2017
+ms.author: andredm
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: e7323325c303c26e2ea4d9f2a8ac5178fa33b875
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Azure PowerShell を使用したロールベースのアクセス制御の管理
@@ -128,7 +128,7 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 カスタム ロールを作成するには、 ```New-AzureRmRoleDefinition``` コマンドを使用します。 ロールを構成する方法は 2 つあります。PSRoleDefinitionObject を使用するか JSON テンプレートを使用します。 
 
-## <a name="get-actions-from-particular-resource-provider"></a>特定のリソース プロバイダーからアクションを取得する
+## <a name="get-actions-for-a-resource-provider"></a>リソース プロバイダーの操作を取得する
 カスタム ロールを最初から作成するときは、リソース プロバイダーから可能なすべての操作を理解しておくことが重要です。
 この情報を取得するには、```Get-AzureRMProviderOperation``` コマンドを使います。
 たとえば、仮想マシンで使用可能なすべての操作を確認する場合は、次のコマンドを使います。
@@ -166,7 +166,7 @@ New-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ### <a name="create-role-with-json-template"></a>JSON テンプレートを使用したロールの作成
-カスタム ロールのソース定義として JSON テンプレートを使用できます。 次の例では、ストレージと計算リソースへの読み取りアクセス、サポートへのアクセスを許可するカスタム ロールを作成し、そのロールを 2 つのサブスクリプションに追加します。 次の内容を持つ新しいファイル `C:\CustomRoles\customrole1.json` を作成します。 新しい ID が自動的に生成されるため、最初のロール作成では ID を `null` に設定する必要があります。 
+カスタム ロールのソース定義として JSON テンプレートを使用できます。 次の例では、ストレージと計算リソースへの読み取りアクセス、サポートへのアクセスを許可するカスタム ロールを作成し、そのロールを 2 つのサブスクリプションに追加します。 以下のコード例を含んだ新しいファイル `C:\CustomRoles\customrole1.json` を作成します。 新しい ID が自動的に生成されるため、最初のロール作成では ID を `null` に設定する必要があります。 
 
 ```
 {

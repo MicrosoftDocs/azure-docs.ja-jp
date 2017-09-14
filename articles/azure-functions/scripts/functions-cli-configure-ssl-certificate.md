@@ -4,7 +4,7 @@ description: "Azure CLI のサンプル スクリプト - Azure における Fun
 services: functions
 documentationcenter: 
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
@@ -17,22 +17,26 @@ ms.date: 04/10/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 9b7f84f5ad01335a3ce72b6b2aa654968fdd9499
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: ddabb701d7d5615232d1f6163aa6fb166efe5cb0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>カスタム SSL 証明書を Function App にバインドする
 
-このサンプル スクリプトは、App Service で関連リソースと共に Function App を作成し、そこにカスタム ドメイン名の SSL 証明書をバインドします。 このサンプルでは、次のものが必要になります。
+このサンプル スクリプトは、App Service で関連リソースと共に Function App を作成し、そこにカスタム ドメイン名の SSL 証明書をバインドします。 このサンプルでは、以下が必要です。
 
 * ドメイン レジストラーの DNS 構成ページへのアクセス許可。
 * アップロードしてバインドする SSL 証明書の有効な .PFX ファイルとパスワード。
 
 SSL 証明書をバインドするには、Function App を従量課金プランではなく、App Service プランで作成する必要があります。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

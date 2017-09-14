@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 08/07/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 5bed2616e15a2e5f52e79d0c28159b568e7a1de3
-ms.lasthandoff: 04/15/2017
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 804e05f596e1d6d5f650e4c94a18eff6b7c3ba4e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -25,31 +26,89 @@ ms.lasthandoff: 04/15/2017
 Automation アカウントが正常に作成されたら、新しく作成または更新された Automation 実行アカウントを使用して Azure Resource Manager または Azure クラシック デプロイメントで正常に認証できることを確認する簡単なテストを実行できます。    
 
 ## <a name="automation-run-as-authentication"></a>Automation 実行アカウントの認証
+実行アカウントを使った認証を検証するには、以下のサンプル コードを使って、[PowerShell Runbook を作成](automation-creating-importing-runbook.md)します。さらにカスタム Runbook でも、Automation アカウントによる Resource Manager リソースの認証と管理を行ってください。   
 
-1. 先ほど作成した Automation アカウントを Azure Portal で開きます。  
-2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
-3. **AzureAutomationTutorialScript** Runbook を選択し、**[開始]** をクリックして、Runbook を開始します。  Runbook を開始することを確認するプロンプトが表示されます。
-4. [Runbook ジョブ](automation-runbook-execution.md) が作成されると、[ジョブ] ブレードが表示され、ジョブの状態が **[ジョブの概要]** タイルに表示されます。  
-5. 最初のジョブの状態は " *キュー登録済み* " であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。 その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
-6. Runbook ジョブが完了すると、状態は **[完了]** と表示されます。<br> ![Security Principal Runbook Test](media/automation-verify-runas-authentication/job-summary-automationtutorialscript.png)<br>
-7. Runbook の詳細な結果を表示するには、 **[出力]** タイルをクリックします。
-8. **[出力]** ブレードに、正常に認証され、リソース グループ内で使用可能なすべてのリソースの一覧が返されたことが示されます。
-9. **[出力]** ブレードを閉じて、**[ジョブの概要]** ブレードに戻ります。
-10. **[ジョブの概要]** と、対応する **[AzureAutomationTutorialScript]** Runbook ブレードを閉じます。
+    $connectionName = "AzureRunAsConnection"
+    try
+    {
+        # Get the connection "AzureRunAsConnection "
+        $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
+
+        "Logging in to Azure..."
+        Add-AzureRmAccount `
+           -ServicePrincipal `
+           -TenantId $servicePrincipalConnection.TenantId `
+           -ApplicationId $servicePrincipalConnection.ApplicationId `
+           -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+    }
+    catch {
+       if (!$servicePrincipalConnection)
+       {
+          $ErrorMessage = "Connection $connectionName not found."
+          throw $ErrorMessage
+      } else{
+          Write-Error -Message $_.Exception
+          throw $_.Exception
+      }
+    }
+
+    #Get all ARM resources from all resource groups
+    $ResourceGroups = Get-AzureRmResourceGroup 
+
+    foreach ($ResourceGroup in $ResourceGroups)
+    {    
+       Write-Output ("Showing resources in resource group " + $ResourceGroup.ResourceGroupName)
+       $Resources = Find-AzureRmResource -ResourceGroupNameContains $ResourceGroup.ResourceGroupName | Select ResourceName, ResourceType
+       ForEach ($Resource in $Resources)
+       {
+          Write-Output ($Resource.ResourceName + " of type " +  $Resource.ResourceType)
+       }
+       Write-Output ("")
+    } 
+
+Runbook での認証に使用されるコマンドレット ( **Add-AzureRmAccount**) は、 *ServicePrincipalCertificate* パラメーター セットを使用することに注意してください。  認証に使用するのはサービス プリンシパル証明書であり、資格情報ではありません。  
+
+[この Runbook を実行](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)して実行アカウントを検証すると、[Runbook ジョブ](automation-runbook-execution.md)が作成され、[ジョブ] ブレードが表示されて、ジョブの状態が **[ジョブの概要]** タイルに表示されます。 最初のジョブの状態は " *キュー登録済み* " であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。 その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  Runbook ジョブが完了すると、状態は **[完了]** と表示されます。
+
+Runbook の詳細な結果を表示するには、 **[出力]** タイルをクリックします。  **[出力]** ブレードに、正常に認証されたことが示されると共に、ご利用のサブスクリプションに含まれる全リソース グループのすべてのリソースの一覧が返されます。  
+
+Runbook のコードを再利用する際は、`#Get all ARM resources from all resource groups` というコメントで始まるコード ブロックを忘れずに削除してください。
 
 ## <a name="classic-run-as-authentication"></a>クラシック実行認証
-クラシック デプロイメント モデルのリソースを管理する場合は、次の手順を実行して、新しいクラシック実行アカウントを使用して正しく認証できることを確認します。     
+クラシック実行アカウントを使った認証を検証するには、以下のサンプル コードを使って、[PowerShell Runbook を作成](automation-creating-importing-runbook.md)します。さらにカスタム Runbook でも、クラシック デプロイメント モデルにおけるリソースの認証と管理を行ってください。  
 
-1. 先ほど作成した Automation アカウントを Azure Portal で開きます。  
-2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
-3. **AzureClassicAutomationTutorialScript** Runbook を選択し、**[開始]** をクリックして、Runbook を開始します。  Runbook を開始することを確認するプロンプトが表示されます。
-4. [Runbook ジョブ](automation-runbook-execution.md) が作成されると、[ジョブ] ブレードが表示され、ジョブの状態が **[ジョブの概要]** タイルに表示されます。  
-5. 最初のジョブの状態は " *キュー登録済み* " であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。 その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
-6. Runbook ジョブが完了すると、状態は **[完了]** と表示されます。<br><br> ![Security Principal Runbook Test](media/automation-verify-runas-authentication/job-summary-automationclassictutorialscript.png)<br>  
-7. Runbook の詳細な結果を表示するには、 **[出力]** タイルをクリックします。
-8. **[出力]** ブレードに、正常に認証され、サブスクリプション内のすべてのクラシック VM の一覧が返されたことが示されます。
-9. **[出力]** ブレードを閉じて、**[ジョブの概要]** ブレードに戻ります。
-10. **[ジョブの概要]** と、対応する **[AzureClassicAutomationTutorialScript]** Runbook ブレードを閉じます。
+    $ConnectionAssetName = "AzureClassicRunAsConnection"
+    # Get the connection
+    $connection = Get-AutomationConnection -Name $connectionAssetName        
+
+    # Authenticate to Azure with certificate
+    Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
+    $Conn = Get-AutomationConnection -Name $ConnectionAssetName
+    if ($Conn -eq $null)
+    {
+       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in the Automation account."
+    }
+
+    $CertificateAssetName = $Conn.CertificateAssetName
+    Write-Verbose "Getting the certificate: $CertificateAssetName" -Verbose
+    $AzureCert = Get-AutomationCertificate -Name $CertificateAssetName
+    if ($AzureCert -eq $null)
+    {
+       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in the Automation account."
+    }
+
+    Write-Verbose "Authenticating to Azure with certificate." -Verbose
+    Set-AzureSubscription -SubscriptionName $Conn.SubscriptionName -SubscriptionId $Conn.SubscriptionID -Certificate $AzureCert
+    Select-AzureSubscription -SubscriptionId $Conn.SubscriptionID
+    
+    #Get all VMs in the subscription and return list with name of each
+    Get-AzureVM | ft Name
+
+[この Runbook を実行](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)して実行アカウントを検証すると、[Runbook ジョブ](automation-runbook-execution.md)が作成され、[ジョブ] ブレードが表示されて、ジョブの状態が **[ジョブの概要]** タイルに表示されます。 最初のジョブの状態は " *キュー登録済み* " であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。 その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  Runbook ジョブが完了すると、状態は **[完了]** と表示されます。
+
+Runbook の詳細な結果を表示するには、 **[出力]** タイルをクリックします。  **[出力]** ブレードに、正常に認証されたことが示されると共に、ご利用のサブスクリプションにデプロイされているすべての Azure VM の一覧が VMName で返されます。  
+
+Runbook のコードを再利用する際は、コマンドレット **Get-AzureVM** を忘れずに削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 * PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。

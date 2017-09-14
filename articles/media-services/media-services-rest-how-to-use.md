@@ -4,7 +4,7 @@ description: "Media Services REST API の概要"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8b6e19e3c495eec4e16187524df0b13e4ffce9de
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a874bc48cc94fff32382ccdb832f0fbd3d08e03f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
@@ -27,6 +28,7 @@ ms.openlocfilehash: 8b6e19e3c495eec4e16187524df0b13e4ffce9de
 
 Microsoft Azure Media Services は OData ベースの HTTP 要求を受け付けるサービスであり、詳細 JSON または atom+pub で応答が可能です。 Media Services は、Azure 設計ガイドラインに準拠しているため、Media Services に接続するときに各クライアントが使用する必要がある必須 HTTP ヘッダーのセットと、使用できる省略可能なヘッダーのセットがあります。 次のセクションでは、要求を作成したり Media Services から応答を受信したりするときに使用できるヘッダーと HTTP 動詞について説明します。
 
+このトピックでは、REST v2 を Media Services で使用する方法について概説します。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -101,23 +103,23 @@ HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次
 | MERGE |名前付きプロパティを変更して、既存のオブジェクトを更新します。 |
 | HEAD |GET 応答に対するオブジェクトのメタデータを返します。 |
 
-## <a name="limitation"></a>制限事項
-パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
-
-## <a name="discovering-media-services-model"></a>Media Services のモデルの検出
+## <a name="discover-media-services-model"></a>Media Services のモデルの検出
 Media Services のエンティティを見つけやすくするには、$metadata 操作を使用できます。 これによって、すべての有効なエンティティの種類、エンティティのプロパティ、関連付け、関数、アクションなどを取得できます。 次の例は、URI を作成する方法を示しています。 https://media.windows.net/API/$metadata
 
 ブラウザーにメタデータを表示する場合は　URI の末尾に "?api-version=2.x" を追加してください。または、要求に　x-ms-version　を含めないでください。
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
+
+## <a name="next-steps"></a>次のステップ
+
+REST を使った AMS API へのアクセスについては、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

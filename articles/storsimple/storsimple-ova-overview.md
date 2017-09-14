@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/09/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ba37cbfc8c92d00cf0ec02dd7b1ea9795946bcd
 ms.openlocfilehash: 100eed4694d2017333ef25eca86034d17cce78d1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/09/2016
 
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
@@ -79,7 +81,7 @@ StorSimple Virtual Array は、次のワークフローに特に適してしま�
 
 * [クラウドベースのストレージ管理](#cloud-based-storage-management)
 * [場所に依存しないバックアップ](#location-independent-backup)
-* [データ保護と障害復旧](#data-protection-and-disaster-recovery)
+* [データ保護とディザスター リカバリー](#data-protection-and-disaster-recovery)
 
 ### <a name="cloud-based-storage-management"></a>クラウドベースのストレージ管理
 Azure Portal で実行されている StorSimple Device Manager サービスを使用して、複数のデバイスや複数の場所に保存されたデータを管理できます。 これは、分散型ブランチ シナリオで特に役立ちます。 仮想アレイと StorSimple 物理デバイスを管理する StorSimple Device Manager サービスのインスタンスを個別に作成する必要があります。 また、仮想アレイでは、Azure クラシック ポータルではなく、新しい Azure Portal を使用するようになりました。
@@ -94,7 +96,7 @@ Azure Portal で実行されている StorSimple Device Manager サービスを�
 
 * **ボリュームまたは共有の復元** - ボリュームまたは共有を回復する新しいワークフローとして復元を使用します。 この手法を使用して、ボリュームまたは共有全体を回復します。
 * **項目レベルの回復** - 共有により、最近のバックアップへのアクセスを簡素化できます。 クラウドで利用できる特別な *.backup* フォルダーから、個々のファイルを簡単に回復できます。 この復元機能はユーザー主導型であり、管理者の介入は不要です。
-* **ディザスター リカバリー** - フェールオーバー機能を使用して、すべてのボリュームまたは共有を新しい仮想アレイに回復します。 新しい仮想アレイを作成して StorSimple Device Manager サービスに登録し、元の仮想アレイをフェールオーバーします。 プロビジョニング済みのリソースは、新しい仮想アレイが引き継ぎます。
+* **ディザスター リカバリー** - フェールオーバー機能を使用して、すべてのボリュームまたは共有を新しい仮想アレイに回復します。 新しい仮想アレイを作成して StorSimple Device Manager サービスに登録し、元の仮想アレイをフェールオーバーします。 プロビジョニング済みのリソースは、新しい仮想アレイが引き継ぎます。 
 
 ## <a name="storsimple-virtual-array-components"></a>StorSimple Virtual Array のコンポーネント
 仮想アレイには、次のコンポーネントがあります。
@@ -108,7 +110,7 @@ Azure Portal で実行されている StorSimple Device Manager サービスを�
 ### <a name="virtual-array"></a>仮想アレイ
 仮想アレイは、プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する単一ノード ストレージ ソリューションです。仮想アレイでは、デバイス上に保存されたすべてのデータのセキュリティと機密性も確保されます。
 
-仮想アレイは、ダウンロード可能な&1; つのモデルで使用できます。 仮想アレイの最大容量は、デバイス上が 6.4 TB (基になるストレージ要件は 8 TB)、クラウド ストレージを含めると 64 TB です。 
+仮想アレイは、ダウンロード可能な 1 つのモデルで使用できます。 仮想アレイの最大容量は、デバイス上が 6.4 TB (基になるストレージ要件は 8 TB)、クラウド ストレージを含めると 64 TB です。 
 
 仮想アレイには次の特長があります。
 
@@ -174,7 +176,7 @@ Web ベースの UI の使用方法については、「 [Web UI を使用した
 
 ローカル固定共有/ボリュームを階層化として復元することも、階層化共有/ボリュームをローカル固定として復元することもできます。 
 
-ローカル固定ボリュームの詳細については、「 [StorSimple Device Manager サービスを使用してボリュームを管理する (Update&2;)](storsimple-virtual-array-manage-volumes.md)」をご覧ください。
+ローカル固定ボリュームの詳細については、「 [StorSimple Device Manager サービスを使用してボリュームを管理する (Update 2)](storsimple-virtual-array-manage-volumes.md)」をご覧ください。
 
 ### <a name="deduplication-and-compression-for-data-tiered-or-backed-up-to-the-cloud"></a>クラウドに階層化またはバックアップされたデータの重複除去と圧縮
 StorSimple では、重複除去とデータ圧縮を使用して、クラウドでのストレージ要件をさらに削減します。 重複除去では、格納されているデータ セットの重複を除去してデータを圧縮します。 情報が変更されると、StorSimple は、変更されていないデータを無視して変更内容のみを取り込みます。 さらに、重複する情報を特定して削除することで、保存されるデータの量を減らします。 
@@ -189,10 +191,5 @@ StorSimple のデータ保護機能を使用すると、オンデマンド バ�
 
 ## <a name="next-steps"></a>次のステップ
 [仮想アレイ ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md)方法を確認します。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

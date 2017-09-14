@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6bc564cc5121a6b7b7896f1d90177140bee15fbb
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: da517c096357bb8db4334715fa46aa209c273f22
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
@@ -105,7 +104,7 @@ Active Directory では、既定のユーザー プリンシパル名 (UPN) サ�
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD のユーザー プリンシパル名
 Azure AD Connect ウィザードでは、userPrincipalName 属性を使用することもできますが、Azure AD のユーザー プリンシパル名として使用される属性をオンプレミスから指定することもできます (後者はカスタム インストールの場合です)。 この値が、Azure AD へのサインインに使用されます。 ユーザー プリンシパル名の属性値が Azure AD の確認済みドメインに対応しない場合は、値が既定値 (.onmicrosoft.com) に置き換えられます。
 
-Azure Active Directory のすべてのディレクトリには、contoso.onmicrosoft.com という形式のドメイン名があらかじめ設定されており、これによってユーザーは、Azure をはじめとする Microsoft の各種サービスを利用できるようになっています。 カスタム ドメインを使用すれば、サインイン エクスペリエンスを改善したり、簡素化することもできます。 Azure AD のカスタム ドメイン名とドメインの確認方法については、「[Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-add-domain.md#add-a-custom-domain-name-to-your-directory)」をご覧ください。
+Azure Active Directory のすべてのディレクトリには、contoso.onmicrosoft.com という形式のドメイン名があらかじめ設定されており、これによってユーザーは、Azure をはじめとする Microsoft の各種サービスを利用できるようになっています。 カスタム ドメインを使用すれば、サインイン エクスペリエンスを改善したり、簡素化することもできます。 Azure AD のカスタム ドメイン名とドメインの確認方法については、「[Azure Active Directory へのカスタム ドメイン名の追加](../add-custom-domain.md#add-the-custom-domain-name-to-your-directory)」をご覧ください。
 
 ## <a name="azure-ad-sign-in-configuration"></a>Azure AD サインインの構成
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Azure AD Connect による Azure AD サインインの構成
@@ -117,8 +116,8 @@ Azure AD のサインイン ページには、オンプレミスの Active Direc
 | 状態 | 説明 | 必要な対処 |
 |:--- |:--- |:--- |
 | Verified |Azure AD Connect が、Azure AD で一致する確認済みのドメインを検出しました。 このドメインのすべてのユーザーは、オンプレミスの資格情報を使用してサインインできます。 |対処は必要ありません。 |
-| 未確認 |Azure AD Connect が Azure AD 内の一致するカスタム ドメインを検出しましたが、そのドメインはまだ確認されていません。 ドメインが確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、同期後に既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [Azure AD でカスタム ドメインを確認します。](../active-directory-add-domain.md#verify-the-domain-name-with-azure-ad) |
-| 追加されていません |Azure AD Connect が、UPN サフィックスに対応するカスタム ドメインを検出できませんでした。 ドメインが追加されて確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [UPN サフィックスに対応するカスタム ドメインを追加し、確認します。](../active-directory-add-domain.md) |
+| 未確認 |Azure AD Connect が Azure AD 内の一致するカスタム ドメインを検出しましたが、そのドメインはまだ確認されていません。 ドメインが確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、同期後に既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [Azure AD でカスタム ドメインを確認します。](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
+| 追加されていません |Azure AD Connect が、UPN サフィックスに対応するカスタム ドメインを検出できませんでした。 ドメインが追加されて確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [UPN サフィックスに対応するカスタム ドメインを追加し、確認します。](../add-custom-domain.md) |
 
 Azure AD サインイン ページには、オンプレミス Active Directory に対して定義されている UPN サフィックスの一覧と、対応する Azure AD のカスタム ドメインおよび現在の確認状態が表示されます。 カスタム インストールでは、**[Azure AD のサインイン]** ページでユーザー プリンシパル名の属性を選択できるようになりました。
 

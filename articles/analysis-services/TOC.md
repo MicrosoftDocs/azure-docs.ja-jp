@@ -1,14 +1,28 @@
 # 概要
 ## [Azure Analysis Services とは](analysis-services-overview.md)
 ## [サポートされるデータ ソース](analysis-services-datasource.md)
+## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
+## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)
+## [互換性レベル](analysis-services-compat-level.md)
+## [高可用性](analysis-services-bcdr.md)
 
-# クイック スタート
-## [サーバーの作成 - ポータル](analysis-services-create-server.md)
-## [モデルのデプロイ - SSDT](analysis-services-deploy.md)
+# 作業開始
+## [Azure Portal でサーバーを作成する](analysis-services-create-server.md)
+## [PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
+## [Visual Studio からモデルをデプロイする](analysis-services-deploy.md)
+## [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
 
-
-# チュートリアル
-## モデルの作成とデプロイ
+# 操作方法 
+## [サーバーの管理](analysis-services-manage.md)
+## [データベース ユーザーの管理](analysis-services-database-users.md)
+## [サーバー管理者の管理](analysis-services-server-admins.md)
+## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
+## [クライアント ライブラリの取得](analysis-services-data-providers.md)
+## [バックアップと復元](analysis-services-backup.md)
+## [Excel を使用した接続](analysis-services-connect-excel.md)
+## [Power BI を使用した接続](analysis-services-connect-pbi.md)
+## [.odc ファイルの作成](analysis-services-odc.md)
+## Tutorials (チュートリアル)
 ### [Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)
 ### [レッスン 1: 新しい表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 ### [レッスン 2: データを取得する](tutorials/aas-lesson-2-get-data.md)
@@ -25,32 +39,24 @@
 ### [レッスン 13: デプロイする](tutorials/aas-lesson-13-deploy.md)
 ### [補足のレッスン - 詳細行](tutorials/aas-supplemental-lesson-detail-rows.md)
 ### [補足のレッスン - 動的なセキュリティ](tutorials/aas-supplemental-lesson-dynamic-security.md)
-### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
-
-# 操作方法 
-## [サーバーの管理](analysis-services-manage.md)
-## [ユーザーの管理](analysis-services-manage-users.md)
-## [オンプレミスのデータ ゲートウェイの統合](analysis-services-gateway.md)
-## [サーバーへの接続](analysis-services-connect.md)
-## [Excel を使用した接続](analysis-services-connect-excel.md)
-## [Power BI を使用した接続](analysis-services-connect-pbi.md)
-## [クライアント ライブラリの取得](analysis-services-data-providers.md)
-## [バックアップと復元](analysis-services-backup.md)
-## [高可用性](analysis-services-bcdr.md)
-## [.odc ファイルの作成](analysis-services-odc.md)
+### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # リファレンス
 ## [PowerShell](analysis-services-powershell.md)
 ## [REST ()](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # リソース
+## [GitHub の Analysis Services コード サンプル](https://github.com/Microsoft/Analysis-Services)
 ## [Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
-## [フィードバック](https://feedback.azure.com/forums/556165-azure-analysis-services)
-## [StackOverflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
-## [料金](https://azure.microsoft.com/pricing/details/analysis-services/)
-## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Azure の状態](https://azure.microsoft.com/status/)
+## [フィードバック](https://feedback.azure.com/forums/556165-azure-analysis-services)
+## [料金](https://azure.microsoft.com/pricing/details/analysis-services/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [StackOverflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 

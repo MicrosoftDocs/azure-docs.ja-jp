@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 1901613b3e0db19f86247ee78828eccd58fb026b
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 8e77153493b6f37f5f48116b86bad6b25a50d1a1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ Hadoop はログやファイルなどの非構造化データおよび半構造�
 
 [Sqoop][sqoop-user-guide-1.4.4] は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL Server、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換してから、そのデータを RDBMS にエクスポートして戻したりできます。 このチュートリアルでは、リレーショナル データベースとして SQL Server データベースを使用します。
 
-HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
+HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」をご覧ください。
 
 ## <a name="understand-the-scenario"></a>シナリオの理解
 
@@ -114,7 +114,7 @@ Azure PowerShell を使用してクラスターと SQL Database を作成する�
 * **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。 Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。 
   
   > [!NOTE]
-  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。 Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
+  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure Portal から有効にする必要があります。 Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
   > 
   > 
 * **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。

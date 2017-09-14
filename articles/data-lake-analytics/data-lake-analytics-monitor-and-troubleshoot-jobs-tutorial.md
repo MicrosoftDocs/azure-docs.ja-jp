@@ -3,8 +3,8 @@ title: "Azure Portal を使用する Azure Data Lake Analytics ジョブのト�
 description: "Azure ポータルを使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: b2b19a6f2ea20c414119e9dfbf84fda92dd93402
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -27,50 +27,31 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 
 このチュートリアルでは、不足しているソース ファイルの問題をセットアップし、Azure ポータルを使用してその問題のトラブルシューティングを行います。
 
-**前提条件**
-
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
-
-* **Data Lake Analytics ジョブ プロセスの基本的な知識**。 「 [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
-* **Data Lake Analytics アカウント**。 「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)」を参照してください。
-* **既定の Data Lake Store アカウントへのサンプル データのコピー**。  「 [ソース データの準備](data-lake-analytics-get-started-portal.md)
-
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics ジョブの送信
-ここでは、不適切なソース ファイル名で U-SQL ジョブを作成します。  
 
-**ジョブを送信するには**
+次の U-SQL ジョブを送信します。
 
-1. Azure ポータルで、左上隅にある **[Microsoft Azure]** をクリックします。
-2. Data Lake Analytics アカウント名のタイルをクリックします。  ここにはアカウントの作成時にピン留めされます。
-   アカウントがそこにピン留めされていない場合は、 [ポータルから Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#manage-data-sources)手順を参照してください。
-3. 上部のメニューから **[新しいジョブ]** をクリックします。
-4. ジョブ名および以下の U-SQL スクリプトを入力します。
+```
+@searchlog =
+   EXTRACT UserId          int,
+           Start           DateTime,
+           Region          string,
+           Query           string,
+           Duration        int?,
+           Urls            string,
+           ClickedUrls     string
+   FROM "/Samples/Data/SearchLog.tsv1"
+   USING Extractors.Tsv();
 
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv1"
-            USING Extractors.Tsv();
+OUTPUT @searchlog   
+   TO "/output/SearchLog-from-adls.csv"
+   USING Outputters.Csv();
+```
+    
+スクリプトで定義されているソース ファイルは **/Samples/Data/SearchLog.tsv1** ですが、これは **/Samples/Data/SearchLog.tsv** でなければなりません。
 
-        OUTPUT @searchlog   
-            TO "/output/SearchLog-from-adls.csv"
-        USING Outputters.Csv();
-
-    スクリプトで定義されているソース ファイルは **/Samples/Data/SearchLog.tsv1** ですが、これは **/Samples/Data/SearchLog.tsv** でなければなりません。
-5. 上部の **[ジョブの送信]** をクリックします。 新しいジョブの詳細ペインが開きます。 タイトル バーに、ジョブの状態が示されます。 完了するまで数分かかります。 **[更新]** をクリックして最新の状態を取得することができます。
-6. ジョブの状態が **[失敗]**に変わるまで待機します。  ジョブが **[成功]**と示された場合は、/Samples フォルダーが削除されていません。 チュートリアルの冒頭にある「 **前提条件** 」を参照してください。
-
-小規模なジョブにどうしてこんなにも時間がかかるのか疑問に思われるかもしれません。  Data Lake Analytics はビッグ データを処理するように設計されていることに注意してください。  これは、分散システムを使用して大量のデータを処理する場合に役立ちます。
-
-ジョブを送信したと仮定し、ポータルを閉じます。  次のセクションでは、ジョブのトラブルシューティングを行う方法を学習します。
 
 ## <a name="troubleshoot-the-job"></a>ジョブのトラブルシューティング
-この最後のセクションでは、ジョブが送信済みで、そのジョブは失敗した状態にあります。  
 
 **すべてのジョブを表示するには**
 

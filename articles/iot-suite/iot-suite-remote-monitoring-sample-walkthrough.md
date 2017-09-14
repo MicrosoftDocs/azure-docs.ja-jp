@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/24/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: c6d76cc741a6d932a506017781e45bc9b8f8c640
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/15/2017
-
 
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>リモート監視の事前構成済みソリューションのチュートリアル

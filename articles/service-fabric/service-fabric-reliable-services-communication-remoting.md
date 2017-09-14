@@ -16,10 +16,10 @@ ms.workload: required
 ms.date: 04/20/2017
 ms.author: vturecek
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: ebca34d5bf092494ea59a4a679f7f1175577320f
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 92a8894f24c234fbf38eda086531b524cceccfc1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -31,6 +31,8 @@ WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロ
 
 1. 実装するサービスのインターフェイスを作成します。 このインターフェイスはサービスのリモート プロシージャ コールで使用できるメソッドを定義します。 このメソッドはタスクを返す非同期メソッドである必要があります。 インターフェイスは `Microsoft.ServiceFabric.Services.Remoting.IService` を実装し、そのサービスにリモート処理インターフェイスがあることを示す必要があります。
 2. サービスでリモート処理リスナーを使用します。 これは、リモート処理機能を提供する `ICommunicationListener` の実装です。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 名前空間には、ステートレス サービスとステートフル サービスの拡張メソッド `CreateServiceRemotingListener` が含まれています。このメソッドは、既定のリモート処理トランスポート プロトコルを使用してリモート処理リスナーを作成するときに使用できます。
+
+注: `Remoting` 名前空間は、`Microsoft.ServiceFabric.Services.Remoting` という別の nuget パッケージで入手できます 
 
 たとえば、次のステートレス サービスでは、リモート プロシージャ コールで "Hello World" を取得する 1 つのメソッドを公開します。
 
@@ -96,7 +98,7 @@ ServiceProxyFactory はできるだけ長くキャッシュすることをお勧
 ServiceProxy は、それが作成されたサービス パーティションのすべてのフェールオーバー例外を処理します。 フェールオーバー例外 (一時的ではない例外) が発生した場合、エンドポイントを再度解決し、正しいエンドポイントでの呼び出しを再試行します。 フェールオーバー例外の再試行回数に上限はありません。
 一時的な例外の場合は、単に呼び出しが再試行されます。
 
-既定の再試行パラメーターは、[OperationRetrySettings](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。 OperationRetrySettings オブジェクトを ServiceProxyFactory コンストラクターに渡すことでこれらの値を構成できます。
+既定の再試行パラメーターは、[OperationRetrySettings] で指定します。 (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) OperationRetrySettings オブジェクトを ServiceProxyFactory コンストラクターに渡すことでこれらの値を構成できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)

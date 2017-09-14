@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
-ms.openlocfilehash: b949318eb689eec9f0d08e91f2a9d0169d9d816f
-ms.lasthandoff: 02/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 73e50a593c41e841dcaf184abb895406ff5001e9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="set-resource-location-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースの場所を設定する

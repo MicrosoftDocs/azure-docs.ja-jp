@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3334729cbc4ab4a48e10ece0a15a31595317ca3f
-ms.openlocfilehash: 5a14124412ac8e86a4a76d18c6d93a17a4f72b1b
+ms.custom: H1Hack27Feb2017;it-pro
+ms.reviewer: asteen
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: deec642a240cb6f088210748b0ef3a3636a88405
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="reset-a-password-for-a-user-in-the-azure-classic-portal"></a>Azure クラシック ポータルでのユーザーのパスワードのリセット
@@ -31,6 +31,9 @@ ms.lasthandoff: 03/01/2017
 >
 
 ユーザーがパスワードを忘れてロックアウトされた場合、または日常的なセキュリティ メンテナンスを行っているとき、Azure Active Directory (Azure AD) を使用すると、ユーザーのパスワードをリセットするプロセスが簡単になります。 
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターでユーザーのパスワードをリセットする方法については、「[Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)」をご覧ください。
 
 1. ディレクトリを開きます。
 2. **[ユーザー]** タブをクリックし、変更するユーザーの表示名を選択します。

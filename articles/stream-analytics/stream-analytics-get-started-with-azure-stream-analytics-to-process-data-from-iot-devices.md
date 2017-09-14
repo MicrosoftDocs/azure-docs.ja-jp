@@ -4,7 +4,7 @@ description: "IoT センサー タグと、Stream Analytics によるデータ �
 keywords: "IoT ソリューション, IoT の概要"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
-ms.lasthandoff: 01/24/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 3146604dd2dbc626d8179d5c91e3cf895b9f67da
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Azure Stream Analytics の使用を開始して IoT デバイスからのデータを処理する
@@ -65,7 +65,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 4. ボックスをオンにしてジョブをダッシュボードに配置し、**[作成]** をクリックします。
    
     ![進行中のジョブの作成](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. "デプロイが開始されました..." というメッセージが ブラウザー ウィンドウの右上に表示されます。 それがすぐに、以下に示すような完了ウィンドウに変化します。
+5. ブラウザー ウィンドウの右上に "デプロイを開始しました..." と表示されます。 それがすぐに、以下に示すような完了ウィンドウに変化します。
    
     ![進行中のジョブの作成](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
@@ -111,7 +111,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 ご覧のように、結果に含まれるのは 245 行のみで、平均温度が 100 度を超えるセンサーの名前が一覧表示されます。 このクエリでは、センサー名である **dspl** 別に、30 秒の**タンブリング ウィンドウ**でイベントのストリームをグループ化しています。 一時的なクエリでは、時間の進み方を指定する必要があります。 ここでは、一時的な計算すべてに時間を関連付けるため、**TIMESTAMP BY** 句を使用して **OUTPUTTIME** 列を指定しました。 詳細については、MSDN の[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[ウィンドウ関数](https://msdn.microsoft.com/library/azure/dn835019.aspx)に関する記事を参照してください。
 
 ### <a name="query-detect-absence-of-events"></a>クエリ: イベントがないことを検出する
-入力イベントがないことを検出するためのクエリは、どのように記述すればよいのでしょうか。 センサーが最後にデータを送信してから 1 分間イベントを送信しなかったタイミングを見つけましょう。 このクエリは AbsenseOfEvent.txt ファイルにあります。
+入力イベントがないことを検出するためのクエリは、どのように記述すればよいのでしょうか。 センサーが最後にデータを送信してから 5 秒間イベントを送信しなかったタイミングを見つけましょう。 このクエリは AbsenseOfEvent.txt ファイルにあります。
 
 ![Detect absence of events](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 

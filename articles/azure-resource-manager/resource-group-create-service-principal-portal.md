@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: c66c895eb9b905ea265341783c153a9554bd1259
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 5d24fb99e1095d53e5ea547e53b80178d9cb77c0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
@@ -161,43 +160,17 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 ## <a name="log-in-as-the-application"></a>アプリケーションとしてログイン
 
-Azure Active Directory でアプリケーションがセットアップされました。 アプリケーションとしてサインインする際に使用する ID とキーも用意しました。 アプリケーションは、実行できる特定のアクションを提供するロールに割り当てられています。 
+Azure Active Directory でアプリケーションがセットアップされました。 アプリケーションとしてサインインする際に使用する ID とキーも用意しました。 アプリケーションは、実行できる特定のアクションを提供するロールに割り当てられています。 さまざまなプラットフォームからアプリケーションとしてログインする方法については、次のリンクをクリックしてください。
 
-PowerShell でログインするには、「[Provide credentials through PowerShell (資格情報を PowerShell で渡す)](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)」を参照してください。
+* [PowerShell](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)
+* [Azure CLI](resource-group-authenticate-service-principal-cli.md#provide-credentials-through-azure-cli)
+* [REST ()](/rest/api/#create-the-request)
+* [.NET](/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+* [Java](/java/azure/java-sdk-azure-authenticate)
+* [Node.JS](/nodejs/azure/node-sdk-azure-get-started?view=azure-node-2.0.0)
+* [Python](/python/azure/python-sdk-azure-authenticate?view=azure-python)
+* [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
-Azure CLI でログインするには、「[資格情報を Azure CLI で渡す](resource-group-authenticate-service-principal-cli.md#provide-credentials-through-azure-cli)」を参照してください。
-
-REST 操作のアクセス トークンを取得するには、「[Create the request (要求を作成する)](/rest/api/#create-the-request)」を参照してください。
-
-アプリケーション コードからのログインの詳細については、次のサンプル アプリケーションを確認してください。
-
-### <a name="sample-applications"></a>サンプル アプリケーション
-以下のサンプル アプリケーションでは、AD アプリケーションとしてログインする方法を紹介しています。
-
-**.NET**
-
-* [.NET からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-* [Azure のリソースとリソース グループを .NET で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-
-**Java**
-
-* [リソースの概要 - Java で Azure Resource Manager テンプレートをデプロイする](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-* [リソースの概要 - Java でリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
-
-**Python**
-
-* [Python からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-* [Azure のリソースとリソース グループを Python で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-
-**Node.JS**
-
-* [Node.js からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-* [Azure のリソースとリソース グループを Node.js で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-
-**Ruby**
-
-* [Ruby からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-* [Azure のリソースとリソース グループを Ruby で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ## <a name="next-steps"></a>次のステップ
 * マルチテナント アプリケーションのセットアップについては、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。

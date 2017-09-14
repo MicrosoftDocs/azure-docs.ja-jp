@@ -3,7 +3,7 @@ title: "Azure Network Watcher を使用したネットワーク セキュリテ�
 description: "このページは、Azure CLI で Azure Network Watcher のネットワーク セキュリティ グループのフロー ログを管理する方法を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: b4baa3396d28aeb1b4ada7f644a3146dde527fda
-ms.lasthandoff: 03/28/2017
-
+ms.author: jdial
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d5a8aa0cd274132798a0d8484a950926761dae7f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -28,19 +28,30 @@ ms.lasthandoff: 03/28/2017
 > [!div class="op_single_selector"]
 > - [Azure ポータル](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 ネットワーク セキュリティ グループのフローのログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
 
-この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
+この記事では、Azure CLI 2.0 を使います。Azure CLI 2.0 は、Resource Manager デプロイメント モデルを対象とする Microsoft の次世代 CLI であり、Windows、Mac、Linux で利用できます。
+
+この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストール](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)する必要があります。
+
+## <a name="register-insights-provider"></a>Insights プロバイダーの登録
+
+フローのログ記録を成功させるには、**Microsoft.Insights** プロバイダーを登録する必要があります。 **Microsoft.Insights** プロバイダーが登録されているかどうか不明な場合は、次のスクリプトを実行します。
+
+```azurecli
+az provider register --namespace Microsoft.Insights
+```
 
 ## <a name="enable-network-security-group-flow-logs"></a>ネットワーク セキュリティ グループのフローのログを有効にする
 
 フローのログを有効にするコマンドを次の例に示します。
 
 ```azurecli
-azure network watcher configure-flow-log -g resourceGroupName -n networkWatcherName -t nsgId -i storageAccountId -e true
+az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
 ```
 
 ## <a name="disable-network-security-group-flow-logs"></a>ネットワーク セキュリティ グループのフローのログを無効にする
@@ -48,7 +59,7 @@ azure network watcher configure-flow-log -g resourceGroupName -n networkWatcherN
 フローのログを無効にするには、次の例を使用します。
 
 ```azurecli
-azure network watcher configure-flow-log -g resourceGroupName -n networkWatcherName -t nsgId -i storageAccountId -e false
+az network watcher flow-log configure --resource-group resourceGroupName --enabled false --nsg nsgName
 ```
 
 ## <a name="download-a-flow-log"></a>フローのログをダウンロードする

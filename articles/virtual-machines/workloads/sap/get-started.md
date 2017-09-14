@@ -14,18 +14,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/29/2017
+ms.date: 08/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 6a482561613f56e33741e6d4e573d7734c217adf
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: e69d96e5f18b4334a63445b08979c457d241e818
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
 
-# <a name="using-sap-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) における SAP の使用
+# <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -162,6 +162,7 @@ ms.lasthandoff: 04/07/2017
 
 
 [ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide]:sap-high-availability-guide.md
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -223,7 +224,7 @@ ms.lasthandoff: 04/07/2017
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:/powershell/azureps-cmdlets-docs
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
@@ -233,14 +234,14 @@ ms.lasthandoff: 04/07/2017
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-3-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image%2Fazuredeploy.json
-[storage-azure-cli]:../../../storage/storage-azure-cli.md
-[storage-azure-cli-copy-blobs]:../../../storage/storage-azure-cli.md#copy-blobs
-[storage-introduction]:../../../storage/storage-introduction.md
-[storage-powershell-guide-full-copy-vhd]:../../../storage/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/storage-premium-storage.md
-[storage-redundancy]:../../../storage/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/storage-scalability-targets.md
-[storage-use-azcopy]:../../../storage/storage-use-azcopy.md
+[storage-azure-cli]:../../../storage/common/storage-azure-cli.md
+[storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
+[storage-introduction]:../../../storage/common/storage-introduction.md
+[storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
+[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-redundancy]:../../../storage/common/storage-redundancy.md
+[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
@@ -294,47 +295,47 @@ ms.lasthandoff: 04/07/2017
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
-Microsoft Azure を SAP 対応クラウド パートナーとして選択すると、ミッション クリティカルな SAP ワークロードを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用環境をまたいで SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S4/HANA、Linux から Windows、そして SAP HANA から SQL まで対応しています。 
+Microsoft Azure を SAP 対応クラウド パートナーとして選択することで、ミッション クリティカルな SAP ワークロードとシナリオを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S4/HANA、SAP BI、Linux から Windows、SAP HANA から SQL まで対応しています。 
 
-Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタンスを通じて、マイクロソフトは包括的な IaaS (Infrastructure as a Service) プラットフォームを提供しています。 広範囲の SAP ソリューションが Azure でサポートされているため、この "入門ドキュメント" は、マイクロソフトが現在公開している一連の SAP ドキュメントの目次として機能します。 より多くのタイトルがマイクロソフトのドキュメント ライブラリに追加されるとともに、ここに表示される情報も追加されます。 
+SAP NetWeaver シナリオをさまざまな DBMS を使用して Azure でホストすることに加え、その他の SAP ワークロード シナリオ (SAP BI など) も Azure でホストできます。 Azure のネイティブ Virtual Machines での SAP NetWeaver のデプロイに関するドキュメントについては、「Azure Virtual Machines 上の SAP NetWeaver」セクションを参照してください。 
 
-## <a name="getting-started-with-sap-hana-on-azure"></a>SAP HANA on Azure の概要
-タイトル: Azure VM に SAP HANA を手動でインストールするためのクイック スタート ガイド
+Azure には、SAP HANA を活用する SAP ワークロードに対応するように CPU とメモリ リソースのサイズを大きくする、ネイティブ Azure Virtual Machine 製品があります。 このトピックの詳細については、「Azure Virtual Machines 上の SAP HANA」セクションを参照してください。
 
-要約: このクイック スタート ガイドは、SAP NetWeaver 7.5 と SAP HANA SP12 の手動インストールを行って、単一インスタンスの SAP HANA プロトタイプ/デモ システムを Azure VM でセットアップする際に役立ちます。 このガイドは、JSON テンプレートを使用する方法を含め、Azure Portal と Powershell/CLI のいずれかを使って仮想マシンまたは仮想ネットワークをデプロイする方法など、Azure IaaS の基本について読者が熟知していることを前提としています。 さらに、読者が SAP HANA、SAP NetWeaver、オンプレミスでのそのインストール方法について理解しているとも想定しています。
+Azure for SAP HANA の独自性は、その製品の独自性にあります。これにより、Azure は、競合製品の中で特に優れています。 SAP HANA が関与するより多くのメモリと CPU リソースを必要とする SAP シナリオをホストできるようにするため、Azure では、お客様専用のベア メタル ハードウェアの使用を提案しています。その目的は、S/4HANA またはその他の SAP HANA ワークロードで最大 20 TB (60 TB のスケールアウト) のメモリを必要とする SAP HANA のデプロイを実行することです。 このSAP HANA on Azure (L インスタンス) の独自の Azure ソリューションによって、SAP アプリケーション レイヤーまたはネイティブ Azure Virtual Machines でホストされるワークロードのミドルウェア レイヤーを使用して、SAP HANA を専用のベア メタル ハードウェア上で実行できます。 このソリューションについては、さまざまなドキュメントの「SAP HANA on Azure (L インスタンス)」セクションで説明されています。   
 
-更新日: 2016 年 12 月
+Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネントと SAP SaaS または PaaS 製品に対する Activity Directory を使用した ID 統合要件とシングル サインオンを構成できます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
-[ガイドはこちら](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
+## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の SAP HANA
+
+### <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 タイトル: SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
 概要: これは、アーキテクチャ/テクニカル デプロイ ガイドであり、Azure の新しい SAP HANA on Azure (L インスタンス) で SAP をデプロイする場合に役立つ情報を提供します。 SAP ソリューションの特定のセットアップを取り扱った包括的なガイドではなく、初期のデプロイメントと継続的な操作に役立つ情報を提供することを意図しています。 SAP HANA のインストールに関連する SAP ドキュメント (またはこのトピックについて取り上げた多くの SAP サポート ノート) の代わりとしてこのガイドを使用しないでください。 概要を説明し、Azure (L インスタンス) に SAP HANA をインストールする際の追加情報を提供するものです。
 
-更新日: 2016 年 12 月
+更新日: 2017 年 7 月
 
 [ガイドはこちら](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="infrastructure-and-connectivity-to-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続
+### <a name="infrastructure-and-connectivity-to-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続
 タイトル: SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続
 
 概要: お客様とマイクロソフト エンタープライズ アカウント チームとの間で Azure (L インスタンス) の SAP HANA の購入処理が終了した後は、適切に接続するためのさまざまな構成が必要です。  このドキュメントでは、理解しておいていただきたい情報を、必須となる情報とともにおおまかに説明します。 このドキュメントでは、収集する必要がある情報と、スクリプトの実行が必要になる構成の概要を説明します。 
 
-更新日: 2016 年 12 月
+更新日: 2017 年 7 月
 
 [ガイドはこちら](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="install-sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) への SAP HANA のインストール
+### <a name="install-sap-hana-in-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) への SAP HANA のインストール
 タイトル: SAP HANA on Azure (L インスタンス) への SAP HANA のインストール
 
-概要: このドキュメントでは、Azure の L インスタンスに SAP HANA をインストールするためのセットアップ手順について説明します。
+概要: このドキュメントでは、Azure の L インスタンスに SAP HANA をインストールするためのセットアップ手順について説明します。 
 
-更新日: 2016 年 12 月
+更新日: 2017 年 7 月
 
 [ガイドはこちら](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の高可用性と障害復旧
+### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の高可用性とディザスター リカバリー | Microsoft Docs
 タイトル: SAP HANA on Azure (L インスタンス) の高可用性と障害復旧
 
 概要: 高可用性 (HA) と障害復旧 (DR) は、ミッション クリティカルな SAP HANA on Azure (L インスタンス) サーバーを実行する場合の重要な要素です。 正しい HA/DR 戦略を適切に構築、実装するには、SAP、システム インテグレーター、Microsoft と協力することが重要です。 環境に固有の目標復旧時点 (RPO) と目標復旧時間 (RTO) のような重要な考慮事項を検討する必要があります。  このドキュメントでは、お客様に必要なレベルの HA と DR を実現するためのオプションについて説明します。
@@ -343,49 +344,146 @@ Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタ
 
 [このドキュメントはこちらからご利用いただけます](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>Azure (L インスタンス) の SAP HANA のトラブルシューティングと監視
+### <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>Azure (L インスタンス) の SAP HANA のトラブルシューティングと監視
 タイトル: Azure (L インスタンス) の SAP HANA のトラブルシューティングと監視
 
 概要: このガイドは、Azure 環境の SAP HANA の監視機能を構築する際に役立つ情報のほか、トラブルシューティングに関する追加情報を取り扱います。 
 
-更新日: 2016 年 12 月
+更新日: 2017 年 8 月
 
 [このドキュメントはこちらからご利用いただけます](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Azure 上の SUSE Linux での NetWeaver のクイック スタート ガイド
+## <a name="sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA
+
+### <a name="getting-started-with-sap-hana-on-azure"></a>SAP HANA on Azure の概要
+タイトル: Azure VM に SAP HANA を手動でインストールするためのクイック スタート ガイド
+
+概要: このクイック スタート ガイドは、SAP NetWeaver 7.5 と SAP HANA SP12 の手動インストールを行って、単一インスタンスの SAP HANA システムを Azure VM でセットアップする際に役立ちます。 このガイドは、JSON テンプレートを使用する方法を含め、Azure Portal と Powershell/CLI のいずれかを使って仮想マシンまたは仮想ネットワークをデプロイする方法など、Azure IaaS の基本について読者が熟知していることを前提としています。 さらに、読者が SAP HANA、SAP NetWeaver、オンプレミスでのそのインストール方法について理解しているとも想定しています。
+
+更新日: 2017 年 6 月
+
+[ガイドはこちら](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="s4hana-sap-cal-deployment-on-azure"></a>Azure への S/4HANA SAP CAL デプロイ
+タイトル: Azure に SAP S/4HANA または BW/4HANA をデプロイする
+
+概要: このガイドは、SAP Cloud Appliance Library を使用した Azure への SAP S/4HANA のデプロイを紹介するのに役立ちます。 SAP Cloud Appliance Library とは、SAP アプリケーションを Azure にデプロイできるようにする、SAP が提供するサービスです。 ガイドでは、デプロイの詳しい手順を説明しています。
+
+更新日: 2017 年 6 月
+
+[ガイドはこちら](cal-s4h.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="high-availability-of-sap-hana-in-azure-virtual-machines"></a>Azure Virtual Machines での SAP HANA の高可用性
+タイトル: Azure Virtual Machines 上の SAP HANA の高可用性
+
+概要: このガイドでは、自動フェールオーバーにより HANA System レプリケーションに対応するための SUSE 12 OS と SAP HANA の高可用性構成について説明しています。 このガイドは、SUSE と Azure Virtual Machines 専用です。 まだ Red Hat、ベア メタル、プライベート クラウド、またはその他の非 Azure パブリック クラウド デプロイには対応していません。
+
+更新日: 2017 年 6 月
+
+[ガイドはこちら](sap-hana-high-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="sap-hana-backup-overview-on-azure-vms"></a>Azure VM 上での SAP HANA のバックアップの概要
+タイトル: Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
+
+概要: このガイドでは、Azure Virtual Machines 上で SAP HANA を実行するバックアップ方法に関する基本的な情報を提供します。
+
+更新日: 2017 年 3 月
+
+[ガイドはこちら](sap-hana-backup-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="sap-hana-file-level-backup-on-azure-vms"></a>Azure VM 上での SAP HANA のファイル レベルのバックアップ
+タイトル: ストレージ スナップショットに基づいた SAP HANA のバックアップ
+
+概要: このガイドでは、Azure Virtual Machines 上で SAP HANA を実行している場合に、Azure VM 上でスナップショット ベースのバックアップを使用する方法に関する情報を提供します。
+
+更新日: 2017 年 3 月
+
+[ガイドはこちら](sap-hana-backup-file-level.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+
+### <a name="sap-hana-snapshot-based-backups-on-azure-vms"></a>Azure VM 上での SAP HANA のスナップショット ベースのバックアップ
+タイトル: ファイル レベルの SAP HANA Azure バックアップ
+
+概要: このガイドでは、Azure Virtual Machines 上で SAP HANA を実行する、SAP HANA のファイル レベルのバックアップの使用に関する情報を提供します。
+
+更新日: 2017 年 3 月
+
+[ガイドはこちら](sap-hana-backup-storage-snapshots.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+
+## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure Virtual Machines 上にデプロイされた SAP NetWeaver
+
+### <a name="deploy-sap-ides-system-on-windows-and-sql-server-through-sap-cal-on-azure"></a>Azure 上の SAP CAL を通じて Windows と SQL Server 上に SAP IDES システムをデプロイする
 タイトル: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト 
 
-要約: この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver を実行する際のさまざまな考慮事項について説明します。 2016 年 5 月 19 日 の時点で、SAP NetWeaver は Azure 上の SUSE Linux VM で正式にサポートされています。 Linux のバージョンや SAP カーネルのバージョンなど、すべての詳細については、SAP Note 1928533「SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)」を参照してください。
+概要: このドキュメントでは、SAP Cloud Appliance Library を使用した、Azure 上の Windows および SQL Server に基づく SAP IDES システムのデプロイについて説明しています。 SAP Cloud Appliance Library とは、SAP 製品を Azure にデプロイできるようにする SAP サービスです。 このドキュメントでは、SAP IDES システムのデプロイの詳しい手順について説明しています。 IDES システムは、SAP Cloud Appliance を通じて Microsoft Azure にデプロイできるその他多くのアプリケーションのほんの一例です。
+
+更新日: 2017 年 6 月
+
+[ガイドはこちら](cal-ides-erp6-erp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+
+### <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Azure 上の SUSE Linux での NetWeaver のクイック スタート ガイド
+タイトル: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト 
+
+要約: この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver を実行する際のさまざまな考慮事項について説明します。 SAP NetWeaver は、Azure 上の SUSE Linux VM で正式にサポートされています。 Linux のバージョンや SAP カーネルのバージョンなど、すべての詳細については、SAP Note 1928533「SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)」を参照してください。
 
 更新日: 2016 年 9 月
 
 [ガイドはこちら](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
-タイトル:  Linux 仮想マシン (VM) 上の SAP NetWeaver – 計画/導入ガイド
+### <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
+タイトル: Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド
 
-概要: SAP NetWeaver を Azure Virtual Machines で実行することを検討している方は、まずこのホワイト ペーパーをお読みください。 既にあるまたは導入を予定している SAP NetWeaver ベースのシステムを Azure Virtual Machines 環境にデプロイできるかどうかを評価するうえで参考になります。 SAP NetWeaver のデプロイに伴うさまざまなシナリオのほか、Azure に固有の SAP 構成も取り上げています。 このホワイト ペーパーには、ハイブリッド SAP ランドスケープを運用するために SAP/Azure 側で必要となる構成情報が詳細に説明されています。 SAP NetWeaver ベースのシステムの高可用性を IaaS で確保するために講じることのできる対策についても触れています。
+概要: このドキュメントは、SAP NetWeaver を Azure Virtual Machines で実行することを検討している場合に最初に参照するガイドです。 この計画/導入ガイドは、既存または導入を予定している SAP NetWeaver ベースのシステムを Azure Virtual Machines 環境にデプロイできるかどうかを評価するうえで参考になります。 SAP NetWeaver のデプロイに伴うさまざまなシナリオのほか、Azure に固有の SAP 構成も取り上げています。 このホワイト ペーパーには、ハイブリッド SAP ランドスケープを運用するために SAP/Azure 側で必要となる構成情報が詳細に説明されています。 SAP NetWeaver ベースのシステムの高可用性を IaaS で確保するために講じることのできる対策についても触れています。
 
-最終更新日: 2016 年 3 月
+更新日: 2017 年 6 月
 
 [ガイドはこちら][planning-guide]
 
-## <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>デプロイ
-タイトル: Linux 仮想マシン (VM) 上の SAP NetWeaver – デプロイ ガイド
+### <a name="high-availability-configurations-of-sap-netweaver-in-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性の構成
+タイトル: SAP NetWeaver のための Azure Virtual Machines 高可用性
+
+概要: このドキュメントでは、Azure Resource Manager デプロイメント モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。 このドキュメントでは、Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) やデータベース管理システム (DBMS) などの単一障害点コンポーネント、SAP アプリケーション サーバーなどの冗長コンポーネントが、Azure VM で実行される場合にどのように保護されるかについて説明します。 Azure の Windows Server フェールオーバー クラスタリング クラスターにおける高可用性 SAP システムのインストールと構成の手順を追った例についても、このドキュメントで紹介されています。
+
+更新日: 2017 年 6 月
+
+[ガイドはこちら](high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="realizing-multi-sid-deployments-of-sap-netweaver-in-azure-vms"></a>Azure VM における SAP NetWeaver のマルチ SID デプロイの実現
+タイトル: SAP NetWeaver マルチ SID 構成の作成 
+
+概要: このドキュメントは、ドキュメント「Azure VM での SAP NetWeaver の高可用性」を補足するものです。 2016 年 9 月に導入された Azure の新機能により、複数の SAP NetWeaver ASCS/SCS インスタンスを Azure VM のペアにデプロイできるようになりました。 このような構成を使用すると、デプロイする必要のある VM の数を減らして、高可用性の SAP NetWeaver 構成を実現できます。 このガイドでは、このようなマルチ SID 構成の設定について説明します。
+
+更新日: 2016 年 12 月
+
+[ガイドはこちら](high-availability-multi-sid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>Azure VM での SAP NetWeaver のデプロイ
+タイトル: SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
 概要: SAP NetWeaver ソフトウェアを Azure 内の仮想マシンにデプロイする手順について説明します。 このホワイト ペーパーでは、Azure Monitoring Extensions for SAP の有効化に重点を置きつつ (Azure Monitoring Extensions for SAP で発生する問題のトラブルシューティングに関する推奨事項など)、3 つのデプロイ シナリオを中心に説明しています。 既に計画/導入ガイドを読んでいることを前提としています。
 
-最終更新日: 2016 年 3 月
+更新日: 2017 年 6 月
 
 [ガイドはこちら][deployment-guide]
 
-## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
-タイトル: Linux 仮想マシン (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド
+### <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
+タイトル: SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 
-概要: このホワイト ペーパーでは、SAP と連携させる DBMS システムの計画と導入に関する注意点を取り上げています。 最初のパートでは、全般的な注意点が列挙されています。 その後、SAP でサポートされる各種 DBMS を Azure にデプロイする作業に関連した説明が続きます。 紹介されている DBMS は、SQL Server、SAP ASE、Oracle です。 その個々の領域において、これらの DBMS と共に SAP システムを Azure で実行する際に考慮する必要のある事柄を説明します。 Azure 上の各種 DBMS でサポートされるバックアップと高可用性の手法といったテーマは、SAP アプリケーションの使用法の観点から取り上げています。
+概要: このホワイト ペーパーでは、SAP と連携させる DBMS システムの計画と導入に関する注意点を取り上げています。 最初のパートでは、全般的な注意点が列挙されています。 その後、SAP でサポートされる各種 DBMS を Azure にデプロイする作業に関連した説明が続きます。 紹介されている他の DBMS は、SQL Server、SAP ASE、Oracle です。 この各パートでは、これらの DBMS と共に SAP システムを Azure で実行する際に考慮する必要のある事柄について説明しています。 Azure 上の各種 DBMS でサポートされるバックアップと高可用性の手法といったテーマは、SAP アプリケーションの使用法の観点から取り上げています。
 
-最終更新日: 2016 年 3 月
+更新日: 2017 年 6 月
 
 [ガイドはこちら][dbms-guide]
+
+### <a name="using-azure-site-recovery-for-sap-workload"></a>SAP ワークロード用の Azure Site Recovery
+タイトル: SAP NetWeaver: Azure Site Recovery を使用したディザスター リカバリー ソリューションの構築 
+
+概要: このドキュメントでは、ディザスター リカバリー シナリオを処理することを目的として Azure Site Recovery サービスを使用する方法を説明しています。 Azure Site Recovery Services を使用した オンプレミス SAP ランドスケープのディザスター リカバリーの場所として Azure を使用する事例が説明されています。 このドキュメントで説明されている別のシナリオは Azure-to-Azure (A2A) ディザスター リカバリー事例であり、それを Azure Site Recovery で管理する方法も説明されています。  
+
+更新日: 2017 年 8 月
+
+[ガイドはこちら](http://aka.ms/asr-sap)
 
 

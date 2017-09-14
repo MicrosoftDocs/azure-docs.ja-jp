@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
 ms.openlocfilehash: a17bf35abb54eded78d112ac4b25ddebaf5fb5e8
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/05/2017
 
 ---
 # <a name="generic-sql-connector-step-by-step"></a>Generic SQL コネクタのステップ バイ ステップ
@@ -202,9 +203,4 @@ GO
 ALTER TABLE [dbo].[USERPHONE] CHECK CONSTRAINT [FK_USERPHONE_USER]
 GO
 ```
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

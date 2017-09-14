@@ -9,24 +9,24 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
+ms.custom: scale out apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 8567061a98ec5a0619a8e10cb44501dd88d8166c
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 547851972f13ec69a8f65d01290874ad7d07f192
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
-# <a name="restore-a-single-tenant-database"></a>シングル テナント データベースの復元
+# <a name="restore-a-wingtip-saas-tenants-sql-database"></a>Wingtip SaaS テナントの SQL データベースの復元
 
-Wingtip Tickets SaaS アプリは、テナントごとのデータベース モデルを使用して構築されています。このモデルでは、各テナントに独自のデータベースが用意されています。 このモデルの利点の 1 つは、他のテナントに影響を与えることなく、シングル テナントのデータを切り離して簡単に復元できることです。
+Wingtip SaaS アプリは、テナントごとのデータベース モデルを使用して構築されています。このモデルでは、各テナントに独自のデータベースが用意されています。 このモデルの利点の 1 つは、他のテナントに影響を与えることなく、シングル テナントのデータを切り離して簡単に復元できることです。
 
 このチュートリアルでは、2 つのデータ回復パターンについて説明します。
 
@@ -44,7 +44,7 @@ Wingtip Tickets SaaS アプリは、テナントごとのデータベース モ�
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分未満でデプロイする方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
+* Wingtip SaaS アプリがデプロイされている。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 ## <a name="introduction-to-the-saas-tenant-restore-pattern"></a>SaaS テナントの復元パターンの概要
@@ -57,11 +57,11 @@ Wingtip Tickets SaaS アプリは、テナントごとのデータベース モ�
 
 ## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip Tickets のスクリプトとアプリケーションのソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) Github リポジトリから入手できます。 スクリプト ファイルは、[Learning Modules フォルダー](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)にあります。 **Learning Modules** フォルダーを、構造を保ったままローカル コンピューターにダウンロードします。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)。
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>データを誤って削除した状態のテナントをシミュレートする
 
-前述の回復シナリオを示すには、いずれかのテナント データベースで一部のデータを "*誤って*" 削除する必要があります。 任意のレコードを削除できますが、次の手順では、参照整合性違反によってブロックされないようにデモを設定します。 また、"*WTP Analytics のチュートリアル*" で後から使用できるチケット購入データも追加します。
+前述の回復シナリオを示すには、いずれかのテナント データベースで一部のデータを "*誤って*" 削除する必要があります。 任意のレコードを削除できますが、次の手順では、参照整合性違反によってブロックされないようにデモを設定します。 また、「*Wingtip SaaS Analytics のチュートリアル*」で後から使用できるチケット購入データも追加します。
 
 チケット ジェネレーター スクリプトを実行して、追加のデータを作成します。 チケット ジェネレーターは、各テナントの最後のイベントのチケットを意図的に購入しません。
 
@@ -148,6 +148,7 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)
 * [SQL Database バックアップについての詳細情報](sql-database-automated-backups.md)
+

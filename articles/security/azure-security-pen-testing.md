@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 08/24/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5d58d9dd6c92c81328f89a703b3bc8529aff8dc0
-
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="pen-testing"></a>侵入テスト
@@ -33,19 +34,14 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 
 どうすればよいでしょうか。
 
-Azure でホストされるアプリケーションの侵入テストを行う準備ができたら、Microsoft に連絡する必要があります。 お客様が特定のテストを実行する予定であることを把握すると、テストが Azure 侵入テストの契約条件に適合している限り、不注意でシャットダウンすることはありません (テストを実行している IP アドレスをブロックするなど)。
+Azure でホストされるアプリケーションの侵入テストを行う準備ができたら、[Microsoft に連絡する](https://portal.msrc.microsoft.com/en-us/engage/pentest)ことができます。 お客様が特定のテストを実行する予定であることを把握すると、テストが、「[Microsoft Cloud Unified Penetration Testing Rules of Engagement (Microsoft Cloud 統合侵入テストの活動規則)](https://technet.microsoft.com/en-us/mt784683)」に記載されている Azure 侵入テストの契約条件に適合している限り、不注意でシャットダウンすることはありません (テストを実行している IP アドレスをブロックするなど)。
 実行できる標準テストは、次のとおりです。
 
-*  [Open Web Application Security Project (OWASP) の上位 10 の脆弱性](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
+* [Open Web Application Security Project (OWASP) の上位 10 の脆弱性](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
 * [ファジー テスト](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) 
 * [ポートのスキャン](https://en.wikipedia.org/wiki/Port_scanner) 
 
 実行できないテストの種類の 1 つは、 [サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
-Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://security-forms.azure.com/penetration-testing/terms) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 また、侵入テストの契約条件の詳細と、Azure やその他の Microsoft サービスに関連するセキュリティの不備を報告する方法に関する役立つリンクを見つけることもできます。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://technet.microsoft.com/library/mt784683.aspx) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 また、侵入テストの契約条件の詳細と、Azure やその他の Microsoft サービスに関連するセキュリティの不備を報告する方法に関する役立つリンクを見つけることもできます。
 

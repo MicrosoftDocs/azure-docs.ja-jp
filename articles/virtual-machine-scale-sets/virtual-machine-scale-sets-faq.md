@@ -13,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/09/2017
+ms.date: 7/20/2017
 ms.author: negat
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: de67dba5e615db8138957420a1db89d444a37d67
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f320dd5d1f8c99317792f4ae9e09bc5adaf79e25
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -188,7 +187,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 }
 ```
  
-この JSON ブロックは、 [GitHub の 101-vm-sshkey クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
+この JSON ブロックは、[GitHub の 101-vm-sshkey クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
  
 この OS プロファイルは、[GitHub の grelayhost.json クイック スタート テンプレート](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json)でも使用されています。
 
@@ -495,7 +494,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
                             "loadBalancerBackendAddressPools": [
                                 {
                                     "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/backendAddressPools/addressPool1')]"
-                                }
+                                 }
                             ]
                         }
                     }
@@ -511,7 +510,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>同じサブスクリプションで同じリージョンの仮想マシン スケール セットの VIP スワップを実行するにはどうすればよいですか。
 
-同じサブスクリプションで同じリージョンの仮想マシン スケール セットの VIP スワップを実行する方法については、「[VIP Swap: Blue-green deployment in Azure Resource Manager (VIP スワップ: Azure Resource Manager での Blue-Green デプロイ)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)」を参照してください。
+2 つの仮想マシン スケール セットと Azure Load Balancer フロントエンドがあり、それらが同じサブスクリプションおよびリージョンにある場合、それぞれのパブリック IP アドレスの割り当てを解除し、もう一方に割り当てることができます。 例については、「[VIP Swap: Blue-green deployment in Azure Resource Manager (VIP スワップ: Azure Resource Manager での Blue-green デプロイ)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)」を参照してください。 しかし、この場合、リソースの割り当て解除/割り当てがネットワーク レベルで行われるため、遅延が生じます。 高速なオプションは、Azure Application Gateway と 2 つのバックエンド プールおよびルーティング規則を使うものです。 または、[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) でアプリケーションをホストすることもできます。このサービスでは、ステージング スロットと運用スロット間のすばやい切り替えをサポートしています。
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>静的プライベート IP アドレスの割り当て用に、プライベート IP アドレスの範囲を指定するにはどうすればよいですか。
 
@@ -527,7 +526,53 @@ IP アドレスは指定したサブネットから選択されます。
 
 仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加する方法については、「[ARM: Get VMSS's private IPs (ARM: VMSS のプライベート IP を取得する)](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)」を参照してください。
 
+### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>高速ネットワークでスケール セットを使用できますか?
 
+はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 例: 
+```json
+"networkProfile": {
+    "networkInterfaceConfigurations": [
+    {
+        "name": "niconfig1",
+        "properties": {
+        "primary": true,
+        "enableAcceleratedNetworking" : true,
+        "ipConfigurations": [
+                ]
+            }
+            }
+        ]
+        }
+    }
+    ]
+}
+```
+
+### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>スケール セットによって使用される DNS サーバーは、どのように構成すればよいですか?
+
+カスタム DNS 構成を持つ VM スケール セットを作成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings JSON パケットを追加します。 例:
+```json
+    "dnsSettings":{
+        "dnsServers":["10.0.0.6", "10.0.0.5"]
+    }
+```
+
+### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>各 VM にパブリック IP アドレスを割り当てるには、スケール セットをどのように構成すればよいですか?
+
+各 VM にパブリック IP アドレスを割り当てる VM スケール セットを作成するには、Microsoft.Compute/virtualMAchineScaleSets リソースの API バージョンが 2017-03-30 であることを確認してから、スケール セットの ipConfigurations セクションに _publicipaddressconfiguration_ JSON パケットを追加します。 例:
+
+```json
+    "publicipaddressconfiguration": {
+        "name": "pub1",
+        "properties": {
+        "idleTimeoutInMinutes": 15
+        }
+    }
+```
+
+### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>複数の Application Gateway で動作するようにスケール セットを構成できますか?
+
+はい。 複数の Application Gateway バックエンド アドレス プールのリソース ID を、スケール セット ネットワーク プロファイルの _ipConfigurations_ セクションの _applicationGatewayBackendAddressPools_ リストに追加できます。
 
 ## <a name="scale"></a>スケール
 

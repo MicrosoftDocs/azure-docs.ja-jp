@@ -2,8 +2,8 @@
 title: "iOS モバイル アプリでオフライン同期を有効にする | Microsoft Docs"
 description: "Azure App Service Mobile Apps を使用して、iOS アプリケーション内のオフライン データをキャッシュし、同期する方法について説明します。"
 documentationcenter: ios
-author: ysxu
-manager: yochayk
+author: ggailey777
+manager: syntaxc4
 editor: 
 services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: yuaxu
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dc5f98fd548512801c705f942e30df5e6b95d542
 ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/31/2017
-
 
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
@@ -129,7 +129,7 @@ Swift バージョンでは、プッシュ操作は必ずしも必要ではな�
 
 Objective-C と Swift のどちらのバージョンでも、**pullWithQuery** メソッドを使用して、取得するレコードをフィルター処理するクエリを指定できます。 この例のクエリでは、リモートの `TodoItem` テーブルのすべてのレコードを取得します。
 
-**pullWithQuery** の&2; 番目のパラメーターは、*増分同期*に使用するクエリ ID です。 増分同期では、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して、前回の同期以降に変更されたレコードだけを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。 増分同期を解除するには、クエリ ID として `nil` を渡します。 この方法では、プル操作のたびにすべてのレコードを取得するため、非効率的になる可能性があります。
+**pullWithQuery** の 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。 増分同期では、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して、前回の同期以降に変更されたレコードだけを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。 増分同期を解除するには、クエリ ID として `nil` を渡します。 この方法では、プル操作のたびにすべてのレコードを取得するため、非効率的になる可能性があります。
 
 Objective-C のアプリは、データを変更または追加したとき、ユーザーが更新操作を実行したとき、および起動時に同期します。
 
@@ -226,7 +226,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 **Swift**:
 
-`viewDidLoad` の **ToDoTableViewController.swift** で、次に示す&2; 行をコメントアウトしてアプリの起動時に同期しないようにします。 この記事の執筆時点では、Swift Todo アプリはユーザーが項目を追加または完了したときにはサービスを更新せず、 アプリの起動時にのみサービスを更新しています。
+`viewDidLoad` の **ToDoTableViewController.swift** で、次に示す 2 行をコメントアウトしてアプリの起動時に同期しないようにします。 この記事の執筆時点では、Swift Todo アプリはユーザーが項目を追加または完了したときにはサービスを更新せず、 アプリの起動時にのみサービスを更新しています。
 
    ```swift
   self.refreshControl?.beginRefreshing()

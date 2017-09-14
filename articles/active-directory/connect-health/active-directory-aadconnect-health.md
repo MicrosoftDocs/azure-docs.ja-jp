@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/10/2017
-ms.author: vakarand
-translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: d995918ef51f345bf76a25f9b6908cf5f4aac6c9
-ms.lasthandoff: 03/10/2017
-
+ms.date: 07/18/2017
+ms.author: billmath
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視

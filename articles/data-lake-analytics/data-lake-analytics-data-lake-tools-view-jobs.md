@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 08/02/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: ac5a64b759376c06e058ae015b73f1b73b7d1e7b
-ms.openlocfilehash: 8f3c0f7a1b16afdbada39017d28bed49620cc34c
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用
@@ -29,7 +30,7 @@ Data Lake Analytics サービスは、既定で 30 日間ジョブをアーカ�
 [Azure Data Lake Tools for Visual Studio の前提条件](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)を参照してください。
 
 ## <a name="open-the-job-browser"></a>ジョブ ブラウザーを開く
-ジョブ ブラウザーにアクセスするには、Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data Lake Analytics]、[ジョブ]** の順に選択します。  このブラウザーを使用すると、Data Lake Analytics アカウントのクエリ ストアにアクセスできます。 ジョブ ブラウザーでは、ジョブの基本情報を示すクエリ ストアが左側に、特定のジョブの詳細な情報を示すジョブ ビューが右側に表示されます。
+Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data Lake Analytics]、[ジョブ]** の順に選択して、ジョブ ブラウザーにアクセスします。  このジョブ ブラウザーを使用して、Data Lake Analytics アカウントのクエリ ストアにアクセスできます。 ジョブ ブラウザーには、ジョブの基本情報を示すクエリ ストアが左側に表示され、ジョブの詳細情報を示すジョブ ビューが右側に表示されます。
 
 ## <a name="job-view"></a>ジョブ ビュー
 ジョブ ビューには、特定のジョブの詳細な情報が示されます。 ジョブを開くには、ジョブ ブラウザーでジョブをダブルクリックするか、Data Lake メニューの [Job View (ジョブ ビュー)] をクリックします。 ジョブの URL が設定されたダイアログが表示されます。
@@ -172,18 +173,8 @@ Data Lake Analytics サービスは、既定で 30 日間ジョブをアーカ�
     頂点実行の詳細が示されます。 ジョブ プロファイルは、読み取られたデータおよび書き込まれたデータの合計、実行時間、状態など、各頂点実行ログをアーカイブします。このビューを使用すると、ジョブの実行の詳細を確認できます。 詳細については、「[Data Lake Tools for Visual Studio での頂点実行ビューの使用](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-* U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
-* U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-* 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * 診断情報のログについては、「 [Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 * 頂点実行ビューの使用方法については、「[Use the Vertex Execution View in Data Lake Tools for Visual Studio (Data Lake Tools for Visual Studio での頂点実行ビューの使用)](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。
-* Data Lake Tools for Visual Studio Code については、「[Use the Azure Data Lake Tools for Visual Studio Code (Azure Data Lake Tools for Visual Studio Code の使用)](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

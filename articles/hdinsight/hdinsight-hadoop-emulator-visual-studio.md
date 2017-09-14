@@ -1,6 +1,6 @@
 ---
-title: "Hortonworks サンドボックスでの Azure Data Lake Tools for Visual Studio | Microsoft Docs"
-description: "(ローカル VM で実行される) Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する方法について説明します。このツールを使用すると、サンドボックスで Hive ジョブと Pig ジョブを作成して実行し、ジョブの出力と履歴を表示できます。"
+title: "Hortonworks サンドボックスでの Data Lake Tools for Visual Studio - Azure HDInsight | Microsoft Docs"
+description: "ローカル VM で実行される Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する方法について説明します。 このツールを使用すると、サンドボックスで Hive ジョブと Pig ジョブを作成して実行し、ジョブの出力と履歴を表示できます。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/28/2017
+ms.date: 08/11/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 599aeb1f38c804c2edf6590140e739c9705ab1ab
-ms.lasthandoff: 03/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 574ccaa8b2d9448a60ddf8adc7f92fa3683b1d61
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 
-Azure Data Lake Tools for Visual Studio には、Azure Data Lake と HDInsight を操作するためのツールに加えて、汎用的な Hadoop クラスターを操作するためのツールも含まれています。 このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで、Azure Data Lake ツールを使用するために必要な手順を説明します。
+Azure Data Lake には、汎用の Hadoop クラスターで動作するツールが含まれています。 このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで Data Lake ツールを使用するために必要な手順を説明します。
 
 Hortonworks サンドボックスを使用すると、ローカルの開発環境で Hadoop を使用できます。 開発したソリューションを大規模にデプロイしたい場合に、HDInsight クラスターに移行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントに記載されている内容は、Oracle VirtualBox で実行されるサンドボックスを使用してテストされています。また、サンドボックスは、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md)に関するドキュメントに記載された情報を使用して構成されています。
+* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントの執筆とテストには、Oracle VirtualBox で実行されたサンドボックスを使用しています。 サンドボックスをセットアップする方法については、[Hortonworks サンドボックスの概要](hdinsight-hadoop-emulator-get-started.md) に関する記事を参照してください。
 
-* Visual Studio 2013、2015、または 2017 の任意のエディション。
+* Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017 (エディションは任意)。
 
 * [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 2.7.1 以降。
 
-* [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)。
 
 ## <a name="configure-passwords-for-the-sandbox"></a>サンドボックスのパスワードを構成する
 
-Hortonworks サンドボックスが実行されていることを確認したら、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関するドキュメントに記載された手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
+Hortonworks サンドボックスが実行中であることを確認します。 次に、[Hortonworks サンドボックスの概要](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関する記事の手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 
@@ -48,91 +48,90 @@ Hortonworks サンドボックスが実行されていることを確認した�
 
 2. **[サーバー エクスプローラー]** の **[HDInsight]** エントリをクリックし、**[Connect to HDInsight Emulator (HDInsight Emulator に接続)]** を選択します。
 
-    ![[Connect to HDInsight Emulator (HDInsight Emulator に接続)]](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
+    ![サーバー エクスプローラーのスクリーンショット ([HDInsight Emulator に接続する] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
-3. **[Connect to HDInsight Emulator (HDInsight Emulator に接続)]** ダイアログ ボックスで、Ambari 用に構成したパスワードを入力します。
+3. **[HDInsight Emulator に接続する]** ダイアログ ボックスで、Ambari 用に構成したパスワードを入力します。
 
-    ![Enter Ambari password](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
+    ![ダイアログ ボックスのスクリーンショット (パスワード テキスト ボックスを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     **[次へ]** をクリックして続行します。
 
 4. **[パスワード]** フィールドに、`root` アカウント用に構成したパスワードを入力します。 他のフィールドは既定値のままにします。
 
-    ![Enter root password](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![ダイアログ ボックスのスクリーンショット (パスワード テキスト ボックスを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
 
     **[次へ]** をクリックして続行します。
 
 5. サービスの検証が完了するのを待ちます。 検証が失敗し、構成を更新するよう求められることがあります。 検証が失敗した場合は、**[更新]** をクリックし、サービスの構成と検証が完了するのを待ちます。
 
-    ![Errors and update button](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
+    ![ダイアログ ボックスのスクリーンショット ([更新] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
     > [!NOTE]
-    > 更新プロセスでは、Ambari を使用して、Azure Data Lake Tools for Visual Studio で必要とされる要件に合わせて Hortonworks サンドボックス構成が変更されます。
+    > 更新プロセスでは、Ambari を使用して、Data Lake Tools for Visual Studio で必要とされる要件に合わせて Hortonworks サンドボックス構成が変更されます。
 
-    検証が終わったら、**[完了]** をクリックして、構成を完了します。
+6. 検証が終わったら、**[完了]** をクリックして、構成を完了します。
+    ![ダイアログ ボックスのスクリーンショット ([完了] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-    ![Finish connecting](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
+     >[!NOTE]
+     > 開発環境の処理速度と仮想マシンに割り当てられたメモリの量によっては、サービスの構成と検証に数分かかることがあります。
 
-    > [!NOTE]
-    > 開発環境の処理速度と仮想マシンに割り当てられたメモリの量によっては、サービスの構成と検証に数分かかることがあります。
-
-上記の手順を終了すると、[サーバー エクスプローラー] の [HDInsight] セクションに [HDInsight local cluster (HDInsight ローカル クラスター)] エントリが表示されます。
+上記の手順を終了すると、サーバー エクスプローラーの **[HDInsight]** セクションに **[HDInsight local cluster]\(HDInsight ローカル クラスター\)** エントリが表示されます。
 
 ## <a name="write-a-hive-query"></a>Hive クエリを記述する
 
-Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。 次の手順では、ローカル クラスターにアドホック クエリを実行する方法を示します。
+Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。 次の手順は、ローカル クラスターに対してオンデマンド クエリを実行する方法を示しています。
 
-1. **[サーバー エクスプローラー]** で、前の手順で追加したローカル クラスターのエントリを右クリックし、**[Write a Hive query (Hive クエリの記述)]** を選択します。
+1. **サーバー エクスプローラー**で、前の手順で追加したローカル クラスターのエントリを右クリックし、**[Hive クエリの作成]** を選択します。
 
-    ![Hive クエリを記述する](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
+    ![サーバー エクスプローラーのスクリーンショット ([Hive クエリの作成] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
-    新しいクエリ ウィンドウが開き、短時間でクエリを入力して、ローカル クラスターに送信できます。
+    新しいクエリ ウィンドウが表示されます。 このウィンドウでローカル クラスターに対するクエリをすぐに作成して送信できます。
 
 2. 新しいクエリ ウィンドウに、次のコマンドを入力します。
 
         select count(*) from sample_08;
 
-    クエリ ウィンドウの上部で、ローカル クラスターの構成が選択されていることを確認し、 **[送信]**をクリックします。 他の値 (**[バッチ]** とサーバー名) は既定値のままにします。
+    クエリを実行するには、ウィンドウの上部にある **[送信]** を選択します。 他の値 (**[バッチ]** とサーバー名) は既定値のままにします。
 
-    ![query window and submit button](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
+    ![クエリ ウィンドウのスクリーンショット ([送信] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
     **[送信]** の横にあるドロップダウン メニューで **[詳細設定]** を選択することもできます。 [詳細設定] オプションでは、ジョブを送信するときに利用できる追加のオプションを指定できます。
 
-    ![advanced submit](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
-3. クエリを送信すると、ジョブの状態が表示されます。 ここでは、Hadoop で処理されるジョブの情報が表示されます。 **[ジョブの状態]** エントリは、ジョブの状態を示します。 状態は定期的に更新されます。更新アイコンを使用して、状態を手動で更新することもできます。
+3. クエリを送信すると、ジョブの状態が表示されます。 ここでは、Hadoop で処理されるジョブの情報が表示されます。 **[ジョブの状態]** は、ジョブの状態を示します。 状態は定期的に更新されます。更新アイコンを使用して、状態を手動で更新することもできます。
 
-    ![Job state](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
+    ![[ジョブ ビュー] ダイアログ ボックスのスクリーンショット ([ジョブの状態] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    **[ジョブの状態]** が **[完了]** に変わったら、有向非巡回グラフ (DAG) が表示されます。 このダイアグラムは、Tez (ローカル クラスター上の Hive の既定の実行エンジン) によって決定された実行パスを示しています。
+    **[ジョブの状態]** が **[完了]** に変わったら、有向非巡回グラフ (DAG) が表示されます。 このダイアグラムは、Hive クエリを処理するときに Tez によって決定された実行パスを示しています。 Tez は、ローカル クラスター上の Hive の既定の実行エンジンです。
 
     > [!NOTE]
-    > Linux ベースの HDInsight クラスターを使用する場合も、Tez が既定の実行エンジンです。 Windows ベースの HDInsight では既定ではありません。Tez を使用するには、Hive クエリの先頭に `set hive.execution.engine = tez;` という行を追加する必要があります。
+    > Linux ベースの HDInsight クラスターを使用する場合も、Tez が既定の実行エンジンです。 Windows ベースの HDInsight では既定ではありません。 Tez を使用するには、Hive クエリの先頭に `set hive.execution.engine = tez;` という行を追加する必要があります。
 
-    **[ジョブの出力]** リンクをクリックすると、出力が表示されます。 この例では、**823** と表示されます。これは、sample_08 テーブル内の行の数です。 **[ジョブのログ]** リンクと **[Download YARN Log (YARN ログのダウンロード)]** リンクを使用すると、ジョブに関する診断情報を表示できます。
+    **[ジョブの出力]** リンクをクリックすると、出力が表示されます。 この例では、"823" と表示されます。これは、sample_08 テーブル内の行の数です。 **[ジョブのログ]** リンクと **[Download YARN Log (YARN ログのダウンロード)]** リンクを使用すると、ジョブに関する診断情報を表示できます。
 
-4. また、**[バッチ]** フィールドを **[対話型]** に変更し、**[実行]** をクリックすると、対話形式で Hive ジョブを実行できます。
+4. また、対話形式で Hive ジョブを実行することもできます。その場合は、**[バッチ]** フィールドを **[対話型]** に変更し、 **[実行]** をクリックしてください。
 
-    ![Interactive query](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
+    ![スクリーンショット ([対話型] ボタンと [実行] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
 
     これによって、処理中に生成された出力ログが **[HiveServer2 Output (HiveServer2 出力)]** ウィンドウにストリーム表示されます。
 
     > [!NOTE]
-    > これは、ジョブが完了した後に **[ジョブのログ]** リンクから取得できるものと同じ情報です。
+    > これは、ジョブが完了した後に **[ジョブのログ]** リンクから取得できるのと同じ情報です。
 
-    ![[HiveServer2 Output (HiveServer2 出力)]](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
+    ![出力ログのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
 
 ## <a name="create-a-hive-project"></a>Hive プロジェクトを作成する
 
-複数の Hive スクリプトを含むプロジェクトを作成することもできます。 プロジェクトは、複数の関連スクリプトを 1 つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
+複数の Hive スクリプトを含むプロジェクトを作成することもできます。 関連するスクリプトがある場合やバージョン管理システムにスクリプトを格納する場合は、プロジェクトを使用します。
 
-1. Visual Studio で、**[ファイル]**、**[新規]**、__[プロジェクト]__ の順に選択します。
+1. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
 
 2. プロジェクトの一覧から、**[テンプレート]**、**[Azure Data Lake]** の順に展開し、**[HIVE (HDInsight)]** を選択します。 テンプレートの一覧から **[Hive Sample (Hive サンプル)]** を選択します。 名前と場所を入力し、**[OK]** を選択します。
 
-    ![HIVE (HDInsight) template](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+    ![[新しいプロジェクト] ウィンドウのスクリーンショット ([Azure Data Lake]、[HIVE]、[Hive Sample]\(Hive サンプル\)、[OK] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンをクリックします。
+**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンを使用できます。
 
 ## <a name="create-a-pig-project"></a>Pig プロジェクトを作成する
 
@@ -140,7 +139,7 @@ Hive には構造化データを操作するための SQL に似た言語が用�
 
 1. Visual Studio を開いて、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。 プロジェクトの一覧から、**[テンプレート]**、**[Azure Data Lake]** の順に展開し、**[Pig (HDInsight)]** を選択します。 テンプレートの一覧から、**[Pig Application (Pig アプリケーション)]** を選択します。 名前と場所を入力し、**[OK]** を選択します。
 
-    ![Pig (HDInsight) project](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
+    ![[新しいプロジェクト] ウィンドウのスクリーンショット ([Azure Data Lake]、[Pig]、[Pig Application]\(Pig アプリケーション\)、[OK] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
 2. このプロジェクトで作成した **script.pig** ファイルの内容として、次のテキストを入力します。
 
@@ -155,27 +154,27 @@ Hive には構造化データを操作するための SQL に似た言語が用�
         c = GROUP b BY ip_address;
         DUMP c;
 
-    Pig では Hive とは異なる言語を使用しますが、ジョブを実行する方法はどちらの言語でも同じで、**[送信]** ボタンをクリックします。 **[送信]** の横にあるドロップダウンを選択すると、Pig の詳細な送信設定のためのダイアログが表示されます。
+    Pig では Hive とは異なる言語を使用しますが、ジョブを実行する方法はどちらの言語でも同じで、**[送信]** ボタンをクリックします。 **[送信]** の横にあるドロップダウンを選択すると、Pig の詳細な送信設定用のダイアログ ボックスが表示されます。
 
-    ![Pig advanced submit](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
 
 3. 表示されるジョブの状態と出力は、Hive クエリの場合と同じです。
 
-    ![image of a completed pig job](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
+    ![完了した Pig ジョブのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
 
 ## <a name="view-jobs"></a>ジョブを表示する
 
-Azure Data Lake Tools では、Hadoop で実行されたジョブに関する情報も簡単に表示できます。 ローカル クラスターで実行されたジョブを表示するには、次の手順に従います。
+Data Lake Tools では、Hadoop で実行されたジョブに関する情報も簡単に表示できます。 ローカル クラスターで実行されたジョブを表示するには、次の手順に従います。
 
-1. **[サーバー エクスプローラー]** で、ローカル クラスターを右クリックし、**[ジョブの表示]** を選択します。 クラスターに送信されたジョブの一覧が表示されます。
+1. **サーバー エクスプローラー**で、ローカル クラスターを右クリックし、**[ジョブの表示]** を選択します。 クラスターに送信されたジョブの一覧が表示されます。
 
-    ![ジョブを表示する](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
+    ![サーバー エクスプローラーのスクリーンショット ([ジョブの表示] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
 
 2. ジョブの一覧から、詳細を表示するジョブを選択します。
 
-    ![select a job](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
+    ![ジョブ ブラウザーのスクリーンショット (1 つのジョブを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
 
-    表示される情報は、Hive や Pig のクエリを実行した後に出力とログ情報を表示するためのリンクを使用して得られるものとほとんど同じです。
+    表示される情報は、出力とログ情報を表示するためのリンクを含め、Hive や Pig のクエリを実行した後に表示されるものとほとんど同じです。
 
 3. また、ここからジョブの変更と再送信を実行することもできます。
 
@@ -183,27 +182,27 @@ Azure Data Lake Tools では、Hadoop で実行されたジョブに関する情
 
 1. **[サーバー エクスプローラー]** で、**[HDInsight local cluster (HDInsight ローカル クラスター)]** エントリ、**[Hive Databases (Hive データベース)]** の順に展開します。 ローカル クラスター上の **[既定]** データベースと **[xademo]** データベースが表示されます。 データベースを展開すると、データベース内のテーブルが表示されます。
 
-    ![expanded databases](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
+    ![サーバー エクスプローラーのスクリーンショット (データベースを展開)](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 
-2. テーブルを展開すると、そのテーブルの列が表示されます。 テーブルを右クリックし、**[View Top 100 Rows (上位 100 行の表示)]** を選択すると、すぐにデータが表示されます。
+2. テーブルを展開すると、そのテーブルの列が表示されます。 すぐにデータを表示するには、テーブルを右クリックし、**[上位 100 行を表示 ]** を選択します。
 
-    ![hive databases view](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
+    ![サーバー エクスプローラーのスクリーンショット (テーブルを展開し、[上位 100 行を表示] を選択)](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
 
 ### <a name="database-and-table-properties"></a>データベースとテーブルのプロパティ
 
-お気付きかもしれませんが、データベースまたはテーブルで **[プロパティ]** を選択して表示することができます。 **[プロパティ]** を選択すると、選択したアイテムの詳細が [プロパティ] ウィンドウに表示されます。
+データベースまたはテーブルのプロパティを表示することができます。 **[プロパティ]** を選択すると、選択したアイテムの詳細が [プロパティ] ウィンドウに表示されます。 その例については、次のスクリーンショットに表示されている情報をご覧ください。
 
-![プロパティ](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![[プロパティ] ウィンドウのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 
 ### <a name="create-a-table"></a>テーブルを作成する
 
-新しいテーブルを作成するには、データベースを右クリックし、**[テーブルの作成]** を選択します。
+テーブルを作成するには、データベースを右クリックし、**[テーブルの作成]** を選択します。
 
-![[テーブルの作成]](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![サーバー エクスプローラーのスクリーンショット ([テーブルの作成] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
 
-ここでフォームを使用してテーブルを作成できます。 このページの下部に表示されている未加工の HiveQL を使用してテーブルを作成します。
+ここでフォームを使用してテーブルを作成できます。 次のスクリーンショットの一番下を見ると、テーブルの作成に使用された生の HiveQL が確認できます。
 
-![create table form](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
+![テーブルの作成に使用されたフォームのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
 
 ## <a name="next-steps"></a>次のステップ
 

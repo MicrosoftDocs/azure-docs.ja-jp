@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 05/18/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 223edfde090c9b77467e032198c2150fbaa56a5b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 61bb5379cd94dd00814e14420947e7783999ff0a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -27,15 +28,11 @@ ms.lasthandoff: 04/12/2017
 > * [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
 
 
-Azure Data Factory では、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。 このサービスでは、次の目的で使用できる監視ダッシュボードが用意されています。
+> [!IMPORTANT]
+> 監視と管理アプリケーションによって、ご使用のデータ パイプラインの管理および管理や、問題のトラブルシューティングがより適切にサポートされます。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
 
-* エンドツーエンドのデータ パイプラインの正常性を素早く評価する。
-* 問題を特定し、必要に応じて是正措置を講じる。
-* データ系列を追跡する。
-* ソース全体のデータ間の関係を追跡する。
-* ジョブ実行の全課金履歴、システムの正常性、依存関係を確認する。
 
-この記事では、パイプラインを監視、管理、およびデバッグする方法について説明します。 また、警告を作成して障害について通知を受け取る方法についての情報も提供します。
+この記事では、Azure Portal と PowerShell を使用してパイプラインを監視、管理、デバッグする方法について説明します。 また、警告を作成して障害について通知を受け取る方法についての情報も提供します。
 
 ## <a name="understand-pipelines-and-activity-states"></a>パイプラインとアクティビティの状態の理解
 Azure Portal を使用すると、次の操作を行うことができます。
@@ -44,15 +41,13 @@ Azure Portal を使用すると、次の操作を行うことができます。
 * パイプライン内のアクティビティを表示する。
 * 入力データセットと出力データセットを参照する。
 
-このセクションでは、スライスの状態がどのように移行するかについても説明します。   
+このセクションでは、データセット スライスの状態がどのように移行するかについても説明します。   
 
 ### <a name="navigate-to-your-data-factory"></a>Data Factory に移動する
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のメニューで、**[データ ファクトリ]** をクリックします。 表示されない場合は、**[その他のサービス >]** をクリックし、**[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
 
    ![[すべて参照] > [データ ファクトリ]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
-
-   **[データ ファクトリ]** ブレードにすべてのデータ ファクトリが表示されます。
 3. **[データ ファクトリ]** ブレードで、目的のデータ ファクトリを選択します。
 
     ![データ ファクトリの選択](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
@@ -62,13 +57,11 @@ Azure Portal を使用すると、次の操作を行うことができます。
    ![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>Data Factory のダイアグラム ビュー
-データ ファクトリの**ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する 1 つのウィンドウが提供されます。
+データ ファクトリの**ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する 1 つのウィンドウが提供されます。 データ ファクトリの**ダイアグラム** ビューを表示するには、データ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
 
-データ ファクトリの**ダイアグラム** ビューを表示するには、データ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
+![[ダイアグラム] ビュー](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-![ダイアグラム ビュー](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
-
-ダイアグラムの拡大または縮小、画面に合わせたサイズ変更、100% 表示、レイアウトのロックを行うことができるほか、パイプラインとテーブルを自動で配置することができます。 また、データ系列の情報を確認することもできます (つまり、選択したアイテムのアップストリーム アイテムとダウンストリーム アイテムが表示されます)。
+ダイアグラムの拡大または縮小、画面に合わせたサイズ変更、100% 表示、レイアウトのロックを行うことができるほか、パイプラインとデータセットを自動で配置することができます。 また、データ系列の情報を確認することもできます (つまり、選択したアイテムのアップストリーム アイテムとダウンストリーム アイテムが表示されます)。
 
 ### <a name="activities-inside-a-pipeline"></a>パイプライン内のアクティビティ
 1. パイプラインを右クリックして **[パイプラインを開く]** をクリックすると、パイプライン内のすべてのアクティビティとアクティビティの入力データセットおよび出力データセットが表示されます。 この機能は、パイプラインに複数のアクティビティが含まれる場合に、1 つのパイプラインの動作系列を理解するときに便利です。
@@ -172,17 +165,13 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 **Ready** または **Failed** 状態から **Waiting** 状態にスライスをリセットできます。 また、スライスの状態を **Skip** としてマークでき、この状態ではアクティビティは実行されず、スライスは処理されません。
 
-## <a name="manage-pipelines"></a>パイプラインを管理する
-Azure PowerShell を使用してパイプラインを管理できます。 たとえば、Azure PowerShell コマンドレットを実行してパイプラインを一時停止および再開できます。
+## <a name="pause-and-resume-pipelines"></a>パイプラインを一時停止および再開する
+Azure PowerShell を使用してパイプラインを管理できます。 たとえば、Azure PowerShell コマンドレットを実行してパイプラインを一時停止および再開できます。 
 
-### <a name="pause-and-resume-pipelines"></a>パイプラインを一時停止および再開する
-**Suspend-AzureRmDataFactoryPipeline** PowerShell コマンドレットを使用して、パイプラインを一時停止/中断できます。 このコマンドレットは、問題が修正されるまでパイプラインを実行しない場合に便利です。
+> [!NOTE] 
+> ダイアグラム ビューは、パイプラインの一時停止と再開をサポートしていません。 ユーザー インターフェイスを使用する場合は、監視と管理アプリケーションを使用してください。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
 
-たとえば、次のスクリーン ショットでは、**productrecgamalbox1dev** データ ファクトリの **PartitionProductsUsagePipeline** に問題が見つかり、パイプラインを中断します。
-
-![パイプラインの中断](./media/data-factory-monitor-manage-pipelines/pipeline-to-be-suspended.png)
-
-パイプラインを中断するには、次の PowerShell コマンドを実行します。
+**Suspend-AzureRmDataFactoryPipeline** PowerShell コマンドレットを使用して、パイプラインを一時停止/中断できます。 このコマンドレットは、問題が修正されるまでパイプラインを実行しない場合に便利です。 
 
 ```powershell
 Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -193,7 +182,7 @@ For example:
 Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
-**PartitionProductsUsagePipeline** の問題が解決されたら、次の PowerShell コマンドを実行して中断されているパイプラインを再開できます。
+パイプラインの問題が解決されたら、次の PowerShell コマンドを実行して、一時停止されているパイプラインを再開できます。
 
 ```powershell
 Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -203,8 +192,11 @@ For example:
 ```powershell
 Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
+
 ## <a name="debug-pipelines"></a>パイプラインをデバッグする
 Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure Portal および Azure PowerShell で提供されています。
+
+> [!NOTE} 監視と管理アプリを使用してエラーをトラブルシューティングする方がはるかに簡単です。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
 
 ### <a name="find-errors-in-a-pipeline"></a>パイプラインのエラーを発見する
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。 次の方法を使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
@@ -221,19 +213,19 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
    ![エラーのあるアクティビティ実行詳細ブレード](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>PowerShell を使用してエラーをデバッグする
-1. **Azure PowerShell** を開始します。
+1. **PowerShell**を起動します。
 2. **Get-AzureRmDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]**になっているスライスが表示されます。        
 
     ```powershell   
     Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   次に例を示します。
+   For example:
 
     ```powershell   
     Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
-   **StartDateTime** を、Set-AzureRmDataFactoryPipelineActivePeriod に対して指定した StartDateTime の値に置き換えます。
+   **StartDateTime** を、ご使用のパイプラインの開始時刻で置き換えます。 
 3. **Get-AzureRmDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
 
     ```powershell   
@@ -279,12 +271,17 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>パイプラインのエラーを再実行する
+
+> [!IMPORTANT]
+> 監視と管理アプリを使用してエラーのトラブルシューティングを行い、失敗したスライスを返す方が簡単です。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
+
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 パイプラインのエラーをトラブルシューティングおよびデバッグした後は、エラー スライスに移動してコマンド バーの **[実行]** ボタンをクリックすることで、エラーを再実行できます。
 
 ![障害が発生したスライスの再実行](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
 ポリシー エラー (たとえば、データが使用不可能な場合) のためにスライスの検証が失敗した場合は、エラーを修正し、コマンド バーの **[検証]** ボタンをクリックすることによって再度検証できます。
+
 ![エラーの修正と検証](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用

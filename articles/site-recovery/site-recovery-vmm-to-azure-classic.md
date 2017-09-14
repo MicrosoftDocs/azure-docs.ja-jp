@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/06/2017
+ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ed97f2aeb19566b12342e5194ac8a01293f453bf
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ac0931a71a2814723380256fc5326fc431c82f2c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure"></a>VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
@@ -52,7 +51,7 @@ Azure で必要なものを次に示します。
 | **前提条件** | **詳細** |
 | --- | --- |
 | **Azure アカウント** |[Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。 [こちら](https://azure.microsoft.com/pricing/details/site-recovery/) をご覧ください。 |
-| **Azure Storage** |レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。 レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 <br/><br/>[Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。 アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。 Premium ストレージ アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については、[こちら](../storage/storage-introduction.md)をご覧ください。 |
+| **Azure Storage** |レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。 レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 <br/><br/>[Standard 地理冗長ストレージ アカウント](../storage/common/storage-redundancy.md#geo-redundant-storage)が必要です。 アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。 Premium ストレージ アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については、[こちら](../storage/common/storage-introduction.md)をご覧ください。 |
 | **Azure ネットワーク** |フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。 Azure の仮想ネットワークは、Site Recovery コンテナーと同じリージョンに置かれている必要があります。 |
 
 ## <a name="on-premises-prerequisites"></a>オンプレミスの前提条件
@@ -226,9 +225,9 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
     ![クラウドのレプリケーション設定](./media/site-recovery-vmm-to-azure-classic/cloud-settings.png)
 
-この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。 VMM ソース クラウド内のすべての Hyper-V ホスト サーバーは、レプリケーション用に構成されます。
+この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。VMM ソース クラウド内のすべての Hyper-V ホスト サーバーは、レプリケーション用に構成されます。
 
-保存後は、クラウド設定は **[構成]** タブで変更できます。 ターゲットの場所またはターゲットのストレージ アカウントを変更するには、クラウド構成を削除してから、クラウドを再構成する必要があります。 ストレージ アカウントを変更する場合は、ストレージ アカウントの修正後に保護を有効にした仮想マシンにのみ、その変更が適用されることに注意してください。 既存の仮想マシンは新しいストレージ アカウントに移行されません。
+保存後は、クラウド設定は **[構成]** タブで変更できます。ターゲットの場所またはターゲットのストレージ アカウントを変更するには、クラウド構成を削除してから、クラウドを再構成する必要があります。 ストレージ アカウントを変更する場合は、ストレージ アカウントの修正後に保護を有効にした仮想マシンにのみ、その変更が適用されることに注意してください。 既存の仮想マシンは新しいストレージ アカウントに移行されません。
 
 ## <a name="step-7-configure-network-mapping"></a>ステップ 7: ネットワーク マッピングを構成する
 ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。 さらに、1 つまたは複数の Azure Virtual Network を作成します。 複数の VM ネットワークを 1 つの Azure ネットワークにマップできることに注意してください。
@@ -242,7 +241,7 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
     ![クラウドのレプリケーション設定](./media/site-recovery-vmm-to-azure-classic/map-networks.png)
 
-設定を保存すると、マッピングの進行状況を追跡するジョブが起動します。進行状況は [ジョブ] タブで監視することができます。 ソースの VM ネットワークに対応する既存のレプリカの全仮想マシンが、ターゲットの Azure ネットワークに接続します。 ソースの VM ネットワークに接続する新しい仮想マシンは、レプリケーション後、マップされた Azure ネットワークに接続します。 既存のマッピングを新しいネットワークで変更すると、レプリカの仮想マシンは新しい設定で接続されます。
+設定を保存すると、マッピングの進行状況を追跡するジョブが起動します。進行状況は [ジョブ] タブで監視することができます。ソースの VM ネットワークに対応する既存のレプリカの全仮想マシンが、ターゲットの Azure ネットワークに接続します。 ソースの VM ネットワークに接続する新しい仮想マシンは、レプリケーション後、マップされた Azure ネットワークに接続します。 既存のマッピングを新しいネットワークで変更すると、レプリカの仮想マシンは新しい設定で接続されます。
 
 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続することに注意してください。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
 
@@ -315,7 +314,7 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
     ![復旧計画の作成](./media/site-recovery-vmm-to-azure-classic/select-rp.png)
 
-復旧計画が作成されると、 **[復旧計画]** タブにその計画が表示されます。 [Azure Automation Runbook](site-recovery-runbook-automation.md) を復旧計画に追加して、フェールオーバー中のアクションを自動化することもできます。
+復旧計画が作成されると、 **[復旧計画]** タブにその計画が表示されます。[Azure Automation Runbook](site-recovery-runbook-automation.md) を復旧計画に追加して、フェールオーバー中のアクションを自動化することもできます。
 
 ### <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 Azure へのテスト フェールオーバーを実行する方法は 2 つあります。

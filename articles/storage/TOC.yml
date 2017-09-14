@@ -1,0 +1,16 @@
+- name: 概要
+  items:
+    - name: はじめに
+      href: ./common/storage-introduction.md
+    - name: BLOB、ファイル、またはディスクの選択
+      href: ./common/storage-decide-blobs-files-disks.md
+- name: BLOB
+  href: ./blobs/storage-blobs-introduction.md
+- name: ファイル
+  href: ./files/storage-files-introduction.md
+- name: キュー
+  href: ./queues/storage-queues-introduction.md
+- name: テーブル
+  href: ../cosmos-db/table-storage-overview.md
+- name: ディスク
+  href: ../virtual-machines/windows/managed-disks-overview.md

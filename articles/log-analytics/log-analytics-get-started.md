@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 9147d2f349f59417e44e288ef057e5857a266815
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 7bdbdf8654ae22ba143d5f87384e04fe4a11d10e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-a-log-analytics-workspace"></a>Log Analytics ワークスペースを使って作業を開始する
@@ -47,7 +46,7 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
 次の手順に従って、ワークスペースを作成します。
 
 1. Azure Portal の Marketplace のサービスの一覧で「*Log Analytics*」を検索し、**[Log Analytics]** を選択します。  
-    ![Azure ポータル](./media/log-analytics-get-started/log-analytics-portal.png)
+    ![Azure Portal](./media/log-analytics-get-started/log-analytics-portal.png)
 2. **[作成]**をクリックし、次の項目について選択します。
    * **OMS ワークスペース** - ワークスペースの名前を入力します。
    * **[サブスクリプション]** - 複数のサブスクリプションがある場合は、新しいワークスペースに関連付けるサブスクリプションを 1 つ選択します。
@@ -59,7 +58,12 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
 4. ワークスペースを選択すると、その詳細が Azure Portal に表示されます。       
     ![workspace details](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
 
-## <a name="3-add-solutions-and-solution-offerings"></a>3 ソリューションとソリューション オファリングを追加する
+## <a name="3-upgrade-workspace-to-new-log-search"></a>3 ワークスペースを新しいログ検索にアップグレードする
+新しい Log Analytics クエリ言語がリリースされましたが、これを利用するにはワークスペースを変換する必要があります。  ワークスペースがホストされているリージョンがアップグレードされると、ワークスペース上部に変換を促す紫のバナーが表示されるようになります。 アップグレードは完全に任意であり、Log Analytics と追加するソリューションの操作性に影響を与えることはありません。  
+
+利点、考慮事項、およびアップグレード手順を理解するための詳細情報については、[新しいログ検索への Azure Log Analytics のアップグレード](log-analytics-log-search-upgrade.md)に関するページを参照してください。  
+
+## <a name="4-add-solutions-and-solution-offerings"></a>4 ソリューションとソリューション オファリングを追加する
 
 次に、管理ソリューションとソリューション オファリングを追加します。 管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。 ソリューション オファリングとは、複数の管理ソリューションを組み合わせたものです。
 
@@ -89,17 +93,17 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
 
 ### <a name="to-create-a-virtual-machine"></a>仮想マシンを作成するには
 
-- 「[Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」に記載された手順に従って、新しい仮想マシンを作成します。
+- 「[Azure Portal で初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」に記載された手順に従って、新しい仮想マシンを作成します。
 
 ### <a name="connect-the-virtual-machine-to-log-analytics"></a>仮想マシンを Log Analytics に接続するには
 
 - 「[Azure 仮想マシンを Log Analytics に接続する](log-analytics-azure-vm-extension.md)」に記載された手順に従って、Azure Portal で VM を Log Analytics に接続します。
 
-## <a name="5-view-and-act-on-data"></a>5 データを表示して操作する
+## <a name="6-view-and-act-on-data"></a>6 データを表示して操作する
 
 前の手順で、Activity Log Analytics ソリューション、Security & Compliance サービス オファリング、および Automation & Control サービス オファリングを有効にしました。 続いては、ソリューションによって収集されたデータとログ検索の結果を確認します。
 
-まず、ソリューションの内部から表示されるデータを確認します。 次に、ログ検索機能でアクセスするログ検索の結果を確認します。 ユーザーはログの検索を通じて、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較することができます。 詳細については、「[Log Analytics におけるログの検索](log-analytics-log-searches.md)」を参照してください。 最後に、Azure Portal の外部にある OMS ポータルでデータを操作します。
+まず、ソリューションの内部から表示されるデータを確認します。 次に、ログ検索機能でアクセスするログ検索の結果を確認します。 ユーザーはログの検索を通じて、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較することができます。 詳細については、[Log Analytics でのログ検索](log-analytics-log-searches.md)に関するページを参照してください。また、ワークスペースを新しいクエリ言語に変換した場合は、「[Log Analytics でのログ検索について](log-analytics-log-search-new.md)」を参照してください。 
 
 ### <a name="to-view-antimalware-data"></a>マルウェア対策に関するデータを表示するには
 

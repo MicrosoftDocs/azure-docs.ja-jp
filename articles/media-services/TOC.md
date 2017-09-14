@@ -1,20 +1,18 @@
 # [概要](media-services-overview.md)
+## [シナリオと可用性](scenarios-and-availability.md)
 ## [概念](media-services-concepts.md)
 
 # 作業開始
 ## [アカウントの作成と管理](media-services-portal-create-account.md)
 ## [開発環境のセットアップ](media-services-set-up-computer.md)
-###[.NET](media-services-dotnet-how-to-use.md)
-###[REST ()](media-services-rest-how-to-use.md)  
+### [.NET](media-services-dotnet-how-to-use.md)
+### [REST ()](media-services-rest-how-to-use.md)  
 ## [AAD 認証を使用して API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
-###[ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
-###[.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
-###[REST で API にアクセスする](media-services-rest-connect-with-aad.md)
-###[CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
-###[PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
-## ACS キーを使用してプログラムで接続する
-### [.NET](media-services-dotnet-connect-programmatically.md)
-### [REST ()](media-services-rest-connect-programmatically.md)
+### [ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
+### [.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
+### [REST で API にアクセスする](media-services-rest-connect-with-aad.md)
+### [CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
+### [PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
 
 ## ビデオ オン デマンドの配信
 ### [ポータル](media-services-portal-vod-get-started.md)
@@ -26,10 +24,7 @@
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
 # 方法
-## Manage
-### アカウント
-#### [PowerShell](media-services-manage-with-powershell.md)
-#### [REST ()](/rest/api/media/mediaservice)
+## 管理
 ### エンティティ
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST ()](media-services-rest-manage-entities.md)
@@ -113,7 +108,6 @@
 ### [オンプレミス エンコーダー](media-services-live-streaming-with-onprem-encoders.md)
 #### [ポータル](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-#### [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [クラウド エンコーダーを使用したライブ ストリーミング](media-services-manage-live-encoder-enabled-channels.md)
 #### [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -133,16 +127,15 @@
 ### [Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)
 ### [DRM ライセンス配信](media-services-deliver-keys-and-licenses.md)
 ### [パートナーを使用して Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
+#### [Axinom を使用して Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
+#### [castLabs を使用して Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
 ### [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 ### [Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)
+### [DRM サブシステムのハイブリッド設計](hybrid-design-drm-sybsystem.md)
 ### [CENC とマルチ DRM およびアクセス制御](media-services-cenc-with-multidrm-access-control.md)
-### [Axinom を使用して Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
-### [castLabs を使用して Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
-
-### 資産の配信
-#### 資産配信ポリシーを構成する
-##### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
-##### [REST ()](media-services-rest-configure-asset-delivery-policy.md)
+### 資産配信ポリシーを構成する
+#### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
+#### [REST ()](media-services-rest-configure-asset-delivery-policy.md)
 ### ContentKeys を作成する
 #### [.NET](media-services-dotnet-create-contentkey.md)
 #### [REST ()](media-services-rest-create-contentkey.md)
@@ -150,11 +143,14 @@
 #### [ポータル](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST ()](media-services-rest-configure-content-key-auth-policy.md)
+### [Safari での AES 暗号化 HLS の再生](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
+### [認証トークンを渡す](http://mingfeiy.com/how-client-pass-tokens-to-azure-media-services-key-delivery-services)
 
 ## [分析](media-services-analytics-overview.md)
 ### [ポータルを使用したメディアの分析](media-services-portal-analyze.md)
 ### [Indexer 2 による処理](media-services-process-content-with-indexer2.md)
 ### [Indexer による処理](media-services-index-content.md)
+#### [タスク プリセット](indexer-task-preset.md)
 ### [Hyperlapse による処理](media-services-hyperlapse-content.md)
 ### [Face Detector による処理](media-services-face-and-emotion-detection.md)
 ### [Motion Detector による処理](media-services-motion-detection.md)
@@ -171,7 +167,6 @@
 ### [メディア処理](media-services-scale-media-processing-overview.md)
 #### [ポータル](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
-#### [REST ()](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 ### ストリーミング エンドポイント
 #### [ポータル](media-services-portal-scale-streaming-endpoints.md)
 
@@ -217,13 +212,16 @@
 ### [再試行ロジック](media-services-retry-logic-in-dotnet-sdk.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell (サービス管理)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST ()](/rest/api/media/mediaservice)  
 
 # リソース
-## [リリース ノート](media-services-release-notes.md)
-## [料金](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services コミュニティ](media-services-community.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=web-mobile)
+## [料金](https://azure.microsoft.com/pricing/details/media-services/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [リリース ノート](media-services-release-notes.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)

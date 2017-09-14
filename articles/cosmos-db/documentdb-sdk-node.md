@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB Node.js API、SDK、およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、DocumentDB Node.js SDK の各バージョン間の変更など、Node.js API と SDK に関するあらゆる詳細を提供します。"
+title: "Azure Cosmos DB Node.js API、SDK、およびリソース | Microsoft Docs"
+description: "リリース日、提供終了日、Azure Cosmos DB Node.js SDK の各バージョン間の変更など、Node.js API と SDK に関するあらゆる詳細を提供します。"
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 260405d1f6b5064af3d533ecef722f0d56b7ef36
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
-# <a name="documentdb-nodejs-sdk-release-notes-and-resources"></a>DocumentDB Node.js SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET Change Feed](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.JS](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -50,26 +50,39 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**Notification Hubs の使用**</td><td>[Node.js SDK の開始](documentdb-nodejs-get-started.md)</td></tr>
 
-<tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB を使用した Node.js Web アプリケーションの作成](documentdb-nodejs-application.md)</td></tr>
+<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](documentdb-nodejs-application.md)</td></tr>
 
-<tr><td>**現在サポートされているプラットフォーム**</td><td>[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)<br/>[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)</td></tr>
+<tr><td>**現在サポートされているプラットフォーム**</td><td> 
+[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
+[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
+[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
+[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
+</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="1.12.2"/>1.12.2</a>
+*   npm のドキュメントを修正しました。
+
+### <a name="1.12.1"/>1.12.1</a>
+* ドキュメントに Unicode の特殊文字 (LS、PS) が含まれている場合の executeStoredProcedure のバグを修正しました。
+* パーティション キーで Unicode 文字が使用されているドキュメントを処理する際のバグを修正しました。
+* 名前メディアでコレクションを作成するためのサポートを修正しました。 Github 問題 #114。
+* アクセス許可承認トークンのサポートを修正しました。 Github 問題 #178。
+
 ### <a name="1.12.0"/>1.12.0</a>
-* [1 分あたりの要求ユニット (RU/m)](../cosmos-db/request-units-per-minute.md) 機能のサポートが追加されました。
 * ConsistentPrefix と呼ばれる新しい[一貫性レベル](consistency-levels.md)に対応するようになりました。
 * UriFactory のサポートを追加しました。
-* Unicode サポートのバグを修正しました。 (GitHub の問題 #171)
+* Unicode サポートのバグを修正しました。 GitHub 問題 #171。
 
 ### <a name="1.11.0"/>1.11.0</a>
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
-* DocumentDB エミュレーターに対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
+* Azure Cosmos DB エミュレーターに対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
-* 単一パーティション コレクションに関する継続トークンのバグを修正しました (github #107)。
-* 0 を単一パラメーター として処理する際の executeStoredProcedure バグを修正しました (github #155)。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 Github 問題 #107。
+* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 Github 問題 #155。
 
 ### <a name="1.10.2"/>1.10.2</a>
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
@@ -84,7 +97,7 @@ ms.lasthandoff: 05/31/2017
 * パーティション分割コレクションの TOP/ORDER BY クエリのサポートを追加しました。
 
 ### <a name="1.9.0"/>1.9.0</a>
-* スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、DocumentDB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 DocumentDB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
+* スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、Azure Cosmos DB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 Azure Cosmos DB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
 * Cosmos DB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
 * ConnectionPolicy クラスの RetryOptions プロパティを公開する、RetryOptions クラスが追加されました。これは、一部の既定の再試行オプションをオーバーライドするために使用できます。
 
@@ -104,7 +117,7 @@ ms.lasthandoff: 05/31/2017
 * hashParitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
 
 ### <a name="1.5.4"/>1.5.4</a>
-* 問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) を修正します - 専用 HTTPS エージェント: DocumentDB 目的用のグローバル エージェントが変更されないようにします。 lib のすべての要求に対して、専用エージェントを使用します。
+* 問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) を修正します - 専用 HTTPS エージェント: Azure Cosmos DB 目的用のグローバル エージェントが変更されないようにします。 lib のすべての要求に対して、専用エージェントを使用します。
 
 ### <a name="1.5.3"/>1.5.3</a>
 * 問題 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) を修正します - メディア ID のダッシュを正しく処理します。
@@ -155,7 +168,7 @@ ms.lasthandoff: 05/31/2017
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
@@ -165,6 +178,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.12.2](#1.12.2) |2017 年 8 月 10 日 |--- |
+| [1.12.1](#1.12.1) |2017 年 8 月 10 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 5 月 10 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 3 月 16 日 |--- |
 | [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |

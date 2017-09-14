@@ -13,23 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: de39e768697425b98fb615697e57918c8c5d3853
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 77097d59077cd8e199acdb5dc0d8427369565eea
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 間の接続の構成 (クラシック)
 
+[!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
+
 この記事では、仮想ネットワーク間で VPN ゲートウェイ接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 この記事のこの手順は、クラシック デプロイ モデルと Azure Portal に適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [クラシック - Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
+> * [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [異なるデプロイメント モデルの接続 - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [異なるデプロイメント モデルの接続 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
@@ -39,25 +42,25 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="about-vnet-to-vnet-connections"></a>VNet 間接続の概要
 
-VPN Gateway を使用したクラシック デプロイメント モデルでの仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 
+VPN Gateway を使用したクラシック デプロイメント モデルでの仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
 
 接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。 マルチサイト構成と VNet 対 VNet 通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
 ![VNet 間接続](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
+### <a name="why"></a>仮想ネットワークを接続する理由
 
 仮想ネットワークを接続するのは次のような場合です。
 
 * **リージョン間の geo 冗長性および geo プレゼンス**
-  
+
   * インターネット接続エンドポイントを介さず、安全な接続を使って独自の geo レプリケーションや geo 同期をセットアップすることができます。
   * Azure Load Balancer と Microsoft (またはサード パーティ) のクラスタリング テクノロジを使用し、複数の Azure リージョンをまたぐ geo 冗長性を備えた、可用性に優れたワークロードをセットアップすることができます。 たとえば、複数の Azure リージョンにまたがる SQL AlwaysOn 可用性グループをセットアップすることができます。
 * **特定の地域内で強固な分離境界を備えた多層アプリケーション**
-  
+
   * 同じリージョン内の相互に接続された複数の VNet を使って多層アプリケーションをセットアップすることができます。それぞれの層のアプリケーションが強固に分離され、安全な層間通信を実現することができます。
 * **サブスクリプションや組織の境界を越えた通信を Azure 内で実現**
-  
+
   * Azure サブスクリプションを複数所有している場合、異なるサブスクリプションからのワークロードを仮想ネットワークを介して安全に接続することができます。
   * 企業やサービス プロバイダーが、安全な VPN テクノロジを使用した組織間の通信を Azure 内で実現できます。
 
@@ -67,7 +70,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 この演習を開始する前に、Azure サービス管理 (SM) PowerShell コマンドレットの最新バージョンをダウンロードしてインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 ほとんどの手順でポータルを使用しますが、VNet 間の接続を確立する場合は、PowerShell を使う必要があります。 Azure Portal を使用して接続を確立することはできません。
 
-## <a name="step1"></a>手順 1 - IP アドレス範囲を決める
+## <a name="plan"></a>手順 1 - IP アドレス範囲を決める
 
 仮想ネットワークの構成に使用する範囲を決めることは重要です。 この構成では、VNet のアドレス範囲が、互いにまたは接続先のすべてのローカル ネットワークと重複していないことを確認する必要があります。
 
@@ -82,7 +85,16 @@ VNet の定義の例を下表に示します。 範囲はあくまでも参考�
 
 ## <a name="vnetvalues"></a>手順 2 - 仮想ネットワークを作成する
 
-[Azure Portal](https://portal.azure.com) で 2 つの仮想ネットワークを作成します。 従来型の仮想ネットワークを作成する手順については、[従来型の仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)に関するページをご覧ください。 この記事を演習として使用している場合、以下のサンプル値を使用できます。
+[Azure Portal](https://portal.azure.com) で 2 つの仮想ネットワークを作成します。 従来型の仮想ネットワークを作成する手順については、[従来型の仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)に関するページをご覧ください。 
+
+ポータルを使ってクラシック仮想ネットワークを作成するときは、以下の手順を使って仮想ネットワーク ブレードに移動する必要があります。そうしないと、クラシック仮想ネットワークを作成するオプションが表示されません。
+
+1. [+] をクリックして [新規作成] ブレードを開きます。
+2. [Marketplace を検索] フィールドに「仮想ネットワーク」と入力します。 代わりに、[ネットワーク] -> [仮想ネットワーク] を選ぶと、クラシック VNet を作成するオプションが表示されません。
+3. 検索結果の一覧から "仮想ネットワーク" を探してクリックし、[仮想ネットワーク] ブレードを開きます。 
+4. [仮想ネットワーク] ブレードで、[クラシック] を選んでクラシック VNet を作成します。 
+
+この記事を演習として使用している場合、以下のサンプル値を使用できます。
 
 **TestVNet1 の値**
 
@@ -118,13 +130,13 @@ GatewaySubnet: 10.41.1.0/27
 
 * **[DNS サーバー]** – DNS サーバー名と IP アドレスを入力します。 この設定で、DNS サーバーは作成されません。 この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。
 
-このセクションでは、接続の種類とローカル サイトを構成し、ゲートウェイを作成します。 
+このセクションでは、接続の種類とローカル サイトを構成し、ゲートウェイを作成します。
 
 ## <a name="localsite"></a>手順 3 - ローカル サイトを構成する
 
 Azure では、各ローカル ネットワーク サイトで指定されている設定を使用して、VNet 間でトラフィックをルーティングする方法を決定します。 各 VNet は、トラフィックのルーティング先とする対応するローカル ネットワークをポイントする必要があります。 各ローカル ネットワーク サイトの参照に使用する名前を指定します。 わかりやすい名前を使用することをお勧めします。
 
-たとえば、TestVNet1 は "VNet4Local" という名前で作成するローカル ネットワーク サイトに接続します。 VNet4Local の設定には、TestVNet4 のアドレス プレフィックスが含まれています。 
+たとえば、TestVNet1 は "VNet4Local" という名前で作成するローカル ネットワーク サイトに接続します。 VNet4Local の設定には、TestVNet4 のアドレス プレフィックスが含まれています。
 
 それぞれの VNet のローカル サイトが、もう一方の VNet になります。 この構成には、次の例の値が使用されます。
 
@@ -134,12 +146,12 @@ Azure では、各ローカル ネットワーク サイトで指定されてい
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |米国西部 |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Azure Portal で TestVNet1 を見つけます。 ブレードの **[VPN 接続]** セクションで、**[ゲートウェイ]** をクリックします。
- 
+
     ![ゲートウェイがない場合](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
 2. **[新しい VPN 接続]** ページで、**[サイト対サイト]** を選択します。
 3. **[ローカル サイト]** をクリックして [ローカル サイト] ページを開き、設定を構成します。
-4. **[ローカル サイト]** ページで、ローカル サイトに名前を付けます。 この例では、ローカル サイトに "VNet4Local" という名前を付けます。 
-5. **[VPN ゲートウェイの IP アドレス]** には、有効な形式であればどの IP アドレスでも使用できます。 通常は、VPN デバイスの実際の外部 IP アドレスを使用します。 ただし、クラシック VNet 間構成では、VNet のゲートウェイに割り当てられているパブリック IP アドレスを使用します。 仮想ネットワーク ゲートウェイをまだ作成していない場合は、プレース ホルダーとして任意の有効なパブリック IP アドレスを指定します。<br>この項目を空白のままにしないでください。この構成では省略可能ではありません。 Azure によってゲートウェイが生成されたら、後でこれらの設定に戻り、対応する仮想ネットワーク ゲートウェイ IP アドレスを使用して設定を構成します。 
+4. **[ローカル サイト]** ページで、ローカル サイトに名前を付けます。 この例では、ローカル サイトに "VNet4Local" という名前を付けます。
+5. **[VPN ゲートウェイの IP アドレス]** には、有効な形式であればどの IP アドレスでも使用できます。 通常は、VPN デバイスの実際の外部 IP アドレスを使用します。 ただし、クラシック VNet 間構成では、VNet のゲートウェイに割り当てられているパブリック IP アドレスを使用します。 仮想ネットワーク ゲートウェイをまだ作成していない場合は、プレース ホルダーとして任意の有効なパブリック IP アドレスを指定します。<br>この項目を空白のままにしないでください。この構成では省略可能ではありません。 Azure によってゲートウェイが生成されたら、後でこれらの設定に戻り、対応する仮想ネットワーク ゲートウェイ IP アドレスを使用して設定を構成します。
 6. **[クライアント アドレス空間]** には、その他の VNet のアドレス空間を使用します。 計画例を参照してください。 **[OK]** をクリックして設定を保存し、**[新しい VPN 接続]** ブレードに戻ります。
 
     ![ローカル サイト](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
@@ -151,18 +163,18 @@ Azure では、各ローカル ネットワーク サイトで指定されてい
 1. **[新しい VPN 接続]** ブレードで、**[ゲートウェイをすぐに作成する]** チェック ボックスをオンにします。
 2. **[サブネット、サイズ、ルーティングの種類]** をクリックします。 **[ゲートウェイの構成]** ブレードで、**[サブネット]** をクリックします。
 3. ゲートウェイ サブネットの名前は、必須の名前 "GatewaySubnet" を使用して自動的に入力されます。 **[アドレス範囲]** には、VPN Gateway サービスに割り当てられている IP アドレスが含まれています。 一部の構成ではゲートウェイ サブネット /29 を使用できますが、将来の構成でゲートウェイ サービスに、より多くの IP アドレスが必要になった場合に備えて、/28 または /27 を使用することをお勧めします。 この例の設定では、10.11.1.0/27 を使用します。 アドレス空間を調整し、**[OK]** をクリックします。
-4. **[ゲートウェイのサイズ]** を構成します。 この設定では、[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gateway-skus) を参照します。
+4. **[ゲートウェイのサイズ]** を構成します。 この設定では、[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) を参照します。
 5. **[ルーティングの種類]** を構成します。 この構成のルーティングの種類は**動的**である必要があります。 ゲートウェイを破棄し、新しいゲートウェイを作成しない限り、ルーティングの種類を後で変更することはできません。
-6. **[OK]**をクリックします。 
+6. **[OK]**をクリックします。
 7. **[新しい VPN 接続]** ブレードで、**[OK]** をクリックして仮想ネットワーク ゲートウェイの作成を開始します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
-## <a name="step-5---configure-testvnet4-settings"></a>手順 5 - TestVNet4 設定を構成する
+## <a name="vnet4settings"></a>手順 5 - TestVNet4 設定を構成する
 
 必要に応じて値を置き換えて、[ローカル サイトを作成する](#localsite)手順と[仮想ネットワーク ゲートウェイを作成する](#gw)手順を繰り返し、TestVNet4 を構成します。 これを演習として実行している場合、[例の値](#vnetvalues)を使用します。
 
-## <a name="step-6---update-the-local-sites"></a>手順 6 - ローカル サイトを更新する
+## <a name="updatelocal"></a>手順 6 - ローカル サイトを更新する
 
-両方の VNet に対して仮想ネットワーク ゲートウェイを作成したら、ローカル サイトの **VPN ゲートウェイの IP アドレス**の値を調整する必要があります。 
+両方の VNet に対して仮想ネットワーク ゲートウェイを作成したら、ローカル サイトの **VPN ゲートウェイの IP アドレス**の値を調整する必要があります。
 
 |VNet の名前|接続されているサイト|ゲートウェイ IP アドレス|
 |:--- |:--- |:--- |
@@ -196,9 +208,9 @@ Azure では、各ローカル ネットワーク サイトで指定されてい
 6. その他のブレードを閉じます。
 7. TestVNet4 について、これらの手順を繰り返します。
 
-## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a>手順 7 - ネットワーク構成ファイルから値を取得する
+## <a name="getvalues"></a>手順 7 - ネットワーク構成ファイルから値を取得する
 
-Azure Portal でクラシック VNets を作成するときに表示される名前は、PowerShell に使用する完全な名前ではありません。 たとえば、Azure Portal に **TestVNet1** という名前で表示されている VNet は、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 つまり、実際には **Group ClassicRG TestVNet1** のような名前である可能性があります。 接続を作成するときは、ネットワーク構成ファイルに示されている値を使用することが重要です。 
+Azure Portal でクラシック VNets を作成するときに表示される名前は、PowerShell に使用する完全な名前ではありません。 たとえば、Azure Portal に **TestVNet1** という名前で表示されている VNet は、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 つまり、実際には **Group ClassicRG TestVNet1** のような名前である可能性があります。 接続を作成するときは、ネットワーク構成ファイルに示されている値を使用することが重要です。
 
 次の手順では、Azure アカウントに接続し、ネットワーク構成ファイルをダウンロードして表示し、接続に必要な値を取得します。
 
@@ -234,7 +246,7 @@ Azure Portal でクラシック VNets を作成するときに表示される名
   ```
 4. テキスト エディターでファイルを開き、VNet とサイトの名前を確認します。 接続を作成するときには、これらの名前を使用します。<br>VNet 名は **VirtualNetworkSite name =** と示されています<br>サイト名は **LocalNetworkSiteRef name =** と示されています
 
-## <a name="step-8---create-the-vpn-gateway-connections"></a>手順 8 - VPN ゲートウェイ接続を作成する
+## <a name="createconnections"></a>手順 8 - VPN ゲートウェイ接続を作成する
 
 以上の手順がすべて完了したら、IPsec/IKE 事前共有キーを設定して接続を作成できます。 この一連の手順では、PowerShell を使用します。 クラシック デプロイメント モデルの VNet 間接続を、Azure Portal で構成することはできません。
 
@@ -257,9 +269,9 @@ Azure Portal でクラシック VNets を作成するときに表示される名
   ```
   Error          :
   HttpStatusCode : OK
-  Id             : 
+  Id             :
   Status         : Successful
-  RequestId      : 
+  RequestId      :
   StatusCode     : OK
   ```
 

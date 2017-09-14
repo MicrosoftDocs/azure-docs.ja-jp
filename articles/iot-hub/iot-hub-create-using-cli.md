@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 159aed19b4c5e381ef15c40c15cf6bd7694d2fa3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/24/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して IoT ハブを作成する
@@ -79,14 +78,17 @@ Azure CLI を使用してリソース グループを作成してから、IoT �
     >
     >
 
-2. 以下の、リソース グループに[IoT ハブを作成するコマンド][lnk-az-iot-command]を実行します。
+2. IoT Hub に対してグローバルに一意の名前を使用して、以下の、リソース グループに [IoT Hub を作成するコマンド][lnk-az-iot-command]を実行します。
     
     ```azurecli
     az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
     ```
 
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+
+
 > [!NOTE]
-> IoT ハブの名前は、グローバルに一意である必要があります。 上のコマンドは、課金の対象となる S1 価格レベルに IoT ハブを作成します。 詳細については、「[Azure IoT Hub の価格][lnk-iot-pricing]」を参照してください。
+> 上のコマンドは、課金の対象となる S1 価格レベルに IoT ハブを作成します。 詳細については、「[Azure IoT Hub の価格][lnk-iot-pricing]」を参照してください。
 >
 >
 

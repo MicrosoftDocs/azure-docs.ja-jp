@@ -4,7 +4,7 @@ description: "Azure CLI のサンプル スクリプト - Azure における Fun
 services: functions
 documentationcenter: 
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: azure-service-management
 ms.assetid: d127e347-7581-47d7-b289-e0f51f2fbfbc
@@ -16,22 +16,23 @@ ms.topic: sample
 ms.date: 06/01/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: cd7ab0bbe92fa32d23a841b0b17bee8510f6b406
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 5a17830ad3b879382b7e82d435f1286c7ecdf7c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
 
 このサンプル スクリプトでは、Function App を関連リソースと共に作成し、`www.<yourdomain>` にマップします。 カスタム ドメインにマップするには、Function App を従量課金プランではなく、App Service プランで作成する必要があります。 Azure Functions は、A レコードを使用したカスタム ドメインのマッピングのみをサポートします。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降のバージョンを使用する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは次のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | コマンド | メモ |
 |---|---|

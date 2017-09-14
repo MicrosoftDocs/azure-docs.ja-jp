@@ -4,7 +4,7 @@ description: "Azure Function App の設定を構成する方法について説�
 services: 
 documentationcenter: .net
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: functions
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
-ms.author: rachelap, glenga
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 7576bf607a4bec60011ed0a009462f8cd3e0d598
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0bcf8f0d1c5fc44a31de9be9adbdad3893ff111f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
@@ -39,7 +38,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 
 
 ## <a name="connectivity"></a>接続
 

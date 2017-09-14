@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7f165111cd089d5f32f309235dcbc24d11fb5d64
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 53bf33f6027f1f365bd92251490d5c851fb83f8b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -27,7 +28,7 @@ Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデ
 ## <a name="what-is-sqoop"></a>Sqoop とは
 ログやファイルなどの非構造化データおよび半構造化データを処理する場合は、ビッグ データ アプリケーションが自然な選択です。 ただし、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) は、リレーショナル データベースとビッグ データ リポジトリ (Data Lake Store など) の間でデータを転送するために設計されたツールです。 このツールを使用すると、Azure SQL Database などのリレーショナル データベース管理システム (RDBMS) から Data Lake Store にデータをインポートすることができます。 ビッグ データ ワークロードを使用してデータを転送および分析し、再びデータを RDBMS にエクスポートすることができます。 このチュートリアルでは、Azure SQL Database をリレーショナル データベースとして使用し、それに対してインポートまたはエクスポートを行うことができます。
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) は、リレーショナル データベースとビッグ データ レポジトリ (Data Lake Store など) の間でデータを転送するために設計されたツールです。 このツールを使用すると、Azure SQL Database などのリレーショナル データベース管理システム (RDBMS) から Data Lake Store にデータをインポートすることができます。 ビッグ データ ワークロードを使用してデータを転送および分析し、再びデータを RDBMS にエクスポートすることができます。 このチュートリアルでは、Azure SQL Database をリレーショナル データベースとして使用し、それに対してインポートまたはエクスポートを行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
@@ -109,7 +110,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
         -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
         -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-    各 **part-m-***ファイルは、ソース テーブル**Table1**内の行に対応します。検証する part-m-* ファイルのコンテンツを表示できます。
+    各 **part-m-*** ファイルは、ソース テーブル **Table1** 内の行に対応します。 検証する part-m-* ファイルのコンテンツを表示できます。
 
 
 ### <a name="export-data-from-data-lake-store-into-azure-sql-database"></a>Data Lake Store から Azure SQL Database にデータをエクスポートします。

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/24/2017
+ms.date: 08/14/2017
 ms.author: shlo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6af34cf24a8fb7d2dd8f4c44392e0e6c3ed46b1a
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: e96ed72b81f37c3df78647ebfe9cdf271466a0c2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
@@ -48,18 +47,12 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
 データ ファクトリの生成または作成は、次のツール/SDK を使用して行う事ができます。
 
-* **Azure Portal**
-  : Azure Portal の Data Factory ブレードは、Data Factory およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。 **Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。 ポータルまたはエディターを使用した Data Factory の作成とデプロイの例については、 [Azure Portal を使用した初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline-using-editor.md) に関するページを参照してください。
-* **Visual Studio**
-    : Visual Studio を使用して、Azure Data Factory を作成することができます。 詳細については、「 [Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md) 」を参照してください。
-* **Azure PowerShell**
-   : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、[Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference]をご覧ください。
-* **.NET クラス ライブラリ**
-   : Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。 .NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、 [.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md) に関するページをご覧ください。 Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]をご覧ください。
-* **REST API**
-   : Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。 Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]をご覧ください。
-* **Azure Resource Manager テンプレート**
-  : 詳細については、「 [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) 」を参照してください。
+* **Azure Portal** : Azure Portal の Data Factory ブレードは、Data Factory およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。 **Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。 ポータルまたはエディターを使用した Data Factory の作成とデプロイの例については、 [Azure Portal を使用した初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline-using-editor.md) に関するページを参照してください。
+* **Visual Studio** : Visual Studio を使用して、Azure Data Factory を作成することができます。 詳細については、「 [Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md) 」を参照してください。
+* **Azure PowerShell** : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、 [Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference]をご覧ください。
+* **.NET クラス ライブラリ** : Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。 .NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、 [.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md) に関するページをご覧ください。 Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]をご覧ください。
+* **REST API** : Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。 Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]をご覧ください。
+* **Azure Resource Manager テンプレート** : 詳細については、「 [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) 」を参照してください。
 
 ### <a name="can-i-rename-a-data-factory"></a>Data Factory の名前を変更できますか。
 いいえ。 他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
@@ -131,8 +124,10 @@ Data Factory サービスで作成されたオンデマンド クラスターを
     {
         "type": "HDInsightOnDemandLinkedService",
         "typeProperties": {
+            "version": "3.5",
             "clusterSize": 1,
-            "timeToLive": "00:01:00",
+            "timeToLive": "00:05:00",
+            "osType": "Linux",
             "linkedServiceName": "LinkedService-SampleData",
             "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ]
         }

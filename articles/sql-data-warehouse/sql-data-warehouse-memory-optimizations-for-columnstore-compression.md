@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 11/18/2016
+ms.date: 6/2/2017
 ms.author: shigu;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 8d189256ed4c876859203406cda95ce0be36c96c
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
 
-# <a name="memory-optimizations-for-columnstore-compression"></a>列ストア圧縮向けのメモリ最適化
+# <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
-メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
+行グループの品質は、行グループ内の行数によって決まります。 メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
 
 ## <a name="why-the-rowgroup-size-matters"></a>行グループのサイズが重要な理由
 列ストアインデックスは個別の行グループの列セグメントをスキャンすることでテーブルをスキャンし、各行グループの行の数を最大限にしてクエリ パフォーマンスを向上させます。 行グループに多くの行がある場合、データ圧縮が向上します。つまり、ディスクから読み取るデータが少なくなります。
@@ -37,11 +37,45 @@ ms.lasthandoff: 03/29/2017
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>圧縮時の行グループのトリミング
 
-一括読み込み中または列ストアインデックスの再構築中、各行グループに指定された行をすべて圧縮するのに使用可能なメモリが十分ではないことがあります。 メモリの負荷がある場合、列ストアへの圧縮ができるように、列ストア インデックスは行グループのサイズをトリミングします。
+一括読み込み中または列ストアインデックスの再構築中、各行グループに指定された行をすべて圧縮するのに使用可能なメモリが十分ではないことがあります。 メモリの負荷がある場合、列ストアへの圧縮ができるように、列ストア インデックスは行グループのサイズをトリミングします。 
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、SQL Data Warehouse はエラーを生成します。
 
 一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index)」セクションを参照してください。
+
+## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
+
+行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) があります。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
+
+```sql
+create view dbo.vCS_rg_physical_stats
+as 
+with cte
+as
+(
+select   tb.[name]                    AS [logical_table_name]
+,        rg.[row_group_id]            AS [row_group_id]
+,        rg.[state]                   AS [state]
+,        rg.[state_desc]              AS [state_desc]
+,        rg.[total_rows]              AS [total_rows]
+,        rg.[trim_reason_desc]        AS trim_reason_desc
+,        mp.[physical_name]           AS physical_name
+FROM    sys.[schemas] sm
+JOIN    sys.[tables] tb               ON  sm.[schema_id]          = tb.[schema_id]                             
+JOIN    sys.[pdw_table_mappings] mp   ON  tb.[object_id]          = mp.[object_id]
+JOIN    sys.[pdw_nodes_tables] nt     ON  nt.[name]               = mp.[physical_name]
+JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  rg.[object_id]     = nt.[object_id]
+                                                                            AND rg.[pdw_node_id]   = nt.[pdw_node_id]
+                                        AND rg.[distribution_id]    = nt.[distribution_id]                                          
+)
+select *
+from cte;
+```
+
+trim_reason_desc は、行グループがトリミングされたかどうかを示します (trim_reason_desc = NO_TRIM は、トリミングがなく、新しいグループが最適な品質であることを示します)。 次のトリミングの理由は、行グループのトリミングが不完全であることを示します。
+- BULKLOAD: このトリミング理由は、負荷の行の受信バッチが 100 万行未満の場合に使用されます。 (デルタ ストアへの挿入とは異なり) 挿入される行が 100,000 行を超え、トリミング理由が BULKLOAD に設定されている場合、エンジンでは圧縮された行グループが作成されます。 このシナリオでは、より多くの行を蓄積できるように、バッチ負荷期間を増やすことをお勧めします。 また、行グループはパーティション境界をまたぐことはできないため、パーティション構成を評価し直して細かくなり過ぎないようにします。
+- MEMORY_LIMITATION: 100 万行の行グループを作成するには、エンジンに特定サイズの作業メモリが必要です。 読み込みセッションに使用できるメモリが、必要な作業メモリよりも少ない場合、行グループは途中でトリミングされます。 以下のセクションでは、必要なメモリを見積もり、メモリの割り当てを増やす方法について説明します。
+- DICTIONARY_SIZE: このトリミング理由は、カーディナリティ文字列の桁数が多い、または高い文字列の列が 1 つ以上あったため、行グループのトリミングが発生したことを示します。 ディクショナリのサイズはメモリ内の 16 MB に制限されています。この制限に達すると、行グループは圧縮されます。 このような場合は、問題のある列を別のテーブルに分離することをお勧めします。
 
 ## <a name="how-to-estimate-memory-requirements"></a>メモリ要件の見積もり方法
 
@@ -108,7 +142,7 @@ OPTION (MAXDOP 1);
 DWU のサイズとユーザー リソースのクラスによって、ユーザー クエリで使用可能なメモリの量が決まります。 読み込みクエリのメモリ許可を増やすために、DWU の数を増やすか、リソース クラスを増やすことができます。
 
 - DWU を増やす方法については、[パフォーマンスのスケーリング方法](sql-data-warehouse-manage-compute-overview.md#scale-compute)に関するセクションを参照してください。
-- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」を参照してください。
+- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)」を参照してください。
 
 たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](sql-data-warehouse-develop-concurrency.md)に関する記事を参照してください。
 

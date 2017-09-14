@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 08/07/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b590329e204c189ea2ef67b7c6c6bb6dacaf1628
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 0264de12caaf62e976673a423df731ad27ab01e0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の作成またはインポート
@@ -36,7 +37,7 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
 
 ### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-portal"></a>Azure ポータルで新しい Azure Automation Runbook を作成するには
 1. Azure ポータルで、Automation アカウントを開きます。
-2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
+2. ハブから、**[Runbook]** を選択して、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックします。
 4. Runbook の **[名前]** を入力し、 [[種類]](automation-runbook-types.md)を選択します。 Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
 5. **[作成]** をクリックして Runbook を作成し、エディターを開きます。
@@ -75,7 +76,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 > 
 
 1. Azure ポータルで、Automation アカウントを開きます。
-2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
+2. ハブから、**[Runbook]** を選択して、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、次に **[インポート]** をクリックします。
 4. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
 5. **[名前]** フィールドが有効になっている場合は、名前を変更できます。  Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
@@ -131,10 +132,5 @@ Windows PowerShell の [Publish-AzureRmAutomationRunbook](https://msdn.microsoft
 * Runbook と PowerShell モジュール ギャラリーの利点については、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」を参照してください
 * テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「 [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 * グラフィカル Runbook 作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

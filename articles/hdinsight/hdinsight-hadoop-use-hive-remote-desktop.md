@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Hive とリモート デスクトップの使用 | Microsoft Docs"
+title: "HDInsight での Hadoop Hive とリモート デスクトップの使用 - Azure | Microsoft Docs"
 description: "リモート デスクトップを使用して HDInsight で Hadoop クラスターに接続し、Hive コマンド ライン インターフェイスを使用して Hive クエリを実行する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,11 +17,10 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 0ff59627fe0e8db409f1404ee8397f3da3a56569
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0be8ba4cfdf0686e14e70d0688085af5455de43a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>リモート デスクトップによる HDInsight での Hive と Hadoop の使用
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 この記事では、リモート デスクトップを使用して HDInsight クラスターに接続し、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを実行する方法について説明します。
 
 > [!IMPORTANT]
-> リモート デスクトップは、オペレーティング システムとして Windows を使用する HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> リモート デスクトップは、オペレーティング システムとして Windows を使用する HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Hive クエリの実行に関する情報については、[HDInsight と Beeline での Hive の使用](hdinsight-hadoop-use-hive-beeline.md)に関するページを参照してください。
 
@@ -58,7 +57,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
+        STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
     これらのステートメントは次のアクションを実行します。

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 6d048b73528d1812f1be9585d30812ca4aeaa397
-ms.lasthandoff: 03/30/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 792712e3e529d77ff20a7603b5fbf028ca60f8c8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -50,7 +51,7 @@ Traffic Manager は、Azure エンドポイントを使用して、'従来の' I
 Azure 外部のサービスには、外部エンドポイントが使用されます。 オンプレミスのホスト サービスや他のプロバイダーなどがその例です。 外部エンドポイントは個別に使用することも、同じ Traffic Manager プロファイルで Azure エンドポイントと組み合わせることもできます。 Azure エンドポイントと外部エンドポイントを組み合わせると、次のようにさまざまなシナリオが可能になります。
 
 * アクティブ/アクティブまたはアクティブ/パッシブ フェールオーバー モデルでは、Azure を使用して既存のオンプレミス アプリケーションの冗長性を向上させます。
-* 世界各地のユーザーのアプリケーションの待機時間を減らすためには、Azure で既存のオンプレミス アプリケーションを他の主要地域に拡張します。 詳細については、[Traffic Manager の 'パフォーマンス' によるトラフィック ルーティング](traffic-manager-routing-methods.md#performance-traffic-routing-method)に関する記事をご覧ください。
+* 世界各地のユーザーのアプリケーションの待機時間を減らすためには、Azure で既存のオンプレミス アプリケーションを他の主要地域に拡張します。 詳細については、[Traffic Manager の 'パフォーマンス' によるトラフィック ルーティング](traffic-manager-routing-methods.md#performance)に関する記事をご覧ください。
 * Azure を使用して、既存のオンプレミス アプリケーションの容量を、継続的に、または 'クラウドへのバースト' として追加し、需要の急増に対処します。
 
 場合によっては、外部エンドポイントを使用して Azure サービスを参照すると便利です (具体例については、「[FAQ](traffic-manager-faqs.md#traffic-manager-endpoints)」を参照)。 この場合、正常性チェックは、外部エンドポイントではなく、Azure エンドポイントの料金で課金されます。 ただし、Azure エンドポイントとは異なり、基になるサービスを停止または削除しても、該当する正常性チェックへの課金は、Traffic Manager でエンドポイントを無効にするか削除しない限り停止されません。
@@ -95,5 +96,4 @@ Traffic Manager でエンドポイントを無効にすると、メンテナン�
 * [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)を確認します。
 * Traffic Manager の [エンドポイントの監視と自動フェールオーバー](traffic-manager-monitoring.md)を確認します。
 * Traffic Manager の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)を確認します。
-
 

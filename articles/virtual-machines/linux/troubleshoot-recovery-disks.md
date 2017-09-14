@@ -1,5 +1,4 @@
 ---
-
 title: "Azure CLI 2.0 でトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
 description: "Azure CLI 2.0 で OS ディスクを復旧 VM に接続して、Linux VM の問題のトラブルシューティングを行う方法について説明します"
 services: virtual-machines-linux
@@ -14,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 518a21896ddfc34156615907b710b421bcea42c1
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 7a28accce1bd328b2b486b588c44d91b03e42122
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -169,7 +168,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 
 - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 
-このテンプレートでは、前述のコマンドの VHD URI を使用して VM をデプロイします。 [az group deployment create](/cli/azure/vm/deployment#create) を使用して、テンプレートをデプロイします。 元の VHD の URI を指定した後、次のように OS の種類、VM サイズ、VM 名を指定します。
+このテンプレートでは、前述のコマンドの VHD URI を使用して VM をデプロイします。 [az group deployment create](/cli/azure/group/deployment#create) を使用して、テンプレートをデプロイします。 元の VHD の URI を指定した後、次のように OS の種類、VM サイズ、VM 名を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \

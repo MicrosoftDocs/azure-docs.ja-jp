@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 03/20/2017
+ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: ec524ed8dd4cc58b948d3047c36a9f7913d7d041
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 2556947d7cdd1475ae82ac2e1d61ad30ebd0d29f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -28,9 +28,14 @@ ms.lasthandoff: 05/15/2017
 
 このシナリオでは、リソース グループ、Linux App Service プラン、および Web アプリを作成し、Azure コンテナー レジストリから Docker コンテナーを使用して ASP.NET Core Web アプリケーションをデプロイします。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-## <a name="create-app-sample"></a>サンプル アプリの作成
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
+## <a name="sample-script"></a>サンプル スクリプト
 
 [!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux の Azure コンテナー レジストリ")]
 
@@ -44,8 +49,8 @@ ms.lasthandoff: 05/15/2017
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az appservice web create](https://docs.microsoft.com/cli/azure/appservice/web#create) | App Service プラン内に Azure Web アプリを作成します。 |
-| [az appservice web config container update](https://docs.microsoft.com/cli/azure/appservice/web/config/container#update) | Azure Web アプリ用の Docker コンテナーを設定します。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
+| [az webapp config container set](https://docs.microsoft.com/cli/azure/webapp/config/container#set) | Azure Web アプリ用の Docker コンテナーを設定します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,51 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 52f9a3146852ef83c31bd93e1c538e12f0d953eb
-ms.openlocfilehash: e44ecf5860becffb39d199e36d36d96f50bf7cf3
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
+
 クライアントが Service Fabric クラスター ノードに接続する際には、証明書セキュリティまたは Azure Active Directory (AAD) を使用してクライアント認証が行われ、セキュリティ保護された通信が確立します。 この認証により、許可されたユーザーのみが、クラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。  証明書または AAD セキュリティは、クラスターの作成時に、クラスターであらかじめ有効にしておく必要があります。  クラスターのセキュリティ シナリオの詳細については、 [クラスター セキュリティ](service-fabric-cluster-security.md)に関する記事を参照してください。 証明書によるセキュリティで保護されたクラスターに接続している場合は、クラスターに接続するコンピューターで[クライアント証明書を設定](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert)します。 
 
 <a id="connectsecureclustercli"></a> 
 
-## <a name="connect-to-a-secure-cluster-using-azure-cli"></a>セキュリティで保護されたクラスターに Azure CLI を使用して接続する
-セキュリティで保護されたクラスターに接続する方法を以下の Azure CLI コマンドで説明します。 
+## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) を使用してセキュリティで保護されたクラスターに接続する
 
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>セキュリティで保護されたクラスターにクライアント証明書を使用して接続する
-証明書の詳細は、クラスター ノード上の証明書と一致する必要があります。 
+Service Fabric CLI (sfctl) を使用してセキュリティで保護されたクラスターに接続する方法はいくつかあります。 認証にクライアント証明書を使用した場合、証明書の詳細は、クラスター ノードにデプロイされた証明書と一致する必要があります。 証明書に証明機関 (CA) がある場合、信頼された CA も指定する必要があります。
 
-ご使用の証明書に証明機関 (CA) が含まれている場合は、次の例のようにパラメーター `--ca-cert-path` を追加する必要があります。 
+`sfctl cluster select` コマンドを使用してクラスターに接続できます。
 
-```
- azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
-```
-複数の CA がある場合は、コンマで区切ります。 
+証明書とキーのペアとして、または単一の pem ファイルとして、2 つの異なる方法でクライアント証明書を指定できます。 パスワードで保護された `pem` ファイルの場合、自動的にパスワードの入力が求められます。
 
-証明書の共通名が接続エンドポイントと一致しない場合は、 `--strict-ssl-false` パラメーターを指定して検証を省略することができます。 
+クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 For example:
 
-```
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 --strict-ssl-false 
+```azurecli
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-CA 検証を省略したい場合、次のコマンドのように ``--reject-unauthorized-false`` パラメーターを追加します。
+パスワードで保護された pem ファイルにより、コマンドを実行する前にパスワードの入力が求められます。
 
-```
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
-```
+証明書を指定するために、キー ペアは `--cert` および `--key` 引数を使用して、各ファイルにファイル パスを指定します。
 
-自己署名証明書で保護されたクラスターに接続する場合は、次のコマンドを実行して、CA 検証と共通名検証の両方を無効にしてください。
-
-```
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false --reject-unauthorized-false
+```azurecli
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-接続後、[他の CLI コマンドを実行](service-fabric-azure-cli.md)してクラスターの対話操作を実行することができます。 
+テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 For example:
+
+> [!WARNING]
+> 運用環境の Service Fabric クラスターに接続するときに `no-verify` オプションを使用しないでください。
+
+```azurecli
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
+```
+
+さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 For example:
+
+```azurecli
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
+```
+
+接続後、[他の sfctl コマンドを実行](service-fabric-cli.md)してクラスターの対話操作を実行することができます。
 
 <a id="connectsecurecluster"></a>
 
@@ -344,9 +350,10 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
-* [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)。
+* [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
 * [アプリケーションのセキュリティと RunAs](service-fabric-application-runas-security.md)
-
+* [Service Fabric CLI の概要](service-fabric-cli.md)
 

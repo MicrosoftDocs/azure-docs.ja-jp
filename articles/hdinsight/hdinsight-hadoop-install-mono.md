@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Mono のインストールまたは更新 |Microsoft Docs"
+title: "HDInsight での Mono のインストールまたは更新 - Azure | Microsoft Docs"
 description: "HDInsight クラスターで Mono の特定のバージョンを使用する方法について説明します。 Mono を使用して、Linux ベースの HDInsight クラスターで .NET アプリケーションを実行します。"
 services: hdinsight
 documentationCenter: 
@@ -12,15 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/01/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: dc303b5386d48cd7daad1630a35c8b8366a9c19f
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 2721b41e8736c9ebd75cd098ad376018b4563d3f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/10/2017
 
 ---
 

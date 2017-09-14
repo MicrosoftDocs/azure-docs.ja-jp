@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 1d712ef6987a4af2014bedb54378f288bcf535a8
-ms.lasthandoff: 04/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 69a860f89601fce7614d77f1bcd839b6ca540b88
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したサービス間認証
@@ -35,7 +35,7 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
 
-この記事では、**サービス間認証用の Azure AD Web アプリケーション**の作成方法について説明します。 エンドユーザー認証用に Azure AD アプリケーションを構成する方法については、「[End-user authentication with Data Lake Store using Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md)」 (Data Lake Store での Azure Active Directory を使用したエンドユーザー認証) を参照してください。
+この記事では、**サービス間認証用の Azure AD Web アプリケーション**の作成方法について説明します。 エンド ユーザー認証用に Azure AD アプリケーションを構成する方法については、「[Data Lake Store での Azure Active Directory を使用したエンド ユーザーの認証](data-lake-store-end-user-authenticate-using-active-directory.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
@@ -44,7 +44,7 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 Azure Active Directory を使用して Azure Data Lake Store でのサービス間認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
-上記に示したリンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[Web アプリ/API]** を必ず選択してください。
+リンクの指示に従うときは、スクリーンショットに示すように、アプリケーションの種類として **[Web アプリ/API]** を必ず選択してください。
 
 ![Web アプリの作成](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "Web アプリの作成")
 

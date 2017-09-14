@@ -3,7 +3,7 @@ title: "Windows Server でのスタンドアロン Azure Service Fabric クラ�
 description: "スタンドアロン Azure Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします (クラスター アップグレード モードの設定など)。"
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
@@ -12,17 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
-ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0c62f84993c83619cd55f9081450deaf0b21c090
+ms.date: 06/30/2017
+ms.author: dekapur
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ac40775ca62362a32184207857a0b965a798e135
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
-# <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード
+# <a name="upgrade-your-standalone-azure-service-fabric-on-windows-server-cluster"></a>Windows Server クラスターでのスタンドアロン Azure Service Fabric のアップグレード
 > [!div class="op_single_selector"]
 > * [Azure クラスター](service-fabric-cluster-upgrade.md)
 > * [スタンドアロン クラスター](service-fabric-cluster-upgrade-windows-server.md)
@@ -188,6 +187,23 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>クラスター構成のアップグレード
+構成アップグレードを開始する前に、スタンドアロン パッケージで PowerShell スクリプトを実行し、新しいクラスター構成をテストできます。
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
+
+```
+または
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
+
+```
+
+エンドポイント、クラスター名、ノード IP など、一部の構成はアップグレードできません。これは古いクラスター構成 JSON に対して新しいクラスター構成 JSON をテストし、問題があれば、PowerShell ウィンドウにエラーを表示します。
+
 クラスター構成をアップグレードするには、**Start-ServiceFabricClusterConfigurationUpgrade** を実行します。 構成のアップグレードは、アップグレード ドメインごとに処理されます。
 
 ```powershell
@@ -198,10 +214,11 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
 ### <a name="cluster-certificate-config-upgrade"></a>クラスター証明書の構成のアップグレード  
 クラスター証明書はクラスター ノード間での認証で使用されるため、証明書のロール オーバーは特に注意して実行する必要があります。失敗するとクラスター ノード間の通信がブロックされます。  
-技術的には、次の 2 つのオプションがサポートされます。  
+技術的には、次の 3 つのオプションがサポートされます。  
 
 1. 証明書のシングル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 B (プライマリ) -> 証明書 C (プライマリ) -> ...' です。   
 2. 証明書のダブル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 A (プライマリ) および B (セカンダリ) -> 証明書 B (プライマリ) -> 証明書 B (プライマリ) および C (セカンダリ) -> 証明書 C (プライマリ) -> ...' です。
+3. 証明書の種類のアップグレード: 拇印ベースの証明書の構成 <-> CommonName ベースの証明書の構成。 たとえば、証明書の拇印 A (プライマリ) と拇印 B (セカンダリ) -> 証明書 CommonName C。
 
 
 ## <a name="next-steps"></a>次のステップ

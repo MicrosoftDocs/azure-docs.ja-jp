@@ -1,8 +1,8 @@
 ---
 title: "Microsoft Azure のメトリックの概要 | Microsoft Docs"
 description: "Microsoft Azure のメトリックとその使用方法の概要"
-author: kamathashwin
-manager: carmonm
+author: johnkemnetz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
-ms.author: ashwink
-translationtype: Human Translation
+ms.author: johnkem
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: 86e025f9211a1d7ed07e831b7ce4c21be351513b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
 
 ---
@@ -80,7 +81,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
    ![Azure Monitor の 1 か所ですべてのメトリックにアクセス](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
-> ホスト レベルのメトリックには、VM (Azure Resource Manager ベース) および Virtual Machine Scale Sets からアクセスできます。その際、追加の診断設定は不要です。 この新しいホスト レベルのメトリックは、Windows と Linux のインスタンスで使用できます。 VM や Virtual Machine Scale Sets で Azure 診断をオンにしている場合にアクセスできる、ゲスト OS レベルのメトリックと混同しないでください。 Azure 診断の構成の詳細については、「[What is Microsoft Azure Diagnostics (Microsoft Azure 診断とは)](../azure-diagnostics.md)」を参照してください。
+> ホスト レベルのメトリックには、VM (Azure Resource Manager ベース) および仮想マシン スケール セットからアクセスできます。その際、追加の診断設定は不要です。 この新しいホスト レベルのメトリックは、Windows と Linux のインスタンスで使用できます。 VM や仮想マシン スケール セットで Azure 診断をオンにしている場合にアクセスできる、ゲスト OS レベルのメトリックと混同しないでください。 Azure 診断の構成の詳細については、「[What is Microsoft Azure Diagnostics (Microsoft Azure 診断とは)](../azure-diagnostics.md)」を参照してください。
 >
 >
 
@@ -113,7 +114,7 @@ Azure Monitor REST API を使用した詳細なチュートリアルについて
  ![Azure Monitor のメトリックとアラート ルール](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
 ### <a name="autoscale-your-azure-resources"></a>Azure リソースの自動スケール
-Azure リソースの中には、複数のインスタンスをスケールアウトまたはスケールインして、ワークロードを処理できるものがあります。 自動スケールは、App Services (Web Apps)、Virtual Machine Scale Sets、および従来の Azure Cloud Services に適用されます。 ワークロードに影響する特定のメトリックが、指定したしきい値を超えたときにスケールアウトまたはスケールインするように、自動スケール ルールを構成することができます。 詳細については、 [自動スケールの概要](monitoring-overview-autoscale.md)に関するページをご覧ください。
+Azure リソースの中には、複数のインスタンスをスケールアウトまたはスケールインして、ワークロードを処理できるものがあります。 自動スケールは、App Services (Web Apps)、仮想マシン スケール セット、および従来の Azure Cloud Services に適用されます。 ワークロードに影響する特定のメトリックが、指定したしきい値を超えたときにスケールアウトまたはスケールインするように、自動スケール ルールを構成することができます。 詳細については、 [自動スケールの概要](monitoring-overview-autoscale.md)に関するページをご覧ください。
 
  ![Azure Monitor のメトリックと自動スケール](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
@@ -121,7 +122,7 @@ Azure リソースの中には、複数のインスタンスをスケールア�
 Azure Monitor は、新しいメトリック インフラストラクチャです。 Azure Portal と、新しいバージョンの Azure Monitor API で、次の Azure サービスをサポートしています。
 
 * VM (Azure Resource Manager ベース)
-* Virtual Machine Scale Sets
+* 仮想マシン スケール セット
 * Batch
 * Event Hubs 名前空間
 * Service Bus 名前空間 (Premium SKU のみ)

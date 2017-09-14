@@ -12,21 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 41435316adaee5c66de503571184fce8937d38ee
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 この記事は主要な Event Hubs .NET Framework クライアント API についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
-監視シナリオは管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[Service Bus .NET](/dotnet/api) と [EventProcessorHost API](/dotnet/api) に関するリファレンスを参照してください。
+監視シナリオは管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) と [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) に関するリファレンスを参照してください。
 
 ## <a name="management-apis"></a>管理 API
 次の管理操作を実行するには、Event Hubs 名前空間の **管理** 権限が必要になります。

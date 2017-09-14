@@ -12,21 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: c5ac70a25e3b80a50c01464895c400f83d1d124d
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 1f443898bcb9b422fc2db46f4e389ae51b043d87
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/04/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-powershell"></a>Deploy templates in Azure Stack using PowerShell
-Use PowerShell to deploy Azure Resource Manager templates to the Azure Stack POC.  Resource Manager templates deploy and provision all resources for your application in a single, coordinated operation.
+Use PowerShell to deploy Azure Resource Manager templates to the Azure Stack Development Kit.  Resource Manager templates deploy and provision all resources for your application in a single, coordinated operation.
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>Run AzureRM PowerShell cmdlets
-In this example, you run a script to deploy a virtual machine to Azure Stack POC using a Resource Manager template.  Before proceeding, ensure you have [configured PowerShell](azure-stack-powershell-configure.md)  
+In this example, you run a script to deploy a virtual machine to Azure Stack Development Kit using a Resource Manager template.  Before proceeding, ensure you have [configured PowerShell](azure-stack-powershell-configure-user.md)  
 
 The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
 
@@ -55,9 +54,6 @@ The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
            -WindowsOSVersion 2012-R2-Datacenter
    ```
 3. Open the Azure Stack portal, click **Browse**, click **Virtual machines**, and look for your new virtual machine (*myDeployment001*).
-
-## <a name="video-example-hybrid-virtual-machine-deployment"></a>Video example: hybrid virtual machine deployment
->[!VIDEO https://channel9.msdn.com/Blogs/azurestack/Microsoft-Azure-Stack-TP1-POC-Hybrid-VM-Deployment/player]
 
 
 ## <a name="next-steps"></a>Next steps

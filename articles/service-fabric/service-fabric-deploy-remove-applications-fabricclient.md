@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/10/2017
+ms.date: 07/07/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e6c6b4acbc48cfbb8c26d09852f8b4c86fd6ea27
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ebe8b9f0cace419125bde84a9ff2a912af061156
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/27/2017
 2. アプリケーションの種類を登録する
 3. アプリケーション インスタンスを作成する
 
-アプリのデプロイ後、インスタンスがクラスターで実行されているときに、アプリのインスタンスとそのアプリケーションの種類を削除することができます。 クラスターからアプリを完全に削除するには、次の手順が必要となります。
+アプリケーションのデプロイ後、インスタンスがクラスターで実行されているときに、アプリケーションのインスタンスとそのアプリケーションの種類を削除することができます。 クラスターからアプリケーションを完全に削除するには、次の手順が必要です。
 
 1. 実行中のアプリケーションのインスタンスを削除する
 2. アプリケーションの種類が不要になったら、その登録を解除する
@@ -46,7 +47,7 @@ ms.lasthandoff: 04/27/2017
 [Visual Studio を使用してローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う](service-fabric-publish-app-remote-cluster.md)場合、前述のすべての手順は、PowerShell スクリプトによって自動的に処理されます。  このスクリプトは、アプリケーション プロジェクトの *Scripts* フォルダーにあります。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。 
  
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
-この記事のいずれかのコード例を実行する前に、[FabricClient](/dotnet/api/system.fabric.fabricclient) インスタンスを作成してクラスターに接続します。 ローカル開発クラスターやリモート クラスター、または Azure Active Directory、X509 証明書、Windows Active Directory で保護されたクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)」をご覧ください。  ローカル開発クラスターに接続するには、次の手順を実行します。
+この記事のいずれかのコード例を実行する前に、[FabricClient](/dotnet/api/system.fabric.fabricclient) インスタンスを作成してクラスターに接続します。 ローカル開発クラスターやリモート クラスター、または Azure Active Directory、X509 証明書、Windows Active Directory で保護されたクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)」をご覧ください。 ローカル開発クラスターに接続するには、次の手順を実行します。
 
 ```csharp
 // Connect to the local cluster.
@@ -54,12 +55,11 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>アプリケーション パッケージをアップロードする
-*MyApplication* という名前のアプリを Visual Studio でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェストとサービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\username\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* に格納されます。
+*MyApplication* という名前のアプリケーションを Visual Studio でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェストとサービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\&lt;username&gt;\Documents\Visual Studio 2017\Projects\MyApplication\MyApplication\pkg\Debug* にあります。
 
-アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に保存されます。
-アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) コマンドレットを使用します。
+アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に保存されます。 Service Fabric は、アプリケーション パッケージの登録時に、アプリケーション パッケージを検証します。 ただし、アプリケーション パッケージをローカルで検証する (つまり、アップロード前に) 場合は、[Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) コマンドレットを使用します。
 
-[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) メソッドはアプリケーション パッケージをクラスター イメージ ストアにアップロードします。 
+[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API はアプリケーション パッケージをクラスター イメージ ストアにアップロードします。 
 
 アプリケーション パッケージが大きい場合や含まれるファイルの数が多い場合は、PowerShell を使用してアプリケーション パッケージを[圧縮](service-fabric-package-apps.md#compress-a-package)し、イメージストアにコピーできます。 圧縮により、ファイルのサイズを小さくし、ファイル数を減らすことができます。
 
@@ -68,35 +68,52 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="register-the-application-package"></a>アプリケーション パッケージを登録する
 アプリケーション マニフェストで宣言されたアプリケーションの種類とバージョンは、アプリケーション パッケージを登録すると、利用できるようになります。 システムは、前の手順でアップロードされたパッケージを読み取り、パッケージを検証し、パッケージのコンテンツを処理し、処理済みのパッケージを内部システムの場所にコピーします。  
 
-[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) メソッドはアプリケーションの種類をクラスターに登録し、デプロイできるようにします。
+[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API はアプリケーションの種類をクラスターに登録し、デプロイできるようにします。
 
-[GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) メソッドは、正常に登録されたアプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
+[GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API は正常に登録されたすべてのアプリケーションの種類に関する情報を提供します。 この API を使用して、登録がいつ完了したかを判断できます。
 
 ## <a name="create-an-application-instance"></a>アプリケーション インスタンスを作成する
-[CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) メソッドを使用して、正常に登録されているアプリケーションの種類のバージョンを指定し、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、 *fabric:* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
+[CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API を使用して、正常に登録されているアプリケーションの種類を指定し、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、*"fabric:"* スキームで開始され、(クラスター内の) 各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
 
-登録されたアプリケーションの種類の任意のバージョンに対して、複数のアプリケーション インスタンスを作成できます。 各アプリケーション インスタンスは分離して実行され、独自の作業ディレクトリとプロセスを使用します。
+登録されたアプリケーションの種類の任意のバージョンに対して、複数のアプリケーション インスタンスを作成できます。 各アプリケーション インスタンスは分離して実行され、独自の作業ディレクトリと一連のプロセスを使用します。
 
-クラスターで実行されている名前付きのアプリとサービスを確認するには、それぞれ [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) メソッドと [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) メソッドを実行します。
+クラスターで実行されている名前付きのアプリケーションとサービスを確認するには、[GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) API と [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) API を実行します。
 
 ## <a name="create-a-service-instance"></a>サービス インスタンスを作成する
-[CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) メソッドを使用して、サービスの種類からサービスをインスタンス化できます。  サービスがアプリケーション マニフェストで既定のサービスとして宣言されている場合、インスタンス化されているアプリケーションによってサービスがインスタンス化されます。  既にインスタンス化されているサービスで [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) メソッドを呼び出すと例外が返されます。 
+[CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API を使用して、サービスの種類からサービスをインスタンス化できます。  サービスがアプリケーション マニフェストで既定のサービスとして宣言されている場合、アプリケーションがインスタンス化されるときに、サービスがインスタンス化されます。  既にインスタンス化されているサービスに対して [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API を呼び出すと、FabricErrorCode.ServiceAlreadyExists の値でエラー コードを含む型 FabricException の例外が返されます。
 
 ## <a name="remove-a-service-instance"></a>サービス インスタンスを削除する
-サービス インスタンスが不要になったときは、[DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) メソッドを呼び出して実行中のアプリケーションから削除できます。  この操作は元に戻すことはできず、サービスの状態を復元することはできません。
+サービス インスタンスが不要になったときは、[DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API を呼び出して実行中のアプリケーション インスタンスから削除できます。  
+
+> [!WARNING]
+> この操作は元に戻すことはできず、サービスの状態を復元することはできません。
 
 ## <a name="remove-an-application-instance"></a>アプリケーション インスタンスの削除
-アプリケーション インスタンスが不要になったときは、[DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) メソッドを使用して名前を指定して実行すれば完全に削除できます。 [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) はアプリケーションに属するすべてのサービスを自動的に削除します。その結果、すべてのサービスの状態が完全に削除されます。 この操作は元に戻せません。また、アプリケーションの状態を復元できません。
+アプリケーション インスタンスが不要になったときは、[DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) API を使用して名前を指定して実行すれば完全に削除できます。 [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) はアプリケーションに属するすべてのサービスを自動的に削除します。その結果、すべてのサービスの状態が完全に削除されます。
+
+> [!WARNING]
+> この操作は元に戻せません。また、アプリケーションの状態を復元できません。
 
 ## <a name="unregister-an-application-type"></a>アプリケーションの種類の登録解除
-特定のバージョンのアプリケーションの種類が不要になった場合は、[Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) メソッドを使用してアプリケーションの種類の登録を解除する必要があります。 使用していないアプリケーションの種類について、その登録を解除すると、イメージ ストアによって使用されているストレージ領域が解放されます。 あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
+特定のバージョンのアプリケーションの種類が不要になった場合は、[Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API を使用して、その特定のバージョンのアプリケーションの種類の登録を解除する必要があります。 使用していないバージョンのアプリケーションの種類の登録を解除すると、イメージ ストアで使用されているストレージ領域が解放されます。 あるアプリケーションの種類のバージョンに対してインスタンス化されたアプリケーションがなく、そのアプリケーションの種類のバージョンを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類のバージョンの登録を解除できます。
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
-不要になったアプリケーション パッケージは、[RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) メソッドを使用してイメージ ストアから削除し、システム リソースを解放することができます。
+不要になったアプリケーション パッケージは、[RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API を使用してイメージ ストアから削除し、システム リソースを解放することができます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage がImageStoreConnectionString を求める
-Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。 ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。 この ImageStoreConnectionString は [Get-ServiceFabricClusterManifest](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.getclustermanifestasync) メソッドで取得したクラスター マニフェストで確認できます。
+Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。 ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。 この ImageStoreConnectionString は [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) コマンドと Get-ImageStoreConnectionStringFromClusterManifest コマンドを使用して取得したクラスター マニフェストで見つけることができます。
+
+```powershell
+PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
+```
+
+Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
+
+```powershell
+Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
+```
+
 
 ImageStoreConnectionString は、クラスター マニフェスト内にあります。
 
@@ -115,18 +132,18 @@ ImageStoreConnectionString は、クラスター マニフェスト内にあり�
 イメージ ストアとイメージ ストア接続文字列に関する補足情報は、[イメージ ストア接続文字列の理解](service-fabric-image-store-connection-string.md)に関するページを参照してください。
 
 ### <a name="deploy-large-application-package"></a>大規模なアプリケーション パッケージをデプロイする
-問題: (GB 単位の) 大規模なアプリケーション パッケージで [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) メソッドがタイムアウトする。
+問題: (GB 単位の) 大規模なアプリケーション パッケージで [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API がタイムアウトする。
 次の操作を試してください。
 - `timeout` パラメーターを使用して、[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) メソッドのタイムアウト値を大きくします。 既定では、タイムアウトは 30 分です。
 - ソース コンピューターとクラスターの間のネットワーク接続を確認します。 接続が低速な場合は、ネットワーク接続が高速なコンピューターを使用することを検討してください。
 クライアント コンピューターがクラスターとは別のリージョンにある場合は、クラスターと同じかより近いリージョンにあるクライアント コンピューターの使用を検討してください。
 - 外部で調整されていないかどうかを確認してください。 たとえば、イメージ ストアが Azure Storage を使用するように構成されている場合、アップロードが調整される可能性があります。
 
-問題: パッケージのアップロードが正常に完了したが、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) メソッドがタイムアウトする。
+問題: パッケージのアップロードが正常に完了したが、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API がタイムアウトする。
 次の操作を試してください。
 - イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。
 圧縮によってファイル サイズが小さくなりファイル数が減るため、トラフィックの量と Service Fabric が実行する必要のある処理が減ります。 (圧縮時間を含めた場合は特に) アップロード操作が遅くなる場合がありますが、アプリケーションの種類の登録と登録解除は高速になります。
-- `timeout` パラメーターを使用して、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) メソッドのタイムアウト値を大きくします。
+- `timeout` パラメーターを使用して、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API のタイムアウト値を大きくします。
 
 ### <a name="deploy-application-package-with-many-files"></a>多数のファイルを含むアプリケーション パッケージをデプロイする
 問題: (数千個の) 多数のファイルを持つアプリケーション パッケージに対する [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) がタイムアウトする。
@@ -163,7 +180,7 @@ static void Main(string[] args)
     string serviceName = "fabric:/MyApplication/Stateless1";
     string imageStoreConnectionString = "file:C:\\SfDevCluster\\Data\\ImageStoreShare";
     string packagePathInImageStore = "MyApplication";
-    string packagePath = "C:\Users\username\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug";
+    string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2017\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
     string serviceType = "Stateless1Type";
 
     // Connect to the cluster.
@@ -184,7 +201,7 @@ static void Main(string[] args)
         }
     }
 
-    // Provision the application.  "MyApplicationV1" is the folder in the image store where the app package is located. 
+    // Provision the application.  "MyApplicationV1" is the folder in the image store where the application package is located. 
     // The application type with name "MyApplicationType" and version "1.0.0" (both are found in the application manifest) 
     // is now registered in the cluster.            
     try

@@ -3,8 +3,8 @@ title: "Visual Studio での Azure コードの最適化 | Microsoft Docs"
 description: "Visual Studio の Azure コード最適化ツールにより、コードの堅牢性とパフォーマンスを向上させる方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
 ms.openlocfilehash: a07496a2d5eb52dd3c4092105e45b70b6e9f69cd
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="optimizing-your-azure-code"></a>Azure コードの最適化
@@ -466,9 +467,4 @@ public class BlogsController : Controller
 
 ## <a name="next-steps"></a>次のステップ
 Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

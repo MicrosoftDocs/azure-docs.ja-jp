@@ -3,8 +3,8 @@ title: "課金を管理して予想外のコストを防ぐ - Azure | Microsoft 
 description: "Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Microsoft Azure サブスクリプションに対して、コスト管理機能を使用します。"
 services: 
 documentationcenter: 
-author: jlian
-manager: mattstee
+author: tonguyen10
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2017
-ms.author: jlian
+ms.date: 08/10/2017
+ms.author: tonguyen
+experimental_id: a2b2579c-cd2e-41
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
 
-
 ---
+
 # <a name="prevent-unexpected-costs-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で予想外のコストを防ぐ
 
 Azure にサインアップしたら、支出を把握するために行えることがいくつかあります。 [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で、サブスクリプションを選択するときに、現在のコストの内訳とバーン レートを確認できます。 また、[過去の請求書や詳細な使用状況ファイルをダウンロード](billing-download-azure-invoice-daily-usage-date.md)することもできます。 さまざまなプロジェクトやチームで使用したリソースのコストをグループ化する場合は、[リソースのタグ付け](../azure-resource-manager/resource-group-using-tags.md)を検討します。 使用したいレポート システムが組織にある場合は、[課金 API](billing-usage-rate-card-overview.md) を確認します。 
@@ -39,7 +40,7 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 関心があるサービスの月額料金を見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)と[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を確認します。 たとえば、A1 Windows 仮想マシン (VM) を常に実行したままにしておく場合、コンピューティング時間での推定月額料金は 66.96 米ドルになります。
 
-![A1 Windows VM の推定月額料金が 66.96 米ドルであることを示す料金計算ツールのスクリーンショット](./media/billing-getting-started/pricing-calc.PNG)
+![A1 Windows VM の推定月額料金が 66.96 米ドルであることを示す料金計算ツールのスクリーンショット](./media/billing-getting-started/pricing-calcVM.png)
 
 詳細については、[料金に関する FAQ](https://azure.microsoft.com/pricing/faq/) をご覧ください。 直接問い合わせる場合は、1-800-867-1389 までご連絡ください。
 
@@ -136,7 +137,7 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 7. リソースをクリックして支出の履歴と日ごとのコストを確認します。
 
-    ![Azure Portal の支出の履歴ビューのスクリーンショット](./media/billing-getting-started/spend-history.PNG)
+    ![Azure Portal の支出の履歴ビューのスクリーンショット](./media/billing-getting-started/costhistory.PNG)
 
 サービスを選択したときに表示された見積もりと共に、表示されているコストを確認することをお勧めします。 コストが見積もりと大きく異なる場合は、リソースに対して選択した料金プラン (A1 VM と A0 VM など) を再確認します。 
 
@@ -187,3 +188,4 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+

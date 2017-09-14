@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory ポータルのリスクの高いサインイン レポート | Microsoft Docs"
 description: "Azure Active Directory ポータルのリスクの高いサインイン レポートについて説明します。"
 services: active-directory
@@ -11,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 08/24/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: e21b7733bc0f6b8625fbdcec3529ad603ce306c1
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
@@ -38,9 +37,22 @@ Azure AD は、ユーザー アカウントに関連する疑わしい動作を�
 ![リスクの高いサインイン](./media/active-directory-reporting-security-risky-sign-ins/10.png)
 
 
+## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>セキュリティ レポートにアクセスするために必要な Azure AD ライセンス  
+
+"危険なサインイン" レポートは、Azure Active Directory の全エディションで利用できます。  
+ただしエディションによってレポートの粒度が異なります。 
+
+- 危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**でも一覧表示できます。 
+
+- **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
+
+- **Azure Active Directory Premium 2** エディションでは、基になるすべてのリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
+
+
+
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory の Free および Basic エディション
 
-Azure Active Directory の Free および Basic エディションでは、管理対象ユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 リスク イベント レポートでは、以下の情報が提供されます。
+Azure Active Directory の Free および Basic エディションでは、管理対象ユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 このレポートに表示される内容は次のとおりです。
 
 - **ユーザー** - サインイン操作中に使用されたユーザーの名前
 - **IP** - Azure Active Directory への接続に使用されたデバイスの IP アドレス
@@ -48,7 +60,6 @@ Azure Active Directory の Free および Basic エディションでは、管�
 - **サインイン時刻** - サインインが実行された時刻
 - **状態** - サインインの状態
 
-このレポートでは、レポート データをダウンロードすることもできます。
 
 ![リスクの高いサインイン](./media/active-directory-reporting-security-risky-sign-ins/01.png)
 
@@ -62,6 +73,15 @@ Azure Active Directory の Free および Basic エディションでは、管�
 ![リスクの高いサインイン](./media/active-directory-reporting-security-risky-sign-ins/21.png)
 
 詳細については、「[リスク イベントの手動クローズ](active-directory-identityprotection.md#closing-risk-events-manually)」を参照してください。
+
+このレポートから次の操作を行うことができます。
+
+- リソースの検索
+- レポート データのダウンロード
+
+
+![リスクの高いサインイン](./media/active-directory-reporting-security-risky-sign-ins/93.png)
+
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディション
 

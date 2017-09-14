@@ -1,6 +1,6 @@
 # 概要
 ## [Application Insights とは何か?](app-insights-overview.md)
-## [DevOps サイクルにおけるパフォーマンス監視](app-insights-detect-triage-diagnose.md)
+## [DevOps のパフォーマンス監視の概要](app-insights-detect-triage-diagnose.md)
 
 # 作業開始
 ## Azure の監視
@@ -42,6 +42,7 @@
 ## 構成
 ### Azure
 #### [プロファイラー](app-insights-profiler.md)
+#### [プロファイラーを有効にする](enable-profiler-cloud-services.md)
 #### [診断](app-insights-azure-diagnostics.md)
 #### [プレビュー](app-insights-previews.md)
 
@@ -80,7 +81,6 @@
 #### [Search](app-insights-diagnostic-search.md)
 #### [メトリック](app-insights-metrics-explorer.md)
 #### [ライブ ストリーム](app-insights-live-stream.md)
-
 #### [アプリケーション マップ](app-insights-app-map.md)
 #### [HockeyApp データ](app-insights-hockeyapp-bridge-app.md)
 
@@ -92,8 +92,11 @@
 
 ### 使用法
 #### [概要](app-insights-usage-overview.md)
+#### [ユーザー コンテキストの送信](app-insights-usage-send-user-context.md)
 #### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+#### [ファネル](usage-funnels.md)
 #### [保持](app-insights-usage-retention.md)
+#### [ユーザー フロー](app-insights-usage-flows.md)
 #### [ブック](app-insights-usage-workbooks.md)
 
 ### 分析
@@ -111,10 +114,12 @@
 ### [アラートを設定する](app-insights-powershell-alerts.md)
 ### [Azure 診断の実行](app-insights-powershell-azure-diagnostics.md)
 ### [Microsoft Flow で自動化する](app-insights-automate-with-flow.md)
+### [Azure ロジック アプリで自動化する](automate-with-logic-apps.md)
 
 ## 開発
 
 ### [カスタム イベントとメトリックの API](app-insights-api-custom-events-metrics.md)
+### [.NET SDK でのカスタム操作の追跡](application-insights-custom-operations-tracking.md)
 ### [テレメトリのフィルター処理および前処理](app-insights-api-filtering-sampling.md)
 ### [サンプリング](app-insights-sampling.md)
 
@@ -138,7 +143,7 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # リファレンス
-## [Analytics](app-insights-analytics-reference.md)
+## [Analytics](https://docs.loganalytics.io/)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
@@ -152,12 +157,15 @@
 ### [メトリック](application-insights-data-model-metric-telemetry.md)
 ### [コンテキスト](application-insights-data-model-context.md)
 ## [テレメトリの関連付け](application-insights-correlation.md)
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=application-insights)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 
 ## [言語とプラットフォーム](app-insights-platforms.md)
 
 ## [料金](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
 ## ニュース
 

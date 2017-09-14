@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 350aa79cf1f41084c33e16b6fcf2ada971b22626
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: b62df3074779559ffab55c52a902e7473753868e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
@@ -72,7 +71,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
 
 * 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
-* 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)」を参照してください。
+* 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)」を参照してください。
 
 ### <a name="enable-diagnostics-with-powershell"></a>PowerShell を使用して診断を有効にする
 2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](/powershell/azure/overview) が必要です。

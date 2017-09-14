@@ -4,7 +4,7 @@ description: "このトピックでは、Media Encoder Standard のタスク プ
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 2a4ade25-e600-4bce-a66e-e29cf4a38369
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/01/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 01448fcff64e99429e2ee7df916b110c869307fb
-ms.openlocfilehash: 7776ac35f1a8a30c959286a9e31beb666f5fc799
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 25a13ad3738286795f45bbdec681614356bd3db8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -27,6 +27,10 @@ ms.lasthandoff: 03/02/2017
 ## <a name="overview"></a>概要
 
 このトピックでは、Media Encoder Standard プリセットをカスタマイズする方法を説明します。 .NET を使ってエンコード タスクと、このタスクを実行するジョブを作成する方法については、「[Media Encoder Standard を使用した高度なエンコード](media-services-custom-mes-presets-with-dotnet.md)」を参照してください。 プリセットをカスタマイズしたら、カスタム プリセットをエンコード タスクに指定します。 
+
+>[!NOTE]
+>XML プリセットを使用する場合、下で示す XML サンプルのように要素の順序を保持するようにしてください (たとえば、KeyFrameInterval は SceneChangeDetection の前に来ます)。
+>
 
 このトピックでは、次のエンコード タスクを実行するカスタム プリセットを実演します。
 
@@ -248,7 +252,7 @@ ms.lasthandoff: 03/02/2017
 ## <a id="trim_video"></a>動画をトリミングする (クリッピング)
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。 エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[こちらのブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
-動画をトリミングするには、[こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 次の例では、入力ビデオの開始タイムスタンプは&0; であると想定しています。 **Sources** はプリセットの先頭に配置する必要があります。
+動画をトリミングするには、[こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。 **Sources** はプリセットの先頭に配置する必要があります。
 
 ### <a id="json"></a>JSON プリセット
     {
@@ -493,7 +497,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。 ビデオ ファイルは **プライマリ** ファイルである必要があります。
 
-.NET を使用する場合は、次の&2; つの関数を[こちら](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)のトピックで定義されている .NET の例に追加します。 **UploadMediaFilesFromFolder** 関数は、フォルダーからファイルをアップロードし (BigBuckBunny.mp4、Image001.png など)、mp4 ファイルを資産内のプライマリ ファイルとして設定します。 **EncodeWithOverlay** 関数は、渡されたカスタム プリセット ファイル (下記のプリセットなど) を使用して、エンコード タスクを作成します。
+.NET を使用する場合は、次の 2 つの関数を[こちら](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)のトピックで定義されている .NET の例に追加します。 **UploadMediaFilesFromFolder** 関数は、フォルダーからファイルをアップロードし (BigBuckBunny.mp4、Image001.png など)、mp4 ファイルを資産内のプライマリ ファイルとして設定します。 **EncodeWithOverlay** 関数は、渡されたカスタム プリセット ファイル (下記のプリセットなど) を使用して、エンコード タスクを作成します。
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -804,13 +808,13 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 ### <a name="requirements-and-considerations"></a>要件と考慮事項
 
-* 入力ビデオのオーディオ トラック数の上限は&1; つです。
+* 入力ビデオのオーディオ トラック数の上限は 1 つです。
 * 入力ビデオはすべて同じフレーム レートである必要があります。
 * ビデオを別の資産にアップロードし、各資産でプライマリ ファイルとしてビデオを設定する必要があります。
 * ビデオの再生時間を把握している必要があります。
 * 次のプリセット例では、すべての入力ビデオがゼロのタイムスタンプで始まると想定されています。 ビデオの開始タイムスタンプが異なる場合、通常のライブ アーカイブの場合と同様に、StartTime 値を変更する必要があります。
 * JSON プリセットは、入力資産の AssetID 値の明示的な参照を作成します。
-* サンプル コードでは、JSON プリセットがローカル ファイル ("C:\supportFiles\preset.json" など) に保存されていると想定されています。 また、2 つの資産が&2; つのビデオ ファイルをアップロードして作成されたこと、結果の AssetID 値を知っていることも想定されています。
+* サンプル コードでは、JSON プリセットがローカル ファイル ("C:\supportFiles\preset.json" など) に保存されていると想定されています。 また、2 つの資産が 2 つのビデオ ファイルをアップロードして作成されたこと、結果の AssetID 値を知っていることも想定されています。
 * このコード スニペットと JSON プリセットは、2 つのビデオ ファイルを連結する例です。 次の方法で、複数のビデオに拡張することができます。
 
   1. task.InputAssets.Add() を繰り返し呼び出して複数のビデオを順に追加する。
@@ -909,15 +913,16 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 「 [Media Encoder Standard を使用してビデオをトリミングする](media-services-crop-video.md) 」をご覧ください。
 
 ## <a id="no_video"></a>入力に映像が含まれていないときにビデオ トラックを挿入する
+
 既定では、音声のみで映像の入っていない入力をエンコーダーに送信すると、音声データのみが含まれたファイルが出力資産に含まれます。 Azure Media Player ( [こちら](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)を参照) など、プレイヤーによっては、このようなストリームを処理できないことがあります。 その場合、この設定を使用することで、モノクロのビデオ トラックを出力に追加するようエンコーダーに強制できます。
 
 > [!NOTE]
 > 出力ビデオ トラックを挿入するようエンコーダーに強制すると、出力資産のサイズが増えるため、エンコード タスクのコストが発生します。 テストを実行して、この増加が月額料金に及ぼす影響がごくわずかであることを確認してください。
 >
->
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>最も低いビットレートでのみビデオを挿入する
-["H264 複数ビットレート 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) などの複数ビットレート エンコード プリセットを使用して、ビデオ ファイルと音声のみのファイルが混在する、ストリーミングの入力カタログ全体をエンコードするとします。 このシナリオでは、入力に映像が含まれていないときに、すべての出力ビットレートでビデオを挿入するのではなく、最も低いビットレートでのみモノクロのビデオ トラックを挿入するようエンコーダーに強制できます。 これを実現には、"InsertBlackIfNoVideoBottomLayerOnly" フラグを指定する必要があります。
+
+["H264 複数ビットレート 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) などの複数ビットレート エンコード プリセットを使用して、ビデオ ファイルと音声のみのファイルが混在する、ストリーミングの入力カタログ全体をエンコードするとします。 このシナリオでは、入力に映像が含まれていないときに、すべての出力ビットレートでビデオを挿入するのではなく、最も低いビットレートでのみモノクロのビデオ トラックを挿入するようエンコーダーに強制できます。 これを実現するには、**InsertBlackIfNoVideoBottomLayerOnly** フラグを使用する必要があります。
 
 [こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを使用し、次のように変更します。
 
@@ -932,9 +937,32 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     }
 
 #### <a name="xml-preset"></a>XML プリセット
+
+XML を使用する場合、Condition="InsertBlackIfNoVideoBottomLayerOnly" を **H264Video** 要素の属性として使用し、Condition="InsertSilenceIfNoAudio" を **AACAudio** の属性として使用します。
+
+```
+. . .
+<Encoding>
+  <H264Video Condition="InsertBlackIfNoVideoBottomLayerOnly">
     <KeyFrameInterval>00:00:02</KeyFrameInterval>
+    <SceneChangeDetection>true</SceneChangeDetection>
     <StretchMode>AutoSize</StretchMode>
-    <Condition>InsertBlackIfNoVideoBottomLayerOnly</Condition>
+    <H264Layers>
+      <H264Layer>
+        . . .
+      </H264Layer>
+    </H264Layers>
+    <Chapters />
+  </H264Video>
+  <AACAudio Condition="InsertSilenceIfNoAudio">
+    <Profile>AACLC</Profile>
+    <Channels>2</Channels>
+    <SamplingRate>48000</SamplingRate>
+    <Bitrate>128</Bitrate>
+  </AACAudio>
+</Encoding>
+. . .
+```
 
 ### <a name="inserting-video-at-all-output-bitrates"></a>すべての出力ビットレートでビデオを挿入する
 ["H264 複数ビットレート 720p"](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) などの複数ビットレート エンコード プリセットを使用して、ビデオ ファイルと音声のみのファイルが混在する、ストリーミングの入力カタログ全体をエンコードするとします。 このシナリオでは、入力に映像が含まれていないときに、すべての出力ビットレートでモノクロのビデオ トラックを挿入するようエンコーダーに強制できます。 これにより、ビデオ トラックとオーディオ トラックの数に関して、出力資産がすべて均一になります。 これを実現には、"InsertBlackIfNoVideo" フラグを指定する必要があります。
@@ -952,9 +980,32 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     }
 
 #### <a name="xml-preset"></a>XML プリセット
+
+XML を使用する場合、Condition="InsertBlackIfNoVideo" を **H264Video** 要素の属性として使用し、Condition="InsertSilenceIfNoAudio" を **AACAudio** の属性として使用します。
+
+```
+. . .
+<Encoding>
+  <H264Video Condition="InsertBlackIfNoVideo">
     <KeyFrameInterval>00:00:02</KeyFrameInterval>
+    <SceneChangeDetection>true</SceneChangeDetection>
     <StretchMode>AutoSize</StretchMode>
-    <Condition>InsertBlackIfNoVideo</Condition>
+    <H264Layers>
+      <H264Layer>
+        . . .
+      </H264Layer>
+    </H264Layers>
+    <Chapters />
+  </H264Video>
+  <AACAudio Condition="InsertSilenceIfNoAudio">
+    <Profile>AACLC</Profile>
+    <Channels>2</Channels>
+    <SamplingRate>48000</SamplingRate>
+    <Bitrate>128</Bitrate>
+  </AACAudio>
+</Encoding>
+. . .  
+```
 
 ## <a id="rotate_video"></a>ビデオを回転させる
 [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) は、0/90/180/270 の角度による回転をサポートしています。 既定の動作は "自動" であり、この場合は受信するビデオ ファイルの回転メタデータの検出と、それに対する補正を試みます。 [こちら](media-services-mes-presets-overview.md)のセクションに定義されているいずれかのプリセットに次の **Sources** 要素を含めます。

@@ -1,6 +1,7 @@
 ---
 title: "Kafka に対する Apache Spark ストリーミング - Azure HDInsight | Microsoft Docs"
-description: "HDInsight で Apache Spark を使用して、HDInsight 上の Apache Kafka に対するデータの読み取りと書き込みを行う方法について説明します。 この例では、Jupyter Notebook で Scala を使用し、HDInsight の Kafka にデータを書き込んだ後に、Spark ストリーミングを使用してそのデータを読み取ります。"
+description: "Apache Spark を使用して、DStreams による Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Jupyter ノートブックを使用して HDInsight 上の Spark からデータをストリームします。"
+keywords: kafka example,kafka zookeeper,spark streaming kafka,spark streaming kafka example
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,19 +14,18 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/15/2017
+ms.date: 06/13/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: ceff0df193b3356ed2a23f381ea65369063957b1
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 81fa319f6fb94bdabacd8f68d14b9a1063a9749a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/30/2017
 
 ---
-# <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>HDInsight での Kafka (プレビュー) に Apache Spark を使用する
+# <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>HDInsight 上の Kafka (プレビュー) を用いた Apache Spark ストリーミング (DStream) の例
 
-Apache Spark を使用して、Apache Kafka 内外へのデータのストリームを行う方法について説明します。 このドキュメントでは、HDInsight 上の Spark から Jupyter Notebook を使用して、Kafka の内外にデータをストリームする方法について説明します。
-
+Apache Spark を使用して、DStreams による HDInsight 上の Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
 > [!NOTE]
 > このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
 >
@@ -44,9 +44,14 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v2.json** にあります。
+    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v2.1.json** にあります。
+
+    > [!WARNING]
+    > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
+
+    このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
 
 2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
    
@@ -77,107 +82,11 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 > [!IMPORTANT]
 > 各 HDInsight クラスターの名前が **spark-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
 
-## <a name="get-the-code"></a>コードの入手
+## <a name="use-the-notebooks"></a>ノートブックを使用する
 
 このドキュメントで説明する例で使用するコードは、[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) で入手できます。
 
-## <a name="understand-the-code"></a>コードの理解
-
-この例では、Scala アプリケーションを Jupyter Notebook で使用します。 Notebook のコードは、次のデータに依存します。
-
-* __Kafka ブローカー__: Kafka クラスターの各ワーカー ノードでブローカー プロセスを実行します。 Kafka へのデータの書き込みを行うプロデューサー コンポーネントには、ブローカーの一覧が必要です。
-
-* __Zookeeper ホスト__: Kafka からデータを使用する (読み取る) ときに、Kafka クラスターの Zookeeper ホストを使用します。
-
-* __トピック名__: データの書き込みと読み取りが行われるトピックの名前。 この例では、`sparktest` という名前のトピックを指定します。
-
-Kafka ブローカーと Zookeeper ホストの情報を取得する方法の詳細については、「[Kafka ホスト情報](#kafkahosts)」のセクションを参照してください。
-
-Notebook のコードは次のタスクを実行します。
-
-* `sparktest` という名前の Kafka トピックからデータを読み取るコンシューマーを作成し、データ内の各単語をカウントして、単語およびカウントを `wordcounts` という名前の一時テーブルに格納します。
-
-* `sparktest` という名前の Kafka トピックにランダムな文を書き込むプロデューサーを作成します。
-
-* `wordcounts` テーブルからデータを選択してカウントを表示します。
-
-プロジェクト内の各セルには、コードの機能を説明するコメントやテキスト セクションが含まれています。
-
-## <a id="kafkahosts"></a>Kafka ホスト情報
-
-HDInsight 上の Kafka で動作するアプリケーションを作成する場合は、まず Kafka クラスターで使用する Kafka ブローカーと Zookeeper ホストの情報を取得する必要があります。 この情報は、クライアント アプリケーションによって Kafka との通信に使用されます。
-
-> [!NOTE]
-> Kafka ブローカーと Zookeeper ホストには、インターネット経由で直接アクセスすることはできません。 Kafka を使用するすべてのアプリケーションは、Kafka クラスター上、または Kafka クラスターと同じ Azure Virtual Network 内で実行する必要があります。 今回の例では、同じ仮想ネットワーク内に配置された HDInsight クラスター上の Spark で実行します。
-
-開発環境からは、次のコマンドを使用してブローカーと Zookeeper の情報を取得します。
-
-* __Kafka ブローカー__情報を取得するには：
-
-    ```bash
-    curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
-    ```
-
-    > [!NOTE]
-    > `$PASSWORD`PASSWORD には、クラスターの作成時に使用したログイン (管理者) パスワードを設定します。 `$CLUSTERNAME`には、クラスターの作成時に使用したベース名を設定します。
-
-    ```powershell
-    $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
-        -Credential $creds
-    $respObj = ConvertFrom-Json $resp.Content
-    $brokerHosts = $respObj.host_components.HostRoles.host_name
-    ($brokerHosts -join ":9092,") + ":9092"
-    ```
-
-    > [!NOTE]
-    > `$cluterName` には、HDInsight クラスターの名前を設定します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。
-
-* __Zookeeper ホスト__情報を取得するには：
-
-    ```bash
-    curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'
-    ```
-
-    ```powershell
-    $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
-        -Credential $creds
-    $respObj = ConvertFrom-Json $resp.Content
-    $zookeeperHosts = $respObj.host_components.HostRoles.host_name
-    ($zookeeperHosts -join ":2181,") + ":2181"
-    ```
-
-どちらのコマンドでも、次のテキストのような情報が返されます。
-
-* __Kafka ブローカー__: `wn0-kafka.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:9092,wn1-kafka.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:9092`
-
-* __Zookeeper ホスト__: `zk0-kafka.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181,zk1-kafka.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181,zk2-kafka.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181`
-
-> [!IMPORTANT]
-> このドキュメントのいくつかの手順で使用するため、この情報は保存してください。
-
-## <a name="use-the-jupyter-notebook"></a>Jupyter Notebook の使用
-
-この例の Jupyter Notebook を使用するには、Spark クラスター上の Jupyter Notebook サーバーに Jupyter Notebook をアップロードする必要があります。 次の手順で、Notebook をアップロードします。
-
-1. Web ブラウザーで次の URL を使用して、Spark クラスター上の Jupyter Notebook サーバーに接続します。 `CLUSTERNAME` を Spark クラスターの名前に置き換えます。
-
-        https://CLUSTERNAME.azurehdinsight.net/jupyter
-
-    プロンプトが表示されたら、クラスターの作成時に使用したログイン (管理者) パスワードを入力します。
-
-2. ページの右上隅の __[アップロード]__ ボタンを使用して、`KafkaStreaming.ipynb` ファイルをアップロードします。 [ファイル ブラウザー] ダイアログ ボックスでファイルを選択し、__[開く]__ を選択します。
-
-    ![[アップロード] ボタンを使用して、Notebook を選択してアップロード](./media/hdinsight-apache-spark-with-kafka/upload-button.png)
-
-    ![KafkaStreaming.ipynb ファイルを選択する](./media/hdinsight-apache-spark-with-kafka/select-notebook.png)
-
-3. Notebook の一覧で __KafkaStreaming.ipynb__ エントリを検索し、横にある __[Upload]__ ボタンを選択します。
-
-    ![KafkaStreaming.ipynb エントリの横にある [アップロード] ボタンを使用して、Notebook サーバーにアップロード](./media/hdinsight-apache-spark-with-kafka/upload-notebook.png)
-
-4. ファイルがアップロードされたら、__KafkaStreaming.ipynb__ エントリを選択して Notebook を開きます。 この例を完了するには、Notebook の指示に従ってください。
+`README.md` ファイルの手順に従って、この例を完了します。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
@@ -187,7 +96,7 @@ HDInsight 上の Kafka で動作するアプリケーションを作成する場
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Spark を使用して Kafka に対するデータの読み取りと書き込みを行う方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
+この例では、Spark を使用して Kafka に対するデータの読み取りと書き込みを行う方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 
 * [HDInsight での Apache Kafka の使用](hdinsight-apache-kafka-get-started.md)
 * [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](hdinsight-apache-kafka-mirroring.md)

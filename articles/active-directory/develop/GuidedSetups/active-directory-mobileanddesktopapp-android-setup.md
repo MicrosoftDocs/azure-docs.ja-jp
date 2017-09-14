@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8670da0e22dac101817e970b6dc8e2032ee5de62
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a43d7e30a6f4176afba27f0de2c2c116df741080
 ms.contentlocale: ja-jp
 
 
@@ -24,19 +25,19 @@ ms.contentlocale: ja-jp
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
-> 代わりにこのサンプルの Android Studio プロジェクトをダウンロードしますか。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)して[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
+> 代わりにこのサンプルの Android Studio プロジェクトをダウンロードしますか。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
 
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する 
-1.    Android Studio を開き、[`File`] (ファイル)  >  [`New`] (新規)  >  [`New Project`] (新しいプロジェクト) に移動します。
-2.    アプリケーションに名前を付けて、[`Next`] (次へ) をクリックします。
-3.    *API 21 以降 (Android 5.0)* を選択して、[`Next`] (次へ) をクリックします。
-4.    [`Empty Activity`] (空のアクティビティ) はそのままにして [`Next`] (次へ) をクリックし、[`Finish`] (完了) をクリックします。
+1.  Android Studio を開き、[`File`] \(ファイル)  >  [`New`] \(新規)  >  [`New Project`] \(新しいプロジェクト) に移動します。
+2.  アプリケーションに名前を付けて、[`Next`] \(次へ) をクリックします。
+3.  *API 21 以降 (Android 5.0)* を選択して、[`Next`] \(次へ) をクリックします。
+4.  [`Empty Activity`] \(空のアクティビティ) はそのままにして [`Next`] \(次へ) をクリックし、[`Finish`] \(完了) をクリックします。
 
 
 ### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>プロジェクトへの Microsoft Authentication Library (MSAL) の追加
-1.    Android Studio で、[`Gradle Scripts`]  >  [`build.gradle (Module: app)`] (Gradle のビルド) に移動します。
-2.    [`Dependencies`] (依存関係) で次のコードをコピーして貼り付けます。
+1.  Android Studio で、[`Gradle Scripts`]  >  [`build.gradle (Module: app)`] \(Gradle のビルド) に移動します。
+2.  [`Dependencies`] \(依存関係) で次のコードをコピーして貼り付けます。
 
 ```ruby  
 compile ('com.microsoft.identity.client:msal:0.1.+') {
@@ -53,60 +54,13 @@ compile 'com.android.volley:volley:1.0.0'
 
 ## <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
 
-1.    `activity_main.xml` を開きます ([`res`]  >  [`layout`] (レイアウト) の順)。
-2.    アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` やその他から `LinearLayout` に変更します。
-3.    プロパティ `android:orientation="vertical"` をノード `LinearLayout` に追加します。
-4.    次のコードをノード `LinearLayout` にコピーして貼り付け、現在の内容を置き換えます。
+1.  `activity_main.xml` を開きます ([`res`]  >  [`layout`] \(レイアウト) の順)。
+2.  アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` やその他から `LinearLayout` に変更します。
+3.  プロパティ `android:orientation="vertical"` をノード `LinearLayout` に追加します。
+4.  次のコードをノード `LinearLayout` にコピーして貼り付け、現在の内容を置き換えます。
 
 ```xml
 <TextView
-    android:text="Welcome, "
-    android:textColor="#3f3f3f"
-    android:textSize="50px"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="15dp"
-    android:id="@+id/welcome"
-    android:visibility="invisible"/>
-
-<Button
-    android:id="@+id/callGraph"
-    android:text="Call Microsoft Graph"
-    android:textColor="#FFFFFF"
-    android:background="#00a1f1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="200dp"
-    android:textAllCaps="false" />
-
-<TextView
-    android:text="Getting Graph Data..."
-    android:textColor="#3f3f3f"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:id="@+id/graphData"
-    android:visibility="invisible"/>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dip"
-    android:layout_weight="1"
-    android:gravity="center|bottom"
-    android:orientation="vertical" >
-
-    <Button
-        android:text="Sign Out"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:textColor="#FFFFFF"
-        android:background="#00a1f1"
-        android:textAllCaps="false"
-        android:id="@+id/clearCache"
-        android:visibility="invisible" />
-</LinearLayout>    <TextView
     android:text="Welcome, "
     android:textColor="#3f3f3f"
     android:textSize="50px"

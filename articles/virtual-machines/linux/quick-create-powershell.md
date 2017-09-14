@@ -10,7 +10,7 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
@@ -44,7 +44,7 @@ Login-AzureRmAccount
 
 ## <a name="create-resource-group"></a>Create resource group
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```powershell
 New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
@@ -105,7 +105,7 @@ $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $secu
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName myVM -VMSize Standard_D1 | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName myVM -Credential $cred -DisablePasswordAuthentication | `
-Set-AzureRmVMSourceImage -PublisherName Canonical -Offer UbuntuServer -Skus 14.04.2-LTS -Version latest | `
+Set-AzureRmVMSourceImage -PublisherName Canonical -Offer UbuntuServer -Skus 16.04-LTS -Version latest | `
 Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 # Configure SSH Keys

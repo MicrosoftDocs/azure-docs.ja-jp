@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
-translationtype: Human Translation
-ms.sourcegitcommit: f1e4b86a04a76513a2f0d9a9f89e49611c0447d5
-ms.openlocfilehash: b31fa50a62d5b26a7346f212076ec3a2b0386f5e
+ms.translationtype: HT
+ms.sourcegitcommit: 8bdd78473b506fd3946ab12839ccbc20ca697f38
+ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
+ms.contentlocale: ja-jp
 
 ---
-## <a name="register-your-application-with-your-ad-tenant"></a>AD テナントへのアプリケーションの登録
+## AD テナントへのアプリケーションの登録
 まず、Azure Active Directory (Azure AD) テナントにアプリケーションを登録する必要があります。 これにより、アプリケーションのアプリケーション ID を取得でき、トークンを受信できるようになります。
 
 * [Azure ポータル](https://portal.azure.com)にサインインします。

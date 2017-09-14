@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: cec255f5bf017c98fbd1f198a78dfb963acc3cd0
-ms.openlocfilehash: 7d4d325cc1b2d953c766f5381a2e6d4b5805b90c
-ms.lasthandoff: 02/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: adc10ade79af3087a8b24ea5b6709182cb1edb92
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tag-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソースにタグを付ける

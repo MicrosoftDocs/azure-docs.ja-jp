@@ -13,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: nigu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ce3379d5b5e883c6601c40aca191e8b84e3ad8d3
 ms.openlocfilehash: 0170b5d2435f6e856478ee9e55ae26c626288f75
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/22/2016
-
 
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
-Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ&2; 種類の自動通知電子メールが送信されます。
+Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ 2 種類の自動通知電子メールが送信されます。
 
 * ユーザー侵害アラート電子メール
 * 週間ダイジェスト電子メール

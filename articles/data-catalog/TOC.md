@@ -20,18 +20,22 @@
 ## [データ資産の管理](data-catalog-how-to-manage.md)
 ## [検索条件の保存とデータ資産のピン留め](data-catalog-how-to-save-pin.md)
 ## [ビジネス用語集を設定する](data-catalog-how-to-business-glossary.md)
+## [データ カタログへのアクセスをセキュリティで保護する](data-catalog-how-to-secure-catalog.md)
+## [関連のデータ資産の表示](data-catalog-how-to-view-related-data-assets.md) 
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
 ## [REST ()](/rest/api/datacatalog/)
 ## [検索構文リファレンス](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [開発者の概念](data-catalog-developer-concepts.md)
-## [開発者向けサンプル](data-catalog-samples.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
-## [用語集](data-catalog-terminology.md)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](data-catalog-whats-new.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-catalog)
-## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [用語集](data-catalog-terminology.md)

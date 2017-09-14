@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 08/24/2017
 ms.author: briz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 7ae476dbaf51ae90cc3c5948b0ec8901d7a536da
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub を使用したデバイス管理の概要
@@ -90,7 +89,7 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
     ![デバイス管理の進行状況とステータスの報告パターンを示す図][img-report_progress_pattern]
 
 ## <a name="next-steps"></a>次のステップ
-IoT Hub でデバイス管理用に提供される機能、パターン、およびコード ライブラリを使用することで、デバイスのライフサイクル ステージごとのエンタープライズ IoT オペレーター要件を満たす IoT アプリケーションを作成できます。
+IoT Hub でデバイス管理用に提供される機能、パターン、コード ライブラリを使用することで、デバイスのライフサイクル ステージごとのエンタープライズ IoT オペレーター要件を満たす IoT アプリケーションを作成できます。
 
 IoT Hub のデバイス管理機能についての学習を続けるには、[デバイス管理の概要][lnk-get-started]に関するチュートリアルをご覧ください。
 

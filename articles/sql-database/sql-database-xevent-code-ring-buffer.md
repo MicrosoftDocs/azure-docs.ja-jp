@@ -17,11 +17,10 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: a49be9d5037af120e429a9cc7ae77ceda5e03236
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 06/28/2017
 
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
@@ -67,7 +66,7 @@ ms.lasthandoff: 11/17/2016
 
 &nbsp;
 
-```tsql
+```sql
 GO
 ----  Transact-SQL.
 ---- Step set 1.
@@ -324,7 +323,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 リング バッファーでの作業が終わったら、リング バッファーを削除して、次のように **ALTER** リソースを発行することでリソースを解放できます。
 
-```tsql
+```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     DROP TARGET package0.ring_buffer;
@@ -334,7 +333,7 @@ GO
 
 イベント セッションの定義は更新されますが、削除はされません。 後で、イベント セッションにリング バッファーの別のインスタンスを追加できます。
 
-```tsql
+```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     ADD TARGET

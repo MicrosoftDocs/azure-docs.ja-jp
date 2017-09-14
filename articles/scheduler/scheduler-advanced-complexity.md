@@ -14,14 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e329d152ea6a95c8cdfa6a507504601d4e0957cd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/19/2017
 
 
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Scheduler ジョブの中核となるのが *スケジュール*です。 スケジュールは、Scheduler でジョブを実行するタイミングと方法を決定します。
 
 Azure Scheduler では、ジョブに対して 1 回限りの別々のスケジュールと、定期的なスケジュールを指定できます。 *1 回限り*のスケジュールは、指定された時間に起動します。実質的には、これらも 1 回だけ実行される*定期的な*スケジュールです。 定期的なスケジュールは、事前に定義された頻度で起動します。
@@ -41,7 +43,7 @@ Azure Scheduler では、ジョブに対して 1 回限りの別々のスケジ�
 * 特定の日時に 1 回実行する
 * 明示した回数だけ実行を繰り返す
 * すぐに実行し繰り返す
-* 特定の時刻に開始し、 *n* 分、時間、日、週、または月ごとに実行を繰り返す。
+* 特定の時刻に開始して、*n* 分、時間、日、週、または月ごとに実行を繰り返す
 * 毎週または毎月の頻度で、特定の日、特定の曜日、または月の特定の日にのみ実行を繰り返す
 * ある期間内で複数回実行を繰り返す。たとえば、毎月の最終金曜日と月曜日、毎日の午前 5 時 15 分と午後 5 時 15 分など
 
@@ -108,9 +110,9 @@ Azure Scheduler ジョブにおける日付/時刻の参照は、 [ISO 8601 仕�
 
 ここでは、*startTime* が過去であり、*recurrence* を設定し、*schedule* を設定していない場合についての動作を説明します。  現在の時刻が 2015 年 4 月 8 日 13 時 00 分、*startTime* が 2015 年 4 月 7 日 14時 00 分で、*recurrence* は 2 日ごと (*frequency* に day と *interval* に 2 を指定) であると仮定します。*startTime* が過去、つまり現在の時刻よりも前であることに注意してください。
 
-この条件では、"*最初の実行*" は、2015 年 4 月 9 日 14 時 00 分になります。\.Scheduler エンジンは、開始時刻から実行を計算します。  過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。  したがって、この場合は、*startTime* が 2015 年 4 月 7 日午後 2 時 00 分となり、次回のインスタンスは 2 日後、つまり 2015 年 4 月 9 日午後 2 時 00 分となります。
+この条件では、"*最初の実行*" は、2015 年 4 月 9 日 14 時 00 分になります\. Scheduler エンジンは、開始時刻から実行を計算します。  過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。  したがって、この場合は、*startTime* が 2015 年 4 月 7 日午後 2 時 00 分となり、次回のインスタンスは 2 日後、つまり 2015 年 4 月 9 日午後 2 時 00 分となります。
 
-startTime が 2015 年 4 月 5 日 14 時 00 分または 2015 年 4 月 1 日 14 時 00 分である場合でも、最初の実行は同じであることに注意してください。\. 最初の実行後、スケジュールを使用して 2 回目以降の実行が計算されます。よって、2 回目以降の実行は、2015 年 4 月 11 日午後 2 時 00 分、2015 年 4 月 13 日午後 2 時 00 分、2015 年 4 月 15 日午後 2 時 00 分のように続きます。
+startTime が 2015 年 4 月 5 日 14 時 00 分または 2015 年 4 月 1 日 14 時 00 分である場合でも、最初の実行は同じであることに注意してください\. 最初の実行後、スケジュールを使用して 2 回目以降の実行が計算されます。よって、2 回目以降の実行は、2015 年 4 月 11 日午後 2 時 00 分、2015 年 4 月 13 日午後 2 時 00 分、2015 年 4 月 15 日午後 2 時 00 分のように続きます。
 
 最後に、ジョブにスケジュールが設定されている場合に、スケジュールに時および/または分が設定されていないと、既定では、最初の実行に指定した時および/または分が、それぞれ使用されます。
 
@@ -128,7 +130,7 @@ schedule の要素を複数指定した場合は、評価の順序は大きい�
 | **分** |ジョブを実行する時刻 (分) |<ul><li>整数、または</li><li>整数の配列</li></ul> |
 | **hours** |ジョブを実行する時刻 (時) |<ul><li>整数、または</li><li>整数の配列</li></ul> |
 | **weekDays** |ジョブを実行する曜日。 週単位の頻度だけを指定できます。 |<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday"</li><li>上記の任意の値の配列 (最大配列サイズは 7)</li></ul>大文字/小文字は "*区別されません*" |
-| **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |<ul><li>monthlyOccurence オブジェクトの配列:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurence*<br />}</pre><p> *day* は、ジョブを実行する曜日です。たとえば、{Sunday} は、月の毎週日曜日という意味です。 必須。</p><p>*occurrence* は、月の第何週目に実行するかを表します。たとえば、{Sunday, -1} は月の最終日曜日という意味です。 省略可能。</p> |
+| **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |<ul><li>monthlyOccurrence オブジェクトの配列:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* は、ジョブを実行する曜日です。たとえば、{Sunday} は、月の毎週日曜日という意味です。 必須。</p><p>*occurrence* は、月の第何週目に実行するかを表します。たとえば、{Sunday, -1} は月の最終日曜日という意味です。 省略可能。</p> |
 | **monthDays** |ジョブが実行される月の日にち。 月単位の頻度だけを指定できます。 |<ul><li>-1 以下かつ -31 以上の任意の値。</li><li>1 以上かつ 31 以下の任意の値。</li><li>上記の値の配列</li></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
@@ -188,10 +190,5 @@ schedule の要素を複数指定した場合は、評価の順序は大きい�
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

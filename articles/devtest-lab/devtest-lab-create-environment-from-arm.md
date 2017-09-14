@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 0b402602ed80d9eef5313fb29ba2bd05644f11f8
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 4e1aae6c041e4572e7e2281203f969e7649e1480
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -31,22 +31,28 @@ ms.lasthandoff: 05/15/2017
 - 構成したら、ユーザーは、他の種類の [VM ベース](./devtest-lab-comparing-vm-base-image-types.md)を使用してできることとして Azure Portal から Azure Resource Manager テンプレートを選択して環境を作成できます。
 - Azure PaaS のリソースを、IaaS VM だけでなく Azure Resource Manager テンプレートから環境にプロビジョニングできます。
 - 環境のコストを、他の種類のベースによって作成された個々の VM だけでなくラボで追跡できます。
+- PaaS のリソースが作成され、コスト管理に表示されます。ただし、VM の自動シャットダウンは PaaS リソースに適用されません。
 - ユーザーは、単一のラボの VM と同じ VM ポリシー コントロールをさまざまな環境で使用できます。
 
+Resource Manager テンプレートを使用してラボのすべてのリソースを単一の操作でデプロイ、更新、または削除することには多くの利点があります。詳細については、[こちらで](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager)ご確認ください。
+
 > [!NOTE]
-> リソースの種類 Microsoft.DevTestLab/labs (または、その入れ子になったリソースの種類。例: Microsoft.DevTestLab/labs/virtualmachines) の ARM テンプレートからのデプロイは、この機能ではまだサポートされていません。 VM をデプロイするには、必ず Microsoft.Compute/virtualmachines を使用してください。 ARM テンプレートの他のサンプルについては、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-customdata/azuredeploy.json)をご覧ください。
+> より多くのラボの VM を作成するためのベースとして Resource Manager テンプレートを使用する場合、マルチ VM を作成するか、単一 VM を作成するかでいくつかの違いがあることに注意してください。 その違いについては、「Use a virtual machine's Azure Resource Manager template」(仮想マシンの Azure Resource Manager テンプレートを使用する) で詳しく説明しています。
 >
 >
 
 ## <a name="configure-azure-resource-manager-template-repositories"></a>Azure Resource Manager テンプレート リポジトリを構成する
 
-コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの 1 つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または VSTS の Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 この場合、リポジトリ内で Azure Resource Manager テンプレートを整理するためのルールがいくつかあります。
+コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの 1 つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または VSTS の Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 その結果、Resource Manager のテンプレートは、テスト環境から運用環境まで、リリース サイクル全体で使用することができます。
+
+この場合、リポジトリ内で Azure Resource Manager テンプレートを整理するために従わなければならないルールがいくつかあります。
 
 - マスター テンプレート ファイルの名前を `azuredeploy.json` にする必要があります。 
 
     ![主要な Azure Resource Manager テンプレート ファイル](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - パラメーター ファイルで定義したパラメーター値を使用する場合は、パラメーター ファイルの名前を `azuredeploy.parameters.json` にする必要があります。
+- `_artifactsLocation` と `_artifactsLocationSasToken` のパラメーターを使用すると、parametersLink URI の値を構築できるため、DevTest Labs で入れ子にされたテンプレートを自動的に管理できるようになります。 詳細については、「[How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)」(Azure DevTest Labs を使用してテスト環境での入れ子にされた Resource Manager テンプレートのデプロイを簡単にする方法) を参照してください。
 - メタデータを定義して、テンプレートの表示名と説明を指定することができます。 このメタデータは、`metadata.json` はという名前のファイルに格納する必要があります。 次のメタデータ ファイルの例で、表示名と説明を指定する方法を示します。 
 
 ```json
@@ -111,7 +117,11 @@ ms.lasthandoff: 05/15/2017
     > - GEN-PASSWORD 
  
 1. **[追加]** を選択して環境を作成します。 環境でプロビジョニングが開始され、**[仮想マシン]** の一覧に状態が即座に表示されます。 Azure Resource Manager テンプレートで定義されているすべてのリソースをプロビジョニングするために、新しいリソース グループがラボによって自動的に作成されます。
-1. 環境が作成されたら、**[仮想マシン]** の一覧で環境を選択してリソース グループ ブレードを開き、環境内にプロビジョニングされたリソースを参照します。
+1. 環境が作成されたら、**[仮想マシン]** の一覧で環境を選択してリソース グループ ブレードを開き、環境内にプロビジョニングされたすべてのリソースを参照します。
+    
+    ![[仮想マシン] の一覧](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+   
+   環境にプロビジョニングされている VM の一覧を単に表示するために環境を展開することもできます。
     
     ![[仮想マシン] の一覧](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
 
@@ -121,5 +131,6 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="next-steps"></a>次のステップ
 * VM が作成されたら、その VM のブレードで **[接続]** を選択して VM に接続できます。
+* ラボの **[仮想マシン]** 一覧で環境を選択して、環境内のリソースを表示および管理します。 
 * [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します
 

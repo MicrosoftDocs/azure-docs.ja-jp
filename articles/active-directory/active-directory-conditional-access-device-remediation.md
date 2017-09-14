@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 42dcc653b50698cf8ce8145dfb51f27be7ece440
-ms.lasthandoff: 04/12/2017
-
+ms.reviewer: jairoc
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない
@@ -46,7 +47,7 @@ ms.lasthandoff: 04/12/2017
 
 ![サポートされていないブラウザーに対する "ここからはアクセスできません" メッセージ](./media/active-directory-conditional-access-device-remediation/02.png "シナリオ")
 
-唯一の修復方法は、デバイスのプラットフォーム向けにアプリケーションでサポートされているブラウザーを使用することです。 サポートされているブラウザーの完全な一覧については、「[サポートされているブラウザー](active-directory-conditional-access-supported-apps.md#supported-browsers)」を参照してください。  
+唯一の修復方法は、デバイスのプラットフォーム向けにアプリケーションでサポートされているブラウザーを使用することです。 サポートされているブラウザーの完全な一覧については、「[サポートされているブラウザー](active-directory-conditional-access-supported-apps.md)」を参照してください。  
 
 
 ## <a name="supported-versions-of-windows"></a>サポートされている Windows のバージョン

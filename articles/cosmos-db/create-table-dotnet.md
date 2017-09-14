@@ -12,22 +12,21 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 05/10/2017
+ms.topic: quickstart
+ms.date: 06/22/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 9bbf188b0080b8b1cf71423023645f54f1f823e5
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 29e7eebda5177d6e852ef04ad82d9d38a8d30ed8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/23/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-table-api"></a>Azure Cosmos DB: Table API を使用した .NET アプリケーションの構築
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成する方法と、Azure Portal を使用してそのアカウント内にテーブルを作成する方法を説明します。 さらに、エンティティを挿入、更新、および削除するコードと、いくつかのクエリを実行するコードを作成します。 [Azure Storage Preview SDK](https://aka.ms/premiumtablenuget) は NuGet からダウンロードできます。これには、公開されている [Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage) と同じクラスおよびメソッド シグネチャが含まれます。ただし、[Table API](table-introduction.md) (プレビュー) を使用して Azure Cosmos DB アカウントに接続する機能もあります。 
+このクイック スタートでは、Azure Cosmos DB アカウントを作成する方法と、Azure Portal を使用してそのアカウント内にテーブルを作成する方法を説明します。 次に、エンティティを挿入、更新、削除するコードを記述し、NuGet の新しい [Windows Azure Storage Premium Table](https://aka.ms/premiumtablenuget) (プレビュー) パッケージを使用してクエリを実行します。 このライブラリには、公開されている [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage) と同じクラスおよびメソッド シグネチャが含まれます。ただし、[Table API](table-introduction.md) (プレビュー) を使用して Azure Cosmos DB アカウントに接続する機能もあります。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,18 +44,20 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="add-sample-data"></a>サンプル データの追加
 
-これで、データ エクスプローラーを使用して、新しいテーブルにデータを追加できます。
+これで、データ エクスプローラー (プレビュー) を使用して、新しいテーブルにデータを追加できます。
 
-1. データ エクスプローラーで、**sample-database**、**sample-table** の順に展開し、**[エンティティ]**、**[Add Entity] (エンティティの追加)** の順にクリックします。
-2. PartitionKey 値ボックスと RowKey 値ボックスにデータを追加し、**[Add Entity] (エンティティの追加)** をクリックします。
+1. データ エクスプローラーで、**sample-table** を展開し、**[エンティティ]**、**[エンティティの追加]** の順にクリックします。
 
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
+   ![Azure Portal のデータ エクスプローラーで新しいエンティティを作成する](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
+2. PartitionKey 値ボックスと RowKey 値ボックスにデータを追加し、**[Add Entity] \(エンティティの追加)** をクリックします。
+
+   ![新しいエンティティのパーティション キーと行キーを設定する](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-entity.png)
   
     これで、テーブルにさらにエンティティを追加したり、エンティティを編集したり、データ エクスプローラーでデータをクエリしたりできます。 データ エクスプローラーでは、スループットを拡張し、ストアド プロシージャ、ユーザー定義関数、およびトリガーをテーブルに追加することもできます。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github から DocumentDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+github で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。  
 
@@ -99,28 +100,20 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
                 };
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
+今度は、アプリから Azure Cosmos DB に接続できるように接続文字列情報を更新します。 
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI とプライマリ キーを app.config ファイルにコピーします。
+1. Visual Studio で app.config ファイルを開きます。 
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-table-dotnet/keys.png)
+2. [Azure Portal](http://portal.azure.com/) で左側の Azure Cosmos DB ナビゲーション メニューにある **[接続文字列]** をクリックします。 次に、新しいウィンドウで接続文字列のコピー ボタンをクリックします。 
 
-2. Visual Studio で app.config ファイルを開きます。 
+    ![[接続文字列] ウィンドウの [エンドポイント] と [アカウント キー] を確認してコピーします。](./media/create-table-dotnet/keys.png)
 
-3. ポータルから Azure Cosmos DB アカウント名をコピーして、app.config 内の PremiumStorageConnection 文字列値の AccountName の値に設定します。 上記のスクリーンショットでは、アカウント名は cosmos-db-quickstart です。 自分のアカウント名はポータルの上部に表示されます。
+3. これを app.config ファイルに PremiumStorageConnectionString の値として貼り付けます。 
 
     `<add key="PremiumStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMOSDB.documents.azure.com" />`
-
-4. 次に、ポータルから PRIMARY KEY 値をコピーし、PremiumStorageConnectionString の AccountKey の値に設定します。 
-
-    `AccountKey=AUTHKEY`
-
-5. 最後に、ポータルの [キー] ページから (コピー ボタンを使用して) URI 値をコピーし、PremiumStorageConnectionString の TableEndpoint の値に設定します。
-
-    `TableEndpoint=https://COSMOSDB.documents.azure.com`
+        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMOSDB.documents.azure.com" />`    
 
     StandardStorageConnectionString はそのまま使用できます。
 
@@ -128,17 +121,25 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の**ソリューション エクスプローラー**で **[PremiumTableGetStarted]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
-2. NuGet の**[Browse] (参照)** ボックスに、「*WindowsAzure.Storage*」と入力し、**[Includes prerelease] (プレリリース版を含める)** ボックスをオンにします。 
+2. NuGet の **[参照]** ボックスに「*WindowsAzure.Storage-PremiumTable*」と入力します。
 
-3. 結果から、**WindowsAzure.Storage** ライブラリをインストールします。 これにより、プレビュー Azure Cosmos DB Table API パッケージとすべての依存関係がインストールされます。
+3. **[リリース前のパッケージを含める]** をオンにします。 
 
-4. Ctrl + F5 キーを押してアプリケーションを実行します。
+4. 結果から、**WindowsAzure.Storage-PremiumTable** ライブラリをインストールします。 これにより、プレビュー Azure Cosmos DB Table API パッケージとすべての依存関係がインストールされます。 これは、Azure Table Storage で使用される Windows Azure Storage パッケージとは異なる NuGet パッケージであることに注意してください。 
 
-    コンソール ウィンドウには、テーブルに追加されているデータが表示されます。 スクリプトが完了したら、コンソール ウィンドウを閉じます。 
+5. Ctrl + F5 キーを押してアプリケーションを実行します。
 
-これで、データ エクスプローラーに戻って、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
+    テーブルに追加されているデータ、テーブルから取得されているデータ、照会されているデータ、置換されているデータ、テーブルから削除されているデータがコンソール ウィンドウに表示されます。 スクリプトが完了したら、任意のキーを押してコンソール ウィンドウを閉じます。 
+    
+    ![クイック スタートのコンソール出力](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-console-output.png)
+
+6. データ エクスプローラーに新しいエンティティを表示したい場合は、program.cs の 188 ～ 208 行目を (削除せずに) コメントアウトしてから、もう一度サンプルを実行してください。 
+
+    その後、データ エクスプローラーに戻って、**[最新の情報に更新]** をクリックします。**[people]** テーブルを展開し、**[エンティティ]** をクリックすると、この新しいデータを操作できます。 
+
+    ![データ エクスプローラー内の新しいエンティティ](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-data-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

@@ -3,8 +3,8 @@ title: "Mobile Apps と Mobile Services のクライアントとサーバーの 
 description: "Mobile Services と Azure Mobile Apps のクライアント SDK およびサーバー SDK バージョンとの互換性の一覧"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: d74137dc3c994cb05e02c4f866043eabf134fcdd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
@@ -47,8 +47,8 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 > [!NOTE]
 > Mobile Services と Mobile Apps の間には、特にオフライン同期、認証、プッシュ通知の領域で、さまざまな動作変更があります。 テストを完了し、動作変更によるアプリの機能停止がないことを確認してからバージョン チェックを除外してください。
-> 
-> 
+>
+>
 
 ## <a name="summary-of-compatibility-for-all-versions"></a>すべてのバージョンの互換性のまとめ
 以下の表は、あらゆる種類のクライアント/サーバー間の互換性をまとめたものです。 バックエンドは、それが使用するサーバー SDK に基づき、Mobile **Services** または Mobile **Apps** として分類されます。
@@ -130,5 +130,4 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
-
 

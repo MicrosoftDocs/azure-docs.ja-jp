@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2017
+ms.date: 06/15/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8c4c8db3cf57537dd77d33b3ded2dc24167f511f
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 44762864e0a5adf568fcd4928b48661196f05b9e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 ---
 
@@ -55,7 +56,7 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Traffic Manager ではどのようなアプリケーション プロトコルを使用できますか。
 
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 ただし、Traffic Manager のエンドポイント正常性チェックには、HTTP エンドポイントか HTTPS エンドポイントが必要です。 正常性チェックのためのエンドポイントは、クライアントが接続しているアプリケーション エンドポイントと異なる場合があります。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 監視プロトコルとして TCP を選択すると、アプリケーション プロトコルを使用せずに、Traffic Manager のエンドポイント正常性監視を実行できます。 アプリケーション プロトコルを使用して正常性を検証する場合、エンドポイントは HTTP または HTTPS の GET 要求に応答できる必要があります。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>"ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。
 
@@ -68,9 +69,20 @@ Traffic Manager では、バニティ DNS 名をマッピングするために D
 Traffic Manager におけるネイキッド ドメインの完全サポートは、開発待ちの機能として登録されています。 この機能を要求するためにサポートを登録するには、[コミュニティ フィードバック サイトの投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)で、ぜひ支持を表明してください。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。 
-いいえ。現時点では、Traffic Manager は地理的なルーティング方法とパフォーマンスによるルーティング方法で検索を実行するときに、受信する DNS クエリの送信元 IP アドレス (ほとんどの場合、DNS リゾルバーの IP アドレス) のみを考慮します。  
+いいえ。現時点では、Traffic Manager は地理的なルーティング方法とパフォーマンスによるルーティング方法で検索を実行するときに、受信する DNS クエリの送信元 IP アドレス (通常は DNS リゾルバーの IP アドレス) のみを考慮します。  
 具体的には、クライアントのサブネット アドレスをサポートするリゾルバーから DNS サーバーにクライアントのサブネット アドレスを伝えることができる [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) を提供する [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871) は、Traffic Manager では現在サポートされていません。 この機能を要求する場合は、[コミュニティ フィードバック サイト](https://feedback.azure.com/forums/217313-networking)で支持を表明してください。
 
+
+### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>DNS TTL とは何ですか。DNS TTL はユーザーにどのような影響を及ぼしますか。
+
+Traffic Manager が DNS クエリを受信すると、応答に Time to Live (TTL) と呼ばれる値が設定されます。 この値 (秒単位) は、ダウンストリームの DNS リゾルバーに、この応答のキャッシュ期間を示します。 DNS リゾルバーはこの結果をキャッシュするとは限りませんが、結果をキャッシュすることによって、Traffic Manager の DNS サーバーにアクセスするのではなく、キャッシュを使用して以降のクエリに応答できるようになります。 応答への影響は次のとおりです。
+- TTL を大きくすると、Traffic Manager の DNS サーバーが受信するクエリの数が減ります。Traffic Manager では、提供されるクエリの数に基づいて課金されるため、お客様はコストを削減できます。
+- TTL を大きくすると、DNS 参照の実行に要する時間が削減される可能性があります。
+- TTL を大きくすると、Traffic Manager がプローブ エージェントを介して取得した最新の正常性情報がデータに反映されなくなります。
+
+### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Traffic Manager の応答に設定できる TTL の値を教えてください。
+
+DNS TTL は、プロファイル レベルで 0 ～ 2,147,483,647 秒に設定できます (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) に準拠)。 TTL を 0 にすると、ダウンストリームの DNS リゾルバーはクエリの応答をキャッシュしないので、すべてのクエリが解決のために Traffic Manager の DNS サーバーに送信されることになります。
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager の地理的トラフィック ルーティング方法
 
@@ -81,9 +93,9 @@ Traffic Manager におけるネイキッド ドメインの完全サポートは
 Traffic Manager によって使用される国/地域階層は、[こちら](traffic-manager-geographic-regions.md)でご覧いただけます。 このページは常に最新の状態に保たれ、変更があれば反映されます。また、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、同じ情報をプログラムで取得することもできます。 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>ユーザーがどこからクエリを実行しているのかを Traffic Manager はどのようにして判別しているのですか。 
-Traffic Manager は、クエリの送信元 IP (これは通常、ユーザーの代わりにクエリを実行するローカル DNS リゾルバになります) を調べ、地域と IP とを対応付ける内部マップを使って場所を特定します。 このマップは、インターネットにおける変化を考慮して絶えず更新されます。 
+Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユーザーの代わりにクエリを実行するローカル DNS リゾルバーになります) を調べ、リージョンと IP を対応付ける内部マップを使って場所を特定します。 このマップは、インターネットにおける変化を考慮して絶えず更新されます。 
 
-### <a name="is-it-guaranteed-that-traffic-manager-will-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Traffic Manager では、どのような場合でもユーザーの正確な地理的場所を正しく特定することが保証されていますか。
+### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Traffic Manager では、どのような場合でもユーザーの正確な地理的場所を正しく特定できることが保証されていますか。
 いいえ。次の理由から、Traffic Manager では、DNS クエリの送信元 IP アドレスから推測される地理的リージョンがユーザーの場所に常に対応していることを保証できるわけではありません。 
 
 - 第 1 に、前の FAQ で説明するように、送信元 IP アドレスはユーザーの代わりに検索を実行する DNS リゾルバーの IP アドレスです。 DNS リゾルバーの地理的な場所は、ユーザーの地理的な場所に適したプロキシですが、この DNS リゾルバー サービスとお客様が使用する DNS リゾルバー サービスのフットプリントによっては、DNS リゾルバーの地理的な場所が異なる場合もあります。 たとえば、マレーシアのお客様が、シンガポールの DNS サーバーを使用してユーザー/デバイスのクエリ解決を処理する DNS リゾルバー サービスを使用することをデバイスの設定で指定しているとします。 この場合、Traffic Manager は、シンガポールの場所に対応するリゾルバーの IP アドレスのみを認識します。 このページのクライアント サブネット アドレスのサポートに関する FAQ もご覧ください。
@@ -95,19 +107,22 @@ Traffic Manager は、クエリの送信元 IP (これは通常、ユーザー�
 いいえ。どの地域をエンドポイントにマッピングできるかが、エンドポイントの場所によって制限されることはありません。 たとえば米国中部の Azure リージョンのエンドポイントに、インドからのすべてのユーザーを誘導することもできます。
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>地理的ルーティングを行うための構成がなされていないプロファイルのエンドポイントにリージョンを割り当てることはできますか。 
-はい。プロファイルのルーティング方法が地理的ルーティングではない場合でも、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、そのプロファイルのエンドポイントに地理的リージョンを割り当てることができます。 プロファイルのルーティング タイプが地理的ルーティングではない場合、この構成は無視されます。 そのようなプロファイルを後から地理的ルーティング タイプに変更した場合、それらのマッピングが Traffic Manager によって使われるようになります。
+
+はい。プロファイルのルーティング方法が地理的ルーティングではない場合でも、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、そのプロファイルのエンドポイントに地理的リージョンを割り当てることができます。 プロファイルのルーティング タイプが地理的ルーティングではない場合、この構成は無視されます。 そのようなプロファイルを後から地理的ルーティング タイプに変更した場合、Traffic Manager はそれらのマッピングを使用できます。
 
 
-### <a name="when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic-i-am-getting-an-error"></a>既存のプロファイルのルーティング方法を地理的ルーティングに変更しようとした場合、エラーは発生しますか。
-地理的ルーティングが適用されているプロファイルのすべてのエンドポイントには、少なくとも 1 つのリージョンが対応付けられている必要があります。 既にあるプロファイルを地理的ルーティング タイプに変換するにはまず、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使って、そのすべてのエンドポイントにリージョンを関連付ける必要があります。そのうえでルーティング タイプを地理的ルーティングに変更してください。 ポータルを使用する場合は、まずエンドポイントを削除し、プロファイルのルーティング方法を地理的ルーティングに変更してから、エンドポイントをその地理的リージョン マッピングと共に追加します。 
+### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>既存のプロファイルのルーティング方法を地理的ルーティングに変更しようとしたときにエラーが発生するのはなぜですか。
+
+地理的ルーティングが適用されているプロファイルのすべてのエンドポイントには、少なくとも 1 つのリージョンが対応付けられている必要があります。 既にあるプロファイルを地理的ルーティング タイプに変換するにはまず、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使って、そのすべてのエンドポイントにリージョンを関連付ける必要があります。そのうえでルーティング タイプを地理的ルーティングに変更してください。 ポータルを使用する場合は、まずエンドポイントを削除し、プロファイルのルーティング方法を地理的ルーティングに変更してから、エンドポイントを地理的リージョン マッピングと共に追加します。 
 
 
 ###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>地理的ルーティングを有効にしたプロファイルには、エンドポイントではなく、入れ子にしたプロファイルを作成することが強く推奨されているのはなぜですか。 
-地理的ルーティング タイプが使用されているプロファイル内のエンドポイントには、リージョンを一対一でしか割り当てることができません。 万一エンドポイントが異常な状態に陥っても、そこに子プロファイルが入れ子式に関連付けられていなければ、Traffic Manager は、そのエンドポイントにトラフィックを誘導し続けます。トラフィックの誘導先としてそれよりも状態の良いエンドポイントが存在しないからです。 Traffic Manager が別のエンドポイントにトラフィックをフェールオーバーすることはできません。異常状態のエンドポイントに割り当てられているリージョンの "親" がそこに割り当てられていたとしても同様です (例: スペイン リージョンが割り当てられているエンドポイントに異常が発生した場合に、ヨーロッパ リージョンが割り当てられている別のエンドポイントにフェールオーバーされることはありません)。 Traffic Manager は、お客様がそのプロファイルの中で設定した地理的境界を尊重するようになっているためです。 エンドポイントで異常が生じた場合に別のエンドポイントにフェールオーバーできるようにするために、プロファイルにはエンドポイントを直接割り当てるのではなく、プロファイルを入れ子にして複数のエンドポイントを持たせ、それらのエンドポイントに対して各リージョンを割り当てることが推奨されています。 そうすることで、入れ子になった子プロファイルのいずれかのエンドポイントで異常が発生した場合、入れ子にされている同じ子プロファイル内の別のエンドポイントにトラフィックがフェールオーバーされます。
+
+地理的ルーティング タイプが使用されているプロファイル内のエンドポイントには、リージョンを一対一でしか割り当てることができません。 そのエンドポイントに子プロファイルが入れ子式に関連付けられていない場合、エンドポイントで異常が発生しても、トラフィックの送信先となる良好な状態の代替エンドポイントが存在しないため、Traffic Manager は引き続きそのエンドポイントにトラフィックを送信します。 別のエンドポイントに割り当てられているリージョンが、異常が発生したエンドポイントに割り当てられているリージョンの "親" であっても、その別のエンドポイントにはフェールオーバーされません (たとえば、スペイン リージョンが割り当てられているエンドポイントで異常が発生した場合、ヨーロッパ リージョンが割り当てられている別のエンドポイントにフェールオーバーされることはありません)。 Traffic Manager は、お客様がそのプロファイルの中で設定した地理的境界を尊重するようになっているためです。 エンドポイントで異常が発生したときに別のエンドポイントへのフェールオーバーのメリットが得られるように、地理的リージョンは、個々のエンドポイントに割り当てるのではなく、複数のエンドポイントを含む入れ子になったプロファイルに割り当てることをお勧めします。 そうすることで、入れ子になった子プロファイルのいずれかのエンドポイントで異常が発生した場合、入れ子にされている同じ子プロファイル内の別のエンドポイントにトラフィックがフェールオーバーされます。
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>このルーティング タイプをサポートする API バージョンに制限はありますか。
 
-はい。地理的ルーティング タイプのサポートは、API バージョン 2017-03-01 以降に限られます。 それより前の API バージョンを使用して、地理的ルーティング タイプのプロファイルを作成したり、エンドポイントに地理的リージョンを割り当てたりすることはできません。 以前の API バージョンを使用して Azure サブスクリプションからプロファイルを取得した場合、地理的ルーティング タイプのプロファイルは返されません。 加えて、以前のバージョンの API を使用して取得したプロファイルは、そのエンドポイントにリージョンが割り当てられていても、リージョンの割り当ては表示されません。
+はい。地理的ルーティング タイプのサポートは、API バージョン 2017-03-01 以降に限られます。 それより前の API バージョンを使用して、地理的ルーティング タイプのプロファイルを作成したり、エンドポイントに地理的リージョンを割り当てたりすることはできません。 以前の API バージョンを使用して Azure サブスクリプションからプロファイルを取得した場合、地理的ルーティング タイプのプロファイルは返されません。 また、以前の API バージョンを使用した場合、返されたプロファイルに地理的リージョンが割り当てられたエンドポイントが含まれていても、地理的リージョンの割り当ては表示されません。
 
 
 
@@ -117,10 +132,8 @@ Traffic Manager は、クエリの送信元 IP (これは通常、ユーザー�
 
 Azure Web Apps では、複数のサブスクリプションからのエンドポイントを使用できません。 Azure Web Apps の要件により、Web Apps で使用するカスタム ドメイン名を使用できるのは 1 つのサブスクリプション内に限定されます。 複数のサブスクリプション内で同一のドメイン名を持つ Web Apps を使用することはできません。
 
-他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。 Traffic Manager の構成方法は、クラシック デプロイ モデルまたはリソース マネージャーのエクスペリエンスのどちらを使用しているかによって異なります。
+他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。 Resource Manager では、任意のサブスクリプションのエンドポイントを Traffic Manager に追加できますが、Traffic Manager プロファイルを構成するユーザーにそのエンドポイント対する読み取りアクセス権が必要となります。 こうしたアクセス許可を付与するには、 [Azure Resource Manager のロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md)を使用します。
 
-* Resource Manager では、すべてのサブスクリプションのエンドポイントを Traffic Manager に追加できますが、それには、Traffic Manager プロファイルを構成しているユーザーに、エンドポイントへの読み取りアクセス権が付与されている必要があります。 こうしたアクセス許可を付与するには、 [Azure Resource Manager のロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md)を使用します。
-* クラシック デプロイ モデル インターフェイスでは、Azure エンドポイントとして構成された Cloud Services や Web Apps が、Traffic Manager プロファイルと同じサブスクリプションに存在していることが、Traffic Manager によって求められます。 その他のサブスクリプションにあるクラウド サービスのエンドポイントは、'外部' エンドポイントとして Traffic Manager に追加できます。 これらの外部エンドポイントは、外部レートではなく Azure エンドポイントとして課金されます。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>クラウド サービス 'Staging' スロットで Traffic Manager を使用できますか。
 
@@ -135,15 +148,6 @@ Traffic Manager はエンドポイントの DNS 名を返します。 IPv6 エ�
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。
 
 通常、Traffic Manager は、さまざまなリージョンにデプロイされたアプリケーションにトラフィックを送信するときに使用されます。 ただし、この Traffic Manager は、同じリージョンに複数のアプリケーションがデプロイされている場合も使用できます。 Traffic Manager Azure エンドポイントでは、同じ Azure リージョンの複数の Web アプリケーション エンドポイントを、同じ Traffic Manager プロファイルに追加することはできません。
-
-次の手順により、この制約を回避することができます。
-
-1. エンドポイントが別の Web アプリケーション 'スケール ユニット' に存在することを確認します。 ドメイン名は特定のスケール ユニット内の 1 つのサイトにマップする必要があります。 したがって、同じスケール ユニット内の 2 つの Web アプリケーションは、Traffic Manager プロファイルを共有できません。
-2. 各 Web アプリケーションにカスタム ホスト名としてバニティ ドメイン名を追加します。 各 Web アプリケーションは、別のスケール ユニット内に存在する必要があります。 Web アプリケーションは、すべて同じサブスクリプションに属する必要があります。
-3. Traffic Manager プロファイルに Web アプリケーション エンドポイントを Azure エンドポイントとして 1 つだけ追加します。
-4. 追加の各 Web アプリ エンドポイントを、外部エンドポイントとして Traffic Manager プロファイルに追加します。 外部エンドポイントを追加する場合は、Resource Manager デプロイ モデルを使用する必要があります。
-5. Traffic Manager プロファイルの DNS 名 (<…>.trafficmanager.net) をポイントするバニティ ドメインで、DNS CNAME レコードを作成します。
-6. Traffic Manager プロファイルの DNS 名ではなく、バニティ ドメイン名を使用してサイトにアクセスします。
 
 ##  <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -178,6 +182,28 @@ Traffic Manager は、次のように証明書の検証を提供できません�
 * SNI サーバー側証明書はサポートされていません。
 * クライアント証明書はサポートされていません。
 
+### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>アプリケーションが HTTP または HTTPS をサポートしていなくても Traffic Manager を使用できますか。
+
+はい。 監視プロトコルとして TCP を指定すると、Traffic Manager は TCP 接続を開始し、エンドポイントからの応答を待機します。 接続を確立するために、エンドポイントがタイムアウト期間内に接続要求に応答すると、そのエンドポイントは正常とマークされます。
+
+### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>TCP 監視を使用する場合、エンドポイントからどのような応答が必要ですか。
+
+TCP 監視を使用すると、Traffic Manager は指定されたポートでエンドポイントに SYN 要求を送信して 3 方向の TCP ハンドシェイクを開始します。 Traffic Manager は、エンドポイントからの応答を一定期間 (タイムアウト設定で指定) 待機します。 エンドポイントが、監視設定で指定されたタイムアウト期間内に SYN-ACK 応答で SYN 要求に応答すると、そのエンドポイントは正常と見なされます。 SYN-ACK 応答を受信すると、Traffic Manager は RST で応答して接続をリセットします。
+
+### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Traffic Manager は、どの程度迅速に異常なエンドポイントからユーザーを移動させますか。
+
+Traffic Manager には、Traffic Manager プロファイルのフェールオーバーの動作を制御できる、次のような複数の設定が用意されています。
+- プローブ間隔を 10 秒に設定することで、Traffic Manager がエンドポイントをプローブする頻度を増やすことができます。 これにより、異常が発生したエンドポイントを可能な限り速やかに検出できます。 
+- 正常性チェック要求がタイムアウトになるまでの待機時間を指定できます (最小タイムアウト値は 5 秒です)。
+- エンドポイントが異常としてマークされるまでに許容されるエラーの数を指定できます。 この値を 0 にすることもできます。その場合、エンドポイントは、最初の正常性チェックに失敗するとすぐに異常とマークされます。 ただし、エラーの許容数に最小値の 0 を使用すると、プローブ時に発生する可能性のある一時的な問題によって、エンドポイントがローテーションから除外される可能性があります。
+- DNS 応答の Time to Live (TTL) に 0 を指定できます。 この場合、DNS リゾルバーは応答をキャッシュできないので、新しい各クエリでは Traffic Manager が持つ最新の正常性情報が組み込まれた応答を取得します。
+
+これらの設定を使用することで、Traffic Manager はエンドポイントで異常が発生してから 10 秒以内にフェールオーバーを実行できるようになり、対応するプロファイルに対して DNS クエリが作成されます。
+
+### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>プロファイル内のエンドポイントごとに異なる監視設定を指定するにはどうすればよいですか。
+
+Traffic Manager の監視設定は、プロファイル レベルで行われます。 1 つのエンドポイントにのみ別の監視設定を使用する必要がある場合、これを実現するには、監視設定が親プロファイルと異なる[入れ子になったプロファイル](traffic-manager-nested-profiles.md)としてそのエンドポイントを使用します。
+
 ### <a name="what-host-header-do-endpoint-health-checks-use"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
 
 トラフィック マネージャーは、HTTP および HTTPS の正常性チェックにホスト ヘッダーを使用します。 Traffic Manager で使用されるホスト ヘッダーは、プロファイルで構成されているエンドポイントのターゲットの名前です。 ホスト ヘッダーで使用される値を、ターゲットプロパティとは別に指定することはできません。
@@ -210,6 +236,12 @@ Traffic Manager は、次のように証明書の検証を提供できません�
 * 13.75.152.253
 * 104.41.187.209
 * 104.41.190.203
+
+### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Traffic Manager では、エンドポイントに対して正常性チェックが何回実行されるのですか。
+
+エンドポイントに対して実行される Traffic Manager の正常性チェックの回数は以下によって異なります。
+- 監視間隔に設定した値 (間隔が短いほど、特定の期間にエンドポイントに到達する要求の数が増えます)。
+- 正常性チェックの実行元である場所の数 (正常性チェックの実行元になる IP アドレスは、前の FAQ に記載されています)。
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager の入れ子になったプロファイル
 

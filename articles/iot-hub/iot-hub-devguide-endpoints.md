@@ -12,40 +12,48 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b0b2e8f375fa0b80e4f933515e1e8a689478483e
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 93ada731fe70cf7d294537241f8104c0b89940ed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
+
+## <a name="iot-hub-names"></a>IoT Hub 名
+
+ポータルの **[概要]** ブレードで、エンドポイントをホストする IoT Hub の名前を検索できます。 既定では、IoT Hub の DNS 名は `{your iot hub name}.azure-devices.net` のようになります。
+
+Azure DNS を使用して、IoT Hub のカスタム DNS 名を作成できます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](../dns/dns-custom-domain.md#azure-iot)」をご覧ください。
+
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>IoT Hub の組み込みエンドポイントの一覧
+
 Azure IoT Hub はさまざまなアクターに機能を公開するマルチテナント サービスです。 次の図は、IoT Hub が公開しているさまざまなエンドポイントを示します。
 
 ![IoT Hub エンドポイント][img-endpoints]
 
-エンドポイントの説明を次に示します。
+次の一覧では、エンドポイントについて説明します。
 
-* **リソース プロバイダー**。 IoT Hub のリソース プロバイダーは、[Azure Resource Manager][lnk-arm] のインターフェイスを公開します。このインターフェイスにより、Azure サブスクリプションの所有者は、IoT Hub を作成、削除したり、IoT Hub のプロパティを更新したりできます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー][lnk-accesscontrol] (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソース プロバイダーにより、[デバイス ID をエクスポート][lnk-importexport]することもできます。
+* **リソースプロバイダー**。 IoT Hub リソースプロバイダーでは、[Azure Resource Manager][lnk-arm] インターフェイスが公開されています。 Azure サブスクリプションの所有者は、IoT Hub の作成と削除や IoT Hub プロパティの更新などを、このインターフェイスで行うことができます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー][lnk-accesscontrol] (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソースプロバイダーにより、[デバイス ID をエクスポート][lnk-importexport]することもできます。
 * **デバイス ID の管理**。 各 IoT Hub は、デバイス ID の管理 (作成、取得、更新、削除) を行うための、一連の HTTP REST エンドポイントを公開します。 [デバイス ID][lnk-device-identities]は、デバイスの認証とアクセス制御に使用されます。
 * **デバイス ツインの管理**。 各 IoT Hub は、[デバイス ツイン][lnk-twins]のクエリと更新 (タグとプロパティの更新) を実行するサービス接続 HTTP REST エンドポイントを公開します。
 * **ジョブの管理**。 各 IoT Hub は、[ジョブ][lnk-jobs]のクエリと管理を実行するサービス接続 HTTP REST エンドポイントを公開します。
-* **デバイスのエンドポイント**。 IoT Hub は、ID レジストリでプロビジョニングされたデバイスごとに、デバイスがメッセージの送受信に使用できるエンドポイントを公開します。
-  
-  * *D2C メッセージの送信*。 このエンドポイントを使用して、[Device-to-cloud メッセージを送信します][lnk-d2c]。
+* **デバイスのエンドポイント**。 IoT Hub では、ID レジストリ内のデバイスごとに、以下の一連のエンドポイントを公開しています。
+
+  * *D2C メッセージの送信*。 デバイスは、このエンドポイントを使用して、[デバイスからクラウドへのメッセージを送信します][lnk-d2c]。
   * *C2D メッセージの受信*。 デバイスは、このエンドポイントを使用して、そのデバイスが宛先となっている [Cloud-to-device メッセージ][lnk-c2d]を受信します。
   * *ファイルのアップロードの開始*。 デバイスでは、[ファイルをアップロード][lnk-upload]するために、このエンドポイントを使用して、IoT Hub から Azure Storage の SAS URI を受け取ります。
   * *デバイス ツインのプロパティを取得して更新します*。 デバイスは、このエンドポイントを使用して、その[デバイス ツイン][lnk-twins]のプロパティにアクセスします。
   * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド][lnk-methods]の要求をリッスンします。
-    
-    これらのエンドポイントは、[MQTT v3.1.1][lnk-mqtt]、HTTP 1.1、および [AMQP 1.0][lnk-amqp] の各プロトコルを使用して公開されます。 なお、AMQP は、ポート 443 で [WebSockets][lnk-websockets] 経由で使用することもできます。
-    
-    デバイス ツインとメソッドのエンドポイントは、[MQTT v3.1.1][lnk-mqtt]を使用してのみ利用可能です。
-* **サービス エンドポイント**。 各 IoT Hub は、ソリューション バックエンドがデバイスとの通信に使用できる一連のエンドポイントを公開します。 現時点では、これらのエンドポイントは、HTTP 1.1 経由で公開されるメソッド呼び出しエンドポイントを除いて、[AMQP][lnk-amqp] を使用してのみ公開されます。
+
+    これらのエンドポイントは、[MQTT v3.1.1][lnk-mqtt]、HTTP 1.1、および [AMQP 1.0][lnk-amqp] の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets][lnk-websockets] 経由で使用することもできます。
+
+    デバイス ツインとメソッドのエンドポイントは、[MQTT v3.1.1][lnk-mqtt] プロトコルを使用する場合のみ利用可能です。
+
+* **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP][lnk-amqp] プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTP プロトコルを介して公開されます。
   
   * *D2C メッセージの受信*。 このエンドポイントには、[Azure Event Hubs][lnk-event-hubs] との互換性があります。 バックエンド サービスはこのエンドポイントを使用して、デバイスによって送信された[デバイスからクラウドへのメッセージ][lnk-d2c]を読み取ることができます。 この組み込みのエンドポイントに加え、IoT Hub のカスタム エンドポイントを作成することもできます。
   * *C2D メッセージの送信と、配信の確認メッセージの受信*。 これらのエンドポイントにより、ソリューション バックエンドは、信頼性の高い [Cloud-to-device メッセージ][lnk-c2d]を送信し、対応する配信または有効期限の確認メッセージを受信できます。
@@ -55,9 +63,10 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
 [Azure IoT SDK][lnk-sdks] に関する記事で、これらのエンドポイントにアクセスするさまざまな方法が説明されています。
 
-最後に注意が必要な重要事項として、すべての IoT Hub エンドポイントは、[TLS][lnk-tls] プロトコルを使用しています。また、暗号化されていない経路やセキュリティで保護されていない経路から公開されているエンドポイントはありません。
+IoT Hub エンドポイントはすべて [TLS][lnk-tls] プロトコルを使用しており、暗号化/セキュリティ保護されていない経路からエンドポイントが公開されることはありません。
 
 ## <a name="custom-endpoints"></a>カスタム エンドポイント
+
 サブスクリプションの既存の Azure サービスを、メッセージをルーティングするためのエンドポイントとして機能する IoT Hub にリンクできます。 これらのエンドポイントはサービス エンドポイントとして機能し、メッセージ ルートのシンクとして使用されます。 デバイスは、追加のエンドポイントに直接書き込むことはできません。 メッセージ ルートの詳細については、開発者ガイドの [IoT Hub でのメッセージの送受信][lnk-devguide-messaging]に関する説明を参照してください。
 
 現在、IoT Hub は、追加のエンドポイントとして、次の Azure サービスをサポートします。
@@ -66,25 +75,30 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 * Service Bus キュー
 * Service Bus トピック
 
-IoT Hub でメッセージのルーティングを機能させるには、これらのサービス エンドポイントへの書き込みアクセス許可が必要です。 Azure ポータルを使用してエンドポイントを構成する場合、必要なアクセス許可は自動的に追加されます。 必要なスループットをサポートするようにサービスを確実に構成してください。 IoT ソリューションを初めて構成する場合は、追加のエンドポイントを監視した後で、実際の負荷に合わせるための調整を行う必要があります。
+IoT Hub でメッセージのルーティングを機能させるには、これらのサービス エンドポイントへの書き込みアクセス許可が必要です。 Azure Portal を使用してエンドポイントを構成する場合、必要なアクセス許可は自動的に追加されます。 必要なスループットをサポートするようにサービスを確実に構成してください。 IoT ソリューションを初めて構成する場合は、追加したエンドポイントを監視し、実際の負荷の調整を行う必要があります。
 
-メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。 セッションが有効になっているキューは、エンドポイントとしてサポートされません。 重複除去が有効になっているパーティション分割されたキューとトピックもサポートされません。
+メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。
+
+> [!NOTE]
+> IoT Hub エンドポイントとして使用される Service Bus のキューおよびトピックでは、**セッション**も**重複データ検出**も有効にしないでください。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
 
 追加できるエンドポイントの数の制限については、「[クォータと調整][lnk-devguide-quotas]」をご覧ください。
 
 ## <a name="field-gateways"></a>フィールド ゲートウェイ
-IoT ソリューションでは、*フィールド ゲートウェイ*はデバイスと IoT Hub エンドポイントの間に配置され、 通常はデバイスの近くにあります。 デバイスは、そのデバイスでサポートされているプロトコルを使用してフィールド ゲートウェイと直接通信します。 フィールド ゲートウェイは、IoT Hub でサポートされているプロトコルを使用して IoT Hub エンドポイントに接続します。 フィールド ゲートウェイとして使用できるのは、非常に特殊なハードウェアまたは低電力コンピューターであり、そこで実行されているソフトウェアによって、ゲートウェイが対象としているエンド ツー エンド シナリオが実現します。
 
-[Azure IoT Edge][lnk-gateway-sdk] を使用してフィールド ゲートウェイを実装できます。 この IoT Edge には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などの固有の機能が用意されています。
+IoT ソリューションでは、*フィールド ゲートウェイ*はデバイスと IoT Hub エンドポイントの間に配置され、 通常はデバイスの近くにあります。 デバイスは、そのデバイスでサポートされているプロトコルを使用してフィールド ゲートウェイと直接通信します。 フィールド ゲートウェイは、IoT Hub でサポートされているプロトコルを使用して IoT Hub エンドポイントに接続します。 フィールド ゲートウェイは、専用のハードウェア デバイス、またはカスタム ゲートウェイ ソフトウェアを実行する低電力コンピューターの場合があります。
+
+[Azure IoT Edge][lnk-iot-edge] を使用してフィールド ゲートウェイを実装できます。 IoT Edge には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などが用意されています。
 
 ## <a name="next-steps"></a>次のステップ
+
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
-* [デバイス ツインとジョブの IoT Hub クエリ言語][lnk-devguide-query]
+* [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][lnk-devguide-query]
 * [クォータと調整][lnk-devguide-quotas]
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]
 
-[lnk-gateway-sdk]: https://github.com/Azure/iot-edge
+[lnk-iot-edge]: https://github.com/Azure/iot-edge
 
 [img-endpoints]: ./media/iot-hub-devguide-endpoints/endpoints.png
 [lnk-amqp]: https://www.amqp.org/
@@ -99,10 +113,10 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-accesscontrol]: iot-hub-devguide-security.md#access-control-and-permissions
 [lnk-importexport]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-d2c]: iot-hub-devguide-messages-d2c.md
 [lnk-device-identities]: iot-hub-devguide-identity-registry.md
 [lnk-upload]: iot-hub-devguide-file-upload.md
-[lnk-c2d]: iot-hub-devguide-messaging.md#cloud-to-device-messages
+[lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-twins]: iot-hub-devguide-device-twins.md
 [lnk-query]: iot-hub-devguide-query-language.md

@@ -2,7 +2,7 @@
 title: "Azure Active Directory リスク イベント | Microsoft Docs"
 description: "このトピックでは、リスク イベントの詳細な概要を示します。"
 services: active-directory
-keywords: "azure active directory identity protection, セキュリテ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+keywords: "azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 author: MarkusVi
 manager: femila
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 08/15/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 4a70001f22b47546674c365705554ab30e05f53d
-ms.lasthandoff: 03/24/2017
-
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
@@ -49,7 +50,14 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 
 ### <a name="leaked-credentials"></a>漏洩した資格情報
 
-漏洩した資格情報が悪質な Web で公開されていることを、Microsoft のセキュリティ調査員が発見します。 通常、このような資格情報はプレーン テキストで発見されます。 発見された資格情報は、Azure AD の資格情報と照合されて、一致した場合は、Identity Protection で "漏洩した資格情報" として報告されます。
+サイバー犯罪者によって正規ユーザーの有効なパスワードが漏洩すると、多くの場合、この資格情報は犯罪者で共有されます。 これは通常、闇サイトや貼り付けサイトに公開したり、資格情報を闇市場で取引したり販売したりして行われます。 Microsoft の漏洩した資格情報サービスでは、パブリック サイトや闇サイトを監視したり、下記の人々と連携したりして、ユーザー名とパスワードのペアを取得します。
+
+- 研究者
+- 法執行機関
+- Microsoft のセキュリティ チーム
+- その他の信頼できる発行元 
+
+ユーザー名とパスワードのペアをサービスが取得する際、AAD ユーザーの現在の有効な資格情報と照合します。 一致するペアが見つかった場合、ユーザーのパスワードが漏洩していたことを意味し、*漏洩した資格情報のリスク イベント*が作成されます。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
 
@@ -64,7 +72,7 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>未知の場所からのサインイン
 
-このリスク イベントの種類は、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を判別します。 システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。 システムには 14 日間の初期学習期間があり、この間はどの新しい場所にも未知の場所としてのフラグは設定されません。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 
+このリスク イベントの種類は、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を判別します。 システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。 システムには 30 日間の初期学習期間があり、この間はどの新しい場所にも未知の場所としてのフラグは設定されません。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 
 
 ### <a name="sign-ins-from-infected-devices"></a>感染しているデバイスからのサインイン
 
@@ -131,11 +139,11 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 あり得ない移動は通常、ハッカーがサインインに成功したことのよいインジケーターとなります。 ただし、ユーザーが新しい手段を使用して移動している場合、または組織内の他のユーザーが通常使用しない VPN を使用している場合、誤検知が発生する可能性があります。 誤検知のもう 1 つの原因は、クライアント IP として誤ってサーバー IP を渡すアプリケーションです。その場合、そのアプリケーションのバックエンドがホストされているデータセンターからサインインが行われたように見えます (多くの場合、それは Microsoft のデータセンターであり、Microsoft 所有の IP アドレスからサインインが行われたように見えます)。 このような誤検知のため、このリスク イベントのリスク レベルは "**中**" です。
 
 > [!TIP]
-> [名前付きネットワーク](active-directory-known-networks-azure-portal.md)を構成することで、このリスク イベントの種類で報告される誤検知の数を減らすことができます。 
+> [名前付きの場所](active-directory-named-locations.md)を構成することで、このリスク イベントの種類で報告される誤検知の数を減らすことができます。 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>未知の場所からのサインイン
 
-未知の場所は、攻撃者が窃取された ID を使用できる強い兆候を示している場合があります。 ユーザーが移動しているとき、新しいデバイスを試した場合、新しい VPN を使用したときなど、誤検知が発生することがあります。 このような誤検知のため、このリスク イベントの種類のリスク レベルは "**中**" です。
+未知の場所は、攻撃者が窃取された ID を使用できる強い兆候を示している場合があります。 ユーザーが移動しているとき、新しいデバイスを試してるとき、新しい VPN を使用しているときには、誤検知が発生することがあります。 このような誤検知のため、このリスク イベントの種類のリスク レベルは "**中**" です。
 
 ### <a name="sign-ins-from-infected-devices"></a>感染しているデバイスからのサインイン
 
@@ -176,3 +184,4 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 リスク イベントの検出は既に ID 保護の重要な側面となっていますが、リスク イベントに手動で対処することも、条件付きアクセス ポリシーを構成して自動応答を実装することもできます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
  
+

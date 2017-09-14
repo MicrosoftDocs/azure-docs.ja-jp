@@ -15,6 +15,9 @@
 ### [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
+## イベントのキャプチャ
+### [Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)
+### [Resource Manager テンプレートを使用して Event Hubs Capture を有効にする](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [プログラミング ガイド](event-hubs-programming-guide.md)
 
 # 方法
@@ -31,15 +34,15 @@
 ### [AMQP 1.0 プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Manage
 ### [Event Hubs 管理ライブラリ](event-hubs-management-libraries.md)
-### アーカイブ
-#### [Event Hubs Archive](event-hubs-archive-overview.md)
-#### [テンプレートを使用して Event Hubs Archive を有効にする](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
-#### [Python を使用して Event Hubs Archive を有効にする](event-hubs-archive-python.md)
+### キャプチャ
+#### [Event Hubs Capture](event-hubs-capture-overview.md)
+#### [Python を使用して Event Hubs データをキャプチャする](event-hubs-capture-python.md)
 ### [PowerShell を使用したエンティティのプロビジョニング](event-hubs-manage-with-ps.md) 
 ### [Event Hubs を使用して Azure 診断データをストリーミングする](event-hubs-streaming-azure-diags-data.md)
 ### [Resource Manager テンプレートを使用してイベント ハブを作成およびデプロイする](event-hubs-resource-manager-namespace-event-hub.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=event-hubs)
 ## Java
 ### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
 ### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
@@ -54,9 +57,11 @@
 ## [クォータ](event-hubs-quotas.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [コード サンプル](event-hubs-samples.md)
-## [料金](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [料金](https://azure.microsoft.com/pricing/details/event-hubs/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)

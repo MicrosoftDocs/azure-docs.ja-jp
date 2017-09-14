@@ -4,7 +4,7 @@ description: "App Services アプリケーションに Facebook 認証を構成�
 services: app-service
 documentationcenter: 
 author: mattchenderson
-manager: adrianha
+manager: syntaxc4
 editor: 
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: e23725539a354b0c813e5206e8ca4de37be0b49b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>App Service アプリケーションを Facebook ログインを使用するように構成する方法

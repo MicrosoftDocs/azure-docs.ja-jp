@@ -11,12 +11,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/09/2017
+ms.date: 06/30/2017
 ms.author: pakunapa;
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ddec69e57e84f33c37831a0da2c21955d78fff98
-ms.lasthandoff: 04/03/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 80eb68346dd05c256c60725eb082aa0651fe7cbd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -59,7 +60,7 @@ Reliable Services のライフサイクルについて考える際には、ラ�
 
 1. 次のことが並行して行われます。
     - 開いているリスナーはすべて閉じられます (各リスナーで `CommunicationListener.closeAsync()` が呼び出されます)。
-    - `runAsync()` に渡されたキャンセル トークンが取り消されます (キャンセル トークンの `isCancelled` プロパティをチェックすると true が返され、呼び出された場合、トークンの `throwIfCancellationRequested` メソッドは `CancellationException` を返します)。
+    - `runAsync()` に渡されたキャンセル トークンが取り消されます (キャンセル トークンの `isCancelled` プロパティをチェックすると true が返され、呼び出された場合、トークンの `throwIfCancellationRequested` メソッドは `CancellationException` をスローします)。
 2. 各リスナーで `closeAsync()` が完了し、`runAsync()` も完了すると、存在する場合はサービスの `StatelessService.onCloseAsync()` メソッドが呼び出されます (先ほどと同様に、これも珍しいオーバーライドです)。
 3. `StatelessService.onCloseAsync()` が完了すると、サービス オブジェクトは破棄されます。
 

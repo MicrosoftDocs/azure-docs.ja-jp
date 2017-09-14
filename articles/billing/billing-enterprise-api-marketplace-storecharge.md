@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9f084dce3f01466aaa0e4c32d339c925d9faccd3
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 5539623f7ae35e14b6dafe6fdf9efe4bcaba4fd3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---marketplace-charges-preview"></a>企業ユーザー向けの Reporting API - Marketplace 料金 (プレビュー)
+# <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>企業ユーザー向けの Reporting API - Marketplace Store Charge
 
 Marketplace Store Charge API を使用すると、指定された請求期間または開始日と終了日 (1 回払いの料金は含まず) の使用量に基づく Marketplace 料金の日別内訳が返されます。
 
@@ -32,9 +31,13 @@ Marketplace Store Charge API を使用すると、指定された請求期間ま
 
 |メソッド | 要求 URI|
 |-|-|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/marketplacecharges|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/marketplacecharges|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacecharges|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/marketplacecharges|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
+
+> [!Note]
+> プレビュー版の API を使用するには、上記の URL で v2 を v1 で置き換えます。
+>
 
 ## <a name="response"></a>応答
  
@@ -100,6 +103,7 @@ Marketplace Store Charge API を使用すると、指定された請求期間ま
 |extendedCost|小数点|消費量と拡張原価に基づく推定料金|
 <br/>
 ## <a name="see-also"></a>関連項目
+
 * [Billing Periods API](billing-enterprise-api-billing-periods.md)
 
 * [Usage Detail API](billing-enterprise-api-usage-detail.md) 

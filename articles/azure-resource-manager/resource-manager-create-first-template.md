@@ -6,43 +6,38 @@ documentationcenter:
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/18/2017
+ms.date: 09/03/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 80fd9d79652e4f0d9c4c524e3a762bcc3462bb53
+ms.translationtype: HT
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
-# <a name="create-your-first-azure-resource-manager-template"></a>初めての Azure Resource Manager テンプレートを作成する
+# <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>初めての Azure Resource Manager テンプレートを作成およびデプロイする
 このトピックでは、Azure Resource Manager テンプレートを初めて作成する際の手順を説明します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。 既にリソースがあり、そのリソースのテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
-テンプレートの作成と編集には、JSON エディターが必要です。 軽量なオープンソースのクロスプラットフォーム コード エディターとしては、[Visual Studio Code](https://code.visualstudio.com/) があります。 VS Code は、拡張機能により Resource Manager テンプレートの作成と編集をサポートしています。 このトピックは、VS Code を使用することを前提として書かれています。もっとも、別の JSON エディター (Visual Studio など) があれば、そちらを使っても問題ありません。
+テンプレートの作成と編集には、JSON エディターが必要です。 軽量なオープンソースのクロスプラットフォーム コード エディターとしては、[Visual Studio Code](https://code.visualstudio.com/) があります。 Resource Manager テンプレートの作成には Visual Studio Code を使用することを強くお勧めします。 この記事は、VS Code の使用を前提として書かれています。 別の JSON エディター (Visual Studio など) があれば、そちらを使っても問題ありません。
 
-## <a name="get-vs-code-and-extension"></a>VS Code と拡張機能の入手
-1. 必要があれば、[https://code.visualstudio.com/](https://code.visualstudio.com/) から VS Code をインストールします。
+## <a name="prerequisites"></a>前提条件
 
-2. Quick Open (Ctrl + P) にアクセスして以下のコードを実行し、拡張機能 [Azure Resource Manager ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)をインストールします。 
+* Visual Studio Code。 必要に応じて、[https://code.visualstudio.com/](https://code.visualstudio.com/) からインストールします。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-   ```
-   ext install msazurermtools.azurerm-vscode-tools
-   ```
+## <a name="create-template"></a>テンプレートの作成
 
-3. 拡張機能を有効にするように求められたら、VS Code を再起動します。
+ストレージ アカウントをサブスクリプションにデプロイする単純なテンプレートから始めましょう。
 
-## <a name="create-blank-template"></a>空のテンプレートの作成
+1. **[ファイル]** > **[新しいファイル]** を選択します。 
 
-まずは、テンプレートのごく基本的なセクションのみが入った空のテンプレートを作成しましょう。
-
-1. ファイルを作成します。 
+   ![[新しいファイル]](./media/resource-manager-create-first-template/new-file.png)
 
 2. 以下の JSON 構文をコピーして、ファイルに貼り付けます。
 
@@ -50,264 +45,184 @@ ms.lasthandoff: 06/02/2017
    {
      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
      "contentVersion": "1.0.0.0",
-     "parameters": {  },
-     "variables": {  },
-     "resources": [  ],
-     "outputs": {  }
-   }
-   ```
-
-3. このファイルを **azuredeploy.json** という名前で保存します。 
-
-## <a name="add-storage-account"></a>ストレージ アカウントの追加
-1. デプロイの対象となるストレージ アカウントを定義するため、テンプレートの **resources** セクションにストレージ アカウントを追加します。 ストレージ アカウントに利用可能な値は、[ストレージ アカウントのテンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)を参照してください。 表示されているストレージ アカウントの JSON をコピーします。 
-
-3. コピーした JSON をテンプレートの **resources** セクションに貼り付けます。次の例では、その結果を示しています。 
-
-   ```json
-   {
-     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {  },
-     "variables": {  },
+     "parameters": {
+     },
+     "variables": {
+     },
      "resources": [
        {
-         "name": "string",
+         "name": "[concat('storage', uniqueString(resourceGroup().id))]",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-12-01",
+         "apiVersion": "2016-01-01",
          "sku": {
-           "name": "string"
+           "name": "Standard_LRS"
          },
-         "kind": "string",
-         "location": "string",
+         "kind": "Storage",
+         "location": "South Central US",
          "tags": {},
-         "properties": {
-           "customDomain": {
-             "name": "string",
-             "useSubDomain": boolean
-           },
-           "encryption": {
-             "services": {
-               "blob": {
-                 "enabled": boolean
-               }
-             },
-             "keySource": "Microsoft.Storage"
-           },
-           "accessTier": "string"
-         }
+         "properties": {}
        }
      ],
      "outputs": {  }
    }
    ```
 
-  VS Code に、2016-12-01 が有効な API バージョンではないことを示す警告が表示される場合があります。 テンプレートのリファレンス ドキュメントのバージョン番号を使用している場合は、この警告を無視しても構いません。 この警告が表示されるのは、リソース プロバイダーからの最新のバージョン番号でスキーマが更新されていないときです。 
-  
-  上の例ではプレースホルダーが多数使われていますが、実際のストレージ アカウントでは必要のないプロパティも一部存在します。
+   ストレージ アカウント名には制約がいくつもあるため、設定の難易度が高くなっています。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。また、一意になっている必要があります。 上記のテンプレートでは、[uniqueString](resource-group-template-functions-string.md#uniquestring) 関数を使用してハッシュ値を生成しています。 このハッシュ値に他の意味も加えるために、プレフィックス *storage* を追加します。 
 
-## <a name="set-values-for-storage-account"></a>ストレージ アカウントの値の設定
+3. このファイルを **azuredeploy.json** という名前でローカル フォルダーに保存します。
 
-ここまでで、ストレージ アカウントの値を設定する準備ができました。 
+   ![テンプレートを保存する](./media/resource-manager-create-first-template/save-template.png)
 
-1. JSON のコピー元となった[ストレージ アカウントのテンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)をもう一度参照してください。 プロパティと、それに使用可能な値を説明したテーブルがいくつかあります。 
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
-2. **properties** 要素にある **customDomain**、**encryption**、**accessTier** の 3 つはいずれも、必ずしも必要ないことがわかります。 シナリオによってはこの 3 つの値が重要になることもありますが、例を簡潔にするため、今回は削除します。
+これでこのテンプレートをデプロイする準備が整いました。 PowerShell または Azure CLI を使用して、リソース グループを作成します。 次に、そのリソース グループにストレージ アカウントをデプロイします。
 
-   ```json
-   "resources": [
-     {
-       "name": "string",
-       "type": "Microsoft.Storage/storageAccounts",
-       "apiVersion": "2016-12-01",
-       "sku": {
-         "name": "string"
-       },
-       "kind": "string",
-       "location": "string",
-       "tags": {},
-       "properties": {
-       }
-     }
-   ],
+* PowerShell の場合、テンプレートを含むフォルダーから次のコマンドを使用します。
+
+   ```powershell
+   Login-AzureRmAccount
+   
+   New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+   New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json
    ```
 
-3. **kind** 要素には現在、プレース ホルダーの値 ("string") が設定されています。 VS Code では、テンプレートで使用する値の特定に役立つ機能が多数用意されており、 この値についても、有効でないことを示すメッセージが表示されます。 "string" にカーソルを合わせると、**kind** で有効な値が `Storage` または `BlobStorage` であることがわかります。 
+* Azure CLI のローカル インストールの場合は、テンプレートを含むフォルダーから次のコマンドを使用します。
 
-   ![VS Code による有効な値の表示](./media/resource-manager-create-first-template/vs-code-show-values.png)
+   ```azurecli
+   az login
 
-   使用可能な値を確認するには、二重引用符に囲まれた文字を削除してから、**Ctrl + Space** を押します。 表示されたオプションから **Storage** を選択します。
-  
-   ![IntelliSense の表示](./media/resource-manager-create-first-template/intellisense.png)
-
-   VS Code を使用していない場合には、ストレージ アカウントのテンプレート リファレンス ページを参照してください。 説明のところに、有効な値として上の 2 つが書かれています。 要素を **Storage** に設定します。
-
-   ```json
-   "kind": "Storage",
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
+
+デプロイが完了すると、リソース グループにストレージ アカウントが含まれた状態になります。
+
+## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
+
+[Cloud Shell](../cloud-shell/overview.md) を使用して、テンプレートをデプロイするための Azure CLI コマンドを実行できます。 ただし、最初に Cloud Shell のファイル共有にテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../cloud-shell/overview.md)に関するページを参照してください。
+
+1. [Azure Portal](https://portal.azure.com) にログインします。   
+
+2. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
+
+   ![リソース グループの選択](./media/resource-manager-create-first-template/select-cs-resource-group.png)
+
+3. Cloud Shell のストレージ アカウントを選択します。
+
+   ![ストレージ アカウントを選択する](./media/resource-manager-create-first-template/select-storage.png)
+
+4. **[ファイル]** を選択します。
+
+   ![Select files](./media/resource-manager-create-first-template/select-files.png)
+
+5. Cloud Shell のファイル共有を選択します。 名前のパターンは `cs-<user>-<domain>-com-<uniqueGuid>` です。
+
+   ![ファイル共有を選択する](./media/resource-manager-create-first-template/select-file-share.png)
+
+6. **[ディレクトリの追加]** を選択します。
+
+   ![[ディレクトリの追加]](./media/resource-manager-create-first-template/select-add-directory.png)
+
+7. **templates** という名前を付け、**[OK]** を選択します。
+
+   ![ディレクトリに名前を付ける](./media/resource-manager-create-first-template/name-templates.png)
+
+8. 新しいディレクトリを選択します。
+
+   ![新しいディレクトリを選択する](./media/resource-manager-create-first-template/select-templates.png)
+
+9. **[アップロード]**を選択します。
+
+   ![[アップロード] を選択する](./media/resource-manager-create-first-template/select-upload.png)
+
+10. テンプレートを見つけてアップロードします。
+
+   ![ファイルをアップロードする](./media/resource-manager-create-first-template/upload-files.png)
+
+11. プロンプトを開きます。
+
+   ![Cloud Shell を開く](./media/resource-manager-create-first-template/start-cloud-shell.png)
+
+12. Cloud Shell で次のコマンドを入力します。
+
+   ```azurecli
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+   ```
+
+デプロイが完了すると、リソース グループにストレージ アカウントが含まれた状態になります。
+
+## <a name="customize-the-template"></a>テンプレートのカスタマイズ
+
+テンプレートは正常に機能しますが、柔軟ではありません。 このテンプレートでは、ローカル冗長ストレージは常に米国中南部にデプロイされます。 名前は、常に *storage* の後にハッシュ値が続く形式になります。 さまざまなシナリオでテンプレートを使用できるようにするには、テンプレートにパラメーターを追加します。
+
+次の例は、2 つのパラメーターが含まれた parameters セクションを示しています。 最初のパラメーター `storageSKU` では、冗長性の種類を指定できます。 これで、渡すことができる値を、ストレージ アカウントで有効な値に制限しています。 また、既定値も指定しています。 2 番目のパラメーター `storageNamePrefix` は、最大 11 文字を許可するように設定されています。 ここでは、既定値を指定しています。
+
+```json
+"parameters": {
+  "storageSKU": {
+    "type": "string",
+    "allowedValues": [
+      "Standard_LRS",
+      "Standard_ZRS",
+      "Standard_GRS",
+      "Standard_RAGRS",
+      "Premium_LRS"
+    ],
+    "defaultValue": "Standard_LRS",
+    "metadata": {
+      "description": "The type of replication to use for the storage account."
+    }
+  },
+  "storageNamePrefix": {
+    "type": "string",
+    "maxLength": 11,
+    "defaultValue": "storage",
+    "metadata": {
+      "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+    }
+  }
+},
+```
+
+variables セクションに `storageName` という名前の変数を追加します。 ここでは、parameters からのプレフィックス値と [uniqueString](resource-group-template-functions-string.md#uniquestring) 関数からのハッシュ値を組み合わせています。 ここでは、[toLower](resource-group-template-functions-string.md#tolower) 関数を使用してすべての文字を小文字に変換しています。
+
+```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
+```
+
+これらの新しい値をストレージ アカウントに使用するために、リソース定義を変更します。
+
+```json
+"resources": [
+  {
+    "name": "[variables('storageName')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "[parameters('storageSKU')]"
+    },
+    "kind": "Storage",
+    "location": "[resourceGroup().location]",
+    "tags": {},
+    "properties": {}
+  }
+],
+```
+
+ストレージ アカウントの名前が追加した変数に設定されている点に注意してください。 SKU 名はパラメーターの値に設定されています。 場所は、リソース グループと同じ場所に設定されています。
+
+ファイルを保存します。 
 
 ここまでの作業が終わった時点で、テンプレートは以下のようになります。
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {  },
-  "variables": {  },
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "Storage",
-      "location": "string",
-      "tags": {},
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {  }
-}
-```
-
-## <a name="add-template-function"></a>テンプレート関数の追加
-
-テンプレートの構文を簡略化したり、テンプレートのデプロイ中にのみ利用可能な値を取得したりするには、テンプレートの中で関数を使用します。 テンプレート関数の一覧については、「[Azure Resource Manager のテンプレート関数](resource-group-template-functions.md)」を参照してください。
-
-ストレージ アカウントをリソース グループと同じ場所にデプロイするために、**location** プロパティを次のように設定します。
-
-```json
-"location": "[resourceGroup().location]",
-```
-
-ここでも、VS Code により使用可能な関数が表示されます。 
-
-![関数の表示](./media/resource-manager-create-first-template/show-functions.png)
-
-関数は角かっこで囲まれていることに注目してください。 この [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 関数は、`location` というプロパティを備えたオブジェクトを返すものです。 リソース グループは、ソリューションに関連するあらゆるリソースを保持しています。 location プロパティには "Central US" のような値をハードコーディングすることもできますが、そうすると、テンプレートのデプロイ先を変更する場合に、手作業が必要になります。 `resourceGroup` 関数を使用すると、このテンプレートのデプロイ先を別の場所にある別のリソース グループに簡単に変更することができます。
-
-ここまでの作業が終わった時点で、テンプレートは以下のようになります。
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {  },
-  "variables": {  },
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "Storage",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {  }
-}
-```
-
-## <a name="add-parameters-and-variables"></a>パラメーターと変数の追加
-テンプレートに設定する値はあと 2 つだけです。具体的には、**name** と **sku.name** です。 この 2 つのプロパティには、デプロイ時に値をカスタマイズできるパラメーターを追加します。 
-
-ストレージ アカウント名には制約がいくつもあるため、設定の難易度が高くなっています。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。また、一意になっている必要があります。 ここでは、制約に抵触しない一意の値を当て推量で設定するのではなく、[uniqueString](resource-group-template-functions-string.md#uniquestring) 関数を使ってハッシュ値を生成することにしましょう。 プレフィックスを追加してこのハッシュ値に意味を持たせると、ハッシュ値がストレージ アカウントを示すものであることがデプロイ後にわかりやすくなります。 
-
-1. 名前付け規則に合致するプレフィックスを渡すには、テンプレートの **parameters** セクションに移動します。 テンプレートに、ストレージ アカウント名のプレフィックスを受け取るパラメーターを追加します。
-
-   ```json
-   "parameters": {
-     "storageNamePrefix": {
-       "type": "string",
-       "maxLength": 11,
-       "defaultValue": "storage",
-       "metadata": {
-         "description": "The value to use for starting the storage account name."
-       }
-     }
-   },
-   ```
-
-  `uniqueString` により返される文字が 13 文字であり、名前の文字数が 24 文字を超えることができないことから、プレフィックスは最大 11 文字とします。 デプロイ中にこのパラメーターに値を渡さなかった場合には、既定の値が使用されます。
-
-2. テンプレートの **variables** セクションに移動します。 プレフィックスと一意の文字列から名前を作成するには、次の変数を追加します。
-
-   ```json
-   "variables": {
-     "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
-   },
-   ```
-
-3. **resources** セクションで、ストレージ アカウント名としてその変数を設定します。
-
-   ```json
-   "name": "[variables('storageName')]",
-   ```
-
-3. ストレージ アカウントの別の SKU に渡す処理を有効にするには、**parameters** セクションに移動します。 ストレージ名のプレフィックスのパラメーターの後に、使用できる SKU の値と既定値を指定したパラメーターを追加します。 使用できる値は、テンプレートのリファレンス ページまたは VS Code で確認できます。 次の例では、有効な SKU の値をすべて入れてあります。 これに対して、使用できる値をこのテンプレートを使ってデプロイする SKU の種類だけに限定することもできます。
-
-   ```json
-   "parameters": {
-     "storageNamePrefix": {
-       "type": "string",
-       "maxLength": 11,
-       "defaultValue": "storage",
-       "metadata": {
-         "description": "The value to use for starting the storage account name."
-       }
-     },
-     "storageSKU": {
-       "type": "string",
-       "allowedValues": [
-         "Standard_LRS",
-         "Standard_ZRS",
-         "Standard_GRS",
-         "Standard_RAGRS",
-         "Premium_LRS"
-       ],
-       "defaultValue": "Standard_LRS",
-       "metadata": {
-         "description": "The type of replication to use for the storage account."
-       }
-     }
-   },
-   ```
-
-3. SKU のプロパティを、パラメーターの値を使用するように変更します。
-
-   ```json
-   "sku": {
-     "name": "[parameters('storageSKU')]"
-   },
-   ```    
-
-4. ファイルを保存します。
-
-## <a name="final-template"></a>最終的なテンプレート
-
-この記事の手順を完了すると、テンプレートは次のようになります。
 
 ```json
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    },
     "storageSKU": {
       "type": "string",
       "allowedValues": [
@@ -321,16 +236,150 @@ ms.lasthandoff: 06/02/2017
       "metadata": {
         "description": "The type of replication to use for the storage account."
       }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
       "name": "[variables('storageName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
+      "apiVersion": "2016-01-01",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
+      },
+      "kind": "Storage",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {}
+    }
+  ],
+  "outputs": {  }
+}
+```
+
+## <a name="redeploy-template"></a>テンプレートの再デプロイ
+
+異なる値が使用されたテンプレートを再デプロイします。
+
+PowerShell では、次を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix newstore -storageSKU Standard_RAGRS
+```
+
+Azure CLI では、次を使用します。
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+```
+
+Cloud Shell では、変更したテンプレートをファイル共有にアップロードします。 既存のファイルを上書きします。 次に、次のコマンドを使用します。
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+```
+
+## <a name="use-autocomplete"></a>オートコンプリートの使用
+
+ここまでは、単にこの記事から JSON をコピーして貼り付けることによってのみテンプレートの作業を行ってきましたが、 独自のテンプレートを作成するときは、リソースの種類に応じて利用可能なプロパティと値を探して指定することができます。 VS Code は、リソースの種類に対応したスキーマを読み取り、プロパティと値の候補を表示します。 オートコンプリート機能を見るために、テンプレートの properties 要素に移動し、新しい行を追加してみましょう。 引用符を入力するとすぐに、その properties 要素内で利用できる名前の候補が VS Code によって表示されることがわかります。
+
+![使用できるプロパティの表示](./media/resource-manager-create-first-template/show-properties.png)
+
+**encryption** を選択します。 コロン (:) を入力すると、新しいオブジェクトを追加するように促されます。
+
+![オブジェクトの追加](./media/resource-manager-create-first-template/add-object.png)
+
+オブジェクトを追加するには、Tab キーまたは Enter キーを押します。
+
+もう一度引用符を入力すると、今度は、encryption で利用できるプロパティの候補が表示されます。
+
+![encryption のプロパティの表示](./media/resource-manager-create-first-template/show-encryption-properties.png)
+
+**services** を選択し、VS Code 拡張機能に基づく値を追加していき、次のコードを記述します。
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        }
+    }
+}
+```
+
+ストレージ アカウントに関して BLOB の暗号化を有効にしました。 ところが、VS Code によって問題が検出されています。 encryption に警告が表示されていることに注意してください。
+
+![暗号化の警告](./media/resource-manager-create-first-template/encryption-warning.png)
+
+警告を確認するには、緑色の線にマウス ポインターを合わせます。
+
+![不足しているプロパティ](./media/resource-manager-create-first-template/missing-property.png)
+
+encryption 要素には keySource プロパティが必要であることがわかります。 services オブジェクトの後にコンマを追加して keySource プロパティを追加します。 有効な値の候補として **"Microsoft.Storage"** が VS Code によって表示されます。 完成した properties 要素は次のようになります。
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        },
+        "keySource":"Microsoft.Storage"
+    }
+}
+```
+
+完成したテンプレートは次のとおりです。
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ],
+      "defaultValue": "Standard_LRS",
+      "metadata": {
+        "description": "The type of replication to use for the storage account."
+      }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
+    }
+  },
+  "variables": {
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "name": "[variables('storageName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "sku": {
         "name": "[parameters('storageSKU')]"
       },
@@ -338,15 +387,62 @@ ms.lasthandoff: 06/02/2017
       "location": "[resourceGroup().location]",
       "tags": {},
       "properties": {
+        "encryption":{
+          "services":{
+            "blob":{
+              "enabled":true
+            }
+          },
+          "keySource":"Microsoft.Storage"
+        }
       }
     }
   ],
-  "outputs": {  }
+  "outputs": {}
 }
 ```
 
+## <a name="deploy-encrypted-storage"></a>暗号化されたストレージのデプロイ
+
+再度テンプレートをデプロイし、新しいストレージ アカウント名を入力します。
+
+PowerShell では、次を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix storesecure
+```
+
+Azure CLI では、次を使用します。
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
+Cloud Shell では、変更したテンプレートをファイル共有にアップロードします。 既存のファイルを上書きします。 次に、次のコマンドを使用します。
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+デプロイしたリソースが不要になったら、リソース グループを削除して、そのリソースをクリーンアップします。
+
+PowerShell では、次を使用します。
+
+```powershell
+Remove-AzureRmResourceGroup -Name examplegroup
+```
+
+Azure CLI では、次を使用します。
+
+```azurecli
+az group delete --name examplegroup
+```
+
 ## <a name="next-steps"></a>次のステップ
-* テンプレートが完成し、サブスクリプションにデプロイする準備が整いました。 デプロイ方法については、「[Azure にリソースをデプロイする](resource-manager-quickstart-deploy.md)」を参照してください。
+* VS Code 拡張機能をインストールすると、テンプレートの開発効率をさらに高めることができます。 詳細については、「[Visual Studio Code 拡張機能を使って Azure Resource Manager テンプレートを作成する](resource-manager-vscode-extension.md)」を参照してください。
 * テンプレートの構造の詳細については、「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+* ストレージ アカウントのプロパティについては、[ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)のページを参照してください。
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 

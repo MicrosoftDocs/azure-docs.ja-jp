@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Portal を使用して Media Anal
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 08/07/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d66b9e4c237ca195e2e0094aead7ce029f4fdf36
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 0bf2e57fb0f51f22ccd99b5b27775d007b8a7ccc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する
@@ -142,10 +143,5 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

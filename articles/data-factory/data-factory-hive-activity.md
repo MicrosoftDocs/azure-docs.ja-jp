@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: e22f76f912e568f1ef0ae636a4b5c0ef24e8854c
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: a3e9b2d0a8c851939acd228d8086ddfc9f38a4c1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/14/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -36,6 +36,9 @@ ms.lasthandoff: 03/14/2017
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) または [オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) の Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
+
+> [!NOTE] 
+> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。 
 
 ## <a name="syntax"></a>構文
 
@@ -135,9 +138,9 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 5. HDInsightHive アクティビティでパイプラインを作成します。 このアクティビティはデータの処理や変換を行います。
 
     ```JSON   
-    {    
+    {   
         "name": "HiveActivitySamplePipeline",
-           "properties": {
+        "properties": {
         "activities": [
             {
                 "name": "HiveActivitySample",
@@ -147,21 +150,21 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
                     "name": "HiveSampleIn"
                 }
                 ],
-                 "outputs": [
-                   {
+                "outputs": [
+                {
                     "name": "HiveSampleOut"
-                   }
-                 ],
-                 "linkedServiceName": "HDInsightLinkedService",
-                 "typeproperties": {
-                       "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                       "scriptLinkedService": "StorageLinkedService"
-                 },
+                }
+                ],
+                "linkedServiceName": "HDInsightLinkedService",
+                "typeproperties": {
+                    "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+                    "scriptLinkedService": "StorageLinkedService"
+                },
                 "scheduler": {
                     "frequency": "Hour",
-                       "interval": 1
-                 }
-               }
+                    "interval": 1
+                }
+            }
             ]
         }
     }

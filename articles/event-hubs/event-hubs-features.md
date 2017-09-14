@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/17/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 3979593a399ed701fb1985152379818a0417f122
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -52,6 +51,10 @@ Event Hubs では、 *発行元ポリシー*を介してイベント プロデ�
 ```
 
 前もって発行元名を作成しておく必要はありませんが、独立した発行元 ID を保証するために、発行元名はイベントを発行するときに使用される SAS トークンと一致する必要があります。 発行元ポリシーを使用する場合は、 **PartitionKey** 値を発行元名に設定します。 適切に機能するために、これらの値が一致する必要があります。
+
+## <a name="capture"></a>キャプチャ
+
+[Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー または Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
 ## <a name="partitions"></a>パーティション
 
@@ -91,7 +94,7 @@ Event Hubs は、名前空間とイベント ハブのレベルで利用可能�
 
 Event Hubs の発行/サブスクライブのメカニズムは、"*コンシューマー グループ*" によって有効になります。 コンシューマー グループは、イベント ハブ全体のビュー (状態、位置、またはオフセット) を表します。 コンシューマー グループを使用することにより、複数のコンシューマー アプリケーションは、イベント ストリームの個別のビューをそれぞれ保有し、独自のペースで独自のオフセットによってストリームを別々に読み取ることができます。
 
-ストリーム処理アーキテクチャにおいて、各ダウンストリーム アプリケーションはコンシューマー グループに相当します。 (パーティションからさらに) 長期的なストレージにイベント データを書き込む場合、そのストレージ ライター アプリケーションはコンシューマー グループとなります。 複雑なイベント処理は、別の異なるコンシューマー グループで実行できます。 パーティションにはコンシューマー グループを介してのみアクセスできます。 **特定のコンシューマー グループ**のアクティブ リーダーは、各パーティションで一度に 1 つのみ存在できます。 イベント ハブには既定のコンシューマー グループが常に存在します。Standard レベルのイベント ハブに対して最大 20 個のコンシューマー グループを作成できます。
+ストリーム処理アーキテクチャにおいて、各ダウンストリーム アプリケーションはコンシューマー グループに相当します。 (パーティションからさらに) 長期的なストレージにイベント データを書き込む場合、そのストレージ ライター アプリケーションはコンシューマー グループとなります。 複雑なイベント処理は、別の異なるコンシューマー グループで実行できます。 パーティションにはコンシューマー グループを介してのみアクセスできます。 コンシューマー グループ内の 1 つのパーティションが同時に接続できるリーダーは最大 5 つですが、**コンシューマー グループごとのパーティションのアクティブな受信者は 1 つだけにすることをお勧めします**。 イベント ハブには既定のコンシューマー グループが常に存在します。Standard レベルのイベント ハブに対して最大 20 個のコンシューマー グループを作成できます。
 
 コンシューマー グループ URI 表記の例を次に示します。
 
@@ -118,7 +121,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 ### <a name="common-consumer-tasks"></a>一般的なコンシューマー タスク
 
-すべての Event Hubs コンシューマーは、AMQP 1.0 セッションと、状態に対応する双方向の通信チャネルを介して接続します。 各パーティションには、パーティションによって分離されたイベントの転送を容易にする AMQP 1.0 セッションがあります。
+すべての Event Hubs コンシューマーは、AMQP 1.0 セッション (状態に対応する双方向の通信チャネル) を介して接続します。 各パーティションには、パーティションによって分離されたイベントの転送を容易にする AMQP 1.0 セッションがあります。
 
 #### <a name="connect-to-a-partition"></a>パーティションに接続する
 
@@ -148,7 +151,7 @@ Event Hubs のスループット容量は、"*スループット単位*" によ�
 * イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
 * エグレス: 1 秒あたり最大で 2 MB
 
-購入済みのスループット単位の容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット単位の容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット単位の数を確認してください。 スループット単位は、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット単位を管理することもできます。
+購入済みのスループット単位の容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット単位の容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット単位の数を確認してください。 スループット単位は、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット単位を管理することもできます。
 
 スループット単位は 1 時間ごとに課金され、事前に購入します。 スループット単位を購入すると、少なくとも 1 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット単位を購入でき、名前空間内のすべての Event Hubs で共有できます。
 
@@ -166,7 +169,8 @@ Event Hubs の詳細については、次のリンクを参照してください
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-* [Event Hubs を使用するサンプル アプリケーション][]
+* [Event Hubs サンプル][]
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[Event Hubs を使用するサンプル アプリケーション]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Event Hubs サンプル]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+

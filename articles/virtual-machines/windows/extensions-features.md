@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 09b4a34a45ad676a5279dad85fc84578f40a212a
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 1ce0eebd2585c9457d7f922898d7f2fa3e7ffad7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
@@ -40,7 +40,6 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Windows 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の PowerShell スクリプトを使用できます。 これは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳しくは、[Windows VM のカスタム スクリプト拡張機能](extensions-customscript.md)に関する記事をご覧ください。
 
-VM 拡張機能がエンドツーエンドのアプリケーションのデプロイで使われる例については、「[Azure Virtual Machines へのアプリケーションのデプロイを自動化する](dotnet-core-1-landing.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -159,7 +158,7 @@ VM 拡張機能を Azure Resource Manager テンプレートに追加し、テ�
 }
 ```
 
-詳しくは、「[Windows VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](extensions-authoring-templates.md)」をご覧ください。
+詳しくは、「[Windows VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](template-description.md#extensions)」をご覧ください。
 
 ## <a name="secure-vm-extension-data"></a>VM 拡張機能のデータの保護
 

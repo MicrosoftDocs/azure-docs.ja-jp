@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2017
+ms.date: 08/24/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 469bd8d637337e5900ea84c6bfaf88064695fb7e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="apply-resource-policies-for-tags"></a>タグに関するリソース ポリシーを適用する
 
 このトピックでは、リソースのタグが一貫性を持って使用されることを保証するために適用できる一般的なポリシー ルールについて説明します。
 
-既存のリソースがあるリソース グループまたはサブスクリプションにタグ ポリシーを適用しても、これらのリソースにポリシーがさかのぼって適用されることはありません。 これらのリソースにポリシーを適用するには、「[既存のリソースに対する更新をトリガーする](#trigger-updates-to-existing-resources)」の説明に従って、既存のリソースに対する更新をトリガーします。
+既存のリソースがあるリソース グループまたはサブスクリプションにタグ ポリシーを適用しても、これらのリソースにポリシーがさかのぼって適用されることはありません。 これらのリソースにポリシーを適用するには、既存のリソースに対する更新をトリガーします。 この記事には、更新をトリガーするための PowerShell の例が含まれています。
 
 ## <a name="ensure-all-resources-in-a-resource-group-have-a-tagvalue"></a>リソース グループ内のすべてのリソースにタグ/値があることを確認する
 

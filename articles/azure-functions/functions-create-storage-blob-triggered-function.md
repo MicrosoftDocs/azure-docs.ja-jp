@@ -4,13 +4,13 @@ description: "Azure Functions を使用して、Azure Blob Storage に追加さ�
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/31/2017
@@ -80,7 +80,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![ストレージ資格情報を入力し、接続します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 接続されたストレージ アカウントを展開し、**[Blob containers] (Blob コンテナー)** を右クリックして、**[Create blob container] (Blob コンテナーの作成)** をクリックし、「`mycontainer`」と入力して、Enter キーを押します。
+1. 接続されたストレージ アカウントを展開し、**[Blob containers] \(Blob コンテナー)** を右クリックして、**[Create blob container] \(Blob コンテナーの作成)** をクリックし、「`mycontainer`」と入力して、Enter キーを押します。
 
     ![ストレージ キューを作成します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -90,11 +90,11 @@ Blob コンテナーが用意されているので、このコンテナーにフ
 
 1. Azure Portal に戻り、関数を参照して、ページ下部の **[ログ]** を展開して、ログ ストリーミングが一時停止していないことを確認します。
 
-1. ストレージ エクスプローラーで、ストレージ アカウント、**[Blob containers] (Blob コンテナー)**、および **[mycontainer]** の順に展開します。 **[アップロード]**、**[Upload files...] (ファイルをアップロードしています...)** の順にクリックします。
+1. ストレージ エクスプローラーで、ストレージ アカウント、**[Blob containers] \(Blob コンテナー)**、および **[mycontainer]** の順に展開します。 **[アップロード]**、**[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
 
     ![Blob コンテナーにファイルをアップロードします。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 
-1. **[Upload files] (ファイルのアップロード)** ダイアログ ボックスで、**[ファイル]** フィールドをクリックします。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、**[開く]**、**[アップロード]** の順にクリックします。
+1. **[Upload files] \(ファイルのアップロード)** ダイアログ ボックスで、**[ファイル]** フィールドをクリックします。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、**[開く]**、**[アップロード]** の順にクリックします。
 
 1. 関数ログに戻り、Blob が読み取られたことを確認します。
 

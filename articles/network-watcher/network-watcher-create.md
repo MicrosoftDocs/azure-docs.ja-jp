@@ -3,7 +3,7 @@ title: "Azure Network Watcher のインスタンスの作成 | Microsoft Docs"
 description: "このページでは、ポータルと Azure REST API を使用して Network Watcher のインスタンスを作成する手順について説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 7d8eb5972d35eac6cb55fc393090cfcc21ec341c
-ms.lasthandoff: 03/31/2017
+ms.author: jdial
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 2aeaffdd5ab552e18677cbd1a24a748dd14bf172
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -33,6 +34,12 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 **[その他のサービス]** > **[ネットワーク]** > **[ネットワーク ウォッチャー]** の順に移動します。 Network Watcher を有効にするすべてのサブスクリプションを選択できます。 このアクションにより、利用可能なすべてのリージョンに Network Watcher が作成されます。
 
 ![Network Watcher の作成][1]
+
+ポータルを使用して Network Watcher を有効にすると、Network Watcher インスタンスの名前が自動的に NetworkWatcher_region_name に設定されます (region_name は、インスタンスが有効にされた Azure リージョン)。  たとえば、"西中央アメリカ" リージョンで有効にされた Network Watcher は "NetworkWatcher_westcentralus" という名前になります。
+
+また、Network Watcher インスタンスは自動的に、NetworkWatcherRG というリソース グループに追加されます。  このリソース グループが存在しない場合は、新たに作成されます。
+
+Network Watcher インスタンスの名前とその配置先のリソース グループは、PowerShell、REST API、ARMClient のいずれかを使い、以下に説明した方法でカスタマイズすることができます。  いずれの方法も、Network Watcher の配置先となるリソース グループがあらかじめ存在している必要があります。  
 
 ## <a name="create-a-network-watcher-with-powershell"></a>PowerShell を使用して Network Watcher を作成する
 

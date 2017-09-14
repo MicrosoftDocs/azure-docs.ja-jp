@@ -12,13 +12,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1da3bc5454111bac5e958bf26d33cf61a5d4213c
 ms.openlocfilehash: ecff6e2e5be05499896ad23675682db184c634af
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
@@ -54,20 +54,20 @@ ms.lasthandoff: 02/17/2017
 
 複数のフォレストがある場合は、1 つの Azure AD Connect 同期サーバーがすべてのフォレストにアクセスできる必要があります。 サーバーをドメインに参加させる必要はありません。 すべてのフォレストに到達する必要がある場合は、境界ネットワーク (DMZ、非武装地帯、スクリーン サブネットとも呼ばれます) にサーバーを配置できます。
 
-Azure AD Connect のインストール ウィザードには、複数のフォレストで表されるユーザーを統合するためのいくつかのオプションが用意されています。 その目的は、ユーザーが Azure AD 内で&1; 回だけ表されるようにすることです。 インストール ウィザードのカスタム インストール パスで構成できる一般的なトポロジはいくつかあります。 **[ユーザーを一意に識別]** ページで、トポロジを表す対応するオプションを選択します。 統合は、ユーザーに対してのみ構成されます。 重複しているグループは既定の構成に統合されません。
+Azure AD Connect のインストール ウィザードには、複数のフォレストで表されるユーザーを統合するためのいくつかのオプションが用意されています。 その目的は、ユーザーが Azure AD 内で 1 回だけ表されるようにすることです。 インストール ウィザードのカスタム インストール パスで構成できる一般的なトポロジはいくつかあります。 **[ユーザーを一意に識別]** ページで、トポロジを表す対応するオプションを選択します。 統合は、ユーザーに対してのみ構成されます。 重複しているグループは既定の構成に統合されません。
 
 一般的なトポロジについては、[分離トポロジ](#multiple-forests-separate-topologies)、[フル メッシュ](#multiple-forests-full-mesh-with-optional-galsync)、および[アカウント リソース トポロジ](#multiple-forests-account-resource-forest)に関するセクションで説明しています。
 
 Azure AD Connect 同期の既定の構成では、次のことを前提としています。
 
-* 各ユーザーが持つ有効なアカウントは&1; つのみで、このアカウントが配置されているフォレストがユーザーの認証に使用されます。 この前提は、パスワード同期とフェデレーションの両方に該当します。 UserPrincipalName と sourceAnchor/immutableID は、このフォレストから取得されます。
-* 各ユーザーは、メールボックスを&1; つだけ持っています。
+* 各ユーザーが持つ有効なアカウントは 1 つのみで、このアカウントが配置されているフォレストがユーザーの認証に使用されます。 この前提は、パスワード同期とフェデレーションの両方に該当します。 UserPrincipalName と sourceAnchor/immutableID は、このフォレストから取得されます。
+* 各ユーザーは、メールボックスを 1 つだけ持っています。
 * ユーザーのメールボックスをホストするフォレストは、Exchange のグローバル アドレス一覧 (GAL) で確認できる属性に対して最適なデータ品質を備えています。 ユーザーにメールボックスがない場合、どのフォレストを使用してもこれらの属性値を提供できます。
 * リンクされたメールボックスがある場合は、別のフォレストに、サインインに使用されるアカウントもあります。
 
 環境がこれらの前提と一致しない場合は、次のようになります。
 
-* アクティブなアカウントまたはメールボックスが複数ある場合、同期エンジンは&1; つを選び、他は無視します。
+* アクティブなアカウントまたはメールボックスが複数ある場合、同期エンジンは 1 つを選び、他は無視します。
 * 他のアクティブなアカウントを持たないリンクされたメールボックスは、Azure AD にはエクスポートされません。 ユーザー アカウントは、どのグループのメンバーとしても表されません。 DirSync のリンクされたメールボックスは、常に通常のメールボックスとして表されます。 この変更は、マルチフォレスト シナリオをより適切にサポートするための意図的に異なる動作です。
 
 詳細については、[既定の構成](active-directory-aadconnectsync-understanding-default-configuration.md)に関するページを参照してください。
@@ -78,7 +78,7 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 1 つの Azure AD テナントに接続する複数の Azure AD Connect 同期サーバーはサポートされていません。 例外として、 [ステージング サーバー](#staging-server)の使用があります。
 
 ### <a name="multiple-forests-separate-topologies"></a>複数のフォレスト、分離トポロジ
-![ユーザーがすべてのディレクトリで&1; 度だけ示されるオプション](./media/active-directory-aadconnect-topologies/MultiForestUsersOnce.png)
+![ユーザーがすべてのディレクトリで 1 度だけ示されるオプション](./media/active-directory-aadconnect-topologies/MultiForestUsersOnce.png)
 
 ![複数のフォレストと分離トポロジの説明図](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
 
@@ -103,7 +103,7 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 
 ![複数のフォレストのアカウント リソース フォレスト トポロジ](./media/active-directory-aadconnect-topologies/MultiForestAccountResource.png)
 
-アカウント リソース フォレスト トポロジでは、アクティブなユーザー アカウントを持つ&1; つ以上の "*アカウント*" フォレストが存在します。 また、アカウントが無効になった&1; つ以上の "*リソース*" フォレストも存在します。
+アカウント リソース フォレスト トポロジでは、アクティブなユーザー アカウントを持つ 1 つ以上の "*アカウント*" フォレストが存在します。 また、アカウントが無効になった 1 つ以上の "*リソース*" フォレストも存在します。
 
 このシナリオでは、1 つ (以上) のリソース フォレストがすべてのアカウント フォレストを信頼します。 リソース フォレストには、通常、Exchange および Lync を使用する拡張 Active Directory スキーマがあります。 すべての Exchange および Lync サービスと、他の共有サービスは、このフォレストに配置されます。 ユーザーのユーザー アカウントはこのフォレストで無効になり、メールボックスはアカウント フォレストにリンクされます。
 
@@ -130,25 +130,25 @@ Azure AD Connect では、"*ステージング モード*" でのセカンド �
 異なるデータ センターに複数のバックアップを用意する場合は、複数のステージング サーバーを持つことができます。
 
 ## <a name="multiple-azure-ad-tenants"></a>複数の Azure AD テナント
-組織の Azure AD には&1; つのテナントを置くことをお勧めします。
+組織の Azure AD には 1 つのテナントを置くことをお勧めします。
 複数の Azure AD テナントの使用を計画する前に、[Azure AD の管理単位の管理](../active-directory-administrative-units-management.md)に関する記事を参照してください。 単一のテナントを使用できる一般的なシナリオを説明しています。
 
 ![複数のフォレストと複数のテナントのトポロジ](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 
 Azure AD Connect 同期サーバーと Azure AD テナントには、一対一のリレーションシップがあります。 各 Azure AD テナントに、1 つの Azure AD Connect 同期サーバーをインストールする必要があります。 Azure AD テナントのインスタンスは、分離される設計になっています。 つまり、あるテナントのユーザーは、他のテナントのユーザーを認識することができません。 この分離が望ましい場合、これはサポートされている構成です。 そうでない場合は、単一 Azure AD テナント モデルを使用する必要があります。
 
-### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Azure AD テナントでの各オブジェクトの&1; 回のみの使用
+### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Azure AD テナントでの各オブジェクトの 1 回のみの使用
 ![単一のフォレストのフィルター処理されたトポロジ](./media/active-directory-aadconnect-topologies/SingleForestFiltered.png)
 
 このトポロジでは、1 つの Azure AD Connect 同期サーバーが各 Azure AD テナントに接続されます。 各 Azure AD Connect 同期サーバーについては、操作対象のオブジェクトのセットが相互排他的になるようなフィルター処理を構成する必要があります。 たとえば、各サーバーのスコープを特定のドメインまたは組織単位に設定できます。
 
-DNS ドメインは&1; つの Azure AD テナントにのみ登録できます。 オンプレミス Active Directory インスタンスのユーザーの UPN でも、別の名前空間を使用する必要があります。 たとえば、前の図では、3 つの個別の UPN サフィックスがオンプレミス Active Directory インスタンスの contoso.com、fabrikam.com、および wingtiptoys.com に登録されています。 各オンプレミス Active Directory ドメインのユーザーは、別の名前空間を使用します。
+DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。 オンプレミス Active Directory インスタンスのユーザーの UPN でも、別の名前空間を使用する必要があります。 たとえば、前の図では、3 つの個別の UPN サフィックスがオンプレミス Active Directory インスタンスの contoso.com、fabrikam.com、および wingtiptoys.com に登録されています。 各オンプレミス Active Directory ドメインのユーザーは、別の名前空間を使用します。
 
 Azure AD テナント インスタンス間に GALSync はありません。 Exchange Online と Skype for Business のアドレス帳には、同じテナント内のユーザーのみが表示されます。
 
 このトポロジには次の制約があります。その制約を除けば、各シナリオはサポートされます。
 
-* Azure AD テナントのいずれか&1; つのみが、オンプレミスの Active Directory インスタンスを持つ Exchange ハイブリッドを有効にできます。
+* Azure AD テナントのいずれか 1 つのみが、オンプレミスの Active Directory インスタンスを持つ Exchange ハイブリッドを有効にできます。
 * Windows 10 デバイスは、1 つの Azure AD テナントだけに関連付けることができます。
 * パスワード同期とパススルー認証のシングル サインオン (SSO) オプションは、1 つの Azure AD テナントでのみ使用できます。
 

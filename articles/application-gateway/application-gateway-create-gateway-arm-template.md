@@ -6,20 +6,18 @@ services: application-gateway
 author: georgewallace
 manager: timlt
 editor: tysonn
-ms.assetid: 8192ee25-d9f0-4b32-a45e-1d74629c54e5
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: f44e33ef722cd30787a9d2942ec55ceb73174978
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
@@ -31,12 +29,9 @@ ms.lasthandoff: 05/02/2017
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。
-Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」を参照してください。
 
-サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
-
-GitHub から既存の Azure Resource Manager テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
+この記事では、GitHub から既存の Azure Resource Manager テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
 GitHub から直接 Azure リソース マネージャー テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
 
@@ -210,8 +205,15 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>証明書データを Resource Manager テンプレートに提供する
 
-テンプレートを使って SSL を使用する場合、証明書をアップロードするのではなく、base64 文字列で指定する必要があります。 .pfx または .cer を base64 文字列に変換するには、次の PowerShell コマンドを実行します。 このスニペットにより、証明書はテンプレートに提供できる base64 文字列に変換されます。 予測される出力は、変数に格納できる文字列、またテンプレートに貼り付けることのできる文字列です。
+テンプレートを使って SSL を使用する場合、証明書をアップロードするのではなく、base64 文字列で指定する必要があります。 .pfx または .cer を base64 文字列に変換するには、以下のいずれかのコマンドを使用します。 これらのコマンドによって、証明書はテンプレートに提供できる base64 文字列に変換されます。 予測される出力は、変数に格納できる文字列、またテンプレートに貼り付けることのできる文字列です。
 
+### <a name="macos"></a>macOS
+```bash
+cert=$( base64 <certificate path and name>.pfx )
+echo $cert
+```
+
+### <a name="windows"></a>Windows
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
 ```

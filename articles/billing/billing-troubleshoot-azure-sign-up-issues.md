@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: a50b4fb4b19acf270aaf94fea613e745ec2af649
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 647509ea36e487aca5db661adb3268e845988f78
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>Azure のサインアップに関する問題のトラブルシューティング
@@ -38,22 +39,28 @@ Azure にサインアップできない場合は、この記事の情報を使�
 3. Azure のサインアップ ページを更新し、問題が解決したかどうかを確認します。
 4. 更新しても問題が解決しなかった場合は、ブラウザーを終了して再起動した後、やり直してください。
 
-## <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>サインアップ アカウントの検証中に、テキスト メッセージの送信がなく、電話もかかってこない
-**[テキスト メッセージを受信]** を選択した場合、テキスト コードが電話に届くまでに最大で 4 分かかる場合があります。 言うまでもありませんが、本人確認のために、SMS メッセージを受信できる、または電話を受けることができる (**[電話で確認コードを受け取る]** オプションを選択した場合) 電話番号を入力します。 入力した電話番号は本人確認の目的でのみ使用されます。アカウントの連絡先の電話番号としては保存されません。
+## <a name="credit-card-form-doesnt-support-my-billing-address"></a>請求先住所がクレジット カード フォームでサポートされていない
+請求先住所は、**[自分の情報]** セクションで選択した国内である必要があります。 正しい国を選択していることを確認してください。
 
-いくつかのヒントを次に示します。
+## <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>サインアップ アカウントの検証中に、テキスト メッセージの送信がなく、電話もかかってこない
+確認コードが配信されるまでに、最大で 4 分かかる場合があります (通常はもっと早く配信されます)。 確認のために入力した電話番号は、アカウントの連絡先の電話番号としては保存されません。
+
+いくつかの追加のヒントを以下に示します。
 * 電話確認処理に VoIP 電話番号を使用することはできません。
 * ドロップダウン メニューで選択した国コードを含め、入力する電話番号を再確認してください。
-* テキスト メッセージ (SMS) を受信しない電話の場合は、**[電話で確認コードを受け取る]** をオプションを使用します。
-* **[テキスト メッセージを受信]** と **[電話で確認コードを受け取る]** のどちらを使っても本人確認ができなかった場合は、別の電話番号を使用してください。
+* テキスト メッセージ (SMS) を受信しない電話の場合は、**[電話で確認コードを受け取る]** をオプションを試してください。
+* お使いの電話で米国の番号からの電話または SMS メッセージを受信できることを確認してください。
 
-テキスト メッセージを受信した場合、または電話がかかってきたら、テキスト ボックスに受け取ったコードを入力してください。
+テキスト メッセージを受信するか、電話がかかってきたら、テキスト ボックスに受け取ったコードを入力してください。
 
 ## <a name="credit-card-declined-or-not-accepted"></a>クレジット カードが拒否されます
 バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、「[Azure へのサインアップ時にデビット カードまたはクレジット カードが拒否される](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
 
 ## <a name="free-trial-is-not-available"></a>"無料試用版は使用できません"
 過去に Azure サブスクリプションを使用していませんか。 Azure 使用条件契約書では、Azure を初めて使用するユーザーのみが Azure 無料試用版をアクティブ化できるという制限を設けています。 他の種類の Azure サブスクリプションを持っている場合も、無料試用版をアクティブ化することはできません。 [従量課金のサブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)へのサインアップを検討してください。
+
+## <a name="i-saw-a-charge-on-my-free-trial-account"></a>無料試用版アカウントに料金が表示されている
+サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が表示されることがありますが、これは 3 ～ 5 日以内に削除されます。 コストの管理についての不安がある場合は、[予想外のコストを防ぐ](https://docs.microsoft.com/azure/billing/billing-getting-started)方法に関する記事をご覧ください。
 
 ## <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>MSDN、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません
 サインイン資格情報が正しいことを確認したうえで、 特典プログラムを使用する資格があることを確認します。 
@@ -63,7 +70,7 @@ Azure にサインアップできない場合は、この記事の情報を使�
   * 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/subscriptions/contactus.aspx)にお問い合わせください
 * BizSpark
   * [BizSpark ポータル](https://www.microsoft.com/bizspark/default.aspx#start-two) にサインインし、BizSpark と BizSpark Plus の資格の状態を確認します。
-  * 状態を確認できない場合は、[BizSpark チームにお問い合わせ](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)ください
+  * 状態を確認できない場合は、[BizSpark フォーラムにお問い合わせ](http://aka.ms/bzforums)ください。
 * MPN
   * [MPN ポータル](https://mspartner.microsoft.com/en/us/Pages/Locale.aspx) にサインインし、資格の状態を確認します。 該当する [クラウド プラットフォーム コンピテンシー](https://mspartner.microsoft.com/en/us/pages/membership/cloud-platform-competency.aspx)をお持ちの場合、追加特典の資格を与えられることがあります。
   * 状態を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/en/us/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。

@@ -12,20 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f66b37dafa78e70d47e25653ee09649616ef1fe9
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: bba8257bc4477f985d1a9399e65a1338d237f134
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Make SQL databases available to your Azure Stack users
 
-As an Azure Stack administrator, you can create offers that let your users (tenants) create SQL databases that they can use with their cloud-native apps, websites, and workloads. By providing these custom, on-demand, cloud-based databases to your users, you can save them time and resources. To set this up, you will:
+As an Azure Stack cloud administrator, you can create offers that let your users (tenants) create SQL databases that they can use with their cloud-native apps, websites, and workloads. By providing these custom, on-demand, cloud-based databases to your users, you can save them time and resources. To set this up, you will:
 
 > [!div class="checklist"]
 > * Deploy the SQL Server resource provider
@@ -36,21 +35,21 @@ As an Azure Stack administrator, you can create offers that let your users (tena
 
 The deployment process is described in detail in the [Use SQL databases on Azure Stack article](azure-stack-sql-resource-provider-deploy.md), and is comprised of the following primary steps:
 
-1.    [Deploy the SQL resource provider on the POC host]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2.    [Verify the deployment]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
-3.    [Provide capacity by connecting to a hosting SQL server]( azure-stack-sql-resource-provider-deploy.md#provide-capacity-by-connecting-to-a-hosting-sql-server).
+1.  [Deploy the SQL resource provider]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
+2.  [Verify the deployment]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
+3.  [Provide capacity by connecting to a hosting SQL server]( azure-stack-sql-resource-provider-deploy.md#provide-capacity-by-connecting-to-a-hosting-sql-server).
 
 ## <a name="create-an-offer"></a>Create an offer
 
-1.    [Set a quota](azure-stack-setting-quotas.md) and name it *SQLServerQuota*. Select **Microsoft.SQLAdapter** for the **Namespace** field.
-2.    [Create a plan](azure-stack-create-plan.md). Name it *TestSQLServerPlan*, select the **Microsoft.SQLAdapter** service, and **SQLServerQuota** quota.
+1.  [Set a quota](azure-stack-setting-quotas.md) and name it *SQLServerQuota*. Select **Microsoft.SQLAdapter** for the **Namespace** field.
+2.  [Create a plan](azure-stack-create-plan.md). Name it *TestSQLServerPlan*, select the **Microsoft.SQLAdapter** service, and **SQLServerQuota** quota.
 
     > [!NOTE]
     > To let users create other apps, other services might be required in the plan. For example, Azure Functions requires that the plan include the **Microsoft.Storage** service, while Wordpress requires **Microsoft.MySQLAdapter**.
     > 
     >
 
-3.    [Create an offer](azure-stack-create-offer.md), name it **TestSQLServerOffer** and select the **TestSQLServerPlan** plan.
+3.  [Create an offer](azure-stack-create-offer.md), name it **TestSQLServerOffer** and select the **TestSQLServerPlan** plan.
 
 ## <a name="test-the-offer"></a>Test the offer
 

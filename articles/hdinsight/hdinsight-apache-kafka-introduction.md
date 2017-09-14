@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: f6a49be148ded1a90a642b83d3d70a83e572f4e4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1976c52bd7fa56bb07104e205ab3699b2dfa4c50
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>HDInsight での Apache Kafka の概要 (プレビュー)
@@ -42,7 +42,7 @@ Kafka には、次の機能が用意されています。
 
 * Azure Managed Disks との統合: Managed Disks は、HDInsight クラスターの仮想マシンで使われるディスクのスケールとスループットを高める機能を提供します。
 
-    HDInsight 上の Kafka では Managed Disks は既定で有効になり、ノードごとに使われるディスクの数は HDInsight の作成時に構成できます。 Managed Disks について詳しくは、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md)」をご覧ください。
+    HDInsight 上の Kafka では Managed Disks は既定で有効になり、ノードごとに使われるディスクの数は HDInsight の作成時に構成できます。 Managed Disks について詳しくは、「[Azure Managed Disks の概要](../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
     HDInsight 上の Kafka での Managed Disks の構成について詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](hdinsight-apache-kafka-scalability.md)」をご覧ください。
 

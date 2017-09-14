@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: cc44d59100104253447e474a49254d8b6bd68d8c
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
@@ -37,10 +36,10 @@ ms.lasthandoff: 05/17/2017
 以前は Service Bus Relay サービスという名称でしたが、現在では "WCF リレー" と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
 
 ## <a name="pricing"></a>価格
-このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。 Relay の価格の詳細については、 [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
+このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。 Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>ハイブリッド接続と WCF リレーの課金方法を教えてください。
-Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。 このページで説明されている価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送にも料金が発生します。
+Relay の価格の詳細については、Service Bus の価格の詳細ページで、[ハイブリッド接続と WCF リレー][Pricing overview]の表をご覧ください。 このページで説明されている価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送にも料金が発生します。
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>ハイブリッド接続はどのように課金されますか?
 ここでは、ハイブリッド接続での課金シナリオの例を 3 つ紹介します。
@@ -63,7 +62,7 @@ Relay の価格の詳細については、[Service Bus の価格の詳細][Prici
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Relay では、時間はどのように計算されますか?
 
-WCF リレーは、Standard レベルの名前空間でのみ使用できます。 それ以外では、リレーの価格と[接続クォータ](../service-bus-messaging/service-bus-quotas.md)は変更されていません。 つまり、リレーは、引き続き (操作ではなく) メッセージの数およびリレー時間に基づいて課金されます。 詳細については、価格の詳細に関するページで[ハイブリッド接続と WCF リレー](https://azure.microsoft.com/pricing/details/service-bus/)の表をご覧ください。
+WCF リレーは、Standard レベルの名前空間でのみ使用できます。 それ以外では、リレーの価格と[接続クォータ](../service-bus-messaging/service-bus-quotas.md)は変更されていません。 つまり、リレーは、引き続き (操作ではなく) メッセージの数およびリレー時間に基づいて課金されます。 詳細については、価格の詳細に関するページで ["ハイブリッド接続と WCF Relay"](https://azure.microsoft.com/pricing/details/service-bus/) の表をご覧ください。
 
 ### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>特定のリレーに複数のリスナーを接続した場合はどうなりますか?
 場合によっては、1 つのリレーに複数のリスナーが接続されていることも考えられます。 リレーは、接続されているリレー リスナーが 1 つでもあれば、開いていると見なされます。 開いているリレーにリスナーを追加すると、追加のリレー時間が発生します。 また、リレーに接続されたリレー センダー (リレーに対するメッセージの呼び出しまたは送信を実行するクライアント) の数は、リレー時間の計算には影響しません。
@@ -73,9 +72,9 @@ WCF リレーは、Standard レベルの名前空間でのみ使用できます�
 
 一般に、リレーの場合も、前述した仲介型エンティティ (キュー、トピック、サブスクリプション) と同じ方法で、課金対象のメッセージが計算されます。 ただし、注目すべき違いがいくつかあります。
 
-Service Bus リレーへのメッセージ送信は、そのメッセージを受信するリレー リスナーに対する "直接の" 送信として扱われます。 リレー リスナーに配信する前に行われる Service Bus リレーへの送信のようには扱われ "*ません*"。 リレー リスナーに対する (最大 64 KB の) 要求/応答形式のサービス呼び出しの場合、課金対象のメッセージは、要求の課金対象メッセージと応答の課金対象メッセージ (応答も 64 KB 以下を想定) の 2 つになります。 これは、クライアントとサービスの間の仲介にキューを使用した場合とは異なります。 クライアントとサービスの間の仲介にキューを使用する場合は、同じ要求/応答パターンでも、キューに対する要求の送信、そのキューからサービスへのデキュー/配信の順番で実行する必要があります。 この後さらに、別のキューへの応答の送信、そのキューからクライアントへのデキュー/配信の順番で実行する必要があります。 メッセージのサイズが最初から最後まで同じ (64 KB 以下) であると仮定した場合、仲介型キュー パターンでは課金対象のメッセージは 4 つとなります。 Relay を使って同じパターンを実装した場合と比べてメッセージ数が 2 倍となり、それに対する料金が課金されることになります。 もちろん、キューを使用してこのパターンを実現すれば、持続性や負荷平準化などの利点が生まれます。 これらは追加費用に見合う可能性のある利点です。
+Service Bus リレーへのメッセージ送信は、そのメッセージを受信するリレー リスナーに対する "直接の" 送信として扱われます。 リレー リスナーに配信する前に行われる Service Bus Relay への送信操作のようには扱われません。 リレー リスナーに対する (最大 64 KB の) 要求/応答形式のサービス呼び出しの場合、課金対象のメッセージは、要求の課金対象メッセージと応答の課金対象メッセージ (応答も 64 KB 以下を想定) の 2 つになります。 これは、クライアントとサービスの間の仲介にキューを使用した場合とは異なります。 クライアントとサービスの間の仲介にキューを使用する場合は、同じ要求/応答パターンでも、キューに対する要求の送信、そのキューからサービスへのデキュー/配信の順番で実行する必要があります。 この後さらに、別のキューへの応答の送信、そのキューからクライアントへのデキュー/配信の順番で実行する必要があります。 メッセージのサイズが最初から最後まで同じ (64 KB 以下) であると仮定した場合、仲介型キュー パターンでは課金対象のメッセージは 4 つとなります。 Relay を使って同じパターンを実装した場合と比べてメッセージ数が 2 倍となり、それに対する料金が課金されることになります。 もちろん、キューを使用してこのパターンを実現すれば、持続性や負荷平準化などの利点が生まれます。 これらは追加費用に見合う可能性のある利点です。
 
-netTCPRelay Windows Communication Foundation (WCF) バインドを使って開いたリレーは、メッセージを個別のメッセージとしてではなく、システムを流れるデータのストリームとして扱います。 このバインドを使用すると、センダーとリスナーだけが、送受信された個々のメッセージを 1 つのまとまりとして認識できます。 netTCPRelay バインドを使ったリレーの場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々のリレーを介して送受信されたデータ量の合計を 5 分ごとに計算します。 次に、データ量の合計を 64 KB で除算して、その期間内でのリレーについて、課金対象のメッセージ数を決定します。
+**netTCPRelay** WCF バインドを使って開いたリレーでは、メッセージは個別のメッセージではなく、システムを流れるデータ ストリームとして扱われます。 このバインドを使用すると、センダーとリスナーだけが、送受信された個々のメッセージを 1 つのまとまりとして認識できます。 **netTCPRelay** バインドを使ったリレーの場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々のリレーを介して送受信されたデータ量の合計を 5 分ごとに計算します。 次に、データ量の合計を 64 KB で除算して、その期間内でのリレーについて、課金対象のメッセージ数を決定します。
 
 ## <a name="quotas"></a>クォータ
 | クォータ名 | Scope | 型 | 超過したときの動作 | 値 |
@@ -88,12 +87,12 @@ netTCPRelay Windows Communication Foundation (WCF) バインドを使って開�
 | [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) と [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) リレーのメッセージ サイズ |システム全体 |静的 |- |無制限 |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Relay に使用量クォータはありますか?
-Microsoft は、既定で、任意のクラウド サービスに関して、お客様の全サブスクリプションにわたって算出される月単位の総使用量クォータを設定しています。 Microsoft では、実際のニーズがこれらの制限を上回る可能性があることを認識しています。 お気軽にカスタマー サービスまでお問い合わせください。お客様のニーズを確認のうえ、適宜制限を調整させていただきます。 Service Bus の総使用量クォータは次のとおりです。
+既定では、Microsoft はすべてのクラウド サービスに関し、お客様のサブスクリプション全体で算出する月単位の総使用量クォータを設定しています。 Microsoft では、実際のニーズがこれらの制限を上回る可能性があることを認識しています。 お気軽にカスタマー サービスまでお問い合わせください。お客様のニーズを確認のうえ、適宜制限を調整させていただきます。 Service Bus の総使用量クォータは次のとおりです。
 
 * 50 億メッセージ
 * 200 万リレー時間
 
-Microsoft は、月ごとの使用量クォータを超えた場合に、お客様のアカウントを無効にする権利を保有しています。ただし、その場合は電子メールでお客様にその旨をお知らせし、何度かお客様に連絡を試みたうえで、措置を講じることといたします。 そのクォータを超えたお客様についても、その超過分は課金の対象となります。
+Microsoft は、月ごとの使用量クォータを超えた場合にお客様のアカウントを無効にする権利を保有しています。ただし、その場合は電子メールでお客様にその旨をお知らせし、何度かお客様に連絡を試みたうえで、措置を講じることといたします。 そのクォータを超えたお客様についても、超過分は課金の対象となります。
 
 ### <a name="naming-restrictions"></a>名前に関する制限
 Relay 名前空間名の長さは 6 ～ 50 文字である必要があります。
@@ -127,7 +126,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 一般的な例外と、それを解決するための推奨されるアクションの説明については、[Relay の例外][Relay exceptions]に関する記事を参照してください。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Shared Access Signature とは何ですか? また、どの言語で署名を生成できますか?
-Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node、PHP、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証][Shared Access Signatures]」を参照してください。
+Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node、PHP、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証][Shared Access Signatures]」を参照してください。
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか?
 はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS ホワイトリスト登録をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。

@@ -1,9 +1,9 @@
 ---
-title: "Azure Network Watcher を使用したネットワーク セキュリティ グループのフローのログの管理 | Microsoft Docs"
+title: "Azure Network Watcher を使用したネットワーク セキュリティ グループのフロー ログの管理 | Microsoft Docs"
 description: "このページでは、Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -13,17 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: bbea08798a601989d06774475cb25ee67e99add6
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 41cb5ffab9bd3a3bed75ffdb6a7383ca1690f810
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 06/02/2017
 
 ---
 
-# <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Azure Portal でのネットワーク セキュリティ グループのフローのログの管理
+# <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Azure Portal におけるネットワーク セキュリティ グループのフロー ログの管理
 
 > [!div class="op_single_selector"]
 > - [Azure ポータル](network-watcher-nsg-flow-logging-portal.md)
@@ -32,67 +31,76 @@ ms.lasthandoff: 05/26/2017
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-ネットワーク セキュリティ グループのフローのログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
+ネットワーク セキュリティ グループのフロー ログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフロー ログは JSON 形式で作成され、重要な情報が記録されています。その例を次に示します。 
+
+- ルールごとの送信フローと受信フロー。
+- フローの適用先の NIC。
+- フローに関する 5 タプル情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)。
+- トラフィックが許可 (または拒否) されたかどうかの情報。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
+このシナリオは、[Network Watcher のインスタンスの作成](network-watcher-create.md)に関する記事の手順を実施済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを所有していることも前提としています。
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 
-フローのログ記録を成功させるには、**Microsoft.Insights** プロバイダーを登録する必要があります。 プロバイダーを登録するには、**[サブスクリプション]** に移動し、フローのログを有効にするサブスクリプションを選択します。 **[サブスクリプション]** ブレードで、**[リソース プロバイダー]** を選択します。 プロバイダーの一覧を移動し、**microsoft.insights** プロバイダーが登録されていることを確認します。 登録されていない場合は、**[登録]** をクリックします。
+フロー ログが正常に機能するためには、**Microsoft.Insights** プロバイダーが登録されている必要があります。 このプロバイダーを登録するには、次の手順を実行します。 
+
+1. **[サブスクリプション]** に移動し、フロー ログを有効にするサブスクリプションを選択します。 
+2. **[サブスクリプション]** ブレードで、**[リソース プロバイダー]** を選択します。 
+3. プロバイダーの一覧を見て、**microsoft.insights** プロバイダーが登録されていることを確認します。 登録されていなければ、**[登録]** を選択します。
 
 ![プロバイダーを表示する][providers]
 
 ## <a name="enable-flow-logs"></a>フローのログを有効にする
 
-ネットワーク セキュリティ グループのフローのログを有効にするには、次の手順に従います。
+ネットワーク セキュリティ グループのフロー ログを有効にするには、次の手順に従います。
 
 ### <a name="step-1"></a>手順 1
 
-Network Watcher インスタンスに移動し、**[フローのログ]** を選択します。
+Network Watcher インスタンスに移動し、**[NSG フロー ログ]** を選択します。
 
-![フローのログの概要][1]
+![フロー ログの概要][1]
 
 ### <a name="step-2"></a>手順 2.
 
-一覧でネットワーク セキュリティ グループをクリックして選択します。
+一覧からネットワーク セキュリティ グループを選択します。
 
-![フローのログの概要][2]
+![フロー ログの概要][2]
 
 ### <a name="step-3"></a>手順 3. 
 
-**[フローのログ設定]** ブレードで、状態を **[オン]** に設定し、ストレージ アカウントを構成します。  完了したら **[OK]** をクリックし、**[保存]** をクリックします。
+**[フローのログ設定]** ブレードで、状態を **[オン]** に設定し、ストレージ アカウントを構成します。  終了したら、**[OK]** を選択します。 次に、**[保存]** を選択します。
 
-![フローのログの概要][3]
+![フロー ログの概要][3]
 
-## <a name="download-flow-logs"></a>フローのログをダウンロードする
+## <a name="download-flow-logs"></a>フロー ログをダウンロードする
 
-フローのログはストレージ アカウントに保存されます。 フローのログを表示するには、それらのログをダウンロードする必要があります。
+フローのログはストレージ アカウントに保存されます。 フロー ログを表示するには、それらをダウンロードしてください。
 
 ### <a name="step-1"></a>手順 1
 
-フローのログをダウンロードするには、**[構成済みのストレージ アカウントからフローのログをダウンロードできました。]** をクリックします。  これにより、ストレージ アカウント ビューが表示されます。ここで、ダウンロードするログに移動できます。
+フロー ログをダウンロードするには、**[構成済みのストレージ アカウントからフローのログをダウンロードできました。]** を選択します。 ストレージ アカウント ビューが表示され、ダウンロードするログを選択できます。
 
-![フローのログ設定][4]
+![フロー ログ設定][4]
 
 ### <a name="step-2"></a>手順 2.
 
-適切なストレージ アカウントに移動し、**[コンテナー]** > **[insights-log-networksecuritygroupflowevent]** をクリックします。
+適切なストレージ アカウントに移動します。 次に、**[コンテナー]** > **[insights-log-networksecuritygroupflowevent]** の順にクリックします。
 
-![フローのログ設定][5]
+![フロー ログ設定][5]
 
 ### <a name="step-3"></a>手順 3.
 
-フローのログの場所にドリルダウンし、フローのログを選択して **[ダウンロード]** をクリックします。
+フロー ログの場所に移動し、フロー ログを選択して **[ダウンロード]** を選択します。
 
-![フローのログ設定][6]
+![フロー ログ設定][6]
 
-ログの構造については、[ネットワーク セキュリティ グループのフローのログの概要](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
+ログの構造については、[ネットワーク セキュリティ グループのフロー ログの概要](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[PowerBI を使用して、NSG フロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-power-bi.md)方法を確認する
+[Power BI を使用して、NSG フロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-power-bi.md)方法を確認します。
 
 <!-- Image references -->
 [1]: ./media/network-watcher-nsg-flow-logging-portal/figure1.png
@@ -102,3 +110,4 @@ Network Watcher インスタンスに移動し、**[フローのログ]** を選
 [5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
 [6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
 [providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png
+

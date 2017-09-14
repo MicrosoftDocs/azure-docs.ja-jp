@@ -4,23 +4,23 @@ description: "ポータルで Azure App Service の新しい関数アプリを�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 
 ms.service: functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: f9f1b95ade5f397fa1a3bcdc4165c81c1c9628c0
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 85a88c537415cd6f2b6bc005cc18e3baaa29e9a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から関数アプリを作成する
@@ -52,7 +52,7 @@ App Service で関数アプリを作成するときに、BLOB、キュー、お�
 >[!NOTE]
 >従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
-ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要に関する記事](../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
+ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

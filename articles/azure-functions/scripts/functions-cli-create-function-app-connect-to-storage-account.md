@@ -4,7 +4,7 @@ description: "Azure CLI スクリプトのサンプル - Azure Storage に接続
 services: functions
 documentationcenter: functions
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: functions
 ms.assetid: 
@@ -17,21 +17,21 @@ ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 3925c1a3d2c5a9fc3a82e8823dbdeffabeb38a3a
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 36dbc2c181c9991a27163e3194800f63c6c0e01e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="integrate-function-app-into-azure-storage-account"></a>Function App を Azure Storage アカウントに統合する
 
 このサンプル スクリプトでは、Function App とストレージ アカウントを作成します。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

@@ -1,11 +1,11 @@
 ---
 title: "Azure Logic Apps と統合される関数を作成する | Microsoft Docs"
-description: "Azure サービスを使用してツイートのセンチメントを分類する関数を作成します。"
+description: "Azure Logic Apps および Azure Cognitive Services と統合し、ツイートのセンチメントを分類して、センチメントが良くない場合に通知を送信する関数を作成します。"
 services: functions, logic-apps, cognitive-services
 keywords: "ワークフロー, クラウド アプリ, クラウド サービス, ビジネス プロセス, システム統合, エンタープライズ アプリケーション統合, EAI"
 documentationcenter: 
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: functions
@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
-ms.author: glenga, riande
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: b8bf047be9796935ce815f4d803e229c7208ade5
+ms.date: 05/15/2017
+ms.author: glenga
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 4a5dc668e21c5328b308c8f5852aaa922232374d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -52,7 +53,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 Cognitive Services アカウントは、監視対象のツイートのセンチメントを検出するために必要となります。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 2. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
 
@@ -111,7 +112,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
     ```
     この関数コードは、要求で受信したセンチメント スコアに基づいて、色のカテゴリを返します。 
 
-3. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。 **[要求本文]** に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
+3. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。**[要求本文]** に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
 
     ![Azure Portal で関数をテストする](./media/functions-twitter-email/test.png)
 

@@ -3,8 +3,8 @@ title: "Xamarin Android アプリに Azure Mobile Apps を使用する"
 description: "次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します"
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
-ms.lasthandoff: 01/20/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 6b41fd8090dd771fc40769c134bad258b3d4bd36
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
@@ -39,11 +39,6 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 * アクティブな Azure アカウント。 アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手してください。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx) 」をご覧ください。
 
-> [!NOTE]
-> サインアップして Azure アカウントを得る前に Azure App Service を実際に使ってみるには、[App Service の試用](https://azure.microsoft.com/try/app-service/mobile/)に関するページをご覧ください。  App Service で短時間有効な簡易版の Mobile App をすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
-
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure モバイル アプリ バックエンドの作成
 モバイル アプリ バックエンドを作成するには、次の手順に従います。
 
@@ -56,19 +51,19 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 
 ## <a name="download-and-run-the-xamarinandroid-app"></a>Xamarin.Android アプリのダウンロードと実行
 1. **[Download and run your Xamarin.Android project (Xamarin.Android プロジェクトをダウンロードして実行する)]** の **[ダウンロード]** ボタンをクリックします。
-   
+
       圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 2. **F5** キーを押してプロジェクトをビルドし、アプリケーションを開始します。
 3. アプリで、意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[追加]** ボタンをクリックします。
-   
+
     ![][10]
-   
+
     要求のデータは TodoItem テーブルに挿入されます。 テーブルに格納された項目がモバイル アプリ バックエンドによって返され、データが一覧に表示されます。
-   
+
    > [!NOTE]
    > モバイル アプリ バックエンドにアクセスしてデータのクエリと挿入を行うコードを確認できます (ToDoActivity.cs C# ファイルにあります)。
-   > 
-   > 
+   >
+   >
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリへのオフライン同期の追加](app-service-mobile-xamarin-android-get-started-offline-data.md)

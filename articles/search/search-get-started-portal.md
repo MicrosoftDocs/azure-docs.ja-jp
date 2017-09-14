@@ -1,5 +1,5 @@
 ---
-title: "ポータルで初めて Azure Search インデックスを作成する | Microsoft Docs"
+title: "チュートリアル: ポータルで初めて Azure Search インデックスを作成する | Microsoft Docs"
 description: "Azure Portal で、定義済みのサンプル データを使用してインデックスを生成します。 フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索などについて確認します。"
 services: search
 documentationcenter: 
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 05/01/2017
+ms.date: 06/26/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c49989058fdd98d623c5517060f725e5f7e436d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="build-and-query-your-first-azure-search-index-in-the-portal"></a>ポータルで初めて Azure Search インデックスを作成してクエリを実行する
+# <a name="tutorial-create-your-first-azure-search-index-in-the-portal"></a>チュートリアル: ポータルで初めて Azure Search インデックスを作成する
 
 Azure Portal で、**データのインポート** ウィザードを使用して、定義済みのサンプル データセットからインデックスをすばやく生成します。 **Search エクスプローラー**を使用して、フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索について確認します。  
 

@@ -1,5 +1,5 @@
 ---
-title: "Data Factory を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+title: "Data Factory を使用して オンデマンドの Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
 description: "Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 07/20/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 8bdbe30bb435f06ba206bfde81b238fe7dcf544c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e68f1d72965d9516e0552c84d03d234c21739390
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
@@ -176,7 +175,7 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-この PowerShell スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)」を参照してください。 Azure CLI を代わりに使用する場合は、Azure CLI スクリプトの「[付録](#appendix)」セクションを参照してください。
+この PowerShell スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md)」を参照してください。 Azure CLI を代わりに使用する場合は、Azure CLI スクリプトの「[付録](#appendix)」セクションを参照してください。
 
 **ストレージ アカウントとその内容を確認するには**
 
@@ -313,12 +312,12 @@ HDInsight のオンデマンドのリンクされたサービスの定義で、�
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "osType": "linux",
-            "version": "3.2",
+            "version": "3.5",
             "clusterSize": 1,
+            "timeToLive": "00:05:00",
+            "osType": "Linux",
             "sshUserName": "myuser",                            
             "sshPassword": "MyPassword!",
-            "timeToLive": "00:30:00",
             "linkedServiceName": "[variables('storageLinkedServiceName')]"
         }
     }
@@ -551,12 +550,12 @@ Azure Data Factory では、出力データセットの可用性によってパ�
         "properties": {
             "type": "HDInsightOnDemand",
             "typeProperties": {
-                "osType": "linux",
-                "version": "3.2",
+                "version": "3.5",
                 "clusterSize": 1,
+                "timeToLive": "00:05:00",
+                "osType": "Linux",
                 "sshUserName": "myuser",                            
                 "sshPassword": "MyPassword!",
-                "timeToLive": "00:30:00",
                 "linkedServiceName": "[variables('storageLinkedServiceName')]",
                 "additionalLinkedServiceNames": "[variables('defaultStorageLinkedServiceName')]"
             }
@@ -596,5 +595,5 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted"
 ```
 
-コンテナー名は *adfgetstarted*です。 この名前はそのままにしておいてください。 そうしないと、Resource Manager テンプレートの更新が必要になります。 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/storage-azure-cli.md)」を参照してください。
+コンテナー名は *adfgetstarted*です。 この名前はそのままにしておいてください。 そうしないと、Resource Manager テンプレートの更新が必要になります。 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/common/storage-azure-cli.md)」を参照してください。
 

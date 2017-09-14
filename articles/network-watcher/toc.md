@@ -7,6 +7,7 @@
 ## [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 ## [次ホップ](network-watcher-next-hop-overview.md)
 ## [VPN 接続のトラブルシューティング](network-watcher-troubleshoot-overview.md)
+## [接続のチェック](network-watcher-connectivity-overview.md)
 ## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 # 作業の開始
 ## [Network Watcher の構成](network-watcher-create.md)
@@ -44,6 +45,11 @@
 ### [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
 ### [CLI 2.0](network-watcher-security-group-view-cli.md)
 ### [REST ()](network-watcher-security-group-view-rest.md)
+## 接続をテストする
+### [ポータル](network-watcher-connectivity-portal.md)
+### [PowerShell](network-watcher-connectivity-powershell.md)
+### [CLI 2.0](network-watcher-connectivity-cli.md)
+### [REST ()](network-watcher-connectivity-rest.md)
 ## NSG フロー ログの構成
 ### [ポータル](network-watcher-nsg-flow-logging-portal.md)
 ### [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
@@ -59,6 +65,7 @@
 ## [オープン ソース ツールを使用してフロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ## [オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する](network-watcher-using-open-source-tools.md)
 ## [PowerShell を使用してネットワークのコンプライアンスと監査を実行する](network-watcher-nsg-auditing-powershell.md)
+## [NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)
 ## [オープン ソース ツールを使用して不正侵入検出を実行する](network-watcher-intrusion-detection-open-source-tools.md)
 ## [Azure Log Analytics で Application Gateway のログを分析する](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 # リファレンス
@@ -70,8 +77,9 @@
 ## [仮想マシン](/azure/virtual-machines/)
 ## [VPN Gateway](/azure/vpn-gateway/)
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/network-watcher/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/network-watcher)
+## [料金](https://azure.microsoft.com/pricing/details/network-watcher/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=network-watcher)
+## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/network-watcher)

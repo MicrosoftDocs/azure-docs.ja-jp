@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: c7fb1c796556baf09a34c4bc6ed71964071d5874
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 90d55bbac6e113d6add848ace67cf0749e26342b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -38,7 +38,7 @@ Azure クラシック ポータルの [スケール] ページでは、Web ロ�
 
     ロール インスタンスが大きいと、使用するコアも多くなります。 アプリケーションの規模の設定は、サブスクリプションのコア数の制限内でのみ行うことができます。 たとえば、サブスクリプションのコア数が 20 に制限されているとします。 アプリケーションを 2 つの中規模のクラウド サービスで実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスのデプロイは残りの 16 コアまでしかスケールアップできません。 サイズの詳細については、「[Cloud Service のサイズ](cloud-services-sizes-specs.md)」を参照してください。
 
-* メッセージのしきい値に基づいてアプリケーションの規模を設定する前に、キューを作成してロールに関連付ける必要があります。 詳細については、「 [How to use the Queue Storage Service ( Queue Storage サービスの使用方法)](../storage/storage-dotnet-how-to-use-queues.md)」を参照してください。
+* メッセージのしきい値に基づいてアプリケーションの規模を設定する前に、キューを作成してロールに関連付ける必要があります。 詳細については、「 [How to use the Queue Storage Service ( Queue Storage サービスの使用方法)](../storage/queues/storage-dotnet-how-to-use-queues.md)」を参照してください。
 
 * クラウド サービスにリンクされたリソースの規模を設定できます。 リソースのリンクの詳細については、「 [方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)」を参照してください。
 

@@ -48,6 +48,7 @@
 ### [Azure Load Balancer のトラブルシューティング](load-balancer-troubleshoot.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)
 ## [PowerShell](/powershell/module/azurerm.network)
 ## [Azure CLI 2.0](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
@@ -67,5 +68,7 @@
 ## [DNS](/azure/dns/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [料金](https://azure.microsoft.com/pricing/details/load-balancer/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=load-balancer)

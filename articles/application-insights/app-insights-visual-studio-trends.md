@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: c0c1eb80685d18794bcae7acaa16b777ff21b3e6
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析

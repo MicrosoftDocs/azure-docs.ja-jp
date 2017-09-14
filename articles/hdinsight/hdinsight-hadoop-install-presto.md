@@ -12,14 +12,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 406ef84e72d253fec51a0b37c48f326dafd511b6
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fb5e500b922522e4cdfa7dd07b5233688b916b3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/18/2017
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 > 
-> Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 > 
 > 
 
@@ -113,11 +112,11 @@ ms.lasthandoff: 05/18/2017
     出力は次のように表示されます。
 
         {
-              "coordinator_address" : [ {
+            "coordinator_address" : [ {
                 "value" : "10.0.0.12:9090",
                 "level" : "application",
                 "updatedTime" : "Mon Apr 03 20:13:41 UTC 2017"
-          } ]
+        } ]
 
 3. 出力の **value** プロパティの値をメモに記録します。 この値は、Airpal をクラスターのエッジ ノードにインストールするときに必要になります。 上記の出力の場合、必要な値は **10.0.0.12:9090** です。
 

@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 7679aa86aa24396d9cd7cf84a8cafe7950ad6d62
-ms.lasthandoff: 04/20/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -75,7 +76,7 @@ ms.lasthandoff: 04/20/2017
 - **ストレージ アカウントの共有アクセス署名接続文字列**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共有アクセス署名には、コンテナ (ここではテーブル) とオブジェクト (テーブルの行) の一覧と読み取りアクセス許可が必要です。
 -  **テーブルの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共有アクセス署名には、テーブルに対するクエリ (読み取り) アクセス許可が必要です。
 
-ストレージの共有アクセス署名の詳細については、「[Shared Access Signature (SAS) の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+ストレージの共有アクセス署名の詳細については、「[Shared Access Signature (SAS) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 > [!NOTE]
 > 共有アクセス署名の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 共有アクセス署名の資格情報の有効期限が切れた場合、インデクサーは失敗し、「接続文字列で指定された資格情報が無効か期限が切れています」のようなエラー メッセージが表示されます。  

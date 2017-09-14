@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: d66489b43e983f313028a846d2b7da1534c86b53
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 1032c4e7d378016e36c92efa9478be72e9a557c4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
@@ -53,13 +52,13 @@ VNet を使用して次のことが行えます。
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>VNet を作成するのには、どのようなツールを使用でしょうか。
 次のツールを使用して、VNet を作成または構成できます。
 
-* Azure ポータル (クラシックおよび Resource Manager VNet)。
+* Azure Portal (クラシックおよび Resource Manager VNet)。
 * ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。 「[Configure a VNet using a network configuration file (ネットワーク構成ファイルを使用した VNet の構成)](virtual-networks-using-network-configuration-file.md)」を参照してください。
 * PowerShell (クラシックおよび Resource Manager VNet)。
 * Azure CLI (クラシックおよび Resource Manager VNet)。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNet でどのアドレス範囲が使用できるでしょうか。
-パブリック IP アドレスの範囲を使用して、任意の IP アドレス範囲で定義されている [RFC 1918](http://tools.ietf.org/html/rfc1918)です。
+[RFC 1918](http://tools.ietf.org/html/rfc1918) で定義されている任意の IP アドレス範囲 (例: 10.0.0.0/16)。
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>VNet 内でパブリック IP アドレスを持つことができますか。
 はい。 パブリック IP アドレス範囲の詳細については、[仮想ネットワークでのパブリック IP アドレス空間](virtual-networks-public-ip-within-vnet.md)に関する記事を参照してください。 パブリック IP アドレスは、インターネットから直接アクセスできません。

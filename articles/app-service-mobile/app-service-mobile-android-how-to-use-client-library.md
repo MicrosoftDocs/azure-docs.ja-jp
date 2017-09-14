@@ -3,8 +3,8 @@ title: "Azure Mobile Apps SDK for Android の使用方法 | Microsoft Docs"
 description: "Azure Mobile Apps SDK for Android の使用方法"
 services: app-service\mobile
 documentationcenter: android
-author: adrianhall
-manager: adrianhall
+author: ggailey777
+manager: syntaxc4
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: adrianha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 2709a67f1586f9c43d5d696909aef8ca945583f8
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4b15d024ca6d5bbafe83d321a64021aecd78c4a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
@@ -1099,7 +1099,7 @@ dependencies {
 
 1. 以下のコードを次のように置換してから、アプリケーションに追加します。
 
-* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。
+* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。
 * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
 * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。

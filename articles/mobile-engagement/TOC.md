@@ -127,17 +127,19 @@
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
 
 # リソース
+## [.NET API サンプル](mobile-engagement-dotnet-sdk-service-api.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サンプルのデモ アプリ](mobile-engagement-demo-apps.md)
+## [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+## [ビデオ & 最新情報](https://azure.microsoft.com/documentation/services/mobile-engagement/)
 ## リリース ノート
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
-### [Windows ユニバーサル アプリ SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
-## [料金](https://azure.microsoft.com/pricing/details/mobile-engagement/)
-## [サンプルのデモ アプリ](mobile-engagement-demo-apps.md)
-## [.NET API サンプル](mobile-engagement-dotnet-sdk-service-api.md)
-## [ビデオ & 最新情報](https://azure.microsoft.com/documentation/services/mobile-engagement/)
-## [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+### [Windows ユニバーサル アプリ SDK](mobile-engagement-windows-store-release-notes.md)
 
 
 

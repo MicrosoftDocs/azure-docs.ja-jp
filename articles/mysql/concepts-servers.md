@@ -8,16 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/06/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 33508edb1b1aee058bff4b186f76d172f11f272f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2556206ac53829fcd6ab92ffe292859349790d7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
-
 このトピックでは、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーとは
@@ -34,6 +33,8 @@ Azure Database for MySQL サーバーの特徴を次に示します。
 - サーバーおよびデータベース アクセスの接続エンドポイントを提供します。
 - データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
 - 複数のバージョンで使用できます。 詳細については、[サポートされる Azure Database for MySQL データベース バージョン](./concepts-supported-versions.md)に関するページをご覧ください。
+
+Azure Database for MySQL サーバー内には 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、コンピューティング ユニット、ストレージ (GB) の構成に基づき、サービスごとに構造化されています。 詳細については、「[価格レベル](./concepts-service-tiers.md)」をご覧ください。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーへの接続および認証方法
 

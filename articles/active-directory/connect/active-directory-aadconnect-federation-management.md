@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/4/2016
-ms.author: anandy
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 2a64405c0862d09dd487d260a651123eafbcaf99
-ms.lasthandoff: 04/10/2017
-
+ms.date: 07/18/2017
+ms.author: billmath
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 14f03542a6553c5bb697192828368ffe6b96441c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
@@ -173,9 +173,12 @@ Azure AD Connect を使用すると、Azure AD とのフェデレーションを
 
     ドメインを選択すると、ウィザードによって今後実行されるアクションと構成の影響に関する適切な情報が表示されます。 Azure AD でまだ確認されていないドメインを選択すると、ドメインの確認に役立つ情報が表示される場合もあります。 詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-add-domain.md) 」を参照してください。
 
-5. **[次へ]**をクリックします。 **[構成の準備完了]** ページに、Azure AD Connect によって実行されるアクションの一覧が表示されます。 **[インストール]** をクリックして構成を終了します。
+5. **[次へ]** をクリックします。 **[構成の準備完了]** ページに、Azure AD Connect によって実行されるアクションの一覧が表示されます。 **[インストール]** をクリックして構成を終了します。
 
-   ![[構成の準備完了]](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
+   ![構成の準備完了](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
+
+> [!NOTE]
+> 追加したフェデレーション ドメインのユーザーは、同期後に Azure AD にログインできるようになります。
 
 ## <a name="ad-fs-customization"></a>AD FS のカスタマイズ
 以下のセクションでは、AD FS サインイン ページをカスタマイズする際に必要になる可能性のある一般的なタスクについて詳しく説明します。

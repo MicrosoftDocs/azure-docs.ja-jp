@@ -12,13 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: support-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: required
-ms.date: 01/10/2017
+ms.date: 06/13/2017
 ms.devlang: na
 ms.author: delhan
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 95b12674f3e7d3d63421be6098c72d87cab562b6
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 7fe0636366c60d4679cfc69bd96cd532695b080e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -83,6 +84,6 @@ VM サイズを小さくできない場合は、次の手順に従います。
 既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられていない場合は、既存のクラウド サービス内の VM を削除し、ディスクから新しいクラウド サービスに VM を再作成する必要があります。 ただし、新しいクラウド サービスには新しい名前と VIP が割り当てられるので、既存のクラウド サービスでこれらの情報を現在使用しているすべての依存関係について、情報を更新する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
+Azure で Windows VM を作成するときに問題が発生する場合は、[Azure での Windows 仮想マシンの作成に関するデプロイの問題のトラブルシューティング](../troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
 
 

@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 02688f62101fe2ee602badc08feba02fa3e86e26
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 7963a07a2b9d529e89302f32e5ffd56c51687ffa
 ms.contentlocale: ja-jp
 
 
@@ -25,8 +25,8 @@ ms.contentlocale: ja-jp
 
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library (MSAL) を使用して Microsoft Graph API のトークンを取得する
 
-1.    `MainActivity` を開きます (`app` > `java` > `{domain}.{appname}` の順に選択します)。
-2.    次のインポートを追加します。
+1.  `MainActivity` を開きます (`app` > `java` > `{domain}.{appname}` の順に選択します)。
+2.  次のインポートを追加します。
 
 ```java
 import android.app.Activity;
@@ -248,18 +248,18 @@ public class MainActivity extends AppCompatActivity {
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 #### <a name="getting-a-user-token-interactive"></a>ユーザー トークンを対話形式で取得する
-`AcquireTokenAsync` メソッドを呼び出すことで、ユーザーにサインインを求めるウィンドウを表示します。 アプリケーションは通常、ユーザーが保護されたリソースに初めてアクセスするとき、または自動でのトークンの取得に失敗したとき (ユーザーのパスワードが期限切れになっている場合など) に、対話形式でユーザーにサインインを求めます。
+`AcquireTokenAsync` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 アプリケーションは通常、ユーザーが保護されたリソースに初めてアクセスするとき、または自動でのトークンの取得に失敗したとき (ユーザーのパスワードが期限切れになっている場合など) に、対話形式でユーザーにサインインを求めます。
 
 #### <a name="getting-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 `AcquireTokenSilentAsync` は、ユーザーの操作なしでトークンの取得や更新を行います。 最初に `AcquireTokenAsync` が実行されたあと、`AcquireTokenSilentAsync` メソッドは通常、保護されたリソースにアクセスするトークンを取得するために使用します。トークンを要求したり更新したりする後続の呼び出しは自動で行われます。
-ユーザーがサインアウトした場合や、別のデバイスでパスワードを変更した場合などには、`AcquireTokenSilentAsync` は最終的に失敗します。 MSAL は、この問題がユーザーの操作によって解決されたことを検知した場合、`MsalUiRequiredException` を実行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
+ユーザーがサインアウトした場合や、別のデバイスでパスワードを変更した場合などには、`AcquireTokenSilentAsync` は最終的に失敗します。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-1.    すぐに `AcquireTokenAsync` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常この方法で処理します。 このガイドのセットアップで生成されたサンプルではこの方法を使用します。サンプルを最初に実行するときは、まだ誰もそのアプリケーションを使用していない状態であるため、サインインを求めるウィンドウが表示されます。`PublicClientApp.Users.FirstOrDefault` は null 値を含み、`MsalUiRequiredException` 例外がスローされます。 サンプルのコードでは、ユーザーのサインインを求める `AcquireTokenAsync` を呼び出すことで、この例外を処理します。
-2.    ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `AcquireTokenSilentAsync` を再試行できるようにする。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、中断せずにアプリケーションの機能にアクセスできる場合は、通常この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `AcquireTokenSilentAsync` を再試行できます。
+1.  すぐに `AcquireTokenAsync` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイドのセットアップで生成されたサンプルではこの方法を使用します。サンプルを最初に実行するときは、まだ誰もそのアプリケーションを使用していない状態であるため、サインインを求めるウィンドウが表示されます。`PublicClientApp.Users.FirstOrDefault` は null 値を含み、`MsalUiRequiredException` 例外がスローされます。 サンプルのコードでは、ユーザーのサインインを求める `AcquireTokenAsync` を呼び出すことで、この例外を処理します。
+2.  ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `AcquireTokenSilentAsync` を再試行できるようにする。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、中断せずにアプリケーションの機能にアクセスできる場合は、通常この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `AcquireTokenSilentAsync` を再試行できます。
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>取得したトークンを使用して Microsoft Graph API を呼び出す
-1.    次のメソッドを `MainActivity` クラスに追加します。
+1.  次のメソッドを `MainActivity` クラスに追加します。
 
 ```java
 /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
@@ -323,7 +323,7 @@ private void updateGraphUI(JSONObject graphResponse) {
 
 ## <a name="setup-sign-out"></a>サインアウトのセットアップ
 
-1.    次のメソッドを `MainActivity` クラスに追加します。
+1.  次のメソッドを `MainActivity` クラスに追加します。
 
 ```java
 /* Clears a user's tokens from the cache.

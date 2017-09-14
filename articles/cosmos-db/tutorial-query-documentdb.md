@@ -11,7 +11,7 @@ ms.assetid:
 ms.service: cosmos-db
 ms.custom: tutorial-develop
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/01/2017
-
 
 ---
 

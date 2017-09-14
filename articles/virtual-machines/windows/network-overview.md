@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: cda53c43d4524ddcc8139f60f6b605a1f26c2658
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 
@@ -97,7 +97,7 @@ VNet を設定するときに、使用できるアドレス空間やサブネッ
 
 既定ではサブネット間にセキュリティ境界がないため、各サブネットの VM は互いに通信できます。 ただし、ネットワーク セキュリティ グループ (NSG) を設定して、サブネット間と VM 間のトラフィック フローを制御できます。 
 
-次の表に、VNet とサブネットの作成に使用できる方法の一覧を示します。    
+次の表に、VNet とサブネットの作成に使用できる方法の一覧を示します。 
 
 | メソッド | 説明 |
 | ------ | ----------- |

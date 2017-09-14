@@ -4,7 +4,7 @@ description: "Azure 共同管理者、サービス管理者、アカウント管
 services: 
 documentationcenter: 
 author: genlin
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 07/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6d438cde704323a07cc125eb75d08cb64b2432ec
-ms.openlocfilehash: 00b71701c4c114007e2d9a6d23f20b3df5fb2534
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: da5995535d42ed52772cb09e0f4da51bbf878748
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/21/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する
@@ -38,16 +37,22 @@ Azure Portal でユーザーをサブスクリプションの管理者として�
 
     ![選択されたサブスクリプションのスクリーンショット](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
-3. サブスクリプション ブレードで、**[アクセス制御 (IAM)]** > **[追加]** の順に選択します。
+3. サブスクリプション ブレードで、**[アクセス制御 (IAM)]** を選択します。
+4. **[追加]** > **[ロール]** > **[所有者]** の順に選択します。 所有者として追加するユーザーの電子メール アドレスを入力し、ユーザーを選択し、**[保存]** を選択します。
 
-    ![選択された [追加] ボタンを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. **[役割を選択]** > **[所有者]** の順に選択します。
+    ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-    ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
+5. **[アクセス制御 (IAM)]** ページで共同管理者として所有者アカウントを追加する場合、ユーザーを右クリックし、**[共同管理者として管理する]** を選択します。 この機能は現在、[Azure プレビュー ポータル](https://preview.portal.azure.com/)でご利用いただけます。 
 
-5. 所有者として追加するユーザーの電子メール アドレスを入力し、ユーザーをクリックしてから、 **[選択]**をクリックします。
+     ![共同管理者追加のスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
-    ![追加されて選択されたユーザーのメール アドレスを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
+    >[!TIP]
+    >ユーザーが [Azure クラシック ポータル](https://manage.windowsazure.com/)で Azure サービスを管理する必要がある場合、"所有者" ユーザーを共同管理者として追加する必要があります。
+
+    共同管理者のアクセス許可を削除するには、"共同管理者" をクリックし、**[共同管理者を削除する]** を選択します。
+
+    ![共同管理者削除のスクリーンショット](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
 
 **Azure クラシック ポータル**
 
@@ -68,14 +73,12 @@ Azure Portal でユーザーをサブスクリプションの管理者として�
 
     user@&lt;ドメイン&gt;.onmicrosoft.com
 
-
-
 ## <a name="change-service-administrator-for-a-subscription"></a>サブスクリプションのサービス管理者を変更する
 サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。
 
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
 2. 変更するサブスクリプションを選択します。
-3. 右側にある **[サブスクリプション詳細の編集]** をクリックします。 </br>
+3. 右側にある **[サブスクリプション詳細の編集]** を選択します。 </br>
 
     ![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
 4. **[サービス管理者]** ボックスに、新しいサービス管理者の電子メール アドレスを入力します。 </br>
@@ -109,13 +112,13 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) では�
 ## <a name="limitations-and-restrictions-for-admin-accounts"></a>管理者アカウントの制限事項および制約事項
 * 各サブスクリプションは Azure AD ディレクトリ (既定のディレクトリとも呼ばれます) と関連付けられます。 サブスクリプションが関連付けられている既定のディレクトリを探すには、[Azure クラシック ポータル](https://manage.windowsazure.com/)にアクセスし、**[設定]** > **[サブスクリプション]** の順に選択します。 サブスクリプション ID をチェックして既定のディレクトリを見つけてください。
 * Microsoft アカウントを使用してサインインした場合、他の Microsoft アカウントまたは既定のディレクトリ内のユーザーを共同管理者として追加することしかできません。
-* 組織アカウントを使用してサインインした場合、組織内の他の組織アカウントを共同管理者として追加することができます。 たとえば、abby@contoso.com はサービス管理者または共同管理者として bob@contoso.com を追加できますが、john@noncontoso.com が既定のディレクトリ内にない限り john@notcontoso.com は追加できません。 組織アカウントでサインインしているユーザーは、Microsoft アカウント ユーザーをサービス管理者または共同管理者として引き続き追加できます。
+* 組織アカウントを使用してサインインした場合、組織内の他の組織アカウントを共同管理者として追加することができます。 たとえば、abby@contoso.com はサービス管理者または共同管理者として bob@contoso.com を追加できますが、john@notcontoso.com が既定のディレクトリ内にない限り john@notcontoso.com は追加できません。 組織アカウントでサインインしているユーザーは、Microsoft アカウント ユーザーをサービス管理者または共同管理者として引き続き追加できます。
 * 組織アカウントで Azure にサインインできるようになると、サービス管理者と共同管理者アカウントの要件は次のように変わります。
 
   | サインイン方法 | Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる | 同じ組織内の組織アカウントを CA または SA として追加できる | 異なる組織内の組織アカウントを CA または SA として追加できる |
   | --- | --- | --- | --- |
-  |  Microsoft アカウント |はい |いいえ |いいえ |
-  |  組織アカウント |はい |はい |いいえ |
+  |  Microsoft アカウント |はい |なし |いいえ |
+  |  組織アカウント |はい |あり |いいえ |
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>リソースのアクセス制御と Active Directory の詳細
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](../active-directory/active-directory-understanding-resource-access.md)」を参照してください。

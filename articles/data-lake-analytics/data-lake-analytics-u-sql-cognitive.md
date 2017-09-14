@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-translationtype: Human Translation
-ms.sourcegitcommit: 21b4d574705d589406f50cac106a47ada71d24cd
-ms.openlocfilehash: 596459e25f8ad072a55ad45a2f444c71b27fd60c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -26,11 +28,11 @@ ms.openlocfilehash: 596459e25f8ad072a55ad45a2f444c71b27fd60c
 U-SQL の Cognitive 機能により、開発者はビッグ データ プログラムにインテリジェンスを配置できます。 全体的なプロセスは簡単です。
 
 * REFERENCE ASSEMBLY ステートメントを使用して U-SQL スクリプトの認識機能を有効にします
-* PROCESS 操作を使用して Cognitive 機能を使用します 
+* PROCESS 操作を呼び出して Cognitive 機能を使用します 
 
 ## <a name="imaging-scenarios"></a>シナリオのイメージング
 
-### <a name="a-simple-example-image-tagging"></a>簡単な例: イメージのタグ付け
+### <a name="example-image-tagging"></a>例: イメージのタグ付け
 
 次の例では、イメージ内のオブジェクトの検出を目的とした、エンド ツー エンドでのイメージング機能の使用が示されます。
 
@@ -150,10 +152,5 @@ Leo Tolstoy の「戦争と平和」で構成される入力があると仮定�
                 Chapter,
                 Text
         USING new Cognition.Text.SentimentAnalyzer(true);
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

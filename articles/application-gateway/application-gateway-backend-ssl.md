@@ -1,5 +1,5 @@
 ---
-title: "Application Gateway での SSL ポリシーとエンド ツー エンド SSL の有効化 | Microsoft Docs"
+title: "Azure Application Gateway でのエンド ツー エンド SSL の有効化 | Microsoft Docs"
 description: "このページでは、Application Gateway によるエンドツーエンド SSL のサポートの概要を示します。"
 documentationcenter: na
 services: application-gateway
@@ -13,16 +13,16 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 04/04/2017
+ms.date: 07/19/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 40368e31790a7ffa2d34a51a13e78d028cd0a1eb
-ms.lasthandoff: 04/05/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="overview-of-end-to-end-ssl-and-ssl-policy-on-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL と SSL ポリシーの概要
+# <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL の概要
 
 アプリケーション ゲートウェイは、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、暗号化されていない通信をバックエンド サーバーで受け入れていない顧客もいます。 このように暗号化されていない通信が発生する原因としては、セキュリティの要件とコンプライアンスの要件が考えられます。また、アプリケーションでセキュリティで保護された接続以外は受け入れられないこともあります。 このようなアプリケーションのために、アプリケーション ゲートウェイでは、エンド ツー エンド SSL 暗号化がサポートされています。
 
@@ -40,17 +40,9 @@ ms.lasthandoff: 04/05/2017
 
 Application Gateway は、既知のバックエンド インスタンスのみと通信します。これらのインスタンスでは、アプリケーション ゲートウェイに関する証明書がホワイトリスト登録されています。 証明書のホワイトリスト登録を有効にするには、(ルート証明書ではなく) バックエンド サーバーの証明書の公開キーをアプリケーション ゲートウェイにアップロードする必要があります。 ホワイトリスト登録された既知のバックエンドへの接続のみが許可され、 それ以外ではゲートウェイ エラーが発生します。 自己署名証明書はテストのみを目的とするため、運用環境のワークロードで使用することはお勧めできません。 このような証明書は、使用する前に、上記の手順で説明したとおりに、アプリケーション ゲートウェイでホワイトリスト登録する必要があります。
 
-## <a name="application-gateway-ssl-policy"></a>Application Gateway の SSL ポリシー
-
-Application Gateway では、ユーザーが構成できる SSL ネゴシエーション ポリシーがサポートされます。このポリシーを使用すると、顧客はアプリケーション ゲートウェイで SSL 接続をより詳細に制御できます。
-
-1. SSL 2.0 および 3.0 は、すべての Application Gateway に対して既定で無効になります。 これらのポリシーを構成することはできません。
-2. SSL ポリシーの定義によって、**TLSv1\_0**、**TLSv1\_1**、**TLSv1\_2** の 3 つのプロトコルのうち任意のものを無効にできます。
-3. SSL ポリシーが定義されていない場合は、3 つすべて (TLSv1\_0、TLSv1\_1、TLSv1_2) が有効になります。
-
 ## <a name="next-steps"></a>次のステップ
 
-エンド ツー エンド SSL と SSL ポリシーについて学習したので、[アプリケーション ゲートウェイでのエンド ツー エンド SSL の有効化](application-gateway-end-to-end-ssl-powershell.md)に進んで、エンド ツー エンド SSL を使用するアプリケーション ゲートウェイを作成します。
+エンド ツー エンド SSL について学習したので、[Application Gateway でのエンド ツー エンド SSL の有効化](application-gateway-end-to-end-ssl-powershell.md)に進んで、エンド ツー エンド SSL を使用する Application Gateway を作成します。
 
 <!--Image references-->
 

@@ -13,13 +13,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/26/2017
+ms.date: 08/31/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 739f7c0fe0cca03d80fa8b4bdadbf93b5da72a73
-ms.lasthandoff: 03/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 7381bacb09d9b530c14b65030db0fc8ab79b0b9a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/27/2017
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
 * として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
-* [Automation アカウント](automation-sec-configure-azure-runas-account.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+* [Automation アカウント](automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 * Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
 
 ## <a name="step-1---create-new-runbook"></a>手順 1 - 新しい Runbook を作成する

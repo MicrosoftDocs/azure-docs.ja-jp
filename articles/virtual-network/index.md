@@ -2,7 +2,7 @@
 title: "Azure Virtual Network のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "クラウド内で仮想ネットワークを使用する方法について説明します。 ドキュメントでは、VNet のデプロイ、VNet を使用したリソースの起動、オンプレミス ネットワークとの統合の方法を紹介します。"
 services: virtual-network
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: d65301d1ca71f62b52c97f1de772a61c33933b8a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/18/2017
 
 ---

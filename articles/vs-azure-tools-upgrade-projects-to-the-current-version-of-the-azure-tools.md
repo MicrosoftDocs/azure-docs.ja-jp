@@ -3,8 +3,8 @@ title: "現行バージョンの Azure Tools にプロジェクトをアップ�
 description: "Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1d64070a-078d-468a-87f4-e6715de6475f
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e346640f6cbf7969bf373b84d8a20a24a74f654e
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
@@ -46,10 +47,5 @@ ms.openlocfilehash: e346640f6cbf7969bf373b84d8a20a24a74f654e
     そのプロジェクトに関連付けられているツールのバージョンが **[アプリケーション]** タブに表示されます。 新しいバージョンの Azure Tools が表示された場合、そのプロジェクトは既にアップグレードされています。 タブに表示されたバージョンよりも新しいツールがインストールされている場合は、 **[アップグレード]** ボタンが表示されます。
 3. **[アップグレード]** ボタンをクリックして、プロジェクトを新しいバージョンのツールにアップグレードします。
 4. プロジェクトをビルドし、API の変更に起因するエラーがあれば解決してください。 新しいバージョンのコードを変更する方法については、特定の API に関するドキュメントを参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

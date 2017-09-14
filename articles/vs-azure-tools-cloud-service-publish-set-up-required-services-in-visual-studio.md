@@ -3,8 +3,8 @@ title: "Visual Studio からの Azure アプリケーションの発行または
 description: "クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: 5d747a7c34b340c6f98dabb2c3ff4d3340e74e4a
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 967501fa8ac4b2471a62afabc18a12a71776eaac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>Visual Studio からの Azure アプリケーションの発行またはデプロイの準備
@@ -46,7 +47,7 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 ### <a name="to-create-a-cloud-service-by-using-the-azure-classic-portal"></a>Azure クラシック ポータル
 1. Microsoft Web サイトの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkId=253103) にサインインします。
 2. (省略可能) 既に作成したクラウド サービスの一覧を表示するには、ページの左側にある [Cloud Services] リンクを選択します。
-3. 左下隅にある **[+]** アイコンを選択し、表示されるメニューで **[クラウド サービス]** を選択します。 **[簡易作成]** と **[カスタム作成]** という&2; つのオプションがある別の画面が表示されます。 **[簡易作成]**を選択した場合、URL と物理的にホストするリージョンを指定するだけで、クラウド サービスを作成できます。 **[カスタム作成]**を選択した場合、パッケージ (.cspkg ファイル)、構成 (.cscfg) ファイル、および証明書を指定することで、クラウド サービスをすぐに発行できます。 Azure プロジェクトの **[発行]** コマンドを使用してクラウド サービスを発行する場合、カスタム作成は必須ではありません。 **[発行]** コマンドは、Azure プロジェクトのショートカット メニューで使用できます。
+3. 左下隅にある **[+]** アイコンを選択し、表示されるメニューで **[クラウド サービス]** を選択します。 **[簡易作成]** と **[カスタム作成]** という 2 つのオプションがある別の画面が表示されます。 **[簡易作成]**を選択した場合、URL と物理的にホストするリージョンを指定するだけで、クラウド サービスを作成できます。 **[カスタム作成]**を選択した場合、パッケージ (.cspkg ファイル)、構成 (.cscfg) ファイル、および証明書を指定することで、クラウド サービスをすぐに発行できます。 Azure プロジェクトの **[発行]** コマンドを使用してクラウド サービスを発行する場合、カスタム作成は必須ではありません。 **[発行]** コマンドは、Azure プロジェクトのショートカット メニューで使用できます。
 4. 後で Visual Studio を使用してクラウド サービスを発行する場合は、 **[簡易作成]** を選択します。
 5. クラウド サービスの名前を指定します。 名前の隣に完全な URL が表示されます。
 6. 一覧で、ユーザーが主に配置されているリージョンを選択します。
@@ -86,7 +87,7 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 >
 
 ## <a name="configure-your-app-to-use-services-provided-by-the-storage-account"></a>ストレージ アカウントによって提供されるサービスを使用するようアプリケーションを構成する
-作成した Azure Storage サービスを使用するには、Storage サービスにアクセスするロールを構成する必要があります。 これを行うために、Azure プロジェクトの複数のサービス構成を使用できます。 既定では、Azure プロジェクトに&2; つのサービス構成が作成されます。 複数のサービス構成を使用すると、コード内では同じ接続文字列を使用しつつ、各サービス構成で定めた接続文字列に別の値を適用することができます。 たとえば、Azure ストレージ エミュレーターを使用してアプリケーションをローカルで実行およびデバッグするサービス構成と、Azure にアプリケーションを発行する別のサービス構成を使用できます。 サービス構成ファイルの詳細については、「 [複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
+作成した Azure Storage サービスを使用するには、Storage サービスにアクセスするロールを構成する必要があります。 これを行うために、Azure プロジェクトの複数のサービス構成を使用できます。 既定では、Azure プロジェクトに 2 つのサービス構成が作成されます。 複数のサービス構成を使用すると、コード内では同じ接続文字列を使用しつつ、各サービス構成で定めた接続文字列に別の値を適用することができます。 たとえば、Azure ストレージ エミュレーターを使用してアプリケーションをローカルで実行およびデバッグするサービス構成と、Azure にアプリケーションを発行する別のサービス構成を使用できます。 サービス構成ファイルの詳細については、「 [複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
 
 ### <a name="to-configure-your-application-to-use-services-that-the-storage-account-provides"></a>ストレージ アカウントが提供するサービスを使用するようアプリケーションを構成するには
 1. Visual Studio で Azure ソリューションを開きます。 ソリューション エクスプローラーで、ストレージ サービスにアクセスする Azure プロジェクトの各ロールのショートカット メニューを開き、 **[プロパティ]**をクリックします。 ロールの名前のページが、Visual Studio エディターに表示されます。 ページには、 **[構成]** タブのフィールドが表示されます。
@@ -116,16 +117,11 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
        * **[カスタム エンドポイントを指定する]**。これは、3 つのサービスそれぞれに対してエンドポイントを指定するときに使用します。 このオプションを選択すると、特定のサービスのフィールドにエンドポイントを入力できます。
 
          > [!NOTE]
-         > カスタム エンドポイントを作成する場合は、より複雑な接続文字列を作成できます。 この文字列形式を使用する場合は、ストレージ アカウント用に BLOB サービスに登録したカスタム ドメイン名を含むストレージ サービス　エンドポイントを指定できます。 また、Shared Access Signature を介して単一コンテナーの BLOB リソースにのみアクセスを許可できます。 カスタム エンドポイントの作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage/storage-configure-connection-string.md)」を参照してください。
+         > カスタム エンドポイントを作成する場合は、より複雑な接続文字列を作成できます。 この文字列形式を使用する場合は、ストレージ アカウント用に BLOB サービスに登録したカスタム ドメイン名を含むストレージ サービス　エンドポイントを指定できます。 また、Shared Access Signature を介して単一コンテナーの BLOB リソースにのみアクセスを許可できます。 カスタム エンドポイントの作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage/common/storage-configure-connection-string.md)」を参照してください。
          >
          >
 11. これらの接続文字列の変更を保存するには、**[OK]** をクリックし、ツール バーの **[保存]** ボタンをクリックします。 これらの変更を保存すると、 [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx)を使用して、コード内のこの接続文字列の値を取得できるようになります。 Azure にアプリケーションを発行するときに、接続文字列用の Azure ストレージ アカウントを含むサービス構成を選択します。 アプリケーションを発行した後、アプリケーションが Azure Storage サービスに対して期待どおりに動作することを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 Visural Studio からの Azure へのアプリ発行の詳細については、「 [Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

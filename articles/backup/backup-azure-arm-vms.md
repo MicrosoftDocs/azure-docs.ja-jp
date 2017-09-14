@@ -13,14 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/15/2017
+ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
 ms.openlocfilehash: 72f1ed52c9e0f39009efc54967d7cc68517182a3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
-
 
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ

@@ -1,21 +1,19 @@
 ---
-title: "Azure Key Vault 開発者ガイド | Microsoft Docs"
+title: "Azure Key Vault 開発者ガイド"
 description: "開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。"
 services: key-vault
-documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 08/04/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: b046e95e2167009727f6ea8f3dd237619c61434f
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 115862aca98926e354e4703f86cb4a7e1d1f72a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
@@ -29,14 +27,18 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
 
-## <a name="public-preview---may-10-2017"></a>パブリック プレビュー - 2017 年 5 月 10 日
+## <a name="public-previews"></a>パブリック プレビュー
+
+Key Vault の新機能のパブリック プレビューは定期的にリリースされます。 ぜひお試しいただき、azurekeyvault@microsoft.com (フィードバック用のメール アドレス) までご意見をお寄せください。
+
+### <a name="storage-account-keys---july-10-2017"></a>ストレージ アカウント キー - 2017 年 7 月 10 日
 
 >[!NOTE]
->この Azure Key Vault のプレビュー バージョンでは、**論理的な削除**機能のみがプレビュー段階です。 全体としては、Azure Key Vault は完全な運用サービスです。
+>Azure Key Vault のこのアップデートでは、**ストレージ アカウント キー**機能のみがプレビュー段階です。
 
-このプレビューでは、新しい論理的な削除機能や、Key Vault と Key Vault オブジェクトの回復可能な削除を利用できるほか、開発者向けのインターフェイス、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、および [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) が更新されています。 
+このプレビューには、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) の各インターフェイスで使用できる新しいストレージ アカウント キー機能が用意されています。 
 
-新しい論理的な削除機能の詳細については、「[Azure Key Vault soft delete overview (Azure Key Vault の論理的な削除の概要)](key-vault-ovw-soft-delete.md)」を参照してください。
+新しいストレージ アカウント キー機能について詳しくは、[Azure Key Vault ストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関する記事をご覧ください。
 
 ## <a name="videos"></a>ビデオ
 
@@ -63,7 +65,7 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 
 ## <a name="coding-with-key-vault"></a>Key Vault を使用したコーディング
 
-プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています。 REST インターフェイスを介して Key Vault リソースのすべて (キー、シークレット、証明書) にアクセスできます。 [Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
+プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています。 REST インターフェイスを使用すると、すべてのキー コンテナー リソース (キー、シークレット、証明書) にアクセスできます。 [Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
 
 ### <a name="supported-programming-languages"></a>サポートされるプログラミング言語
 
@@ -79,7 +81,9 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 
 #### <a name="nodejs"></a>Node.js
 
-- [Key Vault Managment の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
+Node.js では、コンテナー管理 API とコンテナー オブジェクト API は別々になっています。 Key Vault Management では、キー コンテナーの作成と更新が行えます。 Key Vault Operations API は、キーやシークレット、証明書といったコンテナー オブジェクトを使用するためのものです。 
+
+- [Key Vault Management の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
 - [Key Vault Operations の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest/) 
 
 ### <a name="quick-start"></a>クイック スタート
@@ -107,8 +111,9 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 - [エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md): Azure Key Vault を使用して、キー ローテーションと監査を設定する方法について説明します。
 - [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
 - [Key Vault にアクセスするためのアクセス許可を多数のアプリケーションに付与する](key-vault-group-permissions-for-apps.md): Key Vault のアクセス制御ポリシーでは、16 のエントリのみをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
-
-Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け Azure Resource Manager テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
+- Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け Azure Resource Manager テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
+- 「[CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
+- 「[How to use Key Vault soft-delete with PowerShell](key-vault-soft-delete-powershell.md)」(PowerShell で Key Vault の論理的な削除を使用する方法) では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
 
 ## <a name="integrated-with-key-vault"></a>Key Vault との統合
 
@@ -120,20 +125,20 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
-- [Key Vault セキュリティ ワールド](key-vault-ovw-security-worlds.md)
-- [Key Vault の論理的な削除](key-vault-ovw-soft-delete.md)
+- [Key Vault の論理的な削除の動作](key-vault-ovw-soft-delete.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
+- [Key Vault のクライアント調整](key-vault-ovw-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
+- [Key Vault のストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関するページでは、Key Vault 統合 Azure ストレージ アカウント キーについて説明します。
+- [Key Vault のセキュリティ ワールド](key-vault-ovw-security-worlds.md)に関するページでは、リージョンとセキュリティ領域の関係について説明します。
 
 ## <a name="social"></a>ソーシャル
 
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-
 ## <a name="supporting-libraries"></a>対応ライブラリ
 
 - [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core): 識別子からキーを検索し、キーを使用して操作を実行する、**IKey** および **IKeyResolver** インターフェイスを提供します。
 - [Microsoft Azure Key Vault Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) : Azure Key Vault の拡張機能を提供します。
 
-## <a name="other-key-vault-resources"></a>その他の Key Vault リソース
 
 

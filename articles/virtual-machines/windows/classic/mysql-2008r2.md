@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 1bfce97dba3cfc371900c0e3c6a93369e768c181
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 11850e5ce20efae88a7af9c1d2e4761ed2b70cd7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Windows Server 2016 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
@@ -37,7 +36,7 @@ Windows Server 2016 を実行している VM がまだない場合は、この[�
 ## <a name="attach-a-data-disk"></a>データ ディスクの接続
 仮想マシンを作成したら、データ ディスクを必要に応じて接続できます。 OS ドライブ (C:) にはオペレーティング システムが含まれており、ここでデータ ディスクを追加するとドライブ容量の不足を回避できるため、運用環境のワークロードで推奨されています。
 
-[データ ディスクを Windows 仮想マシンに接続する方法](../attach-disk-portal.md)に関する記事を参照して、空のディスクを接続する手順に従ってください。 ホストのキャッシュ設定を **[なし]** または **[読み取り専用]** に設定します。
+[データ ディスクを Windows 仮想マシンに接続する方法](../attach-managed-disk-portal.md)に関する記事を参照して、空のディスクを接続する手順に従ってください。 ホストのキャッシュ設定を **[なし]** または **[読み取り専用]** に設定します。
 
 ## <a name="log-on-to-the-virtual-machine"></a>仮想マシンへのログオン
 次に、[仮想マシンにログオン](./connect-logon.md)して MySQL をインストールします。

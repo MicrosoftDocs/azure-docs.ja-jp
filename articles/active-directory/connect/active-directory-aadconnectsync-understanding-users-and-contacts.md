@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi;andkjell
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c5b54c80d9a74d72b242f8d7dd55e2dcadbfa48e
 ms.openlocfilehash: 96d568b6d264fa484e09ee81cdbc779a6f65eb0d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect Sync: ユーザーと連絡先について

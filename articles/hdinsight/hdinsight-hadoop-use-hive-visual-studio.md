@@ -1,6 +1,6 @@
 ---
-title: "Hadoop tools for Visual Studio での Hive クエリ | Microsoft Docs"
-description: "Visual Studio の Hadoop ツールを使用して HDInsight の Hadoop で Hive を使用する方法について説明します。"
+title: "Data Lake (Hadoop) Tools for Visual Studio での Hive - Azure HDInsight | Microsoft Docs"
+description: "Data Lake Tools for Visual Studio を使って Azure HDInsight 上の Apache Hadoop で Apache Hive クエリを実行する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,33 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/28/2017
+ms.date: 07/07/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 125531d8d52d4e27951a9e6cae0c50582c5b110e
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3411c59fee73aa2e26a05d70e1dae11cdfc865ff
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="run-hive-queries-using-the-hdinsight-tools-for-visual-studio"></a>Visual Studio の HDInsight ツールを使用して Hive クエリを実行
+# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Hive クエリを実行する
 
-[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
-
-Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsight クラスターに送信する方法を説明します。
+Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行する方法について説明します。 Data Lake Tools を使うと、Azure HDInsight 上の Hadoop に対する Hive クエリを簡単に作成、送信、および監視できます。
 
 ## <a id="prereq"></a>前提条件
-
-この記事の手順を完了するには、次のものが必要です。
 
 * Azure HDInsight (HDInsight で Hadoop を使用) クラスター
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * 下記のいずれかのバージョンの Visual Studio
 
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate の [アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
+    * Visual Studio 2013 Community/Professional/Premium/Ultimate の Update 4
 
     * Visual Studio 2015 (任意のエディション)
 
@@ -70,7 +66,7 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsig
    * `CREATE EXTERNAL TABLE`: Hive に新しい "外部" テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
      > [!NOTE]
-     > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+     > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、MapReduce ジョブや Azure サービスなどです。
      >
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
@@ -115,7 +111,7 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsig
 
 8. ツール バーで **[送信]** を選択し、ジョブを実行します。 **[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
 
-9. ジョブによって新しいテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で、**[Azure]** > **[HDInsight]** > HDInsight クラスター > **[Hive データベース]** > **[既定]** の順に展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
+9. ジョブによってテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で、**[Azure]** > **[HDInsight]** > 対象の HDInsight クラスター > **[Hive データベース]** > **[既定]** の順に展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
 
 ## <a id="nextsteps"></a>次のステップ
 

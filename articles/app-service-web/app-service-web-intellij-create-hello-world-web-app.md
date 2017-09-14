@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: robmcm;asirveda
-translationtype: Human Translation
+ms.author: robmcm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: 756c9fa079782f8f0cb194ca07c637d083f9ebd7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/15/2017
-
 
 ---
 # <a name="create-a-basic-azure-web-app-in-intellij"></a>IntelliJ での基本的な Azure Web アプリの作成

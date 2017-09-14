@@ -14,10 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
-ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>iOS でエンゲージメント リーチを統合する方法
@@ -33,8 +34,8 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 > [!IMPORTANT]
 > **この回避策はお勧めできません。**この iOS API は推奨されていないため、(マイナー アップグレードも含め) iOS バージョンの今後のアップグレードでこの動作が変更される可能性があります。 できるだけ速やかに XCode 8 に切り替えてください。
-> 
-> 
+>
+>
 
 ### <a name="enable-your-app-to-receive-silent-push-notifications"></a>アプリがサイレント プッシュ通知を受信できるようにする
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
@@ -45,33 +46,33 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 ### <a name="modify-your-application-delegate"></a>アプリケーション デリゲートを変更する
 * 実装ファイルの上部で、Engagement Reach モジュールをインポートします。
-  
+
       [...]
       #import "AEReachModule.h"
 * メソッド `applicationDidFinishLaunching:` または `application:didFinishLaunchingWithOptions:` 内で、reach モジュールを作成し、これを既存の Engagement 初期化行に渡します。
-  
+
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
         [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
         [...]
-  
+
         return YES;
       }
 * 通知アイコンの **'icon.png'** 文字列とイメージ名を変更します。
 * リーチ キャンペーンで、オプションの *Update badge value* を使用する場合、またはネイティブ プッシュの \</SaaS/Reach API/Campaign format/Native Push\> キャンペーンを使用する場合は、Reach モジュールにバッジ アイコン自体を管理させる必要があります (アプリケーションが起動またはフォアグラウンドで実行されるたびに、アプリケーション バッジは自動的にクリアされ、Engagement が格納した値もリセットされます)。 これは、Reach モジュールの初期化後に、次の行を追加することによって行われます。
-  
+
       [reach setAutoBadgeEnabled:YES];
 * Reach データ プッシュを処理する場合は、アプリケーション デリゲートに `AEReachDataPushDelegate` プロトコルを準拠させる必要があります。 Reach モジュールの初期化後に、次の行を追加します。
-  
+
       [reach setDataPushDelegate:self];
 * これにより、メソッド `onDataPushStringReceived:` と `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` をアプリケーション デリゲートに実装できます。
-  
+
       -(BOOL)didReceiveStringDataPushWithCategory:(NSString*)category body:(NSString*)body
       {
          NSLog(@"String data push message with category <%@> received: %@", category, body);
          return YES;
       }
-  
+
       -(BOOL)didReceiveBase64DataPushWithCategory:(NSString*)category decodedBody:(NSData *)decodedBody encodedBody:(NSString *)encodedBody
       {
          NSLog(@"Base64 data push message with category <%@> received: %@", category, encodedBody);
@@ -98,10 +99,10 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 まだ登録していない場合は、プッシュ通知を受信するアプリケーションを登録する必要があります。
 
 * `User Notification` フレームワークをインポートします。
-  
+
         #import <UserNotifications/UserNotifications.h>
 * アプリケーションの起動時に、次の行を追加します (通常は `application:didFinishLaunchingWithOptions:`)。
-  
+
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
@@ -132,21 +133,10 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
         [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
     }
 
-> [!NOTE]
-> 上記のメソッドは、iOS 7 で導入されました。 iOS&7; 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:didReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
-> 
-> 
-
-    - (void)application:(UIApplication*)application
-    didReceiveRemoteNotification:(NSDictionary*)userInfo
-    {
-        [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:nil];
-    }
-
 > [!IMPORTANT]
 > 既定では、エンゲージメント リーチが completionHandler を制御します。 コード内の `handler` ブロックに手動で応答する場合は、`handler` 引数の代わりに nil を渡し、完了ブロックを自分で制御できます。 使用可能な値の一覧については、 `UIBackgroundFetchResult` 型に関するページを参照してください、。
-> 
-> 
+>
+>
 
 ### <a name="full-example"></a>完全な例
 完全な統合の例を次に示します。
@@ -186,9 +176,9 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 *アプリケーションも、いずれかのサードパーティ ライブラリも `UNUserNotificationCenterDelegate` を実装していない場合は、この部分をスキップできます。*
 
-`UNUserNotificationCenter` デリゲートは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在できる `UNUserNotificationCenter` デリゲートは&1; つだけです。 `UNUserNotificationCenter` オブジェクトに追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはサード パーティのデリゲートが検出された場合、SDK によって独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
+`UNUserNotificationCenter` デリゲートは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在できる `UNUserNotificationCenter` デリゲートは 1 つだけです。 `UNUserNotificationCenter` オブジェクトに追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはそれ以外のサード パーティのデリゲートが検出された場合、独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
 
-これを実現する方法は&2; つあります。
+これを実現する方法は 2 つあります。
 
 提案 1: 単に、デリゲート呼び出しを SDK に転送します。
 
@@ -251,14 +241,14 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
-  
+
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         return YES;
       }
 
 ## <a name="how-to-customize-campaigns"></a>キャンペーンをカスタマイズする方法
 ### <a name="notifications"></a>通知
-通知には、システム通知とアプリ内通知の&2; 種類があります。
+通知には、システム通知とアプリ内通知の 2 種類があります。
 
 システム通知は iOS によって処理され、カスタマイズすることはできません。
 
@@ -308,8 +298,8 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 > [!TIP]
 > 指定された `AENotificationView.xib` という名前の nib ファイルをコピーし、そこから作業を開始します。 この nib ファイル内のビューは、クラス `AENotificationView`に関連付けられていることに注意してください。 このクラスは、コンテキストに応じてサブビューを移動し、サイズ変更するようにメソッド `layoutSubViews` を再定義しました。 これを `UIView` や自分のカスタム ビュー クラスに置き換えることができます。
-> 
-> 
+>
+>
 
 通知をさらに細かくカスタマイズする必要がある場合 (コードから直接ビューを読み込む場合など) は、`Protocol ReferencesDefaultNotifier` と `AENotifier` の指定されたソース コードやクラスのドキュメントをご確認ください。
 
@@ -334,23 +324,23 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 > [!WARNING]
 > `handleNotification:` が例外をスローし、コンテンツが削除され、`drop` が呼び出された場合、これは統計情報で報告され、次のキャンペーンを処理できるようになります。
-> 
-> 
+>
+>
 
 #### <a name="include-notification-as-part-of-an-existing-view"></a>既存のビューの一部に通知を含める
 オーバーレイは迅速な統合に適していますが、不便な場合や望ましくない副作用をもたらす場合があります。
 
 一部のビューのオーバーレイ システムに不満な場合は、これらのビューをカスタマイズできます。
 
-既存のビューに通知のレイアウトを含めることができます。 これを行うには、次の&2; つの実装スタイルがあります。
+既存のビューに通知のレイアウトを含めることができます。 これを行うには、次の 2 つの実装スタイルがあります。
 
 1. インターフェイス ビルダーを使用して、通知ビューを追加します。
-   
-   *  *インターフェイス ビルダー*
+
+   * *インターフェイス ビルダー*
    * 通知を表示する場所に 320 x 60 (または、iPad の場合は 768 x 60) の `UIView` を配置します。
    * このビューのタグ値を **36822491**
 2. プログラムを使用して通知ビューを追加します。 ビューが初期化されたら、次のコードを追加します。
-   
+
        UIView* notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)]; //Replace x and y coordinate values to your needs.
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
@@ -359,8 +349,8 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 > [!NOTE]
 > 既定の通知は、通知のレイアウトがこのビューに含まれていて、オーバーレイが追加されていないことを自動的に検出します。
-> 
-> 
+>
+>
 
 ### <a name="announcements-and-polls"></a>お知らせとポーリング
 #### <a name="layouts"></a>レイアウト
@@ -377,8 +367,8 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 > [!NOTE]
 > ユーザーがカテゴリ「my\_category」のお知らせの通知をクリックするたびに、登録されているビュー コントローラー (この場合は `MyCustomAnnouncementViewController`) が、メソッド `initWithAnnouncement:` を呼び出すことで初期化され、現在のアプリケーション ウィンドウにビューが追加されます。
-> 
-> 
+>
+>
 
 `AEAnnouncementViewController` クラスの実装では、`announcement` プロパティを読み取り、サブビューを初期化する必要があります。 次の例について検討してみましょう。ここでは、2 つのラベルが `AEReachAnnouncement` クラスの `title` プロパティと `body` プロパティを使用して初期化されています。
 
@@ -413,8 +403,8 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
 
 > [!IMPORTANT]
 > ビュー コントローラーが閉じる前に、`action` (カスタム ポーリング ビュー コントローラーの場合は `submitAnswers:`) メソッドまたは `exit` メソッドのいずれかを必ず呼び出してください。 これを行わないと、統計情報は送信されず (キャンペーンは分析されません)、さらに重要な次のキャンペーンが、アプリケーション プロセスが再起動するまで通知されないことになります。
-> 
-> 
+>
+>
 
 ##### <a name="implementation-example"></a>実装例
 この実装では、カスタム アナウンス ビューが外部の xib ファイルから読み込まれます。
@@ -512,9 +502,4 @@ ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
     }
 
     @end
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

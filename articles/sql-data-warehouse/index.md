@@ -2,7 +2,7 @@
 title: "Azure SQL Data Warehouse のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "SQL Data Warehouse を使用して、SQL Server に超並列処理を統合する方法について説明します。 ドキュメントでは、データの読み込み、分析、管理、エクスポートの方法を紹介します。"
 services: sql-data-warehouse
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
 ms.openlocfilehash: b9f5bc85d6fca466be7abbe67b400856e1635459
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/08/2017
 
 ---

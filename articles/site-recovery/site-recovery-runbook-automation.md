@@ -1,6 +1,6 @@
 ---
-title: "Site Recovery での復旧計画に Azure Automation Runbook を追加する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery において、Azure Automation を使用して復旧計画を拡張し、Azure への復旧中に複雑なタスクを実行可能にする方法について説明します。"
+title: "Azure Site Recovery での復旧計画に Azure Automation Runbook を追加する | Microsoft Docs"
+description: "Azure Automation を使用することによって、復旧計画の拡張に Azure Site Recovery がどのように役立つかについて説明します。 Azure への復旧中に複雑なタスクを完了する方法について説明します。"
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -12,169 +12,173 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 02/22/2017
+ms.date: 06/23/2017
 ms.author: ruturajd@microsoft.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 198caeea693fbc48b6e0eb1c9c8ee559e0553261
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 064a6782970b950543f93c24800998c1f104c8df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画への Azure Automation Runbook の追加
-このチュートリアルでは、復旧計画に拡張性を持たせるために Azure Site Recovery と Azure Automation を統合する方法について説明します。 復旧計画では、セカンダリ クラウドへのレプリケーションと Azure へのレプリケーションという両方のシナリオで、Azure Site Recovery を使用して保護された仮想マシンの復旧を調整できます。 復旧計画により、復旧を**常に正確**、**反復可能**で、**自動化**されるようにすることもできます。 仮想マシンを Azure にフェールオーバーする場合は、Azure Automation と統合して復旧計画を拡張し、Runbook を実行する機能を使用できます。そのため、強力な自動タスクを実行できます。
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
+この記事では、復旧計画の拡張に役立てるために Azure Site Recovery と Azure Automation をどのように統合するかについて説明します。 復旧計画では、Site Recovery で保護される VM の復旧を調整できます。 復旧計画は、セカンダリ クラウドへのレプリケーションと Azure へのレプリケーションの両方に対して機能します。 復旧計画はまた、復旧を**常に正確で**、**繰り返し可能**、さらに**自動化される**ようにするのにも役立ちます。 VM を Azure にフェールオーバーする場合、Azure Automation との統合によって復旧計画が拡張されます。 それを使用して、強力な自動化タスクを提供する Runbook を実行できます。
 
-Azure Automation について聞いたことがない場合は、[こちら](https://azure.microsoft.com/services/automation/)でサインアップして、[こちら](https://azure.microsoft.com/documentation/scripts/)からサンプル スクリプトをダウンロードしてください。 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) の詳細と、復旧計画を使用した Azure への復旧の調整方法については、[こちら](https://azure.microsoft.com/blog/?p=166264)を参照してください。
+Azure Automation が初めての場合は、[サインアップ](https://azure.microsoft.com/services/automation/)し、[サンプル スクリプトをダウンロード](https://azure.microsoft.com/documentation/scripts/)できます。 詳細について、および[復旧計画](https://azure.microsoft.com/blog/?p=166264)を使用して Azure への復旧を調整する方法を学習するには、「[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)」を参照してください。
 
-このチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を 1 回のクリックの復旧アクションに変換する方法を説明します。
+この記事では、復旧計画に Azure Automation Runbook を統合する方法について説明します。 ここでは、以前は手動の介入を必要とした基本的なタスクを自動化する例を使用します。 また、複数手順の復旧を 1 回のクリックでの復旧アクションに変換する方法についても説明します。
 
 ## <a name="customize-the-recovery-plan"></a>復旧計画のカスタマイズ
-1. はじめに、復旧計画のリソース ブレードを開きます。 復旧計画に、復旧用に 2 つの仮想マシンが追加されています。
+1. **Site Recovery** 復旧計画リソース ブレードに移動します。 この例では、復旧用に復旧計画に 2 つの VM が追加されています。 Runbook の追加を開始するには、**[カスタマイズ]** タブをクリックします。
 
-    ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
-- - -
-1. カスタマイズ ボタンをクリックして、Runbook の追加を開始します。
-
-    ![](media/site-recovery-runbook-automation-new/customize-rp.PNG)
+    ![[カスタマイズ] ボタンをクリックします。](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-1. 開始グループ 1 を右クリックし、[事後アクションの追加] を選択して追加します。
-2. 新しいブレードでスクリプトをクリックして選択します。
-3. スクリプトに "Hello World" という名前を付けます。
-4. Automation アカウント名を選択します。
+2. **[Group 1: Start] \(グループ 1: 開始)** を右クリックしてから、**[Add post action] \(事後アクションを追加する)** を選択します。
+
+    ![[Group 1: Start] \(グループ 1: 開始) の右クリックおよび事後アクションの追加](media/site-recovery-runbook-automation-new/customize-rp.png)
+
+3. **[Choose a script] \(スクリプトを選択する)** をクリックします。
+
+4. **[Update action] \(アクションの更新)** ブレードで、スクリプトに **Hello World** という名前を付けます。
+
+    ![[Update action]\ (アクションの更新) ブレード](media/site-recovery-runbook-automation-new/update-rp.png)
+
+5. Automation アカウント名を入力します。
     >[!NOTE]
-    > Automation アカウントは、Azure のいずれの geo のものでもかまいませんが、Site Recovery コンテナーと同じサブスクリプションのものである必要があります。
+    > Automation アカウントは、任意の Azure リージョン内に存在できます。 Automation アカウントは、Azure Site Recovery コンテナーと同じサブスクリプション内に存在する必要があります。
 
-5. Automation アカウントから Runbook を選択します。 この Runbook は、最初のグループの復旧後、復旧計画の実行中に実行されるスクリプトです。
+6. Automation アカウントで、Runbook を選択します。 この Runbook は、最初のグループの復旧後、復旧計画の実行中に実行されるスクリプトです。
 
-    ![](media/site-recovery-runbook-automation-new/update-rp.PNG)
-6. [OK] を選択してスクリプトを保存します。 スクリプトが [グループ 1: 開始] の事後アクション グループに追加されます。
+7. スクリプトを保存するには、**[OK]** をクリックします。 このスクリプトは **[グループ 1: 後の手順]** に追加されます。
 
-    ![](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
-
-
-## <a name="salient-points-of-adding-a-script"></a>スクリプト追加の要点
-1. スクリプトを右クリックし、"手順を削除" するか、"スクリプトを更新" します。
-2. スクリプトはオンプレミスから Azure へのフェールオーバー時に Azure で実行でき、また、シャットダウン前にプライマリ側スクリプトとして、Azure からオンプレミスへのフェールオーバー時に Azure で実行できます。
-3. スクリプトの実行時に、復旧計画のコンテキストが挿入されます。
-
-以下に、コンテキスト変数がどのようになっているかについて例を示します。
-
-        {"RecoveryPlanName":"hrweb-recovery",
-
-        "FailoverType":"Test",
-
-        "FailoverDirection":"PrimaryToSecondary",
-
-        "GroupId":"1",
-
-        "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
-
-                { "SubscriptionId":"7a1111111-c1d6-49c5-8c5d-111ce8dd183",
-
-                "ResourceGroupName":"ContosoRG",
-
-                "CloudServiceName":"pod02hrweb-Chicago-test",
-
-                "RoleName":"Fabrikam-Hrweb-frontend-test",
-
-                "RecoveryPointId":"TimeStamp"}
-
-                }
-
-        }
+    ![事後アクション グループ 1: 開始](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
 
-以下の表には、コンテキスト内の各変数の名前と説明が示されています。
+## <a name="considerations-for-adding-a-script"></a>スクリプトを追加するための考慮事項
 
-| **変数名** | **説明** |
-| --- | --- |
-| RecoveryPlanName |実行される計画の名前です。 この変数を使うことで、同じスクリプトで名前に応じて異なるアクションを実行することができます。 |
-| FailoverType |テスト用のフェールオーバーか、計画されたフェールオーバーか、それとも計画外のフェールオーバーかを指定します。 |
-| FailoverDirection |プライマリへの復旧か、それともセカンダリへの復旧かを指定します。 |
-| GroupID |復旧計画が実行される場合に、その計画内のグループ番号を識別します。 |
-| VmMap |グループ内のすべての仮想マシンの配列です。 |
-| VMMap キー |VM ごとの一意のキー (GUID) です。 これは、該当する仮想マシンの VMM ID と同じです。 |
-| SubscriptionId |VM の作成先となる Azure サブスクリプション ID です。 |
-| RoleName |復元される Azure VM の名前です。 |
-| CloudServiceName |仮想マシンが作成される Azure Cloud Service の名前です。 |
-| ResourceGroupName|仮想マシンが作成される Azure リソース グループの名前です。 |
-| RecoveryPointId|VM をどの時点 (タイムスタンプ) まで復元するかを示します。 |
+* **手順を削除する**か、または**スクリプトを更新する**オプションの場合は、スクリプトを右クリックします。
+* スクリプトは、オンプレミスのマシンから Azure へのフェールオーバー中に Azure 上で実行できます。 また、Azure からオンプレミスのマシンへのフェールバック中にも、シャットダウンの前にプライマリ サイトのスクリプトとして Azure 上で実行できます。
+* スクリプトの実行時に、復旧計画のコンテキストが挿入されます。 次の例は、コンテキスト変数を示しています。
 
-Automation アカウントに、以下のモジュールが追加されていることを確認する必要があります。 すべてのモジュールは互換性のあるバージョンでなければなりません。 すべて最新バージョンのモジュールを使用するのが簡単です。
-* AzureRM.profile
-* AzureRM.Resources
-* AzureRM.Automation
-* AzureRM.Network
-* AzureRM.Compute
+    ```
+            {"RecoveryPlanName":"hrweb-recovery",
 
+            "FailoverType":"Test",
 
-### <a name="accessing-all-vms-of-the-vmmap-in-a-loop"></a>VmMap のすべての VM にループでアクセスする
-VmMap のすべての VM にループでアクセスするには、次のスニペットを使用します。
+            "FailoverDirection":"PrimaryToSecondary",
+
+            "GroupId":"1",
+
+            "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
+
+                    { "SubscriptionId":"7a1111111-c1d6-49c5-8c5d-111ce8dd183",
+
+                    "ResourceGroupName":"ContosoRG",
+
+                    "CloudServiceName":"pod02hrweb-Chicago-test",
+
+                    "RoleName":"Fabrikam-Hrweb-frontend-test",
+
+                    "RecoveryPointId":"TimeStamp"}
+
+                    }
+
+            }
+    ```
+
+    次の表は、コンテキスト内の各変数の名前と説明を示しています。
+
+    | **変数名** | **説明** |
+    | --- | --- |
+    | RecoveryPlanName |実行される計画の名前。 この変数は、復旧計画名に基づいて異なるアクションを実行するのに役立ちます。 また、スクリプトを再利用することもできます。 |
+    | FailoverType |フェールオーバーがテスト フェールオーバー、計画されたフェールオーバー、計画されていないフェールオーバーのいずれであるかを指定します。 |
+    | FailoverDirection |プライマリ サイトまたはセカンダリ サイトのどちらへの復旧かを指定します。 |
+    | GroupID |復旧計画が実行されている場合、その計画内のグループ番号を識別します。 |
+    | VmMap |グループ内のすべての VM の配列。 |
+    | VMMap キー |VM ごとの一意キー (GUID)。 これは、VM の Azure Virtual Machine Manager (VMM) ID と同じです (該当する場合)。 |
+    | SubscriptionId |VM が作成されたときの Azure サブスクリプション ID。 |
+    | RoleName |復旧されている Azure VM の名前。 |
+    | CloudServiceName |VM が作成されたときの Azure クラウド サービス名。 |
+    | ResourceGroupName|VM が作成されたときの Azure リソース グループ名。 |
+    | RecoveryPointId|VM が復旧されるときのタイムスタンプ。 |
+
+* Automation アカウントに次のモジュールが含まれていることを確認してください。
+    * AzureRM.profile
+    * AzureRM.Resources
+    * AzureRM.Automation
+    * AzureRM.Network
+    * AzureRM.Compute
+
+モジュールはすべて、互換性のあるバージョンである必要があります。 すべてのモジュールに互換性があるようにするための簡単な方法は、すべてのモジュールの最新バージョンを使用することです。
+
+### <a name="access-all-vms-of-the-vmmap-in-a-loop"></a>VMMap のすべての VM にループでアクセスする
+Microsoft VMMap のすべての VM にわたってループ処理するには、次のコードを使用します。
 
 ```
-    $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
-    $vmMap = $RecoveryPlanContext.VmMap
-     foreach($VMID in $VMinfo)
-     {
-         $VM = $vmMap.$VMID                
+$VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
+$vmMap = $RecoveryPlanContext.VmMap
+ foreach($VMID in $VMinfo)
+ {
+     $VM = $vmMap.$VMID                
              if( !(($VM -eq $Null) -Or ($VM.ResourceGroupName -eq $Null) -Or ($VM.RoleName -eq $Null))) {
-             #this check is to ensure that we skip when some data is not available else it will fail
-         Write-output "Resource group name ", $VM.ResourceGroupName
-         Write-output "Rolename " = $VM.RoleName
-         }
+         #this check is to ensure that we skip when some data is not available else it will fail
+ Write-output "Resource group name ", $VM.ResourceGroupName
+ Write-output "Rolename " = $VM.RoleName
      }
+ }
 
 ```
 
 > [!NOTE]
-> このスクリプトが、ブート グループの事前アクションであるときは、ResourceGroupName と RoleName の値が空になります。 値が反映されるのは、そのグループの VM がフェールオーバーに成功し、かつスクリプトがブート グループの事後アクションである場合だけです。
+> スクリプトがブート グループへの事前アクションである場合、リソース グループ名とロール名の値は空です。 これらの値は、そのグループの VM がフェールオーバーで成功した場合にのみ設定されます。 このスクリプトは、ブート グループの事後アクションです。
 
-## <a name="using-the-same-automation-runbook-with-multiple-recovery-plans"></a>複数の復旧計画で同じ Automation Runbook を使用する
+## <a name="use-the-same-automation-runbook-in-multiple-recovery-plans"></a>複数の復旧計画で同じ Automation Runbook を使用する
 
-外部変数を使用すると、1 つのスクリプトを複数の復旧計画で使用することができます。 復旧計画の実行に関して渡すことができるパラメーターは、[Azure Automation の変数](../automation/automation-variables.md)を使用して格納できます。 変数の先頭に復旧計画の名前を追加することによって、復旧計画ごとに異なる変数を作成し、それらをパラメーターとして使用することができます。 スクリプトに変更を加えることなくパラメーターを変更し、スクリプトの働きを変えることができます。
+外部変数を使用することによって、複数の復旧計画で 1 つのスクリプトを使用できます。 [Azure Automation 変数 ](../automation/automation-variables.md) を使用すると、復旧計画の実行のために渡すことのできるパラメーターを格納できます。 この変数へのプレフィックスとして復旧計画名を追加することにより、復旧計画ごとの個別の変数を作成できます。 次に、これらの変数をパラメーターとして使用します。 スクリプトを変更しなくてもパラメーターを変更できますが、それによってスクリプトの動作が変更されます。
 
-### <a name="using-simple-string-variables-in-runbook-script"></a>Runbook スクリプトにおける単純な文字列変数の使用
+### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Runbook スクリプトで単純な文字列変数を使用する
 
-NSG を入力として受け取り、復旧計画の VM に適用するスクリプトを考えてみましょう。
+この例では、スクリプトはネットワーク セキュリティ グループ (NSG) の入力を受け取り、それを復旧計画の VM に適用します。
 
-どの復旧計画が実行されているかは、復旧計画のコンテキストを使ってスクリプトに伝えることができます。
-
-```
-    workflow AddPublicIPAndNSG {
-        param (
-              [parameter(Mandatory=$false)]
-              [Object]$RecoveryPlanContext
-        )
-
-        $RPName = $RecoveryPlanContext.RecoveryPlanName
-```
-
-既にある NSG を適用するには、NSG の名前と NSG のリソース グループが必要です。 それらの変数を復旧計画スクリプトの入力として与えることになります。 具体的には、Automation アカウント アセットに 2 つの変数を作成し、そのプレフィックスとして、パラメーターの作成対象となる復旧計画の名前を追加します。
-
-1. NSG の名前を格納するための変数を作成します。 そのプレフィックスとして復旧計画の名前を追加します。
-    ![NSG 名の変数を作成](media/site-recovery-runbook-automation-new/var1.png)
-
-2. NSG の RG 名を格納するための変数を作成します。 そのプレフィックスとして復旧計画の名前を追加します。
-    ![NSG RG 名を作成](media/site-recovery-runbook-automation-new/var2.png)
-
-
-スクリプトでは、次のリファレンス コードを使用して変数の値を取得します。
+スクリプトでどの復旧計画が実行されているかを検出するには、復旧計画のコンテキストを使用します。
 
 ```
+workflow AddPublicIPAndNSG {
+    param (
+          [parameter(Mandatory=$false)]
+          [Object]$RecoveryPlanContext
+    )
+
+    $RPName = $RecoveryPlanContext.RecoveryPlanName
+```
+
+既存の NSG を適用するには、NSG 名と NSG リソース グループ名がわかっている必要があります。 これらの変数を復旧計画スクリプトへの入力として使用します。 これを行うには、Automation アカウント アセット内に 2 つの変数を作成します。 パラメーターを作成している復旧計画の名前を変数名へのプレフィックスとして追加します。
+
+1. NSG の名前を格納するための変数を作成します。 復旧計画の名前を使用して、この変数名にプレフィックスを追加します。
+
+    ![NSG 名の変数を作成する](media/site-recovery-runbook-automation-new/var1.png)
+
+2. NSG のリソース グループ名を格納するための変数を作成します。 復旧計画の名前を使用して、この変数名にプレフィックスを追加します。
+
+    ![NSG リソース グループ名を作成する](media/site-recovery-runbook-automation-new/var2.png)
+
+
+3.  このスクリプトでは、次の参照コードを使用して変数値を取得します。
+
+    ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
     $NSGRGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSGRG"
 
     $NSGnameVar = Get-AutomationVariable -Name $NSGValue
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
-```
+    ```
 
-次に、これらの変数を Runbook の中で使用して、それに該当する NSG を、フェールオーバーされた仮想マシンのネットワーク インターフェイスに適用することができます。
+4.  この NSG をフェールオーバーされた VM のネットワーク インターフェイスに適用するには、これらの変数を Runbook で使用します。
 
-```
-     InlineScript {
-        if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
+    ```
+    InlineScript {
+    if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
             $NSG = Get-AzureRmNetworkSecurityGroup -Name $Using:NSGname -ResourceGroupName $Using:NSGRGname
             Write-output $NSG.Id
             #Apply the NSG to a network interface
@@ -183,41 +187,44 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
             #  -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $NSG
         }
     }
-```
-
-スクリプトを再利用して、復旧計画の名前を変数のプレフィックスとして追加できるよう、それぞれの復旧計画について個別に変数を作成します。 この例のスクリプト全体は、[こちら](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)に掲載しています。
-
-
-### <a name="using-complex-variable-to-store-more-information"></a>複合変数を使ってより多くの情報を格納する
-
-たった 1 つのスクリプトで、特定の VM のパブリック IP を有効にするにはどうすればよいのでしょうか。また、仮想マシン全体ではなく一部の仮想マシンについてのみ、それぞれ異なる NSG を適用するにはどうすればよいのでしょうか。 そのスクリプトは、他の復旧計画にも再利用できなければなりません。 仮想マシンの台数は復旧計画ごとに異なる場合があります (SharePoint の復旧の場合はフロント エンドが 2 台、単純な LOB アプリケーションの場合はフロント エンドが 1 台だけでよいなど)。 復旧計画ごとに個別に変数を作成する方法では、このようなことはできません。 ここでは新たな手法として、Azure Automation アカウントのアセットに複数の値を指定して、[複合変数](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396)を作成します。 以降の手順を実行するためには、Azure PowerShell が必要です。
-
-1. Azure PowerShell で自分のサブスクリプションにログインします。
-
-    ```
-        login-azurermaccount
-        $sub = Get-AzureRmSubscription -Name <SubscriptionName>
-        $sub | Select-AzureRmSubscription
     ```
 
-2. パラメーターを格納するために、復旧計画と同じ名前の複合変数を作成します。
+このスクリプトを再利用できるように、復旧計画ごとに独立した変数を作成します。 復旧計画名を使用してプレフィックスを追加します。 このシナリオのための完全なエンド ツー エンドのスクリプトを作成するには、「[Add a public IP and NSG to VMs during test failover of a Site Recovery recovery plan (Site Recovery 復旧計画のテスト フェールオーバー中に VM にパブリック IP および NSG を追加する)](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)」を参照してください。
+
+
+### <a name="use-a-complex-variable-to-store-more-information"></a>複合変数を使用してより多くの情報を格納する
+
+特定の VM 上でパブリック IP を有効にするための 1 つのスクリプトが必要なシナリオを考えてみます。 別のシナリオでは、(すべての VM 上ではなく) さまざまな VM 上で異なる NSG を適用することもできます。 どの復旧計画にも再利用可能なスクリプトを作成できます。 各復旧計画には、可変数の VM が存在できます。 たとえば、SharePoint の復旧には 2 つのフロントエンドがあります。 基本的な基幹業務 (LOB) アプリケーションには 1 つのフロントエンドしかありません。 復旧計画ごとに個別の変数を作成することはできません。 
+
+次の例では、新しい手法を使用し、Azure Automation アカウント アセット内に[複合変数](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396)を作成します。 これは、複数の値を指定することによって行います。 次の手順を完了するには、Azure PowerShell を使用する必要があります。
+
+1. PowerShell で、Azure サブスクリプションにサインインします。
 
     ```
-        $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
+    login-azurermaccount
+    $sub = Get-AzureRmSubscription -Name <SubscriptionName>
+    $sub | Select-AzureRmSubscription
+    ```
+
+2. パラメーターを格納するには、復旧計画の名前を使用して複合変数を作成します。
+
+    ```
+    $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-    この複合変数の **VMDetails* は、保護対象となる仮想マシンの VM ID です。 この ID は、ポータルから仮想マシンのプロパティで確認できます。 ここでは、2 台の仮想マシンの詳細情報を格納する変数を作成しました。
+3. この複合変数では、**VMDetails** は保護された VM の VM ID です。 VM ID を取得するには、Azure Portal でその VM のプロパティを表示します。 次のスクリーンショットは、2 つの VM の詳細を格納する変数を示しています。
 
-    ![GUID として使用する VM の ID](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![VM ID を GUID として使用する](media/site-recovery-runbook-automation-new/vmguid.png)
 
-3. この変数を Runbook で使用し、指定された VMGUID が復旧計画のコンテキストに見つかった場合、仮想マシンに NSG を適用します。
+4. この変数は Runbook で使用します。 示されている VM GUID が復旧計画のコンテキスト内に見つかった場合は、その VM 上で NSG を適用します。
 
     ```
-        $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
+    $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
-4. Runbook で復旧計画のコンテキストの VM を反復処理しながら、その VM が **$VMDetailsObj** にも存在するかどうかをチェックします。 存在する場合は、変数のプロパティにアクセスして NSG を適用します。
+4. Runbook で、復旧計画のコンテキストの各 VM をループ処理します。 この VM が **$VMDetailsObj** 内に存在するかどうかを確認します。 存在する場合は、その変数のプロパティにアクセスして NSG を適用します。
+
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
         $vmMap = $RecoveryPlanContext.VmMap
@@ -236,23 +243,23 @@ NSG を入力として受け取り、復旧計画の VM に適用するスクリ
         }
     ```
 
-各復旧計画に対応する値をそれぞれ異なる変数に格納することで、同じスクリプトを別の復旧計画で使用し、異なるパラメーターを指定することができます。
+異なる復旧計画に対して同じスクリプトを使用できます。 復旧計画に対応する値を別の変数に格納することによって、異なるパラメーターを入力します。
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
-下の [Azure へのデプロイ] ボタンを使用して、サンプル スクリプトを Automation アカウントにデプロイします。
+
+サンプル スクリプトを Automation アカウントにデプロイするには、**[Azure へのデプロイ]** ボタンをクリックします。
 
 [![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-2 層 WordPress アプリケーションを Azure に復元する方法に関する簡単なビデオもご覧ください。
+別の例として、次の動画を参照してください。 これは、2 層 WordPress アプリケーションを Azure に復旧する方法を示しています。
+
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
 
 ## <a name="additional-resources"></a>その他のリソース
-[Azure Automation サービスの実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)
-
-[Azure Automation Overview (Azure Automation の概要) (Azure Automation の概要) (Azure Automation の概要)](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation Overview (Azure Automation の概要) (Azure Automation の概要)")
-
-[Sample Azure Automation Scripts (サンプルの Azure Automation スクリプト) (サンプルの Azure Automation スクリプト) (サンプルの Azure Automation スクリプト)](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Sample Azure Automation Scripts (サンプルの Azure Automation スクリプト) (サンプルの Azure Automation スクリプト)")
+* [Azure Automation サービスの実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure Automation の概要](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation の概要")
+* [Azure Automation のサンプル スクリプト](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation のサンプル スクリプト")
 

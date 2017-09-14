@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3c228be32539050123b01c5ccd74547b0d04ed28
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: a3d5cb909dbfcb00f3fbfa0165bb6cd58eb18688
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -32,11 +32,6 @@ SQL Database では次のことを行います。
 * データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。 たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Azure SQL Database に行を挿入します (アクション)。 
 
 このトピックでは、ロジック アプリ内で SQL Database コネクタを使用する方法を説明し、アクションの一覧を示します。
-
-> [!NOTE]
-> 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。 
-> 
-> 
 
 Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」と[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
 
@@ -73,8 +68,9 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
    > 
 5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/sql/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/sql/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。

@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 606d40a0e5c89a03c2ad602d3bbdf3cbb0c9049a
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 4a695c00fce4deb02261ba58ec95469746bb1486
 ms.contentlocale: ja-jp
 
 
@@ -41,7 +41,7 @@ ms.contentlocale: ja-jp
 
 ユーザーが認証されると、サンプル アプリケーションは、Microsoft Graph API または Microsoft Azure Active Directory v2 によって保護されている Web API でのクエリ実行で使用できるトークンを受け取ります。
 
-Microsoft Graph などの API では、特定のリソースにアクセスできるアクセス トークンが必要です。たとえば、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、電子メールの送信などです。 アプリケーションは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することにより、これらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP 認証ヘッダーに追加されます。 
+Microsoft Graph などの API では、特定のリソースにアクセスできるアクセス トークンが必要です。たとえば、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、電子メールの送信などです。 アプリケーションでは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することによってこれらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP 認証ヘッダーに追加されます。 
 
 MSAL がアクセス トークンのキャッシュと更新を管理します。そのため、アプリケーションが管理する必要はありません。
 

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: nigu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
 ms.openlocfilehash: 87070d7680a6d48e94099b47f9dc336a75332f6c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
-
 
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック

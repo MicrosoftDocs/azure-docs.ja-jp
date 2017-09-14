@@ -1,4 +1,4 @@
---- 
+---
 title: "Eclipse 用の Azure Service Fabric プラグイン | Microsoft Docs"
 description: "Eclipse 用の Service Fabric プラグインの概要を紹介します。"
 services: service-fabric
@@ -12,14 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/03/2016
+ms.date: 08/21/2016
 ms.author: saysa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9cc621380a6b22a6b1da617d76c56e4773bb3dde
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 98c1b99972b9ad7a396d72b98e727286f6822e42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -38,7 +37,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
   1.    **[Work with]\(作業対象\)** ボックスに、「**http://dl.microsoft.com/eclipse**」と入力します。
   2.    **[追加]**をクリックします。
 
-         ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install] 
+         ![Eclipse Neon 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
   3.    Service Fabric プラグインを選択して **[Next (次へ)]** をクリックします。
   4.    インストール手順を完了し、マイクロソフト ソフトウェア ライセンス条項に同意します。
 
@@ -147,6 +146,9 @@ Eclipse Neon を使用してアプリケーションをアップグレードす�
 この手順を行うと、いつでもアプリケーションのアップグレードに使用できる実行構成プロファイルが作成されて保存されます。 これを使用すると、アプリケーション マニフェスト ファイルから、アプリケーションの種類の更新後の最新バージョンも取得されます。
 
 アプリケーションのアップグレードには数分かかります。 アプリケーションのアップグレードは Service Fabric Explorer で監視できます。
+
+## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>以前の Service Fabric Java アプリケーションを移行して Maven で使用する
+最近、Service Fabric Java ライブラリが Service Fabric Java SDK から Maven リポジトリに移行されました。 Eclipse を使って生成する新しいアプリケーションでは、(Maven で使用可能な) 最新のプロジェクトが生成されますが、(これまで Service Fabric Java SDK を使っていた) 既存の Service Fabric のステートレスまたはアクター Java アプリケーションは、Maven からの Service Fabric Java 依存関係を使うように更新することができます。 以前のアプリケーションを Maven で使用するには、[こちら](service-fabric-migrate-old-javaapp-to-use-maven.md)に記載した手順に従ってください。
 
 <!-- Images -->
 

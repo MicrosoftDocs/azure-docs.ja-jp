@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブのトラブルシューティングを�
 keywords: "入力のトラブルシューティング, 入力のサンプリング"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 8a8664cec88f2d04a3dff55df0e6ccea1ea79422
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: db9686fad7153d63fc659869b93821200e08397c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-stream-analytics-input-stream-sampling"></a>Azure Stream Analytics の入力ストリームのサンプリング
@@ -59,11 +58,11 @@ Stream Analytics ジョブの詳細ウィンドウで **[クエリ]** の下に�
 
 ## <a name="get-help"></a>問い合わせ
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -2,7 +2,7 @@
 title: "Azure IoT Hub のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "IoT Hub を使用して、何十億台ものモノのインターネット資産 (IoT) を接続、監視、制御する方法について説明します。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントを提供します。"
 services: iot-hub
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

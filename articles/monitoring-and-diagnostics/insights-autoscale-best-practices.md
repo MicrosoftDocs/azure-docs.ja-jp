@@ -1,8 +1,8 @@
 ---
 title: "自動スケールのベスト プラクティス | Microsoft Docs"
-description: "Virtual Machines、Virtual Machine Scale Sets、および Cloud Services の自動スケールを効率的に行うための原則について説明します。"
-author: kamathashwin
-manager: carmonm
+description: "Azure での Web Apps、Virtual Machine Scale Sets、および Cloud Services の自動スケール パターン"
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
-ms.author: ashwink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f1e4a60cd98d40794c63dc334f242415445e0d6d
+ms.date: 07/07/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 54dad831287376db7fb2dc46e4591be1499dc072
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
@@ -151,4 +150,10 @@ Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azur
 * 自動スケール サービスがスケールを決定する際にメトリックを使用できない場合。
 * スケールを決定する際にメトリックを再び使用できるようになった (回復した) 場合。
   上記の状況に加え、スケール操作が正常に完了した場合に通知されるように、電子メールまたは Webhook の通知を構成できます。
+  
+また、アクティビティ ログ アラートを使用して、自動スケール エンジンの正常性を監視することもできます。 ここに、[アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)場合、または[アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)場合の例を示します。
+
+## <a name="next-steps"></a>次のステップ
+- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

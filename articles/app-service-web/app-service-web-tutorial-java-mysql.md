@@ -11,14 +11,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e3a8bc6b11cccf7f6b277e800dbcedcd90e87006
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 5a6e4431ef25c66e1863a679f0db1363a83f4769
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -44,11 +45,12 @@ ms.lasthandoff: 06/03/2017
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
 1. [Java 7 JDK 以降をダウンロードし、インストールします](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [MySQL をダウンロード、インストール、および起動します](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-1. [Azure CLI 2.0 をインストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する 
 
@@ -56,7 +58,7 @@ ms.lasthandoff: 06/03/2017
 
 ### <a name="connect-to-mysql-server"></a>MySQL サーバーに接続する
 
-コマンドラインからローカル MySQL サーバーに接続します。
+ターミナル ウィンドウで、ローカル MySQL サーバーに接続します。 このチュートリアルでは、ターミナル ウィンドウを使ってすべてのコマンドを実行します。
 
 ```bash
 mysql -u root -p
@@ -86,7 +88,7 @@ quit
 
 ### <a name="clone-the-sample"></a>サンプルを複製する
 
-コマンド プロンプトから作業ディレクトリに移動し、サンプル リポジトリを複製します。 
+ターミナル ウィンドウで、作業ディレクトリに移動し、サンプル リポジトリを複製します。 
 
 ```bash
 git clone https://github.com/azure-samples/mysql-spring-boot-todo
@@ -94,7 +96,7 @@ git clone https://github.com/azure-samples/mysql-spring-boot-todo
 
 ### <a name="configure-the-app-to-use-the-mysql-database"></a>MySQL データベースを使用するようにアプリを構成する
 
-MySQL コマンド プロンプトを開くのに使用したのと同じルート パスワードで、`spring.datasource.password` および *spring-boot-mysql-todo/src/main/resources/application.properties* の値を更新します。
+MySQL プロンプトを開くのに使用したのと同じルート パスワードで、`spring.datasource.password` および *spring-boot-mysql-todo/src/main/resources/application.properties* の値を更新します。
 
 ```
 spring.datasource.password=mysqlpass
@@ -109,14 +111,14 @@ cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-ブラウザーで http://localhost:8080 を開いて、サンプルの動作を確認します。 一覧にタスクを追加する際は、MySQL コマンド プロンプトで次の SQL コマンドを使用して、MySQL に格納されているデータを表示します。
+ブラウザーで http://localhost:8080 を開いて、サンプルの動作を確認します。 一覧にタスクを追加する際は、MySQL プロンプトで次の SQL コマンドを使用して、MySQL に格納されているデータを表示します。
 
 ```SQL
 use testdb;
 select * from todo_item;
 ```
 
-コマンド プロンプトで `Ctrl`+`C` を押してアプリケーションを停止します。 
+ターミナルで `Ctrl`+`C` を押してアプリケーションを停止します。 
 
 ## <a name="create-an-azure-mysql-database"></a>Azure MySQL データベースを作成する
 

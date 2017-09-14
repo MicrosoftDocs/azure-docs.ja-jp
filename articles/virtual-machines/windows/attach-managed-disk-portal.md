@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 9c29390756ac2cd925ed7d2989393e63ed0a1239
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: f0cf88a06c5470ef173b22e7213419a6c8760723
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -58,6 +58,29 @@ ms.lasthandoff: 05/10/2017
 8. **[新しいディスクのフォーマット]** ダイアログで設定を確認し、**[開始]** をクリックします。
 9. ディスクをフォーマットするとデータがすべて削除されることを警告するメッセージが表示されます。**[OK]** をクリックします。
 10. フォーマットが完了したら、**[OK]** をクリックします。
+
+## <a name="use-trim-with-standard-storage"></a>Standard Storage での TRIM の使用
+
+Standard Storage (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。 
+
+次のコマンドを実行すると、TRIM の設定を確認できます。 Windows VM 上でコマンド プロンプトを開いて、次のように入力します。
+
+```
+fsutil behavior query DisableDeleteNotify
+```
+
+このコマンドが 0 を返す場合、TRIM は適切に有効化されています。 1 が返される場合は、次のコマンドを実行して TRIM を有効にします。
+```
+fsutil behavior set DisableDeleteNotify 0
+```
+
+ディスクからデータを削除した後は、TRIM でデフラグを実行して、TRIM 操作が正しくフラッシュすることを確認できます。
+
+```
+defrag.exe <volume:> -l
+```
+
+ボリュームのフォーマットによって、ボリューム全体を確実に削除することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーションで D: ドライブを使用してデータを保存する必要がある場合は、 [Windows 一時ディスクのドライブ文字を変更](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。

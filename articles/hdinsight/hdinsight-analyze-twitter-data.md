@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Hadoop を使用した Twitter データの分析 | Microsoft Docs"
+title: "HDInsight の Hadoop を使用した Twitter データの分析 - Azure | Microsoft Docs"
 description: "HDInsight の Hadoop に格納されている Twitter データを Hive で分析し、特定の単語の使用頻度を調べる方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 159e41f3d1b43abc830b79e1ea0bed05e05505a2
-ms.lasthandoff: 04/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 711d364c36c3aba699326f4a76d42891ba3219fb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/11/2017
 このチュートリアルでは、Twitter streaming API を使用して複数のツイートを取得します。さらに、Azure HDInsight の Apache Hive を使用して、特定の単語を含むツイートを多く送信した Twitter ユーザーの一覧を取得します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
+> このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/11/2017
     ```
 
     > [!IMPORTANT]
-    > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**廃止**される予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 
@@ -461,7 +461,7 @@ HiveQL スクリプトは、次の作業を実行します。
 次の Windows PowerShell スクリプトを使用して Hive スクリプトを実行します。 最初の変数を設定する必要があります。
 
 > [!NOTE]
-> 最後の 2 つのセクションでアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。 パブリック BLOB にアップロードされているものを使用するには、$hqlScriptFile を "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
+> 最後の 2 つのセクションでアップロードしたツイートと HiveQL スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。 パブリック BLOB にアップロードされているものを使用するには、$hqlScriptFile を "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
 
 ```powershell
 #region variables and constants
@@ -470,7 +470,7 @@ $httpUserName = "admin"
 $httpUserPassword = "<HDInsight Cluster HTTP User Password>"
 
 #use one of the following
-$hqlScriptFile = "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"
+$hqlScriptFile = "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"
 $hqlScriptFile = "/tutorials/twitter/twitter.hql"
 
 $statusFolder = "/tutorials/twitter/jobstatus"

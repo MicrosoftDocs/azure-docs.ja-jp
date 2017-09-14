@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 08/04/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ea928ba4d13970a32123a8ada8575658cecde5d8
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: bdca442755507c4ffe8d43692c5b7f2aa3a746f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -126,14 +125,10 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
 * login.windows.net
 * login.microsoftonline.com
 
-コネクタ サービスで使用する基になる Service Bus 管理チャネルでも、特定の IP アドレスへの接続が必要です。 代わりに Service Bus が FQDN に移動するまでは、次の 2 つのオプションがあります。
+FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 
 * すべてのアクセス先に対するコネクタの送信アクセスを許可する。
-* [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。
-
->[!NOTE]
->Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。
->
+* [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。
 
 #### <a name="proxy-authentication"></a>プロキシの認証
 
@@ -141,13 +136,10 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
 
 #### <a name="proxy-ports"></a>プロキシ ポート
 
-コネクタは、CONNECT メソッドを使用して SSL ベースの送信接続を確立します。 このメソッドにより、送信プロキシを経由するトンネルが設定されます。 一部のプロキシ サーバーは、既定では、標準の SSL ポート (443 など) への送信トンネリングしか許可しません。 この場合、追加のポートへのトンネリングを許可するようにプロキシ サーバーを構成する必要があります。
-
-プロキシ サーバーが、標準以外の SSL ポート (8080、9090、9091、10100-10120) へのトンネリングを許可するように構成します。
+コネクタは、CONNECT メソッドを使用して SSL ベースの送信接続を確立します。 このメソッドにより、送信プロキシを経由するトンネルが設定されます。 プロキシ サーバーが、ポート 443 と 80 へのトンネリングを許可するように構成します。
 
 >[!NOTE]
 >Service Bus を HTTPS 経由で実行する場合は、ポート 443 が使用されます。 ただし、既定では、Service Bus は直接 TCP 接続を試みて、直接接続に失敗した場合にのみ HTTPS に戻ってきます。
->
 
 Service Bus のトラフィックも送信プロキシ サーバー経由で送信されるようにするには、コネクタがポート 9350、9352、5671 で Azure サービスに直接接続できないようにしてください。
 

@@ -1,31 +1,37 @@
-- name: "QnAMaker API Documentation"
+- name: QnAMaker API のドキュメント
   href: ../index.md
-- name: "Overview"
+- name: 概要
   items:
-  - name: "Learn about QnAMaker"
-    href: Home.md
-- name: "Quickstarts"
+    - name: QnAMaker について
+      href: Home.md
+- name: クイック スタート
   expanded: true
-  items: 
-  - name: "Get started with QnAMaker"
-    href: Quickstart.md
-- name: "How to Guides"
-  items: 
-  - name: "Create a knowledge base"
-    href: Guides/CreateKB.md
-  - name: "Train a knowledge base"
-    href: Guides/TrainKB.md
-  - name: "Share a knowledge base"
-    href: Guides/share-knowledgebase-qnamaker.md
-  - name: "Update a knowledge base"
-    href: Guides/UpdateKB.md
-  - name: "Publish a knowledge base"
-    href: Guides/PublishKB.md
-  - name: "Authentication"
-    href: SubscriptionKeys.md
-- name: "Reference"
-  items: 
-  - name: "API Reference"
-    href: HTTPEndPoint.md
-  - name: "FAQ"
-    href: FAQs.md
+  items:
+    - name: QnAMaker の概要
+      href: Quickstart.md
+- name: ハウツー ガイド
+  items:
+    - name: ナレッジ ベースの作成
+      href: Guides/CreateKB.md
+    - name: ナレッジ ベースの訓練
+      href: Guides/TrainKB.md
+    - name: ナレッジ ベースの共有
+      href: Guides/share-knowledgebase-qnamaker.md
+    - name: ナレッジ ベースの更新
+      href: Guides/UpdateKB.md
+    - name: ナレッジ ベースの公開
+      href: Guides/PublishKB.md
+    - name: アクティブ ラーニング
+      href: Guides/active-learning-qnamaker.md
+    - name: 認証
+      href: SubscriptionKeys.md
+- name: リファレンス
+  items:
+    - name: API リファレンス
+      href: HTTPEndPoint.md
+    - name: FAQ
+      href: FAQs.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

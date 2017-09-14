@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 06/27/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd8ba95ee1fb2703926fb35cdb49e6a503637a7d
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -28,11 +29,6 @@ ms.lasthandoff: 11/17/2016
 > 
 
 ## <a name="standard-integration"></a>標準統合
-Reach SDK には **Android サポート ライブラリ (v4)**が必要です。
-
-**Eclipse** でプロジェクトにライブラリを追加する最も簡単な方法は、`Right click on your project -> Android Tools -> Add Support Library...` です。
-
-Eclipse を使用しない場合は、 [こちら]の手順をご覧ください。
 
 プロジェクトの SDK から Reach リソースのファイルをコピーします。
 
@@ -107,10 +103,6 @@ Eclipse を使用しない場合は、 [こちら]の手順をご覧ください
           <uses-permission android:name="android.permission.VIBRATE" />
   
   Reach キャンペーン マネージャーで音を鳴らすオプションやバイブレーションのオプションを有効にしても、このアクセス許可が存在しない場合は Android でシステム通知が表示されません。
-* **ProGuard** を使用して構築したアプリケーションに Android サポート ライブラリや Engagement jar に関連するエラーが発生した場合は、次の行を `proguard.cfg` ファイルに追加します。
-  
-          -dontwarn android.**
-          -keep class android.support.v4.** { *; }
 
 ## <a name="native-push"></a>Native Push (ネイティブのプッシュ)
 Reach モジュールを構成したので、デバイスのキャンペーンを受信できるようにネイティブ プッシュ通知を設定する必要があります。
@@ -243,7 +235,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="a-namecategoriesa-categories"></a><a name="categories"></a> カテゴリ
+#### <a name="categories"></a> カテゴリ
 指定のレイアウトを修正すると、通知すべての見た目が修正されます。 カテゴリを使用して、通知対象のさまざまな外観 (場合によっては動作) を定義できます。 リーチ キャンペーンを作成する場合にカテゴリを指定できます。 また、カテゴリを使用してお知らせとポーリングもカスタマイズできます。これについては、このドキュメントの後半で説明します。
 
 通知のカテゴリ ハンドラーを登録するには、アプリケーションが初期化される際に呼び出しを追加する必要があります。
@@ -636,7 +628,7 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 
 `actionContent(this)` を呼び出してアクティビティを完了すると、`exitContent(this)` が安全に呼び出されることがわかります。
 
-[こちら]:http://developer.android.com/tools/extras/support-library.html#Downloading
+[here]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
 

@@ -1,5 +1,5 @@
 ---
-title: "VMVware VM または物理サーバーを別のサイトにレプリケートする (Azure クラシック ポータル) | Microsoft Docs"
+title: "VMware VM または物理サーバーを別のサイトにレプリケートする (Azure クラシック ポータル) | Microsoft Docs"
 description: "VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
 services: site-recovery
 documentationcenter: 
@@ -12,7 +12,7 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 08/11/2017
 ms.author: nisoneji
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
@@ -20,12 +20,11 @@ ms.openlocfilehash: c49f283971b33a4e88573e1d67ba159021fbccb8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/04/2017
 
-
 ---
 # <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Azure クラシック ポータルでオンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
 
 ## <a name="overview"></a>概要
-Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
+Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。 
 
 ## <a name="prerequisites"></a>前提条件
 **Azure アカウント**: [Microsoft Azure](https://azure.microsoft.com/) アカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。 [こちら](https://azure.microsoft.com/pricing/details/site-recovery/) をご覧ください。

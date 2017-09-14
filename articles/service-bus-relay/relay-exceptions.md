@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: a0414648dc6cecf4a502f7efa75adbcb1456a8b4
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 83ff97b59e428e7b617a7f5d1011ca5ddf3060b6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
@@ -77,7 +76,8 @@ Relay では、リレー送信者接続を最初に開いたときにタイム�
 例:
 
 ```
-'System.TimeoutException’: The operation did not complete within the allotted timeout of 00:00:10. The time allotted to this operation may have been a portion of a longer timeout.
+'System.TimeoutException’: The operation did not complete within the allotted timeout of 00:00:10.
+The time allotted to this operation may have been a portion of a longer timeout.
 ```
 
 ### <a name="common-causes"></a>一般的な原因
@@ -88,7 +88,7 @@ Relay では、リレー送信者接続を最初に開いたときにタイム�
     操作状態に対して、操作タイムアウトが小さすぎる可能性があります。 クライアント SDK の操作タイムアウトの既定値は 60 秒です。 コードの値が小さすぎる値に設定されていないか確認します。 CPU 使用率とネットワークの状態が、操作の完了に要する時間に影響する可能性があることに注意してください。 操作タイムアウトに非常に小さい値を設定するのは避けることをお勧めします。
 *   **一時的なサービス エラー**
 
-    Relay では、要求の処理が遅れる場合があります。 これは、トラフィックの多い時間帯などに発生することがあります。 これが発生した場合は、遅延の後、操作が成功するまで操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、[Azure のサービス状態のサイト](https://azure.microsoft.com/status/)を確認し、既知のサービス停止がないかどうかを確認してください。
+    場合によっては、Relay サービスで要求の処理が遅れることがあります。 これは、トラフィックの多い時間帯などに発生することがあります。 これが発生した場合は、遅延の後、操作が成功するまで操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、[Azure のサービス状態のサイト](https://azure.microsoft.com/status/)を確認し、既知のサービス停止がないかどうかを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Relay に関する FAQ](relay-faq.md)

@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3219df0e45d516ea332725b3e1955026cc1db231
 ms.openlocfilehash: 88fb93b8f3e196121b635d5ce7a21bf8f8c46be5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/11/2017
-
 
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
@@ -63,7 +63,7 @@ ms.lasthandoff: 02/11/2017
 ただし、 *AppCmd.exe* をスタートアップ タスクとして使用するにはいくつか注意する点があります。
 
 * スタートアップ タスクは、再起動の間に複数回実行されることがあります。 たとえば、ロールが再利用される場合です。
-* *AppCmd.exe* アクションは、複数回実行されるとエラーが発生することがあります。 たとえば、*Web.config* にセクションを&2; 回追加しようとするとエラーが発生する可能性があります。
+* *AppCmd.exe* アクションは、複数回実行されるとエラーが発生することがあります。 たとえば、*Web.config* にセクションを 2 回追加しようとするとエラーが発生する可能性があります。
 * ゼロ以外の終了コードや **errorlevel**が返されると、スタートアップ タスクが失敗します。 たとえば、*AppCmd.exe* でエラーが発生した場合です。
 
 *AppCmd.exe* を呼び出した後、**errorlevel** を確認することをお勧めします。これは、*AppCmd.exe* への呼び出しを *.cmd* ファイルでラップすると簡単に実行できます。 既知の **errorlevel** 応答が検出された場合は無視するか、その応答を返すことができます。
@@ -125,7 +125,7 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>ファイアウォール規則を追加する
-Azure では、実質的に&2; つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [ServiceDefinition.csdef] ファイルの [EndPoints] 要素によって制御されます。
+Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [ServiceDefinition.csdef] ファイルの [EndPoints] 要素によって制御されます。
 
 2 つ目のファイアウォールは、仮想マシンとその仮想マシン内の処理との間の接続を制御します。 このファイアウォールは、`netsh advfirewall firewall` コマンド ライン ツールを使用して制御できます。
 
@@ -188,7 +188,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 最後に、お使いの Web ロールの [web.config](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) ファイルの **system.webServer セクション** を変更し、次の例に示すようにアクセス許可が付与された IP アドレスの一覧を追加します。
 
-このサンプル構成では、定義した&2; つ以外のすべての IP についてサーバーへのアクセスを **許可** します。
+このサンプル構成では、定義した 2 つ以外のすべての IP についてサーバーへのアクセスを **許可** します。
 
 ```xml
 <system.webServer>
@@ -203,7 +203,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 </system.webServer>
 ```
 
-このサンプル構成では、定義した&2; つ以外のすべての IP についてサーバーへのアクセスを **拒否** します。
+このサンプル構成では、定義した 2 つ以外のすべての IP についてサーバーへのアクセスを **拒否** します。
 
 ```xml
 <system.webServer>
@@ -477,7 +477,7 @@ EXIT %ERRORLEVEL%
 管理者特権を必要とするスタートアップ タスクの例は、 **AppCmd.exe** を使用して IIS を構成するスタートアップ タスクです。 **AppCmd.exe** には `executionContext="elevated"` が必要です。
 
 ### <a name="use-the-appropriate-tasktype"></a>適切な taskType を使用する
-[taskType][Task] 属性は、スタートアップ タスクを実行する方法を決定します。 **simple**、**background**、および **foreground** の&3; つの値があります。 background タスクと foreground タスクは非同期的に開始され、simple タスクは一度に&1; 回のみ同期的に実行されます。
+[taskType][Task] 属性は、スタートアップ タスクを実行する方法を決定します。 **simple**、**background**、および **foreground** の 3 つの値があります。 background タスクと foreground タスクは非同期的に開始され、simple タスクは一度に 1 回のみ同期的に実行されます。
 
 **simple** スタートアップ タスクでは、ServiceDefinition.csdef ファイルに表示される順序でタスクが実行されます。 **simple** タスクがゼロ以外の終了コードで終了すると、スタートアップ手続きは停止し、ロールは開始されません。
 

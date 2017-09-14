@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/22/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 5e363a3e59b077a7bccfaff2ae6eee51418c77e5
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 77b5fb94cdfa5722081198aabc59fbf86229c2b0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -38,7 +38,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Azure AD と Cerner Central の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Cerner Central でのシングル サインオンが有効なサブスクリプション
+- 承認済みの Cerner Central システム アカウント
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -110,18 +110,33 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_url.png)
 
-    a. **[識別子]** ボックスに、`https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` の形式で値を入力します。
+    a. **[識別子]** ボックスに、次の形式で値を入力します。
+    
+    | |
+    |--|
+    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
+    | `https://<instancename>.sandboxcerner.com/session-api/protocol/saml2/metadata` |
+    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+    | `https://sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
 
-    b. **[応答 URL]** ボックスに、`https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、次の形式で URL を入力します。 
+    | |
+    |--|
+    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
+    | `https://cernercentral.com/<instasncename>` |
+    | `https://sandboxcernercentral.com/<instancename>` |
+    | `https://sandboxcernercentral.com/<instancename>` |
+    | `https://<subdomain>.sandboxcernercentral.com/<instancename>` |
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[Cerner Central サポート チーム](https://www.cerner.com/support)に連絡してください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Cerner Central サポート チーム](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)に連絡してください。
  
-5. **[保存]** ボタンをクリックします。
+4. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
 
-6. **メタデータ** URL を生成するには、次の手順を実行します。
+5. **メタデータ** URL を生成するには、次の手順を実行します。
 
     a. **[アプリの登録]** をクリックします。
     
@@ -141,7 +156,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
     e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
-7. **Cerner Central** 側でシングル サインオンを構成するには、**メタデータ URL** を [Cerner Central サポート](https://www.cerner.com/support)に送信する必要があります。 アプリケーション側で SSO が構成され、統合が完了します。
+6. **Cerner Central** 側でシングル サインオンを構成するには、**メタデータ URL** を [Cerner Central サポート](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)に送信する必要があります。 アプリケーション側で SSO が構成され、統合が完了します。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -180,7 +195,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
  
 ### <a name="creating-a-cerner-central-test-user"></a>Cerner Central のテスト ユーザーの作成
 
-Azure AD ユーザーが Cerner Central にログインできるようにするには、ユーザーを Cerner Central にプロビジョニングする必要があります。 Cerner Central アプリケーションでは、さまざまな方法でユーザーを作成できます。 Cerner Central アプリケーションでユーザーを手動で作成するには、[Cerner Central サポート](https://www.cerner.com/support) チームと連携して行ってください。
+**Cerner Central** アプリケーションは、すべてのフェデレーション ID プロバイダーからの認証を許可します。 ユーザーがアプリケーションのホーム ページにログインできる場合、それらはフェデレーションされて、手動でプロビジョニングを行う必要はありません。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -216,7 +231,7 @@ Azure AD ユーザーが Cerner Central にログインできるようにする�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cerner Central] タイルをクリックすると、自動的に Cerner Central アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)に関する記事を参照してください。
+アクセス パネルで [Cerner Central] タイルをクリックすると、自動的に Cerner Central アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

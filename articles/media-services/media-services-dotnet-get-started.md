@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure Media Services と .NET 
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/10/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 124eff2edccb6b4ad56ee39a2b37e892ef8c6cb4
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: e80fe0970ec130754c2c058789e1d1e2a9492216
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 04/18/2017
 
 ストリーミング エンドポイントを開始するには、次の操作を行います。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. [設定] ウィンドウで [ストリーミング エンドポイント] をクリックします。
 3. 既定のストリーミング エンドポイントをクリックします。
 
@@ -81,43 +81,14 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
-1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **[名前]**、**[場所]**、**[ソリューション名]** を入力し、**[OK]** をクリックします。
-2. NuGet パッケージ [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) を使用して **Azure Media Services .NET SDK Extensions** をインストールします。  Media Services .NET SDK Extensions は、コードを簡素化し、Media Services による開発を容易にする一連の拡張メソッドとヘルパー機能です。 このパッケージをインストールすると、 **Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
-
-    NuGet を使用して参照を追加するには、ソリューション エクスプローラーで、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** を選択します。 次に、**windowsazure.mediaservices.extensions** を検索し、**[インストール]** をクリックします。
-
-3. System.Configuration アセンブリへの参照を追加します。 このアセンブリには、構成ファイル (App.config など) にアクセスするための **System.Configuration.ConfigurationManager** クラスが含まれています。
-
-    参照を追加するには、ソリューション エクスプローラーで、プロジェクト名を右クリックし、**[追加]** > **[参照]** の順に選択し、検索ボックスに「configuration」と入力します。
-
-4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。 Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。 アカウント名とキーの情報を取得するには、[Azure Portal](https://portal.azure.com/) に移動して AMS アカウントを選択します。 次に、**[設定]** > **[キー]** の順に選択します。 [キーの管理] ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。 アカウント名とプライマリ キーの値をコピーします。
-
-        <configuration>
-        ...
-          <appSettings>
-            <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-            <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-          </appSettings>
-
-        </configuration>
-5. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
-
-        using System;
-        using System.Collections.Generic;
-        using System.Linq;
-        using System.Text;
-        using System.Threading.Tasks;
-        using System.Configuration;
-        using System.Threading;
-        using System.IO;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-6. 新しいフォルダーをローカル ドライブの任意の場所に作成し、エンコードしてストリーミングするかプログレッシブ ダウンロードする .mp4 ファイルをコピーします。 この例では、"C:\VideoFiles" というパスを使用しています。
+1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
+2. 新しいフォルダーをローカル ドライブの任意の場所に作成し、エンコードしてストリーミングするかプログレッシブ ダウンロードする .mp4 ファイルをコピーします。 この例では、"C:\VideoFiles" というパスを使用しています。
 
 ## <a name="connect-to-the-media-services-account"></a>Media Services アカウントへの接続
 
 Media Services を .NET で使用するとき、Media Services に関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、 **CloudMediaContext** クラスが必要となります。
 
-既定の Program クラスを次のコードで上書きします。 このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 Media Services への接続の詳細については、「 [Media Services SDK for .NET を使用した Media Services への接続](media-services-dotnet-connect-programmatically.md)」をご覧ください。
+既定の Program クラスを次のコードで上書きします。 このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 詳細については、[Media Services API への接続](media-services-use-aad-auth-to-access-ams-api.md)に関するページを参照してください。
 
 メディア ファイルのある場所に合わせて、ファイル名とパスを更新してください。
 
@@ -129,48 +100,44 @@ Media Services を .NET で使用するとき、Media Services に関連した�
     class Program
     {
         // Read values from the App.config file.
-        private static readonly string _mediaServicesAccountName =
-            ConfigurationManager.AppSettings["MediaServicesAccountName"];
-        private static readonly string _mediaServicesAccountKey =
-            ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
-        // Field for service context.
         private static CloudMediaContext _context = null;
-        private static MediaServicesCredentials _cachedCredentials = null;
 
         static void Main(string[] args)
         {
-            try
-            {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the chached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+        try
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-                // Add calls to methods defined in this section.
-        // Make sure to update the file name and path to where you have your media file.
-                IAsset inputAsset =
-                    UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.None);
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                IAsset encodedAsset =
-                    EncodeToAdaptiveBitrateMP4s(inputAsset, AssetCreationOptions.None);
+            // Add calls to methods defined in this section.
+            // Make sure to update the file name and path to where you have your media file.
+            IAsset inputAsset =
+            UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.None);
 
-                PublishAssetGetURLs(encodedAsset);
-            }
-            catch (Exception exception)
-            {
-                // Parse the XML error message in the Media Services response and create a new
-                // exception with its content.
-                exception = MediaServicesExceptionParser.Parse(exception);
+            IAsset encodedAsset =
+            EncodeToAdaptiveBitrateMP4s(inputAsset, AssetCreationOptions.None);
 
-                Console.Error.WriteLine(exception.Message);
-            }
-            finally
-            {
-                Console.ReadLine();
-            }
+            PublishAssetGetURLs(encodedAsset);
+        }
+        catch (Exception exception)
+        {
+            // Parse the XML error message in the Media Services response and create a new
+            // exception with its content.
+            exception = MediaServicesExceptionParser.Parse(exception);
+
+            Console.Error.WriteLine(exception.Message);
+        }
+        finally
+        {
+            Console.ReadLine();
+        }
         }
     }
 

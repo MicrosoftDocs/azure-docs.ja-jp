@@ -12,15 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 07/26/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6c0affd0f5ea600f979cfcc87e2435658c8dab14
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: a2ddc932343d54963a378ee27dc962a790326b2a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
+
+>[!NOTE]
+> この記事では、現行の Log Analytics クエリ言語によるコンピューター グループの使用について説明しています。    ご使用のワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、コンピューター グループの動作が異なります。  新しいクエリ言語における構文や動作の違いについては、この記事の注意書きに記載しています。  
+
+
 Log Analytics では、コンピューター グループを使用して、[ログ検索](log-analytics-log-searches.md)の範囲を特定のコンピューターの集合に限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログの検索に含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
 
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
@@ -47,6 +53,12 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 
     Computer="Computer1" OR Computer="Computer2" | distinct Computer 
     Computer=*srv* | measure count() by Computer
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、新しいコンピューター グループを作成する手順を次のように変更します。
+>  
+> - コンピューター グループを作成するためのクエリに `distinct Computer` を含める必要があります。  コンピューター グループを作成するクエリの例を次に示します。<br>`Heartbeat | where Computer contains "srv" `
+> - 新しいコンピューター グループを作成するときは、名前だけでなくエイリアスを指定する必要があります。  以下に説明するクエリの中でコンピューター グループを使用するときに、そのエイリアスを使用します。  
 
 ### <a name="log-search-api"></a>Log Search API
 Log Search API を使って作成されたコンピューター グループは、[ログ検索] を使って作成された検索と同じです。
@@ -89,6 +101,11 @@ Active Directory のセキュリティ グループをインポートするた�
 
     Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]
 
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、クエリの中でコンピューター グループを使用する際は、そのエイリアスを関数として扱います。その例を次に示します。
+> 
+>  `UpdateSummary | where Computer IN (MyComputerGroup)`
+
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
 Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが OMS リポジトリに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ検索に基づくコンピューター グループにはレコードが作成されません。
 
@@ -106,10 +123,5 @@ Active Directory または WSUS から作成されたコンピューター グ�
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

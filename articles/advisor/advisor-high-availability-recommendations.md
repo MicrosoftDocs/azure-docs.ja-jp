@@ -3,7 +3,7 @@ title: "Advisor の高可用性に関する推奨事項 | Microsoft Docs"
 description: "Azure Advisor を使用して、Azure のデプロイの高可用性を向上させます。"
 services: advisor
 documentationcenter: NA
-author: kumudd
+author: KumudD
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 23c159471a6e5a7ad9cb545840e8afd3ac72ecba
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 ---

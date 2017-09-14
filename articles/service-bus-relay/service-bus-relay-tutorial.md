@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Bus WCF Relay のチュートリアル | Microsoft Docs"
-description: "Service Bus WCF Relay を使用して、Service Bus クライアント アプリケーションとサービスをビルドします。"
+description: "WCF Relay を使用して、Service Bus クライアント アプリケーションとサービスをビルドします。"
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -12,41 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 06/02/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: fee43f1e3fa50758870ffbe5b70c20fba517485e
-ms.openlocfilehash: 70fc05f57b66fd14f047fe52f50fd3479a9f2d3d
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 5347bf85cad32b59677369d51a1f36529aef6662
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/06/2017
 
 
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF Relay のチュートリアル
+
 このチュートリアルでは、Azure Relay を使用して簡単な WCF Relay クライアント アプリケーションとサービスを構築する方法について説明します。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
-このチュートリアルを利用すると、WCF Relay のクライアント アプリケーションとサービス アプリケーションを作成するために必要な手順を理解できます。 元の WCF サービスと同様に、サービスは&1; つ以上のエンドポイントを公開するコンストラクトであり、各エンドポイントは&1; つ以上のサービス操作を公開します。 サービスのエンドポイントでは、サービスが見つかるアドレス、クライアントがサービスとやり取りする必要がある情報を含むバインド、サービスがそのクライアントに提供する機能を定義するコントラクトを指定します。 WCF と WCF Relay の主な違いは、エンドポイントがコンピューターのローカルではなくクラウドで公開される点です。
+このチュートリアルを利用すると、WCF Relay のクライアント アプリケーションとサービス アプリケーションを作成するために必要な手順を理解できます。 元の WCF サービスと同様に、サービスは 1 つ以上のエンドポイントを公開するコンストラクトであり、各エンドポイントは 1 つ以上のサービス操作を公開します。 サービスのエンドポイントでは、サービスが見つかるアドレス、クライアントがサービスとやり取りする必要がある情報を含むバインド、サービスがそのクライアントに提供する機能を定義するコントラクトを指定します。 WCF と WCF Relay の主な違いは、エンドポイントがコンピューターのローカルではなくクラウドで公開される点です。
 
 このチュートリアルの一連のトピックに従って操作が完了すると、実行中のサービスとサービスの操作を呼び出すことができるクライアントが作成されます。 最初のトピックでは、アカウントを設定する方法について説明します。 次の手順では、コントラクトを使用するサービスを定義する方法、そのサービスを実装する方法、コードでそのサービスを構成する方法について説明します。 また、サービスをホストして実行する方法についても説明します。 作成されるサービスは自己ホスト型であり、クライアントとサービスは同じコンピューターで実行されます。 このサービスは、コードまたは構成ファイルを使用して構成することができます。
 
-最後の&3; つの手順では、クライアント アプリケーションの作成方法、クライアント アプリケーションの構成方法、ホストの機能にアクセスできるクライアントを作成して使用する方法について説明します。
+最後の 3 つの手順では、クライアント アプリケーションの作成方法、クライアント アプリケーションの構成方法、ホストの機能にアクセスできるクライアントを作成して使用する方法について説明します。
 
-このセクションのすべてのトピックでは、開発環境として Visual Studio を使用していることを前提とします。
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルを完了するには、次のものが必要です。
+
+* [Microsoft Visual Studio 2015 以上](http://visualstudio.com)。 このチュートリアルでは、Visual Studio 2017 を使用します。
+* アクティブな Azure アカウント。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
 
 ## <a name="create-a-service-namespace"></a>サービス名前空間の作成
 
 最初の手順として、名前空間を作成し、[Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) キーを取得します。 名前空間により、リレー サービスが公開する各アプリケーションにアプリケーション境界が設けられます。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Azure が認証する資格情報になります。 [こちらの手順](relay-create-namespace-portal.md)に従って、Relay 名前空間を作成します。
 
 ## <a name="define-a-wcf-service-contract"></a>WCF サービス コントラクトを定義する
+
 サービス コントラクトは、サービスでサポートされる操作 (メソッドや関数を表す Web サービスの用語) を指定します。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 各インターフェイスには、[ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性が適用されている必要があります。また、各操作には、[OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性が適用されている必要があります。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性があるインターフェイスのメソッドに [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性がない場合、そのメソッドは公開されません。 以下の手順では、これらのタスクのコード例を示します。 コントラクトとサービスの概要については、WCF ドキュメントの [「サービスの設計と実装」](https://msdn.microsoft.com/library/ms729746.aspx) を参照してください。
 
-### <a name="to-create-a-relay-contract-with-an-interface"></a>インターフェイスを使用してリレー コントラクトを作成するには
+### <a name="create-a-relay-contract-with-an-interface"></a>インターフェイスを使用してリレー コントラクトを作成する
+
 1. 管理者として Visual Studio を開きます。これには、**[スタート]** メニューの [Visual Studio] を右クリックし、**[管理者として実行]** を選択します。
-2. 新しいコンソール アプリケーション プロジェクトを作成します。 **[ファイル]** メニューをクリックし、**[新規作成]** を選択して、**[プロジェクト]** をクリックします。 **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** をクリックします (**[Visual C#]** が表示されない場合は、**[他の言語]** の下を確認してください)。 **[コンソール アプリケーション]** テンプレートをクリックし、**EchoService** という名前を付けます。 **[OK]** をクリックしてプロジェクトを作成します。
+2. 新しいコンソール アプリケーション プロジェクトを作成します。 **[ファイル]** メニューをクリックし、**[新規作成]** を選択して、**[プロジェクト]** をクリックします。 **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** をクリックします (**[Visual C#]** が表示されない場合は、**[他の言語]** の下を確認してください)。 **[コンソール アプリ (.NET Framework)]** テンプレートをクリックし、「**EchoService**」という名前を付けます。 **[OK]** をクリックしてプロジェクトを作成します。
 
     ![][2]
+
 3. Service Bus NuGet パッケージをインストールします。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできるようにする名前空間です。 Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。
 
-    ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]**をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]**をクリックして、使用条件に同意します。
+    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]**をクリックして、使用条件に同意します。
 
     ![][3]
 4. エディターに Program.cs ファイルがまだ表示されていない場合は、ソリューション エクスプローラーでこのファイルをダブルクリックして開きます。
@@ -59,10 +69,10 @@ ms.lasthandoff: 02/17/2017
 6. 名前空間の名前を、既定の名前である **EchoService** から **Microsoft.ServiceBus.Samples** に変更します。
 
    > [!IMPORTANT]
-   > このチュートリアルでは、C# の名前空間 **Microsoft.ServiceBus.Samples** を使用します。これは、コントラクトのマネージ型の名前空間で、[「WCF クライアントを構成する」](#configure-the-wcf-client)の手順に出てくる構成ファイルで使用されます。 このサンプルをビルドするときに必要な名前空間を指定できますが、それに応じて、アプリケーション構成ファイルでコントラクトとサービスの名前空間を変更しない限り、このチュートリアルは機能しません。 App.config ファイルで指定する名前空間は、C# ファイルで指定した名前空間と同じである必要があります。
+   > このチュートリアルでは、C# の名前空間 **Microsoft.ServiceBus.Samples** を使用します。これは、コントラクトベースのマネージ型の名前空間で、「[WCF クライアントを構成する](#configure-the-wcf-client)」の手順に出てくる構成ファイルで使用されます。 このサンプルをビルドするときに必要な名前空間を指定できますが、それに応じて、アプリケーション構成ファイルでコントラクトとサービスの名前空間を変更しない限り、このチュートリアルは機能しません。 App.config ファイルで指定する名前空間は、C# ファイルで指定した名前空間と同じである必要があります。
    >
    >
-7. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、このインターフェイスに名前空間の値が `http://samples.microsoft.com/ServiceModel/Relay/` の `ServiceContractAttribute` 属性を適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。
+7. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、このインターフェイスに名前空間の値が `http://samples.microsoft.com/ServiceModel/Relay/` の `ServiceContractAttribute` 属性を適用します。 この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。 代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。 名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。 名前空間の宣言の後に次のコードを貼り付けます。
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -75,7 +85,7 @@ ms.lasthandoff: 02/17/2017
    > 通常、サービス コントラクトの名前空間には、バージョン情報を含む名前付けスキームが含まれています。 サービス コントラクトの名前空間にバージョン情報を含めると、サービスは、新しいサービス コントラクトを新しい名前空間を使用して定義し、それを新しいエンドポイントで公開することで、主要な変更を分離できます。 この方法では、クライアントは、古いサービス コントラクトを更新する必要なく、使用し続けることができます。 バージョン情報は、日付またはビルド番号で構成できます。 詳細については、[「サービスのバージョン管理」](http://go.microsoft.com/fwlink/?LinkID=180498)を参照してください。 このチュートリアルの目的では、サービス コントラクトの名前空間の名前付けスキームにバージョン情報は含まれません。
    >
    >
-8. `IEchoContract` インターフェイス内で、`IEchoContract` コントラクトがインターフェイスで公開している単一操作のメソッドを宣言し、パブリック WCF Relay コントラクトの一部として公開するメソッドに `OperationContractAttribute` 属性を適用します。
+8. `IEchoContract` インターフェイス内で、`IEchoContract` コントラクトがインターフェイスで公開している単一操作のメソッドを宣言し、次に示すように、パブリック WCF Relay コントラクトの一部として公開するメソッドに `OperationContractAttribute` 属性を適用します。
 
     ```csharp
     [OperationContract]
@@ -91,6 +101,7 @@ ms.lasthandoff: 02/17/2017
 10. **[ビルド]** メニューの **[ソリューションのビルド]** をクリックするか、**Ctrl + Shift + B** キーを押して、ここまでの作業に問題がないことを確認します。
 
 ### <a name="example"></a>例
+
 次のコードに、WCF Relay コントラクトを定義する基本的なインターフェイスを示します。
 
 ```csharp
@@ -120,6 +131,7 @@ namespace Microsoft.ServiceBus.Samples
 これでインターフェイスが作成されたので、このインターフェイスを実装することができます。
 
 ## <a name="implement-the-wcf-contract"></a>WCF コントラクトを実装する
+
 Azure Relay を作成するには、まずコントラクトを作成する必要があります。コントラクトは、インターフェイスを使用して定義します。 インターフェイスの作成の詳細については、前の手順を参照してください。 次の手順はインターフェイスの実装です。 これには、ユーザー定義の `EchoService` インターフェイスを実装する `IEchoContract` というクラスの作成が含まれます。 インターフェイスを実装したら、App.config 構成ファイルを使用してインターフェイスを構成します。 構成ファイルには、サービス名、コントラクト名、リレー サービスとの通信に使用するプロトコルの種類など、アプリケーションに必要な情報が含まれています。 以下の手順では、これらのタスクに使用するコード例を示します。 サービス コントラクトの実装方法の全般的な説明については、WCF のドキュメントの [「サービス コントラクトの実装」](https://msdn.microsoft.com/library/ms733764.aspx) をご覧ください。
 
 1. `IEchoContract` インターフェイスの定義の直後に、`EchoService` という新しいクラスを作成します。 `EchoService` クラスによって、`IEchoContract` インターフェイスが実装されます。
@@ -150,11 +162,12 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
     ```
 4. **[ビルド]**、**[ソリューションのビルド]** の順にクリックして、作業に問題がないことを確認します。
 
-### <a name="to-define-the-configuration-for-the-service-host"></a>サービス ホストの構成を定義するには
-1. 構成ファイルは WCF 構成ファイルとよく似ており、 サービス名、エンドポイント (つまり、クライアントとホストの相互通信用に Azure Relay が公開している場所)、バインド (通信に使用するプロトコルの種類) が記載されています。 主な違いは、構成されているこのサービス エンドポイントが、.NET Framework に含まれていない [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) バインドを参照している点です。 [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) は、サービスによって定義されたバインドの&1; つです。
+### <a name="define-the-configuration-for-the-service-host"></a>サービス ホストの構成を定義する
+
+1. 構成ファイルは WCF 構成ファイルとよく似ており、 サービス名、エンドポイント (つまり、クライアントとホストの相互通信用に Azure Relay が公開している場所)、バインド (通信に使用するプロトコルの種類) が記載されています。 主な違いは、構成されているこのサービス エンドポイントが、.NET Framework に含まれていない [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) バインドを参照している点です。 [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) は、サービスによって定義されたバインドの 1 つです。
 2. **ソリューション エクスプローラー**で、App.config ファイルをダブルクリックして、Visual Studio エディターでそのファイルを開きます。
 3. `<appSettings>` 要素内のプレースホルダーを、実際のサービスの名前空間名と先ほどコピーした SAS キーに置き換えます。
-4. `<system.serviceModel>` タグ内に、`<services>` 要素を追加します。 1 つの構成ファイルで複数のリレー アプリケーションを定義できます。 ただし、このチュートリアルで定義するのは&1; つだけです。
+4. `<system.serviceModel>` タグ内に、`<services>` 要素を追加します。 1 つの構成ファイルで複数のリレー アプリケーションを定義できます。 ただし、このチュートリアルで定義するのは 1 つだけです。
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -182,6 +195,7 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
 7. **[ビルド]** メニューの **[ソリューションのビルド]** をクリックして、作業に問題がないことを確認します。
 
 ### <a name="example"></a>例
+
 次のコードは、サービス コントラクトの実装を示します。
 
 ```csharp
@@ -219,10 +233,12 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
 ```
 
 ## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>リレー サービスに登録する基本的な Web サービスをホストして実行する
+
 この手順では、Azure Relay サービスの実行方法について説明します。
 
-### <a name="to-create-the-relay-credentials"></a>リレー資格情報を作成するには
-1. `Main()` で、コンソール ウィンドウから読み取った名前空間と SAS キーを格納するための&2; つの変数を作成します。
+### <a name="create-the-relay-credentials"></a>リレー資格情報を作成する
+
+1. `Main()` で、コンソール ウィンドウから読み取った名前空間と SAS キーを格納するための 2 つの変数を作成します。
 
     ```csharp
     Console.Write("Your Service Namespace: ");
@@ -239,7 +255,8 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-### <a name="to-create-a-base-address-for-the-service"></a>サービスのベース アドレスを作成するには
+### <a name="create-a-base-address-for-the-service"></a>サービスのベース アドレスを作成する
+
 1 つ前の手順で追加したコードの後に、サービスのベース アドレスの `Uri` インスタンスを作成します。 この URI では、Service Bus スキーム、名前空間、サービス インターフェイスのパスを指定します。
 
 ```csharp
@@ -250,7 +267,8 @@ Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "Ec
 
 このチュートリアルでは、URI は `sb://putServiceNamespaceHere.windows.net/EchoService` です。
 
-### <a name="to-create-and-configure-the-service-host"></a>サービス ホストを作成して構成するには
+### <a name="create-and-configure-the-service-host"></a>サービス ホストを作成して構成する
+
 1. 接続モードを `AutoDetect` に設定します。
 
     ```csharp
@@ -288,9 +306,10 @@ Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "Ec
     }
     ```
 
-    前の手順で説明したように、構成ファイルで複数のサービスとエンドポイントを宣言しておくことができます。 宣言した場合、このコードは構成ファイルを走査し、資格情報を適用する必要があるすべてのエンドポイントを検索します。 ただし、このチュートリアルでは、構成ファイルのエンドポイントは&1; つだけです。
+    前の手順で説明したように、構成ファイルで複数のサービスとエンドポイントを宣言しておくことができます。 宣言した場合、このコードは構成ファイルを走査し、資格情報を適用する必要があるすべてのエンドポイントを検索します。 ただし、このチュートリアルでは、構成ファイルのエンドポイントは 1 つだけです。
 
-### <a name="to-open-the-service-host"></a>サービス ホストを開くには
+### <a name="open-the-service-host"></a>サービス ホストを開く
+
 1. サービスを開きます。
 
     ```csharp
@@ -311,7 +330,8 @@ Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "Ec
 4. **Ctrl + Shift + B** キーを押して、プロジェクトをビルドします。
 
 ### <a name="example"></a>例
-次の例では、チュートリアルの前の手順で説明したサービス コントラクトと実装が含まれています。ここでは、コンソール アプリケーションでサービスをホストします。 次のコードをコンパイルして、EchoService.exe という実行可能ファイルを作成します。
+
+完成したサービス コードは次のようになります。 このコードには、チュートリアルの前の手順で説明したサービス コントラクトと実装が含まれています。ここでは、コンソール アプリケーションでサービスをホストします。
 
 ```csharp
 using System;
@@ -388,12 +408,13 @@ namespace Microsoft.ServiceBus.Samples
 ```
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>サービス コントラクト用の WCF クライアントを作成する
+
 次の手順では、クライアント アプリケーションを作成し、後の手順で実装するサービス コントラクトを定義します。 これらの手順の多くは、コントラクトの定義、App.config ファイルの編集、資格情報を使用したリレー サービスへの接続など、サービスの作成に使用した手順に似ています。 以下の手順では、これらのタスクに使用するコード例を示します。
 
 1. 次の手順に従って、クライアント用の現在の Visual Studio ソリューションに新しいプロジェクトを作成します。
 
    1. ソリューション エクスプローラーで、サービスを含む同じソリューションの (プロジェクトではなく) 現在のソリューションを右クリックし、**[追加]** をクリックします。 次に、**[新しいプロジェクト]** をクリックします。
-   2. **[新しいプロジェクトの追加]** ダイアログ ボックスで **[Visual C#]** をクリックします (**[Visual C#]** が表示されない場合は、**[他の言語]** の下を探してください)。**[コンソール アプリケーション]** テンプレートを選択し、**EchoClient**という名前を付けます。
+   2. **[新しいプロジェクトの追加]** ダイアログ ボックスで **[Visual C#]** をクリックします (**[Visual C#]** が表示されない場合は、**[他の言語]** の下を探してください)。**[コンソール アプリ (.NET Framework)]** テンプレートを選択し、「**EchoClient**」という名前を付けます。
    3. **[OK]**をクリックします。
       <br />
 2. ソリューション エクスプローラーで **EchoClient** プロジェクトの Program.cs ファイルをダブルクリックしてエディターで開きます (まだ開いていない場合)。
@@ -421,6 +442,7 @@ namespace Microsoft.ServiceBus.Samples
 7. **Ctrl + Shift + B** キーを押して、クライアントをビルドします。
 
 ### <a name="example"></a>例
+
 次のコードは、**EchoClient** プロジェクトの Program.cs ファイルの現在の状態を示します。
 
 ```csharp
@@ -451,6 +473,7 @@ namespace Microsoft.ServiceBus.Samples
 ```
 
 ## <a name="configure-the-wcf-client"></a>WCF クライアントを構成する
+
 この手順では、このチュートリアルで前に作成したサービスにアクセスする基本的なクライアント アプリケーションの App.config ファイルを作成します。 この App.config ファイルでは、エンドポイントのコントラクト、バインド、および名前を定義します。 以下の手順では、これらのタスクに使用するコード例を示します。
 
 1. ソリューション エクスプローラーで、**EchoClient** プロジェクトの **[App.config]** をダブルクリックし、Visual Studio エディターでファイルを開きます。
@@ -480,6 +503,7 @@ namespace Microsoft.ServiceBus.Samples
 5. **[ファイル]**、**[すべて保存]** の順にクリックします。
 
 ## <a name="example"></a>例
+
 次のコードは、Echo クライアントの App.config ファイルを示します。
 
 ```xml
@@ -512,9 +536,9 @@ namespace Microsoft.ServiceBus.Samples
 6. アプリケーション固有のタスクを実行します。
 7. 接続を閉じます。
 
-ただし、主な違いの&1; つとして、クライアント アプリケーションではリレー サービスへの接続にチャネルを使用するのに対し、サービスでは **ServiceHost** の呼び出しを使用します。 以下の手順では、これらのタスクに使用するコード例を示します。
+ただし、主な違いの 1 つとして、クライアント アプリケーションではリレー サービスへの接続にチャネルを使用するのに対し、サービスでは **ServiceHost** の呼び出しを使用します。 以下の手順では、これらのタスクに使用するコード例を示します。
 
-### <a name="to-implement-a-client-application"></a>クライアント アプリケーションを実装するには
+### <a name="implement-a-client-application"></a>クライアント アプリケーションを実装する
 1. 接続モードを **AutoDetect** に設定します。 **EchoClient** アプリケーションの `Main()` メソッドの中に次のコードを追加します。
 
     ```csharp
@@ -584,46 +608,9 @@ namespace Microsoft.ServiceBus.Samples
     channelFactory.Close();
     ```
 
-## <a name="to-run-the-applications"></a>アプリケーションを実行するには
-1. **Ctrl + Shift + B** キーを押して、ソリューションをビルドします。 前の手順で作成したサービス プロジェクトとクライアント プロジェクトの両方がビルドされます。
-2. クライアント アプリケーションを実行する前に、サービス アプリケーションが実行されていることを確認してください。 Visual Studio のソリューション エクスプローラーで **[EchoService]** ソリューションを右クリックし、**[プロパティ]** をクリックします。
-3. [ソリューションのプロパティ] ダイアログ ボックスの **[スタートアップ プロジェクト]** をクリックし、**[マルチ スタートアップ プロジェクト]** ボタンをクリックします。 **EchoService** がリストの先頭に表示されていることを確認してください。
-4. **EchoService** プロジェクトと **EchoClient** プロジェクトの両方の **[アクション]** ボックスを **[開始]** に設定します。
-
-    ![][5]
-5. **[プロジェクトの依存関係]**をクリックします。 **[プロジェクト]** ボックスの **[EchoClient]** を選択します。 **[依存先]** ボックスで、**[EchoService]** がオンになっていることを確認します。
-
-    ![][6]
-6. **[OK]** をクリックして、**[プロパティ]** ダイアログを閉じます。
-7. **F5** キーを押して両方のプロジェクトを実行します。
-8. 両方のコンソール ウィンドウが開き、名前空間名の入力が求められます。 先にサービスを実行しておく必要があるので、**[EchoService]** コンソール ウィンドウで名前空間を入力し、**Enter** キーを押します。
-9. 次に、SAS キーの入力を求められます。 SAS キーを入力し、Enter キーを押します。
-
-    コンソール ウィンドウの出力例を次に示します。 ここで示されている値は例での使用のみを目的としています。
-
-    `Your Service Namespace: myNamespace`
-    `Your SAS Key: <SAS key value>`
-
-    次の例に示すように、サービス アプリケーションによってリッスンされているアドレスがコンソール ウィンドウに出力されます。
-
-    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/`
-    `Press [Enter] to exit`
-10. **[EchoClient]** コンソール ウィンドウに、先ほどサービス アプリケーションについて入力したものと同じ情報を入力します。 前の手順に従い、クライアント アプリケーションについても同じサービス名前空間と SAS キーの値を入力してください。
-11. これらの値を入力すると、クライアントはサービスに対するチャネルを開き、次のコンソール出力例に示すように、なんらかのテキストを入力するよう求めます。
-
-    `Enter text to echo (or [Enter] to exit):`
-
-    サービス アプリケーションに送信するテキストを入力し、Enter キーを押します。 このテキストは、Echo サービス操作を介してサービスに送信され、次の出力例のように、サービス コンソール ウィンドウに表示されます。
-
-    `Echoing: My sample text`
-
-    クライアント アプリケーションは、`Echo` 操作の戻り値を受け取ります。これは元のテキストで、コンソール ウィンドウに出力されます。 クライアント コンソール ウィンドウの出力例を次に示します。
-
-    `Server echoed: My sample text`
-12. この方法で、クライアントからサービスにテキスト メッセージの送信を続けることができます。 終了したら、クライアント コンソール ウィンドウとサービス コンソール ウィンドウで Enter キーを押して両方のアプリケーションを終了します。
-
 ## <a name="example"></a>例
-次の例では、クライアント アプリケーションを作成する方法、サービスの操作を呼び出す方法、操作の呼び出しが完了した後でクライアントを終了する方法を示します。
+
+完成したコードは次のようになります。クライアント アプリケーションを作成する方法、サービスの操作を呼び出す方法、操作の呼び出しが完了した後でクライアントを終了する方法を示しています。
 
 ```csharp
 using System;
@@ -690,21 +677,59 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
+## <a name="run-the-applications"></a>アプリケーションの実行
+
+1. **Ctrl + Shift + B** キーを押して、ソリューションをビルドします。 前の手順で作成したサービス プロジェクトとクライアント プロジェクトの両方がビルドされます。
+2. クライアント アプリケーションを実行する前に、サービス アプリケーションが実行されていることを確認してください。 Visual Studio のソリューション エクスプローラーで **[EchoService]** ソリューションを右クリックし、**[プロパティ]** をクリックします。
+3. [ソリューションのプロパティ] ダイアログ ボックスの **[スタートアップ プロジェクト]** をクリックし、**[マルチ スタートアップ プロジェクト]** ボタンをクリックします。 **EchoService** がリストの先頭に表示されていることを確認してください。
+4. **EchoService** プロジェクトと **EchoClient** プロジェクトの両方の **[アクション]** ボックスを **[開始]** に設定します。
+
+    ![][5]
+5. **[プロジェクトの依存関係]**をクリックします。 **[プロジェクト]** ボックスの **[EchoClient]** を選択します。 **[依存先]** ボックスで、**[EchoService]** がオンになっていることを確認します。
+
+    ![][6]
+6. **[OK]** をクリックして、**[プロパティ]** ダイアログを閉じます。
+7. **F5** キーを押して両方のプロジェクトを実行します。
+8. 両方のコンソール ウィンドウが開き、名前空間名の入力が求められます。 先にサービスを実行しておく必要があるので、**[EchoService]** コンソール ウィンドウで名前空間を入力し、**Enter** キーを押します。
+9. 次に、SAS キーの入力を求められます。 SAS キーを入力し、Enter キーを押します。
+
+    コンソール ウィンドウの出力例を次に示します。 ここで示されている値は例での使用のみを目的としています。
+
+    `Your Service Namespace: myNamespace`
+    `Your SAS Key: <SAS key value>`
+
+    次の例に示すように、サービス アプリケーションによってリッスンされているアドレスがコンソール ウィンドウに出力されます。
+
+    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/`
+    `Press [Enter] to exit`
+10. **[EchoClient]** コンソール ウィンドウに、先ほどサービス アプリケーションについて入力したものと同じ情報を入力します。 前の手順に従い、クライアント アプリケーションについても同じサービス名前空間と SAS キーの値を入力してください。
+11. これらの値を入力すると、クライアントはサービスに対するチャネルを開き、次のコンソール出力例に示すように、なんらかのテキストを入力するよう求めます。
+
+    `Enter text to echo (or [Enter] to exit):`
+
+    サービス アプリケーションに送信するテキストを入力し、Enter キーを押します。 このテキストは、Echo サービス操作を介してサービスに送信され、次の出力例のように、サービス コンソール ウィンドウに表示されます。
+
+    `Echoing: My sample text`
+
+    クライアント アプリケーションは、`Echo` 操作の戻り値を受け取ります。これは元のテキストで、コンソール ウィンドウに出力されます。 クライアント コンソール ウィンドウの出力例を次に示します。
+
+    `Server echoed: My sample text`
+12. この方法で、クライアントからサービスにテキスト メッセージの送信を続けることができます。 終了したら、クライアント コンソール ウィンドウとサービス コンソール ウィンドウで Enter キーを押して両方のアプリケーションを終了します。
+
 ## <a name="next-steps"></a>次のステップ
+
 このチュートリアルでは、Service Bus の WCF Relay 機能を使用して、Azure Relay クライアント アプリケーションとサービスを構築する方法を紹介しました。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 Azure Relay の詳細については、次のトピックを参照してください。
 
 * [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Azure Relay の概要](relay-what-is-it.md)
-* [.NET で WCF リレー サービスを使用する方法](service-bus-dotnet-how-to-use-relay.md)
+* [.NET で WCF リレー サービスを使用する方法](relay-wcf-dotnet-get-started.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
 
-[1]: ./media/service-bus-relay-tutorial/service-bus-policies.png
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png
-[4]: ./media/service-bus-relay-tutorial/create-ns.png
 [5]: ./media/service-bus-relay-tutorial/set-projects.png
 [6]: ./media/service-bus-relay-tutorial/set-depend.png
 

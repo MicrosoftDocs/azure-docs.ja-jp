@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 08/29/2017
 ms.author: juanpere
-translationtype: Human Translation
-ms.sourcegitcommit: eac5027f39d15e355d1c9f60a31ded567272d5fa
-ms.openlocfilehash: b94ceac2298509817020b32b65125c5f767d8089
-ms.lasthandoff: 12/16/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 6e4ca8ad0c444930f5e45eed0a024412de82dbb1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/16/2016
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
     ```
-次に示すように、クエリ条件は&1; つのデバイス ID にもデバイス ID のリストにも設定できます。
+次に示すように、クエリ条件は 1 つのデバイス ID にもデバイス ID のリストにも設定できます。
 
 **例**
 ```
@@ -117,8 +117,8 @@ ContinuationToken は、応答から提供されます。
 | プロパティ | 説明 |
 | --- | --- |
 | **jobId** |アプリケーションが提供するジョブの ID。 |
-| **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO&8601;)。 |
-| **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO&8601;)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
+| **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO 8601)。 |
+| **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO 8601)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
 | **type** |ジョブの種類: |
 | **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 | |
 | **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 | |
@@ -147,7 +147,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
 * [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
 * [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
-* [IoT Hub のツインおよびジョブ向けのクエリ言語][lnk-query]: IoT Hub からデバイス ツインおよびジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
+* [デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: デバイス ツインとジョブに関する情報を IoT Hub から取得するために使用できる IoT Hub クエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ

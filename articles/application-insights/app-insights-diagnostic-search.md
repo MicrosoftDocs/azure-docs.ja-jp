@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 08390472c6480200751f37028fef594fb055f118
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: aeb27a02ed624106afec5dbd98faacf5f400f89e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用

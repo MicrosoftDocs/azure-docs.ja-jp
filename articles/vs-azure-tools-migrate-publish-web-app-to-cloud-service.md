@@ -3,8 +3,8 @@ title: "方法: Visual Studio から Azure クラウド サービスへの Web �
 description: "Visual Studio を使用して、Azure クラウド サービスに Web アプリケーションを移行および発行する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
 ms.openlocfilehash: a30859610aed55c1ffa22e821de3702d265a7fa7
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
@@ -201,9 +202,4 @@ Azure に Web アプリケーションを発行するには、次の表に記載
 
 ## <a name="next-steps"></a>次のステップ
 発行の詳細については、「 [Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。 また、「 [名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

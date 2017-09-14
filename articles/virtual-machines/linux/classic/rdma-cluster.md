@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b002d21b198fa4887e30d30c20ec67d21ae30579
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
-Azure で [H シリーズまたはコンピューティング集中型 A シリーズの VM](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。 この記事では、クラスターで Intel MPI を実行するために Linux HPC イメージを準備する手順を説明します。 準備ができたら、このイメージと、RDMA 対応の Azure VM サイズのいずれか (現時点では H16r、H16mr、A8、または A9) を使用して、VM のクラスターをデプロイします。 リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信する MPI アプリケーションを実行するには、このクラスターを使用します。
+Azure で[ハイ パフォーマンス コンピューティング VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。 この記事では、クラスターで Intel MPI を実行するために Linux HPC イメージを準備する手順を説明します。 準備ができたら、このイメージと、RDMA 対応の Azure VM サイズのいずれか (現時点では H16r、H16mr、A8、または A9) を使用して、VM のクラスターをデプロイします。 リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信する MPI アプリケーションを実行するには、このクラスターを使用します。
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。

@@ -1,6 +1,6 @@
 ---
-title: "Azure への VMware レプリケーションの容量とスケーリングの計画 | Microsoft Docs"
-description: "この記事を使用して、Azure に VMware VM をレプリケートする場合の容量とスケーリングを計画します"
+title: "Azure Site Recovery を使用した Azure への VMware レプリケーションの容量とスケーリングを計画する | Microsoft Docs"
+description: "この記事では、Azure Site Recovery で Azure に VMware VM をレプリケートする場合の容量とスケーリングを計画する方法について説明します"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,22 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/05/2017
+ms.date: 05/24/2017
 ms.author: rayne
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 86366359e065c9a9b4a52136254588e67125fb5f
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 8b580ac239bfb6d7b633fb03d4cfb91b168b0610
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Azure Site Recovery を使用した VMware レプリケーションの容量とスケーリングの計画
 
-この記事で、オンプレミスの VMware VM および物理サーバーを Azure にレプリケートする場合に、[Azure Site Recovery](site-recovery-overview.md) を使用して容量とスケーリングを計画する方法を理解します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM および物理サーバーを Azure にレプリケートする場合に容量とスケーリングを計画する方法を説明します。
 
 ## <a name="how-do-i-start-capacity-planning"></a>容量計画はどのように開始すればよいか
 
-[Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) を使用して、レプリケーション環境に関する情報を収集します。 これには、互換性のある仮想マシンと互換性のない仮想マシンの数、VM ごとのディスク数、ディスクごとのデータ変更頻度に関する情報が含まれます。 また、ネットワーク帯域幅要件と、レプリケーションとテスト フェールオーバーを正常に実行するために必要な Azure インフラストラクチャに関する情報も含まれます。
+VMware をレプリケーションするために [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) を実行して、レプリケーション環境に関する情報を収集します。 [こちら](site-recovery-deployment-planner.md) を参照してください。 互換および非互換の VM、VM あたりのディスク数、およびディスクあたりのデータ チャーンに関する情報を収集します。 このツールでは、ネットワーク帯域幅の要件に加えて、レプリケーションとテスト フェールオーバーを正常に実行するために必要な Azure インフラストラクチャに関する情報も収集されます。
 
 ## <a name="capacity-considerations"></a>容量に関する考慮事項
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="control-network-bandwidth"></a>ネットワーク帯域幅の管理
 
-[Deployment Planner ツール](https://aka.ms/asr-deployment-planner-doc)を使用して、レプリケーション (初期レプリケーションとその後の差分レプリケーションを含む) に必要な帯域幅を計算できます。 レプリケーションの帯域幅の使用量を制御する方法には、いくつかのオプションがあります。
+[Deployment Planner ツール](site-recovery-deployment-planner.md)を使用してレプリケーションに必要な帯域幅 (初期レプリケーションと差分) を計算した後、次の 2 つのオプションを使用してレプリケーションに使用する帯域幅の量を制御できます。
 
 * **帯域幅を調整する**: Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
 * **帯域幅に影響を与える**: レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
@@ -87,6 +88,7 @@ ms.lasthandoff: 03/22/2017
   * **Hkey_local_machine \software\microsoft\windows Azure Backup\DownloadThreadsPerVM** は、フェールバック時にデータ転送に使用されるスレッドの数を指定します。
 
 ### <a name="throttle-bandwidth"></a>帯域幅を調整する
+
 1. プロセス サーバーとして機能しているマシンで、Azure Backup MMC スナップインを開きます。 既定では、Backup のショートカットが、デスクトップかフォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin にあります。
 2. スナップインで **[プロパティの変更]** をクリックします。
 
@@ -140,9 +142,7 @@ ms.lasthandoff: 03/22/2017
 3. **[ターゲット プロセス サーバーの選択]** で、使用する新しいプロセス サーバーを選択し、そのサーバーが処理する仮想マシンを選択します。 サーバーに関する情報を確認するには、情報アイコンをクリックします。 負荷の決定に役立つように、選択された各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。 チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。
 
 
+## <a name="next-steps"></a>次のステップ
 
-
-
-
-
+[Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) のダウンロードと実行
 

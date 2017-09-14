@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/21/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 60f1ec092635910ae8c98cc0197fdfbf358f01be
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定

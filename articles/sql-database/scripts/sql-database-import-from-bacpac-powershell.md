@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - bacpac から SQL データベースへのインポート | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - PowerShell を使用した bacpac から SQL データベースへのインポート"
+title: "PowerShell サンプル - インポート - bacpac ファイル - Azure SQL データベース | Microsoft Docs"
+description: "bacpac ファイルを SQL データベースにインポートするための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: cd6c53b7e4cc13920f1ed99934e10a38a9b3e4ed
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ba477c19a7c7bd6809aa3b78c0ef23e9cc7d5497
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="import-from-a-bacpac-into-a-sql-database-using-powershell"></a>PowerShell を使用した bacpac から SQL データベースへのインポート
+# <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>PowerShell を使用して bacpac ファイルを Azure SQL データベースにインポートする
 
-この PowerShell のサンプル スクリプトでは、**bacpac** ファイルからデータベースをインポートします。  
+この PowerShell サンプル スクリプトは、**bacpac** ファイルから Azure SQL データベースにデータベースをインポートします。  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

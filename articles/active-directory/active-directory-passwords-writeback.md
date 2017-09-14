@@ -6,22 +6,21 @@ keywords: "Active Directory パスワード管理, パスワード管理, Azure 
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: fde08bfc3a73c54ee53b5d8efffd3001894416b3
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 7783d0fc30b4b7d098a89595771993b33fb0aa97
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
@@ -82,7 +81,7 @@ ms.lasthandoff: 05/13/2017
 
 DirSync と Azure AD Sync は、パスワード ライトバックを有効にする方法としてはサポートされなくなりました。[DirSync と Azure AD Sync からのアップグレード](connect/active-directory-aadconnect-dirsync-deprecated.md)に関する記事に、切り替えに役立つ情報が記載されています。
 
-以下の手順では、既に環境内で[簡単設定](./connect/active-directory-aadconnect-get-started-express.md)または[カスタム設定](./connect/active-directory-aadconnect-get-started-custom.md)を使用して Azure AD Connect を構成済みであることが前提となっています。
+以下の手順は、お使いの環境で[簡単](./connect/active-directory-aadconnect-get-started-express.md)または[カスタム](./connect/active-directory-aadconnect-get-started-custom.md)設定を使用して、Azure AD Connect を既に構成済みであることが前提になっています。
 
 1. パスワード ライトバックを構成および有効化するには、Azure AD Connect サーバーにログインして **Azure AD Connect** 構成ウィザードを開始します。
 2. [ようこそ] 画面で **[構成]** をクリックします。
@@ -198,3 +197,4 @@ DirSync と Azure AD Sync は、パスワード ライトバックを有効に�
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Azure AD Connect でパスワード ライトバックを有効にする"
+

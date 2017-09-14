@@ -1,52 +1,54 @@
-- name: "Emotion API Documentation"
+- name: Emotion API Documentation
   href: ../index.md
-- name: "Overview"
+- name: Overview
   href: Home.md
-- name: "How to"
+- name: How to
   items:
-  - name: "Call the Emotion API for video"
+  - name: Call the Emotion API for video
     href: emotion-api-how-to-topics/HowtoCallEmotionForVideo.md
-  - name: "Analyze videos in real time"
+  - name: Analyze videos in real time
     href: emotion-api-how-to-topics/HowtoAnalyzeVideo_Emotion.md
-- name: "Quickstarts"
+- name: Quickstarts
   expanded: true
   items:
-  - name: "cURL"
+  - name: cURL
     href: QuickStarts/curl.md
-  - name: "C#"
+  - name: 'C#'
     href: QuickStarts/CSharp.md
-  - name: "Java"
+  - name: Java
     href: QuickStarts/Java.md
-  - name: "JavaScript"
+  - name: JavaScript
     href: QuickStarts/JavaScript.md
-  - name: "PHP"
+  - name: PHP
     href: QuickStarts/PHP.md
-  - name: "Python"
+  - name: Python
     href: QuickStarts/Python.md
-  - name: "Ruby"
+  - name: Ruby
     href: QuickStarts/Ruby.md
-- name: "Tutorials"
+- name: Tutorials
   items:
-  - name: "C#"
+  - name: 'C#'
     href: Tutorials/CSharpTutorial.md
-  - name: "Python"
+  - name: Python
     href: Tutorials/PythonTutorial.md
-- name: "Reference"
+- name: Reference
   items: 
-  - name: "Emotion Reference"
+  - name: Emotion Reference
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89
-  - name: "Emotion Recognition Video"
+  - name: Emotion Recognition Video
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e
-  - name: "SDKs"
+  - name: SDKs
     items:
-    - name: "Android"
+    - name: Android
       href: https://github.com/Microsoft/Cognitive-emotion-android
-    - name: "Windows"
+    - name: Windows
       href: https://github.com/Microsoft/Cognitive-emotion-windows
-- name: "Resources"
+- name: Resources
   items: 
-  - name: "Samples"
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Samples
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services
-  - name: "FAQ"
+  - name: FAQ
     href: FAQ.md
     

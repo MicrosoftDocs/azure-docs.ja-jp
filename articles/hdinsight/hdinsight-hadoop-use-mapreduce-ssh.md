@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop の MapReduce と SSH 接続の使用 | Microsoft Docs"
+title: "HDInsight での Hadoop の MapReduce と SSH 接続の使用 - Azure | Microsoft Docs"
 description: "SSH を使用して HDInsight で Hadoop を使用して MapReduce ジョブを実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d13e6782115bf4f229ed232dc6e3c21ff81c86eb
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: eaf6278f97cd5ddd7e049ff4745181f39d7949a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>SSH による HDInsight での MapReduce と Hadoop の使用
@@ -38,7 +37,7 @@ Secure Shell (SSH) 接続から HDInsight に MapReduce ジョブを送信する
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * SSH クライアント 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -46,11 +45,15 @@ Secure Shell (SSH) 接続から HDInsight に MapReduce ジョブを送信する
 
 SSH を使用してクラスターに接続します。 たとえば、次のコマンドは **myhdinsight** という名前のクラスターに接続します。
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net
+```bash
+ssh admin@myhdinsight-ssh.azurehdinsight.net
+```
 
 **SSH 認証に証明書キーを使用する場合**、クライアント システムの秘密キーの場所を指定する必要があることがあります。たとえば、以下のようにします。
 
-    ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+```bash
+ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+```
 
 **SSH 認証にパスワードを使用する場合**、メッセージが表示されたら、パスワードを入力する必要があります。
 
@@ -93,7 +96,7 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](h
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    このコマンドでは、**wasbs://example/data/gutenberg/davinci.txt** ファイルに含まれる文字の一覧と各文字の出現回数が表示されます。 ファイルに含まれるデータの例を次のテキストに示します。
+    このコマンドでは、**wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる文字の一覧と各文字の出現回数が表示されます。 ファイルに含まれるデータの例を次のテキストに示します。
 
         wreathed        3
         wreathing       1

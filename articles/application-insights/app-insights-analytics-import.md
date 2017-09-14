@@ -2,6 +2,7 @@
 title: "Azure Application Insights の Analytics にデータをインポートする | Microsoft Docs"
 description: "静的データをインポートしてアプリのテレメトリと結合したり、個別のデータ ストリームをインポートして Analytics でクエリを実行できます。"
 services: application-insights
+keywords: "スキーマを開く、データのインポート"
 documentationcenter: 
 author: CFreemanwa
 manager: carmonm
@@ -11,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: d649644959d907ff7fd6c1de360b091682f13d5b
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50049b1c66bf93cbed52e30e66385c33a4d97c5b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
@@ -59,19 +59,13 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 
  * 対象の BLOB に対して専用のストレージ アカウントを作成することをお勧めします。 BLOB が他のプロセスと共有されている場合は、BLOB を読み取るプロセスの所要時間が長くなります。
 
-2. この機能がプレビュー中である間は、アクセス権を申請する必要があります。
-
- * [Azure ポータル](https://portal.azure.com)の Application Insights リソースから、Analytics を開きます。 
- * [スキーマ] ペインの下部で、**[Other Data Sources (他のデータ ソース)]** の [お問い合わせ] リンクをクリックします。 
- * [データ ソースの追加] が表示された場合は、既にアクセス権が付与されています。
-
 
 ## <a name="define-your-schema"></a>スキーマの定義
 
 データをインポートする前に、*データ ソース*を定義する必要があります。これにより、データのスキーマを指定します。
 Application Insights リソースには、最大 50 のデータ ソースが許可されます。
 
-1. データ ソース ウィザードを起動します。
+1. データ ソース ウィザードを起動します。 [新しいデータ ソースの追加] ボタンを使用します。 または、右上隅の設定ボタンをクリックして、ドロップダウン メニューから [データ ソース] を選択します。
 
     ![新しいデータ ソースの追加](./media/app-insights-analytics-import/add-new-data-source.png)
 
@@ -140,7 +134,7 @@ JSON ではデータの部分的なマッピングが可能なため、JSON 形�
 
 次のプロセスは、手動で実行するか、または自動化されたシステムを設定して定期的に実行することができます。 インポートするデータのブロックごとに、これらの手順を実行する必要があります。
 
-1. [Azure BLOB ストレージ](../storage/storage-dotnet-how-to-use-blobs.md)にデータをアップロードします。 
+1. [Azure BLOB ストレージ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)にデータをアップロードします。 
 
  * BLOB のサイズは、非圧縮で 1 GB が上限となります。 パフォーマンスの観点から言うと、数百 MB の BLOB が最適なサイズです。
  * Gzip で圧縮すれば、アップロード時間が短縮されるだけでなく、データがクエリで使用できるようになるまでの時間も短縮されます。 ファイル名拡張子は `.gz` を使用してください。
@@ -148,7 +142,7 @@ JSON ではデータの部分的なマッピングが可能なため、JSON 形�
  * データを高い頻度で送信する場合、パフォーマンス上の理由で、数秒おきに複数のストレージ アカウントを使用することをお勧めします。
 
  
-2. [BLOB の Shared Access Signature キーを作成します](../storage/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を 1 日とし、読み取りアクセスを提供する必要があります。
+2. [BLOB の Shared Access Signature キーを作成します](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を 1 日とし、読み取りアクセスを提供する必要があります。
 3. データが待機していることを Application Insights に通知するための REST 呼び出しを実行します。
 
  * エンドポイント: `https://dc.services.visualstudio.com/v2/track`
@@ -372,6 +366,6 @@ namespace IngestionClient
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Analytics クエリ言語のツアー](app-insights-analytics-tour.md)
+* [Log Analytics クエリ言語のツアー](app-insights-analytics-tour.md)
 * [*Logstash* を使用して Application Insights にデータを送信する](https://github.com/Microsoft/logstash-output-application-insights)
 

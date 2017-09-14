@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d9ba200dba2b1460a9d3c9ba07e2bca54c30b53a
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f9a9ff81913dda1457123525fe509d194798db14
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Azure での StorSimple 仮想デバイスのデプロイと管理
@@ -34,7 +34,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートするすべての Azure リージョン<br></br> [こちらの表](https://azure.microsoft.com/en-us/regions/services)を参照し、該当するリージョンで*「Virtual Machines」の「DS シリーズ」*と*「Storage」の「Disk Storage」*の両方が利用できるかどうかを確認してください。 |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md)方法を参照 |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/common/storage-premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -69,7 +69,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 #### <a name="azure-requirements"></a>Azure の要件
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium storage リージョンは、[リージョン別の Azure サービス](https://azure.microsoft.com/en-us/regions/services)の一覧の "*Disk Storage*" 行に対応するリージョンです。
+* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium storage リージョンは、[リージョン別の Azure サービス](https://azure.microsoft.com/en-us/regions/services)の一覧の "*Disk Storage*" 行に対応するリージョンです。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
 * 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。                             
@@ -83,7 +83,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 仮想デバイスを作成する前に、Azure StorSimple サービスに対して次の更新作業を行います。
 
 * 仮想デバイスのホスト サーバーとなる VM の [アクセス制御レコード](storsimple-manage-acrs.md) を追加します。
-* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../storage/storage-premium-storage.md)を参照してください。
+* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/common/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../storage/common/storage-premium-storage.md)を参照してください。
 * 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。

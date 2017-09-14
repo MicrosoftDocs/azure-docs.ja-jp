@@ -3,7 +3,7 @@ title: "Azure API Management のキャッシュ ポリシー | Microsoft Docs"
 description: "Azure API Management で使用できるキャッシュ ポリシーについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
-##  <a name="a-namecachingpoliciesa-caching-policies"></a><a name="CachingPolicies"></a> キャッシュ ポリシー  
+##  <a name="CachingPolicies"></a> キャッシュ ポリシー  
   
 -   応答キャッシュ ポリシー  
   
@@ -38,7 +40,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
     -   [キャッシュから値を削除](#RemoveCacheByKey) - キー別にキャッシュ内の項目を削除します。  
   
-##  <a name="a-namegetfromcachea-get-from-cache"></a><a name="GetFromCache"></a> キャッシュから取得  
+##  <a name="GetFromCache"></a> キャッシュから取得  
  `cache-lookup` ポリシーを使用し、キャッシュを検索して、キャッシュに格納された有効な応答ががあればそれを返します。 このポリシーを適用できるのは、応答の内容が一定期間にわたって静的である場合です。 応答のキャッシュを使用すると、バックエンド Web サーバーの帯域幅および処理の要件が低減され、API コンシューマーによって認識される遅延が小さくなります。  
   
 > [!NOTE]
@@ -128,7 +130,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **ポリシー スコープ:** API、操作、製品  
   
-##  <a name="a-namestoretocachea-store-to-cache"></a><a name="StoreToCache"></a> キャッシュに格納  
+##  <a name="StoreToCache"></a> キャッシュに格納  
  `cache-store`ポリシーは、指定されたキャッシュ設定に従って応答をキャッシュに格納します。 このポリシーを適用できるのは、応答の内容が一定期間にわたって静的である場合です。 応答のキャッシュを使用すると、バックエンド Web サーバーの帯域幅および処理の要件が低減され、API コンシューマーによって認識される遅延が小さくなります。  
   
 > [!NOTE]
@@ -201,7 +203,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **ポリシー スコープ:** API、操作、製品  
   
-##  <a name="a-namegetfromcachebykeya-get-value-from-cache"></a><a name="GetFromCacheByKey"></a> キャッシュから値を取得  
+##  <a name="GetFromCacheByKey"></a> キャッシュから値を取得  
  `cache-lookup-value` ポリシーを使用して、キーごとにキャッシュの検索を行い、キャッシュされている値を返します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。  
   
 > [!NOTE]
@@ -246,7 +248,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
   
-##  <a name="a-namestoretocachebykeya-store-value-in-cache"></a><a name="StoreToCacheByKey"></a> 値をキャッシュに格納  
+##  <a name="StoreToCacheByKey"></a> 値をキャッシュに格納  
  `cache-store-value` は、キーごとに記憶域のキャッシュを実行します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。  
   
 > [!NOTE]
@@ -289,7 +291,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
   
-###  <a name="a-nameremovecachebykeya-remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除  
+###  <a name="RemoveCacheByKey"></a> キャッシュから値を削除  
  `cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。  
   
 #### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -330,8 +332,3 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-
-
-<!--HONumber=Jan17_HO2-->
-
-

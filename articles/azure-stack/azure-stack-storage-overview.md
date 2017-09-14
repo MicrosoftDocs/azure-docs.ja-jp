@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/19/2017
 ms.author: xiaofmao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 18f5d5bd8e95b9250ccbbe89cfd79d42d0af098f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c698e685fd395791b12c9db68d443de1cb804a3b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Introduction to Azure Stack storage
@@ -87,6 +86,6 @@ A storage account can contain any number of queues, and a queue can contain any 
 ## <a name="next-steps"></a>Next steps
 * [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
 
-* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](..\storage\storage-introduction.md)
+* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)
 
 

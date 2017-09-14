@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ef310a094667f390addd5d0df3dc68d67100d2f4
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -27,16 +27,13 @@ U-SQL ジョブ内のデータを処理するユーザー定義演算子を開�
 
 U-SQL の汎用アセンブリを開発する手順については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください
 
-## <a name="define-and-use-user-defined-operator-in-u-sql"></a>U-SQL でのユーザー定義演算子の定義と使用
+## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>U-SQL でのユーザー定義演算子の定義と使用
 **U-SQL ジョブを作成して送信するには**
 
-1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-2. **[U-SQL プロジェクト]** タイプを選択します。
-
-    ![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. **[OK]**をクリックします。 Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
-4. **ソリューション エクスプローラー**で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
-5. 以下のコードをファイルに貼り付けます。
+1. Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]、[ U-SQL プロジェクト]** の順に選択します。
+2. **[OK]**をクリックします。 Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
+3. **ソリューション エクスプローラー**で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
+4. 以下のコードをファイルに貼り付けます。
 
         using Microsoft.Analytics.Interfaces;
         using System.Collections.Generic;
@@ -51,7 +48,7 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
                         "Deutschland", "Germany"
                     },
                     {
-                        "Schwiiz", "Switzerland"
+                        "Suisse", "Switzerland"
                     },
                     {
                         "UK", "United Kingdom"

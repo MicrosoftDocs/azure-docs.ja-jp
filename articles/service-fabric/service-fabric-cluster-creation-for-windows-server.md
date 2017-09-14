@@ -3,7 +3,7 @@ title: "スタンドアロン Azure Service Fabric クラスターの作成 | Mi
 description: "オンプレミスまたはクラウドにある Windows Server が実行されているマシン (物理コンピューターまたは仮想マシン) で、Azure Service Fabric クラスターを作成します。"
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/24/2017
-ms.author: chackdan;maburlik
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 3389684dca62a1b3c8297600c7c09ffef642c854
-ms.lasthandoff: 03/29/2017
-
+ms.date: 8/10/2017
+ms.author: chackdan;maburlik;dekapur
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 6aa2905a97ec6b8c125f2ab9572a8e40bf525b27
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
@@ -33,17 +33,17 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 
 <a id="getsupport"></a>
 
-## <a name="get-support-for-the-service-fabric-standalone-package"></a>Service Fabric スタンドアロン パッケージに関連したサポートの利用
+## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージのサポートを受ける
 * Windows Server 用 Service Fabric スタンドアロン パッケージに関するコミュニティへの質問を [Azure Service Fabric フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) で投稿します。
 * [Service Fabric の専門家によるサポート](http://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)をご覧ください。
 * [Microsoft Premier サポート](https://support.microsoft.com/en-us/premier)の一環として、このパッケージのサポートを受けることもできます。
 * 詳細については、「[Azure Service Fabric のサポート オプション](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)」を参照してください。
-* サポート目的でログを収集するには、[Service Fabric スタンドアロン ログ コレクター](https://go.microsoft.com/fwlink/?linkid=842487) を実行します。
+* サポート目的でログを収集するには、[Service Fabric スタンドアロン ログ コレクター](service-fabric-cluster-standalone-package-contents.md)を実行します。
 
 <a id="downloadpackage"></a>
 
-## <a name="download-the-service-fabric-standalone-package"></a>Service Fabric スタンドアロン パッケージのダウンロード
-クラスターの作成には、次の場所にある Windows Server (2012 R2 以降) 用の Service Fabric スタンドアロン パッケージを使用します。 <br>
+## <a name="download-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージをダウンロードする
+クラスターの作成には、次の場所にある Windows Server 用 Service Fabric パッケージ (Windows Server 2012 R2 以降) を使用します。 <br>
 [ダウンロード リンク - Service Fabric スタンドアロン パッケージ - Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690)
 
 パッケージ内容の詳細については[こちら](service-fabric-cluster-standalone-package-contents.md)を参照してください。
@@ -65,7 +65,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-トラブルシューティングの詳細については、[クラスターのデプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)に関するページの「Environment Setup」(環境のセットアップ) セクションを参照してください。
+トラブルシューティングの詳細については、「[Service Fabric スタンドアロン クラスターのデプロイの準備と計画](service-fabric-cluster-standalone-deployment-preparation.md)」の「環境のセットアップ」を参照してください。
 
 開発シナリオの実行が完了したら、Service Fabric クラスターは、「[クラスターの削除](#removecluster_anchor)」の手順を参照してマシンから削除できます。 
 
@@ -75,39 +75,48 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 
 1. スタンドアロン パッケージのフォルダーから *TestConfiguration.ps1* スクリプトを実行して、作成した構成ファイルを検証します。  
 
-```powershell
-.\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
-```
+    ```powershell
+    .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
+    ```
 
-次のような出力結果が表示されます。 1 番下の "Passed" フィールドで "True" が返された場合、サニティ チェックは成功であり、クラスターは入力した構成を基にデプロイ可能と考えられます。
+    次のような出力結果が表示されます。 1 番下の "Passed" フィールドで "True" が返された場合、サニティ チェックは成功であり、クラスターは入力した構成を基にデプロイ可能と考えられます。
 
-```
-Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
-Running Best Practices Analyzer...
-Best Practices Analyzer completed successfully.
-
-
-LocalAdminPrivilege        : True
-IsJsonValid                : True
-IsCabValid                 : True
-RequiredPortsOpen          : True
-RemoteRegistryAvailable    : True
-FirewallAvailable          : True
-RpcCheckPassed             : True
-NoConflictingInstallations : True
-FabricInstallable          : True
-Passed                     : True
-```
+    ```
+    Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
+    Running Best Practices Analyzer...
+    Best Practices Analyzer completed successfully.
+    
+    LocalAdminPrivilege        : True
+    IsJsonValid                : True
+    IsCabValid                 : True
+    RequiredPortsOpen          : True
+    RemoteRegistryAvailable    : True
+    FirewallAvailable          : True
+    RpcCheckPassed             : True
+    NoConflictingInstallations : True
+    FabricInstallable          : True
+    Passed                     : True
+    ```
 
 2. クラスターを作成します。*CreateServiceFabricCluster.ps1* を実行して、構成内の各マシンに Service Fabric クラスターをデプロイします。 
-```powershell
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
-```
+    ```powershell
+    .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
+    ```
 
 > [!NOTE]
 > デプロイのトレースは、CreateServiceFabricCluster.ps1 PowerShell スクリプトを実行した VM/マシンに書き込まれます。 このトレースは、スクリプトを実行したディレクトリの DeploymentTraces サブフォルダーにあります。 Service Fabric がマシンに正常にデプロイされたかどうかを確かめるには、FabricDataRoot ディレクトリにインストールされたファイルを確認します。このディレクトリはクラスター構成ファイルの FabricSettings セクションで指定した場所にあります (既定では c:\ProgramData\SF)。 また、タスク マネージャーで FabricHost.exe と Fabric.exe の各プロセスが実行されていることも確認します。
 > 
 > 
+
+### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>手順 1C: オフライン (インターネット非接続) クォータを作成する
+Service Fabric ランタイム パッケージは、クラスターの作成時に自動でダウンロードされます。 インターネットに接続していないコンピューターにクラスターをデプロイする場合、Service Fabric ランタイム パッケージを別にダウンロードしておき、クラスターの作成時にそのパスを指定する必要があります。
+ランタイム パッケージはインターネットに接続されている他のコンピューターから別にダウンロードすることができます ([ダウンロード リンク - Service Fabric ランタイム - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354))。 オフライン クラスターをデプロイしている場所にランタイム パッケージをコピーし、次のように `-FabricRuntimePackagePath` パラメーターを指定して `CreateServiceFabricCluster.ps1` を実行してクラスターを作成します。 
+
+```powershell
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
+```
+この `.\ClusterConfig.json` と `.\MicrosoftAzureServiceFabric.cab` は、それぞれクラスター構成のパスとランタイムの .cab ファイルです。
+
 
 ### <a name="step-2-connect-to-the-cluster"></a>手順 2: クラスターに接続する
 セキュリティで保護されたクラスターに接続するには、[セキュリティで保護されたクラスターへの Service Fabric の接続](service-fabric-connect-to-secure-cluster.md)参照してください。
@@ -116,7 +125,9 @@ Passed                     : True
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
-
+```
+例:
+```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 ### <a name="step-3-bring-up-service-fabric-explorer"></a>手順 3: Service Fabric Explorer を起動する

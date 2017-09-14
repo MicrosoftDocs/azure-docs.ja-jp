@@ -34,6 +34,7 @@
 ###[出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
 ## 管理
 ###[ポータルで構成する](cache-configure.md)
+###[geo レプリケーションの構成](cache-how-to-geo-replication.md)
 ###[データをインポート/エクスポートする](cache-how-to-import-export-data.md)
 ###[Reboot](cache-administration.md#reboot)
 ###[更新のスケジュール](cache-administration.md#schedule-updates)
@@ -44,8 +45,11 @@
 ## スケール
 ###[別のサイズとレベルに更新する](cache-how-to-scale.md)
 ###[Redis クラスターを使用してスケールイン/スケールアウトする](cache-how-to-premium-clustering.md)
+## Spring Boot との統合
+###[Redis Cache で Spring Boot Initializer アプリを使用する](cache-java-spring-boot-initializer-with-redis-cache.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 プレビュー](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
@@ -55,6 +59,7 @@
 ## [REST ()](https://docs.microsoft.com/rest/api/redis/)
 
 # リソース
-## [Redis Cache のサンプル](cache-redis-samples.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
 ## [料金](https://azure.microsoft.com/pricing/details/cache/)
+## [Redis Cache のサンプル](cache-redis-samples.md)
 

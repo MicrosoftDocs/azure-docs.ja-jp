@@ -9,28 +9,29 @@ manager: jhubbard
 editor: 
 ms.assetid: 1dd20c6b-ddbb-40ef-ad34-609d398d008a
 ms.service: sql-database
-ms.custom: development
+ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
 ms.date: 02/01/2017
 ms.author: srinia
-translationtype: Human Translation
-ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
-ms.openlocfilehash: c30f1d879f46805cf802679613089a16dc47ad40
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 0f6ba62a01f3211ccaae6b6c48f72e0de54aad78
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-sql-database"></a>マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン
+# <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン
 この記事では、クラウド環境で実行されるマルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの要件と一般的なデータ アーキテクチャ パターンについて説明します。 また、考慮する必要がある要素と、さまざまな設計パターンのトレードオフについても説明します。 Azure SQL Database のエラスティック プールとエラスティック ツールを使用すると、他の目的を損なうことなく、特定の要件を満たすことができます。
 
 開発者は、マルチテナント アプリケーションのデータ層のテナント モデルを設計するときに、長期的な最善の利益に反する選択を行う場合があります。 少なくとも初期の段階では、開発者はテナントの分離やアプリケーションのスケーラビリティよりも、開発の容易さとクラウド サービス プロバイダーのコストの削減の方が重要であると考えます。 この選択は顧客満足度の問題の原因となり、後でコストのかかる軌道修正が発生する可能性もあります。
 
 マルチテナント アプリケーションとは、クラウド環境でホストされ、相互のデータを共有したり表示したりすることのない数百または数千のテナントにサービスの同じセットを提供するアプリケーションです。 一例として、クラウド ホスト環境でテナントにサービスを提供する SaaS アプリケーションがあります。
 
-## <a name="multitenant-applications"></a>マルチテナント アプリケーション
+## <a name="multi-tenant-applications"></a>マルチテナント アプリケーション
 マルチ テナント アプリケーションでは、データとワークロードを簡単にパーティション分割できます。 ほとんどの要求はテナントの境界内で行われるため、たとえば、テナント境界に沿ってデータとワークロードをパーティション分割できます。 この特性はデータとワークロードに固有であり、この記事で説明するアプリケーション パターンが優先されます。
 
 開発者は、次のようなクラウド ベースのアプリケーションの全領域でこの種のアプリケーションを使用します。
@@ -48,7 +49,7 @@ ms.lasthandoff: 02/16/2017
 
 すべてのテーブルに適用することができ、アプリケーションのワークロード全体にわたって機能する単一のパーティション分割戦略はありません。 この記事では、データとワークロードを簡単にパーティション分割できるマルチテナント アプリケーションに重点を置いています。
 
-## <a name="multitenant-application-design-trade-offs"></a>マルチテナント アプリケーションの設計上のトレードオフ
+## <a name="multi-tenant-application-design-trade-offs"></a>マルチテナント アプリケーションの設計上のトレードオフ
 通常、マルチテナント アプリケーション開発者が選択する設計パターンは、次の要素の検討に基づいています。
 
 * **テナントの分離**:  開発者は、テナントが他のテナントのデータに望ましくないアクセスを行わないことを保証する必要があります。 この分離要件は、ノイジー ネイバーからの保護、テナントのデータを復元する機能、テナント固有のカスタマイズの実装など、他の特性にも適用されます。
@@ -62,7 +63,7 @@ ms.lasthandoff: 02/16/2017
 
 企業や組織に提供される SaaS マルチテナント アプリケーションでは、多くの場合、テナントの分離は基本要件です。 開発者は、テナントの分離とスケーラビリティよりも、単純さとコスト面での認識されているメリットに惑わされることがあります。 サービスが成長し、テナント分離要件の重要性が高まり、アプリケーション層で対処するようになったときに、このトレードオフは複雑でコストがかかるということが判明する可能性があります。 ただし、直接的な顧客向けサービスを顧客に提供するマルチテナント アプリケーションでは、テナントの分離はクラウド リソースのコストの最適化よりも優先度が低くなります。
 
-## <a name="multitenant-data-models"></a>マルチテナント データ モデル
+## <a name="multi-tenant-data-models"></a>マルチテナント データ モデル
 テナント データを配置するための一般的な設計手法は、図 1 に示す 3 つの異なるモデルに従います。
 
 ![マルチテナント アプリケーション データ モデル](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-multi-tenant-data-models.png)
@@ -78,7 +79,7 @@ ms.lasthandoff: 02/16/2017
 > 
 > 
 
-## <a name="popular-multitenant-data-models"></a>一般的なマルチテナント データ モデル
+## <a name="popular-multi-tenant-data-models"></a>一般的なマルチテナント データ モデル
 既に確認したアプリケーションの設計上のトレードオフの観点で、各種マルチテナント データ モデルを評価することが重要です。 図 2 に示すように、次の要素によって、前述の最も一般的な 3 つのマルチテナント データ モデルとデータベースの使用方法を特徴付けることができます。
 
 * **分離**。 テナント間の分離の度合いは、データ モデルが実現するテナントの分離がどの程度であるかを示す尺度となります。
@@ -105,7 +106,7 @@ ms.lasthandoff: 02/16/2017
 
 図 2 に示す設計上のトレードオフを考えると、理想的なマルチテナント モデルでは、優れたテナント分離特性とテナント間での最適なリソースの共有を組み込む必要があります。 このモデルは、図 2 の右上のクアドラントに示すカテゴリに適合します。
 
-## <a name="multitenancy-support-in-azure-sql-database"></a>Azure SQL Database でのマルチテナント機能のサポート
+## <a name="multi-tenancy-support-in-azure-sql-database"></a>Azure SQL Database でのマルチテナント機能のサポート
 Azure SQL Database は、図 2 で概説したマルチテナント アプリケーション パターンをすべてサポートします。 また、エラスティック プールを使用することで、優れたリソース共有とテナント単位のデータベース アプローチの分離のメリットを組み合わせたアプリケーション パターンもサポートされるようになりました (図 3 の右上のクアドラントを参照)。 SQL Database のエラスティック データベース ツールとエラスティック データベース機能により、多数のデータベースを使用するアプリケーションの開発と運用のコスト (図 3 の網かけされた領域) を削減できます。 これらのツールは、複数のデータベースのパターンを使用するアプリケーションの構築と管理に役立ちます。
 
 ![Azure SQL Database におけるパターン](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-patterns-sqldb.png)
@@ -156,14 +157,17 @@ Azure Portal を使ってエラスティック プールを作成するには、
 [エラスティック プールを監視および管理する](sql-database-elastic-pool-manage-portal.md)方法を確認します。
 
 ## <a name="additional-resources"></a>その他のリソース
+
+* [Azure SQL Database を使用するマルチテナント アプリケーションのデプロイと操作 - Wingtip SaaS](sql-database-saas-tutorial.md)
 * [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
 * [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
-* [エラスティック データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+* [弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 * [Azure Active Directory と OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)
 * [Tailspin Surveys アプリケーション](../guidance/guidance-multitenant-identity-tailspin.md)
 
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
+
 ご質問がある場合は、 [SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。 機能に関するご要望は、 [SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Python ライブラリを使用した Azure Spark クラスターでの Web サイト ログの分析 | Microsoft Docs"
-description: "HDInsight の Spark クラスターとカスタム Python ライブラリを使用して、Web サイト ログを分析する"
+title: "Spark で Python ライブラリを使用して Web サイト ログを分析する | Microsoft Docs"
+description: "この Notebook では、Azure HDInsight の Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: d55005ecea7ba6b31c638af3d26c44932e3d12bc
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 41275f8264353e7158ca42e5cfc089b2fbaa556d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>HDInsight でカスタム Python ライブラリと Spark クラスターを使用して Web サイト ログを分析する
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/17/2017
 
 データを Hive テーブルとして保存した後、次のセクションでは、Power BI や Tableau などの BI ツールを使用して Hive テーブルに接続します。
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]
@@ -69,7 +68,7 @@ ms.lasthandoff: 05/17/2017
 
 1. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ (**\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
 
-        logs = sc.textFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
+        logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
 
 1. 前の手順が正常に完了したことを確認するために、サンプル ログ セットを取得します。
@@ -93,7 +92,7 @@ ms.lasthandoff: 05/17/2017
 
     しかし、このライブラリは `PYTHONPATH` に含まれていないため、`import iislogparser` のような import ステートメントで使用することはできません。 このライブラリを使用するには、すべてのワーカー ノードに配布する必要があります。 次のスニペットを実行します。
 
-        sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
+        sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
 
 1. `iislogparser` には `parse_log_line` 関数があり、この関数はログ行がヘッダー行である場合は `None` を返し、ログ行に到達すると `LogLine` クラスのインスタンスを返します。 次のように `LogLine` クラスを使用して、RDD からログ行だけを抽出します。
@@ -120,7 +119,7 @@ ms.lasthandoff: 05/17/2017
        numLines = logLines.count()
        numErrors = errors.count()
        print 'There are', numErrors, 'errors and', numLines, 'log entries'
-       errors.map(lambda p: str(p)).saveAsTextFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
+       errors.map(lambda p: str(p)).saveAsTextFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
 
    出力は次のように表示されます。
 
@@ -220,9 +219,9 @@ ms.lasthandoff: 05/17/2017
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

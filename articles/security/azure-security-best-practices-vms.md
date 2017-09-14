@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/02/2017
+ms.date: 07/19/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c306000e898f5fe0260ef3347988923266ed096e
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
@@ -65,7 +65,7 @@ RBAC などの機能を利用したデータ アクセス制御を組織が適�
 
 ## <a name="vm-availability-and-network-access"></a>VM の可用性とネットワーク アクセス
 
-高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)に少なくとも 2 つの VM を作成します。
+高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に少なくとも 2 つの VM を作成します。
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) も、同じ可用性セットに属している負荷分散された VM を必要とします。 これらの VM にインターネットからアクセスをする必要がある場合は、[インターネットに接続するロード バランサー](../load-balancer/load-balancer-internet-overview.md)を構成する必要があります。
 

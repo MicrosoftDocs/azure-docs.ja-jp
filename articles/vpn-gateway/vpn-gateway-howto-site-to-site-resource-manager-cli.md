@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/01/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 43ac7ccada8aa156d41b42839cac0644c061f25c
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 019c5421dc470b18c9087417b93c241cc5730f77
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成
@@ -28,16 +27,15 @@ ms.lasthandoff: 06/20/2017
 この記事では、Azure CLI を使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。<br>
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [クラシック ポータル (クラシック)](vpn-gateway-site-to-site-create.md)
 > 
 >
 
 
-![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-connection-diagram.png)
+![クロスプレミスのサイト間 VPN Gateway 接続の図](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-diagram.png)
 
 サイト間 VPN Gateway 接続は、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介してオンプレミス ネットワークを Azure 仮想ネットワークに接続するために使用します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
@@ -45,13 +43,12 @@ ms.lasthandoff: 06/20/2017
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
-* Resource Manager デプロイメント モデルを使用することを確認します。 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-rm-include.md)]
-* 互換性のある VPN デバイスおよびデバイスを構成できる人員。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
-* VPN デバイスの外部接続用パブリック IPv4 アドレス。 この IP アドレスを NAT の内側に割り当てることはできません。
+* 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
+* VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。 この IP アドレスを NAT の内側に割り当てることはできません。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。
-* 最新バージョンの CLI コマンド (2.0 以降)。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」および「[Azure CLI 2.0 を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
+* 最新バージョンの CLI コマンド (2.0 以降) がインストールされていることを確認します。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」および「[Azure CLI 2.0 を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 
-### <a name="example-values"></a>値の例
+### <a name="example"></a>値の例
 
 次の値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
@@ -61,10 +58,10 @@ ms.lasthandoff: 06/20/2017
 VnetName                = TestVNet1 
 ResourceGroup           = TestRG1 
 Location                = eastus 
-AddressSpace            = 10.12.0.0/16 
+AddressSpace            = 10.11.0.0/16 
 SubnetName              = Subnet1 
-Subnet                  = 10.12.0.0/24 
-GatewaySubnet           = 10.12.255.0/27 
+Subnet                  = 10.11.0.0/24 
+GatewaySubnet           = 10.11.255.0/27 
 LocalNetworkGatewayName = Site2 
 LNG Public IP           = <VPN device IP address>
 LocalAddrPrefix1        = 10.0.0.0/24
@@ -80,7 +77,7 @@ ConnectionName          = VNet1toSite2
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="2-create-a-resource-group"></a>手順 2.リソース グループの作成
+## <a name="rg"></a>2.リソース グループの作成
 
 次の例では、"TestRG1" という名前のリソース グループを "eastus" の場所に作成します。 VNet を作成するリージョンにリソース グループが既にある場合は、代わりにそのリソース グループを使用できます。
 
@@ -95,7 +92,7 @@ az group create --name TestRG1 --location eastus
 次の例では、"TestVNet1" という名前の仮想ネットワークと "Subnet1" という名前のサブネットを作成します。
 
 ```azurecli
-az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.12.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.12.0.0/24
+az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
 ## 4.<a name="gwsub"></a>ゲートウェイ サブネットを作成する
@@ -108,9 +105,8 @@ az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefi
 
 ゲートウェイ サブネットを作成するには、[azure network vnet subnet create](/cli/azure/network/vnet/subnet#create) コマンドを使用します。
 
-
 ```azurecli
-az network vnet subnet create --address-prefix 10.12.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
+az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
 ```
 
 ## <a name="localnet"></a>5.ローカル ネットワーク ゲートウェイを作成する
@@ -191,7 +187,7 @@ az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --v
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="common-tasks"></a>一般的なタスク
+## <a name="tasks"></a>一般的なタスク
 
 このセクションでは、使用頻度の高いコマンドのうち、サイト間構成の操作に役立つものを紹介しています。 CLI のネットワーク関連のコマンドの一覧については、[Azure CLI のネットワーク関連のコマンド](/cli/azure/network)のページを参照してください。
 
@@ -199,8 +195,8 @@ az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --v
 
 ## <a name="next-steps"></a>次のステップ
 
-*  接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
-* 強制トンネリングについては、[強制トンネリングの構成](vpn-gateway-forced-tunneling-rm.md)に関する記事を参照してください。
+* 強制トンネリングについては、[強制トンネリング](vpn-gateway-forced-tunneling-rm.md)に関する記事を参照してください。
+* 高可用性のアクティブ/アクティブ接続については、「[高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md)」を参照してください。
 * ネットワーク関連の Azure CLI コマンドの一覧については、[Azure CLI](https://docs.microsoft.com/cli/azure/network) に関するページを参照してください。
-

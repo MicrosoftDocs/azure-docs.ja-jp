@@ -2,7 +2,7 @@
 title: "Azure Media Services エラー コード | Microsoft Docs"
 description: "このトピックでは、Azure Media Services エラー コードの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: eae360dd3e627a82986cef32ef39860f60ffe51f
-ms.lasthandoff: 01/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 668ba10474fc1b01d5ebccbff1f50fe09ade5f30
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
@@ -28,7 +28,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 要求には、無効な情報が含まれており、次のいずれかの理由で拒否されます。
 
 * サポートされていない API バージョンが指定されています。 最新バージョンについては、「[Media Services REST API 開発用の設定](media-services-rest-how-to-use.md)」をご覧ください。
-* Media Services の API バージョンが指定されていません。 API バージョンを指定する方法については、「[Media Services REST API を使用して Media Services に接続する](media-services-rest-connect-programmatically.md)」を参照してください。
+* Media Services の API バージョンが指定されていません。 API バージョンを指定する方法については、「[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
   
   > [!NOTE]
   > .NET または Java Sdk を使用して Media Services に接続する場合は、Media Services に対して何らかのアクションの実行を試行するたびに、API バージョンが指定されます。
@@ -48,8 +48,8 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 
 * 認証ヘッダーがありません。
 * 不正な認証ヘッダーの値。
-  * トークンの有効期限が切れています。 REST API を直接使用する場合は、新しい認証トークンを生成する方法について、「[Media Services REST API を使用して Media Services に接続する](media-services-rest-connect-programmatically.md)」を参照してください。 .NET または Java Sdk を使用している場合は、CloudMediaContext または MediaContract オブジェクトを作成し、トークンを生成します。 これを行う方法の詳細については、「[Media Services SDK for .NET を使用した Media Services への接続](media-services-dotnet-connect-programmatically.md)」を参照してください。
-  * トークンには、無効な署名が含まれています。</li></ul></li></ul>
+  * トークンの有効期限が切れています。 
+  * トークンには、無効な署名が含まれています。
 
 ## <a name="403-forbidden"></a>403 許可されていません
 次のいずれかの理由で要求が受け入れられません。

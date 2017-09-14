@@ -3,7 +3,7 @@ title: "Azure マネージ アプリケーションの PasswordBox UI 要素 | M
 description: "Azure マネージ アプリケーションの Microsoft.Common.PasswordBox UI 要素について説明します。"
 services: azure-resource-manager
 documentationcenter: na
-author: tabrezm
+author: tfitzmac
 manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
@@ -12,13 +12,12 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
-ms.author: tabrezm;tomfitz
+ms.author: tomfitz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
 ms.openlocfilehash: 196a4b8f77145f83e46b4b23e148bb3a9dffc1b5
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/13/2017
-
 
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI 要素

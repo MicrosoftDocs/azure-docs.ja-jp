@@ -16,28 +16,28 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 842f6667d79d6a2cf3ab6fb7ccff575055585dca
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 945b09ccdb7537987da33d32d94a3ccacd829ffd
 ms.contentlocale: ja-jp
 
 
 ---
 
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
-次の手順に従って、*Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
+次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure)でアプリケーションを登録します。
-2.    アプリケーションの名前とお使いのメール アドレスを入力します。
-3.    ガイド付きセットアップのオプションがオンになっていることを確認します。
-4.    手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
+2.  アプリケーションの名前とお使いのメール アドレスを入力します
+3.  ガイド付きセットアップのオプションがオンになっていることを確認します。
+4.  手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
 
 ### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>ソリューションへのアプリケーション登録情報の追加 (上級)
-次の手順に従って、*Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
-2. アプリケーションの名前とお使いのメール アドレスを入力します。 
+次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
+1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します
+2. アプリケーションの名前とお使いのメール アドレスを入力します 
 3. ガイド付きセットアップのオプションがオフになっていることを確認します。
-4. [`Add Platforms`] (プラットフォームの追加) をクリックしてから [`Native Application`] (ネイティブ アプリケーション) を選択し、[保存] をクリックします。
-5.    `MainActivity` を開きます ([`app`]  >  [`java`]  >  [*`{host}.{namespace}`*] の順)。
-6.    "`final static String CLIENT_ID`" で始まる行の *[Enter the application Id here]* (アプリケーション ID を入力してください) を、登録したアプリケーション ID に置き換えます。
+4. [`Add Platform`] \(プラットフォームの追加) をクリックしてから [`Native Application`] \(ネイティブ アプリケーション) を選択し、[保存] をクリックします。
+5.  `MainActivity` を開きます ([`app`]  >  [`java`]  >  [*`{host}.{namespace}`*] の順)。
+6.  "`final static String CLIENT_ID`" で始まる行の *[Enter the application Id here]* (アプリケーション ID を入力してください) を、登録したアプリケーション ID に置き換えます。
 
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";

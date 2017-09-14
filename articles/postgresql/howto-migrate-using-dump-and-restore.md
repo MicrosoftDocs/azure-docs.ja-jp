@@ -5,17 +5,15 @@ services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql-database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.service: postgresql
 ms.topic: article
-ms.date: 05/10/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b056b2aee8b3d82077f61c18e3a660f3562ae068
+ms.date: 06/14/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8a399ca2f529568dbe5ffd4b58c3f0f69248b71d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
@@ -43,7 +41,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 ```bash
 pg_restore -v –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
-この例では、対象サーバー **mypgserver-20170401.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、生成されたダンプ ファイル **testdb.dump** からデータを復元します。
+この例では、対象サーバー **mypgserver-20170401.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、ダンプ ファイル **testdb.dump** からデータを復元します。
 ```bash
 pg_restore -v --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb testdb.dump
 ```

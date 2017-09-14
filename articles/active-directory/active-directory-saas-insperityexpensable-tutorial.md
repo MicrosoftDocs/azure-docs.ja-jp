@@ -2,53 +2,54 @@
 title: "チュートリアル: Azure Active Directory と Insperity ExpensAble の統合 | Microsoft Docs"
 description: "Azure Active Directory と Insperity ExpensAble の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: c579c453-580e-417d-8a5e-9b6b352795c0
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 06/13/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
-ms.openlocfilehash: b009b203edadae92907aecd2a4eb626815492749
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: b50e10be54b1fc413be10bee5b58631790629335
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル: Azure Active Directory と Insperity ExpensAble の統合
-このチュートリアルの目的は、Insperity ExpensAble と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
+
+このチュートリアルでは、Insperity ExpensAble と Azure Active Directory (Azure AD) を統合する方法について説明します。
+
 Insperity ExpensAble と Azure AD の統合には、次の利点があります。
 
-* Insperity ExpensAble にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に Insperity ExpensAble にサインオン (シングル サインオン) できるようにします。
-* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+- Insperity ExpensAble にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Insperity ExpensAble にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
+
 Insperity ExpensAble と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション
-* Insperity ExpensAble でのシングル サインオンが有効なサブスクリプション
+- Azure AD サブスクリプション
+- Insperity ExpensAble でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
-> 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-* 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Insperity ExpensAble の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -58,161 +59,156 @@ Azure AD への Insperity ExpensAble の統合を構成するには、ギャラ�
 
 **ギャラリーから Insperity ExpensAble を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-   
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+
     ![Active Directory][1]
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-    ![[アプリケーション]][2]
-4. ページの下部にある **[追加]** をクリックします。
-   
+
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+
+    ![アプリケーション][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
     ![アプリケーション][3]
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-    ![アプリケーション][4]
-6. 検索ボックスに「 **Insperity ExpensAble**」と入力します。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_01.png)
-7. 結果ウィンドウで **[Insperity ExpensAble]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+4. 検索ボックスに「 **Insperity ExpensAble**」と入力します。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Insperity ExpensAble ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Insperity ExpensAble の関連ユーザーの間で、リンク関係が確立されている必要があります。  
-このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、Insperity ExpensAble の **[Username]** の値として割り当てます。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_search.png)
+
+5. 結果ウィンドウで **Insperity ExpensAble** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Insperity ExpensAble ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Insperity ExpensAble の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+Insperity ExpensAble で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
 
 Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Insperity ExpensAble テスト ユーザーの作成](#creating-a-insperityexpensable-test-user)** - Insperity ExpensAble で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[Insperity ExpensAble テスト ユーザーの作成](#creating-an-insperity-expensable-test-user)** - Insperity ExpensAble で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Insperity ExpensAble アプリケーションでシングル サインオンを構成することです。
+
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Insperity ExpensAble アプリケーションでシングル サインオンを構成します。
 
 **Insperity ExpensAble で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Insperity ExpensAble** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-    ![Configure Single Sign-On][6] 
-2. **[ユーザーの Insperity ExpensAble へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_03.png) 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_04.png) 
+1. Azure Portal の **Insperity ExpensAble** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Insperity ExpensAble アプリケーションへのサインオンに使用する URL を入力します。`https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`
+    ![[シングル サインオンの構成]][4]
 
-    b. **[次へ]**をクリックします。
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_samlbase.png)
 
-1. **[Insperity ExpensAble でのシングル サインオンの構成]** ページで、次の手順を実行します。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_05.png) 
-   
-    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
+3. **[Insperity ExpensAble のドメインと URL]** セクションで、次の手順を実行します。
 
-2. お使いのアプリケーション用に構成された SSO を取得するために、Insperity ExpensAble のテクニカル サポート チームに問い合わせます。 このケースが割り当てられた後は、ダウンロードした証明書ファイルを電子メールで送信します。 発行元 URL およびシングル サインオン サービス URL もお知らせください。サポート チームが SSO 統合で設定します。 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_url.png)
 
-3. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
-   
-    ![Azure AD のシングル サインオン][10]
-4. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
-   
-    ![Azure AD のシングル サインオン][11]
+    a. **[サインオン URL]** ボックスに、`https://server.expensable.com/esapp/Authenticate?companyId=<company ID>` のパターンを使用して URL を入力します。
+
+    > [!NOTE] 
+    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)に問い合わせてください。 
+ 
+4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_certificate.png) 
+
+5. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_400.png)
+
+6. **[Insperity ExpensAble 構成]** セクションで、**[Insperity ExpensAble の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_configure.png) 
+
+7. **Insperity ExpensAble** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML シングル サインオン サービス URL**、**SAML エンティティ ID** を、[Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。  
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][20]
+![Azure AD ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_09.png) 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
-   
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_01.png) 
+
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_02.png) 
+
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_03.png) 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
-   
+
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_05.png) 
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_06.png) 
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-    b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-    e. **[次へ]**をクリックします。
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_07.png) 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-insperityexpensable-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
-### <a name="creating-a-insperity-expensable-test-user"></a>Insperity ExpensAble テスト ユーザーの作成
-このセクションの目的は、Insperity ExpensAble で Britta Simon というユーザーを作成することです。 Insperity ExpensAble アカウントにユーザーを追加するには、Insperity ExpensAble のサポート チームと協力してください。 
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、Insperity ExpensAble のサポート チームにお問い合わせください。
-> 
-> 
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+
+    d. ページの下部にある **[Create]**」を参照してください。
+ 
+### <a name="creating-an-insperity-expensable-test-user"></a>Insperity ExpensAble テスト ユーザーの作成
+
+このセクションの目的は、Insperity ExpensAble で Britta Simon というユーザーを作成することです。 [Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)と協力して、Insperity ExpensAble アカウントにユーザーを追加してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に Insperity ExpensAble へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+
+このセクションでは、Britta Simon に Insperity ExpensAble へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザーの割り当て][200] 
 
 **Insperity ExpensAble に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-    ![ユーザーの割り当て][201] 
-2. アプリケーションの一覧で **[Insperity ExpensAble]**を選択します。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_50.png) 
-3. 上部のメニューで **[ユーザー]**をクリックします。
-   
-    ![ユーザーの割り当て][203] 
-4. ユーザーの一覧で **[Britta Simon]**を選択します。
-5. 下部にあるツール バーで **[割り当て]**をクリックします。
-   
-    ![ユーザーの割り当て][205]
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[Insperity ExpensAble]**を選択します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-insperityexpensable-tutorial/tutorial_insperityexpensable_app.png) 
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![ユーザーの割り当て][202] 
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![ユーザーの割り当て][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。  
+
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
 アクセス パネルで [Insperity ExpensAble] タイルをクリックすると、自動的に Insperity ExpensAble アプリケーションにサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
+
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
@@ -222,20 +218,10 @@ Insperity ExpensAble で Azure AD のシングル サインオンを構成し、
 [2]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_04.png
-
-[6]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_100.png
-
+[100]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_100.png
 [200]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-insperityexpensable-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
-translationtype: Human Translation
-ms.sourcegitcommit: 541dd7bed5a4a9e306642b2c36dd7c9d45aec690
-ms.openlocfilehash: fcaff51b2897b1b0bce8b1c503adfd9425c9fbb4
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: b562e8cbc84fc3a1e7e6dab1845022dfcce692a3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -162,7 +163,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 | --- | --- |
 | **App Service プランのモード、サイズを設定し、スケーリングを有効化する** |[Azure App Service での Web アプリの拡張][websitescale] |
 | **永続的なデータベース接続を有効にする** |既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。 永続的な接続を有効にするには、[永続的な接続アダプター プラグイン](https://wordpress.org/plugins/persistent-database-connection-updater/installation/)をインストールします。 |
-| **パフォーマンスの向上** |<ul><li><p><a href="https://azure.microsoft.com/en-us/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/">ARR クッキーの無効化</a> - 複数の Web Apps のインスタンスで WordPress を実行している場合に、パフォーマンスを向上させる方法です。</p></li><li><p>キャッシュを有効にする。 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">WordPress を Wincache で高速化します</a>。 Wincache は Web アプリに対して既定で有効化されています。</p></li><li><p>[Azure App Service で Web アプリを拡張][websitescale]して <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB の高可用性ルーティング</a>または <a href="http://www.mysql.com/products/cluster/">MySQL クラスター CGE</a> を使用します。</p></li></ul> |
+| **パフォーマンスの向上** |<ul><li><p><a href="https://azure.microsoft.com/en-us/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/">ARR クッキーの無効化</a> - 複数の Web Apps のインスタンスで WordPress を実行している場合に、パフォーマンスを向上させる方法です。</p></li><li><p>キャッシュを有効にする。 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li><li><p>[WordPress を Wincache で高速化します](https://wordpress.org/plugins/w3-total-cache/)。 Wincache は Web アプリに対して既定で有効化されています。 WinCache と Dynamic Cache を同時に使用する場合は、WinCache のファイル キャッシュをオフにします。ただし、ユーザーとセッション キャッシュはオンのままにしておきます。 ファイル キャッシュをオフにするには、システム レベルの .ini ファイルで次の値を設定します。<br/><code>wincache.fcenabled = 0</code></p></li><li><p>[Azure App Service で Web アプリを拡張][websitescale]して <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB の高可用性ルーティング</a>または <a href="http://www.mysql.com/products/cluster/">MySQL クラスター CGE</a> を使用します。</p></li></ul> |
 | **ストレージ用 BLOB の使用** |<ol><li><p>[Azure Storage アカウント](../storage/storage-create-storage-account.md)を作成します。</p></li><li><p>[コンテンツ配信ネットワークの使用](../cdn/cdn-create-new-endpoint.md)方法を理解し、BLOB を用いて地理的に分散したデータ保存を実施します。</p></li><li><p><a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress プラグイン</a>をインストールし、構成します。</p><p>このプラグインに関する詳細な設定と構成の情報については、<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">ユーザー ガイド</a>を参照してください。</p> </li></ol> |
 | **電子メールの有効化** |Azure ストアで <a href="https://azure.microsoft.com/en-us/marketplace/partners/sendgrid/sendgrid-azure/">SendGrid</a> を有効にします。 WordPress 用の <a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified">SendGrid プラグイン</a>をインストールします。 |
 | **カスタム ドメイン名の構成** |[Azure App Service のカスタム ドメイン名の構成します][customdomain]。 |
@@ -211,7 +212,7 @@ Websites から App Service への変更ガイドについては、「[Azure App
 [storageplugin]: https://wordpress.org/plugins/windows-azure-storage/
 [sendgridplugin]: http://wordpress.org/plugins/sendgrid-email-delivery-simplified/
 [phpwebsite]: web-sites-php-configure.md
-[customdomain]: web-sites-custom-domain-name.md
+[customdomain]: app-service-web-tutorial-custom-domain.md
 [trafficmanager]: ../traffic-manager/traffic-manager-overview.md
 [backup]: web-sites-backup.md
 [restore]: web-sites-restore.md
@@ -223,7 +224,7 @@ Websites から App Service への変更ガイドについては、「[Azure App
 [staging]: web-sites-staged-publishing.md
 [monitor]: web-sites-monitor.md
 [log]: web-sites-enable-diagnostic-log.md
-[httpscustomdomain]: web-sites-configure-ssl-certificate.md
+[httpscustomdomain]: app-service-web-tutorial-custom-ssl.md
 [mysqlwindows]:../virtual-machines/windows/classic/mysql-2008r2.md
 [mysqllinux]:../virtual-machines/linux/classic/mysql-on-opensuse.md
 [cge]: http://www.mysql.com/products/cluster/

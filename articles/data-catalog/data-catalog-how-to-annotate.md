@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: ba15ebc176ada48943fb6afa5f9c723e3d906099
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="how-to-annotate-data-sources"></a>データ ソースに注釈を付ける方法

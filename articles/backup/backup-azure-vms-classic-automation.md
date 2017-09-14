@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 8/2/2017
 ms.author: markgal;trinadhk;jimpark
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: aa1934447b53b725a08cebb47da9171a136b76ff
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 5f0f06adb8177ce2d17aa0b40666470279c04e22
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="use-azurermbackup-cmdlets-to-back-up-virtual-machines"></a>AzureRM.Backup コマンドレットを使って仮想マシンをバックアップする
@@ -29,7 +29,13 @@ ms.lasthandoff: 03/02/2017
 >
 >
 
-この記事では、Azure の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。 Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+この記事では、Azure の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。 Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルを使用してデータをバックアップ コンテナーにバックアップする方法について説明します。 サブスクリプションにバックアップ コンテナーを作成していない場合は、「[AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする](backup-azure-vms-automation.md)」の Resource Manager バージョンの記事をご覧ください。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+
+> [!IMPORTANT]
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 10 月 15 日以降は、PowerShell を使用してバックアップ コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
+>- 残っているすべてのバックアップ コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
+>
 
 ## <a name="concepts"></a>概念
 この記事では、仮想マシンのバックアップに使用する PowerShell コマンドレットに特有の情報を提供します。 Azure VM の保護に関する概要については、「 [Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」を参照してください。
@@ -43,7 +49,7 @@ PowerShell を効果的に使用できるように、オブジェクトの階層
 
 ![オブジェクト階層](./media/backup-azure-vms-classic-automation/object-hierarchy.png)
 
-2 つの最も重要なフローは、VM の保護の有効化と、復旧ポイントからのデータの復元です。 この記事は、これらの&2; つのシナリオを実現するために、PowerShell コマンドレットの操作に熟達することを目的としています。
+2 つの最も重要なフローは、VM の保護の有効化と、復旧ポイントからのデータの復元です。 この記事は、これらの 2 つのシナリオを実現するために、PowerShell コマンドレットの操作に熟達することを目的としています。
 
 ## <a name="setup-and-registration"></a>セットアップと登録
 開始するには
@@ -110,7 +116,7 @@ PS C:\> $backupvault = New-AzureRmBackupVault –ResourceGroupName “test-rg”
 ### <a name="registering-the-vms"></a>VM の登録
 Azure Backup のバックアップを構成するには、まず Azure Backup コンテナーにコンピューターまたは VM を登録します。 **Register-AzureRmBackupContainer** コマンドレットは、Azure IaaS 仮想マシンの入力情報を受け取り、指定のコンテナーへの登録を行います。 登録操作は、Azure virtual machine とバックアップ コンテナーを関連付け、VM をバックアップのライフサイクルを通じて追跡します。
 
-Azure Backup サービスを VM に登録する場合、最上位のコンテナー オブジェクトが作成されます。 通常コンテナーには、バックアップ可能な項目が複数ありますが、VM の場合、コンテナーのバックアップ項目は&1; つのみとなります。
+Azure Backup サービスを VM に登録する場合、最上位のコンテナー オブジェクトが作成されます。 通常コンテナーには、バックアップ可能な項目が複数ありますが、VM の場合、コンテナーのバックアップ項目は 1 つのみとなります。
 
 ```
 PS C:\> $registerjob = Register-AzureRmBackupContainer -Vault $backupvault -Name "testvm" -ServiceName "testvm"
@@ -133,7 +139,7 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 >
 >
 
-バックアップ ポリシーは、少なくとも&1; つのアイテム保持ポリシーと関連付けられています。 アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。 **New-AzureRmBackupRetentionPolicy** コマンドレットは、アイテム保持ポリシー情報を保持する PowerShell オブジェクトを作成します。 これらのアイテム リテンション期間ポリシー オブジェクトは、*New-AzureRmBackupProtectionPolicy* コマンドレットへの入力として使用されるか、*Enable-AzureRmBackupProtection* コマンドレットで直接使用されます。
+バックアップ ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられています。 アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。 **New-AzureRmBackupRetentionPolicy** コマンドレットは、アイテム保持ポリシー情報を保持する PowerShell オブジェクトを作成します。 これらのアイテム リテンション期間ポリシー オブジェクトは、*New-AzureRmBackupProtectionPolicy* コマンドレットへの入力として使用されるか、*Enable-AzureRmBackupProtection* コマンドレットで直接使用されます。
 
 バックアップ ポリシーには、アイテムのバックアップが実行されるタイミングと方法を定義します。 **New-AzureRmBackupProtectionPolicy** コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。 バックアップ ポリシーは、 *Enable-AzureRmBackupProtection* コマンドレットへの入力として使用されます。
 
@@ -147,7 +153,7 @@ DailyBackup01             AzureVM            Daily              01-Sep-15 3:30:0
 ```
 
 ### <a name="enable-protection"></a>保護を有効にする
-保護を有効にするには、同じコンテナーに属する、アイテムとポリシーの&2; つのオブジェクトが必要です。 ポリシーとアイテムの関連付けが完了すると、バックアップのワークフローが定義されたスケジュールで開始されます。
+保護を有効にするには、同じコンテナーに属する、アイテムとポリシーの 2 つのオブジェクトが必要です。 ポリシーとアイテムの関連付けが完了すると、バックアップのワークフローが定義されたスケジュールで開始されます。
 
 ```
 PS C:\> Get-AzureRmBackupContainer -Type AzureVM -Status Registered -Vault $backupvault | Get-AzureRmBackupItem | Enable-AzureRmBackupProtection -Policy $newpolicy

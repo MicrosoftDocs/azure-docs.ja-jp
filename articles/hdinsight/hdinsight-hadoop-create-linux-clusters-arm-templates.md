@@ -1,5 +1,5 @@
 ---
-title: "テンプレートを使用して HDInsight (Hadoop) クラスターを作成する | Microsoft Docs"
+title: "テンプレートを使用して Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
 description: "Resource Manager テンプレートを使用して HDInsight 用のクラスターを作成する方法について説明します"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/14/2017
+ms.date: 06/30/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 22846febbb83d0fbc506e6bef03945130e03ca29
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 75a85407f7b17ed165253c1145fe92c36cf7168d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/01/2017
 
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight に Hadoop クラスターを作成する
@@ -59,7 +58,7 @@ Azure Portal を使用して、クラスターのすべてのプロパティを�
 
 **Azure Portal を使用してテンプレートを生成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[新規]** をクリックし、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。
 3. プロパティを入力する手順に従います。 **[簡易作成]** または**[カスタム]** オプションを使用できます。
 4. **[概要]** タブで、**[テンプレートおよびパラメーターをダウンロードする]** をクリックします。
@@ -177,7 +176,7 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 * Azure Resource Manager のテンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 * Azure Resource Manager のテンプレートで使用できる関数の一覧については、「 [Azure Resource Manager のテンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)」を参照してください。
 
-## <a name="appendix-resource-manager-template"></a>付録: Resource Manager テンプレート
+## <a name="appendix-resource-manager-template-to-create-a-hadoop-cluster"></a>付録: Resource Manager テンプレートを使用した Hadoop クラスターの作成
 次に示す Azure Resource Manager テンプレートは、Azure ストレージ アカウントに依存する Linux ベースの Hadoop クラスターを作成します。
 
 > [!NOTE]
@@ -339,7 +338,7 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
                 "name": "[concat(variables('clusterStorageAccountName'),'.blob.core.windows.net')]",
                 "isDefault": true,
                 "container": "[parameters('clusterName')]",
-                "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('clusterStorageAccountName')), variables('defaultApiVersion')).key1]"
+                "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('clusterStorageAccountName')), variables('defaultApiVersion')).keys[0].value]"
                 }
             ]
             },
@@ -382,5 +381,169 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
         "value": "[reference(resourceId('Microsoft.HDInsight/clusters',parameters('clusterName')))]"
         }
     }
+    }
+
+## <a name="appendix-resource-manager-template-to-create-a-spark-cluster"></a>付録: Resource Manager テンプレートを使用した Spark クラスターの作成
+
+このセクションでは、Azure Resource Manager テンプレートを使用して HDInsight Spark クラスターを作成します。 このテンプレートには、`spark-defaults` と `spark-thrift-sparkconf` の構成 (Spark 1.6 クラスター用) と、`spark2-defaults` と `spark2-thrift-sparkconf` の構成 (Spark 2 クラスター用) が含まれています。 これに加え、HDInsight は、クラスターのサイズに基づいて、`spark.executor.instances`、`spark.executor.memory`、および `spark.executor.cores` などの構成を計算し、設定します。 
+
+あるセクションで、任意の 1 つのパラメーターをテンプレート自体の一部として設定した場合、HDInsight は、同じセクションの他のパラメーターの計算および設定は行いません。 たとえば、パラメーター `spark.executor.instances` が `spark-defaults` 構成に設定されているとします。 `spark-defaults` 構成で別のパラメーター (例: `spark.yarn.exector.memoryOverhead`) を設定した場合、HDInsight は、`spark.executor.instances` パラメーターの計算と設定は行いません。
+
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "0.9.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the HDInsight cluster to create."
+            }
+        },
+        "clusterLoginUserName": {
+            "type": "string",
+            "defaultValue": "admin",
+            "metadata": {
+                "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+            }
+        },
+        "clusterLoginPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "southcentralus",
+            "metadata": {
+                "description": "The location where all azure resources will be deployed."
+            }
+        },
+        "clusterVersion": {
+            "type": "string",
+            "defaultValue": "3.5",
+            "metadata": {
+                "description": "HDInsight cluster version."
+            }
+        },
+        "clusterWorkerNodeCount": {
+            "type": "int",
+            "defaultValue": 4,
+            "metadata": {
+                "description": "The number of nodes in the HDInsight cluster."
+            }
+        },
+        "clusterKind": {
+            "type": "string",
+            "defaultValue": "SPARK",
+            "metadata": {
+                "description": "The type of the HDInsight cluster to create."
+            }
+        },
+        "sshUserName": {
+            "type": "string",
+            "defaultValue": "sshuser",
+            "metadata": {
+                "description": "These credentials can be used to remotely access the cluster."
+            }
+        },
+        "sshPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+            }
+        }
+    },
+    "variables": {
+        "defaultApiVersion": "2017-06-01",
+        "clusterStorageAccountName": "[concat(parameters('clusterName'),'store')]"
+    },
+    "resources": [
+        {
+        "name": "[variables('clusterStorageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "[parameters('location')]",
+        "apiVersion": "[variables('defaultApiVersion')]",
+        "dependsOn": [ ],
+        "tags": { },
+        "properties": {
+            "accountType": "Standard_LRS"
+        }
+        },
+    {
+            "apiVersion": "2015-03-01-preview",
+            "name": "[parameters('clusterName')]",
+            "type": "Microsoft.HDInsight/clusters",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "properties": {
+                "clusterVersion": "[parameters('clusterVersion')]",
+                "osType": "Linux",
+                "tier": "standard",
+                "clusterDefinition": {
+                    "kind": "[parameters('clusterKind')]",
+                    "configurations": {
+                        "gateway": {
+                            "restAuthCredential.isEnabled": true,
+                            "restAuthCredential.username": "[parameters('clusterLoginUserName')]",
+                            "restAuthCredential.password": "[parameters('clusterLoginPassword')]"
+                        },
+                        "spark-defaults": {
+                            "spark.executor.cores": "2"
+                        },
+                        "spark-thrift-sparkconf": {
+                            "spark.yarn.executor.memoryOverhead": "896"
+                        }
+                    }
+                },
+                "storageProfile": {
+                    "storageaccounts": [
+                        {
+                            "name": "[concat(variables('clusterStorageAccountName'),'.blob.core.windows.net')]",
+                            "isDefault": true,
+                            "container": "[parameters('clusterName')]",
+                            "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('clusterStorageAccountName')), variables('defaultApiVersion')).keys[0].value]"
+                        }
+                    ]
+                },
+                "computeProfile": {
+                    "roles": [
+                        {
+                            "name": "headnode",
+                            "minInstanceCount": 1,
+                            "targetInstanceCount": 2,
+                            "hardwareProfile": {
+                                "vmSize": "Standard_D12"
+                            },
+                            "osProfile": {
+                                "linuxOperatingSystemProfile": {
+                                    "username": "[parameters('sshUserName')]",
+                                    "password": "[parameters('sshPassword')]"
+                                }
+                            },
+                            "virtualNetworkProfile": null,
+                            "scriptActions": []
+                        },
+                        {
+                            "name": "workernode",
+                            "minInstanceCount": 1,
+                            "targetInstanceCount": 4,
+                            "hardwareProfile": {
+                                "vmSize": "Standard_D4"
+                            },
+                            "osProfile": {
+                                "linuxOperatingSystemProfile": {
+                                    "username": "[parameters('sshUserName')]",
+                                    "password": "[parameters('sshPassword')]"
+                                    }
+                                },
+                                "virtualNetworkProfile": null,
+                                "scriptActions": []
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
     }
 

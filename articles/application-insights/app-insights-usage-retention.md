@@ -11,41 +11,37 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 17f6062537714fbef7c8509261ac4875f8a44b6e
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 2363e725d44facc5417c0baf3f80c8b55fdca470
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 
-[Azure Application Insights](app-insights-overview.md) のリテンション期間ブレードを使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
+[Azure Application Insights](app-insights-overview.md) のリテンション期間機能を使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
 
 ## <a name="get-started"></a>作業開始
 
-Application Insights ポータルのリテンション期間ブレードにデータがまだ表示されていない場合は、[利用状況ツールの使用方法を確認](app-insights-usage-overview.md)してください。
+Application Insights ポータルのリテンション期間ツールにデータがまだ表示されていない場合は、[利用状況ツールの使用方法を確認](app-insights-usage-overview.md)してください。
 
 ## <a name="the-retention-tool"></a>リテンション期間ツール
 
 ![リテンション期間ツール](./media/app-insights-usage-retention/retention.png)
 
-a. [概要] ページは常に表示されます。 また、別のパラメーターの設定を使用して名前付きのレポートを保存できます。 リソースへのアクセス権を持つ他のユーザーにレポートを表示するには、レポートを共有に保存します。
+1. 新しいリテンション期間レポートの作成、既にあるリテンション期間レポートの表示、現在のリテンション期間レポートの保存 (または名前を付けて保存)、保存したレポートへの変更の取り消し、レポート データの更新、メールや直接リンクを介したレポートの共有、ドキュメント ページへのアクセスなどの操作は、ツール バーから行うことができます。 
+2. 既定では、特定の期間に何かを実行して再び戻ってきた後、さらに何か他のことを実行したすべてのユーザーが表示されます。 各種のイベントを組み合わせることで、特定のユーザーのアクティビティを絞り込むことができます。
+3. プロパティに対して 1 つ以上のフィルターを選択します。 たとえば、特定の国またはリージョンのユーザーに注目することができます。 フィルターの設定が完了したら、**[更新]** をクリックします。 
+4. "保有期間全体" のグラフには、選択された期間におけるユーザーのリテンションのサマリーが表示されます。 
+5. このグリッドには、2 のクエリ ビルダーに従って維持されたユーザー数が表示されます。 各行は、表示された期間に選択したいずれかのイベントを実行したユーザーのコーホートを表します。 行の各セルは、そのコーホートの中で、その後の期間に 1 回以上戻ったユーザーの数を示しています。 複数の期間にユーザーが戻る可能性があります。 
+6. リテンション期間レポートを把握しやすいよう、開始イベントの上位 5 件と返されたイベントの上位 5 件が洞察カードに表示されます。 
 
-b. 既定では、アプリから受信したいずれかのカスタム イベントまたはページ ビューを使用したすべてのユーザーがグラフによってカウントされます。 特定のユーザー アクティビティに注目するには、1 つ (サブセット) を選択します。 
+![リテンション期間のマウス ホバー](./media/app-insights-usage-retention/hover.png)
 
-c. プロパティに対して 1 つ以上のフィルターを選択します。 たとえば、特定の国またはリージョンのユーザーに注目することができます。 フィルターの設定が完了したら、**[更新]** をクリックします。
-
-d. **[既定値に戻す]** を使用すると、カスタム フィルターとイベント フィルターが常にクリアされます。
-
-e. 概要グラフには、選択された期間にわたる合計値が表示されます。
-
-f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 このグリッドには、特定の期間内に選択したアクションを繰り返し実行するために戻ったユーザーの数が表示されます。 各行は、表示された期間に選択したアクションのいずれかを実行したユーザーのコーホートを表します。 行の各セルは、そのコーホートの中で、その後の期間に 1 回以上戻ったユーザーの数を示しています。 複数の期間にユーザーが戻る可能性があります。
-
-グラフに示す時間の範囲内にアプリを使用したすべてのユーザーがグラフの 1 行として表されます。 各ユーザーは、グラフに示す時間の範囲内に選択したアクションを最初に実行した期間にカウントされます。 そのため、最初の行の数が大きくなる傾向があります。
-
+リテンション期間ツールのセルにポインタを合わせると、分析ボタンと、セルの意味を説明するヒントが表示されます。 分析ボタンを使用すると、そのセルからユーザーを生成するようにあらかじめ設定されている分析ツールに移動します。 
 
 ## <a name="use-business-events-to-track-retention"></a>ビジネス イベントを使用してリテンション期間を追跡する
 
@@ -69,9 +65,13 @@ f.SAML 属性の属性名またはスキーマ リファレンスを入力しま
 
 
 ## <a name="next-steps"></a>次のステップ
+- 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
+- カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
+    - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+    - [ファネル](usage-funnels.md)
+    - [ユーザー フロー](app-insights-usage-flows.md)
+    - [ブック](app-insights-usage-workbooks.md)
+    - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
 
-* [利用状況の概要](app-insights-usage-overview.md)
-* [ユーザーとセッション](app-insights-usage-segmentation.md)
-* [カスタム イベントのコーディング](app-insights-api-custom-events-metrics.md)
 
 

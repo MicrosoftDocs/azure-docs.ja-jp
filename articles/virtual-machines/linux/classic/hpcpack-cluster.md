@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c65a932d0bf9bfb00f138997babc1bd642bcf879
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
@@ -52,7 +52,7 @@ Azure の HPC Pack クラスター デプロイ オプションの詳細につ�
   * **Ubuntu Server**: 14.04 LTS、16.04 LTS
     
     > [!TIP]
-    > RDMA 対応の VM サイズのいずれかで Azure RDMA ネットワークを使用するには、Azure Marketplace から SUSE Linux Enterprise Server 12 または CentOS ベースの HPC イメージを指定します。 詳細については、「 [About H-series and compute-intensive A-series VMs (H シリーズとコンピューティング集中型 A シリーズの VM について)](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+    > RDMA 対応の VM サイズのいずれかで Azure RDMA ネットワークを使用するには、Azure Marketplace から SUSE Linux Enterprise Server 12 または CentOS ベースの HPC イメージを指定します。 詳しくは、「[ハイ パフォーマンス コンピューティング VM のサイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
     > 
     > 
 
@@ -186,7 +186,7 @@ Linux ノードは、 **[ヒート マップ]** ビューにも表示されま�
 ### <a name="azure-file-storage"></a>Azure File ストレージ
 [Azure File](https://azure.microsoft.com/services/storage/files/) サービスは、標準の SMB 2.1 プロトコルを使用してファイル共有を公開します。 Azure の VM とクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。また、オンプレミスのアプリケーションでは、File ストレージ API を介して、共有内のファイル データにアクセスできます。 
 
-Azure File 共有を作成してヘッド ノードにマウントする詳細な手順については、「 [Windows で Azure File Storage を使用する](../../../storage/storage-dotnet-how-to-use-files.md)」を参照してください。 Linux ノードで Azure File 共有をマウントするには、「 [Linux で Azure File Storage を使用する方法](../../../storage/storage-how-to-use-files-linux.md)」を参照してください。 固定接続を設定するには、「 [Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
+Azure File 共有を作成してヘッド ノードにマウントする詳細な手順については、「 [Windows で Azure File Storage を使用する](../../../storage/files/storage-how-to-use-files-windows.md)」を参照してください。 Linux ノードで Azure File 共有をマウントするには、「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。 固定接続を設定するには、「 [Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
 
 次の例では、ストレージ アカウントへの Azure File 共有を作成します。 ヘッド ノードに共有をマウントするには、コマンド プロンプトを開き、次のコマンドを入力します。
 
@@ -299,7 +299,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) ツー�
 
 ## <a name="next-steps"></a>次のステップ
 * ノード数を増やしてクラスターをスケール アップするか、クラスター上で Linux のワークロードの実行を試行します。 例については、 [Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](hpcpack-cluster-namd.md)方法に関するページを参照してください。
-* [RDMA 対応のコンピューティング集中型 VM](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) で MPI ワークロードを実行して、クラスターを試します。 たとえば、「 [Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](hpcpack-cluster-openfoam.md)」を参照してください。
+* [RDMA 対応のコンピューティング集中型 VM](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) で MPI ワークロードを実行して、クラスターを試します。 たとえば、「 [Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](hpcpack-cluster-openfoam.md)」を参照してください。
 * オンプレミスの HPC Pack クラスターでの Linux ノードの使用については、 [TechNet のガイダンス](https://technet.microsoft.com/library/mt595803.aspx)を参照してください。
 
 <!--Image references-->

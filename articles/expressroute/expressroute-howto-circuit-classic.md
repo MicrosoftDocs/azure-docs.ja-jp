@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a0ce5cf6a48d3dfd68e1696d93aac7c55a442900
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 3b12bbb21ebf6a0160227c4a281c420cf192d6f7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の作成と変更 (クラシック)
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
-> * [クラシック - PowerShell](expressroute-howto-circuit-classic.md)
+> * [Azure ポータル](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure CLI](howto-circuit-cli.md)
 > * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> 
+> * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
 
 この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、Azure ExpressRoute 回線を作成する手順について説明します。 この記事では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。

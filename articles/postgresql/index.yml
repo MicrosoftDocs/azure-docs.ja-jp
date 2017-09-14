@@ -5,56 +5,58 @@ metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
   title: Azure PostgreSQL のドキュメント - チュートリアル、API リファレンス
   description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
-  services: app-service
-  author: jasonwhowell
-  manager: jhubbard
+  services: postgresql
+  author: czeumault
+  manager: carolz
   ms.service: postgresql
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: jasonh
+  ms.author: carolz
 abstract:
   description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。  完全管理型のサービスとしてのデータベースであり、予測可能なパフォーマンス、セキュリティ、高可用性、動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。  Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。  Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for PostgreSQL の使用方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 次を使用して PostgreSQL データベースを作成する方法について説明します。
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
-      text: Azure ポータル
-      href: /azure/postgresql/quickstart-create-server-database-portal
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/postgresql/quickstart-create-server-database-azure-cli
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: 以下の項目について説明します。
-  - type: list
-    style: ordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: 'データベースを設計する&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-    - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Python と CLI を使用して Web アプリを構築する</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的なタスクを管理するためのスクリプトを探します。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 次を使用して PostgreSQL データベースを作成する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
+            text: Azure ポータル
+            href: /azure/postgresql/quickstart-create-server-database-portal
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg'
+            text: Azure CLI
+            href: /azure/postgresql/quickstart-create-server-database-azure-cli
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 以下の項目について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: 'データベースを設計する&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
+          - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Python と CLI を使用して Web アプリを構築する</a>
+  - title: サンプル
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure">Azure CLI</a></p>
+      - type: paragraph
+        text: 一般的なタスクを管理するためのスクリプトを探します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure">Azure CLI</a></p>
+          - title: REST ()
+            html: <p><a href="/rest/api/postgresql">REST API</a></p>

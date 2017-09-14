@@ -4,13 +4,13 @@ description: "Azure で定義したスケジュールに基づいて実行する
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/31/2017

@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: 4a88cf56eea3dd562d4d5dcc4fe7364ea226a348
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更する方法

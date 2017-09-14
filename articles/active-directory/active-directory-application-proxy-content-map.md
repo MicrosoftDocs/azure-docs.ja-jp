@@ -1,6 +1,6 @@
 ---
-title: "Azure AD アプリケーション プロキシの構成に関する問題&quot;"
-description: "Azure AD アプリケーション プロキシの構成に関する問題&quot;"
+title: "Azure AD アプリケーション プロキシの構成に関する問題\""
+description: "Azure AD アプリケーション プロキシの構成に関する問題\""
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 9fe3f343ef95106c52c4ea3ff22143a5e855c6c7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
-
 
 ---
 

@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: xibingao;bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 5fb930cb71fe008ba63d2068bb36643f40259e76
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 

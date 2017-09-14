@@ -12,14 +12,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 128832c6353a9c4501bcbeeaa7c3b61e6a7929b7
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 42e82793b73a941df08e438d9e04669a386a8368
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a>Azure IoT Edge ゲートウェイをリモート監視構成済みソリューションに接続し、シミュレートされたテレメトリを送信する
@@ -108,7 +107,7 @@ args": [
   {
     "macAddress": "AA:BB:CC:DD:EE:FF",
     "deviceId": "<<Azure IoT Hub Device ID>>",
-    "deviceKey": "<<Azure IoT Hub Device Key>>>"
+    "deviceKey": "<<Azure IoT Hub Device Key>>"
   },
   {
     "macAddress": "AA:BB:CC:DD:EE:FF",

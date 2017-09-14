@@ -4,7 +4,7 @@ description: "このチュートリアルでは、パススルー配信用に構
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 6f4acd95-cc64-4dd9-9e2d-8734707de326
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 0818c3124815b53119a5b2d43f16e3154afbc225
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b28488ac9037b0f0ff7df892b9c3a61167b1eceb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Azure ポータルを使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Azure Portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -42,9 +42,9 @@ ms.lasthandoff: 01/27/2017
 
 * [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Azure Media Services を使用したライブ ストリーミングの概要](media-services-manage-channels-overview.md)
-* [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)
+* [マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>一般的なライブ ストリーミング シナリオ
+## <a id="scenario"></a>一般的なライブ ストリーミング シナリオ
 次の手順では、パススルー配信用に構成されたチャネルを使用する、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクについて説明します。 このチュートリアルでは、パススルー チャネルとライブ イベントを作成、管理する方法について説明します。
 
 >[!NOTE]
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/27/2017
 9. イベントまたはプログラムを削除し、必要に応じて資産も削除します。     
 
 > [!IMPORTANT]
-> オンプレミスのエンコーダーとパススルー チャネルを使用したライブ ストリーミングに関する概念と考慮事項については、「 [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md) 」を参照してください。
+> オンプレミスのエンコーダーとパススルー チャネルを使用したライブ ストリーミングに関する概念と考慮事項については、「[マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
 > 
 > 
 
@@ -86,7 +86,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 各イベントは資産に関連付けられています。 イベントを発行するには、関連付けられた資産の OnDemand ロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
 
-チャネルは、最大&3; つの同時実行イベントをサポートするので、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
+チャネルは、最大 3 つの同時実行イベントをサポートするので、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
 既存のライブ イベントの再利用はしないでください。 代わりに、イベントごとに新しいイベントを作成し、開始します。
 
@@ -101,7 +101,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 ### <a name="to-use-the-portal-to-create-a-channel"></a>ポータルを使用してチャネルを作成するには
 このセクションでは、 **簡易作成** オプションを使用してパススルー チャネルを作成する方法について説明します。
 
-パススルー チャネルの詳細については、「 [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
+パススルー チャネルの詳細については、「[マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** ウィンドウで、**[ライブ ストリーミング]** をクリックします。 
@@ -135,7 +135,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 ライブ イベントは、停止するとオンデマンド コンテンツに自動的に変換されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-パススルー チャネルの詳細については、「 [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
+パススルー チャネルの詳細については、「[マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
 
 * チャネルを停止できるのは、チャネルのすべてのイベントまたはプログラムが停止している場合のみです。  チャネルが停止すると、いかなる課金も発生しません。 もう一度開始する必要がある場合、取り込み URL は同一になるため、エンコーダーを再構成する必要はありません。
 * チャネルを削除できるのは、チャネルのすべてのライブ イベントが削除されている場合のみです。

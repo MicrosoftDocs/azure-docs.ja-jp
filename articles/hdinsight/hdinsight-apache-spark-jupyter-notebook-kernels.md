@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 09/07/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: c5813341f0d70a3c04e915d243d2a9717cad1fc9
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 6cfd1c1e7b22f5460b78687c815d149e6c6deac9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
@@ -73,8 +72,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 
     そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
 
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
 
     代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
@@ -172,7 +170,7 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

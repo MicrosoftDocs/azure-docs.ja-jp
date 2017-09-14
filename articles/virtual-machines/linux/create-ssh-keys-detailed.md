@@ -3,7 +3,7 @@ title: "Azure で Linux VM 用の SSH キー ペアを作成する詳細な手�
 description: "Azure で Linux VM 用の SSH 公開キーおよび秘密キーのペアと、各種ユース ケースに応じた証明書を作成する詳細な手順について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: vlivech
+author: dlepow
 manager: timlt
 editor: 
 tags: 
@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 2/6/2016
-ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f452e8b3802bef5dc61bff64a8ac9ec5bb2a5bd9
-ms.lasthandoff: 04/03/2017
-
+ms.date: 6/28/2017
+ms.author: danlep
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: d4548c6f21d04effd57ea36e4fc0d15f77568903
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Azure で Linux VM 用の SSH キー ペアと追加の証明書を作成する詳細なチュートリアル
-SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。 パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure CLI または Resource Manager テンプレートで作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、SSH のパスワード ログインを無効にするというデプロイ後の構成手順を省略できます。 この記事では、証明書を生成する詳細な手順について説明し、クラシック ポータルで使用する証明書などの例を紹介します。 SSH キー ペアを短時間で作成して使用したい場合は、「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](mac-create-ssh-keys.md)」をご覧ください。
+SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。 パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure CLI または Resource Manager テンプレートで作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、SSH のパスワード ログインを無効にするというデプロイ後の構成手順を省略できます。 この記事では、Linux 仮想マシンなどで使用する証明書を生成する詳細な手順について説明します。 SSH キー ペアを短時間で作成して使用したい場合は、「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](mac-create-ssh-keys.md)」をご覧ください。
 
 ## <a name="understanding-ssh-keys"></a>SSH キーについて
 
@@ -36,7 +36,7 @@ Linux サーバーにログインするための最も簡単な方法は、SSH �
 
 ## <a name="ssh-keys-use-and-benefits"></a>SSH キーの使用方法と利点
 
-Azure では、長さ 2,048 ビット以上の SSH プロトコル バージョン 2 RSA 形式の公開キーと秘密キーを必須としています。公開キー ファイルには `.pub` コンテナー形式が含まれています  (クラシック ポータルでは `.pem` ファイル形式が使用されます。 をご覧ください)。このキーを作成するには、`ssh-keygen` を使用します。一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 Azure VM が作成されると、公開キーが VM の `~/.ssh/authorized_keys` フォルダーに自動的にコピーされます。 `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。  認証に SSH キーを使用する Azure Linux VM が作成されると、Azure は、パスワード ログインを禁止して SSH キーのみを許可するよう SSHD サーバーを構成します。  そのため、SSH キーで Azure Linux VM を作成すると、VM のデプロイをセキュリティで保護し、一般的なデプロイ後の構成手順である **sshd_config** ファイルでのパスワードの無効化を省略できます。
+Azure では、長さ 2,048 ビット以上の SSH プロトコル バージョン 2 RSA 形式の公開キーと秘密キーを必須としています。公開キー ファイルには `.pub` コンテナー形式が含まれています  このキーを作成するには、`ssh-keygen` を使用します。一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 Azure VM が作成されると、公開キーが VM の `~/.ssh/authorized_keys` フォルダーに自動的にコピーされます。 `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。  認証に SSH キーを使用する Azure Linux VM が作成されると、Azure は、パスワード ログインを禁止して SSH キーのみを許可するよう SSHD サーバーを構成します。  そのため、SSH キーで Azure Linux VM を作成すると、VM のデプロイをセキュリティで保護し、一般的なデプロイ後の構成手順である **sshd_config** ファイルでのパスワードの無効化を省略できます。
 
 ## <a name="using-ssh-keygen"></a>ssh-keygen の使用
 
@@ -57,26 +57,10 @@ ssh-keygen \
 
 `ssh-keygen` = キーの作成に使用するプログラム。
 
-`-t rsa` = 作成するキーの種類。RSA 形式 [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem) で指定します。
-
-`-b 2048` = キーのビット数。
+`-t rsa` = RSA 形式で作成するキーの種類 [wikipedia][末尾のかっこ](`https://en.wikipedia.org/wiki/RSA_(cryptosystem) `)
+`-b 2048` = キーのビット数
 
 `-C "azureuser@myserver"` = 識別しやすいように公開キー ファイルの末尾に追記されたコメント。  通常は電子メール アドレスがコメントとして使用されますが、インフラストラクチャに最適な他の文字列を使用してもかまいません。
-
-## <a name="classic-portal-and-x509-certs"></a>クラシック ポータルと X.509 証明書
-
-Azure [クラシック ポータル](https://manage.windowsazure.com/)を使用している場合は、SSH キーのために X.509 証明書の .pem ファイルが必要です。  他の種類の SSH 公開キーは許可されず、X.509 証明書である "*必要があります*"。
-
-既存の SSH-RSA 秘密キーから X.509 証明書を作成するには、次のようにします。
-
-```bash
-openssl req -x509 \
--key ~/.ssh/id_rsa \
--nodes \
--days 365 \
--newkey rsa:2048 \
--out ~/.ssh/id_rsa.pem
-```
 
 ## <a name="classic-deploy-using-asm"></a>`asm` を使用するクラシック デプロイ
 
@@ -96,7 +80,7 @@ ssh-keygen \
 ```bash
 ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/azureuser/.ssh/id_rsa): 
+Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.

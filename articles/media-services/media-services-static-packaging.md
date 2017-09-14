@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Media Packager で実行される
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/17/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 4f05f188633e2d5103e29ae4501f7ea9a832acba
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する

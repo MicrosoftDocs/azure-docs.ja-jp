@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 922774c2482737537b64787ae473231ec1fbb68e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/14/2017
-
 
 ---
 

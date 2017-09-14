@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 75c2e0f119ac5669c3ab5bd528899d6e4b7818c9
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 95e14824ba3b705bb909ec983652dd3305b98805
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>SQL Data Warehouse を使ってみる
@@ -60,11 +59,10 @@ SQL Data Warehouse は、大規模な並列処理用に設計された特殊な�
 
 ### <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[新規]** > **[Databases]** > **[SQL Data Warehouse]** の順にクリックします。
 
-    ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png)
-    ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
+    ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png) ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
 
 3. デプロイの詳細を入力します。
 
@@ -84,8 +82,7 @@ SQL Data Warehouse は、大規模な並列処理用に設計された特殊な�
 
     **[Select performance (パフォーマンスの選択)]**: 標準の 400DWU で始めることをお勧めします。
 
-4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
-    ![ダッシュボードにピン留めする](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。![ダッシュボードにピン留めする](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
 
 5. データ ウェアハウスがデプロイされるまでしばらく待ちます。 通常、この処理には数分かかります。 データ ウェアハウスの使用準備が整うとポータルによって通知されます。 
 
@@ -657,7 +654,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
 
 [Azure SQL Data Warehouse へのデータの移行][]
 
-[同時実行とワークロード管理]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[同時実行とワークロード管理]: sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example
 [Azure SQL Data Warehouse のベスト プラクティス]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
 [クエリ監視]: sql-data-warehouse-manage-monitor.md
 [大規模なリレーショナル データ ウェアハウスを構築するためのベストプラクティスのトップ 10]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/

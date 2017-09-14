@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 84ad965ed6ef1711fda983220cf004fdd48d290d
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Microsoft Azure BizTalk Services リリース ノートでは、このリリースの既知の問題について説明します。
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>BizTalk Services の 11 月の更新における新機能
@@ -29,8 +33,8 @@ Microsoft Azure BizTalk Services リリース ノートでは、このリリー�
 ## <a name="update-history"></a>更新履歴
 ### <a name="october-update"></a>10 月の更新
 * 組織アカウントが次のようにサポートされます。  
-  * **シナリオ**: Microsoft アカウント (user@live.com). など) を使用して BizTalk サービスのデプロイを登録した。このシナリオでは、Microsoft アカウント ユーザーのみが、BizTalk Services ポータルを使用してその BizTalk サービスを管理できます。 組織アカウントは使用できません。  
-  * **シナリオ**: Azure Active Directory の組織アカウント (user@fabrikam.com、user@contoso.com). など) を使用して BizTalk サービスのデプロイを登録した。このシナリオでは、同じ組織内の Azure Active Directory ユーザーのみが BizTalk Services ポータルを使用してその BizTalk サービスを管理できます。 Microsoft アカウントは使用できません。  
+  * **シナリオ**: BizTalk Services のデプロイを Microsoft アカウント (user@live.com など) を使用して登録した。 このシナリオでは、Microsoft アカウントのユーザーのみが BizTalk Services ポータルを使用して BizTalk Services を管理できます。 組織アカウントは使用できません。  
+  * **シナリオ**: BizTalk Services のデプロイを Azure Active Directory の組織アカウント (user@fabrikam.com や user@contoso.com など) を使用して BizTalk Services のデプロイを登録した。 このシナリオでは、同じ組織内の Azure Active Directory ユーザーのみが、BizTalk Services ポータルを使用して、BizTalk Services を管理できます。 Microsoft アカウントは使用できません。  
 * Azure クラシック ポータルで BizTalk サービスを作成すると、ユーザーは BizTalk Services ポータルに自動的に登録されます。
   * **シナリオ**: Azure クラシック ポータルにサインインして、BizTalk サービスを作成した後、初めて **[管理]** を選択した。 BizTalk Services ポータルが開くと、BizTalk サービスが自動的に登録され、デプロイできる状態になります。  
     「 [BizTalk Services ポータルでの BizTalk サービス配置の登録と更新](https://msdn.microsoft.com/library/azure/hh689837.aspx)」を参照してください。  
@@ -134,7 +138,7 @@ BizTalk アダプター サービス機能に含まれている BizTalk Adapter 
 > 
 
 ### <a name="restarting-the-biztalk-adapter-service-web-site"></a>BizTalk アダプター サービス Web サイトの再起動
-**BizTalk Adapter サービスのランタイム***をインストールすると、**BAService** アプリケーションが含まれた **BizTalk Adapter サービス** Web サイトが IIS に作成されます。**BAService** アプリケーションでは、オンプレミスのサービス エンドポイントの範囲をクラウドまで拡大するために、リレー バインドを内部で使用しています。 サービスがオンプレミスでホストされている場合、オンプレミス サービスが開始されて初めて、対応するリレー エンドポイントが Service Bus に登録されます。  
+**BizTalk Adapter サービスのランタイム**をインストールすると、**BAService** アプリケーションが含まれた **BizTalk Adapter サービス** Web サイトが IIS に作成されます。 **BAService** アプリケーションでは、オンプレミスのサービス エンドポイントの範囲をクラウドまで拡大するために、リレー バインドを内部で使用しています。 サービスがオンプレミスでホストされている場合、オンプレミス サービスが開始されて初めて、対応するリレー エンドポイントが Service Bus に登録されます。  
 
 アプリケーションを停止して開始すると、アプリケーションを自動開始する構成は有効になりません。 そのため、**BAService** が停止した場合は、常に **BizTalk アダプター サービス** Web サイトを再起動する必要があります。 **BAService** アプリケーションは、開始も停止もしないでください。
 
@@ -218,10 +222,5 @@ BizTalk Services プレビュー サブスクリプションに XML ブリッジ
 
 ### <a name="concepts"></a>概念
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 08/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 88628fb2c07ad72c646f7e3ed076e7a4b1519200
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 13268f14388e511f2ad106939b0913388b89e16c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
@@ -42,41 +41,86 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 > 
 > Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、 [最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md) に関するページを確認してください。 Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
 
+## <a name="supported-authentication-types"></a>サポートされている認証の種類
+U-SQL アクティビティでは、Data Lake Analytics に対して次の種類の認証をサポートしています。
+* サービス プリンシパルの認証
+* ユーザー資格情報 (OAuth) 認証 
+
+特に、スケジュールされた U-SQL の実行の場合は、サービス プリンシパル認証を使うことをお勧めします。 ユーザー資格情報認証では、トークンの有効期限の動作が発生する可能性があります。 構成の詳細については、「[リンクされたサービスのプロパティ](#azure-data-lake-analytics-linked-service)」セクションを参照してください。
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
 **Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
 
-次の例は、Azure Data Lake Analytics リンク サービスの JSON 定義です。 
+次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 サービス プリンシパル認証とユーザー資格情報認証のいずれかをさらに選ぶことができます。
 
-```JSON
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| **type** |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |あり |
+| **accountName** |Azure Data Lake Analytics アカウント名。 |あり |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ |
+| **subscriptionId** |Azure サブスクリプション ID |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
+| **resourceGroupName** |Azure リソース グループ名 |いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
+
+### <a name="service-principal-authentication-recommended"></a>サービス プリンシパル認証 (推奨)
+サービス プリンシパル認証を使うには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+* アプリケーション ID
+* アプリケーション キー 
+* テナント ID
+
+次のプロパティを指定して、サービス プリンシパル認証を使います。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | あり |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。 | あり |
+| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | あり |
+
+**例: サービス プリンシパル認証**
+```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
     "properties": {
         "type": "AzureDataLakeAnalytics",
         "typeProperties": {
             "accountName": "adftestaccount",
-            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
-            "authorization": "<authcode>",
-            "sessionId": "<session ID>", 
-            "subscriptionId": "<subscription id>",
-            "resourceGroupName": "<resource group name>"
+            "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<optional, subscription id of ADLA>",
+            "resourceGroupName": "<optional, resource group name of ADLA>"
         }
     }
 }
 ```
 
-次の表は、JSON 定義で使用されるプロパティの説明です。 
+### <a name="user-credential-authentication"></a>ユーザー資格情報認証
+また、次のプロパティを指定することで、Data Lake Analytics のユーザー資格情報認証を使用することもできます。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| 型 |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |はい |
-| accountName |Azure Data Lake Analytics アカウント名。 |はい |
-| dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |なし |
-| authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |
-| subscriptionId |Azure サブスクリプション ID |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
-| resourceGroupName |Azure リソース グループ名 |いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
-| sessionId |OAuth 承認セッションのセッション ID です。 各セッション ID は一意であり、1 回のみ使用できます。 セッション ID は、Data Factory エディターで自動生成されます。 |はい |
+|:--- |:--- |:--- |
+| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | あり |
+| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | あり |
 
+**例: ユーザー資格情報認証**
+```json
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "adftestaccount",
+            "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
+            "authorization": "<authcode>",
+            "sessionId": "<session ID>", 
+            "subscriptionId": "<optional, subscription id of ADLA>",
+            "resourceGroupName": "<optional, resource group name of ADLA>"
+        }
+    }
+}
+```
+
+#### <a name="token-expiration"></a>トークンの有効期限
 **[認証]** ボタンを使用して生成した認証コードは、いずれ有効期限が切れます。 さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。 認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります: 資格情報の操作エラー: invalid_grant - AADSTS70002: 資格情報の検証中にエラーが発生しました。 AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21:09:31Z"
 
 | ユーザー タイプ | 有効期限 |
@@ -84,9 +128,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
 | Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から 14 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
-このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。 
-
-### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>プログラムを使用して sessionId と authorization の値を生成するには
+このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のようにコードを使用して、**sessionId** と **authorization** のプロパティ値をプログラムで生成することもできます。
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -118,7 +160,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。   
 
-```JSON
+```json
 {
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
@@ -189,7 +231,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ### <a name="input-dataset"></a>入力データセット
 この例では、入力データは Azure Data Lake Store 内 (datalake/input フォルダーの SearchLog.tsv ファイル) にあります。 
 
-```JSON
+```json
 {
     "name": "DataLakeTable",
     "properties": {
@@ -215,7 +257,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ### <a name="output-dataset"></a>出力データセット
 この例では、U-SQL スクリプトで生成された出力データは、Azure Data Lake Store (datalake/output フォルダー) に格納されます。 
 
-```JSON
+```json
 {
     "name": "EventsByRegionTable",
     "properties": {
@@ -235,15 +277,16 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ### <a name="sample-data-lake-store-linked-service"></a>Data Lake Store のリンクされたサービスのサンプル
 入力/出力データセットで使用される Azure Data Lake Store にリンクされたサービスの定義例を次に示します。 
 
-```JSON
+```json
 {
     "name": "AzureDataLakeStoreLinkedService",
     "properties": {
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
         }
     }
 }
@@ -287,7 +330,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 ## <a name="dynamic-parameters"></a>動的パラメーター
 パイプライン定義のサンプルでは、in パラメーターと out パラメーターにハード コーディングされた値が割り当てられています。 
 
-```JSON
+```json
 "parameters": {
     "in": "/datalake/input/SearchLog.tsv",
     "out": "/datalake/output/Result.tsv"
@@ -296,7 +339,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 
 代わりに、動的パラメーターを使用することもできます。 次に例を示します。 
 
-```JSON
+```json
 "parameters": {
     "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
     "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"

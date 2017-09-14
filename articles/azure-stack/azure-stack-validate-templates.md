@@ -12,25 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2016
+ms.date: 07/14/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 15f1ebbe30a39b559d2f889b8c32440d1d3fe08b
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: bb1d624f4c73bcd5f41dde2d0b13c57c880eca05
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
 # <a name="check-your-templates-for-azure-stack-with-template-validator"></a>Check your templates for Azure Stack with Template Validator
-You can use the template validation tool to check if your Azure Resource Manager [templates](azure-stack-arm-templates.md) work with Azure Stack. The template validation tool is available as a part of the Azure Stack tools. Download the Azure Stack tools by using the steps described in the [download tools from GitHub](azure-stack-powershell-download.md) article. 
+You can use the template validation tool to check if your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready for Azure Stack. The template validation tool is available as a part of the Azure Stack tools. Download the Azure Stack tools by using the steps described in the [download tools from GitHub](azure-stack-powershell-download.md) article. 
 
-To validate templates, you will use the following PowerShell modules and the JSON file located in **TemplateValidator** and **CloudCapabilities** folders: 
+To validate templates, you use the following PowerShell modules and the JSON file located in **TemplateValidator** and **CloudCapabilities** folders: 
 
  - AzureRM.CloudCapabilities.psm1 creates a cloud capabilities JSON file representing the services and versions in a cloud like Azure Stack.
  - AzureRM.TemplateValidator.psm1 uses a cloud capabilities JSON file to test templates for deployment in Azure Stack.
- - AzureStackCapabilities_TP2.json is a default cloud capabilities file.  You can create your own, or use this file to get started. 
+ - AzureStackCloudCapabilities_with_AddOns_20170627.json is a default cloud capabilities file.  You can create your own, or use this file to get started. 
 
 In this topic, you run validation against your templates, and optionally build a cloud capabilities file.
 
@@ -40,18 +39,21 @@ In these steps, you validate templates by using the AzureRM.TemplateValidator Po
 1.  Import the AzureRM.TemplateValidator.psm1 PowerShell module:
     
     ```PowerShell
-    import-module .\TemplateValidator\AzureRM.TemplateValidator.psm1
+    cd "c:\AzureStack-Tools-master\TemplateValidator"
+    Import-Module .\AzureRM.TemplateValidator.psm1
     ```
 
 2.  Run the template validator:
 
     ```PowerShell
-    test-azureRMTemplate -TemplatePath <path to template.json or template folder>`
-    -CapabilitiesPath <path to cloudcapabilities.json>`
+    Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
+    -CapabilitiesPath <path to cloudcapabilities.json> `
     -Verbose
     ```
 
-Any template validation warnings or errors are logged to the PowerShell console, and are also logged to an HTML file in the source directory.  
+Any template validation warnings or errors are logged to the PowerShell console, and are also logged to an HTML file in the source directory. An example of the validation report output looks like this:
+
+![sample validation report](./media/azure-stack-validate-templates/image1.png)
 
 ### <a name="parameters"></a>Parameters
 
@@ -61,29 +63,30 @@ Any template validation warnings or errors are logged to the PowerShell console,
 | TemplatePattern | Specifies the name of template files to match. | No |
 | CapabilitiesPath | Specifies the path to cloud capabilities JSON file | Yes | 
 | IncludeComputeCapabilities | Includes evaluation of IaaS resources like VM Sizes and VM Extensions | No |
+| IncludeStorageCapabilities | Includes evaluation of storage resources like SKU types | No |
 | Report | Specifies name of the generated HTML report | No |
 | Verbose | Logs errors and warnings to the console | No|
 
 
 ### <a name="examples"></a>Examples
-This example validates all the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) downloaded locally, and also validates the VM sizes and extensions against Azure Stack TP2 capabilities.
+This example validates all the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) downloaded locally, and also validates the VM sizes and extensions against Azure Stack Development Kit capabilities.
 
 ```PowerShell
-test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates`
--CapabilitiesPath .\TemplateValidator\AzureStackCapabilities_TP3.json`
+test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
+-CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json.json `
 -TemplatePattern MyStandardTemplateName.json`
 -IncludeComputeCapabilities`
 -Report TemplateReport.html
 ```
 
 ## <a name="build-cloud-capabilities-file"></a>Build cloud capabilities file
-The downloaded files include a default AzureStackCapabilities_TP2.json file, which describes the service versions available in a default installation of Azure Stack TP2.  As you install additional Resource Providers, you can use the AzureRM.CloudCapabilities PowerShell module to build a JSON file including the new services.  
+The downloaded files include a default *AzureStackCloudCapabilities_with_AddOns_20170627.json* file, which describes the service versions available in Azure Stack Development Kit with PaaS services installed.  If you install additional Resource Providers, you can use the AzureRM.CloudCapabilities PowerShell module to build a JSON file including the new services.  
 
-1.  Make sure you have connectivity to Azure Stack.  These steps can be performed from [MAS-CON01](azure-stack-connect-azure-stack.md#connect-with-remote-desktop), or you can use [VPN](azure-stack-connect-azure-stack.md#connect-with-vpn) to connect from your workstation. 
+1.  Make sure you have connectivity to Azure Stack.  These steps can be performed from the Azure Stack development kit host, or you can use [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) to connect from your workstation. 
 2.  Import the AzureRM.CloudCapabilities PowerShell module:
 
     ```PowerShell
-    import-module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
+    Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ``` 
 
 3.  Use the Get-CloudCapabilities cmdlet to retrieve service versions and create a cloud capabilities JSON file:

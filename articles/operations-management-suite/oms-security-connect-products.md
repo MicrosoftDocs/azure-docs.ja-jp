@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 07/18/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
 ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/06/2016
-
 
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Operations Management Suite (OMS) のセキュリティと監査ソリューションへのセキュリティ製品の接続 
@@ -90,11 +90,13 @@ OMS セキュリティでは、Syslog と [Cisco ASA](https://blogs.technet.micr
     ```
 6. 次のコマンドを入力し、結果を調べて、OMS エージェント ログにエラーがないことを確認します。
 
-    ```    
+    ``` 
     tail /var/opt/microsoft/omsagent/log/omsagent.log
     ```
 
 ## <a name="reviewing-collected-security-events"></a>収集したセキュリティ イベントの確認
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 構成が完了したら、OMS セキュリティによるセキュリティ イベントの取り込みが開始されます。 取り込んだイベントを視覚化するには、ログ検索を開き、検索フィールドに「*Type=CommonSecurityLog*」と入力して、Enter キーを押します。 次の例は、このコマンドの結果を示しています。この例では既に OMS セキュリティによって複数のベンダーからセキュリティ ログが取り込まれています。
    

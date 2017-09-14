@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: db95802e2d3cabbef64a414a2fe16a3f6c7e33c8
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
@@ -28,9 +28,9 @@ ms.lasthandoff: 05/18/2017
 Apache Hive を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、HDInsight 3.5 でテストされています。
+> このドキュメントの手順は、HDInsight 3.6 でテストされています。
 >
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="get-the-data"></a>データを取得する
 
@@ -96,7 +96,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    nano gettweets.py
    ```
 
-5. **gettweets.py** ファイルの内容として、次のテキストを使用します。 **consumer\_secret****consumer\_key****access/\_token****access\_token\_secret** のプレースホルダー情報を、Twitter アプリケーションの情報に置き換えます。
+5. **gettweets.py** ファイルの内容として、次のテキストを使用します。
 
    ```python
    #!/usr/bin/python
@@ -152,6 +152,14 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
+    > [!IMPORTANT]
+    > 次の項目のプレースホルダー テキストを、twitter アプリケーションからの情報に置き換えます。
+    >
+    > * `consumer_secret`
+    > * `consumer_key`
+    > * `access_token`
+    > * `access_token_secret`
+
 6. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
 
 7. 次のコマンドを使用してファイルを実行し、ツイートをダウンロードします。
@@ -160,7 +168,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
     python gettweets.py
     ```
 
-    進行状況のインジケーターが表示され、ツイートのダウンロードとファイルへの保存の進行状況が 100% までカウントされます。
+    進行状況のインジケーターが表示されます。 このインジケーターは、ツイートのダウンロードの進行状況を 100% になるまでカウントします。
 
    > [!NOTE]
    > 進行が遅い場合は、フィルターを変更してトレンド トピックを追跡することをお勧めします。 フィルターしたトピックに関するツイートが多いほど、必要な 10000 ツイートをすばやく取得できます。
@@ -296,7 +304,7 @@ HDInsight のストレージにデータをアップロードするには、次�
 3. 次のコマンドを使用して、ファイルに含まれている HiveQL を実行します。
 
    ```bash
-   beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin -i twitter.hql
+   beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
     このコマンドは、**twitter.hql** ファイルを実行します。 クエリが完了すると、`jdbc:hive2//localhost:10001/>` プロンプトが表示されます。

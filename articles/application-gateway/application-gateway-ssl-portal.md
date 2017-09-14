@@ -1,6 +1,6 @@
 ---
 title: "SSL オフロードの構成 - Azure Application Gateway - Azure Portal | Microsoft Docs"
-description: "このページでは、ポータルを使用して、SSL オフロード用のアプリケーション ゲートウェイを作成する方法について説明します。"
+description: "この記事では、Azure ポータルを使用して、SSL オフロード用のアプリケーション ゲートウェイを作成する方法について説明します"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,75 +14,70 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: a9cb2d921d1be226661311d91367b2b6f44fa0dc
-ms.lasthandoff: 03/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 23b5a529e7ee7db5615340352fb68b2e64e45972
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>ポータルを使用した SSL オフロード用のアプリケーション ゲートウェイの構成
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>Azure ポータルを使用して SSL オフロード用のアプリケーション ゲートウェイを構成する
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-ssl-arm.md)
-> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-ssl.md)
+> * [Azure クラシック PowerShell](application-gateway-ssl.md)
+> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
 Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。 また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
 ## <a name="scenario"></a>シナリオ
 
-次のシナリオでは、既存のアプリケーション ゲートウェイに、SSL オフロードを構成します。 このシナリオでは、 [アプリケーション ゲートウェイの作成](application-gateway-create-gateway-portal.md)に関する手順を既に実行したことを前提としています。
+次のシナリオでは、既存のアプリケーション ゲートウェイに、SSL オフロードを構成します。 このシナリオでは、[アプリケーション ゲートウェイを作成する](application-gateway-create-gateway-portal.md)ための手順を既に実行したことを前提としています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-アプリケーション ゲートウェイで SSL オフロードを構成するには、証明書が必要です。 この証明書は、アプリケーション ゲートウェイに読み込まれ、SSL 経由で送信されるトラフィックの暗号化と暗号化解除に使用されます。 証明書は、Personal Information Exchange (pfx) 形式である必要があります。 このファイル形式により、秘密キーをエクスポートすることができます。このキーは、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要です。
+アプリケーション ゲートウェイで SSL オフロードを構成するには、証明書が必要です。 この証明書は、アプリケーション ゲートウェイに読み込まれ、SSL 経由で送信されるトラフィックの暗号化と暗号化解除に使用されます。 証明書は、Personal Information Exchange (.pfx) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
 
 ## <a name="add-an-https-listener"></a>HTTPS リスナーの追加
 
-HTTPS リスナーは、構成に基づいてトラフィックを検出し、バックエンド プールへのトラフィックのルーティングをサポートします。
+HTTPS リスナーは、構成に基づいてトラフィックを検出し、バックエンド プールへのトラフィックのルーティングをサポートします。 HTTPS リスナーを追加するには、次の手順を実行します。
 
-### <a name="step-1"></a>手順 1
+   1. Azure ポータルに移動し、既存のアプリケーション ゲートウェイを選択します。
 
-Azure Portal に移動し、既存のアプリケーション ゲートウェイを選択します。
+   2. **[リスナー]** を選択し、**[追加]** ボタンをクリックしてリスナーを追加します。
 
-### <a name="step-2"></a>手順 2.
+   ![Application Gateway の概要ウィンドウ][1]
 
-[リスナー] をクリックし、[追加] ボタンをクリックしてリスナーを追加します。
 
-![app gateway overview blade][1]
+   3. リスナーに必要な次の情報を入力し、.pfx 証明書をアップロードします。
+      - **名前**: リスナーのフレンドリ名。
 
-### <a name="step-3"></a>手順 3.
+      - **フロントエンド IP 構成**: リスナーで使用されるフロントエンド IP 構成。
 
-リスナーに必要な情報を入力し、.pfx 証明書をアップロードします。完了したら、[OK] をクリックします。
+      - **フロントエンド ポート (名前/ポート)**: アプリケーション ゲートウェイのフロントエンドで使用されるポートのフレンドリ名と、実際に使用されるポート。
 
-**[名前]** - この値は、リスナーのフレンドリ名です。
+      - **プロトコル**: フロントエンドに https と http のどちらを使用するかを決定するスイッチ。
 
-**[フロントエンド IP 構成]** - この値は、リスナー用に使用されるフロントエンド IP 構成です。
+      - **証明書 (名前/パスワード)**: SSL オフロードを使用する場合、この設定には .pfx 証明書が必要です。 フレンドリ名とパスワードも必要です。
 
-**[フロントエンド ポート] \([名前]/[ポート])** - アプリケーション ゲートウェイのフロントエンドで使用されるポートのフレンドリ名と、実際に使用されるポートです。
+   4. **[OK]**を選択します。
 
-**[プロトコル]** - フロントエンドに https と http のどちらを使用するかを決定するスイッチです。
-
-**[証明書] \([名前]/[パスワード])** - SSL オフロードを使用する場合、この設定に .pfx 証明書が必要で、フレンドリ名とパスワードも必要になります。
-
-![add listener blade][2]
+![リスナー追加ウィンドウ][2]
 
 ## <a name="create-a-rule-and-associate-it-to-the-listener"></a>ルールの作成とリスナーへの関連付け
 
-ここまでで、リスナーが作成されました。 今度は、リスナーからのトラフィックを処理するルールを作成します。 ルールは、cookie ベースのセッション アフィニティを使用するかどうか、プロトコル、ポートと正常性プローブなど、複数の構成設定に基づくバックエンド プールにトラフィックをルーティングする方法を定義します。
+ここまでで、リスナーが作成されました。 次に、リスナーからのトラフィックを処理するルールを作成します。 ルールは、複数の構成設定に基づいてバックエンド プールにトラフィックをルーティングする方法を定義します。 これらの設定には、プロトコル、ポート、正常性プローブ、および cookie ベースのセッション アフィニティの使用の有無が含まれます。 ルールを作成してリスナーに関連付けるには、次の手順に従います。
 
-### <a name="step-1"></a>手順 1
 
-アプリケーション ゲートウェイの **[ルール]** をクリックし、[追加] をクリックします。
+   1. アプリケーション ゲートウェイの **[ルール]** をクリックし、**[追加]** を選択します。
 
-![app gateway rules blade][3]
+   ![アプリケーション ゲートウェイの [ルール] ウィンドウ][3]
 
-### <a name="step-2"></a>手順 2.
 
-**[基本規則の追加]** ブレードで、ルールのフレンドリ名を入力し、前の手順で作成したリスナーを選択します。 適切なバックエンド プールと http 設定を選択し、 **[OK]**
+   2. **[基本規則の追加]**で、**[名前]** フィールドにルールのフレンドリ名を入力し、前の手順で作成した**リスナー**を選択します。 適切な**バックエンド プール**と **HTTP 設定**を選択し、**[OK]** を選択します。
 
-![https settings window][4]
+   ![HTTPS 設定ウィンドウ][4]
 
 これで、設定がアプリケーション ゲートウェイに保存されます。 これらの設定の保存処理には時間がかかる場合があります。この処理が完了すると、これらの設定はポータルまたは PowerShell で表示できるようになます。 保存後は、アプリケーション ゲートウェイがトラフィックの暗号化と暗号化解除を処理します。 アプリケーション ゲートウェイとバックエンド Web サーバーの間のすべてのトラフィックは HTTP 経由で処理されます。 クライアントに対する通信は、HTTPS 経由で開始された場合、暗号化されてクライアントに返されます。
 
@@ -94,4 +89,5 @@ Azure Application Gateway でカスタムの正常性プローブを構成する
 [2]: ./media/application-gateway-ssl-portal/figure2.png
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
+
 

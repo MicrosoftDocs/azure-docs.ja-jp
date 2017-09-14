@@ -12,26 +12,23 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 5281f6af0e93da7aa1c72891c179afea99c6a26c
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: d973e52a6b19d6a066de1677e5707d182a815205
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (.NET)
+
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>はじめに
 Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、Azure Resource Manager テンプレートを使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
 > [!NOTE]
 > Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
-> 
-> 
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -43,22 +40,28 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>Visual Studio プロジェクトの準備
+
 1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを作成します。 プロジェクトに **CreateIoTHub**という名前を付けます。
+
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]**をクリックします。
+
 3. NuGet パッケージ マネージャーで **[プレリリースを含める]** をオンにし、**[参照]** ページで **Microsoft.Azure.Management.ResourceManager** を検索します。 パッケージを選択して **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+
 5. Program.cs で、既存の **using** ステートメントを以下のコードに置き換えます。
-   
-    ```
+
+    ```csharp
     using System;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-6. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。 このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。 **Azure Storage アカウント名**は、Azure Resource Manager テンプレート ファイルの保存先となる Azure Storage アカウントの名前です。 **Resource group name** は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。 **デプロイ名**は、デプロイの名前です (**Deployment_01** など)。
-   
-    ```
+
+6. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。 このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。 **Azure Storage アカウント名**は、Azure Resource Manager テンプレート ファイルの保存先となる Azure Storage アカウントの名前です。 **リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前です。 名前は既存のリソース グループまたは新しいリソース グループになります。 **デプロイ名**は、デプロイの名前です (**Deployment_01** など)。
+
+    ```csharp
     static string applicationId = "{Your ApplicationId}";
     static string subscriptionId = "{Your SubscriptionId}";
     static string tenantId = "{Your TenantId}";
@@ -70,13 +73,15 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="submit-an-azure-resource-manager-template-to-create-an-iot-hub"></a>Azure Resource Manager テンプレートの送信による IoT Hub の作成
+## <a name="submit-a-template-to-create-an-iot-hub"></a>テンプレートを送信して IoT Hub を作成する
+
 JSON テンプレートとパラメーター ファイルを使用して、リソース グループに IoT Hub を作成します。 Azure Resource Manager テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
 
 1. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。 **template.json** という JSON ファイルをプロジェクトに追加します。
-2. **template.json** の内容を次のリソース定義に置き換えて、標準 IoT ハブを**米国東部**リージョンに追加します。 IoT Hub をサポートするリージョンの最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
-   
-    ```
+
+2. 標準 IoT Hub を**米国東部**リージョンに追加するには、**template.json** の内容を次のリソース定義に置き換えます。 IoT Hub をサポートするリージョンの最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
+
+    ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
@@ -109,10 +114,12 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
       }
     }
     ```
+
 3. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。 **parameters.json** という JSON ファイルをプロジェクトに追加します。
+
 4. **parameters.json** の内容を次のパラメーター情報に置き換えて、新しい IoT Hub の名前を、たとえば **{自分のイニシャル}mynewiothub** に設定します。 IoT ハブ名はグローバルに一意である必要があるため、自分の名前やイニシャルを含めます。
-   
-    ```
+
+    ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
       "contentVersion": "1.0.0.0",
@@ -121,24 +128,28 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
       }
     }
     ```
+  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+
 5. **サーバー エクスプローラー**から Azure サブスクリプションに接続し、Azure Storage アカウントで **templates** というコンテナーを作成します。 **[プロパティ]** ウィンドウで、**[templates]** コンテナーの **[パブリック読み取りアクセス]** 権限を **[BLOB]** に設定します。
+
 6. **サーバー エクスプローラー**で **[templates]** コンテナーを右クリックし、**[BLOB コンテナーの表示]** をクリックします。 **[BLOB のアップロード]** ボタンをクリックして **parameters.json** と **templates.json** の 2 つのファイルを選択し、**[開く]** をクリックして、**[templates]** コンテナーに JSON ファイルをアップロードします。 JSON データを含んだ BLOB の URL は次のとおりです。
-   
-    ```
+
+    ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
 7. 次のメソッドを Program.cs に追加します。
-   
-    ```
+
+    ```csharp
     static void CreateIoTHub(ResourceManagementClient client)
     {
-   
+
     }
     ```
+
 8. テンプレート ファイルとパラメーター ファイルを Azure Resource Manager に送信するために、次のコードを **CreateIoTHub** メソッドに追加します。
-   
-    ```
+
+    ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
         rgName,
         deploymentName,
@@ -158,12 +169,13 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
           }
         });
     ```
+
 9. 次のコードを **CreateIoTHub** メソッドに追加します。これは新しい IoT Hub のステータスとキーを表示するコードです。
-   
-    ```
+
+    ```csharp
     string state = createResponse.Properties.ProvisioningState;
     Console.WriteLine("Deployment state: {0}", state);
-   
+
     if (state != "Succeeded")
     {
       Console.WriteLine("Failed to create iothub");
@@ -172,22 +184,24 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
     ```
 
 ## <a name="complete-and-run-the-application"></a>アプリケーションの完了と実行
+
 **CreateIoTHub** メソッドの呼び出しを追加したうえでアプリケーションをビルドし、実行すれば、アプリケーションは完成です。
 
 1. 次のコードを **Main** メソッドの末尾に追加します。
-   
-    ```
+
+    ```csharp
     CreateIoTHub(client);
     Console.ReadLine();
     ```
+
 2. **[ビルド]**、**[ソリューションのビルド]** の順にクリックします。 すべてのエラーを修正します。
+
 3. **[デバッグ]**、**[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
-4. アプリケーションで新しい IoT ハブが追加されたことを確認するには、[Azure Portal][lnk-azure-portal] にアクセスし、リソースの一覧を表示するか、**Get-AzureRmResource** PowerShell コマンドレットを使用します。
+
+4. アプリケーションが新しい IoT Hub を追加したことを確認するには、[Azure Portal][lnk-azure-portal] にアクセスしてリソースの一覧を表示します。 または、**Get-AzureRmResource** PowerShell コマンドレットを使用します。
 
 > [!NOTE]
 > このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 IoT ハブを削除するには、[Azure Portal][lnk-azure-portal] を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
 ここでは、C# プログラムと Azure Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
@@ -211,7 +225,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
-[lnk-storage-account]: ../storage/storage-create-storage-account.md
+[lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md

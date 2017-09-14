@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
+ms.date: 05/23/2017
 ms.author: boltean
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 1a24e3293445e6e42c8d1e8a9a38c7377120b902
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 85f5f044faddd5180f0c19d3f2c235b20f6373d5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -65,6 +66,9 @@ IP フィルター規則が最大値の 10 個に達すると、**[追加]** オ
 
 > [!NOTE]
 > IP アドレスを拒否すると、他の Azure サービス (Azure Stream Analytics、Azure Virtual Machines、ポータルのデバイス エクスプローラーなど) が IoT Hub と対話できなくなる可能性があります。
+
+> [!WARNING]
+> Azure Stream Analytics (ASA) を使用し、IP フィルターを有効にして、IoT Hub からメッセージを読み取る場合、ASA 接続文字列で、イベント ハブと互換性のある名前と IoT Hub のエンドポイントを使用します。
 
 ## <a name="delete-an-ip-filter-rule"></a>IP フィルター規則の削除
 

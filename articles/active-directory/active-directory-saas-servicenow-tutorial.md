@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: c1e28c5ad7fd3236899ac0ffe9f3d43241061897
-ms.openlocfilehash: 5f253c3a10e5bfdfa9fe36912b5ebcbc9abae3eb
-ms.lasthandoff: 02/15/2017
-
+ms.reviewer: jeedes
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: a91fab90a94b655b93c8ae9064ea4836b80d7678
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル: Azure Active Directory と ServiceNow の統合
@@ -48,10 +49,10 @@ ServiceNow および ServiceNow Express と Azure AD の統合を構成するに
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの ServiceNow の追加
 2. ServiceNow または ServiceNow Express 向けの Azure AD シングル サインオンの構成とテスト
@@ -116,7 +117,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     b. **[識別子]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
    
-    c. **[次へ]**
+    c. **[次へ]** をクリックします
 
 4. SAML ベースの認証用に Azure AD で ServiceNow を自動的に構成するには、 **[シングル サインオンの自動構成]** フォームに ServiceNow のインスタンス名、管理者のユーザー名、管理者パスワードを入力し、 *[構成]*をクリックします。 ここで指定する管理者のユーザー名には、ServiceNow で **security_admin** ロールが割り当てられている必要があります。 Azure AD を SAML ID プロバイダーとして使用するよう ServiceNow を手動で構成するには、**[シングル サインオン用にこのアプリケーションを手動で構成する]** をクリックして **[次へ]** をクリックし、次の手順を完了します。
    
@@ -263,7 +264,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     b. **[発行者の URL]** ボックスに、`https://<instance-name>.service-now.com` というパターンで、ServiceNow アプリケーションへのサインオンにユーザーが使用する URL を入力します。
    
-    c. **[次へ]**
+    c. **[次へ]** をクリックします
 
 4. **[シングル サインオン用にこのアプリケーションを手動で構成する]** をクリックし、**[次へ]** をクリックして、次の手順を実行します。
    
@@ -432,7 +433,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]**をクリックします。
+    c. **[次へ]** をクリックします。
 
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
@@ -446,7 +447,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+   e. **[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    

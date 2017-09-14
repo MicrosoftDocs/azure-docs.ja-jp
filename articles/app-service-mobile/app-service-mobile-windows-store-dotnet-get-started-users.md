@@ -3,8 +3,8 @@ title: "ユニバーサル Windows プラットフォーム (UWP) アプリに�
 description: "Azure App Service Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使ってユニバーサル Windows プラットフォーム (UWP) アプリのユーザーを認証する方法を説明します。"
 services: app-service\mobile
 documentationcenter: windows
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: panarasi
 editor: 
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
 ms.service: app-service-mobile
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 96b87d4d6cc1adbc9700102ffd4a989451676d81
-ms.lasthandoff: 03/09/2017
-
+ms.date: 07/05/2017
+ms.author: panarasi
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 47da343d4ec956ec2e669757f56e853675f887a3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Windows アプリに認証を追加する
@@ -31,6 +31,20 @@ ms.lasthandoff: 03/09/2017
 ## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
+## <a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
+
+認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。 これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。 このチュートリアル全体を通して、URL スキーム _appname_ を使用します。 ただし、選択したあらゆる URL スキームを使用できます。 URL スキームは、モバイル アプリに対して一意である必要があります。 サーバー側でリダイレクトを有効にするには、以下の手順に従います。
+
+1. [Azure Portal] で、App Service を選択します。
+
+2. **[認証/承認]** メニュー オプションをクリックします。
+
+3. **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** に `url_scheme_of_your_app://easyauth.callback` を入力します。  この文字列の **url_scheme_of_your_app** は、モバイル アプリケーションの URL スキームです。  プロトコルの通常の URL 仕様 (文字と数字のみを使用し、文字で始まる) に従う必要があります。  数か所で URL スキームに合わせてモバイル アプリケーション コードを調整する必要があるため、選択した文字列をメモしておく必要があります。
+
+4. **[OK]**をクリックします。
+
+5. [ **Save**] をクリックします。
+
 ## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
@@ -39,7 +53,7 @@ ms.lasthandoff: 03/09/2017
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
 ## <a name="add-authentication"></a>アプリケーションに認証を追加する
-1. UWP アプリ プロジェクトの MainPage.cs ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
+1. UWP アプリ プロジェクトの MainPage.xaml.cs ファイルを開き、次のコード スニペットを追加します。
    
         // Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
@@ -55,7 +69,7 @@ ms.lasthandoff: 03/09/2017
                 // Change 'MobileService' to the name of your MobileServiceClient instance.
                 // Sign-in using Facebook authentication.
                 user = await App.MobileService
-                    .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                    .LoginAsync(MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
                 message =
                     string.Format("You are now signed in - {0}", user.UserId);
    
@@ -73,8 +87,17 @@ ms.lasthandoff: 03/09/2017
         }
    
     このコードでは、Facebook ログインを使用してユーザーを認証します。 Facebook 以外の ID プロバイダーを使用している場合は、上の **MobileServiceAuthenticationProvider** の値をプロバイダーに対応する値に変更してください。
-2. 既存の **OnNavigatedTo** メソッドのオーバーライドで、**ButtonRefresh_Click** メソッド (または **InitLocalStoreAsync** メソッド) の呼び出しをコメントにするか、削除します。 これを行うと、ユーザーが認証されるまでデータが読み込まれなくなります。 次は、認証をトリガーするアプリに **サインイン** ボタンを追加します。
-3. MainPage クラスに、次のコード スニペットを追加します。
+2. MainPage.xaml.cs の **OnNavigatedTo()** メソッドを置き換えます。 次は、認証をトリガーするアプリに **サインイン** ボタンを追加します。
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is Uri)
+            {
+                App.MobileService.ResumeWithURL(e.Parameter as Uri);
+            }
+        }
+
+3. MainPage.xaml.cs に、次のコード スニペットを追加します。
    
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -104,7 +127,24 @@ ms.lasthandoff: 03/09/2017
                 <TextBlock Margin="5">Sign in</TextBlock> 
             </StackPanel>
         </Button>
-5. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
+5. App.xaml.cs に、次のコード スニペットを追加します。
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            if (args.Kind == ActivationKind.Protocol)
+            {
+                ProtocolActivatedEventArgs protocolArgs = args as ProtocolActivatedEventArgs;
+                Frame content = Window.Current.Content as Frame;
+                if (content.Content.GetType() == typeof(MainPage))
+                {
+                    content.Navigate(typeof(MainPage), protocolArgs.Uri);
+                }
+            }
+            Window.Current.Activate();
+            base.OnActivated(args);
+        }
+6. Package.appxmanifest ファイルを開き、 **[宣言]** に移動して、**[使用可能な宣言]** ドロップダウン リストで **[プロトコル]** を選択し、**[追加]** ボタンをクリックします。 次に、**[プロトコル]** 宣言の **[プロパティ]** を構成します。 **[表示名]** で、アプリケーションのユーザーに表示する名前を追加します。 **[名前]** に、自分の {url_scheme_of_your_app} を追加します。
+7. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
 ## <a name="tokens"></a>クライアント側で認証トークンを保存する
 前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと App Service の両方にアクセスする必要があります。 この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。 よって、App Service から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。
@@ -126,5 +166,4 @@ ms.lasthandoff: 03/09/2017
 
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
-
 

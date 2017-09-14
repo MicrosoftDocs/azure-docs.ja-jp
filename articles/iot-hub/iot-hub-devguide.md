@@ -12,16 +12,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/31/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 4f12a4b3ba9c1d0b7ed10cf5d766bcea60205d24
-ms.lasthandoff: 01/31/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: adb9a12899e9040cd83d522c734448989636fe29
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド
+
 Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。
 
 Azure IoT Hub は、以下を提供します。
@@ -33,17 +34,23 @@ Azure IoT Hub は、以下を提供します。
 
 この IoT Hub 開発者ガイドには、次の記事が含まれています。
 
-* [IoT Hub でのメッセージの送受信][devguide-messaging]: IoT Hub が公開している (デバイスとクラウドの双方向の) メッセージング機能について説明します。 この記事には、メッセージ ルーティング、メッセージ形式、サポートされる通信プロトコル、およびプロトコルで使用されるポート番号などのトピックに関する情報も含まれています。
 * [Device-to-cloud communication guidance (デバイスからクラウドへの通信に関するガイダンス)][lnk-d2c-guidance]: デバイスからクラウドへのメッセージ、デバイス ツインの報告されるプロパティ、およびファイルのアップロードのいずれかを選択するのに役立ちます。
 * [device-to-cloud 通信に関するガイダンス][lnk-c2d-guidance]: ダイレクト メソッド、デバイス ツインの必要なプロパティ、およびクラウドからデバイスへのメッセージのいずれかを選択するのに役立ちます。
+* [IoT Hub でのメッセージの送受信][devguide-messaging]: IoT Hub が公開している (デバイスとクラウドの双方向の) メッセージング機能について説明します。
+  * [Send device-to-cloud messages to IoT Hub (デバイスからクラウドへのメッセージを IoT Hub に送信する)][devguide-messages-d2c]
+  * [Read device-to-cloud messages from the built-in endpoint (デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る)][devguide-builtin]
+  * [Use custom endpoints and routing rules for device-to-cloud messages (デバイスからクラウドへのメッセージにカスタム エンドポイントとルーティング ルールを使用する)][devguide-custom]
+  * [Send cloud-to-device messages from IoT Hub (クラウドからデバイスへのメッセージを IoT Hub から送信する)][devguide-messages-c2d]
+  * [Create and read IoT Hub messages (IoT Hub メッセージを作成し、読み取る)][devguide-format]
 * [デバイスからのファイルのアップロード][devguide-upload]: デバイスからファイルをアップロードする方法について説明します。 この記事には、アップロード プロセスで送信可能な通知などのトピックに関する情報も含まれています。
 * [IoT Hub でのデバイス ID の管理][devguide-identities]: 各 IoT ハブの ID レジストリに保存される情報と、レジストリにアクセスして変更する方法について説明します。
 * [IoT Hub へのアクセスの制御][devguide-security]: IoT Hub の機能へのアクセスを許可するために使用する、デバイスとクラウド コンポーネントの両方のセキュリティ モデルについて説明します。 この記事には、トークンと X.509 証明書の使用方法および付与できるアクセス許可の詳細情報が含まれています。
 * [デバイス ツインを使用した状態と構成の同期化][devguide-device-twins]: "*デバイス ツイン*" の概念と、デバイス ツインを使用したデバイスの同期化などの機能について説明します。 この記事には、デバイス ツインに保存されるデータに関する情報が含まれています。
 * [デバイスでのダイレクト メソッドの呼び出し][devguide-directmethods]: ダイレクト メソッドのライフサイクルと、バックエンド アプリからデバイスのメソッドを呼び出してデバイスでダイレクト メソッドを処理する方法について説明します。
 * [Schedule jobs on multiple devices (複数デバイスで実行されるジョブのスケジュール設定)][devguide-jobs]: 複数のデバイスで実行するジョブのスケジュールを設定する方法について説明します。 この記事では、ダイレクト メソッドの実行やデバイス ツインを使用したデバイスの更新などのタスクを実行するジョブを送信する方法について説明します。 ジョブの状態を照会する方法についても説明します。
+* [Reference - choose a communication protocol (リファレンス - 通信プロトコルの選択)][devguide-protocol]: IoT Hub がデバイスの通信でサポートする通信プロトコルについて説明し、オープンする必要があるポートを一覧表示します。
 * [Reference - IoT Hub endpoints (リファレンス - IoT Hub エンドポイント)][devguide-endpoints]: 各 IoT ハブがランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。 また、この記事では、IoT ハブでの追加エンドポイントの作成方法、および標準的ではないシナリオでフィールド ゲートウェイを使用して IoT Hub エンドポイントへのデバイス接続を有効にする方法についても説明しています。
-* [Reference - IoT Hub query language for device twins and jobs (リファレンス - デバイス ツインとジョブの IoT Hub クエリ言語)][devguide-query]: ハブからデバイス ツインとジョブに関する情報を取得できるようにする IoT Hub クエリ言語について説明します。
+* [リファレンス - デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][devguide-query]: ハブからデバイス ツインとジョブに関する情報を取得できるようにする IoT Hub クエリ言語について説明します。
 * [Reference - quotas and throttling (リファレンス - クォータとスロットル)][devguide-quotas]: IoT Hub サービスに設定されるクォータと、クォータを超えたときに発生する可能性があるスロットル動作の概要を示します。
 * [リファレンス - 価格][devguide-pricing]: IoT Hub の各種 SKU に関する全般的な情報と価格の概要と、各種の IoT Hub 機能が IoT Hub によってどのようにメッセージとして測定されるかの詳細について説明します。
 * [リファレンス - デバイス SDK とサービス SDK][devguide-sdks]: IoT Hub と対話するデバイスとサービス アプリの両方を開発する際に使用できる Azure IoT SDK の一覧を示します。 この記事には、オンライン API ドキュメントへのリンクが含まれています。
@@ -66,5 +73,10 @@ Azure IoT Hub は、以下を提供します。
 [devguide-pricing]: iot-hub-devguide-pricing.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-
+[devguide-messages-d2c]: iot-hub-devguide-messages-d2c.md
+[devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
+[devguide-custom]: iot-hub-devguide-messages-read-custom.md
+[devguide-messages-c2d]: iot-hub-devguide-messages-c2d.md
+[devguide-format]: iot-hub-devguide-messages-construct.md
+[devguide-protocol]: iot-hub-devguide-protocols.md
 

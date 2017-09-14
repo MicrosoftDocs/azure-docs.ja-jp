@@ -8,18 +8,18 @@ author: sandshadow
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 72037677fac528ff8174d25b474ca7e70826a7b0
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 3b98728ced81256d05b1bed2c92fc66c5ca61b98
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="how-to-add-an-iot-hub-event-source"></a>IoT Hub イベント ソースを追加する方法
@@ -50,7 +50,7 @@ IoT Hub を作成済みであり、これにイベントを書き込んでいる
 | から | **IoT Hub** を選択して IoT Hub イベント ソースを作成します。
 | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションを選択します。
 | IoT Hub 名 | IoT Hub の名前を選択します。
-| IoT Hub ポリシー名 | [IoT Hub の設定] タブにある共有アクセス ポリシーを選択します。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
+| IoT Hub ポリシー名 | [IoT Hub の設定] タブにある共有アクセス ポリシーを選択します。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
 | IoT Hub コンシューマー グループ | IoT Hub からデータを読み取るためのコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
 
 ### <a name="provide-iot-hub-settings-manually"></a>IoT Hub 設定を手動で行う
@@ -64,7 +64,7 @@ IoT Hub を作成済みであり、これにイベントを書き込んでいる
 | サブスクリプション ID | この IoT Hub が作成されたサブスクリプション。
 | リソース グループ | この IoT Hub が作成されたサブスクリプション。
 | IoT Hub 名 | IoT Hub の名前。 IoT Hub を作成した場合は、特定の名前も付けられています。
-| IoT Hub ポリシー名 | [IoT Hub の設定] タブで作成できる共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
+| IoT Hub ポリシー名 | [IoT Hub の設定] タブで作成できる共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
 | IoT Hub ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。
 | IoT Hub コンシューマー グループ | IoT Hub からデータを読み取るためのコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
 

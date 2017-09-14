@@ -14,17 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: df6443bb27285e8ba719c229dd1b12114acc48c7
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9c8f9ee7780859f7640ac82d6ebce85082170ad7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="upload-a-custom-java-web-app-to-azure"></a>Azure へのカスタム Java Web アプリのアップロード
 このトピックでは、カスタム Java Web アプリを [Azure App Service] Web Apps にアップロードする方法について説明します。 Java Web サイトまたは Web アプリに適用される情報や、特定のアプリケーションを有効にする例も取り上げています。
 
-Azure には、Azure Portal の構成 UI や Azure Marketplace を使用して Java Web アプリを作成するための手段が用意されています。詳細については、「[Azure App Service での Java Web アプリの作成](web-sites-java-get-started.md)」を参照してください。 このチュートリアルは、Azure ポータルの構成 UI や Azure Marketplace を使用しないシナリオを対象にしています。  
+Azure には、Azure Portal の構成 UI や Azure Marketplace を使用して Java Web アプリを作成するための手段が用意されています。詳細については、「[Azure App Service での Java Web アプリの作成](web-sites-java-get-started.md)」を参照してください。 このチュートリアルは、Azure Portal の構成 UI や Azure Marketplace を使用しないシナリオを対象にしています。  
 
 ## <a name="configuration-guidelines"></a>構成のガイドライン
 ここでは、Azure のカスタム Java Web アプリに想定される設定について説明します。
@@ -201,7 +201,7 @@ Tomcat にバンドルされている Liferay 6.1.2 Community Edition GA3 を使
 **Server.xml**
 
 * シャットダウン ポートを -1 に変更。
-* HTTP コネクタを       `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />` に変更。
+* HTTP コネクタを `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />` に変更。
 * AJP コネクタをコメントアウト。
 
 **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** フォルダーで、**portal-ext.properties** という名前のファイルを作成します。 このファイルには、次に示している 1 行を追加する必要があります。
@@ -241,7 +241,7 @@ tomcat-7.0.40 フォルダーと同じディレクトリ レベルで、 **web.c
 ## <a name="next-steps"></a>次のステップ
 Liferay の詳細については、 [http://www.liferay.com](http://www.liferay.com)を参照してください。
 
-Java の詳細については、 [Java デベロッパー センター](/develop/java/)を参照してください。
+Java の詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」をご覧ください。
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

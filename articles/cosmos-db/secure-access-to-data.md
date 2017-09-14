@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: fb0217b1c51a4189dfeac8291bb932cbc571f385
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 383e04f91eec2f465b381ce30f2d6d24c488b731
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
-この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
+この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
 Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 
 
@@ -46,7 +45,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
 
-プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)」を参照してください。
+プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-account.md#keys)」を参照してください。
 
 ![Azure Portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -59,7 +58,7 @@ Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つ�
 次のコード サンプルは、Cosmos DB アカウントのエンドポイントとマスター キーを使用して、DocumentClient のインスタンス化とデータベースの作成を行う方法を示しています。 
 
 ```csharp
-//Read the DocumentDB endpointUrl and authorization keys from config.
+//Read the Azure Cosmos DB endpointUrl and authorization keys from config.
 //These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
 //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
 
@@ -183,6 +182,6 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 
 ## <a name="next-steps"></a>次のステップ
 * Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関するページをご覧ください。
-* マスター キーと読み取り専用キーの詳細については、[Azure Cosmos DB アカウントの管理方法](manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)に関するページをご覧ください。
+* マスター キーと読み取り専用キーの詳細については、[Azure Cosmos DB アカウントの管理方法](manage-account.md#keys)に関するページをご覧ください。
 * Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources)に関するページをご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: "Ambari API を使用した HDInsight の Hadoop クラスターの監視 | Microsoft Docs"
+title: "Ambari API を使用した HDInsight の Hadoop クラスターの監視 - Azure | Microsoft Docs"
 description: "Apache Ambari API は、Hadoop クラスターの作成、管理、および監視を目的として使用します。 直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。"
 services: hdinsight
 documentationcenter: 
@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 16e0ec12e48fa0098c696ad70785bd3a817f5bbe
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: b6fc2098027690eb76b69b1427f0e9541b8a7a69
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 
 ---

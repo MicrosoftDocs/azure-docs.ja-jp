@@ -1,5 +1,5 @@
 ---
-title: "Linux ベースの HDInsight での Hadoop YARN アプリケーション ログへのアクセス | Microsoft Docs"
+title: "Linux ベース HDInsight で Hadoop YARN アプリケーション ログにアクセスする - Azure | Microsoft Docs"
 description: "コマンドラインと Web ブラウザーの両方を使用して、Linux ベース HDInsight (Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,22 +14,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d2dbddeab8e71950a41370818c622306ed097b81
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: fbbbddc47f24a46eac9bc64d4420ee8429ed4ad1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス
 
-Azure HDInsight の Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
+Azure HDInsight の Hadoop クラスター上の YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)」を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdinsight-windows-retirement)」を参照してください。
 
 ## <a name="YARNTimelineServer"></a>YARN タイムライン サーバー
 
@@ -51,7 +50,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 各アプリケーションが、複数の "*アプリケーション試行*" で構成されていることがあります。 アプリケーションが失敗した場合、新しい試行として再試行される場合があります。 各試行は、コンテナーで実行されます。 ある意味、コンテナーは YARN アプリケーションによって実行される作業の基本単位に対して、コンテキストを提供します。 コンテナーのコンテキストで行われる作業はすべて、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。 詳細については、[YARN の概念][YARN-concepts]に関するページをご覧ください。
 
-アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計][log-aggregation]機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。 ログの集計機能により、アプリケーション ログへのアクセスがさらに確実になります。 この機能により、ワーカー ノード上のすべてのコンテナーのログが集計され、ワーカー ノードごとに 1 つの集計ログとして保存されます。 ログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 したがって、アプリケーションで使用するワーカー ノードごとに 1 つのログ ファイルが存在します。 ログの集計は、既定で HDInsight クラスター バージョン 3.0 以降で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。 次のパスは、ログへの HDFS パスです。
+アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計][log-aggregation]機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。 ログの集計機能により、アプリケーション ログへのアクセスがさらに確実になります。 この機能により、ワーカー ノード上のすべてのコンテナーのログが集計され、ワーカー ノードごとに 1 つの集計ログとして保存されます。 ログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 したがって、アプリケーションで使用するワーカー ノードごとに存在するログは 1 つのみです。 ログの集計は、既定で HDInsight クラスター バージョン 3.0 以降で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。 次のパスは、ログへの HDFS パスです。
 
     /app-logs/<user>/logs/<applicationId>
 

@@ -17,12 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a5cec02045e7db70dffbe8089c44e8c3a2b37cd4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 65236f527b62b4990b062fb6a54ce13b3c182e93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -366,7 +365,7 @@ ms.lasthandoff: 04/03/2017
 
 [sap-ha-guide-figure-6003]:media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
@@ -379,14 +378,14 @@ ms.lasthandoff: 04/03/2017
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[storage-azure-cli]:../../../storage/storage-azure-cli.md
-[storage-azure-cli-copy-blobs]:../../../storage/storage-azure-cli.md#copy-blobs
-[storage-introduction]:../../../storage/storage-introduction.md
-[storage-powershell-guide-full-copy-vhd]:../../../storage/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/storage-premium-storage.md
-[storage-redundancy]:../../../storage/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/storage-scalability-targets.md
-[storage-use-azcopy]:../../../storage/storage-use-azcopy.md
+[storage-azure-cli]:../../../storage/common/storage-azure-cli.md
+[storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
+[storage-introduction]:../../../storage/common/storage-introduction.md
+[storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
+[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-redundancy]:../../../storage/common/storage-redundancy.md
+[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
@@ -416,13 +415,8 @@ ms.lasthandoff: 04/03/2017
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
 [virtual-machines-sizes]:../../virtual-machines-windows-sizes.md
-[./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener]:../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[./windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[./windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
-[./windows/sql/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[./windows/sql/virtual-machines-sql-server-infrastructure-services]:../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[./windows/sql/virtual-machines-sql-server-performance-best-practices]:../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -640,7 +634,7 @@ _**図 7:** 高可用性の SAP DBMS と SQL Server Always On の例_
 Azure Resource Manager デプロイメント モデルを使用した Azure での SQL Server のクラスタリングの詳細については、次の記事を参照してください。
 
 * [Azure VM での AlwaysOn 可用性グループの手動構成 - Resource Manager][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
-* [Azure の AlwaysOn 可用性グループに使用する Azure 内部ロード バランサーの構成][virtual-machines-windows-portal-sql-alwayson-int-listener]
+* [Azure の Always On 可用性グループに使用する Azure 内部ロード バランサーの構成][virtual-machines-windows-portal-sql-alwayson-int-listener]
 
 ## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a> エンド ツー エンドの高可用性デプロイ シナリオ
 
@@ -810,7 +804,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
   -  **New Or Existing Subnet (新規または既存のサブネット)**。 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[existing (既存)]** を選択します。
-  -  **Subnet Id (サブネット ID)**。 仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するには、仮想プライベート ネットワーク (VPN) または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
+  -  **Subnet Id (サブネット ID)**。仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するには、仮想プライベート ネットワーク (VPN) または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
 
    /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*>
 
@@ -840,7 +834,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]で、次のパラメーターの値を入力します。
 
-  -  **Sap System Id (SAP システム ID)**。 インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+  -  **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
   -  **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
   -  **Dbtype (DB の種類)**。 クラスターにインストールするデータベースの種類を選びます。 Microsoft SQL Server をインストールする場合は、**[SQL]** を選択します。 仮想マシンに SAP HANA をインストールする予定の場合は、**[HANA]** を選択します。 正しいオペレーティング システムの種類 (SQL の場合は **Windows**、HANA の場合は Linux ディストリビューション) を選択してください。 仮想マシンに接続されている Azure Load Balancer は、選んだデータベースの種類をサポートするように構成されます。
     * **SQL**。 ロード バランサーは、ポート 1433 で負荷分散を行います。 SQL Server Always On セットアップにはこのポートを使ってください。
@@ -849,7 +843,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
   -  **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数を設定します。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **Subnet Id (サブネット ID)**。 ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+  -  **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 #### <a name="application-servers-template"></a> アプリケーション サーバー テンプレート
 
@@ -857,12 +851,12 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image]で、次のパラメーターの値を入力します。
 
-  -  **Sap System Id (SAP システム ID)**。 インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+  -  **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
   -  **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
   -  **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数です。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **Subnet Id (サブネット ID)**。 ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+  -  **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 
 ### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure 仮想ネットワーク
@@ -1027,7 +1021,7 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、*[*<*SID*>-lb-ascs ロード バランサー]**、**[負荷分散規則]**の順に選択します。
+1.  Azure Portal で、**<*SID*>-lb-ascs ロード バランサー** > **[負荷分散規則]** の順に選択します。
 2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
   * 名前
@@ -1602,7 +1596,7 @@ _**図 60:** SAP ERS インスタンスのサービスの種類を遅延自動�
 
 ### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP プライマリ アプリケーション サーバーのインストール
 
-プライマリ アプリケーション サーバー (PAS) のインスタンス <SID>-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。** Azure または DataKeeper 固有の設定に対する依存関係はありません。
+プライマリ アプリケーション サーバー (PAS) のインスタンス <*SID*>-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。 Azure または DataKeeper 固有の設定に対する依存関係はありません。
 
 ### <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP 追加アプリケーション サーバーのインストール
 

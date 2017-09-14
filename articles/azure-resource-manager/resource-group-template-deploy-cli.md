@@ -12,14 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 07/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9c9eff8c828329b9d8358f88b90c174c64f5c29f
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
@@ -30,9 +29,9 @@ ms.lasthandoff: 05/16/2017
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-<a id="deploy-local-template" />
+Azure CLI がインストールされていない場合は、[Cloud Shell](#deploy-template-from-cloud-shell) を使用できます。
 
-## <a name="deploy-a-template-from-your-local-machine"></a>ローカル コンピューターからテンプレートをデプロイする
+## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
 
 リソースを Azure にデプロイするときは、以下の手順に従います。
 
@@ -52,7 +51,7 @@ az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
+    --parameters storageAccountType=Standard_GRS
 ```
 
 デプロイが完了するまでに数分かかる場合があります。 デプロイが完了すると、次のような結果を含むメッセージが表示されます。
@@ -61,21 +60,77 @@ az group deployment create \
 "provisioningState": "Succeeded",
 ```
 
-## <a name="deploy-a-template-from-an-external-source"></a>外部ソースからテンプレートをデプロイする
+## <a name="deploy-external-template"></a>外部テンプレートのデプロイ
 
 Resource Manager テンプレートは、ローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
 外部テンプレートをデプロイするには、**template-uri** パラメーターを使用します。 この例の URI を使用して、GitHub のサンプル テンプレートをデプロイします。
    
 ```azurecli
+az login
+
+az group create --name ExampleGroup --location "Central US"
 az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
+    --parameters storageAccountType=Standard_GRS
 ```
 
 前の例では、テンプレートにはパブリックにアクセスできる URI が必要になります。テンプレートに機密データを含めてはいけないため、この方法は多くの場合に利用できます。 機密データ (管理者パスワードなど) を指定する必要がある場合は、セキュリティで保護されたパラメーターとしてその値を渡します。 ただし、テンプレートを一般からアクセス可能にしない場合は、プライベートなストレージ コンテナーに格納することで保護できます。 Shared Access Signature (SAS) トークンを必要とするテンプレートをデプロイする方法については、[SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)に関するページをご覧ください。
+
+## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
+
+[Cloud Shell](../cloud-shell/overview.md) を使用して、テンプレートをデプロイするための Azure CLI コマンドを実行できます。 ただし、最初に Cloud Shell のファイル共有にテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../cloud-shell/overview.md)に関するページを参照してください。
+
+1. [Azure ポータル](https://portal.azure.com)にログインします。   
+
+2. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
+
+   ![リソース グループの選択](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
+
+3. Cloud Shell のストレージ アカウントを選択します。
+
+   ![ストレージ アカウントを選択する](./media/resource-group-template-deploy-cli/select-storage.png)
+
+4. **[ファイル]** を選択します。
+
+   ![Select files](./media/resource-group-template-deploy-cli/select-files.png)
+
+5. Cloud Shell のファイル共有を選択します。 名前のパターンは `cs-<user>-<domain>-com-<uniqueGuid>` です。
+
+   ![ファイル共有を選択する](./media/resource-group-template-deploy-cli/select-file-share.png)
+
+6. **[ディレクトリの追加]** を選択します。
+
+   ![[ディレクトリの追加]](./media/resource-group-template-deploy-cli/select-add-directory.png)
+
+7. **templates** という名前を付け、**[OK]** を選択します。
+
+   ![ディレクトリに名前を付ける](./media/resource-group-template-deploy-cli/name-templates.png)
+
+8. 新しいディレクトリを選択します。
+
+   ![新しいディレクトリを選択する](./media/resource-group-template-deploy-cli/select-templates.png)
+
+9. **[アップロード]**を選択します。
+
+   ![[アップロード] を選択する](./media/resource-group-template-deploy-cli/select-upload.png)
+
+10. テンプレートを見つけてアップロードします。
+
+   ![ファイルをアップロードする](./media/resource-group-template-deploy-cli/upload-files.png)
+
+11. プロンプトを開きます。
+
+   ![Cloud Shell を開く](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
+
+12. Cloud Shell で次のコマンドを入力します。
+
+   ```azurecli
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
+   ```
 
 ## <a name="parameter-files"></a>パラメーター ファイル
 
@@ -168,7 +223,7 @@ az group deployment create \
     --mode Complete \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
+    --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>サンプル テンプレート

@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 06/29/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e5b622be66c3e009c67a00dd380efd87b013c920
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -72,6 +73,21 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 1. [ **保存**] を選択します。
 
     このポリシーを有効にすると、既定では現在のラボのすべての VM にこのポリシーが適用されます。 この設定を特定の VM から削除するには、その VM のブレードを開いて **[自動シャットダウン]** 設定を変更します。 
+
+## <a name="set-auto-start"></a>自動開始の設定
+自動開始のポリシーでは、現在のラボにある VM をいつ開始するか指定することができます。  
+
+1. ラボの **[Configuration and policies (構成とポリシー)]** ブレードで **[自動開始]** を選択します。
+   
+    ![自動開始](./media/devtest-lab-set-lab-policy/auto-start.png)
+
+2. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+
+3. このポリシーを有効にした場合は、ポリシーを開始する時刻、タイム ゾーン、その時刻を適用する曜日を指定します。 
+
+4. [ **保存**] を選択します。
+
+    このポリシーを有効にしても、現在のラボの VM に自動的に適用されることはありません。 この設定を特定の VM に適用するには、その VM のブレードを開いて **[自動開始]** 設定を変更します。 
 
 ## <a name="next-steps"></a>次のステップ
 

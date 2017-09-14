@@ -4,7 +4,7 @@ description: "Intel NUC ゲートウェイのトラブルシューティング�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "IoT の問題, モノのインターネットの問題"
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: a70de978d4636a31644702c6f3a8ca0d0b80f5c2
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/25/2017
-
 
 ---
 # <a name="troubleshooting"></a>トラブルシューティング

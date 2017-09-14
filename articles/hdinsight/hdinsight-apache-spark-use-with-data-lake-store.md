@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 24e0372f024e574d049c63f444b5e8f6b0dfd065
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: beafd2c65b0506844ff9ea152037ed6f2866e650
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Data Lake Store アカウント。 「 [Azure ポータルで Azure Data Lake Store の使用を開始する](../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
+* Azure Data Lake Store アカウント。 「[Azure Portal で Azure Data Lake Store の使用を開始する](../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
 
 * Data Lake Store をストレージとして使用する Azure HDInsight Spark クラスター。 手順については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 
@@ -58,7 +57,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
    > ファイル名とパス名の大文字/小文字が正しいことを確認します。
    >
    >
-3. Data Lake Store アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。 次のような出力が表示されます。
+3. Data Lake Store アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。 次のスニペットのような出力が表示されます。
 
         Initializing Copy.
         Copy Started.

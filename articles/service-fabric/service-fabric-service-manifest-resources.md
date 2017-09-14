@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 08/18/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 08141edfbc8be9bf7bf303419e1e482d5f884860
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
@@ -108,7 +107,7 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
                      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
-    <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="2" />
+    <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
     <Parameter Name="Stateful1_TargetReplicaSetSize" DefaultValue="3" />
   </Parameters>
@@ -129,7 +128,7 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
 
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="Stateful1">
-      <StatefulService ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
+      <StatefulService ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_ ]">
         <UniformInt64Partition PartitionCount="[Stateful1_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
@@ -139,4 +138,64 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
   </Certificates>
 </ApplicationManifest>
 ```
+
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml のエンドポイントのオーバーライド
+
+ApplicationManifest に、ConfigOverrides セクションの兄弟になるようにResourceOverrides セクションを追加します。 このセクションでは、サービス マニフェストに指定されたリソース セクション内の Endpoints セクションのオーバーライドを指定できます。
+
+ServiceManifest で ApplicationParameters を使用してエンドポイントをオーバーライドするには、次のように ApplicationManifest を変更します。
+
+ServiceManifestImport セクションに、新しいセクション "ResourceOverrides" を追加します。
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Stateless1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <ResourceOverrides>
+      <Endpoints>
+        <Endpoint Name="ServiceEndpoint" Port="[Port]" Protocol="[Protocol]" Type="[Type]" />
+        <Endpoint Name="ServiceEndpoint1" Port="[Port1]" Protocol="[Protocol1] "/>
+      </Endpoints>
+    </ResourceOverrides>
+        <Policies>
+           <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint"/>
+        </Policies>
+  </ServiceManifestImport>
+```
+
+Parameters に次のように追加します。
+
+```xml
+  <Parameters>
+    <Parameter Name="Port" DefaultValue="" />
+    <Parameter Name="Protocol" DefaultValue="" />
+    <Parameter Name="Type" DefaultValue="" />
+    <Parameter Name="Port1" DefaultValue="" />
+    <Parameter Name="Protocol1" DefaultValue="" />
+  </Parameters>
+```
+
+これで、アプリケーションをデプロイするときに、ApplicationParameters としてこれらの値を渡すことができます。次に例を示します。
+
+```powershell
+PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
+```
+
+注: ApplicationParameters に指定する値が空の場合は、ServiceManifest で対応する EndPointName に指定された既定値に戻ります。
+
+For example:
+
+ServiceManifest に次のように指定したとします。
+
+```xml
+  <Resources>
+    <Endpoints>
+      <Endpoint Name="ServiceEndpoint1" Protocol="tcp"/>
+    </Endpoints>
+  </Resources>
+```
+
+また、アプリケーション パラメーターの Port1 と Protocol1 の値は null または空です。 ポートは ServiceFabric によって決定されます。 プロトコルは tcp になります。
+
+無効な値を指定したとします。 たとえば、int ではなく string 値の "Foo" をポートに指定しました。New-ServiceFabricApplication コマンドはエラーで失敗します。セクション 'ResourceOverrides' のオーバーライド パラメーターの名前 'ServiceEndpoint1' と属性 'Port1' が無効であるためです。 指定された値は 'Foo' ですが、'int' が必要です。
 

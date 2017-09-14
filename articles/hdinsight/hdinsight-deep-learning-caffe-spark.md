@@ -1,4 +1,4 @@
-﻿---
+---
 title: "分散型深層学習用に Azure HDInsight Spark で Caffe を使用する | Microsoft Docs"
 description: "分散型深層学習用に Azure HDInsight Spark で Caffe を使用する"
 services: hdinsight
@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 14b7808c9534bce3049422d6bce1e8914b2c2fbc
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/25/2017
 
 

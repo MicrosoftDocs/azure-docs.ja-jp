@@ -11,20 +11,20 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 05/04/2017
+ms.topic: tutorial
+ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 57379d318ab01310388f55c8ec0b9751e909cb9e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>既存のカスタム DNS 名を Azure Web Apps にマップする
 
-このチュートリアルでは、既存のカスタム DNS 名を [Azure Web Apps](app-service-web-overview.md) にマップする方法について説明します。 
+[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、既存のカスタム DNS 名を Azure Web Apps にマップする方法について説明します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -36,51 +36,58 @@ ms.lasthandoff: 05/09/2017
 > * CNAME レコードを使用してワイルドカード ドメイン (たとえば `*.contoso.com`) をマップする
 > * スクリプトでドメイン マッピングを自動化する
 
-**CNAME レコード**または **A レコード**のいずれかを使用して、カスタム DNS 名を App Service にマップします。
+**CNAME レコード**または **A レコード**のいずれかを使用して、カスタム DNS 名を App Service にマップします。 
 
 > [!NOTE]
-> ルート ドメイン (`contoso.com` など) を除くすべてのカスタム DNS 名に CNAME を使用することをお勧めします。 
-> 
-> 
+> ルート ドメイン (`contoso.com` など) を除くすべてのカスタム DNS 名に CNAME を使用することをお勧めします。
+
+ライブ サイトとその DNS ドメイン名を App Service に移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](app-service-custom-domain-name-migrate.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、ドメイン プロバイダー (GoDaddy など) の DNS レジストリへのアクセス権と、ドメインを編集するためのアクセス許可が必要です。 
+このチュートリアルを完了するには、以下が必要です。
 
-たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成するためのアクセス権が必要です。 
+* [App Service アプリを作成する](/azure/app-service/)か、別のチュートリアルで作成したアプリを使用します。
+* ドメイン名を購入し、ドメイン プロバイダー (GoDaddy など) の DNS レジストリへのアクセス権があることを確認します。
 
-> [!NOTE]
-> 既存のドメイン名がない場合は、[App Service ドメインのチュートリアル](custom-dns-web-site-buydomains-web-app.md)に従って、Azure Portal を使用してドメインを購入することを検討してください。 
->
->
+  たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成できる必要があります。
 
-## <a name="prepare-your-app"></a>アプリケーションの準備
-カスタム DNS 名をマップするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
+  > [!NOTE]
+  > 既存のドメイン名がない場合は、[Azure Portal を使用してドメインを購入する](custom-dns-web-site-buydomains-web-app.md)ことを検討してください。 
+
+## <a name="prepare-the-app"></a>アプリの準備
+
+Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal を開きます。 そのためには、Azure アカウントで [https://portal.azure.com](https://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) を開き、Azure アカウントでサインインします。
 
-### <a name="navigate-to-your-app"></a>アプリに移動する
-左側のメニューで **[App Services]** をクリックした後、アプリの名前をクリックします。
+### <a name="navigate-to-the-app-in-the-azure-portal"></a>Azure Portal でアプリに移動する
+
+左側のメニューで、**[App Services]** を選択し、アプリの名前をクリックします。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-App Service アプリの管理ブレードが表示されます (_ブレード_: 水平方向に開かれるポータル ページ)。  
+App Service アプリの管理ページが表示されます。  
 
-### <a name="check-the-pricing-tier"></a>価格レベルを確認する
+<a name="checkpricing"></a>
 
-アプリ ブレードの左側のナビゲーションで **[設定]** セクションまでスクロールし、**[スケール アップ (App Service プラン)]** を選択します。
+### <a name="check-the-pricing-tier"></a>価格レベルの確認
+
+アプリ ページの左側のナビゲーションで、**[設定]** セクションまでスクロールし、**[スケール アップ (App Service のプラン)]** を選択します。
 
 ![スケール アップ メニュー](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-アプリが **Free** レベルに含まれていないことを確認します。 アプリの現在のレベルは、ダーク ブルーのボックスで強調表示されます。 
+アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **Free** レベルに含まれていないことを確認します。 カスタム DNS は、**Free** レベルではサポートされていません。 
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-カスタム DNS は、**Free** レベルではサポートされていません。 スケールアップする必要がある場合は、次のセクションの手順に従います。 それ以外の場合は、**[価格レベルの選択]** ブレードを閉じて、[[Map a CNAME record (CNAME レコードをマップ)]](#cname) または [[Map an A record (A レコードをマップ)]](#a) に進みます。
+App Service プランが **Free** ではない場合は、**[価格レベルの選択]** ページを閉じて、[[Map a CNAME record]\(CNAME レコードをマップ\)](#cname) にスキップします。
 
-### <a name="scale-up-your-app-service-plan"></a>App Service プランをスケールアップする
+<a name="scaleup"></a>
+
+### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
 Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Premium**) を選択します。 
 
@@ -96,58 +103,41 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 ## <a name="map-a-cname-record"></a>CNAME レコードのマップ
 
-この例では、`www` サブドメイン (`www.contoso.com`) の CNAME レコードを追加します。 
+このチュートリアルの例では、`www` サブドメイン (たとえば `www.contoso.com`) の CNAME レコードを追加します。
 
-### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
-
-まず、ドメイン プロバイダーの Web サイトにサインインします。
-
-DNS レコードの管理ページを探します。 各ドメイン プロバイダーには独自の DNS レコード インターフェイスがあるので、ご使用のプロバイダーのドキュメントを参照してください。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 
-
-通常、リンクを見つけるには、アカウント情報を表示し、 **[ドメイン]**などのリンクを探します。 次に、DNS レコードを管理するためのリンクを探します。 このリンクには、**[ゾーン ファイル]**、**[DNS レコード]**、または **[詳細構成]** という名前が付けられている場合があります。
-
-以下のスクリーンショットは、DNS レコード ページの例です。
-
-![DNS レコード ページの例](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-このスクリーンショットの例では、**[追加]** をクリックしてレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 この場合も、プロバイダーのドキュメントを参照してください。
-
-> [!NOTE]
-> 一部のプロバイダー (GoDaddy など) では、別の **[変更を保存]** リンクをクリックするまで DNS レコードの変更が反映されません。 
->
->
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
 サブドメインをアプリの既定のホスト名 (`<app_name>.azurewebsites.net`) にマップするための CNAME レコードを追加します。
 
-`www.contoso.com` ドメインの場合、CNAME レコードでは、`www` という名前が `<app_name>.azurewebsites.net` を指定する必要があります。
+`www.contoso.com` ドメインの例では、名前 `www` を `<app_name>.azurewebsites.net` にマップする CNAME レコードを追加します。
 
-DNS レコード ページは、次のスクリーンショットのようになります。
+CNAME を追加した後の DNS レコード ページは次の例のようになります。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-your-app"></a>アプリの CNAME レコード マッピングを有効にする
+### <a name="enable-the-cname-record-mapping-in-azure"></a>Azure で CNAME レコード マッピングを有効にする
 
-構成した DNS 名をアプリに追加する準備ができました。
-
-アプリ ブレードの左側のナビゲーションで、**[カスタム ドメイン]** をクリックします。 
+Azure Portal のアプリ ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。 
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-アプリの **[カスタム ドメイン]** ブレードで、完全修飾カスタム DNS 名 (`www.contoso.com`) を一覧に追加する必要があります。
+アプリの **[カスタム ドメイン]** ページで、完全修飾カスタム DNS 名 (`www.contoso.com`) を一覧に追加します。
 
-**[ホスト名の追加]** の横の **+** アイコンをクリックします。
+**[ホスト名の追加]** の横の **+** アイコンを選択します。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-先ほど CNAME レコードを構成した完全修飾ドメイン名 (`www.contoso.com` など) を入力し、**[検証]** をクリックします。
+先ほど CNAME レコードを追加した完全修飾ドメイン名 (`www.contoso.com` など) を入力します。 
 
-それ以外の場合は、**[ホスト名の追加]** ボタンがアクティブになります。 
+**[検証]** を選択します。
 
-**[ホスト名レコード タイプ]** が **[CNAME レコード (example.com)]** に設定されていることを確認します。
+**[ホスト名の追加]** ボタンがアクティブになります。 
 
-**[ホスト名の追加]** をクリックして、アプリに DNS 名を追加します。
+**[ホスト名レコード タイプ]** が **[CNAME (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+
+**[ホスト名の追加]** を選択します。
 
 ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
@@ -163,15 +153,15 @@ DNS レコード ページは、次のスクリーンショットのようにな
 
 ## <a name="map-an-a-record"></a>A レコードのマップ
 
-この例では、ルート ドメイン `contoso.com` の A レコードを追加します。 
+このチュートリアルの例では、ルート ドメイン (たとえば `contoso.com`) の A レコードを追加します。 
 
 <a name="info"></a>
 
-### <a name="copy-your-apps-ip-address"></a>アプリの IP アドレスをコピーする
+### <a name="copy-the-apps-ip-address"></a>アプリの IP アドレスをコピーする
 
-A レコードをマップするには、アプリの外部 IP アドレスが必要です。 この IP アドレスは、**[カスタム ドメイン]** ブレードで見つけることができます。
+A レコードをマップするには、アプリの外部 IP アドレスが必要です。 この IP アドレスは、Azure Portal のアプリの **[カスタム ドメイン]** ページで見つけることができます。
 
-アプリ ブレードの左側のナビゲーションで、**[カスタム ドメイン]** をクリックします。 
+Azure Portal のアプリ ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。 
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -179,64 +169,45 @@ A レコードをマップするには、アプリの外部 IP アドレスが�
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
-
-まず、ドメイン プロバイダーの Web サイトにサインインします。
-
-DNS レコードの管理ページを探します。 各ドメイン プロバイダーには独自の DNS レコード インターフェイスがあるので、ご使用のプロバイダーのドキュメントを参照してください。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 
-
-通常、リンクを見つけるには、アカウント情報を表示し、 **[ドメイン]**などのリンクを探します。 次に、DNS レコードを管理するためのリンクを探します。 このリンクには、**[ゾーン ファイル]**、**[DNS レコード]**、または **[詳細構成]** という名前が付けられている場合があります。
-
-以下のスクリーンショットは、DNS レコード ページの例です。
-
-![DNS レコード ページの例](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-このスクリーンショットの例では、**[追加]** をクリックしてレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 この場合も、プロバイダーのドキュメントを参照してください。
-
-> [!NOTE]
-> 一部のプロバイダー (GoDaddy など) では、別の **[変更を保存]** リンクをクリックするまで DNS レコードの変更が反映されません。 
->
->
-
-<a name="create-a"></a>
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-a-record"></a>A レコードを作成する
 
-A レコードをアプリにマップする場合、App Service では実際には次の **2 つ**の DNS レコードが必要になります。
+A レコードをアプリにマップする場合、App Service では **2 つ**の DNS レコードが必要になります。
 
 - アプリの IP アドレスにマップするための **A** レコード。
-- アプリの既定のホスト名 `<app_name>.azurewebsites.net` にマップするための **TXT** レコード。 このレコードにより、App Service はマップするカスタム ドメインの所有者を確認できます。
+- アプリの既定のホスト名 `<app_name>.azurewebsites.net` にマップするための **TXT** レコード。 App Service は、このレコードを、カスタム ドメインの所有者であることを検証するために構成時にのみ使用します。 App Service でカスタム ドメインが検証されて構成された後は、この TXT レコードを削除できます。 
 
-`www.contoso.com` ドメインの場合、次の表に従って A および TXT レコードを作成します (`@` は、通常、ルート ドメインを表します)。 
+`contoso.com` ドメインの場合、次の表に従って A および TXT レコードを作成します (`@` は、通常、ルート ドメインを表します)。 
 
 | レコード タイプ | Host | 値 |
 | - | - | - |
 | A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
-DNS レコード ページは、次のスクリーンショットのようになります。
+レコードが追加されると、DNS レコード ページは次の例のようになります。
 
 ![DNS レコード ページ](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-your-app"></a>アプリの A レコード マッピングを有効にする
+### <a name="enable-the-a-record-mapping-in-the-app"></a>アプリの A レコード マッピングを有効にする
 
-構成した DNS 名をアプリに追加する準備ができました。
+Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り、完全修飾カスタム DNS 名 (たとえば、`contoso.com`) を一覧に追加します。
 
-Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り、完全修飾カスタム DNS 名 (`contoso.com`) を一覧に追加する必要があります。
-
-**[ホスト名の追加]** の横の **+** アイコンをクリックします。
+**[ホスト名の追加]** の横の **+** アイコンを選択します。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
 
-先ほど A レコードを構成した完全修飾ドメイン名 (`contoso.com` など) を入力し、**[検証]** をクリックします。
+先ほど A レコードを構成した完全修飾ドメイン名 (`contoso.com` など) を入力します。
 
-それ以外の場合は、**[ホスト名の追加]** ボタンがアクティブになります。 
+**[検証]** を選択します。
+
+**[ホスト名の追加]** ボタンがアクティブになります。 
 
 **[ホスト名レコード タイプ]** が **[A レコード (example.com)]** に設定されていることを確認します。
 
-**[ホスト名の追加]** をクリックして、アプリに DNS 名を追加します。
+**[ホスト名の追加]** を選択します。
 
 ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
@@ -252,74 +223,51 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 ## <a name="map-a-wildcard-domain"></a>ワイルドカード ドメインのマップ
 
-[ワイルドカード DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (`*.contoso.com` など) を App Service アプリにマップすることもできます。 
+このチュートリアルの例では、CNAME レコードを追加して、[ワイルドカード DNS 名](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (たとえば `*.contoso.com`) を App Service アプリにマップします。 
 
-次の手順では、CNAME レコードを使用して、ワイルドカード ドメイン `*.contoso.com` をマップする方法を示します。 
-
-### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
-
-まず、ドメイン プロバイダーの Web サイトにサインインします。
-
-DNS レコードの管理ページを探します。 各ドメイン プロバイダーには独自の DNS レコード インターフェイスがあるので、ご使用のプロバイダーのドキュメントを参照してください。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 
-
-通常、リンクを見つけるには、アカウント情報を表示し、 **[ドメイン]**などのリンクを探します。 次に、DNS レコードを管理するためのリンクを探します。 このリンクには、**[ゾーン ファイル]**、**[DNS レコード]**、または **[詳細構成]** という名前が付けられている場合があります。
-
-以下のスクリーンショットは、DNS レコード ページの例です。
-
-![DNS レコード ページの例](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-このスクリーンショットの例では、**[追加]** をクリックしてレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 この場合も、プロバイダーのドキュメントを参照してください。
-
-> [!NOTE]
-> 一部のプロバイダー (GoDaddy など) では、別の **[変更を保存]** リンクをクリックするまで DNS レコードの変更が反映されません。 
->
->
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
 ワイルドカード名をアプリの既定のホスト名 (`<app_name>.azurewebsites.net`) にマップするための CNAME レコードを追加します。
 
-`*.contoso.com` ドメインの場合、CNAME レコードでは、`*` という名前が `<app_name>.azurewebsites.net` を指定する必要があります。
+`*.contoso.com` ドメインの例では、CNAME レコードは名前 `*` を `<app_name>.azurewebsites.net` にマップします。
 
-DNS レコード ページは、次のスクリーンショットのようになります。
+CNAME が追加されると、DNS レコード ページは次の例のようになります。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-your-app"></a>アプリの CNAME レコード マッピングを有効にする
+### <a name="enable-the-cname-record-mapping-in-the-app"></a>アプリの CNAME レコード マッピングを有効にする
 
-ワイルドカード名と一致するすべてのサブドメインを追加できるようになりました。
+これで、ワイルドカード名と一致するすべてのサブドメインをアプリに追加できるようになりました (たとえば、`sub1.contoso.com` および `sub2.contoso.com` は `*.contoso.com` に一致します)。 
 
-`*.contoso.com` ワイルドカードの場合は、`sub1.contoso.com` と `sub2.contoso.com` を追加できます。 
-
-アプリ ブレードの左側のナビゲーションで、**[カスタム ドメイン]** をクリックします。 
+Azure Portal のアプリ ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。 
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**[ホスト名の追加]** の横の **+** アイコンをクリックします。
+**[ホスト名の追加]** の横の **+** アイコンを選択します。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-ワイルドカード ドメインと一致するサブドメインの完全修飾ドメイン名 (`sub1.contoso.com` など) を入力し、**[検証]** をクリックします。
+ワイルドカード ドメインと一致する完全修飾ドメイン名 (たとえば `sub1.contoso.com`) を入力し、**[検証]** を選択します。
 
-それ以外の場合は、**[ホスト名の追加]** ボタンがアクティブになります。 
+**[ホスト名の追加]** ボタンがアクティブになります。 
 
-**[ホスト名レコード タイプ]** が **[CNAME レコード (example.com)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME レコード (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
-**[ホスト名の追加]** をクリックして、アプリに DNS 名を追加します。
+**[ホスト名の追加]** を選択します。
 
 ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
 アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
 
-**+** アイコンをもう一度クリックすると、ワイルドカード ドメインと一致する別のホスト名を追加できます。
-
-たとえば、上記の手順を使用して `sub2.contoso.com` を追加します。
+**+** アイコンをもう一度選択して、ワイルドカード ドメインと一致する別のホスト名を追加します。 たとえば、`sub2.contoso.com` を追加します。
 
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 ## <a name="test-in-browser"></a>ブラウザーでテストする
 
-ブラウザーで、構成済みの DNS 名 (`contoso.com` と `www.contoso.com`) を参照します。
+先ほど構成した DNS 名 (たとえば、`contoso.com`、`www.contoso.com`、`sub1.contoso.com`、および `sub2.contoso.com`) を参照します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -334,7 +282,7 @@ DNS レコード ページは、次のスクリーンショットのようにな
 ```bash 
 az appservice web config hostname add \
     --webapp <app_name> \
-    --resource-group <resourece_group_name> \ 
+    --resource-group <resource_group_name> \ 
     --name <fully_qualified_domain_name> 
 ``` 
 
@@ -347,7 +295,7 @@ az appservice web config hostname add \
 ```PowerShell  
 Set-AzureRmWebApp `
     -Name <app_name> `
-    -ResourceGroupName <resourece_group_name> ` 
+    -ResourceGroupName <resource_group_name> ` 
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
@@ -363,8 +311,8 @@ Set-AzureRmWebApp `
 > * CNAME レコードを使用してワイルドカード ドメインをマップする
 > * スクリプトでドメイン マッピングを自動化する
 
-次のチュートリアルに進み、カスタム SSL 証明書をバインドする方法を学習してください。
+次のチュートリアルに進み、カスタム SSL 証明書を Web アプリにバインドする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム SSL 証明書の Azure Web Apps へのバインド](app-service-web-tutorial-custom-ssl.md)
+> [既存のカスタム SSL 証明書を Azure Web Apps にバインドする](app-service-web-tutorial-custom-ssl.md)
 

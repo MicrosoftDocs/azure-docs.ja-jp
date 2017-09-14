@@ -4,7 +4,7 @@ description: "リアルタイム Twitter センチメント分析で Stream Anal
 keywords: "リアルタイム Twitter 傾向分析、センチメント分析、ソーシャル メディア分析、傾向分析の例"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
@@ -13,141 +13,226 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: d4fae06cb240c1687b059ae991b8d09f94e2ffc3
-ms.lasthandoff: 05/01/2017
+ms.date: 06/29/2017
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
-Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 このシナリオでは、Azure Stream Analytics クエリを記述してデータを分析します。 後で使用するために結果を保存するか、ダッシュボードと [Power BI](https://powerbi.com/) を使用して洞察をリアルタイムで表示します。
+Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 Azure Stream Analytics クエリを作成してデータを分析し、後で使用できるように結果を保存したり、ダッシュボードや [Power BI](https://powerbi.com/) を使用してリアルタイムで洞察を提供したりできます。
 
-ソーシャル メディア分析ツールは、組織がトレンド トピックを把握するのに役立ちます。 トレンド トピックとは、ソーシャル メディアにおいて大量の投稿が行われているテーマや考え方のことです。 センチメント分析 (*意見マイニング*ともいう) ではソーシャル メディア分析ツールを使用して、製品やアイデアに対する考え方を特定します。
+ソーシャル メディア分析ツールは、組織がトレンド トピックを把握するのに役立ちます。 トレンド トピックとは、ソーシャル メディアにおいて大量の投稿が行われているテーマや考え方のことです。 センチメント分析 (*意見マイニング*ともいう) ではソーシャル メディア分析ツールを使用して、製品やアイデアに対する考え方を特定します。 
 
-リアルタイム Twitter 傾向分析は、分析ツールの優れた例です。ハッシュタグ サブスクリプション モデルにより、特定のキーワードをリッスンし、フィードの感情分析を展開できます。
+リアルタイム Twitter 傾向分析は、分析ツールの好例です。ハッシュタグ サブスクリプション モデルにより、特定のキーワード (ハッシュタグ) をリッスンし、フィードの感情分析を展開できます。
 
 ## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>シナリオ: リアルタイムのソーシャル メディア感情分析
 
 ニュース メディア Web サイトを運営している会社は、その閲覧者に直接関係するサイト コンテンツを際立たせることで、競合他社より優位に立つことに着目しています。 そのため、会社は、Twitter データのリアルタイム感情分析を実行することで、閲覧者に関連するトピックのソーシャル メディア分析を使用します。
 
-特に、Twitter のトレンディング トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。 つまり、このソーシャル メディア フィードに基づいた感情分析エンジンが必要となります。
+Twitter のトレンド トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。 つまり、このソーシャル メディア フィードに基づいた感情分析エンジンが必要となります。
 
 ## <a name="prerequisites"></a>前提条件
+このチュートリアルでは、Twitter に接続し、特定のハッシュタグ (設定可能) が付いたツイートを検索するクライアント アプリケーションを使用します。 アプリケーションを実行し、Azure Stream Analytics を使用してツイートを分析するには、次のものが必要です。
 
 * Azure サブスクリプション
-* Twitter アカウントと [OAuth アクセス トークン](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
-* GitHub の [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) ファイル
-* 省略可能: [GitHub](https://aka.ms/azure-stream-analytics-twitterclient) の Twitter クライアントのソース コード
+* Twitter アカウント 
+* Twitter アプリケーションと、そのアプリケーションの [OAuth アクセス トークン](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)。 Twitter アプリケーションを作成する大まかな手順については後ほど説明します。
+* Twitter フィードを読み取る TwitterWPFClient アプリケーション。 このアプリケーションを入手するには、GitHub から [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) ファイルをダウンロードし、コンピューター上のフォルダーにパッケージを解凍します。 ソース コードを確認し、デバッガーでアプリケーションを実行する場合は、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からソース コードを入手できます。 
 
-## <a name="create-an-event-hub-input"></a>イベント ハブへの入力の作成
+## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Stream Analytics の入力用のイベント ハブの作成
 
-サンプル アプリケーションでは、イベントを生成し、それらを Event Hubs インスタンス (略して、イベント ハブ) にプッシュします。 Azure Service Bus のイベント ハブは、Stream Analytics の場合に推奨されるイベント取り込み方法です。 詳細については、[Azure Service Bus のドキュメント](/azure/service-bus/)に関するページでイベント ハブのドキュメントを参照してください。
+サンプル アプリケーションでは、イベントを生成し、Azure イベント ハブにプッシュします。 Azure イベント ハブは、Stream Analytics に推奨されるイベント取り込み方法です。 詳細については、[Azure Event Hubs のドキュメント](../event-hubs/event-hubs-what-is-event-hubs.md)をご覧ください。
 
-### <a name="create-an-event-hub"></a>イベント ハブの作成
 
-イベント ハブを作成するには、次の手順に従います。
+### <a name="create-an-event-hub-namespace-and-event-hub"></a>イベント ハブの名前空間とイベント ハブを作成する
+この手順では、まずイベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使用されます。 
 
-1. [Azure Portal](https://portal.azure.com) で、**[新規]** を選択し、「**Event Hubs**」と入力します。検索結果から **[Event Hubs]** を選択します。 **[作成]** を選択します。
+1. Azure Portal にログインし、**[新規]** > **[モノのインターネット]** > **[イベント ハブ]** をクリックします。 
 
-2. イベント ハブの名前を指定し、リソース グループを作成します。 ここでは、それぞれ、`socialtwitter-eh` と `socialtwitter-rg` を指定しています。 アカウントをダッシュボードにピン留めするためのオプションを選択し、**[作成]** ボタンをクリックします。
+2. **[名前空間の作成]** ブレードで、名前空間の名前 (例: `<yourname>-socialtwitter-eh-ns`) を入力します。 名前空間には任意の名前を使用できますが、この名前は URL で有効である必要があり、Azure 全体で一意である必要があります。 
+    
+3. サブスクリプションを選択し、リソース グループを作成または選択して、**[作成]** をクリックします。 
 
-3. デプロイが完了したら、イベント ハブを選択します。 次に、**[エンティティ]** で **[イベント ハブ]** を選択します。
+    ![イベント ハブの名前空間の作成](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-namespace.png)
+ 
+4. イベント ハブの名前空間のデプロイが完了したら、Azure リソースの一覧でその名前空間を見つけます。 
 
-4. イベント ハブを作成するには、**[+ イベント ハブ]** ボタンをクリックします。 もう一度名前を指定し (ここでは `socialtwitter-eh`)、**[作成]** を選択します。
+5. 新しい名前空間をクリックし、名前空間ブレードで **[+&nbsp;イベント ハブ]** をクリックします。 
 
-5. イベント ハブへのアクセスを許可するには、共有アクセス ポリシーを作成する必要があります。 イベント ハブを選択し、**[設定]** の **[共有アクセス ポリシー]** を選択します。
+    ![新しいイベント ハブを作成するための [イベント ハブの追加] ボタン ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+ 
+6. 新しいイベント ハブに `socialtwitter-eh` という名前を付けます。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 イベント ハブの他のオプションを設定する必要はありません。
 
-6. **[共有アクセス ポリシー]** で **[+ 追加]** を選択し、**[管理]** アクセス許可を持つポリシーを作成します。 ポリシーに名前を付け、**[管理]** チェック ボックスをオンにし、**[作成]** を選択します。
+    ![新しいイベント ハブを作成するためのブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
+ 
+7. ページの下部にある **[Create]**」を参照してください。
 
-7. 新しいポリシーが作成されたら、そのポリシーを選択し、**[接続文字列 – 主キー]** エンティティのコピー ボタンをクリックします。 この情報はこの演習の後半で必要になります。 ダッシュボードに戻ります。
 
-![共有アクセス ポリシー エンドポイント](./media/stream-analytics-twitter-sentiment-analysis-trends/keysandendpoints.png)
+### <a name="grant-access-to-the-event-hub"></a>イベント ハブへのアクセスを許可する
+
+プロセスがイベント ハブにデータを送信できるようにするには、イベント ハブに、適切なアクセスを許可するポリシーが必要です。 アクセス ポリシーにより、承認情報を含む接続文字列が生成されます。
+
+1.  イベント名前空間ブレードで、**[イベント ハブ]** をクリックし、新しいイベント ハブの名前をクリックします。
+
+2.  イベント ハブ ブレードで、**[共有アクセス ポリシー]** をクリックし、**[+&nbsp;追加]** をクリックします。
+
+    >[!NOTE]
+    >イベント ハブの名前空間ではなく、イベント ハブを操作していることを確認してください。
+
+3.  `socialtwitter-access` という名前のポリシーを追加し、**[要求]** の **[管理]** を選択します。
+
+    ![イベント ハブの新しいアクセス ポリシーを作成するためのブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
+ 
+4.  ページの下部にある **[Create]**」を参照してください。
+
+5.  ポリシーがデプロイされたら、共有アクセス ポリシーの一覧でそのポリシーをクリックします。
+
+6.  **[接続文字列 - 主キー]** というボックスを見つけ、接続文字列の横のコピー ボタンをクリックします。 
+    
+    ![アクセス ポリシーの接続文字列の主キーのコピー](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
+ 
+7.  接続文字列をテキスト エディターに貼り付けます。 この接続文字列は、少し編集を加えた後に、次のセクションで必要になります。
+
+    接続文字列は次のようになります。
+
+        Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
+
+    接続文字列には、セミコロンで区切られた複数のキーと値のペア (`Endpoint`、`SharedAccessKeyName`、`SharedAccessKey`、`EntityPath`) が含まれています。  
+
+    > [!NOTE]
+    > セキュリティのため、この例では接続文字列の一部が削除されています。
+
+8.  テキスト エディターで、接続文字列から `EntityPath` のペアを削除します (前にあるセミコロンも忘れずに削除してください)。 作業が完了すると、接続文字列は次のようになります。
+
+        Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
+
 
 ## <a name="configure-and-start-the-twitter-client-application"></a>Twitter クライアント アプリケーションの構成および開始
+クライアント アプリケーションは、Twitter からツイート イベントを直接取得します。 そのために、クライアント アプリケーションには Twitter ストリーミング API を呼び出すためのアクセス許可が必要です。 このアクセス許可を構成するために、Twitter でアプリケーションを作成し、一意の資格情報 (OAuth トークンなど) を生成します。 次に、API 呼び出しを行うときにこれらの資格情報を使用するようにクライアント アプリケーションを構成します。 
 
-パラメーター化された一連のトピックに関するツイート イベントを収集するために、[Twitter のストリーミング API](https://dev.twitter.com/streaming/overview) を介して Twitter データに接続するクライアント アプリケーションが作成されています。 [Sentiment140](http://help.sentiment140.com/) オープン ソース ツールにより、各ツイートにセンチメント値が次のように代入されます。
+### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
+このチュートリアルで使用できる Twitter アプリケーションがまだない場合は、アプリケーションを作成できます。 Twitter アカウントを既に持っている必要があります。
+
+> [!NOTE]
+> Twitter でアプリケーションを作成し、キー、シークレット、トークンを取得するための正確なプロセスが変更されている場合があります。 以下の手順が Twitter サイトで表示される内容と一致しない場合は、Twitter の開発者向けドキュメントを参照してください。
+
+1. [Twitter のアプリケーション管理ページ](https://apps.twitter.com/)に移動します。 
+
+2. 新しいアプリケーションを作成します。 
+
+    * Web サイトの URL に有効な URL を指定します。 これはライブ サイトである必要はありません  (`localhost` だけを指定することはできません)。
+    * コールバック フィールドは空白のままにしておきます。 このチュートリアルで使用するクライアント アプリケーションではコールバックは不要です。
+
+    ![Twitter でのアプリケーションの作成](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+
+3. 必要に応じて、アプリケーションのアクセス許可を読み取り専用に変更します。
+
+4. アプリケーションが作成されたら、**[Keys and Access Tokens]** ページに移動します。
+
+5. アクセス トークンとアクセス トークン シークレットを生成するボタンをクリックします。
+
+この情報は次の手順で必要になるため、手元に置いておいてください。
+
+>[!NOTE]
+>Twitter アプリケーションのキーとシークレットにより、Twitter アカウントにアクセスできるようになります。 Twitter のパスワードと同様に、この情報は機密情報として扱ってください。 たとえば、他のユーザーに提供するアプリケーションにこの情報を埋め込まないでください。 
+
+
+### <a name="configure-the-client-application"></a>クライアント アプリケーションを構成する
+特定のトピックに関するツイート イベントを収集するために、[Twitter のストリーミング API](https://dev.twitter.com/streaming/overview) を使用して Twitter データに接続するクライアント アプリケーションを作成しました。 このアプリケーションでは、次のセンチメント値を各ツイートに割り当てる、[Sentiment140](http://help.sentiment140.com/) オープン ソース ツールを使用します。
 
 * 0 = 否定
 * 2 = 中立
 * 4 = 肯定
 
-すると、ツイート イベントがイベント ハブにプッシュされます。  
+ツイート イベントにセンチメント値が割り当てられると、これらのイベントは先ほど作成したイベント ハブにプッシュされます。
 
-### <a name="set-up-the-application"></a>アプリケーションの設定
- アプリケーションを設定するには、次の手順に従います。
+アプリケーションを実行するには、Twitter のキーやイベント ハブの接続文字列などの特定の情報が必要となります。 構成情報は次の方法で指定できます。
 
-1. [TwitterWPFClient.zip をダウンロード](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip)して、解凍します。
+* アプリケーションを実行し、アプリケーションの UI を使用して、キー、シークレット、接続文字列を入力します。 この場合、構成情報は現在のセッションで使用されますが、保存されません。
+* アプリケーションの .config ファイルを編集し、値を設定します。 この方法では構成情報が保持されますが、この機密性の高い情報がコンピューター上にプレーン テキストで保存されることになります。
 
-2. `TwitterWPFClient.exe` アプリケーションを実行します。 次に、Twitter API キーとシークレット、Twitter アクセス トークンとシークレット、さらにイベント ハブ情報のデータを入力します。 最後に、感情を判定するための基準となるキーワードを定義します。
+次の手順は両方の方法を示しています。 
 
-### <a name="generate-an-oauth-access-token"></a>OAuth アクセス トークンの生成
-詳細については、[OAuth アクセス トークンを生成する手順](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)に関するページを参照してください。  
+1. 前提条件に記載されている [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) アプリケーションのダウンロードと解凍が完了していることを確認します。
 
- トークンを生成するには、空のアプリケーションを作成する必要があります。  
+2. 実行時に (現在のセッションでのみ) 値を設定するには、`TwitterWPFClient.exe` アプリケーションを実行します。 値の入力を求められたら、次の値を入力します。
 
-1. TwitterWpfClient.exe.config 内の EventHubConnectionString 値と EventHubName 値を、イベント ハブの接続文字列と名前に置き換えます。 先ほどコピーした接続文字列は、イベント ハブの接続文字列と名前の両方を示しています。 それぞれを別々に適切なフィールドに入力するようにしてください。 たとえば、次の接続文字列の場合を考えてみましょう。
+    * Twitter のコンシューマー キー (API キー)。
+    * Twitter のコンシューマー シークレット (API シークレット)。
+    * Twitter のアクセス トークン。
+    * Twitter のアクセス トークン シークレット。
+    * 以前に保存した接続文字列情報。 `EntityPath` のキーと値のペアを削除した接続文字列を使用していることを確認してください。
+    * 感情の判定対象となる Twitter のキーワード。
 
- ```
-    Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey;EntityPath=yourhub
- ```  
+   ![設定を表示する (一部ぼかし表示)、実行中の TwitterWpfClient アプリケーション](./media/stream-analytics-twitter-sentiment-analysis-trends/wpfclientlines.png)
 
-   TwitterWpfClient.exe.config ファイルには、次の例で示されているように、設定を含める必要があります。
+3. 値を永続的に設定するには、テキスト エディターを使用して TwitterWpfClient.exe.config ファイルを開きます。 次に、`<appSettings>` 要素内で次の操作を行います。
 
- ```
-      add key="EventHubConnectionString" value="Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey"
-      add key="EventHubName" value="yourhub"
-   ```
-   > [!NOTE]
-   > EventHubName の値には "EntityPath=" というテキストが含まれて**いません**。
+    * `oauth_consumer_key` を Twitter のコンシューマー キー (API キー) に設定します。 
+    * `oauth_consumer_secret` を Twitter のコンシューマー シークレット (API シークレット) に設定します。
+    * `oauth_token` を Twitter のアクセス トークンに設定します。
+    * `oauth_token_secret` を Twitter のアクセス トークン シークレットに設定します。
 
-    Twitter と Azure の接続情報の値は、クライアントに直接入力することもできます。 "EntityPath=" は使用されないという、同じロジックが適用されます。
+    `<appSettings>` 要素の後の部分で次の変更を加えます。
 
-   ![wpfclient](./media/stream-analytics-twitter-sentiment-analysis-trends/wpfclientlines.png)
+    * `EventHubName` をイベント ハブ名 (つまり、エンティティ パスの値) に設定します。
+    * `EventHubNameConnectionString` を接続文字列に設定します。 `EntityPath` のキーと値のペアを削除した接続文字列を使用していることを確認してください。
 
-2. **省略可能:** 検索するキーワードを調整します。 既定では、このアプリケーションは、いくつかのゲームに関係するキーワードを検索します。  必要に応じて、TwitterWpfClient.exe.config の **twitter_keywords** の値を調整できます。
+    `<appSettings>` セクションは、次の例のようになります  (わかりやすさとセキュリティのために、一部の行をラップし、一部の文字を削除しています)。
 
-3. TwitterWpfClient.exe を実行します。 その後、緑のスタート ボタンを選択してソーシャル センチメントを収集します。 **CreatedAt**、**Topic**、**SentimentScore** の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
+    ![Twitter のキーとシークレットおよびイベント ハブの接続文字列情報を示す、テキスト エディターの TwitterWpfClient アプリケーション構成ファイル](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
+ 
+4. アプリケーションをまだ起動していなかった場合は、TwitterWpfClient.exe を実行します。 
+
+5. 緑の開始ボタンをクリックして、ソーシャル センチメントを収集します。 **CreatedAt**、**Topic**、**SentimentScore** の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
+
+    ![ツイートの一覧を表示する、実行中の TwitterWpfClient アプリケーション](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-app-listing.png)
+
+    >[!NOTE]
+    >エラーが発生し、ウィンドウの下部にツイートのストリームが表示されない場合は、キーとシークレットを再確認してください。 また、接続文字列も確認してください (`EntityPath` のキーと値が含まれていないことを確認します)。
+
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-Twitter からのリアルタイムのツイート イベントのストリーミングが行われているため、リアルタイムでこれらのイベントを分析するための Stream Analytics ジョブを設定できます。
+ツイート イベントが Twitter からリアルタイムでストリーミングされるようになったので、これらのイベントをリアルタイムで分析する Stream Analytics ジョブを設定します。
 
-### <a name="provision-a-stream-analytics-job"></a>Stream Analytics のジョブの準備
+1. Azure Portal で、**[新規]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** をクリックします。
 
-Stream Analytics のジョブをプロビジョニングするには、次の手順を実行します。
+2. ジョブに `socialtwitter-sa-job` という名前を付け、サブスクリプション、リソース グループ、場所を指定します。
 
-1. [Azure Portal](https://portal.azure.com/) で、**[新規]** を選択し、「**Stream Analytics**」と入力して、Stream Analytics タイルを選択します。
+    最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。
 
-2. 次の値を指定し、**[作成]** を選択します。
+    ![新しい Stream Analytics ジョブの作成](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-   * **[ジョブ名]**: ジョブ名を入力します。
+3. ページの下部にある **[Create]**」を参照してください。
 
-   * **[リソース グループ]**: [既存のものを使用] オプションから、この演習で先ほど作成したリソース グループを選択します。
+    ジョブが作成され、ポータルにジョブの詳細が表示されます。
 
-   * **[ストレージ アカウント]**: このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用する Azure ストレージ アカウントを選択します。 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。   
-
-![新しいジョブ](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
-
-ジョブは作成されると、Azure Portal で開かれます。
 
 ## <a name="specify-the-job-input"></a>ジョブの入力の指定
-ジョブの入力を指定するには、次の手順を実行します。
 
-1. Stream Analytics ジョブで、ジョブ ウィンドウの中央にある **[ジョブ トポロジ]** の **[入力]** をクリックします。 その後、**[追加]** を選択します。
+1. Stream Analytics ジョブで、ジョブ ブレードの中央にある **[ジョブ トポロジ]** の **[入力]** をクリックします。 
 
-    次に、ポータルでは、次の情報の一部を入力するよう求められます。 既定値のほとんどはそのまま使用できます。定義は次のとおりです。
+2. **[入力]** ブレードで **[+&nbsp;追加]** をクリックし、ブレードに次の値を入力します。
 
-   * **[入力のエイリアス]**: このジョブの入力のフレンドリ名を入力します (`TwitterStream` など)。 この名前は、後でクエリで使用します。  
+    * **[入力のエイリアス]**: `TwitterStream` という名前を使用します。 この名前は後で必要になるため、別の名前を使用する場合は書き留めておきます。
+    * **[ソースの種類]**: **[データ ストリーム]** を選択します。
+    * **[ソース]**: **[イベント ハブ]** を選択します。
+    * **[インポート オプション]**: **[現在のサブスクリプションのイベント ハブを使う]** を選択します。 
+    * **[Service Bus 名前空間]**: 以前に作成したイベント ハブの名前空間 (`<yourname>-socialtwitter-eh-ns`) を選択します。
+    * **[イベント ハブ]**: 以前に作成したイベント ハブ (`socialtwitter-eh`) を選択します。
+    * **[イベント ハブ ポリシー名]**: 以前に作成したアクセス ポリシー (`socialtwitter-access`) を選択します。
 
-   * **[イベント ハブ名]**: イベント ハブの名前を選択します。
+    ![Stream Analytics ジョブの新しい入力の作成](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-   * **[イベント ハブ ポリシー名]**: このチュートリアルで前に作成したイベント ハブのポリシーを選択します。
+3. ページの下部にある **[Create]**」を参照してください。
 
-2. **[作成]** ボタンを選択します。
 
 ## <a name="specify-the-job-query"></a>ジョブ クエリの指定
 
@@ -155,97 +240,148 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 トピック間のメンション数を比較するには、[タンブリング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835055.aspx)を使用して、5 秒ごとにトピック別のメンション数を取得します。
 
-コード エディターで、クエリを次のように変更し、**[保存]** を選択します。
+1. **[入力]** ブレードを閉じます (まだ閉じていない場合)。
 
-```
-SELECT System.Timestamp as Time, Topic, COUNT(*)
-FROM TwitterStream TIMESTAMP BY CreatedAt
-GROUP BY TUMBLINGWINDOW(s, 5), Topic
-```   
+2. ジョブ ブレードで、**[クエリ]** ボックスをクリックします。 そのジョブ用に構成されている入力と出力が一覧表示されます。出力に送信される入力ストリームを変換できるクエリを作成できます。
 
-このクエリでは、 **TIMESTAMP BY** キーワードを使用して、一時的な計算に使用されるペイロードのタイムスタンプ フィールドを指定しています。 このフィールドが指定されていない場合は、各イベントがイベント ハブに到着した時間を使用してウィンドウ化操作が実行されます。 詳細については、「[Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時間とアプリケーション時間) を参照してください。
+3. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 
-このクエリは、**System.Timestamp** プロパティを使用して、各期間の終わりのタイムスタンプにもアクセスします。
+3. **[クエリ]** ブレードで、`TwitterStream` 入力の横の点をクリックし、**[入力からのサンプル データ]** を選択します。
 
-![クエリ ボックス](./media/stream-analytics-twitter-sentiment-analysis-trends/querybox.png)
+    ![Stream Analytics ジョブ エントリにサンプル データを使用するためのメニュー オプション - [入力からのサンプル データ] を選択](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
+
+    取得するサンプル データの量を指定できるブレードが開きます。データの量は、入力ストリームの読み取り期間で定義されています。
+
+4. **[分]** を 3 に設定し、**[OK]** をクリックします。 
+    
+    !["3 分" が選択された入力ストリームのサンプリング オプション。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
+
+    入力ストリームから 3 分間分のデータがサンプリングされ、サンプル データの準備ができると通知されます  (少し時間がかかります)。 
+
+    サンプル データは一時的に保存され、クエリ ウィンドウを開いている間使用できます。 クエリ ウィンドウを閉じると、サンプル データは破棄されるので、サンプル データの新しいセットを作成する必要があります。 
+
+5. コード エディターでクエリを次のように変更します。
+
+    ```
+    SELECT System.Timestamp as Time, Topic, COUNT(*)
+    FROM TwitterStream TIMESTAMP BY CreatedAt
+    GROUP BY TUMBLINGWINDOW(s, 5), Topic
+    ```
+
+    入力のエイリアスとして `TwitterStream` を使用しなかった場合は、クエリで `TwitterStream` の代わりに選択したエイリアスを使用します。  
+
+    このクエリでは、 **TIMESTAMP BY** キーワードを使用して、一時的な計算に使用されるペイロードのタイムスタンプ フィールドを指定しています。 このフィールドが指定されていない場合は、各イベントがイベント ハブに到着した時間を使用してウィンドウ化操作が実行されます。 詳細については、「[Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時間とアプリケーション時間) を参照してください。
+
+    このクエリは、**System.Timestamp** プロパティを使用して、各期間の終わりのタイムスタンプにもアクセスします。
+
+5. **[Test]**をクリックします。 サンプリングされたデータに対してクエリが実行されます。
+    
+6. [ **Save**] をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
+
+
+## <a name="experiment-using-different-fields-from-the-stream"></a>ストリームのさまざまなフィールドを使用した実験 
+
+次の表に、JSON ストリーミング データに含まれるフィールドを示します。 クエリ エディターで自由にお試しください。
+
+|JSON プロパティ | 定義|
+|--- | ---|
+|CreatedAt | ツイートが作成された時刻|
+|トピック | 指定したキーワードと一致するトピック|
+|SentimentScore | Sentiment140 のセンチメント スコア|
+|Author | ツイートを送信した Twitter ハンドル|
+|テキスト | ツイートの全文|
+
 
 ## <a name="create-an-output-sink"></a>出力シンクの作成
 
-イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義したところで、最後に、ジョブの出力シンクを定義します。  
+イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義しました。 最後に、ジョブの出力シンクを定義します。  
 
-ジョブ クエリから Azure Blob Storage に集計済みツイート イベントを書き込みます。  また、結果は、具体的なアプリケーションのニーズに応じて、Azure SQL Database、Azure Table Storage、または Event Hubs にプッシュすることもできます。
+このチュートリアルでは、ジョブ クエリから Azure Blob Storage に集計済みのツイート イベントを書き込みます。  アプリケーションのニーズに応じて、Azure SQL Database、Azure Table Storage、Event Hubs、または Power BI に結果をプッシュすることもできます。
 
 ## <a name="specify-the-job-output"></a>ジョブの出力の指定
-ジョブの出力を指定するには、次の手順を実行します。
 
-1. Stream Analytics ジョブで、**[ジョブ トポロジ]** の **[出力]** を選択し、**[追加]** を選択します。
+1. **[ジョブ トポロジ]** セクションで、**[出力]** ボックスをクリックします。 
 
-2. ウィンドウで、次の値を入力または選択します。
+2. **[出力]** ブレードで **[+&nbsp;追加]** をクリックし、ブレードに次の値を入力します。
 
-   * **[出力のエイリアス]**: このジョブの出力のフレンドリ名を入力します。 このデモでは、`Output` を使用します。
+    * **[出力エイリアス]**: `TwitterStream-Output` という名前を使います。 
+    * **[シンク]**: **[Blob ストレージ]** を選択します。
+    * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
+    * **[ストレージ アカウント]**:  **[新しいストレージ アカウントを作成する]** を選択します。
+    * **[ストレージ アカウント]** (2 つ目のボックス):  「`YOURNAMEsa`」と入力します。`YOURNAME` は、自分の名前または別の一意の文字列です。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
+    * **[コンテナー]**:  「`socialtwitter`」を入力します。
+    ストレージ アカウント名とコンテナー名は、BLOB ストレージの URI を指定するときに次のように組み合わせて使われます。 
 
-   * **[シンク]**: **[Blob ストレージ]** を選択します。
+    `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
+    
+    ![Stream Analytics ジョブの [新しい出力] ブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
+    
+4. ページの下部にある **[Create]**」を参照してください。 
 
-   * **[ストレージ アカウント]**: **[新しいストレージ アカウントの作成]** を選択します。
+    ストレージ アカウントが作成され、キーが自動的に生成されます。 
 
-    * **[ストレージ アカウント]**: 新しいストレージ アカウントに名前を指定します (この例では `socialtwitter`)。
+5. **[出力]** ブレードを閉じます。 
 
-    * **[コンテナー]**: 新しいコンテナーに名前を指定します (この例では `socialtwitter`)。
-
-3. 他のエントリは既定値のままにします。 最後に、**[作成]** を選択します。
 
 ## <a name="start-the-job"></a>ジョブの開始
 
-ジョブの入力、クエリ、および出力がすべて指定されたため、いつでも Stream Analytics ジョブを開始できます。
+ジョブ入力、クエリ、出力が指定されました。 これで、Stream Analytics ジョブを開始する準備が整いました。
 
-ジョブを開始するには、次の手順を実行します。
+1. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 
-1. ジョブの概要ウィンドウで、ページの上部にある **[開始]** を選択します。
+2. ジョブ ブレードで、**[開始]** をクリックします。
 
-2. 開いたダイアログ ボックスで、**[ジョブ開始時刻]** を選択し、ダイアログ ボックスの下部にある**チェック** ボタンを選択します。 ジョブの状態がまず **[開始中]** に変化し、その後 **[実行中]** に変化します。
+    ![Stream Analytics ジョブの開始](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-output.png)
 
-![ジョブを実行中](./media/stream-analytics-twitter-sentiment-analysis-trends/jobrunning.png)
+3. **[ジョブの開始]** ブレードで、**[ジョブ出力の開始時刻]** の **[Now]\(今すぐ\)** を選択し、**[開始]** をクリックします。 
+
+    ![Stream Analytics ジョブの [ジョブの開始] ブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-job-blade.png)
+
+    ジョブが開始されたことが通知され、ジョブ ブレードに表示される状態が **[実行中]** になります。
+
+    ![ジョブを実行中](./media/stream-analytics-twitter-sentiment-analysis-trends/jobrunning.png)
 
 ## <a name="view-output-for-sentiment-analysis"></a>センチメント分析の出力表示
 
-ジョブの実行が開始され、リアルタイム Twitter ストリームが処理されているときに、感情分析の出力の表示方法を選択します。
+ジョブの実行が開始されたら、リアルタイム Twitter ストリームの処理中に、感情分析の出力を表示できます。
 
-[Azure Storage エクスプローラー](https://http://storageexplorer.com/)や [Azure エクスプローラー](http://www.cerebrata.com/products/azure-explorer/introduction)などのツールを使用して、ジョブの出力をリアルタイムに表示できます。 ここで、[Power BI](https://powerbi.com/) を使用して、次のスクリーンショットに示されているように、カスタマイズされたダッシュボードを含むようにアプリケーションを拡張できます。
+[Azure Storage エクスプローラー](https://http://storageexplorer.com/)や [Azure エクスプローラー](http://www.cerebrata.com/products/azure-explorer/introduction)などのツールを使用して、ジョブ出力をリアルタイムで表示できます。 ここから、[Power BI](https://powerbi.com/) を使用してアプリケーションを拡張し、次のスクリーンショットに示すようなカスタマイズされたダッシュボードを含めることができます。
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 
+
 ## <a name="create-another-query-to-identify-trending-topics"></a>トレンド トピックを特定する別のクエリの作成
 
-このシナリオのために作成した別のサンプル クエリは、[スライディング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835051.aspx)に基づいています。 トレンド トピックを特定するには、一定期間にメンションのしきい値を超えるトピックを検索します。
+Twitter のセンチメントを理解するために使用できるもう 1 つのクエリは、[スライディング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835051.aspx)に基づいています。 トレンド トピックを特定するには、指定された期間にメンションのしきい値を超えるトピックを検索します。
 
 このチュートリアルでは、直近の 5 秒間で 20 回を超えてメンションされたトピックをチェックします。
 
-```
-SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions
-FROM TwitterStream TIMESTAMP BY CreatedAt
-GROUP BY SLIDINGWINDOW(s, 5), topic
-HAVING COUNT(*) > 20
-```
+1. ジョブ ブレードで **[停止]** をクリックしてジョブを停止します。 
 
-## <a name="use-field-headers"></a>フィールドのヘッダーの使用
+2. **[ジョブ トポロジ]** セクションで、**[クエリ]** ボックスをクリックします。 
 
-この演習で使用できるフィールド ラベルを次の表に示します。 クエリ エディターで自由にお試しください。
+3. クエリを次のように変更します。
 
-JSON プロパティ | 定義
---- | ---
-CreatedAt | ツイートが作成された時刻
-トピック | 指定したキーワードと一致するトピック
-SentimentScore | Sentiment140 のセンチメント スコア
-Author | ツイートを送信した Twitter ハンドル
-テキスト | ツイートの全文
+    ```    
+    SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions
+    FROM TwitterStream TIMESTAMP BY CreatedAt
+    GROUP BY SLIDINGWINDOW(s, 5), topic
+    HAVING COUNT(*) > 20
+    ```
+
+4. [ **Save**] をクリックします。
+
+5. TwitterWpfClient アプリケーションが実行されていることを確認します。 
+
+6. **[開始]** をクリックし、新しいクエリを使用してジョブを再開します。
 
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

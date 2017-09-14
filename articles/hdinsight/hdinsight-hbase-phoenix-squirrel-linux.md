@@ -1,5 +1,5 @@
 ---
-title: "Azure HDInsight (HBase) での Apache Phoenix および SQuirreL の使用 | Microsoft Docs"
+title: "HBase で Apache Phoenix と SQuirreL を使用する - Azure HDInsight | Microsoft Docs"
 description: "Apache Phoenix を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/26/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 04e078d662c861d5c587c571a42478603e291587
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 13d17083bbe26fa9745ce4c5fef9f56859243c2e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -37,15 +38,15 @@ HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方法、
 SQLLine を使用するには、以下のものが必要です。
 
 * **HDInsight 環境の HBase クラスター**。 HBase クラスターのプロビジョニングについては、「[HDInsight での Apache HBase の使用][hdinsight-hbase-get-started]」を参照してください。
-* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
+* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 手順については、[Azure Portal を使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]に関するページを参照してください。
 
 HBase クラスターに接続するときは、いずれかの Zookeeper に接続する必要があります。 各 HDInsight クラスターには 3 つの Zookeeper があります。
 
 **Zookeeper のホスト名を確認するには**
 
-1. **https://<ClusterName>.azurehdinsight.net/** にアクセスして、Ambari を開きます。
+1. **https://<ClusterName>.azurehdinsight.net** にアクセスして、Ambari を開きます。
 2. HTTP (クラスター) ユーザー名とパスワードを入力してログインします。
-3. 左側のメニューで **[Zookeeper]** をクリックします。 リストに 3 つの **Zookeeper サーバー** が表示されます。
+3. 左側のメニューで **[Zookeeper]** をクリックします。 3 つの **ZooKeeper サーバー**が一覧表示されます。
 4. リストの **ZooKeeper サーバー** のいずれかをクリックします。 [概要] ウィンドウで **ホスト名**を確認します。 ホスト名は、 *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*のように表示されます。
 
 **SQLLine を使用するには**

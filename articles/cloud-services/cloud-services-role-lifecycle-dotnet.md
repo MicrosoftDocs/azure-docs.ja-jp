@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9924c7352300c70e949fb86a19dfaf68b9fe8b50
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET で Web または Worker ロールのライフサイクルをカスタマイズする
@@ -81,10 +82,5 @@ Web ロールの初期化とシャットダウン シーケンスを管理する
 
 ## <a name="next-steps"></a>次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

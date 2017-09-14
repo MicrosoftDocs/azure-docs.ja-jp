@@ -6,35 +6,30 @@ services: application-gateway
 author: georgewallace
 manager: timlt
 editor: tysonn
-ms.assetid: 866e9b5f-0222-4b6a-a95f-77bc3d31d17b
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2017
+ms.date: 07/31/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 5f1713365406764998de505ff62309bab9fa2567
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>Azure リソース マネージャーを使用した、Application Gateway の作成、起動、または削除
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。
-Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。
-
-サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、[Application Gateway の概要](application-gateway-introduction.md)に関する記事を参照してください。
 
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
@@ -50,214 +45,111 @@ Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Application Gateway の作成に必要な構成
 
 * **バックエンド サーバー プール:** バックエンド サーバーの IP アドレス、FQDN、または NIC の一覧。 使用する IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
-* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-* **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+* **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+* **リスナー:** リスナーには、フロントエンド ポート、プロトコル (HTTP または HTTPS で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 * **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
-
-## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
-
-Azure クラシックと Azure Resource Manager の使用方法の違いは、設定が必要なアプリケーション ゲートウェイと項目を作成する順番にあります。
-
-Resource Manager を使用すると、アプリケーション ゲートウェイを作成するすべての項目は個別に構成され、その後結合されてアプリケーション ゲートウェイのリソースが作成されます。
-
-アプリケーション ゲートウェイを作成するために必要な手順を次に示します。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成
 
 Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、 [Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
 
-### <a name="step-1"></a>手順 1
+1. 資格情報を入力して Azure にログインします。
 
-Azure へのログイン
+  ```powershell
+  Login-AzureRmAccount
+  ```
 
-```powershell
-Login-AzureRmAccount
-```
+2. アカウントのサブスクリプションを確認します。
 
-資格情報を使用して認証を行うように求めるメッセージが表示されます。
+  ```powershell
+  Get-AzureRmSubscription
+  ```
 
-### <a name="step-2"></a>手順 2.
+3. 使用する Azure サブスクリプションを選択します。
 
-アカウントのサブスクリプションを確認します。
+  ```powershell
+  Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+  ```
 
-```powershell
-Get-AzureRmSubscription
-```
+4. リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-### <a name="step-3"></a>手順 3.
-
-使用する Azure サブスクリプションを選択します。
-
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
-```
-
-### <a name="step-4"></a>手順 4.
-
-リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
-
-```powershell
-New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
-```
+  ```powershell
+  New-AzureRmResourceGroup -Name ContosoRG -Location "West US"
+  ```
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 この場所は、そのリソース グループ内のリソースの既定の保存先として使用されます。 アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
-上記の例では、**appgw-RG** という名前のリソース グループと **West US** という名前の場所を作成しました。
+上記の例では、**ContosoRG** という名前のリソース グループと **East US** という名前の場所を作成しました。
 
 > [!NOTE]
 > アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。 詳細については、 [カスタム プローブと正常性監視](application-gateway-probe-overview.md) に関するページを参照してください。
 
-## <a name="create-a-virtual-network-and-a-subnet"></a>仮想ネットワークとサブネットの作成
-
-次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。 この例では、アプリケーション ゲートウェイ用の VNET を作成します。 アプリケーション ゲートウェイには独自のサブネットが必要です。そのため、アプリケーション ゲートウェイ用に作成するサブネットは、VNET のアドレス空間よりも小さくします。 サブネットを小さくすることで、VNET を他のリソースのために活用できます。一例としては、同じ VNET 内で Web サーバーを構成できます。
-
-### <a name="step-1"></a>手順 1
-
-アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。 この手順ではアプリケーション ゲートウェイのサブネット構成オブジェクトを作成します。これは次のサンプル コードで使用します。
-
-```powershell
-$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
-```
-
-### <a name="step-2"></a>手順 2.
-
-サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ **appgw-rg** に、**appgwvnet** という名前の仮想ネットワークを作成します。 この手順では、アプリケーション ゲートウェイを配置する 1 つのサブネットが含まれた VNET の構成を完了します。
-
-```powershell
-$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-```
-
-### <a name="step-3"></a>手順 3.
-
-次の手順のためにサブネット変数を割り当てます。この変数は、後の手順で `New-AzureRMApplicationGateway` コマンドレットに渡されます。
-
-```powershell
-$subnet=$vnet.Subnets[0]
-```
-
-## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-
-米国西部リージョンのリソース グループ **appgw-rg** に、パブリック IP リソース **publicIP01** を作成します。 Application Gateway では、パブリック IP アドレス、内部 IP アドレス、またはその両方を、負荷分散の要求の受信に使用できます。  この例で使用するのはパブリック IP アドレスだけです。 次の例でのパブリック IP アドレスの作成では、DNS 名の構成を行いません。  Application Gateway では、パブリック IP アドレスのカスタム DNS 名はサポートされていません。  パブリック エンドポイントにカスタム名が必要な場合は、CNAME レコードを作成し、パブリック IP アドレス用に自動生成される DNS 名を指定する必要があります。
-
-```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
-```
-
-> [!NOTE]
-> サービスが開始すると、Application Gateway に IP アドレスが割り当てられます。
 
 ## <a name="create-the-application-gateway-configuration-objects"></a>アプリケーション ゲートウェイの構成オブジェクトの作成
 
 Application Gateway を作成するには、すべての構成項目を設定する必要があります。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
-### <a name="step-1"></a>手順 1
-
-**gatewayIP01** という名前のアプリケーション ゲートウェイの IP 構成を作成します。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
-
 ```powershell
+# Create a subnet and assign the address space of 10.0.0.0/24
+$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
+
+# Create a virtual network with the address space of 10.0.0.0/16 and add the subnet
+$vnet = New-AzureRmVirtualNetwork -Name ContosoVNET -ResourceGroupName ContosoRG -Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+# Retrieve the newly created subnet
+$subnet=$vnet.Subnets[0]
+
+# Create a public IP address that is used to connect to the application gateway. Application Gateway does not support custom DNS names on public IP addresses.  If a custom name is required for the public endpoint, a CNAME record should be created to point to the automatically generated DNS name for the public IP address.
+$publicip = New-AzureRmPublicIpAddress -ResourceGroupName ContosoRG -name publicIP01 -location "East US" -AllocationMethod Dynamic
+
+# Create a gateway IP configuration. The gateway picks up an IP addressfrom the configured subnet and routes network traffic to the IP addresses in the backend IP pool. Keep in mind that each instance takes one IP address.
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
-```
 
-### <a name="step-2"></a>手順 2.
-
-**pool01** という名前のバックエンド IP アドレス プールを構成します。このとき、**pool01** 用の IP アドレスを使用します。 これらの IP アドレスは、アプリケーション ゲートウェイによって保護される Web アプリケーションをホストしているリソースの IP アドレスです。 これらのバックエンド プール メンバーはすべて、基本のプローブかカスタム プローブで正常性を検証されます。  そして、アプリケーション ゲートウェイに要求が届いたときに、これらのメンバーにトラフィックがルーティングされます。 アプリケーション ゲートウェイ内では、複数の規則を使ってバックエンド プールを使用できます。これは、1 つのバックエンド プールを、同じホスト上に存在する複数の Web アプリケーションのために使用できることを意味します。
-
-```powershell
+# Configure a backend pool with the addresses of your web servers. These backend pool members are all validated to be healthy by probes, whether they are basic probes or custom probes.  Traffic is then routed to them when requests come into the application gateway. Backend pools can be used by multiple rules within the application gateway, which means one backend pool could be used for multiple web applications that reside on the same host.
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221, 134.170.185.50
-```
 
-この例では、URL パスに基づいてネットワーク トラフィックをルーティングするためのバックエンド プールが 2 つあります。 1 つのプールは、URL パス "/video" からトラフィックを受信し、もう 1 つのプールはパス "/image" からトラフィックを受信します。 独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
+# Configure backend http settings to determine the protocol and port that is used when sending traffic to the backend servers. Cookie-based sessions are also determined by the backend HTTP settings.  If enabled, cookie-based session affinity sends traffic to the same backend as previous requests for each packet.
+$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
 
-### <a name="step-3"></a>手順 3.
-
-バックエンド プール内の負荷を分散したネットワーク トラフィックに対して、アプリケーション ゲートウェイの設定 **poolsetting01** を構成します。 各バックエンド プールは、独自のバックエンド プール設定を持つことができます。  バックエンド HTTP 設定は、適切なバックエンド プール メンバーにトラフィックをルーティングするための規則で使用されます。 バックエンド HTTP 設定では、バックエンド プール メンバーにトラフィックを送信する際に使用されるプロトコルとポートを決定します。 Cookie ベースのセッションを使用するかどうかも、この設定で決定します。  有効にした場合、Cookie ベースのセッション アフィニティは、各パケットに対する以前の要求と同じバックエンドにトラフィックを送信します。
-
-```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
-```
-
-### <a name="step-4"></a>手順 4.
-
-Application Gateway のフロント エンド ポートを構成します。 フロントエンド ポート構成オブジェクトはリスナーで使用されます。これを使用して、アプリケーション ゲートウェイのリスナーがトラフィックをリッスンするポートを定義します。
-
-```powershell
+# Configure a frontend port that is used to connect to the application gateway through the public IP address
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
-```
 
-### <a name="step-5"></a>手順 5.
-
-パブリック IP エンドポイントでフロント エンド IP を構成します。 フロントエンド IP 構成オブジェクトはリスナーで使用されます。これを使用して、外部に接続する IP アドレスとリスナーを関連付けます。
-
-```powershell
+# Configure the frontend IP configuration with the public IP address created earlier.
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
-```
 
-### <a name="step-6"></a>手順 6.
-
-リスナーを構成します。 この手順では、着信ネットワーク トラフィックを受信するために使用するポートとパブリック IP アドレスについて、リスナーを構成します。 次の例では、先ほど構成したフロントエンド IP 構成、フロントエンド ポート構成、プロトコル (http または https) を使用して、リスナーを構成します。 この例のリスナーは、先ほど作成したパブリック IP アドレスを使ってポート 80 で HTTP トラフィックをリッスンします。
-
-```powershell
+# Configure the listener.  The listener is a combination of the front end IP configuration, protocol, and port and is used to receive incoming network traffic. 
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
-```
 
-### <a name="step-7"></a>手順 7.
+# Configure a basic rule that is used to route traffic to the backend servers. The backend pool settings, listener, and backend pool created in the previous steps make up the rule. Based on the criteria defined traffic is routed to the appropriate backend.
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-ロード バランサーの動作を構成する、**rule01** という名前のロード バランサーのルーティング規則を作成します。 この規則には、これまでの手順で構成したバックエンド プール設定、リスナー、バックエンド プールを使用します。 定義した基準に基づいて、トラフィックが適切なバックエンドにルーティングされます。
-
-```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting01 -HttpListener $listener -BackendAddressPool $pool
-```
-
-### <a name="step-8"></a>手順 8.
-
-Application Gateway のインスタンス数とサイズを構成します。
-
-```powershell
+# Configure the SKU for the application gateway, this determines the size and whether or not WAF is used.
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+
+# Create the application gateway
+$appgw = New-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-> [!NOTE]
-> **InstanceCount** の既定値は 2、最大値は 10 です。 **GatewaySize** の既定値は Medium です。 **Standard_Small**、**Standard_Medium**、**Standard_Large** のいずれかを選択できます。
-
-## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
-
-前の手順の構成項目をすべて使用して、アプリケーション ゲートウェイを作成します。 この例では、アプリケーション ゲートウェイは **appgwtest** という名前です。
+完了したら、アプリケーション ゲートウェイに接続されているパブリック IP リソースから、アプリケーション ゲートウェイの DNS と VIP の詳細を取得します。
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
-```
-
-アプリケーション ゲートウェイに接続されているパブリック IP リソースから、アプリケーション ゲートウェイの DNS と VIP の詳細を取得します。
-
-```powershell
-Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
+Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName ContosoRG
 ```
 
 ## <a name="delete-the-application-gateway"></a>Application Gateway の削除
 
-Application Gateway を削除するには、次の手順を実行します。
-
-### <a name="step-1"></a>手順 1
-
-アプリケーション ゲートウェイ オブジェクトを取得し、変数 `$getgw` に関連付けます。
+次の例では、アプリケーション ゲートウェイを削除します。
 
 ```powershell
-$getgw = Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
-```
+# Retrieve the application gateway
+$gw = Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG
 
-### <a name="step-2"></a>手順 2.
+# Stops the application gateway
+Stop-AzureRmApplicationGateway -ApplicationGateway $gw
 
-`Stop-AzureRmApplicationGateway` を使用してアプリケーション ゲートウェイを停止します。
-
-```powershell
-Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
-```
-
-アプリケーション ゲートウェイが停止状態になったら、`Remove-AzureRmApplicationGateway` コマンドレットを使用してサービスを削除します。
-
-```powershell
-Remove-AzureRmApplicationGateway -Name $appgwtest -ResourceGroupName appgw-rg -Force
+# Once the application gateway is in a stopped state, use the `Remove-AzureRmApplicationGateway` cmdlet to remove the service.
+Remove-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG -Force
 ```
 
 > [!NOTE]
@@ -266,22 +158,25 @@ Remove-AzureRmApplicationGateway -Name $appgwtest -ResourceGroupName appgw-rg -F
 サービスが削除されていることを確認するには、`Get-AzureRmApplicationGateway` コマンドレットを使用します。 この手順は必須ではありません。
 
 ```powershell
-Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG
 ```
 
 ## <a name="get-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名の取得
 
-ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実に見つけられるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照できます。 次に、[Azure でのカスタム ドメイン名を構成します](../cloud-services/cloud-services-custom-domain-name-portal.md)。 動的に生成された DNS 名を探すには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して、2 つの Web アプリケーションがこの DNS 名を指すように CNAME レコードを作成する必要があります。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
+ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実に見つけられるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照できます。 それには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 これを行うには、Azure DNS またはその他の DNS プロバイダーを使用して、[パブリック IP アドレス](../dns/dns-custom-domain.md#public-ip-address)を指す CNAME レコードを作成します。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
+
+> [!NOTE]
+> サービスが開始すると、Application Gateway に IP アドレスが割り当てられます。
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
+Get-AzureRmPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
 ```
 
 ```
 Name                     : publicIP01
-ResourceGroupName        : appgw-RG
+ResourceGroupName        : ContosoRG
 Location                 : westus
-Id                       : /subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/publicIPAddresses/publicIP01
+Id                       : /subscriptions/<subscription_id>/resourceGroups/ContosoRG/providers/Microsoft.Network/publicIPAddresses/publicIP01
 Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
 ResourceGuid             : 00000000-0000-0000-0000-000000000000
 ProvisioningState        : Succeeded
@@ -291,7 +186,7 @@ IpAddress                : xx.xx.xxx.xx
 PublicIpAddressVersion   : IPv4
 IdleTimeoutInMinutes     : 4
 IpConfiguration          : {
-                                "Id": "/subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIP
+                                "Id": "/subscriptions/<subscription_id>/resourceGroups/ContosoRG/providers/Microsoft.Network/applicationGateways/ContosoAppGateway/frontendIP
                             Configurations/frontend1"
                             }
 DnsSettings              : {
@@ -304,7 +199,7 @@ DnsSettings              : {
 この記事で作成したリソースをすべて削除するには、次の手順を実行します。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgw-RG
+Remove-AzureRmResourceGroup -Name ContosoRG
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -317,5 +212,4 @@ SSL オフロードを構成する場合は、[SSL オフロード用のアプ�
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
 

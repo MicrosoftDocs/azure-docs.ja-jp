@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f59028a2f909914222236f3b3575afd0949b4277
 ms.openlocfilehash: c89e206462856d25a81729e7028065ac1cd13ef3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
 
 ---
@@ -32,7 +33,7 @@ Azure AD 内のオブジェクトは、クラウド (Azure AD) とオンプレ�
 オンプレミスの AD にも存在するユーザーを Azure AD で管理していて、後になって Connect が必要になった場合、いくつか追加の懸念事項を考慮する必要があります。
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD の既存のユーザーとの同期
-Azure AD Connect をインストールして同期を開始すると、(Azure AD の) Azure AD 同期サービスによってすべての新しいオブジェクトがチェックされ、一致する既存のオブジェクトが検索されます。 このプロセスでは、**userPrincipalName**、**proxyAddresses**、**sourceAnchor**/**immutableID** の&3; つの属性が使用されます。 **userPrincipalName** と **proxyAddresses** の一致は、**あいまい一致**と呼ばれます。 **sourceAnchor** の一致は、**完全一致**と呼ばれます。 **proxyAddresses** 属性では、**SMTP:** 付きの値 (つまり、プライマリ電子メール アドレス) のみが評価に使用されます。
+Azure AD Connect をインストールして同期を開始すると、(Azure AD の) Azure AD 同期サービスによってすべての新しいオブジェクトがチェックされ、一致する既存のオブジェクトが検索されます。 このプロセスでは、**userPrincipalName**、**proxyAddresses**、**sourceAnchor**/**immutableID** の 3 つの属性が使用されます。 **userPrincipalName** と **proxyAddresses** の一致は、**あいまい一致**と呼ばれます。 **sourceAnchor** の一致は、**完全一致**と呼ばれます。 **proxyAddresses** 属性では、**SMTP:** 付きの値 (つまり、プライマリ電子メール アドレス) のみが評価に使用されます。
 
 一致は、Connect で生成された新しいオブジェクトについてのみ評価されます。 これらの属性のいずれかに一致するように既存のオブジェクトを変更すると、エラーが発生します。
 

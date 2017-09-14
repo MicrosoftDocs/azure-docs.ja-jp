@@ -1,5 +1,5 @@
 ---
-title: "Java HBase アプリケーション - Azure HDInsight | Microsoft Docs"
+title: "Java HBase クライアント - Azure HDInsight | Microsoft Docs"
 description: "Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight での HBase にデプロイする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 08/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: c9025cc569ceddfb8ecba370ffcb08c3aa5324dc
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: d6ef6c988533f27338a61a587b3ce5174d8fa806
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
@@ -29,15 +28,18 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 このドキュメントの手順では、[Maven](http://maven.apache.org/) を使用して、プロジェクトを作成およびビルドします。 Maven は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。
 
+> [!NOTE]
+> このドキュメントの手順のテストは、HDInsight 3.6 で行われたものが最新です。
+
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="requirements"></a>必要条件
 
 * [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 以降
 
     > [!NOTE]
-    > HDInsight 3.5 では、Java 8 が必要です。 以前のバージョンの HDInsight では、Java 7 が必要です。
+    > HDInsight 3.5 以降では Java 8 が必要です。 以前のバージョンの HDInsight では、Java 7 が必要です。
 
 * [Maven](http://maven.apache.org/)
 
@@ -48,13 +50,18 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
-1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します(例: `cd code/hdinsight`)。
+1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します(例: `cd code\hbase`)。
 
 2. Maven でインストールされた **mvn** コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
+
+    > [!NOTE]
+    > PowerShell を使用している場合は、`-D` パラメーターを二重引用符で囲む必要があります。
+    >
+    > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     このコマンドにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
 
@@ -88,7 +95,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
    | HDInsight クラスターのバージョン | 使用する HBase のバージョン |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
-   | 3.3、3.4、および 3.5 |1.1.2 |
+   | 3.3、3.4、3.5、3.6 |1.1.2 |
 
     HDInsight のバージョンとコンポーネントの詳細については、「 [HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
 
@@ -154,7 +161,9 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 6. 次のコマンドを使用して、HBase クラスターから `conf` ディレクトリに HBase の構成をコピーします。 `USERNAME` を SSH ログインの名前に置き換えます。 `CLUSTERNAME` には、HDInsight クラスター名を指定します。
 
-        scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+    ```bash
+    scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+    ```
 
    `ssh` および `scp` の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
@@ -375,7 +384,9 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 2. HBase クラスターに接続するには、次のコマンドを使用します。
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
     `USERNAME` を SSH ログインの名前に置き換えます。 `CLUSTERNAME` には、HDInsight クラスター名を指定します。
 
@@ -401,6 +412,10 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
         Rae Schroeder - rae@contoso.com - ID: 4
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
+
+5. テーブルを削除するには、次のコマンドを使用します。
+
+    
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>JAR をアップロードしてジョブを実行する (PowerShell)
 
@@ -459,7 +474,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     $creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
 
     # The JAR
-    $jarFile = "wasbs:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
+    $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
     # The job definition
     $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -667,7 +682,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 __`ssh` セッションから__:
 
-`hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
+`yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
 
 __Azure PowerShell から__:
 

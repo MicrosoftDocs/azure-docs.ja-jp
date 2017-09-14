@@ -13,21 +13,25 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 06/26/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 8cf37f85236154183590dc07808222125b459acd
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 86795ba6eab3505a3d539e4fc4e032bdeecc2e78
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
+
+## <a name="top-issues"></a>代表的な問題
+[!INCLUDE [support-disclaimer](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
+
+VM デプロイに関するその他の問題や質問については、「[Troubleshoot deploying Windows virtual machine issues in Azure](troubleshoot-deploy-vm.md) (Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング)」を参照してください。
 
 ## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
 トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
@@ -60,7 +64,7 @@ ms.lasthandoff: 03/31/2017
 
 **解決策**
 
-これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。

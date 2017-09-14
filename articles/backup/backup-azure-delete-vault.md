@@ -1,5 +1,5 @@
 ---
-title: " Azure のバックアップ コンテナーを削除する | Microsoft Docs "
+title: " Azure の Recovery Services コンテナーを削除する | Microsoft Docs "
 description: "Azure Backup および Recovery Services コンテナーを削除する方法について説明します。 バックアップ コンテナーは、Azure クラウド コンテナーまたは Azure 復旧コンテナーと呼ばれる場合があります。 クラシック ポータルまたは Azure Portal でバックアップ コンテナーを削除できないときに、問題のトラブルシューティングを行います。"
 services: service-name
 documentationcenter: dev-center-name
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/14/2017
+ms.date: 08/11/2017
 ms.author: markgal;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 28f8ed91cd2305fdad5105428e50d1d9b3370dd9
-ms.lasthandoff: 03/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
-# <a name="delete-an-azure-backup-vault"></a>Azure Backup コンテナーを削除する
+# <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 Azure Backup サービスには、バックアップ コンテナーと Recovery Services コンテナーの 2 種類のコンテナーがあります。 最初にあったのは、バックアップ コンテナーです。 次に、拡張 Resource Manager デプロイメントをサポートするために、Recovery Services コンテナーが加わりました。 拡張された機能とコンテナーに保存する必要がある情報の依存関係のために、バックアップ コンテナーまたは Recovery Services コンテナーの削除は混乱を招く可能性があります。 この記事では、クラシック ポータルと Azure Portal でコンテナーを削除する方法について説明します。  
 
 | **デプロイの種類** | **ポータル** | **コンテナー名** |
@@ -32,6 +32,11 @@ Azure Backup サービスには、バックアップ コンテナーと Recovery
 > [!NOTE]
 > Resource Manager モデルでデプロイされたソリューションをバックアップ コンテナーで保護することはできません。 ただし、Recovery Services コンテナーを使用して、クラシック デプロイによるサーバーと VM を保護することはできます。  
 >
+
+> [!IMPORTANT]
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降、PowerShell を使用してバックアップ コンテナーを作成することはできなくなります。 <br/> **2017 年 11 月 1 日以降**:
+>- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >
 
 この記事で、コンテナーという言葉は、バックアップ コンテナーまたは Recovery Services コンテナーの一般的な形式を意味します。 コンテナーの種類を区別する必要がある場合に、バックアップ コンテナーまたは Recovery Services コンテナーという正式な名称を使用します。
@@ -80,7 +85,7 @@ Azure Backup サービスには、バックアップ コンテナーと Recovery
     ![[バックアップ データの削除]](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
     必要に応じて、データを削除する理由を指定し、コメントを追加できます。 **[バックアップの停止]**をクリックした後、削除ジョブが完了するまで待機してから、コンテナーを削除します。 ジョブの完了を確認するには、Azure メッセージ ![バックアップ データの削除](./media/backup-azure-delete-vault/messages.png) <br/>
-   ジョブが完了すると、バックアップ プロセスが停止されたことと、そのアイテムのバックアップ データが削除されたことを示すメッセージが表示されます。
+    ジョブが完了すると、バックアップ プロセスが停止されたことと、そのアイテムのバックアップ データが削除されたことを示すメッセージが表示されます。
 
     c. 一覧のアイテムを削除した後、**[バックアップ アイテム]** メニューの **[更新]** をクリックして、コンテナー内の残りのアイテムを確認します。
 

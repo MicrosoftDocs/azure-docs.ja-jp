@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -152,9 +154,4 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler
 [13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

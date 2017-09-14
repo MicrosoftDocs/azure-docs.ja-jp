@@ -1,10 +1,10 @@
 ---
 title: "Azure Site Recovery でフェールオーバーと復旧用の復旧計画を作成する | Microsoft Docs"
-description: "Azure Site Recovery で VM と物理サーバーをフェールオーバーおよび復旧するための復旧計画を作成し、カスタマイズする方法について説明します"
+description: "Azure Site Recovery で復旧計画を作成してカスタマイズし、VM と物理サーバーをフェールオーバーおよび復旧する方法について説明します"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/14/2017
+ms.date: 07/23/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 9ab51cb8e11df43ba2157b11e25a1f29b19e4da9
-ms.openlocfilehash: e36f19e9c429c0e4b42e96b28b1ba995bd1bf167
-ms.lasthandoff: 02/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 1b0d64cd592c4738311797b826e490639340f92a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="create-recovery-plans"></a>復旧計画の作成
@@ -28,11 +28,11 @@ ms.lasthandoff: 02/15/2017
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
- 復旧計画では、次のことを行います。
+ 復旧計画を作成して、次のことを行います。
 
 * 一緒にフェールオーバーし、一緒に起動するマシンのグループを定義します。
 * マシンを復旧計画グループにまとめることにより、マシン間の依存関係をモデル化します。 たとえば、特定のアプリケーションをフェールオーバーおよび起動するには、そのアプリケーションのすべての VM を同じ復旧計画グループにまとめます。
-* フェールオーバーします。 復旧計画で、テスト フェールオーバー、計画されたフェールオーバー、または計画されていないフェールオーバーを実行できます。
+* フェールオーバーを実行します。 復旧計画で、テスト フェールオーバー、計画されたフェールオーバー、または計画されていないフェールオーバーを実行できます。
 
 
 ## <a name="create-a-recovery-plan"></a>復旧計画の作成
@@ -44,13 +44,14 @@ ms.lasthandoff: 02/15/2017
     - VMM から Azure への場合は、**[ソースの種類]** > **[VMM]** の順に選択します。  ソース VMM サーバーと、ターゲットとしての **Azure** を選択します。
     - Hyper-V レプリケーションから Azure (VMM なし) への場合は、**[ソースの種類]** > **[Hyper-V サイト]** の順に選択します。 そのサイトをソースとして選択し、**Azure** をターゲットとして選択します。
     - VMware VM またはオンプレミスの物理サーバーから Azure への場合は、構成サーバーをソースとして選択し、**Azure** をターゲットとして選択します。
+    - Azure 間の復旧計画の場合は、ソースとして Azure リージョンを選択し、ターゲットとしてセカンダリ Azure リージョンを選択します。 セカンダリ Azure リージョンは、仮想マシンが保護されているリージョンのみです。
 2. **[仮想マシンの選択]** で、復旧計画の既定のグループ (グループ 1) に追加する必要のある仮想マシン (またはレプリケーション グループ) を選択します。
 
 ## <a name="customize-and-extend-recovery-plans"></a>復旧計画のカスタマイズと拡張
 
 復旧計画は、次のようにカスタマイズおよび拡張することができます。
 
-- **新しいグループを追加する** — 復旧計画グループ (最大&7; つ) を既定のグループに追加し、これらの復旧計画グループにマシンまたはレプリケーション グループをさらに追加します。 グループには、追加順を示す番号が割り当てられます。 仮想マシンまたはレプリケーション グループは、1 つの復旧計画グループのみに含めることができます。
+- **新しいグループを追加する** — 復旧計画グループ (最大 7 つ) を既定のグループに追加し、これらの復旧計画グループにマシンまたはレプリケーション グループをさらに追加します。 グループには、追加順を示す番号が割り当てられます。 仮想マシンまたはレプリケーション グループは、1 つの復旧計画グループのみに含めることができます。
 - **手動アクションを追加する**— 復旧計画グループの前後に実行する手動アクションを追加できます。 復旧計画を実行すると、手動アクションを挿入した位置で停止します。 ダイアログ ボックスで、手動アクションが完了したことを指定するように求められます。
 - **スクリプトを追加する** — 復旧計画グループの前後に実行されるスクリプトを追加できます。 スクリプトを追加すると、グループに対して新しい一連のアクションが追加されます。 たとえば、グループ 1 の前処理ステップ セットが "グループ 1: 前処理ステップ" という名前で作成されます。 すべての前処理ステップはこのセット内に一覧表示されます。 VMM サーバーがデプロイされている場合は、プライマリ サイトのみにスクリプトを追加できます。
 - **Azure Runbook を追加する** — Azure Runbook で復旧計画を拡張することができます。 たとえば、タスクを自動化したり、シングル ステップ復旧を作成したりします。 [詳細情報](site-recovery-runbook-automation.md)。
@@ -71,12 +72,12 @@ ms.lasthandoff: 02/15/2017
 デプロイで VMM を使用している場合は、次のようになります。
 
 * 復旧計画のスクリプトは VMM サービス アカウントのコンテキストで実行されます。 このアカウントに、スクリプトが配置されているリモート共有に対する読み取りアクセス許可が付与されていることを確認してください。 VMM サービス アカウントの権限レベルで実行できるかどうか、スクリプトをテストします。
-* VMM コマンドレットは、Windows PowerShell モジュール内で配布されます。 モジュールは、VMM コンソールと一緒にインストールされます。 スクリプトで次のコマンドを使用して、スクリプトに読み込むことができます。 
+* VMM コマンドレットは、Windows PowerShell モジュール内で配布されます。 モジュールは、VMM コンソールと一緒にインストールされます。 スクリプトで次のコマンドを使用して、スクリプトに読み込むことができます。
    - Import-Module -Name virtualmachinemanager。 [詳細情報](https://technet.microsoft.com/library/hh875013.aspx)。
-* VMM デプロイに&1; つ以上のライブラリ サーバーが存在することを確認します。 既定では、VMM サーバーのライブラリ共有パスは、VMM サーバーにローカルに配置され、MSCVMMLibrary というフォルダー名を持ちます。
+* VMM デプロイに 1 つ以上のライブラリ サーバーが存在することを確認します。 既定では、VMM サーバーのライブラリ共有パスは、VMM サーバーにローカルに配置され、MSCVMMLibrary というフォルダー名を持ちます。
     * ライブラリ共有パスがリモートである (または、ローカルであるが MSCVMMLibrary と共有されていない) 場合は、次の手順を実行して共有パスを構成します (ここでは、例として \\libserver2.contoso.com\share\ が使用されています):
       * レジストリ エディターを開き、**HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration** に移動します。
-      * **ScriptLibraryPath** の値を \\libserver2.contoso.com\share\. に設定します。完全な FQDN を指定します。 共有場所にアクセス許可を設定します。
+      * **ScriptLibraryPath** の値を \\libserver2.contoso.com\share\. に設定します。 完全な FQDN を指定します。 共有場所にアクセス許可を設定します。
       * VMM サービス アカウントと同じアクセス許可を備えたユーザー アカウントを使用して、スクリプトをテストします。 このテストで、スタンドアロンのテスト済みスクリプトが復旧計画でも同じように実行できることを確認します。 VMM サーバーで、次の手順を実行して、実行ポリシーを bypass に設定します。
         * 昇格された特権を使用して、64 ビット Windows PowerShell コンソールを開きます。
         * 「 **Set-executionpolicy bypass**」と入力します。 [詳細情報](https://technet.microsoft.com/library/ee176961.aspx)。
@@ -93,7 +94,7 @@ ms.lasthandoff: 02/15/2017
 6. 復旧計画のフェールオーバーを実行して、スクリプトが想定どおりに動作することを確認します。
 
 
-### <a name="vmm-script"></a>VMM スクリプト
+### <a name="add-a-vmm-script"></a>VMM スクリプトの追加
 
 VMM ソース サイトが存在する場合、VMM サーバー上にスクリプトを作成し、復旧計画に含めることができます。
 

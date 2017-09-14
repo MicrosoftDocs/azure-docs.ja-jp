@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/06/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: cedc7d3c16dd8acac2700f461305d28a8ba6c802
-ms.openlocfilehash: 5ab121e536479ef5584b222456e127d5bb12e24d
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: d8e44a8aade60d21734477d60bccc2bd5194436e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C: コンシューマーのサインアップ時の電子メール検証を無効にする
@@ -27,7 +28,7 @@ ms.openlocfilehash: 5ab121e536479ef5584b222456e127d5bb12e24d
 
 既定では、サインアップ ポリシーで電子メールの検証が有効になっています。 この機能を無効にするには、次のようにします。
 
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. サインアップ用に何を構成したかに応じて、**[Sign-up policies (サインアップ ポリシー)]** または **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]** をクリックします。
 3. ポリシー (例: "B2C_1_SiUp") をクリックして開きます。 ブレードの上部にある **[編集]** をクリックします。
 4. **[Page UI Customization (ページ UI のカスタマイズ)]** をクリックします。
@@ -43,8 +44,3 @@ ms.openlocfilehash: 5ab121e536479ef5584b222456e127d5bb12e24d
 > 
 
 ご意見とご提案をお待ちしております。 このトピックに問題がある場合、またはこのコンテンツを改善するためのご提案がある場合には、ページの下部でフィードバックを送信できます。 機能についてのご要望は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) までお寄せください。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

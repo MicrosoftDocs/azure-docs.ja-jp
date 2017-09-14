@@ -3,8 +3,8 @@ title: "Azure での TFS を使用したクラウド サービスの継続的な
 description: "Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。 MSBuild コマンド ライン ステートメントおよび PowerShell スクリプトのコード サンプル。"
 services: cloud-services
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 4f3c93c6-5c82-4779-9d19-7404a01e82ca
 ms.service: cloud-services
@@ -12,19 +12,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
-
+ms.date: 06/12/2017
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>Azure での Cloud Services の継続的な配信
 この記事のプロセスでは、Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。 このプロセスを使用すると、自動的にパッケージを作成し、コードをチェックインするたびにそのパッケージを Azure にデプロイできます。 この記事で説明するパッケージのビルド プロセスは Visual Studio の**パッケージ** コマンドに相当し、発行手順は Visual Studio の**発行**コマンドに相当します。
 この記事では、MSBuild コマンド ライン ステートメントと Windows PowerShell スクリプトを使用してビルド サーバーを作成するためのいくつかの方法を紹介し、オプションで Visual Studio Team Foundation Server を構成する方法 (MSBuild コマンドと PowerShell スクリプトを使用するためのチーム ビルド定義) について説明します。 このプロセスは、ビルド環境や Azure ターゲット環境に合わせてカスタマイズできます。
 
-また、Visual Studio Team Services (Azure でホストされる TFS のバージョン) を使用すると、これらの操作をより簡単に実行できます。 詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信][Continuous Delivery to Azure by Using Visual Studio Team Services]」を参照してください。
+また、Visual Studio Team Services (Azure でホストされる TFS のバージョン) を使用すると、これらの操作をより簡単に実行できます。 
 
 作業を開始する前に、Visual Studio からアプリケーションを発行する必要があります。
 これにより、発行プロセスの自動化を行う際にすべてのリソースが利用可能で、初期化されることを確認できます。
@@ -84,7 +85,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 2. **[トリガー]** タブを選択し、パッケージのビルドを実行する条件を指定します。 たとえば、ソース管理でチェックインが実行されるたびにパッケージをビルドするには、 **[継続的インテグレーション]** を指定します。
 3. **[ソースの設定]** タブをクリックします。プロジェクト フォルダーが **[ソース管理フォルダー]** 列に表示されていて、状態が **[アクティブ]** になっていることを確認します。
 4. **[ビルドの既定値]** タブをクリックします。[ビルド コントローラー] で、ビルド サーバーの名前を確認します。  さらに、**[ビルド出力を次の格納フォルダーにコピーする]** オプションを選択し、目的の格納場所を指定します。
-5. **[プロセス]** タブを選択します。 [プロセス] タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの **[ビルド]** セクションの **[詳細設定]** セクションを展開します。
+5. **[プロセス]** タブを選択します。[プロセス] タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの **[ビルド]** セクションの **[詳細設定]** セクションを展開します。
 6. **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。 たとえば、パッケージをビルドしてパッケージ ファイルを \\\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\\myserver\\drops\\**」と入力します。
 
    ![MSBuild arguments][2]
@@ -115,10 +116,10 @@ Azure パッケージをビルドするために TFS を構成するには、次
 6. スクリプトのパラメーター セクションを見直します。 既定値を追加または変更します。 これらの値は、明示的なパラメーター値を渡すことでオーバーライドできます。
 7. 発行スクリプトの対象となる有効なクラウド サービスおよびストレージ アカウントがサブスクリプションに作成されていることを確認します。 ストレージ アカウント (BLOB ストレージ) はアップロード用に使用され、デプロイを作成するときにデプロイ パッケージと config ファイルを一時的に格納します。
 
-   * 新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、 [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。 クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
+   * 新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、[Azure Portal](https://portal.azure.com) を使用します。 クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
 
          New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-   * 新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、 [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。 ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。 クラウド サービスと同じ名前を使用してもかまいません。
+   * 新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、[Azure Portal](https://portal.azure.com) を使用します。 ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。 クラウド サービスと同じ名前を使用してもかまいません。
 
          New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 8. スクリプトは、Azure PowerShell から直接呼び出す以外に、ホスト ビルド自動化に関連付けてパッケージがビルドされるたびに実行されるように設定できます。
@@ -132,7 +133,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
        PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-   通常は、この後にテスト実行検証と VIP スワップが行われます。 VIP スワップは、 [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885) または Move-Deployment コマンドレットを使用して実行できます。
+   通常は、この後にテスト実行検証と VIP スワップが行われます。 VIP スワップは、[Azure Portal](https://portal.azure.com) または Move-Deployment コマンドレットを使用して実行できます。
 
    **サンプル シナリオ 2:** 専用テスト サービスの運用環境への継続的なデプロイ
 
@@ -152,11 +153,11 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
        Add-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MY\<THUMBPRINT>)
 
-   次に例を示します。
+   For example:
 
        Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-   または、 [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。
+   または、[Azure Portal](https://portal.azure.com) を使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。
 
    <!---
    Fixing broken links for Azure content migration from ACOM to DOCS. I'm unable to find a replacement links, so I'm commenting out this reference for now. The author can investigate in the future. "Read the following article to learn more: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx.
@@ -515,7 +516,6 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 ## <a name="next-steps"></a>次のステップ
 継続的な配信の使用時にリモート デバッグを有効にするには、「 [継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)」を参照してください。
 
-[Continuous Delivery to Azure by Using Visual Studio Team Services]: cloud-services-continuous-delivery-use-vso.md
 [Team Foundation Build Service]: https://msdn.microsoft.com/library/ee259687.aspx
 [.NET Framework 4]: https://www.microsoft.com/download/details.aspx?id=17851
 [.NET Framework 4.5]: https://www.microsoft.com/download/details.aspx?id=30653
@@ -530,9 +530,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
 [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
 [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブで Event Hubs のコンシューマー 
 keywords: "イベント ハブの制約, コンシューマー グループ"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 3724b9077b04c767d0b1679caffed2bc5d077113
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: ede3137de92e251f4ad020bc1ce3f041918242b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -83,11 +82,11 @@ FROM data
 
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-get-started.md)
+* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
 * [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

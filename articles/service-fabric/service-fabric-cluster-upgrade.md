@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 8/10/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 0b63228e5b09f5d22fc55818986a0a2eb1204278
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレード
@@ -32,7 +31,7 @@ ms.lasthandoff: 05/18/2017
 最新のシステムでは、アップグレード性を考慮した設計を行うことが、製品の長期的な成功を達成する鍵となります。 Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されます。 この記事では、何が自動的に管理され、何をお客様が構成できるかについて説明します。
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>クラスター上で動作するファブリック バージョンの制御
-クラスターは、新しいバージョンのファブリックがマイクロソフトからリリースされたときに自動アップグレードを適用するように設定できます。また、サポートされているファブリック バージョンから、クラスターで使用するバージョンを選択するように設定することもできます。
+Microsoft からのリリース時に自動ファブリック アップグレードを受信するようにクラスターを設定するか、有効にするクラスターのサポートされるファブリック バージョンを選択することもできます。
 
 そのためには、クラスターの作成時に (または後から稼働中のクラスターに対して) Resource Manager を使用するか、またはポータルで "upgradeMode" クラスター構成を設定します。 
 
@@ -166,7 +165,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 ### <a name="certificates"></a>証明書
 ポータルを使用すると、クラスターの新しい証明書の追加、または削除を簡単に行うことができます。 [詳細な手順については、こちらのドキュメント](service-fabric-cluster-security-update-certs-azure.md)
 
-![スクリーンショットは、Azure ポータルの証明書の拇印を示しています。][CertificateUpgrade]
+![スクリーンショットは、Azure Portal の証明書の拇印を示しています。][CertificateUpgrade]
 
 ### <a name="application-ports"></a>アプリケーション ポート
 アプリケーション ポートは、ノードの種類に関連付けられた Load Balancer リソースのプロパティを変更することで変更できます。 ポータルを使用することも、リソース マネージャーの PowerShell を直接使用することもできます。

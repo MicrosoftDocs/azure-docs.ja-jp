@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2017
+ms.date: 06/28/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 628df1df8f5de99a5c18d0df5b7ee41e2fb747df
-ms.openlocfilehash: c3ff370b105a1f9bdacd1bdb4b32d6209e150be2
-ms.lasthandoff: 12/08/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 5afbe575a8affc37b8f902c0988585a83921e3d2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
@@ -40,7 +40,7 @@ Azure で実行するクラスターまたは Windows で実行するスタン�
 ### <a name="node-to-node-certificate-security"></a>ノード間の証明書セキュリティ
 Service Fabric では、クラスターを作成するときにノード タイプの構成で指定した X.509 サーバー証明書を使用します。 これらの証明書の概要とその入手または作成方法はこの記事の最後に記載されています。
 
-証明書セキュリティは、Azure ポータル、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用してクラスターを作成する際に構成されます。 プライマリ証明書と、証明書のロールオーバーに使用されるオプションのセカンダリ証明書を指定できます。 指定するプライマリ証明書とセカンダリ証明書は、 [クライアントとノードの間のセキュリティ](#client-to-node-security)に指定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なります。
+証明書セキュリティは、Azure Portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用してクラスターを作成する際に構成されます。 プライマリ証明書と、証明書のロールオーバーに使用されるオプションのセカンダリ証明書を指定できます。 指定するプライマリ証明書とセカンダリ証明書は、 [クライアントとノードの間のセキュリティ](#client-to-node-security)に指定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なります。
 
 Azure のクラスターで証明書セキュリティを構成する方法については、 [Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md) に関する記事を参照してください。
 
@@ -57,7 +57,7 @@ Azure のクラスターで証明書セキュリティを構成する方法に�
 Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターには、[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx)を利用できます。
 
 ### <a name="client-to-node-certificate-security"></a>クライアントとノードの間の証明書セキュリティ
- クライアントとノードの間の証明書セキュリティを構成するには、Azure ポータル、Resource Manager テンプレート、またはスタンドアロン JSON テンプレートでクラスターを作成するときに、管理用クライアント証明書やユーザー クライアント証明書を指定します。  指定する管理用クライアント証明書とユーザー クライアント証明書は、 [ノード間のセキュリティ](#node-to-node-security)に指定するプライマリ証明書とセカンダリ証明書とは異なります。
+ クライアントとノードの間の証明書セキュリティを構成するには、Azure Portal、Resource Manager テンプレート、またはスタンドアロン JSON テンプレートでクラスターを作成するときに、管理用クライアント証明書やユーザー クライアント証明書を指定します。  指定する管理用クライアント証明書とユーザー クライアント証明書は、ベスト プラクティスとして[ノード間のセキュリティ](#node-to-node-security)に指定するプライマリ証明書とセカンダリ証明書とは異なります。 既定では、ノード間のセキュリティのクラスター証明書は許可されているクライアント管理証明書の一覧に追加されます。
 
 管理用証明書を使用してクラスターに接続するクライアントには、管理機能へのフル アクセス権があります。  読み取り専用ユーザー クライアント証明書を使用してクラスターに接続するクライアントには、管理機能に対する読み取りアクセス権しかありません。 つまり、これらの証明書は、この記事の中で後で説明するロールベースのアクセス制御 (RBAC) に使用されます。
 

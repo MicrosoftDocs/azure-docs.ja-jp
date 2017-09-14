@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d27376e81f5be3d4f473ef044a84a18ac451921f
-ms.lasthandoff: 03/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9336743b92130e37b1df2992aab806696f8276aa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加
@@ -77,7 +77,7 @@ Azure ノードをコンピューティング リソースとして追加する�
 Azure ノードのデプロイで問題が発生した場合は、「 [Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack (Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング)](http://technet.microsoft.com/library/jj159097.aspx)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* バースト ノードにコンピューティング集中型インスタンス サイズを使用する場合は、「[H シリーズとコンピューティング集中型 A シリーズの VM について](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の考慮事項を参照してください。
+* バースト ノードにコンピューティング集中型インスタンス サイズを使う場合は、「[ハイ パフォーマンス コンピューティング VM のサイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の考慮事項をご覧ください。
 * クラスターのワークロードに合わせて Azure コンピューティング リソースを自動的に拡大縮小する方法については、 [HPC Pack クラスターでの Azure コンピューティング リソースの自動的な拡大縮小](hpcpack-cluster-node-autogrowshrink.md)に関する記事をご覧ください。
 
 <!--Image references-->

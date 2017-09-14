@@ -13,37 +13,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/23/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
-ms.openlocfilehash: 90a0cfb7c7cd7d3364ff42559dd7fdc7b2951abf
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 530f3b5c9e90cb45ffb6e12d0d08a35f8d687471
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="create-an-office-data-connection-odc-file"></a>Office データ接続 (.odc) ファイルの作成
+# <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 
-この記事では、Excel 2016 バージョン番号 16.0.7369.2117 以前または Excel 2013 から Azure Analysis Services サーバーに接続するための .odc ファイルを作成する方法について説明します。 更新された [MSOLAP.7 プロバイダー](analysis-services-data-providers.md)も必要です。
+この記事では、Excel 2016 バージョン番号 16.0.7369.2117 以前または Excel 2013 から Azure Analysis Services サーバーに接続するための Office データ接続ファイルを作成する方法について説明します。 更新された [MSOLAP.7 プロバイダー](analysis-services-data-providers.md)も必要です。
 
 
-1. 以下に示すサンプルの .odc 接続ファイルをコピーしてテキスト エディターに貼り付けます。 
+1. 以下に示すサンプル接続ファイルをコピーしてテキスト エディターに貼り付けます。 
 
-2. **odc:ConnectionString** で、次のプロパティを変更します。
+2. `odc:ConnectionString` で、次のプロパティを変更します。
 
-    *   **Data Source=asazure://*region*.asazure.windows.net/*servername*;** で、*region* を Analysis Services サーバーのリージョンに変更し、*servername* をサーバーの名前に変更します。
+    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;` で、`<region>` を Analysis Services サーバーのリージョンに、`<servername>` をサーバーの名前に変更します。
 
-    *   **Initial Catalog=*database*;** で、*database* をデータベースの名前に変更します。
+    *   `Initial Catalog=<database>;` で、`<database>` をデータベースの名前に変更します。
 
-3. **&lt;odc:CommandText>*Model*&lt;/odc:CommandText>** で、*Model* をモデルまたはパースペクティブの名前に変更します。 
+3. `<odc:CommandText>Model</odc:CommandText>` で、`Model` をモデルまたはパースペクティブの名前に変更します。 
 
-4. 拡張子を **.odc** に設定して、C:\Users\\*username*\Documents\My Data Sources フォルダーにファイルを保存します。
+4. 拡張子を `.odc` に設定して、C:\Users\\*username*\Documents\My Data Sources フォルダーにファイルを保存します。
 
 5. ファイルを右クリックして、**[Excel で開く]** をクリックします。 または Excel の **[データ]** リボンで、**[既存の接続]** をクリックしてファイルを選択し、**[開く]** をクリックします。
 
 
 
-**サンプルの .odc 接続ファイル**
+**サンプル接続ファイル**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns="http://www.w3.org/TR/REC-html40">

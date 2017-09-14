@@ -16,33 +16,26 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0fbbf4aacd22f0458b82adcf4335890fbf5ec628
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 39cb2464eb593a29c4436afb5c14419b704ebff4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
-# <a name="linux-on-azure-endorsed-distributions"></a>Azure での動作保証済み Linux ディストリビューション
-> [!NOTE]
-> お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの [アンケート](https://aka.ms/linuxdocsurvey) にご回答ください。 いただいた回答は、今後のドキュメントの改善に活用させていただきます。
-> 
-> 
+# <a name="linux-on-distributions-endorsed-by-azure"></a>Azure で動作保証済みの Linux ディストリビューション
+パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft はさまざまな Linux コミュニティと連携し、動作保証済みディストリビューション リストを拡充しています。 それまでの間、Marketplace からご利用いただけないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」のガイドラインに従って、独自の Linux をいつでも使用できます。
 
-Azure ギャラリーまたは Marketplace にある Linux イメージは多くのパートナーから提供されており、Microsoft はさまざまな Linux コミュニティと協力して、動作保証済みディストリビューションの一覧をよりいっそう充実させようと努めています。 ギャラリーから利用できないディストリビューションの場合も、 [このページ](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)の指針に従うことにより、いつでも独自の Linux を展開することができます。
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
-
-## <a name="supported-distributions--versions"></a>サポートされているディストリビューションとバージョン
+## <a name="supported-distributions-and-versions"></a>サポートされているディストリビューションとバージョン
 次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。 詳細については、[Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/en-us/kb/2941892)に関するページを参照してください。
 
-Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。  LIS ドライバーは、ディストリビューションのカーネルに既定で組み込まれているか、以前の RHEL/CentOS ベースのディストリビューションの場合は [こちらで](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)個別にダウンロードする形で入手できます。  LIS ドライバーの詳細については、 [こちらの記事](create-upload-generic.md#linux-kernel-requirements) を参照してください。
+Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。  既定でディストリビューションのカーネルに組み込まれている LIS ドライバーもあります。 Red Hat Enterprise (RHEL)/CentOS に基づく古いディストリビューションは、[Linux Integration Services Version 4.1 for Hyper-V](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) で個別にダウンロードして入手できます。 LIS ドライバーの詳細については、「[Linux カーネルの要件](create-upload-generic.md#linux-kernel-requirements)」を参照してください。
 
-Azure Linux エージェントは、Azure ギャラリーのイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。  ソース コードは [GitHub](https://github.com/azure/walinuxagent)にあります。
+Azure Linux エージェントは、Azure Marketplace のイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。 ソース コードは [GitHub](https://github.com/azure/walinuxagent)にあります。
 
 | ディストリビューション | バージョン | ドライバー | エージェント |
 | --- | --- | --- | --- |
-| Rogue Wave Software (以前の OpenLogic) の CentOS |CentOS 6.3+、7.0+ |CentOS 6.3: [LIS のダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。 |パッケージ: [リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+、7.0+ |CentOS 6.3: [LIS のダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内 |パッケージ: [リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |カーネル内 |ソース コード: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+、8.2+ |カーネル内 |パッケージ: リポジトリ内の "waagent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -63,12 +56,12 @@ CoreOS Web サイトから入手:
 ### <a name="credativ"></a>Credativ
 [http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
-Credativ は、無償のソフトウェアを使用したプロフェッショナルなソリューションの開発および実装を専門とする、独立したコンサルティングおよびサービス企業です。 大手のオープン ソース スペシャリストとして、Credativ のサポートを利用している多くの IT 部門から国際的に認知されています。 Credativ は現在、マイクロソフトと協力して、Azure で実行するために特別に設計され、プラットフォーム経由で簡単に管理できる Debian 8 (Jessie) および 7 より前の Debian (Wheezy) に対応する Debian イメージを準備しています。 Credativ では、自社のオープン ソース サポート センターを通じて、Azure 用の Debian イメージの長期にわたる保守および更新もサポートします。
+Credativ は、無償のソフトウェアを使用したプロフェッショナルなソリューションの開発および実装を専門とする、独立したコンサルティングおよびサービス企業です。 大手のオープン ソース スペシャリストとして、Credativ のサポートを利用している多くの IT 部門から国際的に認知されています。 Credativ は現在、マイクロソフトと協力して、Debian 8 (Jessie) および 7 より前の Debian (Wheezy) に対応する Debian イメージを準備しています。 両方のイメージは、Azure で実行するために特別に設計され、プラットフォーム経由で簡単に管理できます。 Credativ では、自社のオープン ソース サポート センターを通じて、Azure 用の Debian イメージの長期にわたる保守および更新もサポートします。
 
 ### <a name="oracle"></a>Oracle
 [http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle の戦略は、パブリック クラウドとプライベート クラウドに対して広範なソリューションを用意し、顧客が Oracle のクラウドや他社のクラウドにおいて Oracle のソフトウェアを柔軟にデプロイできるようにすることです。  マイクロソフトと Oracle との提携により、お客様はマイクロソフトのパブリック クラウドおよびプライベート クラウドにおいて Oracle の保証とサポートの下で安心して Oracle のソフトウェアをデプロイできます。  Oracle のパブリックおよびプライベート クラウド ソリューションに対する取り組みと投資が変わることはありません。
+Oracle は、パブリック クラウドおよびプライベート クラウドに幅広いソリューション ポートフォリオを提供するという戦略を取っています。 この戦略により、顧客は、Oracle クラウドやその他のクラウドで Oracle ソフトウェアをデプロイするときに、その方法を複数の選択肢から選び、柔軟に対応することができます。 マイクロソフトと Oracle との提携により、お客様はマイクロソフトのパブリック クラウドおよびプライベート クラウドにおいて Oracle の保証とサポートの下で安心して Oracle のソフトウェアをデプロイできます。  Oracle のパブリックおよびプライベート クラウド ソリューションに対する取り組みと投資が変わることはありません。
 
 ### <a name="red-hat"></a>Red Hat
 [http://www.redhat.com/en/partners/strategic-alliance/microsoft](http://www.redhat.com/en/partners/strategic-alliance/microsoft)
@@ -83,8 +76,7 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 ### <a name="canonical"></a>Canonical
 [http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 
-Canonical のエンジニアリングおよびオープン コミュニティ体制は、消費者向け個人クラウド サービスも含めて、クライアント、サーバー、およびクラウド コンピューティングにおける Ubuntu の成功を支えています。 Canonical は、Ubuntu に関して、携帯電話、タブレット、テレビ、およびデスクトップで一貫したインターフェイスを備え、携帯電話からクラウドまで統一されたフリー プラットフォームにするというビジョンを持っているため、Ubuntu はパブリック クラウド プロバイダーから家電メーカーに至るまで多様な企業が最初に選択するディストリビューションとなり、個々の技術者のお気に入りとなっています。
+Canonical のエンジニアリングおよびオープン コミュニティ体制は、消費者向け個人クラウド サービスも含めて、クライアント、サーバー、およびクラウド コンピューティングにおける Ubuntu の成功を支えています。 Ubuntu における、携帯電話からクラウドまでの統一されたフリー プラットフォームという Canonical のビジョンにより、携帯電話、タブレット、テレビ、およびデスクトップで一貫したインターフェイス ファミリーが提供されます。 このビジョンにより、Ubuntu はパブリック クラウド プロバイダーから家電メーカーに至るまでの多様な企業の最初の選択肢となり、個々の技術者のお気に入りとなっています。
 
-世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC からサーバーや携帯機器まで、さまざまな Ubuntu ソリューションを市場に送り出しています。
-
+世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC やサーバー、携帯機器など、さまざまな Ubuntu ソリューションを市場に送り出しています。
 

@@ -3,8 +3,8 @@ title: "Data Lake Analytics Java SDK を使用してアプリケーションを�
 description: "Azure Data Lake Analytics Java SDK を使用してアプリケーションを開発する"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 99e1c8956968264fbea696b85ac084281d75f02a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-java-sdk"></a>チュートリアル: Java SDK で Azure Data Lake Analytics の使用を開始する
+# <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Java SDK で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除、ジョブの操作などの基本操作を行う方法について説明します。 Data Lake の詳細については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
@@ -31,7 +33,6 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 * Java Development Kit (JDK) 8 (Java バージョン 1.8 を使用)。
 * IntelliJ または別の適切な Java 開発環境。 この手順は省略可能ですが、実施することをお勧めします。 以下の手順では、IntelliJ を使用します。
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure サブスクリプションを有効にします** 。 [手順](data-lake-analytics-get-started-portal.md)を参照してください。
 * Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使用することもできます。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
@@ -350,9 +351,4 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 * U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 * 管理タスクについては、「 [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

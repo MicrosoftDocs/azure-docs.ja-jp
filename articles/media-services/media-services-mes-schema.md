@@ -2,7 +2,7 @@
 title: "Media Encoder Standard スキーマ | Microsoft Docs"
 description: "このトピックでは、Media Encoder Standard スキーマの概要を示します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 07/19/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: b35390c6eb912db966648bff4efb59cece2837b3
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: c9333e745c75f134e045ee6d15c3552449d8edc3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ
@@ -56,13 +55,21 @@ ms.lasthandoff: 05/16/2017
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |現在サポートされているのは 1 パス エンコードだけです。 |
-| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |IDR フレーム間 (既定の) 間隔を決定します。 |
+| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |IDR フレーム間の固定の間隔を秒単位で決定します。 これは GOP 期間とも呼ばれます。 エンコーダーがこの値を逸脱できるかどうかの制御については、(次の) **SceneChangeDetection** を参照してください。 |
 | **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs:boolean** |true に設定すると、エンコーダーはビデオ内でシーン変更の検出を試行し、IDR フレームを挿入します。 |
 | **Complexity**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:string** |エンコード速度とビデオ品質の間のトレードオフを制御します。 **Speed**、**Balanced**、**Quality** のいずれかの値を指定できます<br/><br/> 既定値: **Balanced** |
 | **SyncMode**<br/><br/> minOccurs="0" | |機能は今後のリリースで公開されます。 |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |出力ビデオ レイヤーのコレクション。 |
 
+### <a name="attributes"></a>属性
+| 名前 | 型 | 説明 |
+| --- | --- | --- |
+| **Condition** |**xs:string** | 入力に映像が含まれていない場合、モノクロのビデオ トラックを挿入するようエンコーダーに強制できます。これを実行するには、Condition="InsertBlackIfNoVideoBottomLayerOnly" (最も低いビットレートでのみビデオを挿入) または Condition="InsertBlackIfNoVideo" (すべてのビットレートでビデオを挿入) を使用します。 詳細については、 [こちらの](media-services-advanced-encoding-with-mes.md#no_video) トピックを参照してください。|
+
 ## <a name="H264Layers"></a> H264Layers
+
+既定では、音声のみで映像の入っていない入力をエンコーダーに送信すると、音声データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 その場合、H264Video の **InsertBlackIfNoVideo** 属性設定を使用することで、ビデオ トラックを出力に追加するようエンコーダーに強制できます。 詳細については、 [こちらの](media-services-advanced-encoding-with-mes.md#no_video) トピックを参照してください。
+              
 ### <a name="elements"></a>要素
 | 名前 | 型 | 説明 |
 | --- | --- | --- |

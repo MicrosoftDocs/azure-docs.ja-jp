@@ -10,16 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/21/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: de8ffb5ef81ac9ef4a9217f275f2c96973948eb1
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: d32980f05ad17a76793021d0a5355d597974a4e4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -34,7 +35,10 @@ ms.lasthandoff: 05/17/2017
 > * サブスクリプション内のすべてのイメージを一覧表示する
 > * イメージを削除する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -73,13 +77,13 @@ exit
 
 イメージを作成するには、VM の割り当てを解除する必要があります。 [az vm deallocate](/cli//azure/vm#deallocate) を使用して VM の割り当てを解除します。 
    
-```azurecli
+```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
 最後に、[az vm generalize](/cli//azure/vm#generalize) を使用して VM の状態を一般化済みと設定すると、Azure プラットフォームは、VM が一般化されたことを認識します。 イメージを作成できるのは、一般化された VM からのみです。
    
-```azurecli
+```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
 ```
 
@@ -87,7 +91,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 これで、[az image create](/cli//azure/image#create) を使用して VM のイメージを作成できるようになりました。 次の例では、*myVM* という名前の VM から *myImage* という名前のイメージを作成します。
    
-```azurecli
+```azurecli-interactive 
 az image create \
     --resource-group myResourceGroup \
     --name myImage \
@@ -98,7 +102,7 @@ az image create \
 
 イメージが用意できたので、[az vm create](/cli/azure/vm#create) を使用して、イメージから新しい VM を 1 つ以上作成できます。 次の例では、*myImage* という名前のイメージから *myVMfromImage* という名前の VM を作成します。
 
-```azurecli
+```azurecli-interactive 
 az vm create \
     --resource-group myResourceGroup \
     --name myVMfromImage \
@@ -113,14 +117,14 @@ az vm create \
 
 すべてのイメージを、名前によって表形式で一覧表示します。
 
-```azurecli
+```azurecli-interactive 
 az image list \
   --resource-group myResourceGroup
 ```
 
 イメージを削除します。 この例では、*myOldImage* という名前のイメージを *myResourceGroup* から削除します。
 
-```azurecli
+```azurecli-interactive 
 az image delete \
     --name myOldImage \
     --resource-group myResourceGroup

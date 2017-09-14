@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2015
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: cbdef43381deac957c0e48b7043273c43b032935
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 69ead621c179bf49f17ed3274be4b625fc587556
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
@@ -26,9 +25,12 @@ ms.lasthandoff: 04/07/2017
 
 アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。 [Application Insights][start] はパフォーマンスの問題や例外を通知し、問題の根本原因の検出と診断を支援します。
 
-Application Insights は、Java と ASP.NET の Web アプリケーションとサービス、WCF サービスの両方を監視できます。 それらは、オンプレミスで、仮想マシン上で、または Microsoft Azure Web サイトとしてホストできます。 
+Application Insights は、Java と ASP.NET の Web アプリケーションとサービス、WCF サービスの両方を監視できます。 それらは、オンプレミスで、仮想マシン上で、または Microsoft Azure Websites としてホストできます。 
 
 クライアント側で、Application Insights は、Web ページと、iOS、Android、Windows ストア アプリを含むさまざまなデバイスからテレメトリを取得できます。
+
+>[!Note]
+> Web アプリケーションでパフォーマンスが低下しているページを見つける新しいエクスペリエンスを作成しました。 アクセスできない場合は、[プレビュー ブレード](app-insights-previews.md)でプレビュー オプションを構成することで有効にしてください。 この新しいエクスペリエンスについて詳しくは、「[インタラクティブなパフォーマンス調査によりパフォーマンスのボトルネックを探して修正する](#Find-and-fix-performance-bottlenecks-with-an-interactive-Performance-investigation)」をご覧ください。
 
 ## <a name="setup"></a>パフォーマンス モニターの設定
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
@@ -52,11 +54,9 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 
 > [!NOTE]
 > **すべてのメトリックのチェック ボックスをオフにしてください** 。 メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
-> 
-> 
 
 ## <a name="metrics"></a>どのような意味がありますか? パフォーマンス タイルとレポート
-多様なパフォーマンス メトリックを取得できます。 まず、アプリケーション ブレードに既定で表示されるメトリックから始めます。
+パフォーマンスに関する各種メトリックを取得できます。 まず、アプリケーション ブレードに既定で表示されるメトリックから始めます。
 
 ### <a name="requests"></a>要求
 指定の期間に受け取った HTTP 要求の数です。 これを他のレポートにおける結果と比較して、負荷が変化するとアプリケーションの動作がどのように変わるかを確認します。
@@ -114,6 +114,37 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 * [Web テスト][availability]を設定して、Web サイトが停止した場合や、間違って応答したり、応答速度が低下したりした場合にアラートを送信するようにします。 
 * 要求の数を他のメトリックと比較し、障害や応答速度の低下が負荷と関連しているかどうかを確認します。
 * コードに[トレース ステートメント][diagnostic]を挿入し、そのステートメントを検索することにより、問題を特定しやすくします。
+* 稼働中の Web アプリを [Live Metrics Stream][livestream] で監視します。
+* .Net アプリケーションの状態を[スナップショット デバッガー][snapshot]でキャプチャします。
+
+## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-performance-investigation"></a>インタラクティブなパフォーマンス調査によりパフォーマンスのボトルネックを探して修正する
+
+新しい Application Insights のインタラクティブなパフォーマンス調査機能を使用して、Web アプリの全体的なパフォーマンスを低下させている領域を特定できます。 速度を低下させている具体的なページを簡単に特定し、[プロファイル ツール](app-insights-profiler.md)を使用してそれらのページ間に相関関係があるかどうかを確認できます。
+
+### <a name="create-a-list-of-slow-performing-pages"></a>パフォーマンスが低下しているページの一覧を作成する 
+
+パフォーマンスの問題を見つけるための最初の手順は、応答が遅いページの一覧を取得することです。 以下のスクリーンショットは、[パフォーマンス] ブレードを使用して問題が発生している可能性があるページの一覧を取得し、さらに調査する方法を示します。 このページから、アプリの応答時間が午後 6 時頃に低下しており、午後 10 時頃に再度低下していることがすぐにわかります。 また、顧客/詳細の取得操作の一部で、応答時間の中央値が 507.05 ミリ秒の操作が長時間実行されています。 
+
+![Application Insights のインタラクティブなパフォーマンス](./media/app-insights-web-monitor-performance/performance1.png)
+
+### <a name="drill-down-on-specific-pages"></a>特定のページにドリル ダウンする
+
+アプリのパフォーマンスについてスナップショットを作成したら、パフォーマンスが低下している具体的な操作に関する詳細を取得できます。 一覧の操作をクリックすると、以下に示すように詳細が表示されます。 グラフから、パフォーマンスが依存関係に基づいていたかどうかを確認できます。 また、応答時間の変動を経験したユーザーの数も確認できます。 
+
+![Application Insights の [操作] ブレード](./media/app-insights-web-monitor-performance/performance5.png)
+
+### <a name="drill-down-on-a-specific-time-period"></a>特定の期間にドリル ダウンする
+
+調査する時点を特定したら、さらにドリル ダウンしてパフォーマンスの低下を招いた可能性がある具体的な操作を確認できます。 具体的な時点をクリックすると、以下に示すようにページの詳細を確認できます。 以下の例では、指定した期間における操作の一覧が、サーバー応答コードと操作時間とともに表示されます。 また、TFS 作業項目を開くための URL があり、必要に応じて開発チームにこの情報を送信できます。
+
+![Application Insights のタイム スライス](./media/app-insights-web-monitor-performance/performance2.png)
+
+### <a name="drill-down-on-a-specific-operation"></a>特定の操作にドリル ダウンする
+
+調査する時点を特定したら、さらにドリル ダウンしてパフォーマンスの低下を招いた可能性がある具体的な操作を確認できます。 一覧から操作をクリックして、以下に示すように操作の詳細を確認します。 この例では、操作が失敗し、Application Insights にアプリケーションがスローした例外の詳細が表示されます。 ここでも、このブレードから TFS 作業項目を簡単に作成できます。
+
+![Application Insights の [操作] ブレード](./media/app-insights-web-monitor-performance/performance3.png)
+
 
 ## <a name="next"></a>次のステップ
 [Web テスト][availability] - 世界中から定期的に Web 要求をアプリケーションに送信します。
@@ -135,6 +166,9 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
+[livestream]: app-insights-live-stream.md
+[snapshot]: app-insights-snapshot-debugger.md
+
 
 
 

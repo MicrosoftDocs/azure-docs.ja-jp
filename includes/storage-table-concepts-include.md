@@ -1,28 +1,28 @@
-## <a name="what-is-the-table-service"></a>テーブル サービスとは
-Azure Table ストレージ サービスは、大量の構造化データを格納します。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。 一般的な使用法を次に示します。
+## <a name="what-is-table-storage"></a>Table Storage とは
+Azure Table Storage は、大量の構造化データを格納します。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。 Table Storage の一般的な用途には、次のようなものがあります。
 
 * Web スケール アプリケーションにサービスを提供できる数テラバイトの構造化データを格納する
 * 複雑な結合、外部キー、またはストアド プロシージャを必要とせず、高速アクセスのために非正規化できるデータセットを格納する
 * クラスター化インデックスを使用して高速なデータのクエリを実行する
 * OData プロトコルおよび LINQ クエリを WCF Data Service .NET ライブラリと共に使用してデータにアクセスする
 
-テーブル サービスを使用して、構造化された非リレーショナル データの膨大なセットを格納してクエリを実行することができ、テーブルはデータ量が増加すると拡張されます。
+Table Storage を使用して、構造化された非リレーショナル データの膨大なセットを格納してクエリを実行することができ、テーブルはデータ量が増加すると拡張されます。
 
-## <a name="table-service-concepts"></a>テーブル サービスの概念
-テーブル サービスには、次のコンポーネントが含まれます。
+## <a name="table-storage-concepts"></a>Table Storage の概念
+Table Storage には次の構成要素があります。
 
-![Table service のコンポーネントの図][Table1]
+![Table Storage のコンポーネントの図][Table1]
 
 * **URL 形式:** 次のアドレス形式を使用して、アカウントのテーブルのアドレスを記述します。   
   http://`<storage account>`.table.core.windows.net/`<table>`  
   
   このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。 詳細については、[OData.org][OData.org] の Web サイトを参照してください。
-* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md) を参照してください。
+* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/common/storage-scalability-targets.md) を参照してください。
 * **テーブル:**テーブルは、エンティティのコレクションです。 テーブルではエンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティのセットを持つエンティティが含まれている場合があります。 テーブルの数は、ストレージ アカウントの容量制限によってのみ制限されます。
 * **エンティティ:**エンティティは、プロパティのセットで、データベースの行に似ています。 エンティティの最大サイズは 1 MB です。
 * **プロパティ:**プロパティは、名前と値のペアです。 それぞれのエンティティは、データを格納するために最大で 252 個のプロパティを含むことができます。 さらに、それぞれのエンティティは、パーティション キー、行キー、およびタイムスタンプを指定する、3 つのシステム プロパティを持ちます。 同じパーティション キーを持つエンティティは、アトミック操作でより迅速な照会と挿入/更新が可能です。 エンティティの行キーは、パーティション内の一意の識別子です。
 
-テーブルとプロパティの名前付け規則については、「 [Understanding the Table Service Data Model (Table サービス データ モデルの概要)](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+テーブルとプロパティの名前付け規則については、「 [Understanding the Table Service Data Model (Table サービス データ モデルの概要)](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」を参照してください。
 
 [Table1]: ./media/storage-table-concepts-include/table1.png
 [OData.org]: http://www.odata.org/

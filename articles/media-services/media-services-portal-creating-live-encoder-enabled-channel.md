@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure ポータルを利用し
 services: media-services
 documentationcenter: 
 author: anilmur
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 504f74c2-3103-42a0-897b-9ff52f279e23
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: e764936afda8bd498f97a8dc3426136815c18a5a
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/13/2017
 
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
@@ -203,10 +204,5 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

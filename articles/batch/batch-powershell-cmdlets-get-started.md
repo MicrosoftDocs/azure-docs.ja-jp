@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 65c9d6c2b7a7c994a262d463d6a32b41c7e5c33a
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 015096a48e5287af6b225f16a38fac328ed28630
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する
@@ -100,7 +100,7 @@ Batch アカウントでリソースを作成するには、**New-AzureBatchPool
 以下の例を見るとわかるように、これらのコマンドレットの多くは、その使用時に、BatchContext オブジェクトを渡すことに加え、リソースの詳細な設定を含んだオブジェクトを作成するか、引数として渡す必要があります。 その他の例については、各コマンドレットの詳細なヘルプを参照してください。
 
 ### <a name="create-a-batch-pool"></a>Create a Batch pool
-Batch プールを作成または更新する際は、コンピューティング ノードのオペレーティング システムに関してクラウド サービスの構成または仮想マシンの構成を選択します ( [Batch 機能の概要](batch-api-basics.md#pool)を参照)。 そのどちらを選択したかによって、コンピューティング ノードのイメージ化に、 [Azure ゲスト OS のリリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases) の 1 つを使用するか、Azure Marketplace でサポートされている Linux や Windows の VM イメージの 1 つを使用するかが決まります。
+Batch プールを作成または更新する際は、コンピューティング ノードのオペレーティング システムに関してクラウド サービスの構成または仮想マシンの構成を選択します (「[Batch 機能の概要](batch-api-basics.md#pool)」を参照)。 クラウド サービス構成を指定した場合、コンピューティング ノードはいずれかの [Azure ゲスト OS リリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)を使用してイメージ化されます。 仮想マシンの構成を指定した場合、[Azure Virtual Machines Marketplace][vm_marketplace] に記載されたサポートされている Linux または Windows VM イメージのいずれかを指定するか、自身で準備したカスタム イメージを指定できます。
 
 オペレーティング システムの設定は、**New-AzureBatchPool** を実行するときに、PSCloudServiceConfiguration オブジェクトまたは PSVirtualMachineConfiguration オブジェクトで渡します。 たとえば以下のコマンドレットは、Small サイズのコンピューティング ノードで新しい Batch プールを作成しています。オペレーティング システムにはクラウド サービス構成を選び、最新バージョンであるファミリー 3 (Windows Server 2012) のイメージを使用しています。 ここでは、**CloudServiceConfiguration** パラメーターに PSCloudServiceConfiguration オブジェクトとして *$configuration* 変数を指定しています。 **BatchContext** パラメーターには、先ほど定義した *$context* 変数を BatchAccountContext オブジェクトとして指定しています。
 
@@ -201,7 +201,7 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 
     New-AzureBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 
-アプリケーション パッケージの詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
+アプリケーション パッケージについて詳しくは、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 
 > [!IMPORTANT]
 > アプリケーション パッケージを使用するには、お使いの Batch アカウントに [Azure ストレージ アカウントをリンクする](#linked-storage-account-autostorage) 必要があります。
@@ -238,6 +238,6 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 
 ## <a name="next-steps"></a>次のステップ
 * コマンドレットの詳しい構文と例については、 [Azure Batch コマンドレットのリファレンス](/powershell/module/azurerm.batch/#batch)を参照してください。
-* Batch におけるアプリケーションとアプリケーション パッケージの詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
+* Batch におけるアプリケーションとアプリケーション パッケージについて詳しくは、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 
-
+[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/

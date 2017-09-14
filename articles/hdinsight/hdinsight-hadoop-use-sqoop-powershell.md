@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 12bcff92f7d2f877fa90b35fddf88266488c5f78
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 87af5baeeb1b3132a17085db7cbf275ae86da53b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="run-sqoop-jobs-using-azure-powershell-for-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Hadoop を使用した Sqoop ジョブの実行
@@ -35,7 +34,7 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 > 
 
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
 * **Azure PowerShell を実行できるワークステーション**。
   
@@ -169,7 +168,7 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 ## <a name="limitations"></a>制限事項
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
-* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。

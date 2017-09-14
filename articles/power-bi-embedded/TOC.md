@@ -24,6 +24,7 @@
 ### [Power BI Embedded の行レベルのセキュリティ](power-bi-embedded-rls.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=power-bi-embedded)
 ## [PowerShell](/powershell/module/azurerm.powerbiembedded)
 ## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK ダウンロード](https://www.nuget.org/profiles/powerbi)
@@ -33,9 +34,11 @@
 
 
 # リソース
-## [サンプル アプリケーション](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 ## [JavaScript の Git リポジトリ](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [Power BI C# のGit リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サンプル アプリケーション](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

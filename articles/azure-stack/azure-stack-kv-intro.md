@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/04/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 78261c9203cf2e6595985fcc1554aad565e17558
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0fa9038cd4707408fd45fea7ea92cfe815585adf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Introduction to Key Vault in Azure Stack
@@ -27,26 +26,23 @@ ms.lasthandoff: 06/13/2017
 ## <a name="before-you-start"></a>Before you start
 This article assumes the following:
 
-* Azure Stack administrators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
-* Tenants must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
-* [PowerShell is configured for use with Azure Stack](azure-stack-powershell-configure.md) 
- 
-> [!NOTE]
-> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+* Azure Stack operators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
+* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
+* [PowerShell is configured for use with Azure Stack](azure-stack-powershell-configure-user.md) 
  
 ## <a name="key-vault-basics"></a>Key Vault basics
 Key Vault in Azure Stack helps safeguard cryptographic keys and secrets that cloud applications and services use. By using Key Vault, you can encrypt keys and secrets (such as authentication keys, storage account keys, data encryption keys, .pfx files, and passwords).
 
 Key Vault streamlines the key management process and enables you to maintain control of keys that access and encrypt your data. Developers can create keys for development and testing in minutes, and then seamlessly migrate them to production keys. Security administrators can grant (and revoke) permission to keys, as needed.
 
-Anybody with an Azure Stack subscription can create and use key vaults. Although Key Vault benefits developers and security administrators, it can be implemented and managed by an administrator who manages other Azure Stack services for an organization. For example, this administrator can sign in with an Azure Stack subscription, create a vault for the organization in which to store keys, and then be responsible for these operational tasks:
+Anybody with an Azure Stack subscription can create and use key vaults. Although Key Vault benefits developers and security administrators, it can be implemented and managed by the operator who manages other Azure Stack services for an organization. For example, the Azure Stack operator can sign in with an Azure Stack subscription, create a vault for the organization in which to store keys, and then be responsible for these operational tasks:
 
 * Create or import a key or secret
 * Revoke or delete a key or secret
 * Authorize users or applications to access the key vault, so they can   then manage or use its keys and secrets
 * Configure key usage (for example, sign or encrypt)
 
-This administrator can then provide developers with URIs to call from their applications, and provide a security administrator with key usage logging information.
+The operator can then provide developers with URIs to call from their applications, and provide a security administrator with key usage logging information.
 
 Developers can also manage the keys directly, by using APIs. For more information, see the Key Vault developer's guide.
 
@@ -59,7 +55,7 @@ The following table depicts some of the scenarios where Key Vault can help meet 
 **Statement**: Keys are stored in a vault and invoked by URI when needed.
 
 ### <a name="developer-for-software-as-a-service-saas"></a>Developer for software as a service (SaaS)
-**Problem:** I don’t want the responsibility or potential liability for my customers’ tenant keys and secrets.
+**Problem:** I don’t want the responsibility or potential liability for my customer's keys and secrets.
 
 **Statement:** Customers can import their own keys into Azure Stack, and manage them. I want customers to own and manage their keys so that I can concentrate on doing what I do best, which is providing the core software features.
 

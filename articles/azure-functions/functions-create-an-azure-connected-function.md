@@ -11,16 +11,17 @@ keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピ
 ms.assetid: ab86065d-6050-46c9-a336-1bfc1fa4b5a1
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/01/2017
-ms.author: rachelap; glenga
-translationtype: Human Translation
+ms.author: glenga
+ms.custom: mvc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: 4bea7f73871f8bfc755f30b9ef41a1960893152e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
-
 
 ---
 # <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>他の Azure サービスに接続する関数を Azure Functions を使用して作成する

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a1470234489d67e0dd90237029ce454437f9bfee
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: cd777291a1321eabf4efe0d7b9b101f932d9398b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -59,7 +59,7 @@ az network public-ip list --resource-group myResourceGroup
 ## <a name="next-steps"></a>次のステップ
 Azure 内に独自の NAT を設定することを望んでいますか?  無料だが強力なオープン ソースを使用したいですか?  パブリック フォルダーの使用をお勧めします。 [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) テンプレートを使用することで、一般的な Web サーバー シナリオで FreeBSD の PF を使用してラウンド ロビン方式で負荷分散する NAT ファイアウォールを Azure 内にほんの 5 分で設定できます。 
 
-Azure に提供されている FreeBSD の詳細については、「[Azure の FreeBSD の概要](./../virtual-machines-freebsd-intro-on-azure.md)」を参照してください。
+Azure に提供されている FreeBSD の詳細については、「[Azure の FreeBSD の概要](freebsd-intro-on-azure.md)」を参照してください。
 
 PF の詳細については、[FreeBSD ハンドブック](https://www.freebsd.org/doc/handbook/firewalls-pf.html)または[PF-ユーザーズ ガイド ](https://www.freebsd.org/doc/handbook/firewalls-pf.html)を参照してください。
 

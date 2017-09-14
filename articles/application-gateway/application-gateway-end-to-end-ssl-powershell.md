@@ -1,5 +1,5 @@
 ---
-title: "Application Gateway の SSL ポリシーとエンド ツー エンド SSL の構成 | Microsoft Docs"
+title: "Azure Application Gateway でのエンド ツー エンド SSL の構成 | Microsoft Docs"
 description: "この記事では、Azure Resource Manager PowerShell を使用して Application Gateway でエンド ツー エンド SSL を構成する方法を説明します。"
 services: application-gateway
 documentationcenter: na
@@ -12,21 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 07/19/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
-ms.openlocfilehash: c76dc14998ebf01a938c67d6c78384e169f83266
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 6d969d6a0c649c263e1d5bb99bdbceec484cb9a3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="configure-ssl-policy-and-end-to-end-ssl-with-application-gateway-using-powershell"></a>PowerShell を使用した Application Gateway の SSL ポリシーとエンド ツー エンド SSL の構成
+# <a name="configure-end-to-end-ssl-with-application-gateway-using-powershell"></a>PowerShell を使って Application Gateway にエンド ツー エンド SSL を構成する
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 これは、Application Gateway で SSL 接続を終了することによってサポートされます。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンドへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
 
-アプリケーション ゲートウェイがサポートする他の機能として、特定の SSL プロトコル バージョンの無効化があります。 Application Gateway で無効化がサポートされているプロトコル バージョンは、**TLSv1.0**、**TLSv1.1**、および **TLSv1.2** です。
+Application Gateway がサポートする別の機能は、カスタム SSL オプションの定義です。 Application Gateway は **TLSv1.0**、**TLSv1.1**、および **TLSv1.2** のバージョンのプロトコルの無効化をサポートしています。また、使用する暗号スイートとその優先順位の定義もサポートします。  構成可能な SSL のオプションの詳細については、[SSL ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページをご覧ください。
 
 > [!NOTE]
 > SSL 2.0 と SSL 3.0 は既定で無効になっており、有効にすることはできません。 これらはセキュリティで保護されておらず、Application Gateway では使用できないと見なされています。
@@ -40,9 +41,9 @@ Application Gateway は、トラフィックのエンド ツー エンド暗号�
 このシナリオで、以下の作業を行います。
 
 * **appgw-rg** という名前のリソース グループを作成します。
-* 予約済み CIDR ブロック 10.0.0.0/16 を持つ、**appgwvnet** という名前の仮想ネットワークを作成します。
+* アドレス スペースが 10.0.0.0/16 の **appgwvnet** という名前の仮想ネットワークを作成します。
 * **appgwsubnet** と **appsubnet** という名前の 2 つのサブネットを作成します。
-* エンド ツー エンド SSL 暗号化をサポートし、特定の SSL プロトコルを無効に小さなアプリケーション ゲートウェイを作成します。
+* SSL プロトコル バージョンと暗号化スイートを制限するエンド ツー エンド SSL 暗号化をサポートする、小さなアプリケーション ゲートウェイを作成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -136,7 +137,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Application Gateway 構成オブジェクトの作成
 
-アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
+アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定します。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
 ### <a name="step-1"></a>手順 1
 
@@ -178,7 +179,7 @@ $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 アプリケーション ゲートウェイの証明書を構成します。 この証明書は、アプリケーション ゲートウェイでのトラフィックの暗号化解除と再暗号化に使用されます。
 
 ```powershell
-$cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+$cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
 ```
 
 > [!NOTE]
@@ -189,7 +190,7 @@ $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFil
 アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
 
 ```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
+$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 ```
 
 ### <a name="step-7"></a>手順 7.
@@ -197,7 +198,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol
 SSL 対応バックエンド プール リソースで使用する証明書をアップロードします。
 
 > [!NOTE]
-> 既定のプローブは、バックエンドの IP アドレスでの**既定の** SSL バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 バックエンドでホスト ヘッダーと SNI を使用している**場合**、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンドで https://127.0.0.1/ にアクセスして、**既定の** SSL バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンドでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンドで既定の SSL バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドは許可リストに登録されなくなります。
+> 既定のプローブは、バックエンドの IP アドレスでの**既定の** SSL バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 バックエンドでホスト ヘッダーと SNI を使用している**場合**、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンドで https://127.0.0.1/ にアクセスして、**既定の** SSL バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンドでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンドで既定の SSL バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
 
 ```powershell
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
@@ -235,18 +236,18 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 
 ### <a name="step-11"></a>手順 11.
 
-Application Gateway で使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの特定バージョンを無効にする機能がサポートされています。
+Application Gateway で使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの最小バージョンを設定する機能がサポートされています。
 
-次の値が、無効にできるプロトコル バージョンの一覧です。
+次の値が、定義できるプロトコル バージョンの一覧です。
 
 * **TLSv1_0**
 * **TLSv1_1**
 * **TLSv1_2**
 
-次の例では、**TLSv1\_0** を無効にします。
+最小のプロトコルのバージョンを **TLSv1_2** に設定し、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみを有効にします。
 
 ```powershell
-$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0
+$SSLPolicy = New-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
@@ -254,10 +255,10 @@ $sslPolicy = New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_
 これまでのすべての手順に従って、Application Gateway を作成します。 ゲートウェイの作成には、長い時間がかかります。
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgateway -SslCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="disable-ssl-protocol-versions-on-an-existing-application-gateway"></a>既存の Application Gateway で SSL プロトコル バージョンを無効する
+## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>既存の Application Gateway で SSL プロトコル バージョンを制限する
 
 これまでの手順で、エンド ツー エンド SSL を使用したアプリケーションの作成と、SSL プロトコルの特定バージョンの無効化について説明しました。 次の例では、既存のアプリケーション ゲートウェイの特定の SSL ポリシーを無効にします。
 
@@ -271,10 +272,11 @@ $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroupName Ad
 
 ### <a name="step-2"></a>手順 2.
 
-SSL ポリシーを定義します。 次の例では、TLSv1.0 と TLSv1.1 が無効になります。
+SSL ポリシーを定義します。 次の例では、TLSv1.0 および TLSv1.1 は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
 
 ```powershell
-Set-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1 -ApplicationGateway $gw
+Set-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
+
 ```
 
 ### <a name="step-3"></a>手順 3.
@@ -319,10 +321,5 @@ DnsSettings              : {
 
 Application Gateway を使用して Web アプリケーション ファイアウォールで Web アプリケーションのセキュリティを強化する詳細については、 [Web アプリケーション ファイアウォールの概要](application-gateway-webapplicationfirewall-overview.md)
 
-[scenario]: ./media/application-gateway-end-to-end-ssl-powershell/scenario.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png
 

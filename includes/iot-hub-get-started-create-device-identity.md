@@ -14,6 +14,8 @@
 
     `iothub-explorer create myDeviceId --connection-string`
 
+   [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
+
 結果として得られたデバイスの接続文字列をメモしておきます。 このデバイス接続文字列は、デバイス アプリからデバイスとして IoT Hub に接続する際に使用します。
 
 ![][img-identity]

@@ -2,7 +2,7 @@
 title: "Azure Billing のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Azure の課金を確認する方法に加えて、使用量とコストの管理および監視方法について説明します。 チュートリアル、FAQ、API リファレンスなどのドキュメントを提供します。"
 services: billing
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

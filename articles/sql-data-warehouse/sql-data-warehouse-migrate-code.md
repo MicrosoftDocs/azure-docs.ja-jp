@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 01/30/2017
+ms.date: 06/23/2017
 ms.author: joeyong;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3fd5224983c723faefb8001888ae20e78acdb8ce
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>SQL Data Warehouse への SQL コードの移行
-他のデータベースから SQL Data Warehouse にコードを移行するときは、多くの場合、コード ベースに変更を加える必要があります。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
+この記事では、他のデータベースから SQL Data Warehouse にコードを移行するときに一般に行う必要があるコードの変更について説明します。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
 
 ## <a name="common-t-sql-limitations"></a>一般的な T-SQL の制限事項
-Azure SQL Data Warehouse でサポートされていない一般的な機能を次に示します。 リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
+SQL Data Warehouse でサポートされていない最も一般的な機能を次に示します。 リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
 
 * [ANSI JOIN を使用した更新][ANSI joins on updates]
 * [ANSI JOIN を使用した削除][ANSI joins on deletes]

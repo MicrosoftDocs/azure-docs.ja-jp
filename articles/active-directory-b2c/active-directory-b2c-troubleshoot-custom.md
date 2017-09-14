@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory B2C: Application Insights を使用したカスタム ポリシーのトラブルシューティング | Microsoft Docs"
+title: "Application Insights を使用したカスタム ポリシーのトラブルシューティング - Azure AD B2C | Microsoft Docs"
 description: "カスタム ポリシーの実行を追跡するための Application Insights の設定方法"
 services: active-directory-b2c
 documentationcenter: 
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
 editor: parakhj
 ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
@@ -12,19 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 07eddeb35c2b88b2de08270d9ff5de317cc09ec7
+ms.date: 08/04/2017
+ms.author: saeda
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: ログの収集
 
 この記事では、カスタム ポリシーの問題を診断できるよう、Azure AD B2C からログを収集する手順を説明します。
+
+>[!NOTE]
+>現在、ここで説明する詳細なアクティビティ ログは、カスタム ポリシーの開発**のみ**を支援するように設計されています。 実稼働環境では開発モードを使わないでください。  ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。  実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。  これらの詳細ログは、ポリシーが**開発モード**で配置されている場合にのみ収集されます。
+
 
 ## <a name="use-application-insights"></a>Application Insights を使用する
 
@@ -60,7 +64,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
   * `DeveloperMode="true"` は、開発に適するが高ボリューム時は制約を受ける処理パイプラインを通じてテレメトリを迅速化するよう、Application Insights に指示します。
   * `ClientEnabled="true"` は、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します (不要)。
   * `ServerEnabled="true"` は、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。
-  最終的な XML は次のようになります:
+サンプル:
 
   ```XML
   <TrustFrameworkPolicy
@@ -101,12 +105,17 @@ traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された�
 
 分析ツールの詳細については、[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)を参照してください。
 
-^[!NOTE]
-^ID 開発者を支援するための userjourney ビューアーがコミュニティによって開発されています。  Microsoft によってサポートされていないこのビューアーは、厳密に現状のまま利用可能です。  このビューアーは、Application Insights インスタンスからデータを読み取り、userjourney イベントの適切に構造化された表示を提供します。  ソース コードを入手し、独自のソリューションでデプロイできます。
+>[!NOTE]
+>ID 開発者を支援するためのユーザー体験ビューアーがコミュニティによって開発されています。  Microsoft によってサポートされていないこのビューアーは、厳密に現状のまま利用可能です。  このビューアーは、Application Insights インスタンスからデータを読み取り、ユーザー体験イベントの適切に構造化された表示を提供します。  ソース コードを入手し、独自のソリューションでデプロイできます。
+
+>[!NOTE]
+>現在、ここで説明する詳細なアクティビティ ログは、カスタム ポリシーの開発**のみ**を支援するように設計されています。 実稼働環境では開発モードを使わないでください。  ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。  実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。  これらの詳細ログは、ポリシーが**開発モード**で配置されている場合にのみ収集されます。
 
 [サポートされていないカスタム ポリシーのサンプルと関連ツールの GitHub リポジトリ](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 
+## <a name="next-steps"></a>次のステップ
 
+Application Insights でデータを探索すると、B2C の基盤となる Identity Experience Framework が独自の ID エクスペリエンスを提供するためにどのように機能するかを理解できます。
 

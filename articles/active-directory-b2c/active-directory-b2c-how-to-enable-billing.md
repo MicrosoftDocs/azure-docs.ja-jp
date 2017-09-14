@@ -12,10 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
-translationtype: Human Translation
-ms.sourcegitcommit: 43224628d5726ac2fb0e8c27c649421af7ceeee4
-ms.openlocfilehash: 6cf375fbfe265a53591b9987ebd32db6df73fcb4
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -29,16 +30,16 @@ Azure Active Directory B2C (または Azure AD B2C) の現行の利用料金は�
 https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
 
 ## <a name="step-1---create-an-azure-ad-b2c-tenant"></a>手順 1 - Azure AD B2C テナントを作成する
-
-B2C テナントの作成を先に完了する必要があります。 ターゲットの B2C テナントを既に作成している場合は、この手順はスキップしてください。 [Azure AD B2C の開始](https://azure.microsoft.com/documentation/articles/active-directory-b2c-get-started/)
+B2C テナントの作成を先に完了する必要があります。 ターゲットの B2C テナントを既に作成している場合は、この手順はスキップしてください。 [Azure AD B2C の開始](active-directory-b2c-get-started.md)
 
 ## <a name="step-2---open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>手順 2 - Azure サブスクリプションを表示する Azure AD テナントで Azure Portal を開く
-portal.azure.com に移動します。 使用する Azure サブスクリプションを表示する Azure AD テナントに切り替えます。 この Azure AD テナントは、B2C テナントとは異なります。 Azure Portal で、ダッシュボードの右上にあるアカウント名をクリックして Azure AD テナントを選択します。 続行するには、Azure サブスクリプションが必要です。 [Azure サブスクリプションを取得する](https://account.windowsazure.com/signup?showCatalog=True)
+[Azure Portal](https://portal.azure.com) に移動します。 使用する Azure サブスクリプションを表示する Azure AD テナントに切り替えます。 この Azure AD テナントは、B2C テナントとは異なります。 Azure Portal で、ダッシュボードの右上にあるアカウント名をクリックして Azure AD テナントを選択します。 続行するには、Azure サブスクリプションが必要です。 [Azure サブスクリプションを取得する](https://account.windowsazure.com/signup?showCatalog=True)
 
 ![Azure AD テナントへの切り替え](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
 ## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>手順 3 - Azure Marketplace で B2C テナント リソースを作成する
 Marketplace アイコンをクリックして Marketplace を開くか、ダッシュボードの左上隅の緑の [+] を選択します。  Azure Active Directory B2C を検索して選択します。 [作成] を選択します。
+
 ![[Marketplace] の選択](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
 
 ![AD B2C の検索](./media/active-directory-b2c-how-to-enable-billing/searchb2c.png)
@@ -49,7 +50,7 @@ Azure AD B2C リソースの作成ダイアログでは、次のパラメータ�
 
 2. Azure AD B2C リソース名: B2C テナントのドメイン名に一致する名前があらかじめ選択されています。
 
-3. サブスクリプション: 自身が管理者または共同管理者であるアクティブな Azure サブスクリプション。  複数の Azure AD B2C テナントを&1; つの Azure サブスクリプションに追加できます。
+3. サブスクリプション: 自身が管理者または共同管理者であるアクティブな Azure サブスクリプション。  複数の Azure AD B2C テナントを 1 つの Azure サブスクリプションに追加できます。
 
 4. リソース グループとリソース グループの場所: このアーティファクトでは、複数の Azure リソースを整理できます。  この選択が、B2C テナントの場所、パフォーマンス、または課金状態に影響することはありません。
 
@@ -75,12 +76,5 @@ B2C テナント リソースをクリックして、次のことを実行でき
 ## <a name="next-steps"></a>次のステップ
 B2C テナントごとにこれらの手順を完了したら、Azure Direct または Enterprise Agreement の詳細に従って Azure サブスクリプションが課金されます。
 - 選択した Azure サブスクリプションの使用量と課金を確認します
-- [使用状況レポート API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api) を使用して詳しい使用状況レポートを確認します
-
-
-
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[gog]: http://google.com/        
-[yah]: http://search.yahoo.com/  
-[msn]: http://search.msn.com/    
+- [使用状況レポート API](active-directory-b2c-reference-usage-reporting-api.md) を使用して詳しい使用状況レポートを確認します
 

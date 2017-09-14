@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Container Service のドキュメント
+metadata:
+  document_id: null
+  title: Azure Container Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  services: container-service
+  author: czeumault
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07-21-2017
+  ms.author: carolz
+abstract:
+  description: Azure Container Service では、運用環境で使用できる Kubernetes、DC/OS、または Docker Swarm クラスターを迅速にデプロイすることができます。 以下のクイック スタート、チュートリアル、サンプルを使用して、Azure Container Service の使用方法を確認してください。
+sections:
+  - title: null
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Kubernetes クラスターの概要
+            href: /azure/container-service/kubernetes
+            image:
+              src: media/index/get-started.svg
+              href: /azure/container-service/kubernetes
+          - title: DC/OS および Docker Swarm クラスターの概要
+            href: /azure/container-service/dcos-swarm
+            image:
+              src: media/index/get-started.svg
+              href: /azure/container-service/dcos-swarm

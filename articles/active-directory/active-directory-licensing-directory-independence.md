@@ -1,7 +1,7 @@
 ---
-title: "Azure Active Directory ディレクトリの特性 | Microsoft Docs"
-description: "完全に独立したリソースとしてディレクトリを理解することで Azure Active Directory ディレクトリを管理する"
-services: active-directory
+title: "Azure Active Directory テナントの対話の特性 | Microsoft Docs"
+description: "テナントを完全に独立したリソースとして理解することによって Azure Active テナントを管理する"
+services: active-tenant
 documentationcenter: 
 author: curtand
 manager: femila
@@ -12,44 +12,46 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2017
+ms.date: 07/27/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
-ms.openlocfilehash: 5ec00d5e8380f121dd9302cf08a0708c530aab9b
+ms.custom: H1Hack27Feb2017;it-pro
+ms.reviewer: piotrci
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: d25d2c731034d0785bbd404ec693c4c41d913d01
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="understand-how-multiple-azure-active-directory-directories-interact"></a>複数の Azure Active Directory ディレクトリの相互作用を理解する
-Azure Active Directory (Azure AD) の各ディレクトリは、完全に独立したリソースです。つまり、対等であり、フル機能を備え、管理対象の他のディレクトリから論理的に独立しています。 ディレクトリ間に親子関係はありません。 このディレクトリ間の独立には、リソースの独立、管理上の独立、同期の独立があります。
+
+# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>複数の Azure Active Directory テナントが対話する方法を理解する
+
+Azure Active Directory (Azure AD) では、各テナントは完全に独立したリソース、つまり、管理されている他のテナントから論理的に独立したピアです。 テナント間に親子の関係はありません。 このテナント間の独立には、リソースの独立、管理の独立、および同期の独立が含まれます。
 
 ## <a name="resource-independence"></a>リソースの独立
-後述する外部ユーザーの一部の例外を除き、あるディレクトリでリソースを作成または削除しても、別のディレクトリのリソースには影響しません。 あるディレクトリで "contoso.com" というカスタム ドメインを使用している場合、このドメインを他のディレクトリで使用することはできません。
+* あるテナントでリソースを作成または削除しても、外部ユーザーの部分的な例外を除き、別のテナント内のどのリソースにも影響を与えません。 
+* あるテナントでいずれかのドメイン名を使用した場合は、それを他のどのテナントでも使用できません。
 
 ## <a name="administrative-independence"></a>管理上の独立
-"Contoso" ディレクトリの管理者以外のユーザーが、"Test" というテスト ディレクトリを作成した場合、次のようになります。
+テナント 'Contoso' の管理者以外のユーザーがテスト テナント 'Test' を作成した場合は、次のようになります。
 
-* 既定では、ディレクトリを作成したユーザーがその新しいディレクトリの外部のユーザーとして追加され、そのディレクトリのグローバル管理者ロールが割り当てられます。
-* "Test" の管理者が管理者特権を明示的に付与した場合を除き、"Contoso" ディレクトリの管理者には、"Test" ディレクトリに対する直接的な管理者特権はありません。 "Contoso" の管理者は、"Test" を作成したユーザー アカウントを制御している場合は、"Test" ディレクトリへのアクセスを制御できます。
-* あるディレクトリでユーザーの管理者ロールを変更 (追加または削除) した場合、変更は、別のディレクトリでそのユーザーに割り当てられている可能性のある管理者ロールには影響しません。
+* 既定では、テナントを作成したユーザーはその新しいテナントに外部ユーザーとして追加され、そのテナント内のグローバル管理者ロールが割り当てられます。
+* 'Test' の管理者が管理者特権を明示的に付与しない限り、テナント 'Contoso' の管理者にはテナント 'Test' に対する直接の管理者特権はありません。 ただし、'Contoso' の管理者は、'Test' を作成したユーザー アカウントを制御している場合はテナント 'Test' へのアクセスを制御できます。
+* あるテナントでユーザーの管理者ロールを追加/削除した場合、その変更は、そのユーザーが別のテナントに持っている管理者ロールに影響を与えません。
 
 ## <a name="synchronization-independence"></a>同期の独立
-次のどちらかの 1 つのインスタンスからデータが同期されるように各 Azure AD ディレクトリを独立して構成することができます。
+次のいずれか 1 つのインスタンスからデータが同期されるように、各 Azure AD テナントを個別に構成できます。
 
-* 1 つは、単一の AD フォレストとデータを同期するディレクトリ同期 (DirSync) ツールです。
-* もう 1 つは、1 つ以上のオンプレミスのフォレストと Azure AD 以外のデータ ソースのいずれか、または両方とデータを同期する Forefront Identity Manager 用 Azure Active Directory コネクタです。
+* Azure AD Connect ツール。データを 1 つの AD フォレストと同期する場合。
+* Forefront Identity Manager 用の Azure Active テナント コネクタ。データを 1 つ以上のオンプレミスのフォレストまたは Azure AD 以外のデータ ソース、あるいはその両方と同期する場合。
 
-## <a name="add-an-azure-ad-directory"></a>Azure AD ディレクトリを追加する
-Azure クラシック ポータルで Azure AD ディレクトリを追加するには、左側で Azure Active Directory 拡張機能を選択し、 **[追加]**をタップします。
+## <a name="add-an-azure-ad-tenant"></a>Azure AD テナントを追加する
+Azure Portal で Azure AD テナントを追加するには、Azure AD グローバル管理者のアカウントで [Azure Portal](https://portal.azure.com) にサインインし、左側の **[新規]** を選びます。
 
 > [!NOTE]
-> 他の Azure リソースとは異なり、ディレクトリは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションを取り消した場合や、期限切れを許可した場合でも、Azure PowerShell、Azure Graph API、Office 365 管理センターなどの他のインターフェイスを使用して、ディレクトリ データに引き続きアクセスできます。 また、ディレクトリに別のサブスクリプションを関連付けることもできます。
->
+> 他の Azure リソースとは異なり、テナントは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションが取り消されたり、期限切れになったりした場合でも、Azure PowerShell、Azure Graph API、または Office 365 管理センターを使用してテナント データに引き続きアクセスできます。 また、テナントに別のサブスクリプションを関連付けることもできます。
 >
 
 ## <a name="next-steps"></a>次のステップ
-Azure AD のライセンスに関する問題とベスト プラクティスの概要については、 [Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
+Azure AD のライセンスに関する問題およびベスト プラクティスの広範囲にわたる概要については、「[What is Azure Active tenant licensing? (Azure Active テナントのライセンスとは)](active-directory-licensing-whatis-azure-portal.md)」を参照してください。
 

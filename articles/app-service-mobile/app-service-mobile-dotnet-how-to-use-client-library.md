@@ -3,8 +3,8 @@ title: "App Service Mobile Apps の管理されたクライアント ライブ�
 description: "Windows と Xamarin アプリで Azure App Service Mobile Apps 向け .NET クライアントを使用する方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.service: app-service-mobile
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: a02b817ecc45594f55de9a94b67dd35e34386735
-ms.openlocfilehash: 1f0dfe06bbcd22727d12b651cd708b208350831a
-ms.lasthandoff: 01/05/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5f4cc3e97ba7adde2aaac471951a3130d79910f6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、[Azure Mobile Apps のクイックスタート チュートリアル][1]を完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
@@ -43,7 +43,7 @@ GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、�
 "サーバーフロー" の認証では、UI の表示に WebView を使用します。  デバイスで WebView UI を表示できない場合は、他の認証方法が必要になります。  そのため、この SDK は腕時計型デバイスのような制限付きデバイスには適していません。
 
 ## <a name="setup"></a>セットアップと前提条件
-テーブルを少なくとも&1; つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、「[Azure Mobile Apps クイックスタート][1]」で作成したものと同じテーブルです。
+テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、「[Azure Mobile Apps クイックスタート][1]」で作成したものと同じテーブルです。
 
 C# での対応する型指定されたクライアント側の型は次のクラスです。
 
@@ -68,7 +68,7 @@ Mobile Apps バックエンドにテーブルを作成する方法について�
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
 * **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
-* **Xamarin Studio** でプロジェクトを右クリックし、**[Add (追加)]**、 > **[Add NuGet Packages (NuGet パッケージの追加)]** の順にクリックします。`Microsoft.Azure.Mobile.Client ` パッケージを見つけ、**[Add Package (パッケージの追加)]** をクリックします。
+* **Xamarin Studio** でプロジェクトを右クリックし、**[Add]\(追加\)**、>**[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client ` パッケージを見つけ、**[Add Package]\(パッケージの追加\)** をクリックします。
 
 メイン アクティビティ ファイルに、次の **using** ステートメントを必ず追加してください。
 
@@ -185,7 +185,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-この&2; つの方法は等価であり、区別しないで使用できます。  複数の述語を&1; つのクエリに連結する前のオプション &mdash; のほうが、&mdash;よりコンパクトでありお勧めです。
+この 2 つの方法は等価であり、区別しないで使用できます。  複数の述語を 1 つのクエリに連結する前のオプションのほうが、よりコンパクトでありお勧めです。
 
 `Where` 句は、OData サブセットに変換される操作をサポートします。 操作には以下が含まれます。
 
@@ -215,7 +215,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>方法: ページにデータを返す
-既定では、バックエンドは最初の 50 行のみを返します。 [Take] メソッドを呼び出すことによって、返される行の数を増やすことができます。 [Skip] メソッドと共に `Take` を使用して、クエリによって返されるデータセット全体のうち特定の "ページ" を要求します。 次のクエリを実行すると、テーブルの最初の上位&3; つの項目が返されます。
+既定では、バックエンドは最初の 50 行のみを返します。 [Take] メソッドを呼び出すことによって、返される行の数を増やすことができます。 [Skip] メソッドと共に `Take` を使用して、クエリによって返されるデータセット全体のうち特定の "ページ" を要求します。 次のクエリを実行すると、テーブルの最初の上位 3 つの項目が返されます。
 
 ```
 // Define a filtered query that returns the top 3 items.
@@ -223,7 +223,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-次の変更されたクエリは、最初の&3; つの結果をスキップし、その後の&3; つの結果を返します。 ページ サイズが&3; つの項目である場合、このクエリによってデータの&2; 番目の "ページ" が生成されます。
+次の変更されたクエリは、最初の 3 つの結果をスキップし、その後の 3 つの結果を返します。 ページ サイズが 3 つの項目である場合、このクエリによってデータの 2 番目の "ページ" が生成されます。
 
 ```
 // Define a filtered query that skips the top 3 items and returns the next 3 items.
@@ -517,8 +517,8 @@ PullOptions pullOptions = new PullOptions
 1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
 
-   * **Windows 8.1 Runtime: **[SQLite for Windows 8.1][3] をインストールします。
-   * **Windows Phone 8.1: **[SQLite for Windows Phone 8.1][4] をインストールします。
+   * **Windows 8.1 Runtime:** [SQLite for Windows 8.1][3] をインストールします。
+   * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
    * **ユニバーサル Windows プラットフォーム**: [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
 3. (省略可能)。 Windows デバイスで、**[参照]**、 > **[参照の追加]** の順に右クリックします。**Windows** フォルダー、**[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
@@ -623,7 +623,7 @@ InvokeApiAsync を使用して、Azure Mobile Apps で定義されていない W
 ## <a name="authentication"></a>ユーザーの認証
 Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [アプリケーションへの認証の追加]」を参照してください。
 
-*クライアント側管理フロー*と*サーバー側管理フロー*の&2; つの認証フローがサポートされています。 サーバー側管理フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント側管理フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
+*クライアント側管理フロー*と*サーバー側管理フロー*の 2 つの認証フローがサポートされています。 サーバー側管理フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント側管理フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
 
 > [!NOTE]
 > 運用環境のアプリでは、クライアント側管理フローをお勧めします。
@@ -652,7 +652,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。

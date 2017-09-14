@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 69f7b49fd82e4d34b1d54718cfbd2f4dedd2ae47
 ms.openlocfilehash: 12e142b08774ac5e92fb14ad11554a8c250e65df
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
-
 
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる

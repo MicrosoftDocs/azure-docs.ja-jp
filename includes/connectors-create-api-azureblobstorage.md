@@ -1,6 +1,6 @@
 ### <a name="prerequisites"></a>前提条件
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
-* [Azure BLOB ストレージ アカウント](../articles/storage/storage-create-storage-account.md)。ストレージ アカウント名とアクセス キーが含まれます。 この情報は、Azure ポータルでストレージ アカウントのプロパティに表示されます。 Azure Storage の詳細については、[こちら](../articles/storage/storage-introduction.md)をご覧ください。
+* [Azure BLOB ストレージ アカウント](../articles/storage/common/storage-create-storage-account.md)。ストレージ アカウント名とアクセス キーが含まれます。 この情報は、Azure ポータルでストレージ アカウントのプロパティに表示されます。 Azure Storage の詳細については、[こちら](../articles/storage/common/storage-introduction.md)をご覧ください。
 
 ロジック アプリで Azure Blob Storage アカウントを使用する前に、Azure Blob Storage アカウントに接続します。 これは、Azure Portal のロジック アプリ内で簡単に実行できます。  
 

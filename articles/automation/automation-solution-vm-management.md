@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 06/01/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: db9f2174e9928083957f160be8c268fe21cd4169
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e44f04b3492ac07822b0842864f84a5f16dc3f5b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -57,23 +57,23 @@ StopByResourceGroup-MS-Mgmt-VM | 特定の Azure リソース グループに存
 **SendMailO365-MS-Mgmt** Runbook ||
 SendMailO365-IsSendEmail-MS-Mgmt | 完了時に Runbook (StartByResourceGroup-MS-Mgmt-VM と StopByResourceGroup-MS-Mgmt-VM) から電子メール通知を送信できるかどうかを指定します。  電子メール通知を有効にするには **True** を、無効にするには **False** を選択します。 既定値は **False** です。| 
 **StartByResourceGroup-MS-Mgmt-VM** Runbook ||
-StartByResourceGroup-ExcludeList-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。|
+StartByResourceGroup-ExcludeList-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。スペースは使用できません。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。|
 StartByResourceGroup-SendMailO365-EmailBodyPreFix-MS-Mgmt | 電子メール メッセージ本文の冒頭に追加されるテキスト。|
 StartByResourceGroup-SendMailO365-EmailRunBookAccount-MS-Mgmt | 電子メール Runbook がある Automation アカウントの名前を指定します。  **この変数は変更しないでください。**|
 StartByResourceGroup-SendMailO365-EmailRunbookName-MS-Mgmt | 電子メール Runbook の名前を指定します。  StartByResourceGroup-MS-Mgmt-VM と StopByResourceGroup-MS-Mgmt-VM の Runbook が電子メールを送信するときに使用します。  **この変数は変更しないでください。**|
 StartByResourceGroup-SendMailO365-EmailRunbookResourceGroup-MS-Mgmt | 電子メール Runbook があるリソース グループの名前を指定します。  **この変数は変更しないでください。**|
 StartByResourceGroup-SendMailO365-EmailSubject-MS-Mgmt | 電子メールの件名に使用するテキストを指定します。|  
-StartByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 電子メールの受信者を指定します。  複数の名前は、セミコロン (;) で区切って入力してください。|
-StartByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。  既定値 (アスタリスク) では、サブスクリプションに含まれているすべてのリソース グループが対象となります。|
+StartByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 電子メールの受信者を指定します。  複数の名前は、セミコロン (;) で区切って入力してください。スペースは使用できません。|
+StartByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。スペースは使用できません。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。  既定値 (アスタリスク) では、サブスクリプションに含まれているすべてのリソース グループが対象となります。|
 StartByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | このソリューションで管理する VM があるサブスクリプションを指定します。  このソリューションの Automation アカウントと同じサブスクリプションを指定してください。|
 **StopByResourceGroup-MS-Mgmt-VM** Runbook ||
-StopByResourceGroup-ExcludeList-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。|
+StopByResourceGroup-ExcludeList-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。スペースは使用できません。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。|
 StopByResourceGroup-SendMailO365-EmailBodyPreFix-MS-Mgmt | 電子メール メッセージ本文の冒頭に追加されるテキスト。|
 StopByResourceGroup-SendMailO365-EmailRunBookAccount-MS-Mgmt | 電子メール Runbook がある Automation アカウントの名前を指定します。  **この変数は変更しないでください。**|
 StopByResourceGroup-SendMailO365-EmailRunbookResourceGroup-MS-Mgmt | 電子メール Runbook があるリソース グループの名前を指定します。  **この変数は変更しないでください。**|
 StopByResourceGroup-SendMailO365-EmailSubject-MS-Mgmt | 電子メールの件名に使用するテキストを指定します。|  
-StopByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 電子メールの受信者を指定します。  複数の名前は、セミコロン (;) で区切って入力してください。|
-StopByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。  既定値 (アスタリスク) では、サブスクリプションに含まれているすべてのリソース グループが対象となります。|
+StopByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 電子メールの受信者を指定します。  複数の名前は、セミコロン (;) で区切って入力してください。スペースは使用できません。|
+StopByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 管理操作から除外する VM の名前を入力します。複数指定する場合は、セミコロン (;) で区切ります。スペースは使用できません。 値は大文字と小文字が区別され、ワイルドカード (アスタリスク) がサポートされます。  既定値 (アスタリスク) では、サブスクリプションに含まれているすべてのリソース グループが対象となります。|
 StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | このソリューションで管理する VM があるサブスクリプションを指定します。  このソリューションの Automation アカウントと同じサブスクリプションを指定してください。|  
 <br>
 

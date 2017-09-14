@@ -12,13 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 03/02/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 12b121783f6d95a952441f1a570d58af9ec1eb7a
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -31,11 +32,11 @@ ms.lasthandoff: 03/07/2017
 * 各タスクが次のタスクの開始前に完了している必要がある、レンダリング前およびレンダリング後プロセス。
 * 下流のタスクが上流タスクの出力に依存する、その他すべてのジョブ。
 
-Batch のタスク依存関係を使用すると、コンピューティング ノードで&1; つ以上の親タスクが完了した後に実行されるようにスケジューリングされたタスクを作成できます。 たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。 最後のタスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
+Batch のタスク依存関係を使用すると、コンピューティング ノードで 1 つ以上の親タスクが完了した後に実行されるようにスケジューリングされたタスクを作成できます。 たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。 最後のタスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
 
 既定では、依存タスクは、親タスクが正常に完了した後にのみ実行されるようにスケジューリングされます。 既定の動作を上書きし、親タスクが失敗したときにタスクを実行する、依存関係アクションを指定できます。 詳細については、「[依存関係アクション](#dependency-actions)」セクションをご覧ください。  
 
-他のタスクに対して一対一または一対多の依存関係を持つタスクを作成できます。 特定の範囲に依存するタスク (指定した範囲のタスク ID に該当するタスクのグループが完了した場合に実行されるタスク) を作成することもできます。 その&3; つの基本シナリオを組み合わせれば、多対多の関係を作成することもできます。
+他のタスクに対して一対一または一対多の依存関係を持つタスクを作成できます。 特定の範囲に依存するタスク (指定した範囲のタスク ID に該当するタスクのグループが完了した場合に実行されるタスク) を作成することもできます。 その 3 つの基本シナリオを組み合わせれば、多対多の関係を作成することもできます。
 
 ## <a name="task-dependencies-with-batch-net"></a>Batch .NET でのタスクの依存関係
 この記事では、[Batch .NET][net_msdn] ライブラリを使用したタスクの依存関係の構成方法について説明します。 まず、ジョブで[タスクの依存関係を有効にする](#enable-task-dependencies)方法を説明した後、[依存関係を伴うタスクを構成する](#create-dependent-tasks)方法を紹介します。 親が失敗した場合に依存タスクを実行する、依存関係アクションを指定する方法についても説明します。 最後に、Batch でサポートされる [依存関係のシナリオ](#dependency-scenarios) について取り上げます。
@@ -73,7 +74,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > 
 
 ## <a name="dependency-scenarios"></a>依存関係のシナリオ
-Azure Batch で利用できる基本的なタスクの依存関係には、一対一、一対多、タスク ID 範囲という&3; つのシナリオがあります。 これらを組み合わせることで、第&4; のシナリオ (多対多) を実現することもできます。
+Azure Batch で利用できる基本的なタスクの依存関係には、一対一、一対多、タスク ID 範囲という 3 つのシナリオがあります。 これらを組み合わせることで、第 4 のシナリオ (多対多) を実現することもできます。
 
 | シナリオ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 例 |  |
 |:---:| --- | --- |
@@ -87,7 +88,7 @@ Azure Batch で利用できる基本的なタスクの依存関係には、一�
 > このセクションの例では、依存タスクは親タスクが正常に完了した後にのみ実行されます。 この動作は、依存タスクの既定の動作です。 既定の動作を上書きする依存関係アクションを指定すると、親タスクが失敗した後にタスクを実行できます。 詳細については、「[依存関係アクション](#dependency-actions)」セクションをご覧ください。
 
 ### <a name="one-to-one"></a>一対一
-一対一の依存関係では、タスクは&1; つの親タスクの正常な完了に依存します。 この依存関係を作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、[TaskDependencies][net_taskdependencies].[OnId][net_onid] 静的メソッドに&1; つのタスク ID を渡します。
+一対一の依存関係では、タスクは 1 つの親タスクの正常な完了に依存します。 この依存関係を作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、[TaskDependencies][net_taskdependencies].[OnId][net_onid] 静的メソッドに 1 つのタスク ID を渡します。
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -153,41 +154,42 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 依存関係アクションは、親タスクの終了条件に基づきます。 .NET では、次のどの終了条件に対しても依存関係アクションを指定できます。詳細については、[ExitConditions][net_exitconditions] クラスに関する記事をご覧ください。
 
-- スケジュール エラーが発生したとき
-- **ExitCodes** プロパティで定義された終了コードでタスクが終了したとき
-- **ExitCodeRanges** プロパティで定義された範囲内の終了コードでタスクが終了したとき
-- 既定のケースで、**ExitCodes** または **ExitCodeRanges** で定義されていない終了コードでタスクが終了した場合、または、タスクがスケジュール エラーで終了し **SchedulingError** プロパティが設定されていない場合 
+- 前処理エラーが発生したとき。
+- ファイルのアップロード エラーが発生したとき。 **exitCodes** または **exitCodeRanges** で指定された終了コードでタスクが終了し、その後ファイルのアップロード エラーが発生した場合、その終了コードにより指定されたアクションが優先されます。
+- **ExitCodes** プロパティで定義された終了コードでタスクが終了したとき。
+- **ExitCodeRanges** プロパティで定義された範囲内の終了コードでタスクが終了したとき。
+- 既定のケースで、**ExitCodes** および **ExitCodeRanges** で定義されていない終了コードでタスクが終了した、または前処理エラーでタスクが終了し、**PreProcessingError** プロパティが設定されていない、またはファイルのアップロード エラーでタスクが失敗し、**FileUploadError** プロパティが設定されていない場合。 
 
-.NET で依存関係アクションを指定するには、終了条件の [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] プロパティを設定します。 **DependencyAction** プロパティは、次の&2; つの値のいずれかに設定できます。
+.NET で依存関係アクションを指定するには、終了条件の [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] プロパティを設定します。 **DependencyAction** プロパティは、次の 2 つの値のいずれかに設定できます。
 
 - **DependencyAction** プロパティを **Satisfy** に設定すると、指定したエラーで親タスクが終了した場合に依存タスクが実行対象になります。
 - **DependencyAction** プロパティを **Block** に設定すると、依存タスクは実行対象になりません。
 
 **DependencyAction** プロパティの既定の設定は、終了コード 0 に対しては **Satisfy**、その他のすべての終了条件に対しては **Block** です。
 
-次のコード スニペットでは、親タスクの **DependencyAction** プロパティを設定します。 親タスクがスケジュール エラーで終了した場合、または指定したエラー コードで終了した場合は、依存タスクがブロックされます。 親タスクがその他の&0; 以外のエラーで終了した場合は、依存タスクが実行対象となります。
+次のコード スニペットでは、親タスクの **DependencyAction** プロパティを設定します。 親タスクが前処理エラーで終了した場合、または指定したエラー コードで終了した場合は、依存タスクがブロックされます。 親タスクがその他の 0 以外のエラーで終了した場合は、依存タスクが実行対象となります。
 
 ```csharp
 // Task A is the parent task.
 new CloudTask("A", "cmd.exe /c echo A")
 {
     // Specify exit conditions for task A and their dependency actions.
-    ExitConditions = new ExitConditions()
+    ExitConditions = new ExitConditions
     {
-        // If task A exits with a scheduling error, block any downstream tasks (in this example, task B).
-        SchedulingError = new ExitOptions()
+        // If task A exits with a pre-processing error, block any downstream tasks (in this example, task B).
+        PreProcessingError = new ExitOptions
         {
             DependencyAction = DependencyAction.Block
         },
         // If task A exits with the specified error codes, block any downstream tasks (in this example, task B).
-        ExitCodes = new List<ExitCodeMapping>()
+        ExitCodes = new List<ExitCodeMapping>
         {
             new ExitCodeMapping(10, new ExitOptions() { DependencyAction = DependencyAction.Block }),
             new ExitCodeMapping(20, new ExitOptions() { DependencyAction = DependencyAction.Block })
         },
         // If task A succeeds or fails with any other error, any downstream tasks become eligible to run 
         // (in this example, task B).
-        Default = new ExitOptions()
+        Default = new ExitOptions
         {
             DependencyAction = DependencyAction.Satisfy
         }
@@ -201,7 +203,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>サンプル コード
-[TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の&1; つです。 この Visual Studio ソリューションでは以下を示しています。
+[TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションでは以下を示しています。
 
 - ジョブでタスクの依存関係を有効にする方法
 - 他のタスクに依存するタスクを作成する方法

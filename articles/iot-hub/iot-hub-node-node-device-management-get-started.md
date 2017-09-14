@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 08/25/2017
 ms.author: juanpere
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 08a192a273ff91bcf9e75d1ff023dcc48f9bb6a2
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7de541ac45fd277f3cfc91d598c654c24af187fc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="get-started-with-device-management-node"></a>デバイス管理の開始 (Node)
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/19/2017
 
 * Azure Portal を使用して IoT Hub を作成し、IoT Hub 内にデバイス ID を作成します。
 * デバイスを再起動するダイレクト メソッドを含む、シミュレション済みデバイス アプリを作成します。 ダイレクト メソッドは、クラウドから呼び出されます。
-* シミュレートされたデバイス アプリで再起動ダイレクト メソッドを IoT Hub 経由で呼び出す .NET コンソール アプリを作成します。
+* シミュレートされたデバイス アプリで再起動ダイレクト メソッドを IoT ハブ経由で呼び出す Node.js コンソール アプリを作成します。
 
 このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
@@ -138,7 +137,7 @@ ms.lasthandoff: 05/19/2017
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>ダイレクト メソッドを使用してデバイスのリモート再起動をトリガーする
-このセクションでは、ダイレクト メソッドを使用してデバイスでのリモート再起動を開始する .NET コンソール アプリケーションを作成します (C# を使用します)。 このアプリは、デバイス ツイン クエリを使用して、そのデバイスの前回の再起動時刻を検出します。
+このセクションでは、ダイレクト メソッドを使用してデバイスでのリモート再起動を開始する Node.js コンソール アプリケーションを作成します。 このアプリは、デバイス ツイン クエリを使用して、そのデバイスの前回の再起動時刻を検出します。
 
 1. **triggerrebootondevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**triggerrebootondevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
    

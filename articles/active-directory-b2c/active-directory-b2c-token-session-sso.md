@@ -1,26 +1,28 @@
 ---
-title: "Azure Active Directory B2C: トークン、セッション、シングル サインオンの構成 | Microsoft Docs"
+title: "トークン、セッション、シングル サインオンの構成 - Azure AD B2C | Microsoft Docs"
 description: "Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成"
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
-editor: bryanla
+author: parakhj
+manager: krassk
+editor: parakhj
 ms.assetid: e78e6344-0089-49bf-8c7b-5f634326f58c
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
-ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
-
+ms.date: 08/16/2017
+ms.author: parakhj
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 256c93e5c343cba022599f8e13c5b7616bfa8b58
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: トークン、セッション、シングル サインオンの構成
+
 この機能を使用すると、 [個別のポリシーに基づいて](active-directory-b2c-reference-policies.md)、以下の対象をきめ細かく制御することができます。
 
 1. Azure Active Directory (Azure AD) B2C が出力するセキュリティ トークンの有効期間。
@@ -28,21 +30,22 @@ ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
 3. Azure AD B2C が出力するセキュリティ トークンの重要な要求の形式。
 4. B2C テナントに含まれる複数のアプリケーションとポリシーの間でのシングル サインオン (SSO) の動作。
 
-B2C テナントでこの機能を使用する手順は、以下のとおりです。
+組み込みポリシーでは、この機能を次のように Azure AD B2C ディレクトリで使用できます。
 
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
-2. **[サインイン ポリシー]**をクリックします。 "*注: この機能は **[サインイン ポリシー]** に限らず、あらゆるポリシー タイプで使用できます*"。
-3. ポリシーをクリックして開きます。 たとえば、**[B2C_1_SiIn]** をクリックします。
-4. ブレードの上部にある **[編集]** をクリックします。
+1. この手順に従って、Azure Portal で [B2C 機能メニューに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
+2. **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]**をクリックします。 *注: この機能は **[サインアップまたはサインイン ポリシー]** に限らず、あらゆるポリシー タイプで使用できます*。
+3. ポリシーをクリックして開きます。 たとえば、**[B2C_1_SiUpIn]** をクリックします。
+4. メニューの上部にある **[編集]** をクリックします。
 5. **[トークン、セッション、シングル サインオンの構成]** をクリックします。
 6. 必要な変更を施します。 後のセクションに、利用できるプロパティの説明があります。
 7. **[OK]**をクリックします。
-8. ブレードの上部で **[保存]** をクリックします。
+8. メニューの上部で **[保存]** をクリックします。
 
 ## <a name="token-lifetimes-configuration"></a>トークンの有効期間の構成
+
 Azure AD B2C は保護されたリソースへの安全なアクセスを実現する [OAuth 2.0 認証プロトコル](active-directory-b2c-reference-protocols.md) をサポートしています。 このサポートを実施するために、Azure AD B2C は各種の [セキュリティ トークン](active-directory-b2c-reference-tokens.md)を発行します。 Azure AD B2C は以下のプロパティを使用して、セキュリティ トークンの有効期間を管理することができます。
 
-* **[Access & ID token lifetimes (minutes) (アクセス & ID トークンの有効期間 (分))]**: 保護されたリソースへのアクセスに使用する OAuth 2.0 ベアラー トークンの有効期間。 現在、Azure AD B2C は ID トークンのみを発行します。 アクセス トークンのサポートが開始されたら、このプロパティの値がアクセス トークンにも適用されます。
+* **[Access & ID token lifetimes (minutes) (アクセス & ID トークンの有効期間 (分))]**: 保護されたリソースへのアクセスに使用する OAuth 2.0 ベアラー トークンの有効期間。
   * 既定値 = 60 分。
   * 最小値 (この値を含む) = 5 分。
   * 最大値 (この値を含む) = 1,440 分。
@@ -55,7 +58,7 @@ Azure AD B2C は保護されたリソースへの安全なアクセスを実現�
   * 最小値 (この値を含む) = 1 日。
   * 最大値 (この値を含む) = 365 日。
 
-次の&2; つのユース ケースは、これらのプロパティを使用して実現できます。
+次の 2 つのユース ケースは、これらのプロパティを使用して実現できます。
 
 * ユーザーがモバイル アプリケーションでアクティブな状態を継続している限り、そのアプリケーションへのサインインを無制限に持続することができます。 そのためには、サインイン ポリシーで **[Refresh token sliding window lifetime (days) (更新トークン スライディング ウィンドウの有効期間 (日))]** スイッチを **[Unbounded (制限なし)]** に設定します。
 * 適切なアクセス トークン有効期間を設定して、業界のセキュリティ要件やコンプライアンス要件を満たすことができます。
@@ -66,6 +69,7 @@ Azure AD B2C は保護されたリソースへの安全なアクセスを実現�
     > 
 
 ## <a name="token-compatibility-settings"></a>トークンの互換性の設定
+
 Azure AD B2C が出力するセキュリティ トークンの重要な要求のフォーマットに変更を加えました。 この変更は、当社の標準プロトコル サポートの向上、またサードパーティの ID ライブラリとの相互運用性の向上を目的としています。 ただし、既存のアプリの中断を回避するために、お客様が必要に応じてオプトインできるようにする次のプロパティを作成しました。
 
 * **発行者 (iss) 要求**: トークンを発行した Azure AD B2C テナントを特定します。
@@ -79,6 +83,7 @@ Azure AD B2C が出力するセキュリティ トークンの重要な要求の
   * **acr**: これは、下位互換の場合にのみ用意されており、可能であればすぐに `tfp` に切り替えることをお勧めします。
 
 ## <a name="session-behavior"></a>セッションの動作
+
 Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](active-directory-b2c-reference-oidc.md) を使用して、Web アプリケーションへの安全なサインインを実現できます。 次のプロパティを使用して、Web アプリケーション セッションを管理できます。
 
 * **[Web app session lifetime (minutes) (Web アプリ セッション有効期間 (分))]**: ユーザーのブラウザーに保存した Azure AD B2C のセッション Cookie が正常に認証される有効期間。
@@ -87,7 +92,7 @@ Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](
   * 最大値 (この値を含む) = 1,440 分。
 * **[Web app session timeout (Web アプリ セッションのタイムアウト)]**: このスイッチを **[絶対]** に設定すると、**[Web app session lifetime (minutes) (Web アプリ セッション有効期間 (分))]** で指定した期間の経過後に、強制的にユーザーを再認証します。 このスイッチを **[ローリング]** (既定値) に設定すると、ユーザーが Web アプリケーションでアクティブな状態を継続している限り、そのユーザーのサインインは継続されます。
 
-次の&2; つのユース ケースは、これらのプロパティを使用して実現できます。
+次の 2 つのユース ケースは、これらのプロパティを使用して実現できます。
 
 * 適切な Web アプリケーション セッション有効期間を設定して、業界のセキュリティ要件やコンプライアンス要件を満たすことができます。
 * ユーザーが Web アプリケーションの高セキュリティ部分を操作しているときに、設定期間が過ぎると、強制的に再認証を実施できます。 
@@ -109,10 +114,5 @@ B2C テナントで複数のアプリケーションやポリシーを運用し�
     > これらの設定は、パスワード リセット ポリシーでは使用できません。
     > 
     > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

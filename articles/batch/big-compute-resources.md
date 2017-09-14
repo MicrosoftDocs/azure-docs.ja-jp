@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: aff11fe3d7e4cea3580f73d54a53d9624e4f3ac9
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 18be9f503b57117a7e8f5f0a4e9c93614cc7755b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="big-compute-in-azure-technical-resources-for-batch-and-high-performance-computing"></a>Azure における大規模なコンピューティング: Batch とハイパフォーマンス コンピューティング (HPC) に関するテクニカル リソース
@@ -77,7 +77,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [MPI フォーラム](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>コンピューティング集中型インスタンス
-Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。 
+Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。 
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)

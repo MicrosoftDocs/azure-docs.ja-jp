@@ -4,7 +4,7 @@ description: "このトピックでは、**Media Encoder Standard** と **Media 
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a79437c0-4832-423a-bca8-82632b2c47cc
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 07/17/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 5cbe0b7f71f8dfd6f3a41fa6ff4b0c6ab5e6985d
-ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
-
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: a0e93881e0d75541fc04d7bc736459f8109d1c9f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -25,13 +26,30 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 
 このトピックでは、**Media Encoder Standard** と **Media Encoder Premium Workflow** のエンコード機能を比較します。
 
-### <a name="a-idbillingabilling-meter-used-by-each-encoder"></a><a id="billing"></a>各エンコーダーで使用される課金メーター
+## <a name="video-and-audio-processing-capabilities"></a>ビデオおよびオーディオの処理機能
+
+次の表では、Media Encoder Standard (MES) と Media Encoder Premium Workflow (MEPW) の機能を比較します。 
+
+|機能|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー|
+|---|---|---|
+|エンコード中に条件ロジックを適用する<br/>(たとえば、入力が HD の場合は、5.1 オーディオをエンコードする)|いいえ|あり|
+|クローズ キャプション|いいえ|[はい](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
+|[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> (Dialogue Intelligence™ を採用)|いいえ|あり|
+|ノンインターレース、逆テレシネ|Basic|放送品質|
+|黒い境界線の検出と削除 <br/>(ピラーボックス、レターボックス)|いいえ|あり|
+|サムネイルの生成|[はい](media-services-dotnet-generate-thumbnail-with-mes.md)|[はい](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
+|ビデオのクリッピング/トリミングおよび合成|[はい](media-services-advanced-encoding-with-mes.md#trim_video)|あり|
+|オーディオまたはビデオのオーバーレイ|[はい](media-services-advanced-encoding-with-mes.md#overlay)|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
+|グラフィックスのオーバーレイ|イメージ ソースから|イメージとテキスト ソースから|
+|複数のオーディオ言語トラック|制限あり|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
+
+## <a id="billing"></a>各エンコーダーで使用される課金メーター
 | メディア プロセッサ名 | 適用される価格 | メモ |
 | --- | --- | --- |
 | **メディア エンコーダー スタンダード** |エンコーダー |エンコード タスクは、出力として生成されたすべてのメディア ファイルの合計再生時間 (分単位) に基づいて課金されます。料金は[こちら][1] (「ENCODER」列) に記載されています。 |
 | **メディア エンコーダー Premium ワークフロー** |プレミアム エンコーダー |エンコード タスクは、出力として生成されたすべてのメディア ファイルの合計再生時間 (分単位) に基づいて課金されます。料金は[こちら][1] (「PREMIUM ENCODER」列) に記載されています。 |
 
-### <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
+## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 | 入力コンテナー/ファイル形式 | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
 | --- | --- | --- |
 | Adobe® Flash® F4V |はい |はい |
@@ -46,9 +64,9 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 | スムーズ ストリーミング ファイル形式 (PIFF 1.3) |はい |なし |
 | [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |はい |なし |
 | Matroska/WebM |はい |なし |
-| QuickTime (.mov) |はい |なし |
+| QuickTime (.mov) |はい |いいえ |
 
-### <a name="input-video-codecs"></a>入力ビデオ コーデック
+## <a name="input-video-codecs"></a>入力ビデオ コーデック
 | 入力ビデオ コーデック | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
 | --- | --- | --- |
 | AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2 |はい |
@@ -66,9 +84,9 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 | Apple ProRes 422 HQ |はい |なし |
 | Apple ProRes プロキシ |はい |なし |
 | Apple ProRes 4444 |はい |なし |
-| Apple ProRes 4444 XQ |はい |なし |
+| Apple ProRes 4444 XQ |はい |いいえ |
 
-### <a name="input-audio-codecs"></a>入力オーディオ コーデック
+## <a name="input-audio-codecs"></a>入力オーディオ コーデック
 | 入力オーディオ コーデック | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
 | --- | --- | --- |
 | AES (SMPTE 331M および 302M、AES3-2003) |なし |はい |
@@ -82,9 +100,9 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 | WAV/PCM |あり |はい |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |はい |いいえ |
 | [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |はい |なし |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |○ |なし |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |○ |いいえ |
 
-### <a name="output-containerfile-formats"></a>出力コンテナー/ファイル形式
+## <a name="output-containerfile-formats"></a>出力コンテナー/ファイル形式
 | 出力コンテナー/ファイル形式 | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
 | --- | --- | --- |
 | Adobe® Flash® F4V |なし |はい |
@@ -95,9 +113,9 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 | MPEG TS |はい |はい |
 | Windows Media/ASF |なし |はい |
 | AVI (非圧縮 8-bit/10-bit) |なし |はい |
-| スムーズ ストリーミング ファイル形式 (PIFF 1.3) |なし |はい |
+| スムーズ ストリーミング ファイル形式 (PIFF 1.3) |なし |あり |
 
-### <a name="output-video-codecs"></a>出力ビデオ コーデック
+## <a name="output-video-codecs"></a>出力ビデオ コーデック
 | 出力ビデオ コーデック | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
 | --- | --- | --- |
 | AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra) |8 ビット 4:2:0 のみ |はい |
@@ -105,9 +123,11 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 | MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル) |なし |はい |
 | MPEG-1 |なし |はい |
 | Windows Media ビデオ/VC-1 |なし |はい |
-| JPEG サムネール作成 |なし |はい |
+| JPEG サムネール作成 |あり |あり |
+| PNG サムネイル作成 |あり |あり |
+| BMP サムネイル作成 |あり |いいえ |
 
-### <a name="output-audio-codecs"></a>出力オーディオ コーデック
+## <a name="output-audio-codecs"></a>出力オーディオ コーデック
 | 出力オーディオ コーデック | メディア エンコーダー スタンダード | メディア エンコーダー Premium ワークフロー |
 | --- | --- | --- |
 | AES (SMPTE 331M および 302M、AES3-2003) |なし |はい |
@@ -133,9 +153,4 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

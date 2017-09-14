@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: bsiva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 51065a48c2f797b0ab764bf1b57425bd0696e2bd
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 581daaaa5cc0cf8be782f834c6bdb3f27ee413fb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="replicate-hyper-v-vms-to-azure-with-powershell-in-the-classic-portal"></a>クラシック ポータルで PowerShell を使用して Azure に VMware VM をレプリケートする
@@ -50,7 +49,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ### <a name="azure-prerequisites"></a>Azure の前提条件
 * [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
-* レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
+* レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [Azure ストレージについてはこちらを参照してください。](../storage/common/storage-introduction.md)
 * 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認する必要があります。
 
 ### <a name="vmm-prerequisites"></a>VMM の前提条件

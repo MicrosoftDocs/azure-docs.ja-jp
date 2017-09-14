@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: nigu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
 ms.openlocfilehash: 7f2a3c4bf8fda9dd235986be8b0ceaa8eb8313e0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
-
 
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Cloud App Discovery のプロキシ サービス用レジストリ設定

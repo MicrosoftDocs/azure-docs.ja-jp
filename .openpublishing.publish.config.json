@@ -22,10 +22,12 @@
   "notification_subscribers": [],
   "branches_to_filter": [
     "master",
-    "master-sync-work"
+    "master-sync-work",
+    "live-sxs"
   ],
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.ja-jp",
   "git_repository_branch_open_to_public_contributors": "live",
+  "continue_with_document_error": true,
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "dependent_repositories": [
@@ -43,16 +45,26 @@
     {
       "path_to_root": "cli_scripts",
       "url": "https://github.com/Azure/azure-docs-cli-python-samples",
-      "branch": "master"
+      "branch": "master",
+      "branch_mapping": {
+        "release-build-mysql": "release-build",
+        "release-build-postgresql": "release-build",
+        "release-build-stellar": "release-build"
+      }
     },
     {
       "path_to_root": "powershell_scripts",
       "url": "https://github.com/Azure/azure-docs-powershell-samples",
-      "branch": "master"
+      "branch": "master",
+      "branch_mapping": {
+        "release-build-mysql": "release-build",
+        "release-build-postgresql": "release-build",
+        "release-build-stellar": "release-build"
+      }
     },
     {
       "path_to_root": "_repo.en-us",
-      "url": "https://github.com/Microsoft/azure-docs-pr",
+      "url": "https://github.com/MicrosoftDocs/azure-docs-pr",
       "branch": "live",
       "branch_mapping": {
         "live": "live",

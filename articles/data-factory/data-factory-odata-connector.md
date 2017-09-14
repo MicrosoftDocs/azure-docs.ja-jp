@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 06/04/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 2cb8c9b50f3067561c63be194151d6128cd45299
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 624b6c8f317477d83539392c6c2f15c2dc69d401
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/06/2017
 
 
 ---
@@ -153,6 +154,35 @@ source の種類が **RelationalSource** (OData を含む) である場合は、
 | プロパティ | 説明 | 例 | 必須 |
 | --- | --- | --- | --- |
 | query |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ |
+
+## <a name="type-mapping-for-odata"></a>OData の型マッピング
+[データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+
+1. ネイティブの source 型から .NET 型に変換する
+2. .NET 型からネイティブの sink 型に変換する
+
+OData からデータを移動する場合、OData 型から .NET 型に対する次のマッピングが使用されます。
+
+| OData データ型 | .NET 型 |
+| --- | --- |
+| Edm.Binary |Byte[] |
+| Edm.Boolean |ブール値 |
+| Edm.Byte |Byte[] |
+| Edm.DateTime |DateTime |
+| Edm.Decimal |Decimal |
+| Edm.Double |Double |
+| Edm.Single |Single |
+| Edm.Guid |Guid |
+| Edm.Int16 |Int16 |
+| Edm.Int32 |Int32 |
+| Edm.Int64 |Int64 |
+| Edm.SByte |Int16 |
+| Edm.String |String |
+| Edm.Time |timespan |
+| Edm.DateTimeOffset |Datetimeoffset |
+
+> [!Note]
+> OData の複雑なデータ型 (オブジェクト型など) はサポートされていません。
 
 ## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON の使用例: OData ソースから Azure Blob にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、OData ソースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。 このサンプルでは、次の Data Factory のエンティティがあります。

@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6a3c4273042a7684307d56341de1065ad45eb617
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/29/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
@@ -26,8 +25,7 @@ ms.lasthandoff: 05/10/2017
 
 [Azure Application Insights](app-insights-overview.md) のプロファイリング ツールを使用して、実行中の Web アプリケーションで各メソッドにどれくらい時間がかかっているかを確認できます。 アプリによって処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "ホット パス" が強調表示されます。 また、複数の応答時間が含まれたサンプルが自動的に選択されます。 オーバーヘッドは、さまざまな手法を使用して最小化されます。
 
-このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます  (ASP.NET Core を使用している場合は、ターゲット フレームワークが `.NetCoreApp` である必要があります)。
-
+このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます  
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>プロファイラーを有効にする
@@ -196,18 +194,21 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 
 ## <a name="manual-installation"></a>手動のインストール
 
-プロファイラーを構成すると、Web アプリの設定が次のように更新されます。 環境に応じて (内部ロード バランサーを使用してプライベート ネットワークでアプリケーションを実行する場合など)、手動で設定することもできます。
+プロファイラーを構成すると、Web アプリの設定が次のように更新されます。 Azure App Service Environment (ASE) でアプリケーションを実行している場合など、環境に応じて手動で設定することもできます。
 
 1. [Web アプリ] コントロール ブレードで、[設定] を開きます。
 2. [.Net Framework バージョン] を [v4.6] に設定します。
 3. [Always On] を [オン] に設定します。
 4. アプリ設定 "__APPINSIGHTS_INSTRUMENTATIONKEY__" を追加し、その値を SDK によって使用されたのと同じインストルメンテーション キーに設定します。
-5. **[拡張機能]** で、[Application Insights] を追加します。 インストールは数分で終了します。
+5. [高度なツール] を開きます。
+6. [移動] をクリックして、Kudu の Web サイトを開きます。
+7. Kudu の Web サイトで、[Site extensions]\(サイトの機能拡張\) を選択します。
+8. [Gallery]\(ギャラリー\) から __Application Insights__ をインストールします。
+9. Web アプリを再起動します。
 
 ## <a id="aspnetcore"></a>ASP.NET Core のサポート
 
-AI SDK 2.0 以降を対象とする ASP.NET Core 1.1.2 アプリケーションでは、Profiler が機能します。 
-
+ASP.NET Core アプリケーションでは、Microsoft.ApplicationInsights.AspNetCore Nuget パッケージ 2.1.0-beta6 以上をインストールして、プロファイラーと共に使用する必要があります。 2017 年 6 月 27 日以降は、これより下位のバージョンはサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0092496ea13c862a1717f4fdcb882139cbd8a177
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 4eaa3e36ededddeb5268ec4f49b9daee2f824cee
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Azure クラシック デプロイメントと Resource Manager による Runbook の認証
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/15/2017
 3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br><br>![[Automation アカウントの追加]](media/automation-create-aduser-account/add-automation-acct-properties.png)
 4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
 5. 複数のサブスクリプションがある場合は、新しいアカウントに対していずれかを指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**も指定します。
-6. **[Azure 実行アカウントの作成]** オプションで **[いいえ]** を選択し、**[作成]** ボタンをクリックします。  
+6. **[Azure 実行アカウントの作成]** オプションで **[はい]** を選択し、**[作成]** ボタンをクリックします。  
    
     > [!NOTE]
     > 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。  アカウントが作成されてサブスクリプションの **共同作成者** ロールに割り当てられますが、サブスクリプションのディレクトリ サービス内の対応する認証 ID が割り当てられないため、サブスクリプション内のリソースにアクセスすることはできません。  このアカウントを参照する Runbook は認証を通過できず、Azure Resource Manager リソースに対するタスクを実行することができません。

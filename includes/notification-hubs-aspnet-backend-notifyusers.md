@@ -7,8 +7,8 @@
 
 次の手順では、新しい ASP.NET WebAPI バックエンドを作成する方法を説明します。 
 
-> [!NOTE]
-> **重要**: このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。 確認するには、Visual Studio を起動します。 **[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。 **NuGet Package Manager for Visual Studio 2013**を探し、バージョンが 2.8.50313.46 以降であることを確認します。 違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
+> [!IMPORTANT]
+> Visual Studio 2015 またはそれ以前のバージョンを使用している場合は、このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。 確認するには、Visual Studio を起動します。 **[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。 お使いの Visual Studio に対応した **NuGet パッケージ マネージャー**を探し、バージョンが最新であることを確認します。 違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
 > 
 > ![][B4]
 > 
@@ -38,7 +38,9 @@
         using System.Threading;
         using System.Security.Principal;
         using System.Net;
-        using System.Web;
+        using System.Text;
+        using System.Threading.Tasks;
+
 3. AuthenticationTestHandler.cs で、 `AuthenticationTestHandler` クラス定義を次のコードに置き換えます。 
    
     このハンドラーは、次の 3 つの条件すべてを満たす場合に要求を承認します。
@@ -51,12 +53,7 @@
      
      要求メッセージが認証され、 `AuthenticationTestHandler`によって承認される場合、基本認証ユーザーは [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx)の現在の要求に添付されます。 HttpContext のユーザー情報は、後で別のコントローラー (RegisterController) で使用され、通知登録の要求に [タグ](https://msdn.microsoft.com/library/azure/dn530749.aspx) を追加します。
      
-       public class AuthenticationTestHandler : DelegatingHandler   {
-     
-           protected override Task<HttpResponseMessage> SendAsync(
-           HttpRequestMessage request, CancellationToken cancellationToken)
-           {
-               var authorizationHeader = request.Headers.GetValues("Authorization").First();
+       public class AuthenticationTestHandler : DelegatingHandler   {       protected override Task<HttpResponseMessage> SendAsync(       HttpRequestMessage request, CancellationToken cancellationToken)       {           var authorizationHeader = request.Headers.GetValues("Authorization").First();
      
                if (authorizationHeader != null && authorizationHeader
                    .StartsWith("Basic ", StringComparison.InvariantCultureIgnoreCase))
@@ -313,15 +310,16 @@
 
 ## <a name="publish-the-new-webapi-backend"></a>新しい WebAPI バックエンドを発行する
 1. 次に、このアプリを Azure の Web サイトにデプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-2. 発行先として **Microsoft Azure Web Apps** を選択します。
-   
+2. 発行先として **[Microsoft Azure App Service]** を選択し、**[発行]** をクリックします。 [App Service の作成] ダイアログ ボックスが表示されます。このダイアログ ボックスでは、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースを作成できます。
+
     ![][B15]
-3. Azure アカウントでログインし、既存または新規の Web アプリを選択します。
-   
-    ![][B16]
-4. **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。 後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]**をクリックします。
-   
-    ![][B18]
+3. **[App Service の作成]** ダイアログ ボックスで、Azure アカウントを選択します。 **[Change Type]\(種類の変更\)** をクリックして、**[Web アプリ]** を選択します。 **[Web アプリ名]** はそのまま保持し、**[サブスクリプション]**、**[リソース グループ]**、**[App Service プラン]** を選択します。  **[作成]**をクリックします。
+
+4. **[概要]** セクションの **[サイト URL]** プロパティをメモします。 後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]**をクリックします。
+
+5. ウィザードの完了後に、Azure に ASP.NET Web アプリを発行してから、既定のブラウザーでアプリを起動します。  アプリケーションが Azure App Services に表示されます。
+
+URL では、前に指定した Web アプリ名が http://<アプリ名>.azurewebsites.net という形式で使用されます。
 
 [B1]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push1.png
 [B2]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push2.png
@@ -332,6 +330,6 @@
 [B7]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push7.png
 [B8]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push8.png
 [B14]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push14.png
-[B15]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users15.PNG
+[B15]: ./media/notification-hubs-aspnet-backend-notifyusers/publish-to-app-service.png
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG

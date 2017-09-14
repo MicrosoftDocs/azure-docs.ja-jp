@@ -3,7 +3,7 @@ title: "Azure AD での SaaS アプリ ユーザー プロビジョニングの�
 description: "Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。"
 services: active-directory
 documentationcenter: 
-author: asmalser-msft
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2016
-ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 39714145f84f5f9229dbf4bbe136103d4d102bed
-ms.lasthandoff: 03/31/2017
-
+ms.date: 07/13/2017
+ms.author: curtand
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7cb780117d64d67449146b9757f8162e23e65d1e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化

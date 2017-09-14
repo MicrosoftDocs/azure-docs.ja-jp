@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2017
+ms.date: 06/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: a09aefd00a89c48acdc885f98e34d7faa9c5629a
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 756565b3da6e0a818d1ee3d5e17f942d96be14f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -47,10 +48,10 @@ AMQP メッセージにマップされている Service Bus のメッセージ�
 要求を送信するために管理ノードへのリンクを作成します。  
   
 ```  
-requestLink = session.attach(       
+requestLink = session.attach(     
 role: SENDER,   
-       target: { address: "<entity address>/$management" },   
-       source: { address: ""<my request link unique address>" }   
+    target: { address: "<entity address>/$management" },   
+    source: { address: ""<my request link unique address>" }   
 )  
   
 ```  
@@ -60,10 +61,10 @@ role: SENDER,
 管理ノードからの応答を受信するためのリンクを作成します。  
   
 ```  
-responseLink = session.attach(      
+responseLink = session.attach(    
 role: RECEIVER,   
     source: { address: "<entity address>/$management" }   
-       target: { address: "<my response link unique address>" }   
+    target: { address: "<my response link unique address>" }   
 )  
   
 ```  
@@ -93,17 +94,17 @@ requestLink.sendTransfer(
 responseMessage = responseLink.receiveTransfer()  
 ```  
   
-応答メッセージは次の形式になります。  
+応答メッセージは次の形式になります。
   
 ```  
 Message(  
-properties: {      
+properties: {     
         correlation-id: <request id>  
     },  
     application-properties: {  
             "statusCode" -> <status code>,  
             "statusDescription" -> <status description>,  
-           },          
+           },         
 )  
   
 ```  
@@ -329,7 +330,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |message-count|int|はい|ピークするメッセージの最大数。|  
 |session-id|string|あり|セッション ID。|  
   
-#### <a name="response"></a>応答  
+#### <a name="response"></a>Response  
 
 応答メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
@@ -398,7 +399,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |---------|----------------|--------------|--------------------|  
 |session-id|string|あり|セッション ID。|  
   
-#### <a name="response"></a>応答  
+#### <a name="response"></a>Response  
 
 応答メッセージには、次のアプリケーション プロパティが含まれている必要があります。  
   
@@ -559,7 +560,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |sequence-numbers|long 型の配列|はい|シーケンス番号。|  
-|receiver-settle-mode|ubyte|あり|AMQP core v1.0 で指定されている受信側解決モード。|  
+|receiver-settle-mode|ubyte|あり|AMQP core v1.0 で指定されている**受信側解決**モード。|  
   
 #### <a name="response"></a>応答  
 
@@ -616,6 +617,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |statusDescription|string|いいえ|ステータスの説明。|
 
 ## <a name="next-steps"></a>次のステップ
+
 AMQP と Service Bus の詳細については、次のリンクを参照してください。
 
 * [Service Bus AMQP の概要]

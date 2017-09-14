@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric について | Microsoft Docs"
-description: "Azure Service Fabric の概要とファースト ステップ ガイド。 Service Fabric についてと、マイクロサービスで構成されたスケーラブルかつ信頼性が高く、管理しやすいアプリケーションを開発する方法について説明します。"
+title: "Azure Service Fabric の詳細 | Microsoft Docs"
+description: "Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,64 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/18/2017
+ms.date: 06/14/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e1b8eba3e6ed91f87c4f2adfbba19d8fe2712920
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a5ccfa671e6780a3d4305d4e3238c55de8e577c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
-この入門書では、Service Fabric の簡単な概要、中核となる概念と用語の紹介、ファースト ステップ ガイド、および Service fabric の各領域の概要を提供します。 この入門書には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
-
-## <a name="the-five-minute-overview"></a>5 分間の概説
-Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。 開発者と管理者は Service Fabric を使用することで、複雑なインフラストラクチャの問題の解決を回避できます。 そのうえ、スケーラブルで信頼性が高く、管理可能であることがわかっているため、ミッション クリティカルな要求の厳しいワークロードの実装に集中できます。 Service Fabric は、これらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代のミドルウェア プラットフォームの代表例です。 
-
-次の Channel9 の短いビデオでは、Service Fabric とマイクロサービスを紹介しています。<center><a target="_blank" href="https://aka.ms/servicefabricvideo">  
-<img src="./media/service-fabric-content-roadmap/OverviewVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-## <a name="the-detailed-overview"></a>概要の詳細
-Service Fabric を使用すると、マイクロサービスで構成されるスケーラブルで信頼性の高いアプリケーションを構築して管理できます。 これらのマイクロサービスは、クラスターと呼ばれるマシンの共有プールで、高密度で実行します。 分散型のスケーラブルなステートレスおよびステートフル マイクロサービスを構築するための高度なランタイムを提供します。 また、デプロイ済みのアプリケーションをプロビジョニング、デプロイ、監視、アップグレード/修正、削除するための包括的なアプリケーション管理機能も提供します。 詳しくは、「[Service Fabric の概要](service-fabric-overview.md)」をご覧ください。
-
-なぜ設計にマイクロサービスを採用しているのでしょうか。 すべてのアプリケーションは時間の経過に伴って進化します。 成功したアプリケーションは便利であることで進化します。 現在の要件についておよびその要件が将来どうなるかについてどれほどのことをご存じでしょうか。 (アプリケーションは後で再設計可能であると承知した上で) 簡単なアプリケーションを概念実証として完成させることが推進要因となることがあります。 一方で、企業がクラウドの構築について話すとき、成長と使用状況に対する期待があります。 問題はその成長と規模が予想できないことです。 開発者は、アプリケーションをスケールして予測できない成長や使用状況に対応できることを把握しながら、迅速にプロトタイプを構築する必要があります。 「[マイクロサービスとは](service-fabric-overview-microservices.md)」では、マイクロサービス設計アプローチがこれらの課題をどのようにして克服できるか、およびマイクロサービスを作成して個別にスケールアップ/スケールダウン、テスト、デプロイ、管理する方法について説明します。
-
-Service Fabric はさまざまな種類のビジネス アプリケーションやサービスを作成し実行できる信頼性の高い柔軟なプラットフォームを提供します。 また、(あらゆる言語で記述された) 任意の既存のアプリケーションを実行できます。 これらのアプリケーションとマイクロサービスはステートレスまたはステートフルが考えられますが、最大限に効率化するために仮想マシン間でリソース分散されます。 Service Fabric 独自のアーキテクチャでは、リアルタイムに近いデータ分析、メモリ内のコンピューティング、並列トランザクション、アプリケーションでのイベント処理を実行できます。 リソース要件の変化に応じて、[アプリケーションを簡単にスケール アップまたはスケール ダウン](service-fabric-concepts-scalability.md) (実際にはスケール インまたはスケール アウト) できます。 作成できるアプリケーションやサービスのカテゴリとお客様導入事例については、[アプリケーションのシナリオ](service-fabric-application-scenarios.md)と[パターンとシナリオ](service-fabric-patterns-and-scenarios.md)に関する記事をご覧ください。
-
-次の Microsoft Virtual Academy のビデオでは、Service Fabric の主要概念について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">  
-<img src="./media/service-fabric-content-roadmap/CoreConceptsVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-## <a name="get-started-and-create-your-first-app"></a>導入および最初のアプリの作成 
-Service Fabric SDK とツールを使用して Windows、Linux、または MacOS の各環境でアプリを開発し、それらのアプリを Windows または Linux で実行されているクラスターにデプロイできます。 次のガイドに従ってアプリをデプロイします。デプロイにかかる時間は数分です。 最初のアプリケーションを実行後、既製の[サンプル アプリ](http://aka.ms/servicefabricsamples)をいくつかダウンロードして実行します。 具体的には、[入門サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)から始めてください。
-
-### <a name="on-windows"></a>Windows の場合
-Service Fabric SDK には、Service Fabric アプリケーションの作成、デプロイ、およびデバッグのためのテンプレートとツールを提供する Visual Studio 用アドインが含まれます。 これらのトピックでは、Visual Studio で最初のアプリケーションを作成し、それをお使いの開発用コンピューターで実行するプロセスについて説明します。
-
-[開発環境のセットアップ](service-fabric-get-started.md)
-[最初のアプリの作成 (C#)](service-fabric-create-your-first-application-in-visual-studio.md)
-
-#### <a name="practical-hands-on-labs"></a>実践的なハンズオン ラボ
-この広範な[ハンズオン ラボ (パート 1)](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) で Service Fabric のエンド ツー エンドの開発フローに慣れることができます。 ステートレス サービスの作成、監視と正常性レポートの構成、アプリケーションのアップグレードを実行する方法を学習します。 パート 1 の後、[ハンズオン ラボ (パート 2)](http://aka.ms/sflab2) を実行すると、ステートフル サービスについて学習できます。
-
-次の Channel9 のビデオでは、Visual Studio で C# アプリケーションを作成するプロセスについて説明します。  
-<center><a target="_blank" href="https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio">  
-<img src="./media/service-fabric-content-roadmap/first-app-vid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-### <a name="on-linux"></a>Linux の場合
-Service Fabric では、.NET Core と Java の両方で Linux 上のサービスを構築するための SDK を提供しています。 「[開発環境をセットアップする](service-fabric-get-started-linux.md)」、「[最初のアプリを作成する (Java)](service-fabric-create-your-first-linux-application-with-java.md)」、「[最初のアプリを作成する (C#)](service-fabric-create-your-first-linux-application-with-csharp.md)」のトピックで、Linux で最初の Java または C# アプリケーションを作成し、それをお使いの開発用コンピューターで実行するプロセスについて説明します。
-
-次の Microsoft Virtual Academy ビデオで、Linux で Java アプリを作成する手順について説明しています。  
-<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
-<img src="./media/service-fabric-content-roadmap/LinuxVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-### <a name="on-macos"></a>MacOS の場合
-Linux クラスターで実行する Service Fabric アプリケーションを MacOS X で構築できます。 「[開発環境をセットアップする](service-fabric-get-started-mac.md)」および「[最初のアプリを作成する (Java)](service-fabric-create-your-first-linux-application-with-java.md)」記事では、お使いの Mac を開発用にセットアップする方法と、MacOS で Java アプリケーションを作成して Ubuntu 仮想マシンで実行する方法について説明します。
+Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
 
 ## <a name="core-concepts"></a>主要な概念
 「[Service Fabric の用語](service-fabric-technical-overview.md)」、「[アプリケーション モデル](service-fabric-application-model.md)」、および「[サポートされるプログラミング モデル](service-fabric-choose-framework.md)」では詳細な概念や説明が提供されていますが、ここでは基本的な概念について説明します。
@@ -82,7 +36,7 @@ Linux クラスターで実行する Service Fabric アプリケーションを 
 <img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td></tr>
 </table>
 
-### <a name="design-time-app-type-service-type-app-package-and-manifest-service-package-and-manifest"></a>設計時: アプリの種類、サービスの種類、アプリのパッケージとマニフェスト、サービス パッケージとマニフェスト
+### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>設計時: アプリケーションの種類、サービスの種類、アプリケーションのパッケージとマニフェスト、サービス パッケージとマニフェスト
 アプリケーションの種類は、一連のサービスの種類に割り当てられる名前/バージョンです。 これは、アプリケーション パッケージ ディレクトリに埋め込まれているファイル *ApplicationManifest.xml* に定義されています。 アプリケーション パッケージは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて名前付きアプリケーションを作成できます。作成したアプリケーションはクラスター内で実行します。 
 
 サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、サービス パッケージ ディレクトリに埋め込まれているファイル ServiceManifest.xml に定義されています。 サービス パッケージ ディレクトリは、アプリケーション パッケージのファイル *ApplicationManifest.xml* から参照されます。 クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。 サービスの種類は、その *ServiceManifest.xml* ファイルに記述します。 このサービスの種類は、実行時に読み込まれる実行可能コードのサービス構成設定と、サービスによって消費される静的データで構成されます。
@@ -93,7 +47,7 @@ Linux クラスターで実行する Service Fabric アプリケーションを 
 
 サービス パッケージは、サービスの種類の *ServiceManifest.xml* ファイルが含まれているディスク ディレクトリで、サービスの種類に対応するコード、静的データ、構成パッケージなどを参照します。 サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した *ApplicationManifest.xml* ファイルから参照されます。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
 
-### <a name="run-time-clusters-and-nodes-named-apps-named-services-partitions-and-replicas"></a>実行時: クラスターとノード、名前付きアプリ、名前付きサービス、パーティション、およびレプリカ
+### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>実行時: クラスターとノード、名前付きアプリケーション、名前付きサービス、パーティション、およびレプリカ
 [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。
 
 クラスターに属しているコンピューターまたは VM をノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始される Windows サービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、`Fabric.exe` と `FabricGateway.exe` の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 開発やテストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
@@ -117,14 +71,21 @@ Linux クラスターで実行する Service Fabric アプリケーションを 
 
 パーティションには、ステートレスの名前付きサービスの場合はインスタンスが、ステートフルの名前付きサービスの場合はレプリカが格納されます。 通常、ステートレスの名前付きサービスは内部的な状態を持たないため、割り当てられるパーティションは 1 つだけです。 パーティションのインスタンスによってもたらされるのは[可用性](service-fabric-availability-services.md)です。 つまり 1 つのインスタンスで障害が発生しても他のインスタンスは正常動作を保ち、Service Fabric によって新しいインスタンスが作成されます。 ステートフルの名前付きサービスでは、その状態がレプリカ内で管理されます。それぞれのパーティションが固有のレプリカ セットを持ちます。 読み取りおよび書き込み操作は、1 つのレプリカ (プライマリと呼ばれます) で実行されます。 書き込み操作からの状態の変更は、他の複数のレプリカ (アクティブ セカンダリと呼ばれます) にレプリケートされます。 万一レプリカに障害が発生した場合は、Service Fabric が既存のレプリカから新しいレプリカを構築します。
 
+## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric 用のステートレス マイクロサービスとステートフル マイクロサービス
+Service Fabric では、マイクロサービスまたはコンテナーで構成されるアプリケーションを構築することができます。 ステートレス マイクロサービス (プロトコル ゲートウェイや Web プロキシなど) では、要求およびそのサービスからの応答以外では変更可能な状態が維持されません。 Azure Cloud Services worker ロールは、ステートレス サービスの一例です。 ステートフル マイクロサービス (ユーザー アカウント、データベース、デバイス、ショッピング カート、キューなど) では、要求およびその応答以外でも変更可能な認証状態が維持されます。 今日のインターネット規模のアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせで構成されています。 
+
+Service Fabric との重要な違いは、[組み込みプログラミング モデル](service-fabric-choose-framework.md)またはコンテナー化されたステートフル サービスで、ステートフル サービスの構築に大きな重点が置かれていることです。 [アプリケーション シナリオ](service-fabric-application-scenarios.md)では、ステートフル サービスが使われるシナリオについて説明されています。
+
+ステートレス マイクロサービスだけでなく、ステートフル マイクロサービスも必要である理由。 主に 2 つの理由があります。
+
+* 同じコンピューター上でコードとデータを密接に保持することで、高スループット、低待機時間、エラー トレラントなオンライン トランザクション処理 (OLTP) サービスを構築できます。 例として、対話型のストアフロント、検索、モノのインターネット (IoT) システム、取引システム、クレジット カード処理、不正検出システム、個人記録管理などがあります。
+* アプリケーションの設計を簡素化することができます。 完全にステートレスなマイクロサービスの可用性と待機時間の要件に対応するために、従来は追加のキューとキャッシュが必要でしたが、ステートフル マイクロサービスでは不要になります。 ステートフル サービスは高可用性と低待機時間が特徴であり、アプリケーション全体で管理すべき変動要素が少なくなります。
+
 ## <a name="supported-programming-models"></a>サポートされるプログラミング モデル
 Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。 サービスでは Service Fabric API を使用して、プラットフォームの機能とアプリケーション フレームワークを最大限に活用できます。 サービスはまた、任意の言語で記述され、Service Fabric クラスターでホストされる任意のコンパイル済み実行可能プログラムにすることができます。 詳しくは、[サポートされるプログラミング モデル](service-fabric-choose-framework.md)に関する記事をご覧ください。
 
-### <a name="guest-executables"></a>ゲスト実行可能ファイル
-[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)は、Service Fabric クラスターで他のサービスとともにホストされる既存の任意の実行可能ファイル (任意の言語で記述されたもの) です。 ただし、ゲスト実行可能ファイルは、Service Fabric API に直接統合されません。 ゲスト実行可能ファイルは、プラットフォームに用意されているフルセットの機能 (カスタムの正常性および負荷のレポート、サービス エンドポイントの登録、ステートフル コンピューティングなど) を利用できません。
-
 ### <a name="containers"></a>コンテナー
-既定では、Service Fabric はサービスをプロセスとしてデプロイし、アクティブ化します。 また、Service Fabric では[コンテナー](service-fabric-containers-overview.md)内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。 現在、Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。 Service Fabric のアプリケーション モデルでは、コンテナーは複数のサービス レプリカが配置されたアプリケーション ホストを表します。 Service Fabric を使用して、既存のアプリケーション、ステートレス サービス、またはステートフル サービスをコンテナーにデプロイできます。 
+既定では、Service Fabric はサービスをプロセスとしてデプロイし、アクティブ化します。 また、Service Fabric では[コンテナー](service-fabric-containers-overview.md)内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。 Service Fabric では、Linux コンテナーのデプロイと、Windows Server 2016 での Windows コンテナーのデプロイをサポートしています。 既存のアプリケーション、ステートレス サービス、またはステートフル サービスをコンテナーにデプロイできます。 
 
 ### <a name="reliable-services"></a>Reliable Service
 [Reliable Services](service-fabric-reliable-services-introduction.md) は軽量のフレームワークで、Service Fabric プラットフォームと統合した、プラットフォームの全機能を活用するサービスを作成できます。 Reliable Services は、Azure Cloud Services の Web サーバーや worker ロールなどの多くのサービス プラットフォームと同様にステートレスになる場合があり、状態は Azure DB や Azure Table Storage などの外部のソリューションに維持されます。 Reliable Services はステートフルになる場合もあり、状態は Reliable Collection を使用してサービスに直接維持されます。 状態はレプリケーションによって[高可用](service-fabric-availability-services.md)になり、[パーティション](service-fabric-concepts-partitioning.md)によって分散されます。いずれも Service Fabric で自動的に管理されます。
@@ -132,7 +93,13 @@ Service Fabric には、サービスの記述と管理に使用できる複数�
 ### <a name="reliable-actors"></a>Reliable Actor
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) フレームワークは Reliable Services 上に構築され、アクター設計パターンに基づいて、Virtual Actor パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、アクターという単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
 
-## <a name="app-lifecycle"></a>アプリケーション ライフサイクル
+### <a name="aspnet-core"></a>ASP.NET Core
+Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) と統合することで、Web アプリケーションや API アプリケーションを構築するための優れたプログラミング モデルとして機能します。
+
+### <a name="guest-executables"></a>ゲスト実行可能ファイル
+[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)は、Service Fabric クラスターで他のサービスとともにホストされる既存の任意の実行可能ファイル (任意の言語で記述されたもの) です。 ゲスト実行可能ファイルは、Service Fabric API に直接統合されません。 ただし、カスタムの正常性と負荷のレポート、REST API を呼び出すことによるサービスの検出可能性など、プラットフォームに備わった機能からメリットを得られます。 また、完全なアプリケーションのライフサイクルのサポートも備えています。 
+
+## <a name="application-lifecycle"></a>アプリケーションのライフサイクル
 その他のプラットフォームと同様に、通常、Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを進みます。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 「[Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)」では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズ全体でさまざまな役割がその API をどのように使用するかを示します。 
 
 アプリケーションのライフサイクル全体は、[PowerShell コマンドレット](/powershell/module/ServiceFabric/)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、 [Java API](/java/api/system.fabric._application_management_client)、および[REST API](/rest/api/servicefabric/) を使用して管理できます。 [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) や [Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md) などのツールを使用して、継続的インテグレーション/継続的なデプロイ パイプラインをセットアップすることもできます。
@@ -141,8 +108,8 @@ Service Fabric には、サービスの記述と管理に使用できる複数�
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
-## <a name="test-apps-and-services"></a>アプリとサービスのテスト
-真のクラウド スケール サービスを作成するには、アプリとサービスが現実の障害に耐えられるかを検証することが不可欠です。 Fault Analysis Service は、Service Fabric で構築されたサービスをテストするために設計されています。 Fault Analysis Service (service-fabric-testability-overview.md) を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行できます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
+## <a name="test-applications-and-services"></a>アプリケーションとサービスをテストする
+真のクラウド スケール サービスを作成するには、アプリケーションとサービスが現実の障害に耐えられるかを検証することが不可欠です。 Fault Analysis Service は、Service Fabric で構築されたサービスをテストするために設計されています。 [Fault Analysis Service](service-fabric-testability-overview.md) を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
 
 [アクション](service-fabric-testability-actions.md)は、個別の障害を使用してテストするためのサービスを対象にします。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 シミュレートされる障害の例を次に示します。
 
@@ -166,7 +133,7 @@ Service Fabric クラスターは、Windows Server や Linux が動作してい�
 </a></center>
 
 ### <a name="clusters-on-azure"></a>Azure 上のクラスター
-Azure で Service Fabric クラスターを実行すると、Azure の他の機能とサービスに統合されるため、クラスターの操作と管理が容易になり、信頼性が高まります。 クラスターは、Azure Resource Manager リソースであるため、Azure で他の任意のリソースのようにクラスターをモデル化できます。 Resource Manager では、クラスターで使用するすべてのリソースを 1 つの単位として簡単に管理することもできます。 Azure 上のクラスターは、Azure 診断および Log Analytics と統合されます。 クラスターの NodeType は、[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/index)であるため、自動スケール機能が組み込まれています。
+Azure で Service Fabric クラスターを実行すると、Azure の他の機能とサービスに統合されるため、クラスターの操作と管理が容易になり、信頼性が高まります。 クラスターは、Azure Resource Manager リソースであるため、Azure で他の任意のリソースのようにクラスターをモデル化できます。 Resource Manager では、クラスターで使用するすべてのリソースを 1 つの単位として簡単に管理することもできます。 Azure 上のクラスターは、Azure 診断および Log Analytics と統合されます。 クラスター ノードの種類は、[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/index)であるため、自動スケール機能が組み込まれています。
 
 [Azure Portal](service-fabric-cluster-creation-via-portal.md) 経由で、[テンプレート](service-fabric-cluster-creation-via-arm.md)から、または [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) から、Azure 上にクラスターを作成できます。
 
@@ -175,7 +142,7 @@ Linux 上の Service Fabric を使用すると、Windows 上と同じように�
 Linux での Service Fabric はプレビュー版であるため、Windows ではサポートされているものの Linux ではサポートされていない機能が一部存在します。 詳細については、「[Linux での Service Fabric (プレビュー) と Windows での Service Fabric (一般公開) の違い](service-fabric-linux-windows-differences.md)」をご覧ください。
 
 ### <a name="standalone-clusters"></a>スタンドアロンのクラスター
-Service Fabric には、オンプレミスまたは任意のクラウド プロバイダーにスタンドアロン Service Fabric クラスターを作成するインストール パッケージが用意されています。 スタンドアロン クラスターは、任意の場所でクラスターをホストする自由があります。 データがコンプライアンスや法的な制約を課せられる場合、またはデータをローカルに保持する場合は、独自のクラスターとアプリをホストできます。 Service Fabric アプリは、変更せずに複数のホスティング環境で実行できるため、アプリの構築の知識を 1 つのホスティング環境から別の環境に持ち越すことができます。 
+Service Fabric には、オンプレミスまたは任意のクラウド プロバイダーにスタンドアロン Service Fabric クラスターを作成するインストール パッケージが用意されています。 スタンドアロン クラスターは、任意の場所でクラスターをホストする自由があります。 データがコンプライアンスや法的な制約を課せられる場合、またはデータをローカルに保持する場合は、独自のクラスターとアプリケーションをホストできます。 Service Fabric アプリケーションは、変更せずに複数のホスティング環境で実行できるため、アプリケーションの構築の知識を 1 つのホスティング環境から別の環境に持ち越すことができます。 
 
 [初めての Service Fabric スタンドアロン クラスターの作成](service-fabric-get-started-standalone-cluster.md)
 
@@ -215,7 +182,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 追加の設定なしで、Service Fabric コンポーネントは、クラスター内のすべてのエンティティの正常性をレポートします。 [システム正常性レポート](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)は、クラスターとアプリケーションの動作状況を視覚化し、正常性の問題を警告します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric ランタイムの観点から確認します。 レポートは、サービスのビジネス ロジックの正常性モニタリングやハングしたプロセスの検出を提供するものではありません。 サービスのロジックに固有の正常性情報を追加するには、サービスに[カスタム正常性レポートを実装](service-fabric-report-health.md)します。
 
 Service Fabric には、正常性ストアに集計された[正常性レポートを表示する](service-fabric-view-entities-aggregated-health.md)ために複数の方法が用意されています。
-* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) またはその他の視覚化ツール
+* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) またはその他の視覚化ツール。
 * 正常性クエリ ([PowerShell](/powershell/module/ServiceFabric/)、[C# FabricClient API](/api/system.fabric.fabricclient.healthclient) および [Java FabricClient API](/java/api/system.fabric._health_client)、または[REST API](/rest/api/servicefabric) を介して)。
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、API、または REST を使用)。
 

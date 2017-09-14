@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/30/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 015782373e59d1aaf10a7b089c84c982031b36b2
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 265a968f902f53c7561c8c7e937f8eacfdb37167
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
@@ -64,6 +63,6 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 * [ラボのポリシーを設定します](devtest-lab-set-lab-policy.md)。
 * [ラボ テンプレートを作成します](devtest-lab-create-template.md)。
 * [VM のカスタム アーティファクトを作成します](devtest-lab-artifact-author.md)。
-* [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
+* [アーティファクトを含む VM をラボに追加します](https://azure.microsoft.com/resources/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab/)。
 
 

@@ -2,7 +2,7 @@
 title: "Azure Power BI Embedded のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Power BI のデータ視覚化と対話型レポートをアプリに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 services: power-bi-embedded
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 48f9fe41b94016e54a2ec622df9684b7dcd4dfed
 ms.openlocfilehash: c1e12dc71ce823425971beeb9db1cc5abd2aa12b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
@@ -139,10 +141,5 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
         </div>
     </li>
 </ul>
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

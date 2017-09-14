@@ -16,76 +16,157 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2a645e6ab50b7b764a56bb7a79ad5cf295881214
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/23/2017
 
 
 ---
-# <a name="deploy-sap-s4hana-or-bw4hana-on-microsoft-azure"></a>Microsoft Azure に SAP S/4HANA または BW/4HANA をデプロイする
-この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して Microsoft Azure に S/4HANA をデプロイする方法について説明します。 他の SAP HANA ベースのソリューション (BW/4HANA など) のデプロイも同様のプロセスで機能します。 別のソリューションを選択するだけです。
+# <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure に SAP S/4HANA または BW/4HANA をデプロイする
+この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して Azure に S/4HANA をデプロイする方法について説明します。 BW/4HANA などの他の SAP HANA ベースのソリューションをデプロイする手順は同じです。
 
 > [!NOTE]
-SAP Cloud Appliance Library の詳細については、[サイトのホーム ページ](https://cal.sap.com/)参照してください。 [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)のブログもご覧ください。
+SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap.com/) の Web サイトにアクセスします。 SAP には [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience) に関するブログも用意されています。
+
+> [!NOTE]
+2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイメント モデルに加えて Azure Resource Manager デプロイメント モデルを使用できるようになりました。 クラシック デプロイメント モデルの代わりに新しい Resource Manager デプロイメント モデルを使用することをお勧めします。
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>ソリューションを配置するための段階的なプロセス
 
-次のスクリーン ショットでは、Azure にS/4HANA をデプロイする方法を示します。 BW/4 HANA などの他のソリューションでもプロセスは同じです。
+次の一連のスクリーンショットは、SAP CAL を使用して Azure に S/4HANA をデプロイする方法を示します。 BW/4HANA などの他のソリューションでもプロセスは同じです。
 
-最初のスクリーン ショットは、Azure で使用できるすべての SAP CAL HANA ベースのソリューションを示しています。 **SAP S/4HANA オンプレミス エディション**は一番下にあることに注意してください。
+**[Solutions]\(ソリューション\)** ページには、Azure で使用できる SAP CAL HANA ベースのソリューションの一部が掲載されています。 **SAP S/4HANA 1610 FPS01, Fully-Activated Appliance** は中央の行にあります。
 
-![SAP Cloud Appliance Library の [Solutions (ソリューション)] ウィンドウ](./media/cal-s4h/s4h-pic-1b.jpg)
+![SAP CAL のソリューション](./media/cal-s4h/s4h-pic-1c.png)
 
-最初に、新しい SAP CAL アカウントを作成します。 **[Accounts (アカウント)]** には、[Microsoft Azure] と [Azure option operated by 21Vianet (21Vianet によって動作する Azure オプション)] という 2 つのオプションがあります。 この例では、**[Microsoft Azure]** を選択します。
+### <a name="create-an-account-in-the-sap-cal"></a>SAP CAL にアカウントを作成する
+1. 初めて SAP CAL にサインインするには、SAP S-User または SAP に登録された他のユーザーを使用します。 次に、SAP CAL で使用される SAP CAL アカウントを定義し、アプライアンスを Azure にデプロイします。 アカウントの定義では、次を行う必要があります。
 
-![SAP Cloud Appliance Library の [Accounts (アカウント)] ウィンドウ](./media/cal-s4h/s4h-pic-2.jpg)
+    a. Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
 
-次に、Azure のポータルで確認できる Azure サブスクリプション ID を入力します。 その後、Azure 管理証明書をダウンロードします。
+    b. Azure サブスクリプションを入力します。 SAP CAL アカウントは 1 つのサブスクリプションにのみ割り当てることができます。 複数のサブスクリプションが必要な場合は、別の SAP CAL アカウントを作成する必要があります。
 
-![SAP Cloud Appliance Library の [Accounts (アカウント)] ウィンドウ](./media/cal-s4h/s4h-pic3b.jpg)
+    c. Azure サブスクリプションにデプロイするために、SAP CAL にアクセス許可を付与します。
+
+    > [!NOTE]
+    次の手順では、Resource Manager デプロイメント用の SAP CAL アカウントを作成する方法を示します。 クラシック デプロイ モデルにリンクされている SAP CAL アカウントが既にある場合は、次の手順に従って新しい SAP CAL アカウントを作成する "*必要があります*"。 新しい SAP CAL アカウントは、Resource Manager モデルにデプロイする必要があります。
+
+2. 新しい SAP CAL アカウントを作成します。 **[Accounts]\(アカウント\)** ページには、Azure の 3 つの選択肢が用意されています。 
+
+    a. **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイメント モデルで、推奨されなくなりました。
+
+    b. **[Microsoft Azure]** は新しい Resource Manager デプロイメント モデルです。
+
+    c. **[Windows Azure operated by 21Vianet]\(21Vianet が運用する Windows Azure\)** は中国向けのオプションで、クラシック デプロイメント モデルを使用します。
+
+    Resource Manager モデルでデプロイするには、**[Microsoft Azure]** を選択します。
+
+    ![SAP CAL アカウントの詳細](./media/cal-s4h/s4h-pic-2a.png)
+
+3. Azure Portal で見つかった Azure の**サブスクリプション ID** を入力します。
+
+   ![SAP CAL アカウント](./media/cal-s4h/s4h-pic3c.png)
+
+4. SAP CAL を承認し、定義した Azure サブスクリプションにデプロイするには、**[Authorize]\(承認\)** をクリックします。 次のページがブラウザー タブに表示されます。
+
+   ![Internet Explorer のクラウド サービスのサインイン](./media/cal-s4h/s4h-pic4c.png)
+
+5. 複数のユーザーが列挙されている場合は、選択した Azure サブスクリプションの共同管理者としてリンクされている Microsoft アカウントを選択します。 次のページがブラウザー タブに表示されます。
+
+   ![Internet Explorer のクラウド サービスの確認](./media/cal-s4h/s4h-pic5a.png)
+
+6. **[Accept]\(受け入れる\)** をクリックします。 承認が成功した場合は、SAP CAL アカウントの定義が再び表示されます。 短い時間が経過すると、承認プロセスが成功したことを示すメッセージが表示されます。
+
+7. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに**ユーザー ID** を入力し、**[Add]\(追加\)** をクリックします。
+
+   ![アカウントからユーザーへの関連付け](./media/cal-s4h/s4h-pic8a.png)
+
+8. アカウントを SAP CAL へのサインインに使用するユーザーに関連付けるには、**[Review]\(レビュー\)** をクリックします。 
+ 
+9. ユーザーと新しく作成した SAP CAL アカウントの間の関連付けを作成するには、**[Create]\(作成\)** をクリックします。
+
+   ![ユーザーから SAP CAL アカウントへの関連付け](./media/cal-s4h/s4h-pic9b.png)
+
+正しく作成した SAP CAL アカウントでは、次のことが可能です。
+
+- Resource Manager デプロイメント モデルを使用する。
+- SAP システムを Azure サブスクリプションにデプロイする。
+
+これで Azure のユーザー サブスクリプションに S/4HANA のデプロイを開始できます。
 
 > [!NOTE]
-Azure サブスクリプション ID を確認するには、新しい Azure Portal ではなく Azure クラシック ポータルを使用する必要があります。 SAP CAL は新しいモデルにはまだ対応していないため、管理証明書を操作するにはクラシック ポータルを使用する必要があります。
+続行する前に、Azure H シリーズの VM 用の Azure のコア クォータがあるかどうかを判定します。 現時点では、SAP CAL は Azure H シリーズの VM を使用して、SAP HANA ベースの一部のソリューションをデプロイします。 お使いの Azure サブスクリプションには H シリーズ用の H シリーズ コア クォータがない可能性があります。 ない場合は、Azure サポートに問い合わせて 16 H シリーズ コア以上のクォータを入手する必要がある場合があります。
 
-次のスクリーンショットはクラシック ポータルを示しています。 **[設定]** で **[サブスクリプション]** タブを選択して、SAP CAL の [Accounts (アカウント)] ウィンドウに入力するサブスクリプション ID を確認します。
+> [!NOTE]
+SAP CAL で Azure にソリューションをデプロイするときに、1 つの Azure リージョンのみを選択できることがわかる場合があります。 SAP CAL で提案されたリージョン以外の Azure リージョンにデプロイするには、SAP から CAL のサブスクリプションを購入する必要があります。 また、最初に提案された Azure リージョン以外に送るには、SAP でメッセージを開き、CAL アカウントを有効にする必要がある場合があります。
 
-![Azure クラシック ポータルのスクリーンショット](./media/cal-s4h/s4h-pic4b.jpg)
+### <a name="deploy-a-solution"></a>ソリューションのデプロイ
 
-**設定**で、**[管理証明書]** タブに切り替えます。 管理証明書をアップロードして、顧客サブスクリプション内に仮想マシンを作成する権限を SAP CAL に付与します。 (先ほど SAP CAL からダウンロードした管理証明書をアップロードします)。
+SAP CAL の **[Solutions]\(ソリューション\)** ページからソリューションをデプロイしてみましょう。 SAP CAL では、次の 2 つのシーケンスでデプロイできます。
 
-![Azure クラシック ポータルの [管理証明書] タブのスクリーンショット](./media/cal-s4h/s4h-pic5.jpg)
+- 1 ページでデプロイされるシステムを定義する基本シーケンス
+- VM のサイズをある程度選択できる高度なシーケンス 
 
-ダウンロードした証明書ファイルを選択するための小さなダイアログ ボックスが表示されます。
+ここでは、基本のパスを使用してデプロイします。
 
-![[管理証明書のアップロード] ダイアログ ボックスのスクリーン ショット](./media/cal-s4h/s4h-pic8.jpg)
+1. **[Account Details]\(アカウントの詳細\)** ページで、次のことを行う必要があります。
 
-証明書をアップロードした後、SAP CAl と Azure サブスクリプション間の接続を SAP CAl 内でテストできます。 接続が有効であることを示すポップアップ メッセージが表示されます。
+    a. SAP CAL アカウントを選択します  (Resource Manager デプロイメント モデルを使用したデプロイに関連付けられているアカウントを使用します)。
 
-![SAP Cloud Appliance Library の [Accounts (アカウント)] ウィンドウ](./media/cal-s4h/s4h-pic9.jpg)
+    b. インスタンスの**名前**を入力します。
 
-次に、デプロイするソリューションを選択し、インスタンスを作成します。
-インスタンス名を入力し、Azure リージョンを選択し、ソリューションのマスター パスワードを定義します。
+    c. Azure の**リージョン**を選択します。 SAP CAL がリージョンを提案します。 別の Azure リージョンを使用する必要があるものの、SAP CAL のサブスクリプションがない場合は、SAP で CAL のサブスクリプションを注文する必要があります。
 
-![SAP Cloud Appliance Library の [Solutions (ソリューション)] ウィンドウ](./media/cal-s4h/s4h-pic10.jpg)
+    d. ソリューションのマスター **パスワード**を 8 ～ 9 文字で入力します。 パスワードは別のコンポーネントの管理者に対して使用されます。
 
-ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、ソリューションがアクティブであることが示され、使用する準備が整います。
+   ![SAP CAL の基本モード: インスタンスの作成](./media/cal-s4h/s4h-pic10a.png)
 
-![SAP Cloud Appliance Library の [Instances (インスタンス)] ウィンドウ](./media/cal-s4h/s4h-pic11.jpg)
+2. **[Create]\(作成\)** をクリックし、表示されたメッセージ ボックスで **[OK]** をクリックします。
 
-ソリューションの詳細の一部 (デプロイされた VM の種類など) を確認できます。 この例では、サイズと目的が異なる 3 つのの Azure VM が作成されています。
+   ![SAP CAL でサポートされる VM のサイズ](./media/cal-s4h/s4h-pic10b.png)
 
-![SAP Cloud Appliance Library の [Instances (インスタンス)] ウィンドウ](./media/cal-s4h/s4h-pic12.jpg)
+3. **[Private Key]\(秘密キー\)** ダイアログ ボックスで、**[Store]\(格納\)** をクリックしてSAP CAL に秘密キーを格納します。 秘密キーに対してパスワード保護を使用するには、**[Download]\(ダウンロード\)** をクリックします。 
 
-Azure クラシック ポータルには、SAP CAL で指定したのと同じインスタンス名で始まる仮想マシンが表示されます。
+   ![SAP CAL の秘密キー](./media/cal-s4h/s4h-pic10c.png)
 
-![3 つの仮想マシンを表示している Azure クラシック ポータルのスクリーン ショット](./media/cal-s4h/s4h-pic13.jpg)
+4. SAP CAL の**警告**メッセージに目を通し、**[OK]** をクリックします。
 
-これで、SAP CAL ポータルの接続ボタンを使用して、ソリューションに接続できます。 ソリューションで機能するすべての既定の資格情報を説明するユーザー ガイドへのリンクが含まれたダイアログ ボックスが表示されます。
+   ![SAP CAL の警告](./media/cal-s4h/s4h-pic10d.png)
 
-![[Connect to the Instance (インスタンスに接続)] ダイアログ ボックスのスクリーン ショット](./media/cal-s4h/s4h-pic14b.jpg)
+    これで、デプロイが行われます。 ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、状態がアクティブであることが示され、使用する準備が整います。
 
-別のオプションとして、クライアント Windows VM にログインして、事前構成された SAP GUI などを起動することもできます。
+5. あるリソース グループの他の関連リソースで収集された仮想マシンを見つけるには、Azure Portal にアクセスします。 
 
-![事前構成された SAP GUI のスクリーン ショット](./media/cal-s4h/s4h-pic15.jpg)
+   ![新しいポータルにデプロイされている SAP CAL オブジェクト](./media/cal-s4h/sapcaldeplyment_portalview.png)
+
+6. SAP CAL ポータルで、状態が **[Active]\(アクティブ\)** として表示されます。 ソリューションに接続するには、**[Connect]\(接続\)** をクリックします。 別のコンポーネントに接続するための別のオプションはこのソリューション内にデプロイされています。
+
+   ![SAP CAL のインスタンス](./media/cal-s4h/active_solution.png)
+
+7. いずれかのオプションを使用してデプロイ済みのシステムに接続する前に、**[Getting Started Guide]\(ファースト ステップ ガイド\)** をクリックします。 
+
+   ![インスタンスに接続する](./media/cal-s4h/connect_to_solution.png)
+
+    ドキュメントによって各接続メソッドのユーザーが命名されます。 これらのユーザーのパスワードはデプロイ プロセスの最初に定義したマスター パスワードに設定されます。 ドキュメントにはより高機能なユーザーがパスワードとともに列挙されており、これを使用してデプロイ済みのシステムにサインインできます。 
+
+    たとえば、Windows リモート デスクトップ マシンにプレインストールされている SAP GUI を使用している場合、S/4 システムは次のように表示されることがあります。
+
+   ![プレインストールされた SAP GUI の SM50](./media/cal-s4h/gui_sm50.png)
+
+    また、DBACockpit を使用している場合、インスタンスは次のように表示されることがあります。
+
+   ![DBACockpit SAP GUI の SM50](./media/cal-s4h/dbacockpit.png)
+
+数時間のうちに、正常な SAP S/4 アプライアンスが Azure にデプロイされます。
+
+SAP CAP サブスクリプションを購入した場合、SAP が SAP CAL を介した Azure へのデプロイを全面的にサポートします。 サポート キューは BC-VCM-CAL です。
+
+
+
+
+
+
+
 

@@ -14,19 +14,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: cbe2b6bbc8e193bdbbf08572a8488239c633548d
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 78d76efb88bf11fa18a416b59e6f881539141232
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Wingtip SaaS アプリケーションでの複数テナントのスキーマの管理
 
-[最初の Wingtip SaaS チュートリアル](sql-database-saas-tutorial.md)では、アプリがテナント データベースをどのようにプロビジョニングし、カタログに登録するかを示します。 他のアプリケーション同様、Wingtip SaaS アプリは時間の経過に従って進化し、データベースへの変更が必要になる場合があります。 変更には、新しいまたは変更されたスキーマ、新しいまたは変更された参照データ、およびアプリの最適なパフォーマンスを得るための定期的なデータベース メンテナンス タスクなどがあります。 SaaS アプリケーションにより、これらの変更は、大容量になる可能性のあるテナント データベース全体に体系的な方法でデプロイされる必要があります。 変更は、今後のテナント データベースのプロビジョニング プロセスに組み込む必要もあります。
+[最初の Wingtip SaaS チュートリアル](sql-database-saas-tutorial.md)では、アプリがテナント データベースをどのようにプロビジョニングし、カタログに登録するかを示します。 他のアプリケーション同様、Wingtip SaaS アプリは時間の経過に従って進化し、データベースへの変更が必要になる場合があります。 変更には、新しいまたは変更されたスキーマ、新しいまたは変更された参照データ、およびアプリの最適なパフォーマンスを得るための定期的なデータベース メンテナンス タスクなどがあります。 SaaS アプリケーションにより、これらの変更は、大容量になる可能性のあるテナント データベース全体に体系的な方法でデプロイされる必要があります。 これらの変更が将来のテナント データベースに含まれるようにするには、プロビジョニング プロセスに変更を組み込む必要があります。
 
 このチュートリアルでは、2 つのシナリオを扱います。すべてのテナントに対する参照データのデプロイと、参照データを含むテーブルでのインデックスの再調整です。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)機能を使用して、これらの操作をすべてのテナントにわたって実行したり、新しいデータベースのテンプレートとして使用される "*ゴールデン*" テナント データベースに対して実行したりします。
 
@@ -34,7 +33,8 @@ ms.lasthandoff: 05/25/2017
 
 > [!div class="checklist"]
 
-> * 複数のテナントにわたってクエリを実行するジョブ アカウントを作成する
+> * ジョブ アカウントを作成する
+> * 複数のテナントにわたってクエリを実行する
 > * すべてのテナント データベースでデータを更新する
 > * すべてのテナント データベース内のテーブルにインデックスを作成する
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/25/2017
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 * 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS のダウンロードとインストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-"*このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。これは限定プレビューであるため、関連する質問またはサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。*"
+"*このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。*
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
@@ -60,11 +60,11 @@ ms.lasthandoff: 05/25/2017
 Azure SQL Database の統合機能となったエラスティック ジョブの新しいバージョンが入手可能です (追加のサービスまたはコンポーネントを必要としない)。 現在、この新しいバージョンのエラスティック ジョブは限定プレビュー中です。 現在、この限定プレビューでは、ジョブ アカウントを作成するための PowerShell と、ジョブを作成および管理するための T-SQL がサポートされています。
 
 > [!NOTE]
-> "*このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。これは限定プレビューであるため、関連する質問またはサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。*"
+> "*このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。*
 
 ## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)。
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>ジョブ アカウント データベースと新しいジョブ アカウントの作成
 
@@ -89,14 +89,14 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
 1. さらに、テナント サーバー tenants1-\<user\>.database.windows.net に接続します。
 1. *tenants1* サーバーで *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルにクエリを実行して *Motorcycle Racing* および *Swimming Club* が結果の一覧に**含まれていない**ことを確認します。
 1. ファイル …\\Learning Modules\\Schema Management\\DeployReferenceData.sql を開きます。
-1. スクリプト内の 3 か所すべてで、\<user\> を、Wingtip アプリのデプロイ時に使用したユーザー名に変更します。
+1. ステートメント SET @wtpUser = &lt;user&gt; を変更し、Wingtip アプリをデプロイしたときに使用した User の値に置き換えます。
 1. jobaccount データベースに接続していることを確認し、**F5** キーを押してスクリプトを実行します。
 
 * **sp\_add\_target\_group** は、ターゲット グループ名 DemoServerGroup を作成します。次に、ターゲット メンバーを追加する必要があります。
-* **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む customer1-&lt;User&gt; サーバー) 内のすべてのデータベースがジョブに含まれます。次に、*database* ターゲット メンバー タイプ (具体的には "ゴールデン" データベース baseTenantDB) を追加します。これは、catalog-&lt;User&gt; サーバーにあります。最後に、他の *database* ターゲット グループ メンバー タイプを追加して adhocanalytics データベースを含めます。このデータベースは後のチュートリアルで使用します。
+* **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む tenants1-&lt;User&gt; サーバー) 内のすべてのデータベースがジョブに含まれます。次に、*database* ターゲット メンバー タイプ、具体的には "ゴールデン" データベース (basetenantdb) を追加します。これは、catalog-&lt;User&gt; サーバーにあります。最後に、他の *database* ターゲット グループ メンバー タイプを追加して、後のチュートリアルで使用される adhocanalytics データベースを含めます。
 * **sp\_add\_job** は、"Reference Data Deployment" というジョブを作成します。
-* **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、参照テーブル、VenueTypes を更新します。
-* スクリプトの残りのビューは、オブジェクトの存在を表示し、ジョブの実行を監視します。 **lifecycle** 列で状態の値を確認してください。 ジョブがすべてのテナント データベースと、参照テーブルを含む 2 つの追加データベースで正常に完了しています。
+* **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、参照テーブル VenueTypes を更新します。
+* スクリプトの残りのビューは、オブジェクトの存在を表示し、ジョブの実行を監視します。 これらのクエリを使用して **lifecycle** 列の状態値を調べ、すべてのテナント データベースおよび参照テーブルを含むその他 2 つのデータベースで、ジョブがいつ正常に終了したかを確認します。
 
 1. SSMS で、*tenants1* サーバーで *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルにクエリを実行して *Motorcycle Racing* および *Swimming Club* が結果の一覧に**含まれている**ことを確認します。
 
@@ -136,3 +136,4 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
 * [Wingtip SaaS アプリケーションのデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)
 * [スケールアウトしたクラウド データベースの作成と管理](sql-database-elastic-jobs-create-and-manage.md)
+

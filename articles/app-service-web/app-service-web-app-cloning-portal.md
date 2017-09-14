@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2016
 ms.author: aelnably
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: 9ebfa91c7972ab3c264032ead8376c23c1197a4b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -70,9 +72,4 @@ Web アプリの複製を作成するには、その Web アプリが **Premium*
 <!--Image references-->
 [1]: ./media/app-service-web-app-cloning-portal/CloningBlade.png
 [2]: ./media/app-service-web-app-cloning-portal/CloneSettings.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

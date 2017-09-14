@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
-translationtype: Human Translation
-ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
-ms.openlocfilehash: c7444d457592538a26834091c77f49a3c1ef8591
-ms.lasthandoff: 02/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34fbe99572b4a6cee73de6ae5412a0ec09dd1ccc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル
@@ -85,7 +85,7 @@ Azure ポータルで [ADLA アカウント](http://portal.azure.com)を作成�
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
-[Azure ポータル](http://portal.azure.com)で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
+[Azure ポータル](http://portal.azure.com)で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
 
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -121,7 +121,7 @@ Azure ポータルで [ADLA アカウント](http://portal.azure.com)を作成�
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data と trip\_fare を結合するための一意のキーは、medallion、hack\_licence、pickup\_datetime の&3; つのフィールドで構成されています。 パブリック Azure ストレージ BLOB から、生の CSV ファイルにアクセスできます。 この結合の U-SQL スクリプトは、「 [乗車テーブルと料金テーブルの結合](#join) 」セクションにあります。
+trip\_data と trip\_fare を結合するための一意のキーは、medallion、hack\_licence、pickup\_datetime の 3 つのフィールドで構成されています。 パブリック Azure ストレージ BLOB から、生の CSV ファイルにアクセスできます。 この結合の U-SQL スクリプトは、「 [乗車テーブルと料金テーブルの結合](#join) 」セクションにあります。
 
 ## <a name="process-data-with-u-sql"></a>U-SQL を使用してデータを処理する
 このセクションで説明するデータ処理タスクには、データの取り込み、品質チェック、探索、サンプリングが含まれています。 また、乗車テーブルと料金テーブルを結合する方法についても説明します。 最後のセクションでは、U-SQL スクリプトで作成したジョブを Azure ポータルから実行する方法について説明します。 以下は各セクションのリンクです。
@@ -147,7 +147,7 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開できます。 次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data_{\*\}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。 
+Azure BLOB のデータの場所は、**** **と指定して参照します。wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_nameExtractors.Csv()** を使用して展開することができます。 次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data_{\*\}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。 
 
     ///Read in Trip data
     @trip0 =
@@ -170,7 +170,7 @@ Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_accou
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。 処理されたデータは、**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name** を使用して Azure Data Lake Storage に保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存できます。 
+1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。 処理したデータは、**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name** を使用して Azure Data Lake ストレージに保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。 
 
     // change data types
     @trip =
@@ -447,7 +447,7 @@ U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics ア
  ![16](./media/machine-learning-data-science-process-data-lake-walkthrough/16-U-SQL-output-csv-portal.PNG)
 
 ## <a name="build-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning でモデルを構築してデプロイする
-実行可能な&2; つのオプションを例にして、モデルを構築してデプロイするために Azure Machine Learning にデータをプルする方法について説明します。 
+実行可能な 2 つのオプションを例にして、モデルを構築してデプロイするために Azure Machine Learning にデータをプルする方法について説明します。 
 
 * 最初のオプションでは、上記の「 **データのサンプリング** 」手順で Azure BLOB に書き込まれたサンプリング データを使用し、Python を使用して Azure Machine Learning からモデルを構築およびデプロイします。 
 * 2 つ目のオプションでは、Hive クエリを使用して、Azure Data Lake のデータを直接クエリします。 このオプションの場合、新しい HDInsight クラスターを作成するか、Hive テーブルが Azure Data Lake ストレージの NYC タクシー データを指している既存の HDInsight クラスターを使用する必要があります。  ここでは、これらの両方のオプションについて説明します。 
@@ -510,7 +510,7 @@ Python を使用して機械学習モデルを構築およびデプロイする�
             df1[col] = df1[col].astype(float)
 
 ### <a name="build-machine-learning-models"></a>機械学習モデルを構築する
-ここでは、乗車にチップが支払われたかどうかを予測する二項分類モデルを構築します。 Jupyter Notebook には、他に多クラス分類モデルと回帰モデルという&2; つのモデルがあります。
+ここでは、乗車にチップが支払われたかどうかを予測する二項分類モデルを構築します。 Jupyter Notebook には、他に多クラス分類モデルと回帰モデルという 2 つのモデルがあります。
 
 * まず、scikit-learn モデルで使用できるダミー変数を作成する必要があります。
   

@@ -11,7 +11,7 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc

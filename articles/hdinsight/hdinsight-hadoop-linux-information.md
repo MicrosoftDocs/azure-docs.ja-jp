@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: f4ff9c9a76cb5e33c5474ce3b535c3e582dff890
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8c6ff4a6b8617cda9b12be060c7c7bed62cb3f44
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/18/2017
 Azure HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。 使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。 ここでは、知っておく必要がある特定の違いについて説明します。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -128,9 +127,9 @@ __Azure Storage__ を使用する場合は、次のいずれかの URI スキー
 
 * `wasb:///`: 暗号化されていない通信を使用して既定のストレージにアクセスします。
 
-* `wasbs:///`: 暗号化された通信を使用して既定のストレージにアクセスします。
+* `wasbs:///`: 暗号化された通信を使用して既定のストレージにアクセスします。  wasbs スキームは、HDInsight バージョン 3.6 以降でのみサポートされます。
 
-* `wasbs://<container-name>@<account-name>.blob.core.windows.net/`: 既定以外のストレージ アカウントを使用して通信するときに使用します  (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
+* `wasb://<container-name>@<account-name>.blob.core.windows.net/`: 既定以外のストレージ アカウントを使用して通信するときに使用します  (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
 __Data Lake Store__ を使用する場合は、次のいずれかの URI スキームを使用します。
 
@@ -154,7 +153,7 @@ Ambari を使用して、クラスターの既定のストレージ構成を取�
 
 このコマンドにより、次の URI のような値が返されます。
 
-* Azure Storage アカウントを使用している場合: `wasbs://<container-name>@<account-name>.blob.core.windows.net`
+* Azure Storage アカウントを使用している場合: `wasb://<container-name>@<account-name>.blob.core.windows.net`
 
     アカウント名は Azure Storage アカウントの名前であり、コンテナー名はクラスター ストレージのルートである BLOB コンテナーです。
 
@@ -198,7 +197,7 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 
 * [Web ブラウザー](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Azure CLI](../data-lake-store/data-lake-store-get-started-cli.md)
+* [Azure CLI 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)

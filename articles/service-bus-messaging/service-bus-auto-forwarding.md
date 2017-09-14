@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/07/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: d58e9b9dc4771cc69265d02b62cf8fe3c9b7d72e
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 2656b3a276c542ca836b3949e4e493d7c7f48f16
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
@@ -60,7 +60,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 
 自動転送の詳細については、次のリファレンス トピックを参照してください。
 
-* [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo]
+* [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
@@ -69,8 +69,8 @@ Service Bus のパフォーマンスの向上について詳しくは、以下�
 * [Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
 * [パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]
 
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
+[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
+[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
 [QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif

@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/08/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: a6a87bb3d13f5d9acea7cd84fe7eea901ab263e5
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 7a7069adab5742a9dae2833c13a1db57337a41a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Azure PowerShell を使用して、Data Lake Store を (追加のストレージとして) 使用する HDInsight クラスターを作成する
@@ -32,16 +31,17 @@ ms.lasthandoff: 05/09/2017
 
 Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。 既定のストレージとして Azure Data Lake Store を使用する HDInsight クラスターの作成方法については、[既定のストレージとして Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)に関する記事をご覧ください。
 
+> [!NOTE]
+> Azure Data Lake Store を HDInsight クラスターの追加ストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Store を既存の HDInsight クラスターに追加のストレージとして追加することは、複雑なプロセスであり、エラーも発生しやすくなります。
+>
+
 サポートされている種類のクラスターでは、Data Lake Store を既定のストレージまたは追加のストレージ アカウントとして使用できます。 Data Lake Store を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage BLOB (WASB) のままであり、クラスター関連のファイル (ログなど) はその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Store アカウントに格納することができます。 Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
 ## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>HDInsight クラスター ストレージで Data Lake Store を使用する
 
 HDInsight で Data Lake Store を使用するための重要な考慮事項を次に示します。
 
-* Data Lake Store にアクセスできる HDInsight クラスターを追加のストレージとして作成するオプションは、HDInsight バージョン 3.2、3.4、3.5 で使用できます。
-
-* HBase クラスター (Windows および Linux) の場合、Data Lake Store は、既定のストレージとしても追加のストレージとしても**使用できません**。
-
+* Data Lake Store にアクセスできる HDInsight クラスターを追加のストレージとして作成するオプションは、HDInsight バージョン 3.2、3.4、3.5、および 3.6 で使用できます。
 
 PowerShell を使用して、Data Lake Store を使用するように HDInsight を構成するには、次の手順が必要です。
 

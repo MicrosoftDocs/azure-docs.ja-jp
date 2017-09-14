@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 69f7b49fd82e4d34b1d54718cfbd2f4dedd2ae47
 ms.openlocfilehash: 2b0ff24b692b9be7c7792d6f78e31ac2a7d8a97e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
-
 
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのコンテンツ管理要件の決定

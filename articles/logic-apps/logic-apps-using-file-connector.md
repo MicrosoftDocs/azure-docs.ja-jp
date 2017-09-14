@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/27/2017
 ms.author: LADocs; deli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3faa238b882c88f1a0eb59a4e7a2f8bb6d6e6b9b
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: f33e7c58103c57e17e4e273caba1ab9b83f0cd2b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 

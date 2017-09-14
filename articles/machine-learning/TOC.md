@@ -3,9 +3,18 @@
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
 
 ## Team Data Science Process
-### [概要](http://aka.ms/datascienceprocess)
-### [ライフサイクル](data-science-process-overview.md)
+### [概要](data-science-process-overview.md)
+### [ライフサイクル](data-science-process-lifecycle.md)
 ### [チュートリアル](data-science-process-walkthroughs.md)
+####[PySpark と Scala を使用した Spark](data-science-process-walkthroughs-spark.md)
+##### [データを調査する](machine-learning-data-science-spark-data-exploration-modeling.md)
+##### [モデルにスコアを付ける](machine-learning-data-science-spark-model-consumption.md)
+##### [高度なデータの探索](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
+####[HDInsight Hadoop での Hive の使用](data-science-process-walkthroughs-hdinsight-hadoop.md)
+####[Azure Data Lake での U-SQL の使用](data-science-process-walkthroughs-azure-data-lake.md)
+####[SQL Server での R、Python、T-SQL の使用](data-science-process-walkthroughs-sql-server.md)
+####[SQL DW での T-SQL と Python の使用](data-science-process-walkthroughs-sql-data-warehouse.md)
+### [Azure ML の使用](http://aka.ms/datascienceprocess)
 
 ## Machine Learning Studio
 ### [Studio とは](machine-learning-what-is-ml-studio.md)
@@ -99,12 +108,6 @@
 ##### [Azure Data Lake を使用する](machine-learning-data-science-process-data-lake-walkthrough.md)
 ##### [SQL VM を使用する](machine-learning-data-science-process-sql-server-virtual-machine.md)
 ##### [データ パイプラインを使用する](machine-learning-automated-data-pipeline-cheat-sheet.md)
-#### Spark を使用してデータを処理する
-##### [概要](machine-learning-data-science-spark-overview.md)
-##### [データを調査する](machine-learning-data-science-spark-data-exploration-modeling.md)
-##### [モデルにスコアを付ける](machine-learning-data-science-spark-model-consumption.md)
-##### [高度なデータの探索](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
-##### [Scala や Spark を使用する](machine-learning-data-science-process-scala-walkthrough.md)
 
 ## モデルの開発
 ### 特徴のエンジニアリングと選択
@@ -165,14 +168,11 @@
 ### [サンプル実験](machine-learning-sample-experiments.md)
 ### [サンプル データセット](machine-learning-use-sample-datasets.md)
 ### [顧客離れの例](machine-learning-azure-ml-customer-churn-scenario.md)
-### エンド ツー エンドのシナリオ
-#### [Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
-#### [1 TB で Hadoop を使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-#### [SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
-#### [SQL Data Warehouse を使用する](machine-learning-data-science-process-sqldw-walkthrough.md)
+
 
 # リファレンス
 
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=machine-learning)
 ## [PowerShell モジュール (新規)](/powershell/module/azurerm.machinelearning)
 ## [PowerShell モジュール (クラシック)](machine-learning-powershell-module.md)
 ## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
@@ -193,6 +193,10 @@
 ### [コレクション](machine-learning-gallery-collections.md)
 ### [カスタム モジュール](machine-learning-gallery-custom-modules.md)
 
+## Cortana Intelligence パートナー ソリューション
+### [Cortana Intelligence の発行ガイド](cortana-intelligence-appsource-publishing-guide.md)
+### [Cortana Intelligence のソリューション評価ツール](cortana-intelligence-appsource-evaluation-tool.md)
+
 ## Cortana Analytics
 ### API
 #### [異常の検出](machine-learning-apps-anomaly-detection-api.md)
@@ -207,9 +211,11 @@
 ##### [セットアップ](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 
 ## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [料金](https://azure.microsoft.com/pricing/details/machine-learning/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [ブログ](http://blogs.technet.com/b/machinelearning/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)

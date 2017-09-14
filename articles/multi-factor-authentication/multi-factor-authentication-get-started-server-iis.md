@@ -24,7 +24,7 @@ ms.lasthandoff: 02/28/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
 
-Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure MFA Server では、Azure Multi-Factor Authentication を追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインがインストールされます。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを&2; 要素認証から除外できます。
+Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure MFA Server では、Azure Multi-Factor Authentication を追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインがインストールされます。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを 2 要素認証から除外できます。
 
 ![IIS 認証](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 

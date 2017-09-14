@@ -4,7 +4,7 @@ description: "Azure Functions で SendGrid を使用する方法の説明"
 services: functions
 documentationcenter: na
 author: rachelappel
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/31/2017
 ms.author: rachelap
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b95fcfa1ed4ea4cf1051f4920b9c05bb40a19cab
 ms.openlocfilehash: 05c9f4e4a4351219da68af8b702c25f21d7d4d02
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
-
 
 ---
 # <a name="how-to-use-sendgrid-in-azure-functions"></a>Azure Functions で SendGrid を使用する方法

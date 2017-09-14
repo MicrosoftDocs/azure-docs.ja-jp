@@ -7,7 +7,7 @@
 * App Service のスケーリングのベスト プラクティス
   
   * ポートの消費と接続プール
-  * [App Service アプリからの Azure Storage の利用](../articles/storage/storage-dotnet-how-to-use-blobs.md)
+  * [App Service アプリからの Azure Storage の利用](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)
   * [App Service アプリからの Azure CDN の利用](../articles/cdn/cdn-overview.md)
   * [App Service アプリからの Azure Redis Cache の利用](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
 * Geo 分散

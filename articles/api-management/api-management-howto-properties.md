@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 146aa7706b5ff2a613dd94c75f3ad447ace82834
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 3b0fe2a300038e13cc488bdb4f50f8be270ea8f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -151,10 +153,5 @@ REST API を利用し、プロパティを削除する方法については、�
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

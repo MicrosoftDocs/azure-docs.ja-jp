@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 5db1a6f8b3ff0369817e69abaa4d95af843cd7f2
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法

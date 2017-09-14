@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 07/26/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 0235058d17a55562271c0a98c47b9b12f8d27be6
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 5efb78c2c514bd0b21be842ddee5465fe4e4dcf9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 05/04/2017
 
 ---
 # <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>Microsoft Azure IoT Raspberry Pi 3 スタート キットをリモート監視ソリューションに接続する
@@ -30,9 +29,9 @@ ms.lasthandoff: 05/03/2017
 
 | チュートリアル | メモ | 言語 |
 | -------- | ----- | --------- |
-| シミュレートされたテレメトリ (初級)| センサー データをシミュレートします。 スタンドアロンの Raspberry Pi を使用します。 | [C][lnk-c-simulator] [Node.js][lnk-node-simulator] |
-| 実際のセンサー (中級) | Raspberry Pi に接続している BME280 センサーからのデータを使用します。 | [C][lnk-c-basic] [Node.js][lnk-node-basic] |
-| ファームウェアの更新の実装 (上級)| Raspberry Pi に接続している BME280 センサーからのデータを使用します。 Raspberry Pi のリモート ファームウェア更新を有効にします。 | [C][lnk-c-advanced] [Node.js][lnk-node-advanced] |
+| シミュレートされたテレメトリ (初級)| センサー データをシミュレートします。 スタンドアロンの Raspberry Pi を使用します。 | [C][lnk-c-simulator]、[Node.js][lnk-node-simulator] |
+| 実際のセンサー (中級) | Raspberry Pi に接続している BME280 センサーからのデータを使用します。 | [C][lnk-c-basic]、[Node.js][lnk-node-basic] |
+| ファームウェアの更新の実装 (上級)| Raspberry Pi に接続している BME280 センサーからのデータを使用します。 Raspberry Pi のリモート ファームウェア更新を有効にします。 | [C][lnk-c-advanced]、[Node.js][lnk-node-advanced] |
 
 ## <a name="next-steps"></a>次のステップ
 

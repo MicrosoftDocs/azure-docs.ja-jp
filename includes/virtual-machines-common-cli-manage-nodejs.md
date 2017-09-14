@@ -12,7 +12,7 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 この記事では、Azure サブスクリプションでリソース (主に VM) を管理および操作するために Azure CLI で使用する基本的なコマンドについて説明します。  特定のコマンド ライン スイッチやオプションの詳細については、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力して、コマンド ラインのオンライン ヘルプとオプションを使用します。
 
 > [!NOTE]
-> これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。 詳細については、[Azure Resource Manager での Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)に関するページと「[Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+> これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。 詳細については、[Azure Resource Manager での Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)に関するページと「[Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 > 
 > 
 

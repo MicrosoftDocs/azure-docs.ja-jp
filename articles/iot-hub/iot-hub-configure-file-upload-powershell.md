@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: deac38afc200a0c68751a061d3fb284f8244225b
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 66bb54927f3137aa7bfeb467962655a51bf71b4b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
@@ -62,7 +61,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
 
 次の手順は、ストレージ アカウントが、**クラシック** デプロイ モデルではなく **Resource Manager** デプロイ モデルを使用して作成されていることを前提としています。
 
-デバイスからファイルのアップロードを構成するには、IoT Hub と同じサブスクリプションに Azure ストレージ アカウントの接続文字列が必要です。 また、ストレージ アカウントには BLOB コンテナーの名前も必要です。 ストレージ アカウント キーを取得するには、次のコマンドを使用します。
+デバイスからファイル アップロードを構成するには、Azure Storage アカウント用の接続文字列が必要です。 Azure Storage アカウントは、IoT Hub と同じサブスクリプション内にある必要があります。 また、ストレージ アカウントには BLOB コンテナーの名前も必要です。 ストレージ アカウント キーを取得するには、次のコマンドを使用します。
 
 ```powershell
 Get-AzureRmStorageAccountKey `
@@ -126,7 +125,8 @@ Set-AzureRmIotHub `
 ```
 
 ## <a name="next-steps"></a>次のステップ
-IoT Hub のファイルのアップロード機能に関する詳細については、IoT Hub 開発者ガイドの [Upload files from a device (デバイスからのファイルのアップロード)][lnk-upload] に関する記事をご覧ください。
+
+IoT Hub のファイル アップロード機能に関する詳細については、[デバイスからのファイルのアップロード][lnk-upload]に関するページをご覧ください。
 
 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
@@ -154,4 +154,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-powershell-iothub]: https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub
 [lnk-portal-hub]: iot-hub-create-through-portal.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-portal-storage]: ../storage/storage-create-storage-account.md
+[lnk-portal-storage]:../storage/common/storage-create-storage-account.md

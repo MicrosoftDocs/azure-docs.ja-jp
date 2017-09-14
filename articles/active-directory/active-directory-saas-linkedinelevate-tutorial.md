@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: c175d54fcc7e55bae5057adbb4b9dba0a8843fe2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5336543e06d60be555722a615568b12048c2aa2f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>チュートリアル: Azure Active Directory と LinkedIn Elevate の統合
@@ -138,13 +137,16 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
     | --- | --- |    
     | department| user.department |
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
+      ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
 
-    a. [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
+      a. [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
 
-    b. **[OK]** をクリックして属性を保存します。
+      ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
+
+      b. **[OK]** をクリックして属性を保存します。
+
+      c. 属性 **emailaddress** の名前を **email** に変更します。
+
 
 10. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
@@ -237,6 +239,7 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 
 ## <a name="additional-resources"></a>その他のリソース
 
+* [チュートリアル: LinkedIn Elevate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 

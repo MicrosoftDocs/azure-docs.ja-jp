@@ -3,7 +3,7 @@ title: "Azure API Management のカスタム キャッシュ"
 description: "Azure API Management のキーによって項目をキャッシュする方法を説明します。"
 services: api-management
 documentationcenter: 
-author: darrelmiller
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 24cbe51ef5a453d06e9f70e1e2146479935c5bf5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API Management のカスタム キャッシュ

@@ -1,5 +1,5 @@
 ---
-title: ".NET SDK を使用した Azure Search でのデータ アップロード | Microsoft Docs"
+title: "データのアップロード (.NET - Azure Search) | Microsoft Docs"
 description: ".NET SDK を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
 services: search
 documentationcenter: 
@@ -15,10 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/13/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
-
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: bdd952869143c6ca6374bb9264db5bcba1f32b50
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>.NET SDK を使用した Azure Search へのデータのアップロード
@@ -33,7 +34,8 @@ ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
 
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。 また、この記事では、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#CreateSearchServiceClient)」で説明されているとおりに、`SearchServiceClient` オブジェクトを作成済みであることを前提としています。
 
-この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。
+> [!NOTE]
+> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
 
 .NET SDK を使用してインデックスにドキュメントをプッシュするには、次の手順を実行する必要があります。
 
@@ -236,10 +238,5 @@ Azure Search インデックスにマップする独自のモデル クラスを
 
 ## <a name="next-steps"></a>次のステップ
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

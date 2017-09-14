@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: e4851e872349fa6483e1f1a340d0968e845a3518
-ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
-ms.lasthandoff: 01/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/14/2017
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="view-your-subscription-and-costs"></a>サブスクリプションとコストを表示する
-サブスクリプションの情報と、すべてのリソースの合計コストに関する情報を表示できます。 **[サブスクリプション]** を選択し、表示するサブスクリプションを選択します。 選択できるサブスクリプションが&1; つのみの場合もあります。
+サブスクリプションの情報と、すべてのリソースの合計コストに関する情報を表示できます。 **[サブスクリプション]** を選択し、表示するサブスクリプションを選択します。 選択できるサブスクリプションが 1 つのみの場合もあります。
 
 ![サブスクリプション](./media/resource-group-portal/select-subscription.png)
 

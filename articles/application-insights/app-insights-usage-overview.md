@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fe513adfe40b675b1154e24388316eb7ee09a37d
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 80142d9f27abed181bca6f5f536b950198e66e20
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -41,6 +41,10 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
     アプリを発行し、アプリのパフォーマンスを監視してユーザーがアプリを使って何をしているか確認します。
 
+## <a name="include-user-and-session-id-in-your-telemetry"></a>ユーザー ID とセッション ID をテレメトリに含める
+Application Insights で一定期間にわたってユーザーを追跡するためには、それらのユーザーを識別する手段が必要となります。 ユーザー ID やセッション ID を必要としない使用状況ツールはイベント ツールだけです。
+
+これらの ID の送信方法については、[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)をご覧ください。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>使用状況の人口統計データや統計を調査する
 ユーザーがアプリをいつ使い、どのページに最も興味があり、ユーザーがどこにいて、どのようなブラウザーやオペレーティング システムを使っているかを確認しましょう。 
@@ -123,7 +127,6 @@ Web アプリでユーザーが何を行っているか明確に把握するに�
 ### <a name="slice-and-dice-events"></a>イベントの詳細な分析
 
 [ユーザー]、[セッション]、および [イベント] ツールでは、ユーザー、イベント名、プロパティごとにカスタム イベントを詳細に分析することができます。
-
 ![ユーザー](./media/app-insights-usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>アプリでのテレメトリの設計
@@ -167,9 +170,10 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
 すべての新しい TelemetryClients により、指定したプロパティ値が自動的に追加されます。 個々のテレメトリ イベントは、既定値を上書きすることができます。
 
 ## <a name="next-steps"></a>次のステップ
-
-* [ユーザーとセッション](app-insights-usage-segmentation.md)
-* [保持](app-insights-usage-retention.md)
-* [カスタム イベントのコーディング](app-insights-api-custom-events-metrics.md)
-
+   - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+   - [ファネル](usage-funnels.md)
+   - [保持](app-insights-usage-retention.md)
+   - [ユーザー フロー](app-insights-usage-flows.md)
+   - [ブック](app-insights-usage-workbooks.md)
+   - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
 

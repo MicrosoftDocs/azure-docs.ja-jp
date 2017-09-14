@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - SQL データベースの復元 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用した SQL データベースの復元"
+title: "PowerShell サンプル - 復元 - バックアップ - Azure SQL データベース | Microsoft Docs"
+description: "geo 冗長バックアップから Azure SQL データベースを復元するための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 751c1ff5c8cd76885b91c16d2372d1cd9b0c4c39
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 2be93bd623ae3960c61d54d4219cc4b60257f88d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="restore-a-sql-database-using-powershell"></a>PowerShell を使用して SQL Database を復元する
+# <a name="use-powershell-to-restore-an-azure-sql-database-from-backups"></a>PowerShell を使用してバックアップから Azure SQL データベースを復元する
 
-この PowerShell のサンプル スクリプトは、geo 冗長バックアップから Azure SQL データベースを復元し、削除されたデータベースを最新のバックアップに復元します。  
+この PowerShell サンプル スクリプトは、geo 冗長バックアップから Azure SQL Database を復元し、削除された Azure SQL Database を最新のバックアップに復元し、Azure SQL データベースを特定の時点に復元します。  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

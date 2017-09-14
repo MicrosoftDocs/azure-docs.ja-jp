@@ -34,6 +34,8 @@
         }
    
     これは、**myFirstDevice** という ID でデバイス ID を作成するメソッドです  (そのデバイス ID が既に ID レジストリに存在する場合は、単にその既存のデバイス情報を取得します)。続けてその ID のプライマリ キーが表示されます。 シミュレーション対象デバイス アプリでこのキーを使用し、IoT Hub に接続します。
+[!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
+
 7. 最後に、 **Main** メソッドに次の行を追加します。
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);

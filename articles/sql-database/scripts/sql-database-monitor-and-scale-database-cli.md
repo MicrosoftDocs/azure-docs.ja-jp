@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI スクリプト - 単一の SQL Database の監視とスケーリング | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Azure CLI を使用して単一の SQL データベースを監視およびスケーリングする"
+title: "CLI サンプル - モニター - スケーリング - 単一 Azure SQL データベース | Microsoft Docs"
+description: "単一 Azure SQL データベースを監視し、スケーリングするための Azure CLI サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -9,40 +9,40 @@ editor: carlrab
 tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
-ms.custom: mvc
+ms.custom: monitor & tune
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 04/24/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: f29da889f90968a82dccaeb1fa7e3c20e6b44458
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 01911b85268244a8fddb32aa726f8a870abbaf77
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/30/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="monitor-and-scale-a-single-sql-database-using-the-azure-cli"></a>Azure CLI を使用して 1 つの SQL データベースを監視およびスケーリングする
+# <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>CLI を使用して単一の SQL データベースを監視し、スケーリングする
 
-この CLI のサンプル スクリプトは、単一の Azure SQL データベースのサイズ情報をクエリした後に、そのデータベースを別のパフォーマンス レベルにスケーリングします。 
-
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+この Azure CLI サンプル スクリプトでは、データベースのサイズ情報の問い合わせ後、1 つの Azure SQL データベースが別のパフォーマンス レベルにスケーリングします。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "単一の SQL Database の監視とスケーリング")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "単一の SQL Database の監視とスケーリング")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

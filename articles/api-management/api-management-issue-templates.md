@@ -3,7 +3,7 @@ title: "Azure API Management の問題テンプレート | Microsoft Docs"
 description: "Azure API Management で開発者ポータルの問題ページの内容をカスタマイズする方法について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 6a14bd0cb95f8965ae53ff60fe1e638199a0b5b5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management の問題テンプレート
@@ -29,7 +31,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。  
   
-##  <a name="a-nameissuelista-issue-list"></a><a name="IssueList"></a> 問題リスト  
+##  <a name="IssueList"></a> 問題リスト  
  **問題リスト** テンプレートを使用すると、開発者ポータルで問題リスト ページの本文をカスタマイズすることができます。  
   
  ![Issue List Developer Portal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM Issue List Developer Portal")  
@@ -134,8 +136,3 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 ## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

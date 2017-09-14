@@ -12,30 +12,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2017
+ms.date: 06/17/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 8296e88024109e35379faa67ca887e6d2c52a6c5
-ms.openlocfilehash: 41bba4608fd7e3d0b16cbf0d846f5f65a071ad20
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 0db9dbd2d2743907e3f0b259228201d4f5d0c3c2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
+
 このチュートリアルでは、REST ベースのインターフェイスを表示する簡易な Azure Relay ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
 
-本チュートリアルでは、Windows Communication Foundation (WCF) REST プログラミング モデルを使用して、Service Bus に REST サービスを構築します。 詳細については、WCF ドキュメントの[「WCF Web HTTP プログラミング モデル」](https://msdn.microsoft.com/library/bb412169.aspx)と [「サービスの設計と実装」](https://msdn.microsoft.com/library/ms729746.aspx) を参照してください。
+本チュートリアルでは、Windows Communication Foundation (WCF) REST プログラミング モデルを使用して、Service Bus に REST サービスを構築します。 詳細については、WCF ドキュメントの[「WCF Web HTTP プログラミング モデル」](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model)と [「サービスの設計と実装」](/dotnet/framework/wcf/designing-and-implementing-services) を参照してください。
 
-## <a name="step-1-create-a-service-namespace"></a>手順 1: サービス名前空間の作成
+## <a name="step-1-create-a-namespace"></a>手順 1: 名前空間を作成する
 
 Azure で Relay 機能を使用するには、最初にサービス名前空間を作成する必要があります。 名前空間は、アプリケーション内で Azure リソースをアドレス指定するためのスコープ コンテナーを提供します。 [こちらの手順](relay-create-namespace-portal.md)に従って、Relay 名前空間を作成します。
 
 ## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>手順 2: Azure Relay で使用する REST ベースの WCF サービス コントラクトを定義する
+
 WCF REST スタイルのサービスを作成するには、コントラクトを定義する必要があります。 コントラクトには、ホストがサポートする操作を指定します。 サービス操作は、Web サービス メソッドと考えることができます。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性を各インターフェイスに適用する必要があります。また、[OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性を各操作に適用する必要があります。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) があるインターフェイスのメソッドに [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) がない場合、そのメソッドは公開されません。 これらのタスクに使用されるコードの例を手順に従って説明します。
 
 WCF コントラクトと REST スタイルのコントラクトの主な違いは、REST スタイルの [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) にはプロパティ [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) がある点です。 このプロパティを使用すると、インターフェイス内のメソッドを相手側のインターフェイスのメソッドにマップすることができます。 ここでは、[WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) を使用してメソッドを HTTP GET にリンクします。 その結果、Service Bus は、インターフェイスに送信されたコマンドをより正確に取得および解釈できるようになります。
 
 ### <a name="to-create-a-contract-with-an-interface"></a>インターフェイスを使用してコントラクトを作成するには
+
 1. 管理者として Visual Studio を開きます。**[スタート]** メニューの[Visual Studio] を右クリックし、**[管理者として実行]** をクリックします。
 2. 新しいコンソール アプリケーション プロジェクトを作成します。 **[ファイル]** メニューをクリックし、**[新規作成]**、**[プロジェクト]** の順に選択します。 **[新しいプロジェクト]** ダイアログ ボックスで **[Visual C#]** をクリックします。**[コンソール アプリケーション]** テンプレートを選択し、「**ImageListener**」と名前を付けます。 既定の **[場所]** を使用します。 **[OK]** をクリックしてプロジェクトを作成します。
 3. C# プロジェクトの場合、`Program.cs` ファイルが作成されます。 このクラスには、空の `Main()` メソッドが含まれています。このメソッドは、コンソール アプリケーション プロジェクトを正常にビルドするために必要です。
@@ -208,7 +212,7 @@ REST スタイルの WCF Relay サービスを作成するには、まずコン�
 1. **ソリューション エクスプローラー**で、**App.config** をダブルクリックして、Visual Studio エディターでそのファイルを開きます。
    
     **App.config** ファイルには、サービス名、エンドポイント (つまり、クライアントとホストの相互通信用に Azure Relay が公開している場所)、バインド (通信に使用するプロトコルの種類) が記載されています。 主な違いは、構成されているサービス エンドポイントが [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) バインドを参照している点です。
-2. `<system.serviceModel>` XML 要素は&1; つ以上のサービスを定義する WCF 要素です。 この要素は、サービス名とエンドポイントの定義に使用されます。 `<system.serviceModel>` 要素の下 (ただし、`<system.serviceModel>` 内) に、次の内容の `<bindings>` 要素を追加します。 ここでアプリケーションに使用するバインドを定義します。 複数のバインドを定義できますが、このチュートリアルで定義するバインドは&1; つのみです。
+2. `<system.serviceModel>` XML 要素は 1 つ以上のサービスを定義する WCF 要素です。 この要素は、サービス名とエンドポイントの定義に使用されます。 `<system.serviceModel>` 要素の下 (ただし、`<system.serviceModel>` 内) に、次の内容の `<bindings>` 要素を追加します。 ここでアプリケーションに使用するバインドを定義します。 複数のバインドを定義できますが、このチュートリアルで定義するバインドは 1 つのみです。
    
     ```xml
     <bindings>
@@ -222,7 +226,7 @@ REST スタイルの WCF Relay サービスを作成するには、まずコン�
     ```
    
     上記のコードでは、**relayClientAuthenticationType** を **None** に設定して、WCF Relay の [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) バインドを定義しています。 この設定は、このバインドを使用するエンドポイントは、クライアントの資格情報を必要としないことを示します。
-3. `<bindings>` 要素の後に、`<services>` 要素を追加します。 バインドと同様に、1 つの構成ファイルで複数のサービスを定義できます。 ただし、このチュートリアルで定義するサービスは&1; つのみです。
+3. `<bindings>` 要素の後に、`<services>` 要素を追加します。 バインドと同様に、1 つの構成ファイルで複数のサービスを定義できます。 ただし、このチュートリアルで定義するサービスは 1 つのみです。
    
     ```xml
     <services>
@@ -558,9 +562,9 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="next-steps"></a>次のステップ
 ここでは、Service Bus Relay サービスを使用するアプリケーションを構築しました。Azure Relay の詳細については、次の記事を参照してください。
 
-* [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
+* [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * [Azure Relay の概要](relay-what-is-it.md)
-* [.NET で WCF リレー サービスを使用する方法](service-bus-dotnet-how-to-use-relay.md)
+* [.NET で WCF リレー サービスを使用する方法](relay-wcf-dotnet-get-started.md)
 
 [Azure portal]: https://portal.azure.com
 

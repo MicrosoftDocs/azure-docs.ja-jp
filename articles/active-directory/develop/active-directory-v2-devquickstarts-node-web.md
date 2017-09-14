@@ -16,14 +16,16 @@ ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a77337b582f337723b9e4b1befb2c638870a1c4b
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="add-sign-in-to-a-nodejs-web-app"></a>サインインを Node.js Web アプリに追加する
+<a id="add-sign-in-to-a-nodejs-web-app" class="xliff"></a>
+
+# サインインを Node.js Web アプリに追加する
 
 > [!NOTE]
 > Azure Active Directory のシナリオと機能のすべてが v2.0 エンドポイントで機能するわけではありません。 v2.0 エンドポイントと v1.0 エンドポイントのどちらを使用するかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関する記事をご覧ください。
@@ -35,23 +37,29 @@ ms.lasthandoff: 05/10/2017
 * ユーザーについての情報を表示します。
 * ユーザーをアプリからサインアウトします。
 
-**Passport** は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。 Passport では、包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。 Microsoft は Azure AD 用の認証手法を開発しました。 この記事では、モジュールをインストールした後に Azure AD `passport-azure-ad` プラグインを追加する方法について説明します。
+**Passport** は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップできます。 Passport では、包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。 Microsoft は Azure AD 用の認証手法を開発しました。 この記事では、モジュールをインストールした後に Azure AD `passport-azure-ad` プラグインを追加する方法について説明します。
 
-## <a name="download"></a>ダウンロード
+<a id="download" class="xliff"></a>
+
+## ダウンロード
 このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)で管理されています。 チュートリアルを実行するには、[アプリのスケルトン (.zip ファイル) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)するか、次のようにスケルトンを複製します。
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
 また、このチュートリアルの終了時には、完成したアプリケーションを取得できます。
 
-## <a name="1-register-an-app"></a>1: アプリを登録する
+<a id="1-register-an-app" class="xliff"></a>
+
+## 1: アプリを登録する
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従ってアプリを登録します。 以下を実行します。
 
 * アプリに割り当てられた**アプリケーション ID** をコピーしておきます。 このチュートリアルで必要になります。
 * アプリの **Web** プラットフォームを追加します。
 * ポータルから **リダイレクト URI** をコピーしておきます。 既定の URI 値 `urn:ietf:wg:oauth:2.0:oob` を使用する必要があります。
 
-## <a name="2-add-prerequisities-to-your-directory"></a>2: ディレクトリに前提条件を追加する
+<a id="2-add-prerequisities-to-your-directory" class="xliff"></a>
+
+## 2: ディレクトリに前提条件を追加する
 コマンド プロンプトで、ルート フォルダーに移動します (現在のディレクトリがこのディレクトリでない場合)。 次のコマンドを実行します。
 
 * `npm install express`
@@ -73,10 +81,12 @@ ms.lasthandoff: 05/10/2017
 
 これにより、`passport-azure-ad` が使用するライブラリがインストールされます。
 
-## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3: passport-node-js 戦略を使用するようにアプリを設定する
+<a id="3-set-up-your-app-to-use-the-passport-node-js-strategy" class="xliff"></a>
+
+## 3: passport-node-js 戦略を使用するようにアプリを設定する
 OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを設定します。 Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用します。
 
-1.  プロジェクトのルートで Config.js ファイルを開き 、`exports.creds` セクションでアプリケーションの構成値を入力します。
+1.  プロジェクトのルートにある Config.js ファイルを開きます。 `exports.creds` セクションで、アプリケーションの構成値を入力します。
   
   * `clientID`: Azure Portal のアプリに割り当てられた**アプリケーション ID** です。
   * `returnURL`: ポータルで入力した**リダイレクト URI** です。
@@ -133,10 +143,10 @@ OpenID Connect 認証プロトコルを使用するように、Express ミドル
   ));
   ```
 
-Passport は、Twitter や Facebook などのすべての戦略に同様のパターンを使用し、 すべての戦略記述者がこのパターンに準拠します。 トークンと `done` をパラメーターとして使用する `function()` を戦略に渡します。 すべての作業が終わった後で戦略が返されます。 もう一度要求しなくて済むように、ユーザーを格納し、トークンを保存します。
+Passport は、Twitter や Facebook などのすべての戦略に、同様のパターンを使用します。 すべての戦略記述者がこのパターンに従います。 パラメーターとして token と `done` を使用する `function()` の戦略を渡します。 すべての作業が終わった後で戦略が返されます。 再度要求しなくて済むように、ユーザーを格納し、トークンを保存します。
 
   > [!IMPORTANT]
-  > 上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。 これは、自動登録と呼ばれます。 運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。 これは、コンシューマー アプリで通常見られるパターンです。 Facebook での登録を許可するものの、その後で追加情報の入力を求めるアプリもあります。 このチュートリアルでコマンドライン プログラムを使用していなければ、返されるトークン オブジェクトから電子メールを抽出した後 、追加情報の入力を要求できます。 これはテスト サーバーなので、ユーザーをメモリ内データベースに直接追加します。
+  > 上記のコードでは、サーバーに対して認証可能なすべてのユーザーを受け入れます。 これは、自動登録と呼ばれます。 運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。 これは、コンシューマー アプリで通常見られるパターンです。 Facebook での登録を許可するものの、その後で追加情報の入力を求めるアプリもあります。 このチュートリアルでコマンドライン プログラムを使用していなければ、返されるトークン オブジェクトからメールを抽出できます。 その後、ユーザーに追加情報の入力を要求できます。 これはテスト サーバーなので、ユーザーをメモリ内データベースに直接追加します。
   > 
   > 
 
@@ -247,7 +257,9 @@ Passport は、Twitter や Facebook などのすべての戦略に同様のパ�
     });
   ```
 
-## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4: Passport を使用して、サインイン要求とサインアウト要求を Azure AD に発行する
+<a id="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad" class="xliff"></a>
+
+## 4: Passport を使用して、サインイン要求とサインアウト要求を Azure AD に発行する
 ここまでで、OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するようにアプリが設定されました。 `passport-azure-ad` の戦略は、認証メッセージの作成、Azure AD から受け取ったトークンの検証、ユーザー セッションの維持のためのすべての処理を実行します。 残りの作業は、サインインとサインアウトの方法をユーザーに提示することと、サインインしているユーザーに関する追加情報を収集することです。
 
 1.  **既定**のメソッド、**login** メソッド、**account** メソッド、**logout** メソッドを App.js ファイルに追加します。
@@ -280,8 +292,8 @@ Passport は、Twitter や Facebook などのすべての戦略に同様のパ�
 
   これらについて詳しく説明します。
     
-    * `/` ルートは、index.ejs ビューにリダイレクトして、 要求内のユーザーを渡します (存在する場合)。
-    * `/account` ルートは、*ユーザーが認証されていることを確認*した後 (次のコードで実装します)、 ユーザーに関する追加情報を取得できるように、 要求内のユーザーを渡します。
+    * `/` ルートは、index.ejs ビューにリダイレクトします。 次に、要求内のユーザーを渡します (存在する場合)。
+    * `/account` ルートはまず、"*認証されていることを確認します*" (これは次のコードで実装します)。 次に、要求内のユーザーを渡します。 これにより、ユーザーに関する詳細情報を得ることができます。
     * `/login` ルートは、`passport-azuread` から `azuread-openidconnect` 認証子を呼び出します。 これが成功しなかった場合は、ユーザーを `/login` にリダイレクトして戻します。
     * `/logout` ルートは、logout.ejs ビュー (およびルート) を呼び出します。 これにより Cookie をクリアし、ユーザーを index.ejs に返します。
 
@@ -311,7 +323,9 @@ Passport は、Twitter や Facebook などのすべての戦略に同様のパ�
   ```
 
 
-## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5: Web サイトにユーザーを表示する Express のビューとルートを作成する
+<a id="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website" class="xliff"></a>
+
+## 5: Web サイトにユーザーを表示する Express のビューとルートを作成する
 ユーザーに情報を表示するルートとビューを追加します。 これらのルートとビューは、作成した `/logout` ルートと `/login` ルートの処理も行います。
 
 1. ルート ディレクトリに `/routes/index.js` ルートを作成します。
@@ -401,13 +415,15 @@ Passport は、Twitter や Facebook などのすべての戦略に同様のパ�
   </html>
   ```
 
-6.  アプリを構築して実行するには、`node app.js` を実行して 、`http://localhost:3000` に移動します。
+6.  アプリをビルドして実行するには、`node app.js` を実行します。 次に、`http://localhost:3000` に移動します。
 
 7.  個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインします。 ユーザーの ID が /account リストに反映されることに注意してください。 
 
-これで、業界標準のプロトコルで Web アプリが保護されました。 ユーザーの個人アカウントや職場/学校アカウントを使用して、アプリでユーザーを認証できます。
+これで、業界標準のプロトコルを使用して Web アプリが保護されました。 ユーザーの個人アカウントや職場/学校アカウントを使用して、アプリでユーザーを認証できます。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 参考のため、完成済みサンプル (構成値を除く) が [.zip ファイル](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)で提供されています。 GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
@@ -421,7 +437,9 @@ Passport は、Twitter や Facebook などのすべての戦略に同様のパ�
 * [Azure AD v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)
 * [Stack Overflow "azure-Active Directory" タグ](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-### <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
-サインアップして、セキュリティの問題が発生したときに通知を受け取ることをお勧めします。 [マイクロソフト テクニカル セキュリティ通知](https://technet.microsoft.com/security/dd252948)のページで、セキュリティ アドバイザリ アラートを登録してください。
+<a id="get-security-updates-for-our-products" class="xliff"></a>
+
+### Microsoft 製品のセキュリティ更新プログラムの取得
+サインアップして、セキュリティの問題が発生したときに通知を受け取ることをお勧めします。 [マイクロソフト テクニカル セキュリティ通知](https://technet.microsoft.com/security/dd252948)のページで、セキュリティ アドバイザリ アラートに登録してください。
 
 

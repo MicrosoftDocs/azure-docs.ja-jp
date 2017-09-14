@@ -9,16 +9,17 @@ editor:
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 704403704bd52ba1fe1815345708ab4d2d2547af
-ms.lasthandoff: 04/04/2017
+ms.custom: H1Hack27Feb2017, mvc
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 392ed1b7ac5f543b322024f4b771c73bf865e970
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
@@ -38,7 +39,7 @@ Microsoft は、単一インスタンス仮想マシン向けに、業界をリ�
 
 Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定するだけで、Azure がディスクを作成し、管理します。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
 
-また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../../storage/storage-managed-disks-overview.md)に関するページをご覧ください。
+また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../windows/managed-disks-overview.md)に関するページをご覧ください。
 
 ## <a name="azure-virtual-machines--instances"></a>Azure Virtual Machines とインスタンス
 Microsoft Azure は、現在普及しているさまざまな Linux ディストリビューションに対応します。Microsoft の多数のパートナーが、それらのディストリビューションを提供、管理しています。  Azure Marketplace からは、Red Hat Enterprise、CentOS、Debian、Ubuntu、CoreOS、RancherOS、FreeBSD などのディストリビューションが提供されています。 Microsoft はさまざまな Linux コミュニティと積極的に連携し、[Azure 動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) リストを拡充しています。
@@ -51,7 +52,6 @@ Azure Virtual Machines を使用すると、さまざまなコンピューティ
 Azure に VM をデプロイするとき、あらかじめ用意された一連のサイズから、目的のワークロードに適した VM サイズを選択します。 また、サイズは仮想マシンの処理能力、メモリ、記憶容量にも影響します。 課金は、VM の実行時間とその割り当てリソースの消費量に基づいて行われます。 [Virtual Machines のサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の完全な一覧。
 
 ここでは、Microsoft が提供している一連の VM サイズ (A、D、DS、G、GS) からの選び方について基本的なガイドラインを紹介しています。
-
 * A シリーズの VM は、軽量のワークロードと開発/テストを想定した低価格、入門レベルの VM です。 すべてのリージョンで広く利用できます。定番となっているさまざまなリソースをつないで、仮想マシンから使用することが可能です。
 * A シリーズ サイズ (A8 ～ A11) は、ハイパフォーマンス コンピューティング クラスター アプリケーションに適した特殊なコンピューティング集中型の構成です。
 * D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。 D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。
@@ -60,7 +60,7 @@ Azure に VM をデプロイするとき、あらかじめ用意された一連�
 
 注: DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。SSD をベースとした高性能かつ低レイテンシのストレージによって、I/O 負荷の高いワークロードに対応します。 Premium Storage は特定のリージョンで使用できます。 詳細については、次のリンクを参照してください。
 
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md)
+* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md)
 
 ## <a name="automation"></a>Automation
 適切な DevOps カルチャを実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます (Phoenix サーバー)。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要なオートメーション ツールと連携します。  Azure には、自動化のための独自のツールもあります。
@@ -93,14 +93,14 @@ Microsoft はパートナーと連携し、利用可能なイメージが Azure 
 * Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
-## <a name="getting-setup-on-azure"></a>Azure の設定
+## <a name="getting-started-with-linux-on-azure"></a>Microsoft Azure における Linux の概要
 Azure の使用を開始するには、Azure アカウント、Azure CLI のインストール、および SSH 公開キーと秘密キーのペアが必要です。
 
 ### <a name="sign-up-for-an-account"></a>アカウントにサインアップする
 Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
 
 ### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install) をインストールします。
+新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) し、パスワードのないログインとセキュリティの強化を実現します。
@@ -118,24 +118,22 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 ### <a name="login-using-ssh-without-a-password"></a>パスワードを使わずに SSH を使用してログインする
 これで VM が Azure 上で実行され、ログインする準備ができました。  パスワードを使用して SSH からログインする方法は、安全ではなく、時間がかかります。  ログインの手段として最も安全性が高く、かつすばやい方法は、SSH キーを使用することです。  ポータルまたは CLI から Linux VM を作成する場合、認証の選択肢が 2 つあります。  SSH のパスワードを選択した場合、Azure はパスワードによるログインを許可するように VM を構成します。  SSH 公開キーを選択した場合、Azure は SSH キーを使用したログインのみを許可するように VM を構成し、パスワードのログインは無効になります。 SSH キーのログインのみを許可することにより Linux VM をセキュリティで保護するには、Portal または CLI で VM を作成するときに SSH 公開キーのオプションを使用します。
 
-* [SSHD の構成により Linux VM で SSH パスワードを無効化する](mac-disable-ssh-password-usage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント
 ## <a name="storage"></a>Storage
-* [Microsoft Azure Storage の概要](../../storage/storage-introduction.md)
+* [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)
 * [Azure CLI を使用して Linux VM にディスクを追加する](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure ポータルで Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Portal で Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="networking"></a>ネットワーク
 * [仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
 * [Azure 内の IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure ポータルでの完全修飾ドメイン名の作成](portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Portal での完全修飾ドメイン名の作成](portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="containers"></a>コンテナー
 * [Virtual Machines とコンテナーが Azure にもたらすメリット](containers.md)
 * [Azure Container Service の概要](../../container-service/container-service-intro.md)
-* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/container-service-deployment.md)
+* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)
 
 ## <a name="next-steps"></a>次のステップ
 これで、Azure での Linux の概要の説明が終わりました。  次の手順では、VM の作成について詳しく説明します。

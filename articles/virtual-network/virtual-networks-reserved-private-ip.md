@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: d2e2effa9c215107cf0893a74df0b909fbf5d4c0
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: cf9ee59ca4e44ed01836c2efb1f4df5f073bf6e0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -41,7 +42,7 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
     OperationStatus      : Succeeded
 
 > [!NOTE]
-> 上記のコマンドを安全な環境でテストする場合は、[Virtual Network の作成](virtual-networks-create-vnet-classic-portal.md)のガイドラインに従い、*TestVnet* という VNet を作成して *10.0.0.0/8* アドレス空間が使用されるようにします。
+> 上記のコマンドを安全な環境でテストする場合は、[仮想ネットワーク (クラシック) の作成](virtual-networks-create-vnet-classic-pportal.md)のガイドラインに従い、*TestVnet* という VNet を作成して *10.0.0.0/8* アドレス空間が使用されるようにします。
 > 
 > 
 

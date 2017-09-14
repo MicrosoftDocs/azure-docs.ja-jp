@@ -1,6 +1,6 @@
 ---
 title: "Azure App Service でアプリを監視する | Microsoft Docs"
-description: "Azure ポータルを使用して Azure App Service のアプリを監視する方法を説明します。"
+description: "Azure Portal を使用して Azure App Service のアプリを監視する方法を説明します。"
 services: app-service
 documentationcenter: 
 author: btardif
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: d779170030b61540de2c0459e574a72cdc77f342
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
-[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure ポータル](https://portal.azure.com)に用意されています。
+[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
 この監視機能には、アプリと App Service プランの**クォータ**と**メトリック**を確認する機能、**アラート**のセットアップ、さらにこれらのメトリックに基づいた自動**スケール**が含まれています。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
@@ -38,13 +38,13 @@ App Service でホストされているアプリケーションは、使用で�
 **Free** アプリまたは **Shared** アプリの**クォータ**は、次のようになります。
 
 * **CPU (ショート)**
-  * このアプリケーションが 3 分ごとに使用できる CPU の量。 このクォータは、3 分ごとに再設定されます。
+  * このアプリケーションが 5 分ごとに使用できる CPU の量。 このクォータは、5 分ごとに再設定されます。
 * **CPU (1 日)**
-  * このアプリケーションが&1; 日に使用できる CPU の総量。 このクォータは、24 時間ごとに (UTC の午前 0 時に) 再設定されます。
+  * このアプリケーションが 1 日に使用できる CPU の総量。 このクォータは、24 時間ごとに (UTC の午前 0 時に) 再設定されます。
 * **メモリ**
   * このアプリケーションが使用できるメモリの総量。
 * **帯域幅**
-  * このアプリケーションが&1; 日に使用できる送信帯域幅の総量。
+  * このアプリケーションが 1 日に使用できる送信帯域幅の総量。
     このクォータは、24 時間ごとに (UTC の午前 0 時に) 再設定されます。
 * **ファイルシステム**
   * 使用可能なストレージの総量。
@@ -122,9 +122,9 @@ App Service でホストされているアプリケーションは、使用で�
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU 時間と CPU の割合
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
-CPU の使用状況を反映するメトリックには、 **CPU 時間**と **CPU の割合**の&2; つがあります。
+CPU の使用状況を反映するメトリックには、 **CPU 時間**と **CPU の割合**の 2 つがあります。
 
-**CPU 時間**は、**Free** プランまたは **Shared** プランでホストされているアプリで役に立ちます。これは、これらのプランのクォータの&1; つが、アプリによって使用される CPU 時間 (分数) で定義されているためです。
+**CPU 時間**は、**Free** プランまたは **Shared** プランでホストされているアプリで役に立ちます。これは、これらのプランのクォータの 1 つが、アプリによって使用される CPU 時間 (分数) で定義されているためです。
 
 一方、**CPU の割合**は、**Basic**、**Standard**、**Premium** のプランでホストされているアプリで役に立ちます。これらのアプリではスケールアウトが可能であり、このメトリックが全インスタンスの全体的な使用状況を示す優れた指標となるためです。
 
@@ -135,8 +135,8 @@ CPU の使用状況を反映するメトリックには、 **CPU 時間**と **C
 * 粒度が**時間**のメトリックは **30 日間**保持されます。
 * 粒度が**日**のメトリックは **90 日間**保持されます。
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure ポータルでのクォータとメトリックの監視
-アプリケーションに影響するさまざまな**クォータ**と**メトリック**の状態を、[Azure ポータル](https://portal.azure.com)で確認できます。
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure Portal でのクォータとメトリックの監視
+アプリケーションに影響するさまざまな**クォータ**と**メトリック**の状態を、[Azure Portal](https://portal.azure.com) で確認できます。
 
 ![][quotas]
 **クォータ**は、[設定] ブレードの **[クォータ]** にあります。 UX では、(1) クォータの名前、(2) リセットの間隔、(3) 現在の制限、(4) 現在の値を確認できます。

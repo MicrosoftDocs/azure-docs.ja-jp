@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a5b845a93f318b991e14705f0fadea3acd802ced
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -33,11 +34,11 @@ ms.lasthandoff: 03/21/2017
 ## <a name="create-vms-with-docker-machine"></a>Docker マシンで VM を作成する
 `azure` ドライバーを使用する `docker-machine create` コマンドを使用して、Azure に Docker ホスト VM を作成します。 
 
-Azure ドライバーにはサブスクリプション ID が必要になります。 [Azure CLI](cli-install-nodejs.md) または [Azure Portal](https://portal.azure.com) を使用して、Azure サブスクリプションを取得することができます。 
+Azure ドライバーにはサブスクリプション ID が必要です。 [Azure CLI](cli-install-nodejs.md) または [Azure Portal](https://portal.azure.com) を使用して、Azure サブスクリプションを取得することができます。 
 
 **Azure ポータルの使用**
 
-* 左側のナビゲーション ページからサブスクリプションを選択し、サブスクリプション ID をコピーします。
+* 左側のナビゲーション ページから**サブスクリプション**を選択し、サブスクリプション ID をコピーします。
 
 **Azure CLI の使用**
 
@@ -48,7 +49,7 @@ Azure ドライバーにはサブスクリプション ID が必要になりま�
 
 次の例では[既定値](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22)を使用していますが、必要に応じて以下の値を設定します。 
 
-* パブリック IP に関連付けられている名前の azure-dns と生成される証明書。  これにより、VM は動的 IP を安全に停止およびリリースすることができ、新しい IP で VM が再起動された後に再接続することが可能になります。  名前のプレフィックスは、そのリージョン UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com に対して一意である必要があります。
+* パブリック IP に関連付けられている名前の azure-dns と生成される証明書。 これは仮想マシンの DNS 名です。 これにより、VM は動的 IP を安全に停止およびリリースし、新しい IP で VM が再起動された後に再接続できます。 名前のプレフィックスは、そのリージョン UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com に対して一意である必要があります。
 * 発信インターネット アクセス用に VM 上で開かれているポート 80
 * より高速な Premium Storage を利用するための VM のサイズ
 * VM ディスクに使用する Premium Storage
@@ -100,14 +101,14 @@ Status: Downloaded newer image for nginx:latest
 ```
 
 ## <a name="test-the-container"></a>コンテナーをテストする
-`docker ps` を利用し、実行中のコンテナーを調べます。
+`docker ps`を利用し、実行中のコンテナーを調べます。
 
 ```bash
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                         NAMES
 d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago       Up 5 minutes        0.0.0.0:80->80/tcp, 443/tcp   goofy_mahavira
 ```
 
-実行中のコンテナーを確認します。「`docker-machine ip <VM name>`」と入力すると、ブラウザーに入力する IP アドレスが見つかります。
+また、実行中のコンテナーを確認するには、「`docker-machine ip <VM name>`」と入力して、ブラウザーに入力する IP アドレスを見つけます。
 
 ```
 PS C:\> docker-machine ip MyDockerHost
@@ -117,7 +118,7 @@ PS C:\> docker-machine ip MyDockerHost
 ![実行中の ngnix コンテナー](./media/vs-azure-tools-docker-machine-azure-config/nginxsuccess.png)
 
 ## <a name="summary"></a>概要
-docker-machine を使用して、個々の Docker ホストの検証のために Azure に Docker ホストを簡単にプロビジョニングできます。
+docker-machine を使用すると、個々の Docker ホストの検証のために、Azure で Docker ホストを簡単にプロビジョニングできます。
 コンテナーの運用ホスティングについては、「 [Azure Container Service の概要](http://aka.ms/AzureContainerService)
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「 [Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c46a85aaf5237a2a7643cc9069255bdad9ab1d69
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
@@ -227,15 +228,28 @@ ms.lasthandoff: 04/07/2017
     </outbound>  
 </policies>  
 ```  
+この例では、バックエンド サービスの設定ポリシーにより、クエリ文字列に渡されるバージョン値に基づいて、API で指定されているものとは異なるバックエンド サービスに要求をルーティングしています。
   
- この例では、バックエンド サービスの設定ポリシーにより、クエリ文字列に渡されるバージョン値に基づいて、API で指定されているものとは異なるバックエンド サービスに要求をルーティングしています。  
+まず、API 設定からバックエンド サービスのベース URL が読み取られます。 これにより、要求 URL `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` が `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` になります。`http://contoso.com/api/10.4/` は API 設定で指定されているバックエンド サービスの URL です。  
   
- まず、API 設定からバックエンド サービスのベース URL が読み取られます。 これにより、要求 URL `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` が `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` になります。`http://contoso.com/api/10.4/` は API 設定で指定されているバックエンド サービスの URL です。  
+[<choose\>](api-management-advanced-policies.md#choose) ポリシー ステートメントを適用した場合、バックエンド サービスのベース URL は、要求クエリの version パラメーターの値に応じて `http://contoso.com/api/8.2` または `http://contoso.com/api/9.1` のどちらかに変更されます。 たとえば、このパラメーターの値が `"2013-15"` の場合、最終的な要求 URL は `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`になります。  
   
- [<choose\>](api-management-advanced-policies.md#choose) ポリシー ステートメントを適用した場合、バックエンド サービスのベース URL は、要求クエリの version パラメーターの値に応じて `http://contoso.com/api/8.2` または `http://contoso.com/api/9.1` のどちらかに変更されます。 たとえば、このパラメーターの値が `"2013-15"` の場合、最終的な要求 URL は `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`になります。  
+さらに要求を変換する必要がある場合には、別の[変換ポリシー](api-management-transformation-policies.md#TransformationPolicies)を使用できます。 たとえば、要求をバージョンごとのバックエンドにルーティングしたので version クエリ パラメーターを削除するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーを使用して、余計になった version 属性を削除できます。  
   
- さらに要求を変換する必要がある場合には、別の[変換ポリシー](api-management-transformation-policies.md#TransformationPolicies)を使用できます。 たとえば、要求をバージョンごとのバックエンドにルーティングしたので version クエリ パラメーターを削除するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーを使用して、余計になった version 属性を削除できます。  
+### <a name="example"></a>例  
   
+```xml  
+<policies>  
+    <inbound>  
+        <set-backend-service backend-id="my-sf-service" sf-partition-key="@(context.Request.Url.Query.GetValueOrDefault("userId","")" sf-replica-type="primary" /> 
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+```  
+この例では、ポリシーは、パーティション キーとして userId クエリ文字列を使い、パーティションのプライマリ レプリカを使って、サービス ファブリック バックエンドに要求をルーティングします。  
+
 ### <a name="elements"></a>要素  
   
 |名前|説明|必須|  
@@ -246,8 +260,13 @@ ms.lasthandoff: 04/07/2017
   
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|base-url|バックエンド サービスの新しいベース URL。|はい|該当なし|  
-  
+|base-url|バックエンド サービスの新しいベース URL。|いいえ|該当なし|  
+|backend-id|ルーティング先のバックエンドの識別子。|いいえ|該当なし|  
+|sf-partition-key|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 名前解決サービスからの特定のパーティションを解決するために使います。|いいえ|該当なし|  
+|sf-replica-type|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 要求をパーティションのプライマリ レプリカとセカンダリ レプリカのどちらに送信する必要があるかを制御します。 |いいえ|該当なし|    
+|sf-resolve-condition|バックエンドが Service Fabric サービスの場合にのみ適用されます。 Service Fabric バックエンドへの呼び出しを新しい解決で繰り返す必要があるかどうかを識別する条件です。|いいえ|該当なし|    
+|sf-service-instance-name|バックエンドが Service Fabric サービスの場合にのみ適用されます。 実行時にサービス インスタンスを変更できます。 |いいえ|該当なし |    
+
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
@@ -655,7 +674,7 @@ OriginalUrl.
   <outbound>  
       <base />  
       <xsl-transform>  
-          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />  
             <!-- Copy all nodes directly-->  
             <xsl:template match="node()| @*|*">  
@@ -663,7 +682,7 @@ OriginalUrl.
                     <xsl:apply-templates select="@* | node()|*" />  
                 </xsl:copy>  
             </xsl:template>  
-          </xsl:stylesheet>  
+        </xsl:stylesheet>  
     </xsl-transform>  
   </outbound>  
 </policies>  

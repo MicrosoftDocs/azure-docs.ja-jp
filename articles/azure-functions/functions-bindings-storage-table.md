@@ -4,7 +4,7 @@ description: "Azure Functions で Azure Storage のバインドを使用する�
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: bb01be3ee044f60376e0c9c2de7b3dd34f3b7aca
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 486b7c31c914ba7bb2d75e3f83ccf346a09104e8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-storage-table-bindings"></a>Azure Functions における Storage テーブルのバインド
@@ -114,7 +114,7 @@ C# 関数の場合、入力テーブルの単一のエンティティ (または
 
 <a name="inputcsharp"></a>
 
-### <a name="input-sample-in-c"></a>C での入力サンプル# #
+### <a name="input-sample-in-c"></a>C# での入力サンプル #
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
 {
@@ -132,7 +132,7 @@ public class Person
 
 <a name="inputfsharp"></a>
 
-### <a name="input-sample-in-f"></a>F での入力サンプル# #
+### <a name="input-sample-in-f"></a>F# での入力サンプル #
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -226,7 +226,7 @@ Node.js または C# 関数でオブジェクトをシリアル化できます�
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル #
 ```csharp
 public static void Run(string input, ICollector<Person> tableBinding, TraceWriter log)
 {
@@ -253,7 +253,7 @@ public class Person
 ```
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F での出力サンプル# #
+### <a name="output-sample-in-f"></a>F# での出力サンプル #
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -293,7 +293,7 @@ module.exports = function (context) {
 
 <a name="readmulti"></a>
 
-## <a name="sample-read-multiple-table-entities-in-c"></a>サンプル: C での複数のテーブル エンティティの読み取り#  #
+## <a name="sample-read-multiple-table-entities-in-c"></a>サンプル: C# での複数のテーブル エンティティの読み取り  #
 次の *function.json* および C# コード例では、キュー メッセージに指定されたパーティション キーのエンティティを読み取ります。
 
 ```json

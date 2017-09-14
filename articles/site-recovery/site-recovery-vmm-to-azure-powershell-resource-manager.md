@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 933cb8692abea1f66192605208ddd9c0b9057235
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34086044db752f09f1282517b59856091e85c2fc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
@@ -59,7 +58,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### <a name="azure-prerequisites"></a>Azure の前提条件
 * [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/free)を使用できます。 また、「 [Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」もご覧ください。
 * CSP サブスクリプションにレプリケートするシナリオを試す場合は、CSP サブスクリプションが必要です。 CSP プログラムの詳細については、「 [CSP プログラムに登録する](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx)」をご覧ください。
-* Azure にレプリケートしたデータを格納するために Azure v2 ストレージ (Resource Manager) アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションまたは CSP サブスクリプションに関連付けられている必要があります。 Azure Storage のセットアップの詳細については、「 [Microsoft Azure Storage の概要](../storage/storage-introduction.md) 」をご覧ください。
+* Azure にレプリケートしたデータを格納するために Azure v2 ストレージ (Resource Manager) アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションまたは CSP サブスクリプションに関連付けられている必要があります。 Azure Storage のセットアップの詳細については、「 [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md) 」をご覧ください。
 * 保護対象の仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認する必要があります。
 
 > [!NOTE]

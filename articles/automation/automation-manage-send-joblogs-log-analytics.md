@@ -4,7 +4,7 @@ description: "この記事では、ジョブの状態と Runbook ジョブ ス�
 services: automation
 documentationcenter: 
 author: MGoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: c12724c6-01a9-4b55-80ae-d8b7b99bd436
 ms.service: automation
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 06/02/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2c25403a4bb2acd81061cc5dfdfd460c48a244bc
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 2c0ca7fc332963e5a5db3c20c400ed877ae0cc54
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -34,8 +34,8 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 ## <a name="prerequisites-and-deployment-considerations"></a>前提条件とデプロイに関する考慮事項
 Log Analytics への Automation ログの送信を開始するには、次のものが必要です。
 
-1. 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
-2. Log Analytics ワークスペース。 詳細については、「[Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)」を参照してください。
+1. 2016 年 11 月以降のリリースの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0)。
+2. Log Analytics ワークスペース。 詳細については、「[Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)」を参照してください。 
 3. Azure Automation アカウントの ResourceId
 
 Azure Automation アカウントと Log Analytics ワークスペースの ResourceId を調べるには、次の PowerShell を実行します。
@@ -61,25 +61,21 @@ Automation アカウントの "*名前*" の値を調べる必要がある場合
     Param
     (
         [Parameter(Mandatory=$True)]
-            [ValidateSet("AzureCloud","AzureUSGovernment")]
-            [string]$Environment="AzureCloud",
-        [Parameter(Mandatory=$True)]
-        [string]$nameOfYourLogAnalyticsWorkspace,
-        [Parameter(Mandatory=$True)]
-        [string]$nameOfYourAutomationAccount
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
     )
 
 #Check to see which cloud environment to sign into.
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment}
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
    }
 
-# Below both the ResourceId's are populated using the Parameters from this script as a searchstring based on the Name of the Automation Account and Name of Workspace
+# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
+$workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$workspaceId=(Get-AzureRmOperationalInsightsWorkspace|where Name -like ('*'+$nameOfYourLogAnalyticsWorkspace+'*')).ResourceId
-$automationAccountId=(Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts" -ResourceNameContains $nameOfYourAutomationAccount).Resourceid
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
 
@@ -87,7 +83,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $work
 
 このスクリプトを実行すると、Log Analytics に 10 分以内に新しいジョブ ログやジョブ ストリームのレコードが書き込まれます。
 
-ログを表示するには、次のクエリを実行します。`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
+ログを表示するには、Log Analytics のログ検索で次のクエリを実行します:`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>構成の確認
 Automation アカウントから Log Analytics ワークスペースにログが送信されていることを確認するには、次の PowerShell を使用して、Automation アカウントに診断が正しく設定されていることを確認します。
@@ -97,22 +93,20 @@ Automation アカウントから Log Analytics ワークスペースにログが
     Param
     (
         [Parameter(Mandatory=$True)]
-            [ValidateSet("AzureCloud","AzureUSGovernment")]
-            [string]$Environment="AzureCloud",
-        [Parameter(Mandatory=$True)]
-        [string]$nameOfYourAutomationAccount
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
     )
 
 #Check to see which cloud environment to sign into.
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment}
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
    }
+# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
+$workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-# Below the ResourceId is populated using the Parameter from this script as a searchstring based on the Name of the Workspace
-
-$automationAccountId=(Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts" -ResourceNameContains $nameOfYourAutomationAccount).Resourceid
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
@@ -123,7 +117,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
-Azure Automation の診断から、Log Analytics に 2 種類のレコードが作成されます。
+Azure Automation の診断から、Log Analytics に 2 種類のレコードが作成され、タグ **Type=AzureDiagnostics** が付けられます。
 
 ### <a name="job-logs"></a>ジョブ ログ
 | プロパティ | 説明 |

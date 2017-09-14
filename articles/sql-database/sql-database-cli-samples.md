@@ -1,6 +1,6 @@
 ---
-title: "SQL Database の Azure CLI サンプル | Microsoft Docs"
-description: "Azure CLI サンプル - Azure SQL Database サーバー、エラスティック プール、データベース、ファイアウォールを作成し、管理します。"
+title: "SQL Database の Azure CLI スクリプト サンプル | Microsoft Docs"
+description: "Azure SQL Database サーバー、エラスティック プール、データベース、ファイアウォールを作成し、管理するための Azure CLI スクリプト サンプル。"
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/07/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: f4fab4159ed4ff14adad9b1ad63315fe1acfe9e9
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 91b02d1099dc1683abb1042b3dc65cbee5aeae5b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/30/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure CLI サンプル
 
-次の表には、Azure SQL Database の Azure CLI スクリプトのサンプルへのリンクが含まれています。
+次の表には、Azure SQL Database の Azure CLI スクリプト例へのリンクが含まれています。
 
 | |  |
 |---|---|
 |**単一のデータベースとエラスティック プールを作成する**||
-| [単一のデータベースを作成し、ファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 単一の Azure SQL Database を作成し、サーバー レベルのファイアウォール規則を構成します。 |
-| [エラスティック プールを作成し、プールされているデータベースを移動する](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | エラスティック プールを作成し、プールされている Azure SQL データベースを移動して、パフォーマンス レベルを変更します。|
+| [単一のデータベースを作成し、ファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、1 つの Azure SQL データベースが作成され、サーバーレベルのファイアウォール規則が構成されます。 |
+| [エラスティック プールを作成し、プールされているデータベースを移動する](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、SQL エラスティック プールが作成され、プールされた Azure SQL データベースが移動され、パフォーマンス レベルが変更されます。|
 |**単一のデータベースとエラスティック プールをスケーリングする**||
-| [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 単一の Azure SQL データベースのサイズ情報をクエリした後に、そのデータベースを別のパフォーマンス レベルにスケーリングします。 |
-| [エラスティック プールをスケーリングする](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | エラスティック プールをさまざまなパフォーマンス レベルにスケーリングします。  |
+| [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、データベースのサイズ情報の問い合わせ後、1 つの Azure SQL データベースが別のパフォーマンス レベルにスケーリングします。 |
+| [エラスティック プールをスケーリングする](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、SQL エラスティック プールが別のパフォーマンス レベルにスケーリングします。  |
 |||
 

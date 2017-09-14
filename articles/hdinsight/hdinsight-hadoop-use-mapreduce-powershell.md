@@ -1,5 +1,5 @@
 ---
-title: "Hadoop で MapReduce と PowerShell を使用する | Microsoft Docs"
+title: "Hadoop で MapReduce と PowerShell を使用する - Azure HDInsight | Microsoft Docs"
 description: "PowerShell を使用して HDInsight の Hadoop で MapReduce ジョブをリモートで実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: b24bfb08e692ec7ab6da9c60515d7cbeec9589b3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3801573808709f29cb1e563ac803f225a28cafc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 05/18/2017
 * **Azure HDInsight (HDInsight で Hadoop を使用) クラスター**
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
 
@@ -57,7 +57,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
-1. エディターを使用して、次のコードを **mapreducejob.ps1** として保存します。
+1. エディターを使用して、次のコードを **mapreducejob.ps1**として保存します。
 
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 

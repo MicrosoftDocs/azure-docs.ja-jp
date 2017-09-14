@@ -12,16 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 07/11/2017
 ms.author: stefsch
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33d1638dfbf1e314d7ea298a39dd4e646c3faf10
-
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 147ab76d38c8bbbf34d35ed6c2a194d97fe711ab
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
-## <a name="overview"></a>Overview
+
+> [!NOTE] 
+> この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](../app-service/app-service-environment/intro.md)」を参照してください。
+>
+
+## <a name="overview"></a>概要
 App Service Environment は、パブリック VIP の代わりに仮想ネットワークの内部アドレスを使用して作成することができます。  この内部アドレスは、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによって提供されます。  ILB ASE は、Azure ポータルを使用して作成できます。  また、Azure Resource Manager テンプレートによる自動化を利用して作成することもできます。  この記事では、Azure Resource Manager テンプレートを使用して ILB ASE を作成するために必要な手順と構文について詳しく説明します。
 
 ILB ASE の自動作成は、次に示す 3 つの手順で実行されます。
@@ -54,13 +60,13 @@ ILB ASE を作成したら、SSL 証明書を、アプリへの SSL 接続を確
 有効な SSL 証明書を取得するには、内部 CA を利用する、外部の発行元から証明書を購入する、自己署名証明書を使用するなどの方法があります。  どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
 * *Subject*: この属性は、**.your-root-domain-here.com* に設定する必要があります。
-* *Subject Alternative Name*: この属性は、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* を両方とも含むように設定する必要があります。  2 つ目のエントリが必要な理由は、各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、 *your-app-name.scm.your-root-domain-here.com*形式のアドレスを使用して確立されるためです。
+* *Subject Alternative Name*: この属性には、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* の両方が含まれている必要があります。  2 つ目のエントリが必要な理由は、各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、 *your-app-name.scm.your-root-domain-here.com*形式のアドレスを使用して確立されるためです。
 
 有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。  SSL 証明書は、.pfx ファイルに変換して保存する必要があります。  .pfx ファイルには、中間証明書とルート証明書をすべて含める必要があり、さらにパスワードで保護する必要もあるという点に注意してください。
 
 その後、.pfx ファイルは base64 文字列に変換する必要がありますが、これは SSL 証明書が Azure Resource Manager テンプレートを使用してアップロードされるためです。  Azure Resource Manager テンプレートはテキスト ファイルであるため、パラメーターとしてテンプレートに含めることができるように、.pfx ファイルを base64 文字列に変換する必要があります。
 
-以下の Powershell コード スニペットには、自己署名証明書を生成して、その証明書を .pfx ファイルとしてエクスポートし、.pfx ファイルを base64 でエンコードされた文字列に変換してから、それを別のファイルに保存する例を示します。  base64 エンコード用の Powershell コードは、[Powershell スクリプトのブログ][examplebase64encoding]に記載されているコードを基にしています。
+以下の Powershell コード スニペットには、自己署名証明書を生成して、その証明書を .pfx ファイルとしてエクスポートし、.pfx ファイルを base64 でエンコードされた文字列に変換してから、それを別のファイルに保存する例を示します。  base64 エンコード用の PowerShell コードは、[PowerShell スクリプトのブログ][examplebase64encoding]に記載されているコードを基にしています。
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -74,7 +80,7 @@ ILB ASE を作成したら、SSL 証明書を、アプリへの SSL 接続を確
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換された後は、GitHub にある、[既定の SSL 証明書を構成する][configuringDefaultSSLCertificate]ための Azure Resource Manager テンプレート例を使用することができます。
+SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換されたら、GitHub にある、[既定の SSL 証明書を構成する][configuringDefaultSSLCertificate]ためのサンプルの Azure Resource Manager テンプレートを使用できます。
 
 *azuredeploy.parameters.json* ファイル内の各パラメーターを以下に示します。
 
@@ -138,10 +144,5 @@ App Service 環境に関するすべての記事と作業方法は [App Service 
 [quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-create/
 [examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/ 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

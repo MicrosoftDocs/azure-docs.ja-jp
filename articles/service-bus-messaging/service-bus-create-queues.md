@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 08/07/2017
 ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: d987aa22379ede44da1b791f034d713a49ad486a
 ms.openlocfilehash: 40414edebcd76fc93136cbc14d7a6436fc7f6da5
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="create-applications-that-use-service-bus-queues"></a>Service Bus キューを使用するアプリケーションを作成する

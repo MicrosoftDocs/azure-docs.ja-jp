@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c88dc19cdacc94b9b81adcdbf69f22aac8f6eabe
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: e6b251d5b97c57b3b6f79d14e53fbed5ca37ecb0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -25,14 +26,14 @@ ms.lasthandoff: 03/22/2017
 Azure Security Center では、仮想マシン (VM) のオペレーティング システム (OS) を日々分析して、攻撃に対する VM の脆弱性を高める可能性のある構成を特定し、これらの脆弱性に対処するための構成の変更を推奨しています。 Security Center では、VM の OS 構成が推奨される構成規則に適合していない場合に脆弱性を解決するよう推奨します。
 
 > [!NOTE]
-> 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。 現時点では、Windows Server 2016 は完全にはサポートされていません。
+> 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。
 >
 >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 
 > [!NOTE]
-> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
+> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  このドキュメントはステップ バイ ステップ ガイドではありません。
 >
 >
 
@@ -72,15 +73,16 @@ Azure Security Center では、仮想マシン (VM) のオペレーティング 
 ## <a name="see-also"></a>関連項目
 この記事では、"OS の脆弱性の修復" という Security Center の推奨事項を実装する方法について説明しました。 構成規則のセットは [こちら](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)で確認できます。 Security Center では、CCE (Common Configuration Enumeration) を使用して構成規則に一意の識別子を割り当てます。 詳細については、 [CCE](https://nvd.nist.gov/cce/index.cfm) サイトをご覧ください。
 
-セキュリティ センターの詳細については、次を参照してください。
+Security Center の詳細については、次のリソースを参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* 「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」 - サポートされている Windows VM と Linux VM の一覧を示します。
+* 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」 - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 - 推奨事項に従って Azure リソースを保護する方法について説明しています。
+* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
+* 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 - セキュリティの警告の管理と対応の方法について説明しています。
+* 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 - パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 - このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/recommendation.png

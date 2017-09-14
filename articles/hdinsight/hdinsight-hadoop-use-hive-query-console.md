@@ -1,5 +1,5 @@
 ---
-title: "HDInsight のクエリ コンソールでの Hadoop Hive の使用 | Microsoft Docs"
+title: "HDInsight のクエリ コンソールでの Hadoop Hive の使用 - Azure | Microsoft Docs"
 description: "Web ベースのクエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,11 +17,10 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3000f8db8357793c68f49b47cb5a1df16bb8df51
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9e3b4dbda4ba753ac93540d121b3831a6ed3b75e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>クエリ コンソールを使用して Hive クエリを実行
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
 > [!IMPORTANT]
-> HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上での Web ブラウザーからの Hive クエリの実行に関する情報については、[Ambari Hive ビューでの Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 05/18/2017
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
+        STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
     これらのステートメントは次のアクションを実行します。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: d3488b1e7857799d8ed7de796610e8d52034bd8f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
@@ -389,7 +388,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
     診断ツールによって報告された読み取り/書き込み待機時間が長い場合:
 
-    1. BLOB サービスに対して Storage Analytics を構成し、出力を分析して Azure ストレージ アカウントの待機時間を理解します。 詳細な手順については、「[Storage Analytics の有効化と構成](../storage/storage-enable-and-view-metrics-classic-portal.md)」を参照してください。 これらの待機時間が長く、StorSimple 診断ツールが示した数値と同程度である場合は、Azure Storage に対するサービス要求を作成する必要があります。
+    1. BLOB サービスに対して Storage Analytics を構成し、出力を分析して Azure ストレージ アカウントの待機時間を理解します。 詳細な手順については、「[Storage Analytics の有効化と構成](../storage/common/storage-enable-and-view-metrics.md)」を参照してください。 これらの待機時間が長く、StorSimple 診断ツールが示した数値と同程度である場合は、Azure Storage に対するサービス要求を作成する必要があります。
 
     2. ストレージ アカウントの待機時間が短い場合は、ネットワーク管理者に連絡して、ネットワーク内の待機時間に関する問題を調査してください。
 

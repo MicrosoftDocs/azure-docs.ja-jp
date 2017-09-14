@@ -1,27 +1,31 @@
 ---
-title: "Azure App Service にコンテンツ配信ネットワーク (CDN) を追加する | Microsoft Docs"
+title: "Azure App Service に CDN を追加する | Microsoft Docs"
 description: "静的なファイルをキャッシュし、世界各地の顧客に対して地理的に近いサーバーから配信するには、Azure App Service にコンテンツ配信ネットワーク (CDN) を追加します。"
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
-ms.date: 05/01/2017
-ms.topic: article
+ms.date: 05/31/2017
+ms.topic: tutorial
 ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7208abc0e6eaa9067c5bb36a09e1bfd276fe0b0c
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: a4f5113c4cc0ffb5fdd072e9a59743c83154c38c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Azure App Service にコンテンツ配信ネットワーク (CDN) を追加する
 
 [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) では、効果を狙って配置された場所に静的 Web コンテンツをキャッシュすることで、ユーザーへのコンテンツ配信のスループットを最大化できます。 Web アプリでのサーバーの負荷も CDN によって軽減されます。 このチュートリアルでは、[Azure App Service 内の Web アプリ](app-service-web-overview.md)に Azure CDN を追加する方法について説明します。 
 
-このチュートリアルで学習する内容は次のとおりです。
+以下に示したのは、これから扱うサンプルの静的 HTML サイトのホーム ページです。
+
+![サンプル アプリのホーム ページ](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
+
+ここでは、次の内容について学習します。
 
 > [!div class="checklist"]
 > * CDN エンドポイントを作成する。
@@ -29,19 +33,22 @@ ms.lasthandoff: 05/09/2017
 > * キャッシュされたバージョンをクエリ文字列で制御する。
 > * CDN エンドポイントにカスタム ドメインを使用する。
 
-以下に示したのは、これから扱うサンプルの静的 HTML サイトのホーム ページです。
+## <a name="prerequisites"></a>前提条件
 
-![サンプル アプリのホーム ページ](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
+このチュートリアルを完了するには、以下が必要です。
+
+- [Git をインストールする](https://git-scm.com/)
+- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>Web アプリの作成
 
-ここで扱う Web アプリは、[静的 HTML のクイック スタート](app-service-web-get-started-html.md)の手順に従って作成します。ただし「**リソースのクリーンアップ**」の手順は実行しないでください。
-
-このチュートリアルの中で後から Web アプリに追加で変更をデプロイできるよう、作業を終えてもコマンド プロンプトは開いたままにしておいてください。
+ここで扱う Web アプリは、[静的 HTML のクイックスタート](app-service-web-get-started-html.md)の「**アプリの参照**」の手順に従って作成します。
 
 ### <a name="have-a-custom-domain-ready"></a>カスタム ドメインの準備
 
-このチュートリアルのカスタム ドメインに関する手順には、ドメイン プロバイダー (GoDaddy など) の DNS レジストリへのアクセス権が必要です。 たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成するためのアクセス権が必要です。
+このチュートリアルのカスタム ドメインに関する手順を実行するには、カスタム ドメインを所有し、ドメイン プロバイダー (GoDaddy など) の DNS レジストリへのアクセス権を持っている必要があります。 たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成するためのアクセス権が必要です。
 
 既存のドメイン名がない場合は、[App Service ドメインのチュートリアル](custom-dns-web-site-buydomains-web-app.md)に従って、Azure Portal を使用してドメインを購入することを検討してください。 
 
@@ -89,7 +96,7 @@ http://<appname>.azurewebsites.net/css/bootstrap.css
 http://<endpointname>.azureedge.net/css/bootstrap.css
 ```
 
-ブラウザーで次の URL にアクセスして表示されるページは、先ほど Azure Web アプリで実行したページと同じですが、こちらは CDN から配信されています。
+ブラウザーで次の URL に移動します。
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -97,7 +104,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![CDN から配信されたサンプル アプリのホーム ページ](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
-これは Azure CDN が配信元の Web アプリの資産を取得し、それを CDN エンドポイントから配信していることを示しています。 
+ 先ほど Azure Web アプリで実行したのと同じページが表示されます。 Azure CDN は配信元の Web アプリの資産を取得し、それを CDN エンドポイントから配信しています。
 
 このページを確実に CDN にキャッシュするには、ページを最新の情報に更新します。 要求されたコンテンツを CDN でキャッシュするためには、同じ資産に対して 2 回の要求が必要になる場合もあります。
 
@@ -188,7 +195,7 @@ Azure CDN では、次のキャッシュ動作を選択することができま�
 * クエリ文字列に対するキャッシュをバイパス
 * 一意の URL をすべてキャッシュ 
 
-既定では 1 つ目の動作が選択されます。つまりアクセス用の URL に使用されるクエリ文字列に関係なく、資産のバージョンは 1 つしかキャッシュされません。 
+既定では 1 つ目の動作が選択されます。つまり URL 内のクエリ文字列に関係なく、資産のバージョンは 1 つしかキャッシュされません。 
 
 このチュートリアル セクションでは、一意の URL をすべてキャッシュするようにキャッシュ動作を変更します。
 
@@ -235,7 +242,10 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 ![CDN でタイトルに V2 と表示される (クエリ文字列 1)](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title-qs1.png)
 
-この出力結果は、それぞれのクエリ文字列が区別して扱われていることを示しています。つまり以前は q=1 が使用されていたために、キャッシュされていたコンテンツ (V2) が返されていますが、q=2 は新しいクエリ文字列であるため、最新の Web アプリ コンテンツ (V3) が取得されて返されています。
+この出力は、それぞれのクエリ文字列が区別して扱われていることを示しています。
+
+* 以前は q=1 が使用されていたために、キャッシュされていたコンテンツ (V2) が返されています。
+* q=2 は新しいクエリ文字列であるため、最新の Web アプリ コンテンツ (V3) が取得されて返されています。
 
 詳細については、「[クエリ文字列による Azure CDN キャッシュ動作の制御](../cdn/cdn-query-string.md)」を参照してください。
 
@@ -261,7 +271,7 @@ Azure Portal の **[エンドポイント]** ページで、左側のナビゲ�
 
 CNAME 管理セクションを見つけます。 詳細設定ページに進み、"CNAME"、"エイリアス"、"サブドメイン" などの語句を探します。
 
-選択したサブドメイン (**static**、**cdn** など) を、先ほど紹介したポータルの**エンドポイントのホスト名**にマッピングする新しい CNAME レコードを作成します。 
+選択したサブドメイン (**static**、**cdn** など) を、先ほど紹介したポータルの**エンドポイントのホスト名**にマッピングする CNAME レコードを作成します。 
 
 ### <a name="enter-the-custom-domain-in-azure"></a>Azure でカスタム ドメインを入力する
 
@@ -269,7 +279,7 @@ CNAME 管理セクションを見つけます。 詳細設定ページに進み�
    
 入力したドメイン名に対する CNAME レコードが存在するかどうかが Azure によって確認されます。 CNAME が正しければ、カスタム ドメインが検証されます。
 
-CNAME レコードがインターネット上のネーム サーバーに伝播するまでしばらく時間がかかる場合があります。 入力した CNAME レコードが正しいのにドメインがすぐに検証されない場合は、数分間待ってからやり直してください。
+CNAME レコードがインターネット上のネーム サーバーに伝播するまでしばらく時間がかかる場合があります。 ドメインがすぐに検証されない場合は、数分間待ってからやり直してください。
 
 ### <a name="test-the-custom-domain"></a>カスタム ドメインをテストする
 
@@ -283,7 +293,7 @@ CNAME レコードがインターネット上のネーム サーバーに伝播�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
+ここで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
 > * CDN エンドポイントを作成する。
@@ -298,5 +308,4 @@ CNAME レコードがインターネット上のネーム サーバーに伝播�
 
 > [!div class="nextstepaction"]
 > [Azure CDN エンドポイント上のアセットを事前に読み込む](../cdn/cdn-preload-endpoint.md)
-
 

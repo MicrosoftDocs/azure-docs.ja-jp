@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 14c848b4740a0fc49a8ba20f119846892bc8ca22
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e3b4a094511a59cfa02917efc2e3e053840af0c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
@@ -84,7 +84,7 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/storage-redundancy.md#geo-redundant-storage) を使用できます。 次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) を使用できます。 次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
 
    > [!TIP]
    > Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
@@ -264,7 +264,7 @@ DPM エージェントがインストールされており、DPM サーバーに
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”
 ```
 
-[Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\* をフィルター処理します。次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。"*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
+[Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\* をフィルター処理します。 次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。 "*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }
@@ -314,7 +314,7 @@ PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -Tim
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-上記の例で ```$onlineSch``` は、GFS スキームの保護グループ用の既存のオンライン保護スケジュールを含む&4; つの要素を持つ配列です。
+上記の例で ```$onlineSch``` は、GFS スキームの保護グループ用の既存のオンライン保護スケジュールを含む 4 つの要素を持つ配列です。
 
 1. ```$onlineSch[0]``` は日次スケジュールを含みます
 2. ```$onlineSch[1]``` は週次スケジュールを含みます

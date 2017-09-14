@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/01/2017
+ms.date: 08/30/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 491f61afe899c746c193f0d3703d3212f9258e63
-ms.openlocfilehash: 578046d6939b90cb58d457087bb465006630b4c1
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: fec85bcf1ce46374815fddcd21ab2e8f73cbd1df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>FabricClient API の操作時に発生する一般的な例外とエラー
@@ -30,7 +29,7 @@ FabricClient を使用して実行できる操作の種類は多岐にわたり�
 | 例外 | スローされるタイミング |
 | --- |:--- |
 | [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) オブジェクトがクローズ済みであるとき。 使用中の [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) オブジェクトを破棄したうえで、新しい [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) オブジェクトをインスタンス化してください。 |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |操作がタイムアウトしたとき。 操作の完了前に MaxOperationTimeout に達すると、[OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) が返されます。 |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |操作がタイムアウトしたとき。操作の完了前に MaxOperationTimeout に達すると、[OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) が返されます。 |
 | [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |操作のアクセス チェックに失敗したとき。 E_ACCESSDENIED が返されます。 |
 | [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |操作の実行中にランタイム エラーが発生したとき。 FabricClient のいずれのメソッドも、[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) をスローする可能性があります。例外の正確な原因は [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) プロパティによって示されます。 エラー コードは、[FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) 列挙体として定義されています。 |
 | [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |なんらかの一過性のエラー状態が原因で操作に失敗したとき。 たとえばレプリカのクォーラムが一時的に到達不能状態に陥ったことが原因で操作に失敗する可能性があります。 一過性の例外によって失敗した操作は、再試行することができます。 |

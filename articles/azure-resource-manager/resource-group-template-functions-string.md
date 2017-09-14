@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/01/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9932ac04699f49b7a3ea3dabe4d380fdc4d05ec1
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
@@ -29,7 +28,6 @@ ms.lasthandoff: 05/16/2017
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [bool](#bool)
 * [concat](#concat)
 * [contains](#contains)
 * [dataUri](#datauri)
@@ -69,6 +67,10 @@ ms.lasthandoff: 05/16/2017
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |Base 64 形式として返す値。 |
+
+### <a name="return-value"></a>戻り値
+
+base64 形式を含む文字列。
 
 ### <a name="examples"></a>例
 
@@ -111,9 +113,13 @@ ms.lasthandoff: 05/16/2017
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-base64 形式を含む文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | オブジェクト | {"one": "a", "two": "b"} |
 
 <a id="base64tojson" />
 
@@ -127,6 +133,10 @@ base64 形式を JSON オブジェクトに変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |string |JSON オブジェクトに変換する base64 形式。 |
+
+### <a name="return-value"></a>戻り値
+
+JSON オブジェクト。
 
 ### <a name="examples"></a>例
 
@@ -169,9 +179,13 @@ base64 形式を JSON オブジェクトに変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-JSON オブジェクト。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | オブジェクト | {"one": "a", "two": "b"} |
 
 <a id="base64tostring" />
 
@@ -185,6 +199,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |string |文字列に変換する base64 形式。 |
+
+### <a name="return-value"></a>戻り値
+
+変換された base64 値の文字列。
 
 ### <a name="examples"></a>例
 
@@ -227,55 +245,15 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-変換された base64 値の文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | オブジェクト | {"one": "a", "two": "b"} |
 
-<a id="bool" />
 
-## <a name="bool"></a>bool
-`bool(arg1)`
-
-パラメーターをブール値に変換します。
-
-### <a name="parameters"></a>parameters
-
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| arg1 |はい |文字列または整数 |ブール値に変換する値。 |
-
-### <a name="examples"></a>例
-
-次の例では、ブール値を文字列または整数と共に使用する方法を示します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueString": {
-            "value": "[bool('true')]",
-            "type" : "bool"
-        },
-        "falseString": {
-            "value": "[bool('false')]",
-            "type" : "bool"
-        },
-        "trueInt": {
-            "value": "[bool(1)]",
-            "type" : "bool"
-        },
-        "falseInt": {
-            "value": "[bool(0)]",
-            "type" : "bool"
-        }
-    }
-}
-```
-
-### <a name="return-value"></a>戻り値
-ブール値。
 
 <a id="concat" />
 
@@ -290,6 +268,9 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | arg1 |あり |文字列または配列 |連結の最初の値。 |
 | 残りの引数 |いいえ |string |連結する順の追加の値。 |
+
+### <a name="return-value"></a>戻り値
+連結された値の文字列または配列。
 
 ### <a name="examples"></a>例
 
@@ -308,12 +289,18 @@ base64 形式を文字列に変換します。
     "resources": [],
     "outputs": {
         "concatOutput": {
-            "value": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
+            "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]",
             "type" : "string"
         }
     }
 }
 ```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 次の例では、2 つの配列を結合する方法を示します。
 
@@ -350,8 +337,11 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
-連結された値の文字列または配列。
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 <a id="contains" />
 
@@ -366,6 +356,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |あり |文字列または整数 |検索対象の値。 |
+
+### <a name="return-value"></a>戻り値
+
+項目が見つかった場合は **True**、それ以外の場合は **False** です。
 
 ### <a name="examples"></a>例
 
@@ -420,9 +414,16 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-項目が見つかった場合は **True**、それ以外の場合は **False** です。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| stringTrue | ブール値 | True |
+| stringFalse | ブール値 | False |
+| objectTrue | ブール値 | True |
+| objectFalse | ブール値 | False |
+| arrayTrue | ブール値 | True |
+| arrayFalse | ブール値 | False |
 
 <a id="datauri" />
 
@@ -437,6 +438,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToConvert |はい |string |データ URI に変換する値。 |
 
+### <a name="return-value"></a>戻り値
+
+データ URI として書式設定された文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、値をデータ URI に変換し、データ URI を文字列に変換します。
@@ -469,9 +474,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-データ URI として書式設定された文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 <a id="datauritostring" />
 
@@ -486,6 +494,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |あり |string |変換するデータ URI 値。 |
 
+### <a name="return-value"></a>戻り値
+
+変換後の値を含む文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、値をデータ URI に変換し、データ URI を文字列に変換します。
@@ -518,9 +530,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-変換後の値を含む文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 <a id="empty" /> 
 
@@ -534,6 +549,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
+
+### <a name="return-value"></a>戻り値
+
+値が空の場合は **True** を、値が空でない場合は **False** を返します。
 
 ### <a name="examples"></a>例
 
@@ -576,9 +595,13 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-値が空の場合は **True** を、値が空でない場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayEmpty | ブール値 | True |
+| objectEmpty | ブール値 | True |
+| stringEmpty | ブール値 | True |
 
 <a id="endswith" />
 
@@ -593,6 +616,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |あり |string |検索対象の値。 |
+
+### <a name="return-value"></a>戻り値
+
+文字列の最後の文字または文字列が値に一致した場合は **True**、それ以外の場合は **False**。
 
 ### <a name="examples"></a>例
 
@@ -632,9 +659,16 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字列の最後の文字または文字列が値に一致した場合は **True**、それ以外の場合は **False**。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| startsTrue | ブール値 | True |
+| startsCapTrue | ブール値 | True |
+| startsFalse | ブール値 | False |
+| endsTrue | ブール値 | True |
+| endsCapTrue | ブール値 | True |
+| endsFalse | ブール値 | False |
 
 <a id="first" />
 
@@ -648,6 +682,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
+
+### <a name="return-value"></a>戻り値
+
+文字列の最初の文字、または配列の最初の要素の型 (文字列、整数、配列、またはオブジェクト)。
 
 ### <a name="examples"></a>例
 
@@ -678,9 +716,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字列の最初の文字、または配列の最初の要素の型 (文字列、整数、配列、またはオブジェクト)。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 <a id="indexof" />
 
@@ -695,6 +736,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |あり |string |検索対象の値。 |
+
+### <a name="return-value"></a>戻り値
+
+検索する項目の位置を表す整数。 値は 0 から始まります。 項目が見つからない場合は、-1 が返されます。
 
 ### <a name="examples"></a>例
 
@@ -730,10 +775,15 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-検索する項目の位置を表す整数。 値は 0 から始まります。 項目が見つからない場合は、-1 が返されます。
-
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| notFound | int | -1 |
 
 <a id="last" />
 
@@ -747,6 +797,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
+
+### <a name="return-value"></a>戻り値
+
+文字列の最後の文字、または配列の最後の要素の型 (文字列、整数、配列、またはオブジェクト)。
 
 ### <a name="examples"></a>例
 
@@ -777,9 +831,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字列の最後の文字、または配列の最後の要素の型 (文字列、整数、配列、またはオブジェクト)。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 <a id="lastindexof" />
 
@@ -794,6 +851,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |あり |string |検索対象の値。 |
+
+### <a name="return-value"></a>戻り値
+
+検索する項目の最後の位置を表す整数。 値は 0 から始まります。 項目が見つからない場合は、-1 が返されます。
 
 ### <a name="examples"></a>例
 
@@ -829,10 +890,15 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-検索する項目の最後の位置を表す整数。 値は 0 から始まります。 項目が見つからない場合は、-1 が返されます。
-
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| notFound | int | -1 |
 
 <a id="length" />
 
@@ -846,6 +912,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+
+### <a name="return-value"></a>戻り値
+
+整数。 
 
 ### <a name="examples"></a>例
 
@@ -883,9 +953,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-整数。 
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
 
 <a id="padleft" />
 
@@ -904,6 +977,10 @@ base64 形式を文字列に変換します。
 
 元の文字列が、埋め込まれる文字数よりも長い場合は、文字が追加されません。
 
+### <a name="return-value"></a>戻り値
+
+少なくとも指定した文字数の文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。 
@@ -916,25 +993,23 @@ base64 形式を文字列に変換します。
         "testString": {
             "type": "string",
             "defaultValue": "123"
-        },
-        "totalCharacters": {
-            "type": "int",
-            "defaultValue": 10
         }
     },
     "resources": [],
     "outputs": {
         "stringOutput": {
             "type": "string",
-            "value": "[padLeft(parameters('testString'),parameters('totalCharacters'),'0')]"
+            "value": "[padLeft(parameters('testString'),10,'0')]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-少なくとも指定した文字数の文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| stringOutput | String | 0000000123 |
 
 <a id="replace" />
 
@@ -950,6 +1025,10 @@ base64 形式を文字列に変換します。
 | originalString |あり |string |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
 | oldString |あり |string |元の文字列から削除する文字列。 |
 | newString |あり |string |削除された文字列の代わりに追加する文字列。 |
+
+### <a name="return-value"></a>戻り値
+
+文字が置き換えられた文字列。
 
 ### <a name="examples"></a>例
 
@@ -979,9 +1058,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字が置き換えられた文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| firstOutput | String | 1231231234 |
+| secodeOutput | String | 123-123-xxxx |
 
 <a id="skip" />
 
@@ -996,6 +1078,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
+
+### <a name="return-value"></a>戻り値
+
+配列または文字列。
 
 ### <a name="examples"></a>例
 
@@ -1041,9 +1127,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列または文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | array | ["three"] |
+| stringOutput | String | two three |
 
 <a id="split" />
 
@@ -1058,6 +1147,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |分割する文字列。 |
 | delimiter |あり |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
+
+### <a name="return-value"></a>戻り値
+
+文字列の配列。
 
 ### <a name="examples"></a>例
 
@@ -1094,9 +1187,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字列の配列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| firstOutput | array | ["one", "two", "three"] |
+| secondOutput | array | ["one", "two", "three"] |
 
 <a id="startswith" />
 
@@ -1111,6 +1207,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |あり |string |検索対象の値。 |
+
+### <a name="return-value"></a>戻り値
+
+文字列の最初の文字または文字列が値に一致した場合は **True**、それ以外の場合は **False**。
 
 ### <a name="examples"></a>例
 
@@ -1150,10 +1250,16 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字列の最初の文字または文字列が値に一致した場合は **True**、それ以外の場合は **False**。
-
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| startsTrue | ブール値 | True |
+| startsCapTrue | ブール値 | True |
+| startsFalse | ブール値 | False |
+| endsTrue | ブール値 | True |
+| endsCapTrue | ブール値 | True |
+| endsFalse | ブール値 | False |
 
 <a id="string" />
 
@@ -1167,6 +1273,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい | 任意 |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
+
+### <a name="return-value"></a>戻り値
+
+変換された値の文字列。
 
 ### <a name="examples"></a>例
 
@@ -1215,9 +1325,13 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | String | ["a","b","c"] |
+| intOutput | String | 5 |
 
 <a id="substring" />
 
@@ -1233,6 +1347,23 @@ base64 形式を文字列に変換します。
 | stringToParse |はい |string |部分文字列の抽出元となる文字列。 |
 | startIndex |なし |int |部分文字列の 0 から始まる開始文字位置。 |
 | length |いいえ |int |部分文字列の文字数。 文字列内の場所を参照する必要があります。 |
+
+### <a name="return-value"></a>戻り値
+
+部分文字列。
+
+### <a name="remarks"></a>解説
+
+部分文字列が文字列の末尾を越えると関数は失敗します。 次の例は、"インデックス パラメーターと長さパラメーターは文字列内の場所を参照している必要があります。 インデックス パラメーター: '{0}'、長さパラメーター: '11'、文字列長パラメーター: '10'" というエラーで失敗します。
+
+```json
+"parameters": {
+    "inputString": { "type": "string", "value": "1234567890" }
+},
+"variables": { 
+    "prefix": "[substring(parameters('inputString'), 0, 11)]"
+}
+```
 
 ### <a name="examples"></a>例
 
@@ -1258,16 +1389,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-次の例は、"インデックス パラメーターと長さパラメーターは文字列内の場所を参照している必要があります。 インデックス パラメーター: '{0}'、長さパラメーター: '11'、文字列長パラメーター: '10'" というエラーで失敗します。
+既定値を使用した場合の前の例の出力は次のようになります。
 
-```json
-"parameters": {
-    "inputString": { "type": "string", "value": "1234567890" }
-},
-"variables": { 
-    "prefix": "[substring(parameters('inputString'), 0, 11)]"
-}
-```
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| substringOutput | String | two |
+
 
 <a id="take" />
 
@@ -1282,6 +1409,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
 | numberToTake |あり |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
+
+### <a name="return-value"></a>戻り値
+
+配列または文字列。
 
 ### <a name="examples"></a>例
 
@@ -1327,9 +1458,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列または文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | array | ["one", "two"] |
+| stringOutput | String | on |
 
 <a id="tolower" />
 
@@ -1344,6 +1478,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToChange |あり |string |小文字に変換する値。 |
 
+### <a name="return-value"></a>戻り値
+
+小文字に変換された文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、パラメーター値を小文字と大文字に変換します。
@@ -1371,6 +1509,13 @@ base64 形式を文字列に変換します。
     }
 }
 ```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 <a id="toupper" />
 
@@ -1385,6 +1530,10 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | stringToChange |あり |string |大文字に変換する値。 |
 
+### <a name="return-value"></a>戻り値
+
+大文字に変換された文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、パラメーター値を小文字と大文字に変換します。
@@ -1413,6 +1562,13 @@ base64 形式を文字列に変換します。
 }
 ```
 
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
+
 <a id="trim" />
 
 ## <a name="trim"></a>trim
@@ -1425,6 +1581,10 @@ base64 形式を文字列に変換します。
 | パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |はい |string |トリムする値。 |
+
+### <a name="return-value"></a>戻り値
+
+先頭および末尾の空白文字なし文字列です。
 
 ### <a name="examples"></a>例
 
@@ -1450,6 +1610,12 @@ base64 形式を文字列に変換します。
 }
 ```
 
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| 戻り値 | String | one two three |
+
 <a id="uniquestring" />
 
 ## <a name="uniquestring"></a>uniqueString
@@ -1471,8 +1637,6 @@ base64 形式を文字列に変換します。
 返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。 返される値は、13 文字です。 グローバルに一意ではありません。 命名規則にあるプレフィックスをこの値と組み合わせて、わかりやすい名前を作成することもできます。 次の例では、戻り値の形式を示します。 実際の値は、指定されたパラメーターによって異なります。
 
     tcvhiyu5h2o5o
-
-### <a name="examples"></a>例
 
 次の例は、uniqueString を使用して、よく使用されるレベルで一意の値を作成する方法を示しています。
 
@@ -1505,7 +1669,29 @@ base64 形式を文字列に変換します。
 
 ### <a name="return-value"></a>戻り値
 
-13 文字が含まれる文字列
+13 文字が含まれる文字列。
+
+### <a name="examples"></a>例
+
+次の例は、uniquestring から結果を返します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "uniqueRG": {
+            "value": "[uniqueString(resourceGroup().id)]",
+            "type" : "string"
+        },
+        "uniqueDeploy": {
+            "value": "[uniqueString(resourceGroup().id, deployment().name)]",
+            "type" : "string"
+        }
+    }
+}
+```
 
 <a id="uri" />
 
@@ -1522,6 +1708,10 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | relativeUri |あり |string |ベース URI 文字列に追加する相対 URI 文字列。 |
 
 **baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。 たとえば、baseUri パラメーターとして `http://contoso.com/resources/azuredeploy.json` を渡すと、`http://contoso.com/resources/` というベース URI が作成されます。
+
+### <a name="return-value"></a>戻り値
+
+ベース値および相対値の絶対 URI を表す文字列。
 
 ### <a name="examples"></a>例
 
@@ -1560,9 +1750,13 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-ベース値および相対値の絶対 URI を表す文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 <a id="uricomponent" />
 
@@ -1577,6 +1771,10 @@ URI をエンコードします。
 |:--- |:--- |:--- |:--- |
 | stringToEncode |あり |string |エンコード対象の値。 |
 
+### <a name="return-value"></a>戻り値
+
+URI エンコードされた値の文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
@@ -1608,9 +1806,14 @@ URI をエンコードします。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-URI エンコードされた値の文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
 
 <a id="uricomponenttostring" />
 
@@ -1625,6 +1828,10 @@ URI エンコードされた値の文字列を返します。
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |はい |string |文字列に変換する URI エンコードされた値。 |
 
+### <a name="return-value"></a>戻り値
+
+URI エンコードされた値のデコード済み文字列。
+
 ### <a name="examples"></a>例
 
 次の例では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
@@ -1656,9 +1863,14 @@ URI エンコードされた値の文字列を返します。
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-URI エンコードされた値のデコード済み文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

@@ -2,7 +2,7 @@
 title: "Azure Automation のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "時間を節約し、普段の管理タスクの信頼性を向上するために、Automation を使用してプロセスと構成管理を自動化する方法について説明します。"
 services: automation
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 00c4fe633a7ef76b20d2a9d1c704bb09da6b19a0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 ---

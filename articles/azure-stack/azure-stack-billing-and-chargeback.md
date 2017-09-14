@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2016
+ms.date: 07/10/2016
 ms.author: alfredop
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 68258b5b618f5ab71bc48efcf1e2728bf36fa1da
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 631e9bf47830b35ad5bc4b11cd103fa2c265c4c7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Usage and billing in Azure Stack
@@ -33,14 +33,14 @@ Azure Stack contains the infrastructure to collect and aggregate usage data for 
 
 Azure Stack Resource providers, such as Compute, Storage, and Network, generate usage data at hourly intervals for each subscription. The usage data contains information about the resource used such as resource name, meter name, meter ID, quantity used etc. To learn about the meters ID resources, refer to the [usage API FAQ](azure-stack-usage-related-faq.md) article. 
 
-After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal. The Azure billing portal shows the usage data only for the chargeable resources. In addition to the chargeable resources, Azure Stack captures usage data for a broader set of resources, which you can access in your Azure Stack environment through REST APIs or PowerShell. Service administrators can retrieve the usage data for all tenant subscriptions whereas a tenant can get only their usage details.
+After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal. The Azure billing portal shows the usage data only for the chargeable resources. In addition to the chargeable resources, Azure Stack captures usage data for a broader set of resources, which you can access in your Azure Stack environment through REST APIs or PowerShell. Azure Stack cloud administrators can retrieve the usage data for all user subscriptions whereas a user can get only their usage details.
 
 ## <a name="retrieve-usage-information"></a>Retrieve usage information
 
 To generate the usage data, you should have resources that are running and actively using the system. If you’re not sure whether you have any resources running in Azure Stack Marketplace, deploy a virtual machine (VM), and verify the VM monitoring blade to make sure it’s running. Use the following PowerShell cmdlets to view the usage data:
 
 1. [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)
-2. [Configure PowerShell and sign in to your Azure Stack administrator or user subscription.](azure-stack-powershell-configure.md)
+2. * [Configure the Azure Stack user's](azure-stack-powershell-configure-user.md) or the [Azure Stack operator's](azure-stack-powershell-configure-admin.md) PowerShell environment 
 3. To retrieve the usage data, use the [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell cmdlet:
    ```PowerShell
    Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>

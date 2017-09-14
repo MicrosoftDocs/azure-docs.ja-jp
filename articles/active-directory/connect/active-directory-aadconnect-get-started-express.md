@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
-ms.openlocfilehash: 240475240be76265c2a2f150a4a6d8f4aa0d3664
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
@@ -35,9 +36,9 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]**をクリックします。  
 4. [簡単設定] 画面で、 **[簡単設定を使う]**をクリックします。  
    ![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/express.png)
-5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]**をクリックします。  
+5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
    ![Azure AD への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)に関するページに記載されている前提条件の手順を完了してください。
-6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\administrator または fabrikam.com\administrator)。 ページの下部にある **[次へ]**」を参照してください。  
+6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\administrator または fabrikam.com\administrator)。 **[次へ]** をクリックします。  
    ![AD DS に接続](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. [**[Azure AD サインインの構成]**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](active-directory-aadconnect-prerequisites.md)の[ドメインの検証](../active-directory-add-domain.md)が済んでいない場合にのみ表示されます。
    ![Unverified domains](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
@@ -72,10 +73,5 @@ Azure AD Connect がインストールされたので、[インストールを�
 | カスタマイズした設定を使用したインストール |
 | DirSync からのアップグレード |
 | インストールで使用するアカウント |
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

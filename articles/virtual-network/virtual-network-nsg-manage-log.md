@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: f907f388ecb897c05e822f2abd5431b3976b7987
-ms.openlocfilehash: 10581234a4475d0d3b32c7891fcf97eed55f7a1d
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG) のためのログ分析
@@ -47,18 +47,18 @@ NSG に対して、以下の診断ログ カテゴリを有効にできます。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-ポータルを使用してログを有効にするには、[ポータル](https://portal.azure.com)にログインします。 **[その他のサービス]** をクリックし、*ネットワーク サービス グループ*を入力します。 ログを有効にする NSG を選択します。 コンピューティング以外のリソースに対する手順については、[ポータルでの診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-in-the-portal)に関する記事をご覧ください。 **[NetworkSecurityGroupEvent]** と **[NetworkSecurityGroupRuleCounter]** のいずれかまたは両方のログ カテゴリを選択します。
+ポータルを使用してログを有効にするには、[ポータル](https://portal.azure.com)にログインします。 **[その他のサービス]** をクリックし、*ネットワーク サービス グループ*を入力します。 ログを有効にする NSG を選択します。 コンピューティング以外のリソースに対する手順については、[ポータルでの診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事をご覧ください。 **[NetworkSecurityGroupEvent]** と **[NetworkSecurityGroupRuleCounter]** のいずれかまたは両方のログ カテゴリを選択します。
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell を使用してログを有効にするには、[PowerShell での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-powershell)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
+PowerShell を使用してログを有効にするには、[PowerShell での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
 
 - `-ResourceId` パラメーターに使用する値は、次の [テキスト] を適切な値に置き換えてからコマンド `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]` を入力して調べることができます。 このコマンドからの ID の出力は、*/subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]* のようになります。
 - ログ カテゴリのデータのみを収集する場合は、記事のコマンドの末尾に `-Categories [category]` を追加し、カテゴリには *NetworkSecurityGroupEvent* または *NetworkSecurityGroupRuleCounter* のいずれかを指定します。 `-Categories` パラメーターを使用しない場合、両方のログ カテゴリに対してデータ収集が有効になります。
 
 ### <a name="azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI)
 
-CLI を使用してログを有効にするには、[CLI での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-cli)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
+CLI を使用してログを有効にするには、[CLI での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
 
 - `-ResourceId` パラメーターに使用する値は、次の [テキスト] を適切な値に置き換えてからコマンド `azure network nsg show [resource-group-name] [nsg-name]` を入力して調べることができます。 このコマンドからの ID の出力は、*/subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]* のようになります。
 - ログ カテゴリのデータのみを収集する場合は、記事のコマンドの末尾に `-Categories [category]` を追加し、カテゴリには *NetworkSecurityGroupEvent* または *NetworkSecurityGroupRuleCounter* のいずれかを指定します。 `-Categories` パラメーターを使用しない場合、データ収集は両方のログ カテゴリに対して有効になります。

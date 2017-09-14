@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Media Services の概念の概要
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: dcefc8bc-e2ea-4b38-a643-9010f4436fb5
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2017
+ms.date: 07/07/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 59ccb7a043e1db750e596f173af0791099ea1827
-ms.lasthandoff: 03/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ed3417f69bb13043db0affc9249f3ff5e49d7c79
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
@@ -32,20 +32,21 @@ ms.lasthandoff: 03/14/2017
 
 アップロードして資産内に格納するメディア コンテンツを特定する場合は、次の考慮事項に注意してください。
 
-* 資産には、メディア コンテンツの一意のインスタンスを&1; つだけ含めてください。 たとえば、TV ドラマ、映画、または広告の単一の編集です。
-* 資産には、オーディオビジュアル ファイルの複数の演奏または編集を含めないでください。 不適切な使い方の一例として、複数の TV ドラマおよび広告、または単一の製作物からの複数のカメラ アングルを&1; つの資産に格納しようと試みることが挙げられます。 オーディオビジュアル ファイルの複数の演奏または編集を&1; つの資産に格納すると、ワークフローの後半でエンコード ジョブの送信や、資産の配信のストリーミングおよびセキュリティ保護を行うことが困難になるおそれがあります。  
+* 資産には、メディア コンテンツの一意のインスタンスを 1 つだけ含めてください。 たとえば、TV ドラマ、映画、または広告の単一の編集です。
+* 資産には、オーディオビジュアル ファイルの複数の演奏または編集を含めないでください。 不適切な使い方の一例として、複数の TV ドラマおよび広告、または単一の製作物からの複数のカメラ アングルを 1 つの資産に格納しようと試みることが挙げられます。 オーディオビジュアル ファイルの複数の演奏または編集を 1 つの資産に格納すると、ワークフローの後半でエンコード ジョブの送信や、資産の配信のストリーミングおよびセキュリティ保護を行うことが困難になるおそれがあります。  
 
 ### <a name="asset-file"></a>資産ファイル
-[資産ファイル](https://docs.microsoft.com/rest/api/media/operations/assetfile) は、BLOB コンテナーに保存された実際のビデオまたはオーディオ ファイルを表します。 資産ファイルは常に資産に関連付けられ、資産には&1; つまたは複数のファイルが含まれます。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[資産ファイル](https://docs.microsoft.com/rest/api/media/operations/assetfile) は、BLOB コンテナーに保存された実際のビデオまたはオーディオ ファイルを表します。 資産ファイルは常に資産に関連付けられ、資産には 1 つまたは複数のファイルが含まれます。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
-**AssetFile** インスタンスと実際のメディア ファイルは、別々の&2; つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+**AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 
 ### <a name="asset-encryption-options"></a>資産暗号化オプション
 アップロードするコンテンツの種類に応じて、Media Services によって提供されるさまざまな暗号化オプションから選択できます。
 
-**None** – 暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
+>[!NOTE]
+>暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されません。
 
 プログレッシブ ダウンロードを使用して MP4 を配信する場合は、このオプションを使用してコンテンツをアップロードします。
 
@@ -53,7 +54,7 @@ Media Services によって生成された BLOB コンテナーの内容を変�
 
 ストレージで暗号化された資産を配信するためには、資産の配信ポリシーを構成して、コンテンツの配信方法を Media Services に指示する必要があります。 資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシー (AES、PlayReady、暗号化なしなど) を使用してコンテンツをストリーミングする必要があります。 
 
-**CommonEncryptionProtected** - このオプションを使用するのは、共通暗号化または PlayReady DRM を使用して既に暗号化および保護されているコンテンツ (たとえば、PlayReady DRM で保護されているスムーズ ストリーミング) をアップロードする場合です。
+**CommonEncryptionProtected** - このオプションを使用するのは、共通暗号化または PlayReady DRM を使用して既に暗号化および保護されているコンテンツ (たとえば、PlayReady DRM で保護されている Smooth Streaming) をアップロードする場合です。
 
 **EnvelopeEncryptedProtected** – このオプションを使用するのは、AES (Advanced Encryption Standard) で暗号化された HLS (HTTP ライブ ストリーミング) を保護または (既に保護されている HLS を) アップロードする場合です。 AES で既に暗号化された HLS をアップロードする場合、HLS は Transform Manager によって暗号化されている必要があることに注意してください。
 
@@ -66,17 +67,18 @@ Media Services によって生成された BLOB コンテナーの内容を変�
 ### <a name="blob-container"></a>BLOB コンテナー
 BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB コンテナーは、アクセス制御のための境界点として Media Services で使用され、Shared Access Signature (SAS) ロケーターとして資産上で使用されます。 Azure Storage アカウントに含めることができる BLOB コンテナー数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
 
-> [!NOTE]
+>[!NOTE]
 > Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 > 
 > 
 
 ### <a id="locators"></a>ロケーター
-[ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対&1; の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
+[ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
-Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) またはメディアのプログレッシブ ダウンロードに使用し、SAS URL ロケーターは Azure Storage へのメディア ファイルのアップロードまたは Azure Storage からのダウンロードに使用します。 
+Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、Smooth Streamingなど) またはメディアのプログレッシブ ダウンロードに使用し、SAS URL ロケーターは Azure Storage へのメディア ファイルのアップロードまたは Azure Storage からのダウンロードに使用します。 
 
-一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。 
+>[!NOTE]
+>一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。 
 
 ### <a name="storage-account"></a>ストレージ アカウント
 Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 Media Service アカウントに、1 つまたは複数のストレージ アカウントを関連付けることができます。 アカウントに格納できるコンテナーの数は、ストレージ アカウントあたりのコンテナーの合計サイズが 500 TB 未満である限り無制限です。  Media Services が提供する SDK レベルのツールを使用すると、複数のストレージ アカウントを管理すると共に、これらのアカウントへのアップロード中にメトリックまたはランダム配布に基づいて資産の配布を負荷分散できます。 詳細については、「 [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)の操作」をご覧ください。 
@@ -92,39 +94,39 @@ Azure Media Services には、クラウド内のメディア エンコーディ�
 Media Services を使い始める場合、コーデックとファイル形式の違いを理解することが重要です。
 コーデックは圧縮/展開アルゴリズムを実装するソフトウェアで、ファイル形式は圧縮されたビデオを保持するコンテナーです。
 
-Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはスムーズ ストリーミングでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
+Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはSmooth Streamingでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート Smooth Streaming ファイルにエンコードし、少なくとも&1; つの標準またはプレミアム ストリーミング エンドポイントを開始済み状態にする必要があります。
+[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート Smooth Streaming ファイルにエンコードし、少なくとも 1 つの標準またはプレミアム ストリーミング エンドポイントを開始済み状態にする必要があります。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
-* [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
+* [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
 * [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 サポートさえるエンコーダーについては、「 [エンコーダー](media-services-encode-asset.md)」をご覧ください
 
 ## <a name="live-streaming"></a>ライブ ストリーミング
-Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の&2; つの方法のいずれかでライブ入力ストリームを受信します。
+Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはスムーズ ストリーミング (Fragmented MP4) をチャネルに送信します。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision、Tricaster エンコーダーは、RTMP を出力するライブ エンコーダーです。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
-* RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (Fragmented MP4) のいずれかの形式のシングル ビットレート ストリームは、Media Services による Live Encoding が有効なチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision、Tricaster エンコーダーは、RTMP を出力するライブ エンコーダーです。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* RTP (MPEG-TS)、RTMP、Smooth Streaming (Fragmented MP4) のいずれかの形式のシングル ビットレート ストリームは、Media Services による Live Encoding が有効なチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 ### <a name="channel"></a>チャネル
 Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](https://docs.microsoft.com/rest/api/media/operations/channel)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
 
 チャネル作成時に取り込み URL とプレビュー URL を取得できます。 これらの URL を取得するには、チャネルが開始済み状態である必要はありません。 ライブ トランスコーダーからチャネルへのデータのプッシュを開始する準備ができたら、チャネルを開始する必要があります。 ライブ トランスコーダーがデータの取り込みを開始した後、ストリームをプレビューできます。
 
-各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。 帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを&1; つまたは複数のチャネル専用にすることができます。 StreamingEndpoint は、どのチャネルからでもプルできます。
+各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。 帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを 1 つまたは複数のチャネル専用にすることができます。 StreamingEndpoint は、どのチャネルからでもプルできます。
 
 ### <a name="program-event"></a>プログラム (イベント)
-ライブ ストリームでのセグメントの公開と保存は、[プログラム (イベント)](https://docs.microsoft.com/rest/api/media/operations/program) を使用して制御します。 プログラム (イベント) はチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
+ライブ ストリームでのセグメントの公開と保存は、[プログラム (イベント)](https://docs.microsoft.com/rest/api/media/operations/program) を使用して制御します。 プログラム (イベント) はチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアと似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
 録画されたコンテンツの保持時間は、プログラムの **ArchiveWindowLength** プロパティで設定できます。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。
 
 クライアントが現在のライブ位置からさかのぼってシークできる最長時間も ArchiveWindowLength によって決まります。 プログラムの放送は、指定された期間継続しますが、ArchiveWindowLength を過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
 
 各プログラム (イベント) は資産に関連付けられています。 プログラムを公開するには、関連付けられた資産のロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
 
-チャネルは、最大&3; つの同時実行プログラムをサポートするため、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
+チャネルは、最大 3 つの同時実行プログラムをサポートするため、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
 詳細については、次を参照してください。
 
@@ -136,7 +138,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 ### <a name="dynamic-encryption"></a>動的な暗号化
 Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady や Widevine DRM を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと PlayReady ライセンスを配信するためのサービスも提供しています。
 
-現時点では、以下のストリーミング形式を暗号化できます。HLS、MPEG DASH、およびスムーズ ストリーミング。 プログレッシブ ダウンロードを暗号化することはできません。
+現時点では、HLS、MPEG DASH、Smooth Streaming というストリーミング形式を暗号化できます。 プログレッシブ ダウンロードを暗号化することはできません。
 
 Media Services で資産を暗号化する場合は、暗号化キー (CommonEncryption か EnvelopeEncryption) を資産に関連付ける必要があります。また、キーの承認ポリシーを構成する必要があります。
 
@@ -152,12 +154,12 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 詳細については、次の記事を参照してください。
 
 [コンテンツ保護の概要](media-services-content-protection-overview.md)
-[AES&128; での保護](media-services-protect-with-aes128.md)
+[AES 128 での保護](media-services-protect-with-aes128.md)
 [DRM での保護](media-services-protect-with-drm.md)
 
 ## <a name="delivering"></a>配信
 ### <a id="dynamic_packaging"></a>動的パッケージ
-Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、 [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
+Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
 StreamingEndpoint は、ストリーミング サービスを表し、コンテンツをクライアント プレーヤー アプリケーションに直接配信するか、Content Delivery Network (CDN) を介して配信できます (Azure Media Services で Azure CDN 統合が提供されるようになりました)。ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 Media Services のお客様は、必要に応じて、**Standard** ストリーミング エンドポイントか、1 つ以上の **Premium** ストリーミング エンドポイントを選択できます。 Standard ストリーミング エンドポイントはほとんどのストリーミング ワークロードに適しています。 
@@ -176,14 +178,15 @@ Standard ストリーミング エンドポイントはほとんどのストリ�
 StreamingEndpoint が実行状態の場合のみ課金されます。
 
 ### <a name="asset-delivery-policy"></a>資産の配信ポリシー
-Media Services におけるコンテンツ配信ワークフローの手順の&1; つは、ストリームする [資産の配信ポリシー ](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)を構成することです。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
+Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリームする [資産の配信ポリシー ](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)を構成することです。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、Smooth Streaming、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
 ストレージで暗号化した資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリーミングする必要があります。 たとえば、AES (Advanced Encryption Standard) 暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を DynamicEnvelopeEncryption に設定します。 ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を NoDynamicEncryption に設定します。
 
 ### <a name="progressive-download"></a>プログレッシブ ダウンロード
 プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。 プログレッシブ ダウンロードでダウンロードできるのは、MP4 ファイルのみです。
 
-プログレッシブ ダウンロードで使用したい場合は、暗号化された資産の暗号化を解除する必要があります。
+>[!NOTE]
+>プログレッシブ ダウンロードで使用したい場合は、暗号化された資産の暗号化を解除する必要があります。
 
 ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、資産への基本パスが提供されます。 それに MP4 ファイルの名前を付加する必要があります。 次に例を示します。
 
@@ -192,13 +195,14 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>ストリーミング URL
 コンテンツをクライアントにストリーミングします。 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれているアセットの基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターの Path の値とマニフェスト (filename.ism) ファイルの名前を連結する必要があります。 その後、/Manifest と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
-SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 なお、現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
+SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
 
-SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
+>[!NOTE]
+>SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
 
 次の一覧では、さまざまなストリーミング形式について説明し、例を示します。
 
-* スムーズ ストリーミング
+* Smooth Streaming
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
 

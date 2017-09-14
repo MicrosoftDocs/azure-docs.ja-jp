@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/9/2016
+ms.date: 07/17/2017
 ms.author: anandy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 589c37d4bb59ceeb37742163fad21d465b3d3827
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/10/2017
-
 
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション

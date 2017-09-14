@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - 新しいサーバーに SQL データベースをコピーする | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用して新しいサーバーに SQL データベースをコピーする"
+title: "PowerShell サンプル - コピー - Azure SQL データベース - 新しいサーバー | Microsoft Docs"
+description: "新しいサーバーに SQL データベースをコピーするための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,17 +14,17 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: cb3412398e566cc16dadc8348241a603e78a098c
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7b57e37a1bc9391c88c8170f59a39654bf895d47
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="copy-a-sql-database-to-a-new-server-using-powershell"></a>PowerShell を使用して新しいサーバーに SQL データベースをコピーする
+# <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>PowerShell を使用して新しいサーバーに SQL データベースをコピーする
 
 この PowerShell のサンプル スクリプトでは、新しいサーバーに既存のデータベースのコピーを作成します。 
 
@@ -39,7 +39,8 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $sourceresourcegroupname
+Remove-AzureRmResourceGroup -ResourceGroupName $targetresourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

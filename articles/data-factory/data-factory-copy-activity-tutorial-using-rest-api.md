@@ -12,21 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 08e62dba35a72a4c814b07c93304247227b1635c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6663774497aa18aa98e7e8c5aed6183c599b2172
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -100,7 +99,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。
+> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。
 
 ```JSON
 {

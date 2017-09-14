@@ -1,5 +1,5 @@
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューで、**[新規]**、**[データベース]**、**[Azure Cosmos DB]** の順にクリックします。
+2. 左側のメニューで、**[新規]**、**[データベース]** の順にクリックし、**[Azure Cosmos DB]** の下にある **[作成]** をクリックします。
    
    ![その他のサービスと Azure Cosmos DB が強調表示された Azure Portal のスクリーンショット](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
 
@@ -9,7 +9,7 @@
        
     このクイック スタートでは、MongoDB API に対してプログラミングするため、フォームに入力する際に、**MongoDB** を選択します。 ただし、ソーシャル メディア アプリ用のグラフデータ、カタログ アプリからのドキュメント データ、またはキー/値 (テーブル) データを使用する場合は、Azure Cosmos DB によって、あらゆるミッションクリティカルなアプリケーションに、可用性の高い世界中に分散されたデータベース サービス プラットフォームを実現できます。
 
-    スクリーンショットの情報をガイドとして使用して、新しいアカウント ブレードに入力します。 値は、スクリーンショットと正確に一致しないため、自分のアカウントをセットアップしたときの一意の値を選択します。
+    表に記載した情報を参考にして、**[新しいアカウント]** ブレードに必要事項を入力します。
  
     ![新しい Azure Cosmos DB ブレードのスクリーン ショット](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
    

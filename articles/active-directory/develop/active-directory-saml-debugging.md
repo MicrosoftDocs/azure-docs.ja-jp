@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2016
+ms.date: 07/20/2017
 ms.author: asmalser
 ms.custom: aaddev
+ms.reviewer: dastrock
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: 245c2de65ca771cdc0e6371010246725c407ae11
 ms.contentlocale: ja-jp
 ms.lasthandoff: 01/18/2017
-
 
 ---
 # <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法

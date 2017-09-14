@@ -12,13 +12,13 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/28/2017
 ms.author: manayar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 08a4d0fa673a37c61e57daed66ab6768e0276ca8
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9dd74014bf05234a83c7678b67b42b96cd8b8d64
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -26,7 +26,11 @@ ms.lasthandoff: 05/12/2017
 
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
 
-Azure では、リソースの管理操作を制御するさまざまな組み込みのロールが用意されています。 [Azure RBAC の組み込みのロール](../active-directory/role-based-access-built-in-roles.md)について説明します。
+Azure Site Recovery には、Site Recovery の管理操作を制御するための組み込みロールが 3 つ用意されています。 [Azure RBAC の組み込みのロール](../active-directory/role-based-access-built-in-roles.md)について説明します。
+
+* [Site Recovery 共同作成者](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor) - このロールには、Recovery Services コンテナーでの Azure Site Recovery の操作の管理に必要なすべてのアクセス許可があります。 ただし、このロールを持つユーザーは、Recovery Services コンテナーの作成や削除、または他のユーザーへのアクセス権の割り当てを行うことはできません。 このロールは、必要に応じてアプリケーションまたは組織全体のディザスター リカバリーを有効にして管理できるディザスター リカバリー管理者に最も適しています。
+* [Site Recovery オペレーター](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator) - この役割には、フェールオーバーとフェールバックの操作を実行して管理するアクセス許可があります。 このロールのユーザーは、レプリケーションの有効化または無効化、コンテナーの作成または削除、新しいインフラストラクチャの登録、他のユーザーへのアクセス権の割り当てを行うことはできません。 このロールは、実際の障害状況や DR ドリルのようなシミュレーション障害状況において、アプリケーション所有者および IT 管理者から指示されて、仮想マシンまたはアプリケーションをフェールオーバーできる、ディザスター リカバリー オペレーターに最も適しています。 障害が解決された後、DR オペレーターは仮想マシンを再び保護してフェールバックを行うことができます。
+* [Site Recovery 閲覧者](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader) - このロールには、すべての Site Recovery 管理操作を見るアクセス許可があります。 このロールは、保護の現在の状態を監視し、必要な場合にサポート チケットを発行できる、IT 監視担当役員に最も適しています。
 
 制御を強化するために独自のロールを定義する場合は、Azure で [カスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md)方法を参照してください。
 

@@ -11,15 +11,14 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 6/14/2017
+ms.topic: article
+ms.date: 8/2/2017
 ms.author: markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 61328e32763faea90074fc6d499e660c4109ab6d
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 1a0e738cfac01d90e91959412b1ad5591705f617
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="first-look-backing-up-azure-virtual-machines"></a>最初に: Azure 仮想マシンのバックアップ
@@ -49,8 +48,8 @@ ms.lasthandoff: 06/16/2017
 
 > [!IMPORTANT]
 > 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 1 日以降**:
->- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+> バックアップ コンテナーは Recovery Services コンテナーにアップグレードできます。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 10 月 15 日以降は、PowerShell を使用してバックアップ コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
+>- 残っているすべてのバックアップ コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
 >- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >
 

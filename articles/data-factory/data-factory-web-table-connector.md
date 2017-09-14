@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/11/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
 ms.openlocfilehash: 08298608c2dfbe8b7226ae13bb0fe0f9cd5cec65
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する

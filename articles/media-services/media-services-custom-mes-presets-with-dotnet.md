@@ -4,7 +4,7 @@ description: "このトピックでは、Media Encoder Standard のタスク プ
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 07/17/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 244ce537062ef970549ef453adf0ad8d3fea79c1
-ms.openlocfilehash: 2a344af8b5bb5002f400d7a0f87b52a0f73ae619
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ac35031290ec9ca6af3a8b05dc6fc82737fda0dd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ
@@ -28,7 +29,7 @@ ms.openlocfilehash: 2a344af8b5bb5002f400d7a0f87b52a0f73ae619
 
 このトピックでは、[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) プリセットを取得してレイヤーの数を減らすことによってプリセットをカスタマイズする方法を説明します。 [Media Encoder Standard のプリセットのカスタマイズ](media-services-advanced-encoding-with-mes.md)のトピックでは、高度なエンコード タスクを実行するために使用できるカスタム プリセットを示しています。
 
-## <a name="a-idcustomizingpresetsa-customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES プリセットのカスタマイズ
+## <a id="customizing_presets"></a>MES プリセットのカスタマイズ
 
 ### <a name="original-preset"></a>元のプリセット
 
@@ -109,7 +110,7 @@ ms.openlocfilehash: 2a344af8b5bb5002f400d7a0f87b52a0f73ae619
     }  
     
 
-## <a name="a-idencodingwithdotnetaencoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -126,139 +127,129 @@ ms.openlocfilehash: 2a344af8b5bb5002f400d7a0f87b52a0f73ae619
 - ジョブの進行状況を確認するイベント ハンドラーを追加します。
 - ジョブを送信します。
    
-        using System;
-        using System.Collections.Generic;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using System.Net;
-        using System.Security.Cryptography;
-        using System.Text;
-        using System.Threading.Tasks;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using Newtonsoft.Json.Linq;
-        using System.Threading;
-        using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-        using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-        using System.Web;
-        using System.Globalization;
-  
-        namespace CustomizeMESPresests
+#### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
+
+「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
+
+#### <a name="example"></a>例   
+
+    using System;
+    using System.Configuration;
+    using System.IO;
+    using System.Linq;
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System.Threading;
+
+    namespace CustomizeMESPresests
+    {
+        class Program
         {
-            class Program
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+        // Field for service context.
+        private static CloudMediaContext _context = null;
+
+        private static readonly string _mediaFiles =
+            Path.GetFullPath(@"../..\Media");
+
+        private static readonly string _singleMP4File =
+            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
+
+        static void Main(string[] args)
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+            // Get an uploaded asset.
+            var asset = _context.Assets.FirstOrDefault();
+
+            // Encode and generate the output using custom presets.
+            EncodeToAdaptiveBitrateMP4Set(asset);
+
+            Console.ReadLine();
+        }
+
+        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+        {
+            // Declare a new job.
+            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
+            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+
+            // Load the XML (or JSON) from the local file.
+            string configuration = File.ReadAllText("CustomPreset_JSON.json");
+
+            // Create a task
+            ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
+            processor,
+            configuration,
+            TaskOptions.None);
+
+            // Specify the input asset to be encoded.
+            task.InputAssets.Add(asset);
+            // Add an output asset to contain the results of the job. 
+            // This output is specified as AssetCreationOptions.None, which 
+            // means the output asset is not encrypted. 
+            task.OutputAssets.AddNew("Output asset",
+            AssetCreationOptions.None);
+
+            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+            job.Submit();
+            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+            return job.OutputMediaAssets[0];
+        }
+
+        private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+        {
+            Console.WriteLine("Job state changed event:");
+            Console.WriteLine("  Previous state: " + e.PreviousState);
+            Console.WriteLine("  Current state: " + e.CurrentState);
+            switch (e.CurrentState)
             {
-                // Read values from the App.config file.
-                private static readonly string _mediaServicesAccountName =
-                    ConfigurationManager.AppSettings["MediaServicesAccountName"];
-                private static readonly string _mediaServicesAccountKey =
-                    ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-  
-                // Field for service context.
-                private static CloudMediaContext _context = null;
-                private static MediaServicesCredentials _cachedCredentials = null;
-  
-                private static readonly string _mediaFiles =
-                    Path.GetFullPath(@"../..\Media");
-  
-                private static readonly string _singleMP4File =
-                    Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-  
-                static void Main(string[] args)
-                {
-                    // Create and cache the Media Services credentials in a static class variable.
-                    _cachedCredentials = new MediaServicesCredentials(
-                                    _mediaServicesAccountName,
-                                    _mediaServicesAccountKey);
-                    // Used the chached credentials to create CloudMediaContext.
-                    _context = new CloudMediaContext(_cachedCredentials);
-  
-                    // Get an uploaded asset.
-                    var asset = _context.Assets.FirstOrDefault();
-  
-                    // Encode and generate the output using custom presets.
-                    EncodeToAdaptiveBitrateMP4Set(asset);
-  
-                    Console.ReadLine();
-                }
-  
-                static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-                {
-                    // Declare a new job.
-                    IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-                    // Get a media processor reference, and pass to it the name of the 
-                    // processor to use for the specific task.
-                    IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+            case JobState.Finished:
+                Console.WriteLine();
+                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                break;
+            case JobState.Canceling:
+            case JobState.Queued:
+            case JobState.Scheduled:
+            case JobState.Processing:
+                Console.WriteLine("Please wait...\n");
+                break;
+            case JobState.Canceled:
+            case JobState.Error:
 
-                    // Load the XML (or JSON) from the local file.
-                    string configuration = File.ReadAllText("CustomPreset_JSON.json");
+                // Cast sender as a job.
+                IJob job = (IJob)sender;
 
-                    // Create a task
-                    ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
-                        processor,
-                        configuration,
-                        TaskOptions.None);
-
-                    // Specify the input asset to be encoded.
-                    task.InputAssets.Add(asset);
-                    // Add an output asset to contain the results of the job. 
-                    // This output is specified as AssetCreationOptions.None, which 
-                    // means the output asset is not encrypted. 
-                    task.OutputAssets.AddNew("Output asset",
-                        AssetCreationOptions.None);
-
-                    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-                    job.Submit();
-                    job.GetExecutionProgressTask(CancellationToken.None).Wait();
-
-                    return job.OutputMediaAssets[0];
-                }
-
-                private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-                {
-                    Console.WriteLine("Job state changed event:");
-                    Console.WriteLine("  Previous state: " + e.PreviousState);
-                    Console.WriteLine("  Current state: " + e.CurrentState);
-                    switch (e.CurrentState)
-                    {
-                        case JobState.Finished:
-                            Console.WriteLine();
-                            Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                            break;
-                        case JobState.Canceling:
-                        case JobState.Queued:
-                        case JobState.Scheduled:
-                        case JobState.Processing:
-                            Console.WriteLine("Please wait...\n");
-                            break;
-                        case JobState.Canceled:
-                        case JobState.Error:
-
-                            // Cast sender as a job.
-                            IJob job = (IJob)sender;
-
-                            // Display or log error details as needed.
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-
-                private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-                {
-                    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-                    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-                    if (processor == null)
-                        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-                    return processor;
-                }
-
+                // Display or log error details as needed.
+                break;
+            default:
+                break;
             }
         }
 
+        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+        {
+            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
+            if (processor == null)
+            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+            return processor;
+        }
+
+        }
+    }
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -268,10 +259,5 @@ ms.openlocfilehash: 2a344af8b5bb5002f400d7a0f87b52a0f73ae619
 
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

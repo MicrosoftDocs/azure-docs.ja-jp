@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 81549c4bc0cabcf46bc7dc66d7e6662d7f787b1e
 ms.openlocfilehash: df6353f84f898a1722e3e985244a90dbd6b22522
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/26/2017
-
 
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択

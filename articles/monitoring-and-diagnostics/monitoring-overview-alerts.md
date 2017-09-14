@@ -1,8 +1,8 @@
-﻿---
+---
 title: "Microsoft Azure と Azure Monitor のアラートの概要 | Microsoft Docs"
 description: "アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,58 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 3d30ce72a3be298eba1f4e8f8d33b769971c96cb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
-この記事では、アラートの概要、利点、使用方法について説明します。 特に Azure Monitor について述べますが、他のサービスについての情報も提供します。  
+この記事では、Microsoft Azure のさまざまなソースのアラート、アラートの目的、アラートの利点、アラートとの基本的な使用方法について説明します。 特に Azure Monitor について説明しますが、アラートを使用する他のサービスの参照先も紹介します。 アラートは Azure の監視方法の 1 つです。データに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受けることができます。
 
-アラートとは、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知するための手段です。  
+## <a name="taxonomy-of-azure-alerts"></a>Azure のアラートの分類
+Azure では、アラートとその機能を説明するときに次の用語を使用します。
+* **アラート** - 一致したときにアクティブになる条件 (1 つまたは複数の規則または条件) の定義。
+* **アクティブ** - アラートに定義されている条件と一致するときの状態。
+* **解決済み** - アラートに定義されている条件と以前は一致していたが、一致しなくなった状態。
+* **通知** - アラートがアクティブになったことに基づいて実行されるアクション。
+* **アクション** - 通知の受信側に送信される特定の呼び出し (たとえば、アドレスへの電子メール送信や webhook URL への投稿など)。 通常、通知によって複数のアクションがトリガーされる可能性があります。
 
 ## <a name="alerts-in-different-azure-services"></a>さまざまな Azure サービスのアラート
-アラートは、次のようなさまざまなサービスで使用できます。
+アラートは複数の Azure 監視サービス全体で使用できます。 Azure 監視サービスの使用方法と使用する場合については、[こちらの記事を参照してください](./monitoring-overview.md)。 Azure 全体で使用できるアラートの種類の内訳を次に示します。
 
-* **Application Insights**: Web テストとメトリックのアラートを有効にします。 「[Application Insights のアラートの設定](../application-insights/app-insights-alerts.md)」と「[Web サイトの可用性と応答性の監視](../application-insights/app-insights-monitor-web-app-availability.md)」をご覧ください。
-* **Log Analytics (Operations Management Suite)**: アクティビティ ログと診断ログの Log Analytics へのルーティングを有効にします。 Operations Management Suite では、メトリック、ログなどのアラートの種類が許可されています。 詳細については、「 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。  
-* **Azure Monitor**: メトリック値とアクティビティ ログ イベントの両方に基づいてアラートを有効にします。 [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用して、アラートを管理できます。  詳細については、[Azure Portal、PowerShell、またはコマンド ライン インターフェイスでのアラートの作成](insights-alerts-portal.md)に関するページをご覧ください。
+| サービス | アラートの種類 | サポートされているサービス | Description |
+|---|---|---|---|
+| Azure Monitor | [メトリック アラート](./insights-alerts-portal.md) | [Azure Monitor からサポートされるメトリック](./monitoring-supported-metrics.md) | プラットフォームレベルのメトリックが特定の条件 (たとえば、VM の CPU % が過去 5 分間で 90 を超えた、など) と一致する場合に通知を受け取ります。 |
+| Azure Monitor | [アクティビティ ログ アラート](./monitoring-activity-log-alerts.md) | Azure Resource Manager で使用できるすべてのリソースの種類 | [Azure アクティビティ ログ](./monitoring-overview-activity-logs.md)の新しいイベントが特定の条件 (たとえば、myProductionResourceGroup で "VM の削除" 操作が発生した場合や、状態が "アクティブ" の新しいサービス正常性イベントが表示された場合など) と一致する場合に通知を受け取ります。 |
+| Application Insights | [メトリック アラート](../application-insights/app-insights-alerts.md) | Application Insights にデータを送信するようにインストルメント化されたすべてのアプリケーション | アプリケーションレベルのメトリックが特定の条件 (たとえば、サーバーの応答時間が 2 秒を超える、など) と一致した場合に通知を受け取ります。 |
+| Application Insights | [Web テスト アラート](../application-insights/app-insights-monitor-web-app-availability.md) | Application Insights にデータを送信するようにインストルメント化されたすべての Web サイト | Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
+| Log Analytics | [Log Analytics アラート](../log-analytics/log-analytics-alerts.md) | データを Log Analytics に送信するように構成されたすべてのサービス | メトリックやイベント データに対する Log Analytics 検索クエリが特定の条件と一致する場合に通知を受け取ります。 |
 
-## <a name="visual-summary"></a>概要図
-次の図は、アラートの説明と、特に "Azure Monitor" においてアラートでできることの概要を示しています。 これ以外のアクションは、前に記載したサービスで使用できる可能性があります。 たとえば、現在、診断ログのアラートは Log Analytics でのみ使用可能です。
+## <a name="alerts-on-azure-monitor-data"></a>Azure Monitor データのアラート
+Azure Monitor から使用できるデータには、メトリック アラートとアクティビティ ログ アラートという 2 種類のアラートがあります。
+
+* **メトリック アラート** - このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 このアラートで通知が生成されるのは、アラートが "アクティブ化済み" になったとき (しきい値を超え、アラートの条件を満たしたとき) と、"解決済み" になったとき (しきい値を再び超え、条件を満たさなくなったとき) です。 Azure Monitor がサポートするメトリックは増え続けています。使用できるメトリックの一覧については、[Azure Monitor でサポートされているメトリックの一覧](monitoring-supported-metrics.md)を参照してください。
+* **アクティビティ ログ アラート** - 割り当てたフィルター条件と一致するアクティビティ ログ イベントが生成されたときにトリガーされるストリーミング ログ アラート。 すべての新規イベントには、アラート エンジンによってフィルター条件が適用されるだけなので、これらのアラートの状態は "アクティブ化済み" のみです。 これらのアラートを使用して、新しいサービス正常性インシデントが発生したとき、またはユーザーまたはアプリケーションがサブスクリプションで操作 (仮想マシンの削除など) を実行したときに通知を受け取ることができます。
+
+Azure Monitor で使用できる診断ログ データの場合、データを Log Analytics にルーティングし、Log Analytics アラートを使用することをお勧めします。 次の図は、Azure Monitor のデータのソースと、そのデータからアラートを生成する方法をまとめたものです。
 
 ![アラートについて説明します。](./media/monitoring-overview-alerts/Alerts_Overview_Resource_v4.png)
 
-## <a name="what-can-trigger-alerts-in-azure-monitor"></a>Azure Monitor でアラートをトリガーする条件
+## <a name="how-do-i-receive-a-notification-on-an-azure-monitor-alert"></a>Azure Monitor アラートについて通知を受け取る方法
+これまで、各サービスの Azure アラートは、それぞれ独自の組み込み通知方法を使用していました。 これからは、Azure Monitor でアクション グループという再利用可能な通知グループを使用できます。 アクション グループには、通知の受信者セット (任意の数の電子メール アドレス、電話番号 (SMS の場合)、または webhook の URL) を指定します。アクション グループを参照するアラートがアクティブになると、すべての受信者がその通知を受け取ります。 そのため、多数のアラート オブジェクト全体で受信者のグループ (たとえば、オン コール エンジニア一覧など) を再利用できます。 現時点では、アクション グループを利用できるのはアクティビティ ログ アラートのみですが、他の Azure アラートの種類もアクション グループの使用に取り組んでいます。
 
-アラートは、以下の値とイベントに基づいて受け取ることができます。
-
-* **メトリック値**: アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。 Azure Monitor がサポートするメトリックは増え続けています。使用できるメトリックの一覧については、[Azure Monitor でサポートされているメトリックの一覧](monitoring-supported-metrics.md)を参照してください。
-* **アクティビティ ログ イベント**: このアラートは、リソースに特定のイベントが発生したとき、またはサービス通知がサブスクリプションにポストされたときにトリガーされます。
-
-## <a name="what-can-metric-alerts-do"></a>メトリック アラートでできること
-次のアクションを実行するようにアラートを構成することができます。
-
-* メール通知をサービス管理者、共同管理者、または指定した追加のメール アドレスに送信する。
-* webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。 たとえば、次のものの呼び出しが可能です。
+アクション グループは、電子メール アドレスや SMS 番号に加え、webhook URL への投稿による通知をサポートしています。 そのため、たとえば自動化や修復に以下を使用できます。
     - Azure Automation Runbook
     - Azure 関数
-    - Azure ロジック アプリ
+    - Azure Logic App
     - サードパーティのサービス
 
-## <a name="what-can-activity-log-alerts-do"></a>アクティビティ ログ アラートでできること
-次のアクションを実行するようにアラートを構成することができます。
-* サブスクリプションの下のリソースの 1 つで特定のイベントが発生したときにトリガーする
-* サービス通知がサブスクリプションにポストされたときにトリガーする
-* アクション グループのメンバーに警告する方法
-    * sms
-    * 電子メール
-    * Webhook
+メトリック アラートでは、まだアクション グループを使用していません。 個々のメトリック アラートでは、以下のように通知を構成することができます。
+* メール通知をサービス管理者、共同管理者、または指定した追加のメール アドレスに送信する。
+* webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 アラート ルールとその構成方法については、以下をご覧ください。

@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: b1b67a83a25159414a80382030903d300aad71f7
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 40fe0ae04eb94322356ed19773512e3bc383639c
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/18/2017
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/18/2017
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database を使用した高可用性サービスの設計
 
-Azure SQL Database の高可用性サービスを構築してデプロイするときは、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、局地的な障害と致命的な機能停止に対する回復力を用意することで、セカンダリ データベースに高速復旧できます。 この記事では、一般的なアプリケーション パターンを紹介したうえで、アプリケーションのデプロイ要件、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストの面から、各オプションの利点とトレードオフについて説明します。 エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
+Azure SQL Database の高可用性サービスを構築してデプロイするときは、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、局地的な障害と致命的な機能停止に対する回復力を用意することで、セカンダリ データベースに高速復旧できます。 この記事では、一般的なアプリケーション パターンを紹介したうえで、アプリケーションのデプロイ要件、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストの面から、各オプションの利点とトレードオフについて説明します。 エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プールのディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 
 ## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>設計パターン 1: アクティブ/パッシブ デプロイとデータベースの併置によるクラウド障害復旧
 この設計パターンは、以下の特性を持ったアプリケーションに最適な選択肢です。
@@ -43,7 +43,7 @@ Azure SQL Database の高可用性サービスを構築してデプロイする�
 
 この構成の機能停止前の状態を示したのが次の図です。
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
 
 プライマリ リージョンで障害が発生すると、SQL Database サービスがプライマリ データベースにアクセスできないことを検出し、自動フェールオーバー ポリシーのパラメーターの基づいてセカンダリ データベースへのフェールオーバーがトリガーされます。 アプリケーションの SLA によって、障害の検出からフェールオーバー発生までの猶予期間を構成できます。 猶予期間を構成すると、機能停止が致命的でそのリージョンの可用性が簡単には復元できない場合に、データ消失のリスクを減らすことができます。 フェールオーバー グループがデータベースのフェールオーバーをトリガーする前に、エンドポイントのフェールオーバーが Traffic Manager により開始された場合、Web アプリケーションはデータベースに再接続できなくなります。 データベースのフェールオーバーが完了すると、アプリケーションによる再接続の試行は自動的に成功します。 
 
@@ -58,12 +58,12 @@ Azure SQL Database の高可用性サービスを構築してデプロイする�
 セカンダリ リージョンの機能が停止した場合、プライマリ データベースとセカンダリ データベース間のレプリケーション リンクが中断状態となりますが、プライマリ データベースに影響は出ていないためフェールオーバーはトリガーされません。 このケースではアプリケーションの可用性は変更されませんが、レプリケーションされていない状態で運用されることから、両方のリージョンに相次いで障害が発生した場合、リスクは増大します。
 
 > [!NOTE]
-> マイクロソフトで推奨しているのは、障害復旧リージョンを 1 つだけ使用したデプロイ構成のみです。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合 2 つであるためです。 これらの構成で、両方のリージョンの致命的な障害からアプリケーションを保護することはできません。 万一そのような障害が発生した場合は、[geo リストア操作](sql-database-disaster-recovery.md#recover-using-geo-restore)を使って、第 3 のリージョンのデータベースを復元することができます。
+> ディザスター リカバリーについては、アプリケーションのデプロイ先を 2 つのリージョンに限定する構成にすることをお勧めします。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合 2 つだけであるからです。 この構成では、両方のリージョンで同時発生した致命的な障害からアプリケーションは保護されません。  万一そのような障害が発生した場合は、[geo リストア操作](sql-database-disaster-recovery.md#recover-using-geo-restore)を使って、第 3 のリージョンのデータベースを復元することができます。
 >
 
 停止していた機能が復旧すると、セカンダリ データベースがプライマリ データベースと自動的に再同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、セカンダリ リージョンの機能が停止した場合の例です。
 
-![プライマリと同期されたセカンダリ データベース。 Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-3.png)
+![プライマリと同期されたセカンダリ データベース。 クラウド ディザスター リカバリー 。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-3.png)
 
 この設計パターンの主な **利点** は次のとおりです。
 
@@ -96,9 +96,9 @@ Azure SQL Database の高可用性サービスを構築してデプロイする�
 
 次の図は、フェールオーバー後の新しい構成を示しています。
 
-![フェールオーバー後の構成。 Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
+![フェールオーバー後の構成。 クラウド ディザスター リカバリー 。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
 
-いずれかのセカンダリ リージョンの機能が停止した場合、Traffic Manager は、そのリージョンのオフライン エンド ポイントをルーティング テーブルから自動的に削除します。 そのリージョンのセカンダリ データベースへのレプリケーション チャンネルが中断状態となります。 残っているリージョンへのユーザー トラフィックが増えるという点で、機能が停止している間はアプリケーションのパフォーマンスに影響が生じます。 停止していた機能が復旧すると、影響のあったリージョンのセカンダリ データベースがプライマリ データベースと直ちに同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、リージョン B の機能が停止した場合の例です。
+いずれかのセカンダリ リージョンの機能が停止した場合、Traffic Manager は、そのリージョンのオフライン エンド ポイントをルーティング テーブルから自動的に削除します。 そのリージョンのセカンダリ データベースへのレプリケーション チャネルが中断状態となります。 残っているリージョンへのユーザー トラフィックが増えるという点で、機能が停止している間はアプリケーションのパフォーマンスに影響が生じます。 停止していた機能が復旧すると、影響のあったリージョンのセカンダリ データベースがプライマリ データベースと直ちに同期されます。 同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。 次の図は、リージョン B の機能が停止した場合の例です。
 
 ![Outage in secondary region. クラウドの障害復旧 - geo レプリケーション。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
 
@@ -108,7 +108,7 @@ Azure SQL Database の高可用性サービスを構築してデプロイする�
 * 機能が停止している間、アプリケーションのパフォーマンスが影響を受ける
 
 > [!NOTE]
-> 同様のアプローチで、レポート ジョブ、ビジネス インテリジェンス ツール、バックアップなど特定のワークロードの負荷を軽減することができます。 通常これらのワークロードはデータベースのリソースを著しく消費するため、予測されるワークロードに見合ったパフォーマンス レベルのセカンダリ データベースを 1 つ指定することをお勧めします。
+> 同様のアプローチで、レポート ジョブ、ビジネス インテリジェンス ツール、バックアップなど特定のワークロードの負荷を軽減することができます。 通常これらのワークロードはデータベースのリソースを著しく消費するため、予測されるワークロードに見合ったパフォーマンス レベルのセカンダリ データベース  1 つ指定することをお勧めします。
 >
 
 ## <a name="design-pattern-3-active-passive-deployment-for-data-preservation"></a>設計パターン 3: アクティブ/パッシブ デプロイによるデータ保存
@@ -121,17 +121,17 @@ Azure SQL Database の高可用性サービスを構築してデプロイする�
 
 この構成の機能停止前の状態を示したのが次の図です。
 
-![フェールオーバー前のアクティブ/パッシブ デプロイ。 Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-1.png)
+![フェールオーバー前のアクティブ/パッシブ デプロイ。 クラウド ディザスター リカバリー 。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-1.png)
 
 Traffic Manager がリージョン A への接続障害を検出すると、ユーザーのトラフィックをリージョン B のアプリケーション インスタンスに自動的に切り替わります。このパターンでは、データ消失の猶予期間を十分に高い値 (24 時間など) に設定することが重要です。 これにより、機能の停止がその期間内に対処された場合にデータ消失を防ぐことができます。 リージョン B の Web アプリケーションがアクティブになると、読み取り/書き込み操作が失敗するようになります。 その時点で、読み取り専用モードに切り替える必要があります。 このモードでは、要求が自動的にセカンダリ データベースにルーティングされます。 致命的なエラーが発生し、猶予期間内に機能の停止が対処されないと、フェールオーバー グループがフェールオーバーをトリガーします。 その後、読み取り/書き込みリスナーが使用できるようになり、リスナーに対する呼び出しが失敗しないようになります。 これを示したのが次の図です。
 
-![Outage: Application in read-only mode. Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-2.png)
+![Outage: Application in read-only mode. クラウド ディザスター リカバリー 。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-2.png)
 
 プライマリ リージョンの停止していた機能が猶予期間内に対処された場合、プライマリ リージョンの接続の復旧を Traffic Manager が検出し、ユーザー トラフィックをリージョン A のアプリケーション インスタンスに戻します。そのアプリケーション インスタンスはリージョン A のプライマリ データベースを使用して読み取り/書き込みモードで再開し、運用されます。
 
 リージョン B の機能が停止すると、リージョン B のアプリケーション エンドポイントのエラーを Traffic Manager が検出し、フェールオーバー グループが読み取り専用リスナーをリージョン A に切り替えます。この機能停止はエンド ユーザーのエクスペリエンスに影響しませんが、機能停止時にプライマリ データベースが公開されます。 これを示したのが次の図です。
 
-![Outage: Secondary database. Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
+![Outage: Secondary database. クラウド ディザスター リカバリー 。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
 
 機能停止が対処されると、セカンダリ データベースが即時にプライマリと同期され、読み取り専用リスナーがリージョン B のセカンダリ データベースに切り戻されます。同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。
 
@@ -165,5 +165,5 @@ Traffic Manager がリージョン A への接続障害を検出すると、ユ�
 * 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)を参照してください。
 * より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。  
 * 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)を参照してください。
-* エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
+* エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プールのディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 

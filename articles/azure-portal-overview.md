@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure ポータルの概要"
-description: "Microsoft Azure ポータルの使用方法を説明します。"
+title: "Azure Portal の概要 | Microsoft Docs"
+description: "Microsoft Azure Portal の使用方法を説明します。"
 services: 
 documentationcenter: 
 author: davidwrede
@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: e4c1c2b956b2cae673e60223ce777ba1096dce33
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 71820306716c6297085a29f3ceab89b55396bfe6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="microsoft-azure-portal-overview"></a>Microsoft Azure ポータルの概要
-Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って 1 か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
+# <a name="microsoft-azure-portal-overview"></a>Microsoft Azure Portal の概要
+Azure リソースのプロビジョニングと管理は、Microsoft Azure Portal を使って 1 か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
 
 * **包括的なマーケットプレイス** : マイクロソフトや他のベンダーから購入またはプロビジョニングできる数千に及ぶアイテムを参照できます。
 * **統合されたスケーラブルな参照機能** : 関心のあるリソースの検索やさまざまな管理操作の簡単な実行を可能にします。
 * **一貫した管理ページ** (またはブレード): 設定、アクション、課金情報、稼働状況/使用状況データのほか、多くのことを一貫した方法で公開することで、Azure の広範なサービスを管理できます。
 * **個人的なエクスペリエンス** : ログイン時に表示したい情報を示すカスタム スタート画面を作成できます。  タイルが含まれた管理ブレードもカスタマイズできます。
   
-  ![Azure ポータル UI の説明][UIOrientation]
+  ![Azure Portal UI の説明][UIOrientation]
 
 ## <a name="before-you-get-started"></a>開始する前に
 このチュートリアルを使用するには、有効な Azure サブスクリプションが必要です。  お持ちでない場合は、今すぐ [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) してください。  サブスクリプションを取得すると、ポータル (<https://portal.azure.com>) にアクセスできるようになります。
@@ -78,7 +77,7 @@ Azure には、1 か所で作成できる何千という項目を備えたマー
 * ロール ベース アクセス (RBAC) を使用してリソースへのアクセスを制御する方法
 * ヘルプとサポートを利用する方法
 
-Microsoft Azure ポータルならクラウドでのアプリケーションの構築や管理を大幅に簡素化できます。  最新の状態を保つために[管理ブログ](https://azure.microsoft.com/blog/topics/management/)をご覧ください。定期的に[フィードバックを確認](https://feedback.azure.com/forums/223579-azure-preview-portal/)し、改善を行っています。  [ScottGu のブログ](http://weblogs.asp.net/scottgu)も Azure の更新情報を確認する場合に最適です。
+Microsoft Azure Portal ならクラウドでのアプリケーションの構築や管理を大幅に簡素化できます。  最新の状態を保つために[管理ブログ](https://azure.microsoft.com/blog/topics/management/)をご覧ください。定期的に[フィードバックを確認](https://feedback.azure.com/forums/223579-azure-preview-portal/)し、改善を行っています。  [ScottGu のブログ](http://weblogs.asp.net/scottgu)も Azure の更新情報を確認する場合に最適です。
 
 [UIOrientation]: ./media/azure-portal-how-to-use/azure_portal_1.png
 [PortalCategories]: ./media/azure-portal-how-to-use/azure_portal_2.png

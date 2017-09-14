@@ -13,14 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 08/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 5936a45973eb41d2c5b3a1a47c663e393e628f54
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
@@ -30,7 +30,7 @@ storm-starter の例を使って HDInsight で Apache Storm を使う方法に�
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +65,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
     * **[オペレーティング システム]**: Linux
 
-    * **[バージョン]**: Storm 1.0.1 (HDI 3.5)
+    * **[バージョン]**: Storm 1.1.0 (HDI 3.6)
 
     * **[クラスター レベル]**: Standard
 
@@ -110,7 +110,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     >
     > WordCount の例と他の storm-starter の例は、`/usr/hdp/current/storm-client/contrib/storm-starter/` のクラスターに既に含まれています。
 
-storm-starter の例のソースを見たい場合、コードは [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter) にあります。 このリンクは、HDInsight 3.5 に付属している Storm 1.0.x 用です。 Storm の他のバージョンについては、このページの上部にある __[Branch (分岐)]__ ボタンを使用して、別の Storm バージョンを選択してください。
+storm-starter の例のソースを確認したい場合、コードは [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter) にあります。 このリンクは、HDInsight 3.6 に付属している Storm 1.1.x 用です。 Storm の他のバージョンについては、このページの上部にある __[Branch (分岐)]__ ボタンを使用して、別の Storm バージョンを選択してください。
 
 ## <a name="monitor-the-topology"></a>トポロジの監視
 

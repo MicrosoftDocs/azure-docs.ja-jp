@@ -16,10 +16,10 @@ ms.workload: sql-database
 ms.date: 05/27/2016
 ms.author: torsteng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: ceb2d7a28cc416186f3faf1dc5228fce161c34c5
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: f7f1ad3f1933b39a0030a784cae40521254037d6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -147,7 +147,7 @@ SQL DB のエラスティック データベース トランザクションに�
 * WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)として失敗します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure アプリケーションでエラスティック データベースの機能を使ったことがないという方は、 質問がある場合は、 [SQL Database のフォーラム](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)に投稿してください。 質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

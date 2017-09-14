@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4503810769d88ea554885f39902349046981ec88
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -62,10 +64,5 @@ Azure Mobile Engagement は、特に**デジタル マーケティング担当�
 要約すると、Mobile Engagement の目的は、分析データを収集するだけではありません。"Microsoft の別の分析製品でまだサポートされていない" 内容に及んでいます。 それは対象設定済みのプッシュ通知に関するものです。この対象設定のために、行動分析データを収集しますが、スパムと見なされないようにアプリ ユーザーのニーズに合ったプッシュ通知を送信することに重点を置きます。 
 
 詳細については、Mobile Engagement を簡単に説明する [概要ビデオ](mobile-engagement-overview.md) をご覧ください。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

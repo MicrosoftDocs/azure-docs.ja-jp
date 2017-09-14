@@ -4,7 +4,7 @@ description: "このトピックでは、クライアントがストリームの
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 07/18/2016
+ms.date: 07/21/2017
 ms.author: juliako;cenkdin
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 07239a392438afd9807ce69fba657c27e853a219
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK を使用したフィルターの作成

@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 07/25/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: d4a1259e04c3e37d66581185015935eb962fc59a
-ms.openlocfilehash: 666395edb3d1d579b1c69d1b78840b2a381b5b2b
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 9d1ceda5a072f494651a751a25a8ccf66e4c72ef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -24,7 +26,7 @@ ms.openlocfilehash: 666395edb3d1d579b1c69d1b78840b2a381b5b2b
 
 この記事では、Automation Hybrid Runbook Worker で発生することがあるエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
 
-## <a name="hybrid-runbook-worker-a-runbook-job-terminates-with-a-status-of-suspended"></a>Hybrid Runbook Worker: Runbook ジョブが中断状態で終了する
+## <a name="a-runbook-job-terminates-with-a-status-of-suspended"></a>Runbook ジョブが中断状態で終了する
 
 Runbook は、3 回実行を試みると短時間中断されます。 Runbook の正常な完了を中断する可能性がある条件があり、関連するエラー メッセージに理由を示す追加情報は含まれません。 この記事では、Hybrid Runbook Worker の Runbook 実行エラーに関連する問題のトラブルシューティング手順を説明します。
 
@@ -36,14 +38,14 @@ Runbook の実行が失敗し、返されるエラーは "プロセスが異常�
 このエラーには以下のような複数の原因が考えられます。 
 
 1. Hybrid Worker がプロキシまたはファイアウォールの内側にある
-2. Hybrid Worker を実行しているコンピューターが、ハードウェアの最小 [要件](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements) 
+2. ハイブリッド worker を実行しているコンピューターが、ハードウェアの最小[要件](automation-offering-get-started.md#hybrid-runbook-worker)を満たしていない  
 3. Runbook がローカル リソースで認証できない
 
 #### <a name="cause-1-hybrid-runbook-worker-is-behind-proxy-or-firewall"></a>原因 1: Hybrid Runbook Worker がプロキシまたはファイアウォールの内側にある
 Hybrid Runbook Worker を実行しているコンピューターがファイアウォールまたはプロキシ サーバーの内側にあり、発信ネットワーク アクセスが許可されていないか、または正しく構成されていない可能性があります。
 
 #### <a name="solution"></a>解決策
-コンピューターがポート 443、9354、および 30000 ～ 30199 で *.cloudapp.net に発信アクセスできることを確認します。 
+コンピューターがポート 443 で *.azure-automation.net に発信アクセスできることを確認します。 
 
 #### <a name="cause-2-computer-has-less-than-minimum-hardware-requirements"></a>原因 2: コンピューターが最小ハードウェア要件を満たしていない
 Hybrid Runbook Worker を実行するコンピューターは、この機能をホストするよう指定する前に、ハードウェアの最小要件を満たしている必要があります。 満たしていない場合、他のバックグラウンド プロセスのリソース使用状況および実行中の Runbook による競合によっては、コンピューターが過負荷になり、Runbook ジョブが遅延またはタイムアウトします。 
@@ -54,13 +56,8 @@ Hybrid Runbook Worker を実行するコンピューターは、この機能を�
 #### <a name="cause-3-runbooks-cannot-authenticate-with-local-resources"></a>原因 3: Runbook がローカル リソースで認証できない
 
 #### <a name="solution"></a>解決策
-**Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。  このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。  「 [Runbook のアクセス許可](automation-hybrid-runbook-worker.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。  
+**Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。  このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。  「 [Runbook のアクセス許可](automation-hrw-run-runbooks.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。  
 
 ## <a name="next-steps"></a>次のステップ
 
 Automation のその他の問題のトラブルシューティングのヒントについては、「[Azure Automation の一般的な問題のトラブルシューティング](automation-troubleshooting-automation-errors.md)」を参照してください。 
-
-
-<!--HONumber=Jan17_HO4-->
-
-

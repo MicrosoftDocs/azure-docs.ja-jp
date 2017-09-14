@@ -12,7 +12,7 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 119ebb3f4966de08934c7d1fbd139229bda1d060
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>MongoDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法
@@ -59,14 +58,14 @@ Mongo シェルから次のコマンドを実行します。
             "region": "South India"
          },
          "hosts": [
-            "vishi-api-for-mongodb-southcentralus.documents.azure.com:10250",
-            "vishi-api-for-mongodb-westeurope.documents.azure.com:10250",
-            "vishi-api-for-mongodb-southindia.documents.azure.com:10250"
+            "vishi-api-for-mongodb-southcentralus.documents.azure.com:10255",
+            "vishi-api-for-mongodb-westeurope.documents.azure.com:10255",
+            "vishi-api-for-mongodb-southindia.documents.azure.com:10255"
          ],
          "setName": "globaldb",
          "setVersion": 1,
-         "primary": "vishi-api-for-mongodb-southindia.documents.azure.com:10250",
-         "me": "vishi-api-for-mongodb-southindia.documents.azure.com:10250"
+         "primary": "vishi-api-for-mongodb-southindia.documents.azure.com:10255",
+         "me": "vishi-api-for-mongodb-southindia.documents.azure.com:10255"
       }
    ```
 
@@ -108,3 +107,4 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 > [!div class="nextstepaction"]
 > [エミュレーターを使用したローカル開発](local-emulator.md)
+

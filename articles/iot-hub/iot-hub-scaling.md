@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2016
+ms.date: 08/25/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
 ms.openlocfilehash: 03eeecc575be3073066a203cdd4ec6944bb23afc
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="scale-your-iot-hub-solution"></a>IoT Hub ソリューションのスケーリング

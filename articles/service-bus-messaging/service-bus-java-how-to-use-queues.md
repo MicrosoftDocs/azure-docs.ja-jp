@@ -11,17 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 285f3bc3faeffc94c639658ba375910bc4463e25
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 170f431525ffdc93a01fc085e48e69c3a774968e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
+# <a name="how-to-use-service-bus-queues-with-java"></a>Java で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 この記事では、Service Bus キューの使用方法について説明します。 サンプルは Java で記述され、[Azure SDK for Java][Azure SDK for Java] を使用しています。 紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
@@ -48,7 +47,7 @@ import javax.xml.datatype.*;
 ## <a name="create-a-queue"></a>キューを作成する
 Service Bus キューの管理処理は **ServiceBusContract** クラスを使用して実行できます。 **ServiceBusContract** オブジェクトは SAS をカプセル化する構成とそれを管理するアクセス許可で構築されます。**ServiceBusContract** クラスでのみ Azure Service Bus トピックとのやり取りが可能です。
 
-**ServiceBusService** クラスには、キューの作成、列挙、削除のためのメソッドが用意されています。 次の例では、**ServiceBusService** オブジェクトを使用して、"HowToSample" 名前空間の "TestQueue" という名前のキューを作成する方法を示しています。
+**ServiceBusService** クラスには、キューの作成、列挙、削除のためのメソッドが用意されています。 次の例では、**ServiceBusService** オブジェクトを使用して、`HowToSample` 名前空間の `TestQueue` という名前のキューを作成する方法を示しています。
 
 ```java
 Configuration config =
@@ -73,7 +72,7 @@ catch (ServiceException e)
 }
 ```
 
-**QueueInfo** には、キューのプロパティを調整できるメソッドが用意されています (たとえば、キューに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定できます)。 次の例では、名前が `TestQueue`、最大サイズが 5 GB であるキューを作成する方法を示しています。
+`QueueInfo` には、キューのプロパティを調整できるメソッドが用意されています (たとえば、キューに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定できます)。 次の例では、名前が `TestQueue`、最大サイズが 5 GB であるキューを作成する方法を示しています。
 
 ````java
 long maxSizeInMegabytes = 5120;
@@ -82,7 +81,7 @@ queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
 CreateQueueResult result = service.createQueue(queueInfo);
 ````
 
-**ServiceBusContract** オブジェクトの **listQueues** メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
+**ServiceBusContract** オブジェクトの `listQueues` メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
 メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusContract** オブジェクトを取得します。 次のコードでは、上のコードで `HowToSample` 名前空間内で作成した `TestQueue` キューにメッセージを送信する方法を示しています。

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 124f04eb39296899af501d506476ad966442fc3d
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: c5eda443dcd41a481ad952d8472f7f67f4517abd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
@@ -132,7 +131,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="create-output-dataset"></a>出力データセットの作成
 出力データセットは、スケジュール (1 時間に 1 回、毎日など) を開始するため、 アクティビティによって出力が実際に生成されなくても、パイプラインの Spark アクティビティの出力データセットを指定する必要があります。 アクティビティの入力データセットの指定は省略可能です。
 
-1. **Data Factory エディター**のコマンド バーで **[...] \(その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
+1. **Data Factory エディター**のコマンド バーで **[...] (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON スニペットで、**OutputDataset** という名前のデータセットを定義します。 さらに、**adfspark** という BLOB コンテナーと **pyFiles/output** というフォルダーに結果が保存されるように指定します。 前述のように、このデータセットはダミー データセットです。 この例の Spark プログラムでは出力は生成されません。 **availability** セクションでは、出力データセットが毎日生成されることを指定します。  
 
     ```json
@@ -231,7 +230,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
-詳細な手順については、「[Spark SQL クエリの実行](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-an-interactive-spark-sql-query)」を参照してください。 
+詳細な手順については、「[Spark SQL クエリの実行](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-a-hive-query-using-spark-sql)」を参照してください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 **getDebugInfo** を **Always** に設定しているので、Azure BLOB コンテナー内の **pyFiles** フォルダーに **log** サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加の詳細情報を取得できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してみてください。
@@ -299,7 +298,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 | className | アプリケーションの Java/Spark のメイン クラス | なし |
 | arguments | Spark プログラムのコマンドライン引数の一覧です。 | いいえ |
 | proxyUser | Spark プログラムの実行を偽装する借用すユーザー アカウント | いいえ |
-| sparkConfig | Spark 構成のプロパティ。 | いいえ |
+| sparkConfig | 「[Spark Configuration - Application properties (Spark 構成 - アプリケーションのプロパティ)](https://spark.apache.org/docs/latest/configuration.html#available-properties)」と題するトピックに示されている Spark 構成プロパティの値を指定します。 | いいえ |
 | getDebugInfo | HDInsight クラスターで使用されている Azure Storage または sparkJobLinkedService で指定された Azure Storage に Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | なし |
 | sparkJobLinkedService | Spark ジョブ ファイル、依存関係、およびログが含まれる Azure Storage のリンクされたサービス。  指定しない場合は、HDInsight クラスターに関連付けられているストレージが使用されます。 | なし |
 
@@ -310,7 +309,7 @@ HDInsight のリンクされたサービスによって参照される Azure Blo
 
 | パス | Description | 必須 | 型 |
 | ---- | ----------- | -------- | ---- |
-| をクリックします。    | ストレージのリンクされたサービスにおける Spark ジョブのルート パス    | はい | フォルダー |
+| をクリックします。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス  | はい | フォルダー |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス | はい | ファイル |
 | ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの java classpath に配置されます | なし | フォルダー |
 | ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます | いいえ | フォルダー |

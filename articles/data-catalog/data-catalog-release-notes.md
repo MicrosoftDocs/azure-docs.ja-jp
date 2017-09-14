@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 60abdc490cefc7362ca6ed0dec7dbfd53984201f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure Data Catalog リリース ノート

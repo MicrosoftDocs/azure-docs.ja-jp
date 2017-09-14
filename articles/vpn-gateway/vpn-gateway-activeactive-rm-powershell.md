@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 08/16/2017
 ms.author: yushwang
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ea5546a636bd567853438ae2620ae24ce2d7da23
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 93873a530ba7190de964b9f5b2e0e63371d95fcc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
@@ -39,7 +39,9 @@ ms.lasthandoff: 04/27/2017
 これらを組み合わせると、ニーズに合わせて、より複雑で可用性の高いネットワーク トポロジを構築できます。
 
 > [!IMPORTANT]
-> アクティブ/アクティブ モードは HighPerformance SKU でのみ機能します。
+> アクティブ/アクティブ モードは、次の SKU でのみ機能します。 
+  * VpnGw1、VpnGw2、VpnGw3
+  * HighPerformance (古いレガシ SKU 向け)
 > 
 > 
 
@@ -48,7 +50,7 @@ ms.lasthandoff: 04/27/2017
 
 * 2 つのパブリック IP アドレスを使用して 2 つのゲートウェイ IP 構成を作成する必要がある
 * EnableActiveActiveFeature フラグを設定する必要がある
-* ゲートウェイ SKU を HighPerformance に設定する必要がある
+* ゲートウェイ SKU を VpnGw1、VpnGw2、VpnGw3、または HighPerformance に設定する必要があります (レガシ SKU)。
 
 その他のプロパティは、非アクティブ/アクティブのゲートウェイと同じです。 
 
@@ -122,10 +124,10 @@ $gw1ipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2.アクティブ/アクティブ構成で VPN ゲートウェイを作成する
-TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 GatewayIpConfig エントリが 2 つあり、EnableActiveActiveFeature フラグが設定されている点にご注意ください。 アクティブ/アクティブ モードでは、HighPerformance SKU のルート ベースの VPN ゲートウェイが必要です。 ゲートウェイの作成には時間がかかります (完了に 30 分以上必要とします)。
+TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。 GatewayIpConfig エントリが 2 つあり、EnableActiveActiveFeature フラグが設定されている点にご注意ください。 ゲートウェイの作成には時間がかかります (完了まで 45 分以上)。
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
+New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
 #### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3.ゲートウェイのパブリック IP アドレスと BGP ピア IP アドレスを取得する
@@ -253,15 +255,17 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupNa
 #### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3.2 番目のオンプレミス VPN デバイスの VPN と BGP パラメーター
 同様に、一覧の下にあるのは、2 番目のデバイスに入力するパラメーターです。
 
-      - Site5 ASN            : 65050
-      - Site5 BGP IP         : 10.52.255.254
-      - Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
-      - Azure VNet ASN       : 65010
-      - Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
-      - Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
-      - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
-                             Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
-      - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
+- Site5 ASN            : 65050
+- Site5 BGP IP         : 10.52.255.254
+- Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+- Azure VNet ASN       : 65010
+- Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
+- Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
+- Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
+                         Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
+- eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
 
 接続 (トンネル) が確立されると、デュアル冗長 VPN デバイスと、オンプレミス ネットワークと Azure を接続するトンネルが作成されます。
 
@@ -331,7 +335,7 @@ $gw2ipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW2IPconf2 -Subnet
 AS 番号と "EnableActiveActiveFeature" フラグを使用して、VPN ゲートウェイを作成します。 Azure VPN ゲートウェイでは既定の ASN をオーバーライドする必要があることに注意してください。 BGP とトランジット ルーティングを有効にするために、接続された VNet の ASN はそれぞれ異なっている必要があります。
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet2ASN -EnableActiveActiveFeature
+New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN -EnableActiveActiveFeature
 ```
 
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>手順 2 - TestVNet1 と TestVNet2 のゲートウェイを接続する
@@ -366,8 +370,8 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 ## <a name ="aaupdate"></a>パート 4 - アクティブ/アクティブとアクティブ/スタンバイで既存のゲートウェイを更新する
 最後のセクションでは、Azure VPN ゲートウェイをアクティブ/アクティブ モードからアクティブ/スタンバイ モード (またはその逆) に構成する方法を説明します。
 
-> [!IMPORTANT]
-> アクティブ/アクティブ モードは HighPerformance SKU でのみ機能します。
+> [!NOTE]
+> このセクションには、作成済みの VPN ゲートウェイのレガシ SKU (古い SKU) のサイズを Standard から HighPerformance に変更する手順が含まれます。 この手順によって、古いレガシ SKU が新しい SKU にアップグレードされることはありません。
 > 
 > 
 
@@ -396,7 +400,7 @@ Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPc
 ```
 
 #### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3.アクティブ/アクティブ モードを有効にし、ゲートウェイを更新する
-実際に更新を開始するには、PowerShell でゲートウェイ オブジェクトを設定する必要があります。 以前に Standard として作成されているため、ゲートウェイ オブジェクトの SKU を HighPerformance に変更する必要もあります。
+実際に更新を開始するには、PowerShell でゲートウェイ オブジェクトを設定する必要があります。 以前に Standard として作成されているため、仮想ネットワーク ゲートウェイの SKU を HighPerformance に変更 (サイズ変更) する必要もあります。
 
 ```powershell
 Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
@@ -428,5 +432,3 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActive
 
 ## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
-
-

@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 08/15/2017
 ms.author: owend
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: b17251f8e88dc02ddf792da41121fe2730bc50e8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
-
 
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続

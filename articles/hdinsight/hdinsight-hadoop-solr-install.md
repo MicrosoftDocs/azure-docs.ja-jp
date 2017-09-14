@@ -1,5 +1,5 @@
 ---
-title: "Script Action を使用して Hadoop クラスターに Solr をインストールする | Microsoft Docs"
+title: "スクリプト アクションを使用して Hadoop クラスターに Solr をインストールする - Azure | Microsoft Docs"
 description: "Script Action を使って HDInsight クラスターを Solr でカスタマイズする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 12b5194656dd5c55eb7adba96f698cbeca6fd1b5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 スクリプト アクションを使用して Windows ベースの HDInsight クラスターを Solr でカスタマイズする方法と、Solr を使用してデータを検索する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 Linux ベースのクラスターでの Solr の操作については、「 [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースのクラスターでの Solr の操作については、「 [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
 
 
 *Script Action*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Solr をインストールできます。 HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)の読み取り専用 Azure ストレージ BLOB から入手できます。

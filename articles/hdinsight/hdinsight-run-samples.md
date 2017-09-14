@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop のサンプルの実行 | Microsoft Docs"
+title: "HDInsight での Hadoop のサンプルの実行 - Azure | Microsoft Docs"
 description: "用意されたサンプルを利用して、Azure HDInsight サービスを使い始めます。 データ クラスター上で MapReduce プログラムを実行する PowerShell スクリプトを使用します。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: e4042dfbf28e78d2fca5c3f6a93df751a12153f2
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 741cce6f2c81efed1e4bd0547fcb46a231815263
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
@@ -31,7 +31,7 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 * [**ワード カウント**][hdinsight-sample-wordcount]: テキスト ファイル内の単語出現回数をカウントします。
 * [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
 * [**Pi 推定**][hdinsight-sample-pi-estimator]: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-* [**10 GB GraySort**][hdinsight-sample-10gb-graysort] : HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+* [**10 GB GraySort**][hdinsight-sample-10gb-graysort]: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 > [!NOTE]
 > ソース コードは「付録」にあります。
@@ -59,7 +59,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳しくは、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」をご覧ください。
 
 ## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「 [付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -79,9 +79,9 @@ Java MapReduce プログラムの開発手順については、「 [HDInsight �
 
     # Define the MapReduce job
     $mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-                                -JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
+                                -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
                                 -ClassName "wordcount" `
-                                -Arguments "wasbs:///example/data/gutenberg/davinci.txt", "wasbs:///example/data/WordCountOutput"
+                                -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
     # Submit the job and wait for job completion
     $cred = Get-Credential -Message "Enter the HDInsight cluster HTTP user credential:"
@@ -168,7 +168,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-                                -JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
+                                -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
                                 -ClassName "pi" `
                                 -Arguments "16", "10000000"
     ```
@@ -219,7 +219,6 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 * [HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]
 * [HDInsight での Hadoop Job の送信][hdinsight-submit-jobs]
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
-* [HDInsight での Hadoop のデバッグ: エラー メッセージ][hdinsight-errors]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>付録 A - ワード カウントのソース コード
 
@@ -985,8 +984,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-errors]: hdinsight-debug-jobs.md
 
 [hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 

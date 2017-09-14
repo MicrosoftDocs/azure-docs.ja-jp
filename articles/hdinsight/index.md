@@ -2,7 +2,7 @@
 title: "Azure HDInsight のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、HBase、R-Server などを使用して、ビッグ データを処理、分析し、洞察を得る方法について説明します。"
 services: hdinsight
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 2d07e801ea3375e06c9f66db49219b6c79f97e61
-ms.openlocfilehash: bf303554aa47116cdfce074d87235901b5390769
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -131,6 +133,24 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
         </div>
         </a>
     </li>
+<li>
+        <a href="https://github.com/hdinsight/hdinsight-dev-guide/blob/master/HDInsight%20Developer%20Guide.pdf">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight 開発者ガイド</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
 </ul>
 
@@ -156,7 +176,7 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt271028.aspx">.NET (Hadoop)</a></p>
+                        <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight">.NET (Hadoop)</a></p>
                         <p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>
                         <p><a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library">.NET (Avro)</a></p>
                     </div>
@@ -179,10 +199,5 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

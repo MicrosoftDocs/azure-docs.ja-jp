@@ -4,26 +4,29 @@ description: "Azure AD セルフサービスによるパスワードのリセッ
 services: active-directory
 keywords: 
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: barlanmsft
 manager: femila
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
-ms.author: joflore
+ms.date: 08/28/2017
+ms.author: barlan
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: bd0175558a94a146a365e8c1a32522f1e54c184e
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: b701172c2345313e236a037f5aa16939cfaac440
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
+
+> [!IMPORTANT]
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
 
 エンド ユーザーは、セルフサービスによるパスワードのリセット (SSPR) を使用してパスワードのリセットやアカウントのロック解除を自分自身で実行できます。 この機能を利用する前に、認証方法を登録するか、管理者によって設定されている定義済みの認証方法を確認する必要があります。
 
@@ -46,6 +49,16 @@ ms.lasthandoff: 05/03/2017
 
 適切な認証方法が継続して登録されているか確認するため、管理者から、一定期間経過後に認証方法の確認を求められる場合もあります。
 
+## <a name="common-problems-and-their-solutions"></a>一般的な問題とその解決方法
+
+ 次に、一般にエラーになる場合とその解決方法を示します。
+
+| エラー ケース| 表示されるエラー| 解決策 |
+| --- | --- | --- |
+| ユーザー ID を入力した後に「管理者にお問い合わせください」と表示されます | 管理者にお問い合わせください <br> <br> お客様のユーザー アカウントのパスワードは Microsoft によって管理されていません。 そのため、パスワードを自動的にリセットすることはできません。 <br> <br> サポートを受けるには IT スタッフに問い合わせる必要があります。 | このメッセージは、IT スタッフがオンプレミス環境でパスワードを管理しており、[アカウントにアクセスできません] リンクからパスワードをリセットすることを許可していない場合に表示されます。 <br> <br> パスワードをリセットするには、IT スタッフに直接連絡して支援を依頼し、パスワードをリセットしたいことを伝え、この機能を有効にしてもらう必要があります。|
+| ユーザー ID の入力後、「アカウントは、パスワード リセットが有効になっていません。」エラーが表示されます | このアカウントはパスワードのリセットが有効になっていません <br> <br> 申し訳ありませんが、IT スタッフはこのサービスで使用できるアカウントを設定していません。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | これは IT スタッフが [アカウントにアクセスできません] リンクからのパスワードのリセットを有効にしていないため、または機能を使用するライセンスを付与していないために表示されます。 <br> <br> パスワードをリセットするには、管理者に問い合わせるリンクをクリックして会社の IT スタッフに電子メールを送信するか、パスワードをリセットしたいことを伝え、この機能を有効にしてもらう必要があります。 |
+| ユーザー ID の入力後に「お客様のアカウントを確認できませんでした」エラーが表示されます | お客様のアカウントを確認できませんでした <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | このメッセージは、パスワードのリセットは有効になっているが、サービスの使用を登録していない場合に表示されます。 パスワードのリセットを登録するには、アカウントに再アクセスできるようになった後に http://aka.ms/ssprsetup に進みます。 <br> <br> パスワードをリセットするには、管理者に問い合わせるリンクをクリックし、会社の IT スタッフに電子メールを送信します。 |
+
 ## <a name="next-steps"></a>次のステップ
 
 * [セルフサービスによるパスワードのリセットを使用してパスワードを変更する方法](active-directory-passwords-update-your-own-password.md)
@@ -54,5 +67,4 @@ ms.lasthandoff: 05/03/2017
 * [Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
 [Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "登録済みの方法と [完了] ボタンが表示されているパスワードのリセット登録ページ"
-
 

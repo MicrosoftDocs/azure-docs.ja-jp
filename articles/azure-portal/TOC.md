@@ -1,16 +1,23 @@
-# [概要](../azure-portal-overview.md)
+# 概要
+## [Azure Portal の概要](../azure-portal-overview.md)
+# Tutorials (チュートリアル)
+## [Azure Portal での DevOps](tutorial-azureportal-devops.md)
+# 概念
 ## [Azure リソース マネージャー](../azure-resource-manager/resource-group-overview.md)
-
-# 作業の開始
-## [Resource Manager テンプレートを使用したデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
-
-# 方法
+## [キーボード ショートカット](azure-portal-keyboard-shortcuts.md)
+## [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)
+## [Azure ダッシュボードの構造](azure-portal-dashboards-structure.md)
+# ハウツー ガイド
 ## デプロイ
 ### [Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
-
-## [管理]
-### [プレビュー ポータルを使用してリソースを管理する](../azure-resource-manager/resource-group-portal.md)
-### [RBAC を使用したアクセスの管理](../active-directory/role-based-access-control-configure.md)
+### [Resource Manager テンプレートを使用したデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
+### [Azure ダッシュボードの作成と共有](azure-portal-dashboards.md)
+### [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)
+## 管理
+### [ハイコントラストの有効化またはテーマの変更](azure-portal-change-theme-high-contrast.md)
+### [ポータルを使用したリソースの管理](../azure-resource-manager/resource-group-portal.md)
+### [ロールベースのアクセス制御を使用したアクセス管理](../active-directory/role-based-access-control-configure.md)
+### [ロールベースのアクセス制御を使用したダッシュボードの共有](azure-portal-dashboard-share-access.md)
 ### [タグを使用してリソースを整理する](../azure-resource-manager/resource-group-using-tags.md)
 ### [リソースのスケール](../monitoring-and-diagnostics/insights-how-to-scale.md)
 ### [新しい Azure サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)
@@ -33,7 +40,9 @@
 ## [Azure Insights の CLI クイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 

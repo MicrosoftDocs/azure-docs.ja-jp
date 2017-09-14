@@ -15,21 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9b92801609dfc8d14352a50edd10f8902c87c661
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 85867fb8d18377637b3aa848555831a8d9b53512
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
+
+コネクテッド ファクトリ固有の [FAQ](iot-suite-faq-cf.md) に関するページもご覧ください。
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>事前構成済みソリューションのソース コードはどこで入手できますか?
 
 ソース コードは、次の GitHub リポジトリに格納されています。
 * [リモート監視の事前構成済みソリューション][lnk-remote-monitoring-github]
 * [予測的なメンテナンスの構成済みソリューション][lnk-predictive-maintenance-github]
+* [コネクテッド ファクトリの事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>IoT Hub デバイス管理機能を使用している、リモート監視の事前構成済みソリューションを最新バージョンに更新するにはどうすればよいですか?
 
@@ -100,6 +102,7 @@ ms.lasthandoff: 05/10/2017
 IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
 
 * [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
+* [コネクテッド ファクトリ事前構成済みソリューションの概要](iot-suite-connected-factory-overview.md)
 * [IoT の徹底的なセキュリティ][lnk-security-groundup]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md

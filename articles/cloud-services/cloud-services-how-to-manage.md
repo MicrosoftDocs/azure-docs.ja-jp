@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2016
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 76f59384db37967a9210ba5efa49b25788d21cdc
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: e66a3390c08b66e0f2f38725425cd78a36004118
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -112,7 +113,7 @@ Azure クラシック ポータルの **[Cloud Services]** 領域では、サー
     ![リンク ページ 1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
 4. **[新しいリソースを作成する]** または **[既存のリソースをリンクする]** をクリックします。
-5. リンクするリソースの種類を選択します。 [Azure クラシック ポータル](http://manage.windowsazure.com/)で、 **[SQL Database]**をクリックします。 (プレビューの Azure クラシック ポータルは、ストレージ アカウントをクラウド サービスにリンクする機能をサポートしていません)。
+5. リンクするリソースの種類を選択します。 [Azure クラシック ポータル](http://manage.windowsazure.com/)で、 **[SQL Database]**をクリックします。 (Azure クラシック ポータルだけが、ストレージ アカウントをクラウド サービスにリンクする機能をサポートしています。)
 6. データベースの構成を完了するには、Azure クラシック ポータルの **[SQL Database]** 領域のヘルプに記載された指示に従ってください。
 
     リンク操作の進捗状況はメッセージ領域で知ることができます。

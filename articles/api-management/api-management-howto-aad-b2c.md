@@ -3,7 +3,7 @@ title: "Azure Active Directory B2C を使用して開発者アカウントを承
 description: "API Management で Azure Active Directory B2C を使用してユーザーを承認する方法について説明します。"
 services: api-management
 documentationcenter: API Management
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: eb7deb1a79d9db9ac5cfbea69b8d3c564eb55577
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
 
 ---

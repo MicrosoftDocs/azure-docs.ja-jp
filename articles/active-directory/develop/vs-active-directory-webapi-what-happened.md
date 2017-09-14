@@ -3,8 +3,8 @@ title: "Azure AD への接続時に WebApi プロジェクトに行われる変�
 description: "Visual Studio を使用して Azure AD に接続した場合の WebApi プロジェクトの変更内容の説明"
 services: active-directory
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.service: active-directory
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 8ca3234e54d8736aa187195640a103ac6eb145e7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)

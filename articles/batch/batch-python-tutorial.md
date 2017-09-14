@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: bdb36e6397951d2d3298dbfe9e80a0b678ecfdaf
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Python 向け Batch SDK の概要
@@ -32,7 +31,7 @@ ms.lasthandoff: 05/02/2017
 >
 >
 
-Python で作成された小さな Batch アプリケーションについて考察しながら [Azure Batch][azure_batch] と [Batch Python][py_azure_sdk] クライアントの基礎を取り上げます。 2 つのサンプル スクリプトが、Batch サービスを利用してクラウド上の Linux 仮想マシンで並列ワークロードを処理するようすや、それらのスクリプトから [Azure Storage](../storage/storage-introduction.md) とやり取りしてファイルを転送したり取得したりする方法について見ていきましょう。 また、一般的な Batch アプリケーション ワークフローと、ジョブ、タスク、プール、コンピューティング ノードなど、Batch の主なコンポーネントの基本も理解できます。
+Python で作成された小さな Batch アプリケーションについて考察しながら [Azure Batch][azure_batch] と [Batch Python][py_azure_sdk] クライアントの基礎を取り上げます。 2 つのサンプル スクリプトが、Batch サービスを利用してクラウド上の Linux 仮想マシンで並列ワークロードを処理するようすや、それらのスクリプトから [Azure Storage](../storage/common/storage-introduction.md) とやり取りしてファイルを転送したり取得したりする方法について見ていきましょう。 また、一般的な Batch アプリケーション ワークフローと、ジョブ、タスク、プール、コンピューティング ノードなど、Batch の主なコンポーネントの基本も理解できます。
 
 ![Batch ソリューションのワークフロー (基本)][11]<br/>
 
@@ -42,7 +41,7 @@ Python で作成された小さな Batch アプリケーションについて考
 ### <a name="accounts"></a>アカウント
 * **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成][azure_free_account]します。
 * **Batch アカウント**: Azure サブスクリプションの用意ができたら、 [Azure Batch アカウントを作成](batch-account-create-portal.md)します。
-* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 ### <a name="code-sample"></a>サンプル コード
 Python チュートリアルの[コード サンプル][github_article_samples]は、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの 1 つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、このチュートリアルで使う 2 つのスクリプトが `article_samples` ディレクトリに展開されます。
@@ -61,7 +60,7 @@ Python チュートリアルの[コード サンプル][github_article_samples]�
     `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython-dev python-dev`
 * CentOS
 
-    `yum update && yum install -y gcc openssl-dev libffi-devel python-devel`
+    `yum update && yum install -y gcc openssl-devel libffi-devel python-devel`
 * SLES/OpenSUSE
 
     `zypper ref && zypper -n in libopenssl-dev libffi48-devel python-devel`
@@ -153,7 +152,7 @@ if __name__ == '__main__':
 ![Azure Storage でコンテナーを作成する][1]
 <br/>
 
-Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *python_tutorial_client.py* スクリプトではまず、[Azure Blob Storage](../storage/storage-introduction.md#blob-storage) に 3 つのコンテナーを作成します。
+Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *python_tutorial_client.py* スクリプトではまず、[Azure Blob Storage](../storage/common/storage-introduction.md#blob-storage) に 3 つのコンテナーを作成します。
 
 * **application**: このコンテナーには、タスクによって実行される Python スクリプト (*python_tutorial_task.py*) が格納されます。
 * **input**: タスクで、 *input* コンテナーから処理対象のデータ ファイルをダウンロードします。
@@ -183,7 +182,7 @@ blob_client.create_container(OUTPUT_CONTAINER_NAME, fail_on_exist=False)
 コンテナーを作成すると、アプリケーションから、タスクで使用するファイルをアップロードできるようになります。
 
 > [!TIP]
-> 「[Python から Azure BLOB ストレージを使用する方法](../storage/storage-python-how-to-use-blob-storage.md)」に、Azure Storage コンテナーと BLOB の操作がわかりやすく示されています。 Batch を扱う場合は、この記事を早い段階で読むことをお勧めします。
+> 「[Python から Azure BLOB ストレージを使用する方法](../storage/blobs/storage-python-how-to-use-blob-storage.md)」に、Azure Storage コンテナーと BLOB の操作がわかりやすく示されています。 Batch を扱う場合は、この記事を早い段階で読むことをお勧めします。
 >
 >
 
@@ -277,7 +276,7 @@ Shared Access Signature (SAS) は、Azure Storage のコンテナーと BLOB へ
 * **コンテナー Shared Access Signature**: 各タスクでコンピューティング ノードでの処理が完了すると、その出力ファイルが Azure Storage の *output* コンテナーにアップロードされます。 その際、コンテナーへの書き込みアクセスを可能にする Shared Access Signature が *python_tutorial_task.py* によって使用されます。 *python_tutorial_client.py* の `get_container_sas_token` 関数でコンテナーの Shared Access Signature を取得し、それをコマンド ライン引数としてタスクに渡します。 コンテナーの SAS の使用方法については、「 [手順 5: ジョブにタスクを追加する](#step-5-add-tasks-to-job)」で説明します。
 
 > [!TIP]
-> Storage アカウントのデータに安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: BLOB service での SAS の作成と使用](../storage/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
+> Storage アカウントのデータに安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: BLOB service での SAS の作成と使用](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
 >
 >
 

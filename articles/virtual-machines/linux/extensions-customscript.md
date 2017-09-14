@@ -21,7 +21,6 @@ ms.openlocfilehash: 89001404fa7255efc656b98983502d1f1d84fd73
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/12/2017
 
-
 ---
 # <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用
 カスタム スクリプト拡張機能は、Azure 仮想マシンでスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージやその他のアクセス可能なインターネットの場所からダウンロードできます。また、実行時に拡張機能に提供することもできます。 カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合されており、Azure CLI、PowerShell、Azure Portal、または Azure 仮想マシン REST API を使用して実行することもできます。
@@ -119,7 +118,7 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 
 ```json
 {
-  "fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],
+  "fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"]
 }
 ```
 
@@ -134,7 +133,7 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 Azure CLI コマンド:
 
 ```azurecli
-az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json --protected-settings
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json --protected-settings ./protected-config.json
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート

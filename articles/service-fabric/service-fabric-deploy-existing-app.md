@@ -12,17 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/07/2016
+ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 16000dcb751bd96fba247c6209e85c581833681d
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: a1db3dda674ffe43587333d88f3816549af3019c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>Service Fabric へのゲスト実行可能ファイルのデプロイ
-Node.js アプリケーション、Java アプリケーション、Azure Service Fabric のネイティブなアプリケーションなど、あらゆる種類のアプリケーションを実行できます。 このようなアプリケーションを Service Fabric ではゲスト実行可能ファイルと呼びます。
+Node.js、Java、C++ など、あらゆる種類のコードをサービスとして Azure Service Fabric 内で実行できます。 このようなサービスを Service Fabric ではゲスト実行可能ファイルと呼びます。
+
 Service Fabric は、ゲスト実行可能ファイルをステートレス サービスと同様に扱います。 これにより、ゲスト実行可能ファイルは可用性などのメトリックに基づいてクラスター内のノードに配置されます。 この記事を読むと、Visual Studio またはコマンド ライン ユーティリティを使用して、ゲスト実行可能ファイルをパッケージ化し、Service Fabric クラスターにデプロイする方法を理解できます。
 
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイするための手順について説明します。  
@@ -34,6 +36,7 @@ Service Fabric クラスターでゲスト実行可能ファイルを実行す�
 * 正常性の監視: Service Fabric の正常性監視機能により、アプリケーションが稼動しているかどうかが検出され、障害が発生した場合は診断情報が提供されます。   
 * アプリケーション ライフサイクル管理: Service Fabric を使用すると、ダウンタイムなしでアップグレードを実行できるだけでなく、アップグレード中に正常性に問題が発生したことが報告された場合は前のバージョンに自動的にロールバックされます。    
 * 密度: 各アプリケーションを専用のハードウェアで実行する必要がないクラスターで複数のアプリケーションを実行できます。
+* 探索可能性: REST を使って Service Fabric Naming Service を呼び出し、クラスター内の他のサービスを発見できます。 
 
 ## <a name="samples"></a>サンプル
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -43,7 +46,7 @@ Service Fabric クラスターでゲスト実行可能ファイルを実行す�
 ゲスト実行可能ファイルのデプロイの一環として、[アプリケーション モデル](service-fabric-application-model.md)に関するページに目を通し、Service Fabric のパッケージ化とデプロイのモデルについて理解しておくと役立ちます。 Service Fabric パッケージ化モデルでは、アプリケーション マニフェストとサービス マニフェストの 2 つの XML ファイルを使用します。 ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルのスキーマ定義が、Service Fabric SDK と共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされています。
 
 * **アプリケーション マニフェスト**: アプリケーション マニフェストは、アプリケーションについて記述するために使用されます。 このファイルには、アプリケーションを構成する複数のサービスとその他のパラメーター (インスタンス数など) が列挙されています。パラメーターは、個々のサービスや複数のサービスをデプロイする方法を定義するために使用されます。
-  
+
   Service Fabric では、デプロイとアップグレードを行う際に 1 つのアプリケーションをユニットとして扱います。 アプリケーションは 1 つのユニットとしてアップグレードすることができ、エラー (およびロールバック) が発生した場合も 1 つのユニットとして管理されます。 Service Fabric は、アップグレード プロセスが正常完了した場合だけでなく、失敗した場合でも、アプリケーションが不明または不安定な状態にならないことを保証します。
 * **サービス マニフェスト** : サービス マニフェストは、サービスのコンポーネントを記述するために使用されます。 このファイルには、サービスの名前と種類、そのコード、構成などの情報が記載されています。 また、サービスのデプロイ後の構成に使用できるその他のパラメーターも含まれます。
 
@@ -70,24 +73,23 @@ ApplicationPackageRoot には、アプリケーションを定義する Applicat
 
 > [!NOTE]
 > `config` ディレクトリと `data` ディレクトリは、必要がなければ作成する必要はありません。
-> 
-> 
+>
+>
 
 ## <a name="package-an-existing-executable"></a>既存の実行可能ファイルのパッケージ化
 ゲスト実行可能ファイルをパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
 
 > [!TIP]
-> 既存の Windows 実行可能ファイルをパッケージ化してサービスにする場合は、Visual Studio を使用すると最も簡単に行うことができます。
-> 
-> 
+> 既存の Windows 実行可能ファイルをパッケージ化してサービスにするには、Visual Studio または Yeoman (Linux の場合) を使用すると最も簡単に行うことができます。
+>
 
-## <a name="use-visual-studio-to-package-an-existing-executable"></a>Visual Studio を使用した既存の実行可能ファイルのパッケージ化
+## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Visual Studio を使用した既存の実行可能ファイルのパッケージ化とデプロイ
 Visual Studio には、ゲスト実行可能ファイルを Service Fabric クラスターにデプロイするときに役立つ Service Fabric サービスのテンプレートが用意されています。
 
 1. **[ファイル]**、 > **[新しいプロジェクト]** の順に選択し、Service Fabric アプリケーションを作成します。
 2. サービス テンプレートとして**ゲスト実行可能ファイル**を選択します。
 3. **[参照]** をクリックし、実行可能ファイルが含まれたフォルダーを選択します。残りのパラメーターを入力し、サービスを作成します。
-   * *Code Package Behavior* - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成する際に、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
+   * *Code Package Behavior* - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成するときは、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
    * *Program* - サービスを開始するために実行する必要がある実行可能ファイルを指定します。
    * *Arguments* - 実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
    * *WorkingFolder* - 開始するプロセスの作業ディレクトリを指定します。 次の 3 つの値のいずれかを指定できます。
@@ -98,6 +100,16 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 5. サービスに通信用のエンドポイントが必要な場合は、ServiceManifest.xml ファイルに Protocol、Port、Type を追加できます。 (例: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`)。
 6. これで、ローカル クラスターに対してパッケージ化と発行の操作を使用できるようになりました。この操作を行うには、Visual Studio でソリューションをデバッグします。 準備ができたら、アプリケーションをリモート クラスターに発行するか、ソリューションをソース管理にチェックインすることができます。
 7. Service Fabric Explorer で実行されているゲスト実行可能サービスを表示する方法については、この記事の末尾をご覧ください。
+
+## <a name="use-yoeman-to-package-and-deploy-an-existing-executable-on-linux"></a>Linux で Yoeman を使用した既存の実行可能ファイルのパッケージ化とデプロイ
+
+Linux でゲスト実行可能ファイルを作成してデプロイする手順は、csharp または java アプリケーションをデプロイする場合と同じです。
+
+1. ターミナルで、「`yo azuresfguest`」と入力します。
+2. アプリケーションに名前を付けます。
+3. サービスの名前を指定し、実行可能ファイルのパスや呼び出すときに渡す必要があるパラメーターなどの詳細を提供します。
+
+Yeoman により、インストールおよびアンインストール スクリプトと共に、適切なアプリケーション ファイルとマニフェスト ファイルが含まれたアプリケーション パッケージが作成されます。
 
 <a id="manually"></a>
 
@@ -123,8 +135,8 @@ Service Fabric では、アプリケーション ルート ディレクトリの
 
 > [!NOTE]
 > アプリケーションに必要なすべてのファイルと依存関係を必ず含めるようにしてください。 Service Fabric では、アプリケーションのサービスがデプロイされるクラスター内のすべてのノードに、アプリケーション パッケージの内容がコピーされます。 そのため、パッケージには、アプリケーションを実行するのに必要なすべてのコードが含まれている必要があります。 依存関係がインストール済みであることを前提としないでください。
-> 
-> 
+>
+>
 
 ### <a name="edit-the-service-manifest-file"></a>サービス マニフェスト ファイルを編集する
 次の手順では、サービス マニフェスト ファイルを編集して、次の情報を含めます。
@@ -268,8 +280,8 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 
 > [!WARNING]
 > アプリケーションのフェールオーバーに影響する可能性があるため、運用環境でデプロイされたアプリケーションのコンソール リダイレクト ポリシーは決して使用しないでください。 これは、ローカル デプロイおよびデバッグの目的のため "*だけ*" に使用します。  
-> 
-> 
+>
+>
 
 ```xml
 <EntryPoint>
@@ -331,19 +343,9 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 
 ![ディスク上の場所](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-サーバー エクスプローラーを使用してディレクトリを参照した場合は、次のスクリーンショットに示すように、作業ディレクトリとサービスのログ フォルダーを確認できます。
+サーバー エクスプローラーを使用してディレクトリを参照した場合は、次のスクリーンショットに示すように、作業ディレクトリとサービスのログ フォルダーを確認できます。 
 
 ![ログの場所](./media/service-fabric-deploy-existing-app/loglocation.png)
-
-## <a name="creating-a-guest-executable-using-yeoman-for-service-fabric-on-linux"></a>Linux で Service Fabric の Yeoman を使用したゲスト実行可能ファイルの作成
-
-Linux でゲスト実行可能ファイルを作成してデプロイする手順は、csharp または java アプリケーションをデプロイする場合と同じです。 
-
-1. ターミナルで、「`yo azuresfguest`」と入力します。
-2. アプリケーションに名前を付けます。
-3. 最初のサービスの種類を選択し、名前を付けます。 ゲスト実行可能ファイルの**ゲスト バイナリ**を選択し (コンテナーの場合は**ゲスト コンテナー**を選択)、実行可能ファイルのパスや呼び出す必要があるパラメーターなどの詳細を指定します。
-
-Yeoman により、インストールおよびアンインストール スクリプトと共に、適切なアプリケーション ファイルとマニフェスト ファイルが含まれたアプリケーション パッケージが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。 関連する情報やタスクは、次の記事を参照してください。
@@ -352,5 +354,4 @@ Yeoman により、インストールおよびアンインストール スクリ
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
-
 

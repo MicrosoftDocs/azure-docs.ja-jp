@@ -1,6 +1,6 @@
 ---
 title: "Azure Data Factory を使用した DB2 からのデータ移動 | Microsoft Docs"
-description: "Azure Data Factory を使用して DB2 データベースからデータを移動する方法を説明します"
+description: "Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータを移動する方法について説明します。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -12,121 +12,118 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/19/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 6d54203797ad970d590b853b171b383708dbcb5d
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6a89cc44724dbb5b46a9e89d6da24d9b35ddbbef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
-# <a name="move-data-from-db2-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータを移動する
-この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースから、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションのシンクの欄に一覧表示されている任意のデータ ストアに、データをコピーする方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+# <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
+この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータ ストアにデータをコピーする方法について説明します。 データは、[Data Factory のデータ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事でサポートされているシンクとして挙げられているストアにコピーできます。 Data Factory についてのこの記事は、本トピックのベースになっており、コピー アクティビティを使ったデータ移動の概要や、サポートされるデータ ストアの組み合わせの一覧を掲載しています。 
 
-Data Factory が現在サポートしているのは、DB2 データベースから[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)へのデータの移動だけで、他のデータ ストアから DB2 データベースへの移動はサポートしていません。
+現在 Data Factory でサポートされているのは、DB2 データベースから[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)へのデータ移動だけです。 他のデータ ストアから DB2 データベースへの移動はサポートされません。
 
 ## <a name="prerequisites"></a>前提条件
-Data Factory は、Data Management Gateway を使用したオンプレミスの DB2 データベースへの接続をサポートします。 [Data Management Gateway](data-factory-data-management-gateway.md) の詳細については、「Data Management Gateway」をご覧ください。また、データを移動するデータ パイプラインにゲートウェイをセットアップするための詳しい手順については、[オンプレミスからクラウドへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
+Data Factory では、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)を使用して、オンプレミスの DB2 データベースへの接続がサポートされます。 データを移動するためのゲートウェイ データ パイプラインを設定するための具体的な手順については、[オンプレミスからクラウドへのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
 
-DB2 が Azure IaaS VM でホストされている場合でも、ゲートウェイは必須です。 ゲートウェイはデータ ストアと同じ IaaS VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
+DB2 が Azure IaaS VM でホストされている場合でも、ゲートウェイは必須です。 ゲートウェイは、データ ストアと同じ IaaS VM にインストールできます。 ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 
-Data Management Gateway では組み込みの DB2 ドライバーが提供されているため、DB2 からデータをコピーするときにドライバーを手動でインストールする必要はありません。
+データ管理ゲートウェイでは組み込みの DB2 ドライバーが提供されているため、DB2 からデータをコピーするためにドライバーを手動でインストールする必要はありません。
 
 > [!NOTE]
-> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
+> 接続とゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)に関する記事を参照してください。
+
 
 ## <a name="supported-versions"></a>サポートされているバージョン
-この DB2 コネクタでは、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 9、10、および 11 に対応した、次の IBM DB2 のプラットフォームとバージョンをサポートしています。
+Data Factory DB2 コネクタでは、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー バージョン 9、10、および 11 に対応した、次の IBM DB2 のプラットフォームとバージョンがサポートされています。
 
-* IBM DB2 for z/OS 11.1
-* IBM DB2 for z/OS 10.1
-* IBM DB2 for i 7.2
-* IBM DB2 for i 7.1
-* IBM DB2 for LUW 11
-* IBM DB2 for LUW 10.5
-* IBM DB2 for LUW 10.1
+* IBM DB2 for z/OS バージョン 11.1
+* IBM DB2 for z/OS バージョン 10.1
+* IBM DB2 for i (AS400) バージョン 7.2
+* IBM DB2 for i (AS400) バージョン 7.1
+* IBM DB2 for Linux, UNIX, and Windows (LUW) バージョン 11 のサポート
+* IBM DB2 for LUW バージョン 10.5
+* IBM DB2 for LUW バージョン 10.1
 
 > [!TIP]
-> "SQL ステートメント実行要求に対応するパッケージが見つかりませんでした。 SQLSTATE = 51002 SQLCODE =-805" というエラーが表示された場合、ユーザーが高い特権アカウント (パワー ユーザーまたは管理者) を使用してコピー アクティビティを 1 回実行すると、コピー中に必要なパッケージが自動的に作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
+> "SQL ステートメント実行要求に対応するパッケージが見つかりませんでした。 SQLSTATE=51002 SQLCODE=-805" というエラー メッセージは、その OS の標準ユーザーでは必要なパッケージが作成されないために表示されます。 この問題を解決するには、DB2 サーバーの種類に応じて次の手順に従ってください。
+> - DB2 for i (AS400): 標準ユーザーの代わりにパワー ユーザーにコレクションを作成してもらったうえで、コピー アクティビティを実行します。 コレクションを作成するには、`create collection <username>` コマンドを使用します。
+> - DB2 for Z/OS または LUW: パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を付与されたパワー ユーザーまたは管理者の高い権限があるアカウントを使用して、コピー アクティビティを 1 回実行します。 するとコピー時に必要なパッケージが自動作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツール/API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
+さまざまなツールと API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。 
+- Azure Portal、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+1. リンクされたサービスを作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: DB2 から Azure BLOB へのデータのコピー](#json-example-copy-data-from-db2-to-azure-blob)」を参照してください。 
+コピー ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 「[JSON の使用例: DB2 から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-db2-to-azure-blob)」に、オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
-次のセクションでは、DB2 データ ストアに固有のデータ ファクトリ エンティティの定義に使用される JSON プロパティについて詳しく説明します。
+次の各セクションでは、DB2 データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
-## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-次の表は、DB2 のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+## <a name="db2-linked-service-properties"></a>DB2 のリンクされたサービスのプロパティ
+次の表は、DB2 のリンクされたサービスに固有の JSON プロパティの一覧です。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesDB2** |はい |
-| server |DB2 サーバーの名前です。 |はい |
-| database |DB2 データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |なし |
-| authenticationType |DB2 データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
-| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
-| gatewayName |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
-
+| **type** |このプロパティは **OnPremisesDB2** に設定されている必要があります。 |あり |
+| **server** |DB2 サーバーの名前です。 |あり |
+| **database** |DB2 データベースの名前です。 |あり |
+| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ |
+| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |あり |
+| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ |
+| **password** |ユーザー アカウントのパスワードです。 |いいえ |
+| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |あり |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の **structure**、**availability**、**policy** などのセクションは、データセットのすべての型 (Azure SQL、Azure Blob Storage、Azure Table Storage など) でほぼ同じです。
 
-typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 RelationalTable 型のデータセット (DB2 データセットを含む) の typeProperties セクションには次のプロパティがあります。
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (DB2 データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
+| **tableName** |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+コピー アクティビティの定義に使用できるセクションとプロパティの一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティのプロパティ (**名前**、**説明**、**入力**テーブル、**出力**テーブル、**ポリシー**など) は、あらゆる種類のアクティビティで使用できます。 アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、プロパティはデータ ソースとシンクの種類によって異なります。
 
-一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
-
-コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、typeProperties セクションで次のプロパティを使用できます:
+コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from "MySchema"."MyTable""`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
 > [!NOTE]
-> スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、名前を "" (二重引用符) で囲みます。  
+> スキーマ名とテーブル名は、大文字と小文字が区別されます。 query ステートメントでは、プロパティ名を "" (二重引用符) で囲んでください。 For example:
+>
+> ```sql
+> "query": "select * from "DB2ADMIN"."Customers""
+> ```
 
-**例:**
-
-```sql
-"query": "select * from "DB2ADMIN"."Customers""
-```
-
-
-## <a name="json-example-copy-data-from-db2-to-azure-blob"></a>JSON の使用例: DB2 から Azure BLOB へのデータのコピー
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、DB2 データベースから Azure Blob Storage にデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
+## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON の使用例: DB2 から Azure Blob Storage へのデータのコピー
+次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 この例で紹介しているのは、DB2 データベースから Blob Storage にデータをコピーする方法ですが、 Azure Data Factory コピー アクティビティを使用すると、[サポートされている各種データ ストア シンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)にデータをコピーすることができます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-1. [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
-3. [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
+- DB2 の [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties) 型のリンクされたサービス
+- Azure Blob Storage の [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 型のリンクされたサービス
+- [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)
+- [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)
+- [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) プロパティと [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) プロパティを使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
 
-このサンプルは DB2 データベースのクエリ結果のデータを Azure BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは DB2 データベースのクエリ結果のデータを Azure BLOB に 1 時間ごとにコピーします。 サンプルに使用されている JSON プロパティについては、エンティティの定義に続くセクションで説明しています。
 
-最初の手順として、Data Management Gateway をインストールして構成します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
+最初の手順として、データ ゲートウェイをインストールして構成します。 これらの手順は、[オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事に記載されています。
 
-**DB2 のリンクされたサービス:**
+**DB2 のリンクされたサービス**
 
 ```json
 {
@@ -146,7 +143,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**Azure BLOB ストレージのリンクされたサービス:**
+**Azure BLOB ストレージのリンクされたサービス**
 
 ```json
 {
@@ -160,11 +157,12 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**DB2 の入力データセット:**
+**DB2 の入力データセット**
 
-このサンプルでは、DB2 で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
+このサンプルは、"MyTable" という名前のテーブルが DB2 に作成済みで、かつそのテーブルに、時系列データを格納する "timestamp" という列が含まれていることを想定しています。
 
-"external": true の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。 **type** が **RelationalTable** に設定されている点に注目してください。
+**external** プロパティは "true" に設定されています。 この設定により、このデータセットがデータ ファクトリの外部にあり、データ ファクトリのアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。 **type** プロパティが **RelationalTable** に設定されている点に注目してください。
+
 
 ```json
 {
@@ -189,9 +187,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**Azure BLOB の出力データセット:**
+**Azure BLOB の出力データセット**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+**frequency** プロパティを "Hour" に、**interval** プロパティを 1 に設定することによって、新しい BLOB に 1 時間おきにデータを書き込みます。 BLOB の **folderPath** プロパティは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -249,15 +247,15 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**コピー アクティビティのあるパイプライン:**
+**コピー アクティビティのパイプライン**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定された SQL クエリは、Orders テーブルからデータを選択します。
+パイプラインには、指定した入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** の型が **RelationalSource** に設定され、**sink** の型が **BlobSink** に設定されています。 **query** プロパティに指定された SQL クエリは、"Orders" テーブルからデータを選択します。
 
 ```json
 {
     "name": "CopyDb2ToBlob",
     "properties": {
-        "description": "pipeline for copy activity",
+        "description": "pipeline for the copy activity",
         "activities": [
             {
                 "type": "Copy",
@@ -297,14 +295,13 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-
 ## <a name="type-mapping-for-db2"></a>DB2 の型マッピング
-[データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-DB2 にデータを移動する場合、DB2 型から .NET 型に対する次のマッピングが使用されます。
+コピー アクティビティでデータを DB2 型から .NET 型に変換するときに、次のマッピングが使用されます。
 
 | DB2 データベース型 | .NET Framework 型 |
 | --- | --- |
@@ -317,7 +314,7 @@ DB2 にデータを移動する場合、DB2 型から .NET 型に対する次の
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datetime |
+| 日付 |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
@@ -343,18 +340,17 @@ DB2 にデータを移動する場合、DB2 型から .NET 型に対する次の
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datetime |
+| 日付 |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 
-## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
+## <a name="repeatable-reads-from-relational-sources"></a>リレーショナル ソースからの反復可能な読み取り
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行する再試行ポリシー (**policy**) プロパティをデータセットに構成することもできます。 どのようにスライスを再実行するかに関係なく、何度スライスが実行されても同じデータが読み込まれることを確認してください。 詳細については、「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
+コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

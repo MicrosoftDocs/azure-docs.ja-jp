@@ -12,13 +12,13 @@ ms.devlang: javascript
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 06/16/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
-ms.openlocfilehash: 312e9081c8597f59c32e99d594f2e729410986d8
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 4580bda5633f84a7c7af0dc85f3cea4951024836
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/16/2016
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -57,7 +57,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 1. テキスト エディターを使用して SimulatedDevice.js ファイルを開きます。
 2. IoT Hub から送信されたメッセージを処理するように **connectCallback** 関数を変更します。 この例では、メッセージが処理されたことを IoT Hub に通知するために、デバイスは必ず **complete** 関数を呼び出します。 変更後の **connectCallback** 関数は次のスニペットのようになります。
    
-    ```
+    ```javascript
     var connectCallback = function (err) {
       if (err) {
         console.log('Could not connect: ' + err);
@@ -91,26 +91,26 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 1. 空のフォルダーを **sendcloudtodevicemessage**という名前で作成します。 コマンド プロンプトで次のコマンドを使用して、**sendcloudtodevicemessage** フォルダー内に package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
-    ```
+    ```shell
     npm init
     ```
 2. コマンド プロンプトで、**sendcloudtodevicemessage** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** パッケージをインストールします。
    
-    ```
+    ```shell
     npm install azure-iothub --save
     ```
 3. テキスト エディターを使用して、**sendcloudtodevicemessage** フォルダーに **SendCloudToDeviceMessage.js** ファイルを作成します。
 4. **SendCloudToDeviceMessage.js** ファイルの先頭に、次の `require` ステートメントを追加します。
    
-    ```
+    ```javascript
     'use strict';
    
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-5. 次のコードを **SendCloudToDeviceMessage.js** ファイルに追加します。 IoT Hub 接続文字列のプレースホルダーの値は、[IoT Hub の概要]のチュートリアルで作成したハブの IoT Hub の接続文字列で置き換えてください。 ターゲット デバイスのプレースホルダーを、次のように [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID で置き換えます。
+5. 次のコードを **SendCloudToDeviceMessage.js** ファイルに追加します。 "{iot hub 接続文字列}" プレースホルダーの値は、[IoT Hub の概要]のチュートリアルで作成したハブの IoT Hub の接続文字列で置き換えてください。 "{デバイス id}" プレースホルダーを、次のように [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID で置き換えます。
    
-    ```
+    ```javascript
     var connectionString = '{iot hub connection string}';
     var targetDevice = '{device id}';
    
@@ -118,7 +118,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     ```
 6. 操作結果をコンソールに出力するための次の関数を追加します。
    
-    ```
+    ```javascript
     function printResultFor(op) {
       return function printResult(err, res) {
         if (err) console.log(op + ' error: ' + err.toString());
@@ -128,7 +128,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     ```
 7. 配信フィードバック メッセージをコンソールに出力するための次の関数を追加します。
    
-    ```
+    ```javascript
     function receiveFeedback(err, receiver){
       receiver.on('message', function (msg) {
         console.log('Feedback message:')
@@ -138,7 +138,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     ```
 8. デバイスにメッセージを送信し、クラウドからデバイスへのメッセージが配信されたことの確認応答がデバイスからあったときにフィードバック メッセージを処理するための次のコードを追加します。
    
-    ```
+    ```javascript
     serviceClient.open(function (err) {
       if (err) {
         console.error('Could not connect: ' + err.message);
@@ -160,14 +160,14 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 1. **simulateddevice** フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub にテレメトリを送信して、クラウドからデバイスへのメッセージを待機します。
    
-    ```
+    ```shell
     node SimulatedDevice.js 
     ```
    
     ![シミュレーション済みデバイス アプリを実行する][img-simulated-device]
 2. **sendcloudtodevicemessage** フォルダーからコマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを送信して、配信確認のフィードバックを待機します。
    
-    ```
+    ```shell
     node SendCloudToDeviceMessage.js 
     ```
    

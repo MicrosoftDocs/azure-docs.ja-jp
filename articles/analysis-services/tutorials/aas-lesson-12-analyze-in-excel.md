@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアルのレッスン 12: Excel �
 description: "Azure Analysis Services チュートリアル プロジェクトで Excel の Analyze を使用する方法を説明します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

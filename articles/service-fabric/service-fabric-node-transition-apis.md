@@ -52,7 +52,7 @@ Node Transition API を呼び出したときに例外がスローされなけれ
 "*停止*" されているノードを Node Transition API を使って開始すると、そのノードはクラスターの通常のメンバーとして再び機能するようになります。  ノード クエリ API の出力では、*IsStopped* は false に、*NodeStatus* は Down 以外のいずれか (Up など) になります。
 
 
-**期間の制限** Node Transition API を使用してノードを停止する場合、必須パラメーターの&1; つである *stopNodeDurationInSeconds* は、ノードを "*停止*" する時間を秒単位で表します。  この値は 600 ～ 14400 の範囲内でなければなりません。  この時間を過ぎると、ノードは自動的に再起動して稼働状態に戻ります。  使用例については、下のサンプル 1 をご覧ください。
+**期間の制限** Node Transition API を使用してノードを停止する場合、必須パラメーターの 1 つである *stopNodeDurationInSeconds* は、ノードを "*停止*" する時間を秒単位で表します。  この値は 600 ～ 14400 の範囲内でなければなりません。  この時間を過ぎると、ノードは自動的に再起動して稼働状態に戻ります。  使用例については、下のサンプル 1 をご覧ください。
 
 > [!WARNING]
 > Node Transition API と Stop Node API/Start Node API を混在させないようにしてください。  Node Transition API のみを使用することをお勧めします。  Stop Node API で停止されているノードがある場合は、Start Node API でノードを開始してから、Node Transition API の使用を開始してください。

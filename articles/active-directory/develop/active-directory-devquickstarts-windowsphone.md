@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: e3f8db4560efc4c1425e1e88f2afee97ba7a8fea
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 03c4b6d225dce99d79ef6c1ba2af43af8dea3eae
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="integrate-azure-ad-with-a-windows-phone-app"></a>Azure AD と Windows Phone アプリの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+
+> [!NOTE]
+> Windows Phone 8.1 以前のバージョンのプロジェクトは、Visual Studio 2017 でサポートされていません。  詳細については、「[Visual Studio 2017 の対象プラットフォームと互換性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)」を参照してください。
 
 Windows Phone 8.1 アプリを開発する場合、Azure AD を使用すると、Active Directory アカウントを使用してユーザーの認証処理を容易に行うことができます。  また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 

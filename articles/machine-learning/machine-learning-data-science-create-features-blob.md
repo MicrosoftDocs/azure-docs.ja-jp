@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2ef2acfea2372ac7fd52d099a2b4203ee2242d81
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Pandas を使用して Azure BLOB ストレージ データの特徴を作成する
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/17/2016
 この **メニュー** は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。 このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
 
 ## <a name="prerequisites"></a>前提条件
-この記事は、Azure Blob Storage アカウントが作成済みで、そこにデータが格納されていることを前提とします。 アカウントの設定方法については、「[Azure Storage アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
+この記事は、Azure Blob Storage アカウントが作成済みで、そこにデータが格納されていることを前提とします。 アカウントの設定方法については、「[Azure Storage アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas データ フレームにデータを読み込む
 データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。 この手順に必要な操作は次のとおりです。

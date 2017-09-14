@@ -8,16 +8,17 @@ author: op-ravi
 manager: santoshb
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: eb710795916a2d7beea75a6408a0982fb4dc8750
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
 
 ---
@@ -30,23 +31,23 @@ Time Series Insights 環境は、受信とストレージの容量を備えた A
 
 次の手順に従って、環境を作成します。
 
-1.    [Azure Portal](https://portal.azure.com) にサインインします。
-2.    左上隅のプラス記号 ("+") をクリックします。
-3.    検索ボックスで「Time Series Insights」を検索します。
+1.  [Azure Portal](https://portal.azure.com) にサインインします。
+2.  左上隅のプラス記号 ("+") をクリックします。
+3.  検索ボックスで「Time Series Insights」を検索します。
 
   ![Time Series Insights 環境の作成](media/get-started/getstarted-create-environment1.png)
 
-4.    [Time Series Insights] を選択し、[作成] をクリックします。
+4.  [Time Series Insights] を選択し、[作成] をクリックします。
 
   ![Time Series Insights リソース グループの作成](media/get-started/getstarted-create-environment2.png)
 
-5.    環境名を指定します。 この名前は、[Time Series エクスプローラー](https://insights.timeseries.azure.com)でその環境を表します。
-6.    サブスクリプションを選択します。 イベント ソースが含まれているものを選択します。 Time Series Insights では、同じサブスクリプションに存在する Azure IoT Hub とイベント ハブのリソースを自動検出できます。
-7.    リソース グループを選択または作成します。 リソース グループとは、一緒に使用される Azure リソースのコレクションです。
-8.    ホストする場所を選択します。 データ センター間でのデータの移動を回避するために、イベント ソースが含まれている場所を選択してください。
-9.    価格レベルを選択します。
-10.    容量を選択します。 環境の容量は、作成後に変更できます。
-11.    環境を作成します。 サインインするときに常にアクセスしやすいように、作成した環境をダッシュボードにピン留めすることもできます。
+5.  環境名を指定します。 この名前は、[Time Series エクスプローラー](https://insights.timeseries.azure.com)でその環境を表します。
+6.  サブスクリプションを選択します。 イベント ソースが含まれているものを選択します。 Time Series Insights では、同じサブスクリプションに存在する Azure IoT Hub とイベント ハブのリソースを自動検出できます。
+7.  リソース グループを選択または作成します。 リソース グループとは、一緒に使用される Azure リソースのコレクションです。
+8.  ホストする場所を選択します。 データ センター間でのデータの移動を回避するために、イベント ソースが含まれている場所を選択してください。
+9.  価格レベルを選択します。
+10. 容量を選択します。 環境の容量は、作成後に変更できます。
+11. 環境を作成します。 サインインするときに常にアクセスしやすいように、作成した環境をダッシュボードにピン留めすることもできます。
 
   ![Time Series Insights の作成の [ダッシュボードにピン留めする]](media/get-started/getstarted-create-environment3.png)
 

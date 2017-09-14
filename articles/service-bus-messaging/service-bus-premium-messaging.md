@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/28/2017
+ms.date: 08/07/2017
 ms.author: darosa;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a916f643c7e6727d6053865d1c0bd2f683a53b3f
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: a0c169e0580468e83a07c077f8c60e83d3fb52f2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
@@ -48,7 +47,7 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 
 ### <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
-パーティション分割されたキューとトピックは Premium メッセージングでサポートされます。実際には、これらのエンティティは常にパーティション分割されます (無効にすることはできません)。 ただし、Premium のパーティション分割されたキューとトピックは、Standard レベルと Basic レベルの Service Bus メッセージングと同様には機能しません。 Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。 その結果、パフォーマンス向上のためのパーティション分割は必要ありません。 さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。 2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。 
+パーティション分割されたキューとトピックは Premium メッセージングでサポートされます。実際には、これらのエンティティは常にパーティション分割されます (無効にすることはできません)。 ただし、Premium のパーティション分割されたキューとトピックは、Standard レベルの Service Bus メッセージングと同様には機能しません。 Premium メッセージングは SQL をデータ ストアとして使用しないため、共有プラットフォームに関連するリソース競合が発生する可能性がなくなりました。 その結果、パフォーマンス向上のためのパーティション分割は必要ありません。 さらに、パーティション数は、Standard メッセージングでの 16 から、Premium メッセージングでは 2 に変更されました。 2 個のパーティションによって可用性が確保されます。また、Premium の実行時環境にとって、2 個というのはより適切なパーティション数です。 
 
 Premium メッセージングでは、[MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) でエンティティのサイズを指定すると、サイズが 2 つのパーティションに均等に分割されます。これは、合計サイズが指定されたサイズの 16 倍になる [Standard のパーティション分割されたエンティティ](service-bus-partitioning.md#standard)とは異なります。 
 

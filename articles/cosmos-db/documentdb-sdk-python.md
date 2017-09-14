@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB Python API、SDK、およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、DocumentDB Python SDK の各バージョン間の変更など、Python API と SDK に関するあらゆる詳細を提供します。"
+description: "リリース日、提供終了日、Azure Cosmos DB Python SDK の各バージョン間の変更など、Python API と SDK に関するあらゆる詳細を提供します。"
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 413b8a41ea4d87125e6fa1b46ee86288f7ec8c66
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 70d2550f713ff0e9daed235eb8053589b8682633
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="documentdb-python-sdk-release-notes-and-resources"></a>DocumentDB Python SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-python-sdk-release-notes-and-resources"></a>Azure Cosmos DB Python SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET Change Feed](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.JS](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -53,13 +53,12 @@ ms.lasthandoff: 05/31/2017
 
 ## <a name="release-notes"></a>リリース ノート
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* 1 分あたりの要求ユニット (RU/分) 機能のサポートが追加されました。
-* ConsistentPrefix と呼ばれる新しい一貫性レベルに対応するようになりました。
+* ConsistentPrefix と呼ばれている新しい一貫性レベルに対応するようになりました。
 
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
-* DocumentDB Emulator に対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
+* Azure Cosmos DB Emulator に対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
 * 依存する要求モジュールが必ず 2.10.0 でなければならないという制限をなくしました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 * ストアド プロシージャの実行時にスクリプトのログ記録を有効することができるようになりました。
@@ -75,7 +74,7 @@ ms.lasthandoff: 05/31/2017
 * パーティション分割コレクションの TOP/ORDERBY クエリのサポートを追加しました。
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、DocumentDB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 DocumentDB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
+* スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、Azure Cosmos DB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 Azure Cosmos DB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
 * Cosmos DB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
 * document_client クラスで公開されている RetryPolicy クラスとそれに対応するプロパティ (retry_policy) が削除され、代わりに、既定の一部の再試行オプションをオーバーライドするために使用できる ConnectionPolicy クラスの RetryOptions プロパティを公開する RetryOptions クラスが導入されました。
 

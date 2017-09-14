@@ -3,7 +3,7 @@ title: "Azure CDN の概要 | Microsoft Docs"
 description: "Azure Content Delivery Network (CDN) の概要と、CDN を使用して BLOB と静的コンテンツをキャッシュして高帯域幅コンテンツを配信する方法について説明します。"
 services: cdn
 documentationcenter: 
-author: lichard
+author: smcevoy
 manager: akucer
 editor: 
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
-ms.author: rli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 299e55e095ac323ed0ded7c7844d7cd103174af2
+ms.author: v-semcev
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 2706f22d2bc3e77a53f0a6a39dcbea8048879d01
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Azure Content Delivery Network (CDN) の概要
@@ -51,28 +50,39 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 
 |  | Standard Akamai | Standard Verizon | Premium Verizon |
 | --- | --- | --- | --- |
-| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md)、[Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md)、[PowerShell](cdn-manage-powershell.md) を介した管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| CDN エンドポイントでの HTTPS のサポート |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| カスタム ドメイン HTTPS | |**&#x2713;** |**&#x2713;** |
-| 負荷分散 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [DDOS](https://www.us-cert.gov/ncas/tips/ST04-015) 保護 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| IPv4/IPv6 デュアルスタック |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [クエリ文字列のキャッシュ](cdn-query-string.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Geo-filtering](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __パフォーマンス機能と最適化__ |
+| [動的サイト アクセラレーション](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[動的サイト アクセラレーション - アダプティブ イメージの圧縮](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only) | **&#x2713;**  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[動的サイト アクセラレーション - オブジェクトのプリフェッチ](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-akamai-only) | **&#x2713;**  |  |  |
+| [ビデオ ストリーミングの最適化](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&#x2713;**  | \* |  \* |
+| [大きなファイルの最適化](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&#x2713;**  | \* |  \* |
+| [グローバル サーバー負荷分散 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [高速消去](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [資産の事前読み込み](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
-| [コア分析](cdn-analyze-usage-patterns.md) | |**&#x2713;** |**&#x2713;** |
+| [クエリ文字列のキャッシュ](cdn-query-string.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| IPv4/IPv6 デュアルスタック |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 のサポート](cdn-http2.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __セキュリティ__ |
+| CDN エンドポイントでの HTTPS のサポート |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [カスタム ドメイン HTTPS](cdn-custom-ssl.md) | |**&#x2713;** |**&#x2713;** |
+| [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Geo-filtering](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [認証トークン](cdn-token-auth.md)|  |  |**&#x2713;**| 
+| [DDOS 保護](https://www.us-cert.gov/ncas/tips/ST04-015) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __分析とレポート__ |
+| [コア分析](cdn-analyze-usage-patterns.md) | **&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [詳細な HTTP レポート](cdn-advanced-http-reports.md) | | |**&#x2713;** |
 | [リアルタイム統計](cdn-real-time-stats.md) | | |**&#x2713;** |
 | [リアルタイム アラート](cdn-real-time-alerts.md) | | |**&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __使いやすさ__ |
+| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md)、[Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md)、[PowerShell](cdn-manage-powershell.md) を介した管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md) | | |**&#x2713;** |
 | キャッシュ/ヘッダーの設定 ( [ルール エンジン](cdn-rules-engine.md)を使用) | | |**&#x2713;** |
 | URL のリダイレクト/書き換え ([ルール エンジン](cdn-rules-engine.md)を使用) | | |**&#x2713;** |
 | モバイル デバイスのルール ( [ルール エンジン](cdn-rules-engine.md)を使用) | | |**&#x2713;** |
-| [認証トークン](cdn-token-auth.md)|  |  |**&#x2713;**| 
+
+\* Verizon は、一般的な Web 配信で大きなファイルやメディアを直接配信することができます。
 
 
 > [!TIP]

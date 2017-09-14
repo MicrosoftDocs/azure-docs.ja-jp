@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 5: 計算�
 description: "この Azure Analysis Services チュートリアル プロジェクトで計算列を作成する方法について説明します。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

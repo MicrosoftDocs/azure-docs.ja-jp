@@ -1,5 +1,5 @@
 ---
-title: "HDInsight で使用されるポート | Microsoft Docs"
+title: "HDInsight 上の Hadoop サービスで使用されるポート- Azure | Microsoft Docs"
 description: "HDInsight で実行されている Hadoop サービスで使用されるポートの一覧。"
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/17/2017
+ms.date: 08/23/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 3bf5ff732b03a1ecffb4e149d7805a6216ab0019
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f4e42ca177ac6c11111d4ffc0d772cafc13f8657
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="ports-and-uris-used-by-hdinsight"></a>HDInsight で使用されるポートと URI
+# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
 
 このドキュメントでは、Linux ベースの HDInsight クラスターで実行されている Hadoop サービスで使用されるポートの一覧を示します。 また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
 
@@ -76,6 +75,20 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 > [!NOTE]
 > 一部のサービスは、特定のクラスターの種類でのみ利用できます。 たとえば、HBase を利用できるのは、クラスターの種類が HBase の場合のみです。
 
+> [!IMPORTANT]
+> 一部のサービスは、一度に 1 つのヘッド ノード上でしか実行されません。 プライマリのヘッド ノード上のサービスに接続しようとして 404 エラーが発生した場合は、セカンダリのヘッド ノードを使用して再試行してください。
+
+### <a name="ambari"></a>Ambari
+
+| サービス | Nodes | Port | URL パス | プロトコル | 
+| --- | --- | --- | --- | --- |
+| Ambari Web UI | ヘッド ノード | 8080 | / | HTTP |
+| Ambari REST API | ヘッド ノード | 8080 | /api/v1 | HTTP |
+
+次に例を示します。
+
+* Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+
 ### <a name="hdfs-ports"></a>HDFS ポート
 
 | サービス | Nodes | ポート | プロトコル | Description |
@@ -105,8 +118,8 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 | サービス | Nodes | ポート | プロトコル | Description |
 | --- | --- | --- | --- | --- |
-| HiveServer2 |ヘッド ノード |10001 |Thrift |プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
-| Hive メタストア |ヘッド ノード |9083 |Thrift |プログラムによって Hive メタデータ (Thrift/JDBC) に接続するためのサービス |
+| HiveServer2 |ヘッド ノード |10001 |Thrift |Hive に接続するためのサービス (Thrift/JDBC) |
+| Hive メタストア |ヘッド ノード |9083 |Thrift |Hive メタデータに接続するためのサービス (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat ポート
 
@@ -152,4 +165,13 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | ブローカー |ワーカー ノード |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |クライアント通信に使用 |
 | &nbsp; |Zookeeper ノード |2181 |&nbsp; |クライアントが ZooKeeper への接続に使用するポート |
 
+### <a name="spark-ports"></a>Spark ポート
 
+| サービス | Nodes | ポート | プロトコル | URL パス | Description |
+| --- | --- | --- | --- | --- | --- |
+| Spark Thrift サーバー |ヘッド ノード |10002 |Thrift | &nbsp; | Spark SQL に接続するためのサービス (Thrift/JDBC) |
+| Livy サーバー | ヘッド ノード | 8998 | HTTP | /batches | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
+
+次に例を示します。
+
+* Livy: `curl "http://10.0.0.11:8998/batches"`. この例の `10.0.0.11` は、Livy サービスをホストするヘッド ノードの IP アドレスです。

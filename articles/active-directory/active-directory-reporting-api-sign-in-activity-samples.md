@@ -3,7 +3,7 @@ title: "Azure Active Directory サインイン アクティビティ レポー�
 description: "Azure Active Directory Reporting API の概要について説明します。"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6b1137c8ca33774ef9852b9441b541cf7723ebd
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory サインイン アクティビティ レポート API のサンプル
@@ -29,10 +29,9 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
 
 参照:
 
-* [監査ログ](active-directory-reporting-azure-portal.md#audit-logs)に関する記事
+* [監査ログ](active-directory-reporting-azure-portal.md#activity-reports)に関する記事
 * [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
-質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
 ## <a name="prerequisites"></a>前提条件
 このトピックに掲載されているサンプルを使用するには、事前に、 [Azure AD レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)を完了する必要があります。  
@@ -41,7 +40,7 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
     # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
-    $loginURL       = "https://login.windows.net/"
+    $loginURL       = "https://login.microsoftonline.com/"
     $tenantdomain   = "<tenantDomain>"
     $ daterange            # For example, contoso.onmicrosoft.com
 

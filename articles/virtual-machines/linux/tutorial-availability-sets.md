@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: bfa4135600cb94d3947323219969872c2da7912b
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 63fe3f165864f06228604cac56d06cc061ab25f5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -36,10 +36,10 @@ ms.lasthandoff: 06/01/2017
 > * 可用性セットに VM を作成する
 > * 使用可能な VM のサイズを確認する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="availability-set-overview"></a>可用性セットの概要
 
@@ -52,7 +52,7 @@ Azure 内で信頼性の高い VM ベースのソリューションをデプロ�
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットは、[az vm availability-set create](/cli/azure/availability-set#create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
+可用性セットは、[az vm availability-set create](/cli/azure/vm/availability-set#create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
 
 リソース グループを作成します。
 
@@ -71,6 +71,32 @@ az vm availability-set create \
 
 可用性セットでは、"障害ドメイン" と "更新ドメイン" を分離できます。 **障害ドメイン**は、サーバーとネットワークとストレージ リソースの分離されたコレクションを表します。 前の例では、VM がデプロイされる際に、少なくとも 2 つの障害ドメインに可用性セットを分散することを指示しています。 さらに、可用性セットを 2 つの**更新ドメイン**に分散することも指示しています。  2 つの更新ドメインは、Azure でソフトウェアの更新が実行される際に VM リソースが分離され、VM の下で実行されているすべてのソフトウェアが同時に更新されることがないようにします。
 
+## <a name="configure-virtual-network"></a>仮想ネットワークを構成する
+一部の VM をデプロイしてバランサーをテストする前に、関連する仮想ネットワーク リソースを作成します。 仮想ネットワークの詳細については、[Azure 仮想ネットワークの管理](tutorial-virtual-network.md)に関するチュートリアルを参照してください。
+
+### <a name="create-network-resources"></a>ネットワーク リソースを作成する
+[az network vnet create](/cli/azure/network/vnet#create) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* という名前のサブネットと共に、*myVnet* という名前の仮想ネットワークを作成します。
+
+```azurecli-interactive 
+az network vnet create \
+    --resource-group myResourceGroupAvailability \
+    --name myVnet \
+    --subnet-name mySubnet
+```
+仮想 NIC は、[az network nic create](/cli/azure/network/nic#create) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+
+```bash
+for i in `seq 1 3`; do
+    az network nic create \
+        --resource-group myResourceGroupAvailability \
+        --name myNic$i \
+        --vnet-name myVnet \
+        --subnet mySubnet \
+        --lb-name myLoadBalancer \
+        --lb-address-pools myBackEndPool
+done
+```
+
 ## <a name="create-vms-inside-an-availability-set"></a>可用性セット内の VM の作成
 
 VM は、ハードウェア全体で適切に分散させるために、可用性セット内に作成する必要があります。 可用性セットを作成した後に、既存の VM を追加することはできません。 
@@ -83,6 +109,7 @@ for i in `seq 1 2`; do
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
+     --nics myNic$i \
      --size Standard_DS1_v2  \
      --image Canonical:UbuntuServer:14.04.4-LTS:latest \
      --admin-username azureuser \

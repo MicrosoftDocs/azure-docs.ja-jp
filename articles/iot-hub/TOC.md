@@ -15,8 +15,11 @@
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
+#### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
 #### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
+
+#### [Arduino での MXChip IoT DevKit](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 
 #### [Node.js での Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
 #### [C での Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
@@ -84,9 +87,11 @@
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
 ### ダイレクト メソッドの使用
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-direct-methods.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-direct-methods.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-direct-methods.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-direct-methods.md)
 ### デバイス管理の開始
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
@@ -95,13 +100,15 @@
 ### ツインのプロパティの使用方法
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-how-to-configure.md)
 ### デバイス ジョブを使用したデバイスのファームウェアの更新
 #### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
 ### ジョブのスケジュールとブロードキャスト
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
-## Manage
+#### [Java](iot-hub-java-java-schedule-jobs.md)
+## 管理
 ### IoT Hub の作成 
 #### [ポータルの使用](iot-hub-create-through-portal.md)
 #### [PowerShell の使用](iot-hub-create-using-powershell.md)
@@ -133,9 +140,10 @@
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [実在のデバイスの使用](iot-hub-iot-edge-physical-device.md)
 ### モジュールを作成する
-#### [Java](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-java-modules-windows-10ubuntu-linux-14)
-#### [.NET Framework](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-net-modules-windows-10)
-#### [Node.JS](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-javascript-modules-windows-10ubuntu-linux-14)
+#### [Java](iot-hub-iot-edge-create-module-java.md)
+#### [.NET Framework](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-the-net-module-sample-windows-10)
+#### [.NET Standard](iot-hub-iot-edge-create-module-dotnet-core.md)
+#### [Node.JS](iot-hub-iot-edge-create-module-js.md)
 ### 構築
 #### [.NET Framework](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample)
 #### [.NET Core モジュール](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_module_sample)
@@ -147,6 +155,7 @@
 #### [ネイティブ モジュール ホスト](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET (サービス)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
@@ -168,15 +177,17 @@
 ## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
 
 # リソース
-## [iothub-explorer ツール](https://github.com/Azure/iothub-explorer)
-## [iothub-diagnostics ツール](https://github.com/Azure/iothub-diagnostics)
-## [DeviceExplorer ツール](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
-## [料金](https://azure.microsoft.com/pricing/details/iot-hub/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=iot-hub)
-## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
-## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
+## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=internet-of-things)
+## [DeviceExplorer ツール](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
+## [iothub-diagnostics ツール](https://github.com/Azure/iothub-diagnostics)
+## [iothub-explorer ツール](https://github.com/Azure/iothub-explorer)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
+## [料金](https://azure.microsoft.com/pricing/details/iot-hub/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=iot-hub)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
 ## [技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub)

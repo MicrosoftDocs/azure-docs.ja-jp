@@ -1,5 +1,5 @@
 ---
-title: Azure AD B2C | Microsoft Docs
+title: "アプリケーションの種類 - Azure AD B2C | Microsoft Docs"
 description: "Azure Active Directory B2C で構築できるアプリケーションの種類。"
 services: active-directory-b2c
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 762af7e09342f1bb51352e6c3d104bd4d8944e65
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 51001feb17ae99d3bd391a9f980d514e07f97099
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: アプリケーションの種類

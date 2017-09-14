@@ -4,7 +4,7 @@ description: "Data Lake Tools for Visual Studio のインストール方法と�
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: saveenr
+manager: jhubbard
 editor: cgronlun
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2017
-ms.author: edmaca, yanacai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: b2fd62683f0272da271eebeb6eb3a71388ecb59e
+ms.date: 06/28/2017
+ms.author: saveenr, yanacai
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7bbbb08ff635477a88403a3ae6bd3486d31838ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する
@@ -33,10 +32,10 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 
 * **Visual Studio**: Express を除くすべてのエディションがサポートされます。
     * Visual Studio 2017
-    * Visual Studio 2015 Update 4
+    * Visual Studio 2015
     * Visual Studio 2013
 * **Microsoft Azure SDK for .NET** バージョン 2.7.1 以上。  [Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用してインストールします。
-* **Data Lake Analytics**  アカウント。 アカウントを作成するには、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
+* **Data Lake Analytics** アカウント。 アカウントを作成するには、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio をインストールする 
 
@@ -89,10 +88,10 @@ OUTPUT @a
 
     ![U-SQL Visual Studio Data Lake Analytics ジョブ パフォーマンス グラフ](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-   *  **ジョブの概要**: ジョブの概要を示します。   
+   * **ジョブの概要**: ジョブの概要を示します。   
    * **ジョブの詳細**: スクリプト、リソース、頂点などの、ジョブに関する固有情報が表示されます。
-   *  **ジョブ グラフ**: ジョブの進行状況を視覚化します。
-   *  **メタデータ操作**: U-SQL カタログに対して実行されたすべてのアクションを示します。
+   * **ジョブ グラフ**: ジョブの進行状況を視覚化します。
+   * **メタデータ操作**: U-SQL カタログに対して実行されたすべてのアクションを示します。
    * **データ**: すべての入力と出力を示します。
    * **診断**: ジョブの実行とパフォーマンスを最適化するための高度な分析を提供します。
 
@@ -111,7 +110,7 @@ OUTPUT @a
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure ポータル](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md)で Azure Data Lake Analytics の使用を開始する 
+* [ご使用のワークステーションでのテストおよびデバッグのための U-SQL スクリプトの実行](data-lake-analytics-data-lake-tools-local-run.md)
 * [U-SQL ジョブのデバッグ](data-lake-analytics-debug-u-sql-jobs.md)
 * [Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)
 

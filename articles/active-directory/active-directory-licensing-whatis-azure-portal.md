@@ -1,7 +1,7 @@
 ---
 
 title: "Azure Active Directory のグループベースのライセンスとは | Microsoft Docs"
-description: "Azure Active Directory のグループベース ライセンスと、その仕組み、使用方法、およびベスト プラクティスに関する説明"
+description: "Azure Active Directory のグループベース ライセンス、使用方法、ベスト プラクティスに関する説明"
 services: active-directory
 keywords: "Azure AD のライセンス"
 documentationcenter: 
@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 06/29/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.reviewer: piotrci
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 52c3e88689441045c3bd34ea3ab17a8a1d270f23
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 52dd48ce4e4acaf48f31edc51bbb657f8cd249cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスの基礎
 
-マイクロソフトの Office 365、Enterprise Mobility + Security、Dynamics CRM などのクラウド サービスやその他の類似製品では、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
+Office 365、Enterprise Mobility + Security、Dynamics CRM など、Microsoft の有料クラウド サービスやその他の類似製品の使用には、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
 
 従来、ライセンスは個々のユーザー レベルでしか割り当てることができず、大規模な管理を行いづらい場合がありました。 たとえば、組織や部署でのユーザーの異動などの組織の変化に応じてユーザー ライセンスの追加または削除を行うには、管理者は多くの場合、複雑な PowerShell スクリプトを記述する必要がありました。 このスクリプトは、クラウド サービスを一つ一つ呼び出します。
 
@@ -58,7 +59,8 @@ ms.lasthandoff: 04/06/2017
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 
-* [Assigning licenses to a group in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) (Azure Active Directory でのグループへのライセンス割り当て)
+* [Azure Active Directory のライセンスの概要](active-directory-licensing-get-started-azure-portal.md)
+* [Azure Active Directory でのグループへのライセンス割り当て](active-directory-licensing-group-assignment-azure-portal.md)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
 * [Azure Active Directory グループベース ライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)

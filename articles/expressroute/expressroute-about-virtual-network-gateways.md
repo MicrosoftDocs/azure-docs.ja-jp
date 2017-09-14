@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 07/05/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b58a8f7f87a231bd44c9224e3c889c31336ee0b1
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: a6363fa380d0bab05d7500141cc6019d1d3f68b8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/21/2017
 
 仮想ネットワーク ゲートウェイを作成する場合、設定をいくつか指定します。 必須の設定の 1 つとして、ExpressRoute またはサイト間 VPN トラフィック用ゲートウェイのどちらを使用するかを指定します。 Resource Manager デプロイメント モデルでは、設定は "-GatewayType" です。
 
-専用プライベート接続でネットワーク トラフィックを送信する場合、ゲートウェイの種類 "ExpressRoute" を使用します。 これは、ExpressRoute ゲートウェイとも呼ばれます。 パブリック インターネットでネットワーク トラフィックを暗号化して送信する場合、ゲートウェイの種類 "Vpn" を使用します。 これは、VPN ゲートウェイと呼ばれます。 サイト間接続、ポイント対サイト接続、VNet 間接続のすべてで、VPN ゲートウェイが使用されます。 
+プライベート接続でネットワーク トラフィックを送信する場合、ゲートウェイの種類は 'ExpressRoute' を使用します。 これは、ExpressRoute ゲートウェイとも呼ばれます。 パブリック インターネットでネットワーク トラフィックを暗号化して送信する場合、ゲートウェイの種類 "Vpn" を使用します。 これは、VPN ゲートウェイと呼ばれます。 サイト間接続、ポイント対サイト接続、VNet 間接続のすべてで、VPN ゲートウェイが使用されます。
 
 各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。 たとえば、-GatewayType が Vpn の仮想ネットワーク ゲートウェイと -GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。 この記事では、ExpressRoute の仮想ネットワーク ゲートウェイについて説明します。
 

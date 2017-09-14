@@ -1,5 +1,5 @@
 ---
-title: "C# を使用した Azure 仮想マシンのデプロイ | Microsoft Docs"
+title: "C# を使用した Azure 仮想マシンの作成および管理 | Microsoft Docs"
 description: "C# と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,565 +13,389 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f4c63af2d873fb11c8503a30b104b9b7db7f74f0
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c"></a>C を使用した Azure 仮想マシンのデプロイ# #
+# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
-この記事では、Azure 仮想マシンとそれをサポートするリソースを C# を使用して作成する方法を説明します。
+[Azure 仮想マシン](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) には、いくつかのサポート Azure リソースが必要です。 この記事では、C# を使って VM リソースを作成、管理、削除する方法について説明します。 学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Visual Studio プロジェクトを作成する
+> * パッケージをインストールする
+> * 資格情報を作成する
+> * リソースを作成する
+> * 管理タスクを実行する
+> * リソースを削除する
+> * アプリケーションの実行
 
 これらの手順を実行するには約 20 分かかります。
 
-## <a name="step-1-create-a-visual-studio-project"></a>手順 1: Visual Studio プロジェクトを作成する
+## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-この手順では、Visual Studio がインストールされていることを確認し、リソースを作成するために使用するコンソール アプリケーションを作成します。
-
-1. まだ [Visual Studio](https://www.visualstudio.com/) をインストールしていない場合は、インストールを実行します。
+1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、**[インストール]** をクリックします。 サマリーで、**[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
 2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]**をクリックします。
-3. **[テンプレート]** > の **[Visual C#]** で **[コンソール アプリケーション]** を選択し、プロジェクトの名前と場所を入力して、**[OK]** をクリックします。
+3. **[テンプレート]** > **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
 
-## <a name="step-2-install-libraries"></a>手順 2: ライブラリをインストールする
+## <a name="install-the-package"></a>パッケージをインストールする
 
 NuGet パッケージを使用すると、手順を完了するために必要なライブラリを簡単にインストールできます。 Visual Studio で必要なライブラリを入手するには、次の手順に従います。
 
+1. **[ツール]** > **[NuGet パッケージ マネージャー]** をクリックし、**[パッケージ マネージャー コンソール]** をクリックします。
+2. コンソールに次のコマンドを入力します。
 
-1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]**をクリックし、**[参照]** をクリックします。
-2. 検索ボックスに「*Microsoft.IdentityModel.Clients.ActiveDirectory*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
-3. ページの上部で、 **[リリース前のパッケージを含める]**を選択します。 検索ボックスに「*Microsoft.Azure.Management.Compute*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
-4. 検索ボックスに「*Microsoft.Azure.Management.Network*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
-5. 検索ボックスに「*Microsoft.Azure.Management.Storage*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
-6. 検索ボックスに「*Microsoft.Azure.Management.ResourceManager*」と入力し、**[インストール]** をクリックします。指示に従ってパッケージをインストールします。
-
-これで、ライブラリを使用してアプリケーションの作成を開始する準備が整いました。
-
-## <a name="step-3-create-the-credentials-used-to-authenticate-requests"></a>手順 3. 要求の認証に使用される資格情報を作成する
-
-この手順を開始する前に、[Active Directory サービス プリンシパル](../../resource-group-authenticate-service-principal.md)にアクセスできることを確認します。 このサービス プリンシパルから、Azure Resource Manager への要求を認証するためのトークンを取得します。
-
-1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
-   
     ```
-    using Microsoft.Azure;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.Azure.Management.Storage;
-    using Microsoft.Azure.Management.Storage.Models;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Models;
-    using Microsoft.Azure.Management.Compute;
-    using Microsoft.Azure.Management.Compute.Models;
-    using Microsoft.Rest;
+    Install-Package Microsoft.Azure.Management.Fluent
     ```
 
-2. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
-   
-    ```    
-    private static async Task<AuthenticationResult> GetAccessTokenAsync()
-    {
-      var cc = new ClientCredential("{client-id}", "{client-secret}");
-      var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-      var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
-      if (token == null)
-      {
-        throw new InvalidOperationException("Could not get the token");
-      }
-      return token;
-    }
+## <a name="create-credentials"></a>資格情報を作成する
+
+この手順を開始する前に、[Active Directory サービス プリンシパル](../../azure-resource-manager/resource-group-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
+
+### <a name="create-the-authorization-file"></a>認証ファイルを作成する
+
+1. ソリューション エクスプ ローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、**[追加]** をクリックします。
+2. 次の認証プロパティを追加します。
+
+    ```
+    subscription=<subscription-id>
+    client=<application-id>
+    key=<authentication-key>
+    tenant=<tenant-id>
+    managementURI=https://management.core.windows.net/
+    baseURL=https://management.azure.com/
+    authURL=https://login.windows.net/
+    graphURL=https://graph.windows.net/
     ```
 
-    次の値を置き換えます。
+    **&lt;subscription-id&gt;** をサブスクリプション ID に、**&lt;application-id&gt;** を Active Directory アプリケーション ID に、**&lt;authentication-key&gt;** をアプリケーション キーに、**&lt;tenant-id&gt;** をテナント識別子に置き換えます。
+
+3. azureauth.properties ファイルを保存します。 
+4. AZURE_AUTH_LOCATION という Windows 環境変数を、作成した認証ファイルへのフルパスに設定します。 たとえば、次の PowerShell コマンドを使用します。
+
+    ```
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    ```
+
+### <a name="create-the-management-client"></a>管理クライアントを作成する
+
+1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭の既存のステートメントに追加します。
+
+    ```
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    ```
+
+2. 管理クライアントを作成するには、次のコードを Main メソッドに追加します。
+
+    ```
+    var credentials = SdkContext.AzureCredentialsFactory
+        .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
+
+    var azure = Azure
+        .Configure()
+        .WithLogLevel(HttpLoggingDelegatingHandler.Level.Basic)
+        .Authenticate(credentials)
+        .WithDefaultSubscription();
+    ```
+
+## <a name="create-resources"></a>リソースを作成する
+
+### <a name="create-the-resource-group"></a>リソース グループの作成
+
+すべてのリソースは、[リソース グループ](../../azure-resource-manager/resource-group-overview.md)に含まれる必要があります。
+
+アプリケーションに値を指定し、リソース グループを作成するには、次のコードを Main メソッドに追加します。
+
+```
+var groupName = "myResourceGroup";
+var vmName = "myVM";
+var location = Region.USWest;
     
-    - *{client-id}*: Azure Active Directory アプリケーションの ID。 この ID は、AD アプリケーションの [プロパティ] ブレードで確認できます。 Azure Portal で AD アプリケーションを見つけるには、リソース メニューの **[Azure Active Directory]** をクリックし、**[アプリの登録]** をクリックします。
-    - *{client-secret}*: AD アプリケーションのアクセス キー。 この ID は、AD アプリケーションの [プロパティ] ブレードで確認できます。
-    - *{tenant-id}*: サブスクリプションのテナント ID。 テナント ID は、Azure Portal で Azure Active Directory の [プロパティ] ブレードで確認できます。 *[ディレクトリ ID]* というラベルが付いています。
+Console.WriteLine("Creating resource group...");
+var resourceGroup = azure.ResourceGroups.Define(groupName)
+    .WithRegion(location)
+    .Create();
+```
 
-3. 前に作成したメソッドを呼び出すために、次のコードを Program.cs ファイルの Main メソッドに追加します。
+### <a name="create-the-availability-set"></a>可用性セットを作成する
+
+[可用性セット](tutorial-availability-sets.md)を使うと、アプリケーションで使う仮想マシンの管理が容易になります。
+
+可用性セットを作成するには、次のコードを Main メソッドに追加します。
+
+```
+Console.WriteLine("Creating availability set...");
+var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithSku(AvailabilitySetSkuTypes.Managed)
+    .Create();
+```
+
+### <a name="create-the-public-ip-address"></a>パブリック IP アドレスの作成
+
+仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)が必要です。
+
+仮想マシンのパブリック IP アドレスを作成するには、次のコードを Main メソッドに追加します。
    
-    ```
-    var token = GetAccessTokenAsync();
-    var credential = new TokenCredentials(token.Result.AccessToken);
-    ```
+```
+Console.WriteLine("Creating public IP address...");
+var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithDynamicIP()
+    .Create();
+```
 
-4. Program.cs ファイルを保存します。
+### <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
-## <a name="step-3-create-the-resources"></a>手順 3: リソースを作成する
+仮想マシンは、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)のサブネット内に存在する必要があります。
 
-### <a name="register-the-providers-and-create-a-resource-group"></a>プロバイダーを登録し、リソース グループを作成する
+サブネットと仮想ネットワークを作成するには、次のコードを Main メソッドに追加します。
 
-すべてのリソースは、リソース グループに含まれる必要があります。 リソースをグループに追加する前に、リソース プロバイダーにサブスクリプションを登録する必要があります。
+```
+Console.WriteLine("Creating virtual network...");
+var network = azure.Networks.Define("myVNet")
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithAddressSpace("10.0.0.0/16")
+    .WithSubnet("mySubnet", "10.0.0.0/24")
+    .Create();
+```
 
-1. Program クラスの Main メソッドに変数を追加して、リソースに使用する名前を指定します。
-
-    ```   
-    var groupName = "myResourceGroup";
-    var subscriptionId = "subsciptionId";
-    var storageName = "myStorageAccount";
-    var ipName = "myPublicIP";
-    var subnetName = "mySubnet";
-    var vnetName = "myVnet";
-    var nicName = "myNIC";
-    var avSetName = "myAVSet";
-    var vmName = "myVM";  
-    var location = "location";
-    var adminName = "adminName";
-    var adminPassword = "adminPassword";
-    ```
-
-    次の値を置き換えます。
-
-    - *my* から始まるすべてのリソース名: 使用する環境で意味のある名前。
-    - *subscriptionId*: サブスクリプション ID。 サブスクリプション ID は、Azure Portal の [サブスクリプション] ブレードで確認できます。
-    - *location*: リソースを作成する [Azure リージョン](https://azure.microsoft.com/regions/)。
-    - *adminName*: 仮想マシンの管理者アカウントの名前とパスワード。
-    - *adminPassword*: 管理者アカウントのパスワード。
-
-2. リソース グループを作成してプロバイダーを登録するために、次のメソッドを Program クラスに追加します。
-   
-    ```
-    public static async Task<ResourceGroup> CreateResourceGroupAsync(
-      TokenCredentials credential,
-      string groupName,
-      string subscriptionId,
-      string location)
-    {
-      var resourceManagementClient = new ResourceManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-   
-      Console.WriteLine("Registering the providers...");
-      var rpResult = resourceManagementClient.Providers.Register("Microsoft.Storage");
-      Console.WriteLine(rpResult.RegistrationState);
-      rpResult = resourceManagementClient.Providers.Register("Microsoft.Network");
-      Console.WriteLine(rpResult.RegistrationState);
-      rpResult = resourceManagementClient.Providers.Register("Microsoft.Compute");
-      Console.WriteLine(rpResult.RegistrationState);
-   
-      Console.WriteLine("Creating the resource group...");
-      var resourceGroup = new ResourceGroup { Location = location };
-      return await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(
-        groupName, 
-        resourceGroup);
-    }
-    ```
-
-3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```   
-    var rgResult = CreateResourceGroupAsync(
-      credential,
-      groupName,
-      subscriptionId,
-      location);
-    Console.WriteLine(rgResult.Result.Properties.ProvisioningState);
-    Console.ReadLine();
-    ```
-
-### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-
-非管理対象ディスクを使用する場合は、仮想マシン用に作成される仮想ハード ディスク ファイルを保存するための[ストレージ アカウント](../../storage/storage-create-storage-account.md)が必要です。
-
-1. ストレージ アカウントを作成するために、次のメソッドを Program クラスに追加します。
-
-    ```   
-    public static async Task<StorageAccount> CreateStorageAccountAsync(
-      TokenCredentials credential,       
-      string groupName,
-      string subscriptionId,
-      string location,
-      string storageName)
-    {
-      var storageManagementClient = new StorageManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-      
-      Console.WriteLine("Creating the storage account...");
-
-      return await storageManagementClient.StorageAccounts.CreateAsync(
-        groupName,
-        storageName,
-        new StorageAccountCreateParameters()
-          {
-            Sku = new Microsoft.Azure.Management.Storage.Models.Sku() 
-              { Name = SkuName.StandardLRS},
-            Kind = Kind.Storage,
-            Location = location
-          }
-      );
-    }
-    ```
-
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```
-    var stResult = CreateStorageAccountAsync(
-      credential,
-      groupName,
-      subscriptionId,
-      location,
-      storageName);
-    Console.WriteLine(stResult.Result.ProvisioningState);  
-    Console.ReadLine();
-    ```
-
-### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-
-仮想マシンと通信するには、パブリック IP アドレスが必要です。
-
-1. 仮想マシンのパブリック IP アドレスを作成するために、次のメソッドを Program クラスに追加します。
-   
-    ```
-    public static async Task<PublicIPAddress> CreatePublicIPAddressAsync(
-      TokenCredentials credential,  
-      string groupName,
-      string subscriptionId,
-      string location,
-      string ipName)
-    {
-      var networkManagementClient = new NetworkManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-      
-      Console.WriteLine("Creating the public ip...");
-
-      return await networkManagementClient.PublicIPAddresses.CreateOrUpdateAsync(
-        groupName,
-        ipName,
-        new PublicIPAddress
-          {
-            Location = location,
-            PublicIPAllocationMethod = "Dynamic"
-          }
-      );
-    }
-    ```
-
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```   
-    var ipResult = CreatePublicIPAddressAsync(
-      credential,
-      groupName,
-      subscriptionId,
-      location,
-      ipName);
-    Console.WriteLine(ipResult.Result.ProvisioningState);  
-    Console.ReadLine();
-    ```
-
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-
-リソース マネージャーのデプロイ モデルで作成された仮想マシンは、仮想ネットワーク内に存在する必要があります。
-
-1. サブネットと仮想ネットワークを作成するために、次のメソッドを Program クラスに追加します。
-
-    ```   
-    public static async Task<VirtualNetwork> CreateVirtualNetworkAsync(
-      TokenCredentials credential,
-      string groupName,
-      string subscriptionId,
-      string location,
-      string vnetName,
-      string subnetName)
-    {
-      var networkManagementClient = new NetworkManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-   
-      var subnet = new Subnet
-        {
-          Name = subnetName,
-          AddressPrefix = "10.0.0.0/24"
-        };
-   
-      var address = new AddressSpace 
-        {
-          AddressPrefixes = new List<string> { "10.0.0.0/16" }
-        };
-         
-      Console.WriteLine("Creating the virtual network...");
-      return await networkManagementClient.VirtualNetworks.CreateOrUpdateAsync(
-        groupName,
-        vnetName,
-        new VirtualNetwork
-          {
-            Location = location,
-            AddressSpace = address,
-            Subnets = new List<Subnet> { subnet }
-          }
-      );
-    }
-    ```
-
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-
-    ```   
-    var vnResult = CreateVirtualNetworkAsync(
-      credential,
-      groupName,
-      subscriptionId,
-      location,
-      vnetName,
-      subnetName);
-    Console.WriteLine(vnResult.Result.ProvisioningState);  
-    Console.ReadLine();
-    ```
-
-### <a name="create-a-network-interface"></a>ネットワーク インターフェイスの作成
+### <a name="create-the-network-interface"></a>ネットワーク インターフェイスの作成
 
 仮想マシンが仮想ネットワーク上で通信するには、ネットワーク インターフェイスが必要です。
 
-1. ネットワーク インターフェイスを作成するために、次のメソッドを Program クラスに追加します。
+ネットワーク インターフェイスを作成するには、次のコードを Main メソッドに追加します。
 
-    ```   
-    public static async Task<NetworkInterface> CreateNetworkInterfaceAsync(
-      TokenCredentials credential,
-      string groupName,
-      string subscriptionId,
-      string location,
-      string subnetName,
-      string vnetName,
-      string ipName,
-      string nicName)
-    {
-      var networkManagementClient = new NetworkManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-      var subnet = await networkManagementClient.Subnets.GetAsync(
-        groupName,
-        vnetName,
-        subnetName
-      );
-      var publicIP = await networkManagementClient.PublicIPAddresses.GetAsync(
-        groupName, 
-        ipName
-      );
-   
-      Console.WriteLine("Creating the network interface...");
-      return await networkManagementClient.NetworkInterfaces.CreateOrUpdateAsync(
-        groupName,
-        nicName,
-        new NetworkInterface
-          {
-            Location = location,
-            IpConfigurations = new List<NetworkInterfaceIPConfiguration>
-              {
-                new NetworkInterfaceIPConfiguration
-                  {
-                    Name = nicName,
-                    PublicIPAddress = pubipResponse,
-                    Subnet = subnetResponse
-                  }
-              }
-          }
-      );
-    }
-    ```
+```
+Console.WriteLine("Creating network interface...");
+var networkInterface = azure.NetworkInterfaces.Define("myNIC")
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithExistingPrimaryNetwork(network)
+    .WithSubnet("mySubnet")
+    .WithPrimaryPrivateIPAddressDynamic()
+    .WithExistingPrimaryPublicIPAddress(publicIPAddress)
+    .Create();
+ ```
 
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```
-    var ncResult = CreateNetworkInterfaceAsync(
-      credential,
-      groupName,
-      subscriptionId,
-      location,
-      subnetName,
-      vnetName,
-      ipName,
-      nicName);
-    Console.WriteLine(ncResult.Result.ProvisioningState);  
-    Console.ReadLine();
-    ```
-
-### <a name="create-an-availability-set"></a>可用性セットの作成
-
-可用性セットを使うと、アプリケーションで使用する仮想マシンのメンテナンスの管理が容易になります。
-
-1. 可用性セットを作成するために、次のメソッドを Program クラスに追加します。
-
-    ```   
-    public static async Task<AvailabilitySet> CreateAvailabilitySetAsync(
-      TokenCredentials credential,
-      string groupName,
-      string subscriptionId,
-      string location,
-      string avsetName)
-    {
-      var computeManagementClient = new ComputeManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-        
-      Console.WriteLine("Creating the availability set...");
-      return await computeManagementClient.AvailabilitySets.CreateOrUpdateAsync(
-        groupName,
-        avsetName,
-        new AvailabilitySet()
-          { Location = location }
-      );
-    }
-    ```
-
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```
-    var avResult = CreateAvailabilitySetAsync(
-      credential,  
-      groupName,
-      subscriptionId,
-      location,
-      avSetName);
-    Console.ReadLine();
-    ```
-
-### <a name="create-a-virtual-machine"></a>仮想マシンの作成
+### <a name="create-the-virtual-machine"></a>仮想マシンの作成
 
 すべての関連リソースを作成したので、仮想マシンを作成できます。
 
-1. 仮想マシンを作成するために、次のメソッドを Program クラスに追加します。
+仮想マシンを作成するには、次のコードを Main メソッドに追加します。
 
-    ```   
-    public static async Task<VirtualMachine> CreateVirtualMachineAsync(
-      TokenCredentials credential, 
-      string groupName,
-      string subscriptionId,
-      string location,
-      string nicName,
-      string avsetName,
-      string storageName,
-      string adminName,
-      string adminPassword,
-      string vmName)
+```
+Console.WriteLine("Creating virtual machine...");
+azure.VirtualMachines.Define(vmName)
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithExistingPrimaryNetworkInterface(networkInterface)
+    .WithLatestWindowsImage("MicrosoftWindowsServer", "WindowsServer", "2012-R2-Datacenter")
+    .WithAdminUsername("azureuser")
+    .WithAdminPassword("Azure12345678")
+    .WithComputerName(vmName)
+    .WithExistingAvailabilitySet(availabilitySet)
+    .WithSize(VirtualMachineSizeTypes.StandardDS1)
+    .Create();
+```
+
+> [!NOTE]
+> このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+> 
+>
+
+Marketplace イメージではなく、既存のディスクを使用する場合は、このコードを使用します。
+
+```
+var managedDisk = azure.Disks.Define("myosdisk")
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithWindowsFromVhd("https://mystorage.blob.core.windows.net/vhds/myosdisk.vhd")
+    .WithSizeInGB(128)
+    .WithSku(DiskSkuTypes.PremiumLRS)
+    .Create();
+
+azure.VirtualMachines.Define("myVM")
+    .WithRegion(location)
+    .WithExistingResourceGroup(groupName)
+    .WithExistingPrimaryNetworkInterface(networkInterface)
+    .WithSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows)
+    .WithExistingAvailabilitySet(availabilitySet)
+    .WithSize(VirtualMachineSizeTypes.StandardDS1)
+    .Create();
+```
+
+## <a name="perform-management-tasks"></a>管理タスクを実行する
+
+仮想マシンのライフサイクルで、各種の管理タスクを実行する必要がある場合があります (仮想マシンの起動、停止、削除など)。 また、何度も行う作業や複雑な作業は、コードを作成して自動化したい場合もあるでしょう。
+
+VM で何かを実行する必要がある場合、そのインスタンスを取得する必要があります。
+
+```
+var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
+```
+
+### <a name="get-information-about-the-vm"></a>VM に関する情報を取得する
+
+仮想マシンに関する情報を取得するには、次のコードを Main メソッドに追加します。
+
+```
+Console.WriteLine("Getting information about the virtual machine...");
+Console.WriteLine("hardwareProfile");
+Console.WriteLine("   vmSize: " + vm.Size);
+Console.WriteLine("storageProfile");
+Console.WriteLine("  imageReference");
+Console.WriteLine("    publisher: " + vm.StorageProfile.ImageReference.Publisher);
+Console.WriteLine("    offer: " + vm.StorageProfile.ImageReference.Offer);
+Console.WriteLine("    sku: " + vm.StorageProfile.ImageReference.Sku);
+Console.WriteLine("    version: " + vm.StorageProfile.ImageReference.Version);
+Console.WriteLine("  osDisk");
+Console.WriteLine("    osType: " + vm.StorageProfile.OsDisk.OsType);
+Console.WriteLine("    name: " + vm.StorageProfile.OsDisk.Name);
+Console.WriteLine("    createOption: " + vm.StorageProfile.OsDisk.CreateOption);
+Console.WriteLine("    caching: " + vm.StorageProfile.OsDisk.Caching);
+Console.WriteLine("osProfile");
+Console.WriteLine("  computerName: " + vm.OSProfile.ComputerName);
+Console.WriteLine("  adminUsername: " + vm.OSProfile.AdminUsername);
+Console.WriteLine("  provisionVMAgent: " + vm.OSProfile.WindowsConfiguration.ProvisionVMAgent.Value);
+Console.WriteLine("  enableAutomaticUpdates: " + vm.OSProfile.WindowsConfiguration.EnableAutomaticUpdates.Value);
+Console.WriteLine("networkProfile");
+foreach (string nicId in vm.NetworkInterfaceIds)
+{
+    Console.WriteLine("  networkInterface id: " + nicId);
+}
+Console.WriteLine("vmAgent");
+Console.WriteLine("  vmAgentVersion" + vm.InstanceView.VmAgent.VmAgentVersion);
+Console.WriteLine("    statuses");
+foreach (InstanceViewStatus stat in vm.InstanceView.VmAgent.Statuses)
+{
+    Console.WriteLine("    code: " + stat.Code);
+    Console.WriteLine("    level: " + stat.Level);
+    Console.WriteLine("    displayStatus: " + stat.DisplayStatus);
+    Console.WriteLine("    message: " + stat.Message);
+    Console.WriteLine("    time: " + stat.Time);
+}
+Console.WriteLine("disks");
+foreach (DiskInstanceView disk in vm.InstanceView.Disks)
+{
+    Console.WriteLine("  name: " + disk.Name);
+    Console.WriteLine("  statuses");
+    foreach (InstanceViewStatus stat in disk.Statuses)
     {
-      var networkManagementClient = new NetworkManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-      var computeManagementClient = new ComputeManagementClient(credential)
-        { SubscriptionId = subscriptionId };  
-      var nic = await networkManagementClient.NetworkInterfaces.GetAsync(
-        groupName, 
-        nicName);
-      var avSet = await computeManagementClient.AvailabilitySets.GetAsync(
-        groupName, 
-        avsetName);
-   
-      Console.WriteLine("Creating the virtual machine...");
-      return await computeManagementClient.VirtualMachines.CreateOrUpdateAsync(
-        groupName,
-        vmName,
-        new VirtualMachine
-          {
-            Location = location,
-            AvailabilitySet = new Microsoft.Azure.Management.Compute.Models.SubResource
-              {
-                Id = avSet.Id
-              },
-            HardwareProfile = new HardwareProfile
-              {
-                VmSize = "Standard_A0"
-              },
-            OsProfile = new OSProfile
-              {
-                AdminUsername = adminName,
-                AdminPassword = adminPassword,
-                ComputerName = vmName,
-                WindowsConfiguration = new WindowsConfiguration
-                  {
-                    ProvisionVMAgent = true
-                  }
-              },
-            NetworkProfile = new NetworkProfile
-              {
-                NetworkInterfaces = new List<NetworkInterfaceReference>
-                  {
-                    new NetworkInterfaceReference { Id = nic.Id }
-                  }
-              },
-            StorageProfile = new StorageProfile
-              {
-                ImageReference = new ImageReference
-                  {
-                    Publisher = "MicrosoftWindowsServer",
-                    Offer = "WindowsServer",
-                    Sku = "2012-R2-Datacenter",
-                    Version = "latest"
-                  },
-                OsDisk = new OSDisk
-                  {
-                    Name = "mytestod1",
-                    CreateOption = DiskCreateOptionTypes.FromImage,
-                    Vhd = new VirtualHardDisk
-                      {
-                        Uri = "http://" + storageName + ".blob.core.windows.net/vhds/mytestod1.vhd"
-                      }
-                  }
-              }
-          }
-      );
+        Console.WriteLine("    code: " + stat.Code);
+        Console.WriteLine("    level: " + stat.Level);
+        Console.WriteLine("    displayStatus: " + stat.DisplayStatus);
+        Console.WriteLine("    time: " + stat.Time);
     }
-    ```
+}
+Console.WriteLine("VM general status");
+Console.WriteLine("  provisioningStatus: " + vm.ProvisioningState);
+Console.WriteLine("  id: " + vm.Id);
+Console.WriteLine("  name: " + vm.Name);
+Console.WriteLine("  type: " + vm.Type);
+Console.WriteLine("  location: " + vm.Region);
+Console.WriteLine("VM instance status");
+foreach (InstanceViewStatus stat in vm.InstanceView.Statuses)
+{
+    Console.WriteLine("  code: " + stat.Code);
+    Console.WriteLine("  level: " + stat.Level);
+    Console.WriteLine("  displayStatus: " + stat.DisplayStatus);
+}
+Console.WriteLine("Press enter to continue...");
+Console.ReadLine();
+```
 
-    > [!NOTE]
-    > このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
-    > 
-    >
+### <a name="stop-the-vm"></a>VM を停止する
 
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```
-    var vmResult = CreateVirtualMachineAsync(
-      credential,
-      groupName,
-      subscriptionId,
-      location,
-      nicName,
-      avSetName,
-      storageName,
-      adminName,
-      adminPassword,
-      vmName);
-    Console.WriteLine(vmResult.Result.ProvisioningState);
-    Console.ReadLine();
-    ```
+仮想マシンを停止してそのすべての設定を保持する (引き続き課金されます)、または仮想マシンを停止して割り当てを解除します。 仮想マシンの割り当てを解除すると、それに関連付けられているすべてのリソースの割り当ても解除され、仮想マシンに対する課金が終了します。
 
-## <a name="step-4-delete-the-resources"></a>手順 4: リソースを削除する
+仮想マシンの割り当てを解除せずに仮想マシンを停止するには、次のコードを Main メソッドに追加します。
+
+```
+Console.WriteLine("Stopping vm...");
+vm.PowerOff();
+Console.WriteLine("Press enter to continue...");
+Console.ReadLine();
+```
+
+仮想マシンの割り当てを解除する場合は、PowerOff 呼び出しを次のコードに変更します。
+
+```
+vm.Deallocate();
+```
+
+### <a name="start-the-vm"></a>VM を起動する
+
+仮想マシンを起動するには、次のコードを Main メソッドに追加します。
+
+```
+Console.WriteLine("Starting vm...");
+vm.Start();
+Console.WriteLine("Press enter to continue...");
+Console.ReadLine();
+```
+
+### <a name="resize-the-vm"></a>VM のサイズを変更する
+
+仮想マシンのサイズを決定するときは、デプロイのさまざまな面を考慮する必要があります。 詳しくは、[VM サイズ](sizes.md)をご覧ください。  
+
+仮想マシンのサイズを変更するには、次のコードを Main メソッドに追加します。
+
+```
+Console.WriteLine("Resizing vm...");
+vm.Update()
+    .WithSize(VirtualMachineSizeTypes.StandardDS2) 
+    .Apply();
+Console.WriteLine("Press enter to continue...");
+Console.ReadLine();
+```
+
+### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
+
+仮想マシンにデータ ディスクのサイズが 2 GB で、LUN が 0 で、キャッシングの種類が ReadWrite のデータ ディスクを追加するには、次のコードを Main メソッドに追加します。
+
+```
+Console.WriteLine("Adding data disk to vm...");
+vm.Update()
+    .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
+    .Apply();
+Console.WriteLine("Press enter to delete resources...");
+Console.ReadLine();
+```
+
+## <a name="delete-resources"></a>リソースを削除する
 
 Azure で使用されるリソースに対して課金されるため、不要になったリソースは削除することを常にお勧めします。 仮想マシンとすべての関連リソースを削除する場合、必要な操作はリソース グループの削除だけです。
 
-1. リソース グループを削除するために、次のメソッドを Program クラスに追加します。
-   
-    ```
-    public static async void DeleteResourceGroupAsync(
-      TokenCredentials credential,
-      string groupName,
-      string subscriptionId)
-    {
-      Console.WriteLine("Deleting resource group...");
-      var resourceManagementClient = new ResourceManagementClient(credential)
-        { SubscriptionId = subscriptionId };
-      await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
-    }
-    ```
+リソース グループを削除するには、次のコードを Main メソッドに追加します。
 
-2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-   
-    ```   
-    DeleteResourceGroupAsync(
-      credential,
-      groupName,
-      subscriptionId);
-    Console.ReadLine();
-    ```
+```
+azure.ResourceGroups.DeleteByName(groupName);
+```
 
-## <a name="step-5-run-the-console-application"></a>手順 5: コンソール アプリケーションの実行
+## <a name="run-the-application"></a>アプリケーションの実行
 
-1. コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
+このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 
 
-2. "*[成功しました]*" 状態が表示されたら、**Enter** キーを押します。 
-   
-3. 仮想マシンが作成されたら、**Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認できます。
+1. コンソール アプリケーションを実行するには、**[開始]** をクリックします。
+
+2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-* 「[Azure Resource Manager と C# を使用した Azure Virtual Machines の管理](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
+* [Azure libraries for .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet) の使用方法の詳細について学習します。
 
 

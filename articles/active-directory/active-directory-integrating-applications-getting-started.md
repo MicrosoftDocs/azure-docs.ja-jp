@@ -1,5 +1,4 @@
 ---
-
 title: "Azure AD とアプリの統合の概要 | Microsoft Docs"
 description: "この記事は、オンプレミスのアプリケーションおよびクラウド アプリケーションと Azure Active Directory (AD) を統合するための概要ガイドです。"
 services: active-directory
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: markvi
+ms.reviewer: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
 ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/03/2017
-
 
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド

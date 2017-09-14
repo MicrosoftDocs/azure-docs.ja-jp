@@ -5,6 +5,7 @@
 ## [環境の作成](time-series-insights-get-started.md)
 ## [データ アクセスの許可](time-series-insights-data-access.md)
 ## [イベント ソースの作成](time-series-insights-add-event-source.md)
+## [参照データ セットの作成](time-series-insights-add-reference-data-set.md)
 ## [イベントの送信](time-series-insights-send-events.md)
 
 # 方法
@@ -15,6 +16,7 @@
 ## 開発
 ### [認証と権限承認](time-series-insights-authentication-and-authorization.md)
 ### [C# を使用してデータのクエリを実行する](time-series-insights-query-data-csharp.md)
+### [C# を使用して参照データを管理する](time-series-insights-manage-reference-data-csharp.md)
 
 # リファレンス
 ## [クエリ API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
@@ -26,4 +28,6 @@
 ## [Azure Stream Analytics](/azure/stream-analytics/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [料金](https://azure.microsoft.com/pricing/details/time-series-insights/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

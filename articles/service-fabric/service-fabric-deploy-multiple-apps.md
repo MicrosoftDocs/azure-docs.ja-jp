@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d967d70c7fad45f7a10a5288623440491dcfffa3
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/07/2017
 
 このチュートリアルは、データ ストアとして MongoDB を使用する Node.js フロントエンドを使用したアプリケーションをデプロイする方法を示していますが、この手順は、別のアプリケーションへの依存関係があるすべてのアプリケーションに適用できます。   
 
-Visual Studio を使用して、複数のゲスト実行可能ファイルを含むアプリケーション パッケージを生成することができます。 [Visual Studio を使用した既存のアプリケーションのパッケージ化](service-fabric-deploy-existing-app.md#use-visual-studio-to-package-an-existing-executable)に関するセクションを参照してください。 最初のゲスト実行可能ファイルを追加した後は、アプリケーション プロジェクトを右クリックし、**[追加] -> [新しい Service Fabric サービス]** を選択して、2 つ目のゲスト実行可能ファイル プロジェクトをソリューションに追加します。 注: Visual Studio プロジェクトでソースをリンクしている場合、Visual Studio ソリューションをビルドすることで、アプリケーション パッケージをソースの変更に応じて常に最新の状態にできます。 
+Visual Studio を使用して、複数のゲスト実行可能ファイルを含むアプリケーション パッケージを生成することができます。 [Visual Studio を使用した既存のアプリケーションのパッケージ化](service-fabric-deploy-existing-app.md)に関するセクションを参照してください。 最初のゲスト実行可能ファイルを追加した後は、アプリケーション プロジェクトを右クリックし、**[追加] -> [新しい Service Fabric サービス]** を選択して、2 つ目のゲスト実行可能ファイル プロジェクトをソリューションに追加します。 注: Visual Studio プロジェクトでソースをリンクしている場合、Visual Studio ソリューションをビルドすることで、アプリケーション パッケージをソースの変更に応じて常に最新の状態にできます。 
 
 ## <a name="samples"></a>サンプル
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: a06ba41193f00f4aa2c7af4e5430ed15f9bb877c
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1ae47899443d5552178078a417b7d1ebe91966d2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
@@ -36,7 +35,7 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 ### <a name="open-or-create-application-insights-resource"></a>Application Insights リソースを開くまたは作成する
 Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。 
 
-[Azure ポータル](https://portal.azure.com)にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 アプリのサーバー側の監視を既に設定している場合は、既にリソースがあります。
 
@@ -197,7 +196,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 > 
 > 
 
-強力な [Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) を使って、ページ ビューを検索することもできます。
+強力な [Log Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table)を使って、ページ ビューを検索することもできます。
 
 ### <a name="page-view-properties"></a>ページ ビュー プロパティ
 * **ページ ビュー時間** 

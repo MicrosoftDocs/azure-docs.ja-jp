@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 07/19/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b60105297fb84ce1240a33d576653f5fa7c950e9
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 26fb0914de571aa0e398f0e2a2f8e439d3d27680
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
@@ -110,11 +109,13 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | &nbsp; | 東アジア | 東南アジア |
 | オーストラリア | オーストラリア東部 | オーストラリア東部 |
 | &nbsp; | オーストラリア南東部 | オーストラリア南東部 |
-| 日本 | 東日本 | 東日本 |
-| &nbsp; | 西日本 | 東日本 |
 | インド | インド中部 | インド中部 |
 | &nbsp; | インド西部 | インド中部 |
 | &nbsp; | インド南部 | インド中部 |
+| 日本 | 東日本 | 東日本 |
+| &nbsp; | 西日本 | 東日本 |
+| 韓国 | 韓国中部 | 韓国中部 |
+| &nbsp; | 韓国南部 | 韓国中部 |
 
 また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、韓国の Azure Store 間でコピーするには、日本リージョン経由でルーティングされるように `"executionLocation": "Japan East"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
 
@@ -187,6 +188,12 @@ JSON 定義のサンプルを次に示します。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
+
+## <a name="fault-tolerance"></a>フォールト トレランス
+既定では、ソースとシンク間に互換性のないデータが検出されると、コピー アクティビティ時にデータのコピーが停止され、エラーが返されます。ただし、互換性のない行はスキップしてログに記録し、互換性のあるデータのみがコピーされコピーが成功するよう、明示的に構成することができます。 詳細については、「[Copy Activity fault tolerance](data-factory-copy-activity-fault-tolerance.md)」 (コピー アクティビティのフォールト トレランス) を参照してください。
+
+## <a name="security-considerations"></a>セキュリティに関する考慮事項
+Azure Data Factory のデータ移動サービスがデータを保護するために使用するセキュリティ インフラストラクチャについて説明する「[セキュリティに関する考慮事項](data-factory-data-movement-security-considerations.md)」を参照してください。
 
 ## <a name="scheduling-and-sequential-copy"></a>スケジュール設定と順次コピー
 Data Factory でのスケジュール設定と実行のしくみに関する詳細については、 [スケジュール設定と実行のしくみ](data-factory-scheduling-and-execution.md) に関するページをご覧ください。 複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。 [順次コピー](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するセクションを参照してください。

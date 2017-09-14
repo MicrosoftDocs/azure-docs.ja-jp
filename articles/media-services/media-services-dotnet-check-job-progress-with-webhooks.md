@@ -1,10 +1,10 @@
 ---
-title: "Azure WebHook を使用して .NET で Media Services ジョブ通知を監視する | Microsoft Docs"
-description: "Azure WebHook を使用して Media Services ジョブ通知を監視する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
+title: "Azure webhook を使用して .NET で Media Services ジョブ通知を監視する | Microsoft Docs"
+description: "Azure webhook を使用して Media Services ジョブ通知を監視する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
 ms.service: media-services
@@ -12,25 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/28/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: c3a7c0196b3ff1a7bd939f4224cb109ce71872f2
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure WebHook を使用して .NET で Media Services ジョブ通知を監視する
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 このトピックでは、Webhook を使用する方法を説明します。
-
-## <a name="prerequisites"></a>前提条件
-
-チュートリアルを完了するには次のものが必要です。
-
-* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
-* [Azure Functions を使用する方法](../azure-functions/functions-overview.md)の説明。 また、「[Azure Functions における HTTP と Webhook のバインド](../azure-functions/functions-bindings-http-webhook.md)」を確認します。
 
 このトピックでは、以下のことを行う方法を示します。
 
@@ -42,121 +34,148 @@ ms.lasthandoff: 03/22/2017
     >続行する前に、[Azure Functions における HTTP と Webhook のバインド](../azure-functions/functions-bindings-http-webhook.md)方法を理解しておいてください。
     >
     
-* Webhook をエンコード タスクに追加し、Webhook URL と、この Webhook が応答する秘密キーを指定します。 ここで示す例では、エンコード タスクを作成するコードは、コンソール アプリです。
+* Webhook をエンコード タスクに追加し、Webhook URL と、この Webhook が応答する秘密キーを指定します。 このトピックの最後に、webhook をエンコード タスクに追加する例があります。  
 
-## <a name="setting-up-webhook-notification-azure-functions"></a>"webhook 通知" Azure Functions の設定
+さまざまな Media Services .NET Azure Functions の定義は、このトピックで紹介したものも含め、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)で確認できます。
 
-このセクションのコードは、Webhook である Azure Function の実装を示します。 このサンプルでは、関数が Media Services 通知からの Webhook の呼び出しをリッスンし、ジョブが完了すると、出力資産を発行します。
+## <a name="prerequisites"></a>前提条件
 
-Webhook は、署名キー (資格情報) が通知エンドポイントを構成するときに渡される署名キーと一致していることを想定しています。 署名キーは、Azure Media Services からの Webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
+チュートリアルを完了するには次のものが必要です。
 
-次のコードでは、**VerifyWebHookRequestSignature** メソッドが、通知メッセージを検証します。 この検証の目的は、メッセージが Azure Media Services によって送信されており、改ざんされていないことを確認することです。 この署名は、トランスポート層セキュリティ (TLS) 経由のクエリ パラメーターとして**コード**値を含んでいるため、Azure Functions では省略可能です。 
+* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* [Azure Functions の使用方法](../azure-functions/functions-overview.md)に関する知識。 「[Azure Functions における HTTP と Webhook のバインド](../azure-functions/functions-bindings-http-webhook.md)」も確認してください。
 
-Media Services の各種 .NET Azure 関数の定義は、このトピックで紹介したものも含め、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)で確認できます。
+## <a name="create-a-function-app"></a>Function App を作成する
 
-次のコード リストでは、Azure Functions パラメーターの定義と、Azure Functions に関連付けられている 3 つのファイル (function.json、project.json、run.csx) の定義を示します。
+1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
+2. [こちら](../azure-functions/functions-create-function-app-portal.md)の説明に従って関数アプリを作成します。
 
-### <a name="application-settings"></a>アプリケーションの設定 
+## <a name="configure-function-app-settings"></a>関数アプリの設定の構成
 
-次の表は、このセクションで定義された Azure Functions で使用されるパラメーターを示します。 
+Media Services の関数を開発するときは、自分が開発するさまざまな関数で使用する環境変数を追加しておくと便利です。 アプリケーション設定を構成するには、[アプリケーション設定の構成] リンクをクリックします。 
+
+[アプリケーション設定](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)のセクションでは、このトピックで定義されている webhook で使用されるパラメーターを定義します。 また、次のパラメーターをアプリ設定に追加します。 
 
 |名前|定義|例| 
 |---|---|---|
-|AMSAccount|AMS アカウント名。 |juliakomediaservices|
-|AMSKey |AMS アカウント キー。 | JUWJdDaOHQQqsZeiXZuE76eDt2SO+YMJk25Lghgy2nY=|
-|MediaServicesStorageAccountName |AMS アカウントに関連付けられているストレージ アカウントの名前。| storagepkeewmg5c3peq|
-|MediaServicesStorageAccountKey |AMS アカウントに関連付けられているストレージ アカウントのキー。|
 |SigningKey |署名キー。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | webhook エンドポイント アドレス。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|WebHookEndpoint | webhook エンドポイント アドレス。 webhook 関数が作成されたら、**[関数の URL の取得]** リンクから URL をコピーできます。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
-### <a name="functionjson"></a>function.json
+## <a name="create-a-function"></a>関数を作成する
+
+デプロイした関数アプリは、**[App Services]** の Azure Functions に表示されます。
+
+1. 目的の関数アプリを選択し、**[新しい関数]** をクリックします。
+2. **C#** コードと **[API と webhook]** シナリオを選択します。 
+3. **[汎用 webhook - C#]** を選択します。
+4. webhook に名前を付けて、**[作成]** を押します。
+
+### <a name="files"></a>ファイル
+
+Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 既定では、**function.json** ファイルと **run.csx** (C#) ファイルに関数が関連付けられます。 **project.json** ファイルを追加する必要があります。 以降このセクションでは、これらのファイルの定義を紹介していきます。
+
+![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions003.png)
+
+#### <a name="functionjson"></a>function.json
 
 function.json ファイルは、関数バインドとその他の構成設定を定義します。 ランタイムはこのファイルを使用して、監視対象のイベントを特定し、関数の実行との間でデータを渡したりデータを受け取ったりする方法を判断します。 
 
+```
+{
+  "bindings": [
     {
-      "bindings": [
-        {
-          "type": "httpTrigger",
-          "name": "req",
-          "direction": "in",
-          "methods": [
-        "post",
-        "get",
-        "put",
-        "update",
-        "patch"
-          ]
-        },
-        {
-          "type": "http",
-          "name": "res",
-          "direction": "out"
-        }
-      ]
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "genericJson",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
     }
-    
-### <a name="projectjson"></a>project.json
+  ],
+  "disabled": false
+}
+```
+
+#### <a name="projectjson"></a>project.json
 
 project.json ファイルには、依存関係が含まれています。 
 
-    {
-      "frameworks": {
-        "net46":{
-          "dependencies": {
-        "windowsazure.mediaservices": "3.8.0.5",
-        "windowsazure.mediaservices.extensions": "3.8.0.3"
-          }
-        }
-       }
+```
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "windowsazure.mediaservices": "4.0.0.4",
+        "windowsazure.mediaservices.extensions": "4.0.0.4",
+        "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.1",
+        "Microsoft.IdentityModel.Protocol.Extensions": "1.0.2.206221351"
+      }
     }
+   }
+}
+```
     
-### <a name="runcsx"></a>run.csx
+#### <a name="runcsx"></a>run.csx
 
-次の C# コードは、Webhook である Azure Function の定義を示しています。 この関数は、Media Services 通知からの Webhook の呼び出しをリッスンし、ジョブが完了すると、出力資産を発行します。 
+このセクションのコードは、Webhook である Azure 関数の実装を示します。 このサンプルでは、関数が Media Services 通知からの Webhook の呼び出しをリッスンし、ジョブが完了すると、出力資産を発行します。
 
+Webhook は、署名キー (資格情報) が通知エンドポイントを構成するときに渡される署名キーと一致していることを想定しています。 署名キーは、Azure Media Services からの Webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
+
+次の webhook 定義コードでは、**VerifyWebHookRequestSignature** メソッドが、通知メッセージを検証します。 この検証の目的は、メッセージが Azure Media Services によって送信されており、改ざんされていないことを確認することです。 この署名は、トランスポート層セキュリティ (TLS) 経由のクエリ パラメーターとして**コード**値を含んでいるため、Azure Functions では省略可能です。 
 
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
-    ///////////////////////////////////////////////////
-    #r "Newtonsoft.Json"
+```
+///////////////////////////////////////////////////
+#r "Newtonsoft.Json"
 
-    using System;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.IO;
-    using System.Globalization;
-    using Newtonsoft.Json;
-    using Microsoft.Azure;
-    using System.Net;
-    using System.Security.Cryptography;
+using System;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.IO;
+using System.Globalization;
+using Newtonsoft.Json;
+using Microsoft.Azure;
+using System.Net;
+using System.Security.Cryptography;
+using Microsoft.Azure.WebJobs;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-    internal const string SignatureHeaderKey = "sha256";
-    internal const string SignatureHeaderValueTemplate = SignatureHeaderKey + "={0}";
-    static string _webHookEndpoint = Environment.GetEnvironmentVariable("WebHookEndpoint");
-    static string _signingKey = Environment.GetEnvironmentVariable("SigningKey");
-    static string _mediaServicesAccountName = Environment.GetEnvironmentVariable("AMSAccount");
-    static string _mediaServicesAccountKey = Environment.GetEnvironmentVariable("AMSKey");
+internal const string SignatureHeaderKey = "sha256";
+internal const string SignatureHeaderValueTemplate = SignatureHeaderKey + "={0}";
+static string _webHookEndpoint = Environment.GetEnvironmentVariable("WebHookEndpoint");
+static string _signingKey = Environment.GetEnvironmentVariable("SigningKey");
 
-    static CloudMediaContext _context = null;
+static readonly string _AADTenantDomain = Environment.GetEnvironmentVariable("AMSAADTenantDomain");
+static readonly string _RESTAPIEndpoint = Environment.GetEnvironmentVariable("AMSRESTAPIEndpoint");
 
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+static readonly string _AMSClientId = Environment.GetEnvironmentVariable("AMSClientId");
+static readonly string _AMSClientSecret = Environment.GetEnvironmentVariable("AMSClientSecret");
+
+static CloudMediaContext _context = null;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+{
+    log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+
+    Task<byte[]> taskForRequestBody = req.Content.ReadAsByteArrayAsync();
+    byte[] requestBody = await taskForRequestBody;
+
+    string jsonContent = await req.Content.ReadAsStringAsync();
+    log.Info($"Request Body = {jsonContent}");
+
+    IEnumerable<string> values = null;
+    if (req.Headers.TryGetValues("ms-signature", out values))
     {
-        log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
-
-        Task<byte[]> taskForRequestBody = req.Content.ReadAsByteArrayAsync();
-        byte[] requestBody = await taskForRequestBody;
-
-        string jsonContent = await req.Content.ReadAsStringAsync();
-        log.Info($"Request Body = {jsonContent}");
-
-        IEnumerable<string> values = null;
-        if (req.Headers.TryGetValues("ms-signature", out values))
-        {
         byte[] signingKey = Convert.FromBase64String(_signingKey);
         string signatureFromHeader = values.FirstOrDefault();
 
@@ -168,26 +187,30 @@ project.json ファイルには、依存関係が含まれています。
 
             if (VerifyHeaders(req, msg, log))
             { 
-            string newJobStateStr = (string)msg.Properties.Where(j => j.Key == "NewState").FirstOrDefault().Value;
-            if (newJobStateStr == "Finished")
-            {
-                _context = new CloudMediaContext(new MediaServicesCredentials(
-                _mediaServicesAccountName,
-                _mediaServicesAccountKey));
+                string newJobStateStr = (string)msg.Properties.Where(j => j.Key == "NewState").FirstOrDefault().Value;
+                if (newJobStateStr == "Finished")
+                {
+                    AzureAdTokenCredentials tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain,
+                                new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                                AzureEnvironments.AzureCloudEnvironment);
 
-                if(_context!=null)   
-                {                        
-                string urlForClientStreaming = PublishAndBuildStreamingURLs(msg.Properties["JobId"]);
-                log.Info($"URL to the manifest for client streaming using HLS protocol: {urlForClientStreaming}");
+                    AzureAdTokenProvider tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                    _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+                    if(_context!=null)   
+                    {                        
+                        string urlForClientStreaming = PublishAndBuildStreamingURLs(msg.Properties["JobId"]);
+                        log.Info($"URL to the manifest for client streaming using HLS protocol: {urlForClientStreaming}");
+                    }
                 }
-            }
 
-            return req.CreateResponse(HttpStatusCode.OK, string.Empty);
+                return req.CreateResponse(HttpStatusCode.OK, string.Empty);
             }
             else
             {
-            log.Info($"VerifyHeaders failed.");
-            return req.CreateResponse(HttpStatusCode.BadRequest, "VerifyHeaders failed.");
+                log.Info($"VerifyHeaders failed.");
+                return req.CreateResponse(HttpStatusCode.BadRequest, "VerifyHeaders failed.");
             }
         }
         else
@@ -195,58 +218,57 @@ project.json ファイルには、依存関係が含まれています。
             log.Info($"VerifyWebHookRequestSignature failed.");
             return req.CreateResponse(HttpStatusCode.BadRequest, "VerifyWebHookRequestSignature failed.");
         }
-        }
-
-        return req.CreateResponse(HttpStatusCode.BadRequest, "Generic Error.");
     }
 
-    private static string PublishAndBuildStreamingURLs(String jobID)
+    return req.CreateResponse(HttpStatusCode.BadRequest, "Generic Error.");
+}
+
+private static string PublishAndBuildStreamingURLs(String jobID)
+{
+    IJob job = _context.Jobs.Where(j => j.Id == jobID).FirstOrDefault();
+    IAsset asset = job.OutputMediaAssets.FirstOrDefault();
+
+    // Create a 30-day readonly access policy. 
+    // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.
+    IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
+    TimeSpan.FromDays(30),
+    AccessPermissions.Read);
+
+    // Create a locator to the streaming content on an origin. 
+    ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
+    policy,
+    DateTime.UtcNow.AddMinutes(-5));
+
+    // Get a reference to the streaming manifest file from the  
+    // collection of files in the asset. 
+    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+                EndsWith(".ism")).
+                FirstOrDefault();
+
+    // Create a full URL to the manifest file. Use this for playback
+    // in streaming media clients. 
+    string urlForClientStreaming = originLocator.Path + manifestFile.Name + "/manifest" +  "(format=m3u8-aapl)";
+    return urlForClientStreaming;
+
+}
+
+private static bool VerifyWebHookRequestSignature(byte[] data, string actualValue, byte[] verificationKey)
+{
+    using (var hasher = new HMACSHA256(verificationKey))
     {
-        IJob job = _context.Jobs.Where(j => j.Id == jobID).FirstOrDefault();
-        IAsset asset = job.OutputMediaAssets.FirstOrDefault();
-
-        // Create a 30-day readonly access policy. 
-        // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.
-        IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
-        TimeSpan.FromDays(30),
-        AccessPermissions.Read);
-
-        // Create a locator to the streaming content on an origin. 
-        ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
-        policy,
-        DateTime.UtcNow.AddMinutes(-5));
-
-
-        // Get a reference to the streaming manifest file from the  
-        // collection of files in the asset. 
-        var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
-                    EndsWith(".ism")).
-                    FirstOrDefault();
-
-        // Create a full URL to the manifest file. Use this for playback
-        // in streaming media clients. 
-        string urlForClientStreaming = originLocator.Path + manifestFile.Name + "/manifest" +  "(format=m3u8-aapl)";
-        return urlForClientStreaming;
-
-    }
-
-    private static bool VerifyWebHookRequestSignature(byte[] data, string actualValue, byte[] verificationKey)
-    {
-        using (var hasher = new HMACSHA256(verificationKey))
-        {
         byte[] sha256 = hasher.ComputeHash(data);
         string expectedValue = string.Format(CultureInfo.InvariantCulture, SignatureHeaderValueTemplate, ToHex(sha256));
 
         return (0 == String.Compare(actualValue, expectedValue, System.StringComparison.Ordinal));
-        }
     }
+}
 
-    private static bool VerifyHeaders(HttpRequestMessage req, NotificationMessage msg, TraceWriter log)
+private static bool VerifyHeaders(HttpRequestMessage req, NotificationMessage msg, TraceWriter log)
+{
+    bool headersVerified = false;
+
+    try
     {
-        bool headersVerified = false;
-
-        try
-        {
         IEnumerable<string> values = null;
         if (req.Headers.TryGetValues("ms-mediaservices-accountid", out values))
         {
@@ -255,73 +277,78 @@ project.json ファイルには、依存関係が含まれています。
 
             if (0 == string.Compare(accountIdHeader, accountIdFromMessage, StringComparison.OrdinalIgnoreCase))
             {
-            headersVerified = true;
+                headersVerified = true;
             }
             else
             {
-            log.Info($"accountIdHeader={accountIdHeader} does not match accountIdFromMessage={accountIdFromMessage}");
+                log.Info($"accountIdHeader={accountIdHeader} does not match accountIdFromMessage={accountIdFromMessage}");
             }
         }
         else
         {
             log.Info($"Header ms-mediaservices-accountid not found.");
         }
-        }
-        catch (Exception e)
-        {
+    }
+    catch (Exception e)
+    {
         log.Info($"VerifyHeaders hit exception {e}");
         headersVerified = false;
-        }
-
-        return headersVerified;
     }
 
-    private static readonly char[] HexLookup = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+    return headersVerified;
+}
 
-    /// <summary>
-    /// Converts a <see cref="T:byte[]"/> to a hex-encoded string.
-    /// </summary>
-    private static string ToHex(byte[] data)
+private static readonly char[] HexLookup = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+
+/// <summary>
+/// Converts a <see cref="T:byte[]"/> to a hex-encoded string.
+/// </summary>
+private static string ToHex(byte[] data)
+{
+    if (data == null)
     {
-        if (data == null)
-        {
         return string.Empty;
-        }
+    }
 
-        char[] content = new char[data.Length * 2];
-        int output = 0;
-        byte d;
-        for (int input = 0; input < data.Length; input++)
-        {
+    char[] content = new char[data.Length * 2];
+    int output = 0;
+    byte d;
+
+    for (int input = 0; input < data.Length; input++)
+    {
         d = data[input];
         content[output++] = HexLookup[d / 0x10];
         content[output++] = HexLookup[d % 0x10];
-        }
-        return new string(content);
     }
 
-    internal enum NotificationEventType
-    {
-        None = 0,
-        JobStateChange = 1,
-        NotificationEndPointRegistration = 2,
-        NotificationEndPointUnregistration = 3,
-        TaskStateChange = 4,
-        TaskProgress = 5
-    }
-    
-    internal sealed class NotificationMessage
-    {
-        public string MessageVersion { get; set; }
-        public string ETag { get; set; }
-        public NotificationEventType EventType { get; set; }
-        public DateTime TimeStamp { get; set; }
-        public IDictionary<string, string> Properties { get; set; }
-    }
+    return new string(content);
+}
+
+internal enum NotificationEventType
+{
+    None = 0,
+    JobStateChange = 1,
+    NotificationEndPointRegistration = 2,
+    NotificationEndPointUnregistration = 3,
+    TaskStateChange = 4,
+    TaskProgress = 5
+}
+
+internal sealed class NotificationMessage
+{
+    public string MessageVersion { get; set; }
+    public string ETag { get; set; }
+    public NotificationEventType EventType { get; set; }
+    public DateTime TimeStamp { get; set; }
+    public IDictionary<string, string> Properties { get; set; }
+}
+```
+
+関数を保存して、実行します。
 
 ### <a name="function-output"></a>関数の出力
 
-上記の例では、次の出力が生成されました。値は異なる場合があります。
+webhook がトリガーされると、上記の例により次の出力が生成されますが、ご自身の値は異なる場合があります。
 
     C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
     Request Body = {
@@ -342,7 +369,7 @@ project.json ファイルには、依存関係が含まれています。
     
     URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-## <a name="adding-webhook-to-your-encoding-task"></a>エンコード タスクへの Webhook の追加
+## <a name="add-a-webhook-to-your-encoding-task"></a>エンコード タスクへの webhook の追加
 
 このセクションでは、タスクに Webhook 通知を追加するコードを示します。 チェーン タスクを使用したジョブでより役立つ可能性のあるジョブ レベル通知を追加することもできます。  
 
@@ -350,17 +377,21 @@ project.json ファイルには、依存関係が含まれています。
 2. [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
 3. 適切な値で App.config ファイルを更新します。 
     
-    * 通知を送信する Azure Media Services の名前とキー 
+    * Azure Media Services の接続情報 
     * 通知の取得を想定する Webhook URL 
-    * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの Webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
+    * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
 
             <appSettings>
-              <add key="MediaServicesAccountName" value="AMSAcctName" />
-              <add key="MediaServicesAccountKey" value="AMSAcctKey" />
-              <add key="WebhookURL" value="https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>" />
+              <add key="AMSAADTenantDomain" value="domain" />
+              <add key="AMSRESTAPIEndpoint" value="endpoint" />
+
+              <add key="AMSClientId" value="clinet id" />
+              <add key="AMSClientSecret" value="client secret" />
+
+              <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
             </appSettings>
-            
+
 4. 次のコードで Program.cs ファイルを更新します。
 
         using System;
@@ -373,10 +404,16 @@ project.json ファイルには、依存関係が含まれています。
             class Program
             {
             // Read values from the App.config file.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+            private static readonly string _AMSAADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _AMSRESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
+
             private static readonly string _webHookEndpoint =
                 ConfigurationManager.AppSettings["WebhookURL"];
             private static readonly string _signingKey =
@@ -387,11 +424,13 @@ project.json ファイルには、依存関係が含まれています。
 
             static void Main(string[] args)
             {
+                AzureAdTokenCredentials tokenCredentials = new AzureAdTokenCredentials(_AMSAADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
 
-                // Used the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(new MediaServicesCredentials(
-                        _mediaServicesAccountName,
-                        _mediaServicesAccountKey));
+                AzureAdTokenProvider tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_AMSRESTAPIEndpoint), tokenProvider);
 
                 byte[] keyBytes = Convert.FromBase64String(_signingKey);
 
@@ -465,12 +504,10 @@ project.json ファイルには、依存関係が含まれています。
 
                 return processor;
             }
-
             }
         }
 
-## <a name="next-step"></a>次のステップ
-Media Services のラーニング パスを確認します。
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

@@ -13,12 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: a6bb1c4b3a4972cdab9b99c548ef918a4d1070a0
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 780728950199bac6a317767ef1db4462b3fe6ffd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
@@ -35,8 +36,7 @@ Azure AD Connect は、オンプレミス Active Directory と Azure Active Dire
 * 以下の機能は使用できません。
   * Azure AD Connect Health
   * 自動更新
-  * パスワードの書き戻し
-
+ 
 ## <a name="download"></a>ダウンロード
 Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。  Azure AD Connect ブレードを表示するには、次の手順に従います。
 
@@ -64,10 +64,5 @@ Azure AD Connect をインストールする場合は、 [こちら](active-dire
 
 ## <a name="advanced-features-and-additional-information"></a>高度な機能と追加情報
 追加情報と、カスタム設定や高度な構成のガイダンスについては、最初に「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。  このページには、情報と追加のガイダンスへのリンクが用意されています。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

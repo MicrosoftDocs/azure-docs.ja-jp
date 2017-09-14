@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9c20ace9112c62e733b7b679e3f0be717144f3c2
-ms.openlocfilehash: 933a485e36b3cf0f514f28fc069d49161605af3a
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 367b8f38cb9fcf3dc36db83641cb1696710608ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -33,11 +33,6 @@ Azure Security Center は 2 つのレベルで提供されます。
 
 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
-> [!NOTE]
-> Security Center では、Azure Storage を使用して、保護対象のノードから生成したセキュリティ データを保存します。 この記憶域に関連するコストは、サービスの料金には含まれません。通常の [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/blobs/)が別途適用されます。 ストレージ料金は、60 日間の無料試用期間中にも適用されます。
->
->
-
 ## <a name="try-standard-free-for-60-days"></a>Standard レベルのサービスを 60 日間無料で試用する
 Standard レベルは、最初の 60 日間は無料です。 60 日経過した時点で、サービスの利用を継続することを選択した場合は、使用量に応じて自動的に課金が開始されます。
 
@@ -49,7 +44,6 @@ Standard レベルを取得するには
 4. **[価格レベルの選択]** ブレードで、**[Standard]** を選択します。
 5. **[選択]**をクリックします。
 
-![Standard レベル][1]
 
 ## <a name="why-upgrade-to-standard"></a>Standard レベルにアップグレードする理由
 Standard レベルの Security Center は、Free レベルのすべての機能に加え、高度な脅威検出機能を提供します。 高度な脅威検出機能によって、Azure リソースを対象とするアクティブな脅威を識別し、迅速に対応するために必要な洞察を得ることができます。
@@ -79,11 +73,17 @@ Standard レベルには次のセキュリティ分析が付属しています�
 2. サブスクリプションを選択します。
 3. **[データ収集]** がオフになっている場合はオンに変更し、変更を保存します。
 
+> [!NOTE]
+> Azure Security Center の Free レベルを使用している場合は、セキュリティ ポリシーで仮想マシンからのデータ収集を無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。
+>
+>
+
 詳細については、「[Azure Security Center のデータ収集を有効にする](security-center-enable-data-collection.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * このドキュメントでは、Security Center の価格について紹介しました。 価格の詳細情報については、「[Security Center の価格 ](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 * Security Center の高度な検出機能の詳細については、「[Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
+* Security Center でのデータの管理方法と保護方法の詳細については、「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」を参照してください。
 * Security Center に関する質問がある場合は、[Azure Security Center の FAQ](security-center-faq.md) をご覧ください。
 * Security Center の使用に関してご不明な点がある場合は、[Azure のフォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSecurityCenter&filter=alltypes&sort=lastpostdesc)をご覧ください。
 

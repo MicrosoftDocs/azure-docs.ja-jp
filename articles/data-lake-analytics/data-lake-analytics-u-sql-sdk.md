@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: c40d7107e407a089ea1515357cf9f47d5833edc9
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -37,9 +38,9 @@ Azure Data Lake U-SQL SDK は、[こちら](https://www.nuget.org/packages/Micro
 Data Lake U-SQL SDK には、以下の依存関係が必要です。
 
 - [Microsoft .NET Framework 4.6 以降](https://www.microsoft.com/download/details.aspx?id=17851)。
-- Microsoft Visual C++ 14 および Windows SDK 10.0.10240.0 以降 (この記事では CppSDK と呼んでいます)。 CppSDK を取得する方法は&2; つあります。
+- Microsoft Visual C++ 14 および Windows SDK 10.0.10240.0 以降 (この記事では CppSDK と呼んでいます)。 CppSDK を取得する方法は 2 つあります。
 
-    - [Visual Studio Community エディション](https://developer.microsoft.com/downloads/vs-thankyou)をインストールします。 たとえば C:\Program Files (x86)\Windows Kits\10\. のように、Program Files フォルダー内に \Windows Kits\10 フォルダーが作成されます。また、\Windows Kits\10\Lib でも Windows 10 SDK バージョンを確認できます。 このフォルダーが表示されない場合は、Visual Studio を再インストールし、インストール中に必ず Windows 10 SDK を選択してください。 これを Visual Studio と共にインストールすると、U-SQL ローカル コンパイラによって自動的に検出されます。
+    - [Visual Studio Community エディション](https://developer.microsoft.com/downloads/vs-thankyou)をインストールします。 たとえば C:\Program Files (x86)\Windows Kits\10 のように、Program Files フォルダー内に \Windows Kits\10 フォルダーが作成されます。 また、\Windows Kits\10\Lib でも Windows 10 SDK バージョンを確認できます。 このフォルダーが表示されない場合は、Visual Studio を再インストールし、インストール中に必ず Windows 10 SDK を選択してください。 これを Visual Studio と共にインストールすると、U-SQL ローカル コンパイラによって自動的に検出されます。
 
     ![Data Lake Tools for Visual Studio ローカル実行の Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
@@ -144,21 +145,21 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 **run** の省略可能な引数を次に示します。
 
 
-|引数|説明|
-|--------|-----------|
-|-CodeBehind (既定値 "False")|スクリプトには .cs 分離コードがあります|
-|-CppSDK (既定値 "")|CppSDK ディレクトリ|
-|-DataRoot [既定値 "DataRoot 環境変数"]|ローカル実行用の DataRoot。既定値は "LOCALRUN_DATAROOT" 環境変数です|
-|-MessageOut (既定値 "")|ファイルにダンプされるコンソール上のメッセージ|
-|-Parallel (既定値 "1")|指定された並列処理でプランを実行します|
-|-References (既定値 "")|分離コードの追加の参照アセンブリまたはデータ ファイルへのパスから成る、";" で区切られたリスト|
-|-UdoRedirect (既定値 "False")|Udo アセンブリ リダイレクトの構成を生成します|
-|-UseDatabase (既定値 "master")|分離コードの一時アセンブリ登録に使用するデータベース|
-|-Verbose (既定値 "False")|ランタイムからの詳細な出力を表示します|
-|-WorkDir [既定値 "現在のディレクトリ"]|コンパイラの使用と出力用のディレクトリ|
-|-RunScopeCEP [既定値 "0"]|使用する ScopeCEP モード|
-|-ScopeCEPTempPath [既定値 "temp"]|データをストリーミングするために使用する一時パス|
-|-OptFlags [既定値 '']|オプティマイザー フラグのコンマ区切りリスト|
+|引数|既定値|Description|
+|--------|-------------|-----------|
+|-分離コード|False|スクリプトには .cs 分離コードがあります|
+|-CppSDK| |CppSDK ディレクトリ|
+|-DataRoot| DataRoot 環境変数|ローカル実行用の DataRoot。既定値は "LOCALRUN_DATAROOT" 環境変数です|
+|-MessageOut| |ファイルにダンプされるコンソール上のメッセージ|
+|-Parallel|1|指定された並列処理でプランを実行します|
+|-References| |分離コードの追加の参照アセンブリまたはデータ ファイルへのパスから成る、";" で区切られたリスト|
+|-UdoRedirect|False|Udo アセンブリ リダイレクトの構成を生成します|
+|-UseDatabase|master|分離コードの一時アセンブリ登録に使用するデータベース|
+|-Verbose|False|ランタイムからの詳細な出力を表示します|
+|-WorkDir|現在のディレクトリ|コンパイラの使用と出力用のディレクトリ|
+|-RunScopeCEP|0|使用する ScopeCEP モード|
+|-ScopeCEPTempPath|temp|データをストリーミングするために使用する一時パス|
+|-OptFlags| |オプティマイザー フラグのコンマ区切りリスト|
 
 
 次に例を示します。
@@ -347,7 +348,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 |プロパティ|型|説明|
 |--------|----|-----------|
-|AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の&1; つです)|
+|AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
 |CodeBehindReferences|string|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
 |CppSdkDir|string|CppSDK ディレクトリ|
 |CurrentDir|string|現在のディレクトリ|
@@ -392,10 +393,7 @@ E_CSC_SYSTEM_INTERNAL: 内部エラーです。 ファイルを読み込めな�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-* U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-* 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * 診断情報のログについては、「[Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)」を参照してください。
 * より複雑なクエリを表示する場合は、[Azure Data Lake Analytics を使用した Web サイトのログの分析](data-lake-analytics-analyze-weblogs.md)に関するページをご覧ください。
 * ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。

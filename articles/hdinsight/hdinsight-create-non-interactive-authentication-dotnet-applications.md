@@ -1,5 +1,5 @@
 ---
-title: "非対話型認証 .NET HDInsight アプリケーションを作成する | Microsoft Docs"
+title: "非対話型認証 .NET HDInsight アプリケーションを作成する -Azure | Microsoft Docs"
 description: "非対話型認証 .NET HDInsight アプリケーションを作成する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2b8638ffc3287346a71f591370367655c450e376
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 7821a9e60e60ff01cff06db2a6f216a260c1c41a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
 # <a name="create-non-interactive-authentication-net-hdinsight-applications"></a>非対話型認証 .NET HDInsight アプリケーションを作成する

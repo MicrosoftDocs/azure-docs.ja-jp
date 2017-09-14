@@ -11,23 +11,18 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1c56a7f16361ac4fae97be6c9f21c959723b396c
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 622604dc3ce69085feff6705168d58ad9938c429
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへのフェールバック
-
-> [!div class="op_single_selector"]
-> * [Azure から VMware/物理マシン](site-recovery-failback-azure-to-vmware.md)
-> * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
-
 
 この記事では、Azure Virtual Machines からオンプレミス サイトに仮想マシンをフェールバックする方法について説明します。 チュートリアル「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」を使用して、VMware 仮想マシンまたは Windows/Linux 物理サーバーをオンプレミス サイトから Azure にフェールオーバーした後で、この記事の手順に従ってください。
 
@@ -76,7 +71,7 @@ ms.lasthandoff: 04/27/2017
 
 物理マシンは Azure にフェールオーバーした場合、VMware 仮想マシンとしてのみフェールバックできます (P2A2V とも呼ばれます)。 このフローは、別の場所の復旧に該当します。
 
-* Windows Server 2008 R2 SP1 サーバーが保護されていて、Azure にフェールオーバーした場合、これをフェールバックすることはできません。
+* Windows Server 2008 R2 SP1 の物理サーバーが保護されていて、Azure にフェールオーバーした場合、これをフェールバックすることはできません。
 * 1 つ以上のマスター ターゲット サーバーと、フェールバック先として必要な ESX/ESXi ホストを必ず検出します。
 
 ## <a name="have-you-completed-reprotection"></a>再保護の完了の確認
@@ -112,7 +107,7 @@ ms.lasthandoff: 04/27/2017
 
 ### <a name="what-happens-to-vmware-tools-post-failback"></a>フェールバック後の VMware ツールの動作
 
-Azure へのフェールオーバー時は、VMware ツールを Azure 仮想マシンで実行することはできません。 Windows 仮想マシンの場合、フェールオーバー時に ASR によって VMware ツールが無効になります。 Linux 仮想マシンの場合、フェールオーバー時に ASR によって VMware ツールがアンインストールされます。 
+Azure へのフェールオーバー時は、VMware ツールを Azure 仮想マシンで実行することはできません。 Windows 仮想マシンの場合、フェールオーバー時に ASR によって VMware ツールが無効になります。 Linux 仮想マシンの場合、フェールオーバー時に ASR によって VMware ツールがアンインストールされます。
 
 Windows 仮想マシンのフェールバック時に、フェールバックと同時に VMware ツールが再有効化されます。 同様に、Linux 仮想マシンの場合も、フェールバック時に VMware ツールがマシンに再インストールされます。
 

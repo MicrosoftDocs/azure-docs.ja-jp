@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c0c5ab8a9db60ff375b7d823e40f83cbc4d2b4c3
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 359677972c7e1fa3f7435052021ddfae5b1ed85e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する

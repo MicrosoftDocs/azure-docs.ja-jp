@@ -12,14 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
-ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
+ms.reviewer: kairaz.contractor
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 2cc2b63312b331a19c61cd7b59a4cac78edf32e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/11/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Azure Active Directory におけるグループの管理
@@ -36,6 +38,9 @@ Azure Active Directory (Azure AD) ユーザー管理の機能の 1 つに、ユ�
 * SaaS アプリケーション、Azure サービス、SharePoint サイト、オンプレミスのリソースなど、ディレクトリの外部に存在するリソース
 
 加えてリソース所有者は、リソースへのアクセス権を他のユーザーが所有する Azure AD グループに対して割り当てることもできます。 これにより、割り当て先のグループのメンバーにリソースへのアクセス権が付与されます。 グループのメンバーシップは、グループの所有者が管理します。 実質的にはユーザーをリソースに割り当てる権限が、リソースの所有者からグループの所有者に委任されます。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターでグループを管理する方法については、「[Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ## <a name="how-do-i-create-a-group"></a>どのようにしてグループを作成しますか?
 組織がサブスクライブしているサービスに応じて、次のいずれかを使用してグループを作成できます。

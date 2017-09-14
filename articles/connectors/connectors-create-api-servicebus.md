@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/02/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e5d3301c90adf993b1cba35969dfe4dbeaeab499
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 1e2ce06f5993280dbdb67121849591e67f7979e9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -43,12 +43,13 @@ Azure Service Bus に接続して、メッセージを送受信します。 キ�
 > 
 
 ## <a name="use-a-service-bus-action"></a>Service Bus アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 [!INCLUDE [Steps to create a Service Bus action](../../includes/connectors-create-api-servicebus-action.md)]
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/servicebus/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/servicebus/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。

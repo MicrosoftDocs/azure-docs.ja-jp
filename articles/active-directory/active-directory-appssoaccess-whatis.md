@@ -3,7 +3,7 @@ title: "Azure Active Directory のアプリケーション アクセスとシン
 description: "Azure Active Directory を使用して、業務上必要なすべての SaaS アプリケーションと Web アプリケーションへのシングル サインオンを有効にします。"
 services: active-directory
 documentationcenter: 
-author: asmalser-msft
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
-ms.author: asmalser
+ms.date: 09/11/2017
+ms.author: curtand
+ms.reviewer: asmalser
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: cb41fbd7ca931df52ba8e5304459bb04298a108c
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは

@@ -1,6 +1,6 @@
 ---
 title: "Azure における SQL Server のセキュリティに関する考慮事項 | Microsoft Docs"
-description: "このトピックでは、クラシック デプロイ モデルで作成されたリソースを参照し、Azure 仮想マシンで実行している SQL Server をセキュリティ保護するための一般的なガイダンスを示します。"
+description: "このトピックでは、Azure Virtual Machine で実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,44 +13,91 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/15/2016
+ms.date: 06/02/2017
 ms.author: jroth
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 9fc96d70592bd55685ebbf1b80f6017b74f58925
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 4ad9156e481eac0bae32bca35a2b126363e5d8b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
-このトピックでは、Azure VM の SQL Server インスタンスへのセキュリティで保護されたアクセスの確立に役立つ全体的なセキュリティ ガイドラインについて説明します。 ただし、Azure の SQL Server データベース インスタンスをより安全に保護するには、Azure のセキュリティに関するベスト プラクティスに加えて、従来のオンプレミスのセキュリティに関するベスト プラクティスも実装することをお勧めします。
 
-> [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
-
-SQL Server のセキュリティ ベスト プラクティスの詳細については、「 [SQL Server 2008 R2 Security Best Practices - Operational and Administrative Tasks (SQL Server 2008 R2 のセキュリティに関するベスト プラクティス - 運用作業と管理作業)](http://download.microsoft.com/download/1/2/A/12ABE102-4427-4335-B989-5DA579A4D29D/SQL_Server_2008_R2_Security_Best_Practice_Whitepaper.docx)
+このトピックでは、Azure Virtual Machine (VM) の SQL Server インスタンスへのセキュリティで保護されたアクセスの確立に役立つ全体的なセキュリティ ガイドラインについて説明します。
 
 Azure はいくつかの業界規制および標準に準拠しているため、ユーザーは仮想マシンで実行されている SQL Server を使用して、標準に準拠したソリューションを構築できます。 Azure での法規制遵守に関する情報については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)を参照してください。
 
-次に示すのは、Azure VM の SQL Server インスタンスへの接続とその構成のときに考慮することをお勧めする、セキュリティに関する推奨事項の一覧です。
+[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="considerations-for-managing-accounts"></a>アカウントの管理に関する注意点:
-* **Administrator**という名前ではない一意のローカル管理者アカウントを作成します。
-* すべてのアカウントに複雑で強力なパスワードを使用します。 強力なパスワードを作成する方法の詳細については、「[強力なパスワードの作成に関するヒント](http://windows.microsoft.com/en-us/windows-vista/Tips-for-creating-a-strong-password)」をご覧ください。
-* 既定で、Azure は SQL Server 仮想マシンのセットアップ中に Windows 認証を選択します。 そのため、 **SA** ログインは無効となり、パスワードはセットアップによって割り当てられます。 **SA** ログインは使用せず、有効にしないことをお勧めします。 次に示すのは、SQL ログインが必要な場合の代替方法です。
-  
-  * sysadmin メンバーシップを持つ SQL アカウントを作成します。
-  * **SA** ログインを使用する必要がある場合は、ログインを有効にし、名前を変更して新しいパスワードを割り当てます。
-  * 上記のどちらのオプションでも、認証モードを **[SQL Server 認証モードと Windows 認証モード]**に変更する必要があります。 詳細については、「 [サーバーの認証モードの変更](https://msdn.microsoft.com/library/ms188670.aspx)」を参照してください。
+## <a name="control-access-to-the-sql-vm"></a>SQL VM へのアクセスの制御
 
-## <a name="considerations-for-securing-connections-to-azure-virtual-machine"></a>Azure 仮想マシンへの接続のセキュリティ保護に関する注意事項:
-* 仮想マシンの管理には、パブリック RDP ポートではなく、 [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) を使用することを検討してください。
-* [ネットワーク セキュリティ グループ](../../../virtual-network/virtual-networks-nsg.md) (NSG) を使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。 これを行う方法については、 [PowerShell を使用したエンドポイントの Access Control リスト (ACL) の管理](../../../virtual-network/virtual-networks-acl-powershell.md)を参照してください。
-* エンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
-* Azure Virtual Machines の SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にします。 署名付き証明書で SQL Server インスタンスを構成します。 詳細については、「[データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192.aspx)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」をご覧ください。
-* 仮想マシンが特定のネットワークからのみアクセスされる場合は、Windows ファイアウォールを使用して、特定の IP アドレスまたはネットワーク サブネットへのアクセスを制限します。
+SQL Server 仮想マシンを作成するときに、マシンと SQL Server へのアクセス権を持つユーザーを注意深く制御する方法を検討します。 一般に、次の操作を行う必要があります。
+
+- SQL Server へのアクセスをアクセスが必要なアプリケーションとクライアントのみに制限します。
+- ユーザー アカウントとパスワードを管理するためのベスト プラクティスに従います。
+
+次のセクションは、これらの点を考える上での提案を示しています。
+
+## <a name="secure-connections"></a>セキュリティで保護された接続
+
+ギャラリー イメージを使って SQL Server 仮想マシンを作成するときに、[**SQL Server Connectivity**] オプションで、[**ローカル (VM 内のみ)**]、[**プライベート (Virtual Network 内)**]、または [**パブリック (インターネット)**] を選択できます。
+
+![SQL Server Connectivity](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
+
+最善のセキュリティでは、自分のシナリオに最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は [**ローカル**] です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、[**プライベート**] は指定した [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) 内でのみの SQL Server への通信をセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック (インターネット)**] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
+
+ポータルで選択されたオプションは、VM の[ネットワーク セキュリティ グループ](../../../virtual-network/virtual-networks-nsg.md) (NSG) で受信セキュリティ ルールを使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 SQL Server ポート (既定値 1433) へのトラフィックを許可するには、新しい受信 NSG ルールを変更または作成できます。 また、このポートでの通信を許可する、特定の IP アドレスを指定することもできます。
+
+![ネットワーク セキュリティ グループ ルール](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
+
+ネットワーク トラフィックを制限する NSG ルールに加え、仮想マシンで Windows ファイアウォールを使用することもできます。
+
+クラシック デプロイメント モデルでエンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。 これは、Resource Manager を使用する VM には必要ありません。
+
+最後に、Azure Virtual Machine の SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にすることを検討してください。 署名付き証明書で SQL Server インスタンスを構成します。 詳細については、「[データベース エンジンへの暗号化接続の有効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」をご覧ください。
+
+## <a name="use-a-non-default-port"></a>既定以外のポートの使用
+
+既定では、SQL Server は既知のポート (1433) をリッスンします。 セキュリティ強化のために、既定以外のポート (1401 など) をリッスンするように、SQL Server を構成します。 Azure Portal で SQL Server のギャラリー イメージをプロビジョニングする場合、[**SQL Server 設定**] ブレードでこのポートを指定できます。
+
+プロビジョニングした後に、これを構成するには、次の 2 つのオプションがあります。
+
+- Resource Manager VM の場合、VM の概要ブレードから [**SQL Server の構成**] を選択できます。 ここには、ポートを変更するオプションがあります。
+
+  ![ポータルの TCP ポートの変更](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
+
+- ポータルでプロビジョニングされていないクラシック VM または SQL Server VM の場合、VM にリモートで接続して、ポートを手動で構成できます。 構成手順については、「[Configure a Server to Listen on a Specific TCP Port](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port)」 (特定の TCP ポートをリッスンするようにサーバーを構成する) を参照してください。 この手動の方法を使用する場合は、その TCP ポートで受信トラフィックを許可するために、Windows ファイアウォール ルールを追加する必要もあります。
+
+> [!IMPORTANT]
+> SQL Server ポートがパブリック インターネットの接続を開いている場合、既定以外のポートを指定することをお勧めします。
+
+SQL Server が既定以外のポートをリッスンしている場合は、接続時のポートを指定する必要があります。 たとえば、サーバーの IP アドレスが 13.55.255.255 で、SQL Server がポート 1401 をリッスンしているシナリオを検討します。 SQL Server に接続するには、接続文字列で `13.55.255.255,1401` を指定します。
+
+## <a name="manage-accounts"></a>[アカウントの管理]
+
+攻撃者に簡単にアカウント名やパスワードを推測されたくありません。 次のヒントを使用すると役立ちます。
+
+- **Administrator**という名前ではない一意のローカル管理者アカウントを作成します。
+
+- すべてのアカウントに複雑で強力なパスワードを使用します。 強力なパスワードを作成する方法の詳細については、「[強力なパスワードを作成する](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password)」を参照してください。
+
+- 既定で、Azure は SQL Server 仮想マシンのセットアップ中に Windows 認証を選択します。 そのため、 **SA** ログインは無効となり、パスワードはセットアップによって割り当てられます。 **SA** ログインは使用せず、有効にしないことをお勧めします。 SQL ログインが必要な場合は、次の方法のいずれかを使用します。
+
+  - **sysadmin** メンバーシップを持つ一意の名前で SQL アカウントを作成します。 プロビジョニング中に **SQL 認証**を有効にすると、ポータルからこの操作を行うことができます。
+
+    > [!TIP] 
+    > プロビジョニング中に SQL 認証を有効にしない場合は、認証モードを手動で [**SQL Server 認証モードと Windows 認証モード**] に変更する必要があります。 詳細については、「 [サーバーの認証モードの変更](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)」を参照してください。
+
+  - **SA** ログインを使用する必要がある場合は、プロビジョニング後にログインを有効にし、新しい強力なパスワードを割り当てます。
+
+## <a name="follow-on-premises-best-practices"></a>オンプレミスのベスト プラクティスに従う
+
+このトピックで説明している方法に加えて、該当する場合は、従来のオンプレミスのセキュリティの方法を確認して実装することお勧めします。 詳細については、「[SQL Server インストールにおけるセキュリティの考慮事項](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」をご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」をご覧ください。

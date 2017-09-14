@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 2a7f2cb27cb4ed2d23fee09d53f85283a8592b3a
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -135,7 +136,9 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
 4. 証明書を Web アプリに追加する
 
 **証明書を取得または作成する** ここでは、テスト証明書を作成します。 開発者コマンド プロンプトで証明書を作成する場合に使用できる、いくつかのコマンドを次に示します。 証明書ファイルの作成先となるディレクトリを変更します。  また、証明書の開始日と終了日は、現在の日付 + 1 年とします。
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
+
+    makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
+    pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
 終了日と .pfx のパスワードをメモしておいてください (この例では、2016 年 7 月 31 日と test123)。 この情報は以下で必要になります。
 

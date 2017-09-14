@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 912e3e25680034828aee93d23c6a725c2cec0d45
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 4c0040db9e232b2bb1506282cad57175c61a5b81
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -67,9 +67,12 @@ Application Insights ポータルのユーザー、セッション、または�
 
 
 ## <a name="next-steps"></a>次のステップ
-
-* [利用状況の概要](app-insights-usage-overview.md)
-* [保持](app-insights-usage-retention.md)
-* [カスタム イベントのコーディング](app-insights-api-custom-events-metrics.md)
+- 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
+- カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
+    - [ファネル](usage-funnels.md)
+    - [保持](app-insights-usage-retention.md)
+    - [ユーザー フロー](app-insights-usage-flows.md)
+    - [ブック](app-insights-usage-workbooks.md)
+    - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
 
 

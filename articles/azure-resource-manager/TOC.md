@@ -6,11 +6,12 @@
 ## [マネージ アプリケーション](managed-application-overview.md)
 
 # 作業開始
-## [テンプレートをエクスポートする](resource-manager-export-template.md)
-## [最初のテンプレートを作成する](resource-manager-create-first-template.md)
+## [テンプレートを作成してデプロイする](resource-manager-create-first-template.md)
+## [テンプレート用の VS Code 拡張機能](resource-manager-vscode-extension.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # サンプル
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
 ## PowerShell
 ### [テンプレートのデプロイ](resource-manager-samples-powershell-deploy.md)
 
@@ -19,8 +20,8 @@
 
 # 方法
 ## テンプレートの作成
-### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [テンプレート セクション](resource-group-authoring-templates.md)
+### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
@@ -32,6 +33,7 @@
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 
+
 ## デプロイ
 ### PowerShell
 #### [テンプレートのデプロイ](resource-group-template-deploy.md)
@@ -41,7 +43,9 @@
 #### [テンプレートのデプロイ](resource-group-template-deploy-cli.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)
 #### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-cli.md)
-### [ポータル](resource-group-template-deploy-portal.md)
+### ポータル
+#### [リソースのデプロイ](resource-group-template-deploy-portal.md)
+#### [テンプレートをエクスポートする](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [リソース グループ間のデプロイ](resource-manager-cross-resource-group-deployment.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -70,14 +74,18 @@
 ### [ポータルを使用してポリシーを割り当てる](resource-manager-policy-portal.md)
 ### [スクリプトを使用してポリシーを割り当てる](resource-manager-policy-create-assign.md)
 ### 例
-#### [リソース タグ](resource-manager-policy-tags.md)
+#### [タグ](resource-manager-policy-tags.md)
+#### [名前付け規則](resource-manager-policy-naming-convention.md)
+#### [ネットワーク](resource-manager-policy-network.md)
 #### [Storage](resource-manager-policy-storage.md)
 #### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## マネージ アプリケーションの使用
-### [マネージ アプリケーションの発行](managed-application-publishing.md)
-### [マネージ アプリケーションの実行](managed-application-consumption.md)
+### [サービス カタログ アプリケーションの発行](managed-application-publishing.md)
+### [サービス カタログ アプリケーションの使用](managed-application-consumption.md)
+### [マーケットプレース アプリケーションの発行](managed-application-author-marketplace.md)
+### [マーケットプレース アプリケーションの使用](managed-application-consume-marketplace.md)
 ### [UI 定義を作成する](managed-application-createuidefinition-overview.md)
 
 ## Audit
@@ -86,6 +94,11 @@
 
 ## トラブルシューティング
 ### [一般的なデプロイのエラー](resource-manager-common-deployment-errors.md)
+### [デプロイ エラーについて](resource-manager-troubleshoot-tips.md)
+### [RequestDisallowedByPolicy エラー](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### 仮想マシンのデプロイのエラー
+#### [Linux](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+#### [Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 
 # リファレンス
 ## [テンプレートの形式](/azure/templates/)
@@ -93,6 +106,7 @@
 ### [配列とオブジェクトの関数](resource-group-template-functions-array.md)
 ### [比較関数](resource-group-template-functions-comparison.md)
 ### [デプロイ関数](resource-group-template-functions-deployment.md)
+### [論理関数](resource-group-template-functions-logical.md)
 ### [数値関数](resource-group-template-functions-numeric.md)
 ### [リソース関数](resource-group-template-functions-resource.md)
 ### [文字列関数](resource-group-template-functions-string.md)
@@ -119,8 +133,10 @@
 ## [REST ()](/rest/api/resources/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [スロットル リクエスト](resource-manager-request-limits.md)
 ## [非同期操作の追跡](resource-manager-async-operations.md)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)

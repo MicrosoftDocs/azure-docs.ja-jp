@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 7de37f106e33d425b3b497cec640bac3fa4afa74
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 958b61f5de732a882e0a2682b8dd4e18504a6ae7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Azure Portal の Site Recovery を使用して VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-vmm-to-azure.md)
+> * [Azure Portal](site-recovery-vmm-to-azure.md)
 > * [Azure クラシック](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [PowerShell クラシック](site-recovery-deploy-with-powershell.md)
@@ -42,7 +41,7 @@ Azure にマシンを (フェールバックなしで) 移行する方法につ�
 記事に従って、次のデプロイ手順を実行します。
 
 
-1. このデプロイのアーキテクチャの[詳細を確認](site-recovery-components.md#hyper-v-to-azure)します。 また、Site Recovery で Hyper-V レプリケーションがどのように動作するかの[詳細を確認](site-recovery-hyper-v-azure-architecture.md)します。
+1. このデプロイのアーキテクチャの[詳細を確認](site-recovery-components.md)します。 また、Site Recovery で Hyper-V レプリケーションがどのように動作するかの[詳細を確認](site-recovery-hyper-v-azure-architecture.md)します。
 2. 前提条件と制限事項を確認します。
 3. Azure ネットワークおよびストレージ アカウントを設定します。
 4. オンプレミスの VMM サーバーと Hyper-V ホストを準備します。
@@ -60,7 +59,7 @@ Azure にマシンを (フェールバックなしで) 移行する方法につ�
 **サポート要件** | **詳細**
 --- | ---
 **Azure** | [Azure の要件](site-recovery-prereq.md#azure-requirements)を確認します。
-**オンプレミスのサーバー** | オンプレミスの VMM サーバーと Hyper-V ホストの要件の[詳細を確認](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-azure)します。
+**オンプレミスのサーバー** | オンプレミスの VMM サーバーと Hyper-V ホストの要件の[詳細を確認](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-in-vmm-clouds-to-azure)します。
 **オンプレミスの Hyper-V VM** | レプリケートする VM では、[サポートされるオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)を実行し、[Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠する必要があります。
 **Azure の URL** | VMM サーバーは、これらの URL にアクセスできる必要があります。<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> IP アドレスベースのファイアウォール規則を使用している場合、その規則で Azure との通信が許可されていることを確認します。<br/></br> [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。<br/></br> ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
 
@@ -82,14 +81,14 @@ Azure にマシンを (フェールバックなしで) 移行する方法につ�
 Site Recovery に使用されている Azure ネットワークは、同じまたは異なるサブスクリプション内で[移動](../azure-resource-manager/resource-group-move-resources.md)できません。
 
 ### <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントを設定
-* Azure にレプリケートされたデータを保持するには、Standard または Premium の Azure Storage アカウントが必要です。[Premium Storage](../storage/storage-premium-storage.md) は、IO を集中的に行うワークロードをホストするために、常に高い IO パフォーマンスと低遅延時間を必要とする仮想マシンに使用されます。 レプリケートされたデータを Premium アカウントを使用して保存する場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。
-* フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Resource Manager モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
+* Azure にレプリケートされたデータを保持するには、Standard または Premium の Azure Storage アカウントが必要です。[Premium Storage](../storage/common/storage-premium-storage.md) は、IO を集中的に行うワークロードをホストするために、常に高い IO パフォーマンスと低遅延時間を必要とする仮想マシンに使用されます。 レプリケートされたデータを Premium アカウントを使用して保存する場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。
+* フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Resource Manager モード](../storage/common/storage-create-storage-account.md)または[クラシック モード](../storage/common/storage-create-storage-account.md)でセットアップします。
 * アカウントをセットアップしてから、以下の作業を開始することをお勧めします。 行わない場合は、Site Recovery のデプロイ中に行う必要があります。
 - Site Recovery で使用されているストレージ アカウントは、同じまたは異なるサブスクリプション内で[移動](../azure-resource-manager/resource-group-move-resources.md)できないことに注意してください。
 
 ### <a name="prepare-the-vmm-server"></a>VMM サーバーを準備する
 * VMM サーバーが [前提条件](#prerequisites)に準拠しているかどうかを確認します。
-* Site Recovery のデプロイ時に、VMM サーバー上のすべてのクラウドを Azure ポータルで使用できるようにするかを指定できます。 特定のクラウドのみをポータルに表示する場合は、そのための設定を VMM 管理コンソールで対象クラウドに対して有効にできます。
+* Site Recovery のデプロイ時に、VMM サーバー上のすべてのクラウドを Azure Portal で使用できるようにするかを指定できます。 特定のクラウドのみをポータルに表示する場合は、そのための設定を VMM 管理コンソールで対象クラウドに対して有効にできます。
 
 ### <a name="prepare-for-network-mapping"></a>ネットワーク マッピングを準備する
 Site Recovery のデプロイ中にネットワーク マッピングをセットアップする必要があります。 ネットワーク マッピングは、ソースの VMM VM ネットワークとターゲットの Azure ネットワークを対応付けることで、以下のことを実現します。
@@ -102,7 +101,7 @@ Site Recovery のデプロイ中にネットワーク マッピングをセッ�
   * [前述](#set-up-an-azure-network)
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[新規]** > 、**[監視 + 管理]**、 > **[Backup and Site Recovery (OMS) (バックアップと Site Recovery (OMS))]** の順にクリックします。
 
     ![新しいコンテナー](./media/site-recovery-vmm-to-azure/new-vault3.png)
@@ -165,6 +164,11 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 
      ![internet](./media/site-recovery-vmm-to-azure/provider13.PNG)
 7. データの暗号化用に自動的に生成された SSL 証明書を保存する場所を、既定のまま使用するか変更します。 この証明書は、Azure Site Recovery ポータル内で Azure によって保護されているクラウドのデータ暗号化が有効な場合に使用されます。 この証明書を安全な場所に保管します。 Azure へのフェールオーバーを実行する際に、データの暗号化が有効になっている場合の暗号化解除にこれが必要になります。
+
+    > [!NOTE]
+    > Azure Site Recovery で提供されるデータ暗号化オプションを使用する代わりに、Azure で提供されている暗号化機能を使用して保存データを暗号化することをお勧めします。 Azure で提供される暗号化機能は、ストレージ アカウントに対して有効にすることができ、暗号化/暗号化解除が Azure Storage で処理されるときのパフォーマンス向上に役立ちます。
+    > [Azure の Storage サービスの暗号化の詳細については、こちらを参照してください](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)。
+    
 8. **[サーバー名]**に、コンテナーで VMM サーバーを識別する表示名を入力します。 クラスター構成で、VMM クラスターのロール名を指定します。
 9. VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期する場合は、**[Sync cloud metadata (クラウド メタデータの同期)]** を有効にします。 この操作は、各サーバーで 1 回のみ実行する必要があります。 すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。 **[登録]** をクリックしてプロセスを完了します。
 
@@ -217,7 +221,7 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
    ![Storage](./media/site-recovery-vmm-to-azure/gs-createstorage.png)
 
 
-   * クラシック モデルを使用してストレージ アカウントを作成する場合は、Azure Portal で作成できます。 [詳細情報](../storage/storage-create-storage-account-classic-portal.md)
+   * クラシック モデルを使用してストレージ アカウントを作成する場合は、Azure Portal で作成できます。 [詳細情報](../storage/common/storage-create-storage-account.md)
    * レプリケートされたデータに Premium ストレージ アカウントを使用している場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを格納するために、追加の Standard ストレージ アカウントをセットアップします。
 5. まだ Azure ネットワークを作成しておらず、Resource Manager を使用して作成する場合は、**[+ ネットワーク]** をクリックしてインラインで作成します。 **[仮想ネットワークの作成]** ブレードで、ネットワーク名、アドレス範囲、サブネットの詳細、サブスクリプション、場所を指定します。 ネットワークは、Recovery Services コンテナーと同じ場所にある必要があります。
 
@@ -257,7 +261,7 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
 3. **[コピーの頻度]**で、初期レプリケーションの後、差分データをレプリケートする頻度 (30 秒ごと、5 分ごと、または 15 分ごと) を指定します。
 
     > [!NOTE]
-    >  Premium Storage にレプリケートするときには、30 秒の頻度はサポートされません。 上限は、Premium Storage によってサポートされる blob ごとのスナップショットの数 (100) によって決まります。 [詳細情報](../storage/storage-premium-storage.md#snapshots-and-copy-blob)
+    >  Premium Storage にレプリケートするときには、30 秒の頻度はサポートされません。 上限は、Premium Storage によってサポートされる blob ごとのスナップショットの数 (100) によって決まります。 [詳細情報](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
 
 4. **[復旧ポイントの保持期間]**で、各復旧ポイントのリテンション期間の長さを時間単位で指定します。 保護されたマシンはこの期間内のどのポイントにも復旧できます。
 5. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットを含む復旧ポイントの作成頻度 (1 ～ 12 時間) を指定します。 Hyper-V では 2 種類のバックアップを使用します。1 つは標準バックアップで、仮想マシン全体の増分バックアップを実行します。もう 1 つは、アプリケーション整合性スナップショットで、仮想マシン内部のアプリケーション データの特定の時点のスナップショットを作成します。 アプリケーション整合性スナップショットでは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。 アプリケーション整合性スナップショットを有効にすると、ソースの仮想マシンで実行するアプリケーションのパフォーマンスに影響があります。 設定する値は、追加で構成する復旧ポイントの数より少ない数にしてください。
@@ -303,7 +307,7 @@ Site Recovery が備えている Capacity Planner を使用して、ソース環
 3. **[ターゲット]** で、サブスクリプション、フェールオーバー後のデプロイメント モデル、レプリケートされたデータに使用するストレージ アカウントを選択します。
 
     ![Enable replication](./media/site-recovery-vmm-to-azure/enable-replication-target.png)
-4. 使用するストレージ アカウントを選択します。 現在所有しているのと異なるストレージ アカウントを使用する場合は、[ストレージ アカウントを作成](#set-up-an-azure-storage-account)できます。 レプリケートされたデータに Premium Storage アカウントを使用している場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを格納するために、追加の Standard ストレージ アカウントを選択する必要があります。Resource Manager モデルを使用してストレージ アカウントを作成するには、**[新規作成]** をクリックします。 クラシック モデルを使用してストレージ アカウントを作成する場合は、[Azure Portal](../storage/storage-create-storage-account-classic-portal.md) で作成できます。 次に、 **[OK]**をクリックします
+4. 使用するストレージ アカウントを選択します。 現在所有しているのと異なるストレージ アカウントを使用する場合は、[ストレージ アカウントを作成](#set-up-an-azure-storage-account)できます。 レプリケートされたデータに Premium Storage アカウントを使用している場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを格納するために、追加の Standard ストレージ アカウントを選択する必要があります。Resource Manager モデルを使用してストレージ アカウントを作成するには、**[新規作成]** をクリックします。 クラシック モデルを使用してストレージ アカウントを作成する場合は、[Azure Portal](../storage/common/storage-create-storage-account.md) で作成できます。 次に、 **[OK]**をクリックします
 5. フェールオーバー後に作成された Azure VM が接続する Azure ネットワークとサブネットを選択します。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 現在所有しているのと異なるネットワークを使用する場合は、[ネットワークを作成](#set-up-an-azure-network)できます。 Resource Manager モデルを使用してネットワークを作成するには、**[新規作成]** をクリックします。 クラシック モデルを使用してネットワークを作成する場合は、[Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) で作成できます。 該当する場合は、サブネットを選択します。 次に、 **[OK]**をクリックします
 6. **[仮想マシン]** > **[仮想マシンの選択]** で、レプリケートする各マシンをクリックして選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]**をクリックします
 
@@ -426,6 +430,12 @@ Azure Site Recovery プロバイダーは、コマンド ラインからイン�
 * **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
 * **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
 * * **/EncryptionEnabled**: 省略可能。VMM クラウド内の Hyper-V VM を Azure にレプリケートする場合に指定します。 Azure で仮想マシンを暗号化するかどうかを指定します (保存時の暗号化)。 ファイル名の拡張子が **.pfx** であることを確認してください。 既定では、暗号化は無効になっています。
+
+    > [!NOTE]
+    > Azure Site Recovery で提供される暗号化オプション (EncryptionEnabled オプション) を使用する代わりに、Azure で提供されている暗号化機能を使用して保存データを暗号化することをお勧めします。 Azure で提供される暗号化機能は、ストレージ アカウントに対して有効にすることができ、暗号化/暗号化解除が Azure Storage で実行されるときのパフォーマンス向上に役立ちます  
+    > 。
+    > [Azure の Storage サービスの暗号化の詳細については、こちらを参照してください](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)。
+    
 * **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
 * **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
 * **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します (認証が必要なプロキシの場合)。

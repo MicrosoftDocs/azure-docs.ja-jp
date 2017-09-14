@@ -1,6 +1,6 @@
 ---
 title: "データ サイエンス仮想マシンとは | Microsoft Docs"
-description: "この記事では、重要なシナリオ、機能、および分析に使用できるデータ サイエンス Virtual Machines、環境、ツールキットを使い始める方法について説明します。"
+description: "データ サイエンス仮想マシンで主要な分析シナリオを始める方法。"
 keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
 services: machine-learning
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2017
-ms.author: gokuma
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 77b4f634c2a30d0cbec92d34a7f83866541d7d84
-ms.lasthandoff: 04/15/2017
-
+ms.date: 07/21/2017
+ms.author: gokuma;bradsev
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: d6346419756cb0841c23f3ba63e479ba2397af54
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="introduction-to-the-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用のクラウド ベースのデータ サイエンス仮想マシンの概要
-データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server 2012 と Linux で使用できます。 Linux エディションの DSVM は、Ubuntu 16.04 LTS または OpenLogic 7.2 CentOS ベースの Linux ディストリビューションで提供しています。 
+データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と OpenLogic 7.2 CentOS ベースの Linux ディストリビューションで提供しています。 
 
 このトピックは、データ サイエンス VM でできることを説明し、VM を使う主なシナリオの概要を示し、Windows および Linux バージョンで使用できる主な機能の一覧を示し、使い始める方法について説明します。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 04/15/2017
 データ サイエンス VM は、Microsoft R Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 データ サイエンス VM は迅速にセットアップできるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。
 
 ### <a name="deep-learning"></a>ディープ ラーニング
-データ サイエンス VM は、GPU (グラフィック処理装置) ベースのハードウェアで、ディープ ラーニング アルゴリズムを使用したトレーニング モデルに使用できます。 DSVM により、大きなモデルをトレーニングする必要がある場合や GPU の能力を活用する高速計算が必要な場合に、必要に応じて、クラウドで GPU ベースのハードウェアを使用できます。  Windows では現在、DSVM への個別のアドオンとして、[DSVM のディープ ラーニング ツールキット](http://aka.ms/dsvm/deeplearning)を提供しています。 このアドオンにより、VM インスタンスの作成中に、ディープ ラーニング アルゴリズムの GPU ドライバー、フレームワーク、および、 GPU バージョンが自動的にインストールされます。 Linux では、GPU のディープ ラーニングは [Linux (Ubuntu) エディション用のデータ サイエンス仮想マシン](http://aka.ms/dsvm/ubuntu)でのみ有効です。 データ サイエンス VM の Ubuntu エディションは GPU ベースでない Azure 仮想マシンに展開できます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。 DSVM の CentOS ベースの Linux エディションには、一部のディープ ラーニング ツール (CNTK、Tensorflow、MXNet) の CPU ビルドのみが含まれていますが、GPU ドライバーやフレームワークがプレインストールされていません。 
+データ サイエンス VM は、GPU (グラフィック処理装置) ベースのハードウェアで、ディープ ラーニング アルゴリズムを使用したトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング アルゴリズムが事前インストールされています。 Linux では、GPU のディープ ラーニングは [Linux (Ubuntu) エディション用のデータ サイエンス仮想マシン](http://aka.ms/dsvm/ubuntu)でのみ有効です。 データ サイエンス VM の Ubuntu/Windows-2016 エディションは GPU ベースでない Azure 仮想マシンにデプロイできます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。 以前、Windows Server 2012 用に[ディープ ラーニング ツールキット](http://aka.ms/dsvm/deeplearning)を公開しましたが、Windows ベースのディープ ラーニング ワークロードには Windows Server 2016 を使うことをお勧めします。 DSVM の CentOS ベースの Linux エディションには、一部のディープ ラーニング ツール (CNTK、Tensorflow、MXNet) の CPU ビルドのみが含まれていますが、GPU ドライバーやフレームワークがプレインストールされていません。 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Azure のさまざまなデータおよび分析製品を簡単に使用できるようにするツールも含まれます。 Microsoft R Server または SQL Server 2016 を使って、大規模なデータ セットに対する予測モデルを研究および構築できます。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
@@ -58,6 +58,7 @@ ms.lasthandoff: 04/15/2017
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | 人気のパッケージがプレインストールされた [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
 | [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/) Developer エディションには次のものが含まれます。 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-getting-started) 並列および分散ハイ パフォーマンス R フレームワーク<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml-introduction) - Microsoft の新しい最先端 ML アルゴリズム <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R の運用化](https://msdn.microsoft.com/microsoft-r/operationalize/about)                                            |Y                      | Y <br/> (MicrosoftML はまだ使用できません)|
+| [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word および PowerPoint   |Y                      |N              |
 | 人気のパッケージがプレインストールされた [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | Julia 言語用の人気のパッケージがプレインストールされた [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
 | リレーショナル データベース                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) |
@@ -72,7 +73,7 @@ ms.lasthandoff: 04/15/2017
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | Y |
 | JupyterHub (マルチ ユーザー Notebook サーバー)| N | Y |
 | **開発ツール、IDE、およびコード エディター**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server データ ツール、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](http://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/)を備えた [Visual Studio 2015 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server データ ツール、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](http://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/)を備えた [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | Y |
@@ -103,7 +104,7 @@ ms.lasthandoff: 04/15/2017
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](http://rattle.togaware.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (Ubuntu のみ) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/) | N | Y (Ubuntu のみ) |
-| **GPU ベースのディープ ラーニング ツール** |[DSVM 用ディープ ラーニング ツールキット](http://aka.ms/dsvm/deeplearning)の使用 |Ubuntu Edition のみ|
+| **GPU ベースのディープ ラーニング ツール** |Windows Server 2016 エディション  |Ubuntu エディション |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](http://cntk.ai) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Tensorflow](https://www.tensorflow.org/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y | Y|
@@ -120,14 +121,25 @@ ms.lasthandoff: 04/15/2017
 
 
 ## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Windows データ サイエンス仮想マシンを使う方法
-* [このページ](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)に移動し、緑の **[仮想マシンの作成]** ボタンを選んで、Windows 上に VM のインスタンスを作成します。
+* 次の場所に移動して、必要な Windows DSVM エディションのインスタンスを作成します。
+  * [Windows Server 2016 ベースの DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm)
+  
+  または 
+  * [Windows Server 2012 ベースの DSVM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) 
+* **[今すぐ入手する]** ボタンをクリックします。
 * VM を作成するときに指定した資格情報を使って、リモート デスクトップから VM にサインインします。
 * 使用できるツールを見つけて起動するには、**[Start]** (開始) メニューをクリックします。
 
 ## <a name="get-started-with-the-linux-data-science-vm"></a>Linux データ サイエンス仮想マシンを使う
-* Linux で VM のインスタンスを作成します
-  * OpenLogic CentOS ベースのエディションの場合、[このページ](http://aka.ms/dsvm/centos)に移動して、**[今すぐ入手する]** ボタンをクリックします。
-  * Ubuntu エディションの場合は、[このページ](http://aka.ms/dsvm/ubuntu)に移動し、**[今すぐ入手する]** ボタンをクリックします。
+* 次の場所に移動して、必要な Linux DSVM エディションのインスタンスを作成します。 
+  * [Ubuntu ベースの DSVM](http://aka.ms/dsvm/ubuntu)
+
+  または
+
+  * [OpenLogic CentOS ベースの DSVM](http://aka.ms/dsvm/centos)
+
+  
+* **[今すぐ入手する]** ボタンをクリックします。
 * VM を作成するときに指定した資格情報を使って、Putty や SSH Command などの SSH クライアントから VM にサインインします。
 * シェル プロンプトで、「dsvm-more-info」と入力します。
 * グラフィカルなデスクトップの場合、[こちら](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)からお使いのクライアント プラットフォーム用の X2Go クライアントをダウンロードし、Linux データ サイエンス VM のドキュメント「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client)」の説明に従います。

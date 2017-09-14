@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -55,7 +57,7 @@ Azure Data Lake Store では、任意のデータをネイティブ形式でそ�
 
 Azure Data Lake Store のデータ コンテナーは本質的にはフォルダーとファイルです。 格納されたデータを、SDK、Azure ポータル、Azure Powershell を使用して操作します。 これらのインターフェイスと適切なコンテナーを使用してストアにデータを配置する限り、あらゆる種類のデータを格納できます。 Data Lake Store では、格納されているデータの種類に基づくデータの特別な処理は実行されません。
 
-## <a name="a-namedatalakestoresecurityasecuring-data-in-azure-data-lake-store"></a><a name="DataLakeStoreSecurity"></a>Azure Data Lake Store でのデータのセキュリティ保護
+## <a name="DataLakeStoreSecurity"></a>Azure Data Lake Store でのデータのセキュリティ保護
 Azure Data Lake Store では、Azure Active Directory を使用し、認証およびアクセス制御リスト (ACL) によってデータへのアクセスを管理します。
 
 | 機能 | Description |
@@ -101,10 +103,5 @@ Data Lake Store の一連の機能について紹介するビデオをご覧く�
 * [リレーショナル ソースと Azure Data Lake Store との間で Apache Sqoop を使用してデータを移動する](https://mix.office.com/watch/1butcdjxmu114)
 * [Azure Data Lake Store 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Azure Data Lake Store でのデータのセキュリティ保護](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

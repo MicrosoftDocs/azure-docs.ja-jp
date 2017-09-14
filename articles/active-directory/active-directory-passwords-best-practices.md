@@ -6,22 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: sahenry
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 5bd17fc68447b8387dfaad33fe2d0055596ec086
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 4cfc1652377f0cfd059e336aec6994b40d32c559
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="roll-out-password-reset-for-users"></a>ユーザーのパスワード リセットの展開
@@ -51,7 +50,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="creating-your-own-password-portal"></a>独自のパスワードのポータルを作成する
 
-大手企業のお客様の多くは、Web ページをホストし、ルート DNS エントリ (https://passwords.contoso.com など) を作成することを選択しています。 そのページに Azure AD のパスワード リセット、パスワード リセットの登録、パスワード変更ポータル、およびその他の組織に固有の情報へのリンクを設けています。 ユーザーがサービスを使用する必要がある場合にアクセス可能な覚えやすいブランド化された URL を、送信する任意の電子メールまたは広告に含めることができます。
+大手企業のお客様の多くは、Web ページをホストし、ルート DNS エントリ (https://passwords.contoso.com など) を作成することを選択しています。そのページに Azure AD のパスワード リセット、パスワード リセットの登録、パスワード変更ポータル、およびその他の組織に固有の情報へのリンクを設けています。 ユーザーがサービスを使用する必要がある場合にアクセス可能な覚えやすいブランド化された URL を、送信する任意の電子メールまたは広告に含めることができます。
 
 * パスワード リセット ポータル - https://passwordreset.microsoftonline.com/
 * パスワード リセット登録ポータル - http://aka.ms/ssprsetup

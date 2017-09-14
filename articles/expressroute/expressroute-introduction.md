@@ -1,6 +1,6 @@
 ---
-title: "ExpressRoute の概要: 専用プライベート接続でオンプレミスのネットワークを Azure に拡張する | Microsoft Docs"
-description: "この ExpressRoute の技術概要では、ExpressRoute 接続が専用プライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。"
+title: "ExpressRoute の概要: プライベート接続でオンプレミスのネットワークを Azure に拡張する | Microsoft Docs"
+description: "この ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 08/03/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a36fce44efb3c32f83f33b19d2bca5ad73782a1b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a998ec92ad58932c5f71e84fbffcd7783cbb459b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
-Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
+Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute connectivity models](expressroute-connectivity-models.md)」(ExpressRoute 接続モデル) をご覧ください。
 
@@ -114,4 +113,5 @@ ExpressRoute に関してよく寄せられる質問については、「[Expres
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-portal-resource-manager.md)
   * [ExpressRoute 回線のピアリングの構成](expressroute-howto-routing-portal-resource-manager.md)
   * [ExpressRoute 回線に仮想ネットワークを接続する](expressroute-howto-linkvnet-portal-resource-manager.md)
+* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
 

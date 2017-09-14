@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 988e0cfd8329a89ba21ab2ea292785b144e08dab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: adc0c4415e10ddd0b4994cecef17f026546e91a1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -123,10 +125,5 @@ ms.openlocfilehash: 988e0cfd8329a89ba21ab2ea292785b144e08dab
 
 [Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

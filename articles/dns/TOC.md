@@ -40,10 +40,12 @@
 ## [DNS ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)
 ## [.NET SDK で DNS 操作を自動化する](dns-sdk.md)
 
+## [Azure リソースのカスタム ドメイン](dns-custom-domain.md)
 ## トラブルシューティング
 ### [トラブルシューティング ガイド](dns-troubleshoot.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
 ## [PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
@@ -62,8 +64,10 @@
 ## [Web アプリ](/azure/app-service-web/)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=dns)
-## [料金](https://azure.microsoft.com/pricing/details/dns/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
+## [機能に関する要求](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
-## [機能に関する要求](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
+## [料金](https://azure.microsoft.com/pricing/details/dns/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=dns)

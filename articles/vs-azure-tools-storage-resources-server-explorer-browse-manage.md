@@ -3,8 +3,8 @@ title: "サーバー エクスプローラーを使用したストレージ リ�
 description: "サーバー エクスプローラーを使用したストレージ リソースの参照と管理"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 658dc064-4a4e-414b-ae5a-a977a34c930d
 ms.service: storage
@@ -12,12 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d35c9903fd68199f9decdf099a7e162fe664e4d5
-
+ms.date: 8/24/2017
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 43ab501c69c0c1e3271dbfcf08e5342a3507ab82
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="browsing-and-managing-storage-resources-with-server-explorer"></a>サーバー エクスプローラーを使用したストレージ リソースの参照と管理
@@ -42,11 +43,12 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
 * テーブル
 
 ## <a name="work-with-blob-resources"></a>BLOB リソースの操作
-[BLOB] ノードには、選択したストレージ アカウントのコンテナーの一覧が表示されます。 BLOB コンテナーには BLOB ファイルが含まれており、これらの BLOB をフォルダーとサブフォルダーにまとめることができます。 詳細については、「 [.NET から BLOB ストレージを使用する方法](storage/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
+[BLOB] ノードには、選択したストレージ アカウントのコンテナーの一覧が表示されます。 BLOB コンテナーには BLOB ファイルが含まれており、これらの BLOB をフォルダーとサブフォルダーにまとめることができます。 詳細については、「 [.NET から BLOB ストレージを使用する方法](storage/blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
 
 ### <a name="to-create-a-blob-container"></a>BLOB コンテナーを作成するには
 1. **[BLOB]** ノードのショートカット メニューを開き、**[BLOB コンテナーの作成]** をクリックします。
-2. **[BLOB コンテナーの作成]** ダイアログ ボックスで新しいコンテナーの名前を入力し、**[OK]** をクリックします。
+2. **[BLOB コンテナーの作成]** ダイアログ ボックスで新しいコンテナーの名前を入力します。  
+3. キーボードの **Enter** キーを押すか、名前フィールドの外側をクリックまたはタップして BLOB コンテナーを保存します。
    
    > [!NOTE]
    > BLOB コンテナーの名前は、数字 (0 ～ 9) または小文字の英字 (a ～ z) で始める必要があります。
@@ -57,7 +59,7 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
 * 削除する BLOB コンテナーのショートカット メニューを開き、 **[削除]**をクリックします。
 
 ### <a name="to-display-a-list-of-the-items-contained-in-a-blob-container"></a>BLOB コンテナーの内容を表示するには
-* 一覧から BLOB コンテナー名のショートカット メニューを開き、 **[BLOB コンテナーの表示]**をクリックします。
+* 一覧から BLOB コンテナー名のショートカット メニューを開き、**[開く]** をクリックします。
   
     表示した BLOB コンテナーの内容は、BLOB コンテナーのビューと呼ばれるタブに表示されます。
   
@@ -78,12 +80,12 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
   * BLOB をローカル コンピューターに保存する
 
 ### <a name="to-create-a-folder-or-subfolder-in-a-blob-container"></a>BLOB コンテナーにフォルダーまたはサブフォルダーを作成するには
-1. サーバー エクスプローラーで BLOB コンテナーを選択します。 コンテナー ウィンドウで **[BLOB のアップロード]** ボタンをクリックします。
+1. Cloud Explorer で BLOB コンテナーを選択します。 コンテナー ウィンドウで **[BLOB のアップロード]** ボタンをクリックします。
    
     ![Uploading a file into a blob folder](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
 2. **[新しいファイルのアップロード]** ダイアログ ボックスで **[参照]** ボタンをクリックし、アップロードするファイルを指定してから **[フォルダー (省略可)]** ボックスにフォルダー名を入力します。
    
-    同じ手順に従って、コンテナーのフォルダーにサブフォルダーを追加できます。 フォルダー名を指定しない場合、ファイルは BLOB コンテナーの最上位にアップロードされます。コンテナー内の指定したフォルダーにファイルが表示されます。
+    同じ手順に従って、コンテナーのフォルダーにサブフォルダーを追加できます。 フォルダー名を指定しない場合、ファイルは BLOB コンテナーの最上位にアップロードされます。 コンテナー内の指定したフォルダーにファイルが表示されます。
    
     ![Folder added to a blob container](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
 3. フォルダーをダブルクリックするか、Enter キーを押してフォルダーの内容を表示します。 コンテナーのフォルダーで、 **[親ディレクトリを開く]** (上矢印) ボタンをクリックすれば、コンテナーのルートに戻ることができます。
@@ -109,7 +111,7 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
 > 
 
 ### <a name="to-download-blob-data"></a>BLOB データをダウンロードするには
-* **サーバー エクスプローラー**で 1 つ以上の BLOB のショートカット メニューを開いて **[開く]** を選択するか、BLOB 名を選択して **[開く]** ボタンをクリックするか、BLOB 名をダブルクリックします。
+* **Cloud Explorer** で 1 つ以上の BLOB のショートカット メニューを開いて **[開く]** を選択するか、BLOB 名を選択して **[開く]** ボタンをクリックするか、BLOB 名をダブルクリックします。
   
     **[Azure のアクティビティ ログ]** ウィンドウに BLOB のダウンロードの進行状況が表示されます。
   
@@ -160,11 +162,11 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
 Azure Table Storage サービスは、大量の構造化データを格納します。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。
 
 ### <a name="to-create-a-table"></a>テーブルを作成するには
-1. サーバー エクスプローラーで、ストレージ アカウントの **[テーブル]** ノードを選択してから、**[テーブルの作成]** を選択します。
+1. Cloud Explorer で、ストレージ アカウントの **[テーブル]** ノードを選択してから、**[テーブルの作成]** を選択します。
 2. **[テーブルの作成]** ダイアログ ボックスでテーブルの名前を入力します。
 
 ### <a name="to-view-table-data"></a>テーブル データを表示するには
-1. サーバー エクスプローラーで **[Azure]** ノードを開き、**[Storage]** ノードを開きます。
+1. Cloud Explorer で **[Azure]** ノードを開き、**[Storage]** ノードを開きます。
 2. 目的のストレージ アカウント ノードを開き、 **[テーブル]** ノードを開いて、そのストレージ アカウントのテーブルの一覧を表示します。
 3. テーブルのショートカット メニューを開き、 **[テーブルの表示]**を選択します。
    
@@ -185,7 +187,7 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
    * DateTime 値を入力する場合、ご利用のコンピューターの地域と言語の設定に合った適切な形式で入力する必要があります (たとえば、英語 (U.S) の場合であれば、MM/DD/YYYY HH:MM:SS [AM|PM])。
 
 ### <a name="to-add-entities"></a>エンティティを追加するには
-1. **テーブル デザイナー**で、テーブル ビューの右上隅近くにある **[エンティティの追加]** をクリックします。
+1. **[テーブル デザイナー]** で **[エンティティの追加]** ボタンを選択します。
    
     ![[エンティティの追加]](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655336.png)
 2. **[エンティティの追加]** ダイアログ ボックスで、**PartitionKey** プロパティと **RowKey** プロパティの値を入力します。
@@ -198,7 +200,7 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
 クエリ ビルダーを使用する場合、テーブルに表示されるエンティティ セットをカスタマイズすることができます。
 
 1. クエリ ビルダーを開くには、テーブルを閲覧用に開きます。
-2. テーブル ビューのツール バーの右端にあるボタンをクリックします。
+2. テーブル ビューのツール バーの [クエリ ビルダー] ボタンをクリックします。
    
     **[クエリ ビルダー]** ダイアログ ボックスが表示されます。 次の図は、クエリ ビルダーで作成しているクエリを示しています。
    
@@ -213,7 +215,7 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
     ![VST_SE_TableFilter](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655337.png)
 
 ### <a name="refresh-storage-data"></a>ストレージ データの更新
-サーバー エクスプローラーでストレージ アカウントからデータに接続したり、データを取得したりするときには、処理が完了するまでに最大で 1 分かかる場合があります。 接続できない場合は、操作がタイムアウトする可能性があります。 データの取得中、Visual Studio の他の部分では作業を続行できます。 操作に時間がかかりすぎる場合に操作を取り消すには、サーバー エクスプローラー ツール バーの **[更新の中止]** をクリックします。
+サーバー エクスプローラーでストレージ アカウントからデータに接続したり、データを取得したりするときには、処理が完了するまでに最大で 1 分かかる場合があります。 接続できない場合は、操作がタイムアウトする可能性があります。データの取得中、Visual Studio の他の部分では作業を続行できます。 操作に時間がかかりすぎる場合に操作を取り消すには、サーバー エクスプローラー ツール バーの **[更新の中止]** をクリックします。
 
 #### <a name="to-refresh-blob-container-data"></a>BLOB コンテナー データを更新するには
 * **[Storage]** の下にある **[BLOB]** ノードを選択し、サーバー エクスプローラー ツール バーの **[最新の情報に更新]** をクリックします。
@@ -271,10 +273,5 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
 
 ## <a name="next-steps"></a>次のステップ
 Azure ストレージ サービスの使用方法の詳細については、「 [Azure ストレージ サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

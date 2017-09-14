@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - SQL データベースの作成 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用した SQL データベースの作成"
+title: "PowerShell サンプル - Azure SQL データベースの作成 | Microsoft Docs"
+description: "Azure SQL データベースを作成するための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,17 +14,17 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 93abd9955c65e6ea741b7c79c3038ca46f62bccf
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 928f0285d298cad947359d8ba61553af7b8c132a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="create-a-single-sql-database-and-configure-a-firewall-rule-using-powershell"></a>PowerShell を使用して単一の SQL データベースを作成しファイアウォール規則を構成する
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>PowerShell を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する
 
 この PowerShell のサンプル スクリプトでは、Azure SQL Database を作成し、サーバー レベルのファイアウォール規則を構成します。 スクリプトが正常に実行されると、すべての Azure サービスおよび構成済み IP アドレスから SQL Database へアクセスできるようになります。 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

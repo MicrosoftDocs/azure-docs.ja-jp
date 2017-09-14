@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/20/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
-ms.lasthandoff: 12/14/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 70a1d0acb8ec9bbb591f696281ea5e975b443a15
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
@@ -52,7 +52,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 **[Cortana Intelligence]** をクリックすると、[Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) のホーム ページが表示されます。 Cortana Intelligence Suite は、データをインテリジェントなアクションに変換するための、完全管理型ビッグ データおよび高度な分析スイートです。 顧客事例を含む完全なドキュメントについては、Cortana Intelligence Suite のホーム ページを参照してください。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-ここには、**[ホーム]** (最初のページ) と **[Studio]** の&2; つのオプションがあります。
+ここには、**[ホーム]** (最初のページ) と **[Studio]** の 2 つのオプションがあります。
 
 **[Studio]** をクリックすると、**Azure Machine Learning Studio** に移動します。 最初に、Microsoft アカウントを使用するか職場または学校アカウントを使用してサインインするように求められます。 サインインすると、次のタブが左側に表示されます。
 
@@ -72,13 +72,13 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ## <a name="components-of-an-experiment"></a>実験の構成要素
 実験にはデータセットが含まれます。データセットからデータが分析モジュールに提供され、分析モジュールを接続することで予測分析モデルが完成します。 有効な実験に求められる具体的な条件を以下に示します。
 
-* 実験には少なくとも&1; つのデータセットと&1; つのモジュールがある。
+* 実験には少なくとも 1 つのデータセットと 1 つのモジュールがある。
 * データセットはモジュールにのみ接続できる。
 * モジュールはデータセットにも別のモジュールにも接続できる。
 * モジュールのすべての入力ポートが、何らかの形でデータ フローに接続されている。
 * モジュールの必須パラメーターがすべて設定されている。
 
-実験を最初から作成するか、既にあるサンプル実験をテンプレートとして使用してください。 詳細については、 [サンプル実験を使用した新しい実験の作成](machine-learning-sample-experiments.md)に関するページを参照してください。
+実験を最初から作成するか、既にあるサンプル実験をテンプレートとして使用してください。 詳細については、「[サンプル実験をコピーして新しい機械学習実験を作成する](machine-learning-sample-experiments.md)」を参照してください。
 
 簡単な実験を作成する例については、「 [Azure Machine Learning Studio での簡単な実験の作成](machine-learning-create-experiment.md)」をご覧ください。
 

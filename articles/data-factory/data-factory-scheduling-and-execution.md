@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: 861fcd7160fcab025909b60086f1a5a8a68f33fb
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
@@ -221,7 +220,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 "availability": {
     "frequency": "Month",
     "interval": 1,
-    "offset": "3.08:00:00",    
+    "offset": "3.08:00:00", 
     "style": "StartOfInterval"
 }
 ```

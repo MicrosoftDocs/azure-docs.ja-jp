@@ -1,5 +1,5 @@
 ---
-title: "Application Gateway での無効なゲートウェイによる (502) エラーのトラブルシューティング | Microsoft Docs"
+title: "Azure Application Gateway での無効なゲートウェイによる (502) エラーのトラブルシューティング | Microsoft Docs"
 description: "Application Gateway の 502 エラーに関するトラブルシューティングの方法を説明します"
 services: application-gateway
 documentationcenter: na
@@ -13,27 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 05/09/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 178cd0e1c20947c952a2abb4bad253272da9fcd4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: cbf9c552c4818b3925f449081539f1db6d61918e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
 
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
-## <a name="overview"></a>Overview
+Application Gateway の使用時に表示された無効なゲートウェイによる (502) エラーをトラブルシューティングする方法について説明します。
 
-Azure Application Gateway の構成後に発生する可能性があるエラーの 1 つに、"サーバー エラー: 502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました。" というエラーがあります。 このエラーが発生する主な理由としては、次のことが考えられます。
+## <a name="overview"></a>概要
 
-* Azure Application Gateway のバックエンド プールが構成されていないか、空である。
-* VM スケール セット内に正常な VM またはインスタンスがない。
-* VM スケール セットのバックエンド VM またはインスタンスが既定の正常性プローブに応答していない。
-* カスタムの正常性プローブの構成が無効または不適切である。
-* 要求がタイムアウトしたか、ユーザー要求に関して接続の問題がある。
+Application Gateway の構成後に発生する可能性があるエラーの 1 つに、"サーバー エラー: 502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました。" というエラーがあります。 このエラーが発生する主な理由としては、次のことが考えられます。
+
+* Azure Application Gateway の[バックエンド プールが構成されていないか、空である](#empty-backendaddresspool)。
+* [VM スケール セット内に正常な](#unhealthy-instances-in-backendaddresspool) VM またはインスタンスがない。
+* VM スケール セットのバックエンド VM またはインスタンスが[既定の正常性プローブに応答していない](#problems-with-default-health-probe.md)。
+* [カスタムの正常性プローブの構成](#problems-with-custom-health-probe.md)が無効または不適切である。
+* [要求がタイムアウトした](#request-time-out)か、ユーザー要求に関して接続の問題がある。
 
 ## <a name="empty-backendaddresspool"></a>空の BackendAddressPool
 

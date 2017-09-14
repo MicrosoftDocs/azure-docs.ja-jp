@@ -3,8 +3,8 @@ title: "Mobile Services から Azure App Service にアップグレードする"
 description: "簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 596bcd2f38a39cc1404d422214ab49ae79df744c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>既存の .NET Azure Mobile Service を App Service にアップグレードする
@@ -54,7 +54,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK の間に互換性は **ありません** 。 アプリ用にサービスを接続する場合は、発行されたクライアントを現在使用しているサイトに変更を発行しないでください。 代わりに、複製として機能する新しいモバイル アプリを作成する必要があります。 このアプリケーションを同じ App Service プランに指定することで、追加の財務費用が発生しないようにすることができます。
 
-アプリケーションには&2; つのバージョンがあります。1 つは変わらず、発行されたアプリとしてそのままの状態で機能し、もう&1; つはユーザーがアップグレードし、新しいクライアント リリースのターゲットにすることができます。 自分のペースでコードを移動し、テストできますが、バグの修正が両方に適用されることを確認する必要があります。 必要な数の (そのままの状態の) クライアント アプリを最新バージョンに更新したら、必要に応じて、元の移行されたアプリを削除することができます。
+アプリケーションには 2 つのバージョンがあります。1 つは変わらず、発行されたアプリとしてそのままの状態で機能し、もう 1 つはユーザーがアップグレードし、新しいクライアント リリースのターゲットにすることができます。 自分のペースでコードを移動し、テストできますが、バグの修正が両方に適用されることを確認する必要があります。 必要な数の (そのままの状態の) クライアント アプリを最新バージョンに更新したら、必要に応じて、元の移行されたアプリを削除することができます。
 
 このアップグレード プロセスの全概要は、次のとおりです。
 
@@ -126,7 +126,7 @@ Mobile Services では、モバイル アプリ名が Entity Framework セット
 
 ### <a name="system-properties"></a>システム プロパティ
 #### <a name="naming"></a>名前を付ける
-Azure Mobile Services サーバー SDK の場合、システム プロパティには必ず、次のようにプレフィックスとして下線を&2; つ (`__`) 含めるようにしてください。
+Azure Mobile Services サーバー SDK の場合、システム プロパティには必ず、次のようにプレフィックスとして下線を 2 つ (`__`) 含めるようにしてください。
 
 * __createdAt
 * __updatedAt
@@ -241,7 +241,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 ## <a name="updating-clients"></a>クライアントの更新
 モバイル アプリ バックエンドを運用している場合は、それを利用する新しいバージョンのクライアント アプリケーションを使用できます。 Mobile Apps には新しいバージョンのクライアント SDK も含まれ、上記のサーバー アップグレードと同様に、Mobile Apps バージョンをインストールする前に Mobile Services SDK へのすべての参照を削除する必要があります。
 
-バージョン間での主な変更の&1; つは、コンストラクターでアプリケーション キーが不要になったことです。 現在は、モバイル アプリの URL を渡すだけです。 たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
+バージョン間での主な変更の 1 つは、コンストラクターでアプリケーション キーが不要になったことです。 現在は、モバイル アプリの URL を渡すだけです。 たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://contoso.azurewebsites.net", // URL of the Mobile App

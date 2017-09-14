@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: subramar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 86ed3f25f0bdd6bb5d8a93f124a0d2bcd7e2b07a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/08/2017
-
 
 ---
 
@@ -118,7 +118,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
             using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
         { 
                  // report all event information               
-          Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
                 if (eventData.Message != null)              
             Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
             else             

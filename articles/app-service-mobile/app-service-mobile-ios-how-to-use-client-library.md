@@ -14,10 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 614038da2384b3efa48cd46ade347392ffef9d44
-ms.openlocfilehash: 2cb7b5aff47a81ae53d1ce68426b085eba4c96fc
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 65817208e1b26fb5f9eb56d164f48b44d57dce56
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
@@ -34,10 +35,10 @@ iOS SDK は、iOS バージョン 8.0 以降の Objective-C プロジェクト�
 "サーバーフロー" の認証では、UI の表示に WebView を使用します。  デバイスで WebView UI を表示できない場合は、この製品の対象外である別の認証方法が必要になります。  
 そのため、この SDK は腕時計型デバイスのような制限付きデバイスには適していません。
 
-## <a name="a-namesetupasetup-and-prerequisites"></a><a name="Setup"></a>セットアップと前提条件
+## <a name="Setup"></a>セットアップと前提条件
 このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。 このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。 また、コードで `MicrosoftAzureMobile.framework` を参照し、`MicrosoftAzureMobile/MicrosoftAzureMobile.h` をインポートしていることも前提となります。
 
-## <a name="a-namecreate-clientahow-to-create-client"></a><a name="create-client"></a>方法: クライアントを作成する
+## <a name="create-client"></a>方法: クライアントを作成する
 プロジェクトで Azure Mobile Apps バックエンドにアクセスするには、 `MSClient`を作成します。 `AppUrl` をアプリの URL に置き換えます。 `gatewayURLString` と `applicationKey` は空のままにしておいてかまいません。 認証用のゲートウェイを設定する場合は、ゲートウェイの URL で `gatewayURLString` を設定します。
 
 **Objective-C**:
@@ -53,7 +54,7 @@ let client = MSClient(applicationURLString: "AppUrl")
 ```
 
 
-## <a name="a-nametable-referenceahow-to-create-table-reference"></a><a name="table-reference"></a>方法: テーブル参照を作成する
+## <a name="table-reference"></a>方法: テーブル参照を作成する
 データへのアクセスやデータの更新を行うには、バックエンド テーブルへの参照を作成します。 `TodoItem` を実際のテーブルの名前に置き換えます。
 
 **Objective-C**:
@@ -69,7 +70,7 @@ let table = client.tableWithName("TodoItem")
 ```
 
 
-## <a name="a-namequeryingahow-to-query-data"></a><a name="querying"></a>方法: データをクエリする
+## <a name="querying"></a>方法: データをクエリする
 データベース クエリを作成するには、 `MSTable` オブジェクトのクエリを実行します。 次のクエリは、 `TodoItem` 内のすべての項目を取得し、各項目のテキストをログに記録します。
 
 **Objective-C**:
@@ -100,7 +101,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="a-namefilteringahow-to-filter-returned-data"></a><a name="filtering"></a>方法: 返されるデータをフィルター処理する
+## <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 結果をフィルター処理するには、多くのオプションを使用できます。
 
 述語を使用してフィルター処理するには、`NSPredicate` と `readWithPredicate` を使用します。 次のコードは、返されたデータをフィルター処理して、不完全な Todo 項目のみを見つけます。
@@ -139,7 +140,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="a-namequery-objectahow-to-use-msquery"></a><a name="query-object"></a>方法: MSQuery を使用する
+## <a name="query-object"></a>方法: MSQuery を使用する
 複雑なクエリ (並べ替えとページングを含む) を実行するには、 `MSQuery` オブジェクトを直接作成するか、述語を使用して作成します。
 
 **Objective-C**:
@@ -167,7 +168,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 オブジェクトで `readWithCompletion` を呼び出して、`MSQuery` クエリを実行します。
 
-## <a name="a-namesortingahow-to-sort-data-with-msquery"></a><a name="sorting"></a>方法: MSQuery でデータを並べ替える
+## <a name="sorting"></a>方法: MSQuery でデータを並べ替える
 結果の並べ替えの例を見てみましょう。 "text" フィールドを昇順で並べ替えた後、"complete" を降順で並べ替えるには、次のように `MSQuery` を呼び出します。
 
 **Objective-C**:
@@ -203,7 +204,7 @@ query.readWithCompletion { (result, error) in
 ```
 
 
-## <a name="a-nameselectingaa-nameparametersahow-to-limit-fields-and-expand-query-string-parameters-with-msquery"></a><a name="selecting"></a><a name="parameters"></a>方法: MSQuery でフィールドを制限し、クエリ文字列パラメーターを展開する
+## <a name="selecting"></a><a name="parameters"></a>方法: MSQuery でフィールドを制限し、クエリ文字列パラメーターを展開する
 クエリで返されるフィールドを制限するには、 **selectFields** プロパティにフィールド名を指定します。 次の例では、text フィールドと completed フィールドだけが返されます。
 
 **Objective-C**:
@@ -235,7 +236,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="a-namepagingahow-to-configure-page-size"></a><a name="paging"></a>方法: ページ サイズを構成する
+## <a name="paging"></a>方法: ページ サイズを構成する
 Azure Mobile Apps では、バックエンド テーブルから同時に取得されるレコードの数がページ サイズで制御されます。 `pull` データの呼び出しは、このページ サイズに基づいて、プルするレコードがなくなるまで、データをバッチで追加します。
 
 次のように、**MSPullSettings** を使用してページ サイズを構成することができます。 既定のページ サイズは 50 ですが、次の例では 3 に変更します。
@@ -272,7 +273,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="a-nameinsertingahow-to-insert-data"></a><a name="inserting"></a>方法: データを挿入する
+## <a name="inserting"></a>方法: データを挿入する
 新しいテーブル行を挿入するには、`NSDictionary` を作成し、`table insert` を呼び出します。 [動的スキーマ]が有効になっている場合、Azure App Service モバイル バックエンドは、`NSDictionary` に基づいて新しい列を自動的に生成します。
 
 `id` が指定されていない場合、バックエンドは新しい一意の ID を自動的に生成します。 電子メール アドレス、ユーザー名、または独自のカスタム値を ID として使用するには、独自の `id` を指定します。 独自の ID を指定すると、結合およびビジネス指向のデータベース ロジックを容易にすることができます。
@@ -305,7 +306,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="a-namemodifyingahow-to-modify-data"></a><a name="modifying"></a>方法: データを変更する
+## <a name="modifying"></a>方法: データを変更する
 既存の行を更新するには、次のように項目を変更して `update`を呼び出します。
 
 **Objective-C**:
@@ -365,7 +366,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 更新操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
 
-## <a name="a-namedeletingahow-to-delete-data"></a><a name="deleting"></a>方法: データを削除する
+## <a name="deleting"></a>方法: データを削除する
 項目を削除するには、次のように、該当する項目を指定して `delete` を呼び出します。
 
 **Objective-C**:
@@ -420,7 +421,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 削除操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
 
-## <a name="a-namecustomapiahow-to-call-custom-api"></a><a name="customapi"></a>方法: カスタム API の呼び出し
+## <a name="customapi"></a>方法: カスタム API の呼び出し
 カスタム API を使用して、任意のバックエンド機能を公開できます。 テーブル操作にマップする必要はありません。 メッセージングを詳細に制御できるだけでなく、ヘッダーの読み取り/設定や応答本文の形式の変更も可能です。 バックエンドでカスタム API を作成する方法については、「 [カスタム API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
 カスタム API を呼び出すには、 `MSClient.invokeAPI`を呼び出します。 要求と応答のコンテンツは、JSON として扱われます。 他のメディアの種類を使用するには、[`invokeAPI` の他のオーバーロードを使用します][5]。  `POST` 要求の代わりに `GET` 要求を行うには、パラメーター `HTTPMethod` を `"GET"` に設定し、パラメーター `body` を `nil` に設定します (GET 要求にはメッセージ本文がないため)。カスタム API で、他の HTTP 動詞をサポートする場合は、それに応じて `HTTPMethod` を変更します。
@@ -460,7 +461,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="a-nametemplatesahow-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="templates"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
+## <a name="templates"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
 テンプレートを登録するには、 **client.push registerDeviceToken** メソッドを使用してクライアント アプリにテンプレートを渡します。
 
 **Objective-C**:
@@ -499,7 +500,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 セキュリティを確保するために、要求からすべてのタグが削除されます。  インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][4]」を参照してください。  これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API][3] を使用します。
 
-## <a name="a-nameerrorsahow-to-handle-errors"></a><a name="errors"></a>方法: エラーを処理する
+## <a name="errors"></a>方法: エラーを処理する
 Azure App Service モバイル バックエンドを呼び出すと、完了ブロックに `NSError` パラメーターが含まれます。 エラーが発生すると、このパラメーターは null 以外の値になります。 前のコード スニペットに示すように、コードでは、このパラメーターを確認し、必要に応じてエラーを処理する必要があります。
 
 [`<WindowsAzureMobileServices/MSError.h>`][6] ファイルで、`MSErrorResponseKey`、`MSErrorRequestKey`、`MSErrorServerItemKey` の各定数を定義します。 エラーに関するさらに多くのデータを取得するには、次のコードを使用します。
@@ -530,7 +531,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="a-nameadalahow-to-authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
+## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
 Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。 ID プロバイダー SDK を使用したクライアント フローの認証は、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。  クライアント フローの認証により、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になります。
 
 1. [Active Directory ログイン用の App Service の構成方法][7]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。 iOS の場合、リダイレクト URI を `<app-scheme>://<bundle-id>` 形式にすることをお勧めします。 詳細については、[ADAL iOS のクイックスタート][8]に関する記事をご覧ください。
@@ -546,7 +547,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 3. ターミナルを使用して、プロジェクトを含むディレクトリから `pod install` を実行し、(プロジェクトではなく) 生成された Xcode ワークスペースを開きます。
 4. ご使用の言語に応じて、アプリケーションに次のコードを追加します。 各コードでは、次のように置き換えます。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
@@ -612,7 +613,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
             }
     }
 
-## <a name="a-namefacebook-sdkahow-to-authenticate-users-with-the-facebook-sdk-for-ios"></a><a name="facebook-sdk"></a>方法: Facebook SDK for iOS でユーザーを認証する
+## <a name="facebook-sdk"></a>方法: Facebook SDK for iOS でユーザーを認証する
 Facebook SDK for iOS を使用すると、Facebook でアプリケーションにユーザーをサインインさせることができます。  クライアント フローの認証の使用は、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。  クライアント フローの認証により、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になります。
 
 1. [Facebook ログイン用に App Service を構成する方法][9]に関するチュートリアルに従って、Facebook のサインイン用にモバイル アプリ バックエンドを構成します。
@@ -684,7 +685,7 @@ Facebook SDK for iOS を使用すると、Facebook でアプリケーション�
         }
     }
 
-## <a name="a-nametwitter-fabricahow-to-authenticate-users-with-twitter-fabric-for-ios"></a><a name="twitter-fabric"></a>方法: Twitter Fabric for iOS でユーザーを認証する
+## <a name="twitter-fabric"></a>方法: Twitter Fabric for iOS でユーザーを認証する
 Fabric for iOS を使用すると、Twitter でアプリケーションにユーザーをサインインさせることができます。 クライアント フローの認証を使用すると、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
 
 1. 「 [App Service アプリケーションを Twitter ログインを使用するように構成する方法](app-service-mobile-how-to-configure-twitter-authentication.md) 」のチュートリアルに従って、Twitter のサインイン用にモバイル アプリ バックエンドを構成します。
@@ -758,7 +759,7 @@ Fabric for iOS を使用すると、Twitter でアプリケーションにユー
         }
     }
 
-## <a name="a-namegoogle-sdkahow-to-authenticate-users-with-the-google-sign-in-sdk-for-ios"></a><a name="google-sdk"></a>方法: Google Sign-In SDK for iOS でユーザーを認証する
+## <a name="google-sdk"></a>方法: Google Sign-In SDK for iOS でユーザーを認証する
 Google Sign-In SDK for iOS を使用すると、Google アカウントでユーザーをアプリケーションにサインインさせることができます。  Google は、OAuth セキュリティ ポリシーの変更を最近発表しました。  ポリシーのこれらの変更により、将来的に Google SDK を使用することが必要になります。
 
 1. [Google ログイン用に App Service を構成する方法](app-service-mobile-how-to-configure-google-authentication.md) のチュートリアルに従って、Google のサインイン用にモバイル アプリ バックエンドを構成します。
@@ -879,9 +880,4 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 [8]: ../active-directory/active-directory-devquickstarts-ios.md
 [9]: app-service-mobile-how-to-configure-facebook-authentication.md
 [10]: https://developers.facebook.com/docs/ios/getting-started
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

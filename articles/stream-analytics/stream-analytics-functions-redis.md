@@ -3,7 +3,7 @@ title: "Stream Analytics による Azure Functions のリアルタイム処理 |
 description: "Service Bus キューに接続した Azure 関数を使用して、Stream Analytics ジョブの出力から Azure Redis Cache にデータを格納する方法を説明します。"
 keywords: "データ ストリーム, Redis Cache, Service Bus キュー"
 services: stream-analytics
-author: ryancrawcour
+author: samacha
 manager: jhubbard
 documentationcenter: 
 ms.assetid: d428bb33-4244-4001-b93d-c77bed816527
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
-ms.author: ryancraw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 3a915f782eddaa91bcfcc3f2b2c32eee752c319c
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 70471749ef2b0ccaa4662cbf8a1dfa7ef4b21cfa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="how-to-store-data-from-azure-stream-analytics-in-an-azure-redis-cache-using-azure-functions"></a>Azure Functions を使用して Azure Stream Analytics から Azure Redis Cache にデータを格納する方法
@@ -189,7 +188,7 @@ Azure Functions と Stream Analytics の併用によって可能になる、新�
 
 Microsoft Azure を初めてお使いになる場合は、 [Azure 無料試用版アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてご利用ください。 Stream Analytics を初めてお使いになる場合、 [最初の Stream Analytics ジョブを作成](stream-analytics-create-a-job.md)していただけます。
 
-サポートが必要な場合やご不明な点がある場合は、[MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics) または [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics) フォーラムにご投稿ください。 
+サポートが必要な場合やご不明な点がある場合は、[MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) または [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics) フォーラムにご投稿ください。 
 
 次のリソースも参照してください。
 

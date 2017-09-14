@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の WebHCat エラーの説明と解決策"
+title: "HDInsight の WebHCat エラーの説明と解決策 - Azure | Microsoft Docs"
 description: "HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 140d061fefbd9b8cd1b45061bf4dee607f2df44b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d8162e0d64ec9fc42690392b7c822593c0c2767
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -42,7 +42,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 * **Linux** クラスターの場合: Ambari (Web または REST API) を使用して値を変更します。 詳細については、 [Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ### <a name="default-configuration"></a>既定の構成
 
@@ -87,7 +87,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 | 原因 | 解決策 |
 | --- | --- |
 | WebHCat プロセス内で内部ガベージ コレクションが行われている。 |ガベージ コレクションが終了するまで待つか、または WebHCat サービスを再起動します。 |
-| ResourceManager サービスからの応答の待機中にタイムアウトが発生した。 アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 |現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications`を変更して同時実行ジョブの制限値をより大きな値にします。 詳細については、「 [構成の変更](#modifying-configuration) 」を参照してください。 |
+| ResourceManager サービスからの応答の待機中にタイムアウトが発生した。 このエラーは、アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 |現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications`を変更して同時実行ジョブの制限値をより大きな値にします。 詳細については、「[構成の変更](#modifying-configuration)」セクションをご覧ください。 |
 | `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |*すべて*のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。 または、`Fields` を使用しないでください。 |
 | ヘッドノードのフェールオーバー中に WebHCat サービスがダウンした。 |2 分待ってから操作をやり直してください。 |
 | WebHCat を通じて送信された 500 個を超えるジョブが保留中になっている。 |現在保留中のジョブが完了するのを待ってから、次のジョブを送信します。 |

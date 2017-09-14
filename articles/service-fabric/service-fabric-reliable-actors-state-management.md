@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 18a4ab09d83c0a664317191ef15834cc7bf335fc
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -33,7 +34,7 @@ Reliable Actors は、ロジックと状態の両方をカプセル化できる�
 * **揮発状態:** 状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。 これにより、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。 ただし、状態はディスクに保持されません。 従って、すべてのレプリカが同時に失われると状態も失われます。
 * **非永続化状態:** 状態はレプリケートされず、ディスクにも書き込まれません。 単に状態を確実に保持する必要がないアクター レベルです。
 
-永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、状態プロバイダーによって決まります。これは、状態を格納する Reliable Service のコンポーネントです。 またレプリケーションは、サービスがデプロイされるレプリカ数によって決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これはアクターに使用された場合、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。
+永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、状態プロバイダーによって決まります。これは、状態を格納する Reliable Service のコンポーネントです。 またレプリケーションは、サービスがデプロイされるレプリカ数によって決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これはアクターに使用された場合、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。 StatePersistence 属性は、派生クラスによって継承されません。各 Actor 型は、独自の StatePersistence レベルを提供する必要があります。
 
 ### <a name="persisted-state"></a>永続化状態
 ```csharp
@@ -81,7 +82,7 @@ class MyActorImpl extends FabricActor implements MyActor
 この設定は、メモリ内のみの状態プロバイダーを使用し、レプリカ数を 1 に設定します。
 
 ### <a name="defaults-and-generated-settings"></a>既定値と生成される設定
-`StatePersistence`属性を使用する場合、状態プロバイダーはアクター サービスが開始される際に、ランタイムで自動的に選択されます。 ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。 ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。 **最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。 
+`StatePersistence`属性を使用する場合、状態プロバイダーはアクター サービスが開始される際に、ランタイムで自動的に選択されます。 ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。 ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。 **最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。
 
 これらのパラメーターは手動で変更できます。 ただし`StatePersistence`属性が変更されるたびに、選択された`StatePersistence`属性の既定のレプリカ セット サイズ値にパラメーターは設定され、前の値はオーバーライドされます。 つまり、`StatePersistence`属性の値を変更すると、ServiceManifest.xml に設定した値がビルド時*のみ*にオーバーライドされます。
 
@@ -407,10 +408,8 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [アクター型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
-* [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
-* [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
-* [Java サンプル コード](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+
+Reliable Actors に格納される状態は、ディスクに書き込まれて、高可用性のためにレプリケートされる前に、シリアル化される必要があります。 [Actor 型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)についてさらに学習してください。
+
+次に、[アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)についてさらに学習してください。
 

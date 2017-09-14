@@ -1,5 +1,5 @@
 ---
-title: "Linux ベースの HDInsight での Hive を使用したフライトの遅延データの分析 | Microsoft Docs"
+title: "HDInsight での Hive を使用したフライトの遅延データの分析 - Azure | Microsoft Docs"
 description: "Linux ベースの HDInsight で Hive を使用してフライト データを分析し、Sqoop を使用して SQL Database にデータをエクスポートする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: cf460eed4bd290fbdcb9670a4ec4999f4c96c275
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 88031b3698ec575eb48531b118c45f11ef7f19c0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/05/2017
 Linux ベースの HDInsight で Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートする方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -163,7 +163,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 3. Hive を起動し、**flightdelays.hql** ファイルを実行するには、次のコマンドを使用します。
 
     ```
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -f flightdelays.hql
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
    > [!NOTE]
@@ -172,7 +172,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 4. __flightdelays.hql__ スクリプトの実行が完了したら、次のコマンドを使用して、対話型の Beeline セッションを開きます。
 
     ```
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
 5. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のクエリを使用してインポートされたフライト遅延データからデータを取得します。

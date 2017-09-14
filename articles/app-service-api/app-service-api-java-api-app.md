@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: rachelap;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 26011d72644f8b13a711d847d83175ce384f2053
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e38c540071cb49b0177e79178566d72ecb5f8886
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="build-and-deploy-a-java-api-app-in-azure-app-service"></a>Azure App Service での Java API アプリの構築とデプロイ
@@ -240,7 +239,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
           cd deploy
 
 ## <a name="publish-the-output-to-azure-app-service"></a>出力を Azure App Service に発行する
-このセクションでは、Azure ポータルを使用して新しい API アプリを作成する方法、Java アプリケーションをホストするためにこの API アプリを準備する方法、新しく作成した WAR ファイルを Azure App Service にデプロイして新しい API アプリを実行する方法について説明します。 
+このセクションでは、Azure Portal を使用して新しい API アプリを作成する方法、Java アプリケーションをホストするためにこの API アプリを準備する方法、新しく作成した WAR ファイルを Azure App Service にデプロイして新しい API アプリを実行する方法について説明します。 
 
 1. [Azure Portal] で新しい API アプリを作成します。手順として、**[新規] -> [Web + モバイル] -> [API アプリ]** をクリックし、アプリの詳細を入力して、**[作成]** をクリックします。
    
@@ -278,7 +277,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 <a name="see-also"></a>
 
 ## <a name="see-also"></a>関連項目
-Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 
 <!-- URL List -->
 
@@ -287,14 +286,14 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
 [Microsoft Azure]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
-[Azure Java デベロッパー センター]: /develop/java/
+[Azure Java Developer Center]: /develop/java/
 [Java Development Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
 [無料試用版]: https://azure.microsoft.com/
 [オンライン Swagger Editor]: http://editor2.swagger.io/
 [Postman]: https://www.getpostman.com/
-[Storage SDK for Java]: ../storage/storage-java-how-to-use-blob-storage.md
+[Storage SDK for Java]:../storage/blobs/storage-java-how-to-use-blob-storage.md
 [Swagger Editor]: http://swagger.io/
 [Swagger]: http://editor.swagger.io/
 [Visual Studio Code]: https://code.visualstudio.com

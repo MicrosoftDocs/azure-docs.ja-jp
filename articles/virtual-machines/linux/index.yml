@@ -6,7 +6,7 @@ metadata:
   title: Azure Linux 仮想マシンのドキュメント - チュートリアル、API リファレンス
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
-  author: apexprodleads
+  author: czeumault
   manager: carolz
   ms.service: virtual-machines-linux
   ms.tgt_pltfrm: na
@@ -18,89 +18,92 @@ abstract:
   description: Azure Linux 仮想マシンでは、Red Hat、Ubuntu、または好みの Linux ディストリビューションを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Linux VM の作成、構成、管理、スケーリングを行う方法を確認してください。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png
-      width: 250  
+      src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png'
+      width: 250
     title: 'Linux 仮想マシンを作成する。 (4:11)'
-    href: https://azure.microsoft.com/en-us/resources/videos/create-linux-virtual-machine/
+    href: 'https://azure.microsoft.com/en-us/resources/videos/create-linux-virtual-machine/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 'Learn how to deploy an NGINX web-server within a Virtual Machine running Ubuntu:'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Learn how to deploy, manage, and scale Linux VMs on Azure
-  - type: list
-    style: ordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Create and manage Linux VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Create and manage VM disks</a></li>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Automate VM configuration</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Create custom VM images</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Create highly available VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Create a VM scale set</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Load balance VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Manage VMs and virtual networks</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Backup VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitor VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Manage security on VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Create a CI/CD infrastructure with Jenkins, Docker, and GitHub</a>
-- title: 無料の Pluralsight ビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - type: paragraph
+        text: Ubuntu を実行している仮想マシン内で NGINX Web サーバーをデプロイする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Azure CLI
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Managing Infrastructure</a></p>
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-infrastructure.png
-        href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with Virtual Machines</a></p>
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-vms.png
-        href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with IaaS Monitoring</a></p>
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-iaas-monitoring.png
-        href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: サンプル
-  items:
-  - type: paragraph
-    text: Deploy your first application to Azure.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Azure で Linux VM のデプロイ、管理、スケーリング行う方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Linux VM の作成と管理</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">VM ディスクの作成と管理</a></li>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">VM 構成の自動化</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">カスタム VM イメージを作成する</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">高可用性 VM の作成</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">VM スケール セットの作成</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">VM の負荷分散</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">VM と仮想ネットワークの管理</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">VM のバックアップ</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">VM の監視</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">VM のセキュリティの管理</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Jenkins、Docker、GitHub を使用した CI/CD インフラストラクチャの作成</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Team Services による CI/CD</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>、<a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a>、または <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> を使用した Web サーバー スタックの作成
+          - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">SSL による Web サーバーのセキュリティ保護</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
     items:
-    - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Azure CLI</a>
-    - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">インフラストラクチャの管理</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-infrastructure.png'
+              href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Virtual Machines の概要</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-vms.png'
+              href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">IaaS 監視の概要</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-iaas-monitoring.png'
+              href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+  - title: サンプル
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-    - title: 言語
-      html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node​.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/compute">REST API Reference</a></p>
+      - type: paragraph
+        text: 初めてのアプリケーションを Azure にデプロイします。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Azure CLI</a>
+          - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
+          - title: 言語
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.JS</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST ()
+            html: <p><a href="/rest/api/compute">REST API リファレンスに関するページ</a></p>

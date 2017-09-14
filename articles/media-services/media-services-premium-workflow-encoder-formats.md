@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 08/09/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ef5db062ac320995ff8bfa64f38c89d860957868
 ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/28/2017
 
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
@@ -36,7 +37,7 @@ ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
 
 **メディア エンコーダー プレミアム ワークフロー** では、 [この](#closed_captioning) セクションで説明されているクローズド キャプションがサポートされています。 
 
-## <a name="a-idinputformatsamedia-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
+## <a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
 次のセクションに、このメディア プロセッサの入力としてサポートされたコーデックとファイル形式の一覧を示します。
 
 ### <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
@@ -68,7 +69,7 @@ ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
 * Windows Media オーディオ
 * WAV/PCM
 
-## <a name="a-idoutputformatamedia-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
+## <a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
 次のセクションに、このメディア プロセッサからの出力としてサポートされたコーデックとファイル形式の一覧を示します。
 
 ### <a name="output-containerfile-formats"></a>出力コンテナー/ファイル形式
@@ -103,12 +104,12 @@ ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
 >[!NOTE]
 >Dolby® Digital (AC3) にエンコードする場合、出力は、ISO MP4 ファイルにのみ書き込むことができます。
 
-## <a name="a-idclosedcaptioningasupport-for-closed-captioning"></a><a id="closed_captioning"></a>クローズド キャプションのサポート
+## <a id="closed_captioning"></a>クローズド キャプションのサポート
 取り込み側時は、 **メディア エンコーダー プレミアム ワークフロー** で次がサポートされます。
 
 1. SCC ファイル
 2. SMPTE-TT ファイル
-3. CEA&608;/CEA&708; – ユーザー データ (H.264 基本ストリームの SEI メッセージ、ATSC/53、SCTE20) として送信、または MXF/GXF ファイルでの補助データとして送信
+3. CEA 608/CEA 708 – ユーザー データ (H.264 基本ストリームの SEI メッセージ、ATSC/53、SCTE20) として送信、または MXF/GXF ファイルでの補助データとして送信
 4. STL サブタイトル ファイル
 
 出力時は、次のオプションを使用できます。
@@ -130,10 +131,5 @@ ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

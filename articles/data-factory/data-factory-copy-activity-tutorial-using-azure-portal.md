@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: c7815a02bd0eab6b87a1b1b97258c9006a3542e4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8072a863fab0b304ccbbba639aa56b403e8f37c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Portal を使用して、データをコピーする Data Factory パイプラインを作成する 

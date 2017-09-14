@@ -1,10 +1,10 @@
 ---
-title: "Node.js について学習する - Azure Cosmos DB Node.js チュートリアル | Microsoft Docs"
-description: "Node.js について学習する このチュートリアルでは、Microsoft Azure Cosmos DB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
-keywords: "アプリケーション開発, データベース チュートリアル, node.js の学習, node.js チュートリアル, documentdb, azure, Microsoft azure"
+title: "Azure Cosmos DB 用に Node.js Web アプリを構築する | Microsoft Docs"
+description: "この Node.js のチュートリアルでは、Microsoft Azure Cosmos DB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
+keywords: "アプリケーション開発, データベース チュートリアル, node.js の学習, node.js チュートリアル"
 services: cosmos-db
 documentationcenter: nodejs
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9da9e63b-e76a-434e-96dd-195ce2699ef3
@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/23/2017
-ms.author: syamk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 511c9e4d6f68b3e063559acb5996111acd3c653f
+ms.date: 08/14/2017
+ms.author: mimig
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
@@ -34,7 +33,7 @@ ms.lasthandoff: 05/31/2017
 
 この Node.js チュートリアルでは、Azure Cosmos DB と DocumentDB API を使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーション (ToDo アプリ) を作成します。 タスクは、JSON ドキュメントとして Azure Cosmos DB に保存するものとします。 このチュートリアルでは、アプリの作成とデプロイの手順を示し、各スニペットの動作を説明します。
 
-![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image1.png)
+![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-mytodo.png)
 
 チュートリアルを最後まで実施する時間はないが、完成済みのソリューションが必要な場合は、 [GitHub][GitHub] から完全なサンプル ソリューションを入手できます。 アプリケーションを実行する手順については、[Readme](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md) ファイルを参照してください。
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 05/31/2017
 
    または
 
-   [Azure Cosmos DB Emulator](local-emulator.md) のローカル インストール。
+   [Azure Cosmos DB Emulator](local-emulator.md) のローカル インストール (Windows のみ)。
 * [Node.js][Node.js] バージョン v0.10.29 以降
 * [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 * [Git][Git]。
@@ -79,7 +78,7 @@ ms.lasthandoff: 05/31/2017
         npm start
 6. ブラウザーで [http://localhost:3000](http://localhost:3000) に移動すると、新しいアプリケーションを表示できます。
    
-    ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image12.png)
+    ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-express.png)
 
     次に、アプリケーションを停止するために、ターミナル ウィンドウで Ctrl + C キーを押し、**[y]** をクリックして、バッチ ジョブを終了します。
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 05/31/2017
 1. ターミナルに戻り、npm で **async** モジュールをインストールします。
    
         npm install async --save
-2. npm で **documentdb** モジュールをインストールします。 このモジュールで、DocumentDB のすべての操作を行います。
+2. npm で **documentdb** モジュールをインストールします。 このモジュールで、Azure Cosmos DB のすべての操作を行います。
    
         npm install documentdb --save
 3. アプリケーションの **package.json** ファイルを簡単に確認すると、追加モジュールが表示されます。 このファイルは、アプリケーションの実行時にどのパッケージをダウンロードし、インストールする必要があるかを Azure に伝えます。 表示される内容は以下の例のようになります。
@@ -191,12 +190,6 @@ ms.lasthandoff: 05/31/2017
    
         module.exports = DocDBUtils;
    
-   > [!TIP]
-   > createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。 requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。
-   > 
-   > Azure Cosmos DB のプランの種類の詳細については、[Azure Cosmos DB のパフォーマンス レベル](performance-levels.md)に関するページを参照してください。 
-   > 
-   > 
 5. **docdbUtils.js** ファイルを保存して閉じます。
 6. **taskDao.js** ファイルの先頭に、**DocumentDBClient** と、上の手順で作成した **docdbUtils.js** を参照する次のコードを追加します。
    
@@ -391,8 +384,8 @@ ms.lasthandoff: 05/31/2017
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the DocumentDB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the DocumentDB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
@@ -435,22 +428,25 @@ ms.lasthandoff: 05/31/2017
 
 1. **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使われます。 この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使うようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。 
 2. **views** フォルダーにある **layout.jade** ファイルを開き、その内容を次のコードで置き換えます。
-   
-        doctype html
-        html
-           head
-             title= title
-             link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
-             link(rel='stylesheet', href='/stylesheets/style.css')
-           body
-             nav.navbar.navbar-inverse.navbar-fixed-top
-               div.navbar-header
-                 a.navbar-brand(href='#') My Tasks
-             block content
-             script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
-             script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
+
+    ```
+    doctype html
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+      body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+          div.navbar-header
+            a.navbar-brand(href='#') My Tasks
+        block content
+        script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
+        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
+    ```
 
     このコードでは、アプリケーションの特定の HTML を描画し、コンテンツ ページのレイアウトを指定するための、**content** という名前の**ブロック (block)** を作成することを **Jade** エンジンに指示しています。
+
     **layout.jade** ファイルを保存して閉じます。
 
 3. アプリケーションが使用するビューである **index.jade** ファイルを開き、そのファイルの中身を次のコードに置き換えます。
@@ -482,49 +478,33 @@ ms.lasthandoff: 05/31/2017
                      td #{month + "/" + day + "/" + year}
                      td
                        input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
-             button.btn(type="submit") Update tasks
+             button.btn.btn-primary(type="submit") Update tasks
            hr
            form.well(action="/addtask", method="post")
-             label Item Name:
-             input(name="name", type="textbox")
-             label Item Category:
-             input(name="category", type="textbox")
+             .form-group
+               label(for="name") Item Name:
+               input.form-control(name="name", type="textbox")
+             .form-group
+               label(for="category") Item Category:
+               input.form-control(name="category", type="textbox")
              br
              button.btn(type="submit") Add item
    
-    これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
+
+これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
    
-    このレイアウトでは、2 つの HTML フォームを作成しています。 
-    1 つ目のフォームは、データ用のテーブルと、コントローラーの **/completetask** メソッドに対するポストによって項目の更新ができるボタンを含みます。
-    2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
-   
-    アプリケーションが動作するために必要なコードはこれですべてです。
-4. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
-   
-        body {
-          padding: 50px;
-          font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-        }
-        a {
-          color: #00B7FF;
-        }
-        .well label {
-          display: block;
-        }
-        .well input {
-          margin-bottom: 5px;
-        }
-        .btn {
-          margin-top: 5px;
-          border: outset 1px #C8C8C8;
-        }
-   
-    この **style.css** ファイルを保存して閉じます。
+このレイアウトでは、2 つの HTML フォームを作成しています。
+
+1 つ目のフォームは、データ用のテーブルと、コントローラーの **/completetask** メソッドに対するポストによって項目の更新ができるボタンを含みます。
+    
+2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
+
+アプリケーションが動作するために必要なコードはこれですべてです。
 
 ## <a name="_Toc395783181"></a>手順 6: ローカルでのアプリケーションの実行
 1. ローカル コンピューターでアプリケーションをテストするには、ターミナルで `npm start` を実行してアプリケーションを起動し、[http://localhost:3000](http://localhost:3000) ブラウザー ページを更新します。 ページは、次の画像のようになります。
    
-    ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image18.png)
+    ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-localhost.png)
 
     > [!TIP]
     > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両方のファイルの最初の 2 行がスペースなしで左揃えになっていることを確認してください。 最初の 2 行の前にスペースがある場合は、そのスペースを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
@@ -532,7 +512,7 @@ ms.lasthandoff: 05/31/2017
 2. [Item]、[Item Name]、[Category] フィールドを使用して新しいタスクを入力し、**[Add Item]** をクリックします。 これらのプロパティに基づいて、Azure Cosmos DB にドキュメントが作成されます。 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
-    ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image19.png)
+    ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-added-task.png)
 4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]**をクリックします。 既に作成したドキュメントが更新されます。
 
 5. アプリケーションを停止するために、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、**[Y]** をクリックしてバッチ ジョブを終了します。
@@ -547,7 +527,7 @@ ms.lasthandoff: 05/31/2017
         git push azure master
 4. 数秒すると、Git による Web アプリケーションの発行が完了し、ブラウザーが起動します。作成したアプリケーションが Azure で動作しているようすを確認できます。
 
-    ご利用ありがとうございます。 ここでは初めての方を対象に、Azure Cosmos DB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
+    お疲れさまでした。 ここでは初めての方を対象に、Azure Cosmos DB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
     このチュートリアルの完全な参照アプリケーションをダウンロードするか参照する場合は、[GitHub][GitHub] からダウンロードできます。
 

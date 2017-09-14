@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 4e659f2e3f7744a3de7ab4faf18cc31b0c6752b9
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 90d39f75f547eff9c87997eb83460875c12dcfe4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -162,7 +162,7 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
 
 前述の XML 構成ファイルの JSON 形式を次に示します。 
 
-ほとんどの場合、json では PublicConfig と PrivateConfig は別々に使用されるため、これらは異なる変数として渡されます。 Resource Manager テンプレート、仮想マシン スケール セット powershell、Visual Studio などがこれに該当します。 
+ほとんどの場合、json では PublicConfig と PrivateConfig は別々に使用されるため、これらは異なる変数として渡されます。 Resource Manager テンプレート、仮想マシン スケール セット PowerShell、Visual Studio などがこれに該当します。 
 
 ```json
 "PublicConfig" {
@@ -559,7 +559,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |-------------------|-----------------|  
-|**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例:<br /><br /> `Application!*[Application[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[Security[(Level <= 3)]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|  
+|**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|  
 
 
 

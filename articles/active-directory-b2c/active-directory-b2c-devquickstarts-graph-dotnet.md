@@ -1,29 +1,28 @@
 ---
-title: "Azure Active Directory B2C: Graph API を使用する | Microsoft Docs"
+title: "Graph API の使用 - Azure AD B2C | Microsoft Docs"
 description: "アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。"
 services: active-directory-b2c
 documentationcenter: .net
-author: gsacavdm
+author: parakhj
 manager: krassk
-editor: bryanla
+editor: parakhj
 ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2017
-ms.author: gsacavdm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 27a331562d659212dcd1b775ac06e1e1e4686517
+ms.date: 08/07/2017
+ms.author: parakhj
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Graph API を使用する
-Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる傾向があります。 これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD のユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 Azure AD Graph API を使用してこれらの操作を実行できます。
+Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる傾向があります。 これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD B2C ディレクトリのユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 Azure AD Graph API を使用してこれらの操作を実行できます。
 
 B2C テナントでは、主に 2 つのモードで Graph API と通信します。
 
@@ -36,10 +35,10 @@ B2C テナントでは、主に 2 つのモードで Graph API と通信しま�
 アプリケーションまたはユーザーを作成する前に、あるいは Azure AD と対話する前に、Azure AD B2C テナントとそのテナントのグローバル管理者アカウントを用意する必要があります。 テナントがまだない場合は、 [Azure AD B2C の使用開始](active-directory-b2c-get-started.md)に関するページを参照してください。
 
 ## <a name="register-your-application-in-your-tenant"></a>アプリケーションをテナントに登録する
-B2C テナントを取得後、[Azure ポータル](https://portal.azure.com)を通じてアプリケーションを登録する必要があります。
+B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通じてアプリケーションを登録する必要があります。
 
 > [!IMPORTANT]
-> B2C テナントを持つ Graph API を使用するには、Azure AD B2C の *[アプリケーション]* ブレード**ではなく**、Azure ポータルの汎用 *[アプリケーション登録]* ブレードを使用して専用アプリケーションを登録する必要があります。 Azure AD B2C の *[アプリケーション]* ブレードに登録済みの既存の B2C アプリケーションを再利用することはできません。
+> B2C テナントを持つ Graph API を使うには、Azure AD B2C の "*[アプリケーション]*" メニュー**ではなく**、Azure Portal の汎用 "*[アプリの登録]*" メニューを使って専用アプリケーションを登録する必要があります。 Azure AD B2C の "*[アプリケーション]*" メニューに登録済みの既存の B2C アプリケーションを再利用することはできません。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
@@ -48,16 +47,16 @@ B2C テナントを取得後、[Azure ポータル](https://portal.azure.com)を
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
     2. **任意のリダイレクト URI** (例: https://B2CGraphAPI) を入力します。ただし、この例には関係ありません。  
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
-6. [設定] ブレードで、**キー**をクリックして、新しいキー (クライアント シークレットとも呼ばれます) を追加します。 後のセクションで必要になるため、このキーもコピーします。
+6. [設定] メニューで、**[キー]** をクリックして、新しいキー (クライアント シークレットとも呼ばれます) を追加します。 後のセクションで必要になるため、このキーもコピーします。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>アプリケーション用に作成、読み取り、および更新アクセス許可を構成する
 ここでは、ユーザーの作成、読み取り、更新、および削除に必要なすべてのアクセス許可を取得するようにアプリケーションを構成する必要があります。
 
-1. Azure ポータルの [アプリケーション登録] ブレードで手順を続行し、アプリケーションを選択します。
-2. [設定] ブレードで **[必要なアクセス許可]** をクリックします。
-3. [必要なアクセス許可] ブレードで、**[Windows Azure Active Directory]** をクリックします。
-4. [アクセスの有効化] ブレードで、**[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、**[保存]** をクリックします。
-5. 最後に、[必要なアクセス許可] ブレードに戻り、**[アクセス許可の付与]** ボタンをクリックします。
+1. Azure Portal の [アプリの登録] メニューで手順を続行し、アプリケーションを選択します。
+2. [設定] メニューで **[必要なアクセス許可]** をクリックします。
+3. [必要なアクセス許可] メニューで、**[Windows Azure Active Directory]** をクリックします。
+4. [アクセスの有効化] メニューで、**[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、**[保存]** をクリックします。
+5. 最後に、[必要なアクセス許可] メニューに戻り、**[アクセス許可の付与]** をクリックします。
 
 これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
 

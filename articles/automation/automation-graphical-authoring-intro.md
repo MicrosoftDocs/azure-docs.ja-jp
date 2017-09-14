@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 1e61e3717a9006f67c0b57c33573c2d0f5fbfa05
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 417fceb0961165d96ece000f95c8a3f973f4f75b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -254,7 +255,7 @@ Runbook がまだ発行されていない場合、状態は [ **新規**] です
 チェックポイントは、グラフィカル PowerShell ワークフロー Runbook のみで有効で、グラフィカル Runbook では使用できません。  Runbook で Azure コマンドレットを使用する場合、Runbook が一時停止され、別のワーカーでこのチェックポイントから再起動するときは、Add-AzureRMAccount を使用してチェックポイントを設定したアクティビティに従います。 
 
 ## <a name="authenticating-to-azure-resources"></a>Azure リソースの認証
-Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。  [実行アカウント](automation-offering-get-started.md#automation-account) (サービス プリンシパルとも呼ばれます) は、サブスクリプション内の Azure Resource Manager リソースに Automation Runbook でアクセスするための既定の方法です。  この機能をグラフィカル Runbook に追加するには、**AzureRunAsConnection** 接続資産を追加します。これは、PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) コマンドレットと、キャンバスに対する [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用しています。 これを次の例に示します。<br>![Run As Authentication Activities](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
+Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。  [実行アカウント](automation-offering-get-started.md#creating-an-automation-account) (サービス プリンシパルとも呼ばれます) は、サブスクリプション内の Azure Resource Manager リソースに Automation Runbook でアクセスするための既定の方法です。  この機能をグラフィカル Runbook に追加するには、**AzureRunAsConnection** 接続資産を追加します。これは、PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) コマンドレットと、キャンバスに対する [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用しています。 これを次の例に示します。<br>![Run As Authentication Activities](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
 Get Run As Connection アクティビティ (つまり Get-AutomationConnection) は、AzureRunAsConnection という名前の定数値データ ソースで構成されています。<br>![Run As Connection Configuration](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br>
 次のアクティビティ Add-AzureRmAccount は、Runbook で使用する認証済み実行アカウントを追加します｡<br>
 ![Add-AzureRmAccount Parameter Set](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br>

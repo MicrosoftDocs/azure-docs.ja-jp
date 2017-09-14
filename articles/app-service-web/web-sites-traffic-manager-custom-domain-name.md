@@ -3,8 +3,8 @@ title: "負荷分散に Traffic Manager を使用する Azure App Service Web �
 description: "負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名の使用"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.service: app-service-web
@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-translationtype: Human Translation
+ms.date: 08/17/2016
+ms.author: cephalin
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/05/2017
-
 
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する

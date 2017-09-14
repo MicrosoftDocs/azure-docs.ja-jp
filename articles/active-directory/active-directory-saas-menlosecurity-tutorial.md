@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 05/08/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: baf984be59e19f7503c36b12d2b90570ce957edf
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 75366abafa551d21630b0edddb65db23b9ea9d42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -224,7 +224,7 @@ Menlo Security で Azure AD のシングル サインオンを構成してテス
 
 このセクションでは、Azure AD のシングル サインオン構成をテストします。
 
-URL (例: `https://safe.menlosecurity.com/http://www.cnn.com/`) 経由でアプリケーションにログインし、Azure AD 資格情報を入力します。 認証が成功した後、適切な Web サイトにリダイレクトされます。
+新しい認証をトリガーするために、"InPrivate" または "シークレット" モードでブラウザー ウィンドウを開きます。  Internet Explorer では、Ctrl キーと Shift キーを押しながら P キーを押します。  Chrome では、Ctrl キーと Shift キーを押しながら N キーを押します。  プライベート ブラウジング ウィンドウで、保護されているリソースを参照し、Azure AD ログインを実行します。  ログインが成功すると、要求されたサイトが分離されたセッションで開きます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

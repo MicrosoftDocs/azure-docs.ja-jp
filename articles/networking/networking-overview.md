@@ -8,7 +8,7 @@ manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: networking
+ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: a7ab18ea9e7302f6cd2a89e7c2cce7f5a46c66a1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 

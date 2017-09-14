@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: bradsev;paulsh
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 80e0b0cb5193d5a0c3782e2e6371b91441780347
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6da9a8e3f9f8ac851c2a8deb861ac1d0b3ec5874
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="data-science-on-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンでのデータ サイエンス
@@ -44,7 +44,7 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 >
 >
 
-ストレージ領域がもっと必要な場合は、追加のディスクを作成し、VM に接続できます。 これらのディスクでは永続的な Azure Storage を使用します。そのため、サーバーがサイズ変更のために再プロビジョニングされた場合や、シャットダウンされた場合でも、データが保持されます。 ディスクを追加し、VM に接続するには、「[Linux VM へのディスクの追加](../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の手順に従ってください。 次の手順では、Azure コマンド ライン インターフェイス (Azure CLI) を使用します。Azure CLI は、DSVM に既にインストールされています。 そのため、これらの手順をすべて VM 自体から実行できます。 ストレージを増やす方法として、[Azure Files](../storage/storage-how-to-use-files-linux.md) を使用することもできます。
+ストレージ領域がもっと必要な場合は、追加のディスクを作成し、VM に接続できます。 これらのディスクでは永続的な Azure Storage を使用します。そのため、サーバーがサイズ変更のために再プロビジョニングされた場合や、シャットダウンされた場合でも、データが保持されます。 ディスクを追加し、VM に接続するには、「[Linux VM へのディスクの追加](../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の手順に従ってください。 次の手順では、Azure コマンド ライン インターフェイス (Azure CLI) を使用します。Azure CLI は、DSVM に既にインストールされています。 そのため、これらの手順をすべて VM 自体から実行できます。 ストレージを増やす方法として、[Azure Files](../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。
 
 データをダウンロードするには、ターミナル ウィンドウを開き、次のコマンドを実行します。
 
@@ -401,7 +401,7 @@ Rattle の便利な機能の 1 つに、複数の機械学習メソッドを実�
 * **[Type (種類)]** として **[All (すべて)]** を選択します。
 * **[Execute (実行)]**を選択します。
 * その後で、**[Type (種類)]** で **[SVM]** などのいずれか 1 つをクリックして、結果を表示できます。
-* また、 **[Evaluate (評価)]** タブを使用して、検証セットに対するモデルのパフォーマンスを比較することもできます。 たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。
+* また、 **[Evaluate (評価)]** タブを使用して、検証セットに対するモデルのパフォーマンスを比較することもできます。たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。
 * また、ROC 曲線のプロット、感度解析の実行、および他の種類のモデル評価を行うこともできます。
 
 モデルの構築が完了したら、 **[Log (ログ)]** タブをクリックして、セッション中に Rattle によって実行された R コードを表示します。 **[Export (エクスポート)]** をクリックすると、保存することができます。

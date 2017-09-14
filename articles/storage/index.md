@@ -2,7 +2,7 @@
 title: "Azure Storage のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "クラウド上で Azure Storage (BLOB、テーブル、キュー、ファイル、仮想マシン ディスクの各ストレージ) を使用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 services: storage
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

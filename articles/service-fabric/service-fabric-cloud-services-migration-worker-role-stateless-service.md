@@ -12,11 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
-ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -26,7 +28,7 @@ ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
 ## <a name="cloud-service-project-to-service-fabric-application-project"></a>Cloud Service プロジェクトから Service Fabric アプリケーション プロジェクトへ
  Cloud Service プロジェクトと Service Fabric アプリケーション プロジェクトは構造が似ており、いずれもアプリケーションのデプロイ単位を表しています。つまり、それぞれがアプリケーションを実行するためにデプロイされるパッケージ一式を定義しています。 Cloud Service プロジェクトには、1 つ以上の Web ロールまたは worker ロールが含まれています。 同様に、Service Fabric アプリケーション プロジェクトには、1 つ以上のサービスが含まれています。 
 
-違いは、Cloud Service プロジェクトはアプリケーションのデプロイと VM のデプロイを組み合わせているので、VM 構成が含まれており、Service Fabric アプリケーション プロジェクトは、Service Fabric クラスター内の既存の VM セットにデプロイするアプリケーションのみを定義している点です。 Service Fabric クラスター自体は、ARM テンプレートまたは Azure ポータルを介して&1; 度だけデプロイされます。複数の Service Fabric アプリケーションをデプロイできます。
+違いは、Cloud Service プロジェクトはアプリケーションのデプロイと VM のデプロイを組み合わせているので、VM 構成が含まれており、Service Fabric アプリケーション プロジェクトは、Service Fabric クラスター内の既存の VM セットにデプロイするアプリケーションのみを定義している点です。 Service Fabric クラスター自体は、Resource Manager テンプレートまたは Azure Portal を介して 1 度だけデプロイされます。複数の Service Fabric アプリケーションをデプロイできます。
 
 ![Service Fabric プロジェクトと Cloud Services プロジェクトの比較][3]
 
@@ -105,7 +107,7 @@ namespace Stateless1
 
 ```
 
-いずれにも、処理を開始するプライマリ "Run" のオーバーライドがあります。 Service Fabric サービスは、`Run`、`Start`、`Stop` を&1; つのエントリ ポイント `RunAsync` に結合します。 `RunAsync` が開始されるとサービスが開始され、`RunAsync` メソッドの CancellationToken が発信されるとサービスは停止されます。 
+いずれにも、処理を開始するプライマリ "Run" のオーバーライドがあります。 Service Fabric サービスは、`Run`、`Start`、`Stop` を 1 つのエントリ ポイント `RunAsync` に結合します。 `RunAsync` が開始されるとサービスが開始され、`RunAsync` メソッドの CancellationToken が発信されるとサービスは停止されます。 
 
 worker ロールと Service Fabric サービスのライフサイクルと有効期間には、主な違いがいくつかあります。
 
@@ -126,7 +128,7 @@ Cloud Services 環境 API は、現在の VM インスタンスに関する情�
 | 同時変更イベント |`RoleEnvironment` |該当なし |
 
 ## <a name="configuration-settings"></a>構成設定
-VM ロールの構成設定が Cloud Services に設定され、その VM ロールのすべてのインスタンスに適用されます。 この構成設定は、ServiceConfiguration.*.cscfg ファイルに設定されたキーと値のペアです。RoleEnvironment を介して直接アクセスできます。 Service Fabric では、設定は VM ではなく、個別に各サービスと各アプリケーションに適用されます。これは、VM が複数のサービスとアプリケーションをホストできるためです。 サービスは&3; つのパッケージから構成されます。
+VM ロールの構成設定が Cloud Services に設定され、その VM ロールのすべてのインスタンスに適用されます。 この構成設定は、ServiceConfiguration.*.cscfg ファイルに設定されたキーと値のペアです。RoleEnvironment を介して直接アクセスできます。 Service Fabric では、設定は VM ではなく、個別に各サービスと各アプリケーションに適用されます。これは、VM が複数のサービスとアプリケーションをホストできるためです。 サービスは 3 つのパッケージから構成されます。
 
 * **Code:** サービスの実行可能ファイル、バイナリ、DLL など、サービスの実行に必要なファイルが含まれています。
 * **Config:** サービスのすべての構成ファイルと設定。
@@ -187,7 +189,7 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Code、Config、Data というサービス内の&3; つの各パッケージには、パッケージの更新時、追加時、または削除時にサービス インスタンスを通知するイベントがあります。 1 つのサービスには、各パッケージを複数含めることができます。 たとえば、1 つのサービスに複数の config パッケージを含めて、個別にバージョンを管理し、アップグレードすることができます。 
+Code、Config、Data というサービス内の 3 つの各パッケージには、パッケージの更新時、追加時、または削除時にサービス インスタンスを通知するイベントがあります。 1 つのサービスには、各パッケージを複数含めることができます。 たとえば、1 つのサービスに複数の config パッケージを含めて、個別にバージョンを管理し、アップグレードすることができます。 
 
 これらのイベントを使用すると、サービス インスタンスを再起動することなく、サービス パッケージの変更を利用することができます。
 
@@ -260,9 +262,4 @@ Service Fabric の全機能を活用できるように、Service Fabric の Reli
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

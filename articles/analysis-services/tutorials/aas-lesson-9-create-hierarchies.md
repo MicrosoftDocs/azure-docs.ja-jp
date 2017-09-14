@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアルのレッスン 9: 階層�
 description: 
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 05/10/2017
+ms.date: 08/11/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a8c7e1859fa630fbfcebd39d0304a6e7657ac43b
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: c83d482eaf476388a174dfb02ae6ef53ebe921bc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する
@@ -103,16 +102,15 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 * [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) は、Azure AD 認証をサポートしています。 「 [接続プロパティの設定](https://msdn.microsoft.com/library/ms378988.aspx)」もご覧ください。   
 * PolyBase では Azure AD 認証を使用した認証は行えません。   
 * SQL Database の Azure AD 認証は、Azure Portal の **[データベースのインポート]** ブレードと **[データベースのエクスポート]** ブレードでサポートされています。 Azure AD 認証を使用したインポートとエクスポートは、PowerShell コマンドでもサポートされています。   
+* Azure AD 認証は、CLI を使用することによって、SQL Database および SQL Data Warehouse でサポートされます。 詳細については、「[SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」と「[SQL Server - az sql server](https://docs.microsoft.com/en-us/cli/azure/sql/server)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- Azure AD を作成して設定した後、Azure SQL Database で Azure AD を構成する方法については、[Azure SQL Database での Azure AD の構成](sql-database-aad-authentication-configure.md)に関するページを参照してください。
+- Azure AD を作成して設定し、Azure SQL Database または Azure SQL Data Warehouse を使用して Azure AD を構成する方法については、「[SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」を参照してください。
 - SQL Database でのアクセスおよび制御の概要については、[SQL Database のアクセスと制御](sql-database-control-access.md)に関するページを参照してください。
 - SQL Database のログイン、ユーザー、データベース ロールの概要については、[ログイン、ユーザー、およびデータベース ロール](sql-database-manage-logins.md)に関するページを参照してください。
 - データベース プリンシパルの詳細については、「[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)」を参照してください。
 - データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関するページを参照してください。
 - SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
-- SQL Server 認証の使用に関するチュートリアルについては、[SQL の認証と許可](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
-- Azure Active Directory 認証の使用に関するチュートリアルについては、[Azure AD の認証と許可](sql-database-control-access-aad-authentication-get-started.md)に関するページを参照してください。
 
 <!--Image references-->
 

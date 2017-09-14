@@ -12,17 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: a8866119b631ec9776d6587a078c8e54c311071a
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3514812f7f087582035dad5d9a4d620652aa4da9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
+# <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 このガイドでは、Service Bus キューの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。 紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
@@ -66,7 +65,7 @@ use WindowsAzure\Common\ServicesBuilder;
 Service Bus クライアントをインスタンス化するには、まず次の形式の有効な接続文字列が必要です。
 
 ```
-Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
+Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
 ここで、`Endpoint` の一般的な形式は `[yourNamespace].servicebus.windows.net` です。
@@ -78,19 +77,19 @@ Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[D
   * 既定では 1 つの外部ソース (環境変数) のみがサポートされています。
   * `ConnectionStringSource` クラスを拡張して新しいソースを追加できます。
 
-ここで概説している例では、接続文字列を直接渡します。
+ここで概説している例では、接続文字列が直接渡されます。
 
 ```php
 require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 
-$connectionString = "Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]";
+$connectionString = "Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]";
 
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 ```
 
-## <a name="how-to-create-a-queue"></a>方法: キューを作成する
+## <a name="create-a-queue"></a>キューを作成する
 `ServiceBusRestProxy` クラスを使用して Service Bus キューに対する管理操作を実行できます。 `ServicesBuilder::createServiceBusService` ファクトリ メソッドを介して、`ServiceBusRestProxy` オブジェクトがトークン アクセス許可をカプセル化してそれを管理する適切な接続文字列とともに構築されます。
 
 次の例では、`ServiceBusRestProxy` をインスタンス化し、`ServiceBusRestProxy->createQueue` を呼び出して、`MySBNamespace` サービス名前空間内で `myqueue` という名前のキューを作成する方法を示しています。
@@ -114,7 +113,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here: 
-    // http://msdn.microsoft.com/library/windowsazure/dd179357
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -126,7 +125,7 @@ catch(ServiceException $e){
 > 
 > 
 
-## <a name="how-to-send-messages-to-a-queue"></a>方法: キューにメッセージを送信する
+## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
 メッセージを Service Bus キューに送信するには、アプリケーションで `ServiceBusRestProxy->sendQueueMessage` メソッドを呼び出します。 次のコードでは、上のコードで `MySBNamespace` サービス名前空間内で作成した `myqueue` キューにメッセージを送信する方法を示しています。
 
 ```php
@@ -150,7 +149,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here: 
-    // http://msdn.microsoft.com/library/windowsazure/hh780775
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -161,7 +160,8 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 
 Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
 
-## <a name="how-to-receive-messages-from-a-queue"></a>キューからメッセージを受信する方法
+## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
+
 キューからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveQueueMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) と [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) の 2 つの異なるモードで受信できます。 **PeekLock** が既定値です。
 
 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
@@ -201,14 +201,15 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/windowsazure/hh780735
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
+
 Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージについて (`deleteMessage` メソッドの代わりに) `unlockMessage` メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
 キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。

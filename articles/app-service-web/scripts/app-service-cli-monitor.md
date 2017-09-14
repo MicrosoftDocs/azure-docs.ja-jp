@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 03/20/2017
+ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: ef75aa1ea579d4a3804e641ef9c848ccde8b9d7a
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: df4ca5b1270ada849e231ad9608a5b1d2edda8be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 05/15/2017
 
 このシナリオでは、リソース グループ、App Service プラン、Web アプリを作成し、Web アプリを構成して Web サーバー ログを有効にします。 次に、ログ ファイルをダウンロードして確認します。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -48,9 +48,9 @@ ms.lasthandoff: 05/15/2017
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az appservice web create](https://docs.microsoft.com/cli/azure/appservice/web#create) | App Service プラン内に Azure Web アプリを作成します。 |
-| [az appservice web log config](https://docs.microsoft.com/cli/azure/appservice/web/log#config) | Azure の Web アプリを保存するログを構成します。 |
-| [az appservice web log download](https://docs.microsoft.com/cli/azure/appservice/web/log#download) | Azure Web アプリのログをローカル コンピューターにダウンロードします。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
+| [az webapp log config](https://docs.microsoft.com/cli/azure/webapp/log#config) | Azure の Web アプリを保存するログを構成します。 |
+| [az webapp log download](https://docs.microsoft.com/cli/azure/webapp/log#download) | Azure Web アプリのログをローカル コンピューターにダウンロードします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

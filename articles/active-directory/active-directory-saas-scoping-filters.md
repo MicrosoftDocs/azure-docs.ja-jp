@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -19,7 +19,6 @@ ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
 ms.openlocfilehash: 3e4458f70afce9ebd9477b00afc39b6e84e49319
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング

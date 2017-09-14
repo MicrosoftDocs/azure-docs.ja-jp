@@ -14,15 +14,15 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: be8fed81757d3a7467707e4e0fdf1fd5734e0f07
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c9df4e1f7677b2ed10684f6f3c981f2abf64f171
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>Python と SDK のインストール
-Python は、Windows でのセットアップが容易であり、Mac、Linux、および [Bash for Windows](https://msdn.microsoft.com/commandline/wsl/about)ではプレインストールされています。 このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。
+Python は、Windows でのセットアップが容易であり、Mac、Linux、および [Bash for Windows](https://msdn.microsoft.com/commandline/wsl/about) ではプレインストールされています。 このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。
 
 ## <a name="whats-in-the-python-azure-sdk"></a>Python Azure SDK の機能
 Azure SDK for Python には、Azure 向けの Python アプリケーションを開発、デプロイ、管理するためのコンポーネントが用意されています。 Azure SDK for Python には次のコンポーネントが用意されています。
@@ -67,7 +67,7 @@ Azure サービスごとに個別にインストールできます。
 プレビュー パッケージをインストールするには、`--pre` フラグを使用します。
 
 ```console
-   $ pip install --pre azure-mgmt-compute # will install only the latest Compute Management library
+   $ pip install --pre azure-mgmt-compute # installs only the latest Compute Management library
 ```
 
 `azure` メタ パッケージを使用して、一連の Azure ライブラリを 1 行でインストールすることもできます。 このメタ パッケージ内の一部のパッケージはまだ安定版として発行されていません。したがって、`azure` メタ パッケージはまだプレビュー段階です。
@@ -100,7 +100,7 @@ PTVS の使用はオプションですが、使用することをお勧めしま
 
 PTVS では、[Cloud Services](cloud-services/cloud-services-python-ptvs.md) と [Websites](app-service-web/web-sites-python-ptvs-django-mysql.md) へのデプロイをサポートしており、Microsoft Azure へのデプロイも容易になります。
 
-PTVS は、既存の Visual Studio 2013 または 2015 インストールに対応しています。  ダウンロードなどの詳細については、 [Python Tools for Visual Studio]に関するページをご覧ください。  
+PTVS は、既存の Visual Studio 2013、2015、2017 インストールに対応しています。  ダウンロードなどの詳細については、 [Python Tools for Visual Studio]に関するページをご覧ください。  
 
 ## <a name="python-azure-scenarios-for-linux-and-macos"></a>Linux や MacOS 向けの Python Azure
 Linux または MacOS の場合は、主に次の Azure シナリオがサポートされています。
@@ -109,11 +109,11 @@ Linux または MacOS の場合は、主に次の Azure シナリオがサポー
 2. Linux VM でアプリケーションを実行する
 3. Git を使って Azure Websites を開発して公開する
 
-最初のシナリオでは、Azure REST API 用の Python ラッパーを介して Azure の PaaS 機能 ([BLOB ストレージ](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[キュー ストレージ](storage/storage-python-how-to-use-queue-storage.md)、[テーブル ストレージ](storage/storage-python-how-to-use-table-storage.md)など) を利用する優れた Web アプリケーションを作成できます。 これらは、Windows、Mac、Linux とまったく同じように動作します。  また、ローカルの開発マシンや Linux 仮想マシンからこれらのクライアント ライブラリを使うこともできます。
+最初のシナリオでは、Azure REST API 用の Python ラッパーを介して Azure の PaaS 機能 ([BLOB ストレージ](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[キュー ストレージ](storage/queues/storage-python-how-to-use-queue-storage.md)、[テーブル ストレージ](cosmos-db/table-storage-how-to-use-python.md)など) を利用する優れた Web アプリケーションを作成できます。 これらは、Windows、Mac、Linux 上でまったく同じように動作します。  また、ローカルの開発マシンや Linux 仮想マシンからこれらのクライアント ライブラリを使うこともできます。
 
-VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。  たとえば、Windows、Mac、または Linux のコンピューター上で [IPython][IPython] REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。 詳細については、「[Azure での IPython Notebook](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
+VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。  たとえば、Windows、Mac、または Linux のコンピューター上で [IPython][IPython] REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。
 
-Linux 仮想マシンのセットアップの詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
+Linux 仮想マシンのセットアップの詳細については、[Linux を実行する仮想マシンの作成](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するチュートリアルをご覧ください。
 
 Git のデプロイを使って Python Web アプリケーションを開発できます。また、どのオペレーティング システムからでも Azure Web サイトを公開できます。  ご利用のリポジトリを Azure にプッシュする場合、自動的に仮想環境が作られ、pip によって必要なパッケージがインストールされます。
 
@@ -130,7 +130,6 @@ Azure Websites を開発して公開する詳細については、[Django を使
 * [NumPy - Python の数値計算ライブラリ][NumPy - A numerics library for Python]
 * [Django Project - 進化した Web フレームワーク/CMS][Django Project - A mature web framework/CMS]
 * [IPython - 高度な Python 用 REPL/Notebook][IPython - an advanced REPL/Notebook for Python]
-* [Azure での IPython Notebook](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [GitHub の Python Tools for Visual Studio][Python Tools for Visual Studio on GitHub]
 * [Python デベロッパー センター](/develop/python/)
 
@@ -163,5 +162,5 @@ Azure Websites を開発して公開する詳細については、[Django を使
 [Configuring Python with Azure Websites]: web-sites-python-configure.md
 [table storage]: storage-python-how-to-use-table-storage.md
 [queue storage]: storage-python-how-to-use-queue-storage.md
-[blob storage]: storage-python-how-to-use-blob-storage.md
+[blob storage]:storage/blobs/storage-python-how-to-use-blob-storage.md
 

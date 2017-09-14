@@ -1,63 +1,65 @@
-- name: "Face API Documentation"
+- name: Face API Documentation
   href: index.md
-- name: "Overview"
+- name: Overview
   href: Overview.md
-- name: "How to"
+- name: How to
   items:
-  - name: "Detect faces in image"
+  - name: Detect faces in image
     href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-  - name: "Identify faces in image"
+  - name: Identify faces in image
     href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-  - name: "Add faces"
+  - name: Add faces
     href: Face-API-How-to-Topics/face-how-to-add-faces.md
-  - name: "Analyze videos in real time"
+  - name: Analyze videos in real time
     href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
-- name: "Quickstarts"
+- name: Quickstarts
   expanded: true
   items:
-  - name: "cURL"
+  - name: cURL
     href: QuickStarts/curl.md
-  - name: "C#"
+  - name: 'C#'
     href: QuickStarts/CSharp.md
-  - name: "Java"
+  - name: Java
     href: QuickStarts/Java.md
-  - name: "JavaScript"
+  - name: JavaScript
     href: QuickStarts/JavaScript.md
-  - name: "PHP"
+  - name: PHP
     href: QuickStarts/PHP.md
-  - name: "Python"
+  - name: Python
     href: QuickStarts/Python.md
-  - name: "Ruby"
+  - name: Ruby
     href: QuickStarts/Ruby.md
-- name: "Tutorials"
+- name: Tutorials
   items:
-  - name: "C#"
+  - name: 'C#'
     href: Tutorials/FaceAPIinCSharpTutorial.md
-  - name: "Java for Android"
+  - name: Java for Android
     href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
-  - name: "Python"
+  - name: Python
     href: Tutorials/FaceAPIinPythonTutorial.md
-- name: "Reference"
+- name: Reference
   items:
-  - name: "Face API reference"
+  - name: Face API reference
     href: APIReference.md
-  - name: "SDKs"
+  - name: SDKs
     items:
-    - name: "Android"
+    - name: Android
       href: https://github.com/Microsoft/Cognitive-Face-Android
-    - name: "iOS"
+    - name: iOS
       href: https://github.com/Microsoft/Cognitive-Face-iOS
-    - name: "Python"
+    - name: Python
       href: https://github.com/Microsoft/Cognitive-Face-Python
-    - name: "Windows"
+    - name: Windows
       href: https://github.com/Microsoft/Cognitive-Face-Windows
-- name: "Resources"
+- name: Resources
   items:
-    - name: "Samples"
-      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
-    - name: "Glossary"
-      href: Glossary.md
-    - name: "FAQ"
-      href: FAQ.md
-    - name: "Release notes"
-      href: ReleaseNotes.md
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Samples
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
+  - name: Glossary
+    href: Glossary.md
+  - name: FAQ
+    href: FAQ.md
+  - name: Release notes
+    href: ReleaseNotes.md

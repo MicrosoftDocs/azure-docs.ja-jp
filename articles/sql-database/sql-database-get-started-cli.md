@@ -13,14 +13,14 @@ ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 04/17/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: dccebad561b04306126f986193a57aee176aaa0d
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: df42834bca821b16e9dd1bc57d735d346f12ca1d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -30,17 +30,9 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このクイック スタートには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
-
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
-
-```azurecli
-az login
-```
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="define-variables"></a>変数の定義
 
@@ -57,7 +49,7 @@ export adminlogin = ServerAdmin
 export password = ChangeYourAdminPassword1
 # The ip address range that you want to allow to access your DB
 export startip = "0.0.0.0"
-export endip = "0.0.0.1"
+export endip = "0.0.0.0"
 # The database name
 export databasename = mySampleDatabase
 ```

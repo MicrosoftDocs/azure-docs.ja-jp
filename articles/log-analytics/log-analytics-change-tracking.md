@@ -12,27 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a3d958e1a37ddf6821d41afe7427faec1b8259b2
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
 
+![変更の追跡シンボル](./media/log-analytics-change-tracking/change-tracking-symbol.png)
+
 この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows ファイルおよびレジストリ、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
-このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られた後、そのデータがクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
+このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られます。 その後、データはクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * 変更を監視する各コンピューターに、[Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md)、または [Linux](log-analytics-linux-agents.md) エージェントが必要です。
-* 変更の追跡ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に説明されている手順に従って追加してください。  さらに手動で構成する必要はありません。
+* Change Tracking ソリューションを [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) から OMS ワークスペースに追加します。 また、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページの情報を使用して、ソリューションを追加することもできます。 それ以上の構成は必要ありません。
+
+### <a name="configure-linux-files-to-track"></a>追跡する Linux ファイルを構成する
+次の手順を使用して、Linux コンピューター上で追跡するファイルを構成します。
+
+1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
+2. **[設定]** ページで **[データ]** をクリックし、**[Linux ファイルの追跡]** をクリックします。
+3. [Linux ファイルの変更追跡] の下に、追跡するファイルのファイル名を含むパス全体を入力し、**[追加]** シンボルをクリックします。 例: "/etc/*.conf"
+4. **[保存]** をクリックします。  
+
+> [!NOTE]
+> Linux ファイルの追跡には、ディレクトリの追跡、ディレクトリの再帰、およびワイルドカード追跡などの追加機能があります。
 
 ### <a name="configure-windows-files-to-track"></a>追跡する Windows ファイルの構成
 次の手順を使用して、Windows コンピューター上で追跡するファイルを構成します。
@@ -52,14 +65,30 @@ ms.lasthandoff: 04/12/2017
 4. **[保存]** をクリックします。  
    ![Windows レジストリの変更追跡](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
-### <a name="limitations"></a>制限事項
-現在、変更の追跡ソリューションでは以下に対応していません。
+### <a name="explanation-of-linux-file-collection-properties"></a>Linux ファイル コレクションのプロパティの説明
+1. **種類**
+   * **ファイル** (ファイルのメタデータを報告: サイズ、変更日、ハッシュなど)
+   * **ディレクトリ** (ディレクトリのメタデータを報告: サイズ、変更日など)
+2. **リンク** (他のファイルまたはディレクトリへの Linux のシンボリック リンク参照の処理)
+   * **無視** (再帰中にシンボリック リンクを無視して、参照先のファイル/ディレクトリを含めないようにする)
+   * **フォロー** (再帰中にシンボリック リンクをフォローして、参照先のファイル/ディレクトリも含めるようにする)
+   * **管理** (シンボリック リンクをフォローし、返されたコンテンツの処理を変更する)
 
-* フォルダー (ディレクトリ)
-* 再帰
-* ワイルド カード
+   > [!NOTE]   
+   > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
+
+3. **再帰** (フォルダー レベルで再帰し、パス ステートメントに適合するすべてのファイルを追跡する)
+4. **Sudo** (sudo 特権を必要とするファイルまたはディレクトリへのアクセスを有効にする)
+
+### <a name="limitations"></a>制限事項
+現在、Change Tracking ソリューションでは以下の項目に対応していません。
+
+* Windows ファイル追跡用のフォルダー (ディレクトリ)
+* Windows ファイル追跡用の再帰
+* Windows ファイル追跡用のワイルドカード
 * パス変数
 * ネットワーク ファイル システム
+* ファイル コンテンツ
 
 その他の制限事項:
 
@@ -73,9 +102,9 @@ ms.lasthandoff: 04/12/2017
 
 次の表は、変更の追跡におけるデータの収集手段と、データ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Linux エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Linux エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows および Linux |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![なし](./media/log-analytics-change-tracking/oms-bullet-red.png) |![いいえ](./media/log-analytics-change-tracking/oms-bullet-red.png) |![はい](./media/log-analytics-change-tracking/oms-bullet-green.png) | 5 ～ 50 分 (変更の種類に応じて) 詳細については、以下を参照してください。 |
+| Windows および Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 ～ 50 分 (変更の種類に応じて) 詳細については後の表を参照してください。 |
 
 
 次の表は、変更の種類ごとにデータ収集の頻度を示したものです。
@@ -99,7 +128,7 @@ Log Analytics は、変更の追跡ソリューションを使用して、Window
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
     - シャットアップ時に実行されるスクリプトを監視します。
 - HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
-    - 64 ビット コンピューターで実行される 32 ビット プログラム用の Windows アカウントでユーザーがサインインする前に読み込まれるキーを監視します。
+    - ユーザーが Windows アカウントにサインインする前に読み込まれるキーを監視します。 このキーは、64 ビット コンピューターで実行される 32 ビット プログラムに使用されます。
 - HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components
     - アプリケーションの設定の変更を監視します。
 - HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
@@ -113,9 +142,9 @@ Log Analytics は、変更の追跡ソリューションを使用して、Window
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
     - 64 ビット コンピューターで実行される 32 ビット プログラムのアイコン オーバーレイ ハンドラーの登録を監視します。
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
-    - 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するために使用できる、Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。
+    - Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するときに使用されます。
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
-    - 64 ビットコンピューターで実行される 32 ビット プログラムの現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するために使用できる、Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。
+    - Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、64 ビットコンピューターで実行される 32 ビット プログラムのナビゲーションを制御するときに使用されます。
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
     - カスタム ツール メニューやカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions

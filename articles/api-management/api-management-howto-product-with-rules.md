@@ -3,7 +3,7 @@ title: "Azure API Management で API を保護する | Microsoft Docs"
 description: "クォータとスロットル (レート制限) ポリシーを使用して、API を保護する方法について説明します。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 450dc368-d005-401d-ae64-3e1a2229b12f
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
-
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Azure API Management でレート制限を使用して API を保護する
@@ -53,7 +54,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 **[タイトル]** ボックスに、「**無料試用版**」と入力します。
 
-**[説明]** ボックスに「 **サブスクライバーは毎分 10 回、1 週間に最大 200 回の呼び出しを実行でき、それ以上になるとアクセスは拒否されます。**」と入力します。
+**[説明]** ボックスに「**サブスクライバーは毎分 10 回、1 週間に最大 200 回の呼び出しを実行でき、それ以上になるとアクセスは拒否されます。**」と入力します。
 
 API Management の成果物は、保護することも開くこともできます。 保護された成果物を使用するには、事前にサブスクライブする必要があります。 オープンな成果物は、サブスクリプションがなくても使用できます。 サブスクリプションを必要とする保護された成果物を作成するために、 **[Require subscription (サブスクリプションが必要)]** チェック ボックスがオンになっていることを確認します。 これは、既定の設定です。
 
@@ -95,19 +96,21 @@ API Management の成果物は、保護することも開くこともできま�
 ![Echo API の追加][api-management-add-echo-api]
 
 ## <a name="policies"> </a>呼び出しレート制限ポリシーとクォータ ポリシーを構成するには
-レート制限とクォータは、ポリシー エディターで構成します。 左側の **[API Management]** メニューの下にある **[ポリシー]** をクリックします。 **[成果物]** ボックスの一覧で **[無料試用版]** をクリックします。
+レート制限とクォータは、ポリシー エディターで構成します。 このチュートリアルでは、[サブスクリプション別の呼び出しレート制限](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)と[サブスクリプション別の使用量クォータの設定](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)という 2 つのポリシーを追加します。 これらのポリシーは、製品スコープで適用する必要があります。
+
+左側の **[API Management]** メニューの下にある **[ポリシー]** をクリックします。 **[成果物]** ボックスの一覧で **[無料試用版]** をクリックします。
 
 ![製品のポリシー][api-management-product-policy]
 
 **[ポリシーの追加]** をクリックしてポリシー テンプレートをインポートし、レート制限とクォータ ポリシーの作成を開始します。
 
-![ポリシーの追加][api-management-add-policy]
+![[ポリシーの追加]][api-management-add-policy]
 
-ポリシーを挿入し、ポリシー テンプレートの **inbound** または **outbound** セクションにカーソルを置きます。 レート制限ポリシーとクォータ ポリシーは inbound ポリシーなので、カーソルを inbound 要素に置きます。
+レート制限ポリシーとクォータ ポリシーは inbound ポリシーなので、カーソルを inbound 要素に置きます。
 
 ![ポリシー エディター][api-management-policy-editor-inbound]
 
-このチュートリアルでは、[サブスクリプション別の呼び出しレート制限](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)と[サブスクリプション別の使用量クォータの設定](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)という 2 つのポリシーを追加します。
+ポリシーの一覧をスクロールして、**[Limit call rate per subscription]\(サブスクリプション別の呼び出しレート制限\)** ポリシーのエントリを見つけます。
 
 ![ポリシー ステートメント][api-management-limit-policies]
 
@@ -121,7 +124,7 @@ API Management の成果物は、保護することも開くこともできま�
 </rate-limit>
 ```
 
-**[サブスクリプション別の呼び出しレート制限]** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。 このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
+上のスニペットからわかるとおり、このポリシーでは製品の API と操作について制限を設定できます。 このチュートリアルでは、この機能を使用しません。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけを残します。
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -135,7 +138,7 @@ API Management の成果物は、保護することも開くこともできま�
 </rate-limit>
 ```
 
-**[サブスクリプション別の使用量クォータの設定]** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**[サブスクリプション別の使用量クォータの設定]** の左側の矢印をクリックします。
+**サブスクリプション別の使用量クォータの設定**ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**サブスクリプション別の使用量クォータの設定**を見つけてその左側の矢印をクリックします。
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -145,7 +148,7 @@ API Management の成果物は、保護することも開くこともできま�
 </quota>
 ```
 
-このポリシーも成果物レベルで適用するためのものなので、**api** と **operation** の name 要素は削除してください。その例を次に示します。
+**サブスクリプション別の使用量クォータの設定**ポリシーと同様に、**サブスクリプション別の使用量クォータの設定**ポリシーでは、製品の API と操作について制限を設定できます。 このチュートリアルでは、この機能を使用しません。そのため、次の例に示すとおり、**api** 要素と **operation** 要素は **quota** 要素から削除してください。
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -166,7 +169,7 @@ API Management の成果物は、保護することも開くこともできま�
 </quota>
 ```
 
-> ポリシーの間隔は秒単位で指定します。 1 週間の秒数は、日数 (7) に 1 日の時間数 (24)、1 時間の分数 (60)、1 分間の秒数 (60) を掛けて求めることができます (7 * 24 * 60 * 60 = 604800)。
+> ポリシーの間隔は秒単位で指定します。 1 週間の秒数は、日数 (7) に 1 日の時間数 (24)、1 時間の分数 (60)、1 分間の秒数 (60) を掛けて求めることができます (7 * 24 * 60 * 60 = 604,800)。
 > 
 > 
 
@@ -323,9 +326,4 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -12,14 +12,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 522fa6a45521ab917a540e8cc6bc619b05ab262e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>C を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、シミュレートされたテレメトリを送信する
@@ -50,15 +49,18 @@ Raspberry Pi のリモート監視クライアント アプリケーションを
 
 まだレポジトリを複製していない場合は、Pi 上のターミナルで次のコマンドを実行して必要なレポジトリを複製します。
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
+```
 
 ### <a name="update-the-device-connection-string"></a>デバイスの接続文字列を更新する
 
 次のコマンドを使用して、**nano** エディターのサンプル ソース ファイルを開きます。
 
-`nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/remote_monitoring/remote_monitoring.c`
+```sh
+nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/remote_monitoring/remote_monitoring.c
+```
 
 次の行を見つけます。
 
@@ -73,19 +75,23 @@ static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;
 
 Raspberry Pi 上のターミナルで次のコマンドを実行して、C 用 Microsoft Azure IoT device SDK の前提条件となるパッケージをインストールします。
 
-`sudo apt-get update`
-
-`sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev`
+```sh
+sudo apt-get update
+sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
+```
 
 Raspberry Pi 上で更新されたサンプル ソリューションのビルドができます。
 
-`chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh`
-
-`~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh`
+```sh
+chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
+~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
+```
 
 Raspberry Pi 上でサンプル プログラムを実行できます。 次のコマンドを入力します。
 
-  `sudo ~/cmake/remote_monitoring/remote_monitoring`
+```sh
+sudo ~/cmake/remote_monitoring/remote_monitoring
+```
 
 次のサンプル出力は、Raspberry Pi 上のコマンド プロンプトに表示される出力の例です。
 
@@ -98,7 +104,6 @@ Raspberry Pi 上でサンプル プログラムを実行できます。 次の�
 ## <a name="next-steps"></a>次のステップ
 
 Azure IoT のその他のサンプルとドキュメントについては、「[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)」をご覧ください。
-
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-simulator/appoutput.png
 

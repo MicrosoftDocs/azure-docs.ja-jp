@@ -3,7 +3,7 @@ title: "Visual Studio でアプリケーションを管理する | Microsoft Doc
 description: "Visual Studio を利用し、Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: mikkelhegn
 manager: timlt
 editor: 
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
-ms.author: seanmck;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 60d440c75d6352d5e65e0158e439df9db2315ecd
-ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
+ms.date: 06/07/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -30,54 +32,48 @@ Azure Service Fabric アプリケーションとサービスを Visual Studio �
 2. アプリケーション パッケージのイメージ ストアへのアップロード
 3. アプリケーションの種類の登録
 4. 実行している任意のアプリケーション インスタンスの削除
-5. 新しいアプリケーション インスタンスの作成
+5. アプリケーション インスタンスの作成
 
-Visual Studio では、 **[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。 詳細については、「 [Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
+Visual Studio で、**[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。 詳細については、「 [Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
 
 ### <a name="application-debug-mode"></a>アプリケーション デバッグ モード
-既定では、デバッグを停止したとき、または (デバッガーをアタッチせずにアプリケーションをデプロイした場合に) アプリケーションを再デプロイしたときに、Visual Studio ではアプリケーションの種類の既存のインスタンスが削除されます。 その場合、アプリケーションのデータはすべて削除されます。 ローカルでデバッグしている間、アプリケーションの新しいバージョンをテストする際に、場合によっては既に作成したデータを保持する必要があります。または、アプリケーションを実行し続けるか、以降のデバッグセッションでアプリケーションをアップグレードする必要があります。 Visual Studio Service Fabric Tools には、**Application Debug Mode (アプリケーション デバッグ モード)** というプロパティが用意されていて、**F5** キーを押したときにアプリケーションをアンインストールするか、デバッグ セッションの終了後もアプリケーションを維持するか、以降のデバッグ セッションで、アプリケーションを削除して再デプロイするのではなく、アップグレードできるようにするかを制御できます。
+Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Application Debug Mode (アプリケーション デバッグ モード) プロパティを設定するには
-1. アプリケーション プロジェクトのショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
+1. Service Fabric アプリケーション プロジェクトの (*.sfproj) ショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
 2. **[プロパティ]** ウィンドウで **[アプリケーション デバッグ モード]** プロパティを設定します。
 
-    ![Set Application Debug Mode Property][debugmodeproperty]
+![Set Application Debug Mode Property][debugmodeproperty]
 
-**[アプリケーション デバッグ モード]** では、次のオプションを使用できます。
+#### <a name="application-debug-modes"></a>アプリケーション デバッグ モード
 
-1. **自動アップグレード**: デバッグ セッションが終了しても、アプリケーションは実行されたままになります。 次に **F5** キーを押したときに、そのデプロイは、監視なしの自動モードを使用したアップグレードとして扱われ、アプリケーションは、日付文字列が追加された新しいバージョンにアップグレードされます。 アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
-2. **アプリケーションの保持**: デバッグ セッションが終了しても、アプリケーションはクラスターで実行されたままになります。 次に **F5** キーを押すと、アプリケーションは削除され、新しく作成されたアプリケーションがクラスターにデプロイされます。
-3. **アプリケーションの削除** : アプリケーションは、デバッグ セッションが終了したときに削除されます。
+1. **アプリケーションの更新**: このモードでは、コードをすばやく変更およびデバッグでき、デバッグ中の静的な Web ファイルの編集がサポートされます。 このモードが機能するのは、ローカル開発クラスターが [1 ノード モード](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode)の場合のみです。
+2. **アプリケーションの削除** : アプリケーションは、デバッグ セッションが終了したときに削除されます。
+3. **自動アップグレード**: デバッグ セッションが終了しても、アプリケーションは実行されたままになります。 次回のデバッグ セッションでは、デプロイはアップグレードとして扱われます。 アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
+4. **アプリケーションの保持**: デバッグ セッションが終了しても、アプリケーションはクラスターで実行されたままになります。 次回のデバッグ セッションの開始時に、アプリケーションは削除されます。
 
-**[自動アップグレード]** の場合、データは Service Fabric のアプリケーション アップグレード機能を適用して保持されますが、安全性よりもパフォーマンスを最適化するために調整されます。 アプリケーションのアップグレードと実際の環境でアップグレードを実行する方法の詳細については、「 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
-
-![日付が追加された新しいアプリケーション バージョンの例][preservedata]
-
-> [!NOTE]
-> このプロパティは、Service Fabric Tools for Visual Studio バージョン 1.1 より前のバージョンには存在しません。 1.1 より前のバージョンでは、**[開始時にデータを保存]** プロパティを使用してください。同じ動作が実現します。 "アプリケーションの保持" オプションは、Visual Studio の Service Fabric ツールのバージョン 1.2 で導入されました。
->
->
+**[自動アップグレード]** の場合、データは Service Fabric のアプリケーション アップグレード機能を適用して保持されます。 アプリケーションのアップグレードと実際の環境でアップグレードを実行する方法の詳細については、「 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Service Fabric アプリケーションにサービスを追加します。
 新しいサービスをアプリケーションに追加して、その機能を拡張することができます。  サービスがアプリケーション パッケージに含まれているかどうかを確認するには、 **[新規 Fabric サービス]** メニュー項目からサービスを追加します。
 
-![新しい Fabric サービスをアプリケーションに追加する][newservice]
+![新しい Service Fabric サービスを追加する][newservice]
 
 アプリケーションに追加する Service Fabric プロジェクトの種類を選択し、サービスの名前を指定します。  使用するサービスの種類を決定するのに役立つ、「 [サービスのフレームワークの選択](service-fabric-choose-framework.md) 」を参照してください。
 
-![アプリケーションに追加する Fabric サービス プロジェクトの種類を選択する][addserviceproject]
+![アプリケーションに追加する Service Fabric サービス プロジェクトの種類を選択する][addserviceproject]
 
-新しいサービスは、ソリューションおよび既存のアプリケーション パッケージに追加されます。 サービス参照と既定のサービス インスタンスは、アプリケーション マニフェストに追加されます。 サービスが作成され、次回、アプリケーションをデプロイする際に起動します。
+新しいサービスは、ソリューションおよび既存のアプリケーション パッケージに追加されます。 サービス参照と既定のサービス インスタンスは、アプリケーション マニフェストに追加されます。これにより、サービスが作成され、次回、アプリケーションをデプロイする際に起動します。
 
-![新しいサービスは、アプリケーション マニフェストに追加されます][newserviceapplicationmanifest]
+![新しいサービスがアプリケーション マニフェストに追加されている][newserviceapplicationmanifest]
 
 ## <a name="package-your-service-fabric-application"></a>Service Fabric アプリケーションのパッケージ化
-アプリケーションとそのサービスをクラスターにデプロイするには、アプリケーション パッケージを作成する必要があります。  パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。  Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。  **[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。  カスタム Powershell スクリプトを使用してアプリケーションをデプロイする場合に、これを実行できます。
+アプリケーションとそのサービスをクラスターにデプロイするには、アプリケーション パッケージを作成する必要があります。  パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。  Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。  **[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。
 
 ## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Cloud Explorer を使用したアプリケーションとアプリケーションの種類の削除
 Visual Studio 内から Cloud Explorer を使用して、基本的なクラスター管理操作を実行できます。Cloud Explorer は、**[表示]** メニューから起動できます。 たとえば、ローカルやリモートのクラスターで、アプリケーションを削除したり、アプリケーションの種類のプロビジョニングを解除できます。
 
-![アプリケーションの削除](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
+![アプリケーションの削除][removeapplication]
 
 > [!TIP]
 > 高度なクラスター管理機能については、「 [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
@@ -97,11 +93,5 @@ Visual Studio 内から Cloud Explorer を使用して、基本的なクラス�
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
 [newservice]:./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]:./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
-[preservedata]:./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [debugmodeproperty]:./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+[removeapplication]:./media/service-fabric-manage-application-in-visual-studio/removeapplication.png

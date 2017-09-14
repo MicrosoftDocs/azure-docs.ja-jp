@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric アプリケーションのデプロイ | Microsoft Docs"
-description: "Service Fabric のアプリケーションをデプロイおよび削除する方法"
+title: "Azure Service Fabric アプリケーションのデプロイ | Microsoft Docs"
+description: "PowerShell を使用して Service Fabric でアプリケーションをデプロイおよび削除する方法"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/23/2017
+ms.date: 06/01/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8268a0204137a95365a95c323507163c4ec6b33d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c7e8d7a53623219864dc2d5c9ace86f36f3db889
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/27/2017
 2. アプリケーションの種類を登録する
 3. アプリケーション インスタンスを作成する
 
-アプリのデプロイ後、インスタンスがクラスターで実行されているときに、アプリのインスタンスとそのアプリケーションの種類を削除することができます。 クラスターからアプリを完全に削除するには、次の手順が必要となります。
+アプリケーションのデプロイ後、インスタンスがクラスターで実行されているときに、アプリケーションのインスタンスとそのアプリケーションの種類を削除することができます。 クラスターからアプリケーションを完全に削除するには、次の手順が必要です。
 
 1. 実行中のアプリケーションのインスタンスを削除する
 2. アプリケーションの種類が不要になったら、その登録を解除する
@@ -65,12 +66,12 @@ Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStore
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
-*MyApplication* という名前のアプリを Visual Studio でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェストとサービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\username\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* に格納されます。 
+*MyApplication* という名前のアプリケーションを Visual Studio 2015 でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェスト、サービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* にあります。 
 
 アプリケーション パッケージの内容を一覧表示するには、次のコマンドを使用します。
 
 ```powershell
-PS C:\> $path = 'C:\Users\user\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug'
+PS C:\> $path = 'C:\Users\<user\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug'
 PS C:\> tree /f $path
 Folder PATH listing for volume OSDisk
 Volume serial number is 0459-2393
@@ -130,7 +131,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 |2048|1,000|00:01:04.3775554|1,231|
 |5,012|100|00:02:45.2951288|3,074|
 
-圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイ メカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮が解除されます。
+圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮が解除されます。
 
 
 以下の例では、先ほどのパッケージをイメージ ストアの "MyApplicationV1" という名前のフォルダーにアップロードしています。
@@ -139,7 +140,13 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
 ```
 
-*-ApplicationPackagePathInImageStore* パラメーターを指定しなかった場合は、イメージ ストアの "Debug" フォルダーにアプリ パッケージがコピーされます。
+Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
+
+```powershell
+Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
+```
+
+*-ApplicationPackagePathInImageStore* パラメーターを指定しなかった場合は、イメージ ストアの "Debug" フォルダーにアプリケーション パッケージがコピーされます。
 
 パッケージのアップロードにかかる時間は、さまざまな要素に応じて変わってきます。 これらの要素として、パッケージに含まれるファイルの数、パッケージ サイズ、ファイル サイズなどがあります。 ソース コンピューターと Service Fabric クラスターの間のネットワーク速度もアップロード時間に影響を与えます。 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) の既定のタイムアウトは 30 分です。
 説明した要素に応じて、タイムアウトを長くすることが必要になる場合があります。 コピーの呼び出しでパッケージを圧縮する場合は、圧縮時間も考慮する必要があります。
@@ -156,7 +163,7 @@ PS C:\> Register-ServiceFabricApplicationType MyApplicationV1
 Register application type succeeded
 ```
 
-"MyApplicationV1" は、アプリ パッケージが格納されるイメージ ストア内のフォルダーです。 アプリケーション タイプ名 "MyApplicationType"、バージョン "1.0.0" (どちらもアプリケーション マニフェストに記述されます) としてアプリケーションの種類がクラスターに登録されます。
+"MyApplicationV1" は、アプリケーション パッケージが格納されるイメージ ストア内のフォルダーです。 アプリケーション タイプ名 "MyApplicationType"、バージョン "1.0.0" (どちらもアプリケーション マニフェストに記述されます) としてアプリケーションの種類がクラスターに登録されます。
 
 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、アプリケーション パッケージがシステムによって正常に登録された場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、**-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。
 
@@ -173,7 +180,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットでは、正常に登録されているアプリケーションの種類のバージョンを指定して、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、 *fabric:* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
+[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットでは、正常に登録されているアプリケーションの種類のバージョンを指定して、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、*"fabric:"* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
 
 ```powershell
 PS C:\> New-ServiceFabricApplication fabric:/MyApp MyApplicationType 1.0.0
@@ -209,7 +216,10 @@ HealthState            : Ok
 ```
 
 ## <a name="remove-an-application"></a>アプリケーションの削除
-アプリケーション インスタンスが不要になったときは、[Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) コマンドレットの引数に名前を指定して実行すれば完全に削除できます。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) を実行すると、アプリケーションに属するサービスもすべて自動的に削除されます。その結果、すべてのサービスの状態が完全に削除されます。 この操作は元に戻せません。また、アプリケーションの状態を復元できません。
+アプリケーション インスタンスが不要になったときは、[Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) コマンドレットの引数に名前を指定して実行すれば完全に削除できます。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) を実行すると、アプリケーションに属するサービスもすべて自動的に削除されます。その結果、すべてのサービスの状態が完全に削除されます。 
+
+> [!WARNING]
+> この操作は元に戻せません。また、アプリケーションの状態を復元できません。
 
 ```powershell
 PS C:\> Remove-ServiceFabricApplication fabric:/MyApp
@@ -251,10 +261,16 @@ PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStor
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage がImageStoreConnectionString を求める
-Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。 ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。 この ImageStoreConnectionString は [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) コマンドで取得したクラスター マニフェストで確認できます。
+Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。 ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。 この ImageStoreConnectionString は [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) コマンドと Get-ImageStoreConnectionStringFromClusterManifest コマンドを使用して取得したクラスター マニフェストで見つけることができます。
 
 ```powershell
-PS C:\> Get-ServiceFabricClusterManifest
+PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
+```
+
+Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
+
+```powershell
+Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
 ImageStoreConnectionString は、クラスター マニフェスト内にあります。
@@ -286,16 +302,33 @@ ImageStoreConnectionString は、クラスター マニフェスト内にあり�
 - イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。
 圧縮によってファイル サイズが小さくなりファイル数が減るため、トラフィックの量と Service Fabric が実行する必要のある処理が減ります。 (圧縮時間を含めた場合は特に) アップロード操作が遅くなる場合がありますが、アプリケーションの種類の登録と登録解除は高速になります。
 - `TimeoutSec` パラメーターを使用して、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドのタイムアウト値を大きくします。
-- [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) に `Async` スイッチを指定します。 このコマンドを実行すると、クラスターがコマンドを受け入れたときに制御が返されます。プロビジョニングは非同期で継続されます。
-このため、この場合にはより大きなタイムアウト値を指定する必要はありません。
+- [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) に `Async` スイッチを指定します。 このコマンドは、クラスターがコマンドを受け入れ、アプリケーションの種類の登録が非同期的に続行されると戻ります。 このため、この場合にはより大きなタイムアウト値を指定する必要はありません。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、正常に登録されたアプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
+
+```powershell
+PS C:\> Get-ServiceFabricApplicationType
+
+ApplicationTypeName    : MyApplicationType
+ApplicationTypeVersion : 1.0.0
+Status                 : Available
+DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
+```
 
 ### <a name="deploy-application-package-with-many-files"></a>多数のファイルを含むアプリケーション パッケージをデプロイする
 問題: (数千個の) 多数のファイルを持つアプリケーション パッケージに対する [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) がタイムアウトする。
 次の操作を試してください。
 - イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。 圧縮により、ファイル数を減らすことができます。
 - `TimeoutSec` パラメーターを使用して、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドのタイムアウト値を大きくします。
-- [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) に `Async` スイッチを指定します。 このコマンドを実行すると、クラスターがコマンドを受け入れたときに制御が返されます。プロビジョニングは非同期で継続されます。
-このため、この場合にはより大きなタイムアウト値を指定する必要はありません。 
+- [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) に `Async` スイッチを指定します。 このコマンドは、クラスターがコマンドを受け入れ、アプリケーションの種類の登録が非同期的に続行されると戻ります。
+このため、この場合にはより大きなタイムアウト値を指定する必要はありません。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、正常に登録されたアプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
+
+```powershell
+PS C:\> Get-ServiceFabricApplicationType
+
+ApplicationTypeName    : MyApplicationType
+ApplicationTypeVersion : 1.0.0
+Status                 : Available
+DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
+```
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)

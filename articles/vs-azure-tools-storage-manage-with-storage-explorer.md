@@ -3,23 +3,22 @@ title: "ストレージ エクスプローラー (プレビュー) の概要 | M
 description: "ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理"
 services: storage
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
-ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: fbcd35529c5d2360f5b0c9de4d3c9c4a08a0cc8f
+ms.date: 07/17/2017
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0abc33bb5b0ffe46397baa5a2d53637bc3f2984c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
@@ -69,80 +68,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに接続する
 
-ストレージ エクスプローラーでは、リモートで Azure Stack サブスクリプションにアクセスするうえで VPN 接続が必要になります。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn)に関するページを参照してください。
-
-Azure Stack の概念実証 (POC) では、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。 そのためには、次の手順を実行します。
-
-1. MAS-CON01 (Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューター) で `mmc.exe` を開きます。 
-
-2. **[ファイル]** で **[スナップインの追加と削除]** を選択し、**[証明書]** を追加して、**ローカル コンピューター**の**コンピューター アカウント**を管理します。
-
-    ![Azure Stack のルート証明書を mmc.exe で読み込む][25]   
-
-3. **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** の直下で **AzureStackCertificationAuthority** を探します。 
-
-4. 項目を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。  
-
-    エクスポートした証明書は、次の手順で使用します。   
-
-    ![Azure Stack のルート証明機関のルート証明書をエクスポートする][26]   
-
-5. ストレージ エクスプローラー (プレビュー) の **[編集]** メニューで、**[SSL 証明書]**、**[証明書のインポート]** の順に選択します。 ファイル ピッカー ダイアログ ボックスを使用して、前の手順でエクスポートした証明書を検索し、開きます。  
-
-    インポート後は、ストレージ エクスプローラーの再起動を求めるメッセージが表示されます。
-
-    ![ストレージ エクスプローラー (プレビュー) に証明書をインポートする][27]
-
-6. ストレージ エクスプローラー (プレビュー) が再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack (Azure Stack を対象にする)]** が選択されていることを確認します。 選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
-
-    ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する][28]
-
-7. 左側のウィンドウで、**[アカウントの管理]** を選択します。  
-    サインインしている Microsoft アカウントがすべて表示されます。
-
-8. Azure Stack アカウントに接続するには、**[アカウントの追加]** を選択します。
-
-    ![Azure Stack アカウントを追加する][29]
-
-9. **[新しいアカウントを追加]** ダイアログ ボックスで、**[Azure 環境]** 内の **[Create Custom Environment (カスタム環境の作成)]** を選択し、**[次へ]** をクリックします。
-
-10. Azure Stack のカスタム環境に必要なすべての情報を入力し、**[サインイン]** をクリックします。 
-
-11. 少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられた Azure Stack アカウントでサインインするために、**[Sign in to a Custom Cloud environment (カスタム クラウド環境にサインインする)]** ダイアログ ボックスに情報を入力します。  
-
-    各フィールドの詳細は次のとおりです。
-
-    * **[環境名]**: このフィールドはユーザーがカスタマイズできます。
-    * **[機関]**: 値は https://login.windows.net である必要があります。 Azure 中国の場合は、https://login.chinacloudapi.cn を使用してください。
-    * **[Sign in resource id (サインイン リソース ID)]**: 次のいずれかの PowerShell スクリプトを実行して、値を取得します。
-
-        クラウド管理者の場合:
-
-        ```powershell
-        PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-        ```
-
-        テナントの場合:
-
-        ```powershell
-        PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-        ```
-
-    * **[Graph のエンドポイント]**: 値は https://graph.windows.net である必要があります。 Azure 中国の場合は、https://graph.chinacloudapi.cn を使用してください。
-    * **[ARM resource id (ARM リソース ID)]**: **[Sign in resource id (サインイン リソース ID)]** と同じ値を使用します。
-    * **[ARM resource endpoint (ARM リソース エンドポイント)]**: Azure Resource Manager リソース エンドポイントの例は次のとおりです。
-
-        * クラウド管理者の場合: https://adminmanagement.local.azurestack.external   
-        * テナントの場合: https://management.local.azurestack.external
- 
-    * **[Tenant Ids (テナント ID)]**: 省略可能です。 ディレクトリを指定する必要がある場合にのみ値を入力します。
-
-12. Azure Stack アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられている Azure Stack サブスクリプションが表示されます。 操作する Azure Stack サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure Stack サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
-
-    ![カスタム クラウド環境のダイアログ ボックスに情報を入力した後、Azure Stack サブスクリプションを選択する][30]  
-    左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
-
-    ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧][31]
+Azure Stack サブスクリプションに接続する方法については、「[Connect Storage Explorer to an Azure Stack subscription (ストレージ エクスプローラーを Azure Stack サブスクリプションに接続する)](azure-stack/azure-stack-storage-connect-se.md)」を参照してください。
 
 ## <a name="work-with-local-development-storage"></a>ローカル開発ストレージを操作する
 ストレージ エクスプローラー (プレビュー) では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。 この方法を使えば、Azure ストレージ エミュレーターによってストレージ アカウントがエミュレートされるため、Azure にデプロイされたストレージ アカウントがなくても、ストレージ関連のコードを記述したり、ストレージをテストしたりできます。
@@ -230,7 +156,7 @@ Azure Stack の概念実証 (POC) では、Azure Stack の証明機関のルー�
 2. 確認メッセージで **[はい]** を選択して、外部ストレージ アカウントからのデタッチを確定します。
 
 ## <a name="attach-a-storage-account-by-using-an-sas"></a>SAS を使ってストレージ アカウントをアタッチする
-[SAS](storage/storage-dotnet-shared-access-signature-part-1.md) を使うと、Azure サブスクリプションの管理者が Azure サブスクリプションの資格情報を提供しなくても、ストレージ アカウントへのアクセスを一時的に許可できるようになります。
+[SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) を使うと、Azure サブスクリプションの管理者が Azure サブスクリプションの資格情報を提供しなくても、ストレージ アカウントへのアクセスを一時的に許可できるようになります。
 
 このシナリオをわかりやすく説明するために、Azure サブスクリプションの管理者である UserA が UserB に特定のアクセス許可を付与し、一時的にストレージ アカウントへのアクセスを許可する場面を考えてみます。
 

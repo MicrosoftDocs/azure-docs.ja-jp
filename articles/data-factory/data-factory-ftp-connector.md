@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 1c37802e2b908747773afa093a28ea218dd60509
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f8f31f3a2ee02c964737dd32145499f3dcfd0624
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
@@ -190,7 +189,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 この例では、SliceStart の年、月、日、時刻が **folderPath** プロパティと **fileName** プロパティで使用される個別の変数に抽出されます。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、type プロパティはソースとシンクの種類によって異なります。
 
@@ -200,7 +199,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | --- | --- | --- | --- |
 | recursive |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ |
 
-## <a name="json-example-copy-data-from-ftp-server-to-azure-blob-storage"></a>JSON の使用例: FTP サーバーから Azure Blob ストレージへのデータのコピー
+## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON の使用例: FTP サーバーから Azure BLOB へのデータのコピー
 このサンプルは、FTP サーバーから Azure Blob ストレージにデータをコピーする方法を示します。 ただし、Data Factory のコピー アクティビティを使用して、[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)で説明されているシンクのいずれかにデータを直接コピーすることができます。  
 
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
@@ -384,7 +383,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
-* Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md) 」をご覧ください。
+* Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
 * コピー アクティビティを使用したパイプライン作成の詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 

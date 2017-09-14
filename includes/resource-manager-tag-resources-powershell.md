@@ -12,37 +12,76 @@ Version
 3.5.0
 ```
 
-リソースまたはリソース グループにタグを適用するたびに、そのリソースまたはリソース グループの既存のタグが上書きされます。 したがって、リソースまたはリソース グループに保持する必要がある既存のタグがあるかどうかに基づいて、異なるアプローチを使用する必要があります。 その方法を次に示します。
+*リソース グループ*の既存のタグを表示するには、次のコマンドを使用します。
 
-* タグのないリソース グループにタグを追加する。
+```powershell
+(Get-AzureRmResourceGroup -Name examplegroup).Tags
+```
 
-  ```powershell
-  Set-AzureRmResourceGroup -Name TagTestGroup -Tag @{ Dept="IT"; Environment="Test" }
-  ```
+このスクリプトは次の形式を返します。
 
-* 既存のタグがあるリソース グループにタグを追加する。
+```powershell
+Name                           Value
+----                           -----
+Dept                           IT
+Environment                    Test
+```
 
-  ```powershell
-  $tags = (Get-AzureRmResourceGroup -Name TagTestGroup).Tags
-  $tags += @{Status="Approved"}
-  Set-AzureRmResourceGroup -Tag $tags -Name TagTestGroup
-  ```
+*特定のリソース ID に該当するリソース*の既存のタグを表示するには、次のコマンドを使用します。
 
-* タグのないリソースにタグを追加する。
+```powershell
+(Get-AzureRmResource -ResourceId {resource-id}).Tags
+```
 
-  ```powershell
-  Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
-  ```
+*特定の名前とリソース グループに該当するリソース*の既存のタグを表示するには、次のコマンドを使用します。
 
-* 既存のタグがあるリソースにタグを追加する。
+```powershell
+(Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+```
 
-  ```powershell
-  $tags = (Get-AzureRmResource -ResourceName storageexample -ResourceGroupName TagTestGroup).Tags
-  $tags += @{Status="Approved"}
-  Set-AzureRmResource -Tag $tags -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
-  ```
+*特定のタグが付いたリソース グループ*を取得するには、次のコマンドを使用します。
 
-**リソースにある既存のタグを保持せずに**、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+```powershell
+(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
+```
+
+*特定のタグが付いたリソース*を取得するには、次のコマンドを使用します。
+
+```powershell
+(Find-AzureRmResource -TagName Dept -TagValue Finance).Name
+```
+
+リソースまたはリソース グループにタグを適用するたびに、そのリソースまたはリソース グループの既存のタグが上書きされます。 したがって、リソースまたはリソース グループに既存のタグがあるかどうかに基づいて、異なるアプローチを使用する必要があります。 
+
+*既存のタグのないリソース グループ*にタグを追加するには、次のコマンドを使用します。
+
+```powershell
+Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+```
+
+*既存のタグがあるリソース グループ*にタグを追加するには、既存のタグを取得して新しいタグを追加し、タグを適用し直します。
+
+```powershell
+$tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
+$tags += @{Status="Approved"}
+Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
+```
+
+*既存のタグのないリソース*にタグを追加するには、次のコマンドを使用します。
+
+```powershell
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName examplevnet -ResourceGroupName examplegroup
+```
+
+*既存のタグがあるリソース*にタグを追加するには、次のコマンドを使用します。
+
+```powershell
+$tags = (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+$tags += @{Status="Approved"}
+Set-AzureRmResource -Tag $tags -ResourceName examplevnet -ResourceGroupName examplegroup
+```
+
+*リソースにある既存のタグを保持せずに*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
@@ -52,7 +91,7 @@ foreach ($g in $groups)
 }
 ```
 
-**リソースにある重複しない既存のタグを保持して**、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+*リソースにある重複しない既存のタグを保持して*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
@@ -77,18 +116,8 @@ foreach ($g in $groups)
 すべてのタグを削除するには、空のハッシュ テーブルを渡します。
 
 ```powershell
-Set-AzureRmResourceGroup -Tag @{} -Name TagTestGgroup
+Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
 
-特定のタグを持つリソース グループを取得するには、`Find-AzureRmResourceGroup` コマンドレットを使用します。
 
-```powershell
-(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
-```
-
-特定のタグと値を持つすべてのリソースを取得するには、`Find-AzureRmResource` コマンドレットを使用します。
-
-```powershell
-(Find-AzureRmResource -TagName Dept -TagValue Finance).Name
-```
 

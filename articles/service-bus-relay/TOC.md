@@ -13,6 +13,7 @@
 # 方法
 ## 計画と設計
 ### [認証とセキュリティ](relay-authentication-and-authorization.md)
+#### [ACS から SAS への移行](relay-migrate-acs-sas.md)
 ### [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
 ## 開発
 ### [利用可能な API](relay-api-overview.md)
@@ -27,7 +28,9 @@
 ## [ポートの設定](relay-port-settings.md)
 
 # リソース
-## [サンプル](https://github.com/azure/azure-relay/tree/master/samples)
-## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
+## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サンプル](https://github.com/azure/azure-relay/tree/master/samples)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

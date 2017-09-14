@@ -12,18 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 08/04/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 24a6ae1b259a1524ec3a8542dcbf55ff0450421e
-ms.openlocfilehash: 01b9108048b5d7f3aa960ec01f75a693e074beaf
+ms.reviewer: piotrci
+ms.custom: it-pro;oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: d350011ee9fc5ced9ddb16993f68d3c840a645a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS アプリケーションへのアクセスをグループで管理する
 Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは Azure AD Basic ライセンスでは、Azure AD と連携する SaaS アプリケーションへのアクセス権を、グループを使って割り当てることができます。 たとえばマーケティング部門を対象に 5 つの SaaS アプリケーションを使用するためのアクセス権を割り当てる場合、同部門のユーザーから成るグループを作成したうえで、マーケティングで必要となる 5 つの SaaS アプリケーションにそのグループを割り当てます。 このようにマーケティング部門のメンバーシップを一元的に管理することで時間を節約することが可能です。 この場合アプリケーションに対するユーザーの割り当ては、そのユーザーがマーケティング グループのメンバーとして追加されたときに行われます。同様に、マーケティング グループからユーザーが削除されると、アプリケーションからもその割り当てが削除されます。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 
 
 この機能は、Azure AD アプリケーション ギャラリー内から追加できる多数のアプリケーションで利用することができます。
 

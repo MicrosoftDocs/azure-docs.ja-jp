@@ -1,7 +1,7 @@
 ---
 title: "SendGrid 電子メール サービスの使用方法 (.NET) | Microsoft Docs"
 description: "Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。 コード サンプルは C# で記述され、.NET API を使用しています。"
-services: app-service\web
+services: app-service-web
 documentationcenter: .net
 author: thinkingserious
 manager: erikre
@@ -14,17 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 534397378a4d83414bfe62f2dd2c57678f09c429
-ms.lasthandoff: 03/10/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 126bc0658af3a27643bc0da2848545546f158f0c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
-このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは C\#
- で記述され、.NET Standard 1.3 をサポートしています。 紹介するシナリオは、電子メールの作成、電子メールの送信、添付ファイルの追加、さまざまな電子メールおよび追跡設定の有効化です。 SendGrid と電子メールの送信の詳細については、「[次のステップ][Next steps]」を参照してください。
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは C\# で記述され、.NET Standard 1.3 をサポートしています。 紹介するシナリオは、電子メールの作成、電子メールの送信、添付ファイルの追加、さまざまな電子メールおよび追跡設定の有効化です。 SendGrid と電子メールの送信の詳細については、「[次のステップ][Next steps]」を参照してください。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid 電子メール サービスとは
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な用途は次のとおりです。
@@ -70,7 +69,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
 プログラムを使用して SendGrid 電子メール サービスにアクセスするすべての C# ファイルの冒頭部分に、名前空間を宣言する次のコードを追加します。
 
     using SendGrid;
-    using SendGrid.Helpers.Mail
+    using SendGrid.Helpers.Mail;
 
 ## <a name="how-to-create-an-email"></a>方法: 電子メールを作成する
 **SendGridMessage** オブジェクトを使用して電子メール メッセージを作成します。 メッセージ オブジェクトを作成すると、電子メール送信者、電子メール受信者、電子メールの件名、本文などのプロパティやメソッドを設定することができます。

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory の条件付きアクセス | Microsoft Docs"
-description: "Azure Active Directory の条件付きアクセス制御を使用して、アプリケーションへのアクセスを認証するときに特定の条件を確認します。"
+title: "Azure クラシック ポータルの条件付きアクセス | Microsoft Docs"
+description: "Azure クラシック ポータルの条件付きアクセス制御を使用して、アプリケーションへのアクセスの認証時に特定の条件を確認します。"
 services: active-directory
 keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
 documentationcenter: 
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2017
+ms.date: 09/01/2017
 ms.author: markvi
+ms.reviewer: calebb
+ms.custom: oldportal
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 31659a7394a34cf8fb5b6ff11c955bdc9f8b65bb
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: b19fd8c0c41638ffec5fda32b6b1a855be2abc7b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/28/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
-# <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
+# <a name="conditional-access-in-the-azure-classic-portal"></a>Azure クラシック ポータルの条件付きアクセス
 
-> [!div class="op_single_selector"]
-> * [Azure クラシック ポータル](active-directory-conditional-access.md)
-> * [Azure ポータル](active-directory-conditional-access-azure-portal.md)
+このトピックでは、Azure クラシック ポータルの条件付きアクセスについて説明します。 Azure Active Directory の条件付きアクセスの最新情報については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」を参照してください。
+
 
 Azure Active Directory (Azure AD) の条件付きアクセス制御機能を使用すると、クラウドとオンプレミスのリソースを簡単に保護することができます。 多要素認証のような条件付きアクセス ポリシーを使用すると、資格情報の盗難やフィッシングの危険性から保護できます。 その他の条件付きアクセス ポリシーは、組織のデータを安全に保つのに役立ちます。 たとえば、資格情報を要求することに加え、Microsoft Intune などのモバイル デバイス管理システムに登録されているデバイスのみが組織の機密性の高いサービスにアクセスできるようにするポリシーを適用できます。
 

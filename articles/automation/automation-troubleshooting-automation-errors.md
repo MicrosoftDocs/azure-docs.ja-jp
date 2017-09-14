@@ -14,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 06/26/2017
 ms.author: sngun; v-reagie
-translationtype: Human Translation
-ms.sourcegitcommit: a8ecffbc5f9c7e2408708d59459a0d39e59d6e1e
-ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 64548d91e98754210cc5185d9d759141cc0621d3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -64,13 +66,29 @@ ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 **トラブルシューティングのヒント:** Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
+### <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-it-failed-to-start-each-time"></a>シナリオ: Runbook ジョブの開始を 3 回試行したが、開始できない
+**エラー:** Runbook が失敗し、「The job was tried three times but it failed (ジョブを 3 回試行しましたが失敗しました)」というエラーが発生します。
+
+**エラーの理由:** このエラーは次の理由で発生する可能性があります。  
+
+1. メモリの制限。  サンドボックスに割り当てられるメモリの制限については、「[Automation の制限](../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。 
+
+2. モジュールに互換性がない。  これは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「コマンドが見つかりません」または「パラメーターをバインドできません」というメッセージが Runbook から返されます。 
+
+**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。  
+
+* メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell ワークフロー Runbook に書き込むチェックポイントの数を検討する、などがあります。  
+
+* 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新する必要があります。  
+
+
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 **エラー:** Runbook が失敗し、「Cannot bind parameter ``<ParameterName>``. Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>`` (パラメーター <パラメーター名> をバインドできません。逆シリアル化型 <パラメーター型> の値 <パラメーター値> を型 <パラメーター型> に変換できません)」というエラーが発生します。
 
 **エラーの理由:** Runbook が PowerShell ワークフローの場合、ワークフローが中断された場合に Runbook の状態を維持できるように、複雑なオブジェクトが逆シリアル化形式で保存されます。  
 
 **トラブルシューティングのヒント:**  
-次の&amp;3; つの解決策のいずれでもこの問題は解決されます。
+次の 3 つの解決策のいずれでもこの問題は解決されます。
 
 1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。  
 2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。  
@@ -97,7 +115,7 @@ ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 
 * コマンドレット名を正しく入力していることを確認します。  
 * Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。  コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。  
-* 名前が競合し、コマンドレットが&2; つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
+* 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
 * ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
 
 ### <a name="scenario-a-long-running-runbook-consistently-fails-with-the-exception-the-job-cannot-continue-running-because-it-was-repeatedly-evicted-from-the-same-checkpoint"></a>シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。
@@ -172,9 +190,4 @@ ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 * Azure サポート インシデントを送信する。 [Azure サポート サイト](https://azure.microsoft.com/support/options/)にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
 * Azure Automation Runbook ソリューションや統合モジュールを探している場合は、 [スクリプト センター](https://azure.microsoft.com/documentation/scripts/) にスクリプトの要求を投稿することができます。
 * Azure Automation に関するフィードバックや機能に関するご要望は、 [User Voice](https://feedback.azure.com/forums/34192--general-feedback)にお寄せください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

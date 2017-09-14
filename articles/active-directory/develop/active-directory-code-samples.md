@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
 ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/13/2017
-
 
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory のコード例

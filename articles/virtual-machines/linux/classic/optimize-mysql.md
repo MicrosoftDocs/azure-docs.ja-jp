@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2015
+ms.date: 05/31/2017
 ms.author: ningk
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e910c47d88434fae76f9c2d3bcb8a258d7d3fde4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 8f2ec884fa98e989448ac11675e71f39aa21fa7f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -42,27 +43,22 @@ Azure でのディスク I/O スループットと I/O 応答時間は、RAID �
 この記事では、Linux 仮想マシンを既に作成していること、および MYSQL をインストールして構成していることを前提としています。 作業の開始の詳細については、「MySQL を Azure でインストールする方法」を参照してください。  
 
 ### <a name="set-up-raid-on-azure"></a>Azure における RAID の設定
-次の手順で、Azure クラシック ポータルを使用して Azure に RAID を作成する方法を説明します。 Windows PowerShell スクリプトを使用して RAID を設定することもできます。
+次の手順で、Azure Portal を使用して Azure に RAID を作成する方法を説明します。 Windows PowerShell スクリプトを使用して RAID を設定することもできます。
 この例では、4 つのディスクで RAID 0 を構成します。  
 
 #### <a name="add-a-data-disk-to-your-virtual-machine"></a>仮想マシンにデータ ディスクを追加する
-Azure クラシック ポータルの [仮想マシン] ページで、データ ディスクを追加する仮想マシンをクリックします。 この例では、仮想マシンは mysqlnode1 です。  
+Azure Portarl でダッシュボードに移動し、データ ディスクを追加する仮想マシンを選択します。 この例では、仮想マシンは mysqlnode1 です。  
 
-![仮想マシン][1]
+<!--![Virtual machines][1]-->
 
-仮想マシンのページで、 **[ダッシュボード]**をクリックします。  
+**[ディスク]**、**[新しいディスクの接続]** の順にクリックします。
 
-![仮想マシンのダッシュボード][2]
+![仮想マシンにディスクを追加する](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
 
-タスク バーで **[ディスクの接続]** をクリックします。
+500 GB の新しい ディスクを作成します。 **[ホスト キャッシュ設定]** が **[なし]** に設定されていることを確認します。  操作が終了したら、 **[OK]**をクリックします。
 
-![仮想マシン タスク バー][3]
+![空のディスクの接続](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 
-**[空のディスクの接続]**をクリックします。  
-
-![空のディスクの接続][4]
-
-データ ディスクの場合、**[ホスト キャッシュ設定]** を **[なし]** に設定する必要があります。  
 
 これにより、1 つの空のディスクが仮想マシンに追加されます。 この手順をあと 3 回繰り返して、RAID に 4 つのデータ ディスクを追加します。  
 
@@ -348,4 +344,5 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [12]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-14.png
+
 

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/07/2017
+ms.date: 07/19/2017
 ms.author: cabailey
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f9dba42681f69406f9066a63140f74e3f5ec41dd
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a178f6b88054425177092225095b016c902cfc78
+ms.openlocfilehash: 59b1e2a5398d687d71708f6e641cda321062dd7d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
@@ -59,9 +60,4 @@ Azure Key Vault でキーとシークレットを使用する方法の詳細に�
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

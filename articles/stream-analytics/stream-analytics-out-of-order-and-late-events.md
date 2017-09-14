@@ -4,7 +4,7 @@ description: "データ ストリーム中の順序を逸脱したイベント�
 keywords: "順序の逸脱, 遅延, イベント"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 02c854727e5185968dba49233df82ea6ff336ec8
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 5089dda48ea829902663ef9d09fe83177df6f220
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-stream-analytics-event-order-handling"></a>Azure Stream Analytics によるイベントの順序の処理
@@ -65,11 +64,11 @@ Stream Analytics がイベントの順序の逸脱を修正できるようにす
 バッファリングの副作用は、出力が**同じ時間だけ遅延する**ことです。 値を調整して順序を逸脱したイベントの数を抑制したり、ジョブの待ち時間が短い状態を維持したりできます。
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-get-started.md)
+* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
 * [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

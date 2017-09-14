@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 196be1e8185a08394944b0f334fcf21f237464dd
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 5f0a7f59c114ab65a19617a62d39dcfa93a25c00
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
-# <a name="documentdb-net-examples"></a>DocumentDB .NET のサンプル
+# <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB: DocumentDB API の .NET のサンプル
 > [!div class="op_single_selector"]
 > * [.NET のサンプル](documentdb-dotnet-samples.md)
 > * [Node.js のサンプル](documentdb-nodejs-samples.md)
@@ -101,7 +100,7 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 | [文字列の範囲のインデックスの使用](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L342-L405) |[IndexingPolicy.IncludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.includedpaths.aspx)<br>[RangeIndex](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.rangeindex.aspx) |
 | [インデックス変換の実行](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L407-L464) |[ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx) |
 
-インデックス作成の詳細については、「 [DocumentDB インデックス作成ポリシー](indexing-policies.md)」をご覧ください。
+インデックス作成の詳細については、「[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)」をご覧ください。
 
 ## <a name="geospatial-examples"></a>地理空間のサンプル
 地理空間のサンプル ファイル [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)は、次のタスクを実行する方法を示しています。  
@@ -137,7 +136,17 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 | [並列でのパーティション分割コレクションのクエリ](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L664-L734) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 | [パーティション分割コレクションに対する並べ替えを使用したクエリ](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L737-L810) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 
-クエリの記述の詳細については、 [DocumentDB 内の SQL クエリ](documentdb-sql-query.md)に関するページをご覧ください。
+クエリの記述について詳しくは、[Azure Cosmos DB 内の SQL クエリ](documentdb-sql-query.md)に関するページをご覧ください。
+
+## <a name="change-feed-examples"></a>変更フィードの例 
+変更フィードのサンプル [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) は、次のタスクを実行する方法を示しています。 
+
+| タスク | API リファレンス |
+| --- | --- |
+| [変更フィードを読み取る](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
+| [パーティション キーの範囲を読み取る](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
+
+変更フィード プロセッサのサンプル: [変更フィード移行ツール](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)は、変更フィード プロセッサ ライブラリを使用してデータを別の Cosmos DB コレクションにレプリケートする方法を示しています。   
 
 ## <a name="server-side-programming-examples"></a>サーバー側プログラミングのサンプル
 サーバー側プログラミング ファイル [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) は、次のタスクを実行する方法を示しています。

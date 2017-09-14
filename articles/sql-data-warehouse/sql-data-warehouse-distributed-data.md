@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 07/12/2017
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
-ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>超並列処理 (MPP) 用の分散データと分散テーブル
@@ -65,12 +64,10 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 ### <a name="can-i-view-the-compute-nodes"></a>コンピューティング ノードを見ることはできますか?
 各コンピューティング ノードはノード ID を持っており、SQL Data Warehouse および Parallel Data Warehouse に関するシステム ビューで表示できます。  名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノードを見ることができます。 システム ビューの一覧については、[MPP のシステム ビューに関する記事](sql-data-warehouse-reference-tsql-statements.md)をご覧ください。
 
-## <a name="Replicated"></a>Parallel Data Warehouse のレプリケート テーブル
-適用対象: Parallel Data Warehouse
+## <a name="Replicated"></a>レプリケート テーブル
+レプリケートされたテーブルは、各コンピューティング ノードに保存されているテーブルの完全なコピーです。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 各コンピューティング ノードに完全なテーブルを格納するために余分な記憶域が必要になるため、レプリケート テーブルは小さなテーブルにのみ使用できます。  
 
-分散テーブルを使用する以外に、Parallel Data Warehouse にはテーブルをレプリケートするオプションがあります。 "*レプリケート テーブル*" とは、各コンピューティング ノードに全体が格納されるテーブルです。 テーブルをレプリケートすると、結合または集計でテーブルを使用する前にコンピューティング ノード間でテーブルの行を転送する必要がなくなります。 各コンピューティング ノードに完全なテーブルを格納するために余分な記憶域が必要になるため、レプリケート テーブルは小さなテーブルにのみ使用できます。  
-
-次の図は、各コンピューティング ノードに格納されるレプリケート テーブルを示したものです。 レプリケート テーブルは、コンピューティング ノードに割り当てられているすべてのディスクに格納されます。 このディスク戦略は、SQL Server のファイル グループを使用して実装されます。  
+次の図は、各コンピューティング ノードに格納されるレプリケート テーブルを示したものです。 SQL Data Warehouse の場合は、レプリケート テーブルは各コンピューティング ノードのディストリビューション データベースに完全にコピーされます。 Parallel Data Warehouse の場合は、レプリケート テーブルは、コンピューティング ノードに割り当てられているすべてのディスクに格納されます。  このディスク戦略は、SQL Server のファイル グループを使用して実装されます。  
 
 ![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 

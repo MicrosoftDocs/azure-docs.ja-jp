@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 06/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: e286693b585a5991dbecd537fe5cd6621dd27e01
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -61,9 +61,11 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-次の NuGet パッケージをプロジェクトに追加します。
-* [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)
-* [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/)
+[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) と [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET 標準ライブラリの NuGet パッケージを、次の手順でプロジェクトに追加します。 
+
+1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+2. **[参照]** タブをクリックして、"Microsoft.Azure.EventHubs" を検索し、**Microsoft.Azure.EventHubs** パッケージを選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+3. 手順 1 と 2 を繰り返し、**Microsoft.Azure.EventHubs.Processor** パッケージをインストールします。
 
 ## <a name="implement-the-ieventprocessor-interface"></a>IEventProcessor インターフェイスの実装
 

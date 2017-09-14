@@ -3,7 +3,7 @@ title: "ステートフル Reliable Services の診断 | Microsoft Docs"
 description: "ステートフル Reliable Services の診断機能"
 services: service-fabric
 documentationcenter: .net
-author: AlanWarwick
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
-ms.author: alanwar
-translationtype: Human Translation
+ms.date: 06/30/2017
+ms.author: dekapur
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3ed67788fbbe0c4fb820cfd1525d8c9ee5154446
 ms.openlocfilehash: 5da5707900b35be69018ba4e9c8efb05d8a74a9d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -44,13 +46,8 @@ StatefulRunAsyncSlowCancellation および StatefulRunAsyncFailure イベント�
 
 StatefulRunAsyncFailure は、サービスの RunAsync() タスクが例外をスローするたびに出力されます。 一般に、スローされる例外は、サービスのエラーやバグを示します。 さらに、この例外はサービスが失敗する原因となるため、別のノードに移動されます。 この動作には高い負荷がかかる可能性があるため、サービスの移動中には要求の受信が遅れることがあります。 サービスの作成者は例外の原因を特定し、可能であればそれを軽減する必要があります。
 
-StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求が&4; 秒より長くかかる場合に出力されます。 取り消しの完了に時間がかかると、サービスが別のノードで速やかに再開されなくなります。 これはサービスの全体の可用性に影響を与える可能性があります。
+StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求が 4 秒より長くかかる場合に出力されます。 取り消しの完了に時間がかかると、サービスが別のノードで速やかに再開されなくなります。 これはサービスの全体の可用性に影響を与える可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 * [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

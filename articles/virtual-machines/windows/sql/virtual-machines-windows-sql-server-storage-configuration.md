@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: ninarn
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 3fe2a44d7e05538bdc3341110a517e7e9bdf3e7d
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f10bac1189c94a581487d19fc0cc129acec6a636
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
@@ -32,7 +33,7 @@ Azure で SQL Server 仮想マシン イメージを構成するとき、ポー�
 
 * [SQL Server ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#option-1-create-a-sql-vm-with-per-minute-licensing)でプロビジョニングされている。
 * [Resource Manager デプロイメント モデル](../../../azure-resource-manager/resource-manager-deployment-model.md)を使用している。
-* [Premium Storage](../../../storage/storage-premium-storage.md)を使用している。
+* [Premium Storage](../../../storage/common/storage-premium-storage.md)を使用している。
 
 ## <a name="new-vms"></a>新しい VM
 次のセクションでは、新しい SQL Server 仮想マシンのストレージを構成する方法について説明します。
@@ -104,7 +105,7 @@ SQL Server VM に既にストレージを構成してある場合は、そのス
 
 * VM に対して 2 TB 未満のストレージを選択した場合、記憶域プールは作成されません。
 * VM に対して 2 TB 以上のストレージを選択した場合、記憶域プールが構成されます。 このトピックの次のセクションでは、記憶域プールの構成について詳しく説明します。
-* 自動ストレージ構成では、必ず [Premium Storage](../../../storage/storage-premium-storage.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
+* 自動ストレージ構成では、必ず [Premium Storage](../../../storage/common/storage-premium-storage.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
 
 料金情報については、 [Storage 料金](https://azure.microsoft.com/pricing/details/storage) ページの「 **Disk Storage** 」タブを参照してください。
 
@@ -143,9 +144,4 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 
 ## <a name="next-steps"></a>次のステップ
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

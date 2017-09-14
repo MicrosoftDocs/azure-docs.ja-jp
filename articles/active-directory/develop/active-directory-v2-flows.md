@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ab08c126b746ad6f8a835585b7e9773a505e8317
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 9d59e7f0e8f326c40be86e199d7712f6c565cc13
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---

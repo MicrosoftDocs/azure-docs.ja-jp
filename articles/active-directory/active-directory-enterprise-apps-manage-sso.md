@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 118b77064a96585b0d5b951ca56313776021624e
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c975428550690254ba989935fe5110c5903e7102
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>エンタープライズ アプリのシングル サインオンの管理
@@ -28,15 +27,14 @@ ms.lasthandoff: 05/08/2017
 > * [Azure クラシック ポータル](active-directory-sso-integrate-saas-apps.md)
 > 
 
-この記事では、[Azure Portal](https://portal.azure.com) を使用して、アプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリケーション) のシングル サインオン設定を管理する方法について説明します。 
+この記事では、[Azure Portal](https://portal.azure.com) を使用してエンタープライズ アプリケーションのシングル サインオンの設定を管理する方法を説明します。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。 この記事は、[Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリに特に当てはまります。 
 
-## <a name="finding-your-apps"></a>アプリの検索
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
-[Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[その他のサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
+シングル サインオン用に設定されているすべてのエンタープライズ アプリを、Azure Portal で表示し、管理できます。 これらのアプリケーションは、ポータルの **[その他のサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 
 
 ![Enterprise Applications blade][1]
 
-**[すべてのアプリケーション]** を選択すると、ギャラリーから追加されたアプリを含め、構成済みのアプリの一覧が表示されます。 アプリを選択すると、そのアプリのリソース ブレードが読み込まれます。リソース ブレードでは、そのアプリのレポートを表示することや、さまざまな設定を管理することができます。
+**[すべてのアプリケーション]** を選択して、構成されているすべてのアプリの一覧を表示します。 アプリを選択すると、そのアプリのリソース ブレードが読み込まれます。リソース ブレードでは、そのアプリのレポートを表示することや、さまざまな設定を管理することができます。
 
 シングル サインオン設定を管理するには、 **[シングル サインオン]**を選択します。
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 05/08/2017
 
 これらのモードの詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
 
-## <a name="saml-based-sign-on"></a>[SAML-based sign on (SAML ベースのサインオン)]
+## <a name="saml-based-sign-on"></a>SAML ベースのサインオン
 **[SAML-based sign on (SAML ベースのサインオン)]** オプションでは、4 つのセクションに分かれたブレードが表示されます。
 
 ### <a name="domains-and-urls"></a>[Domains and URLs (ドメインと URL)]

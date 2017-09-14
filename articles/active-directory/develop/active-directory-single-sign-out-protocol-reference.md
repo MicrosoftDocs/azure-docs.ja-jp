@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
 ms.openlocfilehash: 7be96ed59a148f7c622551eaa66279a94e2c83f1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/09/2017
-
 
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル

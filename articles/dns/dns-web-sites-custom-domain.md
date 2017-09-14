@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
-ms.openlocfilehash: a2a429873c30f526a0de05d4018f53f3a83bbe28
-ms.lasthandoff: 02/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b054a41ecd69ee1c802d8403fe4b25128f016e3c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -54,9 +55,9 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>手順 2.
 
-割り当てられた $rs 変数を使用して、前に作成したレコード セット "@" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
+割り当てられた $rs 変数を使って、前に作成したレコード セット "@" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
 
-Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service-web/web-sites-custom-domain-name.md#vip)に関するページの手順に従います。
+Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service-web/app-service-web-tutorial-custom-domain.md)に関するページの手順に従います。
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
@@ -70,7 +71,7 @@ Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address
 Set-AzureRMDnsRecordSet -RecordSet $rs
 ```
 
-## <a name="2-create-a-cname-record-for-your-custom-domain"></a>手順&2;.カスタム ドメインの CNAME レコードの作成
+## <a name="2-create-a-cname-record-for-your-custom-domain"></a>手順 2.カスタム ドメインの CNAME レコードの作成
 
 ドメインが既に Azure DNS で管理されている場合 ( [DNS ドメインの委任](dns-domain-delegation.md)に関するページを参照)、次の例を使用して contoso.azurewebsites.net の CNAME レコードを作成できます。
 

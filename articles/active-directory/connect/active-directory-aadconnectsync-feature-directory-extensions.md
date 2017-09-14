@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2f5c5e9af193c843765f63640d46c25f3a6d10c3
 ms.openlocfilehash: 3641f9309cc38f6575ce36d3450448cdae1601a9
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/02/2017
 
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
@@ -49,9 +50,4 @@ Azure AD のオブジェクトは、最大で 100 個のディレクトリ拡張
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

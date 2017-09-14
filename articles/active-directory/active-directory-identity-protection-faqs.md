@@ -11,17 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 09/01/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 4835610eed8df46f3ba9302cf87163b37a6fa124
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/17/2017
 
-
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection の FAQ
+
 
 ## <a name="why-do-some-risk-events-have-closed-system-status"></a>一部のリスク イベントの状態が "クローズ (システム)" になっているのはなぜですか。
 
@@ -38,6 +39,5 @@ ms.lasthandoff: 05/17/2017
 **A:** この質問の回答については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 
 ---
-
 
 

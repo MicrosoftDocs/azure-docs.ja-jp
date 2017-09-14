@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 7ddd9244558479f1fc77c0a9f3d02d0d3b95ca9f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 52113e1240b81299ae3338f35b2934891017adbf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
+
 Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](../../app-service-web/choose-web-site-cloud-service-vm.md)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 
 Azure VM は、VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし、VM のメンテナンス、つまり VM 上で動作するソフトウェアの構成、その修正プログラムの適用、インストールは必要です。
@@ -37,7 +38,7 @@ Azure の仮想マシンは、さまざまな方法で利用できます。 次�
 アプリケーションで使用する VM の数は、ニーズに応じてスケールアップおよびスケールアウトできます。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM の作成前に検討する必要のある事項
-Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
+Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](/architecture/reference-architectures/virtual-machines-linux?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
 
 * アプリケーション リソースの名前
 * リソースが格納される場所
@@ -48,7 +49,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="naming"></a>名前を付ける
-仮想マシンには[名前](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
+仮想マシンには[名前](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
 
 Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
@@ -72,7 +73,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 サブスクリプションにはそれぞれ既定の[クォータ制限](../../azure-subscription-service-limits.md)が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。 制限は、サポート チケットで引き上げを依頼することによって引き上げることができます。
 
 ### <a name="operating-system-disks-and-images"></a>オペレーティング システム ディスクおよびイメージ
-仮想マシンは、[仮想ハード ディスク (VHD)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
+仮想マシンは、[仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
 
 Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azure.microsoft.com/marketplace/virtual-machines/)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 
 
@@ -101,11 +102,11 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 | リソース | 必須 | Description |
 | --- | --- | --- |
 | [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
-| [ストレージ アカウント](../../storage/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
+| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
 | [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
 | [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
 | [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
-| [データ ディスク](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |なし |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
+| [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |なし |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 
 ## <a name="how-do-i-create-my-first-vm"></a>最初の VM の作成方法
 VM を作成する際、いくつかの選択肢があります。 どの選択肢を利用するかは、環境によって異なります。 
@@ -141,7 +142,7 @@ Azure Portal の [接続] ボタンを使用して、[リモート デスクト�
 ### <a name="manage-availability"></a>可用性の管理
 アプリケーションの[高可用性を確保](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)する方法を把握しておくことが重要です。 この構成では、少なくとも 1 つの VM が実行され続けるように、複数の VM を作成します。
 
-Microsoft が VM に設けている 99.95% というサービス レベル アグリーメントの要件をカスタム デプロイで満たすためには、複数の VM をデプロイし、[可用性セット](infrastructure-availability-sets-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内でワークロードを実行する必要があります。 この構成により、複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) では、全体としての Azure の可用性の確保について説明します。
+Microsoft が VM に設けている 99.95% というサービス レベル アグリーメントの要件をカスタム デプロイで満たすためには、複数の VM をデプロイし、[可用性セット](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内でワークロードを実行する必要があります。 この構成により、複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) では、全体としての Azure の可用性の確保について説明します。
 
 ### <a name="back-up-the-vm"></a>VM のバックアップ
 [Recovery Services コンテナー](../../backup/backup-introduction-to-azure-backup.md)は、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すれば、[Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理できます](../../backup/backup-azure-vms-automation.md)。 
@@ -149,6 +150,3 @@ Microsoft が VM に設けている 99.95% というサービス レベル ア�
 ## <a name="next-steps"></a>次のステップ
 * Linux VM を使用する場合は、「[Azure と Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 * インフラストラクチャのセットアップに関するガイドラインの詳細については、「[サンプルの Azure インフラストラクチャによるチュートリアル](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-* [Azure での Windows VM の実行に関するベスト プラクティス](guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に従っていることを確認します。
-
-

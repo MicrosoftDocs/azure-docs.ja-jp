@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9d22438c6ca14ddb8843f4b72cae40e3b622e849
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -228,10 +229,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 上記の例のように、`UnregisterReminderAsync`(C#) メソッドまたは `unregisterReminderAsync`(Java) メソッドは、`IActorReminder`(C#) インターフェースまたは `ActorReminder`(Java) インターフェイスを受け入れます。 アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder`(C#) インターフェイスまたは `ActorReminder`(Java) インターフェイスを取得できる `GetReminder`(C#) メソッドまたは `getReminder`(Java) メソッドをサポートします。 これにより、アクターが `RegisterReminder`(C#) メソッドまたは `registerReminder`(Java) メソッドの呼び出しから返された `IActorReminder`(C#) インターフェイスまたは `ActorReminder`(Java) インターフェイスを永続化する必要がなくなるため便利です。
 
 ## <a name="next-steps"></a>次のステップ
+Reliable Actor のイベントと再入について学習します。
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
-* [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

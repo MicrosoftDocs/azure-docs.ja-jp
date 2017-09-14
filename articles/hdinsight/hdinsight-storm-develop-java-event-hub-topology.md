@@ -13,14 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 07/13/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: ec20115e8316b96d740e1966494096964ec884b1
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2e8ebbdab2be7bed224a67facec798820615bb22
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-java"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
@@ -31,10 +30,10 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight クラスター バージョン 3.5 での Apache Storm。 詳細については、[HDInsight クラスターでの Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md)に関する記事を参照してください。
+* HDInsight クラスター バージョン 3.6 での Apache Storm。 詳細については、[HDInsight クラスターでの Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md)に関する記事を参照してください。
 
     > [!IMPORTANT]
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)。
 
@@ -49,15 +48,15 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
     * SSH クライアント。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* SCP クライアント。 `scp` コマンドは、Linux、Unix、OS X システム (Bash on Windows 10 を含む) すべてに付属しています。`scp` コマンドがない Windows システムでは、PSCP をお勧めします。 PSCP は、[PuTTY のダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)から入手できます。
+* `ssh` コマンドと `scp` コマンド。 これらは、ファイルを HDInsight クラスターにコピーするために使います。 Windows では、これらは Windows 10 の Bash で利用できます。
 
 ## <a name="understanding-the-example"></a>例の説明
 
 [hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) の例には、2 つのトポロジが含まれています。
 
-**com.microsoft.example.EventHubWriter** は、Azure Event Hub にランダムなデータを書き込みます。 データはスパウトで生成され、ランダムなデバイス ID とデバイス値です。 この例では、文字列 ID と数値を出力する何らかのハードウェアをシミュレートしています。
+`resources/writer.yaml` トポロジは、Azure Event Hub にランダムなデータを書き込みます。 データは `DeviceSpout` コンポーネントによって生成され、ランダムなデバイス ID とデバイス値です。 この例では、文字列 ID と数値を出力する何らかのハードウェアをシミュレートしています。
 
-**com.microsoft.example.EventHubReader** は、イベント ハブからデータを読み取り、そのデータをクラスターの /devicedata ディレクトリにある既定のストレージに格納します。
+`resources/reader.yaml` トポロジは、Event Hub からデータを読み取り (EventHubWriter によって書き込まれたデータ)、JSON データを解析してから、`deviceId` データと `deviceValue` データを記録します。
 
 データは JSON ドキュメント形式に変更されてから、Event Hub に出力されます。リーダーが読み取るときに、JSON からタプルに解析されます。 JSON 形式は次のとおりです。
 
@@ -67,43 +66,15 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 `POM.xml` ファイルには、この Maven プロジェクトの構成情報が含まれています。 興味深いのは次の点です。
 
-#### <a name="hortonworks-repository"></a>Hortonworks リポジトリ
+#### <a name="event-hub-components"></a>Event Hub のコンポーネント
 
-HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.5 で使用されるバージョンの Storm や Hadoop とプロジェクトの間に互換性があるように、次のセクションで Hortonworks のビットを使用するようにプロジェクトを構成します。
+Azure Event Hubs に対する読み書きを行うコンポーネントは、[HDInsight リポジトリ](https://github.com/hdinsight/mvn-rep)にあります。 `POM.xml` ファイルの次のセクションでは、このリポジトリからコンポーネントを読み込みます。
 
 ```xml
 <repositories>
     <repository>
-        <releases>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-            <checksumPolicy>warn</checksumPolicy>
-        </releases>
-        <snapshots>
-            <enabled>false</enabled>
-            <updatePolicy>never</updatePolicy>
-            <checksumPolicy>fail</checksumPolicy>
-        </snapshots>
-        <id>HDPReleases</id>
-        <name>HDP Releases</name>
-        <url>http://repo.hortonworks.com/content/repositories/releases/</url>
-        <layout>default</layout>
-    </repository>
-    <repository>
-        <releases>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-            <checksumPolicy>warn</checksumPolicy>
-        </releases>
-        <snapshots>
-            <enabled>false</enabled>
-            <updatePolicy>never</updatePolicy>
-            <checksumPolicy>fail</checksumPolicy>
-        </snapshots>
-        <id>HDPJetty</id>
-        <name>Hadoop Jetty</name>
-        <url>http://repo.hortonworks.com/content/repositories/jetty-hadoop/</url>
-        <layout>default</layout>
+        <id>hdinsight-examples</id>
+        <url>http://raw.github.com/hdinsight/mvn-repo/master</url>
     </repository>
 </repositories>
 ```
@@ -114,68 +85,20 @@ HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.
 <dependency>
     <groupId>com.microsoft</groupId>
     <artifactId>eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>${storm.eventhub.version}</version>
 </dependency>
 ```
 
 この xml では、eventhubs パッケージの依存関係を定義します。これには、Event Hubs からの読み取りに使うスパウトと Event Hubs への書き込みに使うボルトの両方が含まれます。
 
-> [!NOTE]
-> このパッケージは、このドキュメントの後半でインストールします。
-
-#### <a name="the-hdfsbolt-and-wasb-components"></a>HdfsBolt および WASB コンポーネント
-
-通常、HdfsBolt は、Hadoop Distributed File System HDFS にデータを格納するために使用されます。 一方、HDInsight クラスターは Azure Storage (WASB) を既定のデータ ストアとして使用するので、HdfsBolt が WASB ファイル システムを理解できるようにするコンポーネントをいくつか読み込む必要があります。
-
 ```xml
-<!--HdfsBolt stuff -->
-<dependency>
-    <groupId>org.apache.storm</groupId>
-    <artifactId>storm-hdfs</artifactId>
-    <!-- exclude these storm-hdfs dependencies since they are on the server -->
-    <exclusions>
-        <exclusion>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-client</artifactId>
-        </exclusion>
-        <exclusion>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-        </exclusion>
-    </exclusions>
-    <version>${storm.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.apache.hadoop</groupId>
-    <artifactId>hadoop-common</artifactId>
-    <version>${hadoop.version}</version>
-    <exclusions>
-    <exclusion>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-    </exclusion>
-    </exclusions>
-</dependency>
-```
-
-> [!NOTE]
-> 以前のバージョンの HDInsight (バージョン 3.2 など) を使用する場合は、これらのコンポーネントを手動で登録する必要があります。 例については、この例のリポジトリの [Storm v0.9.3](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub/tree/Storm_v0.9.3) ブランチを参照してください。
-
-#### <a name="the-maven-compiler-plugin"></a>maven-compiler-plugin
-
-```xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>2.3.2</version>
-    <configuration>
-    <source>1.8</source>
+</source>
     <target>1.8</target>
     </configuration>
 </plugin>
 ```
 
-これにより、プロジェクトは、HDInsight 3.5 で使用される、Java 8 の出力を生成するように構成されます。
+この xml により、プロジェクトは、HDInsight 3.5 以降で使われる Java 8 用の出力を生成するように構成されます。
 
 #### <a name="the-maven-shade-plugin"></a>maven-shade-plugin
 
@@ -189,7 +112,6 @@ HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.
     <transformers>
     <!-- Keep us from getting a can't overwrite file error -->
     <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
-    <!-- Keep us from getting errors when trying to use WASB from the storm-hdfs bolt -->
     <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
     </transformers>
     <!-- Keep us from getting a bad signature error -->
@@ -215,7 +137,7 @@ HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.
 </plugin>
 ```
 
-これにより、ソリューションは、出力を uber jar にパッケージ化するように構成されます。 Jar には、プロジェクト コードと必要な依存関係の両方が含まれます。 また、次の用途にも使用されます。
+この xml により、ソリューションは、出力を uber jar にパッケージ化するように構成されます。 Jar には、プロジェクト コードと必要な依存関係の両方が含まれます。 また、次の用途にも使用されます。
 
 * 依存関係のライセンス ファイル名を変更する。
 * セキュリティ/署名を除外する。
@@ -223,52 +145,128 @@ HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.
 
 このような構成設定により、実行時のエラーを防ぎます。
 
-#### <a name="the-exec-maven-plugin"></a>exec-maven-plugin
+#### <a name="topology-definitions"></a>トポロジの定義
 
-```xml
-<plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>1.2.1</version>
-    <executions>
-    <execution>
-    <goals>
-        <goal>exec</goal>
-    </goals>
-    </execution>
-    </executions>
-    <configuration>
-    <executable>java</executable>
-    <includeProjectDependencies>true</includeProjectDependencies>
-    <includePluginDependencies>false</includePluginDependencies>
-    <classpathScope>compile</classpathScope>
-    <mainClass>${storm.topology}</mainClass>
-    <cleanupDaemonThreads>false</cleanupDaemonThreads>
-    </configuration>
-</plugin>
+この例では、[Flux](https://storm.apache.org/releases/1.1.0/flux.html) フレームワークを使います。 このフレームワークでは、YAML を使ってトポロジを定義します。 主な利点は、Java コードでトポロジをハード コーディングする必要がないことです。 定義は YAML であるため、すべてを再コンパイルしなくても、トポロジを送信する前に定義を変更できます。
+
+__writer.yaml__:
+
+```yaml
+---
+# Topology that reads from Event Hubs
+name: "eventhubwriter"
+
+components:
+  # Configure the Event Hub spout
+  - id: "eventhubbolt-config"
+    className: "org.apache.storm.eventhubs.bolt.EventHubBoltConfig"
+    constructorArgs:
+      # These are populated from the .properties file when the topology is started
+      - "${eventhub.write.policy.name}"
+      - "${eventhub.write.policy.key}"
+      - "${eventhub.namespace}"
+      - "servicebus.windows.net"
+      - "${eventhub.name}"
+
+spouts:
+  - id: "device-emulator-spout"
+    className: "com.microsoft.example.DeviceSpout"
+    parallelism: ${eventhub.partitions}
+
+bolts:
+  - id: "eventhub-bolt"
+    className: "org.apache.storm.eventhubs.bolt.EventHubBolt"
+    constructorArgs:
+      - ref: "eventhubbolt-config" # config declared in components section
+    # parallelism hint. This should be the same as the number of partitions for your Event Hub, so we read it from the dev.properties file passed at run time.
+    parallelism: ${eventhub.partitions}
+
+  # Log information
+  - id: "log-bolt"
+    className: "org.apache.storm.flux.wrappers.bolts.LogInfoBolt"
+    parallelism: 1
+
+# How data flows through the components
+streams:
+  - name: "spout -> eventhub" # just a string used for logging
+    from: "device-emulator-spout"
+    to: "eventhub-bolt"
+    grouping:
+        type: SHUFFLE
+
+  - name: "spout -> logger"
+    from: "device-emulator-spout"
+    to: "log-bolt"
+    grouping:
+        type: SHUFFLE
 ```
 
-この構成により、デプロイ環境のローカルでトポロジを実行することが簡単になります。 次の構文を使用すると、トポロジをローカルで実行できます。
+__reader.yaml__:
 
-    mvn compile exec:java -Dstorm.topology=<CLASSNAME>
+```yaml
+---
+# Topology that reads from Event Hubs
+name: "eventhubreader"
 
-たとえば、「`mvn compile exec:java -Dstorm.topology=com.microsoft.example.EventHubWriter`」のように入力します。
+components:
+  # Configure the Event Hub spout
+  - id: "eventhubspout-config"
+    className: "org.apache.storm.eventhubs.spout.EventHubSpoutConfig"
+    constructorArgs:
+      # These are populated from the .properties file when the topology is started
+      - "${eventhub.read.policy.name}"
+      - "${eventhub.read.policy.key}"
+      - "${eventhub.namespace}"
+      - "${eventhub.name}"
+      - ${eventhub.partitions}
 
-#### <a name="the-resources-section"></a>resources セクション
+spouts:
+  - id: "eventhub-spout"
+    className: "org.apache.storm.eventhubs.spout.EventHubSpout"
+    constructorArgs:
+      - ref: "eventhubspout-config" # config declared in components section
+    # parallelism hint. This should be the same as the number of partitions for your Event Hub, so we read it from the dev.properties file passed at run time.
+    parallelism: ${eventhub.partitions}
 
-```xml
-<resources>
-    <resource>
-    <directory>${basedir}/conf</directory>
-    <filtering>false</filtering>
-    <includes>
-        <include>EventHubs.properties</include>
-    </includes>
-    </resource>
-</resources>
+bolts:
+  # Log information
+  - id: "log-bolt"
+    className: "org.apache.storm.flux.wrappers.bolts.LogInfoBolt"
+    parallelism: 1
+
+  # Parses from JSON into tuples
+  - id: "parser-bolt"
+    className: "com.microsoft.example.ParserBolt"
+    parallelism: ${eventhub.partitions}
+
+# How data flows through the components
+streams:
+  - name: "spout -> parser" # just a string used for logging
+    from: "eventhub-spout"
+    to: "parser-bolt"
+    grouping:
+        type: SHUFFLE
+
+  - name: "parser -> log-bolt"
+    from: "parser-bolt"
+    to: "log-bolt"
+    grouping:
+        type: SHUFFLE
 ```
 
-この構成では、プロジェクトに含まれている Java 以外のリソースを定義します。 たとえば、**EventHubs.properties** ファイルには、Azure イベント ハブへの接続に使用する情報が含まれています。
+#### <a name="tell-the-topology-about-event-hub"></a>Event Hub についてトポロジに通知する
+
+実行時には、`dev.properties` ファイルを使ってトポロジに Event Hub の構成を渡します。 このファイルの既定の内容は、次の例のようになります。
+
+```yaml
+eventhub.write.policy.name: writer
+eventhub.write.policy.key: your_key_here
+eventhub.read.policy.name: reader
+eventhub.read.policy.key: your_key_here
+eventhub.namespace: your_namespace_here
+eventhub.name: storm
+eventhub.partitions: 2
+```
 
 ## <a name="configure-environment-variables"></a>環境変数を構成する
 
@@ -280,18 +278,6 @@ HDInsight は Hortonworks Data Platform をベースとします。 HDInsight 3.
   * **JAVA_HOME** または同等のパス
   * **JAVA_HOME\bin** または同等のパス
   * Maven がインストールされているディレクトリ
-
-## <a name="download-and-register-the-eventhub-components"></a>EventHub コンポーネントのダウンロードと登録
-
-1. [https://000aarperiscus.blob.core.windows.net/certs/storm-eventhubs-1.0.2-jar-with-dependencies.jar](https://000aarperiscus.blob.core.windows.net/certs/storm-eventhubs-1.0.2-jar-with-dependencies.jar) から、`storm-eventhubs-1.0.2-jar-with-dependencies.jar` をダウンロードします。 このファイルには、EventHubs から読み取りと書き込みを行うためのスパウト コンポーネントとボルト コンポーネントが含まれています。
-
-2. 次のコマンドを使用して、コンポーネントをローカルの maven リポジトリに登録します。
-
-        mvn install:install-file -Dfile=storm-eventhubs-1.0.2-jar-with-dependencies.jar -DgroupId=com.microsoft -DartifactId=eventhubs -Dversion=1.0.2 -Dpackaging=jar
-
-    ダウンロードしたファイルの場所を指すように `-Dfile=` パラメーターを変更します。
-
-    このコマンドにより、ファイルがローカルの Maven リポジトリにインストールされます。この場合、ファイルは、コンパイル時に Maven によって見つかります。
 
 ## <a name="configure-event-hub"></a>Event Hub の構成
 
@@ -329,21 +315,40 @@ Event Hubs は、この例のデータ ソースです。 イベント ハブを
 
 1. GitHub からプロジェクトをダウンロードします ( [hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub))。 パッケージを zip アーカイブとしてダウンロードするか、 [git](https://git-scm.com/) を使用してローカルにプロジェクトの複製を作成します。
 
-2. 次のコマンドを使用して、プロジェクトをビルドしてパッケージ化します。
+2. 実際の Event Hub の構成で、`dev.properties` ファイルを変更します。
+
+3. 次のコマンドを使用して、プロジェクトをビルドしてパッケージ化します。
 
         mvn package
 
     このコマンドにより、必要な依存関係がダウンロードされ、プロジェクトがビルドされてパッケージ化されます。 出力は **EventHubExample-1.0-SNAPSHOT.jar** というファイル名で **/target** ディレクトリに格納されます。
 
-## <a name="deploy-the-topologies"></a>トポロジのデプロイ
+## <a name="test-locally"></a>ローカルでテストする
 
-このプロジェクトで作成される jar には、**com.microsoft.example.EventHubWriter** と **com.microsoft.example.EventHubReader** という 2 つのトポロジが含まれます。 EventHubWriter トポロジを最初に開始する必要があります。これは、Event Hub にイベントが出力され、その出力が EventHubReader から読み取られるためです。
+これらのトポロジは Event Hubs の読み書きを行うだけなので、[Storm 開発環境](http://storm.apache.org/releases/current/Setting-up-development-environment.html)がある場合は、ローカルにテストできます。 次の手順を使って、開発環境でローカルに実行します。
+
+1. ライターを実行します。
+
+        storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /writer.yaml --filter dev.properties
+
+2. リーダーを実行します。
+
+        storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /reader.yaml --filter dev.properties
+
+> [!TIP]
+> * `--local`: トポロジをローカル モード (非分散) で実行します。
+> * `-R /writer.yaml`: jar にパッケージ化されている `resources` から、トポロジの定義を読み込みます。 トポロジがローカル ファイル システム上のファイルである場合は、代わりに、最後のパラメーターとしてファイルへのパスを指定します。
+> * `--filter dev.properties`: `dev.properties` の内容を使って、トポロジ定義の値を設定します。 たとえば、「 `${eventhub.read.policy.name}`」のように入力します。
+
+ローカルで実行すると、出力はコンソールに対して行われます。 トポロジを停止するには、__Ctrl + C__ キーを押します。
+
+## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
 1. SCP を使用して、HDInsight クラスターに jar パッケージをコピーします。 USERNAME には、使用するクラスターの SSH ユーザーを指定します。 CLUSTERNAME には、使用する HDInsight クラスター名を指定します。
 
         scp ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
 
-    SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。 アカウントで SSH キーを使用した場合は、 `-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。 たとえば、「 `scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`」のように入力します。
+    SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。 アカウントで SSH キーを使用した場合は、 `-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。 たとえば、 `scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
 
     このコマンドにより、ファイルがクラスター上の SSH ユーザーのホーム ディレクトリにコピーされます。
 
@@ -358,41 +363,13 @@ Event Hubs は、この例のデータ ソースです。 イベント ハブを
 
 3. 次のコマンドを使用して、トポロジを開始します。
 
-        storm jar EventHubExample-1.0-SNAPSHOT.jar com.microsoft.example.EventHubWriter writer
-        storm jar EventHubExample-1.0-SNAPSHOT.jar com.microsoft.example.EventHubReader reader
+        storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writer.yaml --filter dev.properties
+        storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
 
-    これらのコマンドにより、"reader" および "writer" というフレンドリ名を使用してトポロジが開始されます。
+    > [!TIP]
+    > * `--remote`: トポロジを Nimbus サービスに送信します。Nimbus サービスは、クラスター内の worker ノードでトポロジを開始します。
 
-4. トポロジによってデータが生成されるまで少し待ちます。 次のコマンドを使用して、データが HDInsight ストレージに書き込まれていることを確認します。
-
-        hdfs dfs fs -ls /devicedata
-
-    このコマンドでは、次のテキストのようなファイルの一覧が返されます。
-
-        -rw-r--r--   1 storm supergroup      10283 2015-08-11 19:35 /devicedata/wasbbolt-14-0-1439321744110.txt
-        -rw-r--r--   1 storm supergroup      10277 2015-08-11 19:35 /devicedata/wasbbolt-14-1-1439321748237.txt
-        -rw-r--r--   1 storm supergroup      10280 2015-08-11 19:36 /devicedata/wasbbolt-14-10-1439321760398.txt
-        -rw-r--r--   1 storm supergroup      10267 2015-08-11 19:36 /devicedata/wasbbolt-14-11-1439321761090.txt
-        -rw-r--r--   1 storm supergroup      10259 2015-08-11 19:36 /devicedata/wasbbolt-14-12-1439321762679.txt
-
-   > [!NOTE]
-   > 一部のファイルはサイズ 0 です。これは、EventHubReader でファイルが作成されても、まだデータが格納されていないためです。
-
-    ファイルの内容を表示するには、次のコマンドを使用します。
-
-        hdfs dfs -text /devicedata/*.txt
-
-    これにより、次のテキストのようなデータが返されます。
-
-        3409e622-c85d-4d64-8622-af45e30bf774,848981614
-        c3305f7e-6948-4cce-89b0-d9fbc2330c36,-1638780537
-        788b9796-e2ab-49c4-91e3-bc5b6af1f07e,-1662107246
-        6403df8a-6495-402f-bca0-3244be67f225,275738503
-        d7c7f96c-581a-45b1-b66c-e32de6d47fce,543829859
-        9a692795-e6aa-4946-98c1-2de381b37593,1857409996
-        3c8d199b-0003-4a79-8d03-24e13bde7086,-1271260574
-
-    最初の列にはデバイスの ID 値、2 列目にはデバイス値が含まれます。
+4. 記録されたデータを表示するには、https://CLUSTERNAME.azurehdinsight.net/stormui に移動します。__CLUSTERNAME__ は実際の HDInsight クラスターの名前です。 トポロジを選び、コンポーネントにドリルダウンします。 ログに記録された情報を表示するには、コンポーネントのインスタンスの __port__ エントリを選びます。
 
 5. 次のコマンドを使用してトポロジを停止します。
 
@@ -402,16 +379,6 @@ Event Hubs は、この例のデータ ソースです。 イベント ハブを
 ## <a name="delete-your-cluster"></a>クラスターを削除する
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
-## <a name="troubleshooting"></a>トラブルシューティング
-
-/devicedata ディレクトリ内のファイルが表示されない場合は、Storm UI を使用して、トポロジから返されたエラーを確認します。
-
-Storm UI の詳細な使用方法については、次のトピックを参照してください。
-
-* HDInsight クラスターで **Linux ベース** の Storm を使用している場合は、「 [Deploy and manage Apache Storm topologies on Linux ベース HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
-
-* HDInsight クラスターで **Windows ベース** の Storm を使用している場合は、「 [Deploy and manage Apache Storm topologies on Windows ベース HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
 
 ## <a name="next-steps"></a>次のステップ
 

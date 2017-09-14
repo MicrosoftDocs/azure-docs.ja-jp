@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6fcdd64759cb12ae8804bd0cc8dc4edfeec949bd
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して完全な Linux 環境を作成する
@@ -33,8 +33,6 @@ ms.lasthandoff: 04/03/2017
 * 可用性セット内の 2 つの VM
 * ポート 80 の負荷分散規則が構成されたロード バランサー
 * 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
-
-![基本的な環境の概要](./media/create-cli-complete/environment_overview.png)
 
 このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) が必要です。 JSON 解析ツールも必要です。 この例では、 [jq](https://stedolan.github.io/jq/)を使用します。
 

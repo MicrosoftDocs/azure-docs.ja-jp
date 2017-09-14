@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal のダッシュボード アクセス | Microsoft Docs"
-description: "この記事では、Azure ポータルのダッシュボードへのアクセスを共有する方法について説明します。"
+title: "RBAC を使用した Azure Portal ダッシュボードの共有 | Microsoft Docs"
+description: "この記事では、Azure ポータルでロールベースのアクセス制御を使用して、ダッシュボードを共有する方法について説明します。"
 services: azure-portal
 documentationcenter: 
 author: tfitzmac
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a2f3252aa271c0ec6750c38c6d5060dbfe73a0e2
-
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: ea0cf7ad074f95c2b49a92f9a8e32270a1d39b3a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/25/2017
 
 ---
-# <a name="sharing-azure-dashboards"></a>Azure ダッシュボードの共有
-構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードへのアクセスを第三者に許可するには、Azure の [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
+# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
+構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
 
 発行したダッシュボードはすべて Azure リソースとして実装されます。つまり、それらは管理可能な要素としてサブスクリプションに存在し、リソース グループに属します。  アクセス制御の見地からは、ダッシュボードはその他のリソース (仮想マシン、ストレージ アカウントなど) と変わりありません。
 
@@ -31,11 +32,11 @@ ms.openlocfilehash: a2f3252aa271c0ec6750c38c6d5060dbfe73a0e2
 > 
 
 ## <a name="understanding-access-control-for-dashboards"></a>ダッシュボードのアクセス制御について
-ロールベースのアクセス制御では、以下に示した 3 つのスコープ レベルでユーザーをロールに割り当てることができます。
+ロールベースのアクセス制御 (RBAC) では、以下に示した 3 つのスコープ レベルでユーザーをロールに割り当てることができます。
 
 * サブスクリプション
 * リソース グループ
-* resource
+* リソース
 
 割り当てたアクセス許可は、サブスクリプションからリソースへと継承されます。 発行したダッシュボードはリソースです。 したがってサブスクリプションのロールに対して既にユーザーが割り当てられていると、発行したダッシュボードに対しても、そのロールが作用します。 
 
@@ -76,10 +77,5 @@ ms.openlocfilehash: a2f3252aa271c0ec6750c38c6d5060dbfe73a0e2
 ## <a name="next-steps"></a>次のステップ
 * 一連のロールについては、「 [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
 * リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

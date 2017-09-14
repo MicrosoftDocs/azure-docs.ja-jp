@@ -15,12 +15,11 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4371092aa31db444c4ca0374b4b2e7d700029a8b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 024b70df99fdefa1598225ebb1fbfee85ea375d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>HDInsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/27/2017
 >
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「[HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「[HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
 >
 
 
@@ -89,7 +88,7 @@ SQLLine を使用するには、以下のものが必要です。
 * HBase クラスターの接続固有の DNS サフィックスを取得します。 そのためには、RDP でクラスターに接続して、IPConfig を実行します。  DNS サフィックスの例を次に示します。
 
         myhbase.b7.internal.cloudapp.net
-* [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) をダウンロードしてワークステーションにインストールします。 パッケージから makecert を実行して証明書を作成する必要があります。  
+* [Microsoft Visual Studio Express for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) をダウンロードしてワークステーションにインストールします。 パッケージから makecert を実行して証明書を作成する必要があります。  
 * [Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html) をダウンロードしてワークステーションにインストールします。  SQuirreL SQL クライアント バージョン 3.0 以降には、JRE バージョン 1.6 以降が必要です。  
 
 ### <a name="configure-a-point-to-site-vpn-connection-to-the-azure-virtual-network"></a>Azure 仮想ネットワークへのポイント対サイト VPN 接続を構成します。
@@ -128,7 +127,7 @@ Azure 仮想ネットワークに HBase クラスターをプロビジョニン�
     図ではクライアント接続が 0 であることが示されています。 仮想ネットワークに接続すると、この値が 1 に更新されます。
 
 #### <a name="create-your-certificates"></a>証明書の作成
-X.509 証明書を作成する方法の 1 つは、 [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx)に付属する証明書作成ツール (makecert.exe) を使用することです。
+X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Express for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) に付属する証明書作成ツール (makecert.exe) を使用することです。
 
 **自己署名ルート証明書を作成するには**
 

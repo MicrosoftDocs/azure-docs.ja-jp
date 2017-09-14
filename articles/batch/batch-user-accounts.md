@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/18/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 8c18a6898aa25bbc04040cf2b5c3d05ce0af035e
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 05/27/2017
 
 ---
 
@@ -165,26 +165,94 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 Batch で名前付きユーザー アカウントを作成するには、ユーザー アカウントのコレクションをプールに追加します。 次のコード スニペットでは、.NET、Java、および Python で名前付きユーザー アカウントを作成する方法を示します。 これらのコード スニペットでは、プールで管理者と非管理者の両方の名前付きアカウントを作成する方法を説明します。 この例では、クラウド サービスの構成を使用してプールを作成し、Windows または Linux のプールを作成するときには、仮想マシンの構成で同じアプローチを使用します。
 
-#### <a name="batch-net-example"></a>Batch .NET の例
+#### <a name="batch-net-example-windows"></a>Batch .NET の例 (Windows)
 
 ```csharp
 CloudPool pool = null;
 Console.WriteLine("Creating pool [{0}]...", poolId);
 
+// Create a pool using the cloud service configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicated: 3,                                                         
+    targetDedicatedComputeNodes: 3,                                                         
     virtualMachineSize: "small",                                                
     cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));   
 
+// Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
 {
-    new UserAccount(AdminUserAccountName, AdminPassword, ElevationLevel.Admin),
-    new UserAccount(NonAdminUserAccountName, NonAdminPassword, ElevationLevel.NonAdmin),
+    new UserAccount("adminUser", "xyz123", ElevationLevel.Admin),
+    new UserAccount("nonAdminUser", "123xyz", ElevationLevel.NonAdmin),
 };
- 
-pool.Commit();
+
+// Commit the pool.
+await pool.CommitAsync();
 ```
+
+#### <a name="batch-net-example-linux"></a>Batch .NET の例 (Linux)
+
+```csharp
+CloudPool pool = null;
+
+// Obtain a collection of all available node agent SKUs.
+List<NodeAgentSku> nodeAgentSkus =
+    batchClient.PoolOperations.ListNodeAgentSkus().ToList();
+
+// Define a delegate specifying properties of the VM image to use.
+Func<ImageReference, bool> isUbuntu1404 = imageRef =>
+    imageRef.Publisher == "Canonical" &&
+    imageRef.Offer == "UbuntuServer" &&
+    imageRef.Sku.Contains("14.04");
+
+// Obtain the first node agent SKU in the collection that matches
+// Ubuntu Server 14.04. 
+NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
+    sku.VerifiedImageReferences.Any(isUbuntu1404));
+
+// Select an ImageReference from those available for node agent.
+ImageReference imageReference =
+    ubuntuAgentSku.VerifiedImageReferences.First(isUbuntu1404);
+
+// Create the virtual machine configuration to use to create the pool.
+VirtualMachineConfiguration virtualMachineConfiguration =
+    new VirtualMachineConfiguration(imageReference, ubuntuAgentSku.Id);
+
+Console.WriteLine("Creating pool [{0}]...", poolId);
+
+// Create the unbound pool.
+pool = batchClient.PoolOperations.CreatePool(
+    poolId: poolId,
+    targetDedicatedComputeNodes: 3,                                             
+    virtualMachineSize: "Standard_A1",                                      
+    virtualMachineConfiguration: virtualMachineConfiguration);                  
+
+// Add named user accounts.
+pool.UserAccounts = new List<UserAccount>
+{
+    new UserAccount(
+        name: "adminUser",
+        password: "xyz123",
+        elevationLevel: ElevationLevel.Admin,
+        linuxUserConfiguration: new LinuxUserConfiguration(
+            uid: 12345,
+            gid: 98765,
+            sshPrivateKey: new Guid().ToString()
+            )),
+    new UserAccount(
+        name: "nonAdminUser",
+        password: "123xyz",
+        elevationLevel: ElevationLevel.NonAdmin,
+        linuxUserConfiguration: new LinuxUserConfiguration(
+            uid: 45678,
+            gid: 98765,
+            sshPrivateKey: new Guid().ToString()
+            )),
+};
+
+// Commit the pool.
+await pool.CommitAsync();
+```
+
 
 #### <a name="batch-java-example"></a>Batch Java の例
 

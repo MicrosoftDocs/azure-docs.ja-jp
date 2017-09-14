@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 9e09425b0143c1907d1af167782d1e4b1457d626
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 9b7adf78271407963ed1d4b34a7760d707b5fc3a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 
@@ -113,7 +113,7 @@ POST /indexes/hotels/docs/search?api-version=2016-09-01
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)*" です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view と spacious と air-condition の "***すべて*" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
+ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)*" です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
 
 既定 (`searchMode=any`) では、検索エンジンはより広く解釈することを想定します。 どちらか一方のフィールドが一致していればよい (*should*) の意味、つまり "or" のセマンティクスで解釈されます。 先ほど例に挙げた、2 つの "should" 演算を含んだクエリ ツリーは既定の動作を示しています。  
 
@@ -263,28 +263,28 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 
 | 用語 | 文書リスト |
 |------|---------------|
-| air |    3
-| and |    4
+| air | 3
+| and | 4
 | beach | 1
-| conditioned |    3
-| comfortable |    3
+| conditioned | 3
+| comfortable | 3
 | distance | 1
 | island | 2
 | kauaʻi | 2
-| located |    2
+| located | 2
 | north | 2
 | ocean | 1, 2, 3
 | of | 2
 | on |2
 | quiet | 4
-| rooms     | 1, 3
+| rooms  | 1, 3
 | secluded | 4
-| shore    | 2
+| shore | 2
 | spacious | 1
 | the | 1、2
 | to | 1
 | view | 1, 2, 3
-| walking |    1
+| walking | 1
 | を以下に置き換えることができます。 | 3
 
 
@@ -386,6 +386,8 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 + [言語に固有の字句解析器](https://docs.microsoft.com/rest/api/searchservice/language-support)を適用する方法について書かれた記事を参照します。
 
 + 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
+
++ このデモ Web サイトで横並びに表示される[標準アナライザーと英語アナライザーを比較](http://alice.unearth.ai/)してください。 
 
 ## <a name="see-also"></a>関連項目
 

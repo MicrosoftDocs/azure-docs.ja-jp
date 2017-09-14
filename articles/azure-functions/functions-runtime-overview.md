@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d9e655b6ebbdb02bae21fa7a8fa7ee5b46d6e63b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 98d1e2ad162f4b69be4fdf9a5b004f640fbb5d7e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 

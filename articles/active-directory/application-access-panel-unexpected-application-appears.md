@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 2429ebef69aaddf28d10cd77bf4ce9072ea71476
-ms.lasthandoff: 04/11/2017
-
+ms.reviewr: japere
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -29,7 +30,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   ユーザーまたはユーザーがメンバーとなっているグループからアプリケーションが削除された場合は、数分後にユーザーのアクセス パネルにもう一度サインインおよびサインアウトしてみて、アプリケーションが削除されているかどうかを確認してください。
 
--   ユーザーまたはユーザーがメンバーとなっているグループからライセンスが削除された場合、変更が反映されるまで、グループのサイズと複雑さに応じて長時間かかることがあります。 しばらく待ってからアクセス パネルにサインインしてください。
+-   ユーザーまたはユーザーがメンバーとなっているグループからライセンスが削除された場合は、グループのサイズと複雑さに応じて、変更が反映されるまでに長時間かかることがあります。 しばらく待ってからアクセス パネルにサインインしてください。
 
 ## <a name="problems-related-to-assigning-applications-to-users"></a>ユーザーへのアプリケーションの割り当てに関連する問題
 
@@ -46,13 +47,13 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[All Applications (すべてのアプリケーション)]** をクリックしてすべてのアプリケーションの一覧を表示します。
+5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
 6.  対象のアプリケーションの名前を**検索**します。
 
@@ -68,9 +69,9 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -78,13 +79,13 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[ライセンス]** をクリックして、ユーザーに現在割り当てられているライセンスを確認します。
+7.  **[ライセンス]** をクリックして、ユーザーが現在割り当てられているライセンスを確認します。
 
    * ユーザーが Office ライセンスに割り当てられている場合、これによりファースト パーティーの Office アプリケーションがユーザーのアクセス パネルに表示されます。
 
 ## <a name="problems-related-to-assigning-applications-to-groups"></a>グループへのアプリケーションの割り当てに関連する問題
 
-ユーザーがアプリケーションに割り当てられたグループに属しているため、アクセス パネルにアプリケーションが表示されることがあります。 確認方法を以下にいくつか示します。
+アプリケーションを割り当てられたグループにユーザーが属しているために、そのユーザーのアクセス パネルにアプリケーションが表示されることがあります。 確認方法を以下にいくつか示します。
 
 -   [ユーザーのグループ メンバーシップを確認する](#check-a-users-group-memberships)
 
@@ -96,9 +97,9 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -116,9 +117,9 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 

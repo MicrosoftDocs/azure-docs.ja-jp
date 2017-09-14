@@ -12,17 +12,17 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2017
+ms.date: 06/12/2017
 ms.author: andbuc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 63545f007a2696714d21ab7d778a6e78e6183806
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 02962a91c739a53dfcf947bcc736e5c293b9384f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/26/2017
 
 
 ---
-# <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>Azure IoT Edge を使用して物理デバイス (Linux) に D2C メッセージを送信する
+# <a name="use-azure-iot-edge-on-a-raspberry-pi-to-forward-device-to-cloud-messages-to-iot-hub"></a>Raspberry Pi で Azure IoT Edge を使用し、デバイスとクラウドの間のメッセージを IoT Hub に転送する
 
 この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Azure IoT Edge][lnk-sdk] を使用して次の処理を行う方法について説明します。
 
@@ -48,7 +48,7 @@ IoT Edge ゲートウェイを実行すると、次のような処理が行わ�
 ゲートウェイには、次の IoT Edge モジュールが含まれています。
 
 * *BLE モジュール* : BLE デバイスと接続し、デバイスから温度データを受信してデバイスにコマンドを送信します。
-* *BLE クラウド対デバイス モジュール*: クラウドから送信される JSON メッセージを *BLE モジュール*用の BLE 命令に変換します。
+* *BLE クラウド対デバイス モジュール*: IoT Hub から送信される JSON メッセージを *BLE モジュール*用の BLE 命令に変換します。
 * "*ロガー モジュール*": すべてのゲートウェイ メッセージをローカル ファイルに記録します。
 * *ID マッピング モジュール* : BLE デバイスの MAC アドレスと Azure IoT Hub デバイス ID の間で変換を行います。
 * *IoT Hub モジュール* : テレメトリ データを IoT Hub にアップロードし、IoT Hub からデバイス コマンドを受信します。
@@ -64,7 +64,8 @@ BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理�
 
 1. BLE デバイスが温度サンプルを生成し、Bluetooth 経由でゲートウェイの BLE モジュールに送信する。
 1. BLE モジュールがサンプルを受信し、デバイスの MAC アドレスと共にブローカーに発行する。
-1. ID マッピング モジュールがこのメッセージを取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID に変換する。 IoT Hub デバイス ID は、デバイス ID とデバイス キーで構成されます。 その後、温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージをモジュールが発行する。
+1. ID マッピング モジュールがこのメッセージを取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID に変換する。 IoT Hub デバイス ID は、デバイス ID とデバイス キーで構成されます。
+1. 温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージを ID マッピング モジュールが発行する。
 1. IoT Hub モジュールがこの (ID マッピング モジュールで生成された) 新しいメッセージを受信し、IoT Hub に発行する。
 1. ロガー モジュールが、ブローカーからのすべてのメッセージをローカル ファイルに記録する。
 
@@ -79,6 +80,18 @@ BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理�
 1. BLE モジュールがこのメッセージを取得し、BLE デバイスと通信して I/O 命令を実行する。
 1. ロガー モジュールがメッセージ バスから受信したすべてのメッセージをディスク ファイルに記録する。
 
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルを完了するには、アクティブな Azure サブスクリプションが必要になります。
+
+> [!NOTE]
+> アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][lnk-free-trial]をご覧ください。
+
+Raspberry Pi でコマンド ラインにリモートでアクセスするための SSH クライアントがデスクトップ コンピューターに必要です。
+
+- Windows には SSH クライアントは含まれていません。 [PuTTY](http://www.putty.org/) を使用することをお勧めします。
+- ほとんどの Linux ディストリビューションと Mac OS には、コマンド ライン SSH ユーティリティが含まれています。 詳細については、「[SSH Using Linux or Mac OS (Linux または Mac OS を使用した SSH 接続)](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)」を参照してください。
+
 ## <a name="prepare-your-hardware"></a>ハードウェアの準備
 
 このチュートリアルでは、Raspbian を実行している Raspberry Pi 3 に接続した [Texas Instruments SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html) デバイスを使用することを前提としています。
@@ -90,85 +103,123 @@ BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理�
 * [NOOBS][lnk-noobs] グラフィカル ユーザー インターフェイスを使用して Raspbian の最新版をインストールする。
 * Raspbian オペレーティング システムの最新のイメージを手動で[ダウンロード][lnk-raspbian]し、SD カードに書き込む。
 
+### <a name="sign-in-and-access-the-terminal"></a>ターミナルにサインインまたはアクセスする
+
+Raspberry Pi でターミナル環境にアクセスする方法は 2 とおりあります。
+
+* Raspberry Pi に接続されているキーボードとモニターがある場合は、Raspbian GUI を使用してターミナル ウィンドウにアクセスできます。
+
+* SSH を使用して、デスクトップ コンピューターから Raspberry Pi でコマンド ラインにアクセスします。
+
+#### <a name="use-a-terminal-window-in-the-gui"></a>GUI でターミナル ウィンドウを使用する
+
+Raspbian の既定の資格情報は、**pi** というユーザー名と **raspberry** というパスワードです。 GUI のタスク バーでは、モニターのようなアイコンを使用して、**[Terminal (ターミナル)]** ユーティリティを起動できます。
+
+#### <a name="sign-in-with-ssh"></a>SSH を使用してサインインする
+
+Raspberry Pi へのコマンド ライン アクセスに SSH を使用できます。 「[SSH (Secure Shell)][lnk-pi-ssh]」では、Raspberry Pi で SSH を構成する方法と、[Windows][lnk-ssh-windows] または [Linux および Mac OS][lnk-ssh-linux] から接続する方法を説明しています。
+
+**pi** というユーザー名と **raspberry** というパスワードでサインインします。
+
 ### <a name="install-bluez-537"></a>BlueZ 5.37 をインストールする
 
 BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウェアと通信を行います。 モジュールが正常に動作するためには、BlueZ Version 5.37 が必要です。 次の手順に従って、BlueZ の適切なバージョンをインストールします。
 
 1. 現在の Bluetooth デーモンを停止します。
 
-    `sudo systemctl stop bluetooth`
+    ```sh
+    sudo systemctl stop bluetooth
+    ```
 
 1. BlueZ の依存関係をインストールします。
 
-    `sudo apt-get update`
-
-    `sudo apt-get install bluetooth bluez-tools build-essential autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev`
+    ```sh
+    sudo apt-get update
+    sudo apt-get install bluetooth bluez-tools build-essential autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
+    ```
 
 1. bluez.org から BlueZ のソース コードをダウンロードします。
 
-    `wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz`
+    ```sh
+    wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz
+    ```
 
 1. ソース コードを解凍します。
 
-    `tar -xvf bluez-5.37.tar.xz`
+    ```sh
+    tar -xvf bluez-5.37.tar.xz
+    ```
 
 1. 新しく作成したフォルダーにディレクトリを変更します。
 
-    `cd bluez-5.37`
+    ```sh
+    cd bluez-5.37
+    ```
 
 1. ビルドする BlueZ コードを構成します。
 
-    `./configure --disable-udev --disable-systemd --enable-experimental`
+    ```sh
+    ./configure --disable-udev --disable-systemd --enable-experimental
+    ```
 
 1. BlueZ をビルドします。
 
-    `make`
+    ```sh
+    make
+    ```
 
 1. ビルドした BlueZ をインストールします。
 
-    `sudo make install`
+    ```sh
+    sudo make install
+    ```
 
 1. `/lib/systemd/system/bluetooth.service` ファイル内の新しい Bluetooth デーモンを指すように Bluetooth の systemd サービス構成を変更します。 "ExecStart" 行を次の行で置き換えます。
 
-    `ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E`
+    ```conf
+    ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E
+    ```
 
 ### <a name="enable-connectivity-to-the-sensortag-device-from-your-raspberry-pi-3-device"></a>Raspberry Pi 3 デバイスから SensorTag デバイスへの接続を有効にする
 
 サンプルを実行する前に、Raspberry Pi 3 から SensorTag デバイスに接続できることを確認する必要があります。
 
-
 1. `rfkill` ユーティリティがインストールされていることを確認します。
 
-    `sudo apt-get install rfkill`
+    ```sh
+    sudo apt-get install rfkill
+    ```
 
 1. Raspberry Pi 3 で Bluetooth のブロックを解除し、バージョン番号が **5.37** であることを確認します。
 
-    `sudo rfkill unblock bluetooth`
-
-    `bluetoothctl --version`
-
-1. Bluetooth サービスを開始し、**bluetoothctl** コマンドを実行して Bluetooth の対話型シェルを起動します。
-
-    `sudo systemctl start bluetooth`
-
-    `bluetoothctl`
-
-1. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。 次のような出力が表示されます。
-
+    ```sh
+    sudo rfkill unblock bluetooth
+    bluetoothctl --version
     ```
+
+1. Bluetooth の対話型シェルを起動するには、Bluetooth サービスを開始し、**bluetoothctl** コマンドを実行します。
+
+    ```sh
+    sudo systemctl start bluetooth
+    bluetoothctl
+    ```
+
+1. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。 次のような出力が返されます。
+
+    ```sh
     [NEW] Controller 98:4F:EE:04:1F:DF C3 raspberrypi [default]
     ```
 
-1. 対話型の Bluetooth シェルで、**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。 次のような出力が表示されます。
+1. 対話型の Bluetooth シェルで、**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。 次のような出力が返されます。
 
-    ```
+    ```sh
     Discovery started
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: yes
     ```
 
 1. 小さいボタンを押して SensorTag デバイスを検出可能な状態にします (緑色の LED が点滅します)。 Raspberry Pi 3 によって、次のように SensorTag デバイスが検出されます。
 
-    ```
+    ```sh
     [NEW] Device A0:E6:F8:B5:F6:00 CC2650 SensorTag
     [CHG] Device A0:E6:F8:B5:F6:00 TxPower: 0
     [CHG] Device A0:E6:F8:B5:F6:00 RSSI: -43
@@ -178,14 +229,14 @@ BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウ�
 
 1. **scan off** コマンドを入力してスキャンをオフにします。
 
-    ```
+    ```sh
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: no
     Discovery stopped
     ```
 
 1. MAC アドレスを使用して SensorTag デバイスに接続します (**connect \<MAC アドレス\>** を入力します)。 次に示す出力サンプルは、わかりやすくするために一部省略されています。
 
-    ```
+    ```sh
     Attempting to connect to A0:E6:F8:B5:F6:00
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: yes
     Connection successful
@@ -206,7 +257,7 @@ BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウ�
 
 1. 接続が確認できたので、**disconnect** コマンドを使用してデバイスから切断し、**quit** コマンドを使用して Bluetooth シェルを終了します。
 
-    ```
+    ```sh
     Attempting to disconnect from A0:E6:F8:B5:F6:00
     Successful disconnected
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: no
@@ -222,7 +273,7 @@ IoT Edge の BLE サンプルを実行するには、次の 3 つのタスクを
 * IoT Edge を Raspberry Pi 3 デバイス上にビルドする。
 * Raspberry Pi 3 デバイスで BLE サンプルを構成して実行する。
 
-この記事の執筆時点では、IoT Edge でサポートされているのは、Linux で BLE モジュールを使用するゲートウェイのみです。
+この記事の執筆時点では、IoT Edge では、Linux で実行されているゲートウェイの BLE モジュールのみがサポートされています。
 
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>IoT Hub に 2 つのサンプル デバイスを構成する
 
@@ -233,21 +284,23 @@ IoT Edge の BLE サンプルを実行するには、次の 3 つのタスクを
 
 Azure IoT Edge の依存関係をインストールします。
 
-`sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev`
+```sh
+sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev
+```
 
 次のコマンドを使用して、IoT Edge とそのすべてのサブモジュールをホーム ディレクトリに複製します。
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure/iot-edge.git`
-
-`cd iot-edge`
-
-`git submodule update --init --recursive`
+```sh
+cd ~
+git clone https://github.com/Azure/iot-edge.git
+```
 
 IoT Edge レポジトリの完全なコピーを Raspberry Pi 3 上に用意したら、SDK が含まれているフォルダーから次のコマンドを使用してビルドすることができます。
 
-`./tools/build.sh`
+```sh
+cd ~/iot-edge
+./tools/build.sh  --disable-native-remote-modules
+```
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Raspberry Pi 3 で BLE サンプルを構成して実行する
 
@@ -277,7 +330,7 @@ IoT Edge レポジトリの完全なコピーを Raspberry Pi 3 上に用意し�
 
 #### <a name="ble-module-configuration"></a>BLE モジュールの構成
 
-BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバイスを BLE デバイスとして想定しています。 GATT 周辺機器として動作する標準 BLE デバイスはすべて使用できますが、GATT 特性の ID とデータを更新することが必要になります (書き込み命令の場合)。 SensorTag デバイスの MAC アドレスを次のように追加します。
+BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバイスを BLE デバイスとして想定しています。 GATT 周辺機器として動作する標準 BLE デバイスはすべて使用できますが、GATT 特性の ID とデータを更新することが必要になります。 SensorTag デバイスの MAC アドレスを次のように追加します。
 
 ```json
 {
@@ -335,6 +388,8 @@ BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバ
   }
 }
 ```
+
+SensorTag デバイスを使用していない場合、BLE デバイスの文書を参照し、GATT 特性の ID やデータ値の更新が必要かどうかを判断してください。
 
 #### <a name="iot-hub-module"></a>IoT Hub モジュール
 
@@ -435,13 +490,17 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 
 サンプルを実行するには、JSON 構成ファイルへのパスを **ble\_gateway** バイナリにパラメーターとして渡します。 次のコマンドは、**gateway_sample.json** 構成ファイルを使用することを前提としています。 このコマンドを Raspberry Pi の **iot-edge** フォルダーから実行します。
 
-```
+```sh
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
 ```
 
 このサンプルを実行する前に、SensorTag デバイスの小さいボタンを押して検出可能にすることが必要になる場合があります。
 
-サンプルを実行する際に[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)または [iothub-explorer](https://github.com/Azure/iothub-explorer) ツールを使用すると、IoT Edge ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。
+サンプルを実行する際に[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)または [iothub-explorer](https://github.com/Azure/iothub-explorer) ツールを使用すると、IoT Edge ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。 たとえば、iothub-explorer を利用し、デバイスとクラウドの間のメッセージを次のコマンドで監視できます。
+
+```sh
+iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={Your IoT Hub key}"
+```
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
@@ -518,8 +577,9 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sdk]: https://github.com/Azure/iot-edge/
 [lnk-noobs]: https://www.raspberrypi.org/documentation/installation/noobs.md
 [lnk-raspbian]: https://www.raspberrypi.org/downloads/raspbian/
-
-
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-create-hub]: iot-hub-create-through-portal.md 
+[lnk-pi-ssh]: https://www.raspberrypi.org/documentation/remote-access/ssh/README.md
+[lnk-ssh-windows]: https://www.raspberrypi.org/documentation/remote-access/ssh/windows.md
+[lnk-ssh-linux]: https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md
 

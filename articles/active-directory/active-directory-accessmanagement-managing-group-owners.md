@@ -12,17 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 07/25/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8c4920107b5d05716021bcef80d3c52c25f6eade
-ms.lasthandoff: 12/29/2016
-
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 82fbeb379e90add09f7c569111053f6e9b1bc9c5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="managing-owners-for-a-group"></a>グループの所有者の管理
 リソースの所有者がリソースへのアクセスを Azure AD グループに割り当てたら、そのグループの所有者がグループのメンバーシップを管理します。 実質的には、リソースの所有者が、ユーザーをリソースに割り当てる権限をグループの所有者に委任することになります。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 
 
 ## <a name="assigning-group-ownership"></a>グループの所有権の割り当て
 **グループに所有者を追加するには**
@@ -47,5 +51,4 @@ ms.lasthandoff: 12/29/2016
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 

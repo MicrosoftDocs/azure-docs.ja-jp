@@ -15,19 +15,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: acb80aa98cc978a906ccd6e4b4132a439e505bc8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b8955acc83b0fbb0612e7042d62170ae8078b9ad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>HDInsight での Spark の概要
 
-この記事では、HDInsight での Spark の概要について説明します。 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。 HDInsight の Spark クラスターは、Azure Storage (WASB) および Azure Data Lake Store と互換性があるため、Azure に保存されている既存データを Spark クラスターを介して簡単に処理できます。
+この記事では、HDInsight での Spark の概要について説明します。 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。 HDInsight の Spark クラスターは、Azure Storage (WASB) および Azure Data Lake Store と互換性があるため、 Azure に保存されている既存データを Spark クラスターを介して簡単に処理できます。
 
 HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure 計算リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約 10 分です。 処理するデータは Azure Storage または Azure Data Lake Store に格納されます。 [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
 
@@ -40,7 +39,7 @@ Azure HDInsight の Spark クラスターでは、完全に管理された Spark
 | 機能 | Description |
 | --- | --- |
 | Spark クラスターの作成しやすさ |Azure Portal、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分で作成できます。 「 [HDInsight での Spark クラスターの概要](hdinsight-apache-spark-jupyter-spark-sql.md) |
-| 使いやすさ |HDInsight の Spark クラスターには、Jupyter Notebook と Zeppelin Notebook が含まれています。 対話型のデータ処理とビジュアル化にこれらを使用できます。|
+| 使いやすさ |HDInsight の Spark クラスターには、Jupyter Notebook と Zeppelin Notebook が含まれています。 対話型のデータ処理と視覚化にこれらの Notebook を使用できます。|
 | REST API |HDInsight の Spark クラスターには、ジョブの送信と監視をリモートで実行する REST API ベースの Spark ジョブ サーバーである [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) が含まれています。 |
 | Azure Data Lake Store のサポート | HDInsight の Spark クラスターは、プライマリ ストレージだけでなく、追加のストレージとして Azure Data Lake Store を使用するように構成できます (HDInsight 3.5 クラスターの場合のみ)。 Data Lake Store の詳細については、「 [Azure Data Lake Store の概要](../data-lake-store/data-lake-store-overview.md)」を参照してください。 |
 | Azure サービスとの統合 |HDInsight の Spark クラスターには、Azure Event Hubs へのコネクタが付属しています。 Spark の一部として既に使用できる [Kafka](http://kafka.apache.org/)に加えて、Event Hubs を使用してストリーミング アプリケーションを作成できます。 |

@@ -1,12 +1,15 @@
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
-* Visual Studio を起動し、新しいコンソール アプリケーションを作成します。
+
+最初に Visual Studio を起動し、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成します。
 
 ### <a name="add-the-relay-nuget-package"></a>Relay NuGet パッケージを追加する
-1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+
+1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 2. **[参照]** タブをクリックし、"Microsoft Azure Relay" を検索して、**[Microsoft Azure Relay]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
 ### <a name="write-some-code-to-receive-messages"></a>メッセージを受信するコードを記述する
-1. Program.cs ファイルの先頭にある既存の `using` ステートメントを次のステートメントに置き換えます。
+
+1. Program.cs ファイルの先頭にある既存の `using` ステートメントを、次の `using` ステートメントに置き換えます。
    
     ```csharp
     using System;
@@ -15,7 +18,7 @@
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. ハイブリッド接続の接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。 必ず完全修飾名前空間名を使用してください。
+2. ハイブリッド接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した値に置き換えます。 必ず完全修飾名前空間名を使用してください。
    
     ```csharp
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
@@ -23,7 +26,7 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. `ProcessMessagesOnConnection` という次の新しいメソッドを `Program` クラスに追加します。
+3. `ProcessMessagesOnConnection` という次のメソッドを `Program` クラスに追加します。
    
     ```csharp
     // Method is used to initiate connection
@@ -74,7 +77,7 @@
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. 次に示すように、`RunAsync` という別の新しいメソッドを `Program` クラスに追加します。
+4. 次に示すように、`RunAsync` という別のメソッドを `Program` クラスに追加します。
    
     ```csharp
     private static async Task RunAsync()
@@ -125,7 +128,7 @@
     RunAsync().GetAwaiter().GetResult();
     ```
    
-    Program.cs は次のようになります。
+    完成した Program.cs ファイルは次のようになります。
    
     ```csharp
     namespace Server

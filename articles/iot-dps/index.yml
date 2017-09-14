@@ -1,0 +1,52 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT Hub Device Provisioning Service (プレビュー) のドキュメント
+metadata:
+  title: Azure IoT Hub Device Provisioning Service (プレビュー) のドキュメント - チュートリアル、API リファレンス
+  meta.description: Overview of Azure IoT Hub Device Provisioning Service.
+  services: iot-dps
+  author: nberdy
+  manager: timlt
+  ms.service: iot-dps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: nberdy
+abstract:
+  description: IoT Hub Device Provisioning Service (プレビュー) は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: 初めての Device Provisioning Service インスタンスを設定する方法のほか、シミュレートされたデバイスを IoT ハブにプロビジョニングする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: 自動プロビジョニングの設定
+            href: /azure/iot-dps/quick-setup-auto-provision
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: シミュレートされたデバイスの作成
+            href: /azure/iot-dps/quick-create-simulated-device
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: IoT Hub Device Provisioning Service (プレビュー) を使用して、セキュリティが有効なデバイスを単一または複数の IoT ハブに自動でプロビジョニングする方法について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">クラウド リソースを構成する</a>
+          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Azure に接続するデバイスを設定する</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">単一の IoT ハブにデバイスをプロビジョニングする</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">負荷分散された複数の IoT ハブにデバイスをプロビジョニングする</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST ()
+            html: <p><a href="/rest/api/iot-dps">REST API</a></p>

@@ -4,7 +4,7 @@ description: "よく寄せられる質問 (FAQ)"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 5374f7f4-c189-43ef-8b7f-f2f4141e2748
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 9a6d772bddc4417004c99f319ec7592d026efdb1
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 1f0c5cf93b44433aab2163548de916626a7fa480
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -46,17 +46,17 @@ Q: Azure Media services では画像の保存はサポートされますか。
 
 A: JPEG や PNG 画像を保存するだけの場合は、Azure Blob Storage を使用してください。 これらをビデオやオーディオ アセットに関連付けることがない限り、 Media Services アカウントに保存するメリットはありません。 または、ビデオ エンコーダーで画像をオーバーレイとして使用する必要がある場合、メディア エンコーダー スタンダードではビデオの上に画像をオーバーレイさせることができ、JPEG や PNG が入力形式としてサポートされています。 詳細については、「 [オーバーレイの作成](media-services-advanced-encoding-with-mes.md#overlay)」を参照してください。
 
-Q:&1; つの Media Services アカウントから他のアカウントにアセットをコピーする方法を教えてください。
+Q: 1 つの Media Services アカウントから他のアカウントにアセットをコピーする方法を教えてください。
 
 A: .NET を使用してある Media Services アカウントから別のアカウントにアセットをコピーするには、[Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) リポジトリで入手できる [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) 拡張メソッドを使用します。 詳細については、 [こちらの](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) フォーラムのスレッドをご覧ください。
 
 Q: AMS を使用する場合、ファイルの名前にはどのような文字を使用できますか。
 
-A: Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は&amp;1; つのみです。 また、ファイル名拡張子で使用できる
+A: Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は 1 つのみです。 また、ファイル名拡張子で使用できる
 
 Q: REST を使用して接続する方法を教えてください。
 
-A: https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+A: AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 
 
 Q: エンコーディング プロセスでビデオをローテーションする方法を教えてください。
 
@@ -74,8 +74,6 @@ A: [メディア エンコーダー スタンダード](media-services-dotnet-en
     "Codecs": [
 
     ...
-
-
 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

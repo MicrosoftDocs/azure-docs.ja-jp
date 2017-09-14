@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: b4d3d114f6947639ef865861337ce9f2a6452e76
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: b8c189865c27566e3265f14eb54cb5ea4a005dc5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 04/18/2017
 
 10. アプリケーションでサポートされているパターンを確認するには、次の 3 つの方法があります。
 
-   * テキスト ボックスで、サポートされているバターンが、**<https://contoso.com> のようにプレースホルダーとして表示されます。
+   * テキスト ボックスで、サポートされているバターンが、 <https://contoso.com> *のようにプレースホルダーとして表示されます*。
 
    * パターンがサポートされていない場合は、テキスト ボックスに値を入力しようとすると、赤い感嘆符が表示されます。 赤い感嘆符にポインターを置くと、サポートされているパターンが表示されます。
 
@@ -105,6 +104,10 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 8.  **[SAML 署名証明書]** セクションに移動して、**[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
 
 Azure AD には、メタデータを取得する URL は用意されていません。 メタデータは、XML ファイルとしてのみ取得できます。
+
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>アプリケーションに送信される SAML 要求をカスタマイズする方法がわからない
+
+アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)

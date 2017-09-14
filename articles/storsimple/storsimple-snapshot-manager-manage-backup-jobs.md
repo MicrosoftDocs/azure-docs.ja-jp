@@ -4,7 +4,7 @@ description: "スケジュールされたバックアップ ジョブ、現在�
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/26/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理
+
 ## <a name="overview"></a>Overview
 **[スコープ]** ウィンドウ内の **[ジョブ]** ノードは、対話的に、または構成済みポリシーに従って開始した **[スケジュール済み]**、**[過去 24 時間以内]**、および **[実行中]** のバクアップ タスクを表示します。 
 
@@ -38,9 +41,7 @@ ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
    * **[最後の実行]** – スケジュールされている最近のスナップショットの日時
      
      > [!NOTE]
-     > 1 回限りのみのスナップショットの場合、**[次の実行]** と **[最後の実行]** は同じになります。 
-     > 
-     > 
+     > 1 回限りのみのスナップショットの場合、**[次の実行]** と **[最後の実行]** は同じになります。
      
      ![スケジュールされたバックアップ ジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
 3. 特定のジョブで追加の操作を実行するには、 **[結果]** ウィンドウにあるジョブ名を右クリックしてメニュー オプションから選択します。
@@ -63,14 +64,14 @@ ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
      ![過去 24 時間に実行したジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
 3. 特定のジョブで追加の操作を実行するには、 **[結果]** ウィンドウにあるジョブ名を右クリックしてメニュー オプションから選択します。
    
-    ![ジョブを削除する](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png) 
+    ![ジョブを削除する](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>現在実行中のジョブの表示
 現在実行中のジョブを表示するには、以下の手順を実行します。
 
 #### <a name="to-view-currently-running-jobs"></a>現在実行中のジョブを表示するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
-2. **[スコープ]** ウィンドウで、**[ジョブ]** ノードを展開し、**[実行中]** をクリックします。 指定した **[表示]** オプションに応じて、次の情報が **[結果]** ウィンドウに表示されます。 
+2. **[スコープ]** ウィンドウで、**[ジョブ]** ノードを展開し、**[実行中]** をクリックします。 指定した **[表示]** オプションに応じて、次の情報が **[結果]** ウィンドウに表示されます。
    
    * **[名前]** – スケジュールされたスナップショットの名前。
    * **[開始]** – スナップショットを開始した日時。
@@ -87,10 +88,5 @@ ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 * [StorSimple Snapshot Manager を使用したバックアップ カタログの管理方法](storsimple-snapshot-manager-manage-backup-catalog.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6c8df6b9804d082c8044cdb2420cc5ea42b9774f
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 28d32d1e2d82519fc7b2ad4edca8435c3759594f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="using-analytics-in-application-insights"></a>Application Insights の Analytics の使用
-[Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
 
 * **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
@@ -37,10 +36,10 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 [ここにはさらに広範なツアー](app-insights-analytics-tour.md)があります。
 
 ## <a name="query-your-telemetry"></a>テレメトリのクエリを実行する
-### <a name="write-a-query"></a>クエリを記述します
+### <a name="write-a-query"></a>クエリを記述する
 ![スキーマの表示](./media/app-insights-analytics-using/150.png)
 
-左側の一覧に表示されるテーブルのいずれかの名前 (または [range](app-insights-analytics-reference.md#range-operator) や [union](app-insights-analytics-reference.md#union-operator) 演算子) から始めます。 `|` を使用して、 [演算子](app-insights-analytics-reference.md#queries-and-operators)のパイプラインを作成します。 
+左側の一覧に表示されるテーブルのいずれかの名前 (または [range](https://docs.loganalytics.io/queryLanguage/query_language_rangeoperator.html) や [union](https://docs.loganalytics.io/queryLanguage/query_language_unionoperator.html) 演算子) から始めます。 `|` を使用して、 [演算子](https://docs.loganalytics.io/learn/cheatsheets/useful_operators.html)のパイプラインを作成します。 
 
 IntelliSense によって、使用できる演算子と、式の要素が示されます。 情報アイコンをクリックする (または Ctrl キーを押しながら Space キーを押す) と、より詳しい説明と各要素の使用方法の例が表示されます。
 
@@ -51,7 +50,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
 1. クエリでは単一改行を使用できます。
 2. 実行するクエリの内部または末尾にカーソルを置きます。
-3. クエリの時間範囲を確認します。 (変更するか、クエリに独自の [`where...timestamp...`](app-insights-analytics-tour.md#time-range) 句を含めることによってオーバーライドできます。)
+3. クエリの時間範囲を確認します。 (変更するか、クエリに独自の [`where...timestamp...`](https://docs.loganalytics.io/concepts/concepts_datatypes_timespan.html) 句を含めることによってオーバーライドできます。)
 3. [実行] をクリックしてクエリを実行します。
 4. クエリに空白行を入れないでください。 いくつかの個別のクエリを、空白行で区切ることによって、1 つのクエリ タブに保持することができます。 カーソルのあるクエリのみが実行されます。
 
@@ -73,7 +72,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 > [!NOTE]
 > ブラウザーでの並べ替え、グループ化、およびフィルター処理では、クエリは再実行されません。 最後のクエリによって返された結果を再配置するだけです。 
 > 
-> 結果が返される前に、サーバーでこれらのタスクを実行するには、[sort](app-insights-analytics-reference.md#sort-operator)、[summarize](app-insights-analytics-reference.md#summarize-operator)、および [where](app-insights-analytics-reference.md#where-operator) 演算子を使用してクエリを記述します。
+> 結果が返される前に、サーバーでこれらのタスクを実行するには、[sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)、[summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html)、および [where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) 演算子を使用してクエリを記述します。
 > 
 > 
 
@@ -101,7 +100,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
     ただし、ドロップダウン メニューを使用して時間範囲フィルターを変更できます。
 
-    または、クエリに独自の [`where  ... timestamp ...` 句](app-insights-analytics-reference.md#where-operator)を含めることによって自動範囲をオーバーライドできます。 次に例を示します。
+    または、クエリに独自の [`where  ... timestamp ...` 句](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)を含めることによって自動範囲をオーバーライドできます。 次に例を示します。
 
     `requests | where timestamp > ago('2d')`
 
@@ -109,10 +108,10 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
     制限に達しないようにすることをお勧めします。 時間範囲フィルターを使用するか、次のような演算子を使用します。
 
-  * [top 100 by timestamp](app-insights-analytics-reference.md#top-operator) 
-  * [take 100](app-insights-analytics-reference.md#take-operator)
-  * [summarize ](app-insights-analytics-reference.md#summarize-operator) 
-  * [where timestamp > ago(3d)](app-insights-analytics-reference.md#where-operator)
+  * [top 100 by timestamp](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 
+  * [take 100](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)
+  * [summarize ](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 
+  * [where timestamp > ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
 
 (10,000 を超える数の行が必要な場合は、 [連続エクスポート](app-insights-export-telemetry.md)を代わりに使用することを検討してください。 Analytics は生データの取得ではなく分析を目的として設計されています。)
 
@@ -123,7 +122,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
 種類が適切な複数の列がある場合は、x 軸と y 軸を選択して、結果を分割するディメンションの列を選択できます。
 
-既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。 ただし、クエリの末尾に [render ディレクティブ](app-insights-analytics-reference.md#render-directive) を使用して、ダイアグラムを選択できます。
+既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。 ただし、クエリの末尾に [render ディレクティブ](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html) を使用して、ダイアグラムを選択できます。
 
 ### <a name="analytics-diagnostics"></a>Analytics Diagnostics
 
@@ -135,7 +134,7 @@ Analytics Diagnostics の詳細については、[こちら](app-insights-analyt
 
 ![Analytics Diagnostics](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
-## <a name="pin-to-dashboard"></a>Pin to dashboard
+## <a name="pin-to-dashboard"></a>ダッシュボードにピン留めする
 ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムまたはテーブルをピン留めすることができます。 (この機能を有効にするには、[アプリの料金パッケージのアップグレード](app-insights-pricing.md)が必要になる場合があります)。 
 
 ![ピンのクリック](./media/app-insights-analytics-using/pin-01.png)
@@ -186,7 +185,7 @@ Power BI では、さまざまなソースのデータをまとめるダッシ�
 (リンクでは、クエリ テキストは "?q=" の後ろに gzip 方式で圧縮され、Base-64 でエンコードされて表示されます。 ユーザーに提供するディープ リンクを生成するコードを記述できます。 ただし、Analytics をコードから実行するための推奨する方法は、[REST API](https://dev.applicationinsights.io/) を使用することです。)
 
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>自動化
 
 Analytics クエリを実行するには、[データ アクセス REST API](https://dev.applicationinsights.io/) を使用します。 [例](https://dev.applicationinsights.io/apiexplorer/query?appId=DEMO_APP&apiKey=DEMO_KEY&query=requests%0A%7C%20where%20timestamp%20%3E%3D%20ago%2824h%29%0A%7C%20count) (PowerShell 使用):
 

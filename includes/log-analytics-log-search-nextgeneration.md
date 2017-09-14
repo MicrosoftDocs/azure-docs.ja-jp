@@ -1,0 +1,2 @@
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](../articles/log-analytics/log-analytics-log-search-upgrade.md)にアップグレードされている場合は、以下のクエリを変換する必要があります。 この変換を行うには、[言語コンバーター](../articles/log-analytics/log-analytics-log-search-transition.md#language-converter)を使用することができます。

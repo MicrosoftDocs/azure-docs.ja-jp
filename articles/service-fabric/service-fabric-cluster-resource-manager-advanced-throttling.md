@@ -12,35 +12,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: 8a8419497bda3f1df523d6aff28028548abc155a
-ms.lasthandoff: 01/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/19/2017
 
 ---
 
-# <a name="throttling-the-behavior-of-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーの動作を調整する
-クラスター リソース マネージャーを正しく構成している場合でも、クラスターが中断する場合があります。 たとえば、同時ノードまたは障害ドメインのエラーが考えられます。このようなことがアップグレードの実行中に発生したとしたらどうなるでしょうか。 クラスター リソース マネージャーはすべてを修正しようとしますが、それによってクラスター内に混乱が発生する可能性があります。 スロットルは、クラスターを安定させる (ノードを元に戻し、ネットワーク パーティションを正常化し、修正されたビットをデプロイする) ためのリソースを提供する、バックネットの役割を果たします。
+# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーのスロットル
+クラスター リソース マネージャーを正しく構成している場合でも、クラスターが中断する場合があります。 たとえば、同時ノードや障害ドメインのエラーが考えられます。このようなことがアップグレードの実行中に発生したとしたらどうなるでしょうか。 クラスター リソース マネージャーは常に、クラスターの再編成と修正を試みるクラスター リソースを使用することで、すべてを修正しようとします。 スロットルは、安定化、つまり、ノードを元に戻し、ネットワーク パーティションを正常化し、修正されたビットをデプロイするためのリソースを提供する、バックネットの役割を果たします。
 
-このような状況を支援するため、Service Fabric クラスター リソース マネージャーにはいくつかのスロットルが含まれています。 これらのスロットルは、非常に大きな影響力を持ちます。 これらの設定を既定値から変更する場合は、クラスターが並列で実行できる作業量についての計算を慎重に行ってください。
+このような状況を支援するため、Service Fabric クラスター リソース マネージャーにはいくつかのスロットルが含まれています。 このようなスロットルはすべて、非常に大きな影響力を持つため、 通常は変更しないでください。変更するときは、必ず慎重に計画を立て、十分にテストを行ってください。
 
-スロットルの既定値は、Service Fabric チームが経験を通じてその適切性を確認したものです。 これらを変更する必要がある場合は、予想される実際の負荷に応じて値をチューニングしてください。 一部のスロットルについては、本線の状況安定化にかかる時間がより長くなるとしても、必要と判断される場合があります。
+クラスター リソース マネージャーのスロットルを変更する場合は、予想される実際の負荷に応じて値をチューニングしてください。 一部のスロットルについては、状況の安定化にかかる時間がより長くなるとしても、必要と判断される場合があります。 スロットルの正しい値を判断するには、テストが必要です。 スロットルは、クラスターが適切な時間で変更に対応できる程度に高く、また、大量のリソース消費を防ぐことができる程度に低い値に設定する必要があります。 
+
+スロットルを使用するお客様の多くは、使用している環境において既にリソース制約の問題を抱えているお客様です。 たとえば、各ノードのネットワーク帯域幅に制限があるお客様や、スループットの制限により、多数のステートフル レプリカを並列的に作成できないディスクを使用しているお客様です。 スロットルを使用しないと、操作によってリソースに過剰な負荷がかかり、操作が失敗したり、低速になったりする可能性があります。 こうしたお客様は、クラスターの安定化にかかる時間が長くなることを承知したうえで、スロットルを使用しています。 また、これらのお客様は、システム全体の信頼性が低下する可能性があることも承知したうえで、スロットルを使用しています。
+
 
 ## <a name="configuring-the-throttles"></a>スロットルの構成
-既定で含まれているスロットルには、次のようなものがあります。
 
-* GlobalMovementThrottleThreshold - この設定は (GlobalMovementThrottleCountingInterval で秒単位で定義した) 一定の期間にわたるクラスターの移動の合計数を制御します
-* MovementPerPartitionThrottleThreshold – この設定は (MovementPerPartitionThrottleCountingInterval で秒単位で定義した) 一定の期間にわたるサービス パーティションの移動の合計数を制御します
+Service Fabric には、レプリカの移動数のスロットルを行うためのメカニズムが 2 つあります。 Service Fabric 5.7 より前の既定のメカニズムでは、スロットルが、許可されている移動の絶対数として表されています。 これは一部のサイズのクラスターでは機能しません。 たとえば、既定値が設定されている場合、小規模クラスターでは何も問題はありませんが、この値は大規模クラスターには小さすぎるため、分散速度が大幅に低下し、必要な速度が出ません。 この以前のメカニズムは、割合を基にしたスロットリングに置き換えられ、サービスとノード数が定期的に変わる動的クラスターによって、スケール操作が強化されています。
+
+スロットルは、クラスター内のレプリカの数の割合に基づいています。 割合を基にしたスロットルにより、たとえば、"10 分間隔で 10% を超えるレプリカを移動しない" といったルールが有効になります。
+
+割合を基にしたスロットルの構成設定は次のとおりです。
+
+  - GlobalMovementThrottleThresholdPercentage - クラスター内の任意の時点における移動の最大許容数。クラスター内のレプリカの合計数に対する割合として表されます。 0 は無制限であることを示します。 既定値は 0 です。 この設定と GlobalMovementThrottleThreshold の両方が指定されている場合は、より控え目な制限が使用されます。
+  - GlobalMovementThrottleThresholdPercentageForPlacement - 配置フェーズにおける移動の最大許容数。クラスター内のレプリカの合計数に対する割合として表されます。 0 は無制限であることを示します。 既定値は 0 です。 この設定と GlobalMovementThrottleThresholdForPlacement の両方が指定されている場合は、より控え目な制限が使用されます。
+  - GlobalMovementThrottleThresholdPercentageForBalancing - 分散フェーズにおける移動の最大許容数。クラスター内のレプリカの合計数に対する割合として表されます。 0 は無制限であることを示します。 既定値は 0 です。 この設定と GlobalMovementThrottleThresholdForBalancing の両方が指定されている場合は、より控え目な制限が使用されます。
+
+スロットルの割合を指定するときは、5% を 0.05 として指定します。 こうしたスロットルが制御されます間隔は GlobalMovementThrottleCountingInterval です。これは秒単位で指定されます。
+
 
 ``` xml
 <Section Name="PlacementAndLoadBalancing">
-     <Parameter Name="GlobalMovementThrottleThreshold" Value="1000" />
+     <Parameter Name="GlobalMovementThrottleThresholdPercentage" Value="0" />
+     <Parameter Name="GlobalMovementThrottleThresholdPercentageForPlacement" Value="0" />
+     <Parameter Name="GlobalMovementThrottleThresholdPercentageForBalancing" Value="0" />
      <Parameter Name="GlobalMovementThrottleCountingInterval" Value="600" />
-     <Parameter Name="MovementPerPartitionThrottleThreshold" Value="50" />
-     <Parameter Name="MovementPerPartitionThrottleCountingInterval" Value="600" />
 </Section>
 ```
 
@@ -52,19 +64,19 @@ ms.lasthandoff: 01/07/2017
     "name": "PlacementAndLoadBalancing",
     "parameters": [
       {
-          "name": "GlobalMovementThrottleThreshold",
-          "value": "1000"
+          "name": "GlobalMovementThrottleThresholdPercentage",
+          "value": "0.0"
+      },
+      {
+          "name": "GlobalMovementThrottleThresholdPercentageForPlacement",
+          "value": "0.0"
+      },
+      {
+          "name": "GlobalMovementThrottleThresholdPercentageForBalancing",
+          "value": "0.0"
       },
       {
           "name": "GlobalMovementThrottleCountingInterval",
-          "value": "600"
-      },
-      {
-          "name": "MovementPerPartitionThrottleThreshold",
-          "value": "50"
-      },
-      {
-          "name": "MovementPerPartitionThrottleCountingInterval",
           "value": "600"
       }
     ]
@@ -72,9 +84,15 @@ ms.lasthandoff: 01/07/2017
 ]
 ```
 
-これらのスロットルを使用するお客様の多くは、使用している環境において既にリソース制約の問題を抱えているお客様です。 たとえば、各ノードへのネットワーク帯域幅に制限があるお客様や、スループットの制限により、多数のレプリカを並列的に作成できないディスクを使用しているお客様です。 この種の制限がある場合は、スロットルを使用しなかったとしても、障害発生時にトリガーされる操作が成功しなかったり、低速になったりします。 これらのお客様は、クラスターの安定化にかかる時間が長くなることを承知したうえで、スロットルを使用しています。 また、これらのお客様は、システム全体の信頼性が低下する可能性があることも承知したうえで、スロットルを使用しています。
+### <a name="default-count-based-throttles"></a>既定のカウント ベースのスロットル
+この情報は、古いクラスターがある場合、またはアップグレードされたクラスターでこうした構成がまだ保持されているときに提供されます。 一般的には、上記の割合を基にしたスロットルに置き換えることをお勧めします。 割合に基づくスロットルは既定で無効になっているため、このカウント ベースのスロットルは、無効にして、割合に基づくスロットルで置き換えない限り、引き続き既定のスロットルとして使用されます。 
+
+  - GlobalMovementThrottleThreshold - この設定は、一定の期間にわたるクラスターの移動の合計数を制御します。 この時間は、GlobalMovementThrottleCountingInterval として秒単位で指定されます。 GlobalMovementThrottleThreshold の既定値は 1000 です。GlobalMovementThrottleCountingInterval の既定値は 600 です。
+  - MovementPerPartitionThrottleThreshold – この設定は、一定の期間にわたるサービス パーティションの移動の合計数を制御します。 この時間は、MovementPerPartitionThrottleCountingInterval として秒単位で指定されます。 MovementPerPartitionThrottleThreshold の既定値は 50 です。MovementPerPartitionThrottleCountingInterval の既定値は 600 です。
+
+こうしたスロットルの構成は、割合に基づくスロットルと同じパターンに従います。
 
 ## <a name="next-steps"></a>次のステップ
-* クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
-* クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。 オプションについて詳しくは、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事をご覧ください
+- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
+- Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
 

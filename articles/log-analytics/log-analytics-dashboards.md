@@ -12,18 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: a8c9766bf066a7f0dfd28ebb4e41bf0eaf3f05bd
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics のクエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、新しいダッシュボードを作成および既存のダッシュボードを編集できません。 
+
 このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
 
 ![サンプルのダッシュ ボード](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)

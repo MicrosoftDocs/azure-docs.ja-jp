@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: e843e444d2fe32f578c5a887b606db982920a9e0
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 2366905b8160675f77cbc41ba97540af70be8c01
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -35,7 +36,10 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 > * 着信インターネット トラフィックを保護する
 > * VM 間のトラフィックを保護する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 CLI のバージョンを調べるには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="vm-networking-overview"></a>VM ネットワークの概要
 
@@ -47,7 +51,7 @@ Azure 仮想ネットワークを使用すると、仮想マシン、インタ�
 
 仮想ネットワークを作成する前に、[az group create](/cli/azure/group#create) でリソース グループを作成します。 次の例では、*myRGNetwork* という名前のリソース グループを場所 eastus に作成します。
 
-```azurecli
+```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
 ```
 
@@ -55,7 +59,7 @@ az group create --name myRGNetwork --location eastus
 
 仮想ネットワークを作成するには、[az network vnet create](/cli/azure/network/vnet#create) コマンドを使用します。 この例では、ネットワークは *mvVnet* という名前が付けられ、*10.0.0.0/16* というアドレス プレフィックスが指定されます。 また、サブネットは、*mySubnetFrontEnd* という名前と *10.0.1.0/24* というプレフィックスで作成されます。 このチュートリアルの後の方で、このサブネットにフロントエンド VM を接続します。 
 
-```azurecli
+```azurecli-interactive 
 az network vnet create \
   --resource-group myRGNetwork \
   --name myVnet \
@@ -68,7 +72,7 @@ az network vnet create \
 
 仮想ネットワークに新しいサブネットを追加するには、[az network vnet subnet create](/cli/azure/network/vnet/subnet#create) コマンドを使用します。 この例では、サブネットは *mySubnetBackEnd* という名前が付けられ、*10.0.2.0/24* というアドレス プレフィックスが指定されます。 このサブネットは、すべてのバックエンド サービスで使用されます。
 
-```azurecli
+```azurecli-interactive 
 az network vnet subnet create \
   --resource-group myRGNetwork \
   --vnet-name myVnet \
@@ -92,7 +96,7 @@ Azure リソースにインターネットからアクセスするためには�
 
 [az vm create](/cli/azure/vm#create) コマンドで VM を作成する際、既定のパブリック IP アドレスの割り当て方法は "動的" です。 次の例では、動的 IP アドレスで VM が作成されます。 
 
-```azurecli
+```azurecli-interactive 
 az vm create \
   --resource-group myRGNetwork \
   --name myFrontEndVM \
@@ -114,19 +118,19 @@ IP アドレスの割り当て方法は、[az network public-ip update](/cli/azu
 
 まず、VM の割り当てを解除します。
 
-```azurecli
+```azurecli-interactive 
 az vm deallocate --resource-group myRGNetwork --name myFrontEndVM
 ```
 
-[az network public-ip update](/azure/network/public-ip#update) コマンドを使用して、割り当て方法を更新します。 この例では、`--allocaion-metod` を *static* に設定しています。
+[az network public-ip update](/cli/azure/network/public-ip#update) コマンドを使用して、割り当て方法を更新します。 この例では、`--allocation-method` を *static* に設定しています。
 
-```azurecli
+```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myFrontEndIP --allocation-method static
 ```
 
 VM を起動します。
 
-```azurecli
+```azurecli-interactive 
 az vm start --resource-group myRGNetwork --name myFrontEndVM --no-wait
 ```
 
@@ -156,7 +160,7 @@ NSG ルールは、トラフィックが許可または拒否されるネット�
 
 ネットワーク セキュリティ グループを作成するには、[az network nsg create](/cli/azure/network/nsg#create) コマンドを使用します。
 
-```azurecli
+```azurecli-interactive 
 az network nsg create --resource-group myRGNetwork --name myNSGBackEnd
 ```
 
@@ -164,7 +168,7 @@ NSG は、ネットワーク インターフェイスにではなくサブネッ
 
 *mySubnetBackEnd* という名前の既存のサブネットを新しい NSG で更新します。
 
-```azurecli
+```azurecli-interactive 
 az network vnet subnet update \
   --resource-group myRGNetwork \
   --vnet-name myVnet \
@@ -174,7 +178,7 @@ az network vnet subnet update \
 
 ここで、仮想マシンを作成して、*mySubnetBackEnd* に関連付けます。 `--nsg` 引数には二重引用符で囲まれた空の値が指定されていることに注目してください。 NSG を VM と一緒に作成する必要はありません。 この VM はバックエンド サブネットに関連付けます。そして事前に作成しておいたバックエンド NSG でそのバックエンド サブネットを保護します。 VM には、この NSG が適用されます。 `--public-ip-address` 引数にも二重引用符で囲まれた空の値が指定されていることに注目してください。 この構成では、パブリック IP アドレスなしで VM が作成されます。 
 
-```azurecli
+```azurecli-interactive 
 az vm create \
   --resource-group myRGNetwork \
   --name myBackEndVM \
@@ -192,7 +196,7 @@ az vm create \
 
 [az network nsg rule create](/cli/azure/network/nsg/rule#create) コマンドを使用して、ポート *80* に対するルールを作成します。
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule create \
   --resource-group myRGNetwork \
   --nsg-name myNSGFrontEnd \
@@ -209,13 +213,13 @@ az network nsg rule create \
 
 これでフロントエンド VM には、ポート *22* とポート *80* でのみアクセスできるようになりました。 その他すべての着信トラフィックは、このネットワーク セキュリティ グループでブロックされます。 NSG ルールの構成を視覚化すると役に立つ場合があります。 [az network rule list](/cli/azure/network/nsg/rule#list) コマンドを実行すると、NSG ルールの構成が返されます。 
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGFrontEnd --output table
 ```
 
 出力:
 
-```azurecli
+```azurecli-interactive 
 Access    DestinationAddressPrefix      DestinationPortRange  Direction    Name                 Priority  Protocol    ProvisioningState    ResourceGroup    SourceAddressPrefix    SourcePortRange
 --------  --------------------------  ----------------------  -----------  -----------------  ----------  ----------  -------------------  ---------------  ---------------------  -----------------
 Allow     *                                               22  Inbound      default-allow-ssh        1000  Tcp         Succeeded            myRGNetwork      *                      *
@@ -228,7 +232,7 @@ Allow     *                                               80  Inbound      http 
 
 [az network nsg rule create](/cli/azure/network/nsg/rule#create) コマンドを使用して、ポート 22 に対するルールを作成します。 `--source-address-prefix` 引数に *10.0.1.0/24* という値が指定されていることに注目してください。 この構成により、フロントエンド サブネットからのトラフィックのみがこの NSG の通過を許可されます。
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule create \
   --resource-group myRGNetwork \
   --nsg-name myNSGBackEnd \
@@ -245,7 +249,7 @@ az network nsg rule create \
 
 ここで、ポート 3306 に対する MySQL トラフィックのルールを追加します。
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule create \
   --resource-group myRGNetwork \
   --nsg-name myNSGBackEnd \
@@ -262,7 +266,7 @@ az network nsg rule create \
 
 最後に、NSG には、同じ VNet 内の VM 間のトラフィックをすべて許可する、という既定のルールがあるため、バックエンド NSG には、すべてのトラフィックをブロックするルールを作成できます。 ここで、`--priority` に *300* という値が指定されていることに注意してください。これは、NSG ルールと MySQL ルールのどちらよりも低い値です。 この構成により、SSH トラフィックと MySQL トラフィックについては、引き続き NSG を通過することが許可されます。
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule create \
   --resource-group myRGNetwork \
   --nsg-name myNSGBackEnd \
@@ -279,13 +283,13 @@ az network nsg rule create \
 
 これでバックエンド VM には、フロントエンド サブネットからポート *22* とポート *3306* でのみアクセスできるようになりました。 その他すべての着信トラフィックは、このネットワーク セキュリティ グループでブロックされます。 NSG ルールの構成を視覚化すると役に立つ場合があります。 [az network rule list](/cli/azure/network/nsg/rule#list) コマンドを実行すると、NSG ルールの構成が返されます。 
 
-```azurecli
+```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGBackEnd --output table
 ```
 
 出力:
 
-```azurecli
+```azurecli-interactive 
 Access    DestinationAddressPrefix    DestinationPortRange    Direction    Name       Priority  Protocol    ProvisioningState    ResourceGroup    SourceAddressPrefix    SourcePortRange
 --------  --------------------------  ----------------------  -----------  -------  ----------  ----------  -------------------  ---------------  ---------------------  -----------------
 Allow     *                           22                      Inbound      SSH             100  Tcp         Succeeded            myRGNetwork      10.0.1.0/24            *
@@ -309,3 +313,4 @@ Deny      *                           *                       Inbound      denyA
 
 > [!div class="nextstepaction"]
 > [Azure での Linux 仮想マシンのバックアップ](./tutorial-backup-vms.md)
+

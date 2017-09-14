@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2017
+ms.date: 06/15/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 1436b39fdb9a66a00903442496cc5203b47c1bcb
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -90,7 +90,7 @@ ms.lasthandoff: 05/13/2017
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-このサンプル テンプレートは、Azure PowerShell または Azure CLI を使ってデプロイできます。 2017 年 5 月以降のリリースの Azure CLI または Azure PowerShell を使ってください。 この例は、テンプレートが **crossrgdeployment.json** というファイル名でローカルに保存されていることを前提としています。
+テンプレートの例をデプロイするには、ポータル、Azure PowerShell、または Azure CLI を使用できます。 Azure PowerShell または Azure CLI の場合、2017 年 5 月以降のリリースを使用する必要があります。 この例は、テンプレートが **crossrgdeployment.json** というファイル名でローカルに保存されていることを前提としています。
 
 PowerShell の場合
 
@@ -117,6 +117,42 @@ az group deployment create \
 ```
 
 デプロイが完了すると、2 つのリソース グループが確認できます。 それぞれのリソース グループにストレージ アカウントが存在します。
+
+## <a name="use-resourcegroup-function"></a>resourceGroup() 関数の使用
+
+リソース グループ間のデプロイの場合、[resouceGroup() 関数](resource-group-template-functions-resource.md#resourcegroup)は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
+
+あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の resouceGroup() は親リソース グループに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
+
+```json
+"apiVersion": "2017-05-10",
+"name": "embeddedTemplate",
+"type": "Microsoft.Resources/deployments",
+"resourceGroup": "crossResourceGroupDeployment",
+"properties": {
+    "mode": "Incremental",
+    "template": {
+        ...
+        resourceGroup() refers to parent resource group
+    }
+}
+```
+
+別のテンプレートにリンクする場合、リンクされたテンプレート内の resouceGroup() は入れ子になったリソース グループに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
+
+```json
+"apiVersion": "2017-05-10",
+"name": "linkedTemplate",
+"type": "Microsoft.Resources/deployments",
+"resourceGroup": "crossResourceGroupDeployment",
+"properties": {
+    "mode": "Incremental",
+    "templateLink": {
+        ...
+        resourceGroup() in linked template refers to linked resource group
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

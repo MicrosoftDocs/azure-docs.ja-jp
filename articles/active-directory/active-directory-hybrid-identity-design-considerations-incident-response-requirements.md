@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: bc8e3b76aad18e8d7a73de8bc12e6527e415035d
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/29/2016
 
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのインシデント対応要件の決定
@@ -65,10 +66,5 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

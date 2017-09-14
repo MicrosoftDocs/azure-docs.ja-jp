@@ -4,7 +4,7 @@ description: "Azure Functions で、トリガーとバインドを使用して�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/14/2017
+ms.date: 05/30/2017
 ms.author: donnam
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f7d0ed4f43c68c73c967a401509f1a5ccac7da0b
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/23/2017
 
 ---
 
@@ -190,6 +189,23 @@ let Run(input: WorkItem, log: TraceWriter) =
     json
 ```
 
+## <a name="binding-datatype-property"></a>dataType プロパティのバインド
+
+.NET では、型を使用して、入力データのデータ型を定義します。 たとえば、キュー トリガーのテキストにバインドするには `string` を、バイナリとして読み取るにはバイト配列を使用します。
+
+JavaScript など、動的に型指定された言語については、バインディングの定義で `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+`dataType` のその他のオプションは、`stream` と `string` です。
+
 ## <a name="resolving-app-settings"></a>アプリケーション設定の解決
 ベスト プラクティスとしては、シークレットや接続文字列は、構成ファイルではなくアプリ設定を使用して管理する必要があります。 これにより、これらのシークレットへのアクセスが制限され、パブリックなソース管理レポジトリに *function.json* を安全に格納できるようにします。
 
@@ -307,6 +323,19 @@ Azure Functions には、`{rand-guid}` バインド式を使用してバイン�
 }
 ```
 
+### <a name="current-time"></a>現在の時刻
+
+バインド式 `DateTime` を使用できます。これは、`DateTime.UtcNow` に解決されます。
+
+```json
+{
+  "type": "blob",
+  "name": "blobOutput",
+  "direction": "out",
+  "path": "my-output-container/{DateTime}"
+}
+```
+
 ## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>バインド式でのカスタム入力プロパティへのバインド
 
 バインド式は、トリガー ペイロード自体に定義されているプロパティも参照できます。 たとえば、webhook で提供されるファイル名から Blob Storage ファイルに動的にバインドすることもできます。
@@ -377,6 +406,10 @@ module.exports = function (context, info) {
     context.done();
 }
 ```
+
+## <a name="configuring-binding-data-at-runtime"></a>実行時のデータ バインドの構成
+
+C# および他の .NET 言語では、*function.json* の宣言型のバインドではなく命令型のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 詳細については、C# 開発者用リファレンスの[命令型のバインドによる実行時のバインド](functions-reference-csharp.md#imperative-bindings)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 特定のバインドの詳細については、以下の記事を参照してください。

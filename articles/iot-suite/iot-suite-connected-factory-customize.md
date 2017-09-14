@@ -13,21 +13,20 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4e466f34880bf6ffce5012353f539ee93160892b
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
 ## <a name="introduction"></a>はじめに
 
-コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。
+コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) に関するページをご覧ください。
 
 ソリューションの集計データの例には、ダッシュボードで確認できるファクトリ レベル、ライン レベル、およびステーション レベルの総合設備効率 (OEE) と主要業績評価指標 (KPI) が含まれます。 次のスクリーンショットは、**ミュンヘン** ファクトリの**生産ライン 1** にある**アセンブリ** ステーションの OEE 値と KPI 値を示しています。
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="map-the-data"></a>データのマップ
 
-コネクテッド ファクトリ ソリューションでは、OPC UA サーバーの公開データ項目をソリューションのさまざまなビューにマップしたり、ビューで集計したりできます。 コネクテッド ファクトリ ソリューションは、ソリューションのプロビジョニング時に Azure アカウントにデプロイされます。 Visual Studio コネクテッド ファクトリ ソリューションの JSON ファイルには、このマッピング情報が格納されます。 この JSON 構成ファイルは、Visual Studio コネクテッド ファクトリ ソリューションで表示および変更することも、再デプロイすることもできます。
+コネクテッド ファクトリ ソリューションでは、OPC UA サーバーの公開データ項目をソリューションのさまざまなビューにマップしたり、ビューで集計したりできます。 コネクテッド ファクトリ ソリューションは、ソリューションのプロビジョニング時に Azure アカウントにデプロイされます。 Visual Studio コネクテッド ファクトリ ソリューションの JSON ファイルには、このマッピング情報が格納されます。 この JSON 構成ファイルは、Visual Studio コネクテッド ファクトリ ソリューションで表示および変更できます。 ソリューションは、変更後に再デプロイできます。
 
 構成ファイルを使用すると、次の操作を行うことができます。
 
@@ -107,7 +106,7 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 
 ### <a name="opcuri"></a>OpcUri
 
-**OpcUri** 値は、OPC UA サーバーを一意に識別する OPC UA アプリケーション URI です。 たとえば、ミュンヘンにある生産ライン 1 のアセンブリ ステーションの **OpcUri** 値は **urn:scada2194:ua:munich:productionline0:assemblystation** です。
+**OpcUri** 値は、OPC UA サーバーを一意に識別する OPC UA アプリケーション URI です。 たとえば、ミュンヘンにある生産ライン 1 のアセンブリ ステーションの **OpcUri** 値は **urn:scada2194:ua:munich:productionline0:assemblystation** のようになります。
 
 ソリューション ダッシュボードでは、接続されている OPC UA サーバーの URI を確認できます。
 
@@ -174,8 +173,9 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 コネクテッド ファクトリ事前構成済みソリューションの詳細については、次の記事を参照してください。
 
 * [コネクテッド ファクトリ事前構成済みソリューションのチュートリアル][lnk-rm-walkthrough]
-* [デバイスをコネクテッド ファクトリ事前構成済みソリューションに接続する][lnk-connect-cf]
+* [コネクテッド ファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+* [コネクテッド ファクトリに関する FAQ](iot-suite-faq-cf.md)
 * [FAQ][lnk-faq]
 
 
@@ -188,7 +188,7 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 [img-server-uris]: ./media/iot-suite-connected-factory-customize/serveruris.png
 [lnk-kpi]: ./media/iot-suite-connected-factory-customize/kpidisplay.png
 
-[lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-rm-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [lnk-connect-cf]: iot-suite-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-faq]: iot-suite-faq.md

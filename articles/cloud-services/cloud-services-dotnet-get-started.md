@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3c7f97b72f3813abe2357ae3202eaba285583bb8
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
@@ -173,7 +172,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 4. **[レプリケーション]** ボックスの一覧で、**[ローカル冗長ストレージ (LRS)]** を選択します。
 
-    geo レプリケーションをストレージ アカウントに対して有効にすると、格納されたコンテンツがセカンダリ データセンターにレプリケートされ、プライマリ ロケーションで重大な障害が発生した場合のフェールオーバーが有効になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md)」を参照してください。
+    geo レプリケーションをストレージ アカウントに対して有効にすると、格納されたコンテンツがセカンダリ データセンターにレプリケートされ、プライマリ ロケーションで重大な障害が発生した場合のフェールオーバーが有効になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/common/storage-create-storage-account.md)」を参照してください。
 
 5. **[リソース グループ]** で **[既存のものを使用]** をクリックし、クラウド サービスに使用しているリソース グループを選択します。
 6. **[場所]** ボックスの一覧で、クラウド サービスに選択したのと同じリージョンを選択します。
@@ -234,7 +233,7 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 1. **ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** プロジェクトの **[ロール]** の下にある **[ContosoAdsWeb]** を右クリックし、**[プロパティ]** をクリックします。
 
     ![ロール プロパティ](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. **[設定]** タブをクリックします。 **[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
+2. **[設定]** タブをクリックします。**[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
 
     ![クラウドの構成](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 **[...]** ボタンが表示されます。 省略記号ボタンをクリックして、 **[ストレージ アカウント接続文字列の作成]** ダイアログ ボックスを開きます。

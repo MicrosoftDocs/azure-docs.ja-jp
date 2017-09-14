@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9a2796c66fa49c543e52b654e583ade7625a7f31
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して STAR-CCM+ を実行する
@@ -119,7 +119,7 @@ HPC Pack クラスター マネージャー ツールを起動します。 数�
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Windows と Linux のノードに使用する Azure Files 共有のセットアップ
 Azure Files サービスを使用して、スクリプト、アプリケーション パッケージ、およびデータ ファイルを保存できます。 Azure Files は、永続ストアとして Azure BLOB ストレージ上に CIFS 機能を提供します。 スケーラビリティの点では決して秀でたソリューションではありませんが、きわめてシンプルであり、専用の VM を必要としません。
 
-Azure Files 共有は、「[Windows で Azure File Storage を使用する](../../../storage/storage-dotnet-how-to-use-files.md)」の手順に従って作成します。
+Azure Files 共有は、「[Windows で Azure File Storage を使用する](../../../storage/files/storage-dotnet-how-to-use-files.md)」の手順に従って作成します。
 
 ストレージ アカウントの名前 **saname**、ファイル共有名 **sharename**、ストレージ アカウント キー **sakey** はメモしておいてください。
 

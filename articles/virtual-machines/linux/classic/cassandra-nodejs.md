@@ -3,8 +3,8 @@ title: "Azure 上の Linux での Cassandra の実行 | Microsoft Docs"
 description: "Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法"
 services: virtual-machines-linux
 documentationcenter: nodejs
-author: hanuk
-manager: erikre
+author: tomarcher
+manager: routlaw
 editor: 
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: hanuk;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1cc14b99a4c0dfeb9eec0afaf72200e93cd22e12
+ms.date: 08/17/2017
+ms.author: tarcher
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: acfa9f6f0166167341fc54c4d55fb37e0a338024
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>Azure 上の Linux で Cassandra を実行して Node.js からアクセス
@@ -87,7 +86,7 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 
 **近接性ベースのデプロイ:** テナント ユーザーとリージョンの明確なマッピングを持つマルチ テナント アプリケーションでは、複数リージョン クラスターによる待機時間の短さがメリットになることもあります。 たとえば、ある教育機関の学習管理システムでは、米国東部リージョンおよび米国西部リージョンに分散クラスターをデプロイし、各キャンパスでトランザクションと分析を利用できるようにしています。 データの一貫性は読み取り時および書き込み時にはローカルで確保され、結果的には両方のリージョンにまたがる一貫性が確保されます。 他にも、メディア配布、e コマースなど、特定の geo に集中するユーザー ベースにサービスを提供するありとあらゆる事例で、このデプロイ モデルを活用できます。
 
-**高可用性:** 冗長性は、ソフトウェアとハードウェアの高可用性を実現するための鍵になります。詳細については、Microsoft Azure での信頼性のあるクラウド システムの構築に関するページをご覧ください。 Microsoft Azure で完全な冗長性を実現するための唯一の確実な方法は、複数のリージョンにクラスターをデプロイすることです。 アプリケーションはアクティブ/アクティブ モードまたはアクティブ/パッシブ モードでデプロイすることができ、1 つのリージョンがダウンした場合でも、Azure Traffic Manager で、稼働中のリージョンにトラフィックをリダイレクトできます。  単一リージョン デプロイで可用性が 99.9 の場合、数式 (1-(1-0.999)  *(1-0.999))*100) より、2 リージョン デプロイにすると 99.9999 の可用性を実現できます。詳細については、上記の文書をご覧ください。
+**高可用性:** 冗長性は、ソフトウェアとハードウェアの高可用性を実現するための鍵になります。詳細については、Microsoft Azure での信頼性のあるクラウド システムの構築に関するページをご覧ください。 Microsoft Azure で完全な冗長性を実現するための唯一の確実な方法は、複数のリージョンにクラスターをデプロイすることです。 アプリケーションはアクティブ/アクティブ モードまたはアクティブ/パッシブ モードでデプロイすることができ、1 つのリージョンがダウンした場合でも、Azure Traffic Manager で、稼働中のリージョンにトラフィックをリダイレクトできます。  単一リージョン デプロイで可用性が 99.9 の場合、数式 (1-(1-0.999) * (1-0.999))*100) より、2 リージョン デプロイにすると 99.9999 の可用性を実現できます。詳細については、上記の文書をご覧ください。
 
 **障害復旧:** 複数リージョン Cassandra クラスターは、適切に設計されている場合、データ センターの致命的な停止にも耐えられます。 1 つのリージョンがダウンした場合、その他のリージョンにデプロイされたアプリケーションでエンド ユーザーへのサービスの提供を開始できます。 その他のビジネス継続性の実装と同様に、アプリケーションは、非同期パイプライン内にデータがあることによって生じるある程度のデータ損失を許容することが必要です。 ただし、Cassandra は、従来のデータベースの復旧プロセスよりも、はるかに迅速に復旧を行います。 図 2 に、各リージョンに 8 つのノードがある典型的な複数リージョンのデプロイ モデルを示します。 両方のリージョンは、左右対称の互いのミラー イメージになります。実際の設計は、ワークロードのタイプ (例: トランザクションまたは分析)、RPO、RTO、データの一貫性および可用性の要件によって異なります。
 
@@ -304,15 +303,13 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 これは数秒で完了し、その後、イメージ ギャラリーの [マイ イメージ] セクションでイメージが利用できるようになります。 ソース VM は、イメージが正常にキャプチャされた後に自動的に削除されます。 
 
 ## <a name="single-region-deployment-process"></a>単一リージョン デプロイ プロセス
-**手順 1. Virtual Network の作成** Azure クラシック ポータルにログインし、次の表に記載の属性で Virtual Network を作成します。 プロセスの詳細な手順については、「 [Azure クラシック ポータルでのクラウド専用の Virtual Network の構成](../../../virtual-network/virtual-networks-create-vnet-classic-portal.md) 」を参照してください。      
+**手順 1. Virtual Network の作成** Azure Portal にログインし、次の表に記載の属性で仮想ネットワーク (クラシック) を作成します。 プロセスの詳細な手順については、「[Azure Portal を使用した仮想ネットワーク (クラシック) の作成](../../../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」をご覧ください。      
 
 <table>
 <tr><th>VM の属性名</th><th>値</th><th>解説</th></tr>
 <tr><td>Name</td><td>vnet-cass-west-us</td><td></td></tr>
 <tr><td>リージョン</td><td>米国西部</td><td></td></tr>
-<tr><td>DNS サーバー    </td><td>なし</td><td>DNS サーバーを使用していないため、無視します。</td></tr>
-<tr><td>ポイント対サイト VPN の構成</td><td>なし</td><td> 無視します。</td></tr>
-<tr><td>[サイト間 VPN の構成]</td><td>なし</td><td> 無視します。</td></tr>
+<tr><td>DNS サーバー</td><td>なし</td><td>DNS サーバーを使用していないため、無視します。</td></tr>
 <tr><td>アドレス空間</td><td>10.1.0.0/16</td><td></td></tr>    
 <tr><td>開始 IP</td><td>10.1.0.0</td><td></td></tr>    
 <tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>

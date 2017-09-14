@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/31/2017
+ms.date: 06/06/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 70b04cde5fe877355c1dea29c78df3dcb8277973
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -36,6 +37,7 @@ Azure Search を初めて使う場合は、ここから開始します。 約 1 
 | [インデックスのクエリ](search-get-started-portal.md) | 組み込みのサンプル データを使って、インデックスを作成し、クエリを行います。 ポータルのツールを使うと、クエリの種類と検索パラメーターについて短時間で学習できます。 | 2017 年 2 |
 | [次のステップ:<br/> .NET でのコード](search-howto-dotnet-sdk.md) | この C# チュートリアルでは、Azure Search .NET ライブラリを使って接続、インデックス作成、クエリを実行する方法を示します。 | 2016 年 11 月 |
 | [次のステップ:<br/> REST でのコード](search-create-index-rest-api.md) | 任意のプラットフォームとプログラミング言語で Azure Search インデックスを作成するための REST 呼び出しと JSON ペイロードを確認します。 | 2016 年 12 月 |
+| [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md) | Azure Search でのフルテキスト検索ワークロードのアーキテクチャと概要。 | 2017 年 3 月 |
 
 ## <a name="code-samples"></a>コード サンプル
 
@@ -55,6 +57,7 @@ Azure Search を初めて使う場合は、ここから開始します。 約 1 
 
 | リンク | Description |
 |-------|-------------|
+|[アナライザーのデモを検索する](http://alice.unearth.ai) | 標準 Lucene アナライザー、Lucene の英語アナライザー、および Microsoft の自然言語プロセッサからのクエリ出力を示すライブ デモ Web サイト。 検索語句を入力すると、横並びに表示される各アナライザーの出力を比較することができます。 |
 |[Azure Search のニューヨーク市 (NYC) ジョブ ポータル デモ](http://aka.ms/azjobsdemo) | NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。 このアプリでは、 [簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。 コードを変更して、 [Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。 |
 |[Tate Art Gallery Demo (テート美術館デモ)](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html) | テート美術館のサンプル データを使用するホステッド ASP.NET Web サイト。 まず「modern」、「photo」、「portrait」などの検索用語を試してください。
 |[Azure Search デモ サイト](https://searchsamples.azurewebsites.net/#/) | Azure Search のためのデモ アプリを集めたサイトです。 Azure Search を利用し、メディア検索、地理検索、製品在庫のアプリを試します。 |

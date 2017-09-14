@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b79492914bb52e970343a2e829622122f03642b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 31ed9dad8ba56a3746873b7b35e678e97743fbfe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -78,7 +80,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
    
    1. ボックスの一覧で、アクセス制御レコード (ACR) を選択します。 また、新しい ACR を追加することもできます。 ACR は、ホストの IQN をレコードに記載されている IQN と照合することによって、ボリュームにアクセスできるホストを判定します。
    2. **[このボリュームの既定のバックアップの有効化]** チェックボックスをオンにして、既定のバックアップを有効にすることをお勧めします。
-   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png)  をクリックして、指定した設定でボリュームを作成します。
+   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
 
 新しいボリュームが使用できるようになります。
 
@@ -118,7 +120,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
    
    1. **[コンピューターの管理]** ->**[ディスクの管理]** の順に移動します。
    2. **[ディスクの管理]** を右クリックし、**[ディスクの再スキャン]** を選択します。
-   3. ディスクの一覧で、更新したボリュームを選択して右クリックし、 **[ボリュームの拡張]**を選択します。 ボリューム拡張ウィザードが起動します。 **[次へ]**をクリックします。
+   3. ディスクの一覧で、更新したボリュームを選択して右クリックし、 **[ボリュームの拡張]**を選択します。 ボリューム拡張ウィザードが起動します。 **[次へ]** をクリックします。
    4. 既定の値を使用してウィザードを完了します。 ウィザードが終了すると、サイズが増えたボリュームが表示されます。
 
 ![ビデオ](./media/storsimple-manage-volumes/Video_icon.png) **ビデオ**
@@ -177,10 +179,5 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

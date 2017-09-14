@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 746cad19093fd2a1ad23ddd9412394f8d9da331c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>Azure AD の Android アプリへの統合
@@ -174,7 +173,7 @@ Maven リポジトリから JAR ファイルを取得して、プロジェクト
             ....
         <application/>
 
-4. メイン アクティビティで AuthenticationContext のインスタンスを作成します。 この呼び出しの詳細についてはこのトピックの範囲外ですが、[Android ネイティブ クライアントのサンプル](https://github.com/AzureADSamples/NativeClient-Android)を参照することで適切に作業を開始できます。 次の例は、SharedPreferences が既定のキャッシュであり、機関の形式は `https://login.windows.net/yourtenant.onmicrosoft.com` です。
+4. メイン アクティビティで AuthenticationContext のインスタンスを作成します。 この呼び出しの詳細についてはこのトピックの範囲外ですが、[Android ネイティブ クライアントのサンプル](https://github.com/AzureADSamples/NativeClient-Android)を参照することで適切に作業を開始できます。 次の例は、SharedPreferences が既定のキャッシュであり、機関の形式は `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` です。
 
     `mContext = new AuthenticationContext(MainActivity.this, authority, true); // mContext is a field in your activity`
 
@@ -264,7 +263,7 @@ Microsoft Intune の企業ポータル アプリは、ブローカー コンポ�
 ### <a name="authority-url-and-ad-fs"></a>機関 URL と AD FS
 Active Directory フェデレーション サービス (AD FS) は実稼働 STS とは認識されないため、インスタンス検出を無効にして、AuthenticationContext コンストラクターで false を渡す必要があります。
 
-機関 URL には、STS インスタンスと[テナント名](https://login.windows.net/yourtenant.onmicrosoft.com)が必要です。
+機関 URL には、STS インスタンスと[テナント名](https://login.microsoftonline.com/yourtenant.onmicrosoft.com)が必要です。
 
 ### <a name="querying-cache-items"></a>キャッシュ項目のクエリ
 ADAL は SharedPreferences の既定のキャッシュに、いくつかの単純なキャッシュ クエリ関数を提供します。 AuthenticationContext から現在のキャッシュを取得するには、次の関数を使用します。

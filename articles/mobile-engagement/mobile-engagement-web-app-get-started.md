@@ -14,10 +14,11 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: abcb04e4e0a3ae4fdba3a4ded20b3846ac3b21e6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-web-apps"></a>Web Apps 用 Azure Mobile Engagement の使用
@@ -25,10 +26,13 @@ ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 
 このトピックでは、Azure Mobile Engagement を使用して Web アプリの使用状況を把握する方法について説明します。
 
+> [!NOTE]
+> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
+
 このチュートリアルには、次のものが必要です。
 
 * Visual Studio 2015 またはその他の任意のエディター
-* [Web SDK](http://aka.ms/P7b453) 
+* [Web SDK](http://aka.ms/P7b453)
 
 この Web SDK はプレビュー段階です。現時点でのサポート対象は分析のみで、ブラウザーまたはアプリ内のプッシュ通知の送信にはまだ対応していません。 
 
@@ -40,7 +44,7 @@ ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 ## <a name="setup-mobile-engagement-for-your-web-app"></a>Web アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集するために必要な最小限のセットである "基本的な統合" について説明します。
 
 統合方法を示すために Visual Studio で基本的な Web アプリを作成しますが、Visual Studio 以外で作成された Web アプリケーションを使用して手順を進めることもできます。 
@@ -114,10 +118,5 @@ ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 <!-- Images. -->
 [1]: ./media/mobile-engagement-web-app-get-started/visual-studio-solution-js.png
 [2]: ./media/mobile-engagement-web-app-get-started/session.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

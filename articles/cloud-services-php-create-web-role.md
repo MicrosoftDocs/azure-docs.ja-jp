@@ -14,11 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 89092e75d10ece044be61ceba0baf16c9e1599be
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 214fdcfe20f3fa4ebcbe41308404f8b7e7d15310
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールを作成する方法
@@ -179,7 +179,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 6. 後述の「[アプリケーションの発行](#publish-your-application)」の説明に従って、アプリケーションを発行します。
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>コンピューティング エミュレーターとストレージ エミュレーターでアプリケーションを実行する
-Azure エミュレーターは、Azure アプリケーションをクラウドにデプロイする前にテストできるローカル環境を提供します。 ただし、エミュレーターと Azure 環境では、いくつか相違点があります。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](storage/storage-use-emulator.md)」を参照してください。
+Azure エミュレーターは、Azure アプリケーションをクラウドにデプロイする前にテストできるローカル環境を提供します。 ただし、エミュレーターと Azure 環境では、いくつか相違点があります。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](storage/common/storage-use-emulator.md)」を参照してください。
 
 コンピューティング エミュレーターを使用する場合は、ローカルで PHP をインストールしておく必要があることに注意してください。 コンピューティング エミュレーターでは、アプリケーションを実行するためにローカルの PHP インストールが使用されます。
 

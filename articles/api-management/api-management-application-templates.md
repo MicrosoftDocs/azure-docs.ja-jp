@@ -3,7 +3,7 @@ title: "Azure API Management のアプリケーション テンプレート | Mi
 description: "Azure API Management で開発者ポータルのアプリケーション ページの内容をカスタマイズする方法について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API Management のアプリケーション テンプレート
@@ -31,7 +33,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
   
-##  <a name="a-nameproductlista-application-list"></a><a name="ProductList"></a> アプリケーション リスト  
+##  <a name="ProductList"></a> アプリケーション リスト  
  **アプリケーション リスト** テンプレートを使用すると、開発者ポータルでアプリケーション リスト ページの本文をカスタマイズすることができます。  
   
  ![Application List Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM Application List Page Developer Portal Templates")  
@@ -132,7 +134,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-nameapplicationa-application"></a><a name="Application"></a> アプリケーション  
+##  <a name="Application"></a> アプリケーション  
  **アプリケーション** テンプレートを使用すると、開発者ポータルでアプリケーション ページの本文をカスタマイズすることができます。  
   
  ![Application Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM Application Page Developer Portal Templates")  
@@ -220,8 +222,3 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 ## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -3,23 +3,23 @@ title: "Azure SQL Database のコピーの作成 | Microsoft Docs"
 description: "Azure SQL Database のコピーの作成"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 04/05/2017
-ms.author: sashan;carlrab
+ms.date: 06/15/2017
+ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: af953e16103951fe2fd283898b3c466a1ebe91fd
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 67c42b8df2f1d12ceecd127ab24d359a6de8ef43
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -39,7 +39,7 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 
 [Azure Active Directory](../active-directory/active-directory-whatis.md) を使用すると、コピーで資格情報を管理する必要がなくなります。 ただし、新しいサーバーにデータベースをコピーする場合、ログインに基づくアクセスは動作しないことがあります。これは、そのログインが新しいサーバーに存在しないためです。 別の論理サーバーにデータベースをコピーする場合のログイン管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。 
 
-コピーが成功した後、他のユーザーが再マップされるまでは、コピーを開始したログイン、つまりデータベース所有者のみが新しいデータベースにログインできます。 コピー操作が完了した後でログインを解決するには、「[ログインの解決](sql-database-copy.md#resolve-logins.md)」をご覧ください。
+コピーが成功した後、他のユーザーが再マップされるまでは、コピーを開始したログイン、つまりデータベース所有者のみが新しいデータベースにログインできます。 コピー操作が完了した後でログインを解決するには、「[ログインの解決](#resolve-logins)」をご覧ください。
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>Azure Portal を使ってデータベースをコピーする
 
@@ -49,7 +49,7 @@ Azure Portal を使ってデータベースをコピーするには、データ�
 
 ## <a name="copy-a-database-by-using-powershell"></a>PowerShell を使ってデータベースをコピーする
 
-PowerShell でデータベースをコピーするには、[`New-AzureRmSqlDatabaseCopy`](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) コマンドレットを使います。 
+PowerShell を使用してデータベースをコピーするには、[New-AzureRmSqlDatabaseCopy](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) コマンドレットを使用します。 
 
 ```PowerShell
 New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `

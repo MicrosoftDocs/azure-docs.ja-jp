@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/07/2017
 ms.author: sethm;shvija
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: f14e847b702b92a58fd257512a557b9af3f07238
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/19/2017
-
 
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
@@ -138,7 +138,7 @@ New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```cli
+```azurecli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>

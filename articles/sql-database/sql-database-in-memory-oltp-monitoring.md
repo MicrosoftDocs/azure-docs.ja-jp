@@ -13,32 +13,31 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 07/25/2017
 ms.author: jodebrui
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
-ms.openlocfilehash: f53fa3763edb1d9164278d1e3c418e200d7ada89
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: e953b60493c5a7c7a7ad74533471bd321d42abef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
-[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベルに関する記事](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)をご覧ください。 この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
+[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳しくは、[単一データベースのリソース制限に関する記事](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)および[エラスティック プールのリソース制限に関する記事](sql-database-resource-limits.md#elastic-pool-change-storage-size)をご覧ください。 この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
 
 ## <a name="determine-whether-data-will-fit-within-the-in-memory-storage-cap"></a>データがインメモリ ストレージの上限に収まるかどうかを判断する
-ここでは、ストレージの上限を判断します。各種 Premium サービス階層のストレージ上限については、[SQL Database のサービス階層に関する記事](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)をご覧ください。
+さまざまな Premium サービス階層のストレージの上限を確認します。 [単一データベースのリソース制限に関する記事](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)および[エラスティック プールのリソース制限に関する記事](sql-database-resource-limits.md#elastic-pool-change-storage-size)をご覧ください。
 
 メモリ最適化テーブルのメモリ必要量の推定は、Azure SQL Database で SQL Server の要件を推定する場合と同じように行います。 少し時間をとって、 [MSDN](https://msdn.microsoft.com/library/dn282389.aspx)でメモリ最適化テーブルのメモリ必要量の推定について確認してください。
 
 テーブル行とテーブル変数行、およびインデックスは、最大ユーザー データ サイズにカウントされるので注意してください。 また、テーブル全体とそのインデックスの新しいバージョンを作成するには、ALTER TABLE に十分な領域が必要になります。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
-Azure [Portal](https://portal.azure.com/) で、インメモリ ストレージの使用量を[パフォーマンス階層のストレージ上限](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)に対するパーセンテージとして監視できます。 
+[Azure Portal](https://portal.azure.com/) で、インメモリ ストレージの使用量をパフォーマンス階層のストレージ上限に対するパーセンテージとして監視できます。 
 
-* [データベース] ブレードの [リソース使用率] ボックスで [編集] をクリックします。
-* メトリック `In-Memory OLTP Storage percentage`を選択します。
-* アラートを追加するには、[リソース使用率] チェック ボックスをオンにして [メトリック] ブレードを開き、[アラートの追加] をクリックします。
+1. [データベース] ブレードの [リソース使用率] ボックスで [編集] をクリックします。
+2. メトリック `In-Memory OLTP Storage percentage` を選択します。
+3. アラートを追加するには、[リソース使用率] チェック ボックスをオンにして [メトリック] ブレードを開き、[アラートの追加] をクリックします。
 
 または、次のクエリを使用して、インメモリ ストレージの使用率を表示します。
 

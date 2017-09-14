@@ -2,7 +2,7 @@
 title: "Azure ExpressRoute のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "オンプレミス インフラストラクチャまたは共用施設から Microsoft クラウド サービスへのプライベート ExpressRoute 接続を構成および管理する方法について説明します。"
 services: expressroute
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

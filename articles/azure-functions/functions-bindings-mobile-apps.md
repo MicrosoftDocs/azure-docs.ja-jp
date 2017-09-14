@@ -4,7 +4,7 @@ description: "Azure Functions で Azure Mobile Apps のバインドを使用す�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/31/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: c5e1c02984f9773b263c0bee7685c7d5ff62e658
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: d2c0e4e233761584bad2df05a8e702e4fc77e84f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-mobile-apps-bindings"></a>Azure Functions における Mobile Apps のバインド
@@ -109,7 +110,7 @@ C# および F# の関数では、入力レコード (名前付き入力パラ�
 
 <a name="inputcsharp"></a>
 
-### <a name="input-sample-in-c"></a>C での入力サンプル# #
+### <a name="input-sample-in-c"></a>C# での入力サンプル #
 
 ```cs
 #r "Newtonsoft.Json"    
@@ -220,7 +221,7 @@ Mobile Apps テーブル エンドポイントにレコードを作成してキ�
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル #
 
 ```cs
 public static void Run(string myQueueItem, out object record)
@@ -255,10 +256,5 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

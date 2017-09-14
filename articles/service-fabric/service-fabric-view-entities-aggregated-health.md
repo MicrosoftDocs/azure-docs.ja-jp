@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/18/2017
 ms.author: oanapl
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a93c84435c1adab117961bceae0f7b49b2b2348a
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: ddc7d4faf50129911103d6ebb6a17c8ee76c8767
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
-Azure Service Fabric に正常性エンティティで構成される[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
+Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
 
-既定では、クラスターには、システム コンポーネントによって送信される正常性レポートが事前設定されます。 詳細については、「 [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)」を参照してください。
+クラスターには、システム コンポーネントから送信された正常性レポートが自動的に設定されます。 詳細については、「 [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)」を参照してください。
 
 Service Fabric には、エンティティの正常性の集計を取得する方法が複数用意されています。
 
@@ -32,13 +32,19 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 * 正常性クエリ (PowerShell、API、または REST を使用)
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、API、または REST を使用)
 
-これらのオプションについて、5 つのノードがあるローカル クラスターを使用して説明しましょう。 **fabric:/System** アプリケーション (最初から使用可) の横にいくつかのアプリケーションがデプロイされています。 それらのアプリケーションのうちの 1 つが **fabric:/WordCount**です。 このアプリケーションには、7 のレプリカで構成されたステートフル サービスが含まれています。 ノードは 5 つのみであるため、システム コンポーネントからパーティションがターゲット数より少ないという警告が表示されます。
+これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](http://aka.ms/servicefabric-wordcountapp)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
 
 ```xml
 <Service Name="WordCountService">
-    <StatefulService ServiceTypeName="WordCountServiceType" TargetReplicaSetSize="7" MinReplicaSetSize="2">
+<<<<<<< HEAD
+    <StatefulService ServiceTypeName="WordCountServiceType" TargetReplicaSetSize="7" MinReplicaSetSize="3">
       <UniformInt64Partition PartitionCount="1" LowKey="1" HighKey="26" />
     </StatefulService>
+=======
+  <StatefulService ServiceTypeName="WordCountServiceType" TargetReplicaSetSize="7" MinReplicaSetSize="2">
+    <UniformInt64Partition PartitionCount="[WordCountService_PartitionCount]" LowKey="1" HighKey="26" />
+  </StatefulService>
+>>>>>>> 5e84dbdd8e45a5d6b36f435a550b7433b873bf11
 </Service>
 ```
 
@@ -46,7 +52,7 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 Service Fabric Explorer では、クラスターを視覚的に確認できます。 以下の図では、次の情報を確認できます。
 
 * プロパティ **Availability** について **MyWatchdog** からエラー イベントが報告されているため、アプリケーション **fabric:/WordCount** が赤色 (エラー) になっています。
-* そのサービスの 1 つである **fabric:/WordCount/WordCountService** が黄色 (警告) になっています。 サービスは 7 つのレプリカで構成されていますが、ノードは 5 つのみであるため、すべてを配置することはできません。 ここでは確認できませんが、システム レポートが原因でサービス パーティションが黄色になっています。 黄色のパーティションは黄色のサービスをトリガーします。
+* そのサービスの 1 つである **fabric:/WordCount/WordCountService** が黄色 (警告) になっています。 サービスは 7 つのレプリカで構成され、クラスターには 5 つのノードがあるため、2 つのレプリカを配置できません。 ここでは確認できませんが、`System.FM` からのシステム レポートで `Partition is below target replica or instance count` と報告されているため、サービス パーティションは黄色になっています。 黄色のパーティションは黄色のサービスをトリガーします。
 * 赤色のアプリケーションが原因でクラスターが赤色になっています。
 
 評価にはクラスター マニフェストやアプリケーション マニフェストの既定のポリシーを使用します。 これらのポリシーは厳密なポリシーで、失敗は許容されません。
@@ -64,14 +70,14 @@ Service Fabric Explorer を使用したクラスターのビュー
 >
 
 ## <a name="health-queries"></a>正常性クエリ
-Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 API ( **FabricClient.HealthManager**にあるメソッド)、PowerShell コマンドレット、および REST を使用してアクセスできます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、エンティティが正常でない場合の異常評価、といったエンティティの正常性についての完全な情報を返します。
+Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 アクセスには、API ([FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上メソッドを使用)、PowerShell コマンドレット、および REST を使用できます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、異常評価 (エンティティが正常でない場合)、子の正常性統計情報 (該当する場合) といったエンティティの正常性についての完全な情報を返します。
 
 > [!NOTE]
-> 正常性エンティティは、正常性ストアにすべてが設定されると返されます。 エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。 階層チェーン上の親エンティティも、システム レポートを含む必要があります。 これらの条件が満たされていないと、正常性クエリでは例外が返され、エンティティが返されない理由が表示されます。
+> 正常性エンティティは、正常性ストアにすべてが設定されると返されます。 エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。 階層チェーン上の親エンティティも、システム レポートを含む必要があります。 これらの条件が満たされていないと、正常性クエリからは [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) と、エンティティが返されない理由を示す [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` が返されます。
 >
 >
 
-正常性クエリは、エンティティの識別子を渡す必要があります。エンティティの識別子はエンティティの型によって異なります。 正常性クエリには、オプションで正常性ポリシーのパラメーターを指定できます。 正常性ポリシーを指定しないと、クラスター マニフェストやアプリケーション マニフェストの[正常性ポリシー](service-fabric-health-introduction.md#health-policies)が評価に使用されます。 正常性クエリにはフィルターも適用できます。適用すると、指定したフィルターに該当する子やイベントのみが返されます。
+正常性クエリは、エンティティの識別子を渡す必要があります。エンティティの識別子はエンティティの型によって異なります。 正常性クエリには、オプションで正常性ポリシーのパラメーターを指定できます。 正常性ポリシーを指定しないと、クラスター マニフェストやアプリケーション マニフェストの[正常性ポリシー](service-fabric-health-introduction.md#health-policies)が評価に使用されます。 マニフェストに正常性ポリシーの定義が含まれていない場合、既定の正常性ポリシーが評価に使用されます。 既定の正常性ポリシーは、すべてのエラーを許容していません。 正常性クエリにはフィルターも適用できます。適用すると、指定したフィルターに該当する子やイベントのみが返されます。 他のフィルターを使用すると、子の統計情報を除外することができます。
 
 > [!NOTE]
 > 出力フィルターはサーバー側に適用されるため、応答されるメッセージのサイズが減少します。 フィルターをクライアント側に適用するよりも、返されたデータの数を制限するために出力フィルターを使用することをお勧めします。
@@ -83,7 +89,8 @@ Service Fabric では、サポート対象の各 [エンティティ型](service
 * エンティティの正常性状態の集計。 エンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。 [エンティティの正常性評価](service-fabric-health-introduction.md#health-evaluation)の詳細をご覧ください。  
 * エンティティの正常性イベント。
 * 子が存在するエンティティについては、すべての子の正常性状態のコレクション。 正常性状態にはエンティティの識別子と正常性状態の集計が含まれます。 子の完全な正常性を取得するには、子のエンティティ型に対して正常性クエリを呼び出し、子の識別子を渡します。
-* エンティティが正常でない場合は、エンティティの状態をトリガーしたレポートを示す異常性の評価。
+* エンティティが正常でない場合は、エンティティの状態をトリガーしたレポートを示す異常性の評価。 評価は再帰的です。現在の正常性状態をトリガーした子の正常性評価が含まれます。 たとえば、ウォッチドッグからは、レプリカに対するエラーが報告されます。 アプリケーションの正常性には、異常なサービスが原因の異常性の評価が示されます。このサービスは、エラー状態のパーティションがあるため異常です。レプリカは、ウォッチドッグ エラー正常性レポートがあるため異常です。
+* 子があるエンティティのすべての子の種類に関する正常性の統計情報。 たとえば、クラスターの正常性には、クラスター内のアプリケーション、サービス、パーティション、レプリカ、デプロイされているエンティティの合計数が表示されます。 サービス正常性には、指定したサービスのパーティションとレプリカの合計数が表示されます。
 
 ## <a name="get-cluster-health"></a>クラスターの正常性の取得
 クラスター エンティティの正常性を返し、アプリケーションとノード (クラスターの子) の正常性状態が含まれます。 次の内容を入力します。
@@ -91,6 +98,8 @@ Service Fabric では、サポート対象の各 [エンティティ型](service
 * [省略可能] ノードとクラスターのイベントを評価するために使用されるクラスターの正常性ポリシー。
 * [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定する、イベント、ノード、およびアプリケーションのフィルター。 すべてのイベント、ノード、およびアプリケーションは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
+* [省略可能] 正常性の統計情報を除外するフィルター。
+* [省略可能] 正常性の統計情報に fabric:/System 正常性の統計情報を含めるフィルター。 正常性の統計情報が除外されていない場合にのみ適用されます。 既定で、正常性の統計情報には、システム アプリケーションではなく、ユーザー アプリケーションの統計情報のみが含まれています。
 
 ### <a name="api"></a>API
 クラスターの正常性を取得するには、 `FabricClient` を作成し、 [HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) で **GetClusterHealthAsync**メソッドを呼び出します。
@@ -101,7 +110,7 @@ Service Fabric では、サポート対象の各 [エンティティ型](service
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-次のコードは、カスタム クラスターの正常性ポリシーとノードおよびアプリケーションのフィルターを使用して、クラスターの正常性を取得します。 入力情報が含まれる [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription)が作成されます。
+次のコードは、カスタム クラスターの正常性ポリシーとノードおよびアプリケーションのフィルターを使用して、クラスターの正常性を取得します。 正常性の統計情報に fabric:/System 統計情報を含めることを指定します。 入力情報が含まれる [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription)が作成されます。
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -116,11 +125,17 @@ var applicationsFilter = new ApplicationHealthStatesFilter()
 {
     HealthStateFilterValue = HealthStateFilter.Error
 };
+var healthStatisticsFilter = new ClusterHealthStatisticsFilter()
+{
+    ExcludeHealthStatistics = false,
+    IncludeSystemApplicationHealthStatistics = true
+};
 var queryDescription = new ClusterHealthQueryDescription()
 {
     HealthPolicy = policy,
     ApplicationsFilter = applicationsFilter,
     NodesFilter = nodesFilter,
+    HealthStatisticsFilter = healthStatisticsFilter
 };
 
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync(queryDescription);
@@ -134,82 +149,94 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 次のコマンドレットは、既定の正常性ポリシーを使用してクラスターの正常性を取得します。 fabric:/WordCount アプリケーションが警告になっているため、正常性状態の集計は警告になります。 異常性の評価には、正常性の集計をトリガーした条件の詳細が表示されます。
 
 ```xml
-PS C:\> Get-ServiceFabricClusterHealth
+PS D:\ServiceFabric> Get-ServiceFabricClusterHealth
+
 
 AggregatedHealthState   : Warning
-UnhealthyEvaluations    :
+UnhealthyEvaluations    : 
                           Unhealthy applications: 100% (1/1), MaxPercentUnhealthyApplications=0%.
-
+                          
                           Unhealthy application: ApplicationName='fabric:/WordCount', AggregatedHealthState='Warning'.
-
-                              Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
-
-                              Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Warning'.
-
-                                  Unhealthy event: SourceId='System.PLB',
-                          Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
-                          ConsiderWarningAsError=false.
-
-
-NodeHealthStates        :
-                          NodeName              : _Node_2
-                          AggregatedHealthState : Ok
-
-                          NodeName              : _Node_0
-                          AggregatedHealthState : Ok
-
-                          NodeName              : _Node_1
-                          AggregatedHealthState : Ok
-
-                          NodeName              : _Node_3
-                          AggregatedHealthState : Ok
-
+                          
+                            Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
+                          
+                            Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Warning'.
+                          
+                                Unhealthy partitions: 100% (1/1), MaxPercentUnhealthyPartitionsPerService=0%.
+                          
+                                Unhealthy partition: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', AggregatedHealthState='Warning'.
+                          
+                                    Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=false.
+                          
+                          
+NodeHealthStates        : 
                           NodeName              : _Node_4
                           AggregatedHealthState : Ok
-
-ApplicationHealthStates :
+                          
+                          NodeName              : _Node_3
+                          AggregatedHealthState : Ok
+                          
+                          NodeName              : _Node_2
+                          AggregatedHealthState : Ok
+                          
+                          NodeName              : _Node_1
+                          AggregatedHealthState : Ok
+                          
+                          NodeName              : _Node_0
+                          AggregatedHealthState : Ok
+                          
+ApplicationHealthStates : 
                           ApplicationName       : fabric:/System
                           AggregatedHealthState : Ok
-
+                          
                           ApplicationName       : fabric:/WordCount
                           AggregatedHealthState : Warning
-
+                          
 HealthEvents            : None
+HealthStatistics        : 
+                          Node                  : 5 Ok, 0 Warning, 0 Error
+                          Replica               : 6 Ok, 0 Warning, 0 Error
+                          Partition             : 1 Ok, 1 Warning, 0 Error
+                          Service               : 1 Ok, 1 Warning, 0 Error
+                          DeployedServicePackage : 6 Ok, 0 Warning, 0 Error
+                          DeployedApplication   : 5 Ok, 0 Warning, 0 Error
+                          Application           : 0 Ok, 1 Warning, 0 Error
 ```
 
 次の PowerShell コマンドレットは、カスタム アプリケーション ポリシーを使用してクラスターの正常性を取得します。 結果はフィルター処理され、エラーまたは警告状態のアプリケーションとノードのみを取得します。 すべて正常であったため、結果としてノードは返されません。 アプリケーションのフィルターが考慮されるのは fabric:/WordCount に対してのみです。 カスタム ポリシーでは fabric:/WordCount アプリケーションに対する警告をエラーと認識するため、アプリケーションとクラスターはエラーとして評価されます。
 
 ```powershell
-PS c:\> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
+PS D:\ServiceFabric> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
 $appHealthPolicy.ConsiderWarningAsError = $true
 $appHealthPolicyMap = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicyMap
 $appUri1 = New-Object -TypeName System.Uri -ArgumentList "fabric:/WordCount"
 $appHealthPolicyMap.Add($appUri1, $appHealthPolicy)
-Get-ServiceFabricClusterHealth -ApplicationHealthPolicyMap $appHealthPolicyMap -ApplicationsFilter "Warning,Error" -NodesFilter "Warning,Error"
+Get-ServiceFabricClusterHealth -ApplicationHealthPolicyMap $appHealthPolicyMap -ApplicationsFilter "Warning,Error" -NodesFilter "Warning,Error" -ExcludeHealthStatistics
 
 
 AggregatedHealthState   : Error
-UnhealthyEvaluations    :
+UnhealthyEvaluations    : 
                           Unhealthy applications: 100% (1/1), MaxPercentUnhealthyApplications=0%.
-
+                          
                           Unhealthy application: ApplicationName='fabric:/WordCount', AggregatedHealthState='Error'.
-
-                              Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
-
-                              Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Error'.
-
-                                  Unhealthy event: SourceId='System.PLB',
-                          Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
-                          ConsiderWarningAsError=true.
-
-
+                          
+                            Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
+                          
+                            Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Error'.
+                          
+                                Unhealthy partitions: 100% (1/1), MaxPercentUnhealthyPartitionsPerService=0%.
+                          
+                                Unhealthy partition: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', AggregatedHealthState='Error'.
+                          
+                                    Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=true.
+                          
+                          
 NodeHealthStates        : None
-ApplicationHealthStates :
+ApplicationHealthStates : 
                           ApplicationName       : fabric:/WordCount
                           AggregatedHealthState : Error
-
+                          
 HealthEvents            : None
-
 ```
 
 ### <a name="rest"></a>REST ()
@@ -248,37 +275,37 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 次のコマンドレットは、既定の正常性ポリシーを使用してノードの正常性を取得します。
 
 ```powershell
-PS C:\> Get-ServiceFabricNodeHealth _Node_1
+PS D:\ServiceFabric> Get-ServiceFabricNodeHealth _Node_1
 
 
 NodeName              : _Node_1
 AggregatedHealthState : Ok
-HealthEvents          :
+HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
                         HealthState           : Ok
-                        SequenceNumber        : 6
-                        SentAt                : 3/22/2016 7:47:56 PM
-                        ReceivedAt            : 3/22/2016 7:48:19 PM
+                        SequenceNumber        : 3
+                        SentAt                : 7/13/2017 4:39:23 PM
+                        ReceivedAt            : 7/13/2017 4:40:47 PM
                         TTL                   : Infinite
                         Description           : Fabric node is up.
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : Error->Ok = 3/22/2016 7:48:19 PM, LastWarning = 1/1/0001 12:00:00 AM
+                        Transitions           : Error->Ok = 7/13/2017 4:40:47 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 次のコマンドレットは、クラスター内のすべてのノードの正常性を取得します。
 
 ```powershell
-PS C:\> Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
+PS D:\ServiceFabric> Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
 
 NodeName AggregatedHealthState
 -------- ---------------------
-_Node_2                     Ok
-_Node_0                     Ok
-_Node_1                     Ok
-_Node_3                     Ok
 _Node_4                     Ok
+_Node_3                     Ok
+_Node_2                     Ok
+_Node_1                     Ok
+_Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST ()
@@ -290,6 +317,7 @@ _Node_4                     Ok
 * [必須] アプリケーションを識別するアプリケーション名 (URI)。
 * [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定する、イベント、サービス、およびデプロイされたアプリケーションのフィルター。 すべてのイベント、サービス、およびデプロイされたアプリケーションは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
+* [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、アプリケーションのすべての子 (サービス、パーティション、レプリカ、デプロイされたアプリケーション、デプロイされたサービス パッケージ) に関する ok、警告、エラーの数が含まれます。
 
 ### <a name="api"></a>API
 アプリケーションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) メソッドを呼び出します。
@@ -334,95 +362,94 @@ ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplic
 次のコマンドレットは、 **fabric:/WordCount** アプリケーションの正常性を返します。
 
 ```powershell
-PS c:\>
-PS C:\WINDOWS\system32>  Get-ServiceFabricApplicationHealth fabric:/WordCount
+PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount
 
 
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Warning
-UnhealthyEvaluations            :
+UnhealthyEvaluations            : 
                                   Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
-
+                                  
                                   Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Warning'.
-
-                                      Unhealthy event: SourceId='System.PLB',
-                                  Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
-                                  ConsiderWarningAsError=false.
-
-ServiceHealthStates             :
-                                  ServiceName           : fabric:/WordCount/WordCountService
-                                  AggregatedHealthState : Warning
-
+                                  
+                                    Unhealthy partitions: 100% (1/1), MaxPercentUnhealthyPartitionsPerService=0%.
+                                  
+                                    Unhealthy partition: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', AggregatedHealthState='Warning'.
+                                  
+                                        Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=false.
+                                  
+ServiceHealthStates             : 
                                   ServiceName           : fabric:/WordCount/WordCountWebService
                                   AggregatedHealthState : Ok
-
-DeployedApplicationHealthStates :
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_0
-                                  AggregatedHealthState : Ok
-
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_2
-                                  AggregatedHealthState : Ok
-
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_3
-                                  AggregatedHealthState : Ok
-
+                                  
+                                  ServiceName           : fabric:/WordCount/WordCountService
+                                  AggregatedHealthState : Warning
+                                  
+DeployedApplicationHealthStates : 
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_4
                                   AggregatedHealthState : Ok
-
+                                  
+                                  ApplicationName       : fabric:/WordCount
+                                  NodeName              : _Node_3
+                                  AggregatedHealthState : Ok
+                                  
+                                  ApplicationName       : fabric:/WordCount
+                                  NodeName              : _Node_0
+                                  AggregatedHealthState : Ok
+                                  
+                                  ApplicationName       : fabric:/WordCount
+                                  NodeName              : _Node_2
+                                  AggregatedHealthState : Ok
+                                  
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_1
                                   AggregatedHealthState : Ok
-
-HealthEvents                    :
+                                  
+HealthEvents                    : 
                                   SourceId              : System.CM
                                   Property              : State
                                   HealthState           : Ok
-                                  SequenceNumber        : 360
-                                  SentAt                : 3/22/2016 7:56:53 PM
-                                  ReceivedAt            : 3/22/2016 7:56:53 PM
+                                  SequenceNumber        : 282
+                                  SentAt                : 7/13/2017 5:57:05 PM
+                                  ReceivedAt            : 7/13/2017 5:57:05 PM
                                   TTL                   : Infinite
                                   Description           : Application has been created.
                                   RemoveWhenExpired     : False
                                   IsExpired             : False
-                                  Transitions           : Error->Ok = 3/22/2016 7:56:53 PM, LastWarning = 1/1/0001 12:00:00 AM
-
-                                  SourceId              : MyWatchdog
-                                  Property              : Availability
-                                  HealthState           : Ok
-                                  SequenceNumber        : 131031545225930951
-                                  SentAt                : 3/22/2016 9:08:42 PM
-                                  ReceivedAt            : 3/22/2016 9:08:42 PM
-                                  TTL                   : Infinite
-                                  Description           : Availability checked successfully, latency ok
-                                  RemoveWhenExpired     : False
-                                  IsExpired             : False
-                                  Transitions           : Error->Ok = 3/22/2016 8:55:39 PM, LastWarning = 1/1/0001 12:00:00 AM
+                                  Transitions           : Error->Ok = 7/13/2017 5:57:05 PM, LastWarning = 1/1/0001 12:00:00 AM
+                                  
+HealthStatistics                : 
+                                  Replica               : 6 Ok, 0 Warning, 0 Error
+                                  Partition             : 1 Ok, 1 Warning, 0 Error
+                                  Service               : 1 Ok, 1 Warning, 0 Error
+                                  DeployedServicePackage : 6 Ok, 0 Warning, 0 Error
+                                  DeployedApplication   : 5 Ok, 0 Warning, 0 Error
 ```
 
 次の PowerShell コマンドレットは、カスタム ポリシーを渡します。 また、子とイベントをフィルター処理します。
 
 ```powershell
-PS C:\> Get-ServiceFabricApplicationHealth -ApplicationName fabric:/WordCount -ConsiderWarningAsError $true -ServicesFilter Error -EventsFilter Error -DeployedApplicationsFilter Error
+PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth -ApplicationName fabric:/WordCount -ConsiderWarningAsError $true -ServicesFilter Error -EventsFilter Error -DeployedApplicationsFilter Error -ExcludeHealthStatistics
+
 
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Error
-UnhealthyEvaluations            :
+UnhealthyEvaluations            : 
                                   Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
-
+                                  
                                   Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Error'.
-
-                                      Unhealthy event: SourceId='System.PLB',
-                                  Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
-                                  ConsiderWarningAsError=true.
-
-ServiceHealthStates             :
+                                  
+                                    Unhealthy partitions: 100% (1/1), MaxPercentUnhealthyPartitionsPerService=0%.
+                                  
+                                    Unhealthy partition: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', AggregatedHealthState='Error'.
+                                  
+                                        Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=true.
+                                  
+ServiceHealthStates             : 
                                   ServiceName           : fabric:/WordCount/WordCountService
                                   AggregatedHealthState : Error
-
+                                  
 DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
@@ -436,6 +463,7 @@ HealthEvents                    : None
 * [必須] サービスを識別するサービス名 (URI)
 * [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントおよびパーティションのフィルター。 すべてのイベントおよびパーティションは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
+* [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、サービスのすべてのパーティションとレプリカに関する ok、警告、およびエラーの数が表示されます。
 
 ### <a name="api"></a>API
 API を使用してサービスの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) メソッドを呼び出します。
@@ -464,69 +492,38 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 次のコマンドレットは、既定の正常性ポリシーを使用してサービスの正常性を取得します。
 
 ```powershell
-PS C:\> Get-ServiceFabricServiceHealth -ServiceName fabric:/WordCount/WordCountService
+PS D:\ServiceFabric> Get-ServiceFabricServiceHealth -ServiceName fabric:/WordCount/WordCountService
 
 
 ServiceName           : fabric:/WordCount/WordCountService
 AggregatedHealthState : Warning
-UnhealthyEvaluations  :
-                        Unhealthy event: SourceId='System.PLB',
-                        Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
-                        ConsiderWarningAsError=false.
-
-PartitionHealthStates :
-                        PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
+UnhealthyEvaluations  : 
+                        Unhealthy partitions: 100% (1/1), MaxPercentUnhealthyPartitionsPerService=0%.
+                        
+                        Unhealthy partition: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', AggregatedHealthState='Warning'.
+                        
+                            Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=false.
+                        
+PartitionHealthStates : 
+                        PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
                         AggregatedHealthState : Warning
-
-HealthEvents          :
+                        
+HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
                         HealthState           : Ok
-                        SequenceNumber        : 10
-                        SentAt                : 3/22/2016 7:56:53 PM
-                        ReceivedAt            : 3/22/2016 7:57:18 PM
+                        SequenceNumber        : 15
+                        SentAt                : 7/13/2017 5:57:05 PM
+                        ReceivedAt            : 7/13/2017 5:57:18 PM
                         TTL                   : Infinite
                         Description           : Service has been created.
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : Error->Ok = 3/22/2016 7:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
-
-                        SourceId              : System.PLB
-                        Property              : ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b
-                        HealthState           : Warning
-                        SequenceNumber        : 131031547693687021
-                        SentAt                : 3/22/2016 9:12:49 PM
-                        ReceivedAt            : 3/22/2016 9:12:49 PM
-                        TTL                   : 00:01:05
-                        Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
-                        fabric:/WordCount/WordCountService Secondary Partition a1f83a35-d6bf-4d39-b90d-28d15f39599b could not be placed, possibly,
-                        due to the following constraints and properties:  
-                        Placement Constraint: N/A
-                        Depended Service: N/A
-
-                        Constraint Elimination Sequence:
-                        ReplicaExclusionStatic eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
-                        ReplicaExclusionDynamic eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
-
-                        Nodes Eliminated By Constraints:
-
-                        ReplicaExclusionStatic:
-                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status:
-                        None/None
-                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status:
-                        None/None
-                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status:
-                        None/None
-                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status:
-                        None/None
-
-                        ReplicaExclusionDynamic:
-                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status:
-                        None/None
-
-
-                        RemoveWhenExpired     : True
-                        IsExpired             : False
+                        Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
+                        
+HealthStatistics      : 
+                        Replica               : 5 Ok, 0 Warning, 0 Error
+                        Partition             : 0 Ok, 1 Warning, 0 Error
 ```
 
 ### <a name="rest"></a>REST ()
@@ -538,6 +535,7 @@ HealthEvents          :
 * [必須] パーティションを識別するパーティション ID (GUID)。
 * [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントおよびレプリカのフィルター。 すべてのイベントおよびレプリカは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
+* [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、ok 状態、警告状態、およびエラー状態のレプリカ数が表示されます。
 
 ### <a name="api"></a>API
 API を使用してパーティションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription)を作成します。
@@ -549,45 +547,75 @@ PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionH
 ### <a name="powershell"></a>PowerShell
 パーティションの正常性を取得するコマンドレットは [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 
-次のコマンドレットは、 **fabric:/WordCount/WordCountService** サービスの全パーティションの正常性を取得します。
+次のコマンドレットは、**fabric:/WordCount/WordCountService** サービスの全パーティションの正常性を取得し、レプリカの正常性状態をフィルター処理します。
 
 ```powershell
-PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth
+PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None
 
-
-PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
+PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
 AggregatedHealthState : Warning
-UnhealthyEvaluations  :
+UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=false.
-
-ReplicaHealthStates   :
-                        ReplicaId             : 131031502143040223
-                        AggregatedHealthState : Ok
-
-                        ReplicaId             : 131031502346844060
-                        AggregatedHealthState : Ok
-
-                        ReplicaId             : 131031502346844059
-                        AggregatedHealthState : Ok
-
-                        ReplicaId             : 131031502346844061
-                        AggregatedHealthState : Ok
-
-                        ReplicaId             : 131031502346844058
-                        AggregatedHealthState : Ok
-
-HealthEvents          :
+                        
+ReplicaHealthStates   : None
+HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
                         HealthState           : Warning
-                        SequenceNumber        : 76
-                        SentAt                : 3/22/2016 7:57:26 PM
-                        ReceivedAt            : 3/22/2016 7:57:48 PM
+                        SequenceNumber        : 72
+                        SentAt                : 7/13/2017 5:57:29 PM
+                        ReceivedAt            : 7/13/2017 5:57:48 PM
                         TTL                   : Infinite
                         Description           : Partition is below target replica or instance count.
+                        fabric:/WordCount/WordCountService 7 2 af2e3e44-a8f8-45ac-9f31-4093eb897600
+                          N/P RD _Node_2 Up 131444422260002646
+                          N/S RD _Node_4 Up 131444422293113678
+                          N/S RD _Node_3 Up 131444422293113679
+                          N/S RD _Node_1 Up 131444422293118720
+                          N/S RD _Node_0 Up 131444422293118721
+                          (Showing 5 out of 5 replicas. Total available replicas: 5.)
+                        
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : Error->Warning = 3/22/2016 7:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
+                        Transitions           : Ok->Warning = 7/13/2017 5:57:48 PM, LastError = 1/1/0001 12:00:00 AM
+                        
+                        SourceId              : System.PLB
+                        Property              : ServiceReplicaUnplacedHealth_Secondary_af2e3e44-a8f8-45ac-9f31-4093eb897600
+                        HealthState           : Warning
+                        SequenceNumber        : 131444445174851664
+                        SentAt                : 7/13/2017 6:35:17 PM
+                        ReceivedAt            : 7/13/2017 6:35:18 PM
+                        TTL                   : 00:01:05
+                        Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
+                        Secondary replica could not be placed due to the following constraints and properties:  
+                        TargetReplicaSetSize: 7
+                        Placement Constraint: N/A
+                        Parent Service: N/A
+                        
+                        Constraint Elimination Sequence:
+                        Existing Secondary Replicas eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
+                        Existing Primary Replica eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
+                        
+                        Nodes Eliminated By Constraints:
+                        
+                        Existing Secondary Replicas -- Nodes with Partition's Existing Secondary Replicas/Instances:
+                        --
+                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status: None/None
+                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status: None/None
+                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status: None/None
+                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status: None/None
+                        
+                        Existing Primary Replica -- Nodes with Partition's Existing Primary Replica or Secondary Replicas:
+                        --
+                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status: None/None
+                        
+                        
+                        RemoveWhenExpired     : True
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 7/13/2017 5:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
+                        
+HealthStatistics      : 
+                        Replica               : 5 Ok, 0 Warning, 0 Error
 ```
 
 ### <a name="rest"></a>REST ()
@@ -613,24 +641,24 @@ ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthA
 次のコマンドレットは、サービスのすべてのパーティションのプライマリ レプリカの正常性を取得します。
 
 ```powershell
-PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
+PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
 
 
-PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
-ReplicaId             : 131031502143040223
+PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
+ReplicaId             : 131444422260002646
 AggregatedHealthState : Ok
-HealthEvents          :
+HealthEvents          : 
                         SourceId              : System.RA
                         Property              : State
                         HealthState           : Ok
-                        SequenceNumber        : 131031502145556748
-                        SentAt                : 3/22/2016 7:56:54 PM
-                        ReceivedAt            : 3/22/2016 7:57:12 PM
+                        SequenceNumber        : 131444422263668344
+                        SentAt                : 7/13/2017 5:57:06 PM
+                        ReceivedAt            : 7/13/2017 5:57:18 PM
                         TTL                   : Infinite
-                        Description           : Replica has been created.
+                        Description           : Replica has been created._Node_2
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
+                        Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ### <a name="rest"></a>REST ()
@@ -642,6 +670,7 @@ HealthEvents          :
 * [必須] デプロイされたアプリケーションを識別するアプリケーション名 (URI) とノード名 (文字列)。
 * [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定する、イベントおよびデプロイされたサービス パッケージのフィルター。 すべてのイベントおよびデプロイされたサービス パッケージは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
+* [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、ok、警告、およびエラーの正常性状態のデプロイ済みサービス パッケージ数が表示されます。
 
 ### <a name="api"></a>API
 API を使用してノードにデプロイされたアプリケーションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)を使用します。
@@ -657,33 +686,38 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
 
 ```powershell
-PS C:\> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_2
+PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
 
 
 ApplicationName                    : fabric:/WordCount
-NodeName                           : _Node_2
+NodeName                           : _Node_0
 AggregatedHealthState              : Ok
-DeployedServicePackageHealthStates :
+DeployedServicePackageHealthStates : 
                                      ServiceManifestName   : WordCountServicePkg
-                                     NodeName              : _Node_2
+                                     ServicePackageActivationId : 
+                                     NodeName              : _Node_0
                                      AggregatedHealthState : Ok
-
+                                     
                                      ServiceManifestName   : WordCountWebServicePkg
-                                     NodeName              : _Node_2
+                                     ServicePackageActivationId : 
+                                     NodeName              : _Node_0
                                      AggregatedHealthState : Ok
-
-HealthEvents                       :
+                                     
+HealthEvents                       : 
                                      SourceId              : System.Hosting
                                      Property              : Activation
                                      HealthState           : Ok
-                                     SequenceNumber        : 131031502143710698
-                                     SentAt                : 3/22/2016 7:56:54 PM
-                                     ReceivedAt            : 3/22/2016 7:57:12 PM
+                                     SequenceNumber        : 131444422261848308
+                                     SentAt                : 7/13/2017 5:57:06 PM
+                                     ReceivedAt            : 7/13/2017 5:57:17 PM
                                      TTL                   : Infinite
                                      Description           : The application was activated successfully.
                                      RemoveWhenExpired     : False
                                      IsExpired             : False
-                                     Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
+                                     Transitions           : Error->Ok = 7/13/2017 5:57:17 PM, LastWarning = 1/1/0001 12:00:00 AM
+                                     
+HealthStatistics                   : 
+                                     DeployedServicePackage : 2 Ok, 0 Warning, 0 Error
 ```
 
 ### <a name="rest"></a>REST ()
@@ -710,56 +744,57 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。 エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
 
 ```powershell
-PS C:\> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
+PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
 
 
-ApplicationName       : fabric:/WordCount
-ServiceManifestName   : WordCountServicePkg
-NodeName              : _Node_2
-AggregatedHealthState : Ok
-HealthEvents          :
-                        SourceId              : System.Hosting
-                        Property              : Activation
-                        HealthState           : Ok
-                        SequenceNumber        : 131031502301306211
-                        SentAt                : 3/22/2016 7:57:10 PM
-                        ReceivedAt            : 3/22/2016 7:57:12 PM
-                        TTL                   : Infinite
-                        Description           : The ServicePackage was activated successfully.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
-
-                        SourceId              : System.Hosting
-                        Property              : CodePackageActivation:Code:EntryPoint
-                        HealthState           : Ok
-                        SequenceNumber        : 131031502301568982
-                        SentAt                : 3/22/2016 7:57:10 PM
-                        ReceivedAt            : 3/22/2016 7:57:12 PM
-                        TTL                   : Infinite
-                        Description           : The CodePackage was activated successfully.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
-
-                        SourceId              : System.Hosting
-                        Property              : ServiceTypeRegistration:WordCountServiceType
-                        HealthState           : Ok
-                        SequenceNumber        : 131031502314788519
-                        SentAt                : 3/22/2016 7:57:11 PM
-                        ReceivedAt            : 3/22/2016 7:57:12 PM
-                        TTL                   : Infinite
-                        Description           : The ServiceType was registered successfully.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
+ApplicationName            : fabric:/WordCount
+ServiceManifestName        : WordCountServicePkg
+ServicePackageActivationId : 
+NodeName                   : _Node_2
+AggregatedHealthState      : Ok
+HealthEvents               : 
+                             SourceId              : System.Hosting
+                             Property              : Activation
+                             HealthState           : Ok
+                             SequenceNumber        : 131444422267693359
+                             SentAt                : 7/13/2017 5:57:06 PM
+                             ReceivedAt            : 7/13/2017 5:57:18 PM
+                             TTL                   : Infinite
+                             Description           : The ServicePackage was activated successfully.
+                             RemoveWhenExpired     : False
+                             IsExpired             : False
+                             Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
+                             
+                             SourceId              : System.Hosting
+                             Property              : CodePackageActivation:Code:EntryPoint
+                             HealthState           : Ok
+                             SequenceNumber        : 131444422267903345
+                             SentAt                : 7/13/2017 5:57:06 PM
+                             ReceivedAt            : 7/13/2017 5:57:18 PM
+                             TTL                   : Infinite
+                             Description           : The CodePackage was activated successfully.
+                             RemoveWhenExpired     : False
+                             IsExpired             : False
+                             Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
+                             
+                             SourceId              : System.Hosting
+                             Property              : ServiceTypeRegistration:WordCountServiceType
+                             HealthState           : Ok
+                             SequenceNumber        : 131444422272458374
+                             SentAt                : 7/13/2017 5:57:07 PM
+                             ReceivedAt            : 7/13/2017 5:57:18 PM
+                             TTL                   : Infinite
+                             Description           : The ServiceType was registered successfully.
+                             RemoveWhenExpired     : False
+                             IsExpired             : False
+                             Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ### <a name="rest"></a>REST ()
 デプロイされたサービス パッケージの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="health-chunk-queries"></a>正常性チャンク クエリ
-正常性チャンク クエリは、入力フィルターごとにクラスターの複数レベルの子を (再帰的に) 返すことができます。 このクエリでサポートされている高度なフィルターでは、一意の識別子または他のグループ識別子や正常性状態で識別して、どの子を返すかを柔軟に記述できます。 最初のレベルの子が常に含まれている正常性コマンドとは異なり、既定ではどの子も含まれていません。
+正常性チャンク クエリは、入力フィルターごとにクラスターの複数レベルの子を (再帰的に) 返すことができます。 返される子をとても柔軟に選択することができる高度なフィルターをサポートしています。 フィルターでは、一意の識別子、他のグループの収集、正常性状態を使用して子を指定できます。 最初のレベルの子が常に含まれている正常性コマンドとは異なり、既定ではどの子も含まれていません。
 
 [正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)は、要求されたフィルターごとに、指定されたエンティティの最初のレベルの子のみを返します。 子の子を取得するには、対象のエンティティごとに追加の正常性 API を呼び出す必要があります。 同様に、特定のエンティティの正常性を取得するには、目的の各エンティティごとに正常性 API を呼び出す必要があります。 チャンク クエリの高度なフィルターを使用することで、対象とする複数の項目を 1 つのクエリで要求できます。これにより、メッセージ サイズとメッセージ数を最小限に抑えられます。
 
@@ -769,7 +804,7 @@ HealthEvents          :
 * 名前で指定された 4 つのアプリケーションの正常性のみを返す。
 * 目的のアプリケーションの種類に属するアプリケーションの正常性のみを返す。
 * ノードにデプロイされたすべてのエンティティを返す。 すべてのアプリケーション、指定のノードにデプロイされたすべてのアプリケーション、そのノードにデプロイされたすべてのサービス パッケージが返されます。
-* エラーがあるすべてのレプリカを返す。 すべてのアプリケーション、サービス、パーティションのほか、エラーのあるレプリカが返されます。
+* エラー状態のすべてのレプリカを返す。 すべてのアプリケーション、サービス、パーティションのほか、エラー状態のレプリカが返されます。
 * すべてのアプリケーションを返す。 指定したサービスについて、すべてのパーティションを含める。
 
 現時点では、正常性チャンク クエリはクラスター エンティティについてのみ公開されています。 このクエリが返すクラスターの正常性チャンクには、次のものが含まれます。
@@ -842,7 +877,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 次のコードは、常に返される特定のノードを除き、状態がエラーのノードのみを取得します。
 
 ```xml
-PS C:\> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
+PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
 $allFilter = [System.Fabric.Health.HealthStateFilter]::All;
 
 $nodeFilter1 = New-Object System.Fabric.Health.NodeHealthStateFilter -Property @{HealthStateFilter=$errorFilter}
@@ -854,20 +889,21 @@ $nodeFilters.Add($nodeFilter2)
 
 Get-ServiceFabricClusterHealthChunk -NodeFilters $nodeFilters
 
-HealthState                  : Error
-NodeHealthStateChunks        :
-                               TotalCount            : 1
 
+HealthState                  : Warning
+NodeHealthStateChunks        : 
+                               TotalCount            : 1
+                               
                                NodeName              : _Node_1
                                HealthState           : Ok
-
+                               
 ApplicationHealthStateChunks : None
 ```
 
 次のコマンドレットは、アプリケーションのフィルターを使用してクラスターのチャンクを取得します。
 
 ```xml
-$errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
+PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
 $allFilter = [System.Fabric.Health.HealthStateFilter]::All;
 
 # All replicas
@@ -892,47 +928,48 @@ $appFilters.Add($appFilter)
 
 Get-ServiceFabricClusterHealthChunk -ApplicationFilters $appFilters
 
+
 HealthState                  : Error
 NodeHealthStateChunks        : None
-ApplicationHealthStateChunks :
+ApplicationHealthStateChunks : 
                                TotalCount            : 1
-
+                               
                                ApplicationName       : fabric:/WordCount
                                ApplicationTypeName   : WordCount
                                HealthState           : Error
-                               ServiceHealthStateChunks :
-                                   TotalCount            : 1
-
-                                   ServiceName           : fabric:/WordCount/WordCountService
-                                   HealthState           : Error
-                                   PartitionHealthStateChunks :
-                                       TotalCount            : 1
-
-                                       PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
-                                       HealthState           : Error
-                                       ReplicaHealthStateChunks :
-                                           TotalCount            : 5
-
-                                           ReplicaOrInstanceId   : 131031502143040223
-                                           HealthState           : Ok
-
-                                           ReplicaOrInstanceId   : 131031502346844060
-                                           HealthState           : Ok
-
-                                           ReplicaOrInstanceId   : 131031502346844059
-                                           HealthState           : Ok
-
-                                           ReplicaOrInstanceId   : 131031502346844061
-                                           HealthState           : Ok
-
-                                           ReplicaOrInstanceId   : 131031502346844058
-                                           HealthState           : Error
+                               ServiceHealthStateChunks : 
+                                TotalCount            : 1
+                               
+                                ServiceName           : fabric:/WordCount/WordCountService
+                                HealthState           : Error
+                                PartitionHealthStateChunks : 
+                                    TotalCount            : 1
+                               
+                                    PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
+                                    HealthState           : Error
+                                    ReplicaHealthStateChunks : 
+                                        TotalCount            : 5
+                               
+                                        ReplicaOrInstanceId   : 131444422293118720
+                                        HealthState           : Ok
+                               
+                                        ReplicaOrInstanceId   : 131444422293118721
+                                        HealthState           : Ok
+                               
+                                        ReplicaOrInstanceId   : 131444422293113678
+                                        HealthState           : Ok
+                               
+                                        ReplicaOrInstanceId   : 131444422293113679
+                                        HealthState           : Ok
+                               
+                                        ReplicaOrInstanceId   : 131444422260002646
+                                        HealthState           : Error
 ```
 
 次のコマンドレットは、ノードにデプロイされたすべてのエンティティを返します。
 
 ```xml
-$errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
+PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
 $allFilter = [System.Fabric.Health.HealthStateFilter]::All;
 
 $dspFilter = New-Object System.Fabric.Health.DeployedServicePackageHealthStateFilter -Property @{HealthStateFilter=$allFilter}
@@ -949,40 +986,39 @@ Get-ServiceFabricClusterHealthChunk -ApplicationFilters $appFilters
 
 HealthState                  : Error
 NodeHealthStateChunks        : None
-ApplicationHealthStateChunks :
+ApplicationHealthStateChunks : 
                                TotalCount            : 2
-
+                               
                                ApplicationName       : fabric:/System
                                HealthState           : Ok
-                               DeployedApplicationHealthStateChunks :
-                                   TotalCount            : 1
-
-                                   NodeName              : _Node_2
-                                   HealthState           : Ok
-                                   DeployedServicePackageHealthStateChunks :
-                                       TotalCount            : 1
-
-                                       ServiceManifestName   : FAS
-                                       HealthState           : Ok
-
-
-
+                               DeployedApplicationHealthStateChunks : 
+                                TotalCount            : 1
+                               
+                                NodeName              : _Node_2
+                                HealthState           : Ok
+                                DeployedServicePackageHealthStateChunks :
+                                    TotalCount            : 1
+                               
+                                    ServiceManifestName   : FAS
+                                    ServicePackageActivationId : 
+                                    HealthState           : Ok
+                               
+                               
+                               
                                ApplicationName       : fabric:/WordCount
                                ApplicationTypeName   : WordCount
                                HealthState           : Error
-                               DeployedApplicationHealthStateChunks :
-                                   TotalCount            : 1
-
-                                   NodeName              : _Node_2
-                                   HealthState           : Ok
-                                   DeployedServicePackageHealthStateChunks :
-                                       TotalCount            : 2
-
-                                       ServiceManifestName   : WordCountServicePkg
-                                       HealthState           : Ok
-
-                                       ServiceManifestName   : WordCountWebServicePkg
-                                       HealthState           : Ok
+                               DeployedApplicationHealthStateChunks : 
+                                TotalCount            : 1
+                               
+                                NodeName              : _Node_2
+                                HealthState           : Ok
+                                DeployedServicePackageHealthStateChunks :
+                                    TotalCount            : 1
+                               
+                                    ServiceManifestName   : WordCountServicePkg
+                                    ServicePackageActivationId : 
+                                    HealthState           : Ok
 ```
 
 ### <a name="rest"></a>REST ()
@@ -1023,7 +1059,7 @@ ApplicationHealthStateChunks :
   * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡す必要があります。
+> 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡します。
 >
 >
 
@@ -1055,10 +1091,10 @@ ApplicationParameters  : { "WordCountWebService_InstanceCount" = "1";
                          [ProcessId] -tid [ThreadId]","EnvironmentBlock":"_NO_DEBUG_HEAP=1\u0000"}]" }
 ```
 
-次のコマンドレットは、正常性状態が警告になっているサービスを取得します。
+次のコマンドレットは、正常性状態がエラーになっているサービスを取得します。
 
 ```powershell
-PS C:\> Get-ServiceFabricApplication | Get-ServiceFabricService | where {$_.HealthState -eq "Warning"}
+PS D:\ServiceFabric> Get-ServiceFabricApplication | Get-ServiceFabricService | where {$_.HealthState -eq "Error"}
 
 
 ServiceName            : fabric:/WordCount/WordCountService
@@ -1068,7 +1104,7 @@ IsServiceGroup         : False
 ServiceManifestVersion : 1.0.0
 HasPersistedState      : True
 ServiceStatus          : Active
-HealthState            : Warning
+HealthState            : Error
 ```
 
 ## <a name="cluster-and-application-upgrades"></a>クラスターとアプリケーションのアップグレード
@@ -1087,8 +1123,8 @@ ApplicationName               : fabric:/WordCount
 ApplicationTypeName           : WordCount
 TargetApplicationTypeVersion  : 1.0.0.0
 ApplicationParameters         : {}
-StartTimestampUtc             : 4/21/2015 5:23:26 PM
-FailureTimestampUtc           : 4/21/2015 5:23:37 PM
+StartTimestampUtc             : 4/21/2017 5:23:26 PM
+FailureTimestampUtc           : 4/21/2017 5:23:37 PM
 FailureReason                 : HealthCheck
 UpgradeState                  : RollingBackInProgress
 UpgradeDuration               : 00:00:23
@@ -1136,6 +1172,72 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 ## <a name="use-health-evaluations-to-troubleshoot"></a>正常性の評価を使用したトラブルシューティング
 クラスターやアプリケーションで問題が発生した場合は必ず、そのクラスターやアプリケーションの正常性を確認して問題を特定します。 異常性の評価では、現在の異常な状態をトリガーした原因の詳細を確認できます。 必要に応じて、異常が発生している子エンティティにまで掘り下げて根本原因を特定できます。
+
+たとえば、いずれかのレプリカに関するエラー レポートがあるため、アプリケーションを異常と見なします。 次の PowerShell コマンドレットは、異常性の評価例です。
+
+```powershell
+PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount -EventsFilter None -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
+
+
+ApplicationName                 : fabric:/WordCount
+AggregatedHealthState           : Error
+UnhealthyEvaluations            : 
+                                  Unhealthy services: 100% (1/1), ServiceType='WordCountServiceType', MaxPercentUnhealthyServices=0%.
+                                  
+                                  Unhealthy service: ServiceName='fabric:/WordCount/WordCountService', AggregatedHealthState='Error'.
+                                  
+                                    Unhealthy partitions: 100% (1/1), MaxPercentUnhealthyPartitionsPerService=0%.
+                                  
+                                    Unhealthy partition: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', AggregatedHealthState='Error'.
+                                  
+                                        Unhealthy replicas: 20% (1/5), MaxPercentUnhealthyReplicasPerPartition=0%.
+                                  
+                                        Unhealthy replica: PartitionId='af2e3e44-a8f8-45ac-9f31-4093eb897600', ReplicaOrInstanceId='131444422260002646', AggregatedHealthState='Error'.
+                                  
+                                            Error event: SourceId='MyWatchdog', Property='Memory'.
+                                  
+ServiceHealthStates             : None
+DeployedApplicationHealthStates : None
+HealthEvents                    : None
+```
+
+レプリカで詳細情報を確認することができます。
+
+```powershell
+PS D:\ServiceFabric> Get-ServiceFabricReplicaHealth -ReplicaOrInstanceId 131444422260002646 -PartitionId af2e3e44-a8f8-45ac-9f31-4093eb897600
+
+
+PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
+ReplicaId             : 131444422260002646
+AggregatedHealthState : Error
+UnhealthyEvaluations  : 
+                        Error event: SourceId='MyWatchdog', Property='Memory'.
+                        
+HealthEvents          : 
+                        SourceId              : System.RA
+                        Property              : State
+                        HealthState           : Ok
+                        SequenceNumber        : 131444422263668344
+                        SentAt                : 7/13/2017 5:57:06 PM
+                        ReceivedAt            : 7/13/2017 5:57:18 PM
+                        TTL                   : Infinite
+                        Description           : Replica has been created._Node_2
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
+                        
+                        SourceId              : MyWatchdog
+                        Property              : Memory
+                        HealthState           : Error
+                        SequenceNumber        : 131444451657749403
+                        SentAt                : 7/13/2017 6:46:05 PM
+                        ReceivedAt            : 7/13/2017 6:46:05 PM
+                        TTL                   : Infinite
+                        Description           : 
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Warning->Error = 7/13/2017 6:46:05 PM, LastOk = 1/1/0001 12:00:00 AM
+```
 
 > [!NOTE]
 > 異常性の評価には、エンティティが現在の正常性状態であると評価された第一の理由が示されます。 この状態をトリガーする複数のイベントが他に存在する場合がありますが、それらのイベントは評価には反映されません。 より詳しい情報を得るには、正常性エンティティを詳しく調べ、クラスター内の異常性レポートをすべて確認します。

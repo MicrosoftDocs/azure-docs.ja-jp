@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: nigu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f31188ed3216034ef8ec056023472844ec4debd6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/29/2016
-
 
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集

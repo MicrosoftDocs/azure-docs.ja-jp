@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: bb9d08d6164ec01ce1d76fc4a23e782213ecfcd9
-ms.lasthandoff: 03/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 8d00882caf5411240c5f0a3533c78c3dbe361ef2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
@@ -46,11 +46,11 @@ Azure Active Directory (AD) のセキュリティ上の利点は次のとおり�
 * ハイブリッド ID 管理
 
 ## <a name="single-sign-on"></a>シングル サインオン
-シングル サインオン (SSO) とは、1 つのユーザー アカウントを使って&1; 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
+シングル サインオン (SSO) とは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
 
 多くの組織では、エンド ユーザーの生産性向上のため、Office 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
 
-Azure AD は、オンプレミスの Active Directory をクラウドに拡張して、ユーザーがプライマリ組織アカウントを使用してドメイン参加デバイスおよび会社のリソースにサインインするだけでなく、それぞれの業務に必要なすべての Web アプリケーションおよび SaaS アプリケーションにもサインインできるようにします。
+Azure AD はオンプレミスの Active Directory 環境をクラウドに拡張して、ユーザーがプライマリ組織アカウントを使用してドメイン参加デバイスおよび会社のリソースにサインインするだけでなく、それぞれの業務に必要なすべての Web アプリケーションおよび SaaS アプリケーションにもサインインできるようにします。
 
 これにより、ユーザーが複数のユーザー名とパスワードのセットを管理する必要がなくなるだけでなく、組織のグループや従業員としての地位に基づいてアプリケーションのアクセスを自動的にプロビジョニングまたはプロビジョニング解除することが可能になります。 Azure AD には、SaaS アプリケーション間でユーザー アクセスを一元的に管理するためのセキュリティおよびアクセス管理コントロールが導入されています。
 
@@ -71,7 +71,7 @@ Azure AD アプリケーション プロキシを使用すると、[SharePoint](
 * [条件付きアクセスの使用](../active-directory/active-directory-application-proxy-conditional-access.md)
 
 ## <a name="multi-factor-authentication"></a>多要素認証
-Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な&2; つ目のセキュリティ レイヤーを追加する認証方法です。 MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
+Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 詳細情報:
 
@@ -123,7 +123,7 @@ Intune などのモバイル デバイス管理 (MDM) ソリューションと�
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 Azure Active Directory (AD) Privileged Identity Management (PIM) を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
 
-ユーザーは、Azure や Office 365 のリソース、または他の SaaS アプリで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。 しかし、この措置では、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その&1; つの侵害がクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
+ユーザーは、Azure や Office 365 のリソース、または他の SaaS アプリで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。 しかし、この措置では、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害がクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
 Azure AD Privileged Identity Management では、次のことが可能です。
 
@@ -147,7 +147,7 @@ Azure AD Identity Protection は、リスク イベントや組織の ID に影�
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-management"></a>ハイブリッド ID 管理
-Microsoft の ID 管理はオンプレミスとクラウドにまたがり、場所に関係なく、すべてのリソースの認証と権限付与を&1; つのユーザー ID で行います。
+Microsoft の ID 管理はオンプレミスとクラウドにまたがり、場所に関係なく、すべてのリソースの認証と権限付与を 1 つのユーザー ID で行います。
 
 詳細情報:
 

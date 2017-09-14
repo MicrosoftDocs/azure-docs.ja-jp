@@ -2,7 +2,7 @@
 title: "Media Services PlayReady ライセンス テンプレートの概要"
 description: "このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: ea0b54a1041c0008071a9b11afc81e1b91f3e409
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/13/2017
-
 
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要
@@ -60,7 +60,7 @@ Media Services は、XML へのシリアル化および XML からの逆シリ�
 
 エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「 [PlayReady 動的暗号化とライセンス提供サービスの使用](media-services-protect-with-drm.md)」を参照してください。
 
-## <a name="a-idclassesamedia-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>ライセンス テンプレートの構成に使用する Media Services の .NET クラス
+## <a id="classes"></a>ライセンス テンプレートの構成に使用する Media Services の .NET クラス
 Media Services PlayReady ライセンス テンプレートの設定に使用する主な .NET クラスを以下に示します。 これらのクラスは、 [PlayReady ライセンス テンプレート XML スキーマ](media-services-playready-license-template-overview.md#schema)で定義された型にマップされます。
 
 [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) クラスは、Media Services ライセンス テンプレート XML へのシリアル化およびこの XML からの逆シリアル化に使用します。
@@ -73,7 +73,7 @@ Media Services PlayReady ライセンス テンプレートの設定に使用す
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
 [PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) - このクラスは、エンド ユーザーに返される PlayReady ライセンスを作成するためのライセンス テンプレートを表します。 このクラスには、ライセンス内のコンテンツ キーに関するデータ、およびコンテンツ キーの使用時に PlayReady DRM によって適用される権限または制限が含まれています。
 
-### <a name="a-idplayreadyplayrightaplayreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
+### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
 [PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) - このクラスは、PlayReady ライセンスの PlayRight を表します。 このクラスにより、ユーザーは、ライセンスおよび PlayRight 自体で設定された 0 個以上の (再生固有ポリシーに関する) 制限の対象となるコンテンツを再生できるようになります。 ほとんどの PlayRight のポリシーでは、コンテンツを再生可能な出力の種類を制御する出力制限、および指定した出力の使用時に適用される必要があるすべての制限を処理する必要があります。 たとえば、DigitalVideoOnlyContentRestriction が有効にされると、DRM ランタイムはビデオがデジタル出力だけで表示されることを許可します (アナログ ビデオ出力ではこのコンテンツを配信できなくなります)。
 
 > [!IMPORTANT]
@@ -83,7 +83,7 @@ Media Services PlayReady ライセンス テンプレートの設定に使用す
 
 Silverlight でサポートされる保護レベルの例については、「 [Silverlight での出力保護のサポート](http://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
 
-## <a name="a-idschemaaplayready-license-template-xml-schema"></a><a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
+## <a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />

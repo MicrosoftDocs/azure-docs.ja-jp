@@ -2,7 +2,7 @@
 title: "Azure Advisor のドキュメント - チュートリアル | Microsoft Docs"
 description: 
 services: advisor
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: ce00af5e7382a3d6e80903711bac86ca88191cff
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 ---

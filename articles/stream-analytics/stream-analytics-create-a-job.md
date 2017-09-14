@@ -4,7 +4,7 @@ description: "Stream Analytics のデータ分析処理ジョブの作成 | ラ�
 keywords: "データ分析処理"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: e87157e822752c16fb3d25916efc8223d22b3812
-ms.lasthandoff: 05/01/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 05fdf1e20efd129cdfc27e1d37bc9e124edf5dcd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Stream Analytics のデータ分析処理ジョブを作成する方法
@@ -44,18 +44,18 @@ Stream Analytics の使用を開始するには、まず新しい Stream Analyti
    ![データ分析処理ジョブの通知ハブ](./media/stream-analytics-create-a-job/2-stream-analytics-create-a-job.png)  
    
    ![Azure ポータルのデータ分析処理ジョブのジョブの作成](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  
-5. 新しいジョブが **[作成済み]**の状態で表示されます。 **[開始]** ボタンが無効になっていることに注意してください。 ジョブが開始できるようになるには、ジョブの入力、クエリ、出力を構成する必要があります。
+5. 新しいジョブに **[作成済み]** の状態が表示されます。 **[開始]** ボタンが無効になっていることに注意してください。 ジョブが開始できるようにするには、事前にジョブの入力、クエリ、出力を構成します。
    
-   ![データ分析処理ジョブのジョブの状態](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
+   ![データ分析処理ジョブの状態](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
    
-   ![Azure ポータルのデータ分析処理ジョブのジョブの状態](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
+   ![Azure ポータルのデータ分析処理ジョブの状態](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/11/2017
+ms.date: 08/21/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 20aa8247a16195310a8cb03c13c34186456fd7af
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 33bc0be0aeae6d0276fd8999b9ac0a010e3067ba
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
@@ -28,23 +27,23 @@ ms.lasthandoff: 05/11/2017
 ## <a name="quick-commands"></a>クイック コマンド
 [これらの手順は、Azure PowerShell を使用して実行](nsg-quickstart-powershell.md)することもできます。
 
-最初に、ネットワーク セキュリティ グループを作成します。 ポータルでリソース グループを選択し、**[追加]** をクリックして、[ネットワーク セキュリティ グループ] を探して選択します。
+最初に、ネットワーク セキュリティ グループを作成します。 ポータルでリソース グループを選択し、**[追加]** を選択して、**[ネットワーク セキュリティ グループ]** を探して選択します。
 
 ![ネットワーク セキュリティ グループの追加](./media/nsg-quickstart-portal/add-nsg.png)
 
-ネットワーク セキュリティ グループの名前を入力し、リソース グループを選択または作成してから場所を選択します。 入力し終えたら **[作成]** をクリックします。
+ネットワーク セキュリティ グループの名前を入力し、リソース グループを選択または作成してから場所を選択します。 入力し終えたら **[作成]** を選択します。
 
 ![ネットワーク セキュリティ グループの作成](./media/nsg-quickstart-portal/create-nsg.png)
 
-新しいネットワーク セキュリティ グループを選択します。 [受信セキュリティ規則] を選択し、**[追加]** をクリックして規則を作成します。
+新しいネットワーク セキュリティ グループを選択します。 [受信セキュリティ規則] を選択し、**[追加]** を選択して規則を作成します。
 
 ![受信規則の追加](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-新しい規則の名前を指定します。 ポート 80 が既定で入力されています。 他の規則をネットワーク セキュリティ グループに追加する場合は、このブレードでソース、プロトコル、宛先を変更します。 **[OK]** をクリックして規則を作成します。
+**[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、*[HTTP]*)。 *[カスタム]* を選択して、使用する特定のポートを指定することもできます。 必要な場合は、優先度または名前を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。 この画面の上部にある **[Advanced]\(詳細設定\)** を選択すると、特定の送信元 IP ブロックやポート範囲などを入力することもできます。 準備ができたら、**[OK]** を選択してルールを作成します。
 
 ![受信規則の作成](./media/nsg-quickstart-portal/create-inbound-rule.png)
 
-最後に、ネットワーク セキュリティ グループを、サブネットまたは特定のネットワーク インターフェイスに関連付けます。 ネットワーク セキュリティ グループをサブネットに関連付けてみましょう。 [サブネット] を選択し、**[関連付け]** をクリックします。
+最後に、ネットワーク セキュリティ グループを、サブネットまたは特定のネットワーク インターフェイスに関連付けます。 ネットワーク セキュリティ グループをサブネットに関連付けてみましょう。 **[サブネット]** を選択し、**[関連付け]** を選択します。
 
 ![ネットワーク セキュリティ グループとサブネットの関連付け](./media/nsg-quickstart-portal/associate-subnet.png)
 
@@ -57,15 +56,10 @@ ms.lasthandoff: 05/11/2017
 ## <a name="more-information-on-network-security-groups"></a>ネットワーク セキュリティ グループの詳細
 このページのクイック コマンドでは、VM にフローするトラフィックの開始と実行を行うことができます。 ネットワーク セキュリティ グループには優れた機能が多数用意されており、リソースへのアクセスをきめ細かく制御できます。 詳細については、 [ネットワーク セキュリティ グループと ACL 規則の作成](../../virtual-network/virtual-networks-create-nsg-arm-ps.md)に関するページをご覧ください。
 
-ネットワーク セキュリティ グループと ACL 規則は、Azure Resource Manager のテンプレートの一部として定義できます。 詳細については、 [テンプレートを使用したネットワーク セキュリティ グループの作成](../../virtual-network/virtual-networks-create-nsg-arm-template.md)に関するページをご覧ください。
-
-ポート フォワーディングを使用して、一意の外部ポートを VM 上の内部ポートにマップする必要がある場合は、ロード バランサーとネットワーク アドレス変換 (NAT) 規則を使用します。 たとえば、TCP ポート 8080 を外部に公開し、VM 上の TCP ポート 80 にトラフィックを送ることができます。 詳細については、 [インターネットに接続するロード バランサーの作成](../../load-balancer/load-balancer-get-started-internet-arm-ps.md)に関するページをご覧ください。
+高可用性 Web アプリケーション用に、Azure Load Balancer の背後に VM を配置する必要があります。 ロード バランサーは VM に対してトラフィック フィルターを提供するネットワーク セキュリティ グループと共にトラフィックを分散します。 詳細については、「[Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法](tutorial-load-balancer.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)
 * [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md)
-* [ロード バランサー用の Azure Resource Manager の概要](../../load-balancer/load-balancer-arm.md)
-
-

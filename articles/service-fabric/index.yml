@@ -1,0 +1,80 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Service Fabric のドキュメント
+metadata:
+  title: Azure Service Fabric のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
+  services: service-fabric
+  author: null
+  manager: carolz
+  layout: LandingPage
+  ms.assetid: null
+  ms.service: service-fabric
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: carolz
+abstract:
+  description: Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Service Fabric の使用方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: クラウドに初めての Service Fabric アプリケーションをデプロイする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_net.svg'
+            text: .NET
+            href: 'https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet'
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="service-fabric-tutorial-create-dotnet-app">.NET アプリケーションのデプロイ</a>
+          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">既存の .NET アプリケーションのリフト アンド シフト</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: .NET を使用した開発
+            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+            image:
+              src: 'https://docs.microsoft.com/en-us/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+          - title: クラウド パートナーとアーキテクチャ
+            href: 'https://www.pluralsight.com/courses/microsoft-azure-dotnet-cloud-architecture?twoid=FEED65A23CB221A7'
+            image:
+              src: 'https://docs.microsoft.com/en-us/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/microsoft-azure-dotnet-cloud-architecture?twoid=FEED65A23CB221A7'
+  - title: サンプル
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: スクリプトのサンプル
+            html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p>
+          - title: .NET
+            html: '<p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-getting-started/">使用の開始</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-web-reference-app/">Web リファレンス</a></p><p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-watchdog-service/">ウォッチドッグ</a></p>'
+          - title: Java
+            html: '<p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-java-getting-started/">使用の開始</a></p>'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="/powershell/module/azurerm.servicefabric">PowerShell (Azure)</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
+          - title: 言語
+            html: <p><a href="/java/api/overview/azure/servicefabric">Java API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p>
+          - title: REST ()
+            html: <p><a href="/rest/api/servicefabric">REST API リファレンスに関するページ</a></p>

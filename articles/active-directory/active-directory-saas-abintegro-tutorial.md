@@ -1,116 +1,228 @@
 ---
 title: "チュートリアル: Azure Active Directory と Abintegro の統合 | Microsoft Docs"
-description: "Azure Active Directory で Abintegro を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+description: "Azure Active Directory と Abintegro の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 99287e1f-4189-494a-97c8-e1c03d047fd3
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: ddbe54eb6f9565e0c42d138231dbde22592e75b5
-ms.openlocfilehash: d6191e01450859a5e91b815df84d9a024bbee2c3
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: a2a3c1a7a338ee1cb35dd08176ad3bb5f3cdc319
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-abintegro"></a>チュートリアル: Azure Active Directory と Abintegro の統合
-このチュートリアルでは、Azure と Abintegro の統合について説明します。  
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Abintegro と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-* 有効な Azure サブスクリプション
-* Abintegro でのシングル サインオン (SSO) が有効なサブスクリプション
+Abintegro と Azure AD の統合には、次の利点があります。
 
-このチュートリアルを完了すると、Abintegro に割り当てた Azure AD ユーザーは、Abintegro 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+- Abintegro にアクセスする Azure AD ユーザーを制御できます
+- ユーザーが自分の Azure AD アカウントで自動的に Abintegro にサインオン (シングル サインオン) できるようにします
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
-* Abintegro のアプリケーション統合の有効化
-* シングル サインオン (SSO) の構成
-* ユーザー プロビジョニングの構成
-* ユーザーの割り当て
+## <a name="prerequisites"></a>前提条件
 
-![シナリオ](./media/active-directory-saas-abintegro-tutorial/IC790076.png "Scenario")
+Abintegro と Azure AD の統合を構成するには、次のものが必要です。
 
-## <a name="enable-the-application-integration-for-abintegro"></a>Abintegro のアプリケーション統合の有効化
-このセクションでは、Abintegro のアプリケーション統合を有効にする方法を説明します。
+- Azure AD サブスクリプション
+- Abintegro でのシングル サインオンが有効なサブスクリプション
 
-**Abintegro のアプリケーション統合を有効にするには、次の手順に従います。**
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
-   
-   ![Active Directory](./media/active-directory-saas-abintegro-tutorial/IC700993.png "Active Directory")
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-   ![アプリケーション](./media/active-directory-saas-abintegro-tutorial/IC700994.png "Applications")
-4. ページの下部にある **[追加]** をクリックします。
-   
-   ![アプリケーションの追加](./media/active-directory-saas-abintegro-tutorial/IC749321.png "Add application")
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-   ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-abintegro-tutorial/IC749322.png "Add an application from gallerry")
-6. **[検索]** ボックスに、「**Abintegro**」と入力します。
-   
-   ![アプリケーション ギャラリー](./media/active-directory-saas-abintegro-tutorial/IC790077.png "Application Gallery")
-7. 結果ウィンドウで **[Abintegro]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-   ![Abintegro](./media/active-directory-saas-abintegro-tutorial/IC790078.png "Abintegro")
-   
-## <a name="configure-single-sign-on"></a>Configure single sign-on
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Abintegro に対する認証を行えるようにする方法を説明します。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Azure クラシック ポータルの **Abintegro** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790079.png "Configure Single SignOn")
-2. **[ユーザーの Abintegro へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790080.png "Configure Single SignOn")
-3. **[アプリケーション URL の構成]** ページの **[Abintegro サインオン URL]** ボックスに、ユーザーが Abintegro アプリケーションのサインオンに使用する URL (例: `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`) を入力して、**[次へ]** をクリックします。
-   
-   ![アプリケーション URL の構成](./media/active-directory-saas-abintegro-tutorial/IC790081.png "Configure App URL")
-4. **[Abintegro でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにメタデータ ファイルを保存します。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790082.png "Configure Single SignOn")
-5. Abintegro サポート チームに、メタデータ ファイルを送信します。
-   
-   >[!NOTE]
-   >シングル サインオンの構成は、Abintegro サポート チームが実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
-   >  
-6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
-   
-  ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790083.png "Configure Single SignOn")
-   
-## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
+1. ギャラリーからの Abintegro の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-Abintegro へのユーザー プロビジョニングの構成にあたって必要な操作はありません。  
-割り当てられたユーザーがアクセス パネルを使用してAbintegro にログインしようとすると、そのユーザーが存在するかどうかが Abintegro によって確認されます。  
+## <a name="adding-abintegro-from-the-gallery"></a>ギャラリーからの Abintegro の追加
+Azure AD への Abintegro の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Abintegro を追加する必要があります。
 
+**ギャラリーから Abintegro を追加するには、次の手順を実行します。**
+
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+
+    ![Active Directory][1]
+
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+
+    ![アプリケーション][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+    ![アプリケーション][3]
+
+4. [検索] ボックスに、「**Abintegro**」と入力します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-abintegro-tutorial/tutorial_abintegro_search.png)
+
+5. 結果ウィンドウで **[Abintegro]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-abintegro-tutorial/tutorial_abintegro_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Abintegro で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Abintegro ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Abintegro の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+Abintegro で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+
+Abintegro で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Abintegro テスト ユーザーの作成](#creating-an-abintegro-test-user)** - Abintegro で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure の新しいポータルで Azure AD のシングル サインオンを有効にして、Abintegro アプリケーションでシングル サインオンを構成します。
+
+**Abintegro で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure ポータルの **Abintegro** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![[シングル サインオンの構成]][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-abintegro-tutorial/tutorial_abintegro_samlbase.png)
+
+3. **[Abintegro のドメインと URL]** セクションで、次の手順に従います。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-abintegro-tutorial/tutorial_abintegro_url.png)
+
+    **[サインオン URL]** ボックスに、`https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/` のパターンを使用して URL を入力します。
+
+    > [!NOTE] 
+    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Abintegro クライアント サポート チーム](mailto:support@abintegro.com)に問い合わせてください。 
+ 
+4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+
+    ![Configure Single Sign-On](./media/active-directory-saas-abintegro-tutorial/tutorial_abintegro_certificate.png) 
+
+5. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-abintegro-tutorial/tutorial_general_400.png)
+
+6. **Abintegro** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Abintegro サポート チーム](mailto:support@abintegro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][100]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-abintegro-tutorial/create_aaduser_01.png) 
+
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-abintegro-tutorial/create_aaduser_02.png) 
+
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-abintegro-tutorial/create_aaduser_03.png) 
+
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-abintegro-tutorial/create_aaduser_04.png) 
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+
+    d. ページの下部にある **[Create]**」を参照してください。
+ 
+### <a name="creating-an-abintegro-test-user"></a>Abintegro テスト ユーザーの作成
+
+Abintegro へのユーザー プロビジョニングの構成にあたって必要な操作はありません。 割り当てられたユーザーがアクセス パネルを使用してAbintegro にログインしようとすると、そのユーザーが存在するかどうかが Abintegro によって確認されます。
+  
 使用可能なユーザー アカウントがない場合、ユーザー アカウントは Abintegro により自動的に作成されます。
 
-## <a name="assign-users"></a>[ユーザーの割り当て]
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-**ユーザーを Abintegro に割り当てるには、次の手順に従います。**
+このセクションでは、Britta Simon に Abintegro へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **Abintegro** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
-   
-   ![ユーザーの割り当て](./media/active-directory-saas-abintegro-tutorial/IC790084.png "Assign Users")
-3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
-   
-   ![はい](./media/active-directory-saas-abintegro-tutorial/IC767830.png "Yes")
+![ユーザーの割り当て][200] 
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+**Abintegro に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[Abintegro]** を選択します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-abintegro-tutorial/tutorial_abintegro_app.png) 
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![ユーザーの割り当て][202] 
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![ユーザーの割り当て][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネルで [Abintegro] タイルをクリックすると、Abintegro アプリケーションのログイン ページが表示されます。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+
+## <a name="additional-resources"></a>その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-abintegro-tutorial/tutorial_general_203.png
 
 

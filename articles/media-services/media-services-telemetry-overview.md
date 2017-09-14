@@ -4,7 +4,7 @@ description: "この記事では、Azure Media Services テレメトリの概要
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 99c43c63f75e01713600ef5ca46a8d11e8c5c7ce
-ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 25520a447a9f2c459fd073779e4922377b6d1d4d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -33,14 +34,13 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 ## <a name="configuring-telemetry"></a>テレメトリの構成
 
-テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の&2; つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
+テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の 2 つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
 
 次のトピックで、テレメトリを有効にする方法を示します。
 
 [.NET を使用したテレメトリの有効化](media-services-dotnet-telemetry.md)に関するトピック 
 
 [REST を使用したテレメトリの有効化](media-services-rest-telemetry.md)に関するトピック
-
 
 ## <a name="consuming-telemetry-information"></a>テレメトリ情報の使用
 
@@ -67,16 +67,14 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 - 特定のサービスの特定の日付範囲にあるすべてのデータの取得。
 - サービスの最新データの取得。
 
-
 ### <a name="telemetry-table-storage-output-schema"></a>テレメトリ テーブル ストレージの出力スキーマ
 
 テレメトリ データは、1 つのテーブルにまとめて格納されます (例: "TelemetryMetrics20160321"。"20160321" はテーブルの作成日です)。 テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。 テーブルは、繰り返し発生する値 (特定の時間帯の取り込みビットレートや送信されたバイト数など) を格納するために使用されます。 
 
-
 プロパティ|値|例/メモ
 ---|---|---
 PartitionKey|{アカウント ID}_{エンティティ ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>アカウント ID は、ワークフローを簡単にするためにパーティション キーに含まれ、複数の Media Services アカウントが同じストレージ アカウントに書き込まれます。
-RowKey|{午前&0; 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前&0; 時までの秒数から始まります。 詳細については、[こちらの記事](../storage/storage-table-design-guide.md#log-tail-pattern)を参照してください。 
+RowKey|{午前 0 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前 0 時までの秒数から始まります。 詳細については、[こちらの記事](../cosmos-db/table-storage-design-guide.md#log-tail-pattern)を参照してください。 
 Timestamp|日付/時刻|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
 Type|テレメトリ データを提供するエンティティの種類|Channel/StreamingEndpoint/Archive<br/><br/>イベントの種類は単なる文字列値です。
 Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
@@ -84,14 +82,13 @@ ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです   (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
 
-
 ### <a name="entity-specific-schema"></a>エンティティ固有のスキーマ
 
-エンティティ固有の&3; 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
+エンティティ固有の 3 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
 
 - ストリーミング エンドポイント: 30 秒ごと
-- ライブ チャネル:&1; 分ごと
-- ライブ アーカイブ:&1; 分ごと
+- ライブ チャネル: 1 分ごと
+- ライブ アーカイブ: 1 分ごと
 
 **ストリーミング エンドポイント**
 
@@ -111,7 +108,6 @@ RequestCount|集計内の要求数の合計|3
 BytesSent|集計された送信バイト数|2987358
 ServerLatency|サーバーの平均待機時間 (ストレージを含みます)|129
 E2ELatency|エンド ツー エンドの平均待機時間|250
-
 
 **ライブ チャネル**
 
@@ -138,7 +134,6 @@ UnalignedPresentationTime|プレゼンテーション時間がアラインされ
 UnexpectedBitrate|オーディオ/ビデオ トラックの計算ビットレートまたは実ビットレートが > 40,000 bps であり、IncomingBitrate == 0 であるか IncomingBitrate と actualBitrate の差が 50% の場合は True |True
 Healthy|次の場合は True: <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> がいずれも 0|True <br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
-
 **ライブ アーカイブ**
 
 プロパティ|値|例/メモ
@@ -153,10 +148,9 @@ ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|プログラムの URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|トラックの名前|audio_1
 TrackType|トラックの種類|Audio/video
-カスタム属性|名前とビットレートが同じ複数のトラックを区別する&16; 進数の文字列 (マルチ カメラ アングル)|
+カスタム属性|名前とビットレートが同じ複数のトラックを区別する 16 進数の文字列 (マルチ カメラ アングル)|
 Bitrate|トラックのビットレート|785000
-Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら&2; つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
-
+Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら 2 つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
 
 ## <a name="general-qa"></a>全般的な Q&A
 
@@ -174,7 +168,7 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 
 ### <a name="how-to-define-streaming-unit-count"></a>ストリーミング ユニット数を定義する方法は?
 
-ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを&1; つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
+ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを 1 つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
 たとえば、顧客のサービスからのピーク スループットが 40 MBps であるとします (一定時間の BytesSent の最大値)。 この場合、ストリーミング ユニット数は、(40 MBps)*(8 ビット/バイト)/(160 Mbps) = 2 になります。
 
 ### <a name="how-to-find-average-requestssecond"></a>平均要求数/秒を調べる方法は?
@@ -226,9 +220,4 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

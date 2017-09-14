@@ -1,5 +1,5 @@
 ---
-title: "データ サイエンス用のデータの準備はお済みですか? データの評価 - Azure | Microsoft Docs"
+title: "データ サイエンス用のデータの準備はお済みですか? データの分析 - Azure Machine Learning | Microsoft Docs"
 description: "データ サイエンス用にデータを準備するための 4 つの条件について説明します。 初心者向けデータ サイエンス ビデオ 2 では、基本的なデータの評価を支援する具体的な例を説明しています。"
 keywords: "関連性のあるデータ,データの評価,データの準備,データの条件,データの準備"
 services: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: 3d2b259c29a52394ac42afba0c5572364cfeea39
-ms.lasthandoff: 02/10/2017
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8c27159e75482e5d3b2048298b118c55574c6b57
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
@@ -27,13 +27,14 @@ ms.lasthandoff: 02/10/2017
 データを評価して、データ サイエンスに備えるための基本的な条件を満たしていることを確認する方法について説明します。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
 >
 >
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
@@ -42,9 +43,9 @@ ms.lasthandoff: 02/10/2017
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、"*初心者向けデータ サイエンス*" シリーズの&2; 番目のビデオです。  
+"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、"*初心者向けデータ サイエンス*" シリーズの 2 番目のビデオです。  
 
-データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。 ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。
+データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。 ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。 
 
 ## <a name="criteria-for-data"></a>データの条件
 データ サイエンスの場合は、いくつかの材料をまとめる必要があります。
@@ -59,9 +60,9 @@ ms.lasthandoff: 02/10/2017
 ## <a name="is-your-data-relevant"></a>データに関連性がありますか?
 最初の材料として、関連性のあるデータが必要です。
 
-![関連性のあるデータと関連性のないデータの比較 - データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-relevant-and-irrelevant-data.png)
+![関連性のあるデータと関連性のないデータの比較 - データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
-左側の表をご覧ください。 私たちはボストンのバーの外で&7; 人の人々と会い、血中のアルコール レベル、最近のレッド ソックスの試合の打率、最寄りのコンビニエンス ストアの牛乳の価格を測定しました。
+左側の表をご覧ください。 私たちはボストンのバーの外で 7 人の人々と会い、血中のアルコール レベル、最近のレッド ソックスの試合の打率、最寄りのコンビニエンス ストアの牛乳の価格を測定しました。
 
 これは申し分なく正当なデータです。 唯一の問題は、関連性がないことです。 これらの数値の間に明確な関係はありません。 現在の牛乳の価格とレッド ソックスの打率を与えられても、血中アルコール濃度を推測することはできません。
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="do-you-have-connected-data"></a>データは連続していますか?
 次の材料は、連続しているデータです。
 
-![連続しているデータと連続していないデータの比較 - データの条件、データの準備](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
+![連続しているデータと連続していないデータの比較 - データの条件、データの準備](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
 ここにハンバーガーの品質に関連するデータとして、グリルの温度、パテの重さ、地元の食品雑誌での評価があります。 ただし左側の表内の空白に注目してください。
 
@@ -81,9 +82,9 @@ ms.lasthandoff: 02/10/2017
 一方、右側の表は、すべて揃っている、連続したデータの例です。
 
 ## <a name="is-your-data-accurate"></a>データは正確ですか?
-次に必要な材料が正確さです。 ここに、矢で撃ちたくなるような的が&4; つあります。
+次に必要な材料が正確さです。 ここに、矢で撃ちたくなるような的が 4 つあります。
 
-![正確なデータと不正確なデータの比較 - データの条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-inaccurate-vs-accurate-data.png)
+![正確なデータと不正確なデータの比較 - データの条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
 右上の的をご覧ください。 的の中心の周囲に密接して、緊密なグループができています。 もちろん、これは正確です。 奇妙なことですが、データ サイエンスの言語では、右下の的のパフォーマンスも正確であると見なされます。
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="do-you-have-enough-data-to-work-with"></a>使用するデータは十分ありますか?
 最後の4 番目の材料は、十分なデータが必要であるということです。
 
-![分析用のデータは十分ありますか? データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-barely-enough-data.png)
+![分析用のデータは十分ありますか? データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
 表内の各データ ポイントを絵画の筆のひと塗りだと考えてください。 その一部しか存在しない場合、描画は非常にあいまいになり、何が描かれているかを理解することは困難です。
 
@@ -102,11 +103,11 @@ ms.lasthandoff: 02/10/2017
 
 ある程度塗られると、大まかな判断をするのに十分なだけ絵画が見えるようになります。 私が訪問したいと思っている場所でしょうか? 明るく、水もきれいですね。そう、ここは私が休暇を過ごす場所です。
 
-データを追加すると、画像が明確になり、より緻密に判断することができます。 左側の岸にホテルが&3; 軒あります。 私は手前にあるホテルの建築上の特徴が大好きです。 このホテルの&3; 階に宿泊します。
+データを追加すると、画像が明確になり、より緻密に判断することができます。 左側の岸にホテルが 3 軒あります。 私は手前にあるホテルの建築上の特徴が大好きです。 このホテルの 3 階に宿泊します。
 
 関連性があり、連続していて、正確で、十分な量のデータがあれば、高品質なデータ サイエンスを実行するために必要な材料がすべて揃います。
 
-Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*" の他の&4; つのビデオも必ずご覧ください。
+Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*" の他の 4 つのビデオも必ずご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)

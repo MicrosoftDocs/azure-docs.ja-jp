@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
-translationtype: Human Translation
-ms.sourcegitcommit: 76864bfc1b59cfc4e6f39094c08394fe32482d17
-ms.openlocfilehash: b7957c52877b262506013a422cd1511dd0ee79a4
-ms.lasthandoff: 01/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -86,7 +87,7 @@ Invoke-RestMethod -Uri https://login.microsoftonline.com/<Azure AD Tenant ID>/oa
 ```
 
 応答には、アクセス トークン、そのトークンの有効期限に関する情報、そのトークンを使えるリソースに関する情報が含まれます。
-前の HTTP 呼び出しで受信したアクセス トークンは、Resource Manager API に対するすべての要求で、 "Bearer YOUR_ACCESS_TOKEN" 値を含む "Authorization" というヘッダー値として渡す必要があります。 "Bearer" とアクセス トークンの間のスペースに注意してください。
+前の HTTP 呼び出しで受け取ったアクセス トークンを、すべての要求に対して、Resource Manager API に渡す必要があります。 値 "Bearer YOUR_ACCESS_TOKEN" で "Authorization" というヘッダー値として渡します。 "Bearer" とアクセス トークンの間のスペースに注意してください。
 
 上記の HTTP の結果からわかるとおり、トークンは特定の期間、有効です。その期間中は、トークンをキャッシュし、同じトークンを再利用する必要があります。 API 呼び出しごとに Azure AD に対して認証を行うことができたとしても、著しく非効率です。
 
@@ -169,7 +170,7 @@ Content-Type: application/json
 ```
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
-ここまでは、Resource Manager API に対して情報を照会するのみでしたが、 ここからは、いくつかリソースを作成してみます。その中でも最もシンプルな、リソース グループから始めましょう。 次の HTTP 要求は指定したリージョン/場所にリソース グループを作成し、それにタグを追加します。
+これまで、情報を得るためだけに Resource Manager API をクエリしていました。 ここで、いくつかリソースを作成します。まず、最も簡単なリソース グループから始めましょう。 次の HTTP 要求は指定したリージョン/場所にリソース グループを作成し、それにタグを追加します。
 
 (YOUR_ACCESS_TOKEN、SUBSCRIPTION_ID、RESOURCE_GROUP_NAME を実際のアクセス トークン、サブスクリプション ID、作成するリソース グループの名前に置き換えてください)
 

@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/24/2017
+ms.date: 08/16/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
+ms.translationtype: HT
+ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
+ms.openlocfilehash: 8d4460b3059558de2253c6f6a2d2fc8e7564d6d9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
@@ -29,7 +28,7 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Azure と Azure Active Directory へのアクセス
-**Q: Azure クラシック ポータル \(https://manage.windowsazure.com\) で Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか?**
+**Q: Azure クラシック ポータルで Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか?**
 
 **A:** Azure クラシック ポータルにアクセスするために、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Office 365 または Azure AD サブスクリプションをお持ちの場合は、1 回限りのアクティブ化の手順を行うために [http://aka.ms/accessAAD](http://aka.ms/accessAAD) にアクセスしてください。 これらをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)または有料のサブスクリプションをアクティブ化する必要があります。
 
@@ -213,5 +212,5 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 - - -
 **Q: Azure AD で Secure LDAP 接続をセットアップできますか?**
 
-**A:** いいえ。  Azure AD では、LDAP プロトコルがサポートされていません。
+**A:** いいえ。 Azure AD では、LDAP プロトコルがサポートされていません。
 

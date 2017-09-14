@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: b22e34f9ad0644def8a344b261077b44c34420cb
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項

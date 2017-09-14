@@ -3,7 +3,7 @@ title: "Azure Linux VM のサイズ - Storage | Microsoft Docs"
 description: "Azure の Linux 仮想マシンで使用できるさまざまなストレージ最適化済みのサイズを一覧表示します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
-ms.author: cynthn
-translationtype: Human Translation
+ms.date: 07/28/2017
+ms.author: jonbeck
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 6036b3e6e51d456fd8c5bcc770b944b0fe27227d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/15/2017
+ms.date: 06/13/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 0b8de346d8209dcfd665baf18ce054e5556a883b
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: e418cb01e1a9168e3662e8d6242903e052b6047b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight-preview"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする (プレビュー)
@@ -68,9 +68,12 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.json** にあります。
+    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json** にあります。
+
+    > [!WARNING]
+    > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
 2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
     
@@ -104,77 +107,98 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 ## <a name="create-topics"></a>トピックの作成
 
 1. SSH を使用して**移行元**クラスターに接続します。
-   
-        ssh sshuser@source-BASENAME-ssh.azurehdinsight.net
-   
+
+    ```bash
+    ssh sshuser@source-BASENAME-ssh.azurehdinsight.net
+    ```
+
     **sshuser** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
-   
+
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-2. 次のコマンドを使用して Zookeeper ホストを検索し、`SOURCE_ZKHOSTS` 変数を設定して、`testtopic` という名前の新しいトピックをいくつか作成します。
-   
+2. 次のコマンドを使用して、移行元クラスターの Zookeeper ホストを見つけます。
+
     ```bash
-    SOURCE_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
+    # Install jq if it is not installed
+    sudo apt -y install jq
+    # get the zookeeper hosts for the source cluster
+    export SOURCE_ZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    
+    Replace `$PASSWORD` with the password for the cluster.
+
+    Replace `$CLUSTERNAME` with the name of the source cluster.
+
+3. To create a topic named `testtopic`, use the following command:
+
+    ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
     ```
 
 3. トピックが作成されたことを確認するには、次のコマンドを使用します。
-   
+
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $SOURCE_ZKHOSTS
     ```
-   
+
     応答には `testtopic` が含まれます。
 
 4. 次を使用して、この (**移行元**) クラスターの Zookeeper ホスト情報を表示します。
-   
+
     ```bash
     echo $SOURCE_ZKHOSTS
     ```
 
     次のテキストのような情報が返されます。
 
-    `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
+    `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
 
     この情報は保存してください。 次のセクションで使用します。
 
 ## <a name="configure-mirroring"></a>ミラーリングの構成
 
 1. 別の SSH セッションを使用して**移行先**クラスターに接続します。
-   
-        ssh sshuser@dest-BASENAME-ssh.azurehdinsight.net
-   
+
+    ```bash
+    ssh sshuser@dest-BASENAME-ssh.azurehdinsight.net
+    ```
+
     **sshuser** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
-   
+
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを使用して、**移行元**クラスターとの通信方法を説明する `consumer.properties` ファイルを作成します。
-   
+
     ```bash
     nano consumer.properties
     ```
-   
+
     `consumer.properties` ファイルの内容として、次のテキストを使用します。
-   
-        zookeeper.connect=SOURCE_ZKHOSTS
-        group.id=mirrorgroup
-   
+
+    ```yaml
+    zookeeper.connect=SOURCE_ZKHOSTS
+    group.id=mirrorgroup
+    ```
+
     **SOURCE_ZKHOSTS** を、**移行元**クラスターからの Zookeeper ホストの情報に置き換えます。
-   
+
     このファイルでは、移行元の Kafka クラスターからの読み取りに使用するコンシューマー情報について説明します。 コンシューマーの構成の詳細については、「[Consumer Configs (コンシューマーの構成)](https://kafka.apache.org/documentation#consumerconfigs)」(kafka.apache.org) を参照してください。
-   
+
     ファイルを保存するには、**Ctrl + X** キー、**Y** キー、**Enter** キーの順に押します。
 
 3. 移行先のクラスターと通信するプロデューサーを構成する前に、**移行先**クラスターのブローカー ホストを検索する必要があります。 この情報の取得には、次のコマンドを使用します。
-   
+
     ```bash
     sudo apt -y install jq
-    DEST_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
+    DEST_BROKERHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     echo $DEST_BROKERHOSTS
     ```
-   
+
+    `$PASSWORD` をクラスターのログイン アカウント (admin) のパスワードに置き換えます。
+
+    `$CLUSTERNAME` を移行先クラスターの名前に置き換えます。
+
     これらのコマンドでは、次のような情報が返されます。
-   
+
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
 4. 次を使用して、**移行先**クラスターとの通信方法を説明する `producer.properties` ファイルを作成します。
@@ -184,59 +208,68 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
     ```
 
     `producer.properties` ファイルの内容として、次のテキストを使用します。
-   
-        bootstrap.servers=DEST_BROKERS
-        compression.type=none
-   
-    **DEST_BROKERS** を、前の手順で取得したブローカー情報に置き換えます。 
-   
+
+    ```yaml
+    bootstrap.servers=DEST_BROKERS
+    compression.type=none
+    ```
+
+    **DEST_BROKERS** を、前の手順で取得したブローカー情報に置き換えます。
+
     プロデューサーの構成の詳細については、「[Producer Configs (プロデューサーの構成)](https://kafka.apache.org/documentation#producerconfigs)」(kafka.apache.org) を参照してください。
 
 ## <a name="start-mirrormaker"></a>MirrorMaker の開始
 
 1. **移行先**クラスターに SSH で接続してから、次のコマンドを使用して MirrorMaker プロセスを開始します。
-   
+
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
     ```
-   
+
     この例で使用するパラメーターは次のとおりです。
-   
+
     * **--consumer.config**: コンシューマーのプロパティを格納するファイルを指定します。 これらのプロパティは、*移行元*の Kafka クラスターから読み取りを行うコンシューマーの作成に使用します。
 
     * **--producer.config**: プロデューサーのプロパティを格納するファイルを指定します。 これらのプロパティは、*移行先*の Kafka クラスターへの書き込みを行うプロデューサーの作成に使用します。
 
     * **--whitelist**: MirrorMaker が移行元クラスターから移行先クラスターにレプリケートするトピックの一覧。
-    
+
     * **--num.streams**: 作成するコンシューマー スレッドの数。
-     
-    スタートアップ時に、MirrorMaker により次のテキストのような情報が返されます。
-        
-    ```
+
+ スタートアップ時に、MirrorMaker により次のテキストのような情報が返されます。
+
+    ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}
     metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-kafka.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-2, security.protocol=PLAINTEXT}
     metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-1, security.protocol=PLAINTEXT}
     ```
 
 2. **ソース** クラスターに SSH で接続してから、次のコマンドを使用して、プロデューサーを起動し、トピックにメッセージを送信します。
-    
+
     ```bash
-    sudo apt -y install jq
-    SOURCE_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
+    SOURCE_BROKERHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
- カーソル付きの空白行が表示されたら、テキスト メッセージを数個入力します。 これらのメッセージは、**移行元**クラスター上のトピックに送信されます。 操作が完了したら、**Ctrl + C** キーを使用してプロデューサーのプロセスを終了します。
+    `$PASSWORD` を移行元クラスターのログイン (admin) パスワードに置き換えます。
+
+    `$CLUSTERNAME` を移行元クラスターの名前に置き換えます。
+
+     カーソル付きの空白行が表示されたら、テキスト メッセージを数個入力します。 これらのメッセージは、**移行元**クラスター上のトピックに送信されます。 操作が完了したら、**Ctrl + C** キーを使用してプロデューサーのプロセスを終了します。
 
 3. **移行先**クラスターに SSH で接続してから、**Ctrl + C** キーを使用して MirrorMaker プロセスを終了します。 その後、次のコマンドを使用して、`testtopic` トピックが生成されたこと、およびトピック内のデータがこのミラーにレプリケートされたことを確認します。
-    
+
     ```bash
-    DEST_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
+    DEST_ZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
-    
-  これで、MirrorMaster がトピックを移行元のクラスターから移行先にミラーリングしたときに作成された `testtopic` が、トピックの一覧に含まれるようになりました。 このトピックから取得するメッセージは、送信元クラスターで入力したものと同じです。
+
+    `$PASSWORD` を移行先クラスターのログイン (admin) パスワードに置き換えます。
+
+    `$CLUSTERNAME` を移行先クラスターの名前に置き換えます。
+
+    これで、MirrorMaster がトピックを移行元のクラスターから移行先にミラーリングしたときに作成された `testtopic` が、トピックの一覧に含まれるようになりました。 このトピックから取得するメッセージは、送信元クラスターで入力したものと同じです。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 

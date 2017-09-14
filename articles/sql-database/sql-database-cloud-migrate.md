@@ -16,12 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9fb1d12f5895e27929b2698edbf8c207aa2ee377
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 90c78007368c2679e1c5afdb9369869adde77f0d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server データベースのクラウド内の SQL Database への移行
@@ -65,7 +64,7 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="method-2-use-transactional-replication"></a>方法 2: トランザクション レプリケーションの使用
 
-移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。 この方法を使用するには、ソース データベースが[トランザクション レプリケーションの要件](https://msdn.microsoft.com/library/mt589530.aspx)を満たしているほか、Azure SQL Database に対する互換性を持っている必要があります。 
+移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。 この方法を使用するには、ソース データベースが[トランザクション レプリケーションの要件](https://msdn.microsoft.com/library/mt589530.aspx)を満たしているほか、Azure SQL Database に対する互換性を持っている必要があります。 AlwaysOn を使った SQL レプリケーションの詳細については、「[Always On 可用性グループのレプリケーションの構成 (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)」をご覧ください。
 
 このソリューションを使用するには、Azure SQL Database を移行対象のSQL Server インスタンスへのサブスクライバーとして構成します。 トランザクション レプリケーション ディストリビューターは、新しいトランザクションが発生し続ける中で、同期対象のデータベース (パブリッシャー) からデータを同期します。 
 

@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 06/14/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ddf4affe72c6413501ffa00747c110f8761ed70e
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: ef26a16e79d9c9b0654634960b57dc59827b2c24
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -116,11 +116,11 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
 5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[Entity Id (エンティティ ID)]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
 6. アプリケーションを **IDP** 開始モードで構成する場合は、Azure Portal の **[LinkedIn Sales Navigator のドメインと URL]** セクションで次の手順を実行します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
     a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
@@ -136,17 +136,22 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
     ![シングル サインオンの構成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/updateusermail.png)
     
-9. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。 **department** という別の要求を追加する必要があり、この値が **user.department** にマップされます。
+9. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。 ユーザーは **email**、**department**、**firstname**、**lastname** という名前の 4 つの要求を追加する必要があり、値はそれぞれ **user.mail**、**user.department**、**user.givenname**、**user.surname** にマップします。
 
     | 属性名 | 属性値 |
     | --- | --- |    
+    | 電子メール| User.mail |
     | department| user.department |
-
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
-
+    | firstname| User.givenname |
+    | lastname| User.surname |
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
+    
     a. **[属性の追加]** をクリックして [属性の追加] ダイアログを開きます。
-
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/adduserattribute.png)
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_05.png)
    
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -154,19 +159,29 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
     
     d. **[OK]** をクリックします。
 
-10. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
+10. **name** 属性で以下の手順を実行します。
+
+    a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinsalesnavigator-tutorial/url_update.png)
+
+    b. **namespace** から URL の値を削除します。
+    
+    c. **[OK]** をクリックして設定を保存します。
+
+11. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
-11. **[保存]** ボタンをクリックします。
+12. **[保存]** ボタンをクリックします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
-12. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 **[Upload XML file (XML ファイルのアップロード)]** をクリックして、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
+13. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 **[Upload XML file (XML ファイルのアップロード)]** をクリックして、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-13. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[Not Connected (未接続)]** から **[Connected (接続済み)]** に変更されます
+14. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[Not Connected (未接続)]** から **[Connected (接続済み)]** に変更されます
 
     ![シングル サインオンの構成](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 

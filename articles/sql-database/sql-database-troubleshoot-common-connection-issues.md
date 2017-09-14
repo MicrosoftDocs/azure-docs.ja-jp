@@ -13,18 +13,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 06/13/2017
 ms.author: daleche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 914084ff790ceb2e11852c5dae757b935f813062
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: b8abf1285318e491d51aadf90f921103d84ce1a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
-Azure SQL Database との接続に失敗すると、[エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。 この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介します。 ここでは接続の問題の[一般的な原因](#cause)を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues)を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および[永続的または一時的でないエラー](#troubleshoot-the-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。 最後に、[Azure SQL Database の接続の問題に関連したすべての記事](#all-topics-for-azure-sql-database-connection-problems)をまとめています。
+Azure SQL Database との接続に失敗すると、[エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。 この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介します。 ここでは接続の問題の[一般的な原因](#cause)を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues)を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および[永続的または一時的でないエラー](#troubleshoot-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。 
 
 接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -42,7 +42,7 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 一般的に、Azure SQL Database の接続の問題は、次のカテゴリに分類されます。
 
 * [一時的なエラー (短期間または断続的)](#troubleshoot-transient-errors)
-* [永続的または一時的でないエラー (定期的に発生するエラー)](#troubleshoot-the-persistent-errors)
+* [永続的または一時的でないエラー (定期的に発生するエラー)](#troubleshoot-persistent-errors)
 
 ## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Azure SQL Database の接続の問題のトラブルシューティング ツールを試してみる
 特定の接続エラーが発生した場合は、[こちらのツール](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database)をお試しください。問題の速やかな特定と解決に役立ちます。
@@ -69,7 +69,7 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [パフォーマンスの問題のトラブルシューティング](sql-database-troubleshoot-performance.md)のトピックを参照してください。
 4. 接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options) を選択して、サポート要求を送信してください。
 
-## <a name="troubleshoot-persistent-errors-non-transient-errors"></a>永続的 (一時的でない) エラーのトラブルシューティング
+## <a name="troubleshoot-persistent-errors"></a>永続的なエラーのトラブルシューティング
 アプリケーションが Azure SQL Database の接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
 * ファイアウォールの構成:  Azure SQL データベースまたはクライアント側のファイアウォールにより、Azure SQL Database への接続がブロックされています。

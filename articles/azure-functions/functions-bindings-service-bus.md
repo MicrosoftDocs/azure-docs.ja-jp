@@ -4,7 +4,7 @@ description: "Azure Functions で Azure Service Bus トリガーとバインド�
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
-ms.author: chrande; glenga
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 1afc4d0c04929fdf55cc9f336e50d90ff7c66172
-ms.lasthandoff: 04/25/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 58b6d5c6ef40891e56ea4811f5e778286bdb8bc3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions における Service Bus のバインド
@@ -75,7 +75,7 @@ Service Bus のキューおよびトピック トリガーは、function.json �
 
 ## <a name="trigger-behavior"></a>トリガーの動作
 * **シングル スレッド** - Functions ランタイムは、既定で複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrentCalls` を 1 に設定します。 
-  *host.json* については、「[フォルダー構造](functions-reference.md#folder-structure)」および「[host.json](https://git .com/Azure/azure-webjobs-sdk-script/wiki/host.json)」をご覧ください。
+  *host.json* については、「[フォルダー構造](functions-reference.md#folder-structure)」および「[host.json](https://github .com/Azure/azure-webjobs-sdk-script/wiki/host.json)」をご覧ください。
 * **有害メッセージの処理** - Service Bus では、Azure Functions の構成やコードで制御または構成することができない、独自の有害メッセージを処理します。 
 * **PeekLock 動作** - Functions ランタイムは、[`PeekLock` モード](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)でメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。 
   関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
@@ -123,7 +123,7 @@ Service Bus キュー メッセージを処理する、言語固有のサンプ�
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-sample-in-c"></a>C でのトリガー サンプル# #
+### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
 
 ```cs
 public static void Run(string myQueueItem, TraceWriter log)
@@ -134,7 +134,7 @@ public static void Run(string myQueueItem, TraceWriter log)
 
 <a name="triggerfsharp"></a>
 
-### <a name="trigger-sample-in-f"></a>F でのトリガー サンプル# #
+### <a name="trigger-sample-in-f"></a>F# でのトリガー サンプル #
 
 ```fsharp
 let Run(myQueueItem: string, log: TraceWriter) =
@@ -177,7 +177,7 @@ module.exports = function(context, myQueueItem) {
         "topicName" : "<Name of the topic>",
         "subscriptionName" : "<Name of the subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -240,7 +240,7 @@ Service Bus キューにメッセージを送信する、言語固有のサン�
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル #
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
@@ -265,7 +265,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F での出力サンプル# #
+### <a name="output-sample-in-f"></a>F# での出力サンプル #
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =

@@ -3,27 +3,27 @@ title: "Azure Active Directory とは"
 description: "Azure Active Directory を使用すると、既存のオンプレミス ID をクラウドに拡張したり、Azure AD 統合アプリケーションを開発したりすることができます。"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: jeffgilb
 manager: femila
-editor: 
+ms.reviewer: jsnow
+ms.author: jeffgilb
 ms.assetid: 498820c4-9ebe-42be-bda2-ecf38cc514ca
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
-ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b40ae90ea313638cbd0b60792dc4803d3d08aa0a
-ms.openlocfilehash: 03c1442daf07f57476af64491229f1f38f6ffeff
+ms.date: 07/17/2017
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: b6746afd508832afbd54153851b6f2ae404af147
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/24/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
-Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。
+Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 Azure AD には主要なディレクトリ サービス、高度な ID 管理機能、アプリケーション アクセスの管理機能が統合されています。 また、Azure AD は、リッチな標準ベースのプラットフォームとなっており、開発者は、一元化されたポリシーとルールを基に、開発したアプリケーションへのアクセス制御を行うことができます。 
 
 IT 管理者は、Azure AD により、Office365、Salesforce.com、DropBox、Concur など、 [さまざまなクラウド型 SaaS アプリケーション](active-directory-saas-tutorial-list.md) へのシングル サインオン (SSO) アクセスを従業員やビジネス パートナーに提供する使いやすいソリューションを手軽な価格で手に入れることができます。
 
@@ -33,7 +33,7 @@ IT 管理者は、Azure AD により、Office365、Salesforce.com、DropBox、Co
 
 さらに、わずか [4 回のクリック](./connect/active-directory-aadconnect-get-started-express.md)で Azure AD を既存の Windows Server Active Directory と統合できるため、組織は既存のオンプレミス ID への投資を活用して、クラウド ベースの SaaS アプリケーションへのアクセスを管理できます。
 
-Office365、Azure、Dynamics CRM Online をご利用の方は、既に Azure AD を使用していることを認識していない可能性もあります。 実際に、Office365、Azure、Dynamics CRM のテナントは、いずれも既に Azure AD テナントとなっています。 必要なときはいつでも、そのテナントを使用して、Azure AD と統合するその他さまざまなクラウド アプリケーションへのアクセスを管理できます。
+Office 365、Azure、Dynamics CRM Online をご利用の方は、既に Azure AD を使用していることを認識していない可能性もあります。 実際に、Office 365、Azure、Dynamics CRM のテナントは、いずれも既に Azure AD テナントとなっています。 必要なときはいつでも、そのテナントを使用して、Azure AD と統合するその他さまざまなクラウド アプリケーションへのアクセスを管理できます。
 
 ![Azure AD Connect Stack](./media/active-directory-whatis/Azure_Active_Directory.png)
 
@@ -42,27 +42,25 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
-## <a name="what-are-the-benefits-of-azure-ad"></a>Azure AD の利点について
-組織が Azure AD を使用すると、次のさまざまな方法で、従業員の生産性の向上、IT プロセスの効率化、セキュリティの強化、コストの削減を実現できます。
+## <a name="choose-an-edition"></a>エディションの選択
+すべての Microsoft Online ビジネス サービスは、サインオンや他の ID のニーズに対応するために、Azure Active Directory (Azure AD) に依存しています。 Microsoft Online ビジネス サービス (Office 365、Microsoft Azure など) にサブスクライブすると、Azure AD を入手することができ、Free エディションのすべての機能を利用できます。 Azure Active Directory Free エディションでは、ユーザーとグループの管理、オンプレミスのディレクトリとの同期、Azure、Office 365、および Salesforce、Workday、Concur、DocuSign、Google Apps、Box、ServiceNow、Dropbox などの多くの人気のある SaaS アプリケーション間でのシングル サインオンを実現することができます。 
 
-* クラウド サービスをすばやく採用し、Azure AD の完全に自動化された SaaS アプリのアクセス管理機能とプロビジョニング サービス機能により、従業員やパートナーが簡単にシングル サインオンできるようにします。
-* 従業員が、使いたいデバイスで、どこからでも、卓越したクラウド アプリやセルフサービス機能にアクセスすることを可能にします。
-* 企業のソーシャル メディア アカウントに対する従業員とベンダーのアクセスを簡単かつ安全に管理します。
-* Azure AD の多要素認証と条件付きアクセスにより、アプリケーションのセキュリティを強化します。
-* 一貫したセルフサービスのアプリケーション アクセスの管理を実装することで、経営者は IT コストとオーバーヘッドを削減しながら機動性を強化できます。
-* セキュリティのレポート作成と監視機能により、アプリケーションの使用状況を監視し、高度な脅威からビジネスを保護します。
-* オンプレミスのアプリケーションへのセキュリティで保護されたモバイル (リモート) アクセスを実現します。
+Azure Active Directory を強化するには、Azure Active Directory Basic、Premium P1、Premium P2 の各エディションを使用して有料の機能を追加します。 Azure Active Directory の有料エディションは、既存の無料のディレクトリ上に構築されます。セルフサービス、拡張された監視機能、セキュリティ レポート、Multi-Factor Authentication (MFA)、セキュリティで保護されたモバイル ユーザーのアクセスなどエンタープライズ クラスの機能を提供します。
 
-## <a name="how-does-azure-ad-compare-to-on-premises-active-directory-domain-services-ad-ds"></a>Azure AD とオンプレミスの Active Directory Domain Services (AD DS) との比較
+> [!NOTE]
+> これらのエディションの価格オプションについては、「 [Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。 Azure Active Directory Premium P1、Premium P2、Azure Active Directory Basic は、現在、中国ではサポートされていません。 詳細については、Azure Active Directory フォーラムからお問い合わせください。
+>
 
-Azure Active Directory (Azure AD) とオンプレミスの Active Directory (Active Directory Domain Services or AD DS) は、両方ともディレクトリ データを格納し、ユーザーとリソース間の通信を管理するシステムであり、ユーザーのログイン プロセス、認証、およびディレクトリ検索を実行します。
+* **Azure Active Directory Basic** : このエディションは、クラウド優先のニーズを持つタスク ワーカー向けに設計されており、クラウド中心のアプリケーション アクセスおよびセルフサービス ID 管理のソリューションを提供します。 Azure Active Directory Basic エディションでは、グループベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため) などの生産性の強化とコスト削減の機能が提供され、すべてがアップタイム 99.9% のエンタープライズレベルの SLA によって保証されます。
+* **Azure Active Directory Premium P1** : Azure Active Directory Premium エディションは、より要求の厳しい ID とアクセスの管理を必要とする組織を支援することを目的として、機能豊富なエンタープライズレベルの ID 管理機能を追加し、ハイブリッド ユーザーがオンプレミスの機能とクラウドの機能にシームレスにアクセスできるようにします。 このエディションには、クラウド内のアプリケーション アクセス、セルフサービスの ID とアクセスの管理 (IAM)、ID 保護とセキュリティに関して、ハイブリッド環境のインフォメーション ワーカーと ID 管理者が必要とするすべてが含まれています。 また、動的なグループやセルフサービス グループ管理のような高度な管理と委任のリソースをサポートします。 さらに、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート) が含まれており、オンプレミス ユーザー向けのセルフ サービスのパスワード リセットなどのソリューションを実現するクラウドの書き戻し機能を提供します。
+* **Azure Active Directory Premium P2** - すべてのユーザーと管理者を対象とした高度な保護機能を備えたこの新しいエディションには、Azure AD Premium P1 の全機能に加え、新しい Identity Protection と Privileged Identity Management が含まれています。 Azure Active Directory Identity Protection では、何十億ものシグナルを活用して、アプリケーションや会社の重要なデータへのリスク ベースの条件付きアクセスを提供します。 また、Azure Active Directory Privileged Identity Management では、特権アカウントを管理および保護できるので、管理者と管理者によるリソースへのアクセスを検出、制限、監視し、必要に応じて Just-In-Time アクセスを提供できます。  
 
-AD DS は、Windows Server 上のサーバー ロールであり、物理または仮想マシンに展開できます。 X.500 に基づく階層構造になっています。 オブジェクトの検索では DNS を使用し、LDAP を使用して対話でき、認証では主に Kerberos を使用します。 Active Directory では、ドメインにマシンを参加させるだけでなく、組織単位 (OU) とグループ ポリシー オブジェクト (GPO) を使用できます。ドメイン間に信頼関係が作成されます。
-
-Azure AD は、複数の顧客向けのパブリック ディレクトリ サービスであり、クラウド サーバーのテナントと Office 365 などのアプリケーションを Azure AD 内に作成できます。 ユーザーとグループは、OU も GPO もないフラットな構造で作成されます。 認証は、SAML、WS-Federation、OAuth などのプロトコルを通して実行されます。 Azure AD のクエリを実行できますが、LDAP を使用する代わりに、AD Graph API と呼ばれる REST API を使用する必要があります。 これらのすべてが、HTTP と HTTPS 経由で機能します。
-
-
-
+> [!NOTE]
+> さまざまな Azure Active Directory の機能を "従量課金制" のエディションで使用できます。
+>
+> * Active Directory B2C は、コンシューマー向けアプリケーションの ID およびアクセスの管理ソリューションです。 詳しくは、「 [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
+> * Azure Multi-Factor Authentication は、ユーザーごとまたは認証プロバイダーごとに使用できます。 詳しくは、「 [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
+>
 
 ## <a name="how-can-i-get-started"></a>利用を始めるには?
 
@@ -70,7 +68,7 @@ Azure AD は、複数の顧客向けのパブリック ディレクトリ サー
 
 * [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - 30 日間無料試用版に今すぐサインアップすると、このリンクを使って、初めてのクラウド ソリューションを 5 分程度でデプロイできます
 
-* Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
+* [Azure AD の概要](https://docs.microsoft.com/azure/active-directory/active-directory-get-started-premium)に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 
 **開発者の方:**
  
@@ -78,18 +76,6 @@ Azure AD は、複数の顧客向けのパブリック ディレクトリ サー
 
 * [試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。
 
-## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
-Azure AD について理解を深めていただけるよう、豊富なオンライン リソースをご用意しています。 理解を深めるのに適した優れた記事を以下にリストしましたので、ご活用ください。
-
-* [Azure AD Connect によるディレクトリのハイブリッド管理を有効にする](active-directory-aadconnect.md)
-* [多要素認証とは](../multi-factor-authentication/multi-factor-authentication.md)
-* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
-* [Azure AD レポートの概要](active-directory-reporting-getting-started.md)
-* [任意の場所からのパスワードの管理](active-directory-passwords.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
-* [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
-* [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
-* [Microsoft Azure Active Directory ライセンスとは](active-directory-licensing-what-is.md)
-* [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
+## <a name="next-steps"></a>次のステップ
+[Azure の ID およびアクセス管理の基礎](https://docs.microsoft.com/azure/active-directory/identity-fundamentals)
 

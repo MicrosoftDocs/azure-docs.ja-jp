@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/17/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dd151e222d6920b8c464146bd30af916925a60bc
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f120caf4ea21299e52782db33994b9bd8f63780d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
@@ -210,7 +211,7 @@ MPIO を構成しない場合は、次の手順に従い、Windows Server ホス
 ## <a name="configure-a-new-storage-account-for-the-service"></a>サービスの新しいストレージ アカウントを構成する
 これは省略可能な手順で、サービスでストレージ アカウントの自動作成を有効にしていない場合のみ実行する必要があります。 StorSimple ボリューム コンテナーを作成するには、Microsoft Azure ストレージ アカウントが必要です。
 
-別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md) 」を参照してください。
+別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md) 」を参照してください。
 
 Government Portal の **[StorSimple Manager サービス]** ページで次の手順を実行します。
 
@@ -260,10 +261,5 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 ## <a name="next-steps"></a>次のステップ
 * [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 * [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx) を使用して StorSimple デバイスを管理します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

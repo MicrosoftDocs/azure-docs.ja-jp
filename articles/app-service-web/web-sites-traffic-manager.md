@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 25502e4124442ed1853e3c3d9226107328c29316
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: fb7d391e3118a9dccde5501c3f30c6f580932a30
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御
@@ -50,7 +49,7 @@ Azure トラフィック マネージャーを Azure で使用する場合は、
 * Azure トラフィック マネージャーのプロファイルで指定した Web アプリ エンドポイントは、プロファイルで Web アプリの構成ページの **[ドメイン名]** セクションに表示されますが、そこでは構成できません。
 * Web アプリをプロファイルに追加した後、Web アプリのポータル ページのダッシュボードの **[サイトの URL]** には、Web アプリのカスタム ドメインを設定していればその URL が表示されます。 それ以外の場合は、Traffic Manager のプロファイルの URL ( `contoso.trafficmgr.com`など) が表示されます。 Web アプリの直接のドメイン名とトラフィック マネージャーの URL の両方が、Web アプリの構成ページの **[ドメイン名]** セクションに表示されます。
 * カスタム ドメイン名は予期したとおりに機能しますが、それらのドメイン名を Web アプリに追加するだけでなく、トラフィック マネージャーの URL を参照するように DNS マップを構成する必要もあります。 Azure Web アプリのカスタム ドメイン名の設定については、「[Azure Website のカスタム ドメインの構成](app-service-web-tutorial-custom-domain.md)」を参照してください。
-* 標準モードの Web アプリのみを Azure トラフィック マネージャーのプロファイルに追加できます。
+* 標準またはプレミアム モードの Web アプリのみを Azure Traffic Manager のプロファイルに追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 Azure トラフィック マネージャーの概念と技術的概要については、「 [Traffic Manager Overview (トラフィック マネージャーの概要)](../traffic-manager/traffic-manager-overview.md)」を参照してください。

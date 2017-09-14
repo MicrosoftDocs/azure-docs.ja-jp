@@ -12,19 +12,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 03/22/2017
+ms.date: 05/02/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: cce66615ebe457ed7230401d154ddad07941f5bc
-ms.lasthandoff: 03/23/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 ---
 
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
 
-ASP.NET Core は新しいオープンソースのクロスプラットフォーム フレームワークであり、Web アプリ、IoT アプリ、モバイル バックエンドなど、最新のクラウドベースのインターネット接続アプリケーションを構築するために使用されます。 ASP.NET Core アプリは .NET Core または完全な .NET Framework で実行できますが、Service Fabric サービスは、現時点で完全な .NET Framework でのみ実行できます。 つまり、ASP.NET Core Service Fabric サービスを構築する場合にも完全な .NET Framework を対象にする必要があります。
+ASP.NET Core は新しいオープンソースのクロスプラットフォーム フレームワークであり、Web アプリ、IoT アプリ、モバイル バックエンドなど、最新のクラウドベースのインターネット接続アプリケーションを構築するために使用されます。 
+
+この記事は、NuGet パッケージの **Microsoft.ServiceFabric.AspNetCore.*** セットを使用して、Service Fabric Reliable Services で ASP.NET Core サービスをホスティングするための詳細なガイドです。
+
+Service Fabric の ASP.NET Core の入門チュートリアルと、開発環境のセットアップ方法については、「[ASP.NET Core を使用したアプリケーション用の Web サービス フロントエンドの構築](service-fabric-add-a-web-frontend.md)」を参照してください。
+
+この記事の残りの部分では、読者が ASP.NET Core に慣れているものと想定しています。 慣れていない場合は、[ASP.NET Core の基礎](https://docs.microsoft.com/aspnet/core/fundamentals/index)に関するページを読むことをお勧めします。
+
+## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric 環境の ASP.NET Core
+
+ASP.NET Core アプリは .NET Core または完全な .NET Framework で実行できますが、Service Fabric サービスは、現時点で完全な .NET Framework でのみ実行できます。 つまり、ASP.NET Core Service Fabric サービスを構築する場合にも完全な .NET Framework を対象にする必要があります。
 
 ASP.NET Core は、Service Fabric で 2 とおりの方法で使用できます。
  - **ゲスト実行可能ファイルとしてホストする**。 この方法は、主に、コードの変更なしで Service Fabric 上で既存の ASP.NET Core アプリケーションを実行するために使用します。
@@ -32,25 +42,20 @@ ASP.NET Core は、Service Fabric で 2 とおりの方法で使用できます�
 
 この記事の残りの部分では、Service Fabric SDK に付属する ASP.NET Core 統合コンポーネントを使用して、リライアブル サービス内で ASP.NET Core を使用する方法について説明します。 
 
-> [!NOTE]
->この記事の残りの部分では、読者が SP.NET Core でのホスティングに慣れているものと想定しています。 ASP.NET Core でのホスティングの詳細については、「[Introduction to hosting in ASP.NET Core (ASP.NET Core でのホスティングの概要)](https://docs.microsoft.com/aspnet/core/fundamentals/hosting)」を参照してください。
-
-> [!NOTE]
-> Visual Studio 2015 で ASP.NET Core を使ったリライアブル サービスを開発するには、[.NET Core VS 2015 Tooling Preview 2](https://www.microsoft.com/net/download/core) がインストールされている必要があります。
-
 ## <a name="service-fabric-service-hosting"></a>Service Fabric サービスのホスティング
+
 Service Fabric では、サービスの 1 つまたは複数のインスタンスやレプリカが "*サービス ホスト プロセス*" (サービス コードを実行する実行可能ファイル) で実行されます。 サービス作成者はサービス ホスト プロセスを所有し、Service Fabric はそれをアクティブ化して監視します。
 
-従来の ASP.NET (MVC 5 まで) は、System.Web.dll を通じて IIS に厳密に結合されています。 ASP.NET Core は、Web サーバーと Web アプリケーションの分離を実現します。 これにより、Web アプリケーションをさまざまな Web サーバー間で移植することができます。また、Web サーバーを "*自己ホスト*" することもできます。つまり、IIS などの専用 Web サーバー ソフトウェアが所有するプロセスではなく、自分のプロセスで Web サーバーを起動できます。 
+従来の ASP.NET (MVC 5 まで) は、System.Web.dll を通じて IIS に厳密に結合されています。 ASP.NET Core は、Web サーバーと Web アプリケーションの分離を実現します。 これにより、Web アプリケーションをさまざまな Web サーバー間で移植することができます。また、Web サーバーを "*自己ホスト*" することもできます。つまり、IIS などの専用 Web サーバー ソフトウェアが所有するプロセスではなく、自分のプロセス内で Web サーバーを起動できます。 
 
 Service Fabric サービスと ASP.NET をゲスト実行可能ファイルとして結合するか、リライアブル サービス内で結合するには、サービス ホスト プロセス内で ASP.NET を起動できる必要があります。 ASP.NET Core の自己ホストにより、これを行うことができます。
 
 ## <a name="hosting-aspnet-core-in-a-reliable-service"></a>リライアブル サービスでの ASP.NET Core のホスティング
-通常、自己ホスト型の ASP.NET Core アプリケーションでは、`Program.cs` の `static void Main()` メソッドのように、アプリケーションのエントリ ポイントに WebHost が作成されます。 この場合、WebHost のライフサイクルはプロセスのライフサイクルにバインドされます。
+通常、自己ホスト型の ASP.NET Core アプリケーションでは、`Program.cs` の `static void Main()` メソッドのように、アプリケーションのエントリ ポイントに WebHost が作成されます。 この場合、WebHost のライフサイクルはプロセスのライフサイクルに拘束されます。
 
 ![プロセスでの ASP.NET Core のホスティング][0]
 
-ただし、アプリケーションのエントリ ポイントは、リライアブル サービスに WebHost を作成する場所として適しません。それは、アプリケーションのエントリ ポイントは、サービス タイプを Service Fabric ランタイムに登録するためにのみ使用されることから、そのサービス タイプのインスタンスが作成される可能性があるためです。 WebHost は、リライアブル サービス自体に作成する必要があります。 サービス ホスト プロセス内で、サービス インスタンスやレプリカは、複数のライフサイクルをたどることができます。 
+ただし、アプリケーションのエントリ ポイントは、リライアブル サービスに WebHost を作成する場所として適しません。それは、アプリケーションのエントリ ポイントは、Service Fabric ランタイムがそのサービス タイプのインスタンスを作成できるように、サービス タイプをランタイムに登録するためにのみ使用されるからです。 WebHost は、リライアブル サービス自体に作成する必要があります。 サービス ホスト プロセス内で、サービス インスタンスやレプリカは、複数のライフサイクルをたどることができます。 
 
 リライアブル サービス インスタンスは、`StatelessService` または `StatefulService` から派生したサービス クラスによって表されます。 サービスの通信スタックは、サービス クラスの `ICommunicationListener` 実装に含まれています。 `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet パッケージには、リライアブル サービスで Kestrel または WebListener の ASP.NET Core WebHost を開始および管理する `ICommunicationListener` の実装が含まれています。
 
@@ -80,7 +85,7 @@ Service Fabric サービスと ASP.NET をゲスト実行可能ファイルと�
 これが原因で、診断するのが困難なバグが不規則に発生する場合があります。 
 
 ### <a name="using-unique-service-urls"></a>一意のサービス URL の使用
-これを防ぐために、サービスは、一意の識別子を使用して Naming Service にエンドポイントを送信し、クライアント要求中にその一意の識別子を検証できます。 これは、悪意のないテナントの信頼できる環境におけるサービス間の協調アクションです。 悪意のあるテナント環境では、セキュリティで保護されたサービスの認証は提供されません。
+これを防ぐために、サービスは、一意の識別子を使用して Naming Service にエンドポイントを送信し、クライアント要求中にその一意の識別子を検証できます。 これは、悪意のないテナントの信頼できる環境におけるサービス間の協調アクションです。 これにより、悪意のあるテナント環境でセキュリティで保護されたサービスの認証が提供されるわけではありません。
 
 信頼できる環境では、`UseServiceFabricIntegration` メソッドによって追加されたミドルウェアによって、Naming Service に送信されるアドレスに一意の識別子が自動的に追加され、各要求でその識別子が検証されます。 識別子が一致しない場合、ミドルウェアは即座に HTTP 410 Gone 応答を返します。
 
@@ -309,7 +314,7 @@ Windows 上の外部のインターネットに接続された HTTP エンドポ
 | --- | --- | --- |
 | Web サーバー | WebListener | サービスが信頼できるネットワーク (イントラネットなど) にのみ公開される場合は、Kestrel を使用することができます。 それ以外の場合は、WebListener をお勧めします。 |
 | ポート構成 | 静的 | 一般的な静的ポートを ServiceManifest.xml の `Endpoints` 構成で構成する必要があります (HTTP の場合は 80、HTTPS の場合は 443 など)。 |
-| ServiceFabricIntegrationOptions | なし | Service Fabric 統合ミドルウェアを構成するときに `ServiceFabricIntegrationOptions.None` オプションを使用して、サービスが一意の識別子の受信要求の検証を試みないようにする必要があります。 アプリケーションの外部ユーザーは、ミドルウェアが使用する一意の識別情報を認識しません。 |
+| ServiceFabricIntegrationOptions | なし | Service Fabric 統合ミドルウェアを構成するときに `ServiceFabricIntegrationOptions.None` オプションを使用して、サービスが受信要求の一意の識別子を検証しないようにする必要があります。 アプリケーションの外部ユーザーは、ミドルウェアが使用する一意の識別情報を認識しません。 |
 | Instance Count | -1 | 典型的な使用例では、ロード バランサーからのトラフィックを受信するすべてのノードでインスタンスを使用できるように、インスタンス数を "-1" に設定する必要があります。 |
 
 外部に公開されている複数のサービスが同じノードのセットを共有する場合、一意である一方で安定している URL パスを使用する必要があります。 これは、IWebHost の構成時に提供される URL を変更することで実現できます。 これは WebListener のみに当てはまることに注意してください。

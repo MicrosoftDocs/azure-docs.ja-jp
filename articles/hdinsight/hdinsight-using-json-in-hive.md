@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/26/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 034b61fdeb34c03bb4b58145f04138410e0d6fc6
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bd136afebeceb0cd9c24cfc5f15601caa80a755e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="process-and-analyze-json-documents-using-hive-in-hdinsight"></a>HDInsight の Hive を使用した JSON ドキュメントの処理と分析
@@ -62,7 +61,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
         ]
     }
 
-ファイルは、wasbs://processjson@hditutorialdata.blob.core.windows.net/ で参照できます。 HDInsight での Azure BLOB Storage の使用については、[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
+ファイルは、wasb://processjson@hditutorialdata.blob.core.windows.net/ で参照できます。 HDInsight での Azure BLOB Storage の使用については、[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
 
 このチュートリアルでは、Hive コンソールを使用します。  Hive コンソールを開く手順については、「 [リモート デスクトップによる HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-remote-desktop.md)」をご覧ください。
 
@@ -86,7 +85,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 
     SELECT * FROM StudentsOneLine
 
-未加工の JSON ファイルは **wasbs://processjson@hditutorialdata.blob.core.windows.net/** にあります。 *StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指します。
+未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。 *StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指します。
 
 *StudentsOneLine* Hive テーブルは、*/json/students/* パスの下にある HDInsight の既定のファイル システムにデータを保存します。
 
@@ -162,7 +161,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
       ![JDK の適切な構成値の設定][image-hdi-hivejson-jdk]
 2. [Maven 3.3.1](http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip)
    
-    [コントロール パネル] からご使用のアカウントの環境変数の [システム環境変数の編集] に移動して、パスに bin フォルダーを追加します。 次のスクリーンショットに、この操作を示します。
+    [コントロール パネル] からアカウントの環境変数の [システム環境変数の編集] に移動して、パスに bin フォルダーを追加します。 次のスクリーンショットに、この操作を示します。
    
     ![Maven のセットアップ][image-hdi-hivejson-maven]
 3. [Hive-JSON-SerDe](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master) github サイトからプロジェクトを複製します。 そのためには、次のスクリーンショットに示すように、[Zip のダウンロード] ボタンをクリックします。

@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB を使用した Java アプリケーション開発のチュートリアル | Microsoft Docs"
-description: "この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB サービスを使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
+description: "この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB および DocumentDB API を使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
 keywords: "アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, documentdb, azure, Microsoft azure"
 services: cosmos-db
 documentationcenter: java
@@ -10,20 +10,19 @@ editor: mimig
 ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 05/22/2017
+ms.date: 08/22/2017
 ms.author: denlee
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 3c22c33b27b793e19850c405df9b6b7bc3fe3362
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 292115b5603c6f05a5eab3492d4b3e2096b58ed2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="build-a-java-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Java Web アプリケーションの作成
+# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>Azure Cosmos DB および DocumentDB API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
@@ -32,9 +31,9 @@ ms.lasthandoff: 05/31/2017
 > 
 > 
 
-この Java Web アプリケーション チュートリアルでは、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービスを使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 このトピックでは、次の内容を説明します。
+この Java Web アプリケーション チュートリアルでは、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービスを使用して、Azure App Service Web Apps でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 このトピックでは、次の内容を説明します。
 
-* Eclipse で、基本的な JSP アプリケーションを作成する方法。
+* Eclipse で基本的な JavaServer Pages (JSP) アプリケーションを作成する方法。
 * [Azure Cosmos DB Java SDK](https://github.com/Azure/azure-documentdb-java) を使って Azure Cosmos DB サービスを操作する方法。
 
 この Java Web アプリケーション チュートリアルでは、次の図に示すように、タスクを作成、取得、完了済みとしてマークできる、Web ベースのタスク管理アプリケーションを作成する方法について説明します。 ToDo リストの各タスクは、JSON ドキュメントとして Azure Cosmos DB に格納されます。
@@ -60,7 +59,7 @@ ms.lasthandoff: 05/31/2017
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
-## <a id="CreateDB"></a>手順 1: Azure Cosmos DB データベース アカウントを作成する
+## <a id="CreateDB"></a>手順 1. Azure Cosmos DB アカウントを作成する
 まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルにAzure Cosmos DB Emulator を使用する場合は、「[手順 2: Java JSP アプリケーションを作成する](#CreateJSP)」に進むことができます。
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -100,24 +99,20 @@ DocumentDB Java SDK とその依存関係をインストールするには、 [A
 4. **[Dependencies]** タブの **[Dependencies]** ウィンドウで、**[Add]** をクリックします。
 5. **[Select Dependency]** ウィンドウで、次の操作を行います。
    
-   * **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
-   * **[Artifact Id]** ボックスに、「azure-documentdb」と入力します。
-   * **[Version]** ボックスに「1.5.1」と入力します。
+   * **[Group Id]\(グループ ID\)** ボックスに、「com.microsoft.azure」と入力します。
+   * **[Artifact Id]\(アーティファクト ID\)** ボックスに、「azure-documentdb」と入力します。
+   * **[Version]\(バージョン\)** ボックスに「1.5.1」と入力します。
      
-     ![DocumentDB Java アプリケーション SDK をインストールする](./media/documentdb-java-application/image13.png)
+   ![DocumentDB Java アプリケーション SDK をインストールする](./media/documentdb-java-application/image13.png)
      
-     または、テキスト エディターを使用して、GroupId および ArtifactId の依存関係 XML を 直接 pom.xml に追加します。
+   * または、テキスト エディターを使用して、Group ID および Artifact ID の依存関係 XML を直接 pom.xml に追加します。
      
-        <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-documentdb</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-6. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
+        <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
+6. **[OK]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
 7. pom.xml ファイルを保存します。
 
 ## <a id="UseService"></a>手順 4: Java アプリケーションで Azure Cosmos DB サービスを使用する
-1. まず TodoItem オブジェクトを定義します。
+1. まず、TodoItem.java で TodoItem オブジェクトを定義します。
    
         @Data
         @Builder
@@ -129,7 +124,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、 [A
         }
    
     このプロジェクトでは、 [Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。 または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
-2. Azure Cosmos DB サービスを呼び出すには、新しい **DocumentClient**をインスタンス化する必要があります。 一般に、後続の要求ごとに新しいクライアントを構築するのではなく、 **DocumentClient** を再利用することをお勧めします。 **DocumentClientFactory**の中にラップすることによって、クライアントを再利用できます。 ここでも、 [手順 1.](#CreateDB)でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります。 [YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
+2. Azure Cosmos DB サービスを呼び出すには、新しい **DocumentClient**をインスタンス化する必要があります。 一般に、後続の要求ごとに新しいクライアントを構築するのではなく、 **DocumentClient** を再利用することをお勧めします。 **DocumentClientFactory**の中にラップすることによって、クライアントを再利用できます。 [手順 1.](#CreateDB) でクリップボードに保存した URI とプライマリ キー値を DocumentClientFactory.java に貼り付ける必要があります。 [YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
         private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -547,7 +542,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、 [A
         </body>
         </html>
     ```
-4. 最後に、Web ユーザー インターフェイスとサーブレットを結びつけるためにクライアント側の Javascript を記述します。
+4. 最後に、Web ユーザー インターフェイスとサーブレットを結び付けるためにクライアント側の JavaScript を記述します。
    
         var todoApp = {
           /*
@@ -722,16 +717,16 @@ DocumentDB Java SDK とその依存関係をインストールするには、 [A
 5. これで完成です。 後はアプリケーションをテストするだけです。 アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、 **[Add Task]**をクリックして、いくつかの Todo 項目を追加します。
 6. 項目が表示されたら、チェック ボックスを切り替え、 **[Update Tasks]**をクリックすることで、その項目が完了しているかどうかを確認できます。
 
-## <a id="Deploy"></a>手順 6: Azure Websites に Java アプリケーションをデプロイする
-Azure Websites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: GIT) または FTP のいずれかを使用してアップロードするだけです。
+## <a id="Deploy"></a>手順 6. Azure Web Sites に Java アプリケーションをデプロイする
+Azure Web Sites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: Git) または FTP を使用してアップロードするだけです。
 
-1. アプリケーションを WAR としてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]**、**[WAR File]** の順にクリックします。
+1. アプリケーションを WAR ファイルとしてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]\(エクスポート\)**、**[WAR File]\(WAR ファイル\)** の順にクリックします。
 2. **[WAR Export]** ウィンドウで、次の操作を行います。
    
    * [Web project] ボックスに、「azure-documentdb-java-sample」と入力します。
    * [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
    * **[完了]**をクリックします。
-3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード方法については、「 [Azure の Java Web サイトへのアプリケーションの追加](../app-service-web/web-sites-java-add-app.md)」を参照してください。
+3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード手順については、「[Azure App Service Web Apps への Java アプリケーションの追加](../app-service-web/web-sites-java-add-app.md)」を参照してください。
    
     WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
 4. 完成したアプリケーションの動作を確認するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ にアクセスして、タスクを追加します。
@@ -744,11 +739,11 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
-6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「https://github.com/Azure-Samples/java-todo-app.git」と入力し、**[Next]\(次へ\)** をクリックします。
+6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「 https://github.com/Azure-Samples/java-todo-app.git 」と入力し、**[Next]\(次へ\)** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
-10. **[Import Projects]\(プロジェクトのインポート\)** 画面で、**Azure Cosmos DB** プロジェクトを選択解除し、**[Finish]\(完了\)** をクリックします。 Azure Cosmos DB プロジェクトには、依存関係として追加される Azure Cosmos DB Java SDK が含まれています。
+10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。 DocumentDB プロジェクトには、依存関係として追加される Azure Cosmos DB Java SDK が含まれています。
 11. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を Azure Cosmos DB アカウントの URI とプライマリ キーで置き換え、ファイルを保存します。 詳細については、「[手順 1:Azure Cosmos DB データベース アカウントを作成する](#CreateDB)」を参照してください。
 12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
 13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。 lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
@@ -758,9 +753,9 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 17. **[Project Facets]** 画面で、**[Dynamic Web Module]** と **[Java]** を選択し、**[OK]** をクリックします。
 18. 画面の下部の **[Servers]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Add and Remove]** をクリックします。
 19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。
-20. **[Server]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Restart]** をクリックします。
+20. **[Servers]\(サーバー\)** タブで、**[Tomcat v7.0 Server at localhost]\(ローカルホストの Tomcat v7.0 サーバー\)** を右クリックし、**[Restart]\(再起動\)** をクリックします。
 21. ブラウザーで http://localhost:8080/azure-documentdb-java-sample/ にアクセスして、タスク リストに項目を追加します。 既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
-22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Websites にアプリケーションをデプロイする](#Deploy)」を参照してください。
+22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Web Sites にアプリケーションをデプロイする](#Deploy)」を参照してください。
 
 [1]: media/documentdb-java-application/keys.png
 

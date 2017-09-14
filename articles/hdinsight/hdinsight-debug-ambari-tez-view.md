@@ -1,5 +1,5 @@
 ---
-title: "HDInsight で Ambari Tez ビューを使用する | Microsoft Docs"
+title: "HDInsight で Ambari Tez ビューを使用する - Azure | Microsoft Docs"
 description: "HDInsight で Ambari Tez ビューを使用して Tez ジョブをデバッグする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 4dcccb313c517982680266656c36b9f23dee44c4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 65d89309b9eea8544b85d16687baa90d49688d77
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/18/2017
 HDInsight の Ambari Web UI には Tez ビューが含まれています。Tez ビューは、Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関するページを参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -85,55 +84,26 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
 
     ![Selecting Tez view](./media/hdinsight-debug-ambari-tez-view/selecttez.png)
 
-2. Tez ビューが読み込まれると、クラスターで現在実行されている DAG や実行されていた DAG の一覧が表示されます。
+2. Tez ビューが読み込まれると、クラスターで現在実行されている Hive クエリや実行されていた Hive クエリの一覧が表示されます。
 
-    ![All DAGS](./media/hdinsight-debug-ambari-tez-view/alldags.png)
+    ![All DAGS](./media/hdinsight-debug-ambari-tez-view/tez-view-home.png)
 
-3. エントリが 1 つしかない場合、それは、前のセクションで実行したクエリのエントリです。 エントリが複数ある場合は、**[Application ID]** フィールドにアプリケーション ID を入力して検索してから、Enter キーを押します。
+3. エントリが 1 つしかない場合、それは、前のセクションで実行したクエリのエントリです。 複数のエントリがある場合は、ページの上部にあるフィールドを使用して検索できます。
 
-4. **DAG 名**を選択します。 DAG の情報が表示されます。 この情報が含まれている JSON ファイルの zip ファイルをダウンロードすることもできます。
+4. Hive クエリの**クエリ ID** を選択します。 クエリの情報が表示されます。
 
-    ![DAG Details](./media/hdinsight-debug-ambari-tez-view/dagdetails.png)
+    ![DAG Details](./media/hdinsight-debug-ambari-tez-view/query-details.png)
 
-5. **[DAG Details]** の上にはいくつかのリンクがあります。これらのリンクを使用すると、DAG に関する情報を表示できます。
+5. このページのタブでは、次の情報を確認できます。
 
-   * **[DAG Counters]**: この DAG のカウンターの情報が表示されます。
-   * **[Graphical View]**: この DAG がグラフィカルに表示されます。
-   * **[All Vertices]**: この DAG 内の頂点の一覧が表示されます。
-   * **[All Tasks]**: この DAG 内のすべての頂点のタスクの一覧が表示されます。
-   * **[All TaskAttempts]**: この DAG のタスクの実行に関する情報が表示されます。
+    * **[クエリの詳細]**: Hive クエリに関する詳細情報。
+    * **[タイムライン]**: 処理の各ステージに要した時間に関する情報。
+    * **[構成]**: このクエリに使用される構成。
 
-     > [!NOTE]
-     > [Vertices]、[Tasks]、[TaskAttempts] が表示されるように列をスクロールする場合は、行ごとに**カウンター**を表示するためのリンクと**ログを表示またはダウンロードする**ためのリンクがあることに注意してください。
-
-     ジョブでエラーが発生した場合、[DAG Details] には、[FAILED] という状態と、失敗したタスクに関する情報へのリンクが表示されます。 診断情報は、DAG の詳細の下に表示されます。
-
-     ![A DAG Details screen detailing a failure](./media/hdinsight-debug-ambari-tez-view/faileddag.png)
-
-6. **[Graphical View]**を選択します。 このビューには、DAG がグラフィカルに表示されます。 ビューの各頂点にマウス ポインターを置くと、その項目に関する情報を表示できます。
-
-    ![[Graphical View]](./media/hdinsight-debug-ambari-tez-view/dagdiagram.png)
-
-7. 頂点を選択すると、その項目の **[Vertex Details]** が読み込まれます。 **Map 1** の頂点を選択して、この項目の詳細を表示します。
-
-    ![[Vertex Details]](./media/hdinsight-debug-ambari-tez-view/vertexdetails.png)
-
-8. これで、ページの上部に頂点とタスクに関連するリンクが表示されます。
-
-   > [!NOTE]
-   > **[DAG Details]** に戻り、**[Vertex Details]** を選択して、**Map 1** の頂点を選択することで、このページに移動することもできます。
-
-   * **[Vertex Counters]**: この頂点のカウンター情報が表示されます。
-   * **[Tasks]**: この頂点のタスクが表示されます。
-   * **[Task Attempts]**: この頂点のタスクの実行に関する情報が表示されます。
-   * **[Sources & Sinks]**: この頂点のデータ ソースとシンクが表示されます。
-
-     > [!NOTE]
-     > 前のメニューと同様に、[Tasks]、[Task Attempts]、[Sources & Sinks__] が表示されるように列をスクロールすると、各項目の詳細情報へのリンクを表示できます。
-
-9. **[Tasks]** を選択した後、**00_000000** という名前の項目をクリックします。 このタスクの **[Task Details]** が表示されます。 この画面から、**[Task Counters]** と **[Task Attempts]** を表示できます。
-
-   ![タスクの詳細](./media/hdinsight-debug-ambari-tez-view/taskdetails.png)
+    __[クエリの詳細]__ では、リンクを使用してこのクエリの__アプリケーション__や __DAG__ に関する情報を確認できます。
+    
+    * __[アプリケーション]__ リンクには、このクエリの YARN アプリケーションに関する情報が表示されます。 ここから YARN アプリケーションのログにアクセスすることができます。
+    * __[DAG]__ リンクには、このクエリの有向非巡回グラフ (DAG) に関する情報が表示されます。 ここから DAG のグラフィカル表示を見ることができます。 また、DAG 内の頂点の情報も確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

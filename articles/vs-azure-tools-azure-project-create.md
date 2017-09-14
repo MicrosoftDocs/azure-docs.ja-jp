@@ -3,8 +3,8 @@ title: "Visual Studio での Azure クラウド サービス プロジェクト�
 description: "Visual Studio で Azure クラウド サービス プロジェクトを作成する方法を説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: ec580df7-3dcc-45a9-a1d9-8c110678dfb5
 ms.service: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: b1870b5db6e194f61d2f8b526e0c81b4d46699e4
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>Visual Studio での Azure クラウド サービス プロジェクトの作成

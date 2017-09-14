@@ -1,6 +1,6 @@
 ---
-title: "ポイント対サイトの証明書の作成とエクスポート: Makecert: Azure | Microsoft Docs"
-description: "この記事では、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を Makecert を使用して行う手順について説明します。"
+title: "ポイント対サイトの証明書の作成とエクスポート: MakeCert : Azure | Microsoft Docs"
+description: "この記事では、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を MakeCert を使用して行う手順について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,25 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 0800a7754241eb409dbd86db82b586a3e19a29fc
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 4c51edac3b1cdafae8f9543bd0e3133b6a050f73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Makecert を使用したポイント対サイト接続の証明書の生成とエクスポート
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
 
-> [!NOTE]
-> ポイント対サイト接続用の自己署名証明書を生成する Windows 10 コンピューターへのアクセス権がない場合にのみ、これらの手順を使用します。 Makecert は推奨されていません。 さらに Makecert は SHA-2 証明書を作成することはできず、(今なお P2S に対して有効な) SHA-1 のみを作成します。 これらの理由から、可能であれば [PowerShell の手順](vpn-gateway-certificates-point-to-site.md)を使用することをお勧めします。 PowerShell または Makecert のいずれかを使用して作成した証明書は、証明書の作成に使用したオペレーティング システムだけでなく、任意の[サポートされるクライアント オペレーティング システム](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)にインストールできます。
->
->
-
-
-この記事は、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行う方法を説明します。 この記事には、ポイント対サイト構成の手順や、ポイント対サイトについてよく寄せられる質問は含まれません。 これらの情報については、次のリストにある「ポイント対サイトの構成」のいずれかの記事をご覧ください。
+ポイント対サイト接続では、認証に証明書を使用します。 この記事では、MakeCert を使用した自己署名ルート証明書の作成方法とクライアント証明書の生成方法について説明します。 ルート証明書のアップロード方法など、ポイント対サイトの設定の手順をお探しの場合は、ポイント対サイトの構成に関する記事の いずれかを以下の一覧から選択してください。
 
 > [!div class="op_single_selector"]
 > * [自己署名証明書の作成 - PowerShell](vpn-gateway-certificates-point-to-site.md)
@@ -42,14 +35,16 @@ ms.lasthandoff: 05/10/2017
 > 
 > 
 
-ポイント対サイト接続では、認証に証明書を使用します。 ポイント対サイト接続を構成するときに、ルート証明書の公開キー (.cer ファイル) を Azure にアップロードする必要があります。 さらに、クライアント証明書は、ルート証明書から生成され、VNet に接続する各クライアント コンピューターにインストールされる必要があります。 クライアント証明書を使用してクライアントを認証できます。
+[Windows 10 PowerShell の手順](vpn-gateway-certificates-point-to-site.md)を使用して証明書を作成することをお勧めしますが、別の手段としてこれらの MakeCert による手順も提供しています。 いずれかの方法を使用して生成した証明書は、[サポートされている任意のクライアント オペレーティング システム](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)にインストールできます。 ただし、MakeCert には次の制限事項があります。
+
+* MakeCert は推奨されていません。 これは、任意の時点でこのツールが削除される可能性があることを意味します。 MakeCert が利用できなくなった場合も、MakeCert を使用してすでに生成されたすべての証明書に影響はありません。 MakeCert は、検証メカニズムとしてではなく、証明書の生成にのみ使用されます。
 
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 
-次の手順では、Makecert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
+次の手順では、MakeCert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
-1. [Makecert](https://msdn.microsoft.com/en-us/library/windows/desktop/aa386968(v=vs.85).aspx) をダウンロードし、インストールします。
-2. インストール後、makecert.exe ユーティリティは 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>' で見つかります。 管理者としてコマンド プロンプトを開き、makecert ユーティリティの場所に移動します。 以下の例を使用できます。
+1. [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx) をダウンロードし、インストールします。
+2. インストール後、makecert.exe ユーティリティは通常、C:\Program Files (x86)\Windows Kits\10\bin\<arch> で見つかります。 ただし、別の場所にインストールされている場合もあります。 管理者としてコマンド プロンプトを開き、MakeCert ユーティリティの場所に移動します。 次の例を使って、適切な場所に調整できます。
 
   ```cmd
   cd C:\Program Files (x86)\Windows Kits\10\bin\x64
@@ -57,14 +52,14 @@ ms.lasthandoff: 05/10/2017
 3. コンピューターの個人証明書ストアで証明書を作成し、インストールします。 次の例は、P2S を構成するときに Azure にアップロードする、対応する *.cer* ファイルを作成します。 'P2SRootCert' と 'P2SRootCert.cer' を証明書に使う名前に置き換えます。 証明書は 'Current User\Personal\Certificates' にあります。
 
   ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha1 -len 2048 -ss My "P2SRootCert.cer"
+  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
   ```
 
 ## <a name="cer"></a>公開キー (.cer) のエクスポート
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-エクスポートした .cer ファイルは Azure にアップロードする必要があります。 手順については、[ポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-rm-ps.md#upload)に関するページをご覧ください。
+エクスポートした .cer ファイルは Azure にアップロードする必要があります。 手順については、[ポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)に関するページをご覧ください。 信頼されたルート証明書を追加するには、記事の[このセクション](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add)をご覧ください。
 
 ### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>自己署名証明書と証明書を保存するための秘密キーのエクスポート (省略可能)
 
@@ -88,7 +83,7 @@ ms.lasthandoff: 05/10/2017
   下の例を変更せずに実行すると、ルート証明書 P2SRootCert から生成された個人用証明書ストアに P2SChildcert という名前のクライアント証明書が作成されます。
 
   ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha1
+  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
   ```
 
 ### <a name="clientexport"></a>クライアント証明書のエクスポート
@@ -105,3 +100,4 @@ ms.lasthandoff: 05/10/2017
 
 * **Resource Manager** デプロイメント モデルの手順については、[VNet へのポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関する記事を参照してください。
 * **クラシック** デプロイメント モデルの手順については、[VNet へのポイント対サイト VPN 接続の構成 (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md) に関する記事を参照してください。
+

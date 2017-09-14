@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c507135c4db758e58d8236de4bc76435b8caf32d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 12484338f5b4d489604d70a657ef0992b6267297
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。 このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
  ![[バックアップ カタログ] ページ](./media/storsimple-restore-from-backup-set/HCS_BackupCatalog.png)
@@ -64,7 +66,7 @@ ms.openlocfilehash: c507135c4db758e58d8236de4bc76435b8caf32d
    1. 適切なデバイスを選択します。
    2. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
    3. 時間範囲を指定します。
-   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png)  をクリックしてこのクエリを実行します。
+   4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
       
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 3. バックアップ セットを展開して、関連付けられているボリュームを表示します。 これらのボリュームは、復元する前にホストおよびデバイス上でオフラインにする必要があります。 「 [ボリュームをオフラインにする](storsimple-manage-volumes.md#take-a-volume-offline)」の手順に従ってください。
@@ -87,10 +89,5 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを管理する](storsimple-manage-volumes.md)方法について説明します。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

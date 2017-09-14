@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Backup: 仮想マシンをバックアップする準備 | Microsoft Docs"
 description: "Azure で仮想マシンをバックアップする環境が整っていることを確認します。"
 services: backup
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/7/2017
+ms.date: 7/10/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7937a4070907faa5848f125f83c23849320b9cf4
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: eb6a7069da36a462f8dd27454bc1834d2e3844f0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
@@ -56,9 +56,10 @@ Resource Manager でデプロイされた仮想マシン (VM) の保護または
 環境を準備する前に、制限事項を把握してください。
 
 * 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
+* データ ディスクのサイズが 1023GB を超える仮想マシンはバックアップできません。
 * 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
 * BEK だけを使って暗号化された VM のバックアップはサポートされません。 LUKS 暗号化を使って暗号化された Linux VM のバックアップはサポートされません。
-* Docker 拡張機能を持つ Linux 仮想マシンのバックアップはサポートされません。
+* スケールアウト ファイル サーバー構成で VM をバックアップすることは推奨されません。
 * バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
 * 復元中に既存の仮想マシンを置き換えることはサポートされません。 VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
 * リージョン間のバックアップと復元はサポートされません。
@@ -93,7 +94,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。 コンテナーは、保護する仮想マシンと同じリージョンにある **必要があります** 。
 
    > [!IMPORTANT]
-   > VM がどの場所に存在するかが不明な場合は、コンテナーを作成するダイアログを閉じて、ポータルで仮想マシンの一覧に移動します。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成する必要があります。 最初の場所でコンテナーを作成してから、次の場所に移動してください。 バックアップ データを格納するストレージ アカウントを指定する必要はありません。これは、Recovery Services コンテナーと Azure Backup サービスにより自動的に処理されます。
+   > VM がどの場所に存在するかが不明な場合は、コンテナーを作成するダイアログを閉じて、ポータルで仮想マシンの一覧に移動します。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成する必要があります。 最初の場所でコンテナーを作成してから、次の場所に移動してください。 バックアップ データを格納するストレージ アカウントを指定する必要はありません。バックアップ コンテナーと Azure Backup サービスはこれを自動的に処理します。
    >
    >
 
@@ -115,9 +116,9 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 2. **[設定]**ブレードで縦向きのスライダーを使用して、**[管理]** セクションまでスクロールします。 **[バックアップ インフラストラクチャ]** をクリックしてブレードを開きます。 **[全般]** セクションで **[構成のバックアップ]** をクリックしてブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。 既定では、コンテナーには geo 冗長ストレージがあります。 ストレージのレプリケーション タイプを変更するには、**[保存]** をクリックします。
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-arm-vms-prepare/full-blade.png)
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
-     プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。 プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
+     プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。 プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
@@ -181,8 +182,8 @@ Azure VM のバックアップで問題が発生する場合は、Azure VM エ�
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/linux/agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 github から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
-| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 github から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/linux/agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
+| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 GitHub から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能

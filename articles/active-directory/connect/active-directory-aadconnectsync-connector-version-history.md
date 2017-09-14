@@ -3,7 +3,7 @@ title: "コネクタ バージョンのリリース履歴 | Microsoft Docs"
 description: "このトピックでは、Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタの全リリース一覧を提供します"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: fimguy
 manager: femila
 editor: 
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2017
-ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.date: 08/24/2017
+ms.author: fimguy
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
 Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタは頻繁に更新されます。
 
 > [!NOTE]
-> このトピックでは、FIM と MIM のみを取り上げています。 これらのコネクタは、Azure AD Connect ではサポートされていません。
+> このトピックでは、FIM と MIM のみを取り上げています。 これらのコネクタは、Azure AD Connect にはインストールできません。 リリースされたコネクタは、指定されたビルドにアップグレードするときに AADConnect にプレインストールされます。
 
 このトピックでは、リリース済みのすべてのバージョンのコネクタを一覧にまとめています。
 
@@ -39,12 +38,43 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
 
-## <a name="115220"></a>1.1.522.0
+
+## <a name="116040-aadconnect-pending-release"></a>1.1.604.0 (AADConnect 保留中のリリース)
+
+
+### <a name="fixed-issues"></a>修正された問題:
+
+* 一般的な Web サービス:
+  * 複数のエンドポイントがあるときに SOAP プロジェクトが作成されない問題を修正しました。
+* Generic SQL:
+  * インポート操作において、コネクタ スペースに保存するときに GSQL で時間が正しく変換されませんでした。 GSQL のコネクタ スペースの既定の日付と時刻の形式が、"yyyy-MM-dd hh:mm:ssZ" から "yyyy-MM-dd HH:mm:ssZ" に変更されました。
+
+## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
+
+### <a name="fixed-issues"></a>修正された問題:
+
+* 一般的な Web サービス:
+  * Wsconfig ツールでは、JSON 配列が、REST サービス メソッドの "サンプル要求" から正しく変換されませんでした。 このため、REST 要求のこの JSON 配列で、シリアル化の問題が発生しました。
+  * Web サービス コネクタの構成ツールでは、JSON 属性名で空白記号を使用できません。 
+    * 代入パターンを、WSConfigTool.exe.config ファイルに手動で追加できます (例: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```)。
+
+* Lotus Notes:
+  * **[Allow custom certifiers for Organization/Organizational Units]\(組織/組織単位のカスタム証明者を許可する\)** オプションが無効の場合、エクスポート (更新) 中のコネクタは失敗します。エクスポート フロー後は、すべての属性が Domino にエクスポートされていますが、KeyNotFoundException は、エクスポート時に同期に返されます。 
+    * これは、以下の属性のいずれかを変更することで DN (UserName 属性) を変更しようとしているときに、名前の変更操作が失敗するために発生します。  
+      - LastName
+      - FirstName
+      - MiddleInitial
+      - AltFullName
+      - AltFullNameLanguage
+      - ou
+      - altcommonname
+
+  * **[Allow custom certifiers for Organization/Organizational Units]\(組織/組織単位のカスタム証明者を許可する\)** オプションが有効な場合、必要な証明者がまだ空だと、KeyNotFoundException が発生します。
 
 ### <a name="enhancements"></a>強化された機能:
 
 * Generic SQL:
-  * **シナリオ: 再実装:** "*" 機能
+  * **シナリオ: デザインを刷新して実装済み:** "*" 機能
   * **ソリューションの説明:** [複数値参照属性処理](active-directory-aadconnectsync-connector-genericsql.md)の手法を変更。
 
 

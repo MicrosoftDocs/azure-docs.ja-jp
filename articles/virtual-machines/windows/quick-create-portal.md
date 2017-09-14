@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/03/2017
+ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: fac46780cfd591a00ce73ea1bb4ce73893d22967
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 98ed23b8031c56ba642427e817e48a4e7a5830fc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -36,9 +36,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure ポータルの左上隅にある **[新規]** ボタンをクリックします。
 
-2. **[Compute]\(コンピューティング\)** を選択して **[Windows Server 2016 Datacenter]** を選択し、**Resource Manager** デプロイメント モデルが選択されていることを確認します。 **[Create]** ボタンをクリックします。 
+2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
 
 3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、**[OK]** をクリックします。
 
@@ -48,11 +48,11 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-5. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
+5. **[設定]** は既定値のままにして、**[OK]** をクリックします。 
 
 6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
 
-7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM のサマリー ブレードが自動的に表示されます。
+7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
@@ -94,13 +94,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
 
-IIS がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の VM ブレードで確認できます。
+IIS がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の *[Virtual Machines]* で確認できます。
 
 ![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png) 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシン ブレードでリソース グループを選択し、**[削除]** をクリックします。
+必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、VM のリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

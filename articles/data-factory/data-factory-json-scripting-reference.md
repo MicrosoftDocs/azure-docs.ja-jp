@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 306dde28a4af82197ae5a75bee83c0e7cf219e42
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 805106c0a5cdbff1f143f22a2ae59f6d2a0bf126
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
@@ -3322,7 +3321,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 #### <a name="sample-folder-path-definitions"></a>フォルダー パス定義の例 
 | シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath  |
 | --- | --- | --- |
-| Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |.\\\\ またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
+| Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
 | リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
 
 
@@ -4834,7 +4833,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 | type |type プロパティは **HDInsightOnDemand**に設定されます。 |はい |
 | clusterSize |クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 |はい |
 | timetolive |オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。 その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。 |はい |
-| version |HDInsight クラスターのバージョン。 既定値は、Windows クラスターでは 3.1、Linux クラスターでは 3.2 です。 |なし |
+| version |HDInsight クラスターのバージョン。 詳細については、「[Azure Data Factory でサポートされる HDInsight バージョン](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)」をご覧ください。 |いいえ |
 | 既定のコンテナー |データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 <p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。</p>  | はい |
 | additionalLinkedServiceNames |Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 |なし |
 | osType |オペレーティング システムの種類。 使用可能な値:  Windows (既定値) および Linux |なし |
@@ -4849,9 +4848,10 @@ Azure Data Factory サービスは、データを処理するための Windows/L
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "clusterSize": 4,
+            "version": "3.5",
+            "clusterSize": 1,
             "timeToLive": "00:05:00",
-            "osType": "linux",
+            "osType": "Linux",
             "linkedServiceName": "StorageLinkedService"
         }
     }
@@ -4872,7 +4872,9 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 | clusterUri |HDInsight クラスターの URI です。 |はい |
 | username |既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
-| linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p>  |はい |
+| linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p>  |あり |
+
+サポートされている HDInsight クラスターのバージョン一覧は、「[サポートされる HDInsight のバージョン](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)」をご覧ください。 
 
 #### <a name="json-example"></a>JSON の例
 
@@ -5381,7 +5383,7 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 - **type** プロパティは **HDInsightSpark** に設定されます。
 - **rootPath** は **adfspark\\pyFiles** に設定されます。ここで、adfspark は Azure BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Azure Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別の Azure Storage にアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Azure Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 - **entryFilePath** は、python ファイルである **test.py** に設定されます。 
-- **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。    
+- **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。  
 
     > [!IMPORTANT]
     > 問題のトラブルシューティングを行う場合を除き、運用環境でこのプロパティを Always に設定しないことをお勧めします。 

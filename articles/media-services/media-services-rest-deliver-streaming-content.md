@@ -2,7 +2,7 @@
 title: "REST を使用して Azure Media Services コンテンツを発行する"
 description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: bb3ae3d26d174d0f37cc348cde570250699bf067
-ms.lasthandoff: 03/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3aa6bdac17a78b78490f255b0e86e1c210b64cc6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する
@@ -37,6 +37,17 @@ ms.lasthandoff: 03/14/2017
 このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。 また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
 
 [次](#types) のセクションに、値が REST コールで使われる列挙型を示します。   
+
+> [!NOTE]
+> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+> 
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="create-an-ondemand-streaming-locator"></a>オンデマンド ストリーミング ロケーターを作成する
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
@@ -184,6 +195,8 @@ URL: **Path** + アセット ファイル mp4 名
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>関連項目
+[Media Services Operations REST API の概要](media-services-rest-how-to-use.md)
+
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)
 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 06/13/2016
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 823d1155bc011466d0f3bd0ccd8650be161fd28b
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 140bea93c4563666e8cfdf356eaf87500c1aca8e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -56,9 +56,9 @@ Azure Automation から Windows PowerShell を使用してスケジュールを�
 Runbook の新しいスケジュールは、Azure ポータル、クラシック ポータル、または Windows PowerShell で作成することができます。 Azure クラシック ポータルまたは Azure ポータルを使用して Runbook をスケジュールにリンクするときに新しいスケジュールを作成するというオプションもあります。
 
 > [!NOTE]
-> スケジュールを Runbook に関連付けると、アカウントのモジュールの現在のバージョンが保存され、スケジュールにリンクされます。  つまり、スケジュールを作成したときにアカウントのモジュールのバージョンが 1.0 だった場合は、そのモジュールをバージョン 2.0 に更新しても、スケジュールでは引き続きバージョン 1.0 が使用されます。  更新後のバージョンを使用するには、新しいスケジュールを作成する必要があります。 
-> 
-> 
+> Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。  Runbook およびそれらが自動化するプロセスに影響が及ばないようにするには、テスト専用の Automation アカウントを使用して、スケジュールがリンクされている Runbook を最初にテストする必要があります。  これにより、スケジュール済みの Runbook が引き続き正しく動作するかが検証されます。動作しない場合は、更新された Runbook バージョンを運用環境に移行する前に、トラブルシューティングを実行して必要な変更を適用できます。  
+>  **[モジュール]** ブレードの [[Azure モジュールの更新]](automation-update-azure-modules.md) オプションを選択してモジュールを手動で更新しない限り、Automation アカウントで新しいバージョンのモジュールが自動的に取得されることはありません。 
+>  
 
 ### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Azure ポータルで新しいスケジュールを作成するには
 1. Azure Portal で、Automation アカウントから **[資産]** タイルをクリックして、**[資産]** ブレードを開きます。
@@ -103,7 +103,7 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 4. Runbook にパラメーターがある場合は、**[実行設定を変更する (既定: Azure)]** オプションを選択すると **[パラメーター]** ブレードが表示されるので、必要に応じて情報を入力することができます。  
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-classic-portal"></a>Azure クラシック ポータルで Runbook にスケジュールをリンクするには
-1. Azure クラシック ポータルで、 **[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Azure クラシック ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
 2. **[Runbook]** タブを選択します。
 3. Runbook の名前をクリックして、スケジュールを設定します。
 4. **[スケジュール]** タブをクリックします。

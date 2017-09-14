@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアルの補足のレッスン: �
 description: "この Azure Analysis Services チュートリアルでは、詳細行の式を作成する方法について説明します。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

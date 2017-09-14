@@ -3,8 +3,8 @@ title: "Azure Mobile Apps を使用した iOS での認証の追加"
 description: "Azure Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて iOS アプリのユーザーを認証する方法について説明します。"
 services: app-service\mobile
 documentationcenter: ios
-author: ysxu
-manager: yochayk
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.service: app-service-mobile
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 604c1f84365954ddd3ba2de21fffa90ba5cc274b
-ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 21a2cc6c1eaf4b34cbe8c2d7c4dbb69c8730cf32
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="add-authentication-to-your-ios-app"></a>iOS アプリに認証を追加する
@@ -25,10 +26,10 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
 
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、 [iOS のクイック スタート] プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [iOS のクイック スタート] チュートリアルを完了しておく必要があります。
 
-## <a name="a-nameregisteraregister-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="a-nameredirecturlaadd-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
+## <a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。  これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。  このチュートリアル全体を通して、URL スキーム _appname_ を使用します。  ただし、選択したあらゆる URL スキームを使用できます。  URL スキームは、モバイル アプリに対して一意である必要があります。  サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
@@ -46,12 +47,12 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
 
 7. [ **Save**] をクリックします。
 
-## <a name="a-namepermissionsarestrict-permissions-to-authenticated-users"></a><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 Xcode で、 **[Run]** をクリックしてアプリケーションを開始します。 認証されないユーザーとしてアプリがバックエンドにアクセスしようとしても、*TodoItem* テーブルで認証が要求されるために例外が発生します。
 
-## <a name="a-nameadd-authenticationaadd-authentication-to-app"></a><a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 **Objective-C**:
 
 1. Mac の Xcode で *QSTodoListViewController.m* を開き、次のメソッドを追加します。
@@ -76,8 +77,7 @@ Xcode で、 **[Run]** をクリックしてアプリケーションを開始し
     }
     ```
 
-    Google を ID プロバイダーとして使用しない場合は、*google* を *microsoftaccount*、*twitter*、*facebook*、*windowsazureactivedirectory* のいずれかに変更します。 Facebook を使用する場合、アプリで [Facebook ドメインをホワイトリストに追加する][1]
-   必要があります。
+    Google を ID プロバイダーとして使用しない場合は、*google* を *microsoftaccount*、*twitter*、*facebook*、*windowsazureactivedirectory* のいずれかに変更します。 Facebook を使用する場合、アプリで [Facebook ドメインをホワイトリストに追加する][1]必要があります。
 
     **urlScheme** をアプリケーションの一意の名前に置き換えます。  urlScheme は、Azure Portal **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** フィールドに指定した URL スキーム プロトコルと同じにする必要があります。 urlScheme は、認証要求が完了した後にアプリケーションに戻るために、認証コールバックで使用されます。
 
@@ -163,8 +163,7 @@ Xcode で、 **[Run]** をクリックしてアプリケーションを開始し
     }
     ```
 
-    Google を ID プロバイダーとして使用しない場合は、*google* を *microsoftaccount*、*twitter*、*facebook*、*windowsazureactivedirectory* のいずれかに変更します。 Facebook を使用する場合、アプリで [Facebook ドメインをホワイトリストに追加する][1]
-   必要があります。
+    Google を ID プロバイダーとして使用しない場合は、*google* を *microsoftaccount*、*twitter*、*facebook*、*windowsazureactivedirectory* のいずれかに変更します。 Facebook を使用する場合、アプリで [Facebook ドメインをホワイトリストに追加する][1]必要があります。
 
     **urlScheme** をアプリケーションの一意の名前に置き換えます。  urlScheme は、Azure Portal **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** フィールドに指定した URL スキーム プロトコルと同じにする必要があります。 urlScheme は、認証要求が完了した後にアプリケーションに戻るために、認証コールバックで使用されます。
 
@@ -221,10 +220,5 @@ App Service の認証では、Apple の Inter-App Communication が使用され�
 [Azure Portal]: https://portal.azure.com
 
 [iOS のクイック スタート]: app-service-mobile-ios-get-started.md
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

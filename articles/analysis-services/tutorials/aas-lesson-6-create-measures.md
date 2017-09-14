@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 6: メジ�
 description: "この Azure Analysis Services チュートリアル プロジェクトでメジャーを作成する方法を説明します。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

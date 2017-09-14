@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: d568c52a7cbbe593658fb95203bfa98af13a1554
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: b6ecd0d09589fec85c1633f528afc1165c346b7f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
+
+![Surface Hub シンボル](./media/log-analytics-surface-hubs/surface-hub-symbol.png)
 
 この記事では、Log Analytics の Surface Hub ソリューションを使用して、Microsoft Operations Management Suite (OMS) で Microsoft Surface Hub デバイスを監視する方法について説明します。 Log Analytics は、Surface Hub の正常性を追跡するとともに、それらがどのように使用されているかを理解するために役立ちます。
 
@@ -36,32 +39,32 @@ ms.lasthandoff: 02/28/2017
 
 次に、OMS サブスクリプションを既存の Microsoft Azure サブスクリプションに追加するか、OMS ポータルから新しいワークスペースを直接作成します。 これらの手順の詳細については、「[Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。 OMS サブスクリプションを設定した後、2 つの方法で Surface Hub デバイスを登録できます。
 
-* InTune を通して自動で
+* Intune を通して自動で
 * Surface Hub デバイスの **[設定]** を通して手動で
 
 ## <a name="set-up-monitoring"></a>監視を設定する
-OMS で Log Analytics を使用して、Surface Hub の正常性とアクティビティを監視できます。 Surface Hub の OMS への登録は、InTune を使用するか、Surface Hub で **[設定]** を使用してローカルに実行できます。
+OMS で Log Analytics を使用して、Surface Hub の正常性とアクティビティを監視できます。 Surface Hub の OMS への登録は、Intune を使用するか、Surface Hub で **[設定]** を使用してローカルに実行できます。
 
-## <a name="connect-surface-hubs-to-oms-through-intune"></a>InTune 経由で Surface Hub を OMS に接続する
+## <a name="connect-surface-hubs-to-oms-through-intune"></a>Intune 経由で Surface Hub を OMS に接続する
 Surface Hub を管理する OMS ワークスペースのワークスペース ID とワークスペース キーが必要です。 これらは、OMS ポータルから取得できます。
 
-InTune は、1 つまたは複数のデバイスに適用される OMS 構成設定の一元管理を可能にする Microsoft 製品です。 InTune を通してデバイスを構成するには、次の手順に従います。
+Intune は、1 つまたは複数のデバイスに適用される OMS 構成設定の一元管理を可能にする Microsoft 製品です。 Intune を通してデバイスを構成するには、次の手順に従います。
 
-1. Azure にサインインします。
+1. Intune にサインインします。
 2. **[設定]** > **[接続されたソース]** の順に移動します。
 3. Surface Hub テンプレートに基づいてポリシーを作成するか編集します。
 4. ポリシーの OMS (Azure Operational Insights) セクションに移動し、"*ワークスペース ID*" と "*ワークスペース キー*" をポリシーに追加します。
 5. ポリシーを保存します。
 6. ポリシーを適切なデバイス グループに関連付けます。
 
-   ![InTune ポリシー](./media/log-analytics-surface-hubs/intune.png)
+   ![Intune ポリシー](./media/log-analytics-surface-hubs/intune.png)
 
-その後、InTune によって、OMS の設定がターゲット グループ内のデバイスと同期され、デバイスが OMS ワークスペースに登録されます。
+その後、Intune によって、OMS の設定がターゲット グループ内のデバイスと同期され、デバイスが OMS ワークスペースに登録されます。
 
 ## <a name="connect-surface-hubs-to-oms-using-the-settings-app"></a>設定を通して Surface Hub を OMS に接続する
 Surface Hub を管理する OMS ワークスペースのワークスペース ID とワークスペース キーが必要です。 これらは、OMS ポータルから取得できます。
 
-環境の管理に InTune を使用しない場合は、各 Surface Hub の **[設定]** を通して手動でデバイスを登録できます。
+環境の管理に Intune を使用しない場合は、各 Surface Hub の **[設定]** を通して手動でデバイスを登録できます。
 
 1. Surface Hub から **[設定]** を開きます。
 2. 情報を求めるメッセージが表示されたら、デバイス管理者の資格情報を入力します。

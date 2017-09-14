@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: rachelap
-translationtype: Human Translation
-ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
-ms.openlocfilehash: d22c9e2026c3efc63c5a3baa7ad4505aa269e31d
-ms.lasthandoff: 12/08/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: abfd9a4c1b346377d7f1fc30455a1487b113537d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
@@ -466,7 +466,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
     この設定は、お使いのストレージ アカウントをホストしている Azure データセンターを指定します。 このチュートリアルでは、選択肢によって顕著な相違は生じませんが、運用 Web アプリケーションの場合は、待ち時間とデータ送信料金を最小限に抑えるために、Web サーバーとストレージ アカウントを同じリージョンに設定することが望まれます。 待ち時間を最小限にするには、Web アプリケーション (後で作成する) を Web アプリケーションにアクセスするブラウザーのできるだけ近くで実行します。
 3. **[レプリケーション]** ボックスを **[ローカル冗長]** に設定します。
    
-    Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次データセンターに複製されて、フェイルオーバーが可能になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md)」を参照してください。
+    Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次データセンターに複製されて、フェイルオーバーが可能になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/common/storage-create-storage-account.md)」を参照してください。
 4. **[作成]**をクリックします。
 
     ![新しいストレージ アカウント ](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    

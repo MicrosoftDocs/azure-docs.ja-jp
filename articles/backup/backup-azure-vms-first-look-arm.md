@@ -4,7 +4,7 @@ description: "Recovery Services コンテナーを使用して Azure VM を保�
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keyword: backups; vm backup
 ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/15/2017
+ms.date: 08/15/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: fd923fa711aa0af72e8d81d84fd0adb2e003596a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 696f8025d0d7a65f59be650fac0a6e0e68f1a2ca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
@@ -184,7 +183,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 これで、コンテナーが作成されました。次は、ストレージ レプリケーションを設定する方法について説明します。
 
 ### <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 Recovery Services コンテナーがプライマリ バックアップである場合は、ストレージ レプリケーション オプションの設定を geo 冗長ストレージのままにしておいてください。 永続性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 Recovery Services コンテナーがプライマリ バックアップである場合は、ストレージ レプリケーション オプションの設定を geo 冗長ストレージのままにしておいてください。 永続性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -205,7 +204,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure ストレージのコストを削減できます。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/storage-redundancy.md)を参照してください。
+    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure ストレージのコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージと[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)を参照してください。
 
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
@@ -331,7 +330,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 | --- | --- | --- |
 | VM エージェントのインストール |<li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 <li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |<li> GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent) をインストールします。 インストールを実行するには、管理者特権が必要です。 <li> [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |
 | VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
-| VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
+| VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能
 VM エージェントが仮想マシンにインストールされると、Azure Backup サービスによって VM エージェントにバックアップ拡張機能がインストールされます。 Azure Backup サービスは、バックアップ拡張機能のアップグレードと修正プログラムの適用をシームレスに自動実行します。

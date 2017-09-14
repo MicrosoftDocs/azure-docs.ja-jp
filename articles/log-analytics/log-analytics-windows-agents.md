@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: d95ab33460d5d86b1d2f6d7f0d4e7a9040568c29
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 48a0eaeb10d406d551c9e5870edde06809bd7544
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -65,7 +65,7 @@ Windows エージェントを OMS サービスに接続して登録するには�
 次の表は、通信で必要なリソースを示しています。
 
 >[!NOTE]
->次の一部のリソースは、OMS の旧バージョンである Operational Insights を指しています。 表示されたリソースは、今後変更される予定です。
+>次の一部のリソースは Operational Insights を指しています。これは Log Analytics の以前の名前です。
 
 | エージェントのリソース | ポート | バイパス HTTPS 検査 |
 |---|---|---|
@@ -114,10 +114,10 @@ Windows エージェントを OMS サービスに接続して登録するには�
 
 次の手順を使用して、エージェントが OMS と通信しているかどうかを簡単に確認できます。
 
-1.    Windows エージェントがあるコンピューターで、コントロール パネルを開きます。
-2.    [Microsoft Monitoring Agent] を開きます。
-3.    [Azure Log Analytics (OMS)] タブをクリックします。
-4.    [状態] 列に、エージェントが Operations Management Suite サービスに正常に接続されていることが表示されます。
+1.  Windows エージェントがあるコンピューターで、コントロール パネルを開きます。
+2.  [Microsoft Monitoring Agent] を開きます。
+3.  [Azure Log Analytics (OMS)] タブをクリックします。
+4.  [状態] 列に、エージェントが Operations Management Suite サービスに正常に接続されていることが表示されます。
 
 ![エージェントが接続されている](./media/log-analytics-windows-agents/mma-connected.png)
 
@@ -167,6 +167,12 @@ Windows エージェントを OMS サービスに接続して登録するには�
 |OPINSIGHTS_WORKSPACE_ID                | 追加するワークスペースのワークスペース ID (guid)                    |
 |OPINSIGHTS_WORKSPACE_KEY               | ワークスペースで最初に認証するために使用するワークスペース キー |
 |OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | ワークスペースが配置されるクラウド環境を指定します <br> 0 = Azure 商用クラウド (既定値) <br> 1 = Azure Government |
+|OPINSIGHTS_PROXY_URL               | プロキシで使用される URI |
+|OPINSIGHTS_PROXY_USERNAME               | 認証済みのプロキシにアクセスするためのユーザー名 |
+|OPINSIGHTS_PROXY_PASSWORD               | 認証済みのプロキシにアクセスするためのパスワード |
+
+>[!NOTE]
+IExpress のコマンド ラインの長さ制限に達するのを回避するには、ワークスペースが構成されていないエージェントをインストールしてから、スクリプトを使用してワークスペースの構成を設定します。
 
 >[!NOTE]
 `OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE` パラメーターを使用したときに `Command line option syntax error.` が発生した場合は、次の回避策を使用できます。
@@ -174,9 +180,10 @@ Windows エージェントを OMS サービスに接続して登録するには�
 MMASetup-AMD64.exe /C /T:.\MMAExtract
 cd .\MMAExtract
 setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+```
 
-## Add a workspace using a script
-Add a workspace using the Log Analytics agent scripting API with the following example:
+## <a name="add-a-workspace-using-a-script"></a>スクリプトを使用してワークスペースを追加する
+Log Analytics エージェント スクリプト API を使用して、ワークスペースを追加します。たとえば、スクリプトは次のようになります。
 
 ```PowerShell
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -206,10 +213,10 @@ $mma.ReloadConfiguration()
 この手順とサンプル スクリプトでは、既存のエージェントはアップグレードされません。
 
 1. [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) から xPSDesiredStateConfiguration DSC Module を Azure Automation にインポートします。  
-2.    *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を OMS Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
-3.    次のスクリプトを使用し、MMAgent.ps1 として保存します。
-4.    Azure Automation の DSC を使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 Azure Automation インターフェイスまたはコマンドレットを使用して、Azure Automation に MMAgent.ps1 をインポートします。
-5.    構成にノードを割り当てます。 15 分以内に、ノードはその構成を確認し、MMA がノードにプッシュされます。
+2.  *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を OMS Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
+3.  次のスクリプトを使用し、MMAgent.ps1 として保存します。
+4.  Azure Automation の DSC を使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 Azure Automation インターフェイスまたはコマンドレットを使用して、Azure Automation に MMAgent.ps1 をインポートします。
+5.  構成にノードを割り当てます。 15 分以内に、ノードはその構成を確認し、MMA がノードにプッシュされます。
 
 ```PowerShell
 Configuration MMAgent
@@ -298,17 +305,17 @@ foreach ($Application in $InstalledApplications)
 IT インフラストラクチャ内で Operations Manager を使用する場合は、Operations Manager エージェントとして MMA エージェントを使用することもできます。
 
 ### <a name="to-configure-mma-agents-to-report-to-an-operations-manager-management-group"></a>Operations Manager 管理グループに報告するように MMA エージェントを構成するには
-1.    エージェントのインストール先であるコンピューターで、 **コントロール パネル**を開きます。  
-2.    **Microsoft Monitoring Agent** を開いてから、**[Operations Manager]** タブをクリックします。  
+1.  エージェントのインストール先であるコンピューターで、 **コントロール パネル**を開きます。  
+2.  **Microsoft Monitoring Agent** を開いてから、**[Operations Manager]** タブをクリックします。  
     ![[Microsoft Monitoring Agent Operations Manager] タブ](./media/log-analytics-windows-agents/om-mg01.png)
-3.    Operations Manager サーバーが Active Directory と統合されている場合は、 **[管理グループの割り当てを AD DS から自動的に更新する]**をクリックします。
-4.    **[追加]** をクリックして、**[管理グループを追加する]** ダイアログ ボックスを開きます。  
+3.  Operations Manager サーバーが Active Directory と統合されている場合は、 **[管理グループの割り当てを AD DS から自動的に更新する]**をクリックします。
+4.  **[追加]** をクリックして、**[管理グループを追加する]** ダイアログ ボックスを開きます。  
     ![Microsoft Monitoring Agent で管理グループを追加する](./media/log-analytics-windows-agents/oms-mma-om02.png)
-5.    **[管理グループ名]** ボックスに、管理グループの名前を入力します。
-6.    **[プライマリ管理サーバー]** ボックスに、プライマリ管理サーバーのコンピューター名を入力します。
-7.    **[管理サーバー ポート]** ボックスに、TCP ポート番号を入力します。
-8.    **[エージェント アクション アカウント]**で、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択します。
-9.    **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
+5.  **[管理グループ名]** ボックスに、管理グループの名前を入力します。
+6.  **[プライマリ管理サーバー]** ボックスに、プライマリ管理サーバーのコンピューター名を入力します。
+7.  **[管理サーバー ポート]** ボックスに、TCP ポート番号を入力します。
+8.  **[エージェント アクション アカウント]**で、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択します。
+9.  **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
 
 
 ## <a name="next-steps"></a>次のステップ

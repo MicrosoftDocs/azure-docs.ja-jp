@@ -1,32 +1,36 @@
 
-- name: Custom Vision のドキュメント
+- name: Custom Vision Documentation
   href: ../index.md
-- name: 概要
+- name: Overview
   href: home.md
-- name: クイック スタート
+- name: Quickstarts
   expanded: true
   items: 
-  - name: 分類器の構築
+  - name: Build a classifier
     href: getting-started-build-a-classifier.md
-  - name: 分類器の改善
+  - name: Improve your classifier
     href: getting-started-improving-your-classifier.md
-  - name: モデルのテスト
+  - name: Test your model
     href: test-your-model.md
-  - name: 予測 API の使用
+  - name: Use the prediction API
     href: use-prediction-api.md
-- name: Tutorials (チュートリアル)
+- name: Tutorials
   items:
-  - name: 'C# のチュートリアル'
+  - name: 'C# Tutorial'
     href: csharp-tutorial.md
-- name: リファレンス
+- name: Reference
   items:
-  - name: Custom Vision 予測 API のリファレンス
+  - name: Custom Vision Prediction API Reference
  
     href: https://southcentralus.dev.cognitive.microsoft.com/docs/services/eb68250e4e954d9bae0c2650db79c653/operations/58acd3c1ef062f0344a42814 
-  - name: Custom Vision トレーニング API のリファレンス
+  - name: Custom Vision Training API Reference
   
     href: https://southcentralus.dev.cognitive.microsoft.com/docs/services/d9a10a4a5f8549599f1ecafc435119fa/operations/58d5835bc8cb231380095be3
-  - name: 用語集
+  - name: Glossary
     href: glossary-of-terms.md
   - name: SDK
     href: http://github.com/Microsoft/Cognitive-CustomVision-Windows/
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/

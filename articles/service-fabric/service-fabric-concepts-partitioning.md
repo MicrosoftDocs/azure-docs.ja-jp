@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/17/2017
+ms.date: 06/30/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 0379cd02fe663fbe9f024bc2f786186b0ea1358b
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -130,8 +131,10 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 2. **[新しいプロジェクト]** ダイアログ ボックスで、Service Fabric アプリケーションを選択します
 3. プロジェクトに "AlphabetPartitions" と名前を付けます
 4. **[Create a Service]** (サービスの作成) ダイアログ ボックスで、下図のように **[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
-   
-    ![ステートフル サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createstateful.png)
+       ![Visual Studio の [新しいサービス] ダイアログ][1]
+
+  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
+
 5. パーティション数を設定します。 AlphabetPartitions プロジェクトの ApplicationPackageRoot フォルダーにある ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing_PartitionCount を 26 に更新します。
    
     ```xml
@@ -371,3 +374,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
+[1]: ./media/service-fabric-create-your-first-application-in-visual-studio/new-project-dialog-2.png

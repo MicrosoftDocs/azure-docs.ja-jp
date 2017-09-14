@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+title: "PowerShell を使用して Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
 description: "Azure PowerShell を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: f22fc9e9306d34b66e89966a0f4485461539899d
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: ca75974e6ec4f60739137d4cb5458bbfd735de3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
@@ -55,69 +54,16 @@ Azure PowerShell を使用して HDInsight クラスターを作成するには�
 * Azure BLOB コンテナーの作成
 * HDInsight クラスターの作成
 
-Linux クラスターを作成するために設定する必要がある最も重要な 2 つのパラメーターは、OS の種類と SSH ユーザーの詳細を指定するパラメーターです。
-
-* **-OSType** パラメーターを **Linux** として指定していることを確認します。
-* クラスターのリモート セッションで SSH を使用するには、SSH ユーザー パスワードまたは SSH 公開キーを指定します。 SSH ユーザー パスワードと SSH 公開キーを両方とも指定すると、キーが無視されます。 リモート セッションで SSH キーを使用する場合は、入力を求められたら、空の SSH パスワードを指定する必要があります。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
 次のスクリプトでは、新しいクラスターを作成する方法を示します。
 
-    $token ="<SpecifyAnUniqueString>"
-    $subscriptionID = "<SubscriptionName>"        # Provide your Subscription Name
+[!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster.ps1?range=5-71)]
 
-    $resourceGroupName = $token + "rg"      # Provide a Resource Group name
-    $clusterName = $token
-    $defaultStorageAccountName = $token + "store"   # Provide a Storage account name
-    $defaultStorageContainerName = $token + "container"
-    $location = "East US 2"     # Change the location if needed
-    $clusterNodes = 1           # The number of nodes in the HDInsight cluster
+クラスターのログインに指定する値は、クラスターの Hadoop ユーザー アカウントの作成に使用されます。 Web UI や REST API など、クラスターでホストされるサービスに接続するには、このアカウントを使用します。
 
-    # Sign in to Azure
-    Login-AzureRmAccount
-
-    # Select the subscription to use if you have multiple subscriptions
-    Select-AzureRmSubscription -SubscriptionId $subscriptionID
-
-    # Create an Azure Resource Group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-
-    # Create an Azure Storage account and container used as the default storage
-    New-AzureRmStorageAccount `
-        -ResourceGroupName $resourceGroupName `
-        -StorageAccountName $defaultStorageAccountName `
-        -Location $location `
-        -Type Standard_LRS
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -Name $defaultStorageAccountName -ResourceGroupName $resourceGroupName)[0].Value
-    $destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
-    New-AzureStorageContainer -Name $defaultStorageContainerName -Context $destContext
-
-    # Create an HDInsight cluster
-    $credentials = Get-Credential -Message "Enter Cluster user credentials" -UserName "admin"
-    $sshCredentials = Get-Credential -Message "Enter SSH user credentials"
-
-    # The location of the HDInsight cluster must be in the same data center as the Storage account.
-    $location = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $defaultStorageAccountName | %{$_.Location}
-
-    New-AzureRmHDInsightCluster `
-        -ClusterName $clusterName `
-        -ResourceGroupName $resourceGroupName `
-        -HttpCredential $credentials `
-        -Location $location `
-        -DefaultStorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
-        -DefaultStorageAccountKey $defaultStorageAccountKey `
-        -DefaultStorageContainer $defaultStorageContainerName  `
-        -ClusterSizeInNodes $clusterNodes `
-        -ClusterType Hadoop `
-        -OSType Linux `
-        -Version "3.4" `
-        -SshCredential $sshCredentials
-
-**$clusterCredentials** に指定する値は、クラスターの Hadoop ユーザー アカウントの作成に使用されます。 このアカウントを使用してクラスターに接続します。
-
-**$sshCredentials** に指定する値は、クラスターの SSH ユーザーの作成に使用されます。 このアカウントを使用してクラスターでリモート SSH セッションを開始し、ジョブを実行します。
+SSH ユーザーに指定する値は、クラスターの SSH ユーザーの作成に使用されます。 このアカウントを使用してクラスターでリモート SSH セッションを開始し、ジョブを実行します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するドキュメントを参照してください。
 
 > [!IMPORTANT]
-> このスクリプトで、クラスターに存在する worker ノードの数を指定する必要があります。 (クラスターの作成時または作成後のスケーリングで) 32 個を超える worker ノードを使用することを計画している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズも指定する必要があります。
+> (クラスターの作成時または作成後のスケーリングで) 32 個を超える worker ノードを使用することを計画している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズも指定する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -129,43 +75,7 @@ HDInsight の構成オブジェクトは、`New-AzureRmHDInsightClusterConfig` �
 
 次のスクリプトでは、HDInsight クラスター タイプで R Server を構成する構成オブジェクトを作成します。 この構成は、エッジ ノード、RStudio、および追加のストレージ アカウントを有効にします。
 
-    # Create another storage account used as additional storage account
-    $additionalStorageAccountName = $token + "store2"
-    New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName `
-        -StorageAccountName $additionalStorageAccountName `
-        -Location $location `
-        -Type Standard_LRS
-    $additionalStorageAccountKey = (Get-AzureRmStorageAccountKey -Name $additionalStorageAccountName -ResourceGroupName $resourceGroupName)[0].Value
-
-    # Create a new configuration for RServer cluster type
-    # Use -EdgeNodeSize to set the size of the edge node for RServer clusters
-    # if you want a specific size. Otherwise, the default size is used.
-    $config = New-AzureRmHDInsightClusterConfig `
-        -ClusterType "RServer" `
-        -EdgeNodeSize "Standard_D12_v2"
-
-    # Add RStudio to the configuration
-    $rserverConfig = @{"RStudio"="true"}
-    $config = $config | Add-AzureRmHDInsightConfigValues `
-        -RServer $rserverConfig
-
-    # Add an additional storage account
-    Add-AzureRmHDInsightStorage -Config $config -StorageAccountName "$additionalStorageAccountName.blob.core.windows.net" -StorageAccountKey $additionalStorageAccountKey
-
-    # Create a new HDInsight cluster
-    New-AzureRmHDInsightCluster `
-        -ClusterName $clusterName `
-        -ResourceGroupName $resourceGroupName `
-        -HttpCredential $credentials `
-        -Location $location `
-        -DefaultStorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
-        -DefaultStorageAccountKey $defaultStorageAccountKey `
-        -DefaultStorageContainer $defaultStorageContainerName  `
-        -ClusterSizeInNodes $clusterNodes `
-        -OSType Linux `
-        -Version "3.5" `
-        -SshCredential $sshCredentials `
-        -Config $config
+[!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 
 > [!WARNING]
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。 この例の使用時には、サーバーと同じ場所に追加のストレージ アカウントを作成します。
@@ -181,7 +91,7 @@ HDInsight の構成オブジェクトは、`New-AzureRmHDInsightClusterConfig` �
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

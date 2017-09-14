@@ -1,17 +1,39 @@
-仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 選択するゲートウェイ SKU が上位になるほど、ゲートウェイに割り当てられる CPU やネットワーク帯域幅が増えます。その結果、ゲートウェイで仮想ネットワークに対してより高いネットワーク スループットをサポートできます。
+仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づく要件を満たす SKU を選択します。
 
-VPN Gateway で利用できる SKU は次のとおりです。
+[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
 
-* 基本
-* Standard
-* HighPerformance
+[!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-VPN Gateway では、UltraPerformance ゲートウェイ SKU が使用されません。 UltraPerformance SKU については、[ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) のドキュメントを参照してください。
+###  <a name="workloads"></a>運用環境のワークロード*と*開発テスト環境のワークロード
 
-SKU の選択にあたっては、以下の事項を考慮してください。
+SLA と機能セットに違いがあるため、"*運用環境と開発テスト環境*" では、次の SKU をお勧めします。
 
-* PolicyBased VPN タイプを使用する場合には、Basic SKU を使用する必要があります。 PolicyBased VPN (旧称静的ルーティング) は、その他の SKU ではサポートされていません。
-* BGP は、Basic SKU ではサポートされていません。
-* ExpressRoute と VPN Gateway が共存する構成は、Basic SKU ではサポートされていません。
-* アクティブ/アクティブ S2S VPN ゲートウェイ接続は、HighPerformance SKU のみで構成できます。
+| **ワークロード**                       | **SKU**               |
+| ---                                | ---                    |
+| **運用環境での重要なワークロード** | VpnGw1、VpnGw2、VpnGw3 |
+| **開発テストまたは概念実証**   | Basic                  |
+|                                    |                        |
 
+古い SKU を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU については、[ゲートウェイ SKU (レガシ SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。
+
+###  <a name="feature"></a>ゲートウェイ SKU の機能セット
+
+新しいゲートウェイ SKU では、ゲートウェイで提供される機能セットが効率化されています。
+
+| **SKU**| **機能**|
+| ---    | ---         |
+|**Basic**   | **ルートベース VPN**: 10 トンネル。P2S あり<br><br>**ポリシーベース VPN**: (IKEv1): 1 トンネル。P2S なし|
+| **VpnGw1、VpnGw2、および VpnGw3** | **ルートベース VPN**: 最大 30 トンネル (*)、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
+|        |             |
+
+(*) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイ (VpnGw1、VpnGw2、VpnGw3) を、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
+
+###  <a name="resize"></a>ゲートウェイ SKU のサイズ変更
+
+1. VpnGw1、VpnGw2、VpnGw3 SKU の間でサイズ変更できます。
+2. 古いゲートウェイ SKU では、Basic、Standard、HighPerformance SKU の間でサイズ変更できます。
+2. Basic/Standard/HighPerformance SKU から新しい VpnGw1/VpnGw2/VpnGw3 SKU にサイズ変更することは**できません**。 この場合は、新しい SKU に[移行](#migrate)する必要があります。
+
+###  <a name="migrate"></a>古い SKU から新しい SKU への移行
+
+[!INCLUDE [Migrate SKU](./vpn-gateway-migrate-legacy-sku-include.md)]

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 279b165cbdb924dcae0cb95ad9f9d187aed1a1b3
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9eae17b304f8a987b44ebed8906dabd8ff3a36a8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 

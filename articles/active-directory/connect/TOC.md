@@ -16,7 +16,7 @@
 ### [カスタム設定](active-directory-aadconnect-get-started-custom.md)
 ### [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [以前のバージョンからのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)
-
+### [既存の ADSync データベースを使用したインストール](active-directory-aadconnect-existing-database.md)
 
 # 方法
 ## 計画と設計
@@ -38,6 +38,8 @@
 ##### [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [現時点での制限事項](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [それはどのように機能しますか?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
+##### [プレビュー エージェントのアップグレード](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
+##### [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ### [フェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)
@@ -81,6 +83,7 @@
 ### [LocalDB の 10 GB 制限からの回復方法](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [ハイブリッド ID で必要なポートとプロトコル](active-directory-aadconnect-ports.md)
 ## [プレビュー段階の機能](active-directory-aadconnect-feature-preview.md)
@@ -105,5 +108,8 @@
 
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect の FAQ](active-directory-aadconnect-faq.md)
 ##[DirSync の廃止](active-directory-aadconnect-dirsync-deprecated.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+

@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/20/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.reviewer: jeedes
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>チュートリアル: Azure Active Directory と GitHub の統合
@@ -126,10 +127,10 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 4. **[ユーザー属性]** セクションで、**[ユーザー識別子]** として [user.mail] を選択します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-github-tutorial/tutorial_github_attribute_new01.png)
-     
+    
 5. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
 
-     ![[シングル サインオンの構成]](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
 
 6. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
@@ -167,9 +168,9 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
     a. **サインオン URL**: Azure AD の**[Configure GitHub (GitHub 構成)]** セクションから **SAML シングル サインオン サービス URL** を入力します
 
-      b. **発行者**: Azure AD の**[Configure GitHub (GitHub 構成)]** セクションから **SAML エンティティ ID** を入力します
+    b. **発行者**: Azure AD の**[Configure GitHub (GitHub 構成)]** セクションから **SAML エンティティ ID** を入力します
 
-       c. **公開証明書**: Azure AD からダウンロードした証明書をメモ帳で開き、"BEGIN CERTIFICATE" および "END CERTIFICATE" を含む内容をコピーします
+    c. **公開証明書**: Azure AD からダウンロードした証明書をメモ帳で開き、"BEGIN CERTIFICATE" および "END CERTIFICATE" を含む内容をコピーします
 
     ![[設定]](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_051.png)
 

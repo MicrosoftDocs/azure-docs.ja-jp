@@ -1,5 +1,5 @@
 ---
-title: "HBase で Twitter にリアルタイムの感情分析を実行する | Microsoft Docs"
+title: "HBase で Twitter にリアルタイムの感情分析を実行する - Azure | Microsoft Docs"
 description: "HDInsight (Hadoop) クラスターで HBase を使用し、Twitter からリアルタイムでビックデータのセンチメントを分析する方法について取り上げます。"
 services: hdinsight
 documentationcenter: 
@@ -13,19 +13,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 07/24/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5fa91c0fb1858a46745ff50991b843530f0a5d23
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 4d5bb90c0e7573afb75282810c9ba58e7163e127
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="analyze-real-time-twitter-sentiment-with-hbase-in-hdinsight"></a>HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する
 HDInsight で HBase クラスターを使用して、Twitter のビッグ データをリアルタイムで[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について取り上げます。
 
-ビッグ データの多くはソーシャル Web サイトからもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。 このチュートリアルでは、以下の事柄を実行するためのコンソール ストリーミング サービス アプリケーションと ASP.NET Web アプリケーションを開発します。
+ビッグ データの多くはソーシャル Web サイトからもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。 このチュートリアルでは、以下の処理を実行するためのコンソール ストリーミング サービス アプリケーションと ASP.NET Web アプリケーションを開発します。
 
 ![HDInsight HBase での Twitter センチメントの分析][img-app-arch]
 
@@ -36,7 +36,7 @@ HDInsight で HBase クラスターを使用して、Twitter のビッグ デー
   * センチメント情報を、Microsoft HBase SDK を使用して HBase に格納します。
 * Azure Web サイト アプリケーション
 
-  * リアルタイム統計結果を、ASP.NET Web アプリケーションを使用して Bing マップにプロットします。 ツイートを視覚化すると、次のようになります。
+  * リアルタイム統計結果を、ASP.NET Web アプリケーションを使用して Bing マップにプロットします。 ツイートを視覚化すると、次のスクリーンショットのようになります。
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
 
@@ -47,14 +47,7 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 ### <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **HDInsight 環境の HBase クラスター**。 クラスターの作成については、「[HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]」を参照してください。 このチュートリアルを読み進めるには、次のデータが必要です。
-
-    <table border="1">
-    <tr><th>クラスター プロパティ</th><th>説明</th></tr>
-    <tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。 例: https://myhbase.azurehdinsight.net/</td></tr>
-    <tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。 既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
-    <tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
-    </table>
+* **HDInsight 環境の HBase クラスター**。 クラスターの作成については、「[HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]」を参照してください。 
 
 * Visual Studio 2013/2015/2017 がインストールされている**ワークステーション**。 手順については、 [Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
 
@@ -67,13 +60,12 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 2. **[Create New App]**をクリックします。
 3. **名前**、**説明**、**Web サイト**を入力します。 Twitter アプリケーションの名前は一意の名前にする必要があります。 [Website] フィールドは実際には使用しません。 有効な URL である必要はありません。
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
-5. **[Permissions]** タブをクリックします。 既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
+5. **[Permissions]\(アクセス許可\)** タブをクリックし、**[Read only]\(読み取り専用\)** をクリックします。 このチュートリアルでは、読み取り専用アクセス許可で十分です。
 6. **[Keys and Access Tokens]** タブをクリックします。
-7. **[Create my access token]**をクリックします。
-8. ページの右上隅にある **[Test OAuth]** をクリックします。
-9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**の値をコピーします。 これらの値は後で必要になります。
+7. ページの下部にある **[Create my access token]\(アクセス トークンの作成\)** をクリックします。
+9. **[Consumer Key (API Key)]\(コンシューマー キー (API キー)\)**、**[Consumer Secret (API Secret)]\(コンシューマー シークレット (API シークレット)\)**、**[Access token]\(アクセス トークン\)**、**[Access token secret]\(アクセス トークン シークレット\)** の値をコピーします。 これらの値は、このチュートリアルの後の方で必要になります。
 
-    ![hdi.hbase.twitter.sentiment.twitter.app][img-twitter-app]
+    > ![注] [Test OAuth]\(OAuth のテスト\) ボタンは機能しなくなりました。
 
 ## <a name="create-twitter-streaming-service"></a>Twitter ストリーミング サービスを作成する
 ツイートを取得し、ツイート センチメント スコアを計算し、処理したツイート ワードを HBase に送信するアプリケーションを作成する必要があります。
@@ -385,7 +377,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                         {
                             HBaseWriter hbase = new HBaseWriter();
                             var stream = Stream.CreateFilteredStream();
-                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90));
+                            stream.AddLocation(new Coordinates(90, -180), new Coordinates(-90,180));
 
                             var tweetCount = 0;
                             var timer = Stopwatch.StartNew();

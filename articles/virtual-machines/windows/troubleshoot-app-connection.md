@@ -1,6 +1,6 @@
 ---
-title: "Azure 上の Windows VM でのアプリケーション アクセスのトラブルシューティング | Microsoft Docs"
-description: "Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合は、次の手順を使用して問題の原因を特定してください。"
+title: "Azure 上の Windows VM アプリケーションへのアクセスに関するトラブルシューティング | Microsoft Docs"
+description: "この記事には、Azure 上の Windows 仮想マシンで実行されているアプリケーションへの接続における問題を切り分けるための詳細なトラブルシューティング手順が記載されています。"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 12/20/2016
+ms.date: 05/18/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: edcea6f2cd924404ed089d71f213613b14c66d17
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 5e9f54a666799147cee8d8b5af5fd8aa3bac1780
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="troubleshoot-access-to-an-application-running-on-an-azure-virtual-machine"></a>Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
+# <a name="troubleshoot-access-to-an-application-running-on-a-windows-virtual-machine-in-azure"></a>Azure 上の Windows 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
 [!INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
 

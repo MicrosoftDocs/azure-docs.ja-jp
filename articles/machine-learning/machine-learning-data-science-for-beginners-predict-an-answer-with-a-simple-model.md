@@ -1,5 +1,5 @@
 ---
-title: "単純な回帰モデルで回答を予測する - Azure | Microsoft Docs"
+title: "単純な回帰モデルで回答を予測する - Azure Machine Learning | Microsoft Docs"
 description: "初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。"
 keywords: "モデルを作成する,単純なモデル,価格の予測,単純な回帰モデル"
 services: machine-learning
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ef651e3faa2abd7c1becb5dc2888d465330d4d73
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
@@ -26,13 +27,14 @@ ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 初心者向けデータ サイエン ビデオ 4 では、単純な回帰モデルを作成してダイヤモンドの価格を予測する方法について説明します。 ターゲット データを使用して回帰モデルを引き出します。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
 >
 >
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -41,7 +43,7 @@ ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-predict-an-answer-with-a-simple-model"></a>トランスクリプト: 単純なモデルで回答を予測する
-"初心者向けデータ サイエンス" シリーズの&4; 番目のビデオへようこそ。 ここでは、単純なモデルを作成して予測を行います。
+"初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。 ここでは、単純なモデルを作成して予測を行います。
 
 *"モデル"* とは、データについての単純化されたストーリーです。 何が言いたいかを説明します。
 
@@ -52,9 +54,9 @@ ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 
 ![ダイヤモンドのデータの列](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
 
-リストが&2; 列になっていることに注目してください。 各列は、重さ (カラット単位) と価格という異なる属性を持ち、各行は&1; つのダイヤモンドを表す&1; つのデータ ポイントです。
+リストが 2 列になっていることに注目してください。 各列は、重さ (カラット単位) と価格という異なる属性を持ち、各行は 1 つのダイヤモンドを表す 1 つのデータ ポイントです。
 
-実際に、これで小さなデータ セット、つまり&1; つのテーブルができたことになります。 このテーブルが品質の条件を満たしていることに注目してください。
+実際に、これで小さなデータ セット、つまり 1 つのテーブルができたことになります。 このテーブルが品質の条件を満たしていることに注目してください。
 
 * データに **関連性がある** : 重さは間違いなく価格に関連しています。
 * **正確である** : 書き留めた価格をダブルチェックしました。
@@ -75,7 +77,7 @@ ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 
 このデータを取得し、 *"散布図"*に変換します。 数値のデータ セットを視覚化するにはこの方法がお勧めです。
 
-最初のデータ ポイントでは、1.01 カラットの位置で垂直軸の見当を付けてください。 次に、7,366 ドルの位置で水平軸の見当を付けてください。 それらが交差する場所に点を描きます。 これが&1; 番目のダイヤモンドを表します。
+最初のデータ ポイントでは、1.01 カラットの位置で垂直軸の見当を付けてください。 次に、7,366 ドルの位置で水平軸の見当を付けてください。 それらが交差する場所に点を描きます。 これが 1 番目のダイヤモンドを表します。
 
 リストの各ダイヤモンドで同じ作業を行います。 すべて終わると、点の集まりが得られます。点はそれぞれダイヤモンドを表します。
 
@@ -123,7 +125,7 @@ ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 
 列を増やします。 その場合は、数学が役立ちます。 3 列以上ある場合、紙に点を描画するのは困難です。 数学によって、線または面をデータと非常にうまく適合させることができます。
 
-また、ダイヤモンドがほんのわずかではなく、2,000 個または&200; 万個あった場合は、コンピューターを使用してこの処理をより高速に実行できます。
+また、ダイヤモンドがほんのわずかではなく、2,000 個または 200 万個あった場合は、コンピューターを使用してこの処理をより高速に実行できます。
 
 ここでは、線形回帰を実行する方法について説明し、データを使用して予測しました。
 
@@ -132,9 +134,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

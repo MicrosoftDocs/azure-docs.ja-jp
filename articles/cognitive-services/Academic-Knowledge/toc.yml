@@ -1,49 +1,53 @@
-- name: "Academic Knowledge Documentation"
+- name: Academic Knowledge Documentation
   href: ../index.md
-- name: "Overview"
+- name: Overview
   items:
-  - name: "Learn about the Academic Knowledge KPI"
+  - name: Learn about the Academic Knowledge KPI
     href: Home.md
-- name: "How to Guides"
+- name: How to Guides
   items:
-  - name: "Entity attributes"
+  - name: Entity attributes
     href: EntityAttributes.md
     items: 
-      - name: "Paper"
+      - name: Paper
         href: PaperEntityAttributes.md
-      - name: "Author"
+      - name: Author
         href: AuthorEntityAttributes.md
-      - name: "Affiliation"
+      - name: Affiliation
         href: AffiliationEntityAttributes.md
-      - name: "Field of study"
+      - name: Field of study
         href: FieldsOfStudyEntityAttributes.md
-      - name: "Conference series"
+      - name: Conference series
         href: ConferenceSeriesEntityAttributes.md
-      - name: "Conference instance"
+      - name: Conference instance
         href: ConferenceInstanceEntityAttributes.md
-      - name: "Journal"
+      - name: Journal
         href: JournalEntityAttributes.md
-  - name: "Methods"
+  - name: Methods
     items:
-      - name: "CalcHistogram"
+      - name: CalcHistogram
         href: CalcHistogramMethod.md
-      - name: "Evaluate"
+      - name: Evaluate
         href: EvaluateMethod.md
-      - name: "Interpret"
+      - name: Interpret
         href: InterpretMethod.md
-      - name: "Similarity"
+      - name: Similarity
         href: SimilarityMethod.md
-  - name: "Query expression syntax"
+  - name: Query expression syntax
     href: QueryExpressionSyntax.md
-  - name: "Graph traversal"
+  - name: Graph traversal
     items:
-      - name: "Lambda search syntax"
+      - name: Lambda search syntax
         href: LambdaSearchSyntax.md
-      - name: "Graph search method"
+      - name: Graph search method
         href: GraphSearchMethod.md
-      - name: "JSON Search Syntax"
+      - name: JSON Search Syntax
         href: JSONSearchSyntax.md
-- name: "Reference"
+- name: Reference
   items:
-    - name: "API Reference"
+    - name: API Reference
       href: https://westus.dev.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/

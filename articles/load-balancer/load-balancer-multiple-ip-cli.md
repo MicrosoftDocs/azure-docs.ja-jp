@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: annahar
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5322840700dca3902286f62f62e44bb3746a6148
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: bd15713752ea01ad403d8e3dcfed0c9a7adcc7fa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>複数の IP 構成での負荷分散
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/03/2017
 この記事で紹介するシナリオを実現するには、次の手順に従います。
 
 1. [この記事](../cli-install-nodejs.md)の手順に従って、Azure CLI をインストールして構成し、Azure アカウントにログインします。
-2. 上記のように *contosofabrikam* という名前の[リソース グループを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-groups-and-choose-deployment-locations)します。
+2. 上記のように *contosofabrikam* という名前の[リソース グループを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group)します。
 
     ```azurecli
     azure group create contosofabrikam westcentralus
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/03/2017
     azure network vnet subnet create --resource-group contosofabrikam --vnet-name myVnet --name mySubnet --address-prefix 10.0.0.0/24
     ```
 
-5. *mylb* という名前の[ロード バランサーを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-load-balancer-and-ip-pools)します。
+5. *mylb* という名前の[ロード バランサーを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。
 
     ```azurecli
     azure network lb create --resource-group contosofabrikam --location westcentralus --name mylb
@@ -79,7 +79,7 @@ ms.lasthandoff: 04/03/2017
     azure network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. バックエンド アドレス プール (*contosopool*、*fabrikampool*)、[プローブ](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-load-balancer-health-probe)  - (*HTTP*)、負荷分散規則 (*HTTPc*、*HTTPf*) を作成します。
+8. バックエンド アドレス プール (*contosopool*、*fabrikampool*)、[プローブ](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  - (*HTTP*)、負荷分散規則 (*HTTPc*、*HTTPf*) を作成します。
 
     ```azurecli
     azure network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -91,13 +91,13 @@ ms.lasthandoff: 04/03/2017
     azure network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. 次のコマンドを実行します。その出力を調べて、[ロード バランサーが正常に作成されたことを確認](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#verify-the-load-balancer)します。
+9. 次のコマンドを実行します。その出力を調べて、[ロード バランサーが正常に作成されたことを確認](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。
 
     ```azurecli
     azure network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. 次に示すように、1 つ目の仮想マシン VM1 の[パブリック IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address) (*myPublicIp*) と[ストレージ アカウント](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-storage-account) (*mystorageaccont1*) を作成します。
+10. 次に示すように、1 つ目の仮想マシン VM1 の[パブリック IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address) (*myPublicIp*) と[ストレージ アカウント](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (*mystorageaccont1*) を作成します。
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -105,7 +105,7 @@ ms.lasthandoff: 04/03/2017
     azure storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. 次に示すように、VM1 の[ネットワーク インターフェイスを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-nic-to-use-with-the-linux-vm)し、2 番目の IP 構成 (*VM1-ipconfig2*) を追加して [VM を作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms)します。
+11. 次に示すように、VM1 の[ネットワーク インターフェイスを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic)し、2 番目の IP 構成 (*VM1-ipconfig2*) を追加して [VM を作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms)します。
 
     ```azurecli
     azure network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1

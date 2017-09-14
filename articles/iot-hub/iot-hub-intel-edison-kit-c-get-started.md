@@ -1,10 +1,10 @@
 ---
 title: "Intel Edison からクラウドへの接続 (C) - Intel Edison を Azure IoT Hub に接続する | Microsoft Docs"
-description: "Intel Edison から Azure クラウドにデータを送信するために、Intel Edison を Azure IoT Hub に接続します。"
+description: "このチュートリアルでは、Intel Edison を Azure IoT Hub に接続し、Intel Edison で Azure クラウド プラットフォームにデータを送信する方法について説明します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot intel edison, intel edison iot hub, intel edison からクラウドへのデータの送信, intel edison からクラウドへの接続"
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: fd6d04159c46439b5f1a91be7d2fa1b500bc92b3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison を Azure IoT Hub に接続する (C)
@@ -182,7 +181,7 @@ ms.lasthandoff: 04/20/2017
 
 1. 次の SSH クライアントのいずれかを使用して、ホスト コンピューターから Intel Edison に接続します。 構成ツールの IP アドレスと、そのツールで設定済みのパスワードを使用します。
     - Windows では [PuTTY](http://www.putty.org/)。
-    - Ubuntu または macOS では組み込みの SSH クライアント。
+    - Ubuntu または macOS では組み込みの SSH クライアント (`ssh root@"the IP address"` を実行)。
 
 2. サンプル クライアント アプリケーションをデバイスに複製します。 
    
@@ -242,3 +241,4 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

@@ -4,7 +4,7 @@ description: "Microsoft Azure で Stream Analytics ジョブから診断ログ�
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
+ms.author: samacha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 51f35173f386463eac0d5131e80534511bccbcd8
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: ea90a62ffee9c766985f76e1c0abc1585bebc69b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
@@ -124,7 +123,7 @@ properties | ログ エントリ固有の詳細。JSON 文字列としてシリ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-get-started.md)
+* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
 * [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

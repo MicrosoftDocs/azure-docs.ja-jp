@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 691caf95971ccdd37b12bbc178627f25b228a782
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: ecde5dd3211bfbb290e6910d7d55136d079c6cf3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -57,9 +58,13 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 4. 「 **Exit** 」と入力して、SSH クライアントを閉じます。
 
    > [!NOTE]
-   > 残りの手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../../../cli-install-nodejs.md) ことを前提としています。 次の手順はすべて、[Azure クラシック ポータル][Azure classic portal]でも実行できます。
+   > 残りの手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../../../cli-install-nodejs.md) ことを前提としています。 次の手順はすべて、[Azure Portal](http://portal.azure.com) でも実行できます。
 
 5. クライアント コンピューターから Azure CLI を開き、Azure サブスクリプションにログインします。 詳細については、「 [Connect to an Azure subscription from the Azure CLI (Azure CLI から Azure サブスクリプションへの接続)](../../../xplat-cli-connect.md)」を参照してください。
+
+   > [!NOTE]
+   > Azure Portal で、ポータルにログインします。
+
 6. サービス管理モードであることを確認します。
 
     ```azurecli
@@ -71,9 +76,10 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
     ```azurecli
     azure vm shutdown myVM
     ```
+   必要に応じて、`azure vm list` を使用してサブスクリプションで作成されたすべての VM の一覧を表示できます。
 
    > [!NOTE]
-   > `azure vm list` を使用することによって、サブスクリプションで作成されたすべての VM の一覧を表示できます。
+   > Azure Portal を使用している場合は、VM を選択し、**[停止]** をクリックしてその VM をシャットダウンします。
 
 8. VM が停止しているときにイメージをキャプチャします。 次の例では、`myVM` という名前の VM をキャプチャし、`myNewVM` という名前の一般化されたイメージを作成します。
 
@@ -82,6 +88,9 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
     ```
 
     `-t` サブコマンドによって、元の仮想マシンが削除されます。
+
+    > [!NOTE]
+    > Azure Portal で、ハブ メニューから **[イメージ]** を選択してイメージをキャプチャできます。 イメージについて、名前、リソース グループ、位置情報、オペレーティング システムの種類、およびストレージ BLOB パスを指定する必要があります。
 
 9. 新しいイメージが、新しい VM の構成に使用できるイメージの一覧に表示されるようになりました。 次のコマンドを実行すると、新しいイメージを表示できます。
 
@@ -96,11 +105,10 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 ## <a name="next-steps"></a>次のステップ
 イメージを使用して VM を作成する準備ができました。 Azure CLI コマンド `azure vm create` を使用し、作成したイメージの名前を指定することができます。 詳細については、[クラシック デプロイ モデルでの Azure CLI の使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関する記事をご覧ください。
 
-また、[Azure クラシック ポータル][Azure classic portal]を使用して、**[ギャラリーから]** の方法を使用し、作成したイメージを選択することで、カスタム VM を作成することもできます。 詳細については、[カスタム VM を作成する方法][How to Create a Custom Virtual Machine]に関する記事をご覧ください。
+また、[Azure Portal](http://portal.azure.com) を使用して、**[イメージ]** メソッドを使用し、作成したイメージを選択することで、カスタム VM を作成することもできます。 詳細については、[カスタム VM を作成する方法][How to Create a Custom Virtual Machine]に関する記事をご覧ください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Azure classic portal]:http://manage.windowsazure.com
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]:attach-disk.md

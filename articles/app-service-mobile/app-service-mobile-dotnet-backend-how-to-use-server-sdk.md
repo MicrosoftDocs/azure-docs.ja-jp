@@ -4,8 +4,8 @@ description: "Azure App Service Mobile Apps 用の .NET バックエンド サ�
 keywords: "App Service, Azure App Service, モバイル アプリ, スケール, スケーラブル, アプリのデプロイ, Azure App のデプロイ"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: fcbaa0df29fac22917695046ebc4015f3abf108f
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 657fea16e47c15efd262c86d6a150a721476134a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
@@ -118,17 +117,12 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 次の NuGet ベースの拡張機能パッケージでは、アプリケーションで使用可能な各種モバイル機能が提供されます。 拡張機能の有効化は、初期化中に **MobileAppConfiguration** オブジェクトを使用して行います。
 
 * [Microsoft.Azure.Mobile.Server.Quickstart] Mobile Apps の基本的なセットアップをサポートします。 構成に追加するには、初期化中に **UseDefaultConfiguration** 拡張機能メソッドを呼び出します。 この拡張機能には、Notifications、Authentication、Entity、Tables、Cross-domain、および Home パッケージが含まれています。 このパッケージは、Azure Portal で利用可能な Mobile Apps クイック スタートで使用されます。
-* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/)
-   Web サイトのルートに、"*このモバイル アプリが実行される既定のページ*" を実装します。 構成に追加するには、  **AddMobileAppHomeController** 拡張メソッドを呼び出します。
-* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/)
-   データ処理のためのクラスが含まれており、データ パイプラインを設定します。 構成に追加するには、 **AddTables** 拡張メソッドを呼び出します。
-* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/)
-   Entity Framework で SQL Database のデータにアクセスできるようにします。 構成に追加するには、 **AddTablesWithEntityFramework** 拡張メソッドを呼び出します。
-* [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。 構成に追加するには、**AddAppServiceAuthentication**
-   拡張メソッドと **IAppBuilder**.**UseAppServiceAuthentication** 拡張メソッドを呼び出します。
+* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) Web サイトのルートに、 *このモバイル アプリが実行される既定のページ* を実装します。 構成に追加するには、 **AddMobileAppHomeController** 拡張メソッドを呼び出します。
+* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) データ処理のためのクラスが含まれており、データ パイプラインを設定します。 構成に追加するには、 **AddTables** 拡張メソッドを呼び出します。
+* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) Entity Framework で SQL Database のデータにアクセスできるようにします。 構成に追加するには、 **AddTablesWithEntityFramework** 拡張メソッドを呼び出します。
+* [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。 構成に追加するには、**AddAppServiceAuthentication** 拡張メソッドと **IAppBuilder**.**UseAppServiceAuthentication** 拡張メソッドを呼び出します。
 * [Microsoft.Azure.Mobile.Server.Notifications] プッシュ通知を有効にし、プッシュ登録エンドポイントを定義します。 構成に追加するには、 **AddPushNotifications** 拡張メソッドを呼び出します。
-* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/)
-   モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。 構成に追加するには、  **MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
+* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。 構成に追加するには、 **MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
 * [Microsoft.Azure.Mobile.Server.Login] カスタム認証シナリオで使用される静的メソッドである AppServiceLoginHandler.CreateToken() メソッドを提供します。
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
@@ -349,7 +343,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 `Query()` メソッドは、フィルター処理を行うために LINQ で操作できる `IQueryable` を返します。
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプロジェクトを追加する
+## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプッシュ通知を追加する
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成して、サーバー プロジェクトにプッシュ通知を追加します。
 
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。
@@ -478,5 +472,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
-
 

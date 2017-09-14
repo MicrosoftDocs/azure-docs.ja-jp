@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: e6749bdf73acc9c05e71c85410bb3d95c57a0a9f
-ms.lasthandoff: 12/08/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 220f2806849e59e8799017a2d7558f1ae622a755
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
@@ -60,7 +60,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 > 
 
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
 * **Azure PowerShell を実行できるワークステーション**。 
   
@@ -133,7 +133,7 @@ RunHiveScript には、変数がいくつかあります。 その値は、Azure
 <table border = "1">
 <tr><th>ワークフローの変数</th><th>Description</th></tr>
 <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、<i>wasbs://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
+<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、<i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
 <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
 </table>
 
@@ -185,14 +185,14 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     テーブル名は *log4jLogCount*です。
 4. Oozie ジョブの実行に使用する HDInsight クラスターを作成します。
    
-    クラスターを確認するには、Azure ポータルまたは Azure PowerShell を使用します。
+    クラスターを確認するには、Azure Portal または Azure PowerShell を使用します。
 5. Oozie ワークフロー ファイルと HiveQL スクリプト ファイルを既定のファイル システムにコピーします。
    
     どちらのファイルも、パブリック BLOB コンテナーに格納されます。
    
-   * HiveQL スクリプト (useoozie.hql) を Azure Storage (wasbs:///tutorials/useoozie/useoozie.hql) にコピーします。
-   * workflow.xml を wasbs:///tutorials/useoozie/workflow.xml にコピーします。
-   * データ ファイル (/example/data/sample.log) を wasbs:///tutorials/useoozie/data/sample.log にコピーします。
+   * HiveQL スクリプト (useoozie.hql) を Azure Storage (wasb:///tutorials/useoozie/useoozie.hql) にコピーします。
+   * workflow.xml を wasb:///tutorials/useoozie/workflow.xml にコピーします。
+   * データ ファイル (/example/data/sample.log) を wasb:///tutorials/useoozie/data/sample.log にコピーします。
 6. Oozie ジョブを送信します。
    
     OOzie ジョブの結果を確認するには、Visual Studio または他のツールを使用して Azure SQL Database に接続します。
@@ -447,7 +447,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
     #region - submit Oozie job
 
-    $storageUri="wasbs://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net"
+    $storageUri="wasb://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net"
 
     $oozieJobName = $namePrefix + "OozieJob"
 
@@ -581,7 +581,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 **チュートリアルを再実行するには**
 
-ワークフローを再実行するには、以下のものを削除する必要があります。
+ワークフローを再実行するには、以下の項目を削除する必要があります。
 
 * Hive スクリプトの出力ファイル
 * log4jLogsCount テーブル内のデータ
@@ -658,7 +658,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/
-[azure-create-storageaccount]: ../storage-create-storage-account.md
+[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/

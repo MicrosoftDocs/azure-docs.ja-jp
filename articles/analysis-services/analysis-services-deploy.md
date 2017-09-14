@@ -13,24 +13,23 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 08/01/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0b15399cade0a9dc21b2274a64172d65f2f4e877
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: e9a3aedfb6e55696e1525e226fada1062fd5eda8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="deploy-a-model-from-ssdt"></a>SSDT からのモデルのデプロイ
 Azure サブスクリプションにサーバーを作成した後は、表形式モデル データベースをサーバーにデプロイできます。 表形式モデル プロジェクトの作成とデプロイは、SQL Server Data Tools (SSDT) を使って行うことができます。 
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 開始するには、以下が必要です。
 
 * Azure の **Analysis Services サーバー**。 詳しくは、「[Azure Analysis Services サーバーを作成する](analysis-services-create-server.md)」をご覧ください。
-* SSDT の**表形式モデル プロジェクト**または 1200 以上の互換性レベルの既存の表形式モデル。 作成していない場合は、 [Adventure Works チュートリアル](https://msdn.microsoft.com/library/hh231691.aspx)をご覧ください。
+* SSDT の**表形式モデル プロジェクト**または 1200 以上の互換性レベルの既存の表形式モデル。 作成していない場合は、 [Adventure Works Internet Sales の表形式モデルのチュートリアル](https://msdn.microsoft.com/library/hh231691.aspx)を参照して作成してください。
 * **オンプレミス ゲートウェイ** - 組織のネットワークにオンプレミスのデータ ソースがある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。 ゲートウェイは、クラウドのサーバーがオンプレミスのデータ ソースに接続してモデルのデータを処理および更新するために必要です。
 
 > [!TIP]
@@ -57,7 +56,7 @@ Azure サブスクリプションにサーバーを作成した後は、表形�
 これですべて完了です。
 
 
-## <a name="but-something-went-wrong"></a>問題が発生する場合
+## <a name="troubleshooting"></a>トラブルシューティング
 メタデータをデプロイするとデプロイが失敗する場合、おそらく SSDT がサーバーに接続できないことが原因です。 SSMS を使ってサーバーに接続できることを確認してください。 その後、プロジェクトの [配置サーバー] プロパティが正しいことを確認します。
 
 テーブルでデプロイが失敗する場合は、サーバーがデータ ソースに接続できない可能性があります。 オンプレミスのデータ ソースが組織のネットワークにある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。

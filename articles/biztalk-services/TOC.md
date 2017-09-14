@@ -23,9 +23,11 @@
 ### [作成と管理](integration-hybrid-connection-create-manage.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
+## [料金](https://azure.microsoft.com/pricing/details/biztalk-services/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](biztalk-release-notes.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=biztalk-services)
-## [料金](https://azure.microsoft.com/pricing/details/biztalk-services/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)

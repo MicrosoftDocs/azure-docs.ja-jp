@@ -1,5 +1,5 @@
 ---
-title: "HDInsight .NET SDK を使用して MapReduce ジョブを送信する | Microsoft Docs"
+title: "HDInsight .NET SDK を使用して MapReduce ジョブを送信する - Azure | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、MapReduce ジョブを Azure HDInsight Hadoop に送信する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 08/15/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 03f3898182d405bced8ad41b281e2ce2037b8343
-ms.lasthandoff: 03/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 015435270c31bafea0ebf5303b459338755c1410
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
@@ -34,9 +34,9 @@ ms.lasthandoff: 03/04/2017
 > 
 
 ## <a name="prerequisites"></a>前提条件
-この記事を読み始める前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
+* **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](./hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * **Visual Studio 2013/2015/2017**。
 
 ## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを送信する
@@ -57,28 +57,33 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
         using Microsoft.Azure.Management.HDInsight.Job;
         using Microsoft.Azure.Management.HDInsight.Job.Models;
         using Hyak.Common;
-   
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Blob;
+
         namespace SubmitHDInsightJobDotNet
         {
             class Program
             {
                 private static HDInsightJobManagementClient _hdiJobManagementClient;
    
-                private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
-                private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
-                private const string ExistingClusterUsername = "<Cluster Username>";
-                private const string ExistingClusterPassword = "<Cluster User Password>";
+                private const string existingClusterName = "<Your HDInsight Cluster Name>";
+                private const string existingClusterUri = existingClusterName + ".azurehdinsight.net";
+                private const string existingClusterUsername = "<Cluster Username>";
+                private const string existingClusterPassword = "<Cluster User Password>";
    
-                private const string DefaultStorageAccountName = "<Default Storage Account Name>"; //<StorageAccountName>.blob.core.windows.net
-                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
-                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
+                private const string defaultStorageAccountName = "<Default Storage Account Name>"; //<StorageAccountName>.blob.core.windows.net
+                private const string defaultStorageAccountKey = "<Default Storage Account Key>";
+                private const string defaultStorageContainerName = "<Default Blob Container Name>";
+
+                private const string sourceFile = "/example/data/gutenberg/davinci.txt";  
+                private const string outputFolder = "/example/data/davinciwordcount";
    
                 static void Main(string[] args)
                 {
                     System.Console.WriteLine("The application is running ...");
    
-                    var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
-                    _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
+                    var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = existingClusterUsername, Password = existingClusterPassword };
+                    _hdiJobManagementClient = new HDInsightJobManagementClient(existingClusterUri, clusterCredentials);
    
                     SubmitMRJob();
    
@@ -114,18 +119,47 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
                     }
    
                     // Get job output
-                    var storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey,
-                        DefaultStorageContainerName);
-                    var output = (jobDetail.ExitValue == 0)
-                        ? _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, storageAccess) // fetch stdout output in case of success
-                        : _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); // fetch stderr output in case of failure
-   
                     System.Console.WriteLine("Job output is: ");
-   
-                    using (var reader = new StreamReader(output, Encoding.UTF8))
+                    var storageAccess = new AzureStorageAccess(defaultStorageAccountName, defaultStorageAccountKey,
+                        defaultStorageContainerName);
+        
+                    if (jobDetail.ExitValue == 0)
                     {
-                        string value = reader.ReadToEnd();
-                        System.Console.WriteLine(value);
+                        // Create the storage account object
+                        CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + 
+                            defaultStorageAccountName + 
+                            ";AccountKey=" + defaultStorageAccountKey);
+        
+                        // Create the blob client.
+                        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+        
+                        // Retrieve reference to a previously created container.
+                        CloudBlobContainer container = blobClient.GetContainerReference(defaultStorageContainerName);
+        
+                        CloudBlockBlob blockBlob = container.GetBlockBlobReference(outputFolder.Substring(1) + "/part-r-00000");
+        
+                        using (var stream = blockBlob.OpenRead())
+                        {
+                            using (StreamReader reader = new StreamReader(stream))
+                            {
+                                while (!reader.EndOfStream)
+                                {
+                                    System.Console.WriteLine(reader.ReadLine());
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // fetch stderr output in case of failure
+                        var output = _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); 
+        
+                        using (var reader = new StreamReader(output, Encoding.UTF8))
+                        {
+                            string value = reader.ReadToEnd();
+                            System.Console.WriteLine(value);
+                        }
+        
                     }
                 }
             }
@@ -134,7 +168,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 ジョブを再実行するには、ジョブの出力フォルダー名を変更する必要があります (サンプルでは "/example/data/davinciwordcount" になっています)。
 
-ジョブが正常に完了すると、出力は空白になります。 MapReduce ジョブの結果を確認するには、Azure Portal で Blob ストレージの既定のストレージ コンテナーを調べます。  ファイル名は "part-r-00000" です。
+ジョブが正常に完了すると、アプリケーションは出力ファイル "part-r-00000" の内容を出力します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。

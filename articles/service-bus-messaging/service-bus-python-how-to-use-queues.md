@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 04/30/2017
+ms.date: 08/10/2017
 ms.author: sethm;lmazuel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 215db83e766d595b8f03a89ea6b4221fc756b1aa
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: e1e81ad1d7b4fe0e044917f090cac59dfd5b6332
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
+# <a name="how-to-use-service-bus-queues-with-python"></a>Python で Service Bus キューを使用する方法
+
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 この記事では、Service Bus キューの使用方法について説明します。 サンプルは Python で記述され、[Python Azure Service Bus パッケージ][Python Azure Service Bus package]を使用しています。 紹介するシナリオは、**キューの作成、メッセージの送受信**、**キューの削除**です。
@@ -58,7 +58,7 @@ SAS キーの名前と値は、[Azure Portal][Azure portal] 接続情報に含�
 bus_service.create_queue('taskqueue')
 ```
 
-**create_queue** は追加のオプションもサポートしています。これにより、メッセージの有効期間 (TTL) や最大キュー サイズなどの既定のキューの設定をオーバーライドできます。 次の例では、最大キュー サイズを 5 GB に設定し、TTL 値を 1 分に設定しています。
+`create_queue` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間 (TTL) や最大キュー サイズなどの既定のキューの設定をオーバーライドできます。 次の例では、最大キュー サイズを 5 GB に設定し、TTL 値を 1 分に設定しています。
 
 ```python
 queue_options = Queue()
@@ -69,9 +69,9 @@ bus_service.create_queue('taskqueue', queue_options)
 ```
 
 ## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
-メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusService** オブジェクトの **send\_queue\_message** メソッドを呼び出します。
+メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusService** オブジェクトの `send_queue_message` メソッドを呼び出します。
 
-次の例では、**send\_queue\_message** を使用して、*taskqueue* という名前のキューにテスト メッセージを送信する方法を示しています。
+次の例では、`send_queue_message` を使用して、`taskqueue` という名前のキューにテスト メッセージを送信する方法を示しています。
 
 ```python
 msg = Message(b'Test Message')
@@ -81,18 +81,18 @@ bus_service.send_queue_message('taskqueue', msg)
 Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
-キューからメッセージを受信するには、**ServiceBusService** オブジェクトの **receive\_queue\_message** メソッドを使用します。
+キューからメッセージを受信するには、**ServiceBusService** オブジェクトの `receive_queue_message` メソッドを使用します。
 
 ```python
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=False)
 print(msg.body)
 ```
 
-**peek\_lock** パラメーターが **False** に設定されていると、メッセージが読み取られるときにキューから削除されます。 **peek\_lock** パラメーターを **True** に設定することによって、キューからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
+`peek_lock` パラメーターが **False** に設定されていると、メッセージが読み取られるときにキューから削除されます。 `peek_lock` パラメーターを **True** に設定することによって、キューからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
 
 受信操作の中で行われるメッセージの読み取りと削除の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**peek\_lock** パラメーターが **True** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**Message** オブジェクトの **delete** メソッドを呼び出して受信処理の第 2 段階を完了します。 **delete** メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
+`peek_lock` パラメーターが **True** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**Message** オブジェクトの **delete** メソッドを呼び出して受信処理の第 2 段階を完了します。 **delete** メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
 
 ```python
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=True)

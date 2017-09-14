@@ -4,7 +4,7 @@ description: "このトピックでは、Microsoft Azure Media Services に関�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: d4c43afd-dba8-40a2-ad92-6de54152f7ec
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2017
+ms.date: 07/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: cc6737217ee24f1e698644648ad4f1552f900d96
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限

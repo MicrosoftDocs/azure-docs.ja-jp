@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/28/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 7ad2a150cd4a7223b6eababb8519140ba856cd6e
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 56dd07de81e322aa66587ee160beb734811285dc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
@@ -32,16 +31,14 @@ HDInsight クラスターは 2 つのヘッド ノードを備え、実行中の
 Hadoop は、クラスター内の複数のノードにわたってサービスやデータを複製することにより、高い可用性と信頼性を実現します。 ただし、Hadoop の標準ディストリビューションに含まれるヘッド ノードは、通常 1 つのみです。 この 1 つのヘッド ノードで障害が発生すると、クラスターが動作を停止する可能性があります。 Hadoop の可用性と信頼性を向上させるために、HDInsight では 2 つのヘッド ノードが提供されます。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="availability-and-reliability-of-nodes"></a>ノードの高可用性と信頼性
 
-HDInsight クラスターのノードは、Azure Virtual Machines を使用して実装します。 ノードに障害が発生した場合はオフラインになり、新しいノードが作成され、障害が発生したノードと置換されます。 ノードがオフラインの間は、新しいノードがオンラインに戻るまで、同じ種類の別のノードが使用されます。
+HDInsight クラスターのノードは、Azure Virtual Machines を使用して実装します。 次のセクションでは、HDInsight で使用される個々のノード タイプについて説明します。 
 
 > [!NOTE]
-> 障害発生時にノードがデータ分析を行っていた場合、ジョブの進捗状況は失われます。 ジョブは別のノードに再実行されます。
-
-次のセクションでは、HDInsight で使用される個々のノード タイプについて説明します。 クラスターの種類によっては、一部のノード タイプのみが使用されます。 たとえば、Hadoop クラスターには、Nimbus ノードはありません。 HDInsight クラスターの各種類で使用されるノードの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)に関するドキュメントの「クラスターの種類」セクションを参照してください。
+> クラスターの種類によっては、一部のノード タイプのみが使用されます。 たとえば、Hadoop クラスターには、Nimbus ノードはありません。 HDInsight クラスターの各種類で使用されるノードの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)に関するドキュメントの「クラスターの種類」セクションを参照してください。
 
 ### <a name="head-nodes"></a>ヘッド ノード
 

@@ -4,7 +4,7 @@ description: "Operations Manager と OMS ワークスペースを統合するこ
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 06/21/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c0a988a11722cfefb242f573c5a3affe21e6b6b4
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: bcfffe05dbce2824ea4933997865e8c7e86610b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/21/2017
 
 ---
 
@@ -28,22 +29,47 @@ Operations Manager と OMS ワークスペースを統合することにより�
 * インシデントおよび問題の管理をサポートする ITSM ソリューションとの統合を維持する
 * Operations Manager で監視するオンプレミスおよびパブリック クラウド IaaS 仮想マシンにデプロイされたエージェントのライフ サイクルを管理する
 
-System Center Operations Manager との統合を行うと、Operations Manager でのデータの収集、格納、および分析に OMS の速度と効率の高さを生かすことで、サービス運用戦略に価値を付加することができます。  OMS を利用すれば、既存の問題管理プロセスをサポートするにあたり、問題の原因の特定と再発の抽出という作業を相互に関連付けして、それらに取り組むことができます。   パフォーマンス、イベント、およびアラート データを調べ、豊富なダッシュ ボードとレポート機能でそのデータをわかりやすく表示するという検索エンジンの柔軟性は、OMS が Operations Manager を補完する際にもたらす強みを説明するものです。
+System Center Operations Manager との統合を行うと、Operations Manager でのデータの収集、格納、および分析に OMS の速度と効率の高さを利用することで、サービス運用戦略に価値を付加することができます。  OMS を利用すれば、既存の問題管理プロセスをサポートするにあたり、問題の原因の特定と再発の抽出という作業を相互に関連付けして、それらに取り組むことができます。   パフォーマンス、イベント、およびアラート データを調べ、豊富なダッシュ ボードとレポート機能でそのデータをわかりやすく表示するという検索エンジンの柔軟性は、OMS が Operations Manager を補完する際にもたらす強みを説明するものです。
 
-Operations Manager 管理グループに報告を行うエージェントは、Log Analytics データ ソースと、OMS サブスクリプションで有効にしたソリューションに基づいて、サーバーからデータを収集します。  ソリューションからのデータは、有効にしているソリューションに応じて、Operations Manager 管理サーバーから OMS Web サービスに直接送信される場合と、エージェント管理システムで収集されるデータ量の関係で、エージェントから直接 OMS Web サービスに送信される場合があります。 管理サーバーは OMS データを OMS 　Web サービスに直接転送するので、OMS データが OperationsManager または OperationsManagerDW データベースに書き込まれることはありません。  管理サーバーは OMS Web サービスとの接続が失われると、OMS との通信が再度確立されるまでデータをローカルのキャッシュに入れます。  管理サーバーが計画的な保守または予想外の停止のためにオフラインになった場合は、管理グループ内の別の管理サーバーが OMS との接続を再開します。  
+Operations Manager 管理グループに報告を行うエージェントは、Log Analytics データ ソースと、OMS サブスクリプションで有効にしたソリューションに基づいて、サーバーからデータを収集します。  ソリューションからのデータは、有効にしているソリューションに応じて、Operations Manager 管理サーバーから OMS Web サービスに直接送信される場合と、エージェント管理システムで収集されるデータ量の関係で、エージェントから直接 OMS Web サービスに送信される場合があります。 管理サーバーは OMS データを OMS Web サービスに直接転送するので、OMS データが OperationsManager または OperationsManagerDW データベースに書き込まれることはありません。  管理サーバーは OMS Web サービスとの接続が失われると、OMS との通信が再度確立されるまでデータをローカルのキャッシュに入れます。  管理サーバーが計画的な保守または予想外の停止のためにオフラインになった場合は、管理グループ内の別の管理サーバーが OMS との接続を再開します。  
 
 次の図は、管理サーバー、System Center Operations Manager 管理グループのエージェント、および OMS 間の接続を示しています。また、方向とポートも示されています。   
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-IT セキュリティ ポリシーで、ネットワーク上のコンピューターによるインターネットへの接続が許可されていない場合、有効にしたソリューションに応じて、管理サーバーが OMS ゲートウェイに接続して構成情報を受信し、収集されたデータを送信するように構成できます。  Operations Manager 管理グループが OMS Gateway 経由で OMS サービスと通信するように構成する方法の詳細と手順については、[「OMS Gateway を使用してコンピューターを OMS に接続する」](log-analytics-oms-gateway.md)を参照してください。  
+IT セキュリティ ポリシーで、ネットワーク上のコンピューターによるインターネットへの接続が許可されていない場合、有効にしたソリューションに応じて、管理サーバーが OMS ゲートウェイに接続して構成情報を受信し、収集されたデータを送信するように構成できます。  Operations Manager 管理グループが OMS Gateway 経由で OMS サービスと通信するように構成する方法の詳細と手順については、「[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する](log-analytics-oms-gateway.md)」を参照してください。  
 
 ## <a name="system-requirements"></a>システム要件
-始める前に、次の詳細を確認し、必要な前提条件が満たされていることを確認してください。
+始める前に、次の詳細を確認し、前提条件が満たされていることを確認してください。
 
 * OMS では、Operations Manager 2016、Operations Manager 2012 SP1 UR6 以上、および Operations Manager 2012 R2 UR2 以上のみがサポートされます。  プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうでないと、Windows エージェントのトラフィックに異常が発生し、Operations Manager イベント ログに多数のエラーが記録される可能性があります。
 * OMS サブスクリプション。  詳細については、「 [Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。
+
+### <a name="network"></a>ネットワーク
+次に、OMS と通信するために、Operations Manager エージェント、管理サーバー、およびオペレーション コンソールに必要なプロキシとファイアウォールの構成情報を示します。  各コンポーネントからのトラフィックは、ネットワークから OMS サービスへの送信です。     
+
+|リソース | ポート番号| バイパス HTTP 検査|  
+|---------|------|-----------------------|  
+|**エージェント**|||  
+|\*.ods.opinsights.azure.com| 443 |はい|  
+|\*.oms.opinsights.azure.com| 443|はい|  
+|\*.blob.core.windows.net| 443|はい|  
+|\*.azure-automation.net| 443|あり|  
+|**管理サーバー**|||  
+|\*.service.opinsights.azure.com| 443||  
+|\*.blob.core.windows.net| 443| はい|  
+|\*.ods.opinsights.azure.com| 443| あり|  
+|*.azure-automation.net | 443| あり|  
+|**Operations Manager コンソール から OMS**|||  
+|service.systemcenteradvisor.com| 443||  
+|\*.service.opinsights.azure.com| 443||  
+|\*.live.com| 80 および 443||  
+|\*.microsoft.com| 80 および 443||  
+|\*.microsoftonline.com| 80 および 443||  
+|\*.mms.microsoft.com| 80 および 443||  
+|login.windows.net| 80 および 443||  
+
 
 ## <a name="connecting-operations-manager-to-oms"></a>Operations Manager を OMS に接続する
 次の一連の手順を実行して、OMS ワークスペースの 1 つに接続する Operations Manager 管理グループを構成します。
@@ -69,7 +95,7 @@ OMS ワークスペースとの統合を構成しても、OMS との接続が確
 3. ウィンドウの右側の [アクション] 見出しの下にある **[コンピューター/グループの追加]** リンクをクリックします。
 4. **[コンピューターの検索]** ダイアログ ボックスでは、Operations Manager で監視するコンピューターまたはグループを検索できます。 OMS にオンボードするコンピューターまたはグループを選択し、**[追加]** をクリックしてから、**[OK]** をクリックします。
 
-オペレーション コンソールの **[管理]** ワークスペースにある [Operations Management Suite] の下に、管理されたコンピューター ノードからデータを収集するように構成されたコンピューターとグループが表示されます。  ここからは、必要に応じて、コンピューターおよびグループの追加または削除ができるようになります。
+オペレーション コンソールの **[管理]** ワークスペースにある [Operations Management Suite] の下に、管理されたコンピューター ノードからデータを収集するように構成されたコンピューターとグループが表示されます。  ここから、必要に応じて、コンピューターおよびグループの追加または削除ができます。
 
 ### <a name="configure-oms-proxy-settings-in-the-operations-console"></a>オペレーション コンソールで OMS プロキシ設定を構成する
 内部プロキシ サーバーが管理グループと OMS Web サービスとの間に位置する場合は、次の手順を実行します。  これらの設定は管理グループで一元的に管理され、OMS 用のデータを収集するスコープに含まれている、エージェントで管理されたシステムに配信されます。  この仕組みは、特定のソリューションが管理サーバーをバイパスし、データを OMS Web サービスに直接送信する場合に便利です。
@@ -84,20 +110,20 @@ OMS ワークスペースとの統合を構成しても、OMS との接続が確
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 2. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
 3. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
-4. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 新しい [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
+4. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
 5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** を選択し、**[選択...]** をクリックします。 次に、**[グループ...]** をクリックし、**[グループの検索]** ボックス開きます。
 6. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。  グループを選択したら、**[OK]** をクリックして、**[グループ検索]** ボックスを閉じます。
 7. **[OK]** をクリックして、**[実行アカウントの追加]** ボックスを閉じます。
 8. **[保存]** をクリックして、ウィザードを完了し、変更を保存します。
 
-接続が作成されてから、データの収集および OMS にデータを報告するエージェントを構成すると、管理グループで次の構成が適用されます (順番どおりでなくてもかまわない)。
+接続が作成されてから、データの収集および OMS にデータを報告するエージェントを構成すると、管理グループで次の構成が適用されます (順番どおりでなくてもかまいません)。
 
 * 実行アカウント **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** が作成されます。  これは、実行プロファイル "**Microsoft System Center Advisor Run As Profile Blob**" に関連付けられ、**Collection Server** および **Operations Manager Management Group** という 2 つのクラスをターゲットにします。
 * 2 つのコネクタが作成されます。  1 番目のコネクタは **Microsoft.SystemCenter.Advisor.DataConnector** という名前となり、管理グループ内のすべてのクラスのインスタンスから生成されたすべてのアラートを OMS Log Analytics に転送するサブスクリプションで自動的に構成されます。 2 番目のコネクタは **Advisor Connector**であり、OMS Web サービスとの通信およびデータの共有を担当します。
-* 管理グループ内でデータを収集するために選択したエージェントとグループは、 **Microsoft System Center Advisor Monitoring Server Group**に追加されます。
+* 管理グループ内でデータを収集するために選択したエージェントとグループは、**Microsoft System Center Advisor Monitoring Server Group** に追加されます。
 
 ## <a name="management-pack-updates"></a>管理パックの更新
-構成が完了したら、Operations Manager 管理グループは OMS サービスとの接続を確立します。  管理サーバーはまず Web サービスと同期し、次に有効にされたソリューションで Operations Manager と統合されるソリューションに対応する管理パックの形式で最新の構成情報を受信します。   Operations Manager はこれらの管理パックが更新されているかどうかを確認し、更新がある場合はそれらを自動的にダウンロードしてインポートします。  この動作は特に 2 つのルールで制御されます。
+構成が完了したら、Operations Manager 管理グループは OMS サービスとの接続を確立します。  管理サーバーはまず Web サービスと同期し、次に有効にされたソリューションで Operations Manager と統合されるソリューションに対応する管理パックの形式で最新の構成情報を受信します。   Operations Manager はこれらの管理パックの更新を確認し、更新がある場合はそれらを自動的にダウンロードしてインポートします。  この動作は特に 2 つのルールで制御されます。
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - 基本的な OMS 管理パックを更新します。 既定では 12 時間おきに実行されます。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - ワークスペースで有効にされたソリューション管理パックを更新します。 既定では 5 分おきに実行されます。
@@ -107,7 +133,7 @@ OMS ワークスペースとの統合を構成しても、OMS との接続が確
 引き続き既存の変更管理プロセスに従って運用管理グループにおける管理パックのリリースを制御する場合は、ルールを無効にし、更新が許可されている特定の期間中にルールを有効にすることができます。 環境内に開発または QA 管理グループが存在し、インターネットに接続できる状態にある場合は、このシナリオをサポートする OMS ワークスペースでその管理グループを構成することができます。  この構成では、OMS 管理パックの反復的なリリースを確認および評価してから、運用環境の管理グループにそれらをリリースすることができます。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-oms-workspace"></a>Operations Manager グループを新しい OMS ワークスペースに切り替える
-1. OMS サブスクリプションにログインし、 [Microsoft Operations Management Suite](http://oms.microsoft.com/)に新しいワークスペースを作成します。
+1. OMS サブスクリプションにログインし、[Microsoft Operations Management Suite](http://oms.microsoft.com/) にワークスペースを作成します。
 2. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager コンソールを開き、 **[管理]** ワークスペースを選択します。
 3. [Operations Management Suite] を展開し、 **[接続]**を選択します。
 4. ウィンドウの中央にある **[Operation Management Suite の再構成]** リンクを選択します。
@@ -122,7 +148,7 @@ OMS ワークスペースとの統合を構成しても、OMS との接続が確
 Operations Manager と OMS の統合が正常に行われているかを確認するには数種類の方法があります。
 
 ### <a name="to-confirm-integration-from-the-oms-portal"></a>OMS ポータルで統合を確認するには
-1. OMS ポータルで、 **[設定]** タイルをクリックします。
+1. OMS ポータルで、**[設定]** タイルをクリックします。
 2. **[Connected Sources (接続されているソース)]** を選択します。
 3. [System Center Operations Manager] セクションの表に、管理グループの名前と共に、エージェントの数、データを最後に受信したときの状態が一覧表示されます。
    
@@ -161,7 +187,7 @@ Operations Manager との統合を有効にしたソリューションの管理�
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-7. OMS ポータルで、 **[設定]** タイルをクリックします。
+7. OMS ポータルで、**[設定]** タイルをクリックします。
 8. **[Connected Sources]**(接続されているソース) を選択します。
 9. [System Center Operations Manager] セクションの下の表に、ワークスペースから削除する管理グループの名前が表示されます。  **[Last Data (最後のデータ)]** 列で、**[削除]** をクリックします。  
    
@@ -272,7 +298,7 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 今後、管理グループを OMS ワークスペースに再接続する場合は、管理グループに適用されている最新の更新プログラムのロールアップから `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理パック ファイルを再度インポートする必要があります。  このファイルは、`%ProgramFiles%\Microsoft System Center 2012` または `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` フォルダーに格納されています。
 
 ## <a name="next-steps"></a>次のステップ
-* [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
-* [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する) (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md) 」を参照してください。
+機能を追加し、データを収集するには、[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)方法に関するページを参照してください。
+
 
 

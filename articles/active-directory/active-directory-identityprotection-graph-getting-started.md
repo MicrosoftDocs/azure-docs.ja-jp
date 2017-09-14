@@ -12,18 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 08/17/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
-ms.openlocfilehash: 9c7c10031c068eeb02b4468ec48bf60aece2f12e
-ms.lasthandoff: 11/17/2016
-
+ms.reviewer: nigu
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 9b01ff86da6a1fd4a439a6ba59ea15ed6480cdad
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
-Microsoft Graph は、Microsoft のさまざまな API を統合したエンドポイントであり、[Azure Active Directory Identity Protection](active-directory-identityprotection.md) の API の母体となっています。 そこに初めて導入された API が **identityRiskEvents** です。Microsoft Graph に対して一連の[リスク イベント](active-directory-identityprotection-risk-events-types.md)とその関連情報を照会することができます。 この記事では、この API クエリの基礎について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)を参照してください。
+Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](active-directory-identityprotection.md) API のホームです。 最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](active-directory-identityprotection-risk-events-types.md)とその関連情報のクエリを実行できます。 この記事では、この API クエリの基礎について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)を参照してください。
 
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
 Microsoft Graph を介して Identity Protection のデータにアクセスするには、次の 3 つのステップがあります。
 
@@ -59,7 +62,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
    
     b. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
    
-    c. **[次へ]**をクリックします。
+    c. **[次へ]** をクリックします。
 8. **[アプリケーションのプロパティ]** ダイアログで、次の手順を実行します。
    
     ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_06.png)

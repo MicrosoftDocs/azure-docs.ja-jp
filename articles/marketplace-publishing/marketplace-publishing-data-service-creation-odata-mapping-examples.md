@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f479602647d67e7048371df76b128e33b27c1014
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -84,7 +86,7 @@ POST の生データを使用して、新しい従属要素を作成し、サー
         </FunctionImport>
 
 ## <a name="example-functionimport-using-put"></a>例: "PUT" を使用する FunctionImport
-PUT を使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。  ここでは従属要素は構造化データであり、PUT はべき等であるため、複数回発生しても結果は同じ状態になります  (x=5)。  PUT は、指定したリソースの全内容と共に使用する必要があります。
+PUT を使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。  ここでは従属要素は構造化データであり、PUT はべき等であるため、複数回発生しても結果は同じ状態になります (x=5)。  PUT は、指定したリソースの全内容と共に使用する必要があります。
 
         <EntitySet Name="UpdateAnExistingModelEntitySet" EntityType="MyOffer.UpdateAnExistingModelEntity" />
         <FunctionImport Name="UpdateModel" EntitySet="UpdateAnExistingModelEntitySet" ReturnType="Collection(MyOffer.UpdateAnExistingModelEntity)" d:EncodeParameterValues="true" d:AllowedHttpMethods="PUT" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -106,7 +108,7 @@ PUT を使用して、新しい従属要素を作成したり、サーバーに�
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>例： "PUT" を使用して返される "生" データのための FunctionImport
-PUT の生データを使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。  ここでは従属要素はストリームです。つまり、 テキスト ファイルなどの 非構造化データです。  PUT はべき等であるため、複数回発生しても結果は同じ状態になります  (x=5)。  PUT は、指定したリソースの全内容と共に使用する必要があります。
+PUT の生データを使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。  ここでは従属要素はストリームです。つまり、 テキスト ファイルなどの 非構造化データです。  PUT はべき等であるため、複数回発生しても結果は同じ状態になります (x=5)。  PUT は、指定したリソースの全内容と共に使用する必要があります。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -162,10 +164,5 @@ GET で取得したデータの RESTful なページングを実装します。 
 * 全体的な OData マッピング プロセスと目的を理解したい場合は、この [データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) に関する記事を読んで、定義、構造、手順を確認してください。
 * 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この [データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) に関する記事をご覧ください。
 * データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

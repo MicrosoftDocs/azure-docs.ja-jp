@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI (az.py) を使用して IoT Hub へのファイルのアップロードを構成する | Microsoft Docs"
-description: "クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して Azure IoT Hub へのファイルのアップロードを構成する方法です。"
+description: "クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して、Azure IoT Hub へのファイルのアップロードを構成する方法です。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 48d1fb8bba10df0960a8fba0b8c283aa3142d881
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: e2cd7eae50006717dfc0da358436ae3553a81d00
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -64,7 +63,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
 
 次の手順は、ストレージ アカウントが、**クラシック** デプロイ モデルではなく **Resource Manager** デプロイ モデルを使用して作成されていることを前提としています。
 
-デバイスからファイルのアップロードを構成するには、IoT Hub と同じサブスクリプションに Azure ストレージ アカウントの接続文字列が必要です。 また、ストレージ アカウントには BLOB コンテナーの名前も必要です。 ストレージ アカウント キーを取得するには、次のコマンドを使用します。
+デバイスからファイル アップロードを構成するには、Azure Storage アカウント用の接続文字列が必要です。 Azure Storage アカウントは、IoT Hub と同じサブスクリプション内にある必要があります。 また、ストレージ アカウントには BLOB コンテナーの名前も必要です。 ストレージ アカウント キーを取得するには、次のコマンドを使用します。
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} --resource-group {your storage account resource group}
@@ -136,7 +135,7 @@ az iot hub show --name {your iot hub name}
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Hub のファイルのアップロード機能に関する詳細については、IoT Hub 開発者ガイドの [Upload files from a device (デバイスからのファイルのアップロード)][lnk-upload] に関する記事をご覧ください。
+IoT Hub のファイル アップロード機能に関する詳細については、[デバイスからのファイルのアップロード][lnk-upload]に関するページをご覧ください。
 
 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
@@ -174,6 +173,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
 [lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
 [lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
-[lnk-manage-storage]: ../storage/storage-azure-cli.md#manage-storage-accounts
-[lnk-portal-storage]: ../storage/storage-create-storage-account.md
-[lnk-cli-create-iothub]: https://docs.microsoft.com/cli/azure/iot/hub#create
+[lnk-manage-storage]:../storage/common/storage-azure-cli.md#manage-storage-accounts
+[lnk-portal-storage]:../storage/common/storage-create-storage-account.md
+[lnk-cli-create-iothub]: https://docs.microsoft.com/cli/azure/iot/hub#az_iot_hub_create

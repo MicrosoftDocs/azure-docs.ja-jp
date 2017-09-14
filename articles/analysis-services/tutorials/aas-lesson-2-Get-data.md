@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 2 : デー�
 description: "Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

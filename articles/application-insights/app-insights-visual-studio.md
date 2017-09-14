@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio で Azure Application Insights を操作する | Microsoft Docs"
+title: "Visual Studio の Azure Application Insights でアプリケーションをデバッグする | Microsoft Docs"
 description: "デバッグ中および運用環境の Web アプリのパフォーマンス分析と診断。"
 services: application-insights
 documentationcenter: .net
@@ -11,17 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2016
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7fe1b572104416fec62261c60228fa966d197dd9
+ms.date: 07/07/2017
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: e26186f7dfc81563d72478bf3cf1d306f0203fa5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
-# <a name="working-with-azure-application-insights-in-visual-studio"></a>Visual Studio で Azure Application Insights を操作する
+# <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
 
 Visual Studio 2017 以降を使用して ASP.NET Web アプリを作成した場合は、Application Insights SDK が既に含まれています。 この操作をまだ行っていない場合は、[アプリに Application Insights を追加](app-insights-asp-net.md)してください。
@@ -38,7 +37,7 @@ Visual Studio では、プロジェクトの Application Insights モジュー�
 このボタンをクリックして、テレメトリを検索します。 
 
 ## <a name="application-insights-search"></a>Application Insights での検索
-[Application Insights の検索] ウィンドウには、ログに記録されたイベントが表示されます  (Application Insights を設定する際に Azure にサインインした場合は、Azure Portal で同じイベントを検索できるようになります)。
+[Application Insights の検索] ウィンドウには、ログに記録されたイベントが表示されます  (Application Insights を設定する際に Azure にサインインした場合は、Azure Portal でも同じイベントを検索できます)。
 
 ![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-visual-studio/34.png)
 
@@ -58,14 +57,14 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 
 ![[要求の詳細] で下にスクロールし、関連する項目を表示する](./media/app-insights-visual-studio/41.png)
 
-## <a name="exceptions-and-failed-requests"></a>例外と失敗した要求
+## <a name="view-exceptions-and-failed-requests"></a>例外と失敗した要求を表示する
 例外のレポートは、[検索] ウィンドウに表示されます  (古い種類の ASP.NET アプリケーションの一部では、フレームワークによって処理される例外が表示されるように、[例外の監視を設定する](app-insights-asp-net-exceptions.md)する必要があります)。
 
 スタック トレースを取得するには、例外をクリックします。 Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 
 ![Exception stack trace](./media/app-insights-visual-studio/17.png)
 
-## <a name="request-and-exception-summaries-in-the-code"></a>コードにおける要求と例外の概要
+## <a name="view-request-and-exception-summaries-in-the-code"></a>コードに要求と例外の概要を表示する
 各ハンドラー メソッドの上にある CodeLens 行には、Application Insights によってログに記録された過去 24 時間の要求と例外の数が表示されます。
 
 ![Exception stack trace](./media/app-insights-visual-studio/21.png)
@@ -88,7 +87,7 @@ Application Insights のツール バー ボタンか [Application Insights の�
 傾向について詳しくは、[こちら](app-insights-visual-studio-trends.md)を参照してください。
 
 ## <a name="local-monitoring"></a>ローカル監視
-Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレメトリを送信するように SDK を構成していない (ApplicationInsights.config にインストルメンテーション キーが存在しない) 場合、診断ウィンドウには、直近のデバッグ セッションからテレメトリが表示されます。 
+Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレメトリを送信するように SDK を構成していない (ApplicationInsights.config にインストルメンテーション キーが存在しない) 場合、診断ウィンドウには、直近のデバッグ セッションからのテレメトリが表示されます。 
 
 これは以前のバージョンのアプリを既に発行済みである場合に役立ちます。 デバッグ セッションから得られたテレメトリが、Application Insights ポータル上の発行済みアプリから得られたテレメトリと混同されるのは望ましくありません。
 
@@ -97,13 +96,13 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 * *最初は、ポータルにテレメトリを送信するよう Application Insights を構成しましたが、今は、Visual Studio でテレメトリだけを表示したくなりました。*
   
   * アプリからポータルにテレメトリを送信している場合でも、[検索] ウィンドウの [設定] に用意されているオプションでローカルの診断を検索できます。
-  * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトしてください。 もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
+  * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトしてください。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
 
 
-## <a name="whats-next"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 |  |  |
 | --- | --- |
 | **[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/app-insights-visual-studio/64.png) |
-| **[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-visual-studio/62.png) |
+| **[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 |![Visual studio](./media/app-insights-visual-studio/62.png) |
 
 

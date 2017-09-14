@@ -14,13 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: a5e5cc37c4635b78279a5e240603b6a728922eb8
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 692cd9e3113589142a7df84da88215eabe8f10fd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights

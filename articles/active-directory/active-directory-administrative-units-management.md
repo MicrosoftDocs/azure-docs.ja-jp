@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory の管理単位の管理"
+title: "Azure Active Directory の管理単位の管理のプレビュー"
 description: "管理単位を使用した Azure Active Directory での細かいレベルの権限の委任"
 services: active-directory
 documentationcenter: 
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 08/17/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 5bf0e7f631a86a9d413415ab73e03fa00a0e9325
+ms.reviewer: elkuzmen
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: e12a0aea8264b1ea67c26294ec5bbe9c404a171e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Azure AD の管理単位 - パブリック プレビュー
@@ -28,16 +29,16 @@ ms.lasthandoff: 05/11/2017
 これは、部門が独立している組織、たとえば、互いに独立している多数の自律的なスクール (ビジネス スクール、エンジニアリング スクールなど) で構成される大きな大学で役に立ちます。 このような部門には、その部門のアクセスの制御、ユーザーの管理、およびポリシーの設定を行う IT 管理者が存在します。 全体管理者は、これらの部門の管理者に、特定の部門のユーザーに適用される権限を与えることができます。 前の例を使用して具体的に説明すると、全体管理者は、特定のスクール (ビジネス スクール) の管理単位を作成し、その中にビジネス スクールのユーザーだけを含めることができます。 その後、全体管理者は、ビジネススクールの IT スタッフに限定されたロールを追加できます。つまり、ビジネス スクールの IT スタッフに、ビジネス スクールという管理単位にのみ適用される権限を与えます。
 
 > [!IMPORTANT]
-> 管理単位は、Azure Active Directory Premium を有効にした場合にのみ、作成して使用できます。 詳細については、「 [Azure AD Premium の概要](active-directory-get-started-premium.md)」を参照してください。
+> 管理単位の対象管理者ロールを割り当てることができるのは、Azure Active Directory Premium を有効にした場合だけです。 詳細については、「 [Azure AD Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 >
 
 
 全体管理者の観点から見ると、管理単位は、作成してリソースを設定できるディレクトリ オブジェクトです。 **このプレビュー リリースでは、設定できるリソースはユーザーだけです。** 管理単位を作成して設定した後、与えられた権限の適用先を管理単位に含まれているリソースに限定するスコープとして使用できます。
 
 ## <a name="managing-administrative-units"></a>管理単位の管理
-このプレビュー リリースでは、Azure Active Directory Module for Windows PowerShell コマンドレットを使用して、管理単位の作成と管理を実行できます。 その方法に関する詳細については、「[管理単位の操作](https://docs.microsoft.com/en-us/powershell/azure/working-with-administrative-units?view=azureadps-2.0)」を参照してください。
+このプレビュー リリースでは、Azure Active Directory Module for Windows PowerShell コマンドレットを使用して、管理単位の作成と管理を実行できます。 その方法に関する詳細については、「[管理単位の操作](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)」をご覧ください。
 
-Azure AD モジュールのソフトウェア要件とインストールの詳細、および管理単位を管理するための Azure AD モジュールのコマンドレット (構文、パラメーターの説明、および例) については、「 [Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)」を参照してください。
+Azure AD モジュールのソフトウェア要件とインストールの詳細、管理単位を管理するための Azure AD モジュールのコマンドレット (構文、パラメーターの説明、例) については、「[Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory のエディション](active-directory-editions.md)

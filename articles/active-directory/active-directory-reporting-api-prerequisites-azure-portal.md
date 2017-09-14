@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8f8510b38d795a90850ef58084a04718cb5ac324
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 5fafd83c337e3c73260d89cdad7409a01ce5855b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Azure AD Reporting API にアクセスするための前提条件
@@ -41,7 +41,7 @@ Reporting API へのアクセスを準備するには、次が必要です。
 2. アクセス許可を付与する 
 3. 構成設定を収集する 
 
-質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
+質問、問題点、またはフィードバックについては、[サポート チケットを提出](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)してください。
 
 ## <a name="register-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを登録する
 
@@ -74,7 +74,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     a. **[名前]** ボックスに、「`Reporting API application`」と入力します。
 
-    b. **[アプリケーションの種類]** として [`Web app / API`] を選択します。
+    b. **アプリケーションの種類**として **[Web アプリ/API]** を選択します。
 
     c. **[サインオン URL]** ボックスに、「`https://localhost`」と入力します。
 

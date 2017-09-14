@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 07/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 99fab8eafe4e17f50db8e7e33637001be03abe7b
-ms.openlocfilehash: 0cb356910b858bf231dfadffa1d4561df1977af0
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>Azure クラシック ポータルで StorSimple Manager サービスをデプロイする
 
 ## <a name="overview"></a>概要
-StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure クラシック ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを&1; か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure クラシック ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
 
 StorSimple Manager のランディング ページには、StorSimple ストレージ デバイスの管理に使用できるすべての StorSimple Manager サービスの一覧が示されています。 各 StorSimple Manager について、以下の情報が [StorSimple Manager] ページに表示されます。
 
-* **[名前]** – StorSimple Manager サービスの作成時に付けられた名前。 サービス名は、サービスの作成後に変更することはできません。
+* **[名前]** – StorSimple Manager サービスの作成時に付けられた名前。 **サービス名は、サービスの作成後に変更することはできません。これは、Azure クラシック ポータルで名前を変更できない他のエンティティ (デバイス、ボリューム、ボリューム コンテナー、バックアップ ポリシーなど) も同様です。**
 * **[状態]** – サービスの状態。**アクティブ**、**作成中**、または**オンライン**のいずれか。
 * **[場所]** – StorSimple デバイスがデプロイされる地理的な場所。
 * **[サブスクリプション]** – サービスに関連付けられている課金サブスクリプション。

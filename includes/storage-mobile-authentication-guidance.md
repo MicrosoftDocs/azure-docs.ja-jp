@@ -12,7 +12,7 @@ Storage サービスにアクセスできるようにアプリケーションを
 > 
 > 
 
-共有キー認証を使用する場合は、 [接続文字列](../articles/storage/storage-configure-connection-string.md)を作成します。 接続文字列の構成要素は次のとおりです。  
+共有キー認証を使用する場合は、 [接続文字列](../articles/storage/common/storage-configure-connection-string.md)を作成します。 接続文字列の構成要素は次のとおりです。  
 
 * **DefaultEndpointsProtocol** - HTTP または HTTPS を選択できますが、 HTTPS の使用を強くお勧めします。
 * **Account Name** - ストレージ アカウントの名前
@@ -36,5 +36,5 @@ Storage サービスにアクセスできるようにアプリケーションを
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-ご覧のように、SAS を使用する場合、アプリケーションでアカウント キーを公開することはありません。 SAS の詳細および SAS 使用のベスト プラクティスについては、 [Shared Access Signature: SAS モデルの説明](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
+ご覧のように、SAS を使用する場合、アプリケーションでアカウント キーを公開することはありません。 SAS の詳細および SAS 使用のベスト プラクティスについては、 [Shared Access Signature: SAS モデルの説明](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
 

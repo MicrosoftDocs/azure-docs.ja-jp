@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 06/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 12d4282082b3318bd14535a49e25c8d606d1bd7f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 8af9d70965c1c9ad8c49b7d2bb04244fc207058d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -51,7 +51,10 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージをプロジェクトに追加します。
+[`Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET 標準ライブラリの NuGet パッケージを、次の手順でプロジェクトに追加します。 
+
+1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+2. **[参照]** タブをクリックして、"Microsoft.Azure.EventHubs" を検索し、**Microsoft.Azure.EventHubs** パッケージを選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
 ## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>イベント ハブにメッセージを送信するコードの記述
 

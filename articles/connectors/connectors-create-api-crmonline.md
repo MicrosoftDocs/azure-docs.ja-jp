@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 845dd16c703362e9e64f02832a35c90e7e77e264
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -168,9 +168,9 @@ Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、�
 
 ロジック アプリのトラブルシューティングの詳細については、「[ロジック アプリの障害の診断](../logic-apps/logic-apps-diagnosing-failures.md)」をご覧ください。
 
-## <a name="view-the-swagger"></a>Swagger の表示
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[Swagger の詳細](/connectors/crm/)を参照してください。 
+[コネクタの詳細](/connectors/crm/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。

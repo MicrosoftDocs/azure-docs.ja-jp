@@ -1,5 +1,4 @@
 ---
-
 title: "Azure SQL Data Warehouse - Data Factory へのデータの読み込み | Microsoft Docs"
 description: "このチュートリアルでは、Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込み、データ ソースとして SQL Server データベースを使用します。"
 services: sql-data-warehouse
@@ -16,13 +15,11 @@ ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6474104846eefa1aa7e137e7914b7a7f1ee8a83a
-ms.openlocfilehash: aad76a633b127d23d59dae995d7a503023c5eac7
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 12a35213e07ff16bdc1c27be106792bcc032ac80
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
-
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -38,7 +35,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
 
 - オンラインの **SQL Data Warehouse** が必要です。 データ ウェアハウスがまだない場合は、[Azure SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md)方法に関するトピックを参照してください。
 
-- **Azure ストレージ アカウント**が必要です。 ストレージ アカウントがまだない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md)」をご覧ください。 最大のパフォーマンスを引き出すため、ストレージ アカウントとデータ ウェアハウスは同じ Azure リージョンに配置してください。
+- **Azure ストレージ アカウント**が必要です。 ストレージ アカウントがまだない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)」をご覧ください。 最大のパフォーマンスを引き出すため、ストレージ アカウントとデータ ウェアハウスは同じ Azure リージョンに配置してください。
 
 ## <a name="configure-a-data-factory"></a>データ ファクトリ ページを構成する
 1. [Azure ポータル][]にログインします。
@@ -114,7 +111,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
 
     ![スキーマをマップする](media/sql-data-warehouse-load-with-data-factory/schema-mapping.png)
 
-4. **[次へ]**にログインします。
+4. **[次へ]** をクリックします。
 
 ## <a name="configure-the-performance-settings"></a>パフォーマンスの設定を構成する
 パフォーマンスの構成では、Azure ストレージ アカウントを構成します。このアカウントは、[PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) を使用してデータを SQL Data Warehouse にすばやく読み込む前に、データをステージングする目的で使用されます。 ストレージ内の暫定データは、コピーの完了後に自動的にクリーンアップされます。

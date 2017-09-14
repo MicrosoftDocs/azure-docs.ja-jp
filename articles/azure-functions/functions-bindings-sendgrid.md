@@ -4,20 +4,19 @@ description: "Azure Functions における SendGrid のバインディングの�
 services: functions
 documentationcenter: na
 author: rachelappel
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 08/26/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 0cd7e7c55e77863c142800cdc11d6ea144c38293
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: bcdbb6aee49d230a4cb0ba08d836facacb64de7f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
@@ -35,14 +34,16 @@ Azure Functions には、SendGrid 用の出力バインディングが用意さ�
 
 SendGrid バインディングでは次のプロパティがサポートされます。
 
-- `name`: 必須 - 要求または要求本文の関数コードで使用される変数名。 戻り値が 1 つの場合、この値は ```$return``` です。 
-- `type`: 必須 - "SendGrid" に設定する必要があります。
-- `direction`: 必須 - "out" に設定する必要があります。
-- `apiKey`: 必須 - Function App のアプリ設定に格納されている API キー名に設定する必要があります。
-- `to`: 受信者の電子メール アドレス。
-- `from`: 送信者の電子メール アドレス。
-- `subject`: 電子メールの件名。
-- `text`: 電子メールの本文。
+|プロパティ  |Description  |
+|---------|---------|
+|**name**| 必須 - 要求または要求本文の関数コードで使用される変数名。 戻り値が 1 つの場合、この値は ```$return``` です。 |
+|**type**| 必須 - `sendGrid` に設定する必要があります。|
+|**direction**| 必須 - `out` に設定する必要があります。|
+|**apiKey**| 必須 - Function App のアプリ設定に格納されている API キー名に設定する必要があります。 |
+|**to**| 受信者の電子メール アドレス。 |
+|**from**| 送信者の電子メール アドレス。 |
+|**subject**| 電子メールの件名。 |
+|**text**| 電子メールの本文。 |
 
 **function.json** の例:
 

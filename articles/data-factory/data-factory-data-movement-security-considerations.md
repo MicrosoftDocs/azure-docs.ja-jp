@@ -3,7 +3,7 @@ title: "Azure Data Factory におけるデータ移動のセキュリティに�
 description: "Azure Data Factory におけるデータ移動の保護について説明します。"
 services: data-factory
 documentationcenter: 
-author: abnarain
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
-ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: de9453e6764279c481e569542433d095772f304d
+ms.date: 07/27/2017
+ms.author: abnarain
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4c39d71a2a2f9451531f0c0082c05fd6dc54fbd5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -33,10 +32,10 @@ Data Factory を利用できるリージョンが**米国西部**、**米国東�
 Azure Data Factory 自体は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データ主導型のワークフローを作成し、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミス環境にある[コンピューティング サービス](data-factory-compute-linked-services.md)を使用したデータ処理を調整できます。 また、プログラムと UI の両方のメカニズムを使用して、 [ワークフローを監視および管理](data-factory-monitor-manage-pipelines.md) することもできます。
 
 Azure Data Factory を使用したデータ移動は、次の**認定を取得**しています。
--    [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
--    [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--    [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--    [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
+-   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx)にアクセスしてください。 
 
@@ -68,7 +67,7 @@ Azure SQL Database では、Transparent Data Encryption (TDE) もサポートし
 Azure Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化を有効にすると、Data Lake Store によってデータの永続化の前の暗号化と取得前の暗号化解除が自動的に行われるので、データにアクセスするクライアントに対してこの動作が透過的になります。 詳細については、「[Azure Data Lake Store のセキュリティ](../data-lake-store/data-lake-store-security-overview.md)」をご覧ください。 
 
 #### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Storage と Azure Table Storage
-Azure Blob Storage と Azure Table Storage では、Storage Service Encryption (SSE) をサポートしています。SSE により、データをストレージに永続化する前の暗号化と取得前の暗号化解除が自動的に実行されます。 詳細については、「[保存データ向け Azure Storage Service Encryption](../storage/storage-service-encryption.md)」をご覧ください。
+Azure Blob Storage と Azure Table Storage では、Storage Service Encryption (SSE) をサポートしています。SSE により、データをストレージに永続化する前の暗号化と取得前の暗号化解除が自動的に実行されます。 詳細については、「[保存データ向け Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)」をご覧ください。
 
 #### <a name="amazon-s3"></a>Amazon S3
 Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。 現在、Data Factory では仮想プライベート クラウド (VPC) 内の Amazon S3 はサポートしていません。
@@ -120,7 +119,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
  
 オンプレミス ネットワークと Azure 間の通信チャネルのセキュリティを強化するために、[IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) または [ExpressRoute](../expressroute/expressroute-introduction.md) を使用することもできます。
 
-仮想ネットワークは、クラウド内のユーザーのネットワークを論理的に表したものです。 IPSec VPN (サイト間) または ExpressRoute (プライベート ピアリング) を設定して、オンプレミス ネットワークを Azure 仮想ネットワーク (VNet) に接続できます。        
+仮想ネットワークは、クラウド内のユーザーのネットワークを論理的に表したものです。 IPSec VPN (サイト間) または ExpressRoute (プライベート ピアリング) を設定して、オンプレミス ネットワークを Azure 仮想ネットワーク (VNet) に接続できます。     
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとゲートウェイの構成の推奨事項がまとめてあります。
 
@@ -142,7 +141,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>ゲートウェイのファイアウォール構成とホワイトリストに登録する IP アドレス
 
-#### <a name="firewall-requirements-for-on-premiseprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件    
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件  
 企業では、組織の中央ルーターで**企業ファイアウォール**が実行されています。 また、ゲートウェイがインストールされているローカル コンピューターで **Windows ファイアウォール**がデーモンとして実行されています。 
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
@@ -152,7 +151,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 | `*.servicebus.windows.net` | 443、80 | ゲートウェイが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net` | 443 | [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用する場合に、ゲートウェイが Azure ストレージ アカウントに接続するために使用します。 | 
 | `*.frontend.clouddatahub.net` | 443 | ゲートウェイが Azure Data Factory サービスに接続するために必要です。 | 
-| `*.database.windows.net` | 1433    | (オプション) 移動先が Azure SQL Database または Azure SQL Data Warehouse である場合に必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 | 
+| `*.database.windows.net` | 1433   | (オプション) 移動先が Azure SQL Database または Azure SQL Data Warehouse である場合に必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 | 
 | `*.azuredatalakestore.net` | 443 | (オプション) 移動先が Azure Data Lake Store である場合に必要です。 | 
 
 > [!NOTE] 

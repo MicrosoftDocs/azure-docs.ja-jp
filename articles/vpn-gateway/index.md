@@ -2,7 +2,7 @@
 title: "Azure VPN Gateway のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "クラウドの仮想ネットワークとオンプレミスの間またはクラウドの VNet 間のトラフィックを管理するように仮想プライベート ネットワーク (VPN) ゲートウェイを構成する方法について説明します。"
 services: vpn-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

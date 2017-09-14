@@ -2,7 +2,7 @@
 title: "DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み | Microsoft Docs"
 description: "このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 35ba9161f70a27a215685830d1a9e7c1881cc3bb
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
@@ -105,10 +106,5 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

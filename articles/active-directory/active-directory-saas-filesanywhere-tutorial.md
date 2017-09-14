@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 40164cfba8b54634278194c599a4493a5b7910b2
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4153056bd21006061c6ad8ff9cf3c17de9248628
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>チュートリアル: Azure Active Directory と FilesAnywhere の統合
@@ -117,6 +117,8 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
     ![Configure Single Sign-On](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url.png)
     
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[応答 URL]** ボックスに、`https://<company name>.filesanywhere.com/saml20.aspx?c=215` のパターンを使用して URL を入力します。
+> [!NOTE]
+> **215** は **clientid** の値であり、ほんの一例です。 実際の clientid 値と置き換える必要があります。
 
 4. **SP 開始モード**でアプリケーションを構成する場合は、**[FilesAnywhere のドメインと URL]** セクションで次の手順を実行します。
     
@@ -170,7 +172,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     ![Configure Single Sign-On](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10.    アプリケーションの SSO 構成を FilesAnywhere 側で完成させるには、[FilesAnywhere サポート チーム](mailto:support@FilesAnywhere.com)に問い合わせ、ダウンロード済みの SAML トークン署名証明書とシングル サインオン (SSO) URL を提供します。
+10. アプリケーションの SSO 構成を FilesAnywhere 側で完成させるには、[FilesAnywhere サポート チーム](mailto:support@FilesAnywhere.com)に問い合わせ、ダウンロード済みの SAML トークン署名証明書とシングル サインオン (SSO) URL を提供します。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。

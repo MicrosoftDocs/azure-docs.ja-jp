@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
-ms.custom: pim
+ms.custom: pim;oldportal;it-pro;
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5dde6b98f72306d6fe78f3c12377d3ce2ec5ddea

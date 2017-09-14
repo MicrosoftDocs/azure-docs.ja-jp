@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure Media Services (AMS) ア
 services: media-services
 documentationcenter: java
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 4cf3aaa9678c423c71cf542591a5a98547bb5cf5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Java を使用したオンデマンド コンテンツ配信の概要

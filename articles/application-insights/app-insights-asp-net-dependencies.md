@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c31abf49a05f7911d4ec82db59efa2724ab7b49b
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 43733e452126c85ab9e19b6036aea96f56fc4d12
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定: 依存関係の追跡
@@ -133,8 +132,8 @@ ms.lasthandoff: 05/10/2017
 
 ![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
-## <a name="analytics"></a>[分析]
-依存関係は [Analytics クエリ言語](app-insights-analytics.md)によって追跡できます。 次に例をいくつか示します。
+## <a name="analytics"></a>分析
+依存関係は [Log Analytics クエリ言語](https://docs.loganalytics.io/)によって追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
 

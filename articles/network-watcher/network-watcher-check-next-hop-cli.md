@@ -1,10 +1,10 @@
 ---
-title: "Azure Network Watcher Next Hop で次ホップを探す - Azure CLI | Microsoft Docs"
+title: "Azure Network Watcher Next Hop で次ホップを探す - Azure CLI 2.0 | Microsoft Docs"
 description: "この記事では、Next Hop で Azure CLI を使用して、次ホップの種類と IP アドレスを検索する方法について説明します。"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
-manager: timlt
+manager: jimdial
 editor: 
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
@@ -13,27 +13,29 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 49939946f887c51fbc2a135c28236407f5569f48
-ms.lasthandoff: 03/28/2017
-
+ms.author: jdial
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d1ee6870ba0188ff2c473e4cca12a5bdc1f97d3d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 ---
 
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli"></a>Azure Network Watcher の Next Hop 機能で Azure CLI を使用して次ホップの種類を検索する
+# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Azure Network Watcher の Next Hop 機能で Azure CLI 2.0 を使用して次ホップの種類を検索する
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-check-next-hop-portal.md)
+> - [Azure ポータル](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
-> - [CLI](network-watcher-check-next-hop-cli.md)
+> - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [Azure REST API](network-watcher-check-next-hop-rest.md)
-
 
 Next Hop は Network Watcher の機能の 1 つであり、指定された仮想マシンに基づいて次ホップの種類と IP アドレスを取得できます。 この機能は、仮想マシンからのトラフィックがゲートウェイ、インターネット、または仮想ネットワークを経由して宛先に到達するかどうかを判断する際に役立ちます。
 
-この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
+この記事では、Azure CLI 2.0 を使います。Azure CLI 2.0 は、Resource Manager デプロイメント モデルを対象とする Microsoft の次世代 CLI であり、Windows、Mac、Linux で利用できます。
+
+この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストール](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)する必要があります。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -48,10 +50,13 @@ Next Hop は Network Watcher の機能の 1 つであり、指定された仮想
 
 ## <a name="get-next-hop"></a>次ホップの取得
 
-次ホップを取得するには、`azure netowrk watcher next-hop` コマンドレットを呼び出します。 このコマンドレットには、Network Watcher リソース グループ、Network Watcher、仮想マシン ID、送信元 IP アドレス、宛先 IP アドレスを渡します。 この例では、宛先 IP アドレスは別の仮想ネットワークにある VM です。 2 つの仮想ネットワークの間には、仮想ネットワーク ゲートウェイがあります。
+次ホップを取得するには、`az network watcher show-next-hop` コマンドレットを呼び出します。 このコマンドレットには、Network Watcher リソース グループ、Network Watcher、仮想マシン ID、送信元 IP アドレス、宛先 IP アドレスを渡します。 この例では、宛先 IP アドレスは別の仮想ネットワークにある VM です。 2 つの仮想ネットワークの間には、仮想ネットワーク ゲートウェイがあります。
+
+まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。 次に、次のコマンドを実行します。
 
 ```azurecli
-azure network watcher next-hop -g resourceGroupName -n networkWatcherName -t targetResourceId -a <source-ip> -d <destination-ip>
+az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>
+
 ```
 
 > [!NOTE]
@@ -61,9 +66,12 @@ VM に複数の NIC があり、NIC のいずれかで IP 転送が有効な場�
 
 完了すると、結果が表示されます。 次ホップの IP アドレスと、リソースの種類が返されます。
 
-```
-data:    Next Hop Ip Address             : 10.0.1.2
-info:    network watcher next-hop command OK
+```azurecli
+{
+    "nextHopIpAddress": null,
+    "nextHopType": "Internet",
+    "routeTableId": "System Route"
+}
 ```
 
 現在利用可能な NextHopType の値は次のとおりです。

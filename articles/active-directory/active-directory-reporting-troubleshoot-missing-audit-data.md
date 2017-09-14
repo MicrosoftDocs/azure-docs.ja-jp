@@ -1,5 +1,4 @@
 ---
-
 title: "トラブルシューティング: Azure Active Directory アクティビティ ログにデータが見つからない | Microsoft Docs"
 description: "Azure Active Directory で使用可能なさまざまなレポートの一覧を示します。"
 services: active-directory
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 18af51e95a283a5cd33688484a0d7477eb4b957d
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
-
 
 ---
 

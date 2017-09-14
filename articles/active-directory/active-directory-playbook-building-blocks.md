@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 概念実証戦略の構成要素 | Microsoft Docs"
 description: "ID とアクセスの管理のシナリオを探索して迅速に実装します。"
 services: active-directory
@@ -15,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 9c81bc0c702d559eee8b5fbf2a0508697f4276a0
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 671f2d386aca23bc5c02d0e0ab23e6d9d79a8693
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
@@ -77,7 +75,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 1. パスワード ハッシュ同期のセキュリティに関する考慮事項を[こちら](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)で確認します。  パイロット運用環境のユーザーに対する選択肢としてパスワード ハッシュ同期が明らかに不適切である場合は、代わりに以下の手順を行います。
    * 運用環境ドメインにテスト ユーザーを作成します。 その他のアカウントを同期していないことを確認してください。
    * UAT 環境に移動します。
-2.    フェデレーションを推進する場合は、オンプレミスの ID プロバイダーを使ったフェデレーション ソリューションに伴うコストが POC を上回ることを理解したうえで、期待するメリットと照らして評価することは大切です。
+2.  フェデレーションを推進する場合は、オンプレミスの ID プロバイダーを使ったフェデレーション ソリューションに伴うコストが POC を上回ることを理解したうえで、期待するメリットと照らして評価することは大切です。
     * クリティカル パスであるため、高可用性を意図して設計する必要がある。
     * 容量計画に必要なオンプレミス サービスである。
     * 監視/保守/パッチ適用に必要なオンプレミス サービスである。
@@ -102,7 +100,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | Azure AD 管理ポータルに移動します。 | [Azure AD 管理ポータル - 会社のブランド](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| ログイン ページ用の資産 (ヒーロー ロゴ、小さいロゴ、ラベルなど) をアップロードします AD FS がある場合は、必要に応じて ADFS ログイン ページと同じ資産に統一します。 | [サインイン ページとアクセス パネル ページに会社のブランドを追加する: カスタマイズ可能な要素](active-directory-add-company-branding.md#customizable-elements) |
+| ログイン ページ用の資産 (ヒーロー ロゴ、小さいロゴ、ラベルなど) をアップロードします AD FS がある場合は、必要に応じて ADFS ログイン ページと同じ資産に統一します。 | [サインイン ページとアクセス パネル ページに会社のブランドを追加する: カスタマイズ可能な要素](active-directory-add-company-branding.md) |
 | 変更が完全に反映されるまで数分待ちます。 |  |
 | POC ユーザーの資格情報で https://myapps.microsoft.com にログインします。 |  |
 | ブラウザーで外観を確認します。 | [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md) |
@@ -487,7 +485,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | GA2 が MFA にサインアップしなかった場合、Azure MFA の登録が必要になります。 |  |
 | 手順 3. の元のタブに戻り、ブラウザーの更新ボタンをクリックします。 "ユーザー設定" の変更に対するアクセスが許可されていることがわかります。 | |
 | 全体管理者が電子メールを有効にしている場合は、GA1 と GA2 の受信トレイを見て、ロールがアクティブ化されているという通知を確認してください。 |  |
-| 8    監査履歴をチェックし、レポートを見て、GA2 が昇格されていることの記録があることを確認します。 | [Azure AD Privileged Identity Management とは: ロール アクティビティの確認](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 監査履歴をチェックし、レポートを見て、GA2 が昇格されていることの記録があることを確認します。 | [Azure AD Privileged Identity Management とは: ロール アクティビティの確認](active-directory-privileged-identity-management-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>考慮事項
 

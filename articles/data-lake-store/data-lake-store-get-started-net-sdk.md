@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/09/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: f637b8617c4a9ed3be1eb0932a94b0ffcc7c8f7e
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 70f94a07b0102e3135eaf85e5877e3502762d7e3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-store-using-net-sdk"></a>.NET SDK で Data Lake Store の使用を開始する
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/08/2017
 >
 >
 
-[Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関する記事をご覧ください。
+[Azure Data Lake Store .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet) を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * **Visual Studio 2013、2015、2017**。 以下の手順では、Visual Studio 2015 Update 2 を使用します。

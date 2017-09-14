@@ -13,15 +13,14 @@ ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/30/2017
+ms.topic: quickstart
+ms.date: 08/25/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: ab664eb8803037b0bf09399bf9d28059fec2e204
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 6bf1b94b38fffe31dd67a5146c3c9c5e9367084e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
@@ -30,7 +29,7 @@ ms.lasthandoff: 06/01/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -40,9 +39,9 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 以下の手順に従い、Adventure Works LT サンプル データを含む SQL データベースを作成します。 
 
-1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
 
-2. **[新規]** ページで **[データベース]** を選択し、**[データベース]** ページで **[SQL Database]** を選択します。
+2. **[新規]** ページから **[データベース]** を選択し、**[新規]** ページの **[SQL Database]** で **[作成]** を選択します。
 
    ![データベースの作成 -1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -59,7 +58,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    > このクイック スタートの残りの部分で使用するため、このフォームでサンプル データベースを選択する必要があります。
    > 
 
-4. 前の画像で示されているように、[SQL server (logical server)] \(SQL Server (論理サーバー)) のフォームに次の情報を入力します。   
+4. 次の画像に示されているように、**[サーバー]** の **[Configure required settings]\(必要な設定の構成\)** をクリックし、SQL Server (論理サーバー) フォームに次の情報を入力します。   
 
    | 設定       | 推奨値 | Description | 
    | ------------ | ------------------ | ------------------------------------------------- | 
@@ -78,17 +77,33 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 5. フォームの入力が完了したら、**[選択]** をクリックします。
 
-6. **[価格レベル]** をクリックして、新しいデータベースのサービス レベルとパフォーマンス レベルを指定します。 スライダーを使用して **20 DTU** を選択し、ストレージには **250** GB を選択します。 DTU の詳細については、「[DTU とは](sql-database-what-is-a-dtu.md)」を参照してください。
+6. **[価格レベル]** をクリックして、サービス レベル、DTU 数、ストレージの容量を指定します。 DTU の量とストレージの容量に関して、サービス レベルごとに利用できるオプションを調べます。 
+
+   > [!IMPORTANT]
+   > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
+   >
+   >\* 現在、Premium レベルでは、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、およびカナダ東部の各リージョンにおいて、1 TB を超えるストレージが利用できます。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   > 
+
+7. このクイック スタート チュートリアルでは、**Standard** サービス レベルを選択したうえで、スライダーを使用して **100 DTU (S3)** と **400** GB のストレージを選択します。
 
    ![データベースの作成 -s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
-7. DTU の量を選択した後で、**[適用]** をクリックします。  
+8. プレビューの使用条件に同意して、**[Add-on Storage]\(アドオン ストレージ\)** オプションを使用します。 
 
-8. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
+   > [!IMPORTANT]
+   > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
+   >
+   >\* 現在、Premium レベルでは、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、およびカナダ東部の各リージョンにおいて、1 TB を超えるストレージが利用できます。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   > 
 
-9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
+9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  
 
-   ![通知](./media/sql-database-get-started-portal/notification.png)
+10. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
+
+11. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
+    
+     ![通知](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
@@ -98,25 +113,21 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 データベースの概要ページが開き、完全修飾サーバー名 (**mynewserver20170313.database.windows.net** など) や追加の構成オプションが表示されます。 この完全修飾サーバー名は、後で使用するためコピーしておいてください。
+1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170824.database.windows.net** など) や追加の構成オプションが表示されます。 
 
-   > [!IMPORTANT]
-   > 以降のクイック スタートでサーバーとそのデータベースに接続するには、この完全修飾サーバー名が必要になります。
-   > 
+2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 
 
    ![サーバー名](./media/sql-database-get-started-portal/server-name.png) 
 
-2. 前の画像に示されているように、ツール バーの **[サーバー ファイアウォールの設定]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。 
+3. 前の画像に示されているように、ツール バーの **[サーバー ファイアウォールの設定]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。 
 
    ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
-3. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
+4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-4. [ **Save**] をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. [ **Save**] をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
-   ![サーバーのファイアウォール規則の設定](./media/sql-database-get-started-portal/server-firewall-rule-set.png) 
-
-4. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
+6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 
 これで、SQL Server Management Studio やその他のツールを使用して、SQL Database サーバーとそのデータベースに、前に作成したサーバー管理者アカウントでこの IP アドレスから接続できるようになりました。
 
@@ -128,19 +139,19 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 Azure でサンプル データベースを作成できたので、Azure Portal の組み込みのクエリ ツールを使用して、データベースへの接続とデータへのクエリを実行できることを確認してみましょう。 
 
-1. データベースの SQL Database ページで、ツール バーの **[ツール]** をクリックします。 **[ツール]** ページが表示されます。
+1. データベースの SQL Database ページで、ツール バーの **[ツール]** をクリックし、**[クエリ エディター (プレビュー)]** をクリックします。
 
    ![[ツール] メニュー](./media/sql-database-get-started-portal/tools-menu.png) 
 
-2. **[クエリ エディター (プレビュー)]** をクリックし、**[プレビューの使用条件]** チェック ボックスをオンにしてから **[OK]** をクリックします。 [クエリ エディター] ページが開きます。
+2. **[プレビューの使用条件]** チェック ボックスをオンにしてから **[OK]** をクリックします。 [クエリ エディター] ページが開きます。
 
-3. **[ログイン]** をクリックし、メッセージが表示されたら **[SQL Server 認証]** を選択して、先ほど作成したサーバー管理者ログインとパスワードを入力します。
+3. **[ログイン]** をクリックしてログイン情報を確認し、**[OK]** をクリックしてログインします。先ほど作成したサーバー管理者ログインとパスワードを指定し、SQL Server 認証を使用してログインしてください。
 
    ![login](./media/sql-database-get-started-portal/login.png) 
 
 4. **[OK]** をクリックしてログインします。
 
-5. 認証されたら、[クエリ エディター] ウィンドウに次のクエリを入力します。
+5. **ServerAdmin** として認証されたら、[クエリ エディター] ウィンドウに次のクエリを入力します。
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -153,11 +164,11 @@ Azure でサンプル データベースを作成できたので、Azure Portal 
 
    ![クエリ エディターの結果](./media/sql-database-get-started-portal/query-editor-results.png)
 
-7. **[クエリ エディター]** ページと **[ツール]** ページを閉じます。
+7. **[クエリ エディター]** ページを閉じ、**[OK]** をクリックして未保存の編集を破棄してから、**[ツール]** ページを閉じます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-これらのリソースが別のクイック スタート/チュートリアルで不要である場合 (「[次のステップ](#next-steps)」を参照)、次のようにして削除することができます。
+データベースに接続してクエリを実行するためのさまざまな方法を紹介した「[次のステップ](#next-steps)」に進む場合は、これらのリソースを保存しておいてください。 一方、このクイック スタートで作成したリソースを削除する場合は、次の手順に従います。 
 
 
 1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。 

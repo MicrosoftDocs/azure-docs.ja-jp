@@ -3,7 +3,7 @@ title: "内部仮想ネットワークで Azure API Management を使用する�
 description: "内部仮想ネットワークで Azure API Management を設定し構成する方法について説明します。"
 services: api-management
 documentationcenter: 
-author: solankisamir
+author: vladvino
 manager: kjoshi
 editor: 
 ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b9df2c3e7f49a47bfd714f28c5ab53590ca9a719
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: a4c2bda1226ca05c775d011fba7bc59d4dab8998
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="using-azure-api-management-service-with-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
@@ -63,23 +62,23 @@ API Management を外部仮想ネットワーク モードを使用する場合�
 ### <a name="access-on-default-host-names"></a>既定のホスト名へのアクセス
 "contoso" という名前のパブリック Azure クラウドで API Management サービスを作成すると、次のサービス エンドポイントが既定で構成されます。
 
->    ゲートウェイ/プロキシ - contoso.azure-api.net
+>   ゲートウェイ/プロキシ - contoso.azure-api.net
 
 > パブリッシャー ポータルと開発者ポータル - contoso.portal.azure-api.net
 
 > ダイレクト管理エンドポイント - contoso.management.azure-api.net
 
->    Git - contoso.scm.azure-api.net
+>   Git - contoso.scm.azure-api.net
 
 これらの API Management サービス エンドポイントにアクセスするために、API Management がデプロイされている仮想ネットワークに接続しているサブネットで Virtual Machine を作成できます。 サービスの内部仮想 IP アドレスを 10.0.0.5 と仮定すると、ホスト ファイルのマッピング (%SystemDrive%\drivers\etc\hosts) を次のように行うことができます。
 
-> 10.0.0.5      contoso.azure-api.net
+> 10.0.0.5    contoso.azure-api.net
 
-> 10.0.0.5      contoso.portal.azure-api.net
+> 10.0.0.5    contoso.portal.azure-api.net
 
-> 10.0.0.5      contoso.management.azure-api.net
+> 10.0.0.5    contoso.management.azure-api.net
 
-> 10.0.0.5      contoso.scm.azure-api.net
+> 10.0.0.5    contoso.scm.azure-api.net
 
 これで、すべてのサービス エンドポイントに、作成した Virtual Machine からアクセスできるようになります。 また仮想ネットワーク内でカスタム DNS サーバーを使用している場合、DNS レコードを作成して、仮想ネットワーク内のどこからでもこれらのエンドポイントにアクセスすることができます。 
 

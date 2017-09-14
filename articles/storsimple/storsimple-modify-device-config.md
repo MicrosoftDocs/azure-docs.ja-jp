@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/29/2016
+ms.date: 07/19/2017
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2dfc682fa54577ec5ab9d8a1e21ea82f035cc41e
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5bfbeb038dbedae2bf77016abbc19458c3dc22c9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
@@ -33,6 +34,9 @@ Azure クラシック ポータルの **[構成]** ページには、StorSimple 
 ## <a name="modify-device-settings"></a>デバイスの設定の変更
 デバイスの設定には、デバイスの表示名とデバイスの説明が含まれます。
 
+> [!NOTE] 
+> Azure クラシック ポータルでデバイス名を変更することはできません。 デバイスの名前変更はサポートされません。
+
 StorSimple Manager サービスに接続されている StorSimple デバイスには、既定の名前が割り当てられます。 通常、既定の名前はデバイスのシリアル番号を示します。 たとえば、8600-SHX0991003G44HT などの 15 文字の既定デバイス名は、次のような意味を持ちます。
 
 * **8600** - デバイスのモデルを示します。
@@ -40,9 +44,7 @@ StorSimple Manager サービスに接続されている StorSimple デバイス�
 * **0991003** - 特定の製品を示します。
 * **G44HT**- この最後の 5 桁の数字を増加させて、一意のシリアル番号を作成します。 この数字は、連番でない場合があります。
 
-Azure クラシック ポータルを使用してデバイス名を変更し、一意の表示名を自由に割り当てることができます。 表示名には、64 文字以内で任意の文字を含めることができます。
-
-デバイスの説明を指定することもできます。 一般に、デバイスの説明は、デバイスの所有者と物理的な場所を特定するのに役立ちます。 [説明] フィールドの文字数は 256 文字未満にする必要があります。
+デバイスの説明を指定することができます。 一般に、デバイスの説明は、デバイスの所有者と物理的な場所を特定するのに役立ちます。 [説明] フィールドの文字数は 256 文字未満にする必要があります。
 
 ## <a name="modify-time-settings"></a>時刻の設定の変更
 デバイスは、クラウド ストレージ サービス プロバイダーで認証を行うために時刻を同期する必要があります。 タイム ゾーンをドロップダウン リストから選択し、ネットワーク タイム プロトコル (NTP) サーバーを 2 つまで指定します。 プライマリ NTP サーバーは必須であり、StorSimple 用 Windows PowerShell を使用してデバイスを構成する場合に指定します。 NTP サーバーとして、既定の Windows Server である **time.windows.com** を指定できます。 プライマリ NTP サーバーの構成は Azure クラシック ポータルから確認できますが、変更するには Windows PowerShell インターフェイスを使用する必要があります。
@@ -117,10 +119,5 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイスの MPIO の構成方法](storsimple-configure-mpio-windows-server.md)。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

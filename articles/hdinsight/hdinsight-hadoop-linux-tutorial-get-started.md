@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 08/23/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: f2a97c32e9f1a286102e0800db57107e041d1990
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: fd9e6dcea6524f55c1bd06da35f02be5670bf95f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop チュートリアル: HDInsight で Hadoop を使用する
 
-この記事では、[Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。 [Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。 現在、HDInsight には 6 つのクラスターの種類があります。[Hadoop](hdinsight-hadoop-introduction.md)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md)、[Interactive Hive (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)、[R Server](hdinsight-hadoop-r-server-overview.md) です。  クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、 Hive は 6 つのクラスターの種類すべてでサポートされています。 HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。  
+この記事では、[Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。 [Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。 現在、HDInsight には [7 種類のクラスター](hdinsight-hadoop-introduction.md#overview)が用意されています。 クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、 Hive は全種類のクラスターでサポートされています。 HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -64,7 +63,7 @@ Hadoop ジョブのほとんどはバッチ ジョブです。 クラスター�
     * **OS の種類**: Linux
     * **worker ノードの数**: 2
 
-     各クラスターには Azure ストレージ アカウントとの依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。 
+     各クラスターには、[Azure ストレージ アカウント](hdinsight-hadoop-use-blob-storage.md)または [Azure Data Lake アカウント](hdinsight-hadoop-use-data-lake-store.md)との依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。 
      
      これらのプロパティの詳細については、[HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
@@ -78,7 +77,7 @@ Hadoop ジョブのほとんどはバッチ ジョブです。 クラスター�
 
 
 ## <a name="run-hive-queries"></a>Hive クエリの実行
-[Apache Hive](hdinsight-use-hive.md) は、HDInsight で使用される最も一般的なコンポーネントです。 HDInsight で Hive ジョブを実行する方法は多数存在します。 このチュートリアルでは、ポータルから Ambari Hive ビューを使用して Hive ジョブをいくつか実行します。 Hive ジョブを送信する他の方法については、「 [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」を参照してください。
+[Apache Hive](hdinsight-use-hive.md) は、HDInsight で使用される最も一般的なコンポーネントです。 HDInsight で Hive ジョブを実行する方法は多数存在します。 このチュートリアルでは、ポータルから Ambari Hive ビューを使用します。 Hive ジョブを送信する他の方法については、「 [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」を参照してください。
 
 1. 前のスクリーンショットの状態で、**[クラスター ダッシュボード]** をクリックし、**[HDInsight クラスター ダッシュボード]** をクリックします。  ブラウザーで **https://&lt;クラスター名>.azurehdinsight.net** に移動することもできます。&lt;クラスター名> は、Ambari を開くために前のセクションで作成したクラスターです。
 2. Hadoop ユーザー名と前のセクションで指定したパスワードを入力します。 既定のユーザー名は **admin**です。
@@ -120,7 +119,7 @@ Hive ジョブが完了したら、[結果を Azure SQL データベースまた
 
 **クラスターと既定のストレージ アカウントを削除するには、次の手順に従います。**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ポータルのダッシュボードで、クラスターの作成時に使用したリソース グループ名が表示されているタイルをクリックします。
 3. クラスターと既定のストレージ アカウントが含まれたリソース グループを削除するには、リソース ブレードで **[削除]** をクリックします。または、**[リソース]** タイルでクラスター名をクリックしてから、クラスター ブレードで **[削除]** をクリックします。 リソース グループを削除するとストレージ アカウントも削除されます。 ストレージ アカウントを残しておく場合は、クラスターのみを削除してください。
 

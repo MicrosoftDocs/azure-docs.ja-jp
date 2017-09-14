@@ -1,5 +1,5 @@
 ---
-title: "Hadoop サンドボックスを使用して Hadoop について学ぶ| Microsoft Docs"
+title: "Hadoop サンドボックス (エミュレーター) の使用方法 - Azure HDInsight | Microsoft Docs"
 description: "Hadoop エコシステムの使用について学ぶには、まず Hortonworks の Hadoop サンドボックスを Azure 仮想マシンに設定します。 "
 keywords: hadoop emulator,hadoop sandbox
 editor: cgronlun
@@ -10,21 +10,21 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 1618ed7971ffef0eae55b73b4bdd04f3f14195ba
-ms.openlocfilehash: a070df78bf95173aa48da60d24d14d08d9be8d9a
-ms.lasthandoff: 01/07/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: b701879464205860edd1c097651b532f87bae388
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 ---
-# <a name="get-started-in-the-hadoop-ecosystem-with-a-hadoop-sandbox-on-a-virtual-machine"></a>仮想マシンの Hadoop サンドボックスを使用した Hadoop エコシステム入門
+# <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
 Hortonworks の Hadoop サンドボックスを仮想マシンにインストールする方法と、Hadoop エコシステムについて学ぶことができます。 Hadoop、Hadoop 分散ファイル システム (HDFS)、ジョブの送信などについて理解できるように、サンドボックスにはローカル開発環境が用意されています。 Hadoop について理解できたら、HDInsight クラスターを作成して、Azure で Hadoop を使い始めることができます。 使用方法の詳細については、 [HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
@@ -35,7 +35,8 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 ## <a name="download-and-install-the-virtual-machine"></a>仮想マシンのダウンロードとインストール
 1. [Hortonworks のダウンロード ページ](http://hortonworks.com/downloads/#sandbox)に移動します。
-2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hrotonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて 1 ～ 2 時間かかります。
+
+2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hortonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて 1 ～ 2 時間かかります。
    
     ![Link image for download Hortonworks Sandbox for VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
 3. 同じ Web ページで、**[Import on Virtual Box (仮想ボックスにインポート)]** リンクをクリックして、仮想マシン用のインストール手順が記載された PDF をダウンロードします。
@@ -62,12 +63,13 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
    > SSH クライアントがインストールされていない場合は、**http://localhost:4200/** の仮想マシンから提供される Web ベースの SSH を使用することができます。
    > 
    
-    SSH を使用して初めて接続を行う際、ルート アカウントのパスワードを変更するように求められます。 将来、SSH を使用してログインするときに使用する新しいパスワードを入力します。
+    SSH を使用して初めて接続する際に、ルート アカウントのパスワードを変更するように求められます。 SSH を使用してログインするときに使用する新しいパスワードを入力します。
+
 2. ログインが完了したら、次のコマンドを入力します。
    
         ambari-admin-password-reset
    
-    メッセージが表示されたら、Ambari の管理者アカウントのパスワードを入力します。 これは、Ambari Web UI にアクセスするときに使用されます。
+    メッセージが表示されたら、Ambari の管理者アカウントのパスワードを入力します。 これは、Ambari Web UI にアクセスするときに使用します。
 
 ## <a name="use-hive-commands"></a>Hive コマンドの使用
 

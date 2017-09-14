@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 4/10/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0d659cb860a6c98342b548212820efe046decfcc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -41,15 +40,15 @@ Event Hubs 管理ライブラリの使用を開始するには、Azure Active Di
 * [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対する "所有者" のアクセス許可が必要です。
+これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対する**所有者**のアクセス許可が必要です。
 
 ## <a name="programming-pattern"></a>プログラミング パターン
 
 Event Hubs リソースを操作するパターンは、次の共通のプロトコルに従います。
 
-1. `Microsoft.IdentityModel.Clients.ActiveDirectory` ライブラリを使用して Azure Active Directory からトークンを取得します。
+1. `Microsoft.IdentityModel.Clients.ActiveDirectory` ライブラリを使用して AAD からトークンを取得します。
     ```csharp
-    var context = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
     var result = await context.AcquireTokenAsync(
         "https://management.core.windows.net/",

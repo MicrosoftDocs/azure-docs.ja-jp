@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/24/2017
 ms.author: dekapur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 29dd21511b23e6dffdb1daf8b75ece28989c16e7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 08998340afb2f242b9a268331607b0d1ddb9b0c6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -67,6 +67,6 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
 
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
-* [サービス プロセスからログを直接収集する](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+* [EventFlow を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-eventflow.md)
 
 

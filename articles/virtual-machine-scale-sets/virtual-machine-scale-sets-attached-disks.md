@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: d991adb8fa8f71a8785327be244ad9749a837dfd
-ms.lasthandoff: 04/26/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure VM スケール セットと接続されたデータ ディスク
@@ -99,10 +99,21 @@ Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScale
     }          
 ]
 ```
+
 次に、_[PUT]_ を選択して、スケール セットに変更を適用します。 この例は、3 台以上の接続されたデータ ディスクがサポートされる VM サイズを使用している場合に有効です。
 
 > [!NOTE]
 > データ ディスクを追加または削除するなど、スケール セット定義に変更を加えた場合、変更された定義は新しく作成されるすべての VM に適用されます。既存の VM に対しては、_upgradePolicy_ プロパティが "Automatic" に設定されている場合にのみ、変更された定義が適用されます。 このプロパティが "Manual" に設定されている場合は、新しいモデルを既存の VM に手動で適用する必要があります。 これをポータルで実行するには、_Update-AzureRmVmssInstance_ PowerShell コマンドを使用するか、_az vmss update-instances_ CLI コマンドを使用します。
+
+## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>データ投入済みディスクを現行のスケール セットに追加する 
+> 現行のスケール セット モデルにディスクを追加すると、そのディスクは常時、意図的に空の状態で作成されます。 このシナリオには、スケール セットによって作成される新しいインスタンスも含まれます。 この振る舞いの理由は、スケールセット定義に空のデータ ディスクが存在するためです。 現行のスケール セット モデル用にデータ投入済みドライブを作成するには、次の 2 とおりの方法があります。
+
+* カスタム スクリプトを実行してインスタンス 0 の VM から他の VM のデータ ディスクにデータをコピーする。
+* OS ディスクと (必要なデータが格納された) データ ディスクとを含んだマネージ イメージを作成し、そのイメージを使って新しいスケールセットを作成する。 そうすることで、そのスケールセットの定義に指定されたデータ ディスクが、新たに作成されるすべての VM に割り当てられるようになります。 この定義によって参照されるイメージには、カスタマイズされたデータを格納したデータ ディスクが含まれるため、そのスケールセットの各仮想マシンは自動的に、それらの変更が反映された状態で作成されます。
+
+> カスタム イメージを作成する方法については、「[Azure で一般化された VM の管理対象イメージを作成する](/azure/virtual-machines/windows/capture-image-resource/)」を参照してください。 
+
+> 必要なデータを含んだインスタンス 0 の VM をユーザーがキャプチャしたうえで、その vhd をイメージの定義に使用する必要があります。
 
 ## <a name="removing-a-data-disk-from-a-scale-set"></a>スケール セットからのデータ ディスクの削除
 Azure CLI の _az vmss disk detach_ コマンドを使用して、データ ディスクを VM スケール セットから削除することができます。 たとえば、次のコマンドを実行すると、LUN 2 で定義されているディスクが削除されます。
@@ -112,7 +123,7 @@ az vmss disk detach -g dsktest -n dskvmss --lun 2
 同様に、_storageProfile_ 内の _dataDisks_ プロパティからエントリを削除し、その変更を適用することによって、スケール セットからディスクを削除することもできます。 
 
 ## <a name="additional-notes"></a>その他のメモ
-Azure Managed Disks と、スケール セットに接続されたデータ ディスクのサポートは、Microsoft.Compute API の [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) バージョンで追加されました。 このバージョン以降の API で構築された任意の SDK またはコマンドライン ツールを使用できます。
+Azure Managed Disks と、スケール セットに接続されたデータ ディスクのサポートは、Microsoft.Compute API のバージョン [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) 以降で使用できます。
 
 スケール セットに対する接続されたディスクのサポートの初期の実装では、スケール セット内の個々の VM に対し、データ の接続や接続解除を行うことはできません。
 

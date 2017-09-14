@@ -2,422 +2,396 @@
   href: index.yml
 - name: 概要
   items:
-  - name: 仮想マシンについて
-    href: overview.md
+    - name: 仮想マシンについて
+      href: overview.md
 - name: クイック スタート
   expanded: true
   items:
-  - name: VM の作成 - ポータル
-    href: quick-create-portal.md
-  - name: VM の作成 - PowerShell
-    href: quick-create-powershell.md
-  - name: VM の作成 - Azure CLI
-    href: quick-create-cli.md
+    - name: VM の作成 - ポータル
+      href: quick-create-portal.md
+    - name: VM の作成 - PowerShell
+      href: quick-create-powershell.md
+    - name: VM の作成 - Azure CLI
+      href: quick-create-cli.md
 - name: チュートリアル
   items:
-  - name: 1 - VM の作成/管理
-    href: tutorial-manage-vm.md
-  - name: 2 - ディスクの作成/管理
-    href: tutorial-manage-data-disk.md
-  - name: 3 - 構成の自動化
-    href: tutorial-automate-vm-deployment.md
-  - name: 4 - VM イメージの作成
-    href: tutorial-custom-images.md
-  - name: 5 - 高可用性 VM
-    href: tutorial-availability-sets.md
-  - name: 6 - VM スケール セットの作成
-    href: tutorial-create-vmss.md
-  - name: 7 - VM の負荷分散
-    href: tutorial-load-balancer.md
-  - name: 8 - ネットワークの管理
-    href: tutorial-virtual-network.md
-  - name: 9 - 仮想マシンのバックアップ
-    href: tutorial-backup-vms.md
-  - name: 10 - 仮想マシンの監視
-    href: tutorial-monitoring.md
-  - name: 11 - VM のセキュリティの管理
-    href: tutorial-azure-security.md
-  - name: 12 - Team Services CI/CD
-    href: tutorial-vsts-iis-cicd.md
+    - name: 1 - VM の作成/管理
+      href: tutorial-manage-vm.md
+    - name: 2 - ディスクの作成/管理
+      href: tutorial-manage-data-disk.md
+    - name: 3 - 構成の自動化
+      href: tutorial-automate-vm-deployment.md
+    - name: 4 - VM イメージの作成
+      href: tutorial-custom-images.md
+    - name: 5 - 高可用性 VM
+      href: tutorial-availability-sets.md
+    - name: 6 - VM スケール セットの作成
+      href: tutorial-create-vmss.md
+    - name: 7 - VM の負荷分散
+      href: tutorial-load-balancer.md
+    - name: 8 - ネットワークの管理
+      href: tutorial-virtual-network.md
+    - name: 9 - 仮想マシンのバックアップ
+      href: tutorial-backup-vms.md
+    - name: 10 - 仮想マシンの監視
+      href: tutorial-monitoring.md
+    - name: 11 - VM のセキュリティの管理
+      href: tutorial-azure-security.md
+    - name: 12 - Team Services CI/CD
+      href: tutorial-vsts-iis-cicd.md
+    - name: 13 - SSL による Web サーバーのセキュリティ保護
+      href: tutorial-secure-web-server.md
 - name: サンプル
   items:
-  - name: PowerShell
-    href: powershell-samples.md
-  - name: Azure CLI
-    href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
 - name: 概念
   items:
-  - name: リージョンと可用性
-    href: regions-and-availability.md
-  - name: ストレージ
-    href: ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: ネットワーク
-    href: network-overview.md
-  - name: VM スケール セット
-    href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: インスタンス メタデータ サービス
- 
-    href: ../virtual-machines-instancemetadataservice-overview.md
-  - name: コンテナー
-    href: containers.md
-  - name: リソース マネージャー
-    href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    items:
-    - name: デプロイ モデル
-      href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: VM 用のテンプレート
-      href: template-description.md
-  - name: Azure Windows エージェント
-    href: agent-user-guide.md
-  - name: Azure Security Center
-    href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: ディザスター リカバリー
-    href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: Azure の計画メンテナンス
-    href: planned-maintenance.md
-    items:
-    - name: 保持メンテナンス
-      href: preserving-maintenance.md
-    - name: 再起動メンテナンス
-      href: impactful-maintenance.md
-    - name: スケジュール
-      href: planned-maintenance-schedule.md
-  - name: VM サイズ
-    href: sizes.md
-    items:
-    - name: 汎用
-      href: sizes-general.md
-    - name: コンピューティング最適化
-      href: sizes-compute.md
-    - name: メモリ最適化
-      href: sizes-memory.md
-    - name: ストレージ最適化
-      href: sizes-storage.md
-    - name: GPU 最適化
-      href: sizes-gpu.md
-    - name: ハイ パフォーマンス コンピューティング
-      href: sizes-hpc.md
-      items:
-      - name: コンピューティング集中型サイズ
-        href: a8-a9-a10-a11-specs.md
-    - name: Azure コンピューティング ユニット (ACU)
-      href: acu.md
-    - name: コンピューティング ベンチマーク スコア
-      href: compute-benchmark-scores.md
-    - name: Windows VM の実行に関するベスト プラクティス
-      href: guidance-compute-single-vm.md
-  - name: デプロイに関する考慮事項
-    items:
-    - name: インフラストラクチャのガイドライン
-      href: infrastructure-virtual-machine-guidelines.md
-    - name: サブスクリプションとアカウント
-      href: infrastructure-subscription-accounts-guidelines.md
-    - name: 名前を付ける
-      href: infrastructure-naming-guidelines.md
-    - name: リソース グループ
-      href: infrastructure-resource-groups-guidelines.md
+    - name: リージョンと可用性
+      href: regions-and-availability.md
     - name: ストレージ
-      href: infrastructure-storage-solutions-guidelines.md
+      href: about-disks-and-vhds.md
     - name: ネットワーク
-      href: infrastructure-networking-guidelines.md
-    - name: 可用性セット
-      href: infrastructure-availability-sets-guidelines.md
-    - name: インフラストラクチャの例
-      href: infrastructure-example.md
+      href: network-overview.md
+    - name: VM スケール セット
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: コンテナー
+      href: containers.md
+    - name: リソース マネージャー
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      items:
+        - name: デプロイ モデル
+          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: VM 用のテンプレート
+          href: template-description.md
+    - name: Azure Windows エージェント
+      href: agent-user-guide.md
+    - name: Azure Security Center
+      href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: ディザスター リカバリー
+      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Azure の計画メンテナンス
+      href: planned-maintenance.md
+    - name: VM サイズ
+      href: sizes.md
+      items:
+        - name: 汎用
+          href: sizes-general.md
+        - name: コンピューティング最適化
+          href: sizes-compute.md
+        - name: メモリ最適化
+          href: sizes-memory.md
+        - name: ストレージ最適化
+          href: sizes-storage.md
+        - name: GPU 最適化
+          href: sizes-gpu.md
+          items:
+            - name: GPU ドライバー
+              href: n-series-driver-setup.md
+        - name: ハイ パフォーマンス コンピューティング
+          href: sizes-hpc.md
+        - name: Azure コンピューティング ユニット (ACU)
+          href: acu.md
+        - name: コンピューティング ベンチマーク スコア
+          href: compute-benchmark-scores.md
+    - name: デプロイに関する考慮事項
+      items:
+        - name: 基本的なデプロイの例
+          href: infrastructure-example.md
 - name: ハウツー ガイド
   items:
-  - name: VM の作成
-    items:
-    - name: VM の作成の概要
-      href: creation-choices.md
-    - name: 特殊化した VHD から VM を作成する
-      href: create-vm-specialized.md
-    - name: テンプレートを使用した VM の作成
-      href: ps-template.md
-    - name: 'C# を使用した VM の作成'
-      href: csharp.md
-    - name: 'C# とテンプレートを使用した VM の作成'
-      href: csharp-template.md
-    - name: Chef を使用した VM の作成
-      href: chef-automation.md
-    - name: Python を使用した VM の作成
-      href: python.md
-    - name: Terraform を使用した VM の作成
-      items:
-      - name: インストールと構成
-        href: ../terraform-install-configure.md
-      - name: 基本的なインフラストラクチャの作成
-        href: ../terraform-create-complete-vm.md      
-    - name: 一般的なアプリケーション フレームワークを実行する VM の作成
-      href: app-frameworks.md
-    - name: サブスクリプション間で VM を移動する
-      href: move-vm.md
-  - name: VM の構成
-    items:
-    - name: VM のサイズを変更する
-      href: resize-vm.md
-    - name: タグを使用する
-      href: ../../resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-      - name: VM にタグを付ける
-        href: tag.md
-    - name: Recovery Services を使用してバックアップする
-      href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: PowerShell を使用したバックアップの管理
-      href: ../../backup/backup-azure-vms-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: VM テンプレートのダウンロード
-      href: download-template.md
-    - name: 一般的な PowerShell タスク
-      href: ps-common-ref.md
-    - name: 一般的な CLI タスク
-      href: cli-manage.md
-    - name: CLI を使用して VM を管理する
-      href: cli-deploy-templates.md
-    - name: 'C# を使用して VM を管理する'
-      href: csharp-manage.md
-  - name: RDP を使用した接続
-    items:
-    - name: VM へのログオン
-      href: connect-logon.md
-  - name: VM イメージの管理
-    items:
-    - name: Marketplace VM イメージを検索する
-      href: cli-ps-findimage.md
-    - name: Azure Hybrid Use Benefit のライセンス
-      href: hybrid-use-benefit-licensing.md
-    - name: Windows クライアント イメージを使用する
-      href: client-images.md
-    - name: VHD のアップロードを準備する
-      href: prepare-for-upload-vhd-image.md
-    - name: 管理ディスク イメージを作成する
-      href: capture-image-resource.md
-    - name: 一般化された管理ディスク イメージから VM を作成する
-      href: create-vm-generalized-managed.md
-    - name: Packer でイメージを作成する
-      href: build-image-with-packer.md
-  - name: VM ストレージの管理
-    items:
-    - name: 管理ディスクの作成
-      href: create-managed-disk-ps.md
-    - name: VM を Managed Disks に移行する
-      href: migrate-to-managed-disks.md
-      items:
-      - name: 非管理ディスクから管理ディスクに変換する
-        href: convert-unmanaged-to-managed-disks.md
-      - name: クラシック VM を Managed Disks に移行する
-        href: migrate-single-classic-to-resource-manager.md
-    - name: 管理ディスクのスナップショットを作成する
-      href: snapshot-copy-managed-disk.md
-    - name: Attach data disk
-      items:
-      - name: Azure PowerShell
-        href: attach-disk-ps.md
-      - name: Azure ポータル
-        href: attach-managed-disk-portal.md
-    - name: データ ディスクを切断する
-      href: detach-disk.md
-    - name: OS ディスクを拡張する
-      href: expand-os-disk.md
-    - name: データ ディスクを拡張する
-      href: expand-data-disks.md
-    - name: ファイル共有を使用する
-      href: mount-azure-file-storage.md
-    - name: 'データ ディスクとして D: を使用する'
-      href: change-drive-letter.md
-  - name: VM ネットワーク
-    href: ps-common-network-ref.md
-    items:
-    - name: 仮想ネットワークを作成する
-      href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 複数 NIC を持つ VM の作成
-      href: multiple-nics.md
-    - name: 静的パブリック IP を作成する
-      href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: ポート、エンドポイント、セキュリティを構成する
-      href: endpoints-in-resource-manager.md
-    - name: VM へのアクセスの許可
-      items:
-      - name: Azure PowerShell
-        href: nsg-quickstart-powershell.md
-      - name: Azure ポータル
-        href: nsg-quickstart-portal.md
-    - name: DNS 名前解決のオプション
-      href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: ポータルを使用して FDQN を作成する
-      href: portal-create-fqdn.md
-  - name: スケールと可用性
-    items:
-    - name: VM の可用性
-      href: manage-availability.md
-    - name: 可用性セットの作成
-      href: create-availability-set.md
-    - name: VM の可用性セットの変更
-      href: change-availability-set.md
-    - name: ロード バランサーの概要
-      href: load-balance.md
-      items:
-      - name: ロード バランサーの作成
-        href: ../../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: VMSS を使用して複数の VM をスケール調整する
-      href: vmss-powershell-creating.md
-    - name: 複数の Azure 仮想マシンを作成する
-      href: multiple-vms.md
-    - name: Azure Automation で VM を垂直方向にスケール調整する
-      href: vertical-scaling-automation.md
-    - name: 監視および診断を使用して VM を作成する
-      href: extensions-diagnostics-template.md
-    - name: Azure Automation の概要
-      href: manage-using-azure-automation.md
-  - name: VM のセキュリティの管理
-    items:
-    - name: パスワードのリセット
-      href: reset-local-password-without-agent.md
-    - name: Azure AD での職場または学校の ID の作成
-      href: create-aad-work-id.md
-    - name: アクセスを管理する
-      href: ../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: ディスクの暗号化
-      href: encrypt-disks.md
-    - name: VM へのポリシーの適用
-      href: policy.md
-    - name: Key Vault の設定
-      href: key-vault-setup.md
-    - name: WinRM の設定
-      href: winrm.md
-  - name: VM 拡張機能の使用
-    items:
-    - name: VM 拡張機能の概要
-      href: extensions-features.md
-    - name: カスタム スクリプト拡張機能
-      href: extensions-customscript.md
-    - name: OMS エージェント拡張機能
-      href: extensions-oms.md
-    - name: PowerShell DSC 拡張機能
-      href: extensions-dsc-overview.md
-      items:
-      - name: PowerShell DSC 拡張機能の資格情報の処理
-        href: extensions-dsc-credentials.md
-      - name: テンプレートを備えた VMSS と DSC
-        href: extensions-dsc-template.md
-    - name: Azure Log Collector 拡張機能
-      href: log-collector-extension.md
-    - name: Azure 診断拡張機能
-      href: ps-extensions-diagnostics.md
-    - name: テンプレートの拡張機能
-      href: extensions-authoring-templates.md
-    - name: VM 拡張機能のエクスポート
-      href: extensions-export-templates.md
-    - name: 構成のサンプル
-      href: extensions-configuration-samples.md
-    - name: 拡張機能のトラブルシューティングを行う
-      href: extensions-troubleshoot.md
-  - name: アプリケーションの実行
-    items:
-    - name: SQL Server
-      href: ./sql/virtual-machines-windows-sql-server-iaas-overview.md
-    - name: SharePoint
-      href: sharepoint-farm.md
-    - name: テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
-      href: ps-hybrid-cloud-test-env-lob.md
-    - name: テスト用のシミュレートされたハイブリッド クラウド環境の設定
-      href: ps-hybrid-cloud-test-env-sim.md
-    - name: MongoDB
-      href: install-mongodb.md
-    - name: ハイパフォーマンス コンピューティング (HPC)
-      href: hpcpack-cluster-options.md
-    - name: MATLAB
-      href: matlab-mdcs-cluster.md
-    - name: SAP on Azure
-      href: ../workloads/sap/get-started.md
-  - name: VM の移行
-    items:
-    - name: Azure への AWS とオンプレミスの VM の移行の概要
-      href: on-prem-to-azure.md
-      items:
-      - name: アマゾン ウェブ サービス (AWS) から Azure に移行する
-        href: aws-to-azure.md
-      - name: 一般化した VHD から VM をアップロードおよび作成する
-        href: upload-generalized-managed.md
-    - name: クラシックから Azure Resource Manager に移行する
-      href: migration-classic-resource-manager-overview.md
-      items:
-      - name: 移行の詳細
-        href: migration-classic-resource-manager-deep-dive.md
-      - name: 移行の計画
-        href: migration-classic-resource-manager-plan.md
-      - name: PowerShell を使用して移行する
-        href: migration-classic-resource-manager-ps.md
-      - name: 移行の一般的なエラー
-        href: migration-classic-resource-manager-errors.md
-      - name: 移行用のコミュニティ ツール
-        href: migration-classic-resource-manager-community-tools.md
-      - name: FAQ
-        href: migration-classic-resource-manager-faq.md
-  - name: トラブルシューティング
-    items:
-    - name: システムの再起動を理解する
-      href: understand-vm-reboot.md
-    - name: リモート デスクトップ接続
-      href: troubleshoot-rdp-connection.md
-      items:
-      - name: 詳細な手順
-        href: detailed-troubleshoot-rdp.md
-      - name: エラー メッセージ
-        href: troubleshoot-specific-rdp-errors.md
-    - name: RDP パスワードをリセットする
-      href: reset-rdp.md
-    - name: ブート診断
- 
-      href: boot-diagnostics.md
     - name: VM の作成
-      href: troubleshoot-deployment-new-vm.md
-    - name: VM の再起動またはサイズ変更
-      href: restart-resize-error-troubleshooting.md
-    - name: アプリケーション アクセス
-      href: troubleshoot-app-connection.md
-    - name: 割り当ての失敗
-      href: allocation-failure.md
-    - name: VM を再デプロイする
-      href: redeploy-to-new-node.md
-    - name: 一般的なエラー メッセージ
-      href: error-messages.md
-    - name: VM のトラブルシューティングのための仮想ハードディスクの接続
       items:
-      - name: Azure PowerShell
-        href: troubleshoot-recovery-disks.md
-      - name: Azure ポータル
-        href: troubleshoot-recovery-disks-portal.md
+        - name: 'C# の使用'
+          href: csharp.md
+        - name: 'テンプレートと C# の使用'
+          href: csharp-template.md
+        - name: Chef を使用した VM の作成
+          href: chef-automation.md
+        - name: Java の使用
+          href: java.md
+        - name: Python の使用
+          href: python.md
+        - name: テンプレートの使用
+          href: ps-template.md
+        - name: VM への接続
+          href: connect-logon.md
+        - name: AHUB ライセンスの使用
+          href: hybrid-use-benefit-licensing.md
+        - name: Windows 10 のマルチテナント ホスティング権限の使用
+          href: windows-desktop-multitenant-hosting-deployment.md
+    - name: VM のセキュリティ保護
+      items:
+        - name: 暗号化
+          href: encrypt-disks.md
+        - name: WinRM の使用
+          href: winrm.md
+        - name: アクセス制御の使用
+          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: ポリシーの使用
+          href: policy.md
+        - name: Key Vault の作成
+          href: key-vault-setup.md
+    - name: VM の管理
+      items:
+        - name: 一般的な PowerShell タスク
+          href: ps-common-ref.md
+        - name: VM の移動
+          href: move-vm.md
+        - name: VM サイズの変更
+          href: resize-vm.md
+        - name: VM にタグを付ける
+          href: tag.md
+        - name: VM でのスクリプトの実行
+          href: extensions-customscript.md
+        - name: 一時的なドライブ文字の変更
+          href: change-drive-letter.md
+        - name: 可用性セットの変更
+          href: change-availability-set.md
+        - name: テンプレートのダウンロード
+          href: download-template.md
+        - name: Azure VM エージェント
+          href: agent-user-guide.md
+        - name: スケジュールされたイベント
+          href: scheduled-events.md
+        - name: メタデータの監視
+          href: instance-metadata-service.md
+    - name: イメージの使用
+      items:
+        - name: イメージを検索および使用する
+          href: cli-ps-findimage.md
+        - name: アップロード用に VM を準備する
+          href: prepare-for-upload-vhd-image.md
+        - name: 一般化されたイメージを使用する
+          href: create-vm-generalized-managed.md
+        - name: 特殊化されたイメージを使用する
+          href: create-vm-specialized.md
+        - name: VM をイメージにキャプチャする
+          href: capture-image-resource.md
+        - name: Packer でイメージを作成する
+          href: build-image-with-packer.md
+        - name: Windows クライアント イメージを使用する
+          href: client-images.md
+        - name: 既存のディスクをダウンロードする
+          href: download-vhd.md
+    - name: 可用性とスケール
+      items:
+        - name: Virtual Machine Scale Sets
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: 高可用性
+          href: manage-availability.md
+        - name: 垂直方向にスケーリングする
+          href: vertical-scaling-automation.md
+    - name: 自動化ツールの使用
+      items:
+        - name: Chef
+          href: chef-automation.md
+    - name: アプリケーションの実行
+      items:
+        - name: SQL Server
+          href: /sql/virtual-machines-windows-sql-server-iaas-overview
+        - name: MongoDB
+          href: install-mongodb.md
+        - name: SAP on Azure
+          href: ../workloads/sap/get-started.md
+        - name: MATLAB クラスター
+          href: matlab-mdcs-cluster.md
+        - name: ハイ パフォーマンス コンピューティング (HPC)
+          href: hpcpack-cluster-options.md
+          items:
+            - name: HPC Pack 2016 クラスター
+              href: hpcpack-2016-cluster.md
+            - name: HPC Pack 2016 Azure Active Directory の統合
+              href: hpcpack-cluster-active-directory.md
+            - name: HPC Pack 2012 R2 ヘッド ノード
+              href: hpcpack-cluster-headnode.md
+            - name: HPC Pack 2012 R2 にオンプレミスのジョブを送信する
+              href: hpcpack-cluster-submit-jobs.md
+            - name: HPC Pack 上の Excel
+              href: excel-cluster-hpcpack.md
+    - name: ストレージの管理
+      items:
+        - name: Managed Disks について
+          href: managed-disks-overview.md
+        - name: ディスクに関する FAQ
+          href: faq-for-disks.md
+        - name: ディスクを追加する
+          items:
+            - name: Azure PowerShell
+              href: attach-disk-ps.md
+            - name: Azure Portal
+              href: attach-managed-disk-portal.md
+        - name: ディスクを取り外す
+          href: detach-disk.md
+        - name: ディスクのサイズの変更
+          href: expand-os-disk.md
+        - name: ディスクのスナップショットの作成
+          href: snapshot-copy-managed-disk.md
+        - name: 非管理対象ディスクのバックアップ
+          href: incremental-snapshots.md
+        - name: Standard と Premium 間でディスクを変換する
+          href: convert-disk-storage.md
+        - name: File Storage を使用する
+          href: mount-azure-file-storage.md
+        - name: テンプレートによるディスクのデプロイ
+          href: using-managed-disks-template-deployments.md
+        - name: 管理ディスクに移行する
+          href: migrate-to-managed-disks.md
+          items:
+            - name: 非管理対象ディスクから管理ディスク
+              href: convert-unmanaged-to-managed-disks.md
+            - name: 単一の クラシック VM から Resource Manager
+              href: migrate-single-classic-to-resource-manager.md
+    - name: ネットワークの管理
+      href: ps-common-network-ref.md
+      items:
+        - name: Create virtual network
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: VM へのポートを開く
+          items:
+            - name: Azure Portal
+              href: nsg-quickstart-portal.md
+            - name: Azure PowerShell
+              href: nsg-quickstart-powershell.md
+        - name: パブリック IP アドレスの割り当て
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: 複数の NIC の使用
+          href: multiple-nics.md
+        - name: パブリック DNS 名の割り当て
+          href: portal-create-fqdn.md
+        - name: DNS の解決
+          href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: VM 拡張機能の使用
+      items:
+        - name: VM 拡張機能の概要
+          href: extensions-features.md
+        - name: カスタム スクリプト拡張機能
+          href: extensions-customscript.md
+        - name: OMS エージェント拡張機能
+          href: extensions-oms.md
+        - name: PowerShell DSC 拡張機能
+          href: extensions-dsc-overview.md
+          items:
+            - name: PowerShell DSC 拡張機能の資格情報の処理
+              href: extensions-dsc-credentials.md
+            - name: テンプレートを備えた VMSS と DSC
+              href: extensions-dsc-template.md
+        - name: Azure Log Collector 拡張機能
+          href: log-collector-extension.md
+        - name: Azure 診断拡張機能
+          href: ps-extensions-diagnostics.md
+        - name: VM 拡張機能のエクスポート
+          href: extensions-export-templates.md
+        - name: 拡張機能のトラブルシューティングを行う
+          href: extensions-troubleshoot.md
+        - name: 監視と診断の拡張機能
+          href: extensions-diagnostics-template.md
+        - name: Network Watcher Agent
+          href: extensions-nwa.md
+    - name: VM の移行
+      items:
+        - name: AWS とオンプレミスの VM を移行する
+          href: on-prem-to-azure.md
+          items:
+            - name: オンプレミスの VM をアップロードする
+              href: upload-generalized-managed.md
+            - name: アマゾン ウェブ サービス (AWS) から
+              href: aws-to-azure.md
+            - name: Azure Site Recovery を使用する
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: クラシックから Azure Resource Manager に移行する
+          href: migration-classic-resource-manager-overview.md
+          items:
+            - name: 移行の詳細
+              href: migration-classic-resource-manager-deep-dive.md
+            - name: 移行の計画
+              href: migration-classic-resource-manager-plan.md
+            - name: PowerShell を使用して移行する
+              href: migration-classic-resource-manager-ps.md
+            - name: 移行の一般的なエラー
+              href: migration-classic-resource-manager-errors.md
+            - name: 移行用のコミュニティ ツール
+              href: migration-classic-resource-manager-community-tools.md
+            - name: FAQ
+              href: migration-classic-resource-manager-faq.md
+    - name: トラブルシューティング
+      items:
+        - name: リモート デスクトップ接続
+          href: troubleshoot-rdp-connection.md
+          items:
+            - name: 詳細な手順
+              href: detailed-troubleshoot-rdp.md
+            - name: エラー メッセージ
+              href: troubleshoot-specific-rdp-errors.md
+        - name: RDP パスワードをリセットする
+          href: reset-rdp.md
+        - name: Azure エージェントを使用せずにローカルのパスワードをリセットする
+          href: reset-local-password-without-agent.md
+        - name: システムの再起動を理解する
+          href: understand-vm-reboot.md
+        - name: NIC のリセット
+          href: reset-network-interface.md
+        - name: ブート診断
+          href: boot-diagnostics.md
+        - name: VM の作成
+          href: troubleshoot-deployment-new-vm.md
+        - name: デプロイの問題
+          href: troubleshoot-deploy-vm.md
+        - name: VM の再起動またはサイズ変更
+          href: restart-resize-error-troubleshooting.md
+        - name: アプリケーション アクセス
+          href: troubleshoot-app-connection.md
+        - name: ライセンス認証の問題
+          href: troubleshoot-activation-problems.md
+        - name: 割り当ての失敗
+          href: allocation-failure.md
+        - name: VM を再デプロイする
+          href: redeploy-to-new-node.md
+        - name: 一般的なエラー メッセージ
+          href: error-messages.md
+        - name: VM の復旧方法
+          items:
+            - name: Azure PowerShell
+              href: troubleshoot-recovery-disks.md
+            - name: Azure Portal
+              href: troubleshoot-recovery-disks-portal.md
+        - name: PerfInsights の使用
+          href: how-to-use-perfInsights.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/vm
-  - name: PowerShell
-    href: /powershell/azureps-cmdlets-docs
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.compute
-  - name: Java
-    href: /java/api
-  - name: Node.js
-    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
-  - name: Python
-    href: https://azure.microsoft.com/develop/python/
-  - name: Compute REST
-    href: /rest/api/compute
-  - name: Managed Disks REST
-    href: /rest/api/manageddisks
+    - name: Azure CLI
+      href: /cli/azure/vm
+    - name: PowerShell
+      href: /powershell/azureps-cmdlets-docs
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.compute
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Compute REST
+      href: /rest/api/compute
+    - name: Managed Disks REST
+      href: /rest/api/manageddisks
 - name: リソース
   items:
-  - name: テンプレートの作成
-    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: コミュニティ テンプレート
-    href: https://azure.microsoft.com/documentation/templates
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/#Linux
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
-  - name: FAQ
-    href: faq.md
+    - name: テンプレートの作成
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
+    - name: FAQ
+      href: faq.md

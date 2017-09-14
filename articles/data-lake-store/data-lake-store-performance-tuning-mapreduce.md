@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: c145642c06e477dd47e4d8d651262046519b656b
-ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 9528148792f083cb0e48d356e61cf61762ee954f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 * **HDInsight での MapReduce の使用**。  詳細については、「[HDInsight での MapReduce と Hadoop の使用](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-mapreduce)」を参照してください。  
-* **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store Performance Tuning Guidance (Data Lake Store のパフォーマンス チューニング ガイドライン)](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。  
+* **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store のパフォーマンス チューニング ガイドライン](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。  
 
 ## <a name="parameters"></a>parameters
 
@@ -40,7 +42,7 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 * **Mapreduce.reduce.memory.mb** – 各 Reducer に割り当てるメモリの量
 * **Mapreduce.job.reduces** – ジョブごとの Reduce タスクの数
 
-**Mapreduce.map.memory/Mapreduce.reduce.memory** Map タスクや Reduce タスクで必要なメモリの量に基づき、この数値を調整する必要があります。  Mapreduce.map.memory と Mapreduce.reduce.memory の既定値は Ambari の YARN 構成で参照できます。  Ambari で YARN に移動し、[Configs] (構成) タブを表示します。  メモリが表示されます。     
+**Mapreduce.map.memory/Mapreduce.reduce.memory** Map タスクや Reduce タスクで必要なメモリの量に基づき、この数値を調整する必要があります。  Mapreduce.map.memory と Mapreduce.reduce.memory の既定値は Ambari の YARN 構成で参照できます。  Ambari で YARN に移動し、[Configs] \(構成) タブを表示します。  YARN メモリが表示されます。  
 
 **Mapreduce.job.maps/Mapreduce.job.reduces** 作成される Mapper や Reducer の最大数を決定します。  分割の数によって MapReduce ジョブに作成される Mapper の数が決まります。  そのため、要求した Mapper の数よりも分割が少ないと、要求したよりも少ない数の Mapper を取得する場合があります。       
 
@@ -50,7 +52,7 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 
 **手順 2: Mapreduce.map.memory/Mapreduce.reduce.memory を設定する** – Map タスクと Reduce タスクのメモリ サイズは、特定のジョブに依存します。  同時実行性を向上させるには、メモリ サイズを小さくします。  同時に実行できるタスクの数は、コンテナー数によって異なります。  Mapper や Reducer ごとのメモリの量を減らすことで、より多くのコンテナーを作成できるため、より多くの Mapper や Reducer を同時に実行できます。  メモリの量を減らし過ぎると、一部のプロセスでメモリが不足する場合があります。  ジョブの実行時にヒープ エラーが発生する場合は、Mapper や Reducer ごとのメモリを増やす必要があります。  コンテナーをさらに追加すると、追加された各コンテナーに余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のノード数を増やすことが挙げられます。  メモリの量が増えると使用できるコンテナーの数も増えて、同時実行性が向上されます。  
 
-**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] (構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
+**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
 
     Total YARN memory = nodes * YARN memory per node
 空のクラスターを使用している場合、メモリはクラスターの合計 YARN メモリになります。  ほかのアプリケーションでメモリを使用している場合は、Mapper や Reducer の数を使用するコンテナーの数に減らすことで、クラスターのメモリの一部のみを使用するように選択できます。  
@@ -58,10 +60,10 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 **手順 4: YARN コンテナーの数を計算する** – YARN コンテナーによって、ジョブの同時実行がどの程度可能かが決まります。  合計 YARN メモリを、mapreduce.map.memory で割ります。  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
-    
-最大の同時実行性を取得するには、少なくとも YARN コンテナーと同じ数の Mapper や Reducer を使用する必要があります。  さらに、Mapper や Reducer の数を増やして、パフォーマンスが向上するかを確認することができます。  Mapper の数を増やすとオーバーヘッドが追加されるため、Mapper の数が多すぎるとパフォーマンスが低下する可能性がある点にご注意ください。  
 
-メモ: CPU スケジューリングと CPU の分離は既定ではオフになっているため、YARN コンテナーの数はメモリによって制約されます。
+**手順 5: mapreduce.job.maps/mapreduce.job.reduces を設定する** - mapreduce.job.maps/mapreduce.job.reduces を、少なくとも、使用可能なコンテナーの数に設定します。  さらに、Mapper や Reducer の数を増やして、パフォーマンスが向上するかを確認することができます。  Mapper の数を増やすとオーバーヘッドが追加されるため、Mapper の数が多すぎるとパフォーマンスが低下する可能性がある点にご注意ください。  
+
+CPU スケジューリングと CPU の分離は既定ではオフになっているため、YARN コンテナーの数はメモリによって制約されます。
 
 ## <a name="example-calculation"></a>計算例
 
@@ -72,22 +74,26 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 **手順 2: Mapreduce.map.memory/Mapreduce.reduce.memory を設定する** – この例では、I/O 集約型ジョブを実行し、Map タスクには 3GB のメモリで十分であると判断しています。
 
     mapreduce.map.memory = 3GB
-**手順 3: 合計 YARN メモリを決定する** 
+**手順 3: 合計 YARN メモリを決定する**
 
     total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
 **手順 4: YARN コンテナーの数を計算する**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
+**手順 5: mapreduce.job.maps/mapreduce.job.reduces を設定する**
+
+    mapreduce.map.jobs = 256
+
 ## <a name="limitations"></a>制限事項
 
-**ADLS の調整** 
+**ADLS の調整**
 
 マルチテナント サービスとして、ADLS ではアカウント レベルの帯域幅制限が設定されています。  帯域幅制限に達すると、タスク エラーが発生します。 エラーを特定するには、タスク ログの調整エラーを監視します。  ジョブにより広い帯域幅が必要な場合は、お問い合わせください。   
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にする必要があります。 その方法は次のとおりです。
 
-1. [Ambari] > [YARN] > [Config] (構成) > [Advanced yarn-log4j] (詳細な yarn-log4j) の順に進み、log4j プロパティに log4j.logger.com.microsoft.azure.datalake.store=DEBUG を入力します。
+1. [Ambari] > [YARN] > [Config] \(構成) > [Advanced yarn-log4j] \(詳細な yarn-log4j) の順に進み、log4j プロパティに log4j.logger.com.microsoft.azure.datalake.store=DEBUG を入力します。
 
 2. すべてのノードとサービスを再起動し、構成を有効にします。
 
@@ -98,24 +104,19 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 Azure Data Lake Store で MapReduce を実行する方法を示すために、次の設定のクラスターで実行されたサンプル コードをいくつかご紹介します。
 
 * 16 ノード (D14 v2)
-* HDI 3.5 を実行する Hadoop クラスター
+* HDI 3.6 を実行する Hadoop クラスター
 
 最初に、MapReduce Teragen、Terasort、および Teravalidate を実行するコマンドの例を示します。  これらのコマンドは、お使いのリソースに基づいて調整できます。
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=2048 -Dmapred.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=2048 -Dmapred.map.memory.mb=3072 -Dmapred.reduce.tasks=512 -Dmapred.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=512 -Dmapred.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
-
-
-
-<!--HONumber=Jan17_HO2-->
-
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
 

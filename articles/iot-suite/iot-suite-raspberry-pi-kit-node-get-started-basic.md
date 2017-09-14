@@ -12,14 +12,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 6d8e6ef070c3b9d9623f4b29ab97a5d20f69d499
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-telemetry-from-a-real-sensor-using-nodejs"></a>Node.js を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、現実のセンサーから受信したテレメトリを送信する
@@ -60,33 +59,44 @@ Raspberry Pi に Node.js をインストールします。 Node.js 用 IoT SDK �
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 
-    `sudo apt-get update`
+    ```sh
+    sudo apt-get update
+    ```
 
 1. 次のコマンドを使用して、Node.js のバイナリを Raspberry Pi にダウンロードします。
 
-    `wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. 次のコマンドを使用して、バイナリをインストールします。
 
-    `sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. 次のコマンドを使用して、Node.js v6.10.2 が正常にインストールされたことを確認します。
 
-    `node --version`
+    ```sh
+    node --version
+    ```
 
 ### <a name="clone-the-repositories"></a>リポジトリの複製
 
 まだリポジトリを複製していない場合は、Pi 上で次のコマンドを実行して必要なリポジトリを複製します。
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git`
+```
 
 ### <a name="update-the-device-connection-string"></a>デバイスの接続文字列を更新する
 
 次のコマンドを使用して、**nano** エディターのサンプル ソース ファイルを開きます。
 
-`nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/basic/remote_monitoring.js`
+```sh
+nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/basic/remote_monitoring.js
+```
 
 次の行を見つけます。
 
@@ -100,13 +110,16 @@ var connectionString = 'HostName=[Your IoT hub name].azure-devices.net;DeviceId=
 
 次のコマンドを実行して、サンプルの前提条件となるパッケージをインストールします。
 
-`cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/basic`
-
-`npm install`
+```sh
+cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/basic
+npm install
+```
 
 Raspberry Pi 上でサンプル プログラムを実行できます。 次のコマンドを入力します。
 
-`sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/basic/remote_monitoring.js`
+```sh
+sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/basic/remote_monitoring.js
+```
 
 次のサンプル出力は、Raspberry Pi 上のコマンド プロンプトに表示される出力の例です。
 
@@ -119,7 +132,6 @@ Raspberry Pi 上でサンプル プログラムを実行できます。 次の�
 ## <a name="next-steps"></a>次のステップ
 
 Azure IoT のその他のサンプルとドキュメントについては、「[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)」をご覧ください。
-
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-node-get-started-basic/app-output.png
 

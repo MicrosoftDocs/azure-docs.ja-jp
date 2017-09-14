@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
-ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.date: 07/05/2017
+ms.author: markvi
+ms.reviewer: dhanyahk
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: aa7a69c933abfda3bf4d1ac1a298c4ba684efd7e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/06/2017
-
 
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー

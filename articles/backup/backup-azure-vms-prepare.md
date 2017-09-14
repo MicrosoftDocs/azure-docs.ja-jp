@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/25/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 045dfff9a439674c220a962907d2fe91f2fe0b35
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 072efdccaa8df5d430314d753a437b524986b53c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -92,7 +93,7 @@ Azure データ センターの IP 範囲をホワイトリストに登録する
 VM をバックアップする際、バックアップ拡張機能は HTTPS API を使用してスナップショット管理コマンドを Azure Storage に送信します。 パブリック インターネットにアクセスできるように構成されたコンポーネントは HTTP プロキシのみであるため、HTTP プロキシ経由でバックアップ拡張機能のトラフィックをルーティングします。
 
 > [!NOTE]
-> 使用するプロキシ ソフトウェアについて推奨事項はありません。 以降の構成手順と互換性があるプロキシを選択してください。
+> 使用するプロキシ ソフトウェアについて推奨事項はありません。 送信持続性があり、以降の構成手順と互換性があるプロキシを選択してください。 サード パーティ製のソフトウェアがプロキシ設定を変更しないように注意してください。
 >
 >
 

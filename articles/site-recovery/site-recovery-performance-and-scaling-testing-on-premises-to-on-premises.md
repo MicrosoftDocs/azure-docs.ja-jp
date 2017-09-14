@@ -1,6 +1,6 @@
 ---
 title: "Azure Site Recovery を使用したサイト間での Hyper-V レプリケーションの結果をテストする | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用したオンプレミス間のレプリケーションのパフォーマンス テストについての情報を提供します。"
+description: "この記事では、Azure Site Recovery を使用したオンプレミス間の Hyper-V VM レプリケーションのパフォーマンス テストについて説明します。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 01/23/2017
+ms.date: 05/24/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 1b95723ec9886835c5967c9efe95b4922390a847
-ms.openlocfilehash: 92b5200016b943c06ef7732344d4136bd3c491b7
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: a9bec774b5482de87eefcd0c87844a2adbd98bbe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>Site Recovery を使用したオンプレミス間での Hyper-V レプリケーションの結果のテスト
+
 Microsoft Azure Site Recovery を使用すると、Azure またはセカンダリ データセンターへの仮想マシンと物理サーバーのレプリケーションを調整および管理することができます。 この記事では、2 つのオンプレミス データセンター間で Hyper-V 仮想マシンを複製する際に実行したパフォーマンス テストの結果を示します。
 
-## <a name="overview"></a>概要
+## <a name="test-goals"></a>テストの目的
+
 テストの目的は、安定的にレプリケーションが実行されている間の Azure Site Recovery のパフォーマンスを確認することです。 安定状態のレプリケーションは、仮想マシンが初期レプリケーションを完了し、差分変更を同期しているときに発生します。 予期しない停止が発生しない限り、ほとんどの仮想マシンは安定状態になるため、安定状態を利用してパフォーマンスを測定することが重要です。
 
-テスト デプロイは、各サイトに VMM サーバーをデプロイした&2; つのオンプレミスのサイトで構成しました。 このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
+テスト デプロイは、各サイトに VMM サーバーをデプロイした 2 つのオンプレミスのサイトで構成しました。 このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
 
-### <a name="what-we-did"></a>実行した内容
+## <a name="what-we-did"></a>実行した内容
+
 テスト パスで実行した内容を次に示します。
 
 1. VMM テンプレートを使用して仮想マシンを作成しました。
@@ -41,8 +45,9 @@ Microsoft Azure Site Recovery を使用すると、Azure またはセカンダ�
 7. 12 時間にわたってパフォーマンス メトリックを取得し、すべての仮想マシンがこの 12 時間 に、期待されたレプリケーションの状態を維持していることを確認しました。
 8. 基準となるパフォーマンス メトリックとレプリケーションのパフォーマンス メトリックの差を測定します。
 
-## <a name="test-deployment-results"></a>テスト デプロイの結果
-### <a name="primary-server-performance"></a>プライマリ サーバーのパフォーマンス
+
+## <a name="primary-server-performance"></a>プライマリ サーバーのパフォーマンス
+
 * Hyper-V レプリカは、プライマリ サーバーでのストレージ オーバーヘッドを最小限にしながら、ログ ファイルへの変更を非同期的に追跡します。
 * Hyper-V レプリカは、自己保持型のメモリ キャッシュを活用し、追跡に対する IOPS オーバーヘッドを最小化します。 復旧サイトにログを送信する時刻になる前に、メモリ内に VHDX への書き込みを格納し、ログ ファイルにフラッシュします。 あらかじめ設定された制限に書き込みが達した場合も、ディスク フラッシュが発生します。
 * 次のグラフは、レプリケーションに対する安定状態の IOPS オーバーヘッドを示しています。 レプリケーションによる IOPS オーバーヘッドは約 5% と、非常に低いことがわかります。
@@ -57,7 +62,8 @@ Hyper-V レプリカの CPU オーバーヘッドは最小限です。 グラフ
 
 ![プライマリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
 
-### <a name="secondary-recovery-server-performance"></a>セカンダリ (復旧) サーバーのパフォーマンス
+## <a name="secondary-recovery-server-performance"></a>セカンダリ (復旧) サーバーのパフォーマンス
+
 Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、ストレージ操作の数を最適化できます。 グラフは、復旧サーバーのメモリ使用量をまとめたものです。 示されているメモリ オーバーヘッドは、Hyper-V サーバーに装着されたメモリの合計と比較した、レプリケーションによって使用されるメモリの割合です。
 
 ![セカンダリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
@@ -71,12 +77,14 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 ![セカンダリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
 
-### <a name="effect-of-replication-on-network-utilization"></a>ネットワーク使用率に対するレプリケーションの影響
+## <a name="effect-on-network-utilization"></a>ネットワーク使用率への影響
+
 プライマリ ノードおよび復旧ノード間で、既存の 1 秒あたり 5 Gb の帯域幅に対して、1 秒あたり平均 275 Mb のネットワーク帯域幅が使用されました (圧縮有効時)。
 
 ![結果のネットワーク使用率](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
-### <a name="effect-of-replication-on-virtual-machine-performance"></a>仮想マシンのパフォーマンスに対するレプリケーションの影響
+## <a name="effect-on-vm-performance"></a>VM パフォーマンスへの影響
+
 重要な考慮事項として、仮想マシンで実行されている運用ワークロードに対するレプリケーションの影響が挙げられます。 プライマリ サイトがレプリケーション用に十分にプロビジョニングされている場合は、これらのワークロードに影響はありません。 Hyper-V レプリカの軽量な追跡メカニズムにより、安定状態のレプリケーション中に、仮想マシンで実行されているワークロードは影響を受けません。 このことを、次のグラフで示します。
 
 このグラフは、レプリケーションを有効にする前と後で、さまざまなワークロードを実行する仮想マシンが実行した IOPS を示しています。 2 つの間に差がないことを確認できます。
@@ -87,56 +95,62 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 ![結果のレプリカ効果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
 
-### <a name="conclusion"></a>まとめ
+## <a name="conclusion"></a>まとめ
+
 結果では、Hyper-V レプリカと組み合わせた Azure Site Recovery には、大規模なクラスター構成でオーバーヘッドを最小限にする優れた拡張性があることが明確に示されました。  Azure Site Recovery は、シンプルなデプロイ、レプリケーション、管理および監視を実現します。 Hyper-V レプリカは、レプリケーションを正常にスケーリングするために必要なインフラストラクチャを提供します。 最適なデプロイを計画するために、 [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードすることをお勧めします。
 
 ## <a name="test-environment-details"></a>テスト環境の詳細
+
 ### <a name="primary-site"></a>プライマリ サイト
+
 * プライマリ サイトは、470 台の仮想マシンを実行している 5 つの Hyper-V サーバーを含むクラスターです。
 * 仮想マシンは、さまざまなワークロードを実行し、すべて Azure Site Recovery 保護を有効にしています。
 * クラスター ノード用のストレージは、iSCSI SAN により提供されます。 モデル – Hitachi HUS130。
-* 各クラスター サーバーは、1 Gbps の&4; つのネットワーク カード (NIC) を搭載しています。
-* 2 つのネットワーク カードは、iSCSI プライベート ネットワークに接続され、2 つは外部のエンタープライズ ネットワークに接続されています。 外部ネットワークのうち&1; つは、クラスター通信専用として予約されています。
+* 各クラスター サーバーは、1 Gbps の 4 つのネットワーク カード (NIC) を搭載しています。
+* 2 つのネットワーク カードは、iSCSI プライベート ネットワークに接続され、2 つは外部のエンタープライズ ネットワークに接続されています。 外部ネットワークのうち 1 つは、クラスター通信専用として予約されています。
 
 ![プライマリのハードウェア要件](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
 
 | サーバー | RAM | モデル | プロセッサ | プロセッサの数 | NIC | ソフトウェア |
 | --- | --- | --- | --- | --- | --- | --- |
-| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 に 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @(2.20 GHz) |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 に 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 (2.20 GHz) |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
 | VMM サーバー |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-recovery-site"></a>セカンダリ (復旧) サイト
-* セカンダリ サイトは&6; ノードのフェールオーバー クラスターです。
+
+* セカンダリ サイトは 6 ノードのフェールオーバー クラスターです。
 * クラスター ノード用のストレージは、iSCSI SAN により提供されます。 モデル – Hitachi HUS130。
 
 ![プライマリのハードウェア仕様](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
 
 | サーバー | RAM | モデル | プロセッサ | プロセッサの数 | NIC | ソフトウェア |
 | --- | --- | --- | --- | --- | --- | --- |
-| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @(2.30 GHz) |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
-| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @(2.20 GHz) |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
-| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @(2.20 GHz) |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 (2.30 GHz) |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 (2.20 GHz) |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 (2.20 GHz) |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
 | VMM サーバー |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>サーバー ワークロード
+
 * テストのために、企業の顧客のシナリオでよく使用されるワークロードを選択しました。
 * シミュレーションの表にまとめたワークロードの特性を利用して、 [IOMeter](http://www.iometer.org) を使用しました。
 * IOMeter のすべてのプロファイルは、ランダムにバイトを書き込むよう設定して、ワークロードに対して、最悪の場合の書き込みパターンをシミュレートしました。
 
 | ワークロード | I/O サイズ (KB) | アクセスの割合 | 読み取りの割合 | 処理待ち I/O 数 | I/O パターン |
 | --- | --- | --- | --- | --- | --- |
-| ファイル サーバー |48163264 |60%&20;%&5;%&5;%&10;% |80%&80;%&80;%&80;%&80;% |88888 |すべて 100% ランダム |
-| SQL Server (ボリューム 1) SQL Server (ボリューム 2) |864 |100%&100;% |70%&0;% |88 |100% ランダム&100;% シーケンシャル |
+| ファイル サーバー |48163264 |60% 20% 5% 5% 10% |80% 80% 80% 80% 80% |88888 |すべて 100% ランダム |
+| SQL Server (ボリューム 1) SQL Server (ボリューム 2) |864 |100% 100% |70% 0% |88 |100% ランダム 100% シーケンシャル |
 | Exchange |32 |100% |67% |8 |100% ランダム |
-| ワークステーション/VDI |464 |66%&34;% |70%&95;% |11 |どちらも 100% ランダム |
-| Web ファイル サーバー |4864 |33%&34;%&33;% |95%&95;%&95;% |888 |すべて 75% ランダム |
+| ワークステーション/VDI |464 |66% 34% |70% 95% |11 |どちらも 100% ランダム |
+| Web ファイル サーバー |4864 |33% 34% 33% |95% 95% 95% |888 |すべて 75% ランダム |
 
-### <a name="virtual-machine-configuration"></a>仮想マシンの構成
-* プライマリ クラスターに&470; 台の仮想マシン。
+### <a name="vm-configuration"></a>VM 構成
+
+* プライマリ クラスターに 470 台の仮想マシン。
 * すべての仮想マシンに VHDX ディスクを搭載。
 * 仮想マシンでは、次の表に要約したワークロードを実行。 すべて VMM テンプレートを使用して作成されました。
 
-| ワークロード | # VM | 最小 RAM 容量 (GB) | 最大 RAM 容量 (GB) | VM あたりの論理ディスク サイズ (GB) | 最大 IOPS |
+| ワークロード | VM 数 | 最小 RAM 容量 (GB) | 最大 RAM 容量 (GB) | VM あたりの論理ディスク サイズ (GB) | 最大 IOPS |
 | --- | --- | --- | --- | --- | --- |
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
@@ -145,9 +159,10 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | Web サーバー |149 |0.5 |1 |80 |6 |
 | 合計 |470 | | |96.83 TB (テラバイト) |4108 |
 
-### <a name="azure-site-recovery-settings"></a>Azure Site Recovery 設定
+### <a name="site-recovery-settings"></a>Site Recovery 設定
+
 * Azure Site Recovery をオンプレミス間の保護用に構成しました。
-* VMM サーバーには、Hyper-V クラスター サーバーとその仮想マシンを含むクラウドが&4; つ構成されています。
+* VMM サーバーには、Hyper-V クラスター サーバーとその仮想マシンを含むクラウドが 4 つ構成されています。
 
 | プライマリ VMM クラウド | クラウド内の保護された仮想マシン | レプリケーションの頻度 | 追加の復旧ポイント |
 | --- | --- | --- | --- |
@@ -157,6 +172,7 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | PrimaryCloudRpo5m |235 |5 分 |なし |
 
 ### <a name="performance-metrics"></a>パフォーマンス メトリック
+
 この表では、このデプロイにおいて測定されたパフォーマンス メトリックとカウンターの概要を示します。
 
 | メトリック | カウンター |
@@ -170,5 +186,6 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | VM 書き込みスループット |\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec |
 
 ## <a name="next-steps"></a>次のステップ
-* [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
+
+[オンプレミスの 2 つの VMM サイト間のレプリケーション設定](site-recovery-vmm-to-vmm.md)
 

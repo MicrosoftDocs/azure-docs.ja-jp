@@ -12,7 +12,7 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: c8e2e688a7a8b99272c304df37ceff0f9ec52b19
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: .NET、Xamarin、Facebook 認証を使用した Web アプリの構築
@@ -34,6 +33,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 

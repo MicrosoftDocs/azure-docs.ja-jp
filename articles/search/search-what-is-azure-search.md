@@ -11,81 +11,40 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/24/2017
+ms.date: 06/26/2017
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db227bfea10255322c090e68b197cfb2dd1cf15b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: baf73639eb6506b14d0d3a4de1bf55b66e973b95
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
-Azure Search は、サーバーとインフラストラクチャの管理を Microsoft に委任するクラウドの Search-as-a-service (サービスとしての検索) ソリューションです。データを取り込んだら、Web サイトやモバイル アプリケーションに検索機能を追加して、すぐに利用を開始できます。 簡単な [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を使用してアプリケーションに強力な検索エクスペリエンスを簡単に追加できるので、検索インフラストラクチャを管理する必要も、検索のエキスパートになる必要もありません。
+Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションに豊かなデータ検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。
+
+機能は、検索テクノロジ固有の複雑さを感じさせない単純な [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を通して公開されます。 API に加え、Azure ポータルは、管理とプロトタイピングのサポートも提供します。 インフラストラクチャと可用性は Microsoft が管理します。
 
 <a name="feature-drilldown"></a>
 
-## <a name="embed-a-powerful-search-experience-in-your-app-or-site"></a>アプリケーションやサイトに強力な検索エクスペリエンスを埋め込む 
+## <a name="feature-summary"></a>機能の概要
 
-Azure Search の機能について説明します。
-
-### <a name="full-text-search-and-text-analysis"></a>フルテキスト検索とテキスト分析
-
-[フル テキスト検索](https://en.wikipedia.org/wiki/Full_text_search)は、大部分の検索ベース アプリの主な用途です。 Azure Search では、論理演算子、語句検索演算子、後置演算子、優先順位の演算子を備えた[簡単なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)を使用してクエリを作成できます。 さらに、 [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) では、あいまい検索、近接検索、項目ブースト、および正規表現を有効にすることができます。 さらに、Azure Search は、アプリケーションで発音照合と正規表現を使用して、複雑な検索クエリを処理できる[カスタム字句アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)もサポートしています。
-
-### <a name="language-support"></a>言語のサポート
-
-Azure Search は、[56 の異なる言語](https://docs.microsoft.com/rest/api/searchservice/language-support)に対応する字句アナライザーをサポートしています。 Lucene アナライザーと Microsoft アナライザー (Office および Bing での長年にわたる自然言語処理により改良されています) の両方を使用することで、Azure Search はアプリケーションの検索ボックス内のテキストを分析し、動詞の時制や名詞の性、不規則な複数形の名詞 (例: 'mouse' と 'mice')、二重複合語、(スペースを使用しない言語の) 改行などをインテリジェントに処理できます。
-
-### <a name="data-integration"></a>データ統合
-
-JSON データ構造をプッシュして Azure Search インデックスを設定できます。 また、サポートされているデータ ソースに対しては、[インデクサー](search-indexer-overview.md)を使用して、[Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-documentdb.md)、または [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) を自動的にクロールし、検索インデックスの内容とプライマリ データ ストアを同期できます。
-
-*ドキュメント クラッキング*を使用して、Microsoft Office、PDF、HTML ドキュメントなどの[主要なファイル形式に対してインデックスを作成](search-howto-indexing-azure-blob-storage.md)できます。
-
-### <a name="search-experience"></a>検索エクスペリエンス
-
-+ オートコンプリート入力検索バーと先行入力クエリで、**検索候補**を有効にすることができます。 [インデックス内の実際のドキュメントが提案されます。](https://docs.microsoft.com/rest/api/searchservice/suggesters) 
-
-+ [1 つのクエリ パラメーター](https://docs.microsoft.com/azure/search/search-faceted-navigation)で**ファセット ナビゲーション**を有効にできます。 Azure Search は、ファセット ナビゲーション構造を返します。これをカテゴリ一覧の背後のコードとして使用すると、自律フィルター処理 (たとえば、価格帯やブランド別のカタログ品目のフィルター処理) を実現できます。
-
-+ **フィルター**を使用することで、ファセット ナビゲーションをアプリケーションの UI に組み込み、クエリ形成を拡張し、ユーザーまたは開発者が指定した条件に基づいてフィルター処理することができます。 フィルターを作成するには、[OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用します。
-
-+ **ヒットの強調表示**は、[検索結果内の一致するキーワードに視覚的な書式を適用](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)します。 強調表示されるスニペットを返すフィールドを選択できます。
-
-+ **簡単なスコアリング** は Azure Search の主な利点です。 [スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)を使用して、ドキュメント自体の値の関数として、関連性をモデル化できます。 たとえば、新しい製品や割り引き製品を検索結果の上位に表示することが望ましい場合があります。 あるいは、追跡記録し、個別に保存しておいた顧客の検索傾向に基づいてパーソナライズされたスコアリングのタグを利用し、スコアリング プロファイルを作成できます。
-
-+ **並べ替え** は、インデックス スキーマを介して、複数のフィールドで利用でき、クエリ時に 1 つの検索パラメーターで切り替えることができます。
-
-+ **ページング** とスロットルは、Azure Search が検索結果に適用する [微調整された制御によって簡単に行うことができます](search-pagination-page-layout.md) 。  
-
-### <a name="geosearch"></a>地理空間検索
-
-Azure Search は、地理的な場所をインテリジェントに処理、フィルター、表示する機能を備えています。 Azure Search により、ユーザーは物理的な場所に対する検索結果の近接度に基づいてデータを探索できます。 「 [チャンネル 9: Azure Search と地理空間データ](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)」という動画でそのしくみが説明されています。
-
-### <a name="monitoring-and-reporting"></a>監視と報告
-
-+ **検索トラフィック分析**を[収集し、分析して](search-traffic-analytics.md)、ユーザーが検索ボックスに入力した内容からインサイトを明らかにします。
-
-+ 1 秒あたりのクエリ数、待ち時間、スロットルに関するメトリックが取得され、ポータル ページで報告されます。追加の構成は必要ありません。 また、インデックスとドキュメントの数を簡単に監視できるため、必要に応じて容量を調整できます。 
-
-### <a name="tools-for-prototyping-and-inspection"></a>プロトタイピングと検査のためのツール
-
-ポータルでは、**データのインポート** ウィザードを使ってインデクサーを構成したり、インデックス デザイナーを使ってインデックスを設定したりできます。また、**Search エクスプローラー**を使ってクエリをテストしたり、スコアリング プロファイルを調整したりできます。 また、任意のインデックスを開いてスキーマを表示することもできます。
-
-<a name="cloud-service-advantage"></a>
-
-### <a name="cloud-service-advantages"></a>クラウド サービスの利点
-
-+ **高可用性** により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、 [Azure Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。
-
-+ エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。
+| カテゴリ | 機能 |
+|----------|----------|
+|フル テキスト検索とテキスト分析 | [**フル テキスト検索**](search-lucene-query-architecture.md)は、大部分の検索ベース アプリの主な用途です。 クエリは、サポートされている構文を使用して作成できます。 <br/><br/>[**単純なクエリ構文**](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search): 論理演算子、語句検索演算子、後置演算子、優先順位演算子を使用できます。<br/><br/>[**Lucene クエリ構文**](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search): 単純なクエリでサポートされるすべての演算子に加え、あいまい検索、近接検索、用語ブースト、および正規表現を使用できます。| 
+| データ統合 | Azure Search インデックスは、JSON データ構造として送信されていれば、すべてのソースからのデータを受け入れます。 <br/><br/> 必要に応じて、Azure でサポートされるデータ ソースに対して[**インデクサー**](search-indexer-overview.md)を使用して、[Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-documentdb.md)、または [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) を自動的にクロールし、検索インデックスの内容とプライマリ データ ストアを同期できます。 Azure Blob インデクサーは、Microsoft Office、PDF、HTML ドキュメントなどの[主要なファイル形式に対してインデックスを作成する](search-howto-indexing-azure-blob-storage.md)ための "*ドキュメント クラッキング*" を実行できます。 |
+| 検索分析 | 発音照合と正規表現を使用する複雑な検索クエリで[**カスタム字句アナライザー**](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)を使用できます。 |
+| 言語のサポート | Lucene の[**言語アナライザー**](https://docs.microsoft.com/rest/api/searchservice/language-support)と Microsoft の自然言語処理プロセッサは 56 か国語で利用でき、動詞の時制や名詞の性、不規則な複数形の名詞 (例: 'mouse' と 'mice')、二重複合語、(スペースを使用しない言語の) 改行などをインテリジェントに処理できます。 |
+| 地理空間検索 | Azure Search は、地理的な場所をインテリジェントに処理、フィルター、表示する機能を備えています。 Azure Search により、ユーザーは物理的な場所に対する検索結果の近接度に基づいてデータを探索できます。 詳細については、[このビデオを視聴する](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)か[このサンプルを確認](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)してください。 |
+| ユーザー エクスペリエンス機能 | 検索バーでの先行入力クエリで、[**検索候補**](https://docs.microsoft.com/rest/api/searchservice/suggesters)を有効にすることができます。 ユーザーが検索テキストの一部を入力すると、インデックスに含まれる実際のドキュメントが提案されます。 <br/><br/>1 つのクエリ パラメーターで[**ファセット ナビゲーション**](https://docs.microsoft.com/azure/search/search-faceted-navigation)を有効にできます。 Azure Search は、ファセット ナビゲーション構造を返します。これをカテゴリ一覧の背後のコードとして使用すると、自律フィルター処理 (たとえば、価格帯やブランド別のカタログ品目のフィルター処理) を実現できます。 <br/><br/> [**フィルター**](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用することで、ファセット ナビゲーションをアプリケーションの UI に組み込み、クエリ形成を拡張し、ユーザーまたは開発者が指定した条件に基づいてフィルター処理することができます。 フィルターを作成するには、OData 構文を使用します。<br/><br/> [**ヒットの強調表示**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)は、検索結果内の一致するキーワードに視覚的な書式を適用します。 強調表示されるスニペットを返すフィールドを選択できます。<br/><br/>[**並べ替え**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)は、インデックス スキーマを介して、複数のフィールドで利用でき、クエリ時に 1 つの検索パラメーターで切り替えることができます。<br/><br/> [**ページング**](search-pagination-page-layout.md)とスロットルは、Azure Search が検索結果に適用する微調整された制御によって簡単に行うことができます。  
+| 関連性 | [**簡単なスコアリング**](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)は Azure Search の主な利点です。 スコアリング プロファイルを使用して、ドキュメント自体の値の関数として、関連性をモデル化できます。 たとえば、新しい製品や割り引き製品を検索結果の上位に表示することが望ましい場合があります。 あるいは、追跡記録し、個別に保存しておいた顧客の検索傾向に基づいてパーソナライズされたスコアリングのタグを利用し、スコアリング プロファイルを作成できます。 |
+| 監視と報告 | [**検索トラフィック分析**](search-traffic-analytics.md)を収集し、分析して、ユーザーが検索ボックスに入力した内容からインサイトを明らかにします。 <br/><br/>1 秒あたりのクエリ数、待ち時間、スロットルに関するメトリックが取得され、ポータル ページで報告されます。追加の構成は必要ありません。 また、インデックスとドキュメントの数を簡単に監視できるため、必要に応じて容量を調整できます。 詳細については、[サービス管理](search-manage.md)に関する記事をご覧ください。 |
+| プロトタイピングと検査のためのツール | ポータルでは、[**データのインポート ウィザード**](search-import-data-portal.md)を使用してインデクサーを構成したり、インデックス デザイナーを使用してインデックスを設定したりできます。また、[**Search エクスプローラー**](search-explorer.md)を使用してクエリをテストしたり、スコアリング プロファイルを調整したりできます。 また、任意のインデックスを開いてスキーマを表示することもできます。 |
+| インフラストラクチャ | **可用性の高いプラットフォーム**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、 [Azure Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。<br/><br/> エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。
 
 ## <a name="how-it-works"></a>動作のしくみ
 ### <a name="step-1-provision-service"></a>手順 1: サービスのプロビジョニング
-[Azure Portal](https://portal.azure.com/) または [Azure Resource Management API](/rest/api/searchmanagement/) を使用して、Azure Search サービスを高速化できます。 他のサブスクライバーと共有する無料サービス、または自分のサービスのみで使用するリソース専用の[有料レベル](https://azure.microsoft.com/pricing/details/search/)を選択できます。
-
-有料レベルでは、2 つの面でサービスを拡張できます。 
+[Azure Portal](https://portal.azure.com/) または [Azure Resource Management API](/rest/api/searchmanagement/) を使用して、Azure Search サービスを高速化できます。 他のサブスクライバーと共有する無料サービス、または自分のサービスのみで使用するリソース専用の[有料レベル](https://azure.microsoft.com/pricing/details/search/)を選択できます。 有料レベルでは、2 つの面でサービスを拡張できます。 
 
 - 大量のクエリ負荷を処理できるように、レプリカを追加して容量を拡張する   
 - より多くのドキュメントに対応できるように、パーティションを追加して記憶域を拡大する 
@@ -150,7 +109,15 @@ Azure サブスクライバーは [Free レベルでサービスをプロビジ�
 
 または、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。 
 
-## <a name="watch-a-short-video"></a>短いビデオの視聴
+## <a name="how-to-get-started"></a>ファースト ステップ
+
+1. [Free レベル](search-create-service-portal.md)でサービスを作成します。
+
+2. 1 つまたは複数の次のチュートリアルの手順に従います。 
+
+  + [.NET SDK を使用する方法](search-howto-dotnet-sdk.md)では、マネージ コードの主な手順を示します。  
+  + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。  
+  + [ポータルでの最初のインデックスの作成](search-get-started-portal.md)では、ポータルの組み込みのインデックスとのプロトタイプの機能を示します。   
 
 検索エンジンは、モバイル アプリ、Web、企業データ ストアでの情報の取得を推進する一般的な要素です。 Azure Search は、大規模な商用 Web サイトに類似する検索エクスペリエンスを作成するためのツールを提供します。
 

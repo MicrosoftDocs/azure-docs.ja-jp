@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2016
+ms.date: 5/31/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 3d2ba1d63f4bb89ff51275044922fb86b5f70365
-ms.lasthandoff: 04/11/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 03cb14b5710b6dd17599a3c4eab21380c76c2b40
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -45,7 +46,9 @@ SNAT ポートは有限のリソースであり、不足する可能性があり
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>インスタンス レベルのパブリック IP アドレスなしの負荷分散 VM
 
-このシナリオでは、VM は Azure Load Balancer プールに含まれます。 VM にパブリック IP アドレスは割り当てられていません。 負荷分散 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ロード バランサー フロントエンドのパブリック IP アドレスに変換します。 Azure は Source Network Address Translation (SNAT) を使用してこの機能を実行します。 ロード バランサーのパブリック IP アドレスの一時ポートを使用して、VM から送信される個々のフローが区別されます。 送信フローが作成されると、SNAT は一時ポートを動的に割り当てます。 ここでは、SNAT で使用される一時ポートを SNAT ポートと呼びます。
+このシナリオでは、VM は Azure Load Balancer プールに含まれます。  VM にパブリック IP アドレスは割り当てられていません。 パブリック IP フロントエンドとバックエンド プールをリンクするには、ロード バランサー リソースをルールで構成する必要があります。  この構成を完了しないと、「[インスタンス レベルのパブリック IP アドレスなしのスタンドアロン VM](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address)」セクションのような動作になります。
+
+負荷分散 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ロード バランサー フロントエンドのパブリック IP アドレスに変換します。 Azure は Source Network Address Translation (SNAT) を使用してこの機能を実行します。 ロード バランサーのパブリック IP アドレスの一時ポートを使用して、VM から送信される個々のフローが区別されます。 送信フローが作成されると、SNAT は一時ポートを動的に割り当てます。 ここでは、SNAT で使用される一時ポートを SNAT ポートと呼びます。
 
 SNAT ポートは有限のリソースであり、不足する可能性があります。 使用方法を理解することが大切です。 1 つの SNAT ポートは、1 つの宛先 IP アドレスへの 1 つのフローで消費されます。 同じ宛先 IP アドレスへの複数のフローでは、各フローが 1 つの SNAT ポートを消費します。 これにより、同じパブリック IP アドレスから同じ宛先 IP アドレスに送られる複数のフローが一意であることが保証されます。 別の宛先 IP アドレスへの複数のフローは、宛先ごとに 1 つの SNAT ポートを消費します。 宛先 IP アドレスによってフローが一意になります。
 
@@ -69,7 +72,9 @@ VM が Azure Load Balancer からのヘルス プローブ要求を受け取る�
 
 ## <a name="limitations"></a>制限事項
 
-保証されていませんが、現時点で使用可能な SNAT ポートの最大数は 64,511 (65,535 から特権ポート 1024 を差し引いた数) です。  これがそのまま接続数に変換されるわけではありません。SNAT ポートがどのタイミングでいくつ割り当てられるかについて、またこの有限なリソースを管理する方法については、上記を参照してください。
-
 [複数の (パブリック) IP アドレスがロード バランサーに関連付けられている](load-balancer-multivip-overview.md)場合、すべてのパブリック IP アドレスが送信フローの候補になります。
+
+Azure に使用されているアルゴリズムは、利用できる SNAT ポートの数をプールのサイズから判断します。  現時点では、これを構成によって変更することはできません。
+
+利用できる SNAT ポートの数が、そのまま接続数に変換されるわけではないことに注意してください。 SNAT ポートがどのタイミングでいくつ割り当てられるかについて、またこの有限なリソースを管理する方法については、上記を参照してください。
 

@@ -13,12 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
-ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 9cd8edf47059a5f574489a604156890d157c8b1a
-ms.lasthandoff: 04/13/2017
+ms.date: 06/27/2017
+ms.author: curtand
+ms.custom: aaddev
+ms.reviewer: sasubram
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: fbc12a52555b190d43b5e953fd4d19923a25b0ed
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -27,11 +30,11 @@ ms.lasthandoff: 04/13/2017
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
 
-Azure AD を利用する組織は、Azure AD B2B (Business-To-Business) コラボレーション機能を通じて、他の任意の組織のユーザーと安全に共同作業を行うことができます。相手となる組織の規模の大小や Azure AD の有無は関係がなく、実際 IT 組織の介入も特に必要ありません。 
+Azure AD を利用する組織は、Azure AD B2B (Business-To-Business) コラボレーション機能を通じて、他の任意の組織のユーザーと安全に共同作業を行うことができます。相手となる組織の規模の大小は関係がありません。 これらの組織の Azure AD の有無どころか、IT 組織の有無さえも関係ありません。 
 
-Azure AD を使用する組織は、社内のデータに対するコントロールをすべて維持した状態で、そのパートナーに対してドキュメントやリソース、アプリケーションへのアクセスを提供することができます。 Azure AD B2B API を使えば、エンド ユーザーがシームレスかつ直感的に操作できるような形で、2 つの組織を安全につなぐアプリケーションを開発することができます。
+Azure AD を使用する組織は、独自の社内データに対するコントロールを維持した状態で、そのパートナーに対してドキュメントやリソース、アプリケーションへのアクセスを提供することができます。 開発者は、Azure AD B2B API を使えば、2 つの組織を安全につなぐアプリケーションを開発することができます。 また、これにより、エンドユーザーがはるかに移動しやすくなります。
 
-Microsoft のお客様の実に **97%** が、Azure AD B2B コラボレーションがきわめて重要な意味を持つと回答しています。
+Microsoft のお客様の 97% が、Azure AD B2B コラボレーションがきわめて重要な意味を持つと回答しています。
 
 ![円グラフ](media/active-directory-b2b-what-is-azure-ad-b2b/97-percent-support.png)
 
@@ -51,7 +54,7 @@ Microsoft のお客様の実に **97%** が、Azure AD B2B コラボレーショ
 
 * 完成度の高い Azure AD の強力な承認ポリシーを適用しながら会社のあらゆるアプリやデータへのアクセスを提供
 
-* シームレスなユーザー エクスペリエンス
+* ユーザーにとって容易
 
 * エンタープライズ レベルのセキュリティをアプリとデータに確保
 
@@ -67,7 +70,7 @@ Microsoft のお客様の実に **97%** が、Azure AD B2B コラボレーショ
 
 B2B コラボレーションの (ゲスト) ユーザーは、管理者が [Azure Portal](https://portal.azure.com) から追加できます。
 
-![円グラフ](media/active-directory-b2b-what-is-azure-ad-b2b/adding-b2b-users-admin.png)
+![ゲスト ユーザーの追加](media/active-directory-b2b-what-is-azure-ad-b2b/adding-b2b-users-admin.png)
 
 ### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>コラボレーターによる ID の持ち込みの実現
 
@@ -84,14 +87,17 @@ B2B のコラボレーターは、自分が選んだ任意の ID でサインイ
 
 ### <a name="authorization-policies-protect-your-corporate-content"></a>承認ポリシーによる会社のコンテンツの保護
 
-管理者は会社のアプリとデータを保護するために、条件付きアクセス ポリシー (Multi-Factor Authentication など) をテナント レベルやアプリケーション レベルで適用できるほか、特定のユーザーに対して適用することができます。
+多要素認証などの条件付きアクセス ポリシーを次のように適用できます。
+- テナント レベルで
+- アプリケーション レベルで
+- 特定のユーザーが会社のアプリケーションとデータを保護するために
 
 ![メンバーの追加](media/active-directory-b2b-what-is-azure-ad-b2b/add-member.png)
 
 ### <a name="use-our-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Microsoft 提供の API とサンプル コードを使用した、ユーザー受け入れのためのアプリケーションの容易な構築
 貴社のニーズに応じて、外部のパートナーの受け入れ方法をカスタマイズすることができます。
 
-オンボーディング環境は、[Azure AD B2B 招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用してきめ細かくカスタマイズすることができます。たとえばセルフ サービスのサインアップ ポータルを作成することも可能です。Github に公開されているサンプル コードをご覧ください (<https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web>)。
+[B2B コラボレーションの招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用すると、セルフサービス サインアップ ポータルの作成など、オンボーディング エクスペリエンスをカスタマイズすることができます。 セルフサービス ポータル用のサンプル コードは [Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) で提供しています。
 
 ![サインアップ ポータル](media/active-directory-b2b-what-is-azure-ad-b2b/sign-up-portal.png)
 

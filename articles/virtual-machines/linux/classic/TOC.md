@@ -4,13 +4,13 @@
 ## [可用性](configure-availability.md)
 ## [FAQ](faq.md)
 
-# [作業の開始](../opensource-links.md)
+# 作業の開始
 ## [ポータルを使用した Linux VM の作成](createportal.md)
 ## [Azure CLI のインストール](../../../cli-install-nodejs.md)
 ## [SSH キーの作成](../mac-create-ssh-keys.md)
 
 # 方法
-## [Compute](../intro-on-azure.md)
+## 計算
 ### [カスタム VM の作成](create-custom.md)
 ### [VM のキャプチャ](capture-image.md)
 ### [Linux VM でリモート デスクトップを使用する](remote-desktop.md)
@@ -20,6 +20,7 @@
 ### [診断 VM 拡張機能の v2.x を使用して VM を監視する](diagnostic-extension-v2.md)
 ### [カスタム データを挿入する](inject-custom-data.md)
 ### [Linux パスワードまたはキーのリセット、SSH の修正、ディスクのチェックを実行する](reset-access.md)
+### [メンテナンス](planned-maintenance-schedule.md)
 ### [CLI を使用して Docker ホストを作成する](cli-use-docker.md)
 ### [ポータルを使用して Docker ホストを作成する](portal-use-docker.md)
 ### [Docker Swarm を使用する方法](../../virtual-machines-linux-docker-swarm.md)
@@ -53,18 +54,17 @@
 ### [Visual Studio による Web アプリケーション](web-app-visual-studio.md)
 ### [MPI アプリケーションを実行するための RDMA クラスター](rdma-cluster.md)
 ### [Azure スレーブ プラグインを Hudson CI で使用する方法](../../virtual-machines-azure-slave-plugin-for-hudson.md)
-
-
-## HPC Pack
-### [MPI アプリを実行するための Windows RDMA クラスター](hpcpack-cluster.md)
-### [HPC Pack IaaS デプロイ スクリプトを使用したWidows HPC クラスターの作成](hpcpack-cluster-starccm.md)
-### [コンピューティング ノードの数と可用性を管理する](hpcpack-cluster-powershell-script.md)
-### [オンデマンドによるノードの追加](hpcpack-cluster-openfoam.md)
-### [リソースの自動スケール](hpcpack-cluster-namd.md)
+### HPC Pack
+#### [Linux ワークロード用のクラスターの作成](hpcpack-cluster-powershell-script.md)
+#### [Linux ノードを含むクラスターの管理](hpcpack-cluster.md)
+#### [STAR-CCM+ の実行](hpcpack-cluster-starccm.md)
+#### [OpenFOAM の実行](hpcpack-cluster-openfoam.md)
+#### [NAMD の実行](hpcpack-cluster-namd.md)
 
 ## トラブルシューティング
 ### [VM のデプロイ](troubleshoot-deployment-new-vm.md)
 ### [VM を再起動またはサイズ変更する](restart-resize-error-troubleshooting.md)
+### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
 ## [PowerShell](/powershell/azure/overview)
@@ -78,7 +78,9 @@
 
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)

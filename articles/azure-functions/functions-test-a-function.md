@@ -4,7 +4,7 @@ description: "Postman、cURL、Node.js を使用して Azure 関数をテスト�
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, テスト"
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: a58bf41ec11b5826b60c1fc999240ea655be6d9d
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aca03ba4137893157fcbe6650336782ab88cd234
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
@@ -234,7 +234,7 @@ Azure Functions ポータルは、HTTP 関数およびタイマーによって�
 
 
 ### <a name="test-with-a-timer-trigger"></a>タイマー トリガーを使用してテストする
-機能の中には、ここまでに説明したツールでは十分にテストできないものがあります。 たとえば、メッセージが [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) にドロップされたときに実行されるキュー トリガー関数があるとします。 キューにメッセージをドロップするコードはいつでも記述することができます。コンソール プロジェクトにおける例を、この記事の後の方で示します。 しかし、関数を直接テストするための別の方法もあります。  
+機能の中には、ここまでに説明したツールでは十分にテストできないものがあります。 たとえば、メッセージが [Azure Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md) にドロップされたときに実行されるキュー トリガー関数があるとします。 キューにメッセージをドロップするコードはいつでも記述することができます。コンソール プロジェクトにおける例を、この記事の後の方で示します。 しかし、関数を直接テストするための別の方法もあります。  
 
 キュー出力バインドを用いて構成されたタイマー トリガーを使用できます。 このタイマー トリガー コードで、テスト メッセージをキューに書き込むことができます。 このセクションでは、例を具体的に説明します。
 
@@ -378,11 +378,11 @@ req.end(bodyString);
 
 
 ### <a name="test-a-queue-trigger-function-with-code-c"></a>コードを使用してキュー トリガー関数をテストする: C# #
-キューにメッセージをドロップするコードを使用してキュー トリガーをテストできることは既に説明しました。 次のコード例は、[Azure Queue Storage の概要](../storage/storage-dotnet-how-to-use-queues.md)に関するチュートリアルに記載されている C# コードをベースにしています。 他の言語のコードも、こちらのリンク先から入手できます。
+キューにメッセージをドロップするコードを使用してキュー トリガーをテストできることは既に説明しました。 次のコード例は、[Azure Queue Storage の概要](../storage/queues/storage-dotnet-how-to-use-queues.md)に関するチュートリアルに記載されている C# コードをベースにしています。 他の言語のコードも、こちらのリンク先から入手できます。
 
 コンソール アプリでこのコードをテストするには、次の手順を実行する必要があります。
 
-* [app.config ファイルにストレージ接続文字列を構成します](../storage/storage-dotnet-how-to-use-queues.md)。
+* [app.config ファイルにストレージ接続文字列を構成します](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 * `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「 `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
 
 C# のコード例:

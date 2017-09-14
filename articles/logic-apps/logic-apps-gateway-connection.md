@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 05/5/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8446790af6af160c4b2d463191405faaed68bf0e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータにアクセスする
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/17/2017
 
 このゲートウェイは、次のオンプレミスのデータ ソースへの接続をサポートします。
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   ファイル システム
 *   Informix
@@ -39,26 +38,26 @@ ms.lasthandoff: 05/17/2017
 *   PostgreSQL
 *   SAP アプリケーション サーバー 
 *   SAP メッセージ サーバー
-*   SharePoint (HTTP のみ。HTTPS は対象外)
+*   SharePoint
 *   SQL Server
 *   Teradata
 
 以下の手順は、ロジック アプリでオンプレミス データ ゲートウェイが動作するように設定する方法を示しています。 サポートされる接続の詳細については、[Azure Logic Apps のコネクタ](../connectors/apis-list.md)に関するページを参照してください。 
 
-他の Microsoft サービス向けのデータ ゲートウェイの詳細については、次の記事を参照してください。
+他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
-*   [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/): [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 ## <a name="requirements"></a>必要条件
 
 * [ローカル コンピューターへのデータ ゲートウェイのインストール](logic-apps-gateway-install.md)を済ませている必要があります。
 
-* [オンプレミス データ ゲートウェイをインストール](logic-apps-gateway-install.md#requirements)するには、職場または学校の電子メール アドレスがある Azure アカウントが必要です。
+* Azure ポータルにサインインするときは、[オンプレミス データ ゲートウェイのインストール](logic-apps-gateway-install.md#requirements)に使用したものと同じ職場または学校アカウントを使用する必要があります。 サインイン アカウントには、ゲートウェイのインストール用に Azure ポータルでゲートウェイ リソースを作成するときに使用する Azure サブスクリプションも必要です。
 
-* 他の Azure ゲートウェイ リソースによって既に要求されているゲートウェイのインストールは使用できません。 ゲートウェイのインストールは 1 つのゲートウェイ リソースにのみ関連付けることができます。 要求は、他のリソースがインストールを使用できないようにゲートウェイのリソースを作成したときに発生します。
+* Azure ゲートウェイ リソースから既に要求されているゲートウェイのインストールは要求できません。 ゲートウェイのインストールは 1 つの Azure ゲートウェイ リソースにのみ関連付けることができます。 要求は、他のリソースがインストールを使用できないようにゲートウェイのリソースを作成したときに発生します。
 
 ## <a name="set-up-the-data-gateway-connection"></a>データ ゲートウェイ接続を設定する
 
@@ -105,7 +104,7 @@ ms.lasthandoff: 05/17/2017
 
     ![詳細を指定してオンプレミス データ ゲートウェイを作成する](./media/logic-apps-gateway-connection/createblade.png)
 
-    任意の時点でデータ ゲートウェイを検索または表示するには、メインの Azure の左側のメニューで、 **[その他のサービス]**  >  **[エンタープライズ統合]**  >  **[オンプレミス データ ゲートウェイ]** を選択します。
+    任意の時点でデータ ゲートウェイを検索または表示するには、メインの Azure の左側のメニューで、**[その他のサービス]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** の順に選択します。
 
     ![[その他のサービス]、[エンタープライズ統合]、[オンプレミス データ ゲートウェイ] の順に移動する](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 05/17/2017
 
      ![ロジック アプリに移動し、[API 接続] を選択する](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * または、メインの Azure の左側のメニューで、**[その他のサービス]** > **[Web & Mobile Services]** > **[API 接続]** を選択します。Azure サブスクリプションに関連付けられている、ゲートウェイ接続を含むすべての API 接続が表示されます。 
+   * または、メインの Azure の左側のメニューで、**[その他のサービス]** > **[Web + モバイル]** > **[API 接続]** の順に移動します。Azure サブスクリプションに関連付けられているすべての API 接続 (ゲートウェイ接続を含む) が表示されます。 
 
    * または、メインの Azure の左側のメニューで、すべての API 接続の **[すべてのリソース]** を選択します。Azure サブスクリプションに関連付けられている、ゲートウェイ接続を含むすべての API 接続が表示されます。
 

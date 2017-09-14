@@ -1,113 +1,151 @@
 ---
-title: "Jenkins との継続的インテグレーションのために Azure VM エージェントを使用する"
-description: "Jenkins スレーブとしての Azure VM エージェント。"
+title: "Azure VM エージェントを使用した Jenkins デプロイのスケーリング。"
+description: "Azure 仮想マシンと Jenkins Azure VM エージェント プラグインを使用して、Jenkins パイプラインの容量をさらに追加します。"
 services: multiple
 documentationcenter: 
-author: mlearned
-manager: douge
-editor: 
-ms.assetid: 
+author: rloutlaw
+manager: justhe
 ms.service: multiple
 ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 6/7/2017
+ms.topic: article
+ms.date: 8/25/2017
 ms.author: mlearned
-ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 5f2df414b4d0e8798b7ed6d90d0ea0fb79d42fc2
+ms.custom: Jenkins
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: a3bfa3a17f0d7300f9d1ceb529410bbbb7bb2fee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
-# <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a>Jenkins との継続的インテグレーションのために Azure VM エージェントを使用する
 
-このクイックスタートでは、Jenkins Azure VM エージェント プラグインを使って、Azure にオンデマンド Linux (Ubuntu) エージェントを作成する方法を示します。
+# <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
+
+このチュートリアルでは、Jenkins の [Azure VM エージェント プラグイン](https://plugins.jenkins.io/azure-vm-agents)を使用して、Azure 上で実行している Linux 仮想マシンにオンデマンドで容量を追加します。
+
+このチュートリアルでは、次のことについて説明します。
+
+> [!div class="checklist"]
+> * Azure VM エージェント プラグインをインストールする
+> * プラグインを構成して Azure サブスクリプションにリソースを作成する
+> * 使用可能な計算リソースを各エージェントに設定する
+> * オペレーティング システムおよび各エージェントにインストールされているツールを設定する
+> * Jenkins の新しいフリースタイル ジョブを作成する
+> * Azure VM エージェントでジョブを実行する
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents/player]
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。
+* Azure サブスクリプション
+* Jenkins マスター サーバー お持ちでない場合は、[[クイック スタート]](install-jenkins-solution-template.md) を表示して Azure 上で設定します。
 
-* Jenkins マスターがまだない場合は、[ソリューション テンプレート](install-jenkins-solution-template.md)で開始することができます 
-* Azure サービス プリンシパルがまだない場合は、「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)」をご覧ください
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="install-azure-vm-agents-plugin"></a>Azure VM エージェント プラグインをインストールする
 
-[ソリューション テンプレート](install-jenkins-solution-template.md)から始める場合は、Jenkins マスターに Azure VM エージェント プラグインがインストールされます。
+> [!TIP]
+> [ソリューション テンプレート](install-jenkins-solution-template.md)を使用して Jenkins を Azure にデプロイした場合、Azure VM エージェント プラグインは既にインストールされています。
 
-それ以外の場合は、Jenkins ダッシュボード内から **Azure VM エージェント** プラグインをインストールします。
+1. Jenkins ダッシュボードで、**[Manage Jenkins]\(Jenkins の管理\)**、**[Manage Plugins]\(プラグインの管理\)** の順に選択します。
+2. **[Available]\(利用可能\)** タブを選択し、**[Azure VM Agents]\(Azure VM エージェント\)** を探します。 エントリの横にあるチェックボックスでプラグインを選択し、ダッシュボードの下部にある **[Install without restart]\(再起動せずにインストール\)** を選択します。
 
-## <a name="configure-the-plugin"></a>プラグインを構成する
+## <a name="configure-the-azure-vm-agents-plugin"></a>Azure VM エージェント プラグインを構成する
 
-* Jenkins ダッシュボードで、**[Manage Jenkins\(Jenkins の管理\)] -> [Configure System\(システムの構成\)]** の順にクリックします。 ページの下部までスクロールし、**[Add new cloud\(新しいクラウドの追加\)]** というドロップダウンがあるセクションを探します。 メニューから、**[Microsoft Azure VM Agents\(Microsoft Azure VM エージェント\)]** を選択します。
-* [Azure Credentials\(Azure 資格情報\)] ドロップダウンから既存のアカウントを選びます。  新しい **Microsoft Azure サービス プリンシパル**を追加するには、サブスクリプション ID、クライアント ID、クライアント シークレット、OAuth 2.0 トークン エンドポイントの各値を入力します。
+1. Jenkins ダッシュボードから、**[Manage Jenkins]\(Jenkins の管理\)**、**[Configure System]\(システムの構成\)** の順に選択します。
+2. ページの下部までスクロールし、**[クラウド]** セクションで **[Add new cloud]\(新しいクラウドの追加\)** ボックスを見つけて、**[Microsoft Azure VM Agents]\(Microsoft Azure VM エージェント\)** を選びます。
+3. **[Azure Credentials]\(Azure 資格情報\)** セクションの **[Add]\(追加\)** ボックスから、既存のサービス プリンシパルを選択します。 一覧に何も表示されない場合は、次の手順を実施して Azure アカウントの[サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)し、Jenkins の構成に追加します。   
 
-![Azure 資格情報](./media/jenkins-azure-vm-agents/service-principal.png)
+    a. **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、**[Jenkins]** を選びます。   
+    b. **[Add Credentials]\(資格情報の追加\)** ダイアログで、**[Kind]\(種類\)** ボックスの一覧から **[Microsoft Azure Service Principal]\(Microsoft Azure サービス プリンシパル\)** を選択します。   
+    c. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) から Active Directory サービス プリンシパルを作成します。
+    
+    ```azurecli-interactive
+    az ad sp create-for-rbac --name jenkins_sp --password secure_password
+    ```
 
-* **[Verify configuration\(構成の確認\)]** をクリックして、プロファイルの構成が正しいことを確認します。
-* 構成を保存し、次の手順に進みます。
+    ```json
+    {
+        "appId": "BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBB",
+        "displayName": "jenkins_sp",
+        "name": "http://jenkins_sp",
+        "password": "secure_password",
+        "tenant": "CCCCCCCC-CCCC-CCCC-CCCCCCCCCCC"
+    }
+    ```
+    d. サービス プリンシパルから **[Add Credentials]\(資格情報の追加\)** ダイアログに資格情報を入力します。 Azure サブスクリプション ID がわからない場合は、CLI で次のようにすると照会できます。
+     
+     ```azurecli-interactive
+     az account list
+     ```
 
-## <a name="template-configuration"></a>テンプレートの構成
+     ```json
+        {
+            "cloudName": "AzureCloud",
+            "id": "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+            "isDefault": true,
+            "name": "Visual Studio Enterprise",
+            "state": "Enabled",
+            "tenantId": "CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCC",
+            "user": {
+            "name": "raisa@fabrikam.com",
+            "type": "user"
+            }
+     ```
 
-### <a name="general-configuration"></a>全般的な構成
-次に、Azure VM エージェントの定義に使うテンプレートを構成します。 
+    完了したサービス プリンシパルには、**サブスクリプション ID** に `id` フィールドを、**クライアント ID** に `appId` の値を、**クライアント シークレット**に `password` を、`https://login.windows.net/<tenant_value>` の **OAuth 2.0 トークン エンドポイント**に URL を、それぞれ使用する必要があります。 **[追加]** を選択してサービス プリンシパルを追加し、プラグインを構成して新しく作成された資格情報を使用します。
 
-* **[追加]** をクリックしてテンプレートを追加します。 
-* 新しいテンプレートの名前を指定します。 
-* ラベルには、「ubuntu」と入力します。 このラベルは、ジョブの構成時に使われます。
-* コンボ ボックスから目的のリージョンを選びます。
-* 目的の VM サイズを選びます。
-* Azure Storage アカウント名を指定するか、空白のままにして既定値 "jenkinsarmst" を使います。
-* 保有期間を分単位で指定します。 この設定は、Jenkins がアイドル状態のエージェントを自動的に削除するまで待機する分単位の時間を定義します。 アイドル状態のエージェントが自動的に削除されないようにする場合は、0 を指定します。
+    ![Azure サービス プリンシパルを構成する](./media/jenkins-azure-vm-agents/new-service-principal.png)
 
-![全般的な構成](./media/jenkins-azure-vm-agents/general-config.png)
+    
 
-### <a name="image-configuration"></a>イメージの構成
+4. **[リソース グループ名]** セクションで、**[新規作成]** を選択した状態で `myJenkinsAgentGroup` を入力します。
+5. **[Verify configuration]\(構成の検証\)** を選択して、プロファイル設定をテストするために Azure に接続します。
+6. **[適用]** を選択してプラグインの構成を更新します。
 
-Linux (Ubuntu) エージェントを作成するには、**[Image reference\(イメージの参照\)]** を選択し、例のように次の構成を使います。 Azure がサポートする最新のイメージについては、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) をご覧ください。
+## <a name="configure-agent-resources"></a>エージェントのリソースを構成する
 
-* [Image Publisher\(イメージ発行元\)]: Canonical
-* [Image Offer\(イメージ プラン\)]: UbuntuServer
-* [Image Sku\(イメージ SKU\)]: 14.04.5-LTS
-* [Image version\(イメージのバージョン\)]: latest\(最新\)
-* [OS Type\(OS の種類\)]: Linux
-* [Launch method\(起動方法\)]: SSH
-* 管理者の資格情報を指定します
-* VM 初期化スクリプトの場合は、次のように入力します。
-```
-# Install Java
-sudo apt-get -y update
-sudo apt-get install -y openjdk-7-jdk
-sudo apt-get -y update --fix-missing
-sudo apt-get install -y openjdk-7-jdk
-```
-![イメージの構成](./media/jenkins-azure-vm-agents/image-config.png)
+Azure VM エージェントの定義に使用するテンプレートを構成します。 このテンプレートは、各エージェントが作成された時に保持する計算リソースを定義します。
 
-* **[Verify Template\(テンプレートの確認\)]** をクリックして、構成を確認します。
-* [ **Save**] をクリックします。
+1. **[Add Azure Virtual Machine Template]\(Azure 仮想マシン テンプレートの追加\)** の横にある **[追加]** を選択します。
+2. **Name** に `defaulttemplate` を入力します。
+3. **Label** に `ubuntu` を入力します。
+4. コンボ ボックスから目的の [[Azure リージョン]](https://azure.microsoft.com/regions/) を選びます。
+5. **[Virtual Machine Size]\(仮想マシンのサイズ\)** の下にあるドロップダウン リストから [VM サイズ](/azure/virtual-machines/linux/sizes)を選択します。 汎用的な `Standard_DS1_v2` サイズであれば、このチュートリアルでは十分です。   
+6. **[保持時間]** は `60` のままにしておきます。 この設定は、Jenkins がアイドル状態のエージェントの割り当てを解除するまで待機する分単位の時間を定義します。 アイドル状態のエージェントが自動的に削除されないようにする場合は、0 を指定します。
+
+   ![全般的な VM の構成](./media/jenkins-azure-vm-agents/general-config.png)
+
+## <a name="configure-agent-operating-system-and-tools"></a>オペレーティング システムとツールを構成する
+
+プラグイン構成の **[Image Configuration]\(イメージ構成\)** セクションで、**[Ubuntu 16.04 LTS]** を選択します。 **[Install Git (Latest)](\Git (最新版) をインストールする\)**、**[Install Maven (V3.5.0)]\(Maven (V3.5.0) をインストールする\)**、および **[Docker をインストールする]** の横にあるチェックをオンにして、新しく作成されたエージェントにこれらのツールをインストールします。
+
+![VM の OS とツールを構成する](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
+
+**[管理者資格情報]** の横にある **[追加]** を選択してから、**[Jenkins]** を選択します。 エージェントのログインに使用されるユーザー名とパスワードを入力して、Azure VM の管理者アカウントに求められる[ユーザー名とパスワードのポリシー](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしていることを確認します。
+
+**[Verify Template]\(テンプレートの検証\)** を選択し、**[保存]** を選択して変更内容を保存したら、Jenkins のダッシュ ボードに戻ります。
 
 ## <a name="create-a-job-in-jenkins"></a>Jenkins でジョブを作成する
 
-* Jenkins ダッシュボードで、 **[New Item]**をクリックします。 
-* 名前を入力し、**[Freestyle project\(フリースタイル プロジェクト\)]** を選択して、**[OK]** をクリックします。
-* **[General\(全般\)]** タブで、[Restrict where project can be run\(プロジェクトを実行できる場所を制限する\)] をオンにして、[Label Expression\(ラベル式\)] に「ubuntu」と入力します。 ドロップダウンに "ubuntu" が表示されるようになります。
-* [ **Save**] をクリックします。
+1. Jenkins ダッシュボードで、 **[New Item]**をクリックします。 
+2. 名前に `demoproject1` を入力し、**[Freestyle project]\(フリースタイル プロジェクト\)** 選択してから **[OK]** を選択します。
+3. **[全般]** タブで、**[Restrict where project can be run]\(プロジェクトを実行できる場所を制限する\)** をオンにして、**[ラベル式]** に `ubuntu` と入力します。 前の手順で作成したクラウドの構成によってラベルが提供されていることを確認するメッセージが表示されます。 
+   ![ジョブを設定する](./media/jenkins-azure-vm-agents/job-config.png)
+4. **[ソース コード管理]** タブで **[Git]** を選択し、**[リポジトリの URL]** フィールドに `https://github.com/spring-projects/spring-petclinic.git` のURL を追加します。
+5. **[ビルド]** タブで **[Add build step]\(ビルド ステップの追加\)** を選択し、**Maven の最上位のターゲットを呼び出し**ます。 **[Goals]\(目標\)** フィールドに `package` を入力します。
+6. **[保存]** を選択してジョブ定義を保存します。
 
-![ジョブを設定する](./media/jenkins-azure-vm-agents/job-config.png)
+## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Azure VM エージェントで新しいジョブを作成する
 
-## <a name="build-your-new-project"></a>新しいプロジェクトをビルドする
-
-* Jenkins ダッシュボードに戻ります。
-* 作成した新しいジョブを右クリックして、**[Build now\(今すぐビルド\)]** をクリックします。 ビルドが開始されます。 
-* ビルドが完了したら、**[Console output\(コンソール出力\)]** に移動します。 ビルドが Azure でリモートに実行されたことがわかります。
+1. Jenkins ダッシュボードに戻ります。
+2. 前の手順で作成したジョブを選択し、**[Build now]\(今すぐ作成\)** をクリックします。 新しいビルドがキューに追加されますが、Azure サブスクリプションにエージェント VM が作成されるまでは開始されません。
+3. ビルドが完了したら、**[Console output\(コンソール出力\)]** に移動します。 ビルドが Azure エージェントでリモートに実行されたことがわかります。
 
 ![コンソール出力](./media/jenkins-azure-vm-agents/console-output.png)
 
-## <a name="reference"></a>リファレンス
+## <a name="next-steps"></a>次のステップ
 
-* Azure Friday ビデオ: [Continuous Integration with Jenkins using Azure VM agents](https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents) (Azure VM エージェントを使用した Jenkins との継続的インテグレーション)
-* サポート情報と構成オプション: [Azure VM エージェント Jenkins プラグイン Wiki](https://wiki.jenkins-ci.org/display/JENKINS/Azure+VM+Agents+Plugin) 
-
+> [!div class="nextstepaction"]
+> [Azure App Service への CI/CD](deploy-jenkins-app-service-plugin.md)
 

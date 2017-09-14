@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7795e6fd5cc175e3a0cc91e35a5b1900fbeb2fdc
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 67a33a9abc3d3dcdd2fc7205e11feff97e3582a3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive クエリを使用して Hive テーブルのデータを探索する
@@ -31,18 +31,18 @@ ms.lasthandoff: 03/29/2017
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。 手順については、「 [Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」をご覧ください。
 * データが Azure HDInsight Hadoop クラスターの Hive テーブルにアップロードされている。 アップロードされていない場合は、まず「 [データを作成して Hive テーブルに読み込む](machine-learning-data-science-move-hive-tables.md) 」の指示に従って Hive テーブルにデータをアップロードします。
 * クラスターへのリモート アクセスが有効になっている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。
 * Hive クエリの送信手順については、「 [データを作成して Azure BLOB ストレージから Hive テーブルに読み込む](machine-learning-data-science-move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>データ探索のための Hive クエリ スクリプトの例
-1. パーティションごとの所見の数を取得する  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. 1 日ごとの所見の数を取得する  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. パーティションごとの所見の数を取得する `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. 1 日ごとの所見の数を取得する `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. カテゴリ列内のレベルを取得する   
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. 2 つのカテゴリ列の組み合わせ内のレベル数を取得する  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. 2 つのカテゴリ列を組み合わせたレベル数を取得する `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. 数値型列の分布を取得する   
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. 2 つのテーブルの結合からレコードを抽出する

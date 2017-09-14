@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 08/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 7ac80a8521b48f43538ca06a054f8302eb32eea6
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: bc6eee6ff3e6c7006509cdd175b488e320ed912a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Ambari REST API を使用した HDInsight クラスターの管理
@@ -30,11 +29,11 @@ ms.lasthandoff: 05/17/2017
 
 Ambari REST API を使用して Azure HDInsight の Hadoop クラスターを管理および監視する方法を説明します。
 
-Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれており、クラスターの監視と構成の変更を行うために使用します。
+Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれています。 Ambari を使用して、クラスターを監視し、構成を変更できます。
 
 ## <a id="whatis"></a>Ambari とは
 
-[Apache Ambari](http://ambari.apache.org) は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](http://ambari.apache.org) では、Hadoop クラスターのプロビジョニング、管理、監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
@@ -70,7 +69,7 @@ HDInsight の Ambari REST API のベース URI は、https://CLUSTERNAME.azurehd
 
 ### <a name="authentication"></a>認証
 
-HDInsight の Ambari に接続するには、HTTPS が必要です。 接続を認証するときに、クラスターの作成時に指定した管理者アカウント名 (既定値は **admin**) とパスワードを使用する必要があります。
+HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin**) とパスワードを使用します。
 
 ## <a name="examples-authentication-and-parsing-json"></a>例: 認証と JSON の解析
 
@@ -179,7 +178,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 * **ワーカー ノード**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
+    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -193,7 +192,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 * **Zookeeper ノード**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
+    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -211,7 +210,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 >
 > HDInsight と仮想ネットワークの操作の詳細については、[カスタム Azure Virtual Network による HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページを参照してください。
 
-IP アドレスを取得する前に、ホストの FQDN を知る必要があります。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
+IP アドレスを検索するには、クラスター ノードの内部完全修飾ドメイン名 (FQDN) が必要です。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -258,7 +257,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 戻り値は、以下の例のいずれかと似ています。
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - この値は、クラスターが既定のストレージとして Azure Storage アカウントを使用していることを示します。 `ACCOUNTNAME` 値は、ストレージ アカウントの名前です。 `CONTAINER` 部分は、ストレージ アカウント内の BLOB コンテナーの名前です。 コンテナーは、クラスターの HDFS 互換ストレージのルートです。
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - この値は、クラスターが既定のストレージとして Azure Storage アカウントを使用していることを示します。 `ACCOUNTNAME` 値は、ストレージ アカウントの名前です。 `CONTAINER` 部分は、ストレージ アカウント内の BLOB コンテナーの名前です。 コンテナーは、クラスターの HDFS 互換ストレージのルートです。
 
 * `adl://home` - この値は、クラスターが既定のストレージとして Azure Data Lake Store を使用していることを示します。
 
@@ -307,8 +306,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     ```
 
     ```powershell
-    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+    $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
         -Credential $creds
+    $respObj.Content
     ```
 
     この例は、クラスターにインストールされているコンポーネントの現在の構成 ( *tag* 値で特定) を含む JSON ドキュメントを返します。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
@@ -380,7 +380,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
    
     この一覧から、コンポーネントの名前をコピーする必要があります (たとえば、**spark\_thrift\_sparkconf** と **tag** 値)。
 
-2. 次のコマンドを利用し、コンポーネントの構成とタグを取得します。 構成を取得するコンポーネントとタグで **spark-thrift-sparkconf** と **INITIAL** を置換します。
+2. 次のコマンドを使用して、コンポーネントとタグの構成を取得します。
    
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
@@ -395,6 +395,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
         -Credential $creds
     $resp.Content | jq --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
+
+    > [!NOTE]
+    > 構成を取得するコンポーネントとタグで **spark-thrift-sparkconf** と **INITIAL** を置換します。
    
     jq を使用して、HDInsight から取得したデータを新しい構成テンプレートに変換します。 具体的には、これらの例では以下の操作を実行します。
    

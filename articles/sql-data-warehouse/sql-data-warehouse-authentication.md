@@ -17,10 +17,10 @@ ms.custom: security
 ms.date: 03/21/2017
 ms.author: rortloff;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9f38d57029e962d1bbe8adae68232baa8a4c575d
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -89,7 +89,7 @@ Azure Active Directory 認証を構成するには、次の手順に従います
 現在、Azure Active Directory ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。 回避策として、ユーザーを [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) で表示してください。
 
 ### <a name="find-the-details"></a>詳細の確認
-* 詳細な手順を実行します。 Azure Active Directory 認証を構成および使用する詳細な手順は、Azure SQL Database と Azure SQL Data Warehouse ではほぼ同じです。 詳細な手順については、「 [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](../sql-database/sql-database-aad-authentication.md)」を参照してください。
+* Azure Active Directory 認証を構成および使用する手順は、Azure SQL Database と Azure SQL Data Warehouse ではほぼ同じです。 詳細な手順については、「 [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](../sql-database/sql-database-aad-authentication.md)」を参照してください。
 * カスタム データベース ロールを作成し、ロールにユーザーを追加します。 その後、ロールに詳細なアクセス許可を付与します。 詳細については、「 [データベース エンジンの権限の概要](https://msdn.microsoft.com/library/mt667986.aspx)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ

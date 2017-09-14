@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 750540d0866e69ce043133e9c668c8a2e09b9d1c
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 0230ec0e4fc4ff7fe98a7c3e82f252bd8dd66d16
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>Data Lake Store と他の Azure サービスを統合する
@@ -64,6 +63,9 @@ SSIS で Azure Data Lake Store 接続マネージャーを使用して、SSIS �
 
 ## <a name="use-data-lake-store-with-sql-data-warehouse"></a>SQL Data Warehouse で Data Lake Store を使用する
 PolyBase を使用して、Azure Data Lake Store から SQL Data Warehouse にデータを読み込むことができます。 詳細については、「[SQL Data Warehouse で Data Lake Store を使用する](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)」を参照してください。
+
+## <a name="use-data-lake-store-with-azure-event-hubs"></a>Azure Event Hubs で Data Lake Store を使用する
+Azure Data Lake Store を使用して、Azure Event Hubs で受信したデータをアーカイブしてキャプチャできます。 詳細については、[Azure Event Hubs での Data Lake Store の使用](data-lake-store-archive-eventhub-capture.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: "REST API を使用した Azure Search インデックスの作成 | Microsoft Docs"
+title: "インデックスの作成 (REST API - Azure Search) | Microsoft Docs"
 description: "Azure Search HTTP REST API を使用して、コードでインデックスを作成します。"
 services: search
 documentationcenter: 
@@ -15,9 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
-ms.openlocfilehash: 7f4bccda8a7cebff0d80627320d34062d4d55add
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの作成
@@ -107,9 +109,4 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 
 ## <a name="next-steps"></a>次のステップ
 Azure Search インデックスを作成すると、データの検索を開始できるように [インデックスにコンテンツをアップロードする](search-what-is-data-import.md) 準備が完了します。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -11,17 +11,17 @@ keywords:
 ms.assetid: 29e20d75-bf39-4f7d-815f-a2e47209be7d
 ms.service: container-registry
 ms.devlang: azurecli
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 99bb3db7cc80e8426e1dca14bc3d733ee6c7342c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したプライベート Docker コンテナー レジストリの作成
@@ -35,7 +35,7 @@ Linux、Mac、または Windows コンピューターから [Azure CLI 2.0](http
 ## <a name="prerequisites"></a>前提条件
 * **Azure CLI 2.0**: CLI 2.0 をインストールし、利用を開始するには、[インストール手順](/cli/azure/install-azure-cli)を参照してください。 `az login` を実行して Azure サブスクリプションにログインします。 詳細については、[CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)に関する記事を参照してください。
 * **リソース グループ**: コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 CLI 2.0 を使用してリソース グループを作成するには、[CLI 2.0 のリファレンス](/cli/azure/group)を参照してください。
-* **ストレージ アカウント** (省略可能): 同じ場所にコンテナー レジストリをバックアップするには、Azure Standard [ストレージ アカウント](../storage/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 を使用してストレージ アカウントを作成するには、[CLI 2.0 のリファレンス](/cli/azure/storage/account)を参照してください。 現在、Premium Storage はサポートされていません。
+* **ストレージ アカウント** (省略可能): 同じ場所にコンテナー レジストリをバックアップするには、Azure Standard [ストレージ アカウント](../storage/common/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 を使用してストレージ アカウントを作成するには、[CLI 2.0 のリファレンス](/cli/azure/storage/account)を参照してください。 現在、Premium Storage はサポートされていません。
 * **サービス プリンシパル** (省略可能): CLI を使用してレジストリを作成する場合、既定ではアクセス権が設定されません。 必要に応じて、既存の Azure Active Directory サービス プリンシパルをレジストリに割り当てる (または新しく作成して割り当てる) か、レジストリの管理者ユーザー アカウントを有効にします。 この記事の後半のセクションを参照してください。 レジストリ アクセスの詳細については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成

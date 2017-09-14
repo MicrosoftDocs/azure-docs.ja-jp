@@ -4,7 +4,7 @@ description: "Microsoft Azure 課金パートナーの Cloudyn が Azure Billing
 services: 
 documentationcenter: 
 author: BryanLa
-manager: ruchic
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: f1397397-7e92-4c20-9862-ab6b93afefb7
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 02/03/2017
 ms.author: mobandyo;bryanla
-translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: c4bb977fc201a1da037ee174c883a5174633d45b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: fac0ee2e9cbc87c8b3d04675551bba61f7a532b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -90,9 +92,4 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 [5]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Cost-Effective-Sizing.png
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

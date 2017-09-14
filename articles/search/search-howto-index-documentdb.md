@@ -7,19 +7,18 @@ author: chaosrealm
 manager: pablocas
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: search
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 05/01/2017
+ms.date: 08/10/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 2f1791393b1e59721cc5a1030927cd00d74a5f13
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
@@ -100,21 +99,21 @@ Cosmos DB クエリを指定すると、ネストされたプロパティや配�
 
 フィルター処理クエリ:
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark
+    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
 
 平坦化クエリ:
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark
+    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
     
     
 プロジェクション クエリ:
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark
+    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 
 配列を平坦化するクエリ:
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark
+    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 <a name="CreateIndex"></a>
 ## <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
@@ -242,7 +241,21 @@ Cosmos DB クエリを指定すると、ネストされたプロパティや配�
 
 インデクサーの優れたパフォーマンスを確保するのには、このポリシーを使用することが推奨されます。 
 
-カスタム クエリを使用している場合、`_ts` プロパティはクエリによって投影されていることを確認します。 
+カスタム クエリを使用している場合、`_ts` プロパティはクエリによって投影されていることを確認します。
+
+<a name="IncrementalProgress"></a>
+### <a name="incremental-progress-and-custom-queries"></a>増分の進行状況とカスタム クエリ
+インデックスの作成中に増分の進行状況を利用すると、一時的な障害や実行の制限時間によってインデクサーの実行が中断された場合、次の実行時に、最初からコレクション全体のインデックスを再作成するのではなく、中断したところからインデックスを作成することができます。 大規模なコレクションのインデックスを作成する場合、この機能は特に重要です。 
+
+カスタム クエリを使用するときに増分の進行状況を有効にするには、クエリを使用して `_ts` 列で結果を並べ替えておきます。 こうすることで Azure Search が使用する定期的なチェックポイントが作成され、エラーが発生した場合に増分の進行状況を利用できます。   
+
+ただし状況によっては、クエリに `ORDER BY [collection alias]._ts` 句が含まれる場合でも、クエリ結果が `_ts` で並べ替えられることを Azure Search で推論されない可能性があります。 `assumeOrderByHighWaterMarkColumn` 構成プロパティを使用して結果が並べ替えられるように Azure Search に指示することもできます。 このヒントを指定するには、次のようにインデクサーを作成または更新します。 
+
+    {
+     ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
+    } 
 
 <a name="DataDeletionDetectionPolicy"></a>
 ## <a name="indexing-deleted-documents"></a>削除されたドキュメントのインデックス作成
@@ -285,3 +298,4 @@ Cosmos DB クエリを指定すると、ネストされたプロパティや配�
 
 * Azure Cosmos DB の詳細については、[Cosmos DB のサービス ページ](https://azure.microsoft.com/services/documentdb/)をご覧ください。
 * Azure Search の詳細については、 [Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
+

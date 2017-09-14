@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: c9df0fedfb39ee162334304d56eb4df3a96dcd3e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 342a305a4bbdc1526a9316a35819d06996702a5b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -112,12 +112,20 @@ Add-AzureRmLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
+[Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) を使用して、ロード バランサーを更新します。
+
+```powershell
+Set-AzureRmLoadBalancer -LoadBalancer $lb
+```
+
 ### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。 着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 正常な VM のみでトラフィックを受信するには、使用する正常性プローブの定義も行います。
 
 [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、*myLoadBalancerRule* という名前のロード バランサー規則を作成し、ポート *80* でトラフィックを負荷分散します。
 
 ```powershell
+$probe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name myHealthProbe
+
 Add-AzureRmLoadBalancerRuleConfig `
   -Name myLoadBalancerRule `
   -LoadBalancer $lb `
@@ -125,7 +133,8 @@ Add-AzureRmLoadBalancerRuleConfig `
   -BackendAddressPool $lb.BackendAddressPools[0] `
   -Protocol Tcp `
   -FrontendPort 80 `
-  -BackendPort 80
+  -BackendPort 80 `
+  -Probe $probe
 ```
 
 [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) を使用して、ロード バランサーを更新します。
@@ -142,9 +151,12 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* と共に *myVnet* という名前の仮想ネットワークを作成します。
 
 ```powershell
+# Create subnet config
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
   -Name mySubnet `
   -AddressPrefix 192.168.1.0/24
+
+# Create the virtual network
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroupLoadBalancer `
   -Location EastUS `
@@ -158,6 +170,7 @@ $vnet = New-AzureRmVirtualNetwork `
 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループ規則を作成し、これを *mySubnet* に適用します。
 
 ```powershell
+# Create security rule config
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Name myNetworkSecurityGroupRule `
   -Protocol Tcp `
@@ -168,16 +181,22 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -DestinationAddressPrefix * `
   -DestinationPortRange 80 `
   -Access Allow
+
+# Create the network security group
 $nsg = New-AzureRmNetworkSecurityGroup `
   -ResourceGroupName myResourceGroupLoadBalancer `
   -Location EastUS `
   -Name myNetworkSecurityGroup `
   -SecurityRules $nsgRule
+
+# Apply the network security group to a subnet
 Set-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name mySubnet `
   -NetworkSecurityGroup $nsg `
   -AddressPrefix 192.168.1.0/24
+
+# Update the virtual network
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 ```
 
@@ -278,7 +297,7 @@ for ($i=1; $i -le 3; $i++)
 ```
 
 ## <a name="test-load-balancer"></a>ロード バランサーをテストする
-ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得します。
+ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得しています。
 
 ```powershell
 Get-AzureRmPublicIPAddress `

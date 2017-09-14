@@ -12,11 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
 ms.openlocfilehash: d0488999f55b7ccc393f4852f22c6adf4a031b1f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -28,7 +30,7 @@ Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプ�
 ## <a name="applications-and-infrastructure"></a>アプリケーションとインフラストラクチャ
 Cloud Services と Service Fabric の基本的な違いは、VM、ワークロード、およびアプリケーション間の関係です。 ここでのワークロードとは、特定のタスクを実行したり、サービスを提供したりするために記述されたコードと定義しています。
 
-* **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。** 記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する&1; つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
+* **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。** 記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する 1 つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
 
 ![Cloud Services アプリケーションおよびトポロジ][1]
 
@@ -63,7 +65,7 @@ Service Fabric アプリケーションの完全なアプリケーションで�
 ![完全な移行後の Service Fabric のアーキテクチャ][11]
 
 ## <a name="communication-and-workflow"></a>通信とワークフロー
-多くのクラウド サービス アプリケーションは、複数の階層で構成されます。 同様に、Service Fabric アプリケーションも、複数のサービス (通常は多数のサービス) で構成されます。 通信モデルには、一般的に、直接的な通信と、外部の持続性ストレージを経由した通信の&2; つがあります。
+多くのクラウド サービス アプリケーションは、複数の階層で構成されます。 同様に、Service Fabric アプリケーションも、複数のサービス (通常は多数のサービス) で構成されます。 通信モデルには、一般的に、直接的な通信と、外部の持続性ストレージを経由した通信の 2 つがあります。
 
 ### <a name="direct-communication"></a>直接的な通信
 直接的な通信では、階層は、各階層が公開しているエンドポイント経由で直接的に通信します。 これは Cloud Services などのステートレスな環境では、VM ロールのインスタンスをランダムに、または負荷分散のためにラウンドロビン方式で選択して、そのエンドポイントに直接接続することを意味します。
@@ -103,9 +105,4 @@ Cloud Services から Service Fabric への最も単純な移行パスは、Clou
 [9]: ./media/service-fabric-cloud-services-migration-differences/cloud-services-architecture.png
 [10]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-simple.png
 [11]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-full.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

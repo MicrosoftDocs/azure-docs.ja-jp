@@ -12,85 +12,137 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 06/30/2017
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: af11866fc812cd8a375557b7bf9df5cdc9bba610
-ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7
-ms.lasthandoff: 01/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: e7ea83465328bd4c7479dec4093cd94700463854
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="performance-tuning-guidance-for-azure-data-lake-store"></a>Azure Data Lake Store のパフォーマンス チューニング ガイダンス
+# <a name="tuning-azure-data-lake-store-for-performance"></a>Azure Data Lake Store のパフォーマンス チューニング
 
-この記事では、Azure Data Lake Store のデータの書き込みと読み取り時のパフォーマンスを最適化する方法について説明します。 この記事は、よく使用されるデータ アップロード/ダウンロード ツールとデータ分析ワークロードのために構成できるパラメーターを把握するのに役立ちます。 このガイドのチューニングは、特に、Data Lake Store に対して大量のデータを読み書きする、リソースを集中的に使用するワークロードを対象としています。
+Data Lake Store は、I/O 集中型分析とデータ移動での高スループットをサポートします。  Azure Data Lake Store では、1 秒あたりに読み取むまたは書き込むデータ量など、利用可能なすべてのスループットを利用することが、最適なパフォーマンスを得るために重要となります。  並列での読み取り数と書き込み数をできるだけ多くすることで、これを実現します。
 
-## <a name="prerequisites"></a>前提条件
+![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/throughput.png)
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-* Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+Azure Data Lake Store は、あらゆる分析シナリオで必要とされるスループットを提供するようにスケーリングできます。 既定では、Azure Data Lake Store アカウントは、広範なカテゴリのユース ケースのニーズを満たすのに十分なスループットを自動的に提供します。 お客様が既定の制限に達した場合、Microsoft サポートに連絡して、さらに高いスループットを提供するように ADLS アカウントを構成することができます。
 
+## <a name="data-ingestion"></a>データの取り込み
 
-## <a name="guidelines-for-data-ingestion-tools"></a>データ取り込みツールのガイドライン
+ソース システムから ADLS にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、および ADLS へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
 
-このセクションでは、Data Lake Store に対してデータのコピーまたは移動を行う際のパフォーマンスを向上させるための一般的なガイダンスを示します。 このセクションでは、パフォーマンスを制限する要因とそれらの制限を克服する方法について説明します。 注意すべき考慮事項をいくつか次に示します。
+![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
-* **ソース データ** - ソース データの取得元に起因する制約がたくさんあります。 ソース データが低速なスピンドルやスループット能力の低いリモート ストレージ上にある場合、スループットがボトルネックになることがあります。 (可能であればローカル ディスクで) SSD を使用すると、ディスク スループットが向上するため、最高のパフォーマンスが得られます。
+これらの要因がデータの移動に影響を与えないようにすることが重要です。
 
-* **ネットワーク** - ソース データが VM 上にある場合は、VM と Data Lake Store 間のネットワーク接続が重要です。 使用可能な最大の NIC を備えた VM を使用すると、ネットワーク帯域幅が向上します。
+### <a name="source-hardware"></a>ソース ハードウェア
 
-* **リージョン間コピー** - 米国東部 2 の VM でデータ取り込みツールを実行して米国中部の Data Lake Store アカウントにデータを書き込むなど、リージョン間のデータ I/O には膨大なネットワーク コストがかかります。 リージョン間でデータをコピーしていると、パフォーマンスが低下する場合があります。 ネットワーク スループットを最大化するために、コピー先の Data Lake Store アカウントと同じリージョンの VM でデータ取り込みジョブを使用することをお勧めします。                                                                                                                                        
+オンプレミス マシンを使用しているか、または Azure の VM を使用しているかに関わらず、適切なハードウェアを慎重に選択する必要があります。 ソース ディスク ハードウェアには、HDD よりも SSD を選び、高速スピンドルを備えたディスク ハードウェアをお選びください。 ソース ネットワーク ハードウェアには、考えられる最速の NIC を使用してください。  Azure に関しては、適度に強力なディスクとネットワーク ハードウェアを備えた Azure D14 VM をお勧めします。
 
-* **クラスター** - HDInsight クラスター (DistCp など) を使用してデータ取り込みジョブを実行する場合は、D シリーズ VM をクラスターに使用することをお勧めします。これは、D シリーズ VM はメモリが多いからです。 また、コア数の増加もスループットの向上に貢献します。                                                                                                                                                                                                                                                                                                            
+### <a name="network-connectivity-to-azure-data-lake-store"></a>Azure Data Lake Store へのネットワーク接続
 
-* **スレッドの同時実行性** - HDInsight クラスターを使用して、ストレージ コンテナーからデータをコピーする場合は、クラスター サイズ、コンテナー サイズ、およびスレッドの設定に応じて使用できる並列スレッドの数に制限があります。 Data Lake Store でのパフォーマンスを向上させるための最も重要な方法の&1; つは、同時実行性を向上させることです。 スループットを向上させるには、設定を調整して、同時実行性を最大化する必要があります。 次の表には、同時実行性を向上させるために構成できる設定を、取り込み方法ごとに示しています。 表内のリンクをクリックすると、ツールを使用して Data Lake Store にデータを取り込む方法のほかに、ツールのパフォーマンスを調整してスループットを最大化する方法についても説明している記事に移動します。
+ソース データと Azure Data Lake Store との間のネットワーク接続はボトルネックになることがあります。 ソース データがオンプレミスの場合、[Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) で専用のリンクを使用することを検討してください。 ソース データが Azure にある場合、データが Data Lake Store と同じ Azure リージョンにあると、パフォーマンスは最適となります。
 
-    | ツール               | 同時実行性の設定                                                                |
-    |--------------------|------------------------------------------------------------------------------------|
-    | [Powershell](data-lake-store-get-started-powershell.md)       | PerFileThreadCount、ConcurrentFileCount |
-    | [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)    | Azure Data Lake Analytics ユニット         |
-    | [DistCp](data-lake-store-copy-data-wasb-distcp.md)            | -m (マッパー)                             |
-    | [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)| parallelCopies                          |
-    | [Sqoop](data-lake-store-data-transfer-sql-sqoop.md)           | fs.azure.block.size、-m (マッパー)        |
+### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>データ インジェスト ツールの最大並列化処理の構成
 
+上記のソース ハードウェアとネットワーク接続性のボトルネックに対処したら、次はデータ インジェスト ツールを構成します。 次の表に、一般的なインジェスト ツールの主要な設定の概要と、それらのパフォーマンス チューニングに関する詳細な記事を示します。  ご自身のシナリオで使用すべきツールの詳細については、この[記事](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-data-scenarios)をご覧ください。
 
-## <a name="guidelines-while-working-with-hdinsight-workloads"></a>HDInsight ワークロードを使用する場合のガイドライン
+| ツール               | 設定     | 詳細                                                                 |
+|--------------------|------------------------------------------------------|------------------------------|
+| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [リンク](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell)   |
+| AdlCopy    | Azure Data Lake Analytics ユニット  |   [リンク](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (マッパー)   | [リンク](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies    | [リンク](../data-factory/data-factory-copy-activity-performance.md)                          |
+| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
-Data Lake Store 内のデータを操作する分析ワークロードを実行する場合は、Data Lake Store のパフォーマンスを最大限に引き出すために、HDInsight 3.5 クラスター バージョンを使用することをお勧めします。 ジョブが I/O 集中型の場合、パフォーマンス上の理由から特定のパラメーターを構成できます。 たとえば、ジョブが主に読み取りまたは書き込みで構成されている場合は、Azure Data Lake Store との間の I/O の同時実行性を向上させると、パフォーマンスが向上する可能性があります。
+## <a name="structure-your-data-set"></a>データ セットの構成
 
-Azure Data Lake Store は、同時実行性が高い場合に最高のパフォーマンスを発揮するよう最適化されています。 I/O 集中型のジョブの同時実行性を向上させる一般的な方法はいくつかあります。
+データが Data Lake Store に保存されると、ファイル サイズ、ファイル数、およびフォルダー構造がパフォーマンスに影響を与えるようになります。  次のセクションでは、これらの領域に関するベスト プラクティスについて説明します。  
 
-1. **少数の大規模な YARN コンテナーではなく、多数のコンピューティング YARN コンテナーを実行する** – コンテナーが増えると、入出力操作の同時実行性が向上し、Data Lake Store の能力を活用できます。
+### <a name="file-size"></a>ファイル サイズ
 
-    たとえば、HDInsight クラスターに D3v2 ノードが 2 つあるとします。 各 D3v2 ノードは 12 GB の YARN メモリを備えているため、2 台の D3v2 マシンで YARN メモリは 24 GB になります。 また、YARN コンテナーのサイズを 6 GB に設定しています。 そのため、各 6 GB のコンテナーが 4 つ作成されます。 したがって、4 つの同時実行タスクを並列に実行できます。 同時実行性を向上させるには、たとえば、コンテナーのサイズを 3 GB に減らします。そうすると、各 3 GB のコンテナーが 8 つ作成されます。 この場合、8 つの同時実行タスクを並列に実行できます。 以下に図を示します。
+通常、HDInsight や Azure Data Lake Analytics などの分析エンジンでは、ファイルごとのオーバーヘッドがあります。  データを多数の小さなファイルとして保存すると、パフォーマンスに悪影響を及ぼすことがあります。  
 
-    ![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/image-1.png)
+一般に、パフォーマンスを向上させるには、データをより大きなサイズのファイルにまとめます。  データ セットを 256 MB か、それ以上のサイズのファイルにまとめることが多いでしょう。 画像やバイナリ データなどの場合、並行して処理することはできません。  このような場合は、個々のファイルを 2 GB 未満に維持することをお勧めします。
 
-    よく寄せられる質問に、"コンテナー サイズを 1 GB のメモリに減らせば、コンテナーが 24 個になり、同時実行性がさらに向上するのに、そうしてはいけないのはなぜですか" というものがあります。 これは、タスクにメモリが 3 GB 必要か、1 GB で十分かによります。  コンテナー内でメモリが 1 GB しか必要ない単純な操作を実行する場合や、メモリが 3 GB 必要になる可能性がある複雑な操作を実行する場合があります。  コンテナーのサイズを小さくしすぎると、メモリ不足例外が発生する可能性があります。  その場合は、コンテナーのサイズを増やす必要があります。  メモリ以外に、仮想コアの数も並列処理に影響します。
+場合によっては、データ パイプラインで小さなファイルを多数含む生データの制御が制限されることがあります。  ダウンストリーム アプリケーションでは、“調理“ のプロセスを設けて、より大きいファイルを生成することをお勧めします。  
 
-    ![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/image-2.png)
+### <a name="organizing-time-series-data-in-folders"></a>フォルダー内の時系列データの整理
 
-2. **クラスターのメモリを増やして、同時実行性を向上させる** – クラスターのメモリを増やすには、クラスターのサイズを増やすか、メモリが多い VM タイプを選択します。 そうすると、使用可能な YARN メモリの量が増加するため、コンテナーをもっと作成して、同時実行性を向上させることができます。  
+Hive および ADLA のワークロードでは、時系列データのパーティションを削除すると、一部のクエリがデータのサブセットのみを読み取るようにできるため、パフォーマンスを向上させることができます。    
 
-    たとえば、HDInsight クラスターに D3v2 ノードが 1 つあり、YARN メモリが 12 GB で、コンテナーが 3 GB とします。  クラスターを D3v2 2 台に拡張すると、YARN メモリが 24 GB に増加します。  その結果、同時実行数が 4 から 8 に増えます。
+時系列データを取り込むこれらのパイプラインでは、多くの場合、ファイルにかなり構造化されたファイル名やフォルダー名が付けられます。 以下に、日付によって構成されたデータの一般的な例を示します。
 
-    ![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/image-3.png)
+    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
-3. **タスクの数を現在の同時実行数に設定する** – ここまでで、既にコンテナー サイズを適切に設定して、同時実行数を最大化しました。 今度は、これらのコンテナーをすべて使用するように、タスクの数を設定する必要があります。 各ワークロード内のタスクにはさまざまな名前が付いています。
+フォルダーとファイル名の両方に、日時の情報が示されていることに注意してください。
 
-    また、ジョブのサイズを考慮することが必要な場合もあります。 ジョブのサイズが大きい場合は、各タスクで大量のデータを処理する可能性があります。 タスク数を増やすと、各タスクで処理するデータの量を抑えることができます。
+日付と時刻については、以下が一般的なパターンです。
 
-    たとえば、6 つのコンテナーがあるとします。 開始点として、タスク数を 6 に設定します。 タスク数を増やして、パフォーマンスが向上するかどうか実験してみます。 タスク数を大きく設定しても、同時実行性は向上しません。 タスク数を 6 より大きく設定した場合、次の波が来るまで、タスクは実行されません。 タスク数を 6 より小さく設定した場合、同時実行性がフル活用されません。
+    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
-    タスク数の設定に使用できるパラメーターは、ワークロードごとに異なります。 次の表には、その一部を示しています。
+繰り返しになりますが、フォルダーとファイルの整理については、より大きなファイルサイズに最適化され、各フォルダーに妥当な数のファイルが配置されるような選択を行ってください。
 
-    | ワークロード               | タスク数を設定するパラメーター                                                         |
-    |--------------------|------------------------------------------------------------------------------------|
-    | [HDInsight の Spark](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
-    | [HDInsight の Hive](data-lake-store-performance-tuning-hive.md)    | hive.tez.container.size         |
-    | [HDInsight の MapReduce](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-    | [HDInsight の Storm](data-lake-store-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
+## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>HDInsight の Hadoop および Spark ワークロードでの I/O 集中型ジョブの最適化
+
+ジョブは、大きく次の 3 つのカテゴリに分けられます。
+
+* **CPU 集中型**  これらのジョブは、計算時間は長くかかりますが、I/O 時間は最小限で済みます。  機械学習や自然言語処理のジョブなどが、その例です。  
+* **メモリ集中型**  これらのジョブは、大量のメモリを使用します。  PageRank やリアルタイム分析のジョブなどが、その例です。  
+* **I/O 集中型**  これらのジョブは、大半の時間を I/O 処理に費やします。  読み取りおよび書き込み操作のみを行うコピー ジョブなどが一般的な例です。  その他の例には、大量のデータを読み取ってデータ変換を行った後、保存場所に書き戻すデータ準備ジョブなどがあります。  
+
+次のガイダンスは、I/O 集中型ジョブにのみ適用されます。
+
+### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight クラスターの一般的な考慮事項
+
+* **HDInsight のバージョン** 最適なパフォーマンスを得るには、HDInsight の最新リリースを使用してください。
+* **リージョン** Data Lake Store は HDInsight クラスターと同じリージョンに配置します。  
+
+HDInsight クラスターは、2 つのヘッド ノードと複数のワーカー ノードで構成されます。 各ワーカー ノードは、特定数のコアとメモリを提供します。これは VM の種類によって決まります。  ジョブの実行時には、YARN がリソース ネゴシエーターとなり、コンテナー作成で使用可能なメモリとコアを割り当てます。  各コンテナーは、ジョブを完了するために必要なタスクを実行します。  コンテナーは、タスクを迅速に処理するために並列で実行されます。 そのため、できるだけ多くの並列コンテナーを実行することでパフォーマンスが向上します。
+
+HDInsight クラスター内には 3 つのレイヤーがあります。これらは、コンテナー数を増やし、使用可能なすべてのスループットを使用するようにチューニングできます。  
+
+* **物理レイヤー**
+* **YARN レイヤー**
+* **ワークロード レイヤー**
+
+### <a name="physical-layer"></a>物理レイヤー
+
+**より多くのノードと大きなサイズの VM、またはそのどちらかで、クラスターを実行します。**  次の図に示すように、クラスターを大きくすると、より多くの YARN コンテナーを実行できます。
+
+![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/VM.png)
+
+**より大きなネットワーク帯域幅を備えた VM を使用します。**  ネットワーク帯域幅が Data Lake Store のスループットよりも小さい場合、ネットワーク帯域幅の容量がボトルネックとなる可能性があります。  VM によって、ネットワーク帯域幅のサイズは異なります。  できる限り大きなネットワーク帯域幅を備えた VM タイプを選択してください。
+
+### <a name="yarn-layer"></a>YARN レイヤー
+
+**より小さい YARN コンテナーを使用します。**  各 YARN コンテナーのサイズを小さくして、同じ容量のリソースを備えたコンテナーの数を増やします。
+
+![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+
+ワークロードによっては、YARN コンテナーが常に必要とする最小サイズが存在します。 選択したコンテナーが小さすぎる場合、ジョブでメモリ不足の問題が発生します。 通常、YARN コンテナーは 1 GB 以上にする必要があります。 3 GB の YARN コンテナーを検討するのが一般的です。 一部のワークロードでは、それよりも大きい YARN コンテナーが必要な場合もあります。  
+
+**YARN コンテナーあたりのコア数を増やします。**  各コンテナーで実行される並列タスクの数を増やすには、各コンテナーに割り当てるコアの数を増やします。  これは、コンテナーごとに複数のタスクを実行する Spark のようなアプリケーションで有効です。  各コンテナーで単一スレッドを実行する Hive のようなアプリケーションでは、コンテナーごとのコア数を増やすよりもコンテナー数を増やすことをお勧めします。   
+
+### <a name="workload-layer"></a>ワークロード レイヤー
+
+**使用可能なすべてのコンテナーを使用します。**  すべてのリソースが使用されるように、タスク数を使用可能なコンテナー数と同じ数、またはそれ以上に設定します。
+
+![Data Lake Store のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+
+**タスクでエラーが発生するとコストがかかります。** 各タスクで大量のデータを処理すると、タスクでエラーが発生した場合、再試行に高いコストがかかることになります。  そのため、多数のタスクを作成し、各タスクで少量のデータを処理するようにすることをお勧めします。
+
+上記の一般的なガイドラインに加え、各アプリケーションには、チューニングで使用できるアプリケーション固有のさまざまなパラメーターがあります。 次の表に、パラメーターの一部と、各アプリケーションでパフォーマンス チューニングを開始するためのリンクを示します。
+
+| ワークロード               | タスク数を設定するパラメーター                                                         |
+|--------------------|-------------------------------------------------------------------------------------|
+| [HDInsight の Spark](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+| [HDInsight の Hive](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
+| [HDInsight の MapReduce](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [HDInsight の Storm](data-lake-store-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)

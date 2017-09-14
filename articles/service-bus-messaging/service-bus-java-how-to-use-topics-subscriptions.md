@@ -1,6 +1,6 @@
 ---
 title: "Java で Azure Service Bus トピックを使用する方法 | Microsoft Docs"
-description: "Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Java アプリケーション向けに作成されています。"
+description: "Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。"
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -12,16 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 06/28/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7132d1e42963d2e419d2bf1b7866ca5888f8719d
-ms.lasthandoff: 03/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: b561d6fdcf4fb2839908ac8f53832fb0830dd576
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Java で Service Bus のトピックとサブスクリプションを使用する方法
+
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 このガイドでは、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは Java で記述され、[Azure SDK for Java][Azure SDK for Java] を使用しています。 ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
@@ -151,7 +152,7 @@ BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-Service Bus トピックに送信されるメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage]*オブジェクトには、一連の標準的なメソッド (**setLabel**や**TimeToLive** など)、アプリケーション固有のカスタム プロパティの保持に使用されるディクショナリ、任意のアプリケーション データの本体が含まれます。アプリケーションでは、[BrokeredMessage][BrokeredMessage] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な**DataContractSerializer** を使用してオブジェクトをシリアル化します。別の方法として、**java.io.InputStream** を使用することもできます。
+Service Bus トピックに送信されるメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage]* オブジェクトには、一連の標準的なメソッド (**setLabel** や **TimeToLive** など)、アプリケーション固有のカスタム プロパティの保持に使用されるディクショナリ、任意のアプリケーション データの本体が含まれます。 アプリケーションでは、[BrokeredMessage][BrokeredMessage] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。 別の方法として、**java.io.InputStream** を使用することもできます。
 
 次の例では、前に示したコード スニペットで取得した `TestTopic` **MessageSender** に 5 通のテスト メッセージを送信する方法を示しています。
 各メッセージの **MessageNumber** プロパティの値がループの反復回数に応じてどのように変化するのかに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。

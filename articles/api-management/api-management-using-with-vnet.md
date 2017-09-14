@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: cf2a063acb2a36af2ff71f45159b2e23c9971b32
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: c733c61132a79381d5e025819ff944507fc3fb9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
@@ -34,7 +33,7 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 ## <a name="enable-vpn"> </a>VNET 接続の有効化
 > [!NOTE]
-> VNET 接続は、**Premium** レベルと **Developer** レベルで利用できます。 レベルを切り替えるには、Azure Portal で API Management サービスを開き、**[スケールと料金]** タブを開きます。 **[価格レベル]** セクションで、Premium または Developer レベルを選択し、[保存] をクリックします。
+> VNET 接続は、**Premium** レベルと **Developer** レベルで利用できます。 レベルを切り替えるには、Azure Portal で API Management サービスを開き、**[スケールと料金]** タブを開きます。**[価格レベル]** セクションで、Premium または Developer レベルを選択し、[保存] をクリックします。
 >
 
 VNET 接続を有効にするには、Azure Portal で API Management サービスを開き、**[仮想ネットワーク]** ページに切り替えます。
@@ -94,7 +93,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 * **カスタム DNS サーバーのセットアップ**: API Management サービスは、複数の Azure サービスに依存します。 カスタム DNS サーバーを使用して VNET で API Management をホストする場合、その DNS サーバーはこれらの Azure サービスのホスト名を解決する必要があります。 カスタム DNS のセットアップについては、 [こちらの](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) ガイダンスに従ってください。 下にあるポートの表とその他のネットワーク要件を参照してください。
 
 > [!IMPORTANT]
-> VNET でカスタム DNS サーバーを使用する場合は、API Management サービスをデプロイする**前**にサーバーをセットアップすることをお勧めします。 それ以外の場合、[ネットワーク構成の処理の適用](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservices#ApiManagementServices_ApplyNetworkConfigurationUpdates)を実行して DNS サーバー (s) を変更するたびに API Management サービスを更新する必要があります。
+> VNET でカスタム DNS サーバーを使用する場合は、API Management サービスをデプロイする**前**にサーバーをセットアップすることをお勧めします。 それ以外の場合、[ネットワーク構成の処理の適用](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservice#ApiManagementService_ApplyNetworkConfigurationUpdates)を実行して DNS サーバー (s) を変更するたびに API Management サービスを更新する必要があります。
 
 * **API Management に必要なポート**: API Management がデプロイされるサブネットへの受信トラフィックと送信トラフィックは[ネットワーク セキュリティ グループ][Network Security Group]を使用して制御できます。 これらのポートのいずれかが利用できない場合、API Management は正しく動作しない可能性があり、アクセス不能になる場合があります。 VNET で API Management を使用した場合の不正な構成に関するその他の一般的な問題として、これらの 1 つまたは複数のポートがブロックされていることが挙げられます。
 
@@ -109,11 +108,13 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 11000 - 11999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / 14000 - 14999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / 5671 |送信 |AMQP |Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| 6381 - 6383 / 6381 - 6383 |受信および送信 |UDP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |-
+| 6381 - 6383 / 6381 - 6383 |受信および送信 |TCP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |-
 | * / 445 |送信 |TCP |GIT のための Azure ファイル共有への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / * | 受信 |TCP |Azure インフラストラクチャの Load Balancer | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部 / 内部 |
 
-* **SSL 機能**: SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。
+* **SSL 機能**: SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。API Management にアップロードする任意の証明書に CA ルートへの完全なチェーンが含まれている場合、この依存関係は必要ありません。
+
+* **DNS アクセス**: DNS サーバーとの通信には、ポート 53 での発信アクセスが必要です。 カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは API Management をホストしているサブネットから到達できる必要があります。
 
 * **メトリックと正常性の監視**: Azure Monitoring エンドポイントへの発信ネットワーク接続、次のドメインで解決されます: global.metrics.nsatc.net、shoebox2.metrics.nsatc.net、prod3.metrics.nsatc.net。
 
@@ -126,6 +127,10 @@ API Management サービス インスタンスが VNET でホストされてい�
 >[!WARNING]  
 >Azure API Management は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。 これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure API Management インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。 このネットワーク フローでは、Azure API Management が機能しません。 この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
 
+
+## <a name="troubleshooting"></a>トラブルシューティング
+ネットワークを変更するときは、[NetworkStatus API](https://docs.microsoft.com/en-us/rest/api/apimanagement/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
+
 ## <a name="limitations"> </a>制限事項
 * API Management インスタンスが含まれるサブネットには、その他の Azure リソースの種類を含めることはできません。
 * サブネットと API Management サービスは、同じサブスクリプション内になければなりません。
@@ -135,7 +140,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 
 
 ## <a name="related-content"> </a>関連コンテンツ
-* [VPN Gateway を使用して Virtual Network をバックエンドに接続する](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)
+* [VPN Gateway を使用して Virtual Network をバックエンドに接続する](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [異なるデプロイ モデルの Virtual Network を PowerShell を使用して接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management で API Inspector を使用して呼び出しをトレースする方法](api-management-howto-api-inspector.md)
 

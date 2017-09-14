@@ -3,7 +3,7 @@ title: "Azure Network Watcher のリソース トラブルシューティング�
 description: "このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
-ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 9c7ce71674a851d598ef48eb430127c9a6bddb84
+ms.date: 06/19/2017
+ms.author: jdial
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
-仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 こうしたゲートウェイおよび接続について監視することは、通信が妨げられないようにする上で重要です。 Network Watcher には、仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能が備わっています。 この機能は、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は実行時間の長いトランザクションであり、結果は診断が完了してから返されます。
+仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 こうしたゲートウェイおよび接続について監視することは、通信が妨げられないようにする上で重要です。 Network Watcher には、仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能が備わっています。 この機能は、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は実行時間の長いトランザクションであり、結果は診断が完了してから返されます。
+
+![ポータル][2]
 
 ## <a name="results"></a>結果
 
@@ -77,8 +79,26 @@ ms.lasthandoff: 04/25/2017
 | 認証 | 事前共有キーが一致しません。 | はい|
 | PeerReachability | ピア ゲートウェイに到達できません。 | はい|
 | IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
-| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|
+| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |あり|
 
+## <a name="supported-gateway-types"></a>サポートされるゲートウェイの種類
+
+次に示したのは、Network Watcher のトラブルシューティングでサポートされるゲートウェイと接続の一覧です。
+|  |  |
+|---------|---------|
+|**ゲートウェイの種類**   |         |
+|VPN      | サポートされています        |
+|ExpressRoute | サポートされていません |
+|Hypernet | サポートされていません|
+|**VPN の種類** | |
+|ルート ベース | サポートされています|
+|ポリシー ベース | サポートされていません|
+|**接続の種類**||
+|IPSec| サポートされています|
+|VNet2Vnet| サポートされています|
+|ExpressRoute| サポートされていません|
+|Hypernet| サポートされていません|
+|VPNClient| サポートされていません|
 
 ## <a name="log-files"></a>ログ ファイル
 
@@ -89,7 +109,7 @@ ms.lasthandoff: 04/25/2017
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -194,8 +214,9 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>次のステップ
 
-PowerShell を使用して VPN ゲートウェイと接続について診断する方法については、[PowerShell を使用したゲートウェイのトラブルシューティング](network-watcher-troubleshoot-manage-powershell.md)に関するページを参照してください。
+ポータルを使用して VPN ゲートウェイと接続を診断する方法については、[Azure Portal を使用したゲートウェイのトラブルシューティング](network-watcher-troubleshoot-manage-portal.md)に関するページを参照してください。
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
+[2]: ./media/network-watcher-troubleshoot-overview/portal.png
 

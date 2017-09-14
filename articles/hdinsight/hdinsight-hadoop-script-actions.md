@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Script Action 開発 | Microsoft Docs"
+title: "HDInsight でのスクリプト アクション開発 - Azure | Microsoft Docs"
 description: "Script Action を使用して Hadoop クラスターをカスタマイズする方法について説明します。 Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 989f45eed033409b1ade183827719acdd9a4b0b4
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 04f79442b72a58abb0eba9c2162e0b7b9d390e41
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>HDInsight の Windows ベースのクラスター用 Script Action スクリプトを開発する
@@ -29,7 +29,7 @@ HDInsight 用の Script Action スクリプトを記述する方法について�
 
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight でのスクリプト アクションの開発 (Linux) ](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight でのスクリプト アクションの開発 (Linux) ](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
 >
 >
 
@@ -46,7 +46,7 @@ Script Action は、Hadoop クラスターで実行される追加のソフト�
 >
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
-Windows オペレーティング システムで HDInsight クラスターを作成する場合、Script Action は、Azure PowerShell スクリプトです。サイト構成ファイルを構成するためのサンプル スクリプトを次に示します。
+Windows オペレーティング システムで HDInsight クラスターを作成する場合、スクリプト アクションは Azure PowerShell スクリプトです。 サイト構成ファイルを構成するためのサンプル スクリプトを次に示します。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -97,7 +97,7 @@ Windows オペレーティング システムで HDInsight クラスターを作
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 
-これらのパラメーターは、hive-site.xml ファイルの hive.metastore.client.socket.timeout  の値を 90 に設定します。  既定値は 60 秒です。
+これらのパラメーターは、hive-site.xml ファイルの hive.metastore.client.socket.timeout の値を 90 に設定します。  既定値は 60 秒です。
 
 このサンプル スクリプトは、 [https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1)からも入手できます。
 
@@ -118,7 +118,7 @@ Script Action は、Azure ポータル、Azure PowerShell から、または HDI
 >
 
 ## <a name="helper-methods-for-custom-scripts"></a>カスタム スクリプトのためのヘルパー メソッド
-Script Action ヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらは [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1)で定義されており、次を使用してスクリプトに含めることができます。
+Script Action ヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらのメソッドは [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) で定義されており、次のサンプルを使用してスクリプトに含めることができます。
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -177,12 +177,12 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
     クラスター ノードが再イメージ化されると、C:\ リソース ドライブと D:\ システム ドライブは再フォーマットされ、それらのドライブにインストールされたデータとアプリケーションが失われる可能性があります。 これは、クラスターの一部である Azure 仮想マシン (VM) ノードが停止して、新しいノードに置き換えられた場合にも起こる可能性があります。 コンポーネントは D:\ ドライブやクラスタ上の C:\apps にインストールできます。 C:\ ドライブのその他の場所はすべて予約されています。 クラスターのカスタマイズのスクリプトに、アプリケーションやライブラリがインストールされる場所を指定します。
 * クラスターのアーキテクチャの高可用性を確保
 
-    HDInsight は、高可用性を確保するために、アクティブ / パッシブ アーキテクチャを備えています。1 つのヘッドノードはアクティブ モード (HDInsight サービスが実行されている) であり、その他のヘッドノードはスタンバイ モード (HDInsight サービスが実行されていない) です。 HDInsight サービスが中断されると、ノードはアクティブ モードおよびパッシブ モードを切り替えます。 高可用性を確保する目的で Script Action を使用して両方のヘッド ノードにサービスをインストールする場合、HDInsight のフェールオーバー メカニズムが、このようなユーザーがインストールしたサービスを自動的にフェールオーバーできなくなるため、注意してください。 そのため、高可用性が期待される HDInsight ヘッド ノードにユーザーがインストールしたサービスは、アクティブ/パッシブ モードの場合に独自のフェールオーバーのメカニズムを持つか、アクティブ　 / アクティブ モードになる必要があります。
+    HDInsight は、高可用性を確保するために、アクティブ / パッシブ アーキテクチャを備えています。1 つのヘッドノードはアクティブ モード (HDInsight サービスが実行されている) であり、その他のヘッドノードはスタンバイ モード (HDInsight サービスが実行されていない) です。 HDInsight サービスが中断されると、ノードはアクティブ モードおよびパッシブ モードを切り替えます。 高可用性を確保する目的でスクリプト アクションを使用して両方のヘッド ノードにサービスをインストールする場合、HDInsight のフェールオーバー メカニズムが、このようなユーザーがインストールしたサービスを自動的にフェールオーバーできなくなるため、注意してください。 そのため、高可用性が期待される HDInsight ヘッド ノードにユーザーがインストールしたサービスは、アクティブ/パッシブ モードの場合に独自のフェールオーバーのメカニズムを持つか、アクティブ　 / アクティブ モードになる必要があります。
 
-    *ClusterRoleCollection* パラメーターに値としてヘッドノードの役割を指定すると、両方のヘッドノードで HDInsight のスクリプト アクション コマンドが実行されます。 そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。 両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。 また、再イメージ化の際にデータが失われるので、Script Action を通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。 多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。 同時に再イメージ化できる、クラスター内のノードは最大で 1/5 であることをに注意してください。
+    *ClusterRoleCollection* パラメーターに値としてヘッドノードの役割を指定すると、両方のヘッドノードで HDInsight のスクリプト アクション コマンドが実行されます。 そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。 両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。 また、再イメージ化の際にデータが失われるので、スクリプト アクションを通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。 多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。 同時に再イメージ化できる、クラスター内のノードは最大で 1/5 であることに注意してください。
 * Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
-    クラスター ノードにインストールするカスタム コンポーネントは、Hadoop 分散ファイル システム (HDFS) ストレージを使用するように既定で構成されている場合があります。 代わりに Azure BLOB ストレージを使用するには、構成を変更する必要があります。 クラスターの再イメージ化の際に、HDFS ファイル システムはフォーマットされ、保管されているすべてのデータが失われます。 代わりに Azure BLOB ストレージを使用すると、データは確実に保持されます。
+    クラスター ノードにインストールするカスタム コンポーネントは、Hadoop 分散ファイル システム (HDFS) ストレージを使用するように既定で構成されている場合があります。 代わりに Azure BLOB ストレージを使用するには、構成を変更する必要があります。 クラスターの再イメージ化の際に、HDFS ファイル システムはフォーマットされ、保管されているすべてのデータが失われます。 代わりに Azure Blob Storage を使用すると、データは確実に保持されます。
 
 ## <a name="common-usage-patterns"></a>一般的な使用パターン
 このセクションでは、独自のカスタム スクリプトの書き込み中に発生する可能性がある一般的な使用状況パターンの実装についてのガイダンスを提供します。
@@ -200,12 +200,12 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-この例では、ストレージ アカウント「somestorageaccount」のコンテナー「somecontainer」を、パブリックからアクセスできるようにする必要があります。 そうしないと、スクリプトは「Not Found」例外をスローして失敗します。
+この例では、ストレージ アカウント「somestorageaccount」のコンテナー「somecontainer」を、パブリックからアクセスできるようにする必要があります。 そうしないと、スクリプトは "Not Found" 例外をスローして失敗します。
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Add-AzureRmHDInsightScriptAction コマンドレットにパラメーターを渡す
 複数のパラメーターを Add-AzureRmHDInsightScriptAction コマンドレットに渡すには、スクリプトのすべてのパラメーターを格納する文字列値の書式を設定する必要があります。 For example:
 
-    "-CertifcateUri wasbs:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
+    "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 
 または
 

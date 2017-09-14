@@ -4,7 +4,7 @@ description: "アセットに安全にアクセスできる ContentKey を作成
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c547afd9535eb4764caf6b37d4e38a22f6e88186
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成
@@ -67,7 +68,7 @@ Media Services では、暗号化されたアセットを作成して送信で�
         EnvelopeEncryption = 4
     }
 
-## <a name="a-idenvelopecontentkeyacreate-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>エンベロープ タイプの ContentKey の作成
+## <a id="envelope_contentkey"></a>エンベロープ タイプの ContentKey の作成
 次のコード スニペットでは、エンベロープ暗号化タイプのコンテンツ キーを作成します。 その後、キーを指定されたアセットに関連付けます。
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -104,7 +105,7 @@ Media Services では、暗号化されたアセットを作成して送信で�
 
 
 
-## <a name="a-idcommoncontentkeyacreate-common-type-contentkey"></a><a id="common_contentkey"></a>共通タイプの ContentKey の作成
+## <a id="common_contentkey"></a>共通タイプの ContentKey の作成
 次のコード スニペットでは、共通暗号化タイプのコンテンツ キーを作成します。 その後、キーを指定されたアセットに関連付けます。
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -147,10 +148,5 @@ Media Services では、暗号化されたアセットを作成して送信で�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

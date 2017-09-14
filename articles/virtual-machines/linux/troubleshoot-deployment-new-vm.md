@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2016
 ms.author: cjiang
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7e8e54aad26ddec8be9f6e13931e42f4cc07843f
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: aea5db05843b0175b8ef8b713944e12262e33010
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -27,6 +28,10 @@ ms.lasthandoff: 04/03/2017
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
+## <a name="top-issues"></a>代表的な問題
+[!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
+
+VM デプロイに関するその他の問題や質問については、「[Troubleshoot deploying Linux virtual machine issues in Azure](troubleshoot-deploy-vm.md) (Azure での Linux 仮想マシンのデプロイに関する問題のトラブルシューティング)」を参照してください。
 ## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
 トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 

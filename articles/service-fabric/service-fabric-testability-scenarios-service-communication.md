@@ -12,15 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric Testability シナリオ: サービス通信
+# Service Fabric Testability シナリオ: サービス通信
+<a id="service-fabric-testability-scenarios-service-communication" class="xliff"></a>
 マイクロサービスおよびサービス指向アーキテクチャ スタイルは、Azure Service Fabric に無理なく適用できます。 このような種類の分散アーキテクチャでは、コンポーネント化されたマイクロサービス アプリケーションは、相互に通信する必要がある複数のサービスで構成されることが一般的です。 一般的に、最も単純な場合でも、相互に通信する必要があるステートレス Web サービスとステートフル データ ストレージ サービスが最低限必要です。
 
 各サービスは他のサービスに対してリモート API を公開するため、サービス間の通信はアプリケーションの重要な統合ポイントです。 I/O を伴う一連の API 境界を操作するには、一般的に多少の注意と、テストと検証を十分に行う必要があります。
@@ -33,7 +36,8 @@ ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
 
 Service Fabric によって提供されるいずれかの組み込みサービス通信コンポーネントを使用する場合も、独自のコンポーネントを構築する場合も、サービス間の対話をテストすることは、アプリケーションの回復性を確保するために不可欠です。
 
-## <a name="prepare-for-services-to-move"></a>サービスを移動する準備をする
+## サービスを移動する準備をする
+<a id="prepare-for-services-to-move" class="xliff"></a>
 サービス インスタンスは、時間の経過と共に移動することがあります。 これは、カスタム調整された最適なリソース分散のためのロード メトリックが構成されている場合に特に当てはまります。 Service Fabric は、アップグレード、フェールオーバー、スケールアウト、および分散システムの有効期間に発生するその他の状況下でも、サービス インスタンスを移動することでその可用性を最大化します。
 
 サービスはクラスター全体を移動するため、クライアントやその他サービスは、サービスとの通信時に対応できるように、2 つのシナリオに合わせて準備する必要があります。
@@ -47,7 +51,8 @@ Service Fabric によって提供されるいずれかの組み込みサービ�
 * サービス インスタンスがリスナーを再度開始するときに、サービスの待機時間が一時的に増加する可能性があります。 これは、サービス インスタンスが移動された後で、サービスがどれだけ迅速に開くかによって決まります。
 * 既存の接続を閉じ、新しいノードでサービスが開いた後で再度開く必要があります。 グレースフルなノードのシャットダウンまたは再起動では、既存の接続を正常にシャットダウンするための時間が与えられます。
 
-### <a name="test-it-move-service-instances"></a>テスト: サービス インスタンスの移動
+### テスト: サービス インスタンスの移動
+<a id="test-it-move-service-instances" class="xliff"></a>
 Service Fabric の Testability ツールを使用して、このような状況をさまざまな方法でテストするためのテスト シナリオを作成できます。
 
 1. ステートフル サービスのプライマリ レプリカを移動します。
@@ -71,12 +76,14 @@ Service Fabric の Testability ツールを使用して、このような状況�
    
     ```
 
-## <a name="maintain-service-availability"></a>サービスの可用性の維持
+## サービスの可用性の維持
+<a id="maintain-service-availability" class="xliff"></a>
 プラットフォームとして、Service Fabric は、サービスの高可用性を実現するように設計されています。 ただし、極端な場合は、基盤となるインフラストラクチャの問題が原因で、可用性が失われる可能性があります。 これらのシナリオをテストすることも重要です。
 
 ステートフル サービスは、クォーラム ベースのシステムを使用して、高可用性の状態をレプリケートします。 つまり、書き込み操作を実行するためには、レプリカのクォーラムを利用できる必要があります。 広範囲にわたるハードウェアの障害などのまれなケースで、レプリカのクォーラムを使用できない場合があります。 この場合、書き込み操作を実行することはできませんが、読み取り操作は実行できます。
 
-### <a name="test-it-write-operation-unavailability"></a>テスト: 書き込み操作を実行できない
+### テスト: 書き込み操作を実行できない
+<a id="test-it-write-operation-unavailability" class="xliff"></a>
 Service Fabric の Testability ツールを使用して、テストとしてクォーラム損失を誘発させる障害を注入できます。 そのようなシナリオはめったにありませんですが、ステートフル サービスに依存するクライアントとサービスは、ステートフル サービスに書き込み要求ができない状況に対処できるように準備しておくことが重要です。 ステートフル サービス自体がこのような可能性を認識し、呼び出し元に対してグレースフルな通知を行えることも同様に重要です。
 
 クォーラム損失は、PowerShell の **Invoke-ServiceFabricPartitionQuorumLoss** コマンドレットを使用して誘発させることができます。
@@ -89,14 +96,10 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 この例では、`QuorumLossMode` を `QuorumReplicas` に設定して、すべてのレプリカを停止させることなくクォーラム損失を誘発させることを指示します。 これにより、読み取り操作は引き続き可能です。 パーティション全体が使用できない状況をテストする場合は、このスイッチを `AllReplicas`に設定することができます。
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 [Testability アクションの詳細](service-fabric-testability-actions.md)
 
 [Testability シナリオの詳細](service-fabric-testability-scenarios.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

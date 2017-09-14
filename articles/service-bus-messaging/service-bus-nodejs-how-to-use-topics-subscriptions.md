@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 4e145740f8485e4a02c70f2c9d3a9fa6057da635
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3ffaf1d9102d189468d047b2a0cf11e73e944620
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
+
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 このガイドでは、Node.js アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。 ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。 トピックとサブスクリプションの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
@@ -62,11 +62,11 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
-Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。 これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
+Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 `AZURE_SERVICEBUS_NAMESPACE` と `AZURE_SERVICEBUS_ACCESS_KEY` を読み取ります。 これらの環境変数が設定されていない場合、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][Node.js Cloud Service with Storage]をご覧ください。
+Azure Cloud Service の環境変数を設定する例については、[Storage を使用する Node.js Cloud Service][Node.js Cloud Service with Storage] に関する記事をご覧ください。
 
-Azure Web サイトの Azure クラシック ポータル[Azure classic portal]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
+Azure Web サイトの環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]に関する記事をご覧ください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
@@ -75,7 +75,7 @@ Azure Web サイトの Azure クラシック ポータル[Azure classic portal]�
 var serviceBusService = azure.createServiceBusService();
 ```
 
-**ServiceBusService** オブジェクトで **createTopicIfNotExists** を呼び出すことによって、指定されたトピックが返されるか (存在する場合)、指定された名前で新しいトピックが作成されます。 次のコードでは、**createTopicIfNotExists** を使用して、"MyTopic" という名前のトピックを作成、またはトピックに接続します。
+**ServiceBusService** オブジェクトで `createTopicIfNotExists` を呼び出すことによって、指定されたトピックが返されるか (存在する場合)、指定された名前で新しいトピックが作成されます。 次のコードでは、`createTopicIfNotExists` を使用して、`MyTopic` という名前のトピックを作成、またはキューに接続します。
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -86,7 +86,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-**createServiceBusService** は追加のオプションもサポートしています。これにより、メッセージの有効期間や最大トピック サイズなどの既定のトピックの設定をオーバーライドできます。 次の例では、最大トピック サイズを 5 GB に、有効期間を 1 分に設定します。
+`createServiceBusService` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間や最大トピック サイズなどの既定のトピックの設定をオーバーライドできます。 次の例では、最大トピック サイズを 5 GB に、有効期間を 1 分に設定します。
 
 ```javascript
 var topicOptions = {
@@ -114,7 +114,7 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-このコールバックで、**returnObject** (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に **finalCallback** を呼び出す必要があります (サービス呼び出しを終了する場合)。
+このコールバックで、`returnObject` (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、`finalCallback` を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
 再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **ServiceBusService** オブジェクトを作成します。
 
@@ -127,7 +127,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 トピック サブスクリプションも **ServiceBusService** オブジェクトで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定できます。
 
 > [!NOTE]
-> サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に **getSubscription** メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
+> サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に `getSubscription` メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
 >
 >
 
@@ -147,14 +147,14 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式について詳しくは、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明をご覧ください。
 
-フィルターをサブスクリプションに追加するには、**ServiceBusService** オブジェクトの **createRule** メソッドを使用します。 このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
+フィルターをサブスクリプションに追加するには、**ServiceBusService** オブジェクトの `createRule` メソッドを使用します。 このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
 > [!NOTE]
-> 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。 既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
+> 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。 既定のルールを削除するには、**ServiceBusService** オブジェクトの `deleteRule` メソッドを使用します。
 >
 >
 
-次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム **messagenumber** プロパティが 3 を超えるメッセージのみが選択されます。
+次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム `messagenumber` プロパティが 3 を超えるメッセージのみが選択されます。
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -189,7 +189,7 @@ var rule={
 }
 ```
 
-同様に、次の例では `LowMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、**messagenumber** プロパティが 3 以下のメッセージのみが選択されます。
+同様に、次の例では `LowMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、`messagenumber` プロパティが 3 以下のメッセージのみが選択されます。
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -227,11 +227,11 @@ var rule={
 メッセージが `MyTopic` に送信されると、そのメッセージは `AllMessages` トピック サブスクリプションにサブスクライブしている受信者に必ず配信され、さらにメッセージのコンテンツに応じて、`HighMessages` と `LowMessages` トピック サブスクリプションにサブスクライブしている受信者に対して選択的に配信されます。
 
 ## <a name="how-to-send-messages-to-a-topic"></a>メッセージをトピックに送信する方法
-メッセージを Service Bus トピックに送信するには、アプリケーションで **ServiceBusService** オブジェクトの **sendTopicMessage** メソッドを使用する必要があります。
+メッセージを Service Bus トピックに送信するには、アプリケーションで **ServiceBusService** オブジェクトの `sendTopicMessage` メソッドを使用する必要があります。
 Service Bus トピックに送信されたメッセージは **BrokeredMessage** オブジェクトです。
-**BrokeredMessage** オブジェクトには、(**Label** や **TimeToLive** などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、および文字列データの本体が備わっています。 アプリケーションでは、文字列値を **sendTopicMessage** に渡すことによってメッセージの本文を設定できます。必須の標準プロパティは既定値に設定されます。
+**BrokeredMessage** オブジェクトには、(`Label` や `TimeToLive` などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、および文字列データの本体が備わっています。 アプリケーションでは、文字列値を `sendTopicMessage` に渡すことによってメッセージの本文を設定できます。必須の標準プロパティは既定値に設定されます。
 
-次の例では、"MyTopic" にテスト メッセージを 5 通送信する方法を示しています。 各メッセージの **messagenumber** プロパティの値がループの反復回数に応じて変化することに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
+次の例では、`MyTopic` トピックに 5 件のテスト メッセージを送信する方法を示しています。 各メッセージの `messagenumber` プロパティの値がループの反復回数に応じて変化することに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
 
 ```javascript
 var message = {
@@ -255,14 +255,14 @@ for (i = 0;i < 5;i++) {
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの  **receiveSubscriptionMessage** メソッドを使用します。 既定では、メッセージは読み取られるときにサブスクリプションから削除されますが、省略可能な **isPeekLock** パラメーターを **true** に設定することによって、サブスクリプションからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
+サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの `receiveSubscriptionMessage` メソッドを使用します。 既定では、メッセージは読み取られるときにサブスクリプションから削除されますが、省略可能な `isPeekLock` パラメーターを **true** に設定することによって、サブスクリプションからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
 
 受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**isPeekLock** パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。
+`isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。
 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**deleteMessage** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。 **deleteMessage** メソッドによって、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
 
-次の例では、**receiveSubscriptionMessage** を使用したメッセージの受信および処理の方法を示しています。 この例では、最初に "LowMessages" サブスクリプションからメッセージを受信して削除し、次に true に設定した **isPeekLock** を使用して "HighMessages" サブスクリプションからメッセージを受信します。 次に、**deleteMessage** を使用してメッセージを削除します。
+次の例では、`receiveSubscriptionMessage` を使用したメッセージの受信および処理の方法を示しています。 この例では、最初に "LowMessages" サブスクリプションからメッセージを受信して削除し、次に true に設定した `isPeekLock` を使用して "HighMessages" サブスクリプションからメッセージを受信します。 次に、`deleteMessage` を使用してメッセージを削除します。
 
 ```javascript
 serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
@@ -286,14 +286,14 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの **unlockMessage** メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの `unlockMessage` メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
 
 サブスクリプション内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によりメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、**deleteMessage** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上の処理* と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、`deleteMessage` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上の処理* と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。
+トピックおよびサブスクリプションは永続的であり、[Azure Portal][Azure portal] またはプログラムによって明示的に削除する必要があります。
 次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
 ```javascript
@@ -329,5 +329,5 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js Web Application with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
+[Node.js Web Application with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
 

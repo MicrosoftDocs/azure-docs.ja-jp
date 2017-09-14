@@ -2,7 +2,7 @@
 title: ".NET を使用した Azure Media Services コンテンツの発行 | Microsoft Docs"
 description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 08/09/2017
 ms.author: juliako
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 37f6cd3a25c36fe27c9c711a430a2fc11e50906e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="publish-azure-media-services-content-using-net"></a>.NET を使用した Azure Media Services コンテンツの発行

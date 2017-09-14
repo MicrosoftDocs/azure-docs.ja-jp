@@ -4,7 +4,7 @@ description: "IoT Hub の IoT 温度の監視と、検出された異常に関�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "IoT の監視、IoT の通知、IoT の温度の監視"
 ms.assetid: 43043067-2e1f-42c9-953d-e2dce8fd86df
@@ -13,14 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/25/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 2cdfbadfc4cc28afe34b4d558f40bba6451f7388
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ca27c55f97d1b1d9694bf79282b7714283927ee7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
@@ -145,6 +144,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    1. 作成したキューを選択し、[**Maximum message count**] \(最大メッセージ数) に「`175`」と入力する
 
       ![ロジック アプリで Service Bus 接続の最大メッセージ数を指定する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8_specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
+   1. [保存] ボタンをクリックして、変更を保存します。
 
 1. SMTP サービス接続を作成します。
    1. [**新しいステップ**]  >  [**アクションの追加**] をクリックします。
@@ -176,3 +176,4 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリが正常に作成されました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

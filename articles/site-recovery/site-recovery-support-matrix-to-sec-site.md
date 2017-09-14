@@ -4,7 +4,7 @@ description: "Azure Site Recovery でサポートされているオペレーテ�
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 
 ms.service: site-recovery
@@ -12,28 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/08/2017
+ms.date: 05/24/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: d53d4cfdc7b673d2816fa9372dedbed540380cce
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: db7ee5251f2e2016081e55ca4b295e284c8b08cf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/15/2017
 
 
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス
 
-> [!div class="op_single_selector"]
-> * [Azure へのレプリケート](site-recovery-support-matrix-to-azure.md)
-> * [オンプレミスの保存先へのレプリケート](site-recovery-support-matrix-to-sec-site.md)
-
 この記事では、Azure Site Recovery を使用してセカンダリのオンプレミス サイトにレプリケートする際のサポートについて説明します。
 
 ## <a name="deployment-options"></a>デプロイ オプション
 
-**デプロイ** | **VMware/物理サーバー** | **Hyper-V (SCVMM あり/なし)
+**デプロイ** | **VMware/物理サーバー** | **Hyper-V (SCVMM あり/なし)**
 --- | --- | --- | ---
-**Azure ポータル** | オンプレミスの VMware VM をセカンダリ VMware サイトにレプリケートします。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)をダウンロードします (Azure Portal では入手できません)。 | VMM クラウドのオンプレミスの Hyper-V VM をセカンダリ VMM クラウドにレプリケートします。<br></br> SCVMM なしではサポートされていません。  <br/><br/> 標準の Hyper-V レプリケーションのみ。 SAN はサポートされていません。
+**Azure ポータル** | オンプレミスの VMware VM をセカンダリ VMware サイトにレプリケートします。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)をダウンロードします (Azure Portal では入手できません)。 | VMM クラウドのオンプレミスの Hyper-V VM をセカンダリ VMM クラウドにレプリケートします。<br></br> VMM なしではサポートされていません  <br/><br/> 標準の Hyper-V レプリケーションのみ。 SAN はサポートされていません。
 **クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ<br></br> SCVMM なしではサポートされていません。
 **PowerShell** | サポートされていません | サポートされています<br></br> SCVMM なしではサポートされていません。
 
@@ -140,5 +137,6 @@ RDM | はい | 該当なし
 
 ## <a name="next-steps"></a>次のステップ
 
-[デプロイメントの前提条件](site-recovery-prereq.md)を確認してください。
+- [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](site-recovery-vmm-to-vmm.md)
+- [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
 

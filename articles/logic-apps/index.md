@@ -2,7 +2,7 @@
 title: "Azure Logic Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "オンプレミスとクラウドにまたがるビジネス ワークフローを自動化および簡略化するロジック アプリを開発する方法について説明します。 チュートリアル、テンプレート、および API リファレンスを提供します。"
 services: logic-apps
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

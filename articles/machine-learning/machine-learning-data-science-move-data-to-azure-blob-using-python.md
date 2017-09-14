@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
-ms.openlocfilehash: fb34986d947175ae4b4212e5bd0a1e90836ed170
-ms.lasthandoff: 12/07/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0eea1ff8e4f4c1d108445e1a1250b6fa8ff48910
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>Python を使用して Azure Blob Storage 間でデータを移動する
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/07/2016
 * コンテナー内の BLOB を一覧表示する
 * BLOB を削除する
 
-Python API を使用する方法の詳細については、「 [Python から Azure BLOB ストレージを使用する方法](../storage/storage-python-how-to-use-blob-storage.md)」を参照してください。
+Python API を使用する方法の詳細については、「 [Python から Azure BLOB ストレージを使用する方法](../storage/blobs/storage-python-how-to-use-blob-storage.md)」を参照してください。
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -38,7 +38,7 @@ Python API を使用する方法の詳細については、「 [Python から Az
 > [Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、AzCopy は既に VM にインストールされています。
 > 
 > [!NOTE]
-> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。
+> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。
 > 
 > 
 
@@ -46,7 +46,7 @@ Python API を使用する方法の詳細については、「 [Python から Az
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。 データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
+* ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
 
 ## <a name="upload-data-to-blob"></a>BLOB へのデータのアップロード
 プログラム的に Azure ストレージにアクセスするためのすべての Python コードの先頭付近に、次のスニペットを追加します。

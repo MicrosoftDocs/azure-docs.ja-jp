@@ -3,26 +3,27 @@ title: "Azure RBAC のカスタム ロールの作成 | Microsoft Docs"
 description: "Azure サブスクリプションのきめ細かい ID 管理を実現するために Azure のロールベースのアクセス制御でカスタム ロールを定義する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
-editor: 
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/21/2017
-ms.author: kgremban
+ms.date: 07/11/2017
+ms.author: andredm
+ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e7a85813ae5e26f402837774a40fa3630a436bee
-ms.lasthandoff: 03/31/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 0479f3c4bb65d208cae2424071dface5606a6fa6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のためのカスタム ロールを作成する
-組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。 カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス](role-based-access-control-manage-access-azure-cli.md) (CLI)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure AD テナントで保存され、そのテナントをサブスクリプションの Azure AD ディレクトリとして使用するすべてのサブスクリプションで共有することができます。
+組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。 カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス](role-based-access-control-manage-access-azure-cli.md) (CLI)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure AD テナントに保存され、サブスクリプション間で共有することができます。
 
 各テナントには、最大 2,000 個のカスタム ロールを作成できます。 
 
@@ -87,7 +88,7 @@ azure provider operations show "Microsoft.Network/*"
 制限対象の操作を除外する方が、許可する操作セットを容易に定義できる場合は、 **NotActions** プロパティを使用します。 カスタム ロールによって実際に付与されるアクセス権は、**Actions** の操作から **NotActions** の操作を差し引くことで算出されます。
 
 > [!NOTE]
-> **NotActions**で特定の操作を除外したロールをユーザーに割り当てたうえで、同じユーザーにその操作へのアクセス権を付与する別のロールを割り当てた場合、ユーザーはその操作の実行が許可されます。 **NotActions** は拒否ルールとは異なり、特定の操作を除外する必要があるときに、許可の対象となる一連の操作を指定しやすくすることを目的としたものに過ぎません。
+> **NotActions** で特定の操作を除外したロールをユーザーに割り当てたうえで、同じユーザーにその操作へのアクセス権を付与する別のロールを割り当てた場合、ユーザーはその操作の実行が許可されます。 **NotActions** は拒否ルールとは異なり、特定の操作を除外する必要があるときに、許可の対象となる一連の操作を指定しやすくすることを目的としたものに過ぎません。
 >
 >
 

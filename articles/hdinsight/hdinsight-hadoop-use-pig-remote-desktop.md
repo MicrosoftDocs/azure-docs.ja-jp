@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Pig とリモート デスクトップの使用 | Microsoft Docs"
+title: "HDInsight での Hadoop Pig とリモート デスクトップの使用 - Azure | Microsoft Docs"
 description: "Pig コマンドを使用して、HDInsight の Windows ベースの Hadoop のクラスターへのリモート デスクトップ接続から Pig Latin ステートメントを実行する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 543483b08b32b7a280979502c5548702995f90af
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ab67d21b65323b7f927cb2197c0e123ebe3351e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>リモート デスクトップ接続から Pig ジョブを実行する
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 このドキュメントでは、Pig コマンドを使用して、Windows ベースの HDInsight クラスターへのリモート デスクトップ接続から Pig Latin ステートメントを実行するチュートリアルを提供します。 Pig Latin では、map 関数や reduce 関数ではなく、データ変換を記述することで MapReduce アプリケーションを作成できます。
 
 > [!IMPORTANT]
-> リモート デスクトップは、オペレーティング システムとして Windows を使用する HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関する記事を参照してください。
+> リモート デスクトップは、オペレーティング システムとして Windows を使用する HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Pig ジョブの実行に関する情報については、[HDInsight と SSH での Pig の使用](hdinsight-hadoop-use-pig-ssh.md)に関するページを参照してください。
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/12/2017
     `grunt>` プロンプトが表示されます。
 3. 次のステートメントを入力します。
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD 'wasb:///example/data/sample.log';
 
     このコマンドは、sample.log ファイルの内容をログ ファイルに読み込みます。 ファイルの内容を表示するには、次のコマンドを使用します。
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 04/12/2017
     </table>
 6. 変換の結果は `STORE` ステートメントで保存することもできます。 たとえば、次のコマンドでは `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
 
-        STORE RESULT into 'wasbs:///example/data/pigout'
+        STORE RESULT into 'wasb:///example/data/pigout'
 
    > [!NOTE]
    > データは、 **part-nnnnn**という名前のファイルの指定したディレクトリに保存されます。 ディレクトリが既に存在する場合は、エラー メッセージが表示します。
@@ -98,7 +98,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 1. エラーを解決したら、**メモ帳**を開き、**%PIG_HOME%** ディレクトリに **pigbatch.pig** という名前の新しいファイルを作成します。
 2. 次の行を **pigbatch.pig** ファイルに入力するか貼り付けて、保存します。
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD 'wasb:///example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
         FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
         GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;

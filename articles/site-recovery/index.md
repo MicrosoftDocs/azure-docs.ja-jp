@@ -2,7 +2,7 @@
 title: "Azure Site Recovery のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "レプリケーションのデプロイと管理を通じて、クラウドベースの障害復旧とビジネス継続性を物理サーバーと仮想マシンに設定する方法について説明します。"
 services: site-recovery
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

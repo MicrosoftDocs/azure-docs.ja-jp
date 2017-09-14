@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/19/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b9e61950654ba427b09dd608d354589a0804aaa5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
@@ -198,6 +198,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 
 ## <a name="next-steps"></a>次のステップ
-「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
+
+サインイン アクティビティのエラー コードの詳細については、「[Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)」を参照してください。
 
 

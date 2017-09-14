@@ -3,7 +3,7 @@ title: "Log Analytics のデータ セキュリティ | Microsoft Docs"
 description: "Log Analytics でプライバシーを保護し、データをセキュリティで保護する方法について説明します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: d0f4323c22858300d95af7407cdb14995507ee60
-ms.openlocfilehash: 952697dff7dca2779a6eb5375afa41c0b130aad4
-ms.lasthandoff: 11/23/2016
-
+ms.date: 05/03/2017
+ms.author: magoedte
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9ae1629462d375c1061d9c7b25975c789ee661c9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
@@ -109,7 +109,9 @@ OMS ソフトウェアの開発とサービスのチームは、Microsoft の法
 ## <a name="certifications-and-attestations"></a>認定と認証
 OMS Log Analytics は、次の要件を満たしています。
 
-* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm) および [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498) 準拠
+* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
+* [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
+* [ISO 22301](https://azure.microsoft.com/en-us/blog/iso22301/)
 * PCI Security Standards Council による [Payment Card Industry (PCI 準拠) データ セキュリティ基準 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [Service Organization Controls (SOC) 1 Type 1 および SOC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) 準拠
 * [HIPAA および HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) (HIPAA Business Associate Agreement を締結している企業向け)
@@ -154,7 +156,7 @@ Azure Virtual Machines 上で実行される Windows エージェントの場合
 前述のように、エージェントからのデータが SSL 経由で Microsoft Azure データ センターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
-Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データはその後、[Microsoft Azure Storage](../storage/storage-introduction.md) で BLOB として暗号化されていない状態で保存されます。 ただし、各 Azure Storage BLOB には、そのユーザーのみがアクセスできる一意のキーのセットがあります。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、Azure Storage BLOB 用の生データを処理します。
+Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データはその後、[Microsoft Azure Storage](../storage/common/storage-introduction.md) で BLOB として暗号化されていない状態で保存されます。 ただし、各 Azure Storage BLOB には、そのユーザーのみがアクセスできる一意のキーのセットがあります。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、Azure Storage BLOB 用の生データを処理します。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 OMS ポータルで Log Analytics にサインインするには、設定済みの組織アカウントまたは Microsoft アカウントを使用します。 OMS ポータルと OMS の Log Analytics 間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 OMS ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、OMS ポータル セッションが終了します。

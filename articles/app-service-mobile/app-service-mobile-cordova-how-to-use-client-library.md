@@ -3,8 +3,8 @@ title: "Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
 description: "Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
 services: app-service\mobile
 documentationcenter: javascript
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
 ms.openlocfilehash: 61aa9e5c004decff18337efe3b1baacfcf9279dc
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/07/2017
-
 
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
@@ -79,7 +79,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 * [cordova-plugin-device]
 * [cordova-plugin-inappbrowser]
 
-サーバー フローとクライアント フローの&2; つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
+サーバー フローとクライアント フローの 2 つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 

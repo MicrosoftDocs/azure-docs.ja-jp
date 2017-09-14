@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2063acbafd6766d00dee9509ee7def73bdc5b982
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>オンプレミスの StorSimple デバイスのデプロイ
@@ -141,7 +142,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 |  | | |
 | **NTP** |NTP サーバーを入力するとすぐに時刻の同期が開始されます。 `time.windows.com` またはパブリック タイム サーバーを入力する場合は、UDP ポート 123 が開いていることを確認します。 |[このスクリプトをダウンロードして使用してください](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca)。 |
 |  | | |
-| **プロキシ (省略可能)** |有効なプロキシ URI とポートかどうか。 </br> この認証モードが正しいかどうか。 |<code>wget http://bing.com &#124; % {$_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。 状態コード 200 が返された場合は、接続が成功したことを示します。 |
+| **プロキシ (省略可能)** |有効なプロキシ URI とポートかどうか。 </br> この認証モードが正しいかどうか。 |<code>wget http://bing.com &#124; % {$_.StatusCode}</code></br>このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。 状態コード 200 が返された場合は、接続が成功したことを示します。 |
 | &nbsp; |トラフィックをプロキシ経由でルーティングできるかどうか。 |デバイスでプロキシを構成した後、DNS の検証、NTP チェック、または HTTP チェックを 1 回実行します。 これによって、プロキシまたは他の場所でトラフィックがブロックされているかどうかが明確になります。 |
 |  | | |
 | **登録** |送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 |`Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらをご覧ください。](https://technet.microsoft.com/library/dn372891.aspx) |
@@ -239,7 +240,7 @@ MPIO を構成しない場合は、次の手順を実行して、StorSimple ボ�
 ## <a name="configure-a-new-storage-account-for-the-service"></a>サービスの新しいストレージ アカウントを構成する
 これは省略可能な手順で、サービスでストレージ アカウントの自動作成を有効にしていない場合のみ実行する必要があります。 StorSimple ボリューム コンテナーを作成するには、Microsoft Azure ストレージ アカウントが必要です。
 
-別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md) 」を参照してください。
+別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md) 」を参照してください。
 
 Azure クラシック ポータルの **[StorSimple Manager サービス]** ページで次の手順に従います。
 
@@ -282,10 +283,5 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 ## <a name="next-steps"></a>次のステップ
 * [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 * [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx) を使用して StorSimple デバイスを管理します。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

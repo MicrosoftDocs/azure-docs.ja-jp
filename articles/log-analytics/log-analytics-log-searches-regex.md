@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 08/08/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6c01fe7a791742d283505057a310891a075029ef
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 9746170f157ed5065adc953a31687ff18bd73708
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>正規表現を使用した Log Analytics のログ検索のフィルター処理
@@ -25,6 +25,9 @@ ms.lasthandoff: 04/12/2017
 [ログ検索](log-analytics-log-searches.md)を使用すると、Log Analytics リポジトリから情報を抽出できます。  [フィルター式](log-analytics-search-reference.md#filter-expressions)を使用すると、特定の条件に従って検索結果をフィルター処理できます。  **RegEx** キーワードを使用すると、そのフィルターの正規表現を指定できます。  
 
 この記事では、Log Analytics で使用される正規表現の構文について詳しく説明します。
+
+> [!NOTE]
+> RegEx は、検索可能なフィールドでのみ使用できます。  検索可能なフィールドの詳細については、[Log Analytics におけるログ検索を使用したデータの検索](log-analytics-log-searches.md#use-additional-filters)に関するページの「**フィールドの型**」を参照してください。
 
 
 ## <a name="regex-keyword"></a>RegEx キーワード

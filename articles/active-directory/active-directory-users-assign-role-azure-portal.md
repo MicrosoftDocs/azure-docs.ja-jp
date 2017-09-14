@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる | Microsoft Docs"
+
+title: "Azure Active Directory でユーザーを管理者ロールに割り当てる | Microsoft Docs"
 description: "Azure Active Directory でユーザーの管理情報を変更する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 06/27/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 3b31bd036d9c3ff8036b314b93cbddd94874ff63
-ms.openlocfilehash: 3778964172946fa928e2a908943f50897957eb42
+ms.reviewer: jeffsta
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: ebbadff39c736ec7364999f7644694e8a177073f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる
-この記事では、Azure Active Directory (Azure AD) プレビューでユーザーに管理者ロールを割り当てる方法について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
+# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でユーザーを管理者ロールに割り当てる
+この記事では、Azure Active Directory (Azure AD) でユーザーに管理者ロールを割り当てる方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
 ## <a name="assign-a-role-to-a-user"></a>ユーザーにロールを割り当てる
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
@@ -43,9 +47,4 @@ ms.openlocfilehash: 3778964172946fa928e2a908943f50897957eb42
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
 * [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 * [Azure AD でのユーザーの削除](active-directory-users-delete-user-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

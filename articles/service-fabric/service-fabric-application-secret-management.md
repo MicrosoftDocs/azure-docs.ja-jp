@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: cc6ef8f3ef5371ac3092686afddc9198516916fd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 12/09/2016
 
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 12/09/2016
 
 ![シークレットの管理の概要][overview]
 
-このフローには、次の&4; つの主な手順があります。
+このフローには、次の 4 つの主な手順があります。
 
 1. データ暗号化証明書を取得します。
 2. クラスターに証明書をインストールします。
@@ -67,7 +68,7 @@ Service Fabric SDK には、シークレットの暗号化と暗号化解除の�
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-生成された Base-64 文字列には、シークレットの暗号化テキストと、暗号化に使用された証明書に関する情報が含まれます。  Base&64; でエンコードされた文字列は、サービスの Settings.xml 構成ファイル内の、`IsEncrypted` 属性が `true` に設定されたパラメーターに挿入できます。
+生成された Base-64 文字列には、シークレットの暗号化テキストと、暗号化に使用された証明書に関する情報が含まれます。  Base 64 でエンコードされた文字列は、サービスの Settings.xml 構成ファイル内の、`IsEncrypted` 属性が `true` に設定されたパラメーターに挿入できます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>

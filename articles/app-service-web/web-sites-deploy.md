@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
-ms.author: cephalin;dariac
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 99ec39d3f0f6e82409de571db1e7c7c9468eb068
-ms.lasthandoff: 04/06/2017
-
+ms.author: cephalin
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 7eff46740cdbc8467c711aada5e6022d82930e31
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="deploy-your-app-to-azure-app-service"></a>Azure App Service へのアプリのデプロイ
@@ -150,7 +150,6 @@ IDE を使用したデプロイの欠点は次のとおりです。
 ### <a name="vs"></a>Visual Studio から直接デプロイする方法
 * [Azure と ASP.NET を使ってみる](app-service-web-get-started-dotnet.md) Visual Studio と Web Deploy を使用して簡単な ASP.NET MVC Web プロジェクトを作成し、デプロイする方法。
 * [Visual Studio を使用した Azure WebJobs のデプロイ方法](websites-dotnet-deploy-webjobs.md)。 コンソール アプリケーション プロジェクトを Web ジョブとしてデプロイするための構成方法。  
-* [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションの Web アプリへのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。 Visual Studio、Web Deploy、Entity Framework、Code First Migrations を使用して、ASP.NET MVC Web プロジェクトを SQL データベースと共に配置する方法。
 * [Visual Studio を使用した ASP.NET Web デプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction)。 12 部構成のチュートリアル シリーズであり、このリスト内に掲載されている他のリソースより詳細にデプロイ タスクの範囲を網羅しています。 チュートリアルを作成した後で、不足している事項を説明するためにメモが追加されたため、一部の Azure デプロイ機能が追加されました。
 * [Git リポジトリから ASP.NET Web サイトを Visual Studio 2012 内にある Azure へ直接のデプロイ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)。 Visual Studio 内で ASP.NET Web プロジェクトをデプロイし、Git プラグインを使用してコードを Git にコミットして、Azure を Git リポジトリに接続する方法について説明します。 Visual Studio 2013 以降、Git のサポートが組み込まれており、プラグインをインストールする必要はありません。
 

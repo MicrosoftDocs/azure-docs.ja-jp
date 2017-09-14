@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 8075ab1f36f66a718b2a53d5f42f0c267d58050f
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 119e8a237f24cdc80a1ab8e376f2b308c9eada05
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="list-of-azure-diagnostics-versions"></a>Azure 診断のバージョンの一覧
+# <a name="azure-diagnostics-extention-configuration-schema-versions-and-history"></a>Azure 診断拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure 診断拡張機能のスキーマのバージョン一覧を示します。  
 
 > [!NOTE]
@@ -131,7 +131,7 @@ PublicConfig にストレージの種類が追加されました。 StorageType 
 ### <a name="diagnostics-extension-17"></a>診断拡張機能 1.7 
 EventHub にルーティングする機能が追加されました。
 
-### <a name="diagnostics-extention-15"></a>診断拡張子 1.5
+### <a name="diagnostics-extension-15"></a>診断拡張機能 1.5
 Sink 要素と、診断データを [Application Insights](../application-insights/app-insights-cloudservices.md) に送信することで、アプリケーションとシステムおよびインフラストラクチャのレベル全体の問題を診断しやすくする機能が追加されました。
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 と診断拡張 1.3 

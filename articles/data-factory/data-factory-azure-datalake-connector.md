@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 08/14/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: 1c653644f36df8560d1f9b0ed202a754565eca46
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/11/2017
-
 
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Data Factory を使用して Data Lake Store との間でデータをコピーする

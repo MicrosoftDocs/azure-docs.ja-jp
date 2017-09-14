@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/23/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 359653f29adc538a4fe2f2143e8132bdd9a9d15b
-ms.lasthandoff: 12/29/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 72514dabf3af0b282d1bb49c542c13f7095e03d8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>デプロイ シナリオおよびユース ケース
@@ -38,7 +38,7 @@ Azure Active Directory Domain Services を使用して、Azure 仮想マシン�
 このデプロイ シナリオについて、次の重要事項を考慮してください。
 
 * Azure AD ドメイン サービスによって提供される管理対象ドメインでは、デフォルトで単一のフラットな OU (組織単位) 構造が提供されます。 すべてのドメインに参加しているコンピューターは、単一のフラットな OU に存在します。 ただし、カスタムの OU を作成することもできます。
-* Azure AD ドメイン サービスは、ユーザーおよびコンピューターに対してそれぞれ組み込み GPO の形式で単純なグループ ポリシーをサポートします。 OU/部門ごとに GP をターゲットとすることも、WMI フィルター処理を実行することも、カスタムの GPO を作成することもできません。
+* Azure AD ドメイン サービスは、ユーザーおよびコンピューターに対してそれぞれ組み込み GPO の形式で単純なグループ ポリシーをサポートします。 カスタム GPO を作成し、それらをカスタム OU に対するターゲットにすることができます。
 * Azure AD ドメイン サービスでは、基本の AD コンピューター オブジェクト スキーマをサポートします。 コンピューター オブジェクトのスキーマを拡張することはできません。
 
 ## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>LDAP バインド認証を使用するオンプレミスのアプリケーションをリフト アンド シフト方式で Azure インフラストラクチャ サービスに移行する
@@ -77,10 +77,8 @@ Contoso には、Web フロントエンド、SQL Server、およびバックエ�
 * アプリケーションが認証でユーザー名とパスワードを使用していることを確認します。 証明書/スマート カード ベースの認証は、Azure AD ドメイン サービスでサポートされていません。
 * 管理対象ドメインに対してパスワード変更を直接行うことはできません。 エンド ユーザーがパスワードを変更するには、Azure AD のセルフサービス パスワード変更メカニズムを使用するか、オンプレミスのディレクトリに対してパスワード変更を行います。 これらの変更は自動的に同期され、管理対象ドメイン内で使用できるようになります。
 
-## <a name="azure-remoteapp"></a>Azure RemoteApp
-Azure RemoteApp は、ドメイン参加コレクションを作成する Contoso の管理者を有効にします。 この機能により、Azure RemoteApp で処理されるリモート アプリケーションがドメイン参加コンピューターで実行されたり、Windows 統合認証を使用して他のリソースにアクセスしたりできるようになります。 Contoso は Azure AD ドメイン サービスを使用して、Azure RemoteApp ドメイン参加コレクションによって使用される管理対象ドメインを提供することができます。
+## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Azure での Windows Server のリモート デスクトップ サービス
+Azure AD Domain Services を使用して、Azure にデプロイされているリモート デスクトップ サーバーに対して、管理された AD ドメイン サービスを提供できます。
 
-![Azure RemoteApp](./media/active-directory-domain-services-scenarios/azure-remoteapp.png)
-
-このデプロイ シナリオの詳細については、「 [Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services (Azure RemoteApp と Azure AD ドメイン サービスを使用したワークロードのリフト アンド シフト)](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)」というタイトルのリモート デスクトップ サービスのブログを参照してください。
+このデプロイ シナリオの詳細については、「[Integrate Azure AD Domain Services with your RDS deployment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds)」(Azure AD Domain Services を RDS デプロイに統合する) でその方法を参照してください。
 

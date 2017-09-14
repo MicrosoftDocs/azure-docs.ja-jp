@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: afecdde0cbc0bcbe0932b23dc1a8e067d02ded12
-ms.lasthandoff: 12/20/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 16d4586d82ed256a90d8eb6be4aab927aed1200a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>データのインポート モジュールで各種オンライン データ ソースから Azure Machine Learning Studio にデータをインポートする
@@ -44,6 +44,7 @@ ms.lasthandoff: 12/20/2016
 * Azure SQL Database または Azure VM の SQL Server
 * オンプレミス SQL Server データベース
 * データ フィード プロバイダー (現在は OData)
+* Azure CosmosDB (旧称 DocumentDB)
 
 Studio の実験でオンライン データ ソースにアクセスするには、[データのインポート][import-data] モジュールを追加し、**[データ ソース]** を選択して、データ アクセスに必要なパラメーターを指定します。 サポートされているオンライン データ ソースは、以下の表にまとめました。 サポートされているファイル形式と、データにアクセスするためのパラメーターも記載されています。
 
@@ -55,7 +56,7 @@ Studio の実験でオンライン データ ソースにアクセスするに�
 > 一般的に、このサービス オプションが利用可能になる前に作成された可能性のある Azure ストレージ アカウントに、影響が及ぶことはありません。 
 > 新しいアカウントを作成する必要がある場合は、デプロイメント モデルとして **[クラシック]** を選択するか、Resource Manager を使用して、**[アカウントの種類]** に **[Blob ストレージ]** ではなく **[General (汎用)]** を選択します。 
 > 
-> 詳細については、「 [Azure Blob Storage: ホット層とクール層](../storage/storage-blob-storage-tiers.md)」を参照してください。
+> 詳細については、「 [Azure Blob Storage: ホット層とクール層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 > 
 > 
 

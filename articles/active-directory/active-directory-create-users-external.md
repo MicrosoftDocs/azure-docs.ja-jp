@@ -12,24 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 661470454775d43ce88410a6c995bbcc5e06264c
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する
-> [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-users-create-external-azure-portal.md )
-> * [Azure クラシック ポータル](active-directory-create-users-external.md)
->
->
 
-この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。 組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、 [Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
+この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。 組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、 [Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。 
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターで B2B コラボレーション ゲスト ユーザーを追加する方法については、「[Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)」を参照してください。
+
+既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
 ## <a name="add-a-user"></a>ユーザーの追加
 1. ディレクトリのグローバル管理者となっているアカウントで [Azure クラシック ポータル](https://manage.windowsazure.com) にサインインします。

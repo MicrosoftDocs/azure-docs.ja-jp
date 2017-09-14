@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 07/31/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e31f125d7f0cc82cb2f409d9142e728e1f83ad69
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 207c53924863eb51ee369fe46d5ad12fb1905c53
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
@@ -37,61 +36,51 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-
 ## <a name="about-forced-tunneling"></a>強制トンネリングについて
+
 以下の図には、強制トンネリングのしくみを示しています。 
 
 ![強制トンネリング](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
 
 上記の例では、フロントエンドのサブネットは、トンネリングを強制されません。 フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。 Mid-tier およびMid-tier のサブネットは、トンネリングを強制されます。 これら 2 つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの 1 つを介して、オンプレミス サイトに ”強制” リダイレクトされます。
 
-これにより、必要な多層サービス アーキテクチャが継続的に使用可能になっている間は、Azure 内の仮想マシンやクラウド サービスからのインターネット アクセスを制限および検査することができます。 また、仮想ネットワーク内に、インターネットに接続されたワークロードがない場合、仮想ネットワーク全体に強制トンネリングを適用することもできます。
+これにより、必要な多層サービス アーキテクチャが継続的に使用可能になっている間は、Azure 内の仮想マシンやクラウド サービスからのインターネット アクセスを制限および検査することができます。 仮想ネットワーク内にインターネットに接続されたワークロードがない場合、仮想ネットワーク全体に強制トンネリングを適用することもできます。
 
 ## <a name="requirements-and-considerations"></a>要件と考慮事項
-Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルートを使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。 ユーザー定義のルートおよび仮想ネットワークの詳細については、「 [ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
+
+Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルートを使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。 ユーザー定義のルートおよび仮想ネットワークの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
 * 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
   
-  * **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ
-  * **オンプレミス ルート:** Azure VPN ゲートウェイへ
+  * **ローカル VNet ルート:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
+  * **オンプレミス ルート:** Azure VPN ゲートウェイへ。
   * **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
-* この手順では、ユーザー定義ルート (UDR) を使用することにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
-* 強制トンネリングは、ルートベースの VPN ゲートウェイを持つ VNet に関連付ける必要があります。 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
-* ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。 詳細については、 [ExpressRoute Documentation](https://azure.microsoft.com/documentation/services/expressroute/) を参照してください。
+* この手順ではユーザー定義ルート (UDR) を使用して、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
+* 強制トンネリングは、ルートベースの VPN ゲートウェイを持つ VNet に関連付ける必要があります。 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。 また、オンプレミス VPN デバイスを、トラフィック セレクターとして 0.0.0.0/0 を使用して構成する必要があります。 
+* ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。 詳細については、「[ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/)」を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
-次の手順は、リソース グループと VNet の作成に役立ちます。 その後、VPN Gateway を作成し、強制トンネリングを構成します。 この手順では、仮想ネットワークである "MultiTier-VNet" には、*Frontend*、*Midtier*、*Backend* の 3 つのサブネットがあり、*DefaultSiteHQ* と 3 つの *Branch* の計 4 つのクロス プレミス接続があります。
 
-以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように Midtier と Backend を構成します。
+次の手順は、リソース グループと VNet の作成に役立ちます。 その後、VPN Gateway を作成し、強制トンネリングを構成します。 この手順では、仮想ネットワークである "MultiTier-VNet" には "Frontend"、"Midtier"、"Backend" という 3 つのサブネットがあり、"DefaultSiteHQ" と 3 つの Branch の計 4 つのクロスプレミス接続があります。
+
+以下の手順で "DefaultSiteHQ" を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように "Midtier" と "Backend" サブネットを構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
-構成を開始する前に、以下がそろっていることを確認します。
 
-* Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
+Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
+
+### <a name="to-log-in"></a>ログインするには
+
+[!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
-1. PowerShell コンソールで、Azure アカウントにログインします。 このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされるため、Azure PowerShell で使用できるようになります。
+
+1. リソース グループを作成します。
 
   ```powershell
-  Login-AzureRmAccount
+  New-AzureRmResourceGroup -Name 'ForcedTunneling' -Location 'North Europe'
   ```
-2. Azure サブスクリプションの一覧を取得します。
-
- ```powershell
- Get-AzureRmSubscription
- ```
-3. 使用するサブスクリプションを指定します。
-
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
-4. リソース グループを作成します。
-
-  ```powershell
-  New-AzureRmResourceGroup -Name "ForcedTunneling" -Location "North Europe"
-  ```
-5. 仮想ネットワークを作成し、サブネットを指定します。
+2. 仮想ネットワークを作成し、サブネットを指定します。
 
   ```powershell 
   $s1 = New-AzureRmVirtualNetworkSubnetConfig -Name "Frontend" -AddressPrefix "10.1.0.0/24"
@@ -100,7 +89,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
   $s4 = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "10.1.200.0/28"
   $vnet = New-AzureRmVirtualNetwork -Name "MultiTier-VNet" -Location "North Europe" -ResourceGroupName "ForcedTunneling" -AddressPrefix "10.1.0.0/16" -Subnet $s1,$s2,$s3,$s4
   ```
-6. ローカル ネットワーク ゲートウェイを作成します。
+3. ローカル ネットワーク ゲートウェイを作成します。
 
   ```powershell
   $lng1 = New-AzureRmLocalNetworkGateway -Name "DefaultSiteHQ" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -GatewayIpAddress "111.111.111.111" -AddressPrefix "192.168.1.0/24"
@@ -108,7 +97,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
   $lng3 = New-AzureRmLocalNetworkGateway -Name "Branch2" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -GatewayIpAddress "111.111.111.113" -AddressPrefix "192.168.3.0/24"
   $lng4 = New-AzureRmLocalNetworkGateway -Name "Branch3" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -GatewayIpAddress "111.111.111.114" -AddressPrefix "192.168.4.0/24"
   ```
-7. ルート テーブルおよびルート規則を作成します。
+4. ルート テーブルおよびルート規則を作成します。
 
   ```powershell
   New-AzureRmRouteTable –Name "MyRouteTable" -ResourceGroupName "ForcedTunneling" –Location "North Europe"
@@ -116,7 +105,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
   Add-AzureRmRouteConfig -Name "DefaultRoute" -AddressPrefix "0.0.0.0/0" -NextHopType VirtualNetworkGateway -RouteTable $rt
   Set-AzureRmRouteTable -RouteTable $rt
   ```
-8. ルート テーブルを Midtier および Backend サブネットに関連付けます。
+5. ルート テーブルを Midtier および Backend サブネットに関連付けます。
 
   ```powershell
   $vnet = Get-AzureRmVirtualNetwork -Name "MultiTier-Vnet" -ResourceGroupName "ForcedTunneling"
@@ -124,7 +113,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
   Set-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-9. 既定のサイトでゲートウェイを作成します。 ゲートウェイを作成して構成するため、この手順の完了には 45 分以上かかる場合があります。<br> **-GatewayDefaultSite** は、強制ルーティング構成を動作させるコマンドレット パラメーターです。適切な設定になるように、慎重に構成してください。 このパラメーターは、PowerShell 1.0 以降で利用できます。
+6. 既定のサイトでゲートウェイを作成します。 ゲートウェイを作成して構成するため、この手順の完了には 45 分以上かかる場合があります。<br> **-GatewayDefaultSite** は、強制ルーティング構成を動作させるコマンドレット パラメーターです。適切な設定になるように、慎重に構成してください。 このパラメーターは、PowerShell 1.0 以降で利用できます。
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
@@ -132,7 +121,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
   $ipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "gwIpConfig" -SubnetId $gwsubnet.Id -PublicIpAddressId $pip.Id
   New-AzureRmVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -IpConfigurations $ipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -GatewayDefaultSite $lng1 -EnableBgp $false
   ```
-10. サイト間 VPN 接続を確立します。
+7. サイト間 VPN 接続を確立します。
 
   ```powershell
   $gateway = Get-AzureRmVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling"
@@ -148,4 +137,3 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
     
   Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
   ```
-

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f44119d651767881cfd999808925b0066a5e502b
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d4741921806e443d92c385a04b781cec296c2ae8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Azure CDN での Azure Storage BLOB 有効期限の管理
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-[Azure Storage](../storage/storage-introduction.md) の [BLOB service ](../storage/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの 1 つです。  パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、Azure Storage からの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) によって決まります。
+[Azure Storage](../storage/common/storage-introduction.md) の [BLOB service ](../storage/common/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの 1 つです。  パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、Azure Storage からの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) によって決まります。
 
 > [!TIP]
 > BLOB に TTL を設定しないこともできます。  その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
@@ -64,7 +64,7 @@ $blob.ICloudBlob.SetProperties()
 > 
 
 ## <a name="azure-storage-client-library-for-net"></a>.NET 用 Azure Storage クライアント ライブラリ
-.NET を使用して BLOB の TTL を設定するには、[.NET 用 Azure Storage クライアント ライブラリ](../storage/storage-dotnet-how-to-use-blobs.md)を使用して、[CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) プロパティを設定します。
+.NET を使用して BLOB の TTL を設定するには、[.NET 用 Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使用して、[CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) プロパティを設定します。
 
 ```csharp
 class Program

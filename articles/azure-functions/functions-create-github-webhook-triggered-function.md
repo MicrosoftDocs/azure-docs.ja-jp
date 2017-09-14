@@ -1,26 +1,26 @@
 ---
 title: "GitHub webhook でトリガーされる Azure 関数の作成 | Microsoft Docs"
 description: "Azure Functions を使用して、GitHub webhook によって呼び出されるサーバーレスの関数を作成します。"
-services: azure-functions
+services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: accd5c55e7adafd5a387bf420660b808335192e6
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 038bb4cf0a9278416261c05ddaa0ee97d83b63c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
@@ -52,7 +52,7 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
     ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. 目的の言語の **GitHubWebHook** テンプレートを選びます。 **関数に名前を付け**てから、**[作成]** を選びます。
+2. 目的の言語の **GitHub WebHook** テンプレートを選択します。 **関数に名前を付け**てから、**[作成]** を選びます。
 
      ![Azure Portal での GitHub webhook でトリガーされる関数の作成](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
 
@@ -104,5 +104,9 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub webhook から要求が受信されときに実行される関数を作成しました。 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)] webhook トリガーの詳細については、「[Azure Functions における HTTP と Webhook のバインド](functions-bindings-http-webhook.md)」を参照してください。
+GitHub webhook から要求が受信されときに実行される関数を作成しました。
+
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+
+webhook トリガーの詳細については、「[Azure Functions における HTTP と Webhook のバインド](functions-bindings-http-webhook.md)」を参照してください。
+

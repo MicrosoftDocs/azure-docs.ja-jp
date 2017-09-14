@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/23/2017
+ms.date: 08/25/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8c3cc27f1fa708371d415d00cdff59f77712cd41
-ms.lasthandoff: 05/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: cc5a0a8ff789b878cd5afb62176ae8bcf3f80902
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>ニーズに応じた Azure Multi-Factor Authentication ソリューションを選択する
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | アプリ ギャラリー内の SaaS アプリ |● |  |
 | Azure AD アプリケーション プロキシ経由で公開される Web アプリケーション |● |  |
 | Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション  | |● |
-| VPN、RDG などのリモート アクセス | |● |
+| VPN、RDG などのリモート アクセス | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>ユーザーが位置する場所
 次に、ユーザーが位置する場所を検討します。これは、使用する適切なソリューション (具体的には、クラウドの Multi-Factor Authentication を採用するか、それともオンプレミスで MFA Server を使用するか) の判断に役立ちます。
@@ -76,13 +76,11 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | 条件付きアクセス | ● | ● |
 | キャッシュ |  | ● |
 
-クラウドの多要素認証を使用するか、オンプレミスの MFA Server を使用するかを決定しました。これで、Azure Multi-Factor Authentication の設定と使用を開始できます。 **シナリオに応じてアイコンをクリックしてください。**
+## <a name="next-steps"></a>次のステップ
+
+クラウドの Azure Multi-Factor Authentication とオンプレミスの MFA Server の違いがわかったら、Azure Multi-Factor Authentication を実際にセットアップして使用してみましょう。 **シナリオに応じてアイコンをクリックしてください。**
 
 <center>
 
-
-
-
-[![クラウド](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</center>
+[![クラウドの MFA](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![MFA Server](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
 

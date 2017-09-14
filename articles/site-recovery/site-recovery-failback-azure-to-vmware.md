@@ -11,20 +11,18 @@ ms.service: site-recovery
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.workload: required
+ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3bd182a775377f912914c0c7a63fe41811146e1a
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: dde0bb6b4f6bc10afdd7d40adc6689d42b37de81
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>VMware 仮想マシンと物理サーバーをオンプレミス サイトにフェールバックする
-> [!div class="op_single_selector"]
-> * [Azure から VMware/物理マシン](site-recovery-how-to-failback-azure-to-vmware.md)
-> * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
+
 
 この記事では、Azure からオンプレミス サイトへ Azure Virtual Machines をフェールバックする方法について説明します。 ここに示す手順は、[こちら](site-recovery-how-to-reprotect.md)を参照してコンピューターを再保護した後に、VMware 仮想マシンまたは Windows/Linux 物理サーバーをフェールバックする準備ができたときに実行します。
 
@@ -71,7 +69,7 @@ VMware VM をフェールオーバーした後、ソース VM がオンプレミ
 ## <a name="prerequisites"></a>前提条件
 * VMware VM および物理サーバーのフェールバックには、VMware 環境が必要です。 物理サーバーへのフェールバックはサポートされていません。
 * フェールバックするには、最初に保護を設定するときに Azure ネットワークを作成する必要があります。 フェールバックには、Azure VM が配置されている Azure ネットワークからオンプレミス サイトへの VPN または ExpressRoute 接続が必要です。
-* フェールバック先の VM が vCenter サーバーによって管理されている場合は、vCenter サーバー上の VM の検出に必要な権限があることを確認します。 詳細については、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)」を参照してください。
+* フェールバック先の VM が vCenter サーバーによって管理されている場合は、vCenter サーバー上の VM の検出に必要な権限があることを確認します。 詳細については、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」を参照してください。
 * VM 上にスナップショットがある場合、再保護は失敗します。 スナップショットまたはディスクを削除します。
 * フェールバックする前に、次のコンポーネントを作成します。
   * **Azure にプロセス サーバーを作成する**:  このコンポーネントは、自分で作成してフェールバック中に実行し続ける Azure VM です。 この VM は、フェールバックの完了後に削除できます。
@@ -111,7 +109,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
  * イメージの名前は、"*Microsoft Azure Site Recovery Process Server V2*" です。 デプロイ モデルとして、**[クラシック]** を選択します。
 
        ![Select "Classic" as the Process Server deployment model](./media/site-recovery-failback-azure-to-vmware-classic/templatename.png)
- * 「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)」の説明に従って、プロセス サーバーをインストールします。
+ * 「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」の説明に従って、プロセス サーバーをインストールします。
 7. "*Resource Manager*" Azure ネットワークを選択した場合は、次の情報を指定してサーバーをデプロイします。
 
   * サーバーのデプロイ先のリソース グループの名前
@@ -124,7 +122,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 
     ![[プロセス サーバーの追加] ダイアログ ボックスへの情報の入力](./media/site-recovery-failback-azure-to-vmware-classic/psinputsadd.png)
 
-8. **[OK]**をクリックします。 これにより、プロセス サーバーのセットアップ時に、デプロイの種類が Resource Manager の仮想マシンを作成するジョブがトリガーされます。 構成サーバーにサーバーを登録するには、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)」の手順に従って VM 内でセットアップを実行します。 プロセス サーバーをデプロイするジョブもトリガーされます。
+8. **[OK]**をクリックします。 これにより、プロセス サーバーのセットアップ時に、デプロイの種類が Resource Manager の仮想マシンを作成するジョブがトリガーされます。 構成サーバーにサーバーを登録するには、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」の手順に従って VM 内でセットアップを実行します。 プロセス サーバーをデプロイするジョブもトリガーされます。
 
   プロセス サーバーは、**[構成サーバー]** > **[関連付けられたサーバー]** > **[プロセス サーバー]** タブに表示されます。
 
@@ -143,7 +141,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 1. マスター ターゲット サーバーを Windows 上にセットアップする場合は、マスター ターゲット サーバーをインストールする VM からクイック スタート ページを開きます。
 2. Azure Site Recovery 統合セットアップ ウィザード用のインストール ファイルをダウンロードします。
 3. セットアップを実行し、**[開始する前に]** で **[Add additional process servers to scale out deployment (デプロイをスケールアウトするためにプロセス サーバーを追加する)]** を選択します。
-4. [管理サーバーをセットアップ](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)したときと同様にウィザードを完了します。 **[構成サーバーの詳細]** ページで、このマスター ターゲット サーバーの IP アドレスを指定し、VM にアクセスするためのパスフレーズを入力します。
+4. [管理サーバーをセットアップ](site-recovery-vmware-to-azure-classic.md)したときと同様にウィザードを完了します。 **[構成サーバーの詳細]** ページで、このマスター ターゲット サーバーの IP アドレスを指定し、VM にアクセスするためのパスフレーズを入力します。
 
 ### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>マスター ターゲット サーバーとしての Linux VM をセットアップする
 マスター ターゲット サーバーを実行する管理サーバーを Linux VM としてセットアップするには、最小限の CentOS 6.6 オペレーティング システムをインストールします。 次に、各 SCSI ハード_ディスクの SCSI ID を取得し、追加のパッケージをいくつかインストールし、いくつかのカスタム変更を適用します。
@@ -151,7 +149,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 #### <a name="install-centos-66"></a>CentOS 6.6 をインストールする
 
 1. 管理サーバー VM に CentOS 6.6 最小構成オペレーティング システムをインストールします。 DVD ドライブに ISO イメージを保持し、システムを起動します。 メディア テストをスキップします。 言語として **[Japanese (日本語)]** を選択し、**[基本ストレージ デバイス]** を選択します。ハード ドライブに重要なデータがないことを確認したら、**[はい]** をクリックしてすべてのデータを破棄します。 管理サーバーのホスト名を入力し、サーバーのネットワーク アダプターを選択します。  **[Editing System (システムの編集)]** ダイアログ ボックスで **[自動接続する]** を選択し、静的 IP アドレス設定、ネットワーク設定、DNS 設定を追加します。 タイム ゾーンを指定します。 管理サーバーにアクセスするには、ルート パスワードを入力します。
-2. 希望するインストールのタイプを求められたら、パーティションとして **[カスタム レイアウトを作成する]** を選択します。 **[次へ]**をクリックします。 **[Free (フリー)]** を選択し、**[作成]** をクリックします。 **ファイル システム タイプ:** **ext4** で **/**、**/var/crash**、**/home** の各パーティションを作成します。 **FS Type: swap**としてスワップ パーティションを作成します。
+2. 希望するインストールのタイプを求められたら、パーティションとして **[カスタム レイアウトを作成する]** を選択します。 **[次へ]** をクリックします。 **[Free (フリー)]** を選択し、**[作成]** をクリックします。 **ファイル システム タイプ:** **ext4** で **/**、**/var/crash**、**/home** の各パーティションを作成します。 **FS Type: swap**としてスワップ パーティションを作成します。
 3. 既存のデバイスが検出される場合、警告メッセージが表示されます。 **[フォーマット]** をクリックし、パーティション設定を使用してドライブをフォーマットします。 **[Write change to disk (変更をディスクに書き込む)]** をクリックして、パーティションの変更を適用します。
 4. **[Install boot loader (ブート ローダーをインストールする)]**  >  **[次へ]** の順に選択して、ルート パーティションにブート ローダーをインストールします。
 5. インストールが完了したら、**[再起動]** をクリックします。
@@ -233,7 +231,7 @@ VM を再保護したら、Azure からオンプレミスへのフェールオ�
 再保護が完了すると、VM が Azure にレプリケートされるので、フェールオーバーを実行できます。
 
 ### <a name="resolve-common-failback-issues"></a>フェールバックの一般的な問題を解決する
-* 読み取り専用ユーザー vCenter の検出を実行し、仮想マシンを保護すると、適切に動作し、フェールオーバーが実行されます。 再保護中は、データストアが検出できないため、フェールオーバーは失敗します。 症状としては、再保護中はデータストアの一覧が表示されません。 この問題を解決するには、適切な権限を持つアカウントを使用して vCenter 資格情報を更新し、ジョブを再試行します。 詳細については、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)」を参照してください。
+* 読み取り専用ユーザー vCenter の検出を実行し、仮想マシンを保護すると、適切に動作し、フェールオーバーが実行されます。 再保護中は、データストアが検出できないため、フェールオーバーは失敗します。 症状としては、再保護中はデータストアの一覧が表示されません。 この問題を解決するには、適切な権限を持つアカウントを使用して vCenter 資格情報を更新し、ジョブを再試行します。 詳細については、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」を参照してください。
 * Linux VM をフェールバックしてオンプレミスで実行すると、ネットワーク マネージャー パッケージがマシンからアンインストールされていることを確認できます。 このアンインストールは、Azure で VM が 復旧されるときに、ネットワーク マネージャー パッケージが削除されるために発生します。
 * VM が静的 IP アドレスで構成されているときに Azure にフェールオーバーされると、IP アドレスは DHCP 経由で取得されます。 オンプレミスにフェールオーバーすると、VM は引き続き DHCP を使用して、IP アドレスを取得します。 必要であれば、手動でコンピューターにサインインし、IP アドレスを静的アドレスに設定し直します。
 * ESXi 5.5 無償版または vSphere 6 Hypervisor 無償版のいずれかを使用すると、フェールオーバーは成功しますが、フェールバックは失敗します。 フェールバックを有効にするには、いずれかのプログラムの評価ライセンスにアップグレードしてください。

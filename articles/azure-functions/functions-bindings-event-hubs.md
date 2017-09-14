@@ -1,10 +1,10 @@
 ---
 title: "Azure Functions におけるイベント ハブのバインド | Microsoft Docs"
-description: "Azure Functions で Azure Event Hub のバインドを使用する方法について説明します。"
+description: "Azure Functions で Azure Event Hubs のバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -14,39 +14,38 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 06/20/2017
 ms.author: wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 04a8563a0035992cfa4b7d25a4edc14e1db80e44
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 19021bef8b7156b3049f43b0275c0ed0c6b22514
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
-# <a name="azure-functions-event-hub-bindings"></a>Azure Functions における Event Hub のバインド
+# <a name="azure-functions-event-hubs-bindings"></a>Azure Functions におけるイベント ハブのバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) のバインドを構成およびコーディングする方法について説明します。
+この記事では、Azure Functions で [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) のバインドを構成および使用する方法について説明します。
 Azure Functions は、イベント ハブのトリガーおよび出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Azure Event Hubs を初めて使用する場合は、「[Azure Event Hub の概要](../event-hubs/event-hubs-what-is-event-hubs.md)」を参照してください。
+Azure Event Hubs を初めて使用する場合は、「[イベント ハブの概要](../event-hubs/event-hubs-what-is-event-hubs.md)」を参照してください。
 
 <a name="trigger"></a>
 
 ## <a name="event-hub-trigger"></a>イベント ハブ トリガー
 イベント ハブ トリガーを使用して、イベント ハブのイベント ストリームに送信されたイベントに応答します。 トリガーをセットアップするには、イベント ハブへの読み取りアクセスが必要です。
 
-関数へのイベント ハブ トリガーでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+イベント ハブ関数トリガーでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
 
 ```json
 {
     "type": "eventHubTrigger",
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
-    "path": "<Name of the Event Hub>",
+    "path": "<Name of the event hub>",
     "consumerGroup": "Consumer group to use - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
@@ -97,6 +96,31 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
+このイベントは、イベント メタデータへのアクセスに使用できる [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) オブジェクトとしても受け取ることができます。
+
+```cs
+#r "Microsoft.ServiceBus"
+using System.Text;
+using Microsoft.ServiceBus.Messaging;
+
+public static void Run(EventData myEventHubMessage, TraceWriter log)
+{
+    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+}
+```
+
+イベントをバッチで受け取るには、メソッド シグネチャを `string[]` または `EventData[]` に変更します。
+
+```cs
+public static void Run(string[] eventHubMessages, TraceWriter log)
+{
+    foreach (var message in eventHubMessages)
+    {
+        log.Info($"C# Event Hub trigger function processed a message: {message}");
+    }
+}
+```
+
 <a name="triggerfsharp"></a>
 
 ### <a name="trigger-sample-in-f"></a>F# でのトリガー サンプル #
@@ -119,7 +143,7 @@ module.exports = function (context, myEventHubMessage) {
 
 <a name="output"></a>
 
-## <a name="event-hub-output-binding"></a>イベント ハブ出力バインド
+## <a name="event-hubs-output-binding"></a>イベント ハブ出力バインド
 イベント ハブ出力バインドを使用して、イベント ハブのイベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
 出力バインドでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
@@ -138,7 +162,7 @@ module.exports = function (context, myEventHubMessage) {
 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。
 
 ## <a name="output-usage"></a>出力の使用方法
-このセクションでは、Event Hub 出力バインドを関数のコードで使用する方法について説明します。
+このセクションでは、イベント ハブ出力バインドを関数のコードで使用する方法について説明します。
 
 次のパラメーターの種類で構成済みイベント ハブにメッセージを出力できます。
 

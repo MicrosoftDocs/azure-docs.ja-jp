@@ -70,7 +70,7 @@ $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroupVM `
   -Location EastUS `
   -Name myVnet `
-  -AddressPrefix 192.168.0.0/16 ` 
+  -AddressPrefix 192.168.0.0/16 `
   -Subnet $subnetConfig
 ```
 ### <a name="create-public-ip-address"></a>パブリック IP アドレスの作成
@@ -78,9 +78,9 @@ $vnet = New-AzureRmVirtualNetwork `
 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を使用してパブリック IP アドレスを作成します。
 
 ```powershell
-$pip = New-AzureRmPublicIpAddress ` 
+$pip = New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupVM `
-  -Location EastUS ` 
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIPAddress
 ```
@@ -251,18 +251,22 @@ Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
 ```
 
 ```powershell
-Skus                            Offer         PublisherName          Location
-----                            -----         -------------          --------
-2008-R2-SP1                     WindowsServer MicrosoftWindowsServer EastUS  
-2008-R2-SP1-BYOL                WindowsServer MicrosoftWindowsServer EastUS  
-2012-Datacenter                 WindowsServer MicrosoftWindowsServer EastUS  
-2012-Datacenter-BYOL            WindowsServer MicrosoftWindowsServer EastUS  
-2012-R2-Datacenter              WindowsServer MicrosoftWindowsServer EastUS  
-2012-R2-Datacenter-BYOL         WindowsServer MicrosoftWindowsServer EastUS  
-2016-Datacenter                 WindowsServer MicrosoftWindowsServer EastUS  
-2016-Datacenter-Server-Core     WindowsServer MicrosoftWindowsServer EastUS  
-2016-Datacenter-with-Containers WindowsServer MicrosoftWindowsServer EastUS  
-2016-Nano-Server                WindowsServer MicrosoftWindowsServer EastUS
+Skus                                      Offer         PublisherName          Location
+----                                      -----         -------------          --------
+2008-R2-SP1                               WindowsServer MicrosoftWindowsServer EastUS  
+2008-R2-SP1-smalldisk                     WindowsServer MicrosoftWindowsServer EastUS  
+2012-Datacenter                           WindowsServer MicrosoftWindowsServer EastUS  
+2012-Datacenter-smalldisk                 WindowsServer MicrosoftWindowsServer EastUS  
+2012-R2-Datacenter                        WindowsServer MicrosoftWindowsServer EastUS  
+2012-R2-Datacenter-smalldisk              WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter                           WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter-Server-Core               WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter-Server-Core-smalldisk     WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-smalldisk                 WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-with-Containers           WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-with-Containers-smalldisk WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-with-RDSH                 WindowsServer MicrosoftWindowsServer EastUS
+2016-Nano-Server                          WindowsServer MicrosoftWindowsServer EastUS
 ```
 
 この情報は、特定のイメージを使用して VM をデプロイするために使用できます。 この例では、VM オブジェクトにイメージ名を設定します。 デプロイの完全な手順については、このチュートリアル内の前の例を参照してください。
@@ -352,7 +356,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 
 ```powershell
 Get-AzureRmVM `
-    -ResourceGroupName myResourceGroup `
+    -ResourceGroupName myResourceGroupVM `
     -Name myVM `
     -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
 ```

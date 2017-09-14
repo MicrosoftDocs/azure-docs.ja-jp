@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fa1c3d9cb07d417f5dbde41d6269fb1d157c3104
 ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
@@ -26,7 +27,7 @@ ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
 ## <a name="multiple-top-level-domain-support"></a>複数のトップレベル ドメインのサポート
 複数のトップレベル ドメインと Azure AD のフェデレーションを行うには、単一のトップレベル ドメインを使用するフェデレーションでは行う必要のない構成を、いくつか実施する必要があります。
 
-単一のドメインと Azure AD のフェデレーションを行う場合は、Azure でそのドメインに関する複数のプロパティが設定されます。  重要なプロパティの&1; つは IssuerUri です。  これは、トークンが関連付けられているドメインを識別するために Azure AD で使われる URI です。  この URI は解決される必要はありませんが、有効な URI である必要があります。  既定では、Azure AD により、このプロパティにオンプレミス AD FS 構成内のフェデレーション サービス識別子の値が設定されます。
+単一のドメインと Azure AD のフェデレーションを行う場合は、Azure でそのドメインに関する複数のプロパティが設定されます。  重要なプロパティの 1 つは IssuerUri です。  これは、トークンが関連付けられているドメインを識別するために Azure AD で使われる URI です。  この URI は解決される必要はありませんが、有効な URI である必要があります。  既定では、Azure AD により、このプロパティにオンプレミス AD FS 構成内のフェデレーション サービス識別子の値が設定されます。
 
 > [!NOTE]
 > フェデレーション サービス識別子は、フェデレーション サービスを一意に識別する URI です。  フェデレーション サービスは、セキュリティ トークン サービスとして機能する AD FS のインスタンスです。 
@@ -93,7 +94,7 @@ AD FS と Azure AD インスタンスとの間でフェデレーションによ�
 
 ![Federation error](./media/active-directory-multiple-domains/trust3.png)
 
-下記の手順で、もう&1; つのトップレベル ドメインを追加します。  既にドメインを&1; つ、 `-SupportMultipleDomain` パラメーターを使用せずに追加してある場合は、最初に元のドメインを削除して更新します。  トップレベル ドメインをまだ追加していない場合は、Azure AD Connect の PowerShell を使用してドメインを追加することから始めます。
+下記の手順で、もう 1 つのトップレベル ドメインを追加します。  既にドメインを 1 つ、 `-SupportMultipleDomain` パラメーターを使用せずに追加してある場合は、最初に元のドメインを削除して更新します。  トップレベル ドメインをまだ追加していない場合は、Azure AD Connect の PowerShell を使用してドメインを追加することから始めます。
 
 以下の手順で、Microsoft Online の信頼を削除し、元のドメインを更新します。
 
@@ -118,7 +119,7 @@ AD FS と Azure AD インスタンスとの間でフェデレーションによ�
 1. デスクトップまたは [スタート] メニューから、Azure AD Connect を起動します。
 2. [Azure AD ドメインを追加します] を選択します。![Add an additional Azure AD domain](./media/active-directory-multiple-domains/add1.png)
 3. Azure AD と Active Directory の資格情報を入力します。
-4. フェデレーションを構成する&2; つ目のドメインを選択します。
+4. フェデレーションを構成する 2 つ目のドメインを選択します。
    ![Add an additional Azure AD domain](./media/active-directory-multiple-domains/add2.png)
 5. [インストール] をクリックします。
 
@@ -144,7 +145,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-正規表現の最後の数字は、ルート ドメインにある親ドメインの数を設定します。 ここでは bmcontoso.com があるので、2 つの親ドメインが必要です。 3 つの親ドメインを保持する (つまり corp.bmcontoso.com) 場合、この数字は&3; になります。 範囲を指示できますが、常にドメインの最大数と一致させるための突き合わせが行われます。 "{2,3}" は、2 ～&3; つのドメインと一致します (つまり、bmfabrikam.com と corp.bmcontoso.com)。
+正規表現の最後の数字は、ルート ドメインにある親ドメインの数を設定します。 ここでは bmcontoso.com があるので、2 つの親ドメインが必要です。 3 つの親ドメインを保持する (つまり corp.bmcontoso.com) 場合、この数字は 3 になります。 範囲を指示できますが、常にドメインの最大数と一致させるための突き合わせが行われます。 "{2,3}" は、2 ～ 3 つのドメインと一致します (つまり、bmfabrikam.com と corp.bmcontoso.com)。
 
 以下の手順に従い、サブドメインをサポートするためのカスタム要求を追加します。
 
@@ -162,10 +163,5 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
     ![Replace claim](./media/active-directory-multiple-domains/sub2.png)
 
 5. [OK] をクリックします。  [適用] をクリックします。  [OK] をクリックします。  AD FS 管理を閉じます。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/16/2016
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 529c723a9e071b7cc388cf92423c1f74707cb831
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8ff6b9825212359617b748aba1c78ed789b130dd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="enabling-diagnostics-in-azure-virtual-machines"></a>Azure Virtual Machines での診断の有効化
@@ -28,20 +28,21 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 このチュートリアルでは、開発コンピューターから Azure の仮想マシンに診断をリモートでインストールする方法について説明します。 また、その Azure の仮想マシン上で実行するアプリケーションの実装方法と .NET [EventSource クラス][EventSource Class]を使用したテレメトリデータの生成方法を学習します。 Azure 診断を使用してテレメトリを収集し、これを Azure ストレージ アカウントに格納します。
 
 ### <a name="pre-requisites"></a>前提条件
-このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
+このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2017 を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
 
 ### <a name="step-1-create-a-virtual-machine"></a>手順 1. 仮想マシンを作成する
-1. 開発コンピューター上で Visual Studio 2013 を起動します。
+1. 開発コンピューター上で Visual Studio 2017 を起動します。
 2. Visual Studio の**サーバー エクスプローラー**で、**[Azure]** を展開し、**[仮想マシン]** を右クリックして、**[仮想マシンの作成]** を選択します。
 3. **[サブスクリプションの選択]** ダイアログで Azure サブスクリプションを選択し、**[次へ]** をクリックします。
-4. **[仮想マシン イメージの選択]** ダイアログで **[Windows Server 2012 R2 Datacenter, November 2014]** を選択し、**[次へ]** をクリックします。
+4. **[仮想マシン イメージの選択]** ダイアログで **[Windows Server 2012 R2 Datacenter, June 2017]** を選択し、**[次へ]** をクリックします。
 5. **[仮想マシン基本設定]**で、仮想マシンに「wadexample」という名前を付けます。 管理者ユーザー名とパスワードを設定し、 **[次へ]**をクリックします。
 6. **[クラウド サービスの設定]** ダイアログで「wadexampleVM」という名前の新しいクラウド サービスを作成します。 「wadexample」という名前の新しいストレージ アカウントを作成し、 **[次へ]**をクリックします。
 7. **[作成]**をクリックします。
 
 ### <a name="step-2-create-your-application"></a>手順 2. アプリケーションを作成する
-1. 開発コンピューター上で Visual Studio 2013 を起動します。
+1. 開発コンピューター上で Visual Studio 2017 を起動します。
 2. .NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。 プロジェクト名として「WadExampleVM」と入力します。
+
    ![CloudServices_diag_new_project](./media/virtual-machines-dotnet-diagnostics/NewProject.png)
 3. Program.cs の内容を次のコードに置き換えます。 **SampleEventSourceWriter** クラスは、4 つのログの作成方法 (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。 WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。 Run メソッドは、 **SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
@@ -116,9 +117,9 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 1. 次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義を開発コンピューターにダウンロードします。
 
      2.(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
-2. 既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。 Visual Studio で、**[追加]** -> **[新しい項目]** -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選択します。 ファイルに「WadExample.xml」という名前を付けます。
+2. 既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。 Visual Studio で、**[追加]** -> **[新しいアイテム...]** -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選びます ファイルに「WadExample.xml」という名前を付けます。
 3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]**をクリックします。
-4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する&4; つのイベントを定義します。
+4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
 ```
         <?xml version="1.0" encoding="utf-8"?>
@@ -147,10 +148,18 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 VM の診断を管理する PowerShell コマンドレットは、Set-AzureVMDiagnosticsExtension、Get-AzureVMDiagnosticsExtension、Remove-AzureVMDiagnosticsExtension です。
 
 1. 開発コンピューター上で Azure PowerShell を開きます。
-2. スクリプトを実行して VM に診断をリモートでインストールします ( *StorageAccountKey* を wadexamplevm ストレージ アカウントのストレージ アカウント キーに置き換えます)。
-
-     $storage_name = "wadexamplevm"   $key = "<StorageAccountKey>"   $config_path="c:\users\<user>\documents\visual studio 2013\Projects\WadExampleVM\WadExampleVM\WadExample.xml"   $service_name="wadexamplevm"   $vm_name="WadExample"   $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key   $VM1 = Get-AzureVM -ServiceName $service_name -Name $vm_name   $VM2 = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $config_path -Version "1.*" -VM $VM1 -StorageContext $storageContext   $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
-
+2. スクリプトを実行して、VM にリモートで診断をインストールします (`<user>` は実際のユーザー ディレクトリ名に置き換え、 `<StorageAccountKey>` は wadexamplevm ストレージ アカウントのストレージ アカウント キーに置き換えます)。
+```
+     $storage_name = "wadexamplevm"
+     $key = "<StorageAccountKey>"
+     $config_path="c:\users\<user>\documents\visual studio 2017\Projects\WadExampleVM\WadExampleVM\WadExample.xml"
+     $service_name="wadexamplevm"
+     $vm_name="WadExample"
+     $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key
+     $VM1 = Get-AzureVM -ServiceName $service_name -Name $vm_name
+     $VM2 = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $config_path -Version "1.*" -VM $VM1 -StorageContext $storageContext
+     $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
+```
 ### <a name="step-6-look-at-your-telemetry-data"></a>手順 6. テレメトリ データを確認する
 Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。 VM を 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。 いずれかのテーブルをダブルクリックして、収集した利用統計情報を表示します。
 

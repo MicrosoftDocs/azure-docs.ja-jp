@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: a1349e53774732ffbfacefc7bd8dcc493f78fbd6
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2a2801e5c506dcc8aa9ca2ecd275b52c72d5fbbf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>ビッグ データの要件に対する Azure Data Lake Store の使用
@@ -42,7 +41,7 @@ ms.lasthandoff: 05/08/2017
 
 | データ ソース | 取り込みに使用するツール |
 | --- | --- |
-| ローカル コンピューター |<ul> <li>[Azure ポータル](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure クロスプラットフォーム CLI](data-lake-store-get-started-cli.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
+| ローカル コンピューター |<ul> <li>[Azure ポータル](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure クロスプラットフォーム CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage BLOB |<ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)</li> <li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>ストリーミングされたデータ
@@ -63,7 +62,7 @@ ms.lasthandoff: 05/08/2017
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web サーバー ログ データ (カスタム アプリケーションを使用したアップロード)
 Web サーバー ログ データの分析は、ビッグ データ アプリケーションの一般的な使用例で、大量のログ ファイルを Data Lake Store にアップロードすることを必要とするため、この種類のデータセットは特に呼び出されます。 このようなデータをアップロードするための独自のスクリプトまたはアプリケーションを記述するには、次のツールのいずれかを使用できます。
 
-* [Azure クロスプラットフォーム CLI](data-lake-store-get-started-cli.md)
+* [Azure クロスプラットフォーム CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)
@@ -77,20 +76,20 @@ Web サーバー ログ データをアップロードする場合、または�
 * [AdlCopy サービス](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
 
-### <a name="data-stored-in-on-premise-or-iaas-hadoop-clusters"></a>オンプレミスまたは IaaS Hadoop クラスターに格納されているデータ
+### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>オンプレミスまたは IaaS Hadoop クラスターに格納されているデータ
 大量のデータが既存の Hadoop クラスターの HDFS を使用するコンピューターにローカルに格納されている場合があります。 Hadoop クラスターは、オンプレミスのデプロイ内にある場合も、Azure の IaaS クラスター内にある場合もあります。 このようなデータを 1 回限りまたは定期的に Azure Data Lake Store にコピーする要件が存在します。 これを実現するために、さまざまな方法を使用できます。 以下の表に、それぞれの方法とそのトレードオフを示します。
 
 | アプローチ | 詳細 | 長所 | 考慮事項 |
 | --- | --- | --- | --- |
 | Azure Data Factory (ADF) を使用して Hadoop クラスターから Azure Data Lake Store にデータを直接コピーする。 |[ADF ではデータ ソースとして HDFS をサポートしている。](../data-factory/data-factory-hdfs-connector.md) |ADF では、HDFS が最初からサポートされており、ファースト クラスのエンド ツー エンドの管理と監視が提供される。 |Data Management Gateway をオンプレミスまたは IaaS クラスターにデプロイする必要がある。 |
-| Hadoop からデータをファイルとしてエクスポートする。 次に、適切なメカニズムを使用してファイルを Azure Data Lake Store にコピーする。 |次のいずれかを使用してファイルを Azure Data Lake Store にコピーできる。 <ul><li>[Azure PowerShell (Windows OS)](data-lake-store-get-started-powershell.md)</li><li>[Azure クロスプラットフォーム CLI (Windows OS 以外)](data-lake-store-get-started-cli.md)</li><li>Data Lake Store SDK を使用するカスタム アプリ</li></ul> |手軽に開始できる。 カスタマイズしたアップロードを行うことができる。 |複数のテクノロジを含む複数ステップのプロセス。 カスタマイズされたツールという性質上、時間の経過と共に管理と監視が困難になる。 |
+| Hadoop からデータをファイルとしてエクスポートする。 次に、適切なメカニズムを使用してファイルを Azure Data Lake Store にコピーする。 |次のいずれかを使用してファイルを Azure Data Lake Store にコピーできる。 <ul><li>[Azure PowerShell (Windows OS)](data-lake-store-get-started-powershell.md)</li><li>[Azure クロスプラットフォーム CLI 2.0 (Windows OS 以外)](data-lake-store-get-started-cli-2.0.md)</li><li>Data Lake Store SDK を使用するカスタム アプリ</li></ul> |手軽に開始できる。 カスタマイズしたアップロードを行うことができる。 |複数のテクノロジを含む複数ステップのプロセス。 カスタマイズされたツールという性質上、時間の経過と共に管理と監視が困難になる。 |
 | Distcp を使用して、Hadoop から Azure Storage にデータをコピーする。 次に、適切なメカニズムを使用してデータを Azure Storage から Azure Data Lake Store にコピーする。 |次のいずれかを使用してデータを Azure Storage から Data Lake Store にコピーできる。 <ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |オープン ソースのツールを使用できる。 |複数のテクノロジを含む複数ステップのプロセス。 |
 
 ### <a name="really-large-datasets"></a>非常に大規模なデータセット
 数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。 このような場合は、次のオプションを使用できます。
 
 * **Azure ExpressRoute の使用**。 Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。 これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)をご覧ください。
-* **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../storage/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
+* **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../storage/common/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
 
   > [!NOTE]
   > Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 195 GB 以下である必要があります。
@@ -123,7 +122,7 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 
 次の方法を使用して、Data Lake Store からデータをダウンロードするための独自のスクリプトやアプリケーションを記述することもできます。
 
-* [Azure クロスプラットフォーム CLI](data-lake-store-get-started-cli.md)
+* [Azure クロスプラットフォーム CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 

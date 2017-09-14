@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 07/13/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 2b5899ba43f651ae6f5fdf84d7aa5ee35d81b738
-ms.openlocfilehash: be27695cd1d998eedff0ca76f6ae9d4ff69bb97b
-ms.lasthandoff: 01/05/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信
@@ -35,7 +35,7 @@ Log Analytics リポジトリ内のすべてのデータは、特定の種類の
 
 
 ## <a name="create-a-request"></a>要求を作成する
-HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の&3; つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
+HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の 3 つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
 
 ### <a name="request-uri"></a>要求 URI
 | 属性 | プロパティ |
@@ -95,7 +95,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 次のセクションのサンプルには、承認ヘッダーを作成するのに役立つサンプル コードが含まれています。
 
 ## <a name="request-body"></a>要求本文
-メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを&1; つ以上含める必要があります。
+メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを 1 つ以上含める必要があります。
 
 ```
 {
@@ -106,7 +106,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 }
 ```
 
-次の形式を使用して複数のレコードを&1; つの要求にまとめることができます。 すべてのレコードは同じレコード型である必要があります。
+次の形式を使用して複数のレコードを 1 つの要求にまとめることができます。 すべてのレコードは同じレコード型である必要があります。
 
 ```
 {
@@ -143,7 +143,7 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 * レコード型が存在しない場合、Log Analytics によって新しいレコード型が作成されます。 新しいレコードの各プロパティに対してデータ型を決定するために、Log Analytics では JSON 型推論が使用されます。
 * レコード型が存在する場合、Log Analytics によって、既存のプロパティに基づいて新しいレコードの作成が試みられます。 新しいレコードのプロパティのデータ型が既存の型と一致せず、変換することもできない場合や、存在しないプロパティを含むレコードの場合、Log Analytics によって関連性のあるサフィックスを持つ新しいプロパティが作成されます。
 
-たとえば、次のような送信エントリには、**number_d**、**boolean_b**、**string_s** の&3; つのプロパティを持つレコードが作成されます。
+たとえば、次のような送信エントリには、**number_d**、**boolean_b**、**string_s** の 3 つのプロパティを持つレコードが作成されます。
 
 ![サンプル レコード 1](media/log-analytics-data-collector-api/record-01.png)
 
@@ -155,15 +155,15 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 
 ![サンプル レコード 3](media/log-analytics-data-collector-api/record-03.png)
 
-次に、レコード型が作成される前に、下記のようなエントリを送信する場合、Log Analytics によって **number_s**、**boolean_s**、**string_s** という&3; つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
+次に、レコード型が作成される前に、下記のようなエントリを送信する場合、Log Analytics によって **number_s**、**boolean_s**、**string_s** という 3 つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
 
 ![サンプル レコード 4](media/log-analytics-data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>データ制限
 Log Analytics データ収集 API に送信するデータに関して制約がいくつかあります。
 
-* Log Analytics データ コレクター API に送信するデータの上限は 30 MB です。 これは&1; 回の送信のサイズ制限です。 1 回の送信のデータ サイズが 30 MB を超える場合は、データを小さなサイズのチャンクに分割し、それらを同時に送信する必要があります。 
-* フィールド値の上限は 32 KB です。 フィールド値が 32 KB を超えた場合、データは切り捨てられます。 
+* Log Analytics データ コレクター API に送信するデータの上限は 30 MB です。 これは 1 回の送信のサイズ制限です。 1 回の送信のデータ サイズが 30 MB を超える場合は、データを小さなサイズのチャンクに分割し、それらを同時に送信する必要があります。
+* フィールド値の上限は 32 KB です。 フィールド値が 32 KB を超えた場合、データは切り捨てられます。
 * 特定の種類のフィールドの推奨される最大数は 50 個です。 これは、使いやすさと検索エクスペリエンスの観点からの実質的な制限です。  
 
 ## <a name="return-codes"></a>リターン コード
@@ -191,6 +191,11 @@ HTTP 状態コード 200 は、要求が処理するために受信されたこ�
 
 ## <a name="query-data"></a>データのクエリを実行する
 Log Analytics HTTP データ コレクター API によって送信されたデータを照会するには、**Type** (指定した **LogType** の値の末尾に **_CL** を追加したもの) でレコードを検索します。 たとえば、**MyCustomLog** を使用した場合、**Type=MyCustomLog_CL** のすべてのレコードが返されます。
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+
+> `MyCustomLog_CL`
 
 ## <a name="sample-requests"></a>サンプルの要求
 次のセクションでは、さまざまなプログラミング言語を使用して Log Analytics HTTP データ コレクター API にデータを送信する方法のサンプルを示します。
@@ -323,7 +328,7 @@ namespace OIAPIExample
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
-    
+
             PostData(signature, datestring, json);
         }
 
@@ -344,20 +349,20 @@ namespace OIAPIExample
         public static void PostData(string signature, string date, string json)
         {
             try
-            { 
+            {
                 string url = "https://" + customerId + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
-    
+
                 System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("Log-Type", LogName);
                 client.DefaultRequestHeaders.Add("Authorization", signature);
                 client.DefaultRequestHeaders.Add("x-ms-date", date);
                 client.DefaultRequestHeaders.Add("time-generated-field", TimeStampField);
-    
+
                 System.Net.Http.HttpContent httpContent = new StringContent(json, Encoding.UTF8);
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
-    
+
                 System.Net.Http.HttpContent responseContent = response.Result.Content;
                 string result = responseContent.ReadAsStringAsync().Result;
                 Console.WriteLine("Return Result: " + result);

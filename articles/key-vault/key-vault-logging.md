@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/07/2017
+ms.date: 07/19/2017
 ms.author: cabailey
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録

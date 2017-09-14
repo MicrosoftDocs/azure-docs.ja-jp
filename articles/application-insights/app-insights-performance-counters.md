@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 94a4d2b85c845b135201fd919e8eac64a5e1cb37
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 2bcdff44f6c3169779c3dd018706eea8275825ca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
@@ -29,15 +28,6 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 ![Application Insights で表示されるパフォーマンス カウンター](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
 (パフォーマンス カウンターは Azure Web Apps には使用できません。 ただし、[Azure 診断を Application Insights に送信する](app-insights-azure-diagnostics.md)ことはできます。)
-
-## <a name="configure"></a>構成
-Application Insights Status Monitor がサーバー コンピューターにまだインストールされていない場合、パフォーマンス カウンターを表示するにはインストールする必要があります。
-
-[Status Monitor のインストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)を各サーバー インスタンスにダウンロードして実行します。 既にインストールされている場合は、再度インストールする必要はありません。
-
-* *開発の間に[アプリに Application Insights SDK をインストール](app-insights-asp-net.md)しました。それでも Status Monitor が必要ですか?*
-  
-    はい、ASP.NET Web アプリのパフォーマンス カウンターを収集するには Status Monitor が必要です。 既にご存じかもしれませんが、Status Monitor を使うと、開発時に SDK をインストールしなくても、[既にライブ状態の Web アプリを監視する](app-insights-monitor-performance-live-website-now.md)ことができます。
 
 ## <a name="view-counters"></a>カウンターを表示する
 [サーバー] ブレードには、既定のパフォーマンス カウンターのセットが表示されます。 

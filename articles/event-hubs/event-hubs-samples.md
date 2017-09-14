@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 89049688ab60842910f1bab8e56c349029dd17a7
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae9fbd97a1747d8f14c561f247a0973bb11fd039
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="event-hubs-samples"></a>Event Hubs サンプル 
 
-Azure Event Hubs サンプルは、[Azure Event Hubs](/azure/event-hubs/) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
+一連の Azure Event Hubs サンプルは、[Azure Event Hubs](/azure/event-hubs/) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
 この記事の執筆時には、Event Hubs サンプルは複数の異なる場所に配置されています。
 
@@ -46,11 +45,11 @@ Azure Event Hubs サンプルは、[Azure Event Hubs](/azure/event-hubs/) の主
 
 ### <a name="receive-events"></a>受信イベント 
 
-[イベント プロセッサ ホストでの受信開始](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)のサンプルは、`Event Processor Host`を使用してイベント ハブからメッセージを受け取る .NET Core コンソール アプリケーションです。
+[イベント プロセッサ ホストでの受信開始](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)のサンプルは、イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受け取る .NET Core コンソール アプリケーションです。
 
-## <a name="net-framework"></a>.NET Framework    
+## <a name="net-framework"></a>.NET Framework   
 
-このサンプルは、[.NET Framework ライブラリ](https://msdn.microsoft.com/library/w0x726c2.aspx)を対象とする、Azure Event Hubs のその他のさまざまな機能を示しています。
+このサンプルは、[.NET Framework ライブラリ](/dotnet/framework/index)を対象とする、Azure Event Hubs のその他のさまざまな機能を示しています。
  
 ### <a name="notify-users-of-events-received"></a>ユーザーへの受信イベントの通知
 
@@ -77,7 +76,7 @@ Azure Event Hubs サンプルは、[Azure Event Hubs](/azure/event-hubs/) の主
 .NET Framework バージョンの詳細については、次のリンク先を参照してください。
 
 - [フレームワークとターゲット](/dotnet/articles/standard/frameworks)
-- [.NET Framework 4.6 と 4.5](https://msdn.microsoft.com/library/w0x726c2.aspx)
+- [.NET Framework 4.6 と 4.5](/dotnet/framework/index)
 
 Event Hubs の詳細については、次の記事を参照してください。
 

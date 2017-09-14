@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/31/2017
-ms.author: vakarand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: d270d7cc3ceeef29aaaf1c9f984e69984049f815
+ms.date: 07/17/2017
+ms.author: billmath
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5a319de69c4e142414ab8f2be980a6576acbf8bb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/29/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング

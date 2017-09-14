@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f8cb0030290d200ab79e340b9b0fe8f5765d49f0
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -119,6 +120,11 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
      バックアップ ポリシーを作成する手順については、「 [バックアップ ポリシーの定義](backup-azure-manage-vms.md#defining-a-backup-policy)」を参照してください。
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
+
+> [!NOTE]
+> バックアップ ポリシーを管理する際には、最適なバックアップ パフォーマンスを確保するための[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)に従ってください。
+>
+>
 
 ## <a name="on-demand-backup-of-a-virtual-machine"></a>オンデマンドでの仮想マシンのバックアップ
 仮想マシンに保護が構成されていれば、その仮想マシンについてオンデマンド バックアップを作成できます。 初回バックアップがまだ実行されていない場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Recovery Services コンテナーに作成されます。 初回バックアップが完了している場合、オンデマンド バックアップによって Recovery Services コンテナーに送信されるのは、前回のスナップショット以降の変更だけです。 つまり、以降のバックアップでは、増分のみが送信対象となります。

@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 04/10/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 744ad6cfc15453e1db7a012eebe09ceba226fde9
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 71c7eaf2272245bd681387947812f7d5c0f58094
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
@@ -40,7 +39,7 @@ Azure SQL サーバーにある 1 つのデータベースにのみ選択的に�
    ![Diagram describing firewall configuration.][1]
 
 * **サーバー レベルのファイアウォール規則:** これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 これらの規則は、 **マスター** データベースに保存されます。 サーバー レベルのファイアウォール規則を構成するには、ポータルまたは Transact-SQL ステートメントを使用します。 Azure Portal または PowerShell を使用してサーバーレベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。 Transact-SQL を使用してサーバーレベルのファイアウォール規則を作成するには、サーバーレベルのプリンシパル ログインまたは Azure Active Directory 管理者として SQL Database インスタンスに接続する必要があります (つまり、サーバーレベルのファイアウォール規則は、最初に Azure レベルのアクセス許可を持つユーザーが作成する必要があります)。
-* **データベース レベルのファイアウォール規則:** これらの規則により、クライアントは、同じ論理サーバー内の特定の (セキュリティで保護された) データベースにアクセスできるようになります。 これらの規則は、データベースごと (**master** の database0 を含む) に作成することができ、個々のデータベースに格納されます。 データベース レベルのファイアウォール規則の構成は、Transact-SQL ステートメントを使用して、最初のサーバー レベルのファイアウォールを構成した後にのみ行うことができます。 サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。 データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。 マスターおよびユーザーのデータベースに対するデータベース レベルのファイアウォール規則は、Transact-SQL を介してのみ、作成と管理を行うことができます。 データベース レベルのファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
+* **データベース レベルのファイアウォール規則:** これらの規則により、クライアントは、同じ論理サーバー内の特定の (セキュリティで保護された) データベースにアクセスできるようになります。 これらの規則は、データベースごと (**master** データベースを含む) に作成することができ、個々のデータベースに格納されます。 master データベースとユーザー データベースのデータベースレベルのファイアウォール規則は、Transact-SQL ステートメントを使うことによって、最初のサーバーレベルのファイアウォール規則を構成した後でのみ、作成および管理できます。 サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。 データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。 データベース レベルのファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
 
 **推奨事項:** セキュリティとデータベースの移植性を高めるため、可能な限り、データベース レベルのファイアウォール規則を使用することをお勧めします。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバー レベルのファイアウォール規則を使用します。
 
@@ -69,11 +68,16 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 
 ## <a name="creating-and-managing-firewall-rules"></a>ファイアウォール規則の作成と管理
 最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://msdn.microsoft.com/library/azure/dn546724.aspx)、[Azure CLI](/cli/azure/sql/server/firewall-rule#create)、または [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) を使用して作成できます。 それ以降のサーバーレベルのファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。 
+
 > [!IMPORTANT]
 > データベース レベルのファイアウォール規則は、Transact-SQL でのみ作成と管理が可能です。 
 >
 
 パフォーマンスを向上させるため、サーバー レベルのファイアウォール規則はデータベース レベルで一時的にキャッシュされます。 キャッシュを更新する方法については、「[DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)」をご覧ください。 
+
+> [!TIP]
+> [SQL Database 監査](sql-database-auditing.md)を使用して、サーバー レベルおよびデータベース レベルのファイアウォールの変更を監査できます。
+>
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -149,7 +153,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```powershell
 New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.1"
+    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
 ```
 
 > [!TIP]
@@ -169,7 +173,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
-    -n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.1
+    -n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP]

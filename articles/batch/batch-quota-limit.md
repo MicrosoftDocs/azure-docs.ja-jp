@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 56e8f5579da2b5bed7975f25f0779c54d70cb886
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -72,8 +72,10 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | [アプリケーション](batch-application-packages.md) 数 |20 |
 | アプリケーションあたりのアプリケーション パッケージ数 |40 |
 | 各アプリケーション パッケージのサイズ |約 195 GB<sup>1</sup> |
+| 開始タスクの最大サイズ | 32768 文字<sup>2</sup> |
 
-<sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限
+<sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限<br />
+<sup>2</sup> リソース ファイルと環境変数を含む
 
 ## <a name="view-batch-quotas"></a>Batch クォータの確認
 Batch アカウントのクォータは、[Azure Portal][portal] で確認します。
@@ -111,14 +113,14 @@ Batch アカウントを **Batch サービス** モードで作成した場合�
    
     d. **[サポート プラン]** > **[Quota Support - Included (クォータのサポート - 含む)]**
    
-    **[次へ]**をクリックします。
+    **[次へ]** をクリックします。
 4. **[Problem (問題)]** ブレードで、次の操作を行います。
    
     a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
    
     b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
    
-    **[次へ]**をクリックします。
+    **[次へ]** をクリックします。
 5. **[連絡先情報]** ブレードで、次の操作を行います。
    
     a. **希望連絡方法**を選択します。

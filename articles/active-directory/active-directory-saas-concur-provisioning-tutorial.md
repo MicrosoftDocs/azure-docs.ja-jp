@@ -1,0 +1,129 @@
+---
+title: "チュートリアル: Azure Active Directory と Concur の統合 | Microsoft Docs"
+description: "Azure Active Directory と Concur の間でシングル サインオンを構成する方法について説明します。"
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: femila
+ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/16/2017
+ms.author: jeedes
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: cd35b6e2dc3171e9cffdb820bbc5b0d45ff58e07
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
+
+
+---
+# <a name="tutorial-configuring-concur-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための Concur の構成
+
+このチュートリアルでは、Azure AD から Concur にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Concur と Azure AD で実行する必要がある手順について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+
+*   Azure Active Directory テナント。
+*   Concur でのシングル サインオンが有効なサブスクリプション。
+*   Team Admin アクセス許可がある Concur のユーザー アカウント。
+
+## <a name="assigning-users-to-concur"></a>Concur へのユーザーの割り当て
+
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
+
+プロビジョニング サービスを構成して有効にする前に、Concur アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Concur アプリに割り当てることができます。
+
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+
+### <a name="important-tips-for-assigning-users-to-concur"></a>ユーザーを Concur に割り当てる際の重要なヒント
+
+*   単一の Azure AD ユーザーを Concur に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+
+*   Concur にユーザーを割り当てるときに、有効なユーザー ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+
+## <a name="enable-user-provisioning"></a>ユーザー プロビジョニングの有効化
+
+このセクションでは、Azure AD を Concur のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを Concur で作成、更新、無効化する手順を説明します。
+
+> [!Tip] 
+> Concur では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+### <a name="to-configure-user-account-provisioning"></a>ユーザー アカウント プロビジョニングを構成するには
+
+このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを Concur に対して有効にする方法について説明します。
+
+Expense Service でアプリケーションを有効にするには、正しい設定と共に、Web サービス管理者のプロファイルを使用する必要があります。 T&E 管理機能で使用する既存の管理者プロファイルに WS 管理者のロールを追加しないでください。
+
+Concur コンサルタントまたはクライアント管理者は、Web サービス管理者プロファイルを別に作成する必要があります。クライアント管理者は、Web サービス管理者の機能 (アプリケーションの有効化など) に対してこのプロファイルを使用します。 このプロファイルは、クライアント管理者が日々使用する T&E 管理者プロファイルとは別にする必要があります (T&E 管理者プロファイルには、WS 管理者のロールを割り当てないでください)。
+
+アプリケーションの有効化に使用するプロファイルを作成するときは、ユーザー プロファイルのフィールドにクライアント管理者の名前を入力します。 これにより、プロファイルに所有権が割り当てられます。 プロファイルの作成が完了したら、クライアントはそのプロファイルを使用してログインし、[Web サービス] メニューにあるパートナー アプリケーションの *[有効にする]* ボタンをクリックします。
+
+次の理由から、通常の T&E の管理に使用するプロファイルではこのアクションを実行しないでください。
+
+* クライアントは、アプリケーションを有効にした後で表示されるダイアログ ウィンドウで *[はい]* をクリックしたクライアントと同一でなければなりません。 このクリックは、クライアントがパートナー アプリケーションに対して自分のデータにアクセスすることを許可する意思を示すものです。したがって、パートナーなど、クライアント以外の人物が [はい] をクリックすることはできません。
+
+* クライアント管理者が T&E 管理者プロファイルを使用してアプリケーションを有効にした後で、会社を退職した場合 (その結果、プロファイルが非アクティブになった場合)、そのプロファイルを使用して有効にしたアプリケーションは、別のアクティブな WS 管理者プロファイルで有効にするまで機能しなくなります。 このため、WS 管理者プロファイルを別途作成する必要があります。
+
+* 管理者が会社を退職した場合、その WS 管理者プロファイルに関連付けられている名前を、必要に応じて別の管理者に変更することができます。この方法では、プロファイルを非アクティブ化する必要がないため、有効にしたアプリケーションに影響が及ぶことはありません。
+
+**ユーザー プロビジョニングを構成するには、次の手順に従います。**
+
+1. **Concur** テナントにログインします。
+
+2. **[管理]** メニューの **[Web サービス]** をクリックします。
+   
+    ![Concur tenant](./media/active-directory-saas-concur-provisioning-tutorial/IC721729.png "Concur tenant")
+
+3. 左側の **[Web サービス]** ウィンドウで、**[パートナー アプリケーションの有効化]** を選択します。
+   
+    ![Enable Partner Application](./media/active-directory-saas-concur-provisioning-tutorial/ic721730.png "Enable Partner Application")
+
+4. **[アプリケーションを有効にする]** ボックスの一覧で **[Azure Active Directory]** を選択し、**[有効にする]** をクリックします。
+   
+    ![Microsoft Azure Active Directory](./media/active-directory-saas-concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
+
+5. **[はい]** をクリックして、**[アクションの確認]** ダイアログを閉じます。
+   
+    ![Confirm Action](./media/active-directory-saas-concur-provisioning-tutorial/ic721732.png "Confirm Action")
+
+6. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+
+7. シングル サインオンのために Concur を既に構成している場合は、検索フィールドで Concur のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Concur** を検索します。 検索結果から Concur を選択してアプリケーションの一覧に追加します。
+
+8. Concur のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+
+9. **[プロビジョニング モード]** を **[自動]** に設定します。 
+ 
+    ![プロビジョニング](./media/active-directory-saas-concur-provisioning-tutorial/provisioning.png)
+
+10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「**ユーザー名**」と「**パスワード**」を入力します。
+
+11. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
+
+12. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
+
+13. **[保存]** をクリックします。
+
+14. [マッピング] セクションの **[Azure Active Directory ユーザーを Concur に同期する]** を選択します。
+
+15. **[属性マッピング]** セクションで、Azure AD から Concur に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Concur のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
+
+16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+
+17. **[保存]** をクリックします。
+
+テスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Concur に同期されたことを確認します。
+
+## <a name="additional-resources"></a>その他のリソース
+
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [シングル サインオンの構成](active-directory-saas-concur-tutorial.md)
+
+

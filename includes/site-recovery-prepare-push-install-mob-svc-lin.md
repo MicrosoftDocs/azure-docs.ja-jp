@@ -12,6 +12,7 @@
   4.  **Subsystem** で始まる行を見つけ、その行のコメントを解除します。
 
      ![Linux](./media/site-recovery-prepare-push-install-mob-svc-lin/mobility2.png)
+  5. **sshd** サービスを再起動します。
 
 7. CSPSConfigtool で作成したアカウントを追加します。
     1.  構成サーバーにサインインします。

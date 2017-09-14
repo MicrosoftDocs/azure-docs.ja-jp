@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: ddove
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 035fac3cbdc9765fa8d5c80e3d2d9449e1bf5b3a
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 637463399593f4bc9ff5bfcbf67bf93b816efc7f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -78,7 +78,6 @@ Elastic Database ツールは無料です。 Elastic Database ツールを使用
 ## <a name="next-steps"></a>次のステップ
 Elastic Database ツールの詳細については、以下のページをご覧ください。
 
-* [Elastic Database ツールのドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/) 
 * コード サンプル 
   * [Azure SQL 用 Elastic DB ツール - 概要](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
   * [Azure SQL 用 Elastic DB ツール - Entity Framework の統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)

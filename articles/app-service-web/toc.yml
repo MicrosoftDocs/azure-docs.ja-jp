@@ -2,297 +2,305 @@
   href: index.yml
 - name: 概要
   items:
-  - name: Web Apps について
-    href: app-service-web-overview.md
-  - name: ホスティング オプションの比較
-    href: choose-web-site-cloud-service-vm.md
+    - name: Web Apps について
+      href: app-service-web-overview.md
+    - name: Web Apps for Containers について
+      href: ../app-service/containers/app-service-linux-intro.md
+    - name: ホスティング オプションの比較
+      href: choose-web-site-cloud-service-vm.md
 - name: クイック スタート
   expanded: true
   items:
-  - name: .NET アプリの作成
-    href: app-service-web-get-started-dotnet.md
-  - name: Node.js アプリの作成
-    href: app-service-web-get-started-nodejs.md
-  - name: PHP アプリの作成
-    href: app-service-web-get-started-php.md
-  - name: Java アプリの作成
-    href: app-service-web-get-started-java.md
-  - name: Python アプリの作成
-    href: app-service-web-get-started-python.md
-  - name: 静的な HTML サイトの作成
-    href: app-service-web-get-started-html.md
+    - name: .NET アプリの作成
+      href: app-service-web-get-started-dotnet.md
+    - name: Node.js アプリの作成
+      href: app-service-web-get-started-nodejs.md
+    - name: PHP アプリの作成
+      href: app-service-web-get-started-php.md
+    - name: Java アプリの作成
+      href: app-service-web-get-started-java.md
+    - name: Python アプリの作成
+      href: app-service-web-get-started-python.md
+    - name: 静的な HTML サイトの作成
+      href: app-service-web-get-started-html.md
 - name: Tutorials (チュートリアル)
   items:
-  - name: 1 - .NET と SQL DB
-    href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: 1 - Node.js と MongoDB
-    href: app-service-web-tutorial-nodejs-mongodb-app.md
-  - name: 1 - PHP と MySQL
-    href: app-service-web-tutorial-php-mysql.md 
-  - name: 1 - WordPress と MySQL
-    href: app-service-web-create-web-app-from-marketplace.md
-  - name: 1 - Python と PostgreSQL
-    href: app-service-web-tutorial-docker-python-postgresql-app.md
-  - name: 2 - カスタム ドメインのマップ
-    href: app-service-web-tutorial-custom-domain.md
-  - name: 3 - SSL 証明書のバインド
-    href: app-service-web-tutorial-custom-ssl.md
-  - name: 4 - CDN の追加
-    href: app-service-web-tutorial-content-delivery-network.md
-#  - name: 5 - Monitor your app
-#    href: app-service-web-tutorial-monitoring.md
+    - name: 1 - .NET と SQL DB
+      href: app-service-web-tutorial-dotnet-sqldatabase.md
+    - name: 1 - Node.js と MongoDB
+      href: app-service-web-tutorial-nodejs-mongodb-app.md
+    - name: 1 - PHP と MySQL
+      href: app-service-web-tutorial-php-mysql.md
+    - name: 1 - Java と MySQL
+      href: app-service-web-tutorial-java-mysql.md
+    - name: 2 - カスタム ドメインのマップ
+      href: app-service-web-tutorial-custom-domain.md
+    - name: 3 - SSL 証明書のバインド
+      href: app-service-web-tutorial-custom-ssl.md
+    - name: 4 - CDN の追加
+      href: app-service-web-tutorial-content-delivery-network.md
 - name: サンプル
   items:
-  - name: Azure CLI
-    href: app-service-cli-samples.md
-  - name: PowerShell
-    href: app-service-powershell-samples.md
+    - name: Azure CLI
+      href: app-service-cli-samples.md
+    - name: PowerShell
+      href: app-service-powershell-samples.md
 - name: 概念
   items:
-  - name: App Service の特長
-    href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: App Service プラン
-    href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: App Service Environment
-    href: app-service-app-service-environment-intro.md
-  - name: 認証と権限承認
-    href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: オンプレミスの AD による認証
-    href: web-sites-authentication-authorization.md
+    - name: App Service の特長
+      href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: App Service プラン
+      href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: App Service 環境
+      href: ../app-service/app-service-environment/intro.md
+    - name: 認証と権限承認
+      href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: オンプレミスの AD による認証
+      href: web-sites-authentication-authorization.md
 - name: ハウツー ガイド
   items:
-  - name: アプリの開発
-    items:
-    - name: ASP.NET
+    - name: アプリの開発
       items:
-      - name: SQL Database を使用した ASP.NET アプリ
-        href: web-sites-dotnet-get-started.md
-      - name: VS Code による ASP.NET Core アプリの開発
-        href: web-sites-create-web-app-using-vscode.md
-    - name: PHP
+        - name: ASP.NET
+          items:
+            - name: SQL Database を使用した ASP.NET アプリ
+              href: web-sites-dotnet-get-started.md
+            - name: VS Code による ASP.NET Core アプリの開発
+              href: web-sites-create-web-app-using-vscode.md
+        - name: PHP
+          items:
+            - name: MySQL を使用した Laravel アプリ
+              href: app-service-web-php-get-started.md
+            - name: PHP プロジェクトの設定
+              href: web-sites-php-configure.md
+        - name: Node.js
+          items:
+            - name: Node.js アプリのデバッグ
+              href: web-sites-nodejs-debug.md
+        - name: Java
+          items:
+            - name: Eclipse を使用した Java アプリ
+              href: app-service-web-eclipse-create-hello-world-web-app.md
+            - name: IntelliJ を使用した Java アプリ
+              href: app-service-web-intellij-create-hello-world-web-app.md
+            - name: 既存のアプリのアップロード
+              href: web-sites-java-add-app.md
+        - name: SendGrid を使用した電子メールの送信
+          href: sendgrid-dotnet-how-to-send-email.md
+        - name: ランタイムの構成
+          items:
+            - name: Windows の PHP
+              href: web-sites-php-configure.md
+            - name: Java
+              href: web-sites-java-add-app.md
+            - name: Python
+              href: web-sites-python-configure.md
+        - name: アプリケーションの構成
+          items:
+            - name: アプリ設定の使用
+              href: web-sites-configure.md
+    - name: Azure へのデプロイ
+      href: web-sites-deploy.md
       items:
-      - name: MySQL を使用した Laravel アプリ
-        href: app-service-web-php-get-started.md
-      - name: PHP プロジェクトの設定
-        href: web-sites-php-configure.md
-      - name: WordPress マルチサイトの設定
-        href: web-sites-php-convert-wordpress-multisite.md
-    - name: Node.js
+        - name: FTP 経由でのデプロイ
+          href: app-service-deploy-ftp.md
+        - name: クラウドの同期を使用したデプロイ
+          href: app-service-deploy-content-sync.md
+        - name: 継続的なデプロイ
+          href: app-service-continuous-deployment.md
+        - name: ステージングへのデプロイ
+          href: web-sites-staged-publishing.md
+        - name: ローカル Git からのデプロイ
+          href: app-service-deploy-local-git.md
+        - name: テンプレートを使用したデプロイ
+          href: app-service-deploy-complex-application-predictably.md
+        - name: アジャイル デプロイ
+          href: app-service-agile-software-development.md
+        - name: ベータ テスト
+          href: app-service-web-test-in-production-controlled-test-flight.md
+        - name: デプロイメント資格情報の設定
+          href: app-service-deployment-credentials.md
+        - name: カスタム ドメインのマップ
+          items:
+            - name: ドメインの購入
+              href: custom-dns-web-site-buydomains-web-app.md
+            - name: Traffic Manager を使用したドメインのマップ
+              href: web-sites-traffic-manager-custom-domain-name.md
+            - name: アクティブなドメインの移行
+              href: app-service-custom-domain-name-migrate.md
+        - name: Maven プラグインを使用して Spring Boot アプリを Azure Web Apps にデプロイする
+          href: app-service-web-deploy-spring-boot-app-with-maven-plugin.md
+        - name: コンテナー化された Spring Boot アプリを Maven プラグインを使用してデプロイする
+          href: app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md
+        - name: Azure Container Registry の Spring Boot アプリを Azure App Service にデプロイする
+          href: app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin.md
+        - name: Azure Toolkit for IntelliJ を使用して Linux コンテナーで Hello World Web アプリを実行する
+          href: ../azure-toolkit-for-intellij-hello-world-web-app-linux.md
+    - name: DB/リソースへの接続
       items:
-      - name: NOSQL DB を使用した Sails.js アプリ
-        href: app-service-web-nodejs-sails.md
-      - name: io.js の使用
-        href: web-sites-nodejs-iojs.md
-      - name: Node.js アプリのデバッグ
-        href: web-sites-nodejs-debug.md
-    - name: Java
+        - name: Azure VNet への接続
+          href: web-sites-integrate-with-vnet.md
+        - name: PowerShell を使用した Azure VNet への接続
+          href: app-service-vnet-integration-powershell.md
+        - name: Azure VM 上の MongoDB への接続
+          href: web-sites-dotnet-store-data-mongodb-vm.md
+    - name: アプリのセキュリティ保護
       items:
-      - name: Eclipse を使用した Java アプリ
-        href: app-service-web-eclipse-create-hello-world-web-app.md
-      - name: IntelliJ を使用した Java アプリ
-        href: app-service-web-intellij-create-hello-world-web-app.md
-      - name: Azure SDK for Java の使用
-        href: java-create-azure-website-using-java-sdk.md
-      - name: 既存のアプリのアップロード
-        href: web-sites-java-add-app.md
-    - name: Python
+        - name: ユーザーを認証する
+          items:
+            - name: Azure AD による認証
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: Facebook による認証
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: Google による認証
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: Microsoft アカウントによる認証
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: Twitter による認証
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: オンプレミスの AD による認証
+              href: web-sites-authentication-authorization.md
+            - name: マルチテナント データベースを使用したアプリ
+              href: web-sites-dotnet-entity-framework-row-level-security.md
+        - name: HTTPS の適用
+          href: 'web-sites-configure-ssl-certificate.md#enforce-https-on-your-app'
+        - name: TLS 相互認証の構成
+          href: app-service-web-configure-tls-mutual-auth.md
+    - name: アプリのスケール
       items:
-      - name: MySQL を使用した Django アプリ
-        href: web-sites-python-ptvs-django-mysql.md
-    - name: SendGrid を使用した電子メールの送信
-      href: sendgrid-dotnet-how-to-send-email.md
-    - name: ランタイムの構成
+        - name: スケールアップ
+          href: web-sites-scale.md
+        - name: スケールアウト
+          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+        - name: App Service Environment による高スケール
+          href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+        - name: グローバルな展開に向けた Azure CDN の使用
+          href: cdn-websites-with-cdn.md
+        - name: Memcache 経由での Redis Cache への接続
+          href: web-sites-connect-to-redis-using-memcache-protocol.md
+        - name: Redis Cache の作成
+          href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: 監視
       items:
-      - name: Windows の PHP
-        href: web-sites-php-configure.md
-      - name: Java
-        href: web-sites-java-add-app.md
-      - name: Python
-        href: web-sites-python-configure.md
-    - name: アプリケーションの構成
+        - name: アプリの監視
+          href: web-sites-monitor.md
+        - name: ログの有効化
+          href: web-sites-enable-diagnostic-log.md
+        - name: ログのストリーミング
+          href: web-sites-streaming-logs-and-console.md
+    - name: コンテンツのバックアップ
       items:
-      - name: アプリ設定の使用
-        href: web-sites-configure.md
-    - name: Linux の Web アプリ
+        - name: アプリのバックアップ
+          href: web-sites-backup.md
+        - name: バックアップからのアプリの復元
+          href: web-sites-restore.md
+    - name: アプリのリソースの管理
       items:
-      - name: 概要
-        href: app-service-linux-intro.md
-      - name: Linux の Web アプリの作成
-        href: app-service-linux-how-to-create-web-app.md
-      - name: Linux の Ruby Web アプリ
-        href: app-service-linux-ruby-get-started.md
-      - name: Linux の Node.js Web アプリ
-        href: app-service-linux-using-nodejs-pm2.md
-      - name: Linux の .NET Core Web アプリ
-        href: app-service-linux-using-dotnetcore.md
-      - name: Linux のカスタム Docker Web アプリ
-        href: app-service-linux-using-custom-docker-image.md
-      - name: SSH 経由の接続
-        href: app-service-linux-ssh-support.md
-      - name: Azure App Service への継続的なデプロイ
-        href: app-service-linux-ci-cd.md
-      - name: Linux の Web アプリに関する FAQ
-        href: app-service-linux-faq.md
-  - name: Azure へのデプロイ
-    href: web-sites-deploy.md
-    items:
-    - name: FTP 経由でのデプロイ
-      href: app-service-deploy-ftp.md
-    - name: クラウドの同期を使用したデプロイ
-      href: app-service-deploy-content-sync.md
-    - name: 継続的なデプロイ
-      href: app-service-continuous-deployment.md
-    - name: ステージングへのデプロイ
-      href: web-sites-staged-publishing.md
-    - name: ローカル Git からのデプロイ
-      href: app-service-deploy-local-git.md
-    - name: テンプレートを使用したデプロイ
-      href: app-service-deploy-complex-application-predictably.md
-    - name: アジャイル デプロイ
-      href: app-service-agile-software-development.md
-    - name: ベータ テスト
-      href: app-service-web-test-in-production-controlled-test-flight.md
-    - name: デプロイメント資格情報の設定
-      href: app-service-deployment-credentials.md
-    - name: カスタム ドメインのマップ
+        - name: PowerShell を使用したアプリの複製
+          href: app-service-web-app-cloning.md
+        - name: ポータルを使用したアプリの複製
+          href: app-service-web-app-cloning-portal.md
+        - name: リソースの移動
+          href: app-service-move-resources.md
+    - name: 統合
       items:
-      - name: ドメインの購入
-        href: custom-dns-web-site-buydomains-web-app.md
-      - name: Traffic Manager を使用したドメインのマップ
-        href: web-sites-traffic-manager-custom-domain-name.md
-      - name: GoDaddy ドメインのマップ
-        href: web-sites-godaddy-custom-domain-name.md
-      - name: アクティブなドメインの移行
-        href: app-service-custom-domain-name-migrate.md
-    - name: IIS から移行
-      href: web-sites-migration-from-iis-server.md
-    - name: 運用環境におけるテスト
-      href: app-service-web-test-in-production-get-start.md
-    - name: Web アプリへの機能の追加
-      href: app-service-web-get-started-2.md
-  - name: DB/リソースへの接続
-    items:
-    - name: オンプレミス データに接続する
-      href: web-sites-hybrid-connection-get-started.md
-    - name: Azure VNet への接続
-      href: web-sites-integrate-with-vnet.md
-    - name: PowerShell を使用した Azure VNet への接続
-      href: app-service-vnet-integration-powershell.md
-    - name: Azure VM 上の MongoDB への接続
-      href: web-sites-dotnet-store-data-mongodb-vm.md
-  - name: アプリのセキュリティ保護
-    items:
-    - name: ユーザーを認証する
+        - name: PowerApps および Microsoft Flow にエクスポートする
+          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: App Service 環境
       items:
-      - name: Azure AD による認証
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: Facebook による認証
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: Google による認証
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: Microsoft アカウントによる認証
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: Twitter による認証
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: オンプレミスの AD による認証
-        href: web-sites-authentication-authorization.md
-      - name: マルチテナント データベースを使用したアプリ
-        href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: HTTPS の適用
-      href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
-    - name: TLS 相互認証の構成
-      href: app-service-web-configure-tls-mutual-auth.md
-  - name: アプリのスケール
-    items:
-    - name: スケールアップ
-      href: web-sites-scale.md
-    - name: スケールアウト
-      href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: Traffic Manager による負荷分散
-      href: web-sites-traffic-manager.md
-    - name: App Service Environment による高スケール
-      href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: グローバルな展開に向けた Azure CDN の使用
-      href: cdn-websites-with-cdn.md
-    - name: Memcache 経由での Redis Cache への接続
-      href: web-sites-connect-to-redis-using-memcache-protocol.md
-    - name: Redis Cache の作成
-      href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: Azure Redis Cache でセッション状態を管理する
-      href: web-sites-dotnet-session-state-caching.md
-  - name: 監視
-    items:
-    - name: アプリの監視
-      href: web-sites-monitor.md
-    - name: ログの有効化
-      href: web-sites-enable-diagnostic-log.md
-    - name: ログのストリーミング
-      href: web-sites-streaming-logs-and-console.md
-  - name: コンテンツのバックアップ
-    items:
-    - name: アプリのバックアップ
-      href: web-sites-backup.md
-    - name: バックアップからのアプリの復元
-      href: web-sites-restore.md
-    - name: REST API を使用したバックアップ
-      href: websites-csm-backup.md
-  - name: アプリのリソースの管理
-    items:
-    - name: PowerShell を使用したアプリの複製
-      href: app-service-web-app-cloning.md
-    - name: ポータルを使用したアプリの複製
-      href: app-service-web-app-cloning-portal.md
-    - name: リソースの移動
-      href: app-service-move-resources.md
-    - name: PowerShell で Azure Resource Manager を使用する
-      href: app-service-web-app-azure-resource-manager-powershell.md
-    - name: Azure Automation を使用してアプリを管理する
-      href: automation-manage-web-app.md
+        - name: App Service 環境の使用
+          href: ../app-service/app-service-environment/using-an-ase.md
+        - name: 外部 App Service 環境の作成
+          href: ../app-service/app-service-environment/create-external-ase.md
+        - name: Azure Resource Manager を使用した作成
+          href: ../app-service/app-service-environment/create-from-template.md
+        - name: 内部ロード バランサーを使用した作成
+          href: ../app-service/app-service-environment/create-ilb-ase.md
+        - name: ネットワークに関する考慮事項
+          href: ../app-service/app-service-environment/network-info.md
+        - name: カスタム設定の構成
+          href: ./app-service-app-service-environment-custom-settings.md
+        - name: Web アプリケーション ファイアウォールとの統合
+          href: ./app-service-app-service-environment-web-application-firewall.md
+        - name: 地理的に分散されたスケール
+          href: ./app-service-app-service-environment-geo-distributed-scale.md
+        - name: 管理アドレス リスト
+          href: ../app-service/app-service-environment/management-addresses.md
 - name: リファレンス
   items:
-  - name: CLI 2.0
-    href: /cli/azure/appservice
-  - name: PowerShell
-    href: /powershell
-  - name: REST API
-    href: /rest/api/appservice/
+    - name: CLI 2.0
+      href: /cli/azure/appservice
+    - name: PowerShell
+      href: /powershell
+    - name: REST API
+      href: /rest/api/appservice/
+    - name: App Service 環境
+      href: ../app-service/app-service-environment/readme.md
 - name: リソース
   items:
-  - name: トラブルシューティング
-    items:
-    - name: Visual Studio を使用したトラブルシューティング
-      href: web-sites-dotnet-troubleshoot-visual-studio.md
-    - name: Node.js アプリのトラブルシューティング
-      href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
-    - name: HTTP 502 と 503 のトラブルシューティング
-      href: app-service-web-troubleshoot-http-502-http-503.md
-    - name: パフォーマンスに関する問題のトラブルシューティング
-      href: app-service-web-troubleshoot-performance-degradation.md
-    - name: FAQ
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: トラブルシューティング
       items:
-      - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
-        href: app-service-web-availability-performance-application-issues-faq.md
-      - name: デプロイに関する FAQ
-        href: app-service-web-deployment-faq.md
-      - name: オープン ソース テクノロジに関する FAQ
-        href: app-service-web-open-source-technologies-faq.md
-      - name: 構成と管理に関する FAQ
-        href: app-service-web-configuration-and-management-faq.md
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: クォータの情報
-    href: ../azure-subscription-service-limits.md#app-service-limits
-  - name: サービスの更新情報とリリース ノート
-    href: https://azure.microsoft.com/updates/?product=app-service
-  - name: ベスト プラクティス
-    href: app-service-best-practices.md
-  - name: サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=app-service
-  - name: ビデオ
-    href: https://azure.microsoft.com/resources/videos/index/?services=app-service
-  - name: クックブック
-    items:
-    - name: 参照アーキテクチャ
-      href: ../guidance/guidance-ra-app-service.md
-    - name: デプロイ スクリプト
-      href: https://azure.microsoft.com/documentation/scripts/
+        - name: Visual Studio を使用したトラブルシューティング
+          href: web-sites-dotnet-troubleshoot-visual-studio.md
+        - name: Node.js アプリのトラブルシューティング
+          href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
+        - name: HTTP 502 と 503 のトラブルシューティング
+          href: app-service-web-troubleshoot-http-502-http-503.md
+        - name: パフォーマンスに関する問題のトラブルシューティング
+          href: app-service-web-troubleshoot-performance-degradation.md
+        - name: FAQ
+          items:
+            - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
+              href: app-service-web-availability-performance-application-issues-faq.md
+            - name: デプロイに関する FAQ
+              href: app-service-web-deployment-faq.md
+            - name: オープン ソース テクノロジに関する FAQ
+              href: app-service-web-open-source-technologies-faq.md
+            - name: 構成と管理に関する FAQ
+              href: app-service-web-configuration-and-management-faq.md
+    - name: App Service Environment v1
+      items:
+        - name: 概要
+          href: app-service-app-service-environment-intro.md
+        - name: App Service Environment の作成方法
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: App Service 環境で Web アプリを作成する
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: 内部ロード バランサーを使用する
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: App Service 環境を構成する
+          href: app-service-web-configure-an-app-service-environment.md
+        - name: App Service 環境内でのアプリのスケーリング
+          href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+        - name: ネットワーク アーキテクチャの概要
+          href: app-service-app-service-environment-network-architecture-overview.md
+        - name: レイヤード セキュリティ アーキテクチャの実装
+          href: app-service-app-service-environment-layered-security.md
+        - name: 受信トラフィックを制御する方法
+          href: app-service-app-service-environment-control-inbound-traffic.md
+        - name: バックエンド リソースへの安全な接続
+          href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
+        - name: ExpressRoute でのネットワーク構成の詳細
+          href: app-service-app-service-environment-network-configuration-expressroute.md
+        - name: App Service 環境内での自動スケール
+          href: ../app-service/app-service-environment-auto-scale.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: クォータの情報
+      href: '../azure-subscription-service-limits.md#app-service-limits'
+    - name: サービスの更新情報とリリース ノート
+      href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: ベスト プラクティス
+      href: app-service-best-practices.md
+    - name: サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+    - name: クックブック
+      items:
+        - name: 参照アーキテクチャ
+          href: ../guidance/guidance-ra-app-service.md
+        - name: デプロイ スクリプト
+          href: 'https://azure.microsoft.com/documentation/scripts/'

@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory コマンドレットを使用したグループ設定の構成 | Microsoft Docs"
-description: "Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です。"
+description: "Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,24 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
+ms.date: 08/09/2017
+ms.author: curtand
+ms.reviewer: kairaz.contractor
+ms.custom: it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 2ee71536257d4349fdf8d80bdcb1899a1d244293
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
 > [!IMPORTANT]
-> このコンテンツは、Office 365 グループとも呼ばれる統合グループにのみ適用されます。 
+> このコンテンツは、Office 365 グループにのみ適用されます。 ユーザーにセキュリティ グループの作成を許可するには、「[Set-MSOLCompanySettings](https://docs.microsoft.com/en-us/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` を設定します。 
 
-Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。 つまり、ディレクトリは既定の設定で構成されています。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリのグループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループのグループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、グループへのゲストのアクセスを管理するために使用します。 
+Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Office 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Office 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Office 365 グループへのゲストのアクセスを管理するために使用します。 
 
-コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 このモジュールの詳細と、モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)」を参照してください。 公開版のバージョン 2 モジュールは、[ここ](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
+コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)」を参照してください。 公開版のバージョン 2 モジュールは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
 
 ## <a name="retrieve-a-specific-settings-value"></a>特定の設定値の取得
 取得する設定の名前がわかっている場合、以下のコマンドレットを使って、現在の設定値を取得することができます。 この例では、"UsageGuidelinesUrl" という名前の設定の値を取得しています。 ディレクトリの設定と名前の詳細については、この記事の後の方で説明します。
@@ -39,7 +40,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 ```
 
 ## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
-次の手順では、ディレクトリ内のすべての統合グループに適用される設定をディレクトリ レベルで作成します。
+次の手順では、ディレクトリ内のすべての Office 365 グループ (統合グループ) に適用される設定をディレクトリ レベルで作成します。
 
 1. DirectorySettings コマンドレットでは、使用する SettingsTemplate の ID を指定する必要があります。 使用する ID を把握していない場合、このコマンドレットでは、すべての Settings テンプレートの一覧が返されます。
   
@@ -76,7 +77,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 5. 最後に、設定を適用します。
   
   ```
-  New-AzureADDirectorySetting -DirectorySetting $settings
+  New-AzureADDirectorySetting -DirectorySetting $setting
   ```
 
 このコマンドレットが正常に完了すると、新しい Settings オブジェクトの ID が返されます。

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 4f5e58713d925d2f7477dc072ecec455dec70792
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 Azure Backup では、初回バックアップが圧縮されます。 オフライン シード処理プロセスによって、Azure Backup でディスクを使用し、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。  
 
-Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../storage/storage-import-export-service.md) と緊密に統合されており、ディスクを使用してデータを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 この記事では、このワークフローを完了するための手順の概要について説明します。
+Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../storage/common/storage-import-export-service.md) と緊密に統合されており、ディスクを使用してデータを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 この記事では、このワークフローを完了するための手順の概要について説明します。
 
 ## <a name="overview"></a>Overview
 Azure Backup のオフライン シード処理機能と Azure Import/Export を使用すると、ディスクを使ってオフラインで Azure にデータを簡単にアップロードできます。 ネットワーク経由で完全な初期コピーを転送する代わりに、 *ステージング場所*にバックアップ データを書き込みます。 Azure Import/Export ツールを使用したステージング場所へのコピーが完了すると、このデータは、データの量に応じて 1 台以上の SATA ドライブに書き込まれます。 最終的に、これらのドライブは最も近くにある Azure データセンターに発送されます。
@@ -42,19 +42,19 @@ Azure へのバックアップ データのアップロードが完了した後�
 >
 
 ## <a name="prerequisites"></a>前提条件
-* [Azure Import/Export のワークフローについて理解を深めます](../storage/storage-import-export-service.md)。
+* [Azure Import/Export のワークフローについて理解を深めます](../storage/common/storage-import-export-service.md)。
 * ワークフローを開始する前に、次のことを確認します。
   * Azure Backup コンテナーが作成されている。
   * コンテナー資格情報がダウンロードされている。
   * Windows Server、Windows クライアント、または System Center Data Protection Manager サーバーに Azure Backup エージェントがインストール済みであり、Azure Backup コンテナーにコンピューターが登録されている。
 * [Azure 発行ファイル設定をダウンロード](https://manage.windowsazure.com/publishsettings) します。
 * ステージング場所を準備します。 これには、コンピューター上のネットワーク共有や追加ドライブを使用できます。 ステージング場所は一時ストレージであり、このワークフロー中に一時的に使用されます。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
-* サポートされているドライブを使用していることを確認します。 Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5 または 3.5 インチ SATA II/III の内部ハード ドライブだけです。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/storage-import-export-service.md#hard-disk-drives)をご覧ください。
+* サポートされているドライブを使用していることを確認します。 Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5 または 3.5 インチ SATA II/III の内部ハード ドライブだけです。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-service.md#hard-disk-drives)をご覧ください。
 * SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
 * [Azure Import/Export ツールをダウンロード](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) します。 Azure Backup の更新プログラム 2016 年 8 月 (以降) をインストールした場合、この手順は不要です。
 
 ## <a name="workflow"></a>ワークフロー
-このセクションの情報は、オフライン バックアップ ワークフローを完了するためのものなので、このデータを Azure データセンターに配信したり、Azure Storage にアップロードしたりできます。 インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した [サービスの概要に関するページ](../storage/storage-import-export-service.md) を参照してください。
+このセクションの情報は、オフライン バックアップ ワークフローを完了するためのものなので、このデータを Azure データセンターに配信したり、Azure Storage にアップロードしたりできます。 インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した [サービスの概要に関するページ](../storage/common/storage-import-export-service.md) を参照してください。
 
 ### <a name="initiate-offline-backup"></a>オフライン バックアップを開始する
 1. バックアップのスケジュールを設定するとき、次の画面が表示されます (Windows Server、Windows クライアント、または System Center Data Protection Manager)。
@@ -208,6 +208,6 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
 ストレージ アカウントで初回バックアップ データが使用可能になると、Microsoft Azure Recovery Services エージェントは、データの内容を、このアカウントから、使用可能なバックアップ コンテナーまたは Recovery Services コンテナーにコピーします。 次回のスケジュール バックアップで、Azure Backup エージェントは初期バックアップ コピーの上に増分バックアップを実行します。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure Import/Export ワークフローについて質問がある場合は、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/storage-import-export-service.md)」を参照してください。
+* Azure Import/Export ワークフローについて質問がある場合は、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/common/storage-import-export-service.md)」を参照してください。
 * ワークフローについて質問がある場合は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションを参照してください。
 

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 08/15/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e7519981642c438ca25b0479324ee159545bac8e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c19dc502acd1af4c3193e033d3caefe895624be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>HDInsight での Pig と Hadoop の使用
@@ -39,7 +38,7 @@ Pig は、*Pig Latin* という手続き型言語を使用して Hadoop 用の�
 | [リモート デスクトップ](hdinsight-hadoop-use-pig-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a id="why"></a>Pig を使用する理由
 
@@ -84,7 +83,7 @@ HDInsight にはさまざまなサンプル データ セットが用意され�
 
 次の Pig Latin ジョブでは、HDInsight クラスターの既定のストレージから `sample.log` ファイルを読み込みます。 次に、一連の変換を実行します。その結果、入力データの各ログ レベルの出現回数がカウントされます。 結果は STDOUT に書き込まれます。
 
-    LOGS = LOAD 'wasbs:///example/data/sample.log';
+    LOGS = LOAD 'wasb:///example/data/sample.log';
     LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
     FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
     GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
@@ -109,7 +108,7 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 | [リモート デスクトップ](hdinsight-hadoop-use-pig-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="pig-and-sql-server-integration-services"></a>Pig および SQL Server Integration Services
 

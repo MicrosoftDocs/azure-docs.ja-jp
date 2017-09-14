@@ -4,7 +4,7 @@ description: "このドキュメントでは、メディア エンコーダー �
 services: media-services
 documentationcenter: 
 author: xstof
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 1ba52865-b4a8-4ca0-ac96-920d55b9d15b
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 565497bd5a35e3c4d69d29512307cf3ca2364bdd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
@@ -66,10 +67,10 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
   * [スクリプト コンポーネントからのクリップ リストの変更](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
   * [トリミングが不要な場合に備えて ClippingEnabled プロパティを追加する](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
-## <a name="a-idmxftomp4aencoding-mxf-into-a-single-bitrate-mp4"></a><a id="MXF_to_MP4"></a>MXF をシングル ビットレートの MP4 にエンコードする
+## <a id="MXF_to_MP4"></a>MXF をシングル ビットレートの MP4 にエンコードする
 このチュートリアルでは、入力ファイルとなる .MXF から、オーディオを AAC-HE でエンコードしたシングル ビットレートの .MP4 ファイルを作成します。
 
-### <a name="a-idmxftomp4startnewastarting-a-new-workflow"></a><a id="MXF_to_MP4_start_new"></a>新しいワークフローの開始
+### <a id="MXF_to_MP4_start_new"></a>新しいワークフローの開始
 ワークフロー デザイナーを開いて [ファイル]、[新しいワークスペース]、[トランスコード設計] の順に選択します。
 
 新しいワークフローには次の 3 つの要素が表示されます。
@@ -82,7 +83,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 *新しいエンコード ワークフロー*
 
-### <a name="a-idmxftomp4withfileinputausing-the-media-file-input"></a><a id="MXF_to_MP4_with_file_input"></a>メディア ファイル入力の使用
+### <a id="MXF_to_MP4_with_file_input"></a>メディア ファイル入力の使用
 入力メディア ファイルを受け取るためにはまず、メディア ファイル入力コンポーネントを追加する必要があります。 ワークフローにコンポーネントを追加するには、[リポジトリの検索] ボックスでコンポーネントを探し、必要な項目をデザイナー ウィンドウにドラッグします。 メディア ファイル入力をドラッグしたら、プライマリ ソース ファイル コンポーネントを [メディア ファイル入力] から [ファイル名] の入力ピンに接続します。
 
 ![接続されたメディア ファイル入力](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
@@ -101,7 +102,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 *入力と出力のプロパティを構成したところ*
 
-### <a name="a-idmxftomp4streamsainspecting-media-streams"></a><a id="MXF_to_MP4_streams"></a>メディア ストリームの調査
+### <a id="MXF_to_MP4_streams"></a>メディア ストリームの調査
 ワークフローを流れるストリームの内容を詳しく調べたい場合があります。 ワークフローの途中にあるいずれかのコンポーネントの出力ピンまたは入力ピンをクリックすれば、そのポイントのストリームを調査することができます。 ここでは、メディア ファイル入力の [非圧縮ビデオ] 出力ピンをクリックしてみます。 出力されるビデオを詳細に示したダイアログが表示されます。
 
 ![[非圧縮ビデオ] の出力ピンを調査](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
@@ -110,7 +111,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 このケースでは、解像度が 1920 x 1080、1 秒あたりのフレーム数が 24、サンプリング方式が 4:2:2、長さが約 2 分間のビデオ入力を処理していることがわかります。
 
-### <a name="a-idmxftomp4filegenerationaadding-a-video-encoder-for-mp4-file-generation"></a><a id="MXF_to_MP4_file_generation"></a>.MP4 ファイル生成用のビデオ エンコーダーを追加する
+### <a id="MXF_to_MP4_file_generation"></a>.MP4 ファイル生成用のビデオ エンコーダーを追加する
 [メディア ファイル入力] を見ると、[非圧縮ビデオ] が 1 つと [非圧縮オーディオ] の出力ピンが複数利用できることがわかります。 入力されたビデオをエンコードするためには、エンコード コンポーネント (この例では .MP4 ファイルを生成するためのコンポーネント) が必要となります。
 
 ビデオ ストリームを H.264 にエンコードするには、デザイナー画面に AVC ビデオ エンコーダー コンポーネントを追加します。 このコンポーネントは、非圧縮ビデオ ストリームを入力として受け取り、その出力ピンで AVC 圧縮ビデオ ストリームを生成します。
@@ -136,7 +137,7 @@ AVC エンコーダーにデータを入力するには、メディア ファイ
 
 *AVC メイン エンコーダーを接続したところ*
 
-### <a name="a-idmxftomp4audioaencoding-the-audio-stream"></a><a id="MXF_to_MP4_audio"></a>オーディオ ストリームのエンコード
+### <a id="MXF_to_MP4_audio"></a>オーディオ ストリームのエンコード
 この時点でビデオのエンコードは完了していますが、元のオーディオ ストリームがまだ圧縮されていないので、これを圧縮する必要があります。 ここでは AAC エンコーダー (ドルビー) コンポーネントによる AAC エンコードで圧縮することにしましょう。 これをワークフローに追加します。
 
 ![未接続の AVC エンコーダー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
@@ -161,14 +162,14 @@ AVC エンコーダーにデータを入力するには、メディア ファイ
 
 スピーカー ポジション アサイナーの出力を AAC エンコーダーの入力に接続します。 そのうえで、"2.0 (L,R)" チャンネル プリセットを処理するよう AAC エンコーダーに命令する必要があります。そうすることで、入力として処理する対象がステレオ オーディオであることを AAC エンコーダーが認識できます。
 
-### <a name="a-idmxftomp4audioandfideoamultiplexing-audio-and-video-streams-into-an-mp4-container"></a><a id="MXF_to_MP4_audio_and_fideo"></a>オーディオ ストリームとビデオ ストリームを MP4 コンテナーに多重化する
+### <a id="MXF_to_MP4_audio_and_fideo"></a>オーディオ ストリームとビデオ ストリームを MP4 コンテナーに多重化する
 AVC でエンコードしたビデオ ストリームと AAC でエンコードしたオーディオ ストリームを 1 つの .MP4 コンテナーに取り込むことができます。 複数の異なるストリームを 1 つのストリームにミキシングする処理を "多重化" (または "マルチプレキシング") といいます。 この例では、オーディオ ストリームとビデオ ストリームをインターリーブして 1 つの .MP4 パッケージに統合します。 .MP4 コンテナーに対してこの作業を行うコンポーネントは、ISO MPEG-4 マルチプレクサーと呼ばれています。 このコンポーネントをデザイナー画面に追加し、その入力に AVC ビデオ エンコーダーと AAC エンコーダーの両方を接続します。
 
 ![MPEG4 マルチプレクサーを接続したところ](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
 *MPEG4 マルチプレクサーを接続したところ*
 
-### <a name="a-idmxftomp4writingmp4awriting-the-mp4-file"></a><a id="MXF_to_MP4_writing_mp4"></a>MP4 ファイルの作成
+### <a id="MXF_to_MP4_writing_mp4"></a>MP4 ファイルの作成
 出力ファイルを作成するときは、ファイル出力コンポーネントを使用します。 このコンポーネントを ISO MPEG-4 マルチプレクサーの出力に接続することで、その出力をディスクに書き込むことができます。 そこで [コンテナー (MPEG-4)] の出力ピンを、ファイル出力コンポーネントの [書き込み] の入力ピンに接続します。
 
 ![ファイル出力を接続したところ](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
@@ -202,7 +203,7 @@ AVC でエンコードしたビデオ ストリームと AAC でエンコード�
 
 *出力ディレクトリをファイル式によって解決*
 
-### <a name="a-idmxftomp4assetfromoutputacreating-a-media-services-asset-from-the-output-file"></a><a id="MXF_to_MP4_asset_from_output"></a>出力ファイルから Media Services 資産を作成する
+### <a id="MXF_to_MP4_asset_from_output"></a>出力ファイルから Media Services 資産を作成する
 MP4 の出力ファイルを作成するところまでは完了しましたが、これで終わりではありません。このワークフローを実行した結果として Media Services から出力される資産にそのファイルが従属することを示す必要があります。 そのために使用するのが、ワークフロー キャンバス上の [出力ファイル/資産] ノードです。 このノードに入力されるすべてのファイルが、Azure Media Services によって生成される資産の一部となります。
 
 ファイル出力コンポーネントを出力ファイル/資産コンポーネントに接続すればワークフローは完成です。
@@ -211,10 +212,10 @@ MP4 の出力ファイルを作成するところまでは完了しましたが�
 
 *完成したワークフロー*
 
-### <a name="a-idmxftomp4testatest-the-finished-workflow-locally"></a><a id="MXF_to_MP4_test"></a>完成したワークフローをローカルでテストする
+### <a id="MXF_to_MP4_test"></a>完成したワークフローをローカルでテストする
 ワークフローをローカルでテストするには、画面上部にあるツール バーの再生ボタンをクリックします。 ワークフローの実行が完了したら、先ほど構成した出力フォルダーに生成されている出力結果を調べます。 MXF 入力ソース ファイルからエンコードされた MP4 出力ファイルが生成されていることを確認できます。
 
-## <a name="a-idmxftomp4withdynpackagingaencoding-mxf-into-mp4---multibitrate-dynamic-packaging-enabled"></a><a id="MXF_to_MP4_with_dyn_packaging"></a>MXF をマルチビットレートの MP4 にエンコードする (動的パッケージング対応)
+## <a id="MXF_to_MP4_with_dyn_packaging"></a>MXF をマルチビットレートの MP4 にエンコードする (動的パッケージング対応)
 このチュートリアルでは、入力ファイルとなる単一の .MXF から、オーディオを AAC でエンコードしたマルチ ビットレートの一連の MP4 ファイルを作成します。
 
 マルチビットレートの資産を出力して、Azure Media Services の動的パッケージング機能と連動させるには、GOP 単位でアラインメントされたそれぞれビットレートと解像度の異なる複数の MP4 ファイルを生成する必要があります。 以降、この点について「 [MXF をシングル ビットレートの MP4 にエンコードする](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) 」のチュートリアルを出発点として説明していきます。
@@ -223,7 +224,7 @@ MP4 の出力ファイルを作成するところまでは完了しましたが�
 
 *出発点となるワークフロー*
 
-### <a name="a-idmxftomp4withdynpackagingmoreoutputsaadding-one-or-more-additional-mp4-outputs"></a><a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>MP4 出力の追加
+### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>MP4 出力の追加
 最終的に Azure Media Services から生成される資産の各 MP4 ファイルによって、それぞれ異なるビットレートと解像度がサポートされます。 それでは MP4 出力ファイルをワークフローに追加しましょう。
 
 ビデオ エンコーダーを確実にすべて同じ設定で作成するためには、既にある AVC ビデオ エンコーダーを複製し、解像度とビットレートを変更するのが簡単です。解像度が 960 x 540、1 秒あたりのフレーム数が 25、2.5 Mbps のビデオ エンコーダーを追加しましょう。 既存のエンコーダーを複製するには、そのエンコーダーをコピーしてデザイナー画面に貼り付けます。
@@ -258,7 +259,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 注: 資産の出力に追加するビットレートと解像度の組み合わせごとにこの作業を繰り返す必要があります。
 
-### <a name="a-idmxftomp4withdynpackagingconfoutputnamesaconfiguring-the-file-output-names"></a><a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>ファイル出力名の構成
+### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>ファイル出力名の構成
 ここまで、出力される資産として既に複数のファイルを追加してきました。 そのため、個々の出力ファイルの名前が重複しないようにする必要があります。場合によっては、自分が作業している内容がファイル名から明らかとなるように、ファイルの名前付け規則も必要になるでしょう。
 
 ファイル出力の名前付けは、デザイナーから式を使って制御できます。 いずれかのファイル出力コンポーネントのプロパティ ウィンドウを開き、File プロパティの式エディターを開きます。 1 つ目の出力ファイルは、次の式で設定しました (「 [MXF をシングル ビットレートの MP4 にエンコードする](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)」を参照)。
@@ -276,7 +277,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 ここでひとまずテスト ランを実行し、両方の MP4 出力ファイルが正しく生成されることを確認します。
 
-### <a name="a-idmxftomp4withdynpackagingaudiotracksaadding-a-separate-audio-track"></a><a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>独立したオーディオ トラックの追加
+### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>独立したオーディオ トラックの追加
 この後、MP4 出力ファイルと一緒に .ism ファイルを生成する際、アダプティブ ストリーミングに使用するオーディオ トラックとして、オーディオのみの MP4 ファイルが必要になります。 このファイルを作成するには、もう 1 つマルチプレクサー (ISO-MPEG-4 マルチプレクサー) をワークフローに追加し、そのトラック 1 の入力ピンに AAC エンコーダーの出力ピンを接続します。
 
 ![オーディオ マルチプレクサーを追加したところ](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
@@ -291,7 +292,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 *オーディオ マルチプレクサーによって生成されるファイル出力*
 
-### <a name="a-idmxftomp4withdynpackagingismfileaadding-the-ism-smil-file"></a><a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>.ISM SMIL ファイルの追加
+### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>.ISM SMIL ファイルの追加
 最終的に得られる Media Services 資産に含まれる 2 つの MP4 ファイル (とオーディオのみの MP4) を動的パッケージング機能と連動させるためには、SMIL (Synchronized Multimedia Integration Language) とも呼ばれるマニフェスト ファイルが必要となります。 どの MP4 ファイルを動的パッケージングに使用でき、そのうちどのファイルをオーディオ ストリーミング用と見なすかが、このファイルを介して Azure Media Services に伝えられます。 以下に示したのは、オーディオ ストリームを 1 つ含んだ一連の MP4 の一般的なマニフェスト ファイルの例です。
 
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -323,17 +324,17 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 *MXF からマルチビットレートの MP4 を生成するワークフローが完成*
 
-## <a name="a-idmxftomultibitratemp4aencoding-mxf-into-multibitrate-mp4---enhanced-blueprint"></a><a id="MXF_to__multibitrate_MP4"></a>MXF をマルチビットレートの MP4 にエンコードする (設計の改良)
+## <a id="MXF_to__multibitrate_MP4"></a>MXF をマルチビットレートの MP4 にエンコードする (設計の改良)
 [前のワークフロー チュートリアル](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging) では、単一の MXF 入力資産を変換し、出力資産としてマルチビットレートの MP4 ファイル、音声のみの MP4 ファイル、マニフェスト ファイル (Azure Media Services の動的パッケージング機能との連携に必要) を生成する方法を紹介しました。
 
 このチュートリアルでは、それらに少し手を加えて利便性を高める方法を探っていきます。
 
-### <a name="a-idmxftomultibitratemp4overviewaworkflow-overview-to-enhance"></a><a id="MXF_to_multibitrate_MP4_overview"></a>改良するワークフローの全体像
+### <a id="MXF_to_multibitrate_MP4_overview"></a>改良するワークフローの全体像
 ![改良するマルチビットレートの MP4 ワークフロー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
 
 *改良するマルチビットレートの MP4 ワークフロー*
 
-### <a name="a-idmxftomultibitratemp4filenamingafile-naming-conventions"></a><a id="MXF_to__multibitrate_MP4_file_naming"></a>ファイルの名前付け規則
+### <a id="MXF_to__multibitrate_MP4_file_naming"></a>ファイルの名前付け規則
 先ほどのワークフローでは、生成する出力ファイル名のベースとして単純な式を指定しました。 ただし、すべての出力ファイルの構成要素に対して個別にそのような式を指定するのは無駄に手間がかかります。
 
 たとえば、1 つ目のビデオ ファイルに使用されているファイル出力コンポーネントは、次の式を使って構成されています。
@@ -348,7 +349,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 ここでは個々の MP4 ファイルのビットレートからファイル名の構成を取得するとしましょう。 ビットレートに対する構成を一か所 (ワークフロー図のルート) で行い、ファイル名を生成する段階でそこにアクセスするようにします。 そのためにまず、両方の AVC エンコーダーのビットレート プロパティをワークフローのルートに対して公開します。 こうすることで、ルートだけでなく、AVC エンコーダーからもビットレート プロパティにアクセスできるようになります (2 か所に表示されますが、基になる値は 1 つだけです)。
 
-### <a name="a-idmxftomultibitratemp4publishingapublishing-component-properties-onto-the-workflow-root"></a><a id="MXF_to__multibitrate_MP4_publishing"></a>コンポーネントのプロパティをワークフローのルートに公開する
+### <a id="MXF_to__multibitrate_MP4_publishing"></a>コンポーネントのプロパティをワークフローのルートに公開する
 1 つ目の AVC エンコーダーを開いて [ビットレート (kbps)] プロパティに移動し、ドロップダウンから [公開] を選択します。
 
 ![ビットレート プロパティの公開](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-bitrate-property.png)
@@ -384,7 +385,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 3 つの値のいずれかを変更すると、リンク先 (公開元) である個々のコンポーネントの値も再構成され変更されることに注目してください。
 
-### <a name="a-idmxftomultibitratemp4outputfilesahave-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>生成される出力ファイル名に公開プロパティの値を使用する
+### <a id="MXF_to__multibitrate_MP4_output_files"></a>生成される出力ファイル名に公開プロパティの値を使用する
 今度は、生成するファイル名をハードコーディングするのではなく、ワークフロー図のルートに公開したビットレート プロパティを使用するように、各ファイル出力コンポーネントでファイル名の式を変更しましょう。 まず 1 つ目のファイル出力の File プロパティを探し、その式を次のように編集します。
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
@@ -405,15 +406,15 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 以後、ビデオ ファイルまたはオーディオ ファイルのビットレートを変更した場合、それぞれ対応するエンコーダーが再構成され、ビットレートに基づくファイルの名前付け規則が自動的に反映されます。
 
-## <a name="a-idthumbnailstomultibitratemp4aadding-thumbnails-to-multibitrate-mp4-output"></a><a id="thumbnails_to__multibitrate_MP4"></a>マルチビットレートの MP4 出力にサムネイルを追加する
+## <a id="thumbnails_to__multibitrate_MP4"></a>マルチビットレートの MP4 出力にサムネイルを追加する
 今度は、 [MXF 入力からマルチビットレートの MP4 出力](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)を生成するワークフローを発展させて、出力にサムネイルを追加する方法を見ていきましょう。
 
-### <a name="a-idthumbnailstomultibitratemp4overviewaworkflow-overview-to-add-thumbnails-to"></a><a id="thumbnails_to__multibitrate_MP4_overview"></a>サムネイルの追加先となるワークフローの全体像
+### <a id="thumbnails_to__multibitrate_MP4_overview"></a>サムネイルの追加先となるワークフローの全体像
 ![出発点となるマルチビットレートの MP4 ワークフロー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
 
 *出発点となるマルチビットレートの MP4 ワークフロー*
 
-### <a name="a-idthumbnailstomultibitratemp4withjpgaadding-jpg-encoding"></a><a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>JPG エンコードの追加
+### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>JPG エンコードの追加
 サムネイル生成の核となるのは、JPG エンコーダー コンポーネント、つまり JPG ファイルを出力する機能です。
 
 ![JPG エンコーダー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
@@ -434,7 +435,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 [モード] を [時間 (秒)] に、[間隔] を「60」に設定して、サムネイルを 1 分間隔で作成することにしましょう。
 
-### <a name="a-idthumbnailstomultibitratemp4colorspaceadealing-with-color-space-conversion"></a><a id="thumbnails_to__multibitrate_MP4_color_space"></a>色空間の変換処理
+### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>色空間の変換処理
 一見、フレーム ゲートの [非圧縮ビデオ] ピンとメディア ファイル入力の [非圧縮ビデオ] ピンとを接続するのが正しいように思えますが、そのようにした場合、警告が表示されます。
 
 ![入力色空間エラー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
@@ -451,7 +452,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 プロパティ ウィンドウで、[プリセット] ボックスの一覧の [BGR 24] という項目を選択してください。
 
-### <a name="a-idthumbnailstomultibitratemp4writingthumbnailsawriting-the-thumbnails"></a><a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>サムネイルの作成
+### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>サムネイルの作成
 これまで見てきた MP4 ビデオとは異なり、JPG エンコーダー コンポーネントからは複数のファイルが出力されます。 そこで、"シーン サーチ JPG ファイル ライター" というコンポーネントを使用します。 このコンポーネントは、JPG 形式のサムネイルを入力として受け取り、末尾に異なる数字を持ったファイル名でそれらを出力します (この数字は通常、サムネイルの取得元となったストリーム内の秒数/単位数を示します)。
 
 ![シーン サーチ JPG ファイル ライターを追加](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
@@ -472,7 +473,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 シーン サーチ JPG ファイル ライターを [出力ファイル/資産] ノードに接続します。
 
-### <a name="a-idthumbnailstomultibitratemp4errorsadetecting-errors-in-a-workflow"></a><a id="thumbnails_to__multibitrate_MP4_errors"></a>ワークフローで発生したエラーの検出
+### <a id="thumbnails_to__multibitrate_MP4_errors"></a>ワークフローで発生したエラーの検出
 色空間コンバーターの入力は、未加工の非圧縮ビデオ出力に接続してください。 これで、ワークフローのローカル テスト ランを実行できます。 ワークフローの実行が突然停止し、エラーの発生を示す赤色の枠がコンポーネントに表示されることがあります。
 
 ![色空間コンバーター エラー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
@@ -493,23 +494,23 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 *データ タイプ アップデーターで色空間標準を更新*
 
-### <a name="a-idthumbnailstomultibitratemp4finishafinished-workflow"></a><a id="thumbnails_to__multibitrate_MP4_finish"></a>完成したワークフロー
+### <a id="thumbnails_to__multibitrate_MP4_finish"></a>完成したワークフロー
 これで目的のワークフローが完成しました。テスト ランを実行して正しく動作するか確認してみましょう。
 
 ![複数の MP4 出力とサムネイルを生成するワークフローが完成](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
 *複数の MP4 出力とサムネイルを生成するワークフローが完成*
 
-## <a name="a-idtimebasedtrimatime-based-trimming-of-multibitrate-mp4-output"></a><a id="time_based_trim"></a>マルチビットレートの MP4 出力を時間に基づいてトリミングする
+## <a id="time_based_trim"></a>マルチビットレートの MP4 出力を時間に基づいてトリミングする
 今度は、 [MXF 入力からマルチビットレートの MP4 出力](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)を生成するワークフローを発展させ、時間に基づいてソース ビデオをトリミングする方法を探ってみましょう。
 
-### <a name="a-idtimebasedtrimstartaworkflow-overview-to-start-adding-trimming-to"></a><a id="time_based_trim_start"></a>トリミングの追加先となるワークフローの全体像
+### <a id="time_based_trim_start"></a>トリミングの追加先となるワークフローの全体像
 ![トリミングの追加先となる出発点のワークフロー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
 *トリミングの追加先となる出発点のワークフロー*
 
-### <a name="a-idtimebasedtrimusestreamtrimmerausing-the-stream-trimmer"></a><a id="time_based_trim_use_stream_trimmer"></a>ストリーム トリマーの使用
-ストリーム トリマー コンポーネントを使用すると、入力ストリームの開始と終了をタイミング情報 (秒、分など) に基づいてトリミングすることができます。 フレーム ベースのトリミングは、このトリマーではサポートされません。
+### <a id="time_based_trim_use_stream_trimmer"></a>ストリーム トリマーの使用
+ストリーム トリマー コンポーネントを使用すると、入力ストリームの開始と終了をタイミング情報 (秒、分など) に基づいてトリミングすることができます。フレーム ベースのトリミングは、このトリマーではサポートされません。
 
 ![ストリーム トリマー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
@@ -553,12 +554,12 @@ AVC エンコーダーとスピーカー ポジション アサイナーは、�
 
     ${ROOT_TrimmingEndTime}
 
-### <a name="a-idtimebasedtrimfinishafinished-workflow"></a><a id="time_based_trim_finish"></a>完成したワークフロー
+### <a id="time_based_trim_finish"></a>完成したワークフロー
 ![完成したワークフロー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
 
 *完成したワークフロー*
 
-## <a name="a-idscriptingaintroducing-the-scripted-component"></a><a id="scripting"></a>スクリプト コンポーネントの概要
+## <a id="scripting"></a>スクリプト コンポーネントの概要
 スクリプト コンポーネントは、ワークフローの実行段階で任意のスクリプトを実行できます。 実行できるスクリプトは 4 種類あります。それぞれ明確な特性を備え、ワークフローのライフサイクルの中で実行される場所が決まっています。
 
 * **commandScript**
@@ -568,7 +569,7 @@ AVC エンコーダーとスピーカー ポジション アサイナーは、�
 
 それぞれの種類については、スクリプト コンポーネントのドキュメントで詳しく解説されています。 [以降のセクションでは](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)、**realizeScript** スクリプト コンポーネントを使って、ワークフローの開始時にクリップ リストの XML を動的に作成します。 このスクリプトは、コンポーネントのセットアップ時に呼び出されます。呼び出されるのは、ライフサイクルの中で 1 回だけです。
 
-### <a name="a-idscriptinghelloworldascripting-within-a-workflow-hello-world"></a><a id="scripting_hello_world"></a>ワークフロー内スクリプトの作成: hello world
+### <a id="scripting_hello_world"></a>ワークフロー内スクリプトの作成: hello world
 スクリプト コンポーネントをデザイナー画面にドラッグして名前を変更します (例: "SetClipListXML")。
 
 ![スクリプト コンポーネントの追加](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
@@ -595,7 +596,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 *Hello world のログ出力*
 
-先ほど node オブジェクトの log メソッドを呼び出しましたが、この node オブジェクトが参照しているのは、現在の "ノード"、つまりスクリプトの作成先となっているコンポーネントです。 このように、すべてのコンポーネントにはログ データを出力する機能があり、[システム] タブからそのログにアクセスすることができます。 この例では、"hello world" という文字列リテラルを出力しました。 スクリプトが "実際に何をしているか" について深く知ることができるという点で、これはきわめて優れたデバッグ ツールといえます。
+先ほど node オブジェクトの log メソッドを呼び出しましたが、この node オブジェクトが参照しているのは、現在の "ノード"、つまりスクリプトの作成先となっているコンポーネントです。 このように、すべてのコンポーネントにはログ データを出力する機能があり、[システム] タブからそのログにアクセスすることができます。この例では、"hello world" という文字列リテラルを出力しました。 スクリプトが "実際に何をしているか" について深く知ることができるという点で、これはきわめて優れたデバッグ ツールといえます。
 
 このスクリプト環境内から、他のコンポーネントのプロパティにアクセスすることもできます。 次のコードを実行してみてください。
 
@@ -619,15 +620,15 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 *ノード パスへのアクセスに関するログ出力*
 
-## <a name="a-idframebasedtrimaframe-based-trimming-of-multibitrate-mp4-output"></a><a id="frame_based_trim"></a>マルチビットレートの MP4 出力をフレームに基づいてトリミングする
+## <a id="frame_based_trim"></a>マルチビットレートの MP4 出力をフレームに基づいてトリミングする
 今度は、 [MXF 入力からマルチビットレートの MP4 出力](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)を生成するワークフローを発展させ、フレーム数に基づいてソース ビデオをトリミングする方法を探ってみましょう。
 
-### <a name="a-idframebasedtrimstartablueprint-overview-to-start-adding-trimming-to"></a><a id="frame_based_trim_start"></a>トリミングの追加先となるワークフローの全体像
+### <a id="frame_based_trim_start"></a>トリミングの追加先となるワークフローの全体像
 ![トリミングの追加先となるワークフロー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
 
 *トリミングの追加先となるワークフロー*
 
-### <a name="a-idframebasedtrimcliplistausing-the-clip-list-xml"></a><a id="frame_based_trim_clip_list"></a>クリップ リスト XML の使用
+### <a id="frame_based_trim_clip_list"></a>クリップ リスト XML の使用
 これまでに紹介してきたワークフローはすべて、ビデオの入力ソースとしてメディア ファイル入力コンポーネントを使用してきました。 しかし、これから紹介するシナリオに限っては、クリップ リスト ソース コンポーネントを使用します。 ただし、クリップ リスト ソースは、本当に必要なとき (以降のケースのように、クリップ リストのトリミング機能を利用する場合など) 以外は使用しないでください。やみくもにこの方法を使用してはいけません。
 
 メディア ファイル入力をクリップ リスト ソースに切り替えるには、クリップ リスト ソース コンポーネントをデザイン画面にドラッグし、[クリップ リスト XML] ピンをワークフロー デザイナーの [クリップ リスト XML] ノードに接続します。 これで、入力ビデオに応じて出力ピンがクリップ リスト ソースに追加されます。 次に、クリップ リスト ソースの [非圧縮ビデオ] ピンと [非圧縮オーディオ] ピンをそれぞれ AVC エンコーダーとオーディオ ストリーム インターリーバーに接続します。 この時点でメディア ファイル入力を削除してください。
@@ -672,7 +673,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 *スクリプト コンポーネントのプロパティ*
 
-### <a name="a-idframebasedtrimmodifycliplistamodifying-the-clip-list-from-a-scripted-component"></a><a id="frame_based_trim_modify_clip_list"></a>スクリプト コンポーネントからのクリップ リストの変更
+### <a id="frame_based_trim_modify_clip_list"></a>スクリプト コンポーネントからのクリップ リストの変更
 ワークフローの開始時に生成されたクリップ リスト XML を書き換えるには、そのクリップ リスト XML のプロパティと内容にアクセスする必要があります。 以下のようなコードが必要となります。
 
     // get cliplist xml:
@@ -802,7 +803,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 これで、必要に応じて変更を繰り返し適用しながらワークフローを実行し、調整することができます。    
 
-### <a name="a-idframebasedtrimclippingenabledpropaadding-a-clippingenabled-convenience-property"></a><a id="frame_based_trim_clippingenabled_prop"></a>トリミングが不要な場合に備えて ClippingEnabled プロパティを追加する
+### <a id="frame_based_trim_clippingenabled_prop"></a>トリミングが不要な場合に備えて ClippingEnabled プロパティを追加する
 トリミングが不要な場合もあるかもしれませんので、最後にワークフローを微調整しましょう。トリミング/クリッピングを有効にするかどうかを指定するブール型のフラグを追加します。
 
 "BOOLEAN" 型の "ClippingEnabled" という新しいプロパティをこれまでと同様、ワークフローのルートに公開します。
@@ -824,7 +825,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
     }
 
 
-### <a name="a-idcodeacomplete-code"></a><a id="code"></a>完成したコード
+### <a id="code"></a>完成したコード
     import javax.xml.parsers.*;
     import org.xml.sax.*;
     import org.w3c.dom.*;
@@ -938,9 +939,4 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

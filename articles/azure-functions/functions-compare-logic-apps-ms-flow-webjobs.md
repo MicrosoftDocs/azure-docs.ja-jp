@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs"
 description: "Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。"
 services: functions,app-service\logic
@@ -10,17 +10,17 @@ keywords: "Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure W
 ms.assetid: e9ccf7ad-efc4-41af-b9d3-584957b1515d
 ms.service: functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/08/2016
-ms.author: chrande; glenga
+ms.date: 08/03/2017
+ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0f35d79870301bcba9f009f7dbc00696ce426458
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 256bc04684ba337fe8a403d977079c96b63ca61d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
@@ -50,14 +50,14 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | --- | --- | --- |
 | オーディエンス |オフィスの従業員、ビジネス ユーザー |IT プロフェッショナル、開発者 |
 | シナリオ |セルフ サービス |ミッション クリティカル |
-| デザイン ツール |ブラウザー上、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
+| デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-arm-provision.md) |
 | 管理者向けエクスペリエンス |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | セキュリティ |標準的な実務慣行: [データの主権性の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
 
 <a name="function"></a>
 
-## <a name="functions-vs-webjobs"></a>Functions とWeb ジョブ
+## <a name="functions-vs-webjobs"></a>Functions とWebJobs
 Azure Functions と Azure App Service WebJobs はどちらも開発者向けに設計された " *コード第一* " の統合サービスであるため、ここで一緒に説明します。 この 2 つのサービスでは、[新しいストレージ BLOB](functions-bindings-storage.md) や [webhook 要求](functions-bindings-http-webhook.md)など、さまざまなイベントに対する応答としてスクリプトまたはコードを実行できます。 この 2 つは、以下の点がよく似ています。 
 
 * どちらも [Azure App Service](../app-service/app-service-value-prop-what-is.md) の上に構築されたものであり、[ソース管理](../app-service-web/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[監視](../app-service-web/web-sites-monitor.md)などの機能を利用可能
@@ -82,15 +82,15 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
 | 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
 | トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hub](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Notification Hubs](functions-bindings-notification-hubs.md)、[Azure Service Bus](functions-bindings-service-bus.md)、[Azure Storage](functions-bindings-storage.md) |[Azure Storage](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure Service Bus](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
-| ブラウザーでの開発 |○ | |
-| ウィンドウ スクリプト |試験段階 |○ |
-| PowerShell |試験段階 |○ |
-| C# |○ |○ |
-| F# |○ | |
-| Bash |試験段階 |○ |
-| PHP |試験段階 |○ |
-| Python |試験段階 |○ |
-| JavaScript |○ |○ |
+| ブラウザーでの開発 |サポート対象 | サポート対象外 |
+| ウィンドウ スクリプト |試験段階 |サポート対象 |
+| PowerShell |試験段階 |サポート対象 |
+| C# |サポート対象 |サポート対象 |
+| F# |サポート対象 |サポート対象外 |
+| Bash |試験段階 |サポート対象 |
+| PHP |試験段階 |サポート対象 |
+| Python |試験段階 |サポート対象 |
+| JavaScript |サポート対象 |サポート対象 |
 
 最終的には、現時点で App Service を使って何をしているかに応じて、Functions と WebJobs のどちらを使用するかが変わります。 ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい場合には、WebJobs を使用します。 他の Azure サービスまたはサードパーティ製アプリのコード スニペットを実行する必要がある場合、App Service アプリとは別の環境で統合コード スニペットを管理したい場合、またはロジック アプリからコード スニペットを呼び出す必要がある場合には、Functions で改善された機能を使用します。  
 

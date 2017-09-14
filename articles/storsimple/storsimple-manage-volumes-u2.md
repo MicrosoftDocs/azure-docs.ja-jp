@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/28/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80d58a6ab5f2148b2391d4d63e70371724e5990b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a61c57cd74a0df8363648dd8df40e433b0e6489d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -118,7 +120,7 @@ StorSimple ボリュームは、次のいずれかです。
       
         ![ACR の指定](./media/storsimple-manage-volumes-u2/SpecifyACR.png)
    2. **[このボリュームの既定のバックアップの有効化]** チェック ボックスをオンにすることをお勧めします。
-   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png)  をクリックして、指定した設定でボリュームを作成します。
+   3. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
 
 新しいボリュームが使用できるようになります。
 
@@ -156,7 +158,7 @@ StorSimple ボリュームは、次のいずれかです。
    
    1. **[コンピューターの管理]** ->**[ディスクの管理]** の順に移動します。
    2. **[ディスクの管理]** を右クリックし、**[ディスクの再スキャン]** を選択します。
-   3. ディスクの一覧で、更新したボリュームを選択して右クリックし、 **[ボリュームの拡張]**を選択します。 ボリューム拡張ウィザードが起動します。 **[次へ]**をクリックします。
+   3. ディスクの一覧で、更新したボリュームを選択して右クリックし、 **[ボリュームの拡張]**を選択します。 ボリューム拡張ウィザードが起動します。 **[次へ]** をクリックします。
    4. 既定の値を使用してウィザードを完了します。 ウィザードが終了すると、サイズが増えたボリュームが表示されます。
       
       > [!NOTE]
@@ -214,8 +216,8 @@ StorSimple ボリュームは、次のいずれかです。
 5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png)をクリックして **[追加設定]** ページに移動します。 ローカル固定ボリュームを構成している場合は、次のメッセージが表示されます。
    
     ![ボリュームのメッセージ型の変更](./media/storsimple-manage-volumes-u2/ModifyLocalVolEx.png)
-6. 矢印アイコン  ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png)  をクリックして続行します。
-7. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png)  をクリックして、変換プロセスを開始します。 ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。 ボリュームが正常に更新されると、成功メッセージが表示されます。
+6. 矢印アイコン  ![矢印アイコン](./media/storsimple-manage-volumes-u2/HCS_ArrowIcon.png) をクリックして続行します。
+7. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-volumes-u2/HCS_CheckIcon.png) をクリックして、変換プロセスを開始します。 ボリュームを更新中であることを示すメッセージが Azure ポータルに表示されます。 ボリュームが正常に更新されると、成功メッセージが表示されます。
 
 ## <a name="take-a-volume-offline"></a>ボリュームをオフラインにする
 ボリュームを変更または削除する場合は、ボリュームをオフラインにすることが必要になる場合があります。 ボリュームがオフラインのときは、ボリュームに対して読み取り/書き込みアクセスを行うことはできません。 デバイス上だけでなく、ホスト上のボリュームもオフラインにする必要があります。 
@@ -272,10 +274,5 @@ StorSimple ボリュームは、次のいずれかです。
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

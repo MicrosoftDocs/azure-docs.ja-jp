@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: bbd57547a0cc486a9cf7c8030dccaaf6f46c9860
-ms.lasthandoff: 04/11/2017
-
+ms.reviwer: japere
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 28d91237adf745e591b02322de7881c8122827ac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -51,7 +52,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 -   **条件付きアクセス ポリシー**または **ID 保護**ポリシーがユーザー アクセスをブロックしていないことを確認します。
 
--   ユーザーの**認証の連絡先情報**が最新のものであり、多要素認証または条件付きアクセス ポリシーが適用可能になっていることを確認します。
+-   ユーザーの**認証の連絡先情報**が最新のものであり、多要素認証または条件付きアクセス ポリシーを適用できることを確認します。
 
 -   ブラウザーの Cookie を削除してから、再度サインインを試行して、サインインできることを確認します。
 
@@ -63,14 +64,12 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 -   Internet Explorer 8、9、10、11 - Windows 7 以降
 
+-   Edge - Windows 10 Anniversary Edition 以降 
+
 -   Chrome - Windows 7 以降、MacOS X 以降
 
 -   Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
->[!NOTE] 
->パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Edge でサポートされるようになると、Edge で使用できるようになります。
->
->
 
 ## <a name="problems-with-the-users-account"></a>ユーザーのアカウントに関する問題
 
@@ -100,7 +99,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -110,7 +109,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  ユーザー オブジェクトのプロパティを調べて、予想した通りに表示されていること、紛失したデータがないことを確認します。
+7.  ユーザー オブジェクトのプロパティを調べて、予想した通りに表示されていることと、紛失したデータがないことを確認します。
 
 ### <a name="check-a-users-account-status"></a>ユーザーのアカウントの状態を確認する
 
@@ -118,7 +117,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -128,7 +127,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[プロファイル]** をクリックします。
+7.  **[Profile]** をクリックします。
 
 8.  **[設定]** で、**[サインインのブロック]** が **[いいえ]** に設定されていることを確認します。
 
@@ -138,7 +137,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -152,7 +151,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 8.  表示される **[パスワードのリセット]** ブレード上の **[パスワードのリセット]** ボタンをクリックします。
 
-9.  **一時パスワード**をコピーするかユーザーの**新しいパスワードを入力**します。
+9.  **一時パスワード**をコピーするか、ユーザーの**新しいパスワードを入力**します。
 
 10. この新しいパスワードをユーザーに知らせます。ユーザーは次の Azure Active Directory サインイン時にこのパスワードを変更する必要があります。
 
@@ -160,7 +159,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順を実行します。
 
--   [Azure Active Directory パスワードのユーザーによるリセットを有効にする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
+-   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
 
 -   [オンプレミス Active Directory パスワードをユーザーがリセットまたは変更できるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
 
@@ -170,7 +169,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -182,12 +181,12 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 7.  **多要素認証管理ポータル**をロードしたら、自分が **[ユーザー]** タブに存在していることを確認します。
 
-8.  ユーザーの一覧でユーザーを、検索、フィルター処理、または並べ替えを使って見つけます。
+8.  ユーザーの一覧で、検索、フィルター処理、または並べ替えによってユーザーを見つけます。
 
 9.  ユーザーの一覧からユーザーを選択し、多要素認証を必要に応じて**有効**、**無効**、または**適用**します。
 
    >[!NOTE]
-   >ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従ってこのユーザーのデータを検証または設定できます。
+   >ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
    >
    >
 
@@ -197,7 +196,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -207,7 +206,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[プロファイル]** をクリックします。
+7.  **[Profile]** をクリックします。
 
 8.  下の **[認証の連絡先情報]** までスクロールします。
 
@@ -219,7 +218,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -237,7 +236,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -255,7 +254,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -265,13 +264,13 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[ライセンス]** をクリックして、ユーザーに現在割り当てられているライセンスを確認します。
+7.  **[ライセンス]** をクリックして、ユーザーが現在割り当てられているライセンスを確認します。
 
 8.  **[割り当て]** ボタンをクリックします。
 
 9.  **1 つまたは複数の製品**を利用可能な製品の一覧から選択します。
 
-10. **省略可能** **割り当てオプション**項目をクリックして製品をきめ細かく割り当てます。 完了したら **[OK]** をクリックします。
+10. **省略可能** より細かい単位で製品を割り当てるには、**割り当てオプション**項目をクリックします。 完了したら **[OK]** をクリックします。
 
 11. **[割り当て]** ボタンをクリックしてこれらのライセンスをこのユーザーに割り当てます。
 

@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: d9143c1ec2075f71659e8deaadc93d1972ea9a85
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: f1fda3c4192d0dae4fa60788f4d88fb72ddba4ad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="understanding-resource-access-in-azure"></a>Azure でのリソース アクセスについて
-> [!NOTE]
-> このトピックでは、完全な Azure Portal でのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。 Azure プレビュー ポータルで [ロール ベースのアクセス制御](role-based-access-control-configure.md) を使用して、Azure リソースをさらに細かく管理することもできます。
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure ポータルで[ロール ベースのアクセス制御](role-based-access-control-configure.md)を使用して、Azure リソースをさらに細かく管理することもできます。
 > 
 > 
 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c0b211bced99d272a73a7b018a22f99d8d58aa9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -94,7 +96,7 @@ StorSimple ボリュームをマウントし、初期化してフォーマット
    |:--- |:--- |
    |  名前 |**[名前]** 列には、検出された各ボリュームに割り当てられたドライブ文字が表示されます。 |
    |  デバイス |**[デバイス]** 列には、ホスト コンピューターに接続されているデバイスの IP アドレスが表示されます。 |
-   |  デバイスのボリューム名 |**[デバイスのボリューム名]** 列には、選択したボリュームが属するデバイス ボリュームの名前が表示されます。 これは、Azure クラシック ポータルで定義されたそのボリュームのボリューム名です。 |
+   |  デバイスのボリューム名 |**[デバイスのボリューム名]** 列には、選択したボリュームが属するデバイス ボリュームの名前が表示されます。 これは、Azure Portal で定義されたそのボリュームのボリューム名です。 |
    |  アクセス パス |**[アクセス パス]** 列には、ボリュームへのアクセス パスが表示されます。 これは、ホスト コンピューターのボリュームにアクセスする際のドライブ文字またはマウント ポイントです。 |
 
 ## <a name="delete-a-volume"></a>ボリュームを削除する
@@ -102,8 +104,6 @@ StorSimple Snapshot Manager からボリュームを削除するには、次の�
 
 > [!NOTE]
 > ボリューム グループに属するボリュームは削除できません  (ボリューム グループのメンバーであるボリュームでは、削除オプションは使用できません)。ボリュームを削除するには、ボリューム グループ全体を削除する必要があります。
-> 
-> 
 
 #### <a name="to-delete-a-volume"></a>ボリュームを削除するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
@@ -162,7 +162,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 ### <a name="prerequisites"></a>前提条件
 作業を開始する前に、次のことを行います。
 
-* StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。 詳細については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
+* StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。 詳細については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」をご覧ください。
 * StorSimple Snapshot Manager をインストールして構成します。 詳細については、 [Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 * StorSimple デバイスに 2 つのボリュームを構成します  (この例では、使用できるボリュームは**ディスク 1** と**ディスク 2** です)。 
 
@@ -212,9 +212,4 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

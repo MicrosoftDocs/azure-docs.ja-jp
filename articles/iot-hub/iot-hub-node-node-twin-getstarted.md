@@ -12,14 +12,13 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 08/25/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 527aed57517f04d1b0fdcad5feac5488123b89c7
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 633c9fd4f8a1d017d93148f8c2e860ccba14238c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/07/2016
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
@@ -31,7 +30,7 @@ ms.lasthandoff: 12/07/2016
 * **TwinSimulatedDevice.js**: 以前作成したデバイス ID を使用して IoT Hub に接続するデバイスをシミュレートする Node.js アプリで、接続の状態を報告します。
 
 > [!NOTE]
-> デバイス アプリとバックエンド アプリの両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス アプリとバックエンド アプリ両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDK][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 12/07/2016
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-the-service-app"></a>サービス アプリケーションを作成する
-このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する Node.js コンソール アプリを作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT ハブに格納されているデバイス ツインに対してクエリを実行します。
+このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する Node.js コンソール アプリを作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT Hub に格納されているデバイス ツインに対してクエリを実行します。
 
 1. **addtagsandqueryapp** という名前の新しい空のフォルダーを作成します。 **addtagsandqueryapp** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    

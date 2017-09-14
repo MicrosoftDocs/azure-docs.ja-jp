@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
-ms.author: apurvajo;aelnably
+ms.author: apurvajo
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: fb38555f1f299352f06deae1ca231895163068e5

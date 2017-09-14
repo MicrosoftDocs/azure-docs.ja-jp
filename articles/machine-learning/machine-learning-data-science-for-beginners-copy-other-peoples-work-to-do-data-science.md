@@ -1,5 +1,5 @@
 ---
-title: "他のユーザーのデータ サイエンスの例をコピーする - Machine Learning - Azure | Microsoft Docs"
+title: "他のユーザーのデータ サイエンスの例をコピーする - Azure Machine Learning | Microsoft Docs"
 description: "データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Cortana Analytics Gallery から Machine Learning の例を取得します。"
 keywords: "データ サイエンスの例,Machine Learning の例,クラスタリング アルゴリズム,クラスタリング アルゴリズムの例"
 services: machine-learning
@@ -13,27 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
-ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
-ms.lasthandoff: 02/10/2017
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 440a1ded1f1dc1b8fbe73e3bbcbbd68ec9422bf8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
-データ サイエンスの企業秘密の&1; つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Cortana Analytics Gallery で検索します。
+データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Cortana Analytics Gallery で検索します。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
 >
 >
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -42,16 +43,16 @@ ms.lasthandoff: 02/10/2017
 * ビデオ 5: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
 ## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>トランスクリプト: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
-"初心者向けデータ サイエンス" シリーズの&5; 番目のビデオへようこそ。
+"初心者向けデータ サイエンス" シリーズの 5 番目のビデオへようこそ。
 
 このビデオでは、作業の出発点として利用できるサンプルの場所について紹介しています。 このビデオを最大限に活用するためにまず、このシリーズのビデオを最初から視聴するようお勧めします。
 
-データ サイエンスの企業秘密の&1; つは、自分の代わりに他のユーザーに作業してもらうことです。
+データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。
 
 ## <a name="find-examples-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでサンプルを探す
 Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) という、無料で試用できるクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
 
-このサービスの一部として、**[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery)**というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の&1; つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。
+このサービスの一部として、**[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery)**というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。
 
 ギャラリーには、[aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery) からアクセスできます。 だれでもアクセスできるので、自由に閲覧してください。
 
@@ -60,7 +61,7 @@ Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services
 一番上の **[試験的機能]** をクリックすると、評価の高い最新の実験が多数ギャラリーに表示されます。 その他の実験を検索するには、画面上部の **[Browse All (すべて参照)]** をクリックしてください。そこで検索語句を入力したり、検索フィルターを選択したりすることができます。
 
 ## <a name="find-and-use-a-clustering-algorithm-example"></a>クラスタリング アルゴリズム サンプルの検索と使用
-たとえばクラスター解析の実例を見てみたいという場合は、「 **clustering** 」と入力して実験を検索します。
+たとえばクラスター解析の実例を見てみたいという場合は、「**clustering sweep**」と入力して実験を検索します。
 
 ![Search for clustering experiments](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 

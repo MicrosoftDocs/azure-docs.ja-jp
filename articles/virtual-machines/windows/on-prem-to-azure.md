@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 098904d8b5262d8a19d1c10003e0bcaa668ef2dc
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 685c35dbd4265ca6852de6db2e5a30fc2a611d7c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -30,8 +29,8 @@ ms.lasthandoff: 05/27/2017
 AWS やオンプレミスの仮想化ソリューションから Azure に VHD ファイルをアップロードして、Managed Disks を利用する VM を作成できます。 Azure Managed Disks では、Azure IaaS VM のストレージ アカウントを管理する必要がなくなります。 指定する必要があるのは必要なディスクの種類 (Premium または Standard) とサイズだけで、ディスクは Azureによって作成および管理されます。 
 
 一般化された VHD と特殊化された VHD のいずれもアップロードできます。 
-**一般化された VHD** - 一般化した VHD では、Sysprep を使用して個人アカウント情報がすべて削除されています。 
-**特殊化された VHD** - 特殊化された VHD では、ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 
+- **一般化した VMD**: Sysprep を使用してすべての個人アカウント情報が削除されています。 
+- **特殊化された VHD**: ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 
 
 > [!IMPORTANT]
 > VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に従う必要があります
@@ -41,18 +40,18 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 
 | シナリオ                                                                                                                         | ドキュメント                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Managed Disks に移行する既存の AWS EC2 インスタンスがある                                     | [アマゾン ウェブ サービス (AWS) から Azure Managed Disks に移行する](aws-to-azure.md)                           |
-| 複数の Azure VM を作成するためのイメージとして使用する他の仮想化プラットフォームの VM がある。 | [汎用化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関する記事 |
-| Azure で再作成する一意にカスタマイズされた VM がある。                                                      | [特殊化された VHD の Azure へのアップロードと、Managed Disks を使用した新しい VM の作成](create-vm-specialized.md)に関する記事         |
+| Azure Managed Disks に移行する既存の AWS EC2 インスタンスがある                                     | [PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する](aws-to-azure.md)                           |
+| 複数の Azure VM を作成するためのイメージとして使用する他の仮想化プラットフォームの VM がある。 | [汎用化した VHD をアップロードして Azure で新しい VM を作成する](upload-generalized-managed.md) |
+| Azure で再作成する一意にカスタマイズされた VM がある。                                                      | [特殊化されたディスクからの Windows VM の作成](create-vm-specialized.md)         |
 
 
 ## <a name="overview-of-managed-disks"></a>Managed Disks の概要
 
 Azure Managed Disks は、ストレージ アカウントを管理する必要をなくして VM 管理をシンプルにします。 Managed Disks では、可用性セット内の VM の信頼性の向上というメリットもあります。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。 ニーズに基づいて、2 種類のストレージ オプションから選ぶことができます。 
  
-- [Premium Managed Disks](../../storage/storage-premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。  
+- [Premium Managed Disks](../../storage/common/storage-premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。  
 
-- [Standard Managed Disks](../../storage/storage-standard-storage.md) はハード ディスク ドライブ (HDD) ベースのストレージ メディアを使用し、パフォーマンス変動の影響を受けにくい開発テストやアクセス頻度の少ないワークロードに最適です。  
+- [Standard Managed Disks](../../storage/common/storage-standard-storage.md) はハード ディスク ドライブ (HDD) ベースのストレージ メディアを使用し、パフォーマンス変動の影響を受けにくい開発テストやアクセス頻度の少ないワークロードに最適です。  
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
 

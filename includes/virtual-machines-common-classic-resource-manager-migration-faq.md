@@ -32,9 +32,14 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 
 移行中に、リソースはクラシックから Resource Manager に変換されます。 したがって、移行後に必要になる RBAC ポリシーの更新を計画しておくことをお勧めします。
 
-## <a name="what-if-im-using-azure-site-recovery-or-azure-backup-today"></a>現在、Azure Site Recovery または Azure Backup サービスを使用している場合はどうすればよいですか? 
+## <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>クラシック VM をバックアップ コンテナーにバックアップしてあります。 クラシック モードから Resource Manager モードに VM を移行して、Recovery Services コンテナーで保護することはできますか。 
 
-バックアップが有効になっている仮想マシンを移行する場合は、「[私はクラシック VM を Backup コンテナーにバックアップしてあります」をご覧ください。VM をクラシック モードから Resource Manager モードに移行したいのですが、Recovery Services コンテナーにバックアップするにはどうすればよいですか。](../articles/backup/backup-azure-backup-ibiza-faq.md)私はクラシック VM を Backup コンテナーにバックアップしてあります。 VM をクラシック モードから Resource Manager モードに移行したいのですが、  Recovery Services コンテナーにバックアップするにはどうすればよいですか。
+バックアップ コンテナーのクラシック VM の回復ポイントは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的に移行されません。 VM バックアップを移行するには、次の手順に従います。
+
+1. バックアップ コンテナーで、**[保護された項目]** タブに移動して VM を選択します。 [[保護の停止]](../articles/backup/backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
+2. バックアップ/スナップショット拡張機能を VM から削除します。
+3. 仮想マシンをクラシック モードから Resource Manager モードに移行します。 その仮想マシンに対応するストレージとネットワークの情報も Resource Manager モードに移行されていることを確認してください。
+4. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。 Recovery Services コンテナーへの VM のバックアップについて詳しくは、[Recovery Services コンテナーを使用した Azure VM の保護](../articles/backup/backup-azure-vms-first-look-arm.md)に関する記事を参照してください。
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>サブスクリプションまたはリソースを検証し、移行が可能かどうかを確認できますか? 
 

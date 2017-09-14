@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: c344941c59c52d260999c29f448bb94df24fba1d
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
@@ -197,7 +197,7 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
 
 開発者/運用者に対する "deploy/action" アクセス許可のカスタム ロールの割り当ての対象は、リソース グループです。 これにより、"ContosoAppRG" リソース グループに作成された VM のみがシークレット (SSL 証明書とブートストラップ証明書) を取得します。 開発者/運用者チームのメンバーが他のリソース グループに作成した VM はすべて、シークレットの URI を知っていても、これらのシークレットを取得できません。
 
-この例では、単純なシナリオを示しています。 実際のシナリオはもっと複雑で、ニーズに基づいて、キー コンテナーに対するアクセス許可を調整する必要があります。 たとえば、この例では、開発者/運用者チームがアプリケーションで参照するために必要なキーとシークレットの参照 (URI と拇印) をセキュリティ チームが提供します。 そのため、開発者/運用者にデータ プレーンのアクセス権を付与する必要がありません。 また、この例ではキー コンテナーのセキュリティ保護に焦点を当てていることに注意してください。 [VM](https://azure.microsoft.com/services/virtual-machines/security/) や[ストレージ アカウント](../storage/storage-security-guide.md)などの Azure リソースをセキュリティで保護する場合も、同じようなことを考慮します。
+この例では、単純なシナリオを示しています。 実際のシナリオはもっと複雑で、ニーズに基づいて、キー コンテナーに対するアクセス許可を調整する必要があります。 たとえば、この例では、開発者/運用者チームがアプリケーションで参照するために必要なキーとシークレットの参照 (URI と拇印) をセキュリティ チームが提供します。 そのため、開発者/運用者にデータ プレーンのアクセス権を付与する必要がありません。 また、この例ではキー コンテナーのセキュリティ保護に焦点を当てていることに注意してください。 [VM](https://azure.microsoft.com/services/virtual-machines/security/) や[ストレージ アカウント](../storage/common/storage-security-guide.md)などの Azure リソースをセキュリティで保護する場合も、同じようなことを考慮します。
 
 > [!NOTE]
 > 注: この例では、運用環境でキー コンテナーのアクセスをロックダウンする方法を示しています。 開発者は、キー コンテナー、VM、ストレージ アカウントを管理するための完全なアクセス許可を持つ自分のサブスクリプションまたはリソース グループで、アプリケーションを開発する必要があります。

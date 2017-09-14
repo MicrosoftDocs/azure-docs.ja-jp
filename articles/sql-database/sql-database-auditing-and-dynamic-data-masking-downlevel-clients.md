@@ -1,28 +1,35 @@
 ---
-title: "Azure SQL Database の監査、TDS リダイレクト、および IP エンドポイント | Microsoft Docs"
-description: "Azure SQL Database でテーブル監査を実装する場合の、監査、TDS リダイレクト、およびIP エンドポイント変更について説明します。"
+title: "Azure SQL Database でのテーブル監査、TDS リダイレクト、IP エンドポイント | Microsoft Docs"
+description: "Azure SQL Database でテーブル監査を実装する場合の、監査、TDS リダイレクト、IP エンドポイント変更について説明します。"
 services: sql-database
 documentationcenter: 
-author: ronitr
+author: giladm
 manager: jhubbard
 editor: 
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
-ms.custom: security-protect
+ms.custom: security
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
-ms.author: ronitr
-translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: bcc02abb62b21aadb10e62320b02b33c3c244c17
-ms.lasthandoff: 02/17/2017
+ms.date: 05/31/2017
+ms.author: giladm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 1447a75758475dd6536ef1bcd0e8432e5618dab8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
-# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL Database - 監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
+
+# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - テーブル監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
+
+> [!IMPORTANT]
+> このドキュメントの内容は、**現在は非推奨**となっているテーブル監査についてのみ適用されます。<br>
+> 新しい [BLOB 監査](sql-database-auditing.md)をご使用ください。BLOB 監査では、ダウンレベル クライアントの接続文字列の変更が**不要**です。 BLOB 監査に関する追加情報については、「[SQL Database 監査の使用](sql-database-auditing.md)」をご覧ください。
+
 [データベース監査](sql-database-auditing.md) は TDS リダイレクションに対応する SQL クライアントと自動的に連動します。 なお、Blob 監査メソッドを使用している場合、リダイレクトは適用されません。
 
 ## <a id="subheading-1"></a>ダウンレベル クライアントのサポート

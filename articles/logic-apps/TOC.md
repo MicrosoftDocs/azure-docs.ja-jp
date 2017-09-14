@@ -16,6 +16,7 @@
 ### [Switch ステートメントを追加する](logic-apps-switch-case.md)
 ### [Azure Functions を使用してカスタム コードを追加する](logic-apps-azure-functions.md)
 ### [ループ、スコープ、データの分割処理](logic-apps-loops-and-scopes.md)
+### [メッセージをバッチ処理する](logic-apps-batch-process-send-receive-messages.md)
 ### [ロジック アプリの定義を作成する](logic-apps-author-definitions.md)
 ### [ロジック アプリを呼び出し、トリガーし、入れ子にする](logic-apps-http-endpoint.md)
 ### [ロジック アプリ用のカスタム API を作成する](logic-apps-create-api-app.md)
@@ -62,14 +63,15 @@
 
 ## 管理と監視
 ### [Visual Studio でロジック アプリを管理する](logic-apps-manage-from-vs.md)
-### [ロジック アプリの監視](logic-apps-monitor-your-logic-apps.md)
 ### [統合アカウントを管理する](logic-apps-enterprise-integration-accounts.md)
+### [ロジック アプリの状態の監視](logic-apps-monitor-your-logic-apps.md)
+### [OMS と Log Analytics でロジック アプリの状態を監視する](logic-apps-monitor-your-logic-apps-oms.md)
 ### [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md)
+#### [OMS で B2B メッセージを追跡する](logic-apps-track-b2b-messages-omsportal.md)
+#### [OMS に対して B2B メッセージを照会する](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 #### [AS2 の追跡スキーマ](logic-apps-track-integration-account-as2-tracking-schemas.md)
 #### [X12 の追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [カスタム追跡スキーマ](logic-apps-track-integration-account-custom-tracking-schema.md)
-#### [OMS で B2B メッセージを追跡する](logic-apps-track-b2b-messages-omsportal.md)
-#### [メッセージについて OMS を照会する](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 
 ## 例、シナリオ、チュートリアル
 ### [概要](logic-apps-examples-and-scenarios.md)
@@ -81,7 +83,6 @@
 ## 価格と課金
 ### [料金](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [使用量の測定](logic-apps-pricing.md)
-
 
 # サーバーレス
 ## 概要
@@ -139,6 +140,8 @@
 ### [プレビュー](logic-apps-schema-2015-08-01.md)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-logic-apps)

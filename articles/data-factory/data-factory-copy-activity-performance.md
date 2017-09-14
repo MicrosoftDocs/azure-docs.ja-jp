@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 08/10/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 183cb2ad4f2a80f9a0e1e7a33f1cacae006c0df4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2779655aee3af3a351b30f18b4c9d9918e9f2210
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
@@ -40,22 +39,19 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に「 [コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md) 」を参照してください。
 >
->
 
 ## <a name="performance-reference"></a>パフォーマンス リファレンス
+
+参考として、社内テストに基づく特定のソースとシンクのペアにおけるコピーのスループット (Mbps 単位) を次の表に示します。 比較のために、[クラウド データの移動単位](#cloud-data-movement-units)または [Data Management Gateway のスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md) (複数のゲートウェイ ノード) の異なる設定によってコピーのパフォーマンスがどのように変化するかも示しています。
+
 ![パフォーマンス マトリックス](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
-> [!NOTE]
-> 既定の最大データ移動単位 (DMU) は、クラウド間のコピー アクティビティの実行では 32 ですが、これよりも大きい DMU を利用すると、より高いスループットを得ることができます。 たとえば、100 DMU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[クラウド データ移動単位](#cloud-data-movement-units)」セクションを参照してください。 DMU の追加依頼は、[Azure サポート](https://azure.microsoft.com/support/)に連絡してください。
->
->
 
 **注意する点:**
 * スループットの計算には、[ソースから読み取られたデータ サイズ]/[コピー アクティビティの実行時間] という数式を使用します。
 * 表のパフォーマンスの参照番号は、1 回のコピー アクティビティ実行で [TPC-H](http://www.tpc.org/tpch/) データ セットを使用して測定されました。
-* クラウド データ ストア間のコピーでは、比較のために、 **cloudDataMovementUnits** を 1 と 4 (または 8) に設定します。 **parallelCopies** は指定されていません。 これらの機能の詳細については、「 [並列コピー](#parallel-copy) 」セクションを参照してください。
 * Azure データ ストアでは、ソースとシンクは同じ Azure リージョンにあります。
-* ハイブリッド (オンプレミスからクラウド、またはクラウドからオンプレミス) のデータ移動では、オンプレミス データ ストアとは別のコンピューター上にあるゲートウェイの 1 つのインスタンスが実行されています。 構成の一覧を次の表に示します。 ゲートウェイで 1 つのアクティビティが実行されていた場合、コピー操作で使用されたのは、テスト コンピューターの CPU、メモリ、またはネットワーク帯域幅のごく一部だけでした。
+* オンプレミスとクラウドのデータ ストア間でのハイブリッド コピーでは、各ゲートウェイ ノードは、オンプレミス データ ストアから切り離された次の仕様のコンピューターで実行されました。 ゲートウェイで 1 つのアクティビティが実行されていた場合、コピー操作で使用されたのは、テスト コンピューターの CPU、メモリ、またはネットワーク帯域幅のごく一部だけでした。 詳細については、「[Data Management Gateway に関する考慮事項](#considerations-for-data-management-gateway)」を参照してください。
     <table>
     <tr>
         <td>CPU</td>
@@ -70,6 +66,10 @@ Azure によりエンタープライズ クラスのデータ ストレージお
         <td>インターネット インターフェイス: 10 Gbps。イントラネット インターフェイス: 40 Gbps</td>
     </tr>
     </table>
+
+
+> [!TIP]
+> 既定の最大データ移動単位 (DMU) は、クラウド間のコピー アクティビティの実行では 32 ですが、これよりも大きい DMU を利用すると、より高いスループットを得ることができます。 たとえば、100 DMU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[クラウド データ移動単位](#cloud-data-movement-units)」セクションを参照してください。 DMU の追加依頼は、[Azure サポート](https://azure.microsoft.com/support/)に連絡してください。
 
 ## <a name="parallel-copy"></a>並列コピー
 ソースからのデータ読み取りまたはターゲットへのデータ書き込みは、 **コピー アクティビティの実行中に並行して**実行できます。 この機能によって、コピー操作のスループットが向上し、データの移動にかかる時間が短縮されます。
@@ -115,7 +115,6 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 > [!NOTE]
 > スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。
->
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
@@ -192,7 +191,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 ### <a name="configuration"></a>構成
 コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータを Blob Storage にステージングするかどうかを指定します。 **enableStaging** を TRUE に設定した場合は、次の表に記載されている追加のプロパティを指定する必要があります。 ステージング用に Azure Storage または Storage Shared Access Signature のリンクされたサービスがない場合は、作成する必要もあります。
 
-| プロパティ | Description | 既定値 | 必須 |
+| プロパティ | 説明 | 既定値 | 必須 |
 | --- | --- | --- | --- |
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | **linkedServiceName** |[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスです。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
@@ -247,15 +246,21 @@ Data Factory サービスとコピー アクティビティのパフォーマン
    * パフォーマンス機能:
      * [並列コピー](#parallel-copy)
      * [クラウド データ移動単位](#cloud-data-movement-units)
-     * [ステージング コピー](#staged-copy)   
+     * [ステージング コピー](#staged-copy)
+     * [Data Management Gateway のスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)
+   * [Data Management Gateway](#considerations-for-data-management-gateway)
    * [ソース](#considerations-for-the-source)
    * [シンク](#considerations-for-the-sink)
    * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
    * [圧縮](#considerations-for-compression)
    * [列マッピング](#considerations-for-column-mapping)
-   * [Data Management Gateway](#considerations-for-data-management-gateway)
    * [その他の考慮事項](#other-considerations)
 3. **構成をデータ セット全体に拡張する**。 実行結果とパフォーマンスに問題がなければ、データ セット全体を網羅するように定義とパイプラインのアクティブな期間を拡張することができます。
+
+## <a name="considerations-for-data-management-gateway"></a>Data Management Gateway に関する考慮事項
+**ゲートウェイのセットアップ**: Data Management Gateway をホストする専用のマシンを使用することをお勧めします。 [Data Management Gateway を使用する際の考慮事項](data-factory-data-management-gateway.md#considerations-for-using-gateway)に関する記事を参照してください。  
+
+**ゲートウェイの監視とスケール アップ/スケール アウト**: 1 つまたは複数のゲートウェイ ノードを持つ 1 つの論理ゲートウェイは、同時実行される複数のコピー アクティビティに対応できます。 Azure ポータルで、ゲートウェイ マシンのリソース使用率 (CPU、メモリ、ネットワーク (着信/発信) など) のほぼリアルタイムのスナップショットと、同時実行されているジョブの数と上限を表示できます。「[ポータルでのゲートウェイの監視](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)」をご覧ください。 ハイブリッド データ移動で大量のコピー アクティビティを同時実行するか大量のデータをコピーする高いニーズがある場合は、リソースをもっと有効に利用したり、コピー能力を高めるためのより多くのリソースのプロビジョニングを実行したりできるように、[ゲートウェイをスケール アップするかスケール アウトする](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)ことを検討してください。 
 
 ## <a name="considerations-for-the-source"></a>ソースに関する考慮事項
 ### <a name="general"></a>全般
@@ -342,13 +347,6 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 ソース データ ストアがクエリ可能な場合 (たとえば、SQL Database や SQL Server のようなリレーショナル ストアであるか、Table Storage や Azure Cosmos DB のような NoSQL ストアである場合) は、列マッピングを使用するのでなく、列フィルタリングと順序変更ロジックを **query** プロパティにプッシュすることを検討してください。 そうした場合、データ移動サービスがソース データ ストアからデータを読み取る際にプロジェクションが発生し、効率が大幅に向上します。
 
-## <a name="considerations-for-data-management-gateway"></a>Data Management Gateway に関する考慮事項
-ゲートウェイのセットアップにおける推奨事項については、「 [Data Management Gateway に関する考慮事項](data-factory-data-management-gateway.md#considerations-for-using-gateway)」を参照してください。
-
-**ゲートウェイ コンピューター環境**: Data Management Gateway をホストする専用のマシンを使用することをお勧めします。 PerfMon などのツールを使用して、ゲートウェイ コンピューター上でのコピー操作中の CPU、メモリ、および帯域幅の使用率を確認します。 CPU、メモリ、またはネットワーク帯域幅がボトルネックになる場合は、より強力なコンピューターに切り替えます。
-
-**コピー アクティビティの同時実行**: Data Management Gateway の単一のインスタンスで、複数のコピー アクティビティ実行を同時に並行して処理できます。 同時ジョブの最大数は、ゲートウェイ コンピューターのハードウェア構成に基づいて計算されます。 追加のコピー ジョブはキューに置かれ、ゲートウェイによって取り出されるか、他のジョブがタイムアウトになるまで待機します。 ゲートウェイ上でのリソースの競合を避けるには、コピー アクティビティのスケジュールをステージングして一度にキューに入れるコピー ジョブの数を減らすことも、複数のゲートウェイに負荷を分散することを検討することもできます。
-
 ## <a name="other-considerations"></a>その他の考慮事項
 コピーするデータのサイズが大きい場合は、Data Factory のスライス メカニズムを使用してさらにデータを分割するように、ビジネス ロジックを調整することができます。 次に、コピー アクティビティをより頻繁に実行するようにスケジュールして、各コピー アクティビティ実行のデータ サイズを小さくします。
 
@@ -404,7 +402,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 ## <a name="reference"></a>リファレンス
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
-* Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)に関する記事
+* Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関する記事
 * Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md) し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB: [Azure Cosmos DB のパフォーマンス レベル](../documentdb/documentdb-performance-levels.md)に関する記事

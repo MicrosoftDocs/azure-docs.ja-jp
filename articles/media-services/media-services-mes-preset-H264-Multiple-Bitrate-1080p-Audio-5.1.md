@@ -2,7 +2,7 @@
 title: H264 Multiple Bitrate 1080p Audio 5.1 | Microsoft Docs
 description: "このトピックでは、**H264 Multiple Bitrate 1080p Audio 5.1** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
 ms.openlocfilehash: f2a68bc2481aa1eb71bfe5a36e1321f75d973497
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/29/2016
 
 ---
-
 
 # <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Multiple Bitrate 1080p Audio 5.1
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name` を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
@@ -321,8 +321,4 @@ ms.openlocfilehash: f2a68bc2481aa1eb71bfe5a36e1321f75d973497
   ]  
 }  
 ```
-
-
-<!--HONumber=Nov16_HO5-->
-
 

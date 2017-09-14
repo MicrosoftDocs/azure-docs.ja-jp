@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory B2C: iOS アプリケーションを使用したトークンの取得 | Microsoft Docs"
+title: "iOS アプリケーションを使用してトークンを取得する - Azure AD B2C | Microsoft Docs"
 description: "この記事では、Azure Active Directory B2C と AppAuth を使用してユーザー ID の管理とユーザーの認証を行う iOS アプリを作成する方法を説明します。"
 services: active-directory-b2c
 documentationcenter: ios
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
-editor: 
+editor: parakhj
 ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objectivec
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 9756e9019d1f79c1fb17cf142daaaaca442722c7
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ebec5d910b8987dcc8155cd4ead00f87d219941c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS アプリケーションを使用してサインインする

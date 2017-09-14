@@ -1,10 +1,11 @@
 ---
-title: "Logic Apps 向けの API の作成"
-description: "Logic Apps で使用するカスタム API の作成"
+title: "Web API と REST API をコネクタとして作成する - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps とのシステム統合のために、ワークフローで API、サービス、システムを呼び出す Web API と REST API を作成する"
+keywords: "web API, REST API, コネクタ, ワークフロー, システム統合"
+services: logic-apps
 author: jeffhollan
 manager: anneta
 editor: 
-services: logic-apps
 documentationcenter: 
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
@@ -12,84 +13,199 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3fd558835fb36ef70ac97419727b5133d0741d7e
-ms.lasthandoff: 04/07/2017
-
+ms.date: 5/26/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 4ae98804aced23c0261c1d58721cb18d8152c6f1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 ---
-# <a name="creating-a-custom-api-to-use-with-logic-apps"></a>Logic Apps で使用するカスタム API の作成
-Logic Apps プラットフォームを拡張する際は、多数ある標準搭載コネクタには含まれていない API やシステムをさまざまな方法で呼び出すことができます。  そのような方法の 1 つに、ロジック アプリ ワークフロー内から呼び出せる API アプリの作成があります。
+
+# <a name="create-custom-apis-as-connectors-for-logic-apps"></a>ロジック アプリのコネクタとしてカスタム API を作成する
+
+Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../connectors/apis-list.md)をロジック アプリ ワークフローで利用できますが、コネクタとして利用できない API、システム、サービスを呼び出したい場合があります。 ロジック アプリで使用するアクションとトリガーを提供する独自のカスタム API を作成できます。 ロジック アプリのコネクタとして使用する独自の API は次のような理由から作成されることもあります。
+
+* 現行システム統合やデータ統合のワークフローを拡張する。
+* 仕事または個人的な作業の管理にサービスを利用する顧客を支援する。
+* サービスが届く範囲を拡大する。サービスを見つけやすくする。サービスの用途を拡大する。
+
+基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/app-service-value-prop-what-is.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
+
+カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
+
+> [!TIP] 
+> API は [Web アプリ](../app-service-web/app-service-web-overview.md)としてデプロイできますが、[API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)としてデプロイすることを検討してください。クラウドやオンプレミスで API を構築、ホスト、利用するとき、作業が簡単になります。 API のコードを変更する必要はありません。コードを API アプリにデプロイするだけです。 [ASP.NET](../app-service-api/app-service-api-dotnet-get-started.md)、[Java](../app-service-api/app-service-api-java-api-app.md)、[Node.js](../app-service-api/app-service-api-nodejs-api-app.md) で API アプリを構築する方法をご確認ください。 
+>
+> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](http://aka.ms/logicappsblog)をご覧ください。
 
 ## <a name="helpful-tools"></a>便利なツール
-作成した API が Logic Apps とうまく連携するように、API でサポートされる操作とパラメーターを記述した [swagger](http://swagger.io) ドキュメントを作成することをお勧めします。  swagger を自動的に生成するライブラリが ([Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) など) 豊富に用意されています。  また、[TRex](https://github.com/nihaue/TRex) を使用して、Logic Apps でうまく機能するように swagger に注釈 (表示名、プロパティの型など) を付けることもできます。  Logic Apps 向けに作成された API Apps のサンプルが [GitHub リポジトリ](http://github.com/logicappsio)と[ブログ](http://aka.ms/logicappsblog)で公開されていますので、ぜひご覧ください。
 
-## <a name="actions"></a>アクション
-ロジック アプリの基本的なアクションは、HTTP 要求を受け取って応答 (通常は 200) を返すコントローラーですが、  さまざまなパターンを使用して、ニーズに合わせてアクションを拡張できます。
+API の操作やパラメーターを説明する [Swagger ドキュメント](http://swagger.io/specification/)も API に含まれるとき、カスタム API はロジック アプリと最も効果的に連動します。
+[Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) のようなライブラリの多くは、Swagger ファイルを自動的に生成できます。 表示名やプロパティの種類などに関して Swagger ファイルに注釈を付けるために、[TRex](https://github.com/nihaue/TRex) を利用することもできます。Swagger ファイルとロジック アプリが効果的に連動します。
 
-ロジック アプリのエンジンでは、要求は既定で 1 分後にタイムアウトになります。  ただし、後で詳しく説明する非同期パターンか Webhook パターンを使用して、もっと時間のかかるアクションを API で実行したり、アクションが完了するまでエンジンを待機させたりすることもできます。
+<a name="actions"></a>
 
-標準的なアクションであれば、swagger で公開する API に HTTP 要求メソッドを記述するだけです。  Logic Apps と連携する API Apps のサンプルは、 [GitHub リポジトリ](https://github.com/logicappsio)でご覧いただけます。  以降、カスタム コネクタを使用した一般的なパターンの実現方法を紹介します。
+## <a name="action-patterns"></a>アクション パターン
 
-### <a name="long-running-actions---async-pattern"></a>実行時間の長いアクション - 非同期パターン
-時間のかかるステップやタスクを実行する際は、まず、タイムアウトしたことをエンジンが認識できるようにする必要があります。 また、タスクが完了したことを認識する方法をエンジンに伝える必要もあります。さらに、エンジンがワークフローを続行できるように関連データをエンジンに返す必要もあります。 このような操作は、API を使用して、次のフローに沿って実行することができます。 以下の手順は、カスタム API の視点で記述しています。
+ロジック アプリがタスクを実行するには、カスタム API で[*アクション*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)を提供する必要があります。 API の各操作はアクションにマッピングされます。 基本アクションは、HTTP 要求を受け取り、HTTP 応答を返すコントローラーです。 そのため、たとえば、あるロジック アプリは HTTP 要求を Web アプリまたは API アプリに送信します。 次に、アプリはロジック アプリが処理できるコンテンツと共に HTTP 応答を返します。
 
-1. 要求を受信したら、(作業を実行する前に) すぐに応答を返します。 この応答は `202 ACCEPTED` 応答で、データを取得し、ペイロードを受け取り、現在処理中であることをエンジンに知らせます。 202 応答には、次のヘッダーを含める必要があります。 
+標準的アクションの場合、API に HTTP 要求メソッドを記述し、そのメソッドについて Swagger ファイルで説明できます。 その後、[HTTP アクション](../connectors/connectors-native-http.md)または [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) アクションで API を直接呼び出すことができます。 既定では、応答は[要求のタイムアウト期限](./logic-apps-limits-and-config.md)内に返す必要があります。 
+
+![標準的アクション パターン](./media/logic-apps-create-api-app/standard-action.png)
+
+<a name="pattern-overview"></a> API が時間のかかるタスクを完了するまでロジック アプリに待機させるには、API はこのトピックで説明する[非同期ポーリング パターン](#async-pattern)または[非同期 webhook パターン](#webhook-actions)に従う必要があります。 これらのパターンのさまざまな動作を視覚化する際、類推が役立ちます。ケーキ屋さんにケーキを特注する過程を想像してください。 ポーリング パターンの場合、20 分ごとにケーキ屋さんに電話し、ケーキができているか確認する動作を再現します。 webhook パターンの場合、ケーキができたときに電話できるようにケーキ屋さんがあなたの電話番号を尋ねる動作を再現します。
+
+サンプルが必要であれば、[Logic Apps GitHub リポジトリ](https://github.com/logicappsio)にアクセスしてください。 アクションの使用状況測定については、[こちら](logic-apps-pricing.md)をご覧ください。
+
+<a name="async-pattern"></a>
+
+### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>ポーリング アクション パターンで長時間タスクを実行する
+
+[要求のタイムアウト期限](./logic-apps-limits-and-config.md)より長く実行される可能性があるタスクを API に実行させるには、非同期ポーリング パターンを利用できます。 このパターンでは、API は別個のスレッドで作業しますが、ロジック アプリ エンジンとの有効な接続を維持します。 この方法では、API が作業を完了する前にロジック アプリがタイムアウトしたり、ワークフローの次の段階に進んだりすることがありません。
+
+一般的なパターン:
+
+1. API が要求を受け取り、作業を開始したことをエンジンが認識していることを確認します。
+2. エンジンがその後、ジョブの状態確認を要求したら、API がタスクを完了するタイミングをエンジンに知らせます。
+3. ロジック アプリのワークフローが続行できるように、関連データをエンジンに返します。
+
+<a name="bakery-polling-action"></a> ここで、前のパン屋さんの類推をポーリング パターンに適用します。パン屋さんに電話し、特注ケーキの配送を注文するところを想像してください。 ケーキ作りの過程には時間がかかりますが、ケーキ屋さんがケーキを作っている間、あなたは電話の前で待ちたくありません。 そこでケーキ屋さんが注文を確定したら、あなたは 20 分ごとに電話をかけることにします。ケーキの状態を確認するための電話です。 20 分後、あなたはケーキ屋さんに電話しますが、ケーキはまだできておらず、さらに 20 分後に電話して欲しいと言われます。 この往復プロセスは、あなたが電話し、ケーキ屋さんがあなたにケーキができたので届けると伝えるまで続きます。 
+
+それでは、このポーリング パターンをマッピングしましょう。 ケーキ屋さんはカスタム API です。顧客であるあなたはロジック アプリ エンジンです。 エンジンが API を呼び出し、要求を伝えると、API は要求を確定し、エンジンがジョブの状態を確認できる時間間隔を応答として返します。 エンジンはジョブの状態確認を続け、API が応答でジョブが完了したと伝えたらデータをロジック アプリに返します。ロジック アプリはワークフローを続行します。 
+
+![ポーリング アクション パターン](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
+
+API が従う手順を API の観点から説明すると次のようになります。
+
+1. API は HTTP 要求を受け取って作業を開始すると、この手順の後半で説明する `location` ヘッダーを付けた HTTP `202 ACCEPTED` 応答をすぐに返します。 この応答により、API が要求を受け、要求ペイロード (データ入力) を受け取り、現在処理中であることをロジック アプリ エンジンは知ります。 
    
-   * `location` ヘッダー (必須): これは、Logic Apps がジョブの状態を確認するために使用する URL への絶対パスです。
-   * `retry-after` (省略可能。アクションの既定値は 20)。 これは、エンジンが状態を確認するために location ヘッダーの URL をポーリングする前に待機する秒数です。
-2. ジョブの状態が確認されたら、次の確認を実行します。 
+   `202 ACCEPTED` 応答には次のヘッダーを含める必要があります。
    
-   * ジョブが完了している場合: `200 OK` 応答を応答ペイロードと共に返します。
-   * ジョブがまだ処理中の場合: もう一度 `202 ACCEPTED` 応答を、初回の応答と同じヘッダーで返します。
+   * *必須*: ロジック アプリ エンジンが API のジョブの状態を確認できる URL の絶対パスを指定する `location` ヘッダー。
 
-このパターンでは、カスタム API のスレッド内で極端に長いタスクでも実行でき、Logic Apps エンジンでアクティブな接続が持続されて、作業が完了するまでタイムアウトにならずに続行されます。 このパターンをロジック アプリに追加する際は、ロジック アプリの定義に何もしなくても、ポーリングが継続され、状態が確認されることに注意が必要です。 有効な location ヘッダーを持つ 202 ACCEPTED 応答をエンジンが受け取ると、すぐに非同期パターンが実行され、202 以外の応答が返されるまで location ヘッダーのポーリングが継続されます。
+   * *任意*: 待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
 
-[こちら](https://github.com/jeffhollan/LogicAppsAsyncResponseSample)
+     既定では、エンジンは 20 秒ごとに確認します。 別の時間間隔を指定するには、`retry-after` ヘッダーと次のポーリングまでの秒数を追加します。
 
-### <a name="webhook-actions"></a>Webhook アクション
-ワークフロー中に、ロジック アプリを一時停止し、"コールバック" が続くのを待機させることができます。  このコールバックは、HTTP POST の形式をとります。  このパターンを実装するには、サブスクライブとサブスクライブ解除という 2 つのエンドポイントをコントローラーに提供する必要があります。
+2. 指定した時間が経過したら、ロジック アプリ エンジンは `location` URL に問い合わせ、ジョブの状態を確認します。 API は次のような確認を実行し、次のような応答を返す必要があります。
+   
+   * ジョブが完了したら、HTTP `200 OK` 応答と応答ペイロード (次の手順の入力) を返します。
 
-"サブスクライブ" では、ロジック アプリがコールバック URL を作成して登録します。API は、それを HTTP POST として準備された状態で格納してコールバックできます。  コンテンツやヘッダーがあればロジック アプリに渡され、ワークフローの残りの部分で使用できます。  ロジック アプリ エンジンは、実行時にそのステップに到達すると、すぐに "サブスクライブ" エンドポイントを呼び出します。
+   * ジョブがまだ処理中の場合、別の HTTP `202 ACCEPTED` 応答を返します。ただし、ヘッダーは元の応答と同じです。
 
-実行がキャンセルされた場合、ロジック アプリ エンジンは "サブスクライブ解除" エンドポイントを呼び出します。  これを受けて、API は必要に応じてコールバック URL の登録を解除できます。
+API がこのパターンに従うとき、ロジック アプリ ワークフロー定義で何もしなくてもジョブの状態確認が続行します。 エンジンは HTTP `202 ACCEPTED` 応答と有効な `location` ヘッダーを受け取ると、非同期パターンに従い、API が 202 以外の応答を返すまで `location` ヘッダーを確認します。
 
-現在、ロジック アプリ デザイナーでは、swagger による Webhook エンドポイントの検出をサポートしていないため、この種類のアクションを使用するには、"Webhook" アクションを追加し、要求の URL、ヘッダー、および本文を指定する必要があります。  必要に応じて、これらのフィールドのいずれかでワークフロー関数 `@listCallbackUrl()` を使用して、コールバック URL を渡すことができます。
+> [!TIP]
+> 非同期パターンの例が必要であれば、[ここ](https://github.com/logicappsio/LogicAppsAsyncResponseSample)で GitHub の非同期コントローラー応答サンプルをご覧ください。
 
-[こちら](https://github.com/jeffhollan/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)
+<a name="webhook-actions"></a>
 
-## <a name="triggers"></a>トリガー
-アクションに加えて、カスタム API をロジック アプリのトリガーとして機能させることができます。  ロジック アプリをトリガーするパターンには、次の 2 つがあります。
+### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>webhook アクション パターンで長時間タスクを実行する
 
-### <a name="polling-triggers"></a>ポーリング トリガー
-ポーリング トリガーの動作は、上記の実行時間の長い非同期アクションに似ています。  ロジック アプリ エンジンは、一定の時間が経過した後に (Premium は 15 秒、Standard は1 分、Free は 1 時間など、SKU によって異なります)、トリガー エンドポイントを呼び出します。
+代替として、長時間タスクや非同期処理に webhook パターンを使用できます。 このパターンでは、API からの "コールバック" があるまでロジック アプリは一時停止し、待機します。コールバックの後に処理を完了し、ワークフローを続行します。 このコールバックは、イベントの発生時にメッセージを URL に送信する HTTP POST です。 
 
-使用できるデータがない場合、トリガーは `202 ACCEPTED` 応答で `location` と `retry-after` およびヘッダーを設定して返します。  ただし、トリガーの場合、`location` ヘッダーには `triggerState` というクエリ パラメーターを含めることが推奨されます。  これは、ロジック アプリが前回いつ起動したかを API が把握するための識別子です。  使用できるデータがある場合、トリガーは `200 OK` 応答をコンテンツ ペイロードと共に返します。  これにより、ロジック アプリが起動されます。
+<a name="bakery-webhook-action"></a> ここで、前のパン屋さんの類推を webhook パターンに適用します。パン屋さんに電話し、特注ケーキの配送を注文するところを想像してください。 ケーキ作りの過程には時間がかかりますが、ケーキ屋さんがケーキを作っている間、あなたは電話の前で待ちたくありません。 そこでケーキ屋さんがあなたの注文を確定するとき、あなたはケーキ屋さんに電話番号を伝えます。ケーキができたときに電話できるようにです。 ケーキ屋さんは注文の品ができたとあなたに伝え、品物を届けます。
 
-たとえば、ファイルが使用できるかどうかを私がポーリングした場合、皆さんは次の操作を実行するポーリング トリガーを作成できます。
+この webhook パターンをマッピングするとき、ケーキ屋さんはカスタム API です。顧客であるあなたはロジック アプリ エンジンです。 エンジンは API を呼び出し、要求と "コールバック" URL を与えます。
+ジョブが完了すると、API は URL を利用し、エンジンにジョブ完了を通知し、ロジック アプリにデータを返します。ロジック アプリはワークフローを続行します。 
 
-* triggerState のない要求を受け取った場合、API は `202 ACCEPTED` を `location` ヘッダーと共に返します。このヘッダーには、triggerState に現在の時刻が、`retry-after` には 15 が設定されます。
-* triggerState のある要求を受け取った場合は次の操作を実行します。
-  * triggerState の日時の後に追加されたファイルがあるかどうかを確認します。 
-  * ファイルが 1 つある場合は、`200 OK` 応答をコンテンツ ペイロードと共に返し、私が返したファイルの日時まで triggerState をインクリメントして、`retry-after` を 15 に設定します。
-  * 複数のファイルがある場合、私は一度に 1 つのファイルを `200 OK` 応答と共に返し、`location` ヘッダーの triggerState をインクリメントして、`retry-after` を 0 に設定します。  こうすることで、使用可能なデータが他にもあることをエンジンに知らせることができます。エンジンはすぐに、指定された `location` ヘッダーで残りのデータを要求します。
-  * ファイルがない場合は、`202 ACCEPTED` 応答を返し、`location` triggerState はそのままにしておきます。  `retry-after` は 15 に設定します。
+このパターンでは、コントローラーに `subscribe` と `unsubscribe` という 2 つのエンドポイントを設定します。
 
-[こちら](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)
+*  `subscribe` エンドポイント: ワークフローで API のアクションまで実行が到達すると、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順では、ロジック アプリは API が保存するコールバック URL を作成し、作業の完了時に API からコールバックが届くまで待機します。 API は URL に HTTP POST でコールバックし、ロジック アプリの入力として返すコンテンツやヘッダーがあれば、それを渡します。
 
-### <a name="webhook-triggers"></a>WebHook トリガー
-Webhook トリガーの動作は、上記の Webhook アクションに似ています。  Webhook トリガーが追加されて保存されるたびに、ロジック アプリ エンジンは "サブスクライブ" エンドポイントを呼び出します。  API は Webhook の URL を登録し、データがあるときに HTTP POST を介して呼び出すことができます。  ロジック アプリの実行には、コンテンツ ペイロードとヘッダーが渡されます。
+* `unsubscribe` エンドポイント: ロジック アプリの実行が取り消された場合、ロジック アプリ エンジンは `unsubscribe` エンドポイントを呼び出します。 API はコールバック URL を登録解除し、プロセスがあれば必要に応じて停止できます。
 
-Webhook トリガー (ロジック アプリ全体または Webhook トリガーのみ) が削除されると、エンジンは "サブスクライブ解除" URL を呼び出ます。API はこの URL を使用して、コールバック URL の登録を解除し、必要に応じてプロセスを停止できます。
+![webhook アクション パターン](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-現在、ロジック アプリ デザイナーでは、swagger による Webhook トリガーの検出をサポートしていないため、この種類のアクションを使用するには、"Webhook" トリガーを追加し、要求の URL、ヘッダー、および本文を指定する必要があります。  必要に応じて、これらのフィールドのいずれかでワークフロー関数 `@listCallbackUrl()` を使用して、コールバック URL を渡すことができます。
+> [!NOTE]
+> 現在のところ、ロジック アプリ デザイナーでは、Swagger で webhook エンドポイントを検出できません。 そこでこのパターンの場合、[**webhook** アクション](../connectors/connectors-native-webhook.md)を追加し、要求の URL、ヘッダー、本文を指定する必要があります。 「[ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md#api-connection-webhook-action)」も参照してください。 コールバック URL を渡すために、必要に応じて、前のいずれかのフィールドで `@listCallbackUrl()` ワークフロー機能を利用できます。
 
-[こちら](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)
+> [!TIP]
+> webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー サンプルを参照してください。
 
-## <a name="publish-custom-connectors-to-azure"></a>Azure にカスタム コネクタを公開する
+<a name="triggers"></a>
 
-カスタム API アプリを公開して Azure で使用できるようにするには、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
+## <a name="trigger-patterns"></a>トリガー パターン
 
+カスタム API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリを開始する[*トリガー*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)として機能させることができます。 このトリガーはサービス エンドポイントの新しいデータまたはイベントを定期的に確認するか、待ち受けることができます。 新しいデータ、またはあるイベントが指定の条件を満たした場合、トリガーが発動し、トリガーを待ち受けていたロジック アプリが起動します。 この方法でロジック アプリを開始するには、API で[*ポーリング トリガー*](#polling-triggers) パターンまたは [*webhook トリガー*](#webhook-triggers) パターンを利用します。 これらのパターンは、[ポーリング アクション](#async-pattern)と [webhook アクション](#webhook-actions)のそれに似ています。 トリガーの使用状況測定については、[こちら](logic-apps-pricing.md)をご覧ください。
+
+<a name="polling-triggers"></a>
+
+### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>ポーリング トリガー パターンで新しいデータまたはイベントを定期的に確認する
+
+*ポーリング トリガー*は、このトピックの前半で説明した[ポーリング アクション](#async-pattern)に似た動作をします。 ロジック アプリ エンジンはトリガー エンドポイントに定期的に問い合わせ、新しいデータまたはイベントがないか確認します。 指定の条件に一致する新しいデータまたはあるイベントをエンジンが見つけると、トリガーが発動します。 データを入力として処理するロジック アプリ インスタンスをエンジンが作成します。 
+
+![ポーリング トリガー パターン](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
+
+> [!NOTE]
+> ロジック アプリ インスタンスが作成されなくても、ポーリング要求はアクション実行として数えられます。 同じデータが複数回処理されることを防止するには、すでに読まれ、ロジック アプリに渡されたデータをトリガーは消去する必要があります。
+
+ポーリング トリガーの手順を API の観点から説明すると次のようになります。
+
+| 新しいデータまたはイベントが見つかったか?  | API 応答 | 
+| ------------------------- | ------------ |
+| Found | 応答ペイロード (次の手順の入力) と共に HTTP `200 OK` 状態を返します。 <br/>この応答でロジック アプリ インスタンスが作成され、ワークフローが開始されます。 |
+| 見つかりません | `location` ヘッダーと `retry-after` ヘッダーと共に HTTP `202 ACCEPTED` 状態を返します。 <br/>トリガーの場合、`location` ヘッダーに `triggerState` クエリ パラメーターも含める必要があります。このクエリ パラメーターは通常、"timestamp" です。 API はこの識別子を利用し、ロジック アプリがトリガーがされた最後の時間を追跡記録できます。 |
+
+たとえば、新しいファイルがないか、サービスに定期的に確認するには、次の動作を含むポーリング トリガーを構築できます。
+
+| 要求に `triggerState` が含まれていますか? | API 応答 |
+| -------------------------------- | -------------|
+| いいえ | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 |
+| あり | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 |
+
+| 見つかったファイルの数 | API 応答 |
+| --------------------- | -------------|
+| 1 つのファイル | HTTP `200 OK` 状態とコンテンツ ペイロードを返し、返すファイルの `triggerState` を `DateTime` に更新し、`retry-after` 間隔を 15 秒に設定します。 |
+| 複数のファイル | 一度に 1 つのファイルと HTTP `200 OK` 状態を返し、`triggerState` を更新し、`retry-after` 間隔を 0 秒に設定します。 </br>これらの手順で、さらに多くのデータが利用できること、エンジンは `location` ヘッダーの URL からデータをすぐに要求しなければならないことがエンジンに知らされます。 |
+| ファイルなし | HTTP `202 ACCEPTED` 状態を返します。`triggerState` は変更しません。`retry-after` 間隔を 15 秒に設定します。 |
+
+> [!TIP]
+> ポーリング トリガー パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs)で GitHub のポーリング トリガー コントローラー サンプルを参照してください。
+
+<a name="webhook-triggers"></a>
+
+### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>webhook トリガー パターンで新しいデータまたはイベントを待ち受ける
+
+webhook トリガーは、サービス エンドポイントで新しいデータまたはイベントを待ち受ける*プッシュ トリガー*です。 新しいデータまたはあるイベントが指定の条件を満たす場合、トリガーが発動し、ロジック アプリ インスタンスが作成されます。このインスタンスはデータを入力として処理します。
+webhook トリガーはこのトピックの前半で説明した [webhook アクション](#webhook-actions)に似た動作をします。`subscribe` エンドポイントと `unsubscribe` エンドポイントで設定されます。 
+
+* `subscribe` エンドポイント: ロジック アプリに webhook トリガーを追加し、保存するとき、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順により、API が保存するコールバック URL をロジック アプリが作成します。 新しいデータまたはあるイベントが指定の条件を満たす場合、API は URL に HTTP POST でコールバックします。 コンテンツ ペイロードとヘッダーは入力としてロジック アプリに渡されます。
+
+* `unsubscribe` エンドポイント: webhook が発動するか、ロジック アプリ全体が削除されると、ロジック アプリ エンジンは `unsubscribe` エンドポイントを呼び出します。 API はコールバック URL を登録解除し、プロセスがあれば必要に応じて停止できます。
+
+![webhook トリガー パターン](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
+
+> [!NOTE]
+> 現在のところ、ロジック アプリ デザイナーでは、Swagger で webhook エンドポイントを検出できません。 そこでこのパターンの場合、[**webhook** トリガー](../connectors/connectors-native-webhook.md)を追加し、要求の URL、ヘッダー、本文を指定する必要があります。 「[HTTPWebhook トリガー](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)」もご覧ください。 コールバック URL を渡すために、必要に応じて、前のいずれかのフィールドで `@listCallbackUrl()` ワークフロー機能を利用できます。
+>
+> 同じデータが複数回処理されることを防止するには、すでに読まれ、ロジック アプリに渡されたデータをトリガーは消去する必要があります。
+
+> [!TIP]
+> webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー コントローラー サンプルを参照してください。
+
+## <a name="deploy-call-and-secure-custom-apis"></a>カスタム API のデプロイ、呼び出し、セキュリティ対策
+
+カスタム API を作成したら、安全に呼び出せるように API のデプロイを設定します。 [ロジック アプリのカスタム API のデプロイ、呼び出し、セキュリティ対策](./logic-apps-custom-hosted-api.md)に関するページをご覧ください。
+
+## <a name="publish-custom-apis-to-azure"></a>カスタム API を Azure に公開する
+
+カスタム API を公開して Azure で使用できるようにするには、[Microsoft Azure Certified プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)に推薦を送信します。
+
+## <a name="get-help"></a>問い合わせ
+
+カスタム API に関するサポートが必要な場合、[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) にお問い合わせください。
+
+[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
+
+[Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps とコネクタの改善にご協力ください。 
+
+## <a name="next-steps"></a>次のステップ
+
+* [アクションとトリガーの使用状況測定](logic-apps-pricing.md)
+* [コンテンツ タイプを処理する](./logic-apps-content-type.md)
+* [エラーと例外を処理する](./logic-apps-exception-handling.md)
+* [ロジック アプリへのアクセスのセキュリティ保護](./logic-apps-securing-a-logic-app.md)
+* [HTTP エンドポイントでロジック アプリを呼び出し、トリガーし、入れ子にする](./logic-apps-http-endpoint.md)

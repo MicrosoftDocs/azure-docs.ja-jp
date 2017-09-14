@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7eecd3cc01cc708c3da1efb1cbb3b1cddb86d6f0
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 7e6ccf51a4b75eef16a7df5c1a1018954af8e5dd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -29,8 +29,8 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="configuring-certificates"></a>証明書の構成
 証明書は次の 2 つの方法で構成されます。 
 
-1. [SSL 証明書を構成するには](#To-Configure-the-SSL#Certificate)
-2. [クライアント証明書を構成するには](#To-Configure-Client-Certificates) 
+1. [SSL 証明書を構成するには](#to-configure-the-ssl-certificate)
+2. [クライアント証明書を構成するには](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
 証明書はパブリック証明機関 (CA) または [Windows Certificate Service](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
@@ -53,43 +53,43 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する
-1. [自己署名証明書を作成する](#Create-a-Self-Signed-Certificate)
-2. [自己署名 SSL 証明書用の PFX ファイルを作成する](#Create-PFX-file-for-Self-Signed-SSL-Certificate)
-3. [クラウド サービスに SSL 証明書をアップロードする](#Upload-SSL-Certificate-to-Cloud-Service)
-4. [サービス構成ファイルの SSL 証明書を更新する](#Update-SSL-Certificate-in-Service-Configuration-File)
-5. [SSL 証明機関をインポートする](#Import-SSL-Certification-Authority)
+1. [自己署名証明書を作成する](#create-a-self-signed-certificate)
+2. [自己署名 SSL 証明書用の PFX ファイルを作成する](#create-pfx-file-for-self-signed-ssl-certificate)
+3. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
+4. [サービス構成ファイルの SSL 証明書を更新する](#update-ssl-certificate-in-service-configuration-file)
+5. [SSL 証明機関をインポートする](#import-ssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>証明書ストアから既存の証明書を使用するには
-1. [証明書ストアから SSL 証明書をエクスポートする](#Export-SSL-Certificate-From-Certificate-Store)
-2. [クラウド サービスに SSL 証明書をアップロードする](#Upload-SSL-Certificate-to-Cloud-Service)
-3. [サービス構成ファイルの SSL 証明書を更新する](#Update-SSL-Certificate-in-Service-Configuration-File)
+1. [証明書ストアから SSL 証明書をエクスポートする](#export-ssl-certificate-from-certificate-store)
+2. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
+3. [サービス構成ファイルの SSL 証明書を更新する](#update-ssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>PFX ファイルの既存の証明書を使用するには
-1. [クラウド サービスに SSL 証明書をアップロードする](#Upload-SSL-Certificate-to-Cloud-Service)
-2. [サービス構成ファイルの SSL 証明書を更新する](#Update-SSL-Certificate-in-Service-Configuration-File)
+1. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
+2. [サービス構成ファイルの SSL 証明書を更新する](#update-ssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>クライアント証明書を構成するには
 サービスへの要求を認証するには、クライアント証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### <a name="turn-off-client-certificates"></a>クライアント証明書をオフにする
-1. [クライアント証明書ベースの認証をオフにする](#Turn-Off-Client-Certificate-Based-Authentication)
+1. [クライアント証明書ベースの認証をオフにする](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>新しい自己署名証明書を発行する
-1. [自己署名証明機関を作成する](#Create-a-Self-Signed-Certification-Authority)
-2. [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-Certificate-to-Cloud-Service)
-3. [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [クライアント証明書を発行する](#Issue-Client-Certificates)
-5. [クライアント証明書の PFX ファイルを作成する](#Create-PFX-files-for-Client-Certificates)
+1. [自己署名証明機関を作成する](#create-a-self-signed-certification-authority)
+2. [CA 証明書をクラウド サービスにアップロードする](#upload-ca-certificate-to-cloud-service)
+3. [サービス構成ファイルの CA 証明書を更新する](#update-ca-certificate-in-service-configuration-file)
+4. [クライアント証明書を発行する](#issue-client-certificates)
+5. [クライアント証明書の PFX ファイルを作成する](#create-pfx-files-for-client-certificates)
 6. [クライアント証明書をインポートする](#Import-Client-Certificate)
-7. [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
-8. [許可されているクライアントをサービス構成ファイルに構成する](#Configure-Allowed-Clients-in-the-Service-Configuration-File)
+7. [クライアント証明書のサムプリントをコピーする](#copy-client-certificate-thumbprints)
+8. [許可されているクライアントをサービス構成ファイルに構成する](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>既存のクライアント証明書を使用する
-1. [Find CA Public Key](#Find-CA-Public Key)
+1. [Find CA Public Key](#find-ca-public-key)
 2. [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-certificate-to-cloud-service)
 3. [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
 4. [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
-5. [許可されているクライアントをサービス構成ファイルに構成する](#Configure-Allowed-Clients-in-the-Service-Configuration File)
+5. [許可されているクライアントをサービス構成ファイルに構成する](#configure-allowed-clients-in-the-service-configuration-file)
 6. [クライアント証明書の失効確認を構成する](#Configure-Client-Certificate-Revocation-Check)
 
 ## <a name="allowed-ip-addresses"></a>許可された IP アドレス
@@ -99,19 +99,19 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 メタデータ ストアに格納されている資格情報を暗号化するには、証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### <a name="use-a-new-self-signed-certificate"></a>新しい自己署名証明書を使用する
-1. [自己署名証明書を作成する](#Create-a-Self-Signed-Certificate)
-2. [自己署名の暗号化証明書の PFX ファイルを作成する](#Create-PFX-file-for-Self-Signed-Encryption-Certificate)
-3. [クラウド サービスに暗号化証明書をアップロードする](#Upload-Encryption-Certificate-to-Cloud-Service)
-4. [サービス構成ファイルの暗号化証明書を更新する](#Update-Encryption-Certificate-in-Service-Configuration-File)
+1. [自己署名証明書を作成する](#create-a-self-signed-certificate)
+2. [自己署名の暗号化証明書の PFX ファイルを作成する](#create-pfx-file-for-self-signed-ssl-certificate)
+3. [クラウド サービスに暗号化証明書をアップロードする](#upload-encryption-certificate-to-cloud-service)
+4. [サービス構成ファイルの暗号化証明書を更新する](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-from-the-certificate-store"></a>証明書ストアにある既存の証明書を使用する
-1. [証明書ストアから暗号化証明書をエクスポートする](#Export-Encryption-Certificate-From-Certificate-Store)
-2. [クラウド サービスに暗号化証明書をアップロードする](#Upload-Encryption-Certificate-to-Cloud-Service)
-3. [サービス構成ファイルの暗号化証明書を更新する](#Update-Encryption-Certificate-in-Service-Configuration-File)
+1. [証明書ストアから暗号化証明書をエクスポートする](#export-encryption-certificate-from-certificate-store)
+2. [クラウド サービスに暗号化証明書をアップロードする](#upload-encryption-certificate-to-cloud-service)
+3. [サービス構成ファイルの暗号化証明書を更新する](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-in-a-pfx-file"></a>PFX ファイル内に既存の証明書を使用する
-1. [クラウド サービスに暗号化証明書をアップロードする](#Upload-Encryption-Certificate-to-Cloud-Service)
-2. [サービス構成ファイルの暗号化証明書を更新する](#Update-Encryption-Certificate-in-Service-Configuration-File)
+1. [クラウド サービスに暗号化証明書をアップロードする](#upload-encryption-certificate-to-cloud-service)
+2. [サービス構成ファイルの暗号化証明書を更新する](#update-encryption-certificate-in-service-configuration-file)
 
 ## <a name="the-default-configuration"></a>既定の構成
 既定の構成では、HTTP エンドポイントへのすべてのアクセスを拒否します。 これらのエンドポイントへの要求にはデータベースの資格情報などの機密情報が含まれていることがあるため、これが推奨される設定です。
@@ -402,16 +402,16 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="export-certificate"></a>証明書をエクスポートします。
 **証明書のエクスポート ウィザード**で次のように実行します。
 
-1. **[次へ]**をクリックします。
+1. **[次へ]** をクリックします。
 2. **[はい]**、**[秘密キーをエクスポートします]** の順に選択します。
-3. ページの下部にある [次へ]」を参照してください。
+3. **[次へ]** をクリックします。
 4. 目的の出力ファイル形式を選択します。
 5. 必要なオプションを確認します。
 6. **[パスワード]**をオンにします。
 7. 強力なパスワードを入力し、確定します。
-8. **[次へ]**をクリックします。
+8. **[次へ]** をクリックします。
 9. 証明書が格納されているファイル名を入力するか参照します (拡張子 .PFX を使用)。
-10. **[次へ]**をクリックします。
+10. **[次へ]** をクリックします。
 11. **[完了]**をクリックします。
 12. **[OK]**をクリックします。
 
@@ -422,7 +422,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
    
    * 現在のユーザーが実行中のプロセスのみがサービスにアクセスする場合は、 **[現在のユーザー]** を選択します。
    * このコンピューターの他のプロセスがサービスにアクセスする場合は、 **[ローカル マシン]** を選択します。
-2. **[次へ]**をクリックします。
+2. **[次へ]** をクリックします。
 3. ファイルからインポートしている場合は、ファイルのパスを確認します。
 4. .PFX ファイルをインポートする場合は、次のようにします。
    1. 秘密キーの情報を保護するパスワードを入力する
@@ -436,7 +436,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 9. すべてのダイアログ ウィンドウで **[OK]** をクリックします。
 
 ## <a name="upload-certificate"></a>証明書のアップロード
- [Azure ポータル](https://portal.azure.com/)
+[Azure ポータル](https://portal.azure.com/)
 
 1. **[クラウド サービス]**を選択します。
 2. クラウド サービスを選択します。

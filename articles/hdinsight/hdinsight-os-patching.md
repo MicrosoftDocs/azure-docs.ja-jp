@@ -1,5 +1,5 @@
 ---
-title: "Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する - Azure |Microsoft Docs"
+title: "Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する - Azure | Microsoft Docs"
 description: "Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f39dfdff2239bb0b55eca50a1e7c706a5408b83a
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -47,7 +48,7 @@ HDInsight クラスターの仮想マシンは、重要なセキュリティ更�
 
 このスクリプトを使用するには、次の情報が必要です。
 1. スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh。
-     HDInsight では、この URI を使用してクラスター内のすべての仮想マシンでスクリプトを検索して実行します。
+    HDInsight では、この URI を使用してクラスター内のすべての仮想マシンでスクリプトを検索して実行します。
   
 2. スクリプトが適用されるクラスター ノードの種類: headnode、workernode、zookeeper。 このスクリプトは、クラスター内のすべてのノードの種類に適用する必要があります。 スクリプトをノードの種類に適用しない場合、そのノードの種類の仮想マシンが引き続き以前の更新プログラム適用スケジュールを使用します。
 

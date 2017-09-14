@@ -4,13 +4,21 @@
   href: custom-decision-service-overview.md
 - name: 作業開始
   items:
-  - name: アプリケーションの登録
-    href: custom-decision-service-get-started-register.md
-  - name: ブラウザーから API を呼び出す
-    href: custom-decision-service-get-started-browser.md
-  - name: アプリから API を呼び出す
-    href: custom-decision-service-get-started-app.md
-- name: チュートリアル
-  href: custom-decision-service-tutorial.md
+    - name: アプリケーションの登録
+      href: custom-decision-service-get-started-register.md
+    - name: ブラウザーから API を呼び出す
+      href: custom-decision-service-get-started-browser.md
+    - name: アプリから API を呼び出す
+      href: custom-decision-service-get-started-app.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 記事のパーソナル化
+      href: custom-decision-service-tutorial-news.md
+    - name: Custom Decision Service での機械学習
+      href: custom-decision-service-tutorial-ml.md
 - name: API リファレンス
   href: custom-decision-service-api-reference.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

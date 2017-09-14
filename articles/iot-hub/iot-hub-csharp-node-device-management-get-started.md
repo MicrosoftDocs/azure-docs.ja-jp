@@ -20,7 +20,6 @@ ms.openlocfilehash: def3feb2760c0ec2bb9ff39c6ef8a85bb142a0a7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/19/2017
 
-
 ---
 # <a name="get-started-with-device-management-netnode"></a>デバイス管理の開始 (.NET/Node)
 
@@ -62,6 +61,7 @@ ms.lasthandoff: 05/19/2017
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
+        using Microsoft.Azure.Devices.Shared;
         
 5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションとターゲット デバイスで作成したハブの IoT Hub 接続文字列に置き換えてください。
    

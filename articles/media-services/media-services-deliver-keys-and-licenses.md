@@ -4,7 +4,7 @@ description: "この記事では、Azure Media Services (AMS) を使用して Pl
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
 ms.service: media-services
@@ -12,18 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/18/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 02bf743d310519477bb87a2930a2afe687c62c4e
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 69019f41bcc72b71bcc7d0bf8a66fe37d5243b7b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
 Azure Media Services (AMS) を使用すると、コンテンツの取り込みおよびエンコードを行い、コンテンツ保護を追加して、コンテンツのストリーミングを行うことができます (詳細については、 [この](media-services-protect-with-drm.md) 記事をご覧ください)。 ただし、AMS を使用してライセンスまたはキーの配信のみを行い、オンプレミスのサーバーを使用してエンコード、暗号化、およびストリーミングを行うユーザーがいます。 この記事では、AMS を使用して PlayReady または Widevine のライセンスを配信するものの、オンプレミスのサーバーで残りを処理する方法について説明します。 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Media Services は、PlayReady および Widevine DRM のライセンスと AES-128 キーを配信するためのサービスを提供しています。 また、Media Services で提供される API を使用して、DRM 保護されたコンテンツをユーザーが再生するときに DRM ランタイムが適用する権限と制限を構成できます。 ユーザーが保護されたコンテンツを要求すると、プレーヤー アプリケーションが AMS ライセンス サービスにライセンスを要求します。 AMS ライセンス サービスは、(プレーヤーが承認されていれば) ライセンスをプレーヤーに発行します。 PlayReady および Widevine のライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
 
 Media Services では、ライセンスまたはキーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成することで、ポリシーには、1 つまたは複数の制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、Simple Web Tokens (SWT) 形式と JSON Web Token (JWT) 形式のトークンがサポートされます。
@@ -35,31 +36,34 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 ## <a name="download-sample"></a>サンプルのダウンロード
 この記事で説明されているサンプルは、 [こちら](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)からダウンロードできます。
 
+## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
+
+1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
+2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
+
+    <add key="Issuer" value="http://testacs.com"/> <add key="Audience" value="urn:test"/>
+
 ## <a name="net-code-example"></a>.NET コード例
-このトピックのコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 **コンテンツ キー**、**キー ID**、および**ライセンス取得 URL**の情報を AMS から取得し、オンプレミスのサーバーを構成する必要があります。 オンプレミスのサーバーを構成すると、自分のストリーミング サーバーからストリーミングを行うことができます。 暗号化されたストリームは AMS ライセンス サーバーを参照するため、プレーヤーは AMS にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを AMS ライセンス サーバーが検証し、(有効な場合は) プレーヤーにライセンスを配信します。 (コード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。[この](media-services-protect-with-aes128.md)記事ではその方法を示しています)。
+
+次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 **コンテンツ キー**、**キー ID**、および**ライセンス取得 URL**の情報を AMS から取得し、オンプレミスのサーバーを構成する必要があります。 オンプレミスのサーバーを構成すると、自分のストリーミング サーバーからストリーミングを行うことができます。 暗号化されたストリームは AMS ライセンス サーバーを参照するため、プレーヤーは AMS にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを AMS ライセンス サーバーが検証し、(有効な場合は) プレーヤーにライセンスを配信します。 (コード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。[この](media-services-protect-with-aes128.md)記事ではその方法を示しています)。
 
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
     using Microsoft.WindowsAzure.MediaServices.Client;
     using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-    using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
     using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
     using Newtonsoft.Json;
-
 
     namespace DeliverDRMLicenses
     {
         class Program
         {
             // Read values from the App.config file.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
             private static readonly Uri _sampleIssuer =
                 new Uri(ConfigurationManager.AppSettings["Issuer"]);
@@ -68,16 +72,13 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 
             // Field for service context.
             private static CloudMediaContext _context = null;
-            private static MediaServicesCredentials _cachedCredentials = null;
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 bool tokenRestriction = true;
                 string tokenTemplateString = null;
@@ -86,10 +87,10 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
                 IContentKey key = CreateCommonTypeContentKey();
 
                 // Print out the key ID and Key in base64 string format
-                Console.WriteLine("Created key {0} with key value {1} ", 
+                Console.WriteLine("Created key {0} with key value {1} ",
                     key.Id, System.Convert.ToBase64String(key.GetClearKeyValue()));
 
-                Console.WriteLine("PlayReady License Key delivery URL: {0}", 
+                Console.WriteLine("PlayReady License Key delivery URL: {0}",
                     key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense));
 
                 Console.WriteLine("Widevine License Key delivery URL: {0}",
@@ -100,7 +101,7 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
                 else
                     AddOpenAuthorizationPolicy(key);
 
-                Console.WriteLine("Added authorization policy: {0}", 
+                Console.WriteLine("Added authorization policy: {0}",
                     key.AuthorizationPolicyId);
                 Console.WriteLine();
                 Console.ReadLine();
@@ -112,15 +113,15 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
                 // Create ContentKeyAuthorizationPolicy with Open restrictions 
                 // and create authorization policy          
 
-                List<ContentKeyAuthorizationPolicyRestriction> restrictions = 
+                List<ContentKeyAuthorizationPolicyRestriction> restrictions =
                     new List<ContentKeyAuthorizationPolicyRestriction>
                 {
-                    new ContentKeyAuthorizationPolicyRestriction
-                    {
-                        Name = "Open",
-                        KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
-                        Requirements = null
-                    }
+                        new ContentKeyAuthorizationPolicyRestriction
+                        {
+                            Name = "Open",
+                            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+                            Requirements = null
+                        }
                 };
 
                 // Configure PlayReady and Widevine license templates.
@@ -155,15 +156,15 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
             {
                 string tokenTemplateString = GenerateTokenRequirements();
 
-                List<ContentKeyAuthorizationPolicyRestriction> restrictions = 
+                List<ContentKeyAuthorizationPolicyRestriction> restrictions =
                     new List<ContentKeyAuthorizationPolicyRestriction>
                 {
-                    new ContentKeyAuthorizationPolicyRestriction
-                    {
-                        Name = "Token Authorization Policy",
-                        KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-                        Requirements = tokenTemplateString,
-                    }
+                        new ContentKeyAuthorizationPolicyRestriction
+                        {
+                            Name = "Token Authorization Policy",
+                            KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+                            Requirements = tokenTemplateString,
+                        }
                 };
 
                 // Configure PlayReady and Widevine license templates.
@@ -220,7 +221,7 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
                 //and the application (may be useful for custom app logic) 
                 //as well as a list of one or more license templates.
 
-                PlayReadyLicenseResponseTemplate responseTemplate = 
+                PlayReadyLicenseResponseTemplate responseTemplate =
                     new PlayReadyLicenseResponseTemplate();
 
                 // The PlayReadyLicenseTemplate class represents a license template 
@@ -274,14 +275,14 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
                     allowed_track_types = AllowedTrackTypes.SD_HD,
                     content_key_specs = new[]
                     {
-                        new ContentKeySpecs
-                        {
-                            required_output_protection = 
-                                new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
-                            security_level = 1,
-                            track_type = "SD"
-                        }
-                    },
+                            new ContentKeySpecs
+                            {
+                                required_output_protection =
+                                    new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
+                                security_level = 1,
+                                track_type = "SD"
+                            }
+                        },
                     policy_overrides = new
                     {
                         can_play = true,
@@ -310,8 +311,6 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
                 return key;
             }
 
-
-
             static private byte[] GetRandomBuffer(int length)
             {
                 var returnValue = new byte[length];
@@ -324,11 +323,8 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 
                 return returnValue;
             }
-
-
         }
     }
-
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -342,10 +338,5 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)
 
 [パートナーを使用して Azure Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

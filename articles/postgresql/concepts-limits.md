@@ -5,17 +5,16 @@ services: postgresql
 author: kamathsun
 ms.author: sukamat
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql-database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.service: postgresql
+ms.custom: mvc
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/01/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2df8d6e3d3629ad0e383aa80ba7fee02f8862410
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: a4ddb9d4f672de6cf1ebe137bf06e5e2c8b7796f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
@@ -45,23 +44,24 @@ Azure Database for PostgreSQL では、サーバーを作成するときに複�
 接続数が多すぎると、次のエラーが発生する可能性があります。
 > FATAL:  sorry, too many clients already
 
-## <a name="preview-functional-limitations"></a>プレビュー中の機能制限: 
-### <a name="scale-operations"></a>スケール操作: 
-1.    サービス レベル間でのサーバーの動的スケーリングは現在サポートされていません。 つまり、Basic サービス レベルと Standard サービス レベルの間での切り替えです。
-2.    現時点では、事前に作成されたサーバーのストレージをオンデマンドで動的に増やすことはできません。
-3.    サーバー ストレージを減らすことはできません。
+## <a name="preview-functional-limitations"></a>プレビュー中の機能制限
+### <a name="scale-operations"></a>スケール操作
+1.  サービス レベル間でのサーバーの動的スケーリングは現在サポートされていません。 つまり、Basic サービス レベルと Standard サービス レベルの間での切り替えです。
+2.  現時点では、事前に作成されたサーバーのストレージをオンデマンドで動的に増やすことはできません。
+3.  サーバー ストレージを減らすことはできません。
 
-### <a name="server-version-upgrades"></a>サーバー バージョンのアップグレード: 
+### <a name="server-version-upgrades"></a>サーバー バージョンのアップグレード
 - データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。
 
-### <a name="subscription-management"></a>サブスクリプション管理: 
+### <a name="subscription-management"></a>サブスクリプション管理
 - サブスクリプションとリソース グループ間での事前作成されたサーバーの動的な移動は現在サポートされていません。
 
-### <a name="point-in-time-restore"></a>ポイントインタイム リストア: 
-1.    別のサービス レベルやコンピューティング ユニットおよびストレージ サイズに復元することはできません。
-2.    破棄されたサーバーへの復元はサポートされていません。
+### <a name="point-in-time-restore"></a>ポイントインタイム リストア
+1.  別のサービス レベルやコンピューティング ユニットおよびストレージ サイズに復元することはできません。
+2.  破棄されたサーバーへの復元はサポートされていません。
 
-## <a name="next-steps"></a>次のステップ:
-- [各サービス レベルで使用できる内容](concepts-service-tiers.md)について理解します
+## <a name="next-steps"></a>次のステップ
+- [各価格レベルで使用できる内容](concepts-service-tiers.md)について理解します
 - [サポートされている PostgreSQL Database バージョン](concepts-supported-versions.md)について理解します
 - [Azure Portal を使用して Azure Database for PostgreSQL でサーバーをバックアップして復元する方法](howto-restore-server-portal.md)を確認します
+

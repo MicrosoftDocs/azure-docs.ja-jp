@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 5a39d4ec9bbf1c7672267c7e89c957ebc49f1f3a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
-
 
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights での Linux パフォーマンス メトリック

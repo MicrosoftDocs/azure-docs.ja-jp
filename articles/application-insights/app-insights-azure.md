@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
 ms.openlocfilehash: 04c83dcd4df442d3e8bb41a15bb033de91bc4fcc
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/05/2017
-
 
 ---
 # <a name="application-insights-for-microsoft-azure-apps"></a>Microsoft Azure アプリ向けの Application Insights

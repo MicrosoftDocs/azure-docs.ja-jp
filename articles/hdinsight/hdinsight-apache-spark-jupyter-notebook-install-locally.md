@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: c2949fbda0503c779b117aebb14d4d7b76bae426
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: fe9dcdb643aa6a8ee5d55738b7a446e4b0153986
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
@@ -44,14 +43,14 @@ HDInsight クラスターの Jupyter Notebook で使用できるカスタム カ
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook をコンピューターにインストールする
 
-Jupyter Notebook をインストールする前に Python をインストールする必要があります。 Python と Jupyter はどちらも、 [Ananconda ディストリビューション](https://www.continuum.io/downloads)に同梱されています。 Anaconda をインストールすると、Python のディストリビューションがインストールされます。 Jupyter 環境は、Anaconda のインストール後に適切なコマンドを実行して追加することになります。
+Jupyter Notebook をインストールする前に Python をインストールする必要があります。 Python と Jupyter はどちらも、[Anaconda ディストリビューション](https://www.continuum.io/downloads)に同梱されています。 Anaconda をインストールすると、Python のディストリビューションがインストールされます。 Jupyter 環境は、Anaconda のインストール後に適切なコマンドを実行して追加します。
 
 1. ご使用のプラットフォーム用の [Anaconda インストーラー](https://www.continuum.io/downloads) をダウンロードし、セットアップ プログラムを実行します。 セットアップ ウィザードを実行する過程で、Anaconda を PATH 変数に追加するためのオプションを忘れずに選択してください。
 2. 次のコマンドを実行して Jupyter をインストールします。
 
         conda install jupyter
 
-    Jupyter のインストールの詳細については、 [Anaconda を使用した Jupyter のインストール](http://jupyter.readthedocs.io/en/latest/install.html)に関するページを参照してください。
+    Jupyter のインストールについて詳しくは、[Anaconda を使用した Jupyter のインストール](http://jupyter.readthedocs.io/en/latest/install.html)に関するページをご覧ください。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>カーネルと Spark マジックをインストールする
 
@@ -109,7 +108,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
             "heartbeat_retry_seconds": 1
 
     >[!TIP]
-    >ハートビートが送信され、セッションがリークしないことが確認されます。 コンピューターがスリープ状態になるかシャットダウンすると、ハートビートは送信されず、セッションがクリーンアップされることに注意してください。 クラスター v3.4 の場合、この動作を無効にするには、Ambari UI から Livy config `livy.server.interactive.heartbeat.timeout` を `0` に設定します。 クラスター v3.5 の場合、上記の 3.5 構成を設定しないと、セッションは削除されません。
+    >ハートビートが送信され、セッションがリークしないことが確認されます。 コンピューターがスリープ状態になるかシャットダウンすると、ハートビートは送信されず、セッションがクリーンアップされます。 クラスター v3.4 の場合、この動作を無効にするには、Ambari UI から Livy config `livy.server.interactive.heartbeat.timeout` を `0` に設定します。 クラスター v3.5 の場合、上記の 3.5 構成を設定しないと、セッションは削除されません。
 
 6. Jupyter を起動します。 コマンド プロンプトから次のコマンドを使用します。
 
@@ -117,7 +116,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
 
 7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
 
-    a. 新しい Notebook を作成します。 右隅にある **[新規]**をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]**をクリックします。
+    a. 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]**をクリックします。
 
     ![Jupyter Notebook のカーネル](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter Notebook のカーネル")
 
@@ -160,9 +159,9 @@ Jupyter をローカル コンピューターにインストールし、HDInsigh
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 

@@ -2,7 +2,7 @@
 title: "Azure Notification Hubs のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Notification Hubs を使ってバックエンドからモバイル デバイスにプッシュ通知を送信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

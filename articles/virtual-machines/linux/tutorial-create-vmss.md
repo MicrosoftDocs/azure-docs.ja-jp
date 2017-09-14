@@ -12,14 +12,14 @@ ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
-ms.topic: article
-ms.date: 05/02/2017
+ms.topic: tutorial
+ms.date: 08/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 972c6f60c8963cad6f92b228e795a5027b838f00
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 2b8d519e11f70eda164bd8f6e131a3989f242ab0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -33,7 +33,10 @@ ms.lasthandoff: 05/17/2017
 > * スケール セットのインスタンスの接続情報を表示する
 > * スケール セット内でデータ ディスクを使用する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="scale-set-overview"></a>スケール セットの概要
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セットは、前の[高可用性 VM の作成](tutorial-availability-sets.md)チュートリアルで学習したものと同じコンポーネントを使います。 スケール セット内の VM は、可用性セット内に作成されて、論理障害ドメインおよび更新ドメインに配布されます。
@@ -46,7 +49,9 @@ Azure プラットフォーム イメージを使う場合、スケール セッ
 ## <a name="create-an-app-to-scale"></a>スケーリングするアプリを作成する
 運用環境で使う場合は、インストールと構成が済んだアプリケーションを含む[カスタム VM イメージを作成](tutorial-custom-images.md)できます。 このチュートリアルでは、スケール セットの動作をすぐに確認できるように初回起動時に VM をカスタマイズします。
 
-前のチュートリアルでは、cloud-init を使って [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)を説明しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 *cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。
+前のチュートリアルでは、cloud-init を使って [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)を説明しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 
+
+現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -94,24 +99,24 @@ runcmd:
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
 スケール セットを作成する前に、[az group create](/cli/azure/group#create) を使ってリソース グループを作成します。 次の例では、*myResourceGroupScaleSet* という名前のリソース グループを場所 *eastus* に作成します。
 
-```azurecli
+```azurecli-interactive 
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
 ここでは、[az vmss create](/cli/azure/vmss#create) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成し、cloud-init ファイルを使って VM をカスタマイズして、存在しない場合は SSH キーを生成します。
 
-```azurecli
+```azurecli-interactive 
 az vmss create \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
   --generate-ssh-keys      
 ```
 
-すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
+すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。 Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 アプリにアクセスできるようになるには、さらに数分かかる場合があります。
 
 
 ## <a name="allow-web-traffic"></a>Web トラフィックを許可する
@@ -119,7 +124,7 @@ az vmss create \
 
 トラフィックが Web アプリに到達することを許可するには、[az network lb rule creat](/cli/azure/network/lb/rule#create) を使ってルールを作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
 
-```azurecli
+```azurecli-interactive 
 az network lb rule create \
   --resource-group myResourceGroupScaleSet \
   --name myLoadBalancerRuleWeb \
@@ -134,7 +139,7 @@ az network lb rule create \
 ## <a name="test-your-app"></a>アプリケーションをテストする
 Web 上の Node.js アプリを確認するには、[az network public-ip show](/cli/azure/network/public-ip#show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetLBPublicIP* の IP アドレスを取得します。
 
-```azurecli
+```azurecli-interactive 
 az network public-ip show \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSetLBPublicIP \
@@ -155,7 +160,7 @@ az network public-ip show \
 ### <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
 スケール セットで実行されている VM の一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#list-instances) を次のように使います。
 
-```azurecli
+```azurecli-interactive 
 az vmss list-instances \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
@@ -164,7 +169,7 @@ az vmss list-instances \
 
 出力は次の例のようになります。
 
-```azurecli
+```azurecli-interactive 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
 ------------  --------------------  ----------  ------------  -------------------  -----------------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
@@ -175,7 +180,7 @@ az vmss list-instances \
 ### <a name="increase-or-decrease-vm-instances"></a>VM インスタンスを増減させる
 現時点でスケール セットに存在するインスタンスの数を確認するには、[az vmss show](/cli/azure/vmss#show) と *sku.capacity* に対するクエリを使います。
 
-```azurecli
+```azurecli-interactive 
 az vmss show \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet \
@@ -185,7 +190,7 @@ az vmss show \
 
 [az vmss scale](/cli/azure/vmss#scale) を使って、スケール セット内の仮想マシンの数を手動で増減させることができます。 次の例では、スケール セット内の VM の数を *5* に設定します。
 
-```azurecli
+```azurecli-interactive 
 az vmss scale \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet \
@@ -197,7 +202,7 @@ az vmss scale \
 ### <a name="get-connection-info"></a>接続情報を取得する
 スケール セット内の VM に関する接続情報を取得するには、[az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info) を使用します。 このコマンドでは、SSH での接続を許可する各 VM のパブリック IP アドレスとポートが出力されます。
 
-```azurecli
+```azurecli-interactive 
 az vmss list-instance-connection-info \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet
@@ -210,16 +215,16 @@ az vmss list-instance-connection-info \
 ### <a name="create-scale-set-with-data-disks"></a>データ ディスクを備えたスケール セットを作成する
 スケール セットを作成してデータ ディスクをアタッチするには、[az vmss create](/cli/azure/vmss#create) コマンドに `--data-disk-sizes-gb` パラメーターを追加します。 次の例では、各インスタンスに *50* Gb のデータ ディスクがアタッチされたスケール セットを作成します。
 
-```azurecli
+```azurecli-interactive 
 az vmss create \
-  --resource-group myResourceGroupScaleSet \
-  --name myScaleSetDisks \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
-  --upgrade-policy-mode automatic \
-  --custom-data cloud-init.txt \
-  --admin-username azureuser \
-  --generate-ssh-keys \
-  --data-disk-sizes-gb 50
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSetDisks \
+    --image UbuntuLTS \
+    --upgrade-policy-mode automatic \
+    --custom-data cloud-init.txt \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --data-disk-sizes-gb 50
 ```
 
 インスタンスがスケール セットから削除されると、アタッチされているデータ ディスクも削除されます。
@@ -227,21 +232,21 @@ az vmss create \
 ### <a name="add-data-disks"></a>データ ディスクを追加する
 スケール セット内のインスタンスにデータ ディスクを追加するには、[az vmss disk attach](/cli/azure/vmss/disk#attach) を使用します。 次の例では、各インスタンスに *50* Gb のディスクを追加します。
 
-```azurecli
-az vmss disk attach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
-    --size-gb 50 `
+```azurecli-interactive 
+az vmss disk attach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --size-gb 50 \
     --lun 2
 ```
 
 ### <a name="detach-data-disks"></a>データ ディスクをデタッチする
 スケール セット内のインスタンスからデータ ディスクを削除するには、[az vmss disk detach](/cli/azure/vmss/disk#detach) を使用します。 以下の例では、各インスタンスから LUN *2* のデータ ディスクを削除します。
 
-```azurecli
-az vmss disk detach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
+```azurecli-interactive 
+az vmss disk detach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
     --lun 2
 ```
 

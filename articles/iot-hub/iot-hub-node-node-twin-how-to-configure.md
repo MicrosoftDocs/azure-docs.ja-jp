@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: f8a6705879905d5cf419fc8c5c2322cb5536d244
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -207,7 +209,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
     **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Registry** オブジェクトを初期化した後、**myDeviceId** のデバイス ツインを取得して、新しいテレメトリ構成オブジェクトを使って必要なプロパティを更新します。 その後、10 秒ごとに **queryTwins** 関数を呼び出します。
 
     > [!IMPORTANT]
-    > このアプリケーションでは、例示を目的として 10 秒ごとに IoT Hub にクエリを実行します。 変更を検出するためではなく、あらゆるデバイスのユーザー向けのレポートを生成するためにクエリを使用します。 ソリューションにデバイス イベントのリアルタイム通知が必要な場合は、[デバイスからクラウドへのメッセージ][lnk-d2c]を使用します。
+    > このアプリケーションでは、例示を目的として 10 秒ごとに IoT Hub にクエリを実行します。 変更を検出するためではなく、あらゆるデバイスのユーザー向けのレポートを生成するためにクエリを使用します。 ソリューションにデバイス イベントのリアルタイム通知が必要な場合は、[ツイン通知][lnk-twin-notifications]を使用します。
     > 
     >に関するページを参照してください。
 
@@ -260,7 +262,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-query]: iot-hub-devguide-query-language.md
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-twin-notifications]: iot-hub-devguide-device-twins.md#back-end-operations
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
@@ -268,16 +270,11 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
 [lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

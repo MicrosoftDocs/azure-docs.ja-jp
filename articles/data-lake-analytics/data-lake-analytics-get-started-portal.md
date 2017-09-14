@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: b004310a3b2667134c9ad890bd907dc8ae439dd9
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Azure Portal で Azure Data Lake Analytics の使用を開始する
@@ -35,8 +34,8 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
 
 次に、Data Lake Analytics アカウントと Data Lake Store アカウントを同時に作成します。  この手順は単純であり、所要時間は約 60 秒です。
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. **[新規]** >  **[インテリジェンス + 分析]** > **[Data Lake Analytics]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
+2. **[新規]** >  **[Data + Analytics]** > **[Data Lake Analytics]** の順にクリックします。
 3. 次の項目の値を選択します。
    * **名前**: Data Lake Analytics アカウントに名前を付けます (英小文字と数字のみ使用できます)。
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
@@ -71,7 +70,7 @@ OUTPUT @a
 3. **[ジョブの送信]**をクリックします。   
 4. ジョブの状態が **[成功]** に変わるまで待機します。
 5. ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
-6. **[出力]** タブをクリックし、`SearchLog-from-Data-Lake.csv` をクリックします。 
+6. **[出力]** タブをクリックし、`data.csv` をクリックします。 
 
 ## <a name="see-also"></a>関連項目
 

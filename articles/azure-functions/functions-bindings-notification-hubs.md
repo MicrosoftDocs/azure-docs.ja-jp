@@ -4,7 +4,7 @@ description: "Azure Functions で Azure Notification Hub のバインドを使�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2016
+ms.date: 08/26/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: a64af1a9f969c5ce5a7e2f18ca23451ac96f1a13
-ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 02d01d0f6e945ed54dbe766aec2a0fd7c17c510f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-notification-hub-output-binding"></a>Azure Functions における通知ハブの出力バインド
@@ -36,19 +37,16 @@ ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
 ## <a name="notification-hub-output-binding-properties"></a>Notification Hub 出力バインドのプロパティ
 function.json ファイルは、次のプロパティを提供します。
 
-* `name` : 通知ハブ メッセージの関数コードで使用される変数名。
-* `type` : *"notificationHub"*に設定する必要があります。
-* `tagExpression`: タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。  詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。
-* `hubName` : Azure ポータル内の通知ハブ リソースの名前。
-* `connection` : この接続文字列は、使用している通知ハブの **DefaultFullSharedAccessSignature** 値に設定された *アプリケーション設定* の接続文字列である必要があります。
-* `direction` : *"out"*に設定する必要があります。 
-* `platform` : platform プロパティは、通知の対象となる通知プラットフォームを示します。 次のいずれかの値を指定する必要があります。
-  * `template` : これは、出力バインドで platform プロパティが省略された場合の既定のプラットフォームです。 テンプレート通知は、Azure Notification Hub に構成されているすべてのプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
-  * `apns` : Apple Push Notification Service。 APNS 向けに Notification Hub を構成する方法と、クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から iOS へのプッシュ通知の送信](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)」を参照してください。 
-  * `adm` : [Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 ADM 向けに Notification Hub を構成する方法と、Kindle アプリで通知を受信する方法の詳細については、「[Getting Started with Notification Hubs for Kindle apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)」(Kindle アプリ向けの Notification Hubs の概要) を参照してください。 
-  * `gcm` : [Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 GCM の新しいバージョンである Firebase Cloud Messaging もサポートされます。 GCM/FCM 向けに Notification Hub を構成する方法と、Android クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から Android へのプッシュ通知の送信](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
-  * `wns` : [Windows プラットフォーム向けの Windows プッシュ通知サービス](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)。 WNS では Windows Phone 8.1 以降もサポートされます。 WNS 向けに Notification Hub を構成する方法と、Windows プラットフォーム (UWP) アプリで通知を受信する方法の詳細については、「[Getting started with Notification Hubs for Windows Universal Platform Apps](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」(Windows ユニバーサル プラットフォーム アプリ向けの Notification Hubs の概要) を参照してください。
-  * `mpns` : [Microsoft プッシュ通知サービス](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx)。 このプラットフォームでは、Windows Phone 8 およびそれ以前の Windows Phone プラットフォームがサポートされます。 MPNS 向けに Notification Hub を構成する方法と、Windows Phone アプリで通知を受信する方法の詳細については、「[Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。
+
+|プロパティ  |Description  |
+|---------|---------|
+|**name** | 通知ハブ メッセージの関数コードで使用される変数名。 |
+|**type** | `notificationHub` に設定する必要があります。 |
+|**tagExpression** | タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。  詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。 |
+|**hubName** | Azure Portal 内の通知ハブ リソースの名前。 |
+|**接続** | この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定された**アプリケーション設定**の接続文字列である必要があります。 |
+|**direction** | `out` に設定する必要があります。 | 
+|**platform** | platform プロパティは、通知の対象となる通知プラットフォームを示します。 既定では、プラットフォームのプロパティが出力バインドから省略されている場合、テンプレート通知は、Azure 通知ハブで構成されている任意のプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。 設定されている場合、_platform_ には、次のいずれかの値を指定する必要があります。 <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 APNS 向けに Notification Hub を構成する方法と、クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から iOS へのプッシュ通知の送信](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)」を参照してください。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 ADM 向けに Notification Hub を構成する方法と、Kindle アプリで通知を受信する方法の詳細については、「[Notification Hubs の使用 (Kindle アプリ)](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)」を参照してください。</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 GCM の新しいバージョンである Firebase Cloud Messaging もサポートされます。 詳細については、「[Azure Notification Hubs から Android へのプッシュ通知の送信](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。</li><li><code>wns</code>&mdash;Windows プラットフォーム向けの [Windows Push Notification Services](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)。 WNS では Windows Phone 8.1 以降もサポートされます。 詳細については、「[Notification Hubs の使用 (Windows ユニバーサル プラットフォーム アプリ)](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」を参照してください。</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx)。 このプラットフォームでは、Windows Phone 8 およびそれ以前の Windows Phone プラットフォームがサポートされます。 詳細については、「[Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。</li></ul> |
 
 function.json の例:
 
@@ -70,14 +68,15 @@ function.json の例:
 ```
 
 ## <a name="notification-hub-connection-string-setup"></a>Notification Hub の接続文字列の設定
-Notification Hub 出力バインドを使用するには、ハブの接続文字列を設定する必要があります。 そのためには、*[統合]* タブで、通知ハブを選択するか、新しいハブを作成します。 
+Notification Hub 出力バインドを使用するには、ハブの接続文字列を設定する必要があります。 既存の通知ハブを選択するか、関数の "*統合*" タブから新しいハブを作成できます。 接続文字列を手動で構成することもできます。 
 
-*DefaultFullSharedAccessSignature* の接続文字列を通知ハブに追加して、既存のハブの接続文字列を手動で追加することもできます。 この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。 *DefaultFullSharedAccessSignature* 接続文字列の値には、Azure ポータルの通知ハブ リソースのメイン ブレードにある **[キー]** ボタンからアクセスできます。 ハブの接続文字列を手動で追加するには、次の手順を実行します。 
+既存の通知ハブに対する接続文字列を構成するには:
 
-1. Azure Portal の **[Function App]** ブレードで、**[Function App の設定]、[App Service の設定に移動]** の順にクリックします。
-2. **[設定]** ブレードで、**[アプリケーションの設定]** をクリックします。
-3. **[アプリケーション設定]** セクションまでスクロールして、通知ハブの *DefaultFullSharedAccessSignature* 値の名前付きエントリを追加します。
-4. 出力バインドのアプリケーション設定文字列名を参照します。 上の例で使用した **MyHubConnectionString** と同様です。
+1. [Azure Portal](https://portal.azure.com) で通知ハブに移動し、**[アクセスポリシー]** を選択して、**[DefaultFullSharedAccessSignature]** ポリシーの横にあるコピー ボタンを選択します。 これにより、*DefaultFullSharedAccessSignature* ポリシーの接続文字列が通知ハブにコピーされます。 この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。 
+    ![通知ハブの接続文字列をコピーする](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. Azure Portal の関数アプリに移動し、**[アプリケーション設定]** を選択し、`MyHubConnectionString` などのキーを追加します。次に、通知ハブ用にコピーされた *DefaultFullSharedAccessSignature* を値として貼り付けて、**[保存]** をクリックします。
+
+これで、出力バインドの通知ハブ接続を定義する、この名前付きアプリケーション設定を使用できます。
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>C# キュー トリガーを使用した APNS ネイティブ通知
 次の例では、[Microsoft Azure Notification Hubs ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)に定義されたタイプを使用してネイティブの APNS 通知を送信する方法を示します。 
@@ -294,10 +293,5 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

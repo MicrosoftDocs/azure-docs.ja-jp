@@ -21,7 +21,6 @@ ms.openlocfilehash: 312f84fe2aaf3f63fe2b8d818786ef1c570ccfe1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/11/2017
 
-
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの設計と構築 (プレビュー)
 > [!NOTE]
@@ -86,4 +85,3 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 * 管理ソリューションの[ソリューション ファイルの作成](operations-management-suite-solutions-solution-file.md)方法について
 * [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。
-

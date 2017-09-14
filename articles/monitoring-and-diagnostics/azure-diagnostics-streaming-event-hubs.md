@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 07/13/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 492e0ca675f2a827b172c33fcd33226abc95dcec
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 43061d1a9abd30d8f0c8a627183dbafb00da5067
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 06/14/2017
 
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
@@ -60,6 +59,19 @@ Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降
   </Sink>
 </SinksConfig>
 ```
+```JSON
+"SinksConfig": {
+    "Sink": [
+        {
+            "name": "HotPath",
+            "EventHub": {
+                "Url": "https://diags-mycompany-ns.servicebus.windows.net/diageventhub",
+                "SharedAccessKeyName": "SendRule"
+            }
+        }
+    ]
+}
+```
 
 この例では、イベント ハブの URL はイベント ハブの完全修飾名前空間に設定されています (Event Hubs 名前空間 + "/" + イベント ハブ名)。  
 
@@ -74,11 +86,23 @@ Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降
 
 Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* セクションでも宣言し、定義する必要があります。
 
-```
+```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
-  <StorageAccount name="" key="" endpoint="" />
-  <EventHub Url="https://diags-mycompany-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="9B3SwghJOGEUvXigc6zHPInl2iYxrgsKHZoy4nm9CUI=" />
+  <StorageAccount name="{account name}" key="{account key}" endpoint="{optional storage endpoint}" />
+  <EventHub Url="https://diags-mycompany-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
 </PrivateConfig>
+```
+```JSON
+{
+    "storageAccountName": "{account name}",
+    "storageAccountKey": "{account key}",
+    "storageAccountEndPoint": "{optional storage endpoint}",
+    "EventHub": {
+        "Url": "https://diags-mycompany-ns.servicebus.windows.net/diageventhub",
+        "SharedAccessKeyName": "SendRule",
+        "SharedAccessKey": "{base64 encoded key}"
+    }
+}
 ```
 
 `SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。 [Azure Portal](https://manage.windowsazure.com) の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、"*送信*" のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。 **StorageAccount** は **PrivateConfig** でも宣言されています。 正常に動作している場合、ここでは値を変更する必要はありません。 この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。 たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。  
@@ -100,35 +124,84 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
   <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
   <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\ISAPI Extension Requests/sec" sampleRate="PT3M" />
   <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\Bytes Total/Sec" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\ASP.NET Applications(__Total__)\Requests/Sec" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\ASP.NET Applications(__Total__)\Errors Total/Sec" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\ASP.NET\Requests Queued" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\ASP.NET\Requests Rejected" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
 </PerformanceCounters>
 ```
+```JSON
+"PerformanceCounters": {
+    "scheduledTransferPeriod": "PT1M",
+    "sinks": "HotPath",
+    "PerformanceCounterConfiguration": [
+        {
+            "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+            "sampleRate": "PT3M"
+        },
+        {
+            "counterSpecifier": "\\Memory\\Available MBytes",
+            "sampleRate": "PT3M"
+        },
+        {
+            "counterSpecifier": "\\Web Service(_Total)\\ISAPI Extension Requests/sec",
+            "sampleRate": "PT3M"
+        }
+    ]
+}
+```
 
-次の例では、階層の親ノード **PerformanceCounters** にシンクが適用されます。つまり、すべての子 **PerformanceCounters** が Event Hubs に送信されます。  
+上の例では、階層の親ノード **PerformanceCounters** にシンクが適用されます。つまり、すべての子 **PerformanceCounters** が Event Hubs に送信されます。  
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M">
   <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
   <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\ISAPI Extension Requests/sec" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\Bytes Total/Sec" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\ASP.NET Applications(__Total__)\Requests/Sec" sampleRate="PT3M" />
-  <PerformanceCounterConfiguration counterSpecifier="\ASP.NET Applications(__Total__)\Errors Total/Sec" sampleRate="PT3M" />
   <PerformanceCounterConfiguration counterSpecifier="\ASP.NET\Requests Queued" sampleRate="PT3M" sinks="HotPath" />
   <PerformanceCounterConfiguration counterSpecifier="\ASP.NET\Requests Rejected" sampleRate="PT3M" sinks="HotPath"/>
   <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" sinks="HotPath"/>
 </PerformanceCounters>
+```
+```JSON
+"PerformanceCounters": {
+    "scheduledTransferPeriod": "PT1M",
+    "PerformanceCounterConfiguration": [
+        {
+            "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+            "sampleRate": "PT3M",
+            "sinks": "HotPath"
+        },
+        {
+            "counterSpecifier": "\\Memory\\Available MBytes",
+            "sampleRate": "PT3M"
+        },
+        {
+            "counterSpecifier": "\\Web Service(_Total)\\ISAPI Extension Requests/sec",
+            "sampleRate": "PT3M"
+        },
+        {
+            "counterSpecifier": "\\ASP.NET\\Requests Rejected",
+            "sampleRate": "PT3M",
+            "sinks": "HotPath"
+        },
+        {
+            "counterSpecifier": "\\ASP.NET\\Requests Queued",
+            "sampleRate": "PT3M",
+            "sinks": "HotPath"
+        }
+    ]
+}
 ```
 
 前の例では、**Requests Queued**、**Requests Rejected**、**% Processor time** という 3 つのカウンターにのみシンクが適用されています。  
 
 次の例は、このサービスの正常性のために使用される重要なメトリックになる送信データの量を開発者が制限する方法を示しています。  
 
-```
+```XML
 <Logs scheduledTransferPeriod="PT1M" sinks="HotPath" scheduledTransferLogLevelFilter="Error" />
+```
+```JSON
+"Logs": {
+    "scheduledTransferPeriod": "PT1M",
+    "scheduledTransferLogLevelFilter": "Error",
+    "sinks": "HotPath"
+}
 ```
 
 この例では、シンクはログに適用され、エラー レベル トレースのみを対象にフィルター処理されます。
@@ -297,10 +370,10 @@ namespace EventHubListener
         </Sink>
       </SinksConfig>
     </WadCfg>
-    <StorageAccount />
+    <StorageAccount>ACCOUNT_NAME</StorageAccount>
   </PublicConfig>
   <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
-    <StorageAccount name="" key="" endpoint="" />
+    <StorageAccount name="{account name}" key="{account key}" endpoint="{storage endpoint}" />
     <EventHub Url="https://diageventhub-py-ns.servicebus.windows.net/diageventhub-py" SharedAccessKeyName="SendRule" SharedAccessKey="YOUR_KEY_HERE" />
   </PrivateConfig>
   <IsEnabled>true</IsEnabled>
@@ -320,6 +393,118 @@ namespace EventHubListener
   </Role>
 </ServiceConfiguration>
 ```
+
+仮想マシン用の同等の JSON ベース設定は次のとおりです。
+```JSON
+"settings": {
+    "WadCfg": {
+        "DiagnosticMonitorConfiguration": {
+            "overallQuotaInMB": 4096,
+            "sinks": "applicationInsights.errors",
+            "DiagnosticInfrastructureLogs": {
+                "scheduledTransferLogLevelFilter": "Error"
+            },
+            "Directories": {
+                "scheduledTransferPeriod": "PT1M",
+                "IISLogs": {
+                    "containerName": "wad-iis-logfiles"
+                },
+                "FailedRequestLogs": {
+                    "containerName": "wad-failedrequestlogs"
+                }
+            },
+            "PerformanceCounters": {
+                "scheduledTransferPeriod": "PT1M",
+                "sinks": "HotPath",
+                "PerformanceCounterConfiguration": [
+                    {
+                        "counterSpecifier": "\\Memory\\Available MBytes",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\Web Service(_Total)\\ISAPI Extension Requests/sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\Web Service(_Total)\\Bytes Total/Sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\ASP.NET Applications(__Total__)\\Requests/Sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\ASP.NET Applications(__Total__)\\Errors Total/Sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\ASP.NET\\Requests Queued",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\ASP.NET\\Requests Rejected",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                        "sampleRate": "PT3M"
+                    }
+                ]
+            },
+            "WindowsEventLog": {
+                "scheduledTransferPeriod": "PT1M",
+                "DataSource": [
+                    {
+                        "name": "Application!*"
+                    }
+                ]
+            },
+            "Logs": {
+                "scheduledTransferPeriod": "PT1M",
+                "scheduledTransferLogLevelFilter": "Error",
+                "sinks": "HotPath"
+            }
+        },
+        "SinksConfig": {
+            "Sink": [
+                {
+                    "name": "HotPath",
+                    "EventHub": {
+                        "Url": "https://diageventhub-py-ns.servicebus.windows.net/diageventhub-py",
+                        "SharedAccessKeyName": "SendRule"
+                    }
+                },
+                {
+                    "name": "applicationInsights",
+                    "ApplicationInsights": "",
+                    "Channels": {
+                        "Channel": [
+                            {
+                                "logLevel": "Error",
+                                "name": "errors"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "StorageAccount": "{account name}"
+}
+
+
+"protectedSettings": {
+    "storageAccountName": "{account name}",
+    "storageAccountKey": "{account key}",
+    "storageAccountEndPoint": "{storage endpoint}",
+    "EventHub": {
+        "Url": "https://diageventhub-py-ns.servicebus.windows.net/diageventhub-py",
+        "SharedAccessKeyName": "SendRule",
+        "SharedAccessKey": "YOUR_KEY_HERE"
+    }
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 

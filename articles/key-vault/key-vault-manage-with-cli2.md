@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/08/2017
 ms.author: ambapat
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: e53b45ef180362f7554c7819b9ae2eb3dbfe3300
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5da9f5eceda71ac85259193e0f183c72813e1679
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。 詳
 > [!NOTE]
 > このチュートリアルでは、いずれかの手順に含まれる Azure アプリケーションの記述方法については説明していません。Key Vault でキーやシークレットを使用するためのアプリケーションの承認方法について説明しています。
 >
-> このチュートリアルでは、最新の Azure CLI 2.0 を使用します。 古い (node.js ベース) CLI の使用方法については、[対応するチュートリアル](key-vault-manage-with-cli.md)を参照してください。
+> このチュートリアルでは、最新の Azure CLI 2.0 を使用します。
 >
 >
 
@@ -160,7 +160,11 @@ Key Vault を使用するアプリケーションは、Azure Active Directory �
 Azure Active Directory にアプリケーションを登録するには:
 
 1. Azure ポータルにサインインします。
-2. 左側で **[Azure Active Directory]** をクリックし、アプリケーションを登録するディレクトリを選択します。 <br> <br> 注: Key Vault を作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 ディレクトリが不明な場合は、 **[設定]**をクリックし、Key Vault を作成したサブスクリプションを見つけて、最後の列に表示されているディレクトリ名をご確認ください。
+2. 左側で **[Azure Active Directory]** をクリックし、アプリケーションを登録するディレクトリを選択します。 <br> <br> 
+
+> [!Note] 
+> キー コンテナーを作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 ディレクトリが不明な場合は、 **[設定]**をクリックし、Key Vault を作成したサブスクリプションを見つけて、最後の列に表示されているディレクトリ名をご確認ください。
+
 3. **[アプリケーション]**をクリックします。 アプリがディレクトリに追加されていない場合は、このページには **[アプリケーションの追加]** リンクのみが表示されます。 リンクをクリックするか、コマンド バーの **[追加]** をクリックします。
 4. **アプリケーションの追加**ウィザードの **[実行する作業を選択してください。]** ページで、**[組織で開発中のアプリケーションを追加]** をクリックします。
 5. **[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**[Web アプリケーションや Web API]** (既定値) を選択します。 [次へ] アイコンをクリックします。

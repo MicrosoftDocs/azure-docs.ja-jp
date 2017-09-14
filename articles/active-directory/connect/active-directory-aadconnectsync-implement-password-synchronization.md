@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
-ms.author: markvi
+ms.date: 07/17/2017
+ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 0cb1b04bcfab1f1864ae0ce867be02a8bf8c827c
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="implement-password-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期でパスワード同期を実装する

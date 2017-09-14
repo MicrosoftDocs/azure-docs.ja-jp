@@ -1,133 +1,200 @@
 ---
-title: "チュートリアル: Azure Active Directory と SugarCRM の統合 | Microsoft Docs"
-description: "Azure Active Directory で Sugar CRM を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+title: "チュートリアル: Azure Active Directory と Sugar CRM の統合 | Microsoft Docs"
+description: "Azure Active Directory と Sugar CRM の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 3331b9fc-ebc0-4a3a-9f7b-bf20ee35d180
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 3/07/2017
+ms.date: 07/13/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: acd11de9f2b987c3c0bc6d74cff8019aca92f437
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: c27aef24e859522b8001ecb747906abdca14d87a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="tutorial-azure-active-directory-integration-integration-with-sugarcrm"></a>チュートリアル: Azure Active Directory と Sugar CRM の統合
-このチュートリアルでは、Azure と Sugar CRM の統合について説明します。  
+# <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>チュートリアル: Azure Active Directory と Sugar CRM の統合
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Sugar CRM と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-* 有効な Azure サブスクリプション
-* Sugar CRM でのシングル サインオン (SSO) が有効なサブスクリプション
+Sugar CRM と Azure AD の統合には、次の利点があります。
 
-このチュートリアルを完了すると、Sugar CRM に割り当てた Azure AD ユーザーは、SSO を使って Sugar CRM 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにサインオンできるようになります。
+- Sugar CRM にアクセスする Azure AD ユーザーを制御できます
+- ユーザーが自分の Azure AD アカウントで自動的に Sugar CRM にサインオン (シングル サインオン) できるように、設定が可能です
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
-1. Sugar CRM のアプリケーション統合の有効化
-2. シングル サインオン (SSO) の構成
-3. ユーザー プロビジョニングの構成
-4. ユーザーの割り当て
+## <a name="prerequisites"></a>前提条件
 
-![シナリオ](./media/active-directory-saas-sugarcrm-tutorial/IC795881.png "Scenario")
+Sugar CRM と Azure AD の統合を構成するには、次のものが必要です。
 
-## <a name="enable-the-application-integration-for-sugar-crm"></a>Sugar CRM のアプリケーション統合の有効化
-このセクションでは、Sugar CRM のアプリケーション統合を有効にする方法を説明します。
+- Azure AD サブスクリプション
+- Sugar CRM でのシングル サインオンが有効なサブスクリプション
 
-**Sugar CRM のアプリケーション統合を有効にするには、次の手順に従います。**
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
-   
-    ![Active Directory](./media/active-directory-saas-sugarcrm-tutorial/IC700993.png "Active Directory")
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-    ![アプリケーション](./media/active-directory-saas-sugarcrm-tutorial/IC700994.png "Applications")
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-4. ページの下部にある **[追加]** をクリックします。
-   
-    ![アプリケーションの追加](./media/active-directory-saas-sugarcrm-tutorial/IC749321.png "Add application")
+1. ギャラリーからの Sugar CRM の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-sugarcrm-tutorial/IC749322.png "Add an application from gallerry")
+## <a name="adding-sugar-crm-from-the-gallery"></a>ギャラリーからの Sugar CRM の追加
+Azure AD への Sugar CRM の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Sugar CRM を追加する必要があります。
 
-6. **検索ボックス**に「**Sugar CRM**」と入力します。
-   
-    ![アプリケーション ギャラリー](./media/active-directory-saas-sugarcrm-tutorial/IC795882.png "Application Gallery")
+**ギャラリーから Sugar CRM を追加するには、次の手順に従います。**
 
-7. 結果ウィンドウで **[Sugar CRM]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-    ![Sugar CRM](./media/active-directory-saas-sugarcrm-tutorial/IC795883.png "Sugar CRM")
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-## <a name="configure-single-sign-on"></a>Configure single sign-on
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Sugar CRM で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。  
+    ![Active Directory][1]
 
-この手順の途中で、base-64 でエンコードされた証明書を Sugar CRM テナントにアップロードする必要があります。  
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
-
-**シングル サインオンを構成するには、次の手順に従います。**
-
-1. Azure クラシック ポータルの **[Sugar CRM]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-    ![シングル サインオンの構成](./media/active-directory-saas-sugarcrm-tutorial/IC795884.png "Configure Single Sign-On")
-
-2. **[ユーザーの Sugar CRM へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-    ![シングル サインオンの構成](./media/active-directory-saas-sugarcrm-tutorial/IC795885.png "Configure Single Sign-On")
-
-3. **[アプリケーション URL の構成]** ページの **[サインオン URL]** テキストボックスに、ユーザーが Sugar CRM アプリケーションにサインオンするときに使用する URL (例: "*http://company.sugarondemand.com*") を入力し、**[次へ]** をクリックします。
-   
-    ![アプリケーション URL の構成](./media/active-directory-saas-sugarcrm-tutorial/IC795886.png "Configure App URL")
-
-4. **[Sugar CRMでのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
-   
-    ![シングル サインオンの構成](./media/active-directory-saas-sugarcrm-tutorial/IC796918.png "Configure Single Sign-On")
-
-5. 別の Web ブラウザー ウィンドウで、Sugar CRM 企業サイトに管理者としてログインします。
-
-6. **[Admin]**に移動します。
-   
-    ![管理](./media/active-directory-saas-sugarcrm-tutorial/IC795888.png "Admin")
-
-7. **[Administration]** セクションで、**[Password Management]** をクリックします。
-   
-    ![Administration](./media/active-directory-saas-sugarcrm-tutorial/IC795889.png "Administration")
-
-8. **[Enable SAML Authentication]**を選択します。
-   
-    ![Administration](./media/active-directory-saas-sugarcrm-tutorial/IC795890.png "Administration")
-
-9. **[SAML Authentication]** セクションで、次の手順に従います。
-   
-    ![SAML Authentication](./media/active-directory-saas-sugarcrm-tutorial/IC795891.png "SAML Authentication")   
-  1. Azure クラシック ポータルの **[Sugar CRM でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[Login URL (ログイン URL)]** テキスト ボックスに貼り付けます。
-  2. Azure クラシック ポータルの **[Sugar CRM でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[SLO URL]** テキスト ボックスに貼り付けます。
-  3. ダウンロードした証明書から **Base-64 でエンコードされた** ファイルを作成します。
-      
-     >[!TIP]
-     >詳細については、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。 
-     > 
-
-  4. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
-  5. **[Save]**をクリックします。
-
-10. Azure クラシック ポータルの **[Sugar CRM でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
+    ![アプリケーション][2]
     
-    ![シングル サインオンの構成](./media/active-directory-saas-sugarcrm-tutorial/IC796919.png "Configure Single Sign-On")
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
+    ![アプリケーション][3]
+
+4. 検索ボックスに「**Sugar CRM**」と入力します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_search.png)
+
+5. 結果ウィンドウで **Sugar CRM** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Sugar CRM で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Sugar CRM ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Sugar CRM の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+Sugar CRM で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+
+Sugar CRM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Sugar CRM テスト ユーザーの作成](#creating-a-sugar-crm-test-user)** - Sugar CRM で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Sugar CRM アプリケーションでシングル サインオンを構成します。
+
+**Sugar CRM で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure Portal の **Sugar CRM** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![[シングル サインオンの構成]][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_samlbase.png)
+
+3. **[Sugar CRM のドメインと URL]** セクションで、次の手順に従います。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_url.png)
+
+    **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    | |
+    |--|
+    | `https://<companyname>.sugarondemand.com` |
+    | `https://<companyname>.trial.sugarcrm` |
+
+    > [!NOTE] 
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Sugar CRM クライアント サポート チーム](https://support.sugarcrm.com/)に問い合わせてください。 
+ 
+4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+
+    ![Configure Single Sign-On](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_certificate.png) 
+
+5. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_400.png)
+
+6. **[Sugar CRM 構成]** セクションで **[Sugar CRM の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_configure.png) 
+
+7. 別の Web ブラウザー ウィンドウで、Sugar CRM 企業サイトに管理者としてログインします。
+
+8. **[Admin]**に移動します。
+   
+    ![管理](./media/active-directory-saas-sugarcrm-tutorial/ic795888.png "Admin")
+
+9. **[Administration]** セクションで、**[Password Management]** をクリックします。
+   
+    ![Administration](./media/active-directory-saas-sugarcrm-tutorial/ic795889.png "Administration")
+
+10. **[Enable SAML Authentication]**を選択します。
+   
+    ![Administration](./media/active-directory-saas-sugarcrm-tutorial/ic795890.png "Administration")
+
+11. **[SAML Authentication]** セクションで、次の手順に従います。
+   
+    ![SAML Authentication](./media/active-directory-saas-sugarcrm-tutorial/ic795891.png "SAML Authentication")  
+ 
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+  
+    b. **[SLO URL]\(SLO URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+  
+    c. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
+  
+    d. [ **Save**] をクリックします。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][100]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sugarcrm-tutorial/create_aaduser_01.png) 
+
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sugarcrm-tutorial/create_aaduser_02.png) 
+
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sugarcrm-tutorial/create_aaduser_03.png) 
+
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sugarcrm-tutorial/create_aaduser_04.png) 
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+
+    d. **[作成]**をクリックします。
+ 
+### <a name="creating-a-sugar-crm-test-user"></a>Sugar CRM テスト ユーザーの作成
+
 Azure AD ユーザーが Sugar CRM にログインできるようにするには、そのユーザーを Sugar CRM にプロビジョニングする必要があります。
 
 Sugar CRM の場合、プロビジョニングは手動で行います。
@@ -135,49 +202,94 @@ Sugar CRM の場合、プロビジョニングは手動で行います。
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **Spring CM** 企業サイトに管理者としてログインします。
+
 2. **[Admin]**に移動します。
    
-    ![管理](./media/active-directory-saas-sugarcrm-tutorial/IC795888.png "Admin")
+    ![管理](./media/active-directory-saas-sugarcrm-tutorial/ic795888.png "Admin")
 
 3. **[Administration]** セクションで、**[User Management]** をクリックします。
    
-    ![Administration](./media/active-directory-saas-sugarcrm-tutorial/IC795893.png "Administration")
+    ![Administration](./media/active-directory-saas-sugarcrm-tutorial/ic795893.png "Administration")
 
 4. **[Users]\>[Create New User]** の順に選択します。
    
-    ![Create New User](./media/active-directory-saas-sugarcrm-tutorial/IC795894.png "Create New User")
+    ![Create New User](./media/active-directory-saas-sugarcrm-tutorial/ic795894.png "Create New User")
 
 5. **[User Profile]** タブで、次の手順に従います。
    
-    ![New User](./media/active-directory-saas-sugarcrm-tutorial/IC795895.png "New User")
-  * 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントのユーザー名、姓、および電子メール アドレスを入力します。
+    ![New User](./media/active-directory-saas-sugarcrm-tutorial/ic795895.png "New User")
+
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**姓**、および**メール アドレス**を入力します。
+  
 6. **[Status]** として、**[Active]** を選択します。
 
 7. [Password] タブで、次の手順に従います。
    
-    ![New User](./media/active-directory-saas-sugarcrm-tutorial/IC795896.png "New User")
-  1. 該当するテキスト ボックスにパスワードを入力します。
-  2. **[保存]**をクリックします。
+    ![New User](./media/active-directory-saas-sugarcrm-tutorial/ic795896.png "New User")
+
+    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 該当するテキスト ボックスにパスワードを入力します。
+
+    b. [ **Save**] をクリックします。
 
 >[!NOTE]
 >Sugar CRM から提供されている他の Sugar CRM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assign-users"></a>[ユーザーの割り当て]
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-**ユーザーを Sugar CRM に割り当てるには、次の手順に従います。**
+このセクションでは、Britta Simon に Sugar CRM へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure クラシック ポータルで、テスト アカウントを作成します。
+![ユーザーの割り当て][200] 
 
-2. **Sugar CRM** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
-   
-    ![ユーザーの割り当て](./media/active-directory-saas-sugarcrm-tutorial/IC795897.png "Assign Users")
+**Sugar CRM に Britta Simon を割り当てるには、次の手順に従います。**
 
-3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
-   
-    ![はい](./media/active-directory-saas-sugarcrm-tutorial/IC767830.png "Yes")
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[Sugar CRM]** を選びます。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sugarcrm-tutorial/tutorial_sugarcrm_app.png) 
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![ユーザーの割り当て][202] 
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![ユーザーの割り当て][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで Sugar CRM のタイルをクリックすると、自動的に Sugar CRM アプリケーションにサインオンします。
+
+## <a name="additional-resources"></a>その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_203.png
 
 

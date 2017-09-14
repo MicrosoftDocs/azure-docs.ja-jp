@@ -5,7 +5,7 @@
 1. **[+ New step (+ 新しいステップ)]** を選択して 、操作を追加します。  
 2. **[アクションの追加]**を選択します。 これにより検索ボックスが開き、実行するアクションを検索できます。 この例では、Service Bus の操作が示されています。    
    ![Service Bus アクション イメージ 1](./media/connectors-create-api-servicebus/action-1.png)   
-3. 「サービス バス」 **と入力します。  
+3. *「サービス バス」* と入力します。  
 4. 実行するアクションとして、 **[Service Bus - メッセージを送信]** を選択します。  
    ![Service Bus アクション イメージ 2](./media/connectors-create-api-servicebus/action-2.png)    
 5. メッセージの内容を入力します。 これは必須です。  

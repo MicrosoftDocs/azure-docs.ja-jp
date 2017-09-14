@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 06/08/2017
 ms.author: pajosh
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 41a7024b51bc7a3c9cf34dba97255ea61fd27924
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8ef9ddc345fb553b93815022dc3e6a796cae8b3a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
@@ -74,12 +74,12 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 **Azure Backup Server** ユーザーの場合:
 
 1. バックアップを作成したサーバーをまだ使用できる場合は、削除されたデータ ソースを再度保護し、**データの復旧**機能を使用して、すべての古い復旧ポイントから復旧します。
-2. このサーバーを使用できない場合は、[[Recover data from another Azure Backup Server (別の Azure Backup Server からデータを復旧する)]](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server) を選択し、別の Azure Backup Server インスタンスを使用してデータを取得します。
+2. このサーバーを使用できない場合は、[[Recover data from another Azure Backup Server (別の Azure Backup Server からデータを復旧する)]](backup-azure-alternate-dpm-server.md) を選択し、別の Azure Backup Server インスタンスを使用してデータを取得します。
 
 **Data Protection Manager** ユーザーの場合:
 
 1. バックアップを作成したサーバーをまだ使用できる場合は、削除されたデータ ソースを再度保護し、**データの復旧**機能を使用して、すべての古い復旧ポイントから復旧します。
-2. このサーバーを使用できない場合、[[外部 DPM の追加]](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server) をクリックして、別の Data Protection Manager サーバーを使用してこのデータを取得します。
+2. このサーバーを使用できない場合、[[外部 DPM の追加]](backup-azure-alternate-dpm-server.md) をクリックして、別の Data Protection Manager サーバーを使用してこのデータを取得します。
 
 ## <a name="prevent-attacks"></a>攻撃の防止
 有効なユーザーのみが各種操作を実行できるようにするためのチェックが追加されました。 たとえば、認証レイヤーの追加や、回復を行うための最小リテンション期間の維持などが含まれています。
@@ -106,6 +106,13 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 通常、重要な操作が実行されると、操作の詳細が含まれた電子メール通知がサブスクリプションの管理者に送信されます。 Azure Portal を使用して、これらの通知の電子メール受信者を追加構成できます。
 
 この記事で説明するセキュリティ機能には、対象を絞った攻撃を防ぐための防御機構が用意されています。 さらに重要なことは、攻撃が行われても、これらの機能を使用してデータを回復できるということです。
+
+## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
+| 操作 | エラーの詳細 | 解決策 |
+| --- | --- | --- |
+| ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー: サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、リテンション範囲を上記の最小値を下回るように減らそうとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。 <br/>**推奨される操作:**<br/> このケースでは、指定した最小リテンション期間 (日次の場合は 7 日間、週次の場合は 4 週間、月次の場合は 3 か月、年次の場合は 1 年) を上回るようにリテンション期間を設定し、ポリシー関連の更新を進めます。 他にもお勧めの方法として、バックアップ エージェント、Azure Backup Server、または DPM UR を更新して、すべてのセキュリティ更新プログラムを適用する方法があります。 |
+| パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 (ID: 100130) この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重大な操作 (パスフレーズの変更など) を実行している間に、無効または有効期限の切れたセキュリティ PIN を入力すると発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にログインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
+| パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、パスフレーズを変更しようとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、まずバックアップ エージェントを 2.0.9052 以上、Azure Backup Server を update 1 以上、DPM を 2012 R2 UR12 または DPM 2016 UR2 (以下のリンクからダウンロード) に更新してから有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にログインし、Recovery Services 資格情報コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Recovery Services コンテナーの使用を開始](backup-azure-vms-first-look-arm.md)して、これらの機能を有効にします。

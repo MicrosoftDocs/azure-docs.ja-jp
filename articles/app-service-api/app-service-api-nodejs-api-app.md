@@ -14,18 +14,17 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 19d6d0e1df185746a8ea289db9ac18e5614c09c7
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 806585edd43b9d2d678bfa41523e4d9d40af8cba
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API をビルドして Azure で API アプリにデプロイする
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-このクイックスタートでは、[Swagger](http://swagger.io/) 定義を使用して [簡易](http://expressjs.com/)フレームワークの Node.js REST API を作成し、[API アプリ](app-service-api-apps-why-best-platform.md)として Azure にデプロイする方法を示します。 コマンドライン ツールを使用してアプリを作成し、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) でリソースを構成してから、Git を使ってアプリをデプロイします。  完了すると、Azure.で実行される動作サンプルの REST API を入手できます。
+このクイック スタートでは、Node.js [Express](http://expressjs.com/) による REST API を [Swagger](http://swagger.io/) 定義を使って作成し、それを [API アプリ](app-service-api-apps-why-best-platform.md)として Azure にデプロイする方法を紹介します。 コマンドライン ツールを使用してアプリを作成し、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) でリソースを構成してから、Git を使ってアプリをデプロイします。  完了すると、Azure.で実行される動作サンプルの REST API を入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,12 +64,12 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ディレクトリを *start* フォルダーに変更して、`yo swaggerize` を実行します。 Swaggerize は、*api.json* 内の Swagger 定義から、API の Node.js プロジェクトを作成します。
 
-    ```bash
-    cd start
-    yo swaggerize --apiPath api.json --framework express
-    ```
+```bash
+cd start
+yo swaggerize --apiPath api.json --framework express
+```
 
-     When Swaggerize asks for a project name, use *ContactList*.
+Swaggerize からプロジェクト名を求められたら、*ContactList* を使用します。
    
    ```bash
    Swaggerize Generator
@@ -139,6 +138,9 @@ CLI をローカルにインストールして使用する場合、このトピ�
     var swaggerize = require('swaggerize-express');
     var swaggerUi = require('swaggerize-ui'); 
     var path = require('path');
+    var fs = require("fs");
+    
+    fs.existsSync = fs.existsSync || require('path').existsSync;
 
     var app = express();
 
@@ -214,18 +216,24 @@ CLI をローカルにインストールして使用する場合、このトピ�
     az login
     ```
 
-2. [!INCLUDE [Create resource group](../../includes/app-service-api-create-resource-group.md)] 
+2. 複数の Azure サブスクリプションがある場合は、既定のサブスクリプションを適宜変更します。
 
-3. [!INCLUDE [Create app service plan](../../includes/app-service-api-create-app-service-plan.md)]
+    ````azurecli-interactive
+    az account set --subscription <name or id>
+    ````
 
-4. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
+3. [!INCLUDE [Create resource group](../../includes/app-service-api-create-resource-group.md)] 
+
+4. [!INCLUDE [Create app service plan](../../includes/app-service-api-create-app-service-plan.md)]
+
+5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
 ## <a name="deploy-the-api-with-git"></a>Git を使って API をデプロイする
 
 ローカル Git リポジトリから Azure App Service へコミットをプッシュすることで、コードを API アプリにデプロイします。
 
-1. [!INCLUDE [Configure your deployment credentials](../../includes/app-service-api-configure-local-git.md)] 
+1. [!INCLUDE [Configure your deployment credentials](../../includes/configure-deployment-user-no-h.md)] 
 
 2. *ContactList* ディレクトリにある新しいリポジトリを初期化します。 
 

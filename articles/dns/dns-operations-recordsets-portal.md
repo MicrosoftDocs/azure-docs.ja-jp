@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 850bf9ef5300c72a9e7903be5bf991301d4b574f
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -27,7 +27,8 @@ ms.lasthandoff: 05/11/2017
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](dns-operations-recordsets-portal.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
+> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 この記事では、Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
@@ -125,5 +126,5 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 * Azure DNS の詳細については、「 [Azure DNS の概要](dns-overview.md)」を参照してください。
 * DNS 作成の自動化については、「 [.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。
-* 逆引き DNS レコードの詳細については、「 [PowerShell を使用してサービスの逆引き DNS レコードを管理する方法](dns-reverse-dns-record-operations-ps.md)」を参照してください。
+* 逆引き DNS レコードについて詳しくは、「[逆引き DNS と Azure でのサポートの概要](dns-reverse-dns-overview.md)」をご覧ください。
 

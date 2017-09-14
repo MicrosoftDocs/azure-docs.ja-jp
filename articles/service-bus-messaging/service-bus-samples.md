@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/30/2017
 ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
 ms.openlocfilehash: 0cf21ea9a820de0396b54dd26a625a046de39291
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル

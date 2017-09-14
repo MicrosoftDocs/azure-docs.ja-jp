@@ -14,32 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7169b6f2d9738abd9651120be96bb1cf209ea85d
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>リモート Docker ホストへの ASP.NET コンテナーのデプロイ
 ## <a name="overview"></a>概要
 Docker は軽量のコンテナー エンジンで、アプリケーションとサービスをホストするために使用できる仮想マシンにいくつかの点で似ています。
-このチュートリアルでは、 [Visual Studio 2015 Tools for Docker](http://aka.ms/DockerToolsForVS) 拡張機能を使用して、Azure 上の Docker ホストに PowerShell で ASP.NET Core アプリをデプロイする手順について説明します。
+このチュートリアルでは、[Visual Studio Tools for Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) 拡張機能を使って、Azure 上の Docker ホストに PowerShell で ASP.NET Core アプリをデプロイする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下が必要です。
 
 * 「[Azure で docker マシンを使用する方法](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の説明に従って、Azure Docker ホスト VM を作成する
-* [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
-* [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
-* [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS)
+* [Visual Studio](https://www.visualstudio.com/downloads/) の最新バージョンをインストールする
+* [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122) をダウンロードする
+* [Docker for Windows](https://docs.docker.com/docker-for-windows/install/) をインストールする
 
 ## <a name="1-create-an-aspnet-core-web-app"></a>1.ASP.NET Core Web アプリケーションの作成
 次の手順では、このチュートリアルで使用する基本的な ASP.NET Core アプリの作成について説明します。
 
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## <a name="2-add-docker-support"></a>2.Docker サポートの追加
+## <a name="2-add-docker-support"></a>手順 2.Docker サポートの追加
 [!INCLUDE [create-aspnet5-app](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
 ## <a name="3-use-the-dockertaskps1-powershell-script"></a>3.DockerTask.ps1 PowerShell スクリプトの使用
@@ -56,19 +57,12 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
    MyDockerHost -        azure    Running   tcp://xxx.xxx.xxx.xxx:2376         v1.10.3
    ```
    
-   > [!NOTE]
-   > Docker Beta を使用している場合、ここにホストは表示されません。
-   > 
-   > 
 3. -Build パラメーターを使用してアプリをビルドします。
    
    ```
    PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
    ```  
-   
-   > [!NOTE]
-   > Docker Beta を使用している場合、-Machine 引数は省略してください。
-   > 
+
    > ```
    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release 
    > ```  
@@ -80,9 +74,6 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
    PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
    ```
    
-   > [!NOTE]
-   > Docker Beta を使用している場合、-Machine 引数は省略してください。
-   > 
    > ```
    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release 
    > ```

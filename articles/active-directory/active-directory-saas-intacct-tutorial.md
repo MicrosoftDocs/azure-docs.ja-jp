@@ -1,196 +1,266 @@
 ---
 title: "チュートリアル: Azure Active Directory と Intacct の統合 | Microsoft Docs"
-description: "Azure Active Directory で Intacct を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+description: "Azure Active Directory と Intacct の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 92518e02-a62c-4b1b-a8e9-2803eb2b49ac
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 06/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 20db13c5ba67fcc402db5c692842719dd9a34eb1
-ms.openlocfilehash: 0ea77d5f9c5b139ce6f87bc0cdd817166b03c22e
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: c203b192b9da0d280cbd7f6c123219242ee4a3d1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
+
 
 ---
-
 # <a name="tutorial-azure-active-directory-integration-with-intacct"></a>チュートリアル: Azure Active Directory と Intacct の統合
-このチュートリアルでは、Azure と Intacct の統合について説明します。  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-* 有効な Azure サブスクリプション
-* Intacct テナント
+このチュートリアルでは、Intacct と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-このチュートリアルを完了すると、Intacct に割り当てた Azure Active Directory (Azure AD) ユーザーは、Intacct 企業サイトでのアプリケーションへのサインイン (サービス プロバイダーが開始したサインオン) や、[アクセス パネル](active-directory-saas-access-panel-introduction.md)の使用が可能になります。
+Intacct と Azure AD の統合には、次の利点があります。
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+- Intacct にアクセスする Azure AD ユーザーを制御できます
+- ユーザーが自分の Azure AD アカウントで自動的に Intacct にサインオン (シングル サインオン) できるようにします
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-* Intacct のアプリケーション統合の有効化
-* シングル サインオンの構成
-* ユーザー プロビジョニングの構成
-* ユーザーの割り当て
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
-![シナリオ](./media/active-directory-saas-intacct-tutorial/IC790030.png "Scenario")
+## <a name="prerequisites"></a>前提条件
 
-## <a name="enable-the-application-integration-for-intacct"></a>Intacct のアプリケーション統合の有効化
-このセクションでは、Intacct のアプリケーション統合を有効にする方法について説明します。
+Intacct と Azure AD の統合を構成するには、次のものが必要です。
 
-**Intacct のアプリケーション統合を有効にするには、次の手順を実行します。**
+- Azure AD サブスクリプション
+- Intacct でのシングル サインオンが有効なサブスクリプション
 
-1. Azure クラシック ポータルの左側のウィンドウで、Active Directory のアイコンをクリックします。
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-   ![Active Directory](./media/active-directory-saas-intacct-tutorial/IC700993.png "Active Directory")
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューの上部のメニューで **[アプリケーション]** をクリックします。
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-   ![アプリケーション](./media/active-directory-saas-intacct-tutorial/IC700994.png "Applications")
-4. ページの下部にある **[追加]** をクリックします。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
-   ![アプリケーションの追加](./media/active-directory-saas-intacct-tutorial/IC749321.png "Add application")
-5. **[What do you want to do (実行する内容)]** ページで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-   ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-intacct-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
-6. 検索ボックスに「**Intacct**」と入力します。
+1. ギャラリーからの Intacct の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-   ![アプリケーション ギャラリー](./media/active-directory-saas-intacct-tutorial/IC790031.png "Application Gallery")
-7. 結果ウィンドウで **[Intacct]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+## <a name="adding-intacct-from-the-gallery"></a>ギャラリーからの Intacct の追加
+Azure AD への Intacct の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Intacct を追加する必要があります。
 
-   ![Intacct](./media/active-directory-saas-intacct-tutorial/IC790032.png "Intacct")
+**ギャラリーから Intacct を追加するには、次の手順に従います。**
 
-## <a name="configure-single-sign-on"></a>Configure single sign-on
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-このセクションでは、ユーザーが Azure AD のアカウントで Intacct に対する認証を行えるようにする方法を説明します。 この認証には、SAML プロトコルに基づくフェデレーションを使用します。  
+    ![Active Directory][1]
 
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+    ![アプリケーション][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. Azure クラシック ポータルの **Intacct** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ページを開きます。
+    ![アプリケーション][3]
 
-   ![シングル サインオンの構成](./media/active-directory-saas-intacct-tutorial/IC790033.png "Configure single sign-on")
-2. **[ユーザーの Intacct へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+4. 検索ボックスに、「**Intacct**」と入力します。
 
-   ![シングル サインオンの構成](./media/active-directory-saas-intacct-tutorial/IC790034.png "Configure single sign-on")
-3. **[アプリケーション URL の構成]** ページの **[サインオン URL]** ボックスに *https://Intacct.com/company* というパターンの URL を入力し、**[次へ]** をクリックします。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_search.png)
 
-   ![アプリケーション URL の構成](./media/active-directory-saas-intacct-tutorial/IC790035.png "Configure App URL")
-4. **[Intacct でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
+5. 結果ウィンドウで **[Intacct]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-   ![シングル サインオンの構成](./media/active-directory-saas-intacct-tutorial/IC790036.png "Configure single sign-on")
-5. 別の Web ブラウザー ウィンドウで、Intacct 企業サイトに管理者としてサインインします。
-6. **[会社]** タブをクリックし、**[会社情報]** をクリックします。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_addfromgallery.png)
 
-   ![Company](./media/active-directory-saas-intacct-tutorial/IC790037.png "Company")
-7. **[セキュリティ]** タブをクリックし、**[編集]** をクリックします。
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Intacct で Azure AD のシングル サインオンを構成し、テストします。
 
-   ![Security (セキュリティ)](./media/active-directory-saas-intacct-tutorial/IC790038.png "Security")
-8. **[シングル サインオン (SSO)]** セクションで、次の手順を実行します。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Intacct ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Intacct の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-   ![シングル サインオン](./media/active-directory-saas-intacct-tutorial/IC790039.png "シングル サインオン")
+Intacct で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
 
-   1. **[シングル サインオンを有効にする]**を選択します。
-   2. **[ID プロバイダーの種類]** として **[SAML 2.0]** を選択します。
-   3. Azure クラシック ポータルの **[Intacct でのシングル サインオンの構成]** ページで **[発行者の URL]** の値をコピーし、それを **[Issuer URL (発行者 URL)]** ボックスに貼り付けます。
-   4. Azure クラシック ポータルの **[Intacct でのシングル サインオンの構成]** ページで **[リモート ログイン URL]** の値をコピーし、それを **[Login URL (ログイン URL)]** ボックスに貼り付けます。
-   5. ダウンロードした証明書から **base-64 でエンコードされた** ファイルを作成します。 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」を参照してください。      
-   6. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[Certificate (証明書)]** ボックスに貼り付けます。
-   7. **[保存]**をクリックします。
-9. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ページを閉じます。
+Intacct で Azure AD のシングル サインオンを構成してテストするには、次の要素を完了する必要があります。
 
-   ![シングル サインオンの構成](./media/active-directory-saas-intacct-tutorial/IC790040.png "Configure Single Sign-On")
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Intacct テスト ユーザーの作成](#creating-an-intacct-test-user)** - Intacct で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Intacct アプリケーションでシングル サインオンを構成します。
+
+**Intacct で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure Portal の **Intacct** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![[シングル サインオンの構成]][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_samlbase.png)
+
+3. **[Intacct のドメインと URL]** セクションで、次の手順を実行します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_url.png)
+
+    **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    | |
+    |--|
+    | `https://<companyname>.intacct.com/ia/acct/sso_response.phtml`|
+    | `https://www.intacct.com/ia/acct/sso_response.phtml` |
+
+    > [!NOTE] 
+    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Intacct サポート チーム](https://us.intacct.com/support)にお問い合わせください。
+
+4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_certificate.png) 
+
+5. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-intacct-tutorial/tutorial_general_400.png)
+
+6. **[Intacct 構成]** セクションで、**[Intacct の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_configure.png) 
+
+7. 別の Web ブラウザー ウィンドウで、Intacct 企業サイトに管理者としてサインインします。
+
+8. **[会社]** タブをクリックし、**[会社情報]** をクリックします。
+
+    ![Company](./media/active-directory-saas-intacct-tutorial/ic790037.png "Company")
+
+9. **[セキュリティ]** タブをクリックし、**[編集]** をクリックします。
+
+    ![Security (セキュリティ)](./media/active-directory-saas-intacct-tutorial/ic790038.png "Security")
+
+10. **[シングル サインオン (SSO)]** セクションで、次の手順を実行します。
+
+    ![シングル サインオン](./media/active-directory-saas-intacct-tutorial/ic790039.png "シングル サインオン")
+
+    a. **[シングル サインオンを有効にする]**を選択します。
+
+    b. **[ID プロバイダーの種類]** として **[SAML 2.0]** を選択します。
+
+    c. **[発行者のURL]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+   
+    d. **[ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+
+    e. **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[証明書]** ボックスに貼り付けます。
+   
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 [ **Save**] をクリックします。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][100]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intacct-tutorial/create_aaduser_01.png) 
+
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intacct-tutorial/create_aaduser_02.png) 
+
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intacct-tutorial/create_aaduser_03.png) 
+
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intacct-tutorial/create_aaduser_04.png) 
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+
+    d. **[作成]**をクリックします。
+ 
+### <a name="creating-an-intacct-test-user"></a>Intacct テスト ユーザーの作成
 
 Azure AD ユーザーが Intacct にサインインできるように設定するには、そのユーザーを Intacct にプロビジョニングする必要があります。 Intacct の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. **Intacct** テナントにサインインします。
+
 2. **[会社]** タブをクリックし、**[ユーザー]** をクリックします。
 
-   ![ユーザー](./media/active-directory-saas-intacct-tutorial/IC790041.png "Users")
+    ![ユーザー](./media/active-directory-saas-intacct-tutorial/ic790041.png "Users")
 3. **[Add (追加)]** タブをクリックします。
 
-   ![Add](./media/active-directory-saas-intacct-tutorial/IC790042.png "Add")
+    ![Add](./media/active-directory-saas-intacct-tutorial/ic790042.png "Add")
 4. **[ユーザー情報]** セクションで、次の手順を実行します。
 
-   ![User Information](./media/active-directory-saas-intacct-tutorial/IC790043.png "User Information")
+    ![User Information](./media/active-directory-saas-intacct-tutorial/ic790043.png "User Information")
 
-   1. プロビジョニングする Azure AD アカウントの**ユーザー ID**、**姓**、**名**、**電子メール アドレス**、**役職**、**電話番号**を、**[User Information (ユーザー情報)]** セクションに入力します。
-   2. プロビジョニングする Azure AD アカウントの**管理者特権**を選択します。
-   3. **[保存]**をクリックします。 Azure AD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
+    a. プロビジョニングする Azure AD アカウントの**ユーザー ID**、**姓**、**名**、**電子メール アドレス**、**役職**、**電話番号**を、**[User Information (ユーザー情報)]** セクションに入力します。
+
+    b. プロビジョニングする Azure AD アカウントの**管理者特権**を選択します。
+   
+    c. [ **Save**] をクリックします。 Azure AD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
 
 >[!NOTE]
 >Azure AD ユーザー アカウントをプロビジョニングするには、Intacct から提供されているその他の Intacct ユーザー アカウント作成ツールまたは API を使用できます。
->
+        
+### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-## <a name="assign-users"></a>[ユーザーの割り当て]
-構成をテストするには、Azure AD ユーザーを Intacct に割り当てる必要があります。 ユーザーが割り当てられた後、アプリケーションにアクセスすることができます。
+このセクションでは、Britta Simon に Intacct へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-**ユーザーを Intacct に割り当てるには、次の手順を実行します。**
-
-1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **Intacct** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
-
-   ![ユーザーの割り当て](./media/active-directory-saas-intacct-tutorial/IC790044.png "Assign users")
-3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
-
-   ![はい](./media/active-directory-saas-intacct-tutorial/IC767830.png "Yes")
-
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
-
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Intacct へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるように設定します。
-
-![ユーザーの割り当て][200]
+![ユーザーの割り当て][200] 
 
 **Intacct に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-    ![ユーザーの割り当て][201]
+    ![ユーザーの割り当て][201] 
 
 2. アプリケーションの一覧で **[Intacct]** を選択します。
 
-    ![Configure single sign-on](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_50.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_app.png) 
 
-3. **[管理]** メニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202]
+    ![ユーザーの割り当て][202] 
 
-4. **[追加]** ボタンをクリックし、**[割り当ての追加]** で **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** で、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** で、**[選択]** ボタンをクリックします。
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** で、**[割り当て]** ボタンをクリックします。
-
-
-
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Intacct] タイルをクリックすると、自動的に Intacct アプリケーションにサインインします。
 
-
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 
@@ -205,4 +275,5 @@ Azure AD ユーザーが Intacct にサインインできるように設定す�
 [201]: ./media/active-directory-saas-intacct-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-intacct-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-intacct-tutorial/tutorial_general_203.png
+
 

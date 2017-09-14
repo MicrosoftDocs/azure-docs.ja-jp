@@ -2,7 +2,7 @@
 title: "Azure Marketplace のドキュメント | Microsoft Docs"
 description: "Azure Marketplace について説明します。"
 services: marketplace
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/14/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 6dca59ddd5fe524b7778abe770b6387f8bb24f01
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/20/2017
 
 ---

@@ -1,6 +1,6 @@
 ---
 title: "複数の Azure SQL データベースに対する分析クエリの実行 | Microsoft Docs"
-description: "複数の Azure SQL データベースに対して分散クエリを実行します"
+description: "オフライン分析用にテナント データベースから分析データベースにデータを抽出する"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/16/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 5331f9a7b46f1dd31d4aa246ad9d188b5a5afc19
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 4e32407d5f321198358e07980907c3420aaf56c6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースに対する分散クエリの実行
+# <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>オフライン分析用にテナント データベースから分析データベースにデータを抽出する
 
-このチュートリアルでは、カタログ内の各テナントに対して分析クエリを実行します。 クエリを実行するエラスティック ジョブが作成されます。 このジョブは、データを取得して、カタログ サーバーに作成された別の分析データベースに読み込みます。 このデータベースにクエリを実行して、すべてのテナントの日々の運用データに隠されたインサイトを抽出することができます。 ジョブの出力として、結果を返すクエリによって、テナント分析データベース内にテーブルが作成されます。
+このチュートリアルでは、エラスティック ジョブを使用して各テナント データベースに対してクエリを実行します。 このジョブでは、チケットの売上データを抽出し、分析用に分析データベース (またはデータ ウェアハウス) に読み込みます。 その後、分析データベースにクエリを実行して、すべてのテナントの日々の運用データからインサイトを抽出します。
 
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -47,7 +47,7 @@ SaaS アプリケーションで得られる優れた機会の 1 つは、クラ
 
 ## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)。
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>テナント分析結果用のデータベースをデプロイする
 
@@ -121,3 +121,4 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
 
 * [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)
+

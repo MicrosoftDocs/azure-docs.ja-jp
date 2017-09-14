@@ -4,7 +4,7 @@ description: "この記事では、Media Services でのコンテンツ保護の
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
 ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/27/2017
-
 
 ---
 # <a name="protecting-content-overview"></a>コンテンツ保護の概要
@@ -72,7 +72,7 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 次の考慮事項が適用されます。
 
-* 指定できるのは、ゼロまたは&1; つの暗号化タイプのみです。
+* 指定できるのは、ゼロまたは 1 つの暗号化タイプのみです。
 * 1 つの暗号化のみが資産に適用された場合は、暗号化タイプを URL で指定する必要はありません。
 * 暗号化タイプでは大文字と小文字が区別されます。
 * 指定できる暗号化タイプは次のとおりです。  

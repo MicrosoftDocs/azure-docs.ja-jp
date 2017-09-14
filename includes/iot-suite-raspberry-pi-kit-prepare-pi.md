@@ -69,19 +69,21 @@ Windows でフォルダーを共有するために、Raspberry Pi で Samba サ�
 
 サンプル アプリケーションを実行できるようにするには、Raspberry Pi でシリアル ペリフェラル インターフェイス (SPI) バスを有効にする必要があります。 Raspberry Pi は、SPI バス経由で BME280 センサー デバイスと通信します。 次のコマンドを使用して、構成ファイルを編集します。
 
-`sudo nano /boot/config.txt`
+```sh
+sudo nano /boot/config.txt
+```
 
 次の行を見つけます。
 
-```
-#dtparam=spi=on
-```
+`#dtparam=spi=on`
 
 - 行をコメント解除するには、先頭の `#` を削除します。
 - 変更を保存し (**Ctrl + O** キー、**Enter** キー)、エディターを終了します (**Ctrl + X** キー)。
 - SPI を有効にするために、Raspberry Pi を再起動します。 再起動するとターミナルとの接続が切断されるので、Raspberry Pi が再起動したらもう一度サインインする必要があります。
 
-  `sudo reboot`
+  ```sh
+  sudo reboot
+  ```
 
 
 [img-connection-diagram]: media/iot-suite-raspberry-pi-kit-prepare-pi/rpi2_remote_monitoring.png

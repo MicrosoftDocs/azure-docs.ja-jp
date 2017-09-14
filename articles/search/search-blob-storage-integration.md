@@ -55,7 +55,7 @@ Azure Search は、Blob Storage ポータル ブレードから直接 BLOB に�
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-[Add Azure Search] (Azure Search の追加) オプションをクリックするとフローが開始され、そこで既存の Azure Search サービスを選択するか、または新しいサービスを作成できます。 新しいサービスを作成する場合は、ストレージ アカウントのポータル エクスペリエンスの外部に移動されます。 ストレージのポータル ブレードに再び移動し、[Add Azure Search] (Azure Search の追加) オプションを再度選択する必要があります。そこで、既存のサービスを選択できます。
+[Add Azure Search] \(Azure Search の追加) オプションをクリックするとフローが開始され、そこで既存の Azure Search サービスを選択するか、または新しいサービスを作成できます。 新しいサービスを作成する場合は、ストレージ アカウントのポータル エクスペリエンスの外部に移動されます。 ストレージのポータル ブレードに再び移動し、[Add Azure Search] \(Azure Search の追加) オプションを再度選択する必要があります。そこで、既存のサービスを選択できます。
 
 ### <a name="next-steps"></a>次のステップ
 完全な[ドキュメント](https://aka.ms/azsblobindexer)にある Azure Search BLOB インデクサの詳細を学習します。

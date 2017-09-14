@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
 ms.openlocfilehash: f965e3a5067dd8dd2ac6dc29446c7f5b50cdd450
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/07/2017
-
 
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Power BI を使用して Data Lake Store のデータを分析する

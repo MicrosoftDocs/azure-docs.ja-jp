@@ -3,7 +3,7 @@ title: "Azure Network Watcher トポロジの確認 - REST API | Microsoft Docs"
 description: "この記事では、REST API を使用してネットワーク トポロジを照会する方法を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: de9af643-aea1-4c4c-89c5-21f1bf334c06
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 568f3060da372f4a08cec342e04359172522cb69

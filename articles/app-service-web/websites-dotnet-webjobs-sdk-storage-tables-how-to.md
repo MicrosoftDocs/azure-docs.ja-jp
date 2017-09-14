@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47db68afb8ea938a9861765f9e60c78436569110
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 13cfc788c14d714df7022ce003d34691cf73d121
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-use-azure-table-storage-with-the-webjobs-sdk"></a>Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法
@@ -139,7 +139,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
             tableBinding.Execute(insertOperation);
         }
 
-`CloudTable` オブジェクトの使用方法の詳細については、「 [.NET からテーブル ストレージを使用する方法](../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。 
+`CloudTable` オブジェクトの使用方法の詳細については、「 [.NET からテーブル ストレージを使用する方法](../cosmos-db/table-storage-how-to-use-dotnet.md)」をご覧ください。 
 
 ## <a id="queues"></a>キューのハウツー記事で紹介されている関連トピック
 キュー メッセージによってトリガーされるテーブルの処理の方法、テーブル処理に固有ではない WebJobs SDK のシナリオについては、「 [WebJobs SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 

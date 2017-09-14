@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
-ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure Data Catalog の概要

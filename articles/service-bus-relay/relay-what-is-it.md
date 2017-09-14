@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 06/14/2017
+ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 74a0837b7149236faa45ef2cda0a0aee7c46a31b
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 77ee85db0bcc701514a1a98da9405a79d658d49d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
@@ -52,15 +51,22 @@ Azure Relay には、次の 2 つの機能があります。
 
 [Azure Relay ハイブリッド接続](relay-hybrid-connections-protocol.md)機能は、既存のリレー機能から進化した安全でオープンなプロトコルで、あらゆるプラットフォームに実装することができます。実装には、基本的な WebSocket 機能を備えていて、一般的な Web ブラウザーの WebSocket API を明示的に組み込むことができれば、どのような言語でも使用することができます。 ハイブリッド接続には、HTTP と WebSocket が使用されます。
 
+### <a name="service-history"></a>サービスの経緯
+
+ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。Azure リレー サービスには、この 2 つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
+
 ## <a name="wcf-relays"></a>WCF リレー
 
 WCF リレーは、完全な .NET Framework (NETFX) と WCF で使用できます。 オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。
 
-## <a name="service-history"></a>サービスの経緯
+## <a name="architecture-processing-of-incoming-relay-requests"></a>アーキテクチャ: 受信リレー要求の処理
+クライアントが [Azure Relay](/azure/service-bus-relay/) サービスに要求を送信すると、その要求が Azure Load Balancer によってゲートウェイ ノードのいずれかにルーティングされます。 要求がリッスン要求である場合は、ゲートウェイ ノードは新しいリレーを作成します。 要求が特定のリレーへの接続要求の場合は、ゲートウェイ ノードはリレーを所有するゲートウェイ ノードに接続要求を転送します。 リレーを所有するゲートウェイ ノードは、リッスンしているクライアントにランデブー要求を送信します。その際、接続要求を受信したゲートウェイ ノードへの一時的なチャネルを作成するようリスナーに求めます。
 
-ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。Azure リレー サービスには当面、この 2 つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
+リレー接続が確立されると、クライアントはランデブーに使用されるゲートウェイ ノードを経由してメッセージを交換できます。
 
-## <a name="next-steps"></a>次のステップ:
+![受信 WCF Relay 要求の処理](./media/relay-what-is-it/ic690645.png)
+
+## <a name="next-steps"></a>次のステップ
 
 * [Relay に関する FAQ](relay-faq.md)
 * [名前空間を作成する](relay-create-namespace-portal.md)

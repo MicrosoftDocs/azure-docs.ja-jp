@@ -4,7 +4,7 @@ description: "分析結果の Power BI など、Stream Analytics データ出力
 keywords: "データ変換、分析結果、データ ストレージ オプション"
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 693a4a0dbe7e067492040a12c6cb3b003bbcc54e
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 91ee74f01b2e84244245dbe43408589f04af6338
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics の出力: ストレージのオプション、分析
@@ -32,7 +31,7 @@ Stream Analytics ジョブを作成するときは、生成されたデータが
 Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 この記憶域を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。 承認と (必要に応じて) Data Lake Store にサインアップする方法の詳細については、[Data Lake 出力の記事](stream-analytics-data-lake-output.md)を参照してください。
 
 ### <a name="authorize-an-azure-data-lake-store"></a>Azure Data Lake Store の承認
-Data Lake Storage を Microsoft Azure 管理ポータルで出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
+Data Lake Storage を Azure Portal で出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
 
 ![Data Lake Store の承認](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
@@ -57,7 +56,7 @@ Data Lake Storage を Microsoft Azure 管理ポータルで出力として選択
 <td>出力を送信する Data Lake Storage アカウントの名前。 ポータルにログインしたユーザーがアクセス権を持っている Data Lake Store アカウントのドロップダウン リストが表示されます。</td>
 </tr>
 <tr>
-<td>パス プレフィックスのパターン [<I>省略可能</I>]</td>
+<td>パスのプレフィックス パターン</td>
 <td>指定した Data Lake Store アカウント内のファイルを書き込むために使用するファイル パス。 <BR>{date}、{time}<BR>例 1: folder1/logs/{date}/{time}<BR>例 2: folder1/logs/{date}</td>
 </tr>
 <tr>
@@ -110,7 +109,7 @@ Data Lake Storage を Microsoft Azure 管理ポータルで出力として選択
 > 
 
 ## <a name="blob-storage"></a>BLOB ストレージ
-BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。  Azure BLOB ストレージとその使用法の説明については、「 [How to use Blobs (BLOB の使用方法)](../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
+BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。  Azure BLOB ストレージとその使用法の説明については、「 [How to use Blobs (BLOB の使用方法)](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
 
 次の表に、BLOB 出力を作成するためのプロパティ名とその説明を示します。
 
@@ -134,7 +133,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 </tr>
 <tr>
 <td>ストレージ コンテナー</td>
-<td>コンテナーにより、Microsoft Azure BLOB サービスに格納される BLOB が論理的にグループ化されます。 BLOB を BLOB サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。</td>
+<td>コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。</td>
 </tr>
 <tr>
 <td>パス プレフィックスのパターン [省略可能]</td>
@@ -162,7 +161,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 </tr>
 <tr>
 <td>形式</td>
-<td>JSON のシリアル化のみに適用されます。 行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。 配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。</td>
+<td>JSON のシリアル化のみに適用されます。 行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。 配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。</td>
 </tr>
 </tbody>
 </table>
@@ -177,7 +176,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | 出力のエイリアス |クエリの出力をこのイベント ハブに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
 | イベント ハブ |イベント ハブ出力の名前 |
-| イベント ハブ ポリシー名 |[イベント ハブの構成] タブで作成できる共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| イベント ハブ ポリシー名 |[イベント ハブの構成] タブで作成できる共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
 | イベント ハブ ポリシー キー |Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | パーティション キー列 [省略可能] |この列には、Event Hub 出力のパーティション キーが含まれます。 |
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
@@ -189,7 +188,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。 この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
 ### <a name="authorize-a-power-bi-account"></a>Power BI アカウントを承認する
-1. Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
+1. Power BI を Azure Portal で出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
    
    ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 2. まだアカウントを持っていない場合は新しいアカウントを作成し、[今すぐ承認] をクリックします。  次のような画面が表示されます。  
@@ -255,7 +254,7 @@ DateTime | String | String |  DateTime | String
   ![Power BI renew authorization](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
-[Azure テーブル ストレージ](../storage/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
+[Azure テーブル ストレージ](../storage/common/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
@@ -279,7 +278,7 @@ DateTime | String | String |  DateTime | String
 | 出力のエイリアス |クエリの出力をこの Service Bus キューに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 |
 | キュー名 |Service Bus キューの名前。 |
-| キュー ポリシー名 |キューを作成するとき、[キューの構成] タブで共有アクセス ポリシーを作成することもできます。 各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| キュー ポリシー名 |キューを作成するとき、[キューの構成] タブで共有アクセス ポリシーを作成することもできます。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
 | キュー ポリシー キー |Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
@@ -296,7 +295,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 | 出力のエイリアス |クエリの出力をこの Service Bus トピックに出力するために、クエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
 | トピック名 |トピックは、イベント ハブやキューと類似するメッセージ エンティティです。 多数のさまざまなデバイスやサービスからイベント ストリームを収集するように設計されています。 トピックが作成されるときに、特定の名前も付けられます。 トピックに送信されるメッセージはサブスクリプションが作成されなければ使用できないため、トピックの下に 1 つ以上のサブスクリプションがあることを確認してください |
-| トピック ポリシー名 |トピックを作成するとき、[トピックの構成] タブで共有アクセス ポリシーを作成することもできます。 各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| トピック ポリシー名 |トピックを作成するとき、[トピックの構成] タブで共有アクセス ポリシーを作成することもできます。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
 | トピック ポリシー キー |Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV または JSON 形式の場合、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
@@ -319,12 +318,12 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。
 
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
@@ -333,7 +332,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
+[stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 

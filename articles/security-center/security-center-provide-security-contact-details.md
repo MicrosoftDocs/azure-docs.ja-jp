@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f4ae3395c44f175603556711bfe2f90f0f987c94
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
+ms.openlocfilehash: 1a6e5e915745dd3588fbc54b353daa947b1c4289
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -57,9 +59,4 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png
 [2]:./media/security-center-provide-security-contacts/provide-contact-details.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

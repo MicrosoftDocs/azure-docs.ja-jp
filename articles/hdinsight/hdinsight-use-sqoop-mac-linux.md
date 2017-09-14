@@ -15,24 +15,23 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 07/19/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 8d71c1d870083365a1c106507ceb5f2661ee4ac6
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 35dcbb91e6af1480685c9fd5b829c54277c1c605
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-in-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
+# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
 Azure HDInsight の Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="install-freetds"></a>FreeTDS のインストール
 
@@ -47,7 +46,7 @@ Azure HDInsight の Hadoop クラスターと Azure SQL Database または Micro
 2. 次のコマンドを使用して FreeTDS をインストールします。
 
     ```bash
-    sudo apt install --assume-yes install freetds-dev freetds-bin
+    sudo apt --assume-yes install freetds-dev freetds-bin
     ```
 
     FreeTDS は、SQL Database に接続する際のいくつかの手順で使用します。
@@ -110,28 +109,33 @@ Azure HDInsight の Hadoop クラスターと Azure SQL Database または Micro
 1. クラスターへの SSH 接続から、次のコマンドを使用して、Sqoop が SQL Database を認識できることを確認します。
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
+    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> -P
     ```
+    メッセージが表示されたら、SQL Database ログインのパスワードを入力します。
 
     このコマンドは、先ほど作成した **sqooptest** データベースを含むデータベースの一覧を返します。
 
 2. **hivesampletable** から **mobiledata** テーブルにデータをエクスポートするには、次のコマンドを使用します。
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
+    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
     ```
 
-    このコマンドによって、**sqooptest** データベースに接続するように Sqoop に指示します。 Sqoop は次に、**wasbs:///hive/warehouse/hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
+    このコマンドによって、**sqooptest** データベースに接続するように Sqoop に指示します。 Sqoop は次に、**wasb:///hive/warehouse/hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
+
+    > [!IMPORTANT]
+    > クラスターの既定のストレージが Azure ストレージ アカウントの場合、`wasb:///` を使用します。 Azure Data Lake Store の場合、`adl:///` を使用します。
 
 3. コマンドが完了したら、次のコマンドを使用して、TSQL によってデータベースに接続します。
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
+    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P -p 1433 -D sqooptest
     ```
 
     接続されたら、次のステートメントを使用して、データが **mobiledata** テーブルにエクスポートされたことを確認します。
 
     ```sql
+    SET ROWCOUNT 50;
     SELECT * FROM mobiledata
     GO
     ```
@@ -140,10 +144,10 @@ Azure HDInsight の Hadoop クラスターと Azure SQL Database または Micro
 
 ## <a name="sqoop-import"></a>Sqoop のインポート
 
-1. 次のコマンドを使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasbs:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
+1. 次のコマンドを使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
@@ -160,10 +164,7 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 * HDInsight と SQL Server の両方が、同じ Azure Virtual Network に存在する必要があります。
 
-    SQL Server をデータセンター内で使っている場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
-
-  > [!NOTE]
-  > **ポイント対サイト**仮想ネットワークを使用する場合、SQL Server で VPN クライアント構成アプリケーションが実行されている必要があります。 VPN クライアントは、Azure Virtual Network の構成の **[ダッシュ ボード]** から利用できます。
+    例については、「[Connect HDInsight to your on-premises network](./connect-on-premises-network.md)」(オンプレミス ネットワークへの HDInsight の接続) をご覧ください。
 
     Azure Virtual Network での HDInsight の使用に関する詳細情報については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。 Azure Virtual Network の詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
@@ -193,7 +194,7 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 * HDInsight から SQL Server に接続するときに、SQL Server の IP アドレスの使用が必要な場合があります。 次に例を示します。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
 ## <a name="limitations"></a>制限事項

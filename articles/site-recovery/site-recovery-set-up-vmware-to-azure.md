@@ -11,21 +11,21 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 06/05/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eccc927550aef4c9cd71ffad64d2eddedb74326e
-ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
 # <a name="set-up-the-source-environment-vmware-to-azure"></a>ソース環境のセットアップ (VMware から Azure へ)
 > [!div class="op_single_selector"]
-> * [VMware 仮想マシン](./site-recovery-set-up-vmware-to-azure.md)
-> * [物理サーバー](./site-recovery-set-up-physical-to-azure.md)
+> * [VMware から Azure](./site-recovery-set-up-vmware-to-azure.md)
+> * [物理から Azure](./site-recovery-set-up-physical-to-azure.md)
 
 この記事では、VMware 上で実行されている仮想マシンを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/13/2017
 
 この記事では、次のものが既に作成されていることを前提としています。
 - Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
-- [自動検出](./site-recovery-vmware-to-azure.md#vmware-account-permissions)に使用できる、VMware vCenter 内の専用アカウント。
+- [自動検出](./site-recovery-vmware-to-azure.md)に使用できる、VMware vCenter 内の専用アカウント。
 - 構成サーバーをインストールする仮想マシン。
 
 ## <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件

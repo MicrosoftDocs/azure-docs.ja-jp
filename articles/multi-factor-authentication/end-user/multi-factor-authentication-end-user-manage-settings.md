@@ -4,7 +4,7 @@ description: "連絡先情報の変更やデバイスの構成などの Azure Mu
 services: multi-factor-authentication
 keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 editor: yossib
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: kgremban
+ms.author: barlan
 ms.custom: end-user
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
@@ -60,10 +60,10 @@ IT 管理者が 2 段階認証を管理するための特定の URL または手
 
 ## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>信頼済みとしてマークされているデバイスで 2 段階認証を再び要求する場合
 
-組織の設定によっては、ブラウザーで 2 段階認証を実行するときに、"今後 **X** 日間はこのメッセージを表示しない" というチェック ボックスが表示される場合があります。 このボックスをオンにした後、デバイスを紛失した場合やアカウントが侵害されたと思われる場合は、すべてのデバイスに 2 段階認証を復元する必要があります。 
+組織の設定によっては、ブラウザーで 2 段階認証を実行するときに、"今後 **X** 日間はこのメッセージを表示しない" というチェック ボックスが表示される場合があります。 このボックスをオンにした後、デバイスを紛失した場合やアカウントが侵害されたと思われる場合は、すべてのデバイスに 2 段階認証を復元する必要があります。
 
 1. [追加のセキュリティ確認] ページで、**[以前の信頼済みデバイスに Multi-Factor Authentication を復元する]** を選択します。
-2. 任意のデバイスで次回サインインするときに、2 段階認証を実行するよう求められます。 
+2. 任意のデバイスで次回サインインするときに、2 段階認証を実行するよう求められます。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合
 デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 詳細については、「[Microsoft Authenticator](microsoft-authenticator-app-how-to.md)」参照してください。

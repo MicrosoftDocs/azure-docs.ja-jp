@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 88c919b64513c8441ab73e2750e7ddfb12fcb63e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: eca4ecd8f639bb9816903f4b1d1f999755da819c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
@@ -32,7 +31,7 @@ ms.lasthandoff: 03/29/2017
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」をご覧ください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。  手順については、「 [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」をご覧ください。
 * クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。
 

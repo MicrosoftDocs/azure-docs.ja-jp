@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 356aaeff3a78fc7b682d621e8e0de9312582b2fe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: カスタム属性を使用してコンシューマーに関する情報を収集する
@@ -31,7 +30,7 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 > 
 
 ## <a name="create-a-custom-attribute"></a>カスタム属性を作成する
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. **[ユーザー属性]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. **[名前]** にカスタム属性の名前を入力し (例: "ShoeSize")、必要に応じて **[説明]** を入力します。 **[作成]**をクリックします。
@@ -44,7 +43,7 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 **[ユーザー属性]**の一覧およびサインアップ ポリシーで、カスタム属性を使用できるようになります。
 
 ## <a name="use-a-custom-attribute-in-your-sign-up-policy"></a>サインアップ ポリシーでカスタム属性を使用する
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. **[サインアップ ポリシー]**をクリックします。
 3. クリックしてサインアップ ポリシーを開きます (例: "B2C_1_SiUp")。 ブレードの上部にある **[編集]** をクリックします。
 4. **[サインアップ属性]** をクリックして、カスタム属性 (例: "ShoeSize") を選択します。 **[OK]**をクリックします。

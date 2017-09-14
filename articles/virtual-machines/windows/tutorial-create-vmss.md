@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: Human Translation
@@ -169,7 +169,7 @@ Add-AzureRmVmssNetworkInterfaceConfiguration `
 New-AzureRmVmss `
   -ResourceGroupName myResourceGroupScaleSet `
   -Name myScaleSet `
-  -VirtualMachineScaleSet $vmssConfig     
+  -VirtualMachineScaleSet $vmssConfig
 ```
 
 すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
@@ -202,7 +202,7 @@ $scaleset = Get-AzureRmVmss `
   -VMScaleSetName myScaleSet
 
 # Loop through the instanaces in your scale set
-for ($i=0; $i -le ($scaleset.Sku.Capacity - 1); $i++) {
+for ($i=1; $i -le ($scaleset.Sku.Capacity - 1); $i++) {
     Get-AzureRmVmssVM -ResourceGroupName myResourceGroupScaleSet `
       -VMScaleSetName myScaleSet `
       -InstanceId $i
@@ -242,10 +242,10 @@ Update-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
 
 ```powershell
 # Define your scale set information
-$mySubscriptionId = (Get-AzureRmSubscription).SubscriptionId
+$mySubscriptionId = (Get-AzureRmSubscription).Id
 $myResourceGroup = "myResourceGroupScaleSet"
 $myScaleSet = "myScaleSet"
-$myLocation = "West US"
+$myLocation = "East US"
 
 # Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5 minute period
 $myRuleScaleUp = New-AzureRmAutoscaleRule `

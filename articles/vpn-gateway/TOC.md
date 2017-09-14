@@ -17,7 +17,6 @@
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [クラシック ポータル (クラシック)](vpn-gateway-site-to-site-create.md)
 ## ポイント対サイト接続の構成
 ### [Azure ポータル](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -59,10 +58,16 @@
 ### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [ゲートウェイの SKU (旧)](vpn-gateway-about-skus-legacy.md)
+## サード パーティ VPN デバイスの構成
+### [概要と Azure の構成](vpn-gateway-3rdparty-device-config-overview.md)
+### [サンプル: Cisco ASA デバイス (IKEv2/BGP なし)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## トラブルシューティング
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
+### [コミュニティで推奨される VPN またはファイアウォール デバイスの設定](vpn-gateway-third-party-settings.md)
+### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+### [サイト対サイト接続で接続できない](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
 
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
@@ -80,8 +85,10 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/vpn-gateway)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)

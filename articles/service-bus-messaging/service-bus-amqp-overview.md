@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 91b138ee9590a66c63e2055eaeace82b4e719ae5
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 0aeb02c8a07728cd17aa937614c5c20dd0bf102b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus での AMQP 1.0 サポート
@@ -90,16 +90,12 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 * [AMQP で .NET から Service Bus を使用する]
 * [AMQP で Java から Service Bus を使用する]
-* [AMQP で Python から Service Bus を使用する]
-* [AMQP で PHP から Service Bus を使用する]
 * [Azure Linux VM に Apache Qpid Proton-C をインストールする]
 * [Windows Server 用 Service Bus の AMQP]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [AMQP で .NET から Service Bus を使用する]: service-bus-amqp-dotnet.md
 [AMQP で Java から Service Bus を使用する]: service-bus-amqp-java.md
-[AMQP で Python から Service Bus を使用する]: service-bus-amqp-python.md
-[AMQP で PHP から Service Bus を使用する]: service-bus-amqp-php.md
 [Azure Linux VM に Apache Qpid Proton-C をインストールする]: service-bus-amqp-apache.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: asmalser
+ms.reviewer: asmalser
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 6cb0269e87f7ecffe7030b86237fb88fd58ef77b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
-
 
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/02/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0053f93218e9fec4d72fb229bfb2c6159d8b5bc7
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成する
@@ -32,11 +32,9 @@ Azure PowerShell を使用して、Azure Data Lake Store を既定のストレ�
 
 HDInsight で Data Lake Store を使用するための重要な考慮事項を次に示します。
 
-* 既定のストレージとしての Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.5 で使用できます。
+* 既定のストレージとしての Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.5 および 3.6 で使用できます。
 
 * 既定のストレージとしての Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight Premium クラスターでは*使用できません*。
-
-* HBase クラスター (Windows および Linux) の場合、Data Lake Store は、既定のストレージとしても追加のストレージとしても*サポートされません*。
 
 PowerShell を使用して Data Lake Store を操作できるように HDInsight を構成するには、次の 5 つのセクションで示す手順に従います。
 
@@ -45,7 +43,7 @@ PowerShell を使用して Data Lake Store を操作できるように HDInsight
 
 * **An Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 * **Azure PowerShell 1.0 以上**: [PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関する記事をご覧ください。
-* **Windows ソフトウェア開発キット (SDK)**: Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/en-us/downloads)」をご覧ください。 Windows SDK は、セキュリティ証明書の作成に使用します。
+* **Windows ソフトウェア開発キット (SDK)**: Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/en-us/downloads)」をご覧ください。 SDK は、セキュリティ証明書の作成に使用します。
 * **Azure Active Directory サービス プリンシパル**: このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
     >[!NOTE]
@@ -55,7 +53,7 @@ PowerShell を使用して Data Lake Store を操作できるように HDInsight
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
 Data Lake Store アカウントを作成するには、次の操作を行います。
 
-1. デスクトップで、PowerShell ウィンドウを開き、次のスニペットを入力します。
+1. デスクトップで、PowerShell ウィンドウを開き、次のスニペットを入力します。 サインインを求められたら、サブスクリプションの管理者または所有者としてサインインします。 
 
         # Sign in to your Azure account
         Login-AzureRmAccount
@@ -73,26 +71,42 @@ Data Lake Store アカウントを作成するには、次の操作を行いま�
     > Data Lake Store リソース プロバイダーの登録時に `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Store のホワイトリストに登録されていない可能性があります。 Data Lake Store パブリック プレビューで Azure サブスクリプションを有効にするには、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」をご覧ください。
     >
 
-2. サインインを求められたら、サブスクリプションの管理者または所有者としてサインインします。
-3. Data Lake Store アカウントは、Azure リソース グループに関連付けられます。 まず、リソース グループを作成します。
+2. Data Lake Store アカウントは、Azure リソース グループに関連付けられます。 まず、リソース グループを作成します。
 
         $resourceGroupName = "<your new resource group name>"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-    ![Azure リソース グループの作成](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Azure リソース グループの作成")
+    出力は次のように表示されます。
+
+        ResourceGroupName : hdiadlgrp
+        Location          : eastus2
+        ProvisioningState : Succeeded
+        Tags              :
+        ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
+
 3. Data Lake Store アカウントを作成します。 指定するアカウント名には、小文字と数字のみを含める必要があります。
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    ![Azure Data Lake アカウントの作成](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Azure Data Lake アカウントの作成")
-4. アカウントが正常に作成されたことを確認します。
+    出力は次のように表示されます。
 
-        Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
+        ...
+        ProvisioningState           : Succeeded
+        State                       : Active
+        CreationTime                : 5/5/2017 10:53:56 PM
+        EncryptionState             : Enabled
+        ...
+        LastModifiedTime            : 5/5/2017 10:53:56 PM
+        Endpoint                    : hdiadlstore.azuredatalakestore.net
+        DefaultGroup                :
+        Id                          : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp/providers/Microsoft.DataLakeStore/accounts/hdiadlstore
+        Name                        : hdiadlstore
+        Type                        : Microsoft.DataLakeStore/accounts
+        Location                    : East US 2
+        Tags                        : {}
 
-    この出力は **True** になります。
-
-5. Data Lake Store を既定のストレージとして使用するには、クラスターの作成時にクラスター固有のファイルのコピー先となるルート パスを指定する必要があります。 ルート パス (このスニペットでは **/clusters/hdiadlcluster**) を作成するには、次のコマンドレットを使用します。
+4. Data Lake Store を既定のストレージとして使用するには、クラスターの作成時にクラスター固有のファイルのコピー先となるルート パスを指定する必要があります。 ルート パス (このスニペットでは **/clusters/hdiadlcluster**) を作成するには、次のコマンドレットを使用します。
 
         $myrootdir = "/"
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/clusters/hdiadlcluster
@@ -120,7 +134,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次の 2 つ�
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    メッセージが表示されたら、先ほど指定した秘密キーのパスワードを入力します。 **-po** パラメーターに指定する値は、.pfx ファイルに関連付けられているパスワードです。 コマンドが正常に完了すると、指定した証明書ディレクトリに CertFile.pfx も表示されます。
+    メッセージが表示されたら、先ほど指定した秘密キーのパスワードを入力します。 **-po** パラメーターに指定する値は、.pfx ファイルに関連付けられているパスワードです。 コマンドが正常に完了すると、指定した証明書ディレクトリに **CertFile.pfx** も表示されるはずです。
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>Azure AD とサービス プリンシパルの作成
 このセクションでは、Azure AD アプリケーションのサービス プリンシパルを作成し、そのサービス プリンシパルにロールを割り当てて、証明書を指定することでサービス プリンシパルとして認証します。 Azure AD でアプリケーションを作成するには、次のコマンドを実行します。
@@ -170,9 +184,9 @@ Azure Data Lake の Active Directory 認証を設定するには、次の 2 つ�
         # Set these variables
 
         $location = "East US 2"
-        $storageAccountName = $dataLakeStoreName                          # Data Lake Store account name
+        $storageAccountName = $dataLakeStoreName                       # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
-        $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
+        $clusterName = "<unique cluster name>"
         $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
@@ -188,7 +202,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次の 2 つ�
                -DefaultStorageAccountType AzureDataLakeStore `
                -DefaultStorageAccountName "$storageAccountName.azuredatalakestore.net" `
                -DefaultStorageRootPath $storageRootPath `
-               -Version "3.5" `
+               -Version "3.6" `
                -SshCredential $sshCredentials `
                -AadTenantId $tenantId `
                -ObjectId $objectId `

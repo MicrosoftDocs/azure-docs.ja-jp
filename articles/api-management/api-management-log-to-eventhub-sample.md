@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 666d0f655a0705423d025b88a1f457b866008ab9
-ms.lasthandoff: 03/29/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 70ee752c5639c90f77dde104ce85eec0a1062300
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
@@ -262,7 +263,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 [Runscope 用の既存のクライアント ライブラリ](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)を利用し、`HttpRequestMessage` と `HttpResponseMessage` のインスタンスをサービスに簡単にプッシュ送信することができました。 Runscope API にアクセスするには、アカウントと API キーが必要です。 API キーを取得するための手順については、 [Runscope API にアクセスするアプリケーションの作成](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) に関するスクリーンキャストを参照してください。
 
 ## <a name="complete-sample"></a>完全なサンプル
-サンプルの[ソース コード](https://github.com/darrelmiller/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](api-management-get-started.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/storage-create-storage-account.md)が必要です。   
+サンプルの[ソース コード](https://github.com/darrelmiller/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](api-management-get-started.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/common/storage-create-storage-account.md)が必要です。   
 
 このサンプルは、イベント ハブからのイベントをリッスンし、そのイベントを `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換して、Runscope API に転送するだけの簡単なコンソール アプリケーションです。
 

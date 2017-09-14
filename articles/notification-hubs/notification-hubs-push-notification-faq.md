@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 029401a1884aebf0625ad8d68410dcdcd491d0ad
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知: よく寄せられる質問
@@ -46,7 +46,7 @@ Standard レベルの機能:
 Basic と Standard の Notification Hubs レベルでは、適切に構成されたアプリケーションは、少なくとも 99.9% の時間、プッシュ通知を送信したり、登録管理操作を行ったりすることができます。 SLA の詳細については、「[Notification Hubs の SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/)」ページを参照してください。
 
 > [!NOTE]
-> プッシュ通知はサードパーティのプラットフォーム通知システム (Apple の APNS、Google の FCM など) に依存するため、これらのメッセージの配信に対する SLA 保証はありません。 Notification Hubs がプラットフォーム通知システムへの送信を一括処理 (SLA 保証あり) した後、プッシュの配信 (SLA 保証なし) はプラットフォーム通知システムの責任です。
+> プッシュ通知はサードパーティのプラットフォーム通知システム (Apple の APNS、Google の FCM など) に依存するため、これらのメッセージの配信に対する SLA 保証はありません。 Notification Hubs がプラットフォーム通知システムにバッチを送信 (SLA 保証あり) した後、プッシュの配信 (SLA 保証なし) はプラットフォーム通知システムの責任です。
 
 ### <a name="which-customers-are-using-notification-hubs"></a>Notification Hubs を使用している顧客を教えてください。
 多くのお客様が Notification Hubs を使用しています。 たとえば、次のようなお客様です。
@@ -142,7 +142,7 @@ PNS は、通知の送信に関するいかなる SLA も保証しません。 �
 アプリのバックエンドからの登録は、登録を作成する前にクライアントを認証する必要がある場合に便利です。 アプリのロジックに基づいてアプリのバックエンドによって作成または変更される必要があるタグがある場合にも便利です。 詳細については、「[バックエンド登録のガイダンス]」ページと「[バックエンド登録のガイダンス 2]」ページを参照してください。
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>プッシュ通知の配信のセキュリティ モデルは何ですか。
-Azure Notification Hubs では、[Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) ベースのセキュリティ モデルを使用しています。 Shared Access Signature トークンはルートの名前空間レベルや詳細な通知ハブ レベルで使用できます。 メッセージ アクセス許可の送信や、通知アクセス許可のリッスンなど、さまざまな承認規則に従うように、Shared Access Signature トークンを設定できます。 詳細については、[Notification Hubs のセキュリティ モデル]に関するドキュメントを参照してください。
+Azure Notification Hubs では、[Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) ベースのセキュリティ モデルを使用しています。 Shared Access Signature トークンはルートの名前空間レベルや詳細な通知ハブ レベルで使用できます。 メッセージ アクセス許可の送信や、通知アクセス許可のリッスンなど、さまざまな承認規則に従うように、Shared Access Signature トークンを設定できます。 詳細については、[Notification Hubs のセキュリティ モデル]に関するドキュメントを参照してください。
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>プッシュ通知内の機密情報を含むペイロードはどのように扱えばよいですか。
 すべての通知は、プラットフォームの PNS によってターゲット デバイスに送信されます。 通知は、Azure Notification Hubs に送信されると、処理されて該当する PNS に渡されます。

@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a05c878f876eadc5160ef9765f764595cade76a9
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae42f661b39e8b6170fd415d758404fb33009ccc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
-この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure CLI を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
+
+この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure CLI を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -43,7 +44,7 @@ ms.lasthandoff: 06/20/2017
 
 ![接続について](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
+### <a name="why"></a>仮想ネットワークを接続する理由
 
 仮想ネットワークを接続するのは次のような場合です。
 
@@ -184,11 +185,11 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
   az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-4---create-the-connections"></a>手順 4 - 接続を作成する
+### <a name="createconnect"></a>手順 4 - 接続を作成する
 
 ここまでで、VPN ゲートウェイを備えた VNet を 2つ用意できました。 次の手順では、仮想ネットワーク ゲートウェイの間に VPN ゲートウェイ接続を作成します。 上記の例を使用した場合、VNet ゲートウェイは異なるリソース グループに存在します。 ゲートウェイが異なるリソース グループにある場合は、接続時に各ゲートウェイのリソース ID を特定して指定する必要があります。 VNet が同じリソース グループにある場合は、リソース ID を指定する必要がないため、[2 番目の手順](#samerg)を使用できます。
 
-### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a>異なるリソース グループにある VNet を接続するには
+### <a name="diffrg"></a>異なるリソース グループにある VNet を接続するには
 
 1. 次のコマンドの出力から、VNet1GW のリソース ID を取得します。
 
@@ -257,7 +258,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
-このシナリオでは、TestVNet1 と TestVNet5 を接続します。 VNet は異なるサブスクリプション内に存在します。 この構成の手順では、TestVNet1 を TestVNet5 に接続するために VNet 間接続を追加します。
+このシナリオでは、TestVNet1 と TestVNet5 を接続します。 VNet は異なるサブスクリプション内に存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この構成の手順では、TestVNet1 を TestVNet5 に接続するために VNet 間接続を追加します。
 
 ### <a name="TestVNet1diff"></a>手順 5 - TestVNet1 を作成し、構成する
 
@@ -321,7 +322,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
   az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-8---create-the-connections"></a>手順 8 - 接続を作成する
+### <a name="connections5"></a>手順 8 - 接続を作成する
 
 ゲートウェイが異なるサブスクリプションにあるため、**[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションにこの手順を分けました。 サブスクリプションを切り替えるには、"az account list --all" を実行して、アカウントで使用できるサブスクリプションを一覧表示します。次に、"az account set --subscription <subscriptionID>" を実行して、使用するサブスクリプションに切り替えます。
 
@@ -365,7 +366,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 [!INCLUDE [verify connections v2v cli](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

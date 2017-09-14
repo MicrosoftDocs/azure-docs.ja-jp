@@ -1,79 +1,79 @@
-- name: LUIS のドキュメント
+- name: LUIS Documentation
   href: ../index.md
-- name: 概要
+- name: Overview
   items: 
-  - name: Language Understanding Intelligent Service について
+  - name: Learn about Language Understanding Intelligent Service
     href: Home.md
-- name: クイック スタート
+- name: Quickstarts
   expanded: true
   items: 
-  - name: 新しいアプリの作成
+  - name: Create a new app
     href: luis-get-started-create-app.md
-- name: チュートリアル
+- name: Tutorials
   items: 
-  - name: Node.js を使用して LUIS をボットと統合する
+  - name: Integrate LUIS with a bot using Node.js
     href: luis-nodejs-tutorial-build-bot-framework-sample.md
-- name: 概念
+- name: Concepts
   items: 
-  - name: 意図
+  - name: Intents
     href: luis-concept-intent.md
-  - name: エンティティ
+  - name: Entities
     href: luis-concept-entity-types.md
-  - name: 発話
+  - name: Utterances
     href: luis-concept-utterance.md
-  - name: 機能
+  - name: Features
     href: luis-concept-feature.md
-  - name: 多言語のサポート
+  - name: Support for multiple languages
     href: luis-concept-language-support.md
-- name: ハウツー ガイド
+- name: How-to guides
   items: 
-  - name: アプリの計画
+  - name: Plan your app
     href: Plan-your-app.md
-  - name: LUIS アプリの作成
+  - name: Build a LUIS app
     items: 
-    - name: 新しいアプリの開始
+    - name: Start a new app
       href: Create-new-app.md
-    - name: 意図の追加
+    - name: Add intents
       href: Add-intents.md
-    - name: 発話の追加
+    - name: Add utterances
       href: Add-example-utterances.md
-    - name: 複数エンティティの追加
+    - name: Add entities
       href: Add-entities.md
-    - name: 機能によるパフォーマンスの向上
+    - name: Improve performance using features
       href: Add-Features.md
-    - name: アプリの訓練およびテスト
+    - name: Train and test the app
       href: Train-Test.md
-    - name: アクティブ ラーニングの使用
+    - name: Use active learning
       href: Label-Suggested-Utterances.md
-    - name: アプリケーションの発行
+    - name: Publish your app
       href: PublishApp.md
-  - name: 事前構築済みのモデル
+  - name: Prebuilt models
     items: 
-    - name: 事前構築済みのエンティティの使用
+    - name: Use prebuilt entities
       href: Pre-builtEntities.md
-    - name: 事前構築済みのドメインの使用
+    - name: Use prebuilt domains
       href: luis-how-to-use-prebuilt-domains.md
-    - name: 事前構築済みの Cortana アプリの使用
+    - name: Use the Cortana prebuilt app
       href: Cortana-Prebuilt-App.md
-  - name: LUIS アプリの管理
+  - name: Manage your LUIS app
     items: 
-    - name: ダッシュボードを使用したアプリの監視
+    - name: Monitor your app using the dashboard
       href: App-Dashboard.md
-    - name: キーの管理
+    - name: Manage keys
       href: Manage-Keys.md
-    - name: サブスクリプション キーの作成
+    - name: Create subscription keys
       href: AzureIbizaSubscription.md
-    - name: バージョンの管理
+    - name: Manage versions
       href: luis-how-to-manage-versions.md
-    - name: LUIS アプリでの共同作業
+    - name: Collaborate on a LUIS app
       href: luis-how-to-collaborate.md    
-- name: リファレンス
+- name: Reference
   items: 
-  - name: API の作成
+  - name: Authoring APIs
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f
-  - name: エンドポイント API
+  - name: Endpoint API
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78      
-  - name: SDK
+  - name: SDKs
     items:
     - name: Android
       href: https://github.com/Microsoft/Cognitive-LUIS-Android
@@ -83,7 +83,9 @@
       href: https://github.com/Microsoft/Cognitive-LUIS-Python
     - name: Windows
       href: https://github.com/Microsoft/Cognitive-LUIS-Windows
-- name: リソース
+- name: Resources
   items: 
-  - name: LUIS の FAQ
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: LUIS FAQ
     href: luis-resources-faq.md

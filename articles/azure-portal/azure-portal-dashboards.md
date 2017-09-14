@@ -1,5 +1,5 @@
 ---
-title: "Azure Portal のダッシュボード | Microsoft Docs"
+title: "Azure Portal のダッシュボードの作成と共有 | Microsoft Docs"
 description: "この記事では、Azure Portal でダッシュボードを作成して編集する方法について説明します。"
 services: azure-portal
 documentationcenter: 
@@ -14,19 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 5429e68723448ff5db6ef0ed8da1b927e97e6dd9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="creating-and-sharing-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
-ダッシュボードを複数作成し、ご自分の Azure サブスクリプションにアクセスできる他のユーザーと共有することができます。  この投稿では、ダッシュボードの作成、編集、発行のほか、ダッシュボードへのアクセスの管理に関する基本について説明します。
-
-## <a name="customizing-dashboards-versus-blades"></a>ダッシュボードとブレードをカスタマイズする
-数か月前にダッシュボードが導入されて以来、ブレードのカスタマイズが減り続ける一方で、ダッシュボードのカスタマイズが急激に増加しています。 使用状況に関するこの顕著な傾向から、ブレードよりもダッシュボードのカスタマイズの方が好まれていることがわかります。 この傾向に対応するために、Microsoft はブレードをカスタマイズする機能を削除し、ダッシュボード機能の強化に専念することにしました。 ブレードをカスタマイズしている場合、そのカスタマイズは間もなく削除されます。 そのカスタマイズを保持するには、カスタマイズされたタイルをダッシュボードにピン留めします。 タイルを右クリックし、次の画像に示すように **[ダッシュボードにピン留めする]** を選択してください。
-
-![save customized tile](./media/azure-portal-dashboards/save-customization.png)
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
+ダッシュボードを複数作成し、ご自分の Azure サブスクリプションにアクセスできる他のユーザーと共有することができます。  この記事では、ダッシュボードの作成、編集、発行のほか、ダッシュボードへのアクセスの管理に関する基本について説明します。
 
 ## <a name="create-a-dashboard"></a>ダッシュボードを作成する
 ダッシュボードを作成するには、現在のダッシュボードの名前の隣にある **[新しいダッシュボード]** ボタンを選択します。  
@@ -99,10 +95,5 @@ Azure サブスクリプションがあり、チームのメンバーに、サ�
 ## <a name="next-steps"></a>次のステップ
 * リソースの管理については、「 [ポータルを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)」を参照してください。
 * リソースのデプロイについては、「 [Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

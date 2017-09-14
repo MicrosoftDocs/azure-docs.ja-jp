@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f2fcfecf0d888997b0b0061dc9ed2a8f862d78b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -33,7 +35,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 ## <a name="request-body-for-clientcertificate-authentication"></a>ClientCertificate 認証の要求本文
 `ClientCertificate` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。  
 
-| 要素 | 概要 |
+| 要素 | Description |
 |:--- |:--- |
 | *authentication (親要素)* |SSL クライアント証明書を使用するための認証オブジェクト。 |
 | *type* |必須。 認証の種類。SSL クライアント証明書の場合、値 `ClientCertificate` を使用する必要があります。 |
@@ -391,10 +393,5 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
  [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

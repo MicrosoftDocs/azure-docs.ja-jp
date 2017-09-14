@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/11/2017
+ms.date: 05/30/2017
 ms.author: asaxton
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: ee480f4382a93a2420f7c73f7259ce1f0a03d595
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
@@ -39,11 +39,12 @@ Microsoft Azure Virtual Machines の SQL Server のライセンスを取得す�
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>Azure 仮想マシン ギャラリーで提供される SQL Server イメージ
 Microsoft Azure 仮想マシン ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。 仮想マシン イメージにインストールされているソフトウェアは、オペレーティング システムのバージョンや SQL Server のバージョンによって異なります。 Azure 仮想マシン ギャラリーで提供されるイメージのリストは頻繁に変更されます。
 
-![Azure VM ギャラリーの SQL イメージ](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)
+<!--![SQL image in azure VM gallery](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)-->
+![Azure VM ギャラリーの SQL イメージ](./media/virtual-machines-windows-classic-ps-sql-bi/vm-sql-images.png)
 
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) 次の PowerShell スクリプトは、ImageName に "SQL Server" が含まれた Azure イメージのリストを返します。
 
-    # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
+    # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "Subscriptions" menu in Azure portal.
 
     $subscriptionID = ""    # REQUIRED: Provide your subscription ID.
     $subscriptionName = "" # REQUIRED: Provide your subscription name.
@@ -66,7 +67,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 * [SQL Server 2016 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>SQL Server 仮想マシン ギャラリー イメージにインストールされている BI 機能
-次の表は、SQL Server の一般的な Microsoft Azure 仮想マシン ギャラリー イメージにインストールされている Business Intelligence 機能を示しています。
+次の表は、SQL Server の一般的な Microsoft Azure 仮想マシン ギャラリー イメージにインストールされているビジネス インテリジェンス機能を示しています。
 
 * SQL Server 2016 SP1 Enterprise
 * SQL Server 2016 SP1 Standard
@@ -156,16 +157,20 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
      
       詳細については、「 [What is a Cloud Service? (クラウド サービスとは)](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/)」を参照してください。
 
-**Reporting Services 構成マネージャーを起動します。**
 
-1. **Windows Server 2012/2016** では、次の手順を実行します。
-2. **[スタート]** 画面で、「**Reporting Services**」と入力してアプリケーションの一覧を表示します。
-3. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
-4. **Windows Server 2008 R2**では、次の手順を実行します。
-5. **[スタート]** ボタンをクリックし、**[すべてのプログラム]** をクリックします。
-6. **[Microsoft SQL Server 2016]**をクリックします。
-7. **[構成ツール]**をクリックします。
-8. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
+**Start Reporting Services Configuration Manager**
+
+**Windows Server 2012/2016** では、次の手順を実行します。
+
+1. **[スタート]** 画面で、「**Reporting Services**」と入力してアプリケーションの一覧を表示します。
+2. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
+
+**Windows Server 2008 R2**では、次の手順を実行します。
+
+1. **[スタート]** ボタンをクリックし、**[すべてのプログラム]** をクリックします。
+2. **[Microsoft SQL Server 2016]**をクリックします。
+3. **[構成ツール]**をクリックします。
+4. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
 
 または
 
@@ -219,9 +224,9 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. TCP ポート 80 の仮想マシンのエンドポイントを作成します。 詳細については、このドキュメントの「 [仮想マシン エンドポイントとファイアウォール ポート](#virtual-machine-endpoints-and-firewall-ports) 」をご覧ください。
 2. 仮想マシンのファイアウォールでポート 80 を開きます。
-3. URL 内のサーバー名として Azure 仮想マシンの **DNS 名** を使用して、Web ポータルまたはレポート マネージャーを参照します。 次に例を示します。
+3. URL 内のサーバー名として Azure 仮想マシンの **DNS 名** を使用して、Web ポータルまたはレポート マネージャーを参照します。 For example:
    
-    **レポート サーバー**: http://uebi.cloudapp.net/reportserver  **Web ポータル**: http://uebi.cloudapp.net/reports
+    **レポート サーバー**: http://uebi.cloudapp.net/reportserver **Web ポータル**: http://uebi.cloudapp.net/reports
    
     [レポート サーバー アクセスに対するファイアウォールの構成](https://msdn.microsoft.com/library/bb934283.aspx)
 

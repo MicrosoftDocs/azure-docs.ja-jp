@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: fc9b84d151144ae9cb49beacdf525fdc356818a6
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0ff7fde5f3753aa6a24fb0af54d68d0dc0bd96a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
@@ -68,10 +67,10 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 4. **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
 
 >[!NOTE]
-> クラウド サービスが NSG の背後にある場合は、ポート **3389** と **20000** でのトラフィックを許可するルールを作成する必要があることがあります。  リモート デスクトップではポート **3389** を使用します。  クラウド サービス インスタンスは負荷分散されるため、接続先のインスタンスを直接制御することはできません。  *RemoteForwarder* および *RemoteAccess* エージェントは RDP トラフィックを管理し、クライアントが RDP Cookie を送信して接続先の個々のインスタンスを指定できるようにします。  *RemoteForwarder* および *RemoteAccess* エージェントではポート **20000*** を開く必要があります。NSG がある場合、ブロックされる可能性があります。
+> クラウド サービスが NSG の背後にある場合は、ポート **3389** と **20000** でのトラフィックを許可するルールを作成する必要があることがあります。  リモート デスクトップではポート **3389** を使用します。  クラウド サービス インスタンスは負荷分散されるため、接続先のインスタンスを直接制御することはできません。  *RemoteForwarder* および *RemoteAccess* エージェントは、RDP トラフィックを管理し、クライアントが RDP クッキーを送信して接続先の個々のインスタンスを指定できるようにします。  *RemoteForwarder* および *RemoteAccess* エージェントではポート **20000*** を開く必要があります。NSG がある場合、ブロックされる可能性があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
-[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md#remote-desktop)
+[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md)
 

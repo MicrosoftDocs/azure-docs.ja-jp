@@ -16,4 +16,4 @@ https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
 
 `<username>` は、前の手順で作成した[デプロイ ユーザー](#configure-a-deployment-user)です。
 
-表示された URI を保存します。これは、次の手順で使用します。 
+表示された URI をコピーします。これは、次の手順で使用します。

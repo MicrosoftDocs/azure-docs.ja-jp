@@ -16,19 +16,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 89117c59ae8948eeb32b51a0ecd4fdf0a3a2edd7
-ms.openlocfilehash: d026d6d901374a91864edf9f6ee38d5450e7f179
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: fd51bf9e965d2efd5a6bea9de142ab2ec8d27836
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="cloud-foundry-on-azure"></a>Azure での Cloud Foundry
 
-Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープン ソースのサービスとしてのプラットフォーム (PaaS) です。 このドキュメントでは、Azure で Cloud Foundry を実行するためのオプションと、その使い方について説明します。
+Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースのサービスとしてのプラットフォーム (PaaS) です。 このドキュメントでは、Azure で Cloud Foundry を実行するためのオプションと、その使い方について説明します。
 
 ## <a name="cloud-foundry-offerings"></a>Cloud Foundry の種類
 
-Azure で実行できる Cloud Foundry には、オープン ソースの Cloud Foundry (OSS CF) と Pivotal Cloud Foundry (PCF) という&2; つの形式があります。 OSS CF は完全に[オープン ソース](https://github.com/cloudfoundry)で作られた Cloud Foundry で、Cloud Foundry Foundation によって管理されています。 Pivotal Cloud Foundry は、Pivotal Software Inc. から配布されているエンタープライズ向けの Cloud Foundry です。ここでは両者の違いをいくつか紹介します。
+Azure で実行できる Cloud Foundry には、オープン ソースの Cloud Foundry (OSS CF) と Pivotal Cloud Foundry (PCF) という 2 つの形式があります。 OSS CF は完全に[オープン ソース](https://github.com/cloudfoundry)で作られた Cloud Foundry で、Cloud Foundry Foundation によって管理されています。 Pivotal Cloud Foundry は、Pivotal Software Inc. から配布されているエンタープライズ向けの Cloud Foundry です。ここでは両者の違いをいくつか紹介します。
 
 ### <a name="open-source-cloud-foundry"></a>オープン ソースの Cloud Foundry
 
@@ -53,7 +55,7 @@ Pivotal Cloud Foundry には、OSS 配布と同じコア プラットフォー�
 
 ## <a name="azure-service-broker"></a>Azure Service Broker
 
-Cloud Foundry では、ステートレスなアプリケーション プロセスとステートフルなバックアップ サービスを明確に分離する、["twelve-factor app"](https://12factor.net/) (アプリ開発に必要な&12; 要素) の方法論を推奨しています。 [Service Broker](https://docs.cloudfoundry.org/services/api.html) は、バックアップ サービスをアプリケーションにをプロビジョニングしてバインドするための一貫した方法を提供します。 [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) は、Azure Storage や Azure SQL などの主要な Azure サービスの一部を、このチャネルを通じて提供します。
+Cloud Foundry では、ステートレスなアプリケーション プロセスとステートフルなバックアップ サービスを明確に分離する、["twelve-factor app"](https://12factor.net/) (アプリ開発に必要な 12 要素) の方法論を推奨しています。 [Service Broker](https://docs.cloudfoundry.org/services/api.html) は、バックアップ サービスをアプリケーションにをプロビジョニングしてバインドするための一貫した方法を提供します。 [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) は、Azure Storage や Azure SQL などの主要な Azure サービスの一部を、このチャネルを通じて提供します。
 
 Pivotal Cloud Foundry を使用している場合、Service Broker は Pivotal Network から[タイルとしても使用可能](https://docs.pivotal.io/azure-sb/installing.html)です。
 
@@ -66,9 +68,4 @@ Cloud Foundry は、継続的インテグレーション (CI) や継続的な配
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Marketplace からの Pivotal Cloud Foundry のデプロイ](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+- [アプリを Azure の Cloud Foundry にデプロイする](./cloudfoundry-deploy-your-first-app.md)

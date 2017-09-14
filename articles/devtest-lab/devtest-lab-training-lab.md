@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a85999b7963e9a07d3f91ec47f298f91439c0808
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 3bad7538121e1049af953e3937fc679b1d9184d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>トレーニングでの Azure DevTest Labs の使用
@@ -79,7 +79,7 @@ Azure DevTest Labs は、任意の仮想環境でトレーニングを実施す�
    | タスク | 学習内容 |
    | --- | --- |
    | [ラボのポリシーの定義](devtest-lab-set-lab-policy.md) |ラボでポリシーを設定してコストを管理します。 |
-   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |トレーニングが完了したときに、1 回の操作ですべてのラボを削除します。 |
+   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |トレーニングが完了したときに、1 回の操作ですべてのラボを削除します。 |
 5. **各受講者とラボを共有する**
    
     受講者と共有したリンクを使用すれば、ラボに直接アクセスできます。 受講者は [Microsoft アカウント](devtest-lab-faq.md#what-is-a-microsoft-account)さえ持っていれば、Azure アカウントすら必要ありません。 受講者は他の受講者によって作成された VM を見るこはできません。  
@@ -99,7 +99,7 @@ Azure DevTest Labs は、任意の仮想環境でトレーニングを実施す�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
+   | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

@@ -4,7 +4,7 @@ description: "センサー情報を収集して IoT Hub に送信するために
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: yjianfeng
+manager: timlt
 tags: 
 keywords: "IoT ゲートウェイ, Intel NUC, NUC コンピューター, DE3815TYKE"
 ms.assetid: 917090d6-35c2-495b-a620-ca6f9c02b317
@@ -16,11 +16,10 @@ ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 475664845a9922c5225ea1fd8e008bcb5582bd67
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: b9e842a93dfdb7699158a11978aa622c31382d28
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/26/2017
 
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>IoT ゲートウェイとしての Intel NUC のセットアップ
@@ -105,6 +104,12 @@ Azure IoT Edge パッケージには、IoT Edge のコンパイル済みバイ�
    ```
 
    > 'このチャネルを含める' ように求められたら、'y' を入力します。
+   
+   `import read failed(-1)` エラーが表示された場合、問題を解決するには次のコマンドを使用します。
+   ```bash
+   wget http://iotdk.intel.com/misc/iot_pub2.key 
+   rpm --import iot_pub2.key  
+   ```
 
    `rpm` コマンドは、rpm キーをインポートします。 `smart channel` コマンドは、rpm チャネルを Smart Package Manager に追加します。 `smart update` コマンドを実行する前に、次のような出力が表示されます。
 

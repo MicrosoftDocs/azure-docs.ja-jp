@@ -6,6 +6,7 @@
 ### [インシデント対応](security-center-incident-response.md)
 ### [推奨事項を使用してセキュリティを強化する](security-center-using-recommendations.md)
 ## [プラットフォームの移行](security-center-platform-migration.md)
+### [プラットフォームの移行に関する FAQ](security-center-platform-migration-faq.md)
 
 # 作業開始
 ## [クイック スタート](security-center-get-started.md)
@@ -19,6 +20,7 @@
 
 ## 回避
 ### [セキュリティ ポリシーの設定](security-center-policies.md)
+### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
 ### [セキュリティの推奨事項の実装](security-center-recommendations.md)
 
 ### [アプリケーションの推奨事項](security-center-application-recommendations.md)
@@ -56,9 +58,10 @@
 ## 検出と応答
 ### [検出機能](security-center-detection-capabilities.md)
 ### [セキュリティ アラートの管理](security-center-managing-and-responding-alerts.md)
+### [セキュリティ アラートの種類](security-center-alerts-type.md)
+### [アラートの検証](security-center-alert-validation.md)
 ### [セキュリティ インシデントの管理](security-center-incident.md)
 ### [Azure ログ統合](security-center-integrating-alerts-with-log-integration.md)
-### [セキュリティ アラートの種類](security-center-alerts-type.md)
 ### [脅威インテリジェンス レポート](security-center-threat-report.md)
 
 ## トラブルシューティング
@@ -71,8 +74,10 @@
 ## [Azure Security](/azure/security/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [料金](security-center-pricing.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=security-center)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=security-center)

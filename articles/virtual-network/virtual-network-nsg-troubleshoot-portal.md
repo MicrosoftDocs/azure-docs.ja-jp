@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -41,7 +43,7 @@ VM の NIC に適用されると、有効なセキュリティ規則を NSG か�
 
 この例では TCP ポート 3389 を使用していますが、次の手順は任意のポート経由での受信/送信接続の失敗の確認に使用できます。
 
-### <a name="view-effective-security-rules-for-a-virtual-machine"></a>仮想マシンの有効なセキュリティ規則を表示する
+### <a name="vm"></a>仮想マシンの有効なセキュリティ規則を表示する
 VM の NSG のトラブルシューティングを行うには、次の手順を実行します。
 
 NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧できます。 操作を行う権限を持っていれば、有効な規則のブレードから NIC とサブネット両方の NSG ルールを追加、変更、削除できます。
@@ -74,7 +76,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image4.png)
    
-     *denyRDP* **受信** 規則にご注目ください。 サブネットに適用された受信の規則は、ネットワーク インターフェイスに適用された規則よりも先に評価されます。 サブネットに拒否規則が適用されているため、NIC の許可規則は評価されることなく、TCP 3389 への接続要求は失敗します。 
+    *denyRDP* **受信** 規則にご注目ください。 サブネットに適用された受信の規則は、ネットワーク インターフェイスに適用された規則よりも先に評価されます。 サブネットに拒否規則が適用されているため、NIC の許可規則は評価されることなく、TCP 3389 への接続要求は失敗します。 
    
     *DenyRDP* 規則が、RDP 接続が失敗した理由です。 これを削除すれば、問題が解決するはずです。
    
@@ -92,7 +94,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
    
     VM への RDP 接続を開始するか、PsPing ツールを使用して、TCP ポート 3389 が開いていることを確認します。 PsPing の詳細については、 [PsPing のダウンロード ページ](https://technet.microsoft.com/sysinternals/psping.aspx)をご覧ください。
 
-### <a name="view-effective-security-rules-for-a-network-interface"></a>ネットワーク インターフェイスの有効なセキュリティ規則を表示する
+### <a name="nic"></a>ネットワーク インターフェイスの有効なセキュリティ規則を表示する
 特定の NIC で VM トラフィックが影響を受けている場合は、次の手順を使用してネットワーク インターフェイスのコンテキストから NIC の有効な規則の完全な一覧を表示できます。
 
 1. https://portal.azure.com で Azure ポータルにログインします。
@@ -109,7 +111,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
    > 
 4. NIC やサブネットに関連付けられている NSG の規則を直接編集できます。 方法については、この記事の「 **View effective security rules for a virtual machine (仮想マシンの有効なセキュリティ規則を表示する)** 」セクションの手順 8 をご覧ください。
 
-## <a name="view-effective-security-rules-for-a-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) の有効なセキュリティ規則を表示する
+## <a name="nsg"></a>ネットワーク セキュリティ グループ (NSG) の有効なセキュリティ規則を表示する
 NSG 規則を変更する際、特定の VM に追加された規則による影響を確認できます。 NSG が適用されているすべての NIC の有効なセキュリティ規則の完全な一覧は、NSG ブレードからコンテキストを切り替えることなく確認できます。 NSG 内で有効な規則をトラブルシューティングするには、次の手順を実行します。
 
 1. https://portal.azure.com で Azure ポータルにログインします。
@@ -148,10 +150,5 @@ NSG 規則を変更する際、特定の VM に追加された規則による影
 * 既定では、VNet をピアリングした場合、VIRTUAL_NETWORK タグはピアリングされている VNet のプレフィックスを含めるように自動的に拡張されます。 これらのプレフィックスは、 **ExpandedAddressPrefix** の一覧で表示でき、VNet ピアリングの接続に関連する問題をトラブルシューティングする際に使用できます。 
 * 有効なセキュリティの規則は、VM の NIC やサブネットに関連付けられている NSG がある場合のみ表示されます。 
 * NIC やサブネットに関連付けられている NSG がなく、VM にパブリック IP アドレスを割り当てている場合は、着信/発信アクセス用にすべてのポートが開きます。 VM にパブリック IP アドレスがある場合は、NIC またはサブネットに NSG を適用することを強くお勧めします。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

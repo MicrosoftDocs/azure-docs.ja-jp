@@ -1,5 +1,5 @@
 ## <a name="overview"></a>概要
-[Azure Marketplace](https://azure.microsoft.com/marketplace/)からイメージをデプロイすることによってリソース グループに新しい仮想マシン (VM) を作成するとき、既定の OS ドライブは 127 GB です。 VM にデータ ディスクを追加でき (数は選択されている SKU に依存)、アプリケーションおよび CPU 多用ワークロードはこれらの追加ディスクにインストールすることが推奨されますが、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になることがあります。
+[Azure Marketplace](https://azure.microsoft.com/marketplace/) からイメージをデプロイすることによってリソース グループに新しい仮想マシン (VM) を作成するとき、多くの場合、既定の OS ドライブは 127 GB です (一部のイメージでは既定の OS ディスク サイズが小さくなります)。 VM にデータ ディスクを追加でき (数は選択されている SKU に依存)、アプリケーションおよび CPU 多用ワークロードはこれらの追加ディスクにインストールすることが推奨されますが、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になることがあります。
 
 1. OS ドライブにコンポーネントをインストールするレガシ アプリケーションをサポートする場合。
 2. オンプレミスから OS ドライブの大きい物理 PC または仮想マシンを移行する場合。
@@ -42,7 +42,7 @@
    ```
    
    > [!WARNING]
-   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 許可される最大値は、1,023 GB です。
+   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 許可される最大値は、2,048 GB です  (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の動作に使用できるのは、最初の 2,048 GB の領域のみです)。
    > 
    > 
 6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了した後、VM を再起動します。
@@ -80,5 +80,5 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-Azure Resource Manager VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
+Azure Resource Manager VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 

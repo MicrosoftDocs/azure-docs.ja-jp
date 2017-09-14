@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c614efa25e2e7ddbb9b6c90094cf84fa8b6b4243
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 0293495a9cbdab1fc797d9948e4cbb7759b1ba54
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間 VPN Gateway 接続を構成する
 
-この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 この記事の手順は、Resource Manager デプロイメント モデルと Azure Portal に適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
+
+この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure Portal を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -57,9 +58,10 @@ ms.lasthandoff: 06/17/2017
   
   * 同じリージョン内で、分離または管理要件に基づいて相互に接続された複数の仮想ネットワークを利用し、多層アプリケーションをセットアップすることができます。
 
-VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用してください。
+VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) または [CLI](vpn-gateway-howto-vnet-vnet-cli.md) を使用できます。
 
 ### <a name="values"></a>設定例
+
 以下の手順を練習として使用する場合は、この例の設定値を使用できます。 ここでは、例として示すために VNet ごとに複数のアドレス空間を使用しますが、 VNet 間構成に複数のアドレス空間は必要ありません。
 
 **TestVNet1 の値:**
@@ -129,7 +131,7 @@ VNet が作成されたら、アドレス空間をさらに追加してサブネ
 ### <a name="to-create-a-gateway-subnet"></a>ゲートウェイ サブネットを作成するには
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## <a name="DNSServer"></a>4.DNS サーバーの指定 (省略可能)
+## <a name="dns"></a>4.DNS サーバーの指定 (省略可能)
 VNet 間接続に DNS は不要です。 ただし仮想ネットワークにデプロイされたリソースで名前解決を使用する場合は、DNS サーバーを指定する必要があります。 この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。 この設定で、DNS サーバーは作成されません。
 
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
@@ -185,7 +187,7 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 VNet 間接続に関するその他の情報についてよく寄せられる質問の詳細を示します。
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) を参照してください。

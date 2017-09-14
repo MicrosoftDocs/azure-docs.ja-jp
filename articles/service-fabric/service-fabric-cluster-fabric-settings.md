@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/15/2017
+ms.date: 06/15/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: bee47924092a0b327ef3aa5b936116bf311ce8d7
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: d71fdcf2a054a9b9ac1d74ddd3a6b43d151fa87d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
@@ -262,6 +262,7 @@ ms.lasthandoff: 03/29/2017
 |IsEnabled|ブール値、既定値は false | HttpGateway を有効または無効にします。 HttpGateway は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
 |ActiveListeners |uint、既定値は 50 | HTTP サーバー キューに送信する読み取りの数。 HttpGateway が対応できる同時要求の数を制御します。 |
 |MaxEntityBodySize |uint、既定値は 4194304 |  HTTP 要求の予想される本文の最大サイズを指定します。 既定値は 4 MB です。 本文のサイズがこの値を超えている場合、HttpGateway は要求を失敗させます。 最小読み取りチャンク サイズは 4096 バイトです。 そのため、この値は 4096 以上にする必要があります。 |
+|HttpGatewayHealthReportSendInterval |秒単位。既定値は 30 | timespan を秒単位で指定します。 HTTP ゲートウェイが、累積した正常性レポートを Health Manager に送信する間隔。 |
 
 ### <a name="section-name-ktllogger"></a>セクション名: KtlLogger
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -278,10 +279,10 @@ ms.lasthandoff: 03/29/2017
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 |IsEnabled |ブール値、既定値は false | HttpApplicationGateway を有効または無効にします。 HttpApplicationGateway は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
-|NumberOfParallelOperations | uint、既定値は 1000 | HTTP サーバー キューに送信する読み取りの数。 HttpGateway が対応できる同時要求の数を制御します。 |
-|DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 60 |timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
+|NumberOfParallelOperations | uint、既定値は 5000 | HTTP サーバー キューに送信する読み取りの数。 HttpGateway が対応できる同時要求の数を制御します。 |
+|DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 120 です |timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
 |ResolveServiceBackoffInterval |時間 (秒単位)、既定値は 5 |timespan を秒単位で指定します。  失敗したサービス解決操作を再試行するまでの既定のバックオフ間隔を指定します。 |
-|BodyChunkSize |uint、既定値は 4096 |  本文の読み取りに使用するチャンクのサイズをバイト単位で指定します。 |
+|BodyChunkSize |uint、既定値は 16384 |  本文の読み取りに使用するチャンクのサイズをバイト単位で指定します。 |
 |GatewayAuthCredentialType |string、既定値は "None" | HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は "None/X509 です。 |
 |GatewayX509CertificateStoreName |string、既定値は "My" | HTTP アプリケーション ゲートウェイの証明書を格納する X.509 証明書ストアの名前。 |
 |GatewayX509CertificateFindType |string、既定値は "FindByThumbprint" | GatewayX509CertificateStoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |

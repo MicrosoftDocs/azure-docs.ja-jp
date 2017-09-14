@@ -29,6 +29,7 @@
 ### [マルウェアの評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [システムの更新の評価](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [セキュリティ製品の接続](oms-security-connect-products.md)
+### [Web ベースライン評価](oms-security-web-baseline-assessment.md)
 
 ## ソリューションの使用
 ### [管理ソリューション](operations-management-suite-solutions.md)
@@ -36,16 +37,19 @@
 ### 洞察と分析
 #### [AD 評価](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Agent Health](oms-solution-agenthealth.md)
 #### [アラートの管理](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Azure Networking Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [コンテナー](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault Analytics](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [ネットワーク パフォーマンス監視](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### サービス マップ
 ##### [チュートリアル](operations-management-suite-walkthrough-servicemap.md)
 ##### [最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、](operations-management-suite-service-map.md)
 ##### [構成](operations-management-suite-service-map-configure.md)
+##### [Operations Manager との統合](operations-management-suite-service-map-scom.md)
 #### [SQL の評価](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -73,3 +77,6 @@
 # リファレンス
 ## [SDK](operations-management-suite-sdk.md)
 
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

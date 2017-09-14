@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/27/2017
+ms.date: 06/20/2017
 ms.author: tamram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 92090975e8e4e38b3ea99045c226a2777ef86405
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 9c03bde919c46cd301229255c0b12ee69dda6f78
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -108,7 +108,11 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 
 3. アプリケーション用に **[設定]** ブレードを開きます。 **[API アクセス]** セクションで、**[必要なアクセス許可]** を選択します。
 4. **[必要なアクセス許可]** ブレードで、**[追加]** ボタンをクリックします。
-5. ステップ 1 で、**MicrosoftAzureBatch** を探して **[Microsoft Azure Batch (MicrosoftAzureBatch)]** を選択し、**[選択]** ボタンをクリックします。
+5. ステップ 1 で、Batch API を検索します。 API が見つかるまで、次の各文字列を検索します。
+    1. **MicrosoftAzureBatch**。
+    2. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
+    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 
+6. Batch API を見つけたら選択して、**[選択]** をクリックします。
 6. ステップ 2 で、**[Access Azure Batch Service] \(Azure Batch サービスへのアクセス)** の横のチェック ボックスをオンにし、**[選択]** ボタンをクリックします。
 7. **[完了]** ボタンをクリックします。
 

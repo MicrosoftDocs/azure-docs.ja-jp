@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: b589742e23ba9cca919a845e4d262ccfea4c9aca
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 90e29a9ab522031db8feb934a218d4b671561417
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Azure Data Catalog に Data Lake Store のデータを登録する

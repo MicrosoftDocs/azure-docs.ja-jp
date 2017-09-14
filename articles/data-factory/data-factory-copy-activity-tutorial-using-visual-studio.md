@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
 ms.openlocfilehash: 460276303f026553e1ea374f85759937afe90dfa
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/22/2017
-
 
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する

@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/25/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4ae08f16db8c0b8cd2e918d25aa546f1da615af1
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 42229b338063634480551f26896963d8add5e071
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -34,12 +35,13 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B のゲスト ユーザーが SharePoint Online/OneDrive ユーザー選択ウィンドウに表示されません 
  
-SharePoint Online のユーザー選択ウィンドウで既存のゲスト ユーザーを検索する機能は、従来の動作と一致させるために、既定ではオフになっています。
-これは、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この設定は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
+SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲスト ユーザーを検索する機能は、従来の動作と一致させるために、既定ではオフになっています。
+
+この機能は、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この機能は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>ディレクトリに対して招待が無効になっています
 
-ユーザーを招待するアクセス許可がないことを示すエラー メッセージが表示される場合は、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。 この操作は、次のように、[ユーザー設定] で行うことができます。
+ユーザーを招待するアクセス許可がないことを通知された場合は、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。
 
 ![](media/active-directory-b2b-troubleshooting/external-user-settings.png)
 
@@ -57,13 +59,13 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部ユーザーがフェデレーション ドメインに既に存在しません
 
-オンプレミスで認証が行われているフェデレーション ソリューションを外部ユーザーが使用していて、そのユーザーが既に Azure Active Directory に存在しない場合、そのユーザーを招待することはできません。
+フェデレーション認証を使用しているときに、ユーザーが Azure Active Directory に既に存在しない場合は、そのユーザーを招待することはできません。
 
 この問題を解決するには、外部ユーザーの管理者がユーザーのアカウントを Azure Active Directory に同期する必要があります。
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>通常は無効な文字である "\#" は、どのように Azure AD と同期しますか。
 
-"\#" は Azure AD B2B コラボレーションまたは外部ユーザーの UPN の予約文字です (つまり、招待された user@contoso.com は user_contoso.com#EXT@fabrikam.onmicrosoft.com になります)。そのため、オンプレミスから来る UPN の \# では、Azure Portal へのサインインは許可されません。
+"\#" は、Azure AD B2B コラボレーションまたは外部ユーザー向けの UPN 内の予約文字です。理由は、招待されたアカウント user@contoso.com が user_contoso.com#EXT@fabrikam.onmicrosoft.com になるためです。 したがって、オンプレミスから送信されるUPN 内の \# は、Azure ポータルにサインインするために使用することはできません。 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>同期済みグループに外部ユーザーを追加すると、エラー メッセージが表示されます
 
@@ -75,7 +77,12 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>カスタム メッセージが招待メッセージに含まれないことがあります
 
-招待者がリソース組織 (招待組織とも呼ばれます) の電子メール アドレスを持っていない場合、またはアプリケーションのサービス プリンシパルが招待を送信する場合は、プライバシーに関する法律を順守するために、API は電子メール招待状にカスタム メッセージを含めません。 これがお客様にとって重要なシナリオである場合は、API による招待メール送信を抑制し、任意の電子メール メカニズムを使用して送信できます。 お客様の組織の弁護士に相談して、この方法による電子メールの送信がプライバシーに関する法律に適合しているかどうかを確認してください。
+プライバシーに関する法律を順守するため、以下に該当する場合、API は、電子メール招待状にカスタム メッセージを含めません。
+
+- 招待元が招待元のテナントで電子メール アドレスを持っていない場合
+- appservice プリンシパルが招待を送信する場合
+
+これがお客様にとって重要なシナリオである場合は、API による招待メール送信を抑制し、選択した電子メール メカニズムを使用して送信できます。 お客様の組織の弁護士に相談して、この方法による電子メールの送信がプライバシーに関する法律を順守していることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

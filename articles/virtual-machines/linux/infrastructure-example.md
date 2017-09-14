@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: aed95844ef230ee0f34a9a17cb67e1a9dcd9f81d
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: b18be0d81d6fad7328edb47c9b69af4eecd3b971
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
@@ -118,8 +118,4 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 * インターネットから Web サーバーへの HTTPS ベースの Web トラフィック用の外部負荷分散セット
 * Web サーバーからアプリケーション サーバーへの暗号化されていない Web トラフィック用の内部負荷分散セット
 * 単一リソース グループ
-
-## <a name="next-steps"></a>次のステップ
-[!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
 

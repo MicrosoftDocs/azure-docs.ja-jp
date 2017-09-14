@@ -12,19 +12,19 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/07/2017
 ms.author: sethm;shvija
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: efd0ec90a1c0775661069faa323e56914dd4e032
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0598ee93a38c07aa7b1102cdaf228c2a4b4dcf71
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
 
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 
-この記事では、Azure Resource Manager テンプレートを使用し、Standard/Basic の SKU で **Messaging** タイプの Service Bus 名前空間を作成する方法について説明します。 また、デプロイの実行用に指定するパラメーターについても取り上げます。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、Standard の SKU で **Messaging** タイプの Service Bus 名前空間を作成する方法について説明します。 また、デプロイの実行用に指定するパラメーターについても取り上げます。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/13/2017
 > 
 
 ## <a name="what-will-you-deploy"></a>デプロイの対象
-このテンプレートでは、[Basic、Standard、または Premium](https://azure.microsoft.com/pricing/details/service-bus/) の SKU で Service Bus 名前空間をデプロイします。
+このテンプレートでは、[Standard または Premium](https://azure.microsoft.com/pricing/details/service-bus/) の SKU で Service Bus 名前空間をデプロイします。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
@@ -73,7 +73,6 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 "serviceBusSku": { 
     "type": "string", 
     "allowedValues": [ 
-        "Basic", 
         "Standard",
         "Premium" 
     ], 
@@ -84,7 +83,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 ```
 
-テンプレートには、このパラメーターに指定できる値 (Basic、Standard、または Premium) を定義します。値が指定されない場合は既定値 (Standard) が割り当てられます。
+テンプレートは、このパラメーターに指定できる値 (Standard または Premium) を定義します。値が指定されない場合は既定値 (Standard) が割り当てられます。
 
 Service Bus の価格について詳しくは、「[Service Bus の料金と課金][Service Bus pricing and billing]」をご覧ください。
 
@@ -131,7 +130,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -Tem
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-```CLI
+```azurecli
 azure config mode arm
 
 azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json

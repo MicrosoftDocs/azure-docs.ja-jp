@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/30/2017
+ms.date: 08/02/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: f36d5da78818410e028a73a36a502a758400e5a5
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 51906e8d68b5f951a75b8141644bbaf4cf6a43ce
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
@@ -128,10 +127,10 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 | Setting | Description |
 | --- | --- |
 | [ユーザーはフォレスト全体で 1 回だけ表されます](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。 オブジェクトは、メタバースに結合されません。 |
-| [メール属性](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。 連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。 |
+| [メール属性](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。 連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。 このオプションを選択した場合、メール属性が設定されていないユーザー オブジェクトは、Azure AD との間で同期されません。 |
 | [ObjectSID と msExchangeMasterAccountSID/msRTCSIP-OriginatorSid](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションでは、アカウント フォレスト内の有効なユーザーと、リソース フォレスト内の無効なユーザーが結合されます。 Exchange では、この構成はリンクされたメールボックスと呼ばれています。 このオプションは、Lync のみを使用し、Exchange がリソース フォレスト内にない場合にも使用できます。 |
 | sAMAccountName および MailNickName |このオプションは、ユーザーのサインイン ID を見つけるために必要な属性同士を結合します。 |
-| 特有の属性 |このオプションでは、独自の属性を選択することができます。 **制限:** 必ずメタバース内に既に存在する属性を選択するようにしてください。 カスタム属性 (メタバースにない属性) を選択すると、ウィザードが完了できません。 |
+| 特有の属性 |このオプションでは、独自の属性を選択することができます。 このオプションを選択した場合、(選択した) 属性が設定されていないユーザー オブジェクトは、Azure AD との間で同期されません。 **制限:** 必ずメタバース内に既に存在する属性を選択するようにしてください。 カスタム属性 (メタバースにない属性) を選択すると、ウィザードが完了できません。 |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Azure AD でのユーザーの識別方法を選択する - ソース アンカー
 sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変更できない属性です。 オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。
@@ -200,8 +199,8 @@ Azure AD のスキーマは、組織によって追加されたカスタム属�
 ### <a name="enabling-single-sign-on-sso"></a>シングル サインオン (SSO) の有効化
 パスワード同期またはパススルー認証で使用するシングル サインオンを構成するのは簡単です。Azure AD に同期されているフォレストごとに一度プロセスを完了するだけでかまいません。 構成には次の 2 つの手順が含まれます。
 
-1.    オンプレミスの Active Directory での必要なコンピューター アカウントの作成。
-2.    シングル サインオンをサポートするクライアント コンピューターのイントラネット ゾーンの構成。
+1.  オンプレミスの Active Directory での必要なコンピューター アカウントの作成。
+2.  シングル サインオンをサポートするクライアント コンピューターのイントラネット ゾーンの構成。
 
 #### <a name="create-the-computer-account-in-active-directory"></a>Active Directory でのコンピューター アカウントの作成
 Azure AD Connect で追加されたフォレストごとに、ドメイン管理者の資格情報を入力する必要があります。そうすることで、フォレストごとにコンピューター アカウントを作成できます。 資格情報はアカウントの作成にのみ使用され、他の操作のために保存されたり使用されたりすることはありません。 次に示す Azure AD Connect ウィザードの **[シングル サインオンを有効にする]** ページで、資格情報を入力します。
@@ -215,20 +214,20 @@ Azure AD Connect で追加されたフォレストごとに、ドメイン管理
 クライアントがイントラネット ゾーンに自動的にサインインするように、2 つの URL はイントラネット ゾーンに含まれるものにする必要があります。 これを行うことで、ドメインに参加しているコンピューターが、企業ネットワークに接続された際に Kerberos チケットを Azure AD に自動的に送信するようになります。
 グループ ポリシー管理ツールがあるコンピューターで次の手順を実行します。
 
-1.    グループ ポリシー管理ツールを開きます。
-2.    すべてのユーザーに適用されるグループ ポリシーを編集します。 既定のドメイン ポリシーなどです。
-3.    **[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer]、[インターネット コントロール パネル]、[セキュリティ]** の順に移動して、下の図のように **[サイトとゾーンの割り当て一覧]** を選択します。
-4.    ポリシーを有効にして、ダイアログ ボックスで次の 2 つの項目を入力します。
+1.  グループ ポリシー管理ツールを開きます。
+2.  すべてのユーザーに適用されるグループ ポリシーを編集します。 既定のドメイン ポリシーなどです。
+3.  **[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer]、[インターネット コントロール パネル]、[セキュリティ]** の順に移動して、下の図のように **[サイトとゾーンの割り当て一覧]** を選択します。
+4.  ポリシーを有効にして、ダイアログ ボックスで次の 2 つの項目を入力します。
 
-        値: `https://autologon.microsoftazuread-sso.com`  
-        Data 1  
-        値: `https://aadg.windows.net.nsatc.net`  
-        Data 1
+        Value: `https://autologon.microsoftazuread-sso.com`  
+        Data: 1  
+        Value: `https://aadg.windows.net.nsatc.net`  
+        Data: 1
 
-5.    次のようになります。  
+5.  次のようになります。  
 ![イントラネット ゾーン](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.    **[OK]** を 2 回クリックします。
+6.  **[OK]** を 2 回クリックします。
 
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS とのフェデレーションの構成
 Azure AD Connect との AD FS の構成は、わずか数クリックで簡単です。 構成の前に、以下のものを用意する必要があります。
@@ -275,10 +274,13 @@ Web アプリケーション サーバーが AD FS サーバーとの間にセ�
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>AD FS サービスのサービス アカウントを指定します。
 AD FS サービスには、ユーザーを認証し Active Directory のユーザー情報を参照するドメイン サービス アカウントが必要です。 次の 2 種類のサービス アカウントがサポートされます。
 
-* **グループ管理サービス アカウント** - Windows Server 2012 と共に Active Directory ドメイン サービスに導入されました。 この種類のアカウントは、AD FS のようなサービスに、パスワードを定期的に更新する必要のない単一のアカウントを提供します。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
+* **グループ管理サービス アカウント** - Windows Server 2012 と共に Active Directory Domain Services に導入されました。 この種類のアカウントは、AD FS のようなサービスに、パスワードを定期的に更新する必要のない単一のアカウントを提供します。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
 * **ドメイン ユーザー アカウント** - この種類のアカウントではパスワードの入力が求められ、パスワードの変更や期限切れの際に、定期的に更新する必要があります。 このオプションは、AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーがない場合にのみ使用してください。
 
 グループ管理サービス アカウントを選択した場合、Active Directory でこの機能を使用したことがないと、エンタープライズ管理者の資格情報の入力を求められます。 入力した資格情報は、キー ストアを開始し、Active Directory でこの機能を有効にするために使用されます。
+
+> [!NOTE]
+> Azure AD Connect は、AD FS サービスが SPN としてドメインに登録済みであるかどうかを検出するためのチェックを実行します。  AD DS では、重複する SPN を同時に登録することはできません。  重複する SPN が見つかった場合、その SPN を削除するまで、先に進むことができなくなります。
 
 ![AD FS サービス アカウント](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
 
@@ -318,6 +320,15 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 ### <a name="verify-your-federation-configuration"></a>フェデレーション構成の確認
 [検証] をクリックすると、Azure AD Connect によって DNS 設定が検証されます。
+
+**イントラネット接続の確認**
+
+* フェデレーション FQDN の解決: 接続を確保するために、DNS でフェデレーション FQDN を解決できるかどうかが Azure AD Connect によって確認されます。 Azure AD Connect が FQDN を解決できない場合、検証は失敗します。 検証を正常に完了するために、フェデレーション サービス FQDN の DNS レコードを設定してください。
+* DNS A レコード: フェデレーション サービスに A レコードがあるかどうかが Azure AD Connect によって確認されます。 A レコードがない場合、検証は失敗します。 検証を正常に完了するために、フェデレーション FQDN の A レコードを作成してください (CNAME レコードではありません)。
+
+**エクストラネット接続の確認**
+
+* フェデレーション FQDN の解決: 接続を確保するために、DNS でフェデレーション FQDN を解決できるかどうかが Azure AD Connect によって確認されます。
 
 ![完了](./media/active-directory-aadconnect-get-started-custom/completed.png)
 

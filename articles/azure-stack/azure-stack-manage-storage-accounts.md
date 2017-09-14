@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
 ms.author: anirudha
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 5b4a10e1a6fc0be925aa124de30d15baac97ac8e
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Manage Storage Accounts in Azure Stack
@@ -28,7 +28,7 @@ Learn how to manage storage accounts in Azure Stack to find, recover, and reclai
 The list of storage accounts in the region can be viewed in Azure Stack by:
 
 1. In an Internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as an administrator (using the credentials you provided during deployment)
+2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
 3. On the default dashboard – find the **Region management** list and click the region you want to explore. For example **(local**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
@@ -53,7 +53,7 @@ If you are interested in a particular storage account – you can **filter and f
 **To filter for accounts:**
 
 1. Click **Filter** at the top of the blade.
-2. On the Filter blade, it allows you to specify **account name**,  **subscription ID** or **status** to fine-tune the list of storage accounts to be displayed. Use them as appropriate.
+2. On the Filter blade, it allows you to specify **account name**, **subscription ID** or **status** to fine-tune the list of storage accounts to be displayed. Use them as appropriate.
 3. Click **Update**. The list should refresh accordingly.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
@@ -99,12 +99,12 @@ In Azure Stack there is a very simple way to do that:
   This could mean that the deleted account has already been garbage collected. In this case it cannot be recovered. See [Reclaim capacity](#reclaim) in this topic.
 
 ## <a name="set-the-retention-period"></a>Set the retention period
-The retention period setting allows an administrator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 15 days. Setting the value to “0” means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 15 days. Setting the value to “0” means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
 **To change the retention period:**
 
 1. In an internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as an administrator (using the credentials you provided during deployment)
+2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
 3. On the default dashboard – find the **Region management** list and click the region you want to explore – for example **(local**).
 4. Select **Storage** from the **Resource Providers** list.
 5. Click **Settings** at the top to open the setting blade.
@@ -117,7 +117,7 @@ The retention period setting allows an administrator to specify a time period in
    ![](media/azure-stack-manage-storage-accounts/image10.png)
 
 ## <a name="reclaim"></a>Reclaim capacity
-One of the side effects of having a retention period is that a deleted account continues to consume capacity until it comes out of the retention period. As an administrator you may need a way to reclaim the deleted account space even though the retention period has not yet expired.
+One of the side effects of having a retention period is that a deleted account continues to consume capacity until it comes out of the retention period. As a cloud operator you may need a way to reclaim the deleted account space even though the retention period has not yet expired.
 
 You can reclaim capacity using either the portal or PowerShell.
 
@@ -152,7 +152,7 @@ For more details, refer to [Azure Stack powershell documentation.](https://msdn.
  
 
 ## <a name="migrate-a-container"></a>Migrate a container
-Due to uneven storage use by tenants, an administrator may find one or more underlying tenant shares using more space than others. If this occurs, the administrator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 
+Due to uneven storage use by tenants, an cloud operator may find one or more underlying tenant shares using more space than others. If this occurs, the cloud operator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 
 
 You must use PowerShell to migrate containers.
 > [!NOTE]

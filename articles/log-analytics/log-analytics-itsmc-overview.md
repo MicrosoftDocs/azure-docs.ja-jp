@@ -12,21 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 06/19/2017
 ms.author: v-jysur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: f8e668f89eb1e508c61fec6565e93667d3d0478e
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 54974ef06efdae69ddbfa12b1ba9278b48b113d3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>IT Service Management Connector を使用した ITSM 作業項目の一元管理 (プレビュー)
 
+![IT Service Management Connector シンボル](./media/log-analytics-itsmc/itsmc-symbol.png)
+
 OMS ログ分析の IT Service Management Connector (ITSMC) を使用して、ITSM 製品/サービスの作業項目を一元的に監視、管理できます。
 
-IT Service Management Connector には、既存の IT Service Management (ITSM) 製品/サービスと OMS ログ分析が統合されています。  このソリューションには複数の ITSM 製品/サービスが相互に関連付けられて統合されているため、OMS ユーザーは ITSM ソリューション内のインシデント、アラート、イベントなどの作成を自由に選択できます。 また、このコネクタは、インシデントなどのデータや ITSM ソリューションからの変更要求を OMS ログ分析にインポートします。
+IT Service Management Connector には、既存の IT Service Management (ITSM) 製品/サービスと OMS Log Analytics が統合されています。  このソリューションには複数の ITSM 製品/サービスが相互に関連付けられて統合されているため、OMS ユーザーは ITSM ソリューション内のインシデント、アラート、イベントなどの作成を自由に選択できます。 また、このコネクタは、インシデントなどのデータや ITSM ソリューションからの変更要求を OMS ログ分析にインポートします。
 
 IT Service Management Connector では、次のことができます。
 
@@ -56,6 +58,12 @@ ITSM 作業項目を OMS Log Analytics にインポートするには、OMS の 
 
 ![ITSMC の接続](./media/log-analytics-itsmc/itsmc-overview-solution-in-connected-sources.png)
 
+> [!NOTE]
+
+> 既定では、IT Service Management Connector は、接続のデータを 24 時間に 1 回更新します。 編集内容やテンプレートの更新を反映するために接続のデータをすぐに更新するには、接続の横に表示される更新ボタンをクリックします。
+
+ ![ITSMC の更新](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
+
 ## <a name="management-packs"></a>管理パック
 このソリューションでは、管理パックは不要です。
 
@@ -76,8 +84,11 @@ IT Service Management Connector では、次の ITSM 製品/サービスがサ�
 OMS の IT Service Management Connector を ITSM サービスに接続すると、Log Analytics サービスは接続された ITSM 製品/サービスからデータの収集を開始します。
 
 > [!NOTE]
-> - IT Service Management Connector によってインポートされたデータは、**ServiceDesk_CL** という名前のイベントとして Log Analytics に表示されます。
-- イベントには **ServiceDeskWorkItemType_s** という名前のフィールドが含まれており、 このフィールドの値は **ServiceDesk_CL** イベントに含まれる作業項目データに応じて、インシデントまたは変更要求として取得できます。
+> - IT Service Management Connector ソリューションによってインポートされたデータは、**ServiceDesk_CL** という名前のイベントとして Log Analytics に表示されます。
+- イベントには **ServiceDeskWorkItemType_s** という名前のフィールドが含まれています。 このフィールドは、**ServiceDesk_CL** イベントに含まれている作業項目データに応じて、インシデントまたは変更要求の値を取ることができます。
+
+## <a name="input-data"></a>入力データ
+作業項目は、ITSM 製品/サービスからインポートされます。
 
 IT Service Management Connector によって収集されるデータの例を以下に示します。
 
@@ -144,7 +155,54 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 説明
 - コンピューター
 
-ITSM データに関する Log Analytics 画面 (サンプル):
+## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow インシデントの出力データ
+
+| OMS のフィールド | ITSM のフィールド |
+|:--- |:--- |
+| ServiceDeskId_s| Number |
+| IncidentState_s | 状態 |
+| Urgency_s |緊急度 |
+| Impact_s |影響|
+| Priority_s | 優先順位 |
+| CreatedBy_s | 開始者 |
+| ResolvedBy_s | 解決者|
+| ClosedBy_s  | 終了者 |
+| Source_s| 連絡先の種類 |
+| AssignedTo_s | 割り当て先  |
+| Category_s | カテゴリ |
+| Title_s|  簡単な説明 |
+| Description_s|  メモ |
+| CreatedDate_t|  開始済み |
+| ClosedDate_t| closed|
+| ResolvedDate_t|解決済み|
+| コンピューター  | 構成項目 |
+
+## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 変更要求の出力データ
+
+| OMS のフィールド | ITSM のフィールド |
+|:--- |:--- |
+| ServiceDeskId_s| Number |
+| CreatedBy_s | 要求者 |
+| ClosedBy_s | 終了者 |
+| AssignedTo_s | 割り当て先  |
+| Title_s|  簡単な説明 |
+| Type_s|  型 |
+| Category_s|  カテゴリ |
+| CRState_s|  状態|
+| Urgency_s|  緊急度 |
+| Priority_s| 優先順位|
+| Risk_s| リスク|
+| Impact_s| 影響|
+| RequestedDate_t  | Requested by date\(要求日\) |
+| ClosedDate_t | 終了日 |
+| PlannedStartDate_t  |     開始予定日 |
+| PlannedEndDate_t  |   終了予定日 |
+| WorkStartDate_t  | 実際の開始日 |
+| WorkEndDate_t | 実際の終了日|
+| Description_s | Description |
+| コンピューター  | 構成項目 |
+
+**ITSM データに関する Log Analytics 画面 (サンプル):**
 
 ![Log Analytics 画面](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
 
@@ -207,6 +265,22 @@ OMS ログ検索を使用して、接続先の ITSM ソース内に作業項目�
 4. **[連絡先の種類]**、**[影響]**、**[緊急度]**、**[カテゴリ]**、**[サブ カテゴリ]** のテキスト ボックスに適切な値を入力し、**[作成]** をクリックします。
 
 作業項目は ITSM 内に作成されますが、OMS 内でも確認できます。
+
+## <a name="troubleshoot-itsm-connections-in-oms"></a>OMS の ITSM 接続のトラブルシューティング
+1.  接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次のことを行ってください。
+ - ServiceNow、Cherwell、Provance の接続の場合、各接続のユーザー名/パスワードとクライアント ID/クライアント シークレットが正しく入力されていることを確認します。 エラーが解決しない場合は、対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。
+ - Service Manager の場合、Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。
+
+2.  ServiceNow のデータが OMS で同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 これは、ServiceNow Dev インスタンスがアイドル状態のときに発生する場合があります。 それ以外の場合は、問題を報告してください。
+3.  OMS でアラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、次のことを行ってください。
+ -  OMS ポータルの IT Service Management Connector ソリューションを使用して、接続、作業項目、コンピューターなどの概要を取得できます。状態ブレードでエラー メッセージをクリックし、**[ログ検索]** に移動します。エラー メッセージの詳細情報を使用してエラーがある接続を表示します。
+ - *Type=ServiceDeskLog_CL* を使用して、**[ログ検索]** ページにエラーと関連情報を直接表示できます。
+
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
+1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。
+2.  [スクリプト](log-analytics-itsmc-service-manager-script.md)の実行中に、"**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラー メッセージが表示された場合は、**[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
+3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal でリソース プロバイダーを手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
+
 
 ## <a name="contact-us"></a>お問い合わせ
 

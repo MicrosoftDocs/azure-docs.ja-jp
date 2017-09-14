@@ -11,15 +11,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 17289f6401b36ff6e6a201564aa387f42c712699
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ec6f0b10e68e024292384e9b45891ccd905372ff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
@@ -33,7 +33,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 既存のアプリケーションを App Service や Service Fabric で実行するためにはかなりの修正が必要という場合、Virtual Machines を選ぶことで、クラウドへの移行を単純化できる場合があります。 ただし、VM の構成、セキュリティ保護、メンテナンスを正しく行うためには、Azure App Service や Service Fabric と比べて、はるかに時間がかかり、IT に対する豊富な知識と経験が要求されます。 Azure Virtual Machines を選択する場合は、VM 環境に対する修正プログラムの適用、更新、管理に伴って日々発生するメンテナンスの労力を考慮してください。 Azure Virtual Machines は Infrastructure-as-a-Service (IaaS) で、App Service と Service Fabric は Platform-as-a-Service (Paas) です。 
 
 ## <a name="features"></a>機能の比較
-次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。 それぞれのホスティング方法に関する最新の SLA 情報については、 [Azure サービス レベル アグリーメント](/support/legal/sla/)を参照してください。
+次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。 それぞれのホスティング方法に関する最新の SLA 情報については、 [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
 | 機能 | App Service (Web Apps) | Cloud Services (Web ロール) | Virtual Machines | Service Fabric | メモ |
 | --- | --- | --- | --- | --- | --- |
@@ -56,8 +56,8 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | Visual Studio 統合 |○ |○ |○ |○ | |
 | リモート デバッグ |○ |○ |○ | | |
 | TFS によるコードのデプロイ |○ |○ |○ |○ | |
-| [Azure Virtual Network](/services/virtual-network/) |○ |○ |○ |○ |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
-| [Azure Traffic Manager](/services/traffic-manager/) |○ |○ |○ |○ | |
+| [Azure Virtual Network](/azure/virtual-network/) |○ |○ |○ |○ |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
+| [Azure Traffic Manager](/azure/traffic-manager/) |○ |○ |○ |○ | |
 | 統合エンドポイント監視 |○ |○ |○ | | |
 | サーバーへのリモート デスクトップ アクセス | |○ |○ |○ | |
 | カスタム MSI のインストール | |○ |○ |○ |Service Fabric を使用すると、任意の実行可能ファイルを [ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md) としてホストしたり、任意のアプリを VM にインストールしたりできます。 |
@@ -144,7 +144,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 ご利用のオープン ソース フレームワークが App Service でサポートされていない場合は、他の Azure Web ホスティング方法のいずれかで実行できます。 Virtual Machines を使用する場合、Windows または Linux ベースのマシン イメージにソフトウェアをインストールして構成します。
 
 ### <a id="lob"></a>社内ネットワークに接続する必要がある基幹業務アプリケーションがあります。
-基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。 これは、App Service、Service Fabric、Virtual Machines で、 [Azure Virtual Network サービス](/services/virtual-network/)を使用して実現できます。 App Service 上では、 [VNET 統合機能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
+基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。 これは、App Service、Service Fabric、Virtual Machines で、 [Azure Virtual Network サービス](/azure/virtual-network/)を使用して実現できます。 App Service 上では、 [VNET 統合機能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
 
 ### <a id="mobile"></a>モバイル クライアント向けの REST API や Web サービスをホストします。
 HTTP ベースの Web サービスを使用すると、モバイル クライアントを含めて広範囲のクライアントをサポートすることができます。 ASP.NET Web API のようなフレームワークは、REST サービスを作成および使用しやすくするために Visual Studio と統合されています。  これらのサービスは Web エンドポイントから公開されるため、Azure での Web ホスト手法を使用してこのシナリオをサポートすることができます。 ただし、REST API をホストするためには App Service が適切な選択です。 App Service を使用すると、次のことができます。
@@ -164,29 +164,29 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 アプリケーションに使用するホスティング方法が決まったら、次のリソースで基本事項を確認してください。
 
-* [Azure App Service](/documentation/services/app-service/)
-* [Azure Cloud Services](/documentation/services/cloud-services/)
-* [Azure Virtual Machines](/documentation/services/virtual-machines/)
-* [Service Fabric](/documentation/services/service-fabric)
+* [Azure App Service](/azure/app-service/)
+* [Azure Cloud Services](/azure/cloud-services/)
+* [Azure Virtual Machines](/azure/virtual-machines/)
+* [Service Fabric](/azure/service-fabric/)
 
 <!-- URL List -->
 
-[Azure App Service]: /services/app-service/
-[Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
-[Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
-[Service Fabric]: /services/service-fabric
+[Azure App Service]: /azure/app-service/
+[Cloud Services]: /azure/cloud-services/
+[Virtual Machines]: /azure/virtual-machines/
+[Service Fabric]: /azure/service-fabric/
 [ClearDB]: http://www.cleardb.com/
 [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
-[Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
-[azurestore]: http://www.windowsazure.com/gallery/store/
-[scripting]: http://www.windowsazure.com/documentation/scripts/?services=web-sites
-[dotnet]: http://www.windowsazure.com/develop/net/
-[nodejs]: http://www.windowsazure.com/develop/nodejs/
-[PHP]: http://www.windowsazure.com/develop/php/
-[Python]: http://www.windowsazure.com/develop/python/
-[servicebus]: http://www.windowsazure.com/documentation/services/service-bus/
-[sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
-[Storage]: http://www.windowsazure.com/documentation/services/storage/
+[Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
+[azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps
+[scripting]: https://azure.microsoft.com/documentation/scripts/?services=web-sites
+[dotnet]: https://azure.microsoft.com/develop/net/
+[nodejs]: https://azure.microsoft.com/develop/nodejs/
+[PHP]: https://azure.microsoft.com/develop/php/
+[Python]: https://azure.microsoft.com/develop/python/
+[servicebus]: /azure/service-bus/
+[sqldatabase]: /azure/sql-database/
+[Storage]: /azure/storage/
 
 <!-- IMG List -->
 

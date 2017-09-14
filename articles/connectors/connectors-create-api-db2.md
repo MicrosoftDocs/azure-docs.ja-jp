@@ -16,20 +16,15 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2dc4c912f018f5d71d8c874763f204cf6c2c415b
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 4501b3d9a2fdc00582596cb907f7130591e4782e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="get-started-with-the-db2-connector"></a>DB2 コネクタの概要
 Microsoft Connector for DB2 は、IBM DB2 データベースに格納されているリソースに Logic Apps を接続します。 このコネクタには、TCP/IP ネットワーク経由でリモート DB2 サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Bluemix dashDB や IBM DB2 for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM DB2 のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-db2.md#supported-db2-platforms-and-versions) をご覧ください。
-
-> [!NOTE]
-> 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。 
-> 
-> 
 
 DB2 コネクタでは、次のデータベース操作をサポートしています。
 
@@ -283,8 +278,9 @@ DB2 テーブル内の 1 つの行を削除するロジック アプリのアク
 * IBM DB2 for LUW 11
 * IBM DB2 for LUW 10.5
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/db2/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/db2/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。

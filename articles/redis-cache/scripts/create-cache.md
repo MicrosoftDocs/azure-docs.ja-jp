@@ -13,11 +13,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/14/2017
+ms.date: 08/30/2017
 ms.author: sdanie
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 75b0602a6c6a0e252ae0bb5eab41ef5cc5636dc5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
 
 ---

@@ -3,7 +3,7 @@ title: "Azure Advisor のパフォーマンスに関する推奨事項 | Microso
 description: "Advisor を使用して、Azure のデプロイのパフォーマンスを最適化します。"
 services: advisor
 documentationcenter: NA
-author: kumudd
+author: KumudD
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 5fb86c60b2d1f258dde5636ff8854b6f30f7f1c8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 ---

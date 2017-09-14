@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 8f1f22d1609dc34369a131e79eb2a1c0be9fe552
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: e33f69bf04b32a31aae3c311c41aa44e4da5016a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -95,7 +95,7 @@ geo レプリケーション フェールオーバーまたは geo リストア�
 データベースのアラート ルールの詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](../monitoring-and-diagnostics/insights-service-health.md)」を参照してください。
 
 ### <a name="enable-auditing"></a>監査を有効にする
-データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。 クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。 詳しくは、「[SQL Database の監査](sql-database-auditing.md)」をご覧ください。
+データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。 詳しくは、「[SQL Database の監査](sql-database-auditing.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)

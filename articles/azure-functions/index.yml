@@ -6,9 +6,9 @@ metadata:
   title: Azure Functions のドキュメント - チュートリアル | Microsoft Docs
   meta.description: Learn how to develop and deploy functions in the language of your choice to run tasks in the background or on a schedule without special infrastructure.
   services: functions
-  author: apexprodleads
+  author: czeumault
   manager: carolz
-  ms.service: virtual-machines\linux
+  ms.service: functions
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
@@ -18,67 +18,75 @@ abstract:
   description: Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video-thumb-get-started.png
-      width: 250  
+      width: 250
     title: 'Azure Functions の概要。 (2:39)'
-    href: https://azure.microsoft.com/en-us/resources/videos/get-started-with-azure-functions/
+    href: 'https://azure.microsoft.com/en-us/resources/videos/get-started-with-azure-functions/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 'Learn how to create functions that execute based on events created via:'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: media/index/http.svg
-      text: HTTP
-      href: /azure/azure-functions/functions-create-first-azure-function
-    - image: 
-        src: media/index/stopwatch.svg
-      text: Timer
-      href: /azure/azure-functions/functions-create-scheduled-function
-    - image: 
-        src: media/index/octokitty.svg
-      text: GitHub webhook
-      href: /azure/azure-functions/functions-create-github-webhook-triggered-function
-    - image: 
-        src: media/index/blob.svg
-      text: Blob
-      href: /azure/azure-functions/functions-create-storage-blob-triggered-function
-    - image: 
-        src: media/index/storage.svg
-      text: Queue
-      href: /azure/azure-functions/functions-create-storage-queue-triggered-function
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: 'Learn how to build and manage Azure Functions'
-  - type: list
-    style: ordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="/azure/azure-functions/functions-twitter-email">Create a function that integrates with Azure Logic Apps</a>
-    - html: <a href="/azure/azure-functions/functions-create-serverless-api">Create a serverless API using Azure Functions</a>
-- title: サンプル
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 以下を使用して作成されたイベントに基づいて実行される関数の作成方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/http.svg
+            text: HTTP
+            href: /azure/azure-functions/functions-create-first-azure-function
+          - image:
+              src: media/index/stopwatch.svg
+            text: Timer
+            href: /azure/azure-functions/functions-create-scheduled-function
+          - image:
+              src: media/index/octokitty.svg
+            text: GitHub webhook
+            href: /azure/azure-functions/functions-create-github-webhook-triggered-function
+          - image:
+              src: media/index/blob.svg
+            text: BLOB
+            href: /azure/azure-functions/functions-create-storage-blob-triggered-function
+          - image:
+              src: media/index/storage.svg
+            text: キュー
+            href: /azure/azure-functions/functions-create-storage-queue-triggered-function
+      - type: paragraph
+        text: ローカルでの開発とデバッグの方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /media/logos/logo_visual-studio.svg
+            text: Visual Studio
+            href: /azure/azure-functions/functions-create-your-first-function-visual-studio
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure Functions を構築して管理する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-functions/functions-twitter-email">Azure Logic Apps と統合される関数を作成する</a>
+          - html: <a href="/azure/azure-functions/functions-create-serverless-api">Azure Functions を使用してサーバーレス API を作成する</a>
+  - title: サンプル
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure">Azure CLI</a></p>
-    - title: REST ()
-      html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
-    - title: バインド
- 
-      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">Event Hub</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">External file</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP and webhooks</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio output binding</a></p>
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure">Azure CLI</a></p>
+          - title: REST ()
+            html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
+          - title: バインド
+            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">イベント ハブ</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部ファイル</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP と webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 出力バインド</a></p>

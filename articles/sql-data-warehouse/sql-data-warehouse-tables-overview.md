@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 06/29/2016
 ms.author: shigu;jrj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 914d85267e82ce6a2e60f3841889935046f17c87
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの概要
@@ -50,7 +49,7 @@ RENAME OBJECT Customer TO CustomerOrig;
  ```
 
 ## <a name="distributed-tables"></a>分散テーブル
-SQL Data Warehouse のような分散システムで新たに導入された基本的な属性が、 **ディストリビューション列**です。  ディストリビューション列は、その名前のとおりです。  データをバックグラウンドで分散または分割する方法を決定する列のことです。  ディストリビューション列を指定しないでテーブルを作成すると、テーブルは **ラウンド ロビン**を使用して自動的に分散されます。  一部のシナリオではラウンド ロビン テーブルで十分ですが、ディストリビューション列を定義すると、クエリを実行するときのデータ移動を大幅に削減してパフォーマンスを最適化できます。  ディストリビューション列を選択する方法の詳細については、[テーブルの分散][Distribute] に関するページを参照してください。
+SQL Data Warehouse のような分散システムで新たに導入された基本的な属性が、 **ディストリビューション列**です。  ディストリビューション列は、その名前のとおりです。  データをバックグラウンドで分散または分割する方法を決定する列のことです。  ディストリビューション列を指定しないでテーブルを作成すると、テーブルは **ラウンド ロビン**を使用して自動的に分散されます。  一部のシナリオではラウンド ロビン テーブルで十分ですが、ディストリビューション列を定義すると、クエリを実行するときのデータ移動を大幅に削減してパフォーマンスを最適化できます。  テーブルのデータが少しの場合、**レプリカ**のディストリビューションの種類でテーブルを作成するように選択すると、データが各コンピューティング ノードにコピーされ、クエリ実行時にデータ移動が保存されます。 ディストリビューション列を選択する方法の詳細については、[テーブルの分散][Distribute] に関するページを参照してください。
 
 ## <a name="indexing-and-partitioning-tables"></a>テーブルのインデックス作成とパーティション分割
 SQL Data Warehouse を使用するスキルが高くなり、パフォーマンスの最適化が必要になると、テーブル設計の詳細について学ぶ必要性が生じます。  詳細については、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]に関する各記事をご覧ください。
@@ -69,7 +68,6 @@ SQL Data Warehouse には、他のデータベースで提供されているの�
 
 | サポートされていない機能 |
 | --- |
-| [ID プロパティ][Identity Property] ([代理キーの回避策の割り当て][Assigning Surrogate Key Workaround]を参照してください) |
 | PRIMARY KEY、FOREIGN KEY、UNIQUE、CHECK の各 [テーブル制約][Table Constraints] |
 | [一意のインデックス][Unique Indexes] |
 | [計算列][Computed Columns] |
@@ -202,7 +200,7 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>テーブル領域の概要
-次のクエリはテーブルごとに行と領域を返します。  これは、最大規模のテーブルや、各テーブルがラウンド ロビンとハッシュ分散のどちらであるかを示す優れたクエリです。  ハッシュ分散テーブルの場合、ディストリビューション列も示されます。  ほとんどの場合、最大規模のテーブルは、クラスター化列ストア インデックスを持つハッシュ分散テーブルです。
+次のクエリはテーブルごとに行と領域を返します。  これは、最大規模のテーブルや、各テーブルがラウンド ロビン、レプリケートとハッシュ分散のいずれかであるかを示す優れたクエリです。  ハッシュ分散テーブルの場合、ディストリビューション列も示されます。  ほとんどの場合、最大規模のテーブルは、クラスター化列ストア インデックスを持つハッシュ分散テーブルです。
 
 ```sql
 SELECT 
@@ -295,8 +293,6 @@ ORDER BY    distribution_id
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 [DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[Identity Property]: https://msdn.microsoft.com/library/ms186775.aspx
-[Assigning Surrogate Key Workaround]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
 [Table Constraints]: https://msdn.microsoft.com/library/ms188066.aspx
 [Computed Columns]: https://msdn.microsoft.com/library/ms186241.aspx
 [Sparse Columns]: https://msdn.microsoft.com/library/cc280604.aspx

@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/16/2017
+ms.date: 08/30/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0753fb3a4b08b3bda9da1f5a31c577b354197588
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 535ea21a2c08be5f676ee24269b323a415b92607
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
@@ -75,7 +74,7 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Service Fabric テンプレート
 
-この記事の例では、Service Fabric template.json を使用します。 クラスターを作成する前に、標準のポータル ウィザードを使用してポータルからテンプレートをダウンロードできます。 [テンプレート ギャラリー](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric)のテンプレート ([5 ノード Service Fabric クラスター](https://azure.microsoft.com/en-us/documentation/templates/service-fabric-unsecure-cluster-5-node-1-nodetype/)など) を使用することもできます。
+この記事の例では、Service Fabric template.json を使用します。 クラスターを作成する前に、標準のポータル ウィザードを使用してポータルからテンプレートをダウンロードできます。 [テンプレート ギャラリー](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric)のテンプレート ([5 ノード Service Fabric クラスター](https://azure.microsoft.com/en-us/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)など) を使用することもできます。
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>既存の仮想ネットワークまたはサブネット

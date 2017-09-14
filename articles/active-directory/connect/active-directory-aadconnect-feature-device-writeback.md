@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: b5df0883f20cd484970587b17d5df646022ba84f
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 310dcb176c2e1556af4ed0e0f50ea77c4644ec98
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/13/2017
 
 * AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
 
-これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
+これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
 
 > [!IMPORTANT]
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
@@ -82,7 +82,7 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 4. その他の構成は変更しないで、ウィザードのインストールを完了します。 必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
 
 ## <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
-このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
+このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
 
 ## <a name="verify-devices-are-synchronized-to-active-directory"></a>デバイスが Active Directory に同期されていることを確認する
 デバイスの書き戻しは正常に動作するようになっています。 デバイス オブジェクトを AD に書き戻すには、最大 3 時間かかる可能性があります。  デバイスが正しく同期されていることを確認するには、同期規則が完了した後で次のようにします。

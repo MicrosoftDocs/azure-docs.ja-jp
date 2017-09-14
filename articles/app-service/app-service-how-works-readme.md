@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service の特長"
 description: "App Service の特長"
 keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/23/2017
 ms.author: yochayk
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: edb3325414adf876548181243ddfa2d515aeb0b8
 ms.openlocfilehash: 2d830963d3d2adba71a6ca99f79eac0fc8cbfb12
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/24/2017
 
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/24/2017
 Azure App Service は、今日エンジニアが直面している現実的な問題を解決することを目的としたクラウド サービスです。
 アプリケーションをクラウドで提供するニーズに関して妥協することなく、開発者の生産性を高めるのが App Service のねらいです。 
 
-App Service では、企業の基幹業務アプリケーションを作成するために必要なフレームワークと機能も提供します。 App Service では、Java、PHP、Node.js、Python、Microsoft .NET の各言語を含む普及している普及している開発言語でアプリを開発することができます。 App Service を使用すると、次のことができます。
+App Service では、企業の基幹業務アプリケーションを作成するために必要なフレームワークと機能も提供します。 App Service では、Java、PHP、Node.js、Python、Microsoft .NET の各言語を含む普及している開発言語でアプリを開発することができます。 App Service を使用すると、次のことができます。
 
 * スケーラブルな Web Apps を構築できる。
 * 使いやすい一連のモバイル機能 (データ バックエンド、ユーザー認証、プッシュ通知など) を備えた Mobile Apps バックエンドをすばやく構築できる。

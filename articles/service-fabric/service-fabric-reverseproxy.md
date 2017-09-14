@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 04/07/2017
+ms.date: 08/08/2017
 ms.author: bharatn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 121bf91a2476a079c0737187aef8791be0b4b250
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
@@ -61,14 +60,14 @@ Load Balancer で個々のサービスのポートを構成するのではなく
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS トラフィックの場合、リバース プロキシで SSL (Secure Sockets Layer) 終了が発生します。 リバース プロキシでは、HTTP を使用してクラスター内のサービスに要求を転送します。
-
-    HTTPS サービスは現在サポートされていません。
+* **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
 * **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。 既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
-* **Port:** リバース プロキシに指定されているポートです (例: 19008)。
+* **Port:** リバース プロキシに指定されているポートです (例: 19081)。
 * **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているデプロイ済みのサービス インスタンスの完全修飾名です。 たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
+
+    サービス インスタンス名は、大文字小文字が区別されます。 URL のサービス インスタンス名に使用されている大文字小文字が異なる場合、要求は 404 (Not Found) で失敗します。
 * **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
-* **PartitionKey:** パーティション分割されたサービスの場合、到達するパーティションの計算済みのパーティション キーです。 これはパーティション ID の GUID ではありません ** 。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
+* **PartitionKey:** パーティション分割されたサービスの場合、到達するパーティションの計算済みのパーティション キーです。 これはパーティション ID の GUID では*ありません*。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
 * **PartitionKind:** サービス パーティション構成です。 これには、"Int64Range" または "Named" を指定できます。 シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
 * **ListenerName**: サービスのエンドポイント。{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} の形式で指定します。 サービスが複数のエンドポイントを公開している場合、このパラメーターによって、クライアント要求の転送先となるエンドポイントを特定します。 サービスにリスナーが 1 つしかない場合、このパラメーターは省略できます。
 * **TargetReplicaSelector**: ターゲット レプリカまたはインスタンスの選択方法を指定します。
@@ -90,18 +89,18 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 サービスがシングルトン パーティション構成を使用している場合、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターは不要であり、次のようにゲートウェイを使用してサービスに到達できます。
 
-* 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService`
-* 内部: `http://localhost:19008/MyApp/MyService`
+* 外部: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* 内部: `http://localhost:19081/MyApp/MyService`
 
 サービスが Uniform Int64 パーティション構成を使用している場合、サービスのパーティションにアクセスするには、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターを使用する必要があります。
 
-* 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* 内部: `http://localhost:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* 外部: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* 内部: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 サービスが公開するリソースに到達するには、URL のサービス名の後にリソース パスを配置します。
 
-* 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* 内部: `http://localhost:19008/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* 外部: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* 内部: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 ゲートウェイは、サービスの URL にこれらの要求を転送します。
 
@@ -136,6 +135,15 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 この HTTP 応答ヘッダーは、要求されたリソースが存在しないという通常の HTTP 404 の状況を示すので、Application Gateway はサービス アドレスの解決を再度試みることはなくなります。
 
 ## <a name="setup-and-configuration"></a>セットアップと構成
+
+### <a name="enable-reverse-proxy-via-azure-portal"></a>Azure Portal でリバース プロキシを有効にする
+
+Azure Portal には、新しい Service Fabric クラスターを作成するときに、リバース プロキシを有効にするオプションがあります。
+**[Service Fabric クラスターの作成]** の [手順 2: クラスター構成] の [ノード タイプの構成] で、[リバース プロキシを有効にする] チェックボックスをオンにします。
+セキュリティで保護されたリバース プロキシを構成するには、[手順 3: セキュリティ] の[クラスターのセキュリティ設定の構成] で SSL 証明書を指定し、[リバース プロキシの SSL 証明書を含める] チェックボックスをオンにして、証明書の詳細を入力します。
+
+### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリバース プロキシを有効にする
+
 [Azure Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)を使用して、クラスターで Service Fabric のリバース プロキシを有効にすることができます。
 
 証明書を使用してセキュリティで保護されたリバース プロキシを構成する Azure Resource Manager テンプレートのサンプルと、証明書のロールオーバーの処理については、「[Configure HTTPS Reverse Proxy in a secure cluster (セキュリティで保護されたクラスターで HTTPS リバース プロキシを構成する)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster)」をご覧ください。
@@ -147,7 +155,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     ```json
     "SFReverseProxyPort": {
         "type": "int",
-        "defaultValue": 19008,
+        "defaultValue": 19081,
         "metadata": {
             "description": "Endpoint for Service Fabric Reverse proxy"
         }
@@ -299,9 +307,11 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 ## <a name="next-steps"></a>次のステップ
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
+* [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+* その他のリバース プロキシ構成オプションについては、「[Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ](service-fabric-cluster-fabric-settings.md)」の「ApplicationGateway/Http」セクションを参照してください。
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

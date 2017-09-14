@@ -4,7 +4,7 @@ description: "このトピックでは、長時間実行される操作をポー
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/18/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a24c683b66878e4404a6baf879890453755bc0c
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 763f97855695a51d8fb6050cf1404c787b72c6f6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Azure Media Services を使用したライブ ストリーミング配信
-## <a name="overview"></a>Overview
+
+## <a name="overview"></a>概要
+
 Microsoft Azure Media Services は、要求を Media Services に送信して操作 (例: 作成、開始、停止、チャネルの削除) を開始する API を提供します。 これらは実行時間の長い操作です。
 
 Media Services .NET SDK は、要求を送信し、その操作が完了するまで待機する API を提供します (内部的には、API は一定の間隔で操作の進行状況をポーリングします)。 たとえば、channel.Start() を呼び出すと、このメソッドはチャネルが開始された後に戻ります。 また、非同期バージョンの await channel.StartAsync() を使用することもできます (タスク ベースの非同期パターンの詳細については、「[TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)」を参照してください)。 操作要求を送信し、操作が完了するまで状態をポーリングする API は、"ポーリング メソッド" と呼ばれます。 これらのメソッド (特に非同期バージョン) は、リッチ クライアント アプリケーションやステートフル サービスに対して推奨されます。
@@ -33,12 +36,24 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 
 操作の状態をポーリングするには、**OperationBaseCollection** クラスの **GetOperation** メソッドを使用します。 操作の状態を確認する間隔は、**Channel** 操作と **StreamingEndpoint** 操作の場合は 30 秒、**Program** 操作の場合は 10 秒です。
 
+## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
+
+「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。
+
 ## <a name="example"></a>例
+
 次の例では、 **ChannelOperations**というクラスを定義しています。 このクラス定義は、Web サービス クラス定義の出発点として利用できます。 わかりやすくするために、次の例では、非同期バージョンのメソッドを使用します。
 
 この例では、クライアントでこのクラスを使用する方法も示しています。
 
 ### <a name="channeloperations-class-definition"></a>ChannelOperations クラス定義
+
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Net;
+
     /// <summary> 
     /// The ChannelOperations class only implements 
     /// the Channel’s creation operation. 
@@ -46,21 +61,21 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
     public class ChannelOperations
     {
         // Read values from the App.config file.
-        private static readonly string _mediaServicesAccountName =
-            ConfigurationManager.AppSettings["MediaServicesAccountName"];
-        private static readonly string _mediaServicesAccountKey =
-            ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+        private static readonly string _AADTenantDomain =
+            ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
-        private static MediaServicesCredentials _cachedCredentials = null;
 
         public ChannelOperations()
         {
-                _cachedCredentials = new MediaServicesCredentials(_mediaServicesAccountName,
-                    _mediaServicesAccountKey);
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-                _context = new CloudMediaContext(_cachedCredentials);    }
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+        }
 
         /// <summary>  
         /// Initiates the creation of a new channel.  
@@ -118,7 +133,6 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
             return completed;
         }
 
-
         private static ChannelInput CreateChannelInput()
         {
             return new ChannelInput
@@ -127,14 +141,14 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
                 AccessControl = new ChannelAccessControl
                 {
                     IPAllowList = new List<IPRange>
-                    {
-                        new IPRange
                         {
-                            Name = "TestChannelInput001",
-                            Address = IPAddress.Parse("0.0.0.0"),
-                            SubnetPrefixLength = 0
+                            new IPRange
+                            {
+                                Name = "TestChannelInput001",
+                                Address = IPAddress.Parse("0.0.0.0"),
+                                SubnetPrefixLength = 0
+                            }
                         }
-                    }
                 }
             };
         }
@@ -146,14 +160,14 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
                 AccessControl = new ChannelAccessControl
                 {
                     IPAllowList = new List<IPRange>
-                    {
-                        new IPRange
                         {
-                            Name = "TestChannelPreview001",
-                            Address = IPAddress.Parse("0.0.0.0"),
-                            SubnetPrefixLength = 0
+                            new IPRange
+                            {
+                                Name = "TestChannelPreview001",
+                                Address = IPAddress.Parse("0.0.0.0"),
+                                SubnetPrefixLength = 0
+                            }
                         }
-                    }
                 }
             };
         }
@@ -190,10 +204,5 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

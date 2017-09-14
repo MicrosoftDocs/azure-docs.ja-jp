@@ -4,7 +4,7 @@ description: "行方向のパーティション分割でエラスティック �
 services: sql-database
 documentationcenter: 
 manager: jhubbard
-author: torsteng
+author: MladjoA
 ms.assetid: f86eccb8-6323-4ba7-8559-8a7c039049f3
 ms.service: sql-database
 ms.custom: scale out apps
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
+ms.author: mlandzic
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
 ms.openlocfilehash: c43b34124fd0ccdbe03ce3d336388cbd3b77ad9a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
-
 
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)

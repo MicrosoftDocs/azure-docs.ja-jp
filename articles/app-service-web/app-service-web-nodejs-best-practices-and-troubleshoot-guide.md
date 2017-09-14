@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/06/2016
-ms.author: ranjithr;wadeh
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 79e5329332c457c738c082277ee7b79eb8ead049
-ms.lasthandoff: 04/06/2017
-
+ms.author: ranjithr
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 656c5b3e363bd2eaa7550ffc673606d26f7d06de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
@@ -114,7 +114,7 @@ ms.lasthandoff: 04/06/2017
 ### <a name="my-node-application-is-making-too-many-outbound-calls"></a>ノード アプリケーションによる発信呼び出しが多すぎる
 多くのアプリケーションは、通常の操作の一環として、発信接続を行う必要があります。 たとえば、要求を受信すると、ノード アプリケーションは別の場所の REST API に問い合わせて、要求を処理するための情報を取得しようとします。 http または https 呼び出しを行うときに、キープ アライブ エージェントを使用する場合があります。 たとえば、これらの発信呼び出しを行うときに、キープ アライブ エージェントとして agentkeepalive モジュールを使用できます。 これにより、Azure Web アプリ VM でソケットが再利用されるため、発信要求ごとに新しいソケットを作成するオーバーヘッドが縮小されます。 また、多くの発信要求を行う際に使用するソケット数が少なくなるため、VM ごとに割り当てられる maxSockets を超えることはなくなります。 Azure Web Apps では、agentKeepAlive maxSockets 値を VM あたり合計 160 ソケットに設定することが推奨されます。 つまり、VM で 4 つの node.exe を実行している場合は、node.exe ごとに agentKeepAlive maxSockets を 40 (VM あたり合計 160) に設定することになります。
 
-agentKeepALive 構成の例:
+[agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 構成の例:
 
 ```
 var keepaliveAgent = new Agent({    

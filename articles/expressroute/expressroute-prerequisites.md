@@ -12,38 +12,48 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 06/30/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 873a3b83bf85c7e2d6d299bd25ebb135c300aacb
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 8629235511e0dda149ceef6a9c834c3042f64f90
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
+<a id="expressroute-prerequisites--checklist" class="xliff"></a>
+
+# ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-## <a name="azure-account"></a>Azure アカウント
+<a id="azure-account" class="xliff"></a>
+
+## Azure アカウント
 * 有効でアクティブな Microsoft Azure アカウント。 このアカウントは ExpressRoute 回線のセットアップに必要です。 ExpressRoute 回線は Azure サブスクリプション内のリソースです。 Office 365 サービスや Dynamics 365 など、Azure 以外の Microsoft クラウド サービスに接続が限定される場合でも、Azure サブスクリプションが要件となります。
 * アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。 詳細については、この記事の [Office 365 固有の要件](#office-365-specific-requirements)に関するセクションを参照してください。
 
-## <a name="connectivity-provider"></a>接続プロバイダー
+<a id="connectivity-provider" class="xliff"></a>
+
+## 接続プロバイダー
 
 * [ExpressRoute 接続パートナー](expressroute-locations.md#partners) と連携して Microsoft Cloud に接続することができます。 [3 とおりの方法](expressroute-introduction.md)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。
 * プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#connectivity-through-exchange-providers)を通じて Microsoft Cloud に接続できます。
 
-## <a name="network-requirements"></a>ネットワークの要件
+<a id="network-requirements" class="xliff"></a>
+
+## ネットワークの要件
 * **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。 Microsoft の要件では、 [クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。
 * **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで [ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。 一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
 * **NAT**: Microsoft では、パブリック IP アドレスのみを Microsoft ピアリング経由で受け入れます。 オンプレミス ネットワークでプライベート IP アドレスを使用している場合、自社またはプロバイダーで [NAT を使用して](expressroute-nat.md)プライベート IP アドレスをパブリック IP アドレスに変換する必要があります。
 * **QoS**: Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。 自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。
 * **ネットワーク セキュリティ**: ExpressRoute を介して Microsoft Cloud に接続する場合は、[ネットワーク セキュリティ](../best-practices-network-security.md)について考慮してください。
 
-## <a name="office-365"></a>Office 365
+<a id="office-365" class="xliff"></a>
+
+## Office 365
 ExpressRoute で Office 365 を有効にする予定がある場合は、以下のドキュメントで Office 365 の要件の詳細について確認してください。
 
 * [Office 365 向け ExpressRoute の概要](https://support.office.com/en-us/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
@@ -54,12 +64,17 @@ ExpressRoute で Office 365 を有効にする予定がある場合は、以下�
 * [Office 365 とオンプレミス環境との統合](https://support.office.com/en-us/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
 * [Office 365 での ExpressRoute に関する高度なトレーニング ビデオ](https://channel9.msdn.com/series/aer/)
 
-## <a name="dynamics-365"></a>Dynamics 365
+<a id="dynamics-365" class="xliff"></a>
+
+## Dynamics 365
 ExpressRoute で Dynamics 365 を有効にする予定がある場合は、以下のドキュメントで Dynamics 365 の詳細について確認してください。
 
+* [Dynamics 365 と ExpressRoute のホワイト ペーパー](http://download.microsoft.com/download/B/2/8/B2896B38-9832-417B-9836-9EF240C0A212/Microsoft%20Dynamics%20365%20and%20ExpressRoute.pdf)
 * [Dynamics 365 URL](https://support.microsoft.com/kb/2655102) および [IP アドレス範囲](https://support.microsoft.com/kb/2728473)
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 * ExpressRoute 接続プロバイダーを探します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。
 * [ルーティング](expressroute-routing.md)、[NAT](expressroute-nat.md)、[QoS](expressroute-qos.md) の要件を参照してください。

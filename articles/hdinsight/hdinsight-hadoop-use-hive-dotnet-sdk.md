@@ -1,5 +1,5 @@
 ---
-title: "HDInsight .NET SDK を使用した Hive クエリの実行 | Microsoft Docs"
+title: "HDInsight .NET SDK を使用した Hive クエリの実行 - Azure | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、Hadoop ジョブを Azure HDInsight Hadoop に送信する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
@@ -14,20 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 08/15/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 6e9626cf8da4e4106dfedc164af0f0ba52bf2f06
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 7b1a5f7ea3b2bda438727dc75a85557ea7930280
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/04/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの実行
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-HDInsight .NET SDK を使用して Hive クエリを送信する方法について説明します。
+HDInsight .NET SDK を使用して Hive クエリを送信する方法について説明します。 Hive テーブルを表示するための Hive クエリを送信し、結果を表示する C# プログラムを作成します。
 
 > [!NOTE]
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
@@ -37,7 +36,7 @@ HDInsight .NET SDK を使用して Hive クエリを送信する方法につい�
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
+* **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](./hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * **Visual Studio 2013/2015/2017**。
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの送信

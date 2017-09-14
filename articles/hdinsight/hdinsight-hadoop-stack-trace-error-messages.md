@@ -1,5 +1,5 @@
 ---
-title: "Hadoop スタック トレース エラー メッセージ | Microsoft Docs"
+title: "Hadoop スタック トレース エラー メッセージ - Azure HDInsight | Microsoft Docs"
 description: "Azure HDInsight での Hadoop スタック トレース エラー メッセージのインデックス。 一覧のエラーに対応するトラブルシューティング情報を確認します。"
 keywords: "スタック トレース、エラー メッセージ"
 services: hdinsight
@@ -14,14 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: big-data
-ms.date: 04/26/2017
-ms.author: gao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: bc6f7904e6307477eb90bb0ca74be19a9c76eb35
+ms.date: 08/15/2017
+ms.author: jgao
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 45b3df39dcabf8be640bf6b9e5b83a452d6dd824
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight での Hadoop のトラブルシューティングに関する記事のインデックス
@@ -36,7 +35,6 @@ ms.lasthandoff: 04/28/2017
 
 ## <a name="more-troubleshooting-articles"></a>その他のトラブルシューティングの記事
 * [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)
-* [HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈](hdinsight-debug-jobs.md)
 * [HDInsight の Linux ベースの Hadoop での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Azure HDInsight の Hadoop コンポーネントのリリース ノート](hdinsight-release-notes.md)

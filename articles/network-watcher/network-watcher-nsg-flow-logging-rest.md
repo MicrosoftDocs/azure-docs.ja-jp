@@ -3,7 +3,7 @@ title: "Azure Network Watcher を使用したネットワーク セキュリテ�
 description: "このページでは、REST API を使用して Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: c89a2ab4c39978771c940a819493b4e2283d5f9f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/26/2017
-
 
 ---
 

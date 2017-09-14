@@ -15,6 +15,7 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rickstercdn
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: f1977bf391a9ced08c66e6dfbb36ac35b536357d

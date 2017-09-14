@@ -4,7 +4,7 @@ description: "Azure Functions で Azure Cosmos DB のバインドを使用する
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/18/2016
-ms.author: chrande; glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2c0cb8ee1690f9b36b76c87247e3c7223876b269
+ms.date: 08/26/2017
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fb79e2ad7514ae2cf48b9a5bd486e54b9b407bee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Azure Functions における Cosmos DB のバインド
@@ -40,16 +39,18 @@ DocumentDB API 入力バインドでは、Cosmos DB ドキュメントを取得�
 
 DocumentDB API 入力バインドには、*function.json* に次のプロパティがあります。
 
-- `name`: ドキュメントの関数コードで使用される識別子名
-- `type`: "documentdb" に設定する必要があります
-- `databaseName`: ドキュメントを含むデータベース
-- `collectionName`: ドキュメントを含むコレクション
-- `id`: 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。「[Azure Functions でのトリガーとバインドの使用方法](functions-triggers-bindings.md)」の[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)に関する記事をご覧ください。
-- `sqlQuery`: 複数のドキュメントを取得するときに使用する Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。 次に例を示します。`SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`: Cosmos DB 接続文字列を含むアプリ設定の名前
-- `direction`: `"in"` に設定する必要があります。
+|プロパティ  |Description  |
+|---------|---------|
+|**name**     | 関数でドキュメントを表すバインド パラメーターの名前。  |
+|**type**     | `documentdb` に設定する必要があります。        |
+|**databaseName** | ドキュメントを含むデータベース。        |
+|**collectionName**  | ドキュメントを含むコレクションの名前。 |
+|**id**     | 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。 詳細については、「[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)」を参照してください。 |
+|**sqlQuery**     | 複数のドキュメントを取得するときに使用する Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。例: `SELECT * FROM c where c.departmentId = {departmentId}`        |
+|**接続**     |Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**direction**     | `in` に設定する必要があります。         |
 
-`id` と `sqlQuery` の両方のプロパティを指定することはできません。 `id` と `sqlQuery` をどちらも設定しないと、コレクション全体が取得されます。
+設定できるのは **id** と **sqlQuery** のいずれかです。 どちらも設定しないと、コレクション全体が取得されます。
 
 ## <a name="using-a-documentdb-api-input-binding"></a>Azure DocumentDB API 入力バインドの使用
 
@@ -173,7 +174,7 @@ module.exports = function (context, input) {
     for (var i = 0; i < documents.length; i++) {
         var document = documents[i];
         // operate on each document
-    }        
+    }       
     context.done();
 };
 ```
@@ -181,18 +182,20 @@ module.exports = function (context, input) {
 ## <a id="docdboutput"></a>DocumentDB API 出力バインド
 DocumentDB API 出力バインドを使用すると、Azure Cosmos DB データベースに新しいドキュメントを記述できます。 *function.json* には次のプロパティがあります。
 
-- `name`: 新しいドキュメントの関数コードで使用される識別子
-- `type`: `"documentdb"` に設定する必要があります
-- `databaseName` : 新しいドキュメントが作成されるコレクションを含むデータベース。
-- `collectionName` : 新しいドキュメントが作成されるコレクション。
-- `createIfNotExists`: コレクションが存在しない場合に作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、価格に影響が及ぶためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
-- `connection`: Cosmos DB 接続文字列を含むアプリ設定の名前
-- `direction`: `"out"` に設定する必要があります
+|プロパティ  |Description  |
+|---------|---------|
+|**name**     | 関数のドキュメントを表すバインド パラメーターの名前。  |
+|**type**     | `documentdb` に設定する必要があります。        |
+|**databaseName** | ドキュメントが作成されたコレクションを含むデータベース。     |
+|**collectionName**  | ドキュメントが作成されたコレクションの名前。 |
+|**createIfNotExists**     | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。  |
+|**接続**     |Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**direction**     | `out` に設定する必要があります。         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>DocumentDB API 出力バインドの使用
 このセクションでは、DocumentDB API 出力バインドを関数のコードで使用する方法について説明します。
 
-関数の出力パラメーターに書き込むと、既定で新しい文書がデータベースに生成され、自動的に生成された GUID が文書 ID として割り当てられます。 出力ドキュメントのドキュメント ID は、出力パラメーターの `id` JSON プロパティを指定することによって指定できます。 
+既定では、関数の出力パラメーターに書き込むと、ドキュメントがデータベースに作成されます。 このドキュメントには、自動的に生成された GUID がドキュメント ID として割り当てられます。 出力ドキュメントのドキュメント ID を指定するには、出力パラメーターに渡された JSON オブジェクトで `id` プロパティを指定します。 
 
 >[!Note]  
 >既存のドキュメントの ID を指定した場合、既存のドキュメントは新しい出力ドキュメントによって上書きされます。 

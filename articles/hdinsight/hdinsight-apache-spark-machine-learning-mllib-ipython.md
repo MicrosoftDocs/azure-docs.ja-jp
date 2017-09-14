@@ -1,6 +1,7 @@
 ---
-title: "Spark の MLlib ライブラリを使用した Azure HDInsight での Machine Learning アプリケーションの作成 | Microsoft Docs"
-description: "Apache Spark で MLlib ライブラリを使用して Machine Learning アプリケーションを作成する手順を説明します"
+title: "HDInsight 上の Spark MLlib を使用した Machine Learning の例 - Azure | Microsoft Docs"
+description: "Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。"
+keywords: "Spark Machine Learning、Spark Machine Learning の例"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,29 +10,30 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: c0fd4baa-946d-4e03-ad2c-a03491bd90c8
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 2b9b635abac0d74a270933b8f39d13b1c8436dde
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 47cbb4ba34bb075f51306cc9481afd308ff672b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
-# <a name="machine-learning-predictive-analysis-on-food-inspection-data-using-mllib-with-apache-spark-cluster-on-hdinsight"></a>Machine Learning: HDInsight での MLlib と Apache Spark クラスターを使用した食品検査データの予測分析
+# <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
+
+Spark **MLlib** を使用して Machine Learning アプリケーションを作成し、オープン データセットに対して簡単な予測分析を実行する方法について説明します。 Spark の組み込みの Machine Learning ライブラリから、この例ではロジスティック回帰による*分類*を使用します。 
 
 > [!TIP]
-> このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。 Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。 Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**Python** フォルダーにある **Spark Machine Learning - Predictive analysis on food inspection data using MLLib.ipynb (Machine learning: MLLib.ipynb を使用した食品検査データの予測分析)** の Notebook を実行します。
+> この例は、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。 Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。 Notebook 内からチュートリアルを実行するには、Spark クラスターを作成して Jupyter Notebook を起動します (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)。 次に、**Python** フォルダーで Notebook「**Spark Machine Learning: MLlib.ipynb を使用した食品検査データの予測分析**」を実行します。
 >
 >
 
-この記事では、**MLLib**、Spark の組み込みの Machine Learning ライブラリを使用して、開いているデータセットに対して簡単な予測分析を実行する方法を示します。 MLLib は、Machine Learning タスクに役立つ多数のユーティリティを提供する、コア Spark ライブラリです。これには、以下のことに適したユーティリティが含まれます。
+MLlib は、Machine Learning タスクに役立つ多数のユーティリティを提供する、コア Spark ライブラリです。これには、次のことに適したユーティリティが含まれます。
 
 * 分類
 * 回帰
@@ -40,8 +42,6 @@ ms.lasthandoff: 03/18/2017
 * 特異値分解 (SVD) と主成分分析 (PCA)
 * 仮説テストとサンプル統計の計算
 
-この記事では、ロジスティック回帰を使用した *分類* への簡単なアプローチを提供します。
-
 ## <a name="what-are-classification-and-logistic-regression"></a>分類およびロジスティック回帰とは
 一般的な Machine Learning タスクである*分類*は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに「ラベル」を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する Machine Learning アルゴリズムを考えてみます。
 
@@ -49,13 +49,13 @@ ms.lasthandoff: 03/18/2017
 
 要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる *ロジスティック関数* が生成されます。  
 
-## <a name="what-are-we-trying-to-accomplish-in-this-article"></a>この記事の目的
-Spark を使用して、[シカゴ市のデータ ポータル](https://data.cityofchicago.org/)から取得した食品検査データ (**Food_Inspections1.csv**) に対していくつかの予測分析を実行します。 このデータセットには、シカゴで実施された食品検査に関する情報が含まれており、検査された各食品施設に関する情報、見つかった違反 (存在する場合)、検査結果についての情報が含まれています。 CSV データ ファイルは、クラスターに関連付けられたストレージ アカウントの **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv** に既に用意されています。
+## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品調査データの予測分析の例
+この例では、Spark を使用して、[シカゴ市のデータ ポータル](https://data.cityofchicago.org/)から取得した食品検査データ (**Food_Inspections1.csv**) に対していくつかの予測分析を実行します。 このデータセットには、シカゴで実施された食品施設検査に関する情報が含まれており、各食品施設に関する情報、見つかった違反 (存在する場合)、検査結果についての情報が含まれています。 CSV データ ファイルは、クラスターに関連付けられたストレージ アカウントの **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv** に既に用意されています。
 
 次の手順で、食品検査に合格または不合格になる理由を示すモデルを作成します。
 
-## <a name="start-building-a-machine-learning-application-using-spark-mllib"></a>Spark MLlib を使用して Machine Learning アプリケーション作成を開始する
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+## <a name="start-building-a-spark-mmlib-machine-learning-app"></a>Spark MMLib Machine Learning アプリケーションの作成を開始する
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 1. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]
@@ -64,13 +64,13 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-1. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
+1. Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
+    ![Jupyter Notebook の作成](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-create-jupyter.png "新しい Jupyter Notebook の作成")
 1. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
-    ![Notebook の名前を指定](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
-1. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。 これを行うには、セルにカーソルを置き、 **SHIFT + ENTER**キーを押します。
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-name-jupyter.png "Notebook の名前を指定")
+1. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストと Hive コンテキストが自動的に作成されます。 Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。 これを行うには、セルにカーソルを置き、 **SHIFT + ENTER**キーを押します。
 
         from pyspark.ml import Pipeline
         from pyspark.ml.classification import LogisticRegression
@@ -92,9 +92,9 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
             sio.close()
             return value
 
-        inspections = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+        inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                         .map(csvParse)
-1. これで、CSV ファイルを RDD として使用できます。 RDD から 1 つの行を取得して、データのスキーマを理解します。
+1. これで、CSV ファイルを RDD として使用できます。  データのスキーマを把握するために、RDD から 1 つの行を取得します。
 
         inspections.take(1)
 
@@ -121,7 +121,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
           '41.97583445690982',
           '-87.7107455232781',
           '(41.97583445690982, -87.7107455232781)']]
-1. 上記の出力により、入力ファイルのスキーマのアイデアが提供されます。ファイルには、すべての施設名、施設の種類、アドレス、検査のデータ、場所などが含まれています。 予測分析に役立ついくつかの列を選択し、結果をデータフレームとしてグループ化しましょう。次に、これを使って一時テーブルを作成します。
+1. 前の出力により、入力ファイルのスキーマの概要を把握できます。 ファイルには、すべての施設名、施設の種類、アドレス、検査のデータ、場所などが含まれています。 予測分析に役立ついくつかの列を選択し、結果をデータフレームとしてグループ化しましょう。次に、これを使って一時テーブルを作成します。
 
         schema = StructType([
         StructField("id", IntegerType(), False),
@@ -131,7 +131,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
         df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
         df.registerTempTable('CountResults')
-1. これで、*データフレーム*、`df` を取得できました。ここで分析を実行できます。 **CountResults** という一時テーブルも作成できました。 データフレームで対象の 4 列 (**id**、**name**、**results**、および **violations**) が含まれています。
+1. これで、*データフレーム*、`df` を取得できました。ここで分析を実行できます。 **CountResults** という一時テーブルも作成できました。 データフレームには 4 つの列 (**id**、**name**、**results**、および **violations**) が含まれています。
 
     データの小さなサンプルを取得します。
 
@@ -182,9 +182,9 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
     出力は次のように表示されます。
 
-    ![SQL クエリ出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL クエリ出力")
+    ![SQL クエリ出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL クエリ出力")
 
-    `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
+    `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 1. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成することもできます。 プロットはローカルに保存された **countResultsdf** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
 
         %%local
@@ -199,7 +199,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
     出力は次のように表示されます。
 
-    ![出力結果](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_13_1.png)
+    ![Spark Machine Learning アプリケーションの出力 - 5 つの異なる検査結果が含まれる円グラフ](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark Machine Learning の結果の出力")
 1. 検査には、5 つの個別の結果があることを確認できます。
 
    * 事業体が存在しない
@@ -208,7 +208,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
    * 条件付きで合格
    * 廃業
 
-     違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。 ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。 「Pass w/ Conditions」は Pass であるため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。 その他の結果のデータ (「Business Not Located」、「Out of Business」) は使用できないため、トレーニング セットから削除します。 いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
+     違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。 ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。 「条件付きで合格」であっても合格には変わりがないため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。 その他の結果のデータ (「事業体が存在しない」や「廃業」) は使用できないため、トレーニング セットから削除します。 いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
 1. 先に進み、既存のデータフレーム (`df`) を、各検査がラベルと違反のペアとして表される新しいデータフレームに変換します。 ここでは、ラベル `0.0` は失敗、ラベル `1.0` は成功、ラベル `-1.0` はこれら 2 つ以外の何らかの結果であることを表します。 新しいデータ フレームを計算するときに、これらのその他の結果は除外されます。
 
         def labelForResults(s):
@@ -221,7 +221,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
         label = UserDefinedFunction(labelForResults, DoubleType())
         labeledData = df.select(label(df.results).alias('label'), df.violations).where('label >= 0')
 
-    ラベル付けされたデータから 1 つの行を取得し、内容を確認してみましょう。
+    1 つの行を取得し、ラベル付けされたデータの内容を確認してみましょう。
 
         labeledData.take(1)
 
@@ -234,11 +234,11 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
         [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>入力データ フレームからロジスティック回帰モデルを作成する
-最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと機能ベクトルのペア*である必要があります。ここで「機能ベクトル」とは、何らかの方法での入力ポイントを表す数のベクトルです。 そのため、半構造化され、多くのフリー テキストによるコメントを含む「violations」列を、コンピューターが簡単に理解できる実数の配列に変換する方法が必要です。
+最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア*である必要があります。ここで「特徴ベクトル」とは、入力ポイントを表す数のベクトルです。 そのため、半構造化され、多くのフリー テキストによるコメントを含む「violations」列を、コンピューターが簡単に理解できる実数の配列に変換する必要があります。
 
 自然言語を処理するための 1 つの標準的な Machine Learning のアプローチは、個別の単語に「インデックス」を割り当て、ベクトルを Machine Learning アルゴリズムに渡し、各インデックスの値にその単語の相対度数がテキスト文字列で含まれるようにします。
 
-MLLib では、この操作を実行する簡単な方法を提供します。 最初に、各違反文字列を「トークン化」して各文字列の個々の単語を取得し、`HashingTF` を使用してトークンの各セットを機能ベクトルに渡します。これにより、ロジスティック回帰アルゴリズムに渡され、モデルを作成することができます。 「パイプライン」を使用して、これらすべての手順を順番に実行します。
+MLLib には、この操作を簡単に実行する方法が用意されています。 まず、違反している各文字列を「トークン化」して、各文字列の個々の単語を取得します。 次に、`HashingTF` を使用してトークンの各セットを特徴ベクトルに変換し、それをロジスティック回帰アルゴリズムに渡してモデルを構築します。 「パイプライン」を使用して、これらすべての手順を順番に実行します。
 
     tokenizer = Tokenizer(inputCol="violations", outputCol="words")
     hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol="features")
@@ -250,9 +250,9 @@ MLLib では、この操作を実行する簡単な方法を提供します。 �
 ## <a name="evaluate-the-model-on-a-separate-test-dataset"></a>別のテスト データセットでモデルを評価する
 前に作成したモデルを使用し、どのくらい違反が観察されたかに基づいて、新しい検査結果を *予測* できます。 データセット **Food_Inspections1.csv** でこのモデルをトレーニングしました。 2 つ目のデータセット **Food_Inspections2.csv** を使用して、新しいデータでこのモデルの強度を*評価*します。 この 2 つ目のデータ セット (**Food_Inspections2.csv**) は、クラスターに関連付けられている既定のストレージ コンテナーに既に存在している必要があります。
 
-1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。 このスニペットでは、データフレームに基づいた一時テーブル **Predictions** も作成します。
+1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。 このスニペットでは、データフレームに基づいた **Predictions** と呼ばれる一時テーブルも作成します。
 
-        testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+        testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                  .map(csvParse) \
                  .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
         testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -279,7 +279,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。 �
 
         predictionsDf.take(1)
 
-    テスト データ セットの最初のエントリの予測が表示されます。
+   テスト データ セットの最初のエントリの予測が表示されます。
 1. `model.transform()` メソッドは、同じスキーマを持つ新しいデータに同じ変換を適用し、データの分類方法の予測に到達します。 予測がどれだけ正確だったかを把握するための簡単な統計を実行できます。
 
         numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -331,12 +331,12 @@ MLLib では、この操作を実行する簡単な方法を提供します。 �
 
     次の出力が表示されます。
 
-    ![予測の出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_26_1.png)
+    ![Spark Machine Learning アプリケーションの出力 - 不合格の食品検査の割合を示す円グラフ。](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark Machine Learning の結果の出力")
 
     このグラフでは、「positive」の結果は食品検査の不合格を指し、「negative」の結果は、食品検査の合格を指します。
 
 ## <a name="shut-down-the-notebook"></a>Notebook をシャットダウンする
-アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
+アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより Notebook がシャットダウンされ、Notebook が閉じます。
 
 ## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
@@ -352,9 +352,9 @@ MLLib では、この操作を実行する簡単な方法を提供します。 �
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

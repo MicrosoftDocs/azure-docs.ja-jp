@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: e15ac73051297665a2880a7818273e304d539624
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
+
+![DNS 分析のシンボル](./media/log-analytics-dns/dns-analytics-symbol.png)
 
 この記事では、Azure Log Analytics の Azure DNS 分析ソリューションをセットアップし、このソリューションを使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集する方法について説明します。
 
@@ -146,6 +147,8 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 **[DDI 分析のサンプル クエリ]**。 生の分析データを直接取得する最も一般的な検索クエリの一覧が含まれています。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ![サンプル クエリ](./media/log-analytics-dns/queries.png)
 
 これらのクエリは、カスタム レポート用の独自のクエリを作成するための出発点として使用できます。 クエリはクエリ結果が表示される DNS 分析ログ検索のページにリンクしています。
@@ -155,7 +158,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 - **[使用されていないリソース レコード]**。 未使用か古いリソース レコードの一覧がすべて表示されます。 この一覧には、リソース レコード名、リソース レコードの種類、関連付けられている DNS サーバー、レコードの生成時刻、ゾーン名が含まれています。 この一覧を使用して、使用されなくなった DNS リソース レコードを特定できます。 この情報に基づいて、DNS サーバーからこれらのエントリを削除できます。
 - **[DNS サーバーのクエリ負荷]**。 DNS サーバーの DNS 負荷の全体像を把握できる情報が表示されます。 この情報はサーバーの容量計画に役立ちます。 **[メトリック]** タブに移動すると、ビューをグラフ表示に変更できます。 このビューは、DNS サーバー間で DNS 負荷がどのように分散されているかを理解する上で役立ちます。 ビューには、各サーバーの DNS クエリ レートの傾向が示されます。
 
-    ![DNS サーバーのクエリのログ検索の結果](./media/log-analytics-dns/dns-servers-query-load.png) 
+    ![DNS サーバーのクエリのログ検索の結果](./media/log-analytics-dns/dns-servers-query-load.png)
 
 - **[DNS ゾーンのクエリ負荷]**。 ソリューションによって管理されている DNS サーバーのすべてのゾーンに関する 1 秒あたりの DNS ゾーン クエリ統計情報が表示されます。 **[メトリック]** タブをクリックすると、詳細レコードから結果のグラフ表示にビューが変更されます。
 - **[構成イベント]**。 すべての DNS 構成変更イベントと、関連するメッセージが表示されます。 イベントの時刻、イベント ID、DNS サーバー、またはタスク カテゴリに基づいて、これらのイベントをフィルター処理できます。 このデータを使用して、特定の時点で特定の DNS サーバーに加えられた変更を監査できます。

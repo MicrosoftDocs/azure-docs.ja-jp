@@ -4,7 +4,7 @@ description: "Media Services .NET SDK を利用し、コンテンツ キー承�
 services: media-services
 documentationcenter: 
 author: Mingfeiy
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 3dcd45307716b7343fbac00e083e8f26c9eb967f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
@@ -102,7 +102,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
 
-#### <a name="a-idschemaatoken-restriction-schema"></a><a id="schema"></a>トークン制限スキーマ
+#### <a id="schema"></a>トークン制限スキーマ
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -209,7 +209,7 @@ Media Services では、Secure Token Services は提供されません。 トー
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
 
-#### <a name="a-idtestatest-token"></a><a id="test"></a>テスト トークン
+#### <a id="test"></a>テスト トークン
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、次の処理を行います。
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -232,7 +232,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
 
-PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の&1; つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
+PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
 
 [このトピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法を説明しています。
 
@@ -390,8 +390,8 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、 [こちら](#test) のセクションをご覧ください。 
 
-## <a name="a-idtypesatypes-used-when-defining-contentkeyauthorizationpolicy"></a><a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
-### <a name="a-idcontentkeyrestrictiontypeacontentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
+### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -399,7 +399,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         IPRestricted = 2,
     }
 
-### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -408,7 +408,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
       Widevine = 3
     }
 
-### <a name="a-idtokentypeatokentype"></a><a id="TokenType"></a>TokenType
+### <a id="TokenType"></a>TokenType
     public enum TokenType
     {
         Undefined = 0,

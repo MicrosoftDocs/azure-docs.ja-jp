@@ -12,18 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 07/13/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 47fb74c608315b256e88dd774af7cb5260529607
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/29/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="log-analytics-search-reference"></a>Log Analytics 検索リファレンス
+
+>[!NOTE]
+> この記事では、現行のクエリ言語を使用した Log Analytics のログ検索について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[新しい言語のリファレンス](https://go.microsoft.com/fwlink/?linkid=856079)を参照してください。
+
 検索言語に関する次の参照セクションは、データを検索するときに使用できる一般的なクエリ構文のオプションと、検索を絞り込むために使用できるフィルター式について説明しています。 取得されたデータに対して何らかのアクションを実行するために使用できるコマンドについても説明しています。
 
 検索で返されるフィールドと、類似するデータ カテゴリの詳細を確認するために役立つファセットについては、「[検索フィールドとファセットのリファレンス](#search-field-and-facet-reference)」セクションを参照してください。
@@ -692,7 +695,7 @@ Heartbeat の一致するフィールドを結合して MyBackup_CL の次のレ
 
 
 ### <a name="extend"></a>Extend
-クエリ内に実行時フィールドを作成できます。 集計を実行する場合は、Extend コマンドの後に Measure コマンドを使用することもできます。
+クエリ内に実行時フィールドを作成できます。 実行時フィールドを Measure コマンドと共に使用し、集計を実行することはできません。
 
 **例 1**
 

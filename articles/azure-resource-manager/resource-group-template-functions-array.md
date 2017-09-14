@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 34fc513b6d4408e341fc5a723ca743daee39b85d
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
@@ -34,6 +33,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 * [empty](#empty)
 * [first](#first)
 * [intersection](#intersection)
+* [json](#json)
 * [last](#last)
 * [length](#length)
 * [min](#min)
@@ -58,7 +58,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 |:--- |:--- |:--- |:--- |
 | convertToArray |はい |整数、文字列、配列、オブジェクト |配列に変換する値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列。
+
+### <a name="example"></a>例
 
 次の例では、array 関数をさまざまな型で使用する方法を示します。
 
@@ -99,9 +103,13 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| intOutput | array | [1] |
+| stringOutput | array | ["a"] |
+| objectOutput | array | [{"a": "b", "c": "d"}] |
 
 <a id="coalesce" />
 
@@ -117,7 +125,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | arg1 |はい |整数、文字列、配列、オブジェクト |null かどうかがテストされる最初の値。 |
 | 残りの引数 |いいえ |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+最初の null 以外のパラメーターの値。文字列、整数、配列、またはオブジェクトが返されます。 すべてのパラメーターが null の場合は null になります。 
+
+### <a name="example"></a>例
 
 次の例では、coalesce をさまざまな方法で使用したときの出力を示します。
 
@@ -128,7 +140,14 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
     "parameters": {
         "objectToTest": {
             "type": "object",
-            "defaultValue": {"first": null, "second": null}
+            "defaultValue": {
+                "null1": null, 
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
         }
     },
     "resources": [
@@ -136,27 +155,37 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
     "outputs": {
         "stringOutput": {
             "type": "string",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, 'fallback')]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
         },
         "intOutput": {
             "type": "int",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, 1)]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
         },
         "objectOutput": {
             "type": "object",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, parameters('objectToTest'))]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
         },
         "arrayOutput": {
             "type": "array",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, array(1))]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-最初の null 以外のパラメーターの値。文字列、整数、配列、またはオブジェクトが返されます。 すべてのパラメーターが null の場合は null になります。 
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| stringOutput | String | default |
+| intOutput | int | 1 |
+| objectOutput | オブジェクト | {"first": "default"} |
+| arrayOutput | array | [1] |
+| emptyOutput | ブール値 | True |
 
 <a id="concat" />
 
@@ -167,14 +196,17 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |連結する最初の配列または文字列。 |
 | 残りの引数 |いいえ |配列または文字列 |順次連結する残りの配列または文字列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+連結された値の文字列または配列。
+
+### <a name="example"></a>例
 
 次の例では、2 つの配列を結合する方法を示します。
 
@@ -211,6 +243,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+
 次の例は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
 ```json
@@ -226,15 +264,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
     "resources": [],
     "outputs": {
         "concatOutput": {
-            "value": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
+            "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]",
             "type" : "string"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>戻り値
-連結された値の文字列または配列。
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 <a id="contains" />
 
@@ -245,12 +286,16 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
-| itemToFind |はい |文字列または整数 |検索対象の値。 |
+| itemToFind |あり |文字列または整数 |検索対象の値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+項目が見つかった場合は **True**、それ以外の場合は **False** です。
+
+### <a name="example"></a>例
 
 次の例では、contains をさまざまな型で使用する方法を示します。
 
@@ -303,9 +348,16 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-項目が見つかった場合は **True**、それ以外の場合は **False** です。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| stringTrue | ブール値 | True |
+| stringFalse | ブール値 | False |
+| objectTrue | ブール値 | True |
+| objectFalse | ブール値 | False |
+| arrayTrue | ブール値 | True |
+| arrayFalse | ブール値 | False |
 
 <a id="createarray" />
 
@@ -321,7 +373,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | arg1 |はい |文字列、整数、配列、オブジェクト |配列の最初の値。 |
 | 残りの引数 |なし |文字列、整数、配列、オブジェクト |配列の残りの値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列。
+
+### <a name="example"></a>例
 
 次の例では、createArray をさまざまな型で使用する方法を示します。
 
@@ -362,9 +418,14 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| stringArray | array | ["a", "b", "c"] |
+| intArray | array | [1, 2, 3] |
+| objectArray | array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | array | [["one", "two", "three"]] |
 
 <a id="empty" />
 
@@ -376,11 +437,15 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| itemToTest |あり |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
+| itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+値が空の場合は **True** を、値が空でない場合は **False** を返します。
+
+### <a name="example"></a>例
 
 次の例では、配列、オブジェクト、および文字列が空かどうかを確認します。
 
@@ -421,9 +486,13 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-値が空の場合は **True** を、値が空でない場合は **False** を返します。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayEmpty | ブール値 | True |
+| objectEmpty | ブール値 | True |
+| stringEmpty | ブール値 | True |
 
 <a id="first" />
 
@@ -438,7 +507,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列の最初の要素の型 (文字列、整数、配列、またはオブジェクト)、または文字列の最初の文字。
+
+### <a name="example"></a>例
 
 次の例では、first 関数を配列および文字列と共に使用する方法を示します。
 
@@ -467,13 +540,16 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列の最初の要素の型 (文字列、整数、配列、オブジェクト)、または文字列の最初の文字。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 <a id="intersection" />
 
-## <a name="intersection"></a>共通部分
+## <a name="intersection"></a>intersection
 `intersection(arg1, arg2, arg3, ...)`
 
 パラメーターから共通の要素を持つ 1 つの配列またはオブジェクトを返します。
@@ -483,10 +559,14 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
-| arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
-| 残りの引数 |なし |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
+| arg2 |あり |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
+| 残りの引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+共通の要素を持つ配列またはオブジェクト。
+
+### <a name="example"></a>例
 
 次の例では、intersection を配列およびオブジェクトと共に使用する方法を示します。
 
@@ -527,9 +607,59 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| objectOutput | オブジェクト | {"one": "a", "three": "c"} |
+| arrayOutput | array | ["two", "three"] |
+
+
+## <a name="json"></a>json
+`json(arg1)`
+
+JSON オブジェクトを返します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+|:--- |:--- |:--- |:--- |
+| arg1 |あり |string |JSON に変換する値。 |
+
+
 ### <a name="return-value"></a>戻り値
 
-共通の要素を持つ配列またはオブジェクト。
+**null** が指定された場合は、指定された文字列の JSON オブジェクト、または空のオブジェクト。
+
+### <a name="example"></a>例
+
+次の例では、intersection を配列およびオブジェクトと共に使用する方法を示します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "jsonOutput": {
+            "type": "object",
+            "value": "[json('{\"a\": \"b\"}')]"
+        },
+        "nullOutput": {
+            "type": "bool",
+            "value": "[empty(json('null'))]"
+        }
+    }
+}
+```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| jsonOutput | オブジェクト | {"a": "b"} |
+| nullOutput | Boolean | True |
 
 <a id="last" />
 
@@ -544,7 +674,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列の最後の要素の型 (文字列、整数、配列、またはオブジェクト)、または文字列の最後の文字。
+
+### <a name="example"></a>例
 
 次の例では、last 関数を配列および文字列と共に使用する方法を示します。
 
@@ -573,9 +707,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列の最後の要素の型 (文字列、整数、配列、オブジェクト)、または文字列の最後の文字。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 <a id="length" />
 
@@ -588,9 +725,13 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+整数。 
+
+### <a name="example"></a>例
 
 次の例では、length を配列および文字列と共に使用する方法を示します。
 
@@ -626,6 +767,13 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+
 この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。 次の例では、 **siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
 
 ```json
@@ -636,10 +784,6 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 ```
 
 この関数を配列と共に使用する方法の詳細については、「 [Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
-
-### <a name="return-value"></a>戻り値
-
-整数。 
 
 <a id="min" />
 
@@ -654,7 +798,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 |:--- |:--- |:--- |:--- |
 | arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+最小値を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、min を配列および整数のリストと共に使用する方法を示します。
 
@@ -682,9 +830,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-最小値を表す整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -697,9 +848,13 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
+| arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+最大値を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、max を配列および整数のリストと共に使用する方法を示します。
 
@@ -727,9 +882,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-最大値を表す整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 <a id="range" />
 
@@ -745,7 +903,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | startingInteger |はい |int |配列の最初の整数です。 |
 | numberofElements |はい |int |配列内の整数の数。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+整数の配列。
+
+### <a name="example"></a>例
 
 次の例では、range 関数を使用する方法を示します。
 
@@ -773,9 +935,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-整数の配列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| rangeOutput | array | [5, 6, 7] |
 
 <a id="skip" />
 
@@ -791,7 +955,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列または文字列。
+
+### <a name="example"></a>例
 
 次の例では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
 
@@ -835,9 +1003,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列または文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | array | ["three"] |
+| stringOutput | String | two three |
 
 <a id="take" />
 
@@ -853,7 +1024,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
 | numberToTake |あり |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列または文字列。
+
+### <a name="example"></a>例
 
 次の例では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
 
@@ -897,9 +1072,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列または文字列。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | array | ["one", "two"] |
+| stringOutput | String | on |
 
 <a id="union" />
 
@@ -910,13 +1088,17 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |あり |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
 | 残りの引数 |いいえ |配列またはオブジェクト |要素の結合に使用される残りの値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+配列またはオブジェクト。
+
+### <a name="example"></a>例
 
 次の例では、union を配列およびオブジェクトと共に使用する方法を示します。
 
@@ -931,7 +1113,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
         },
         "secondObject": {
             "type": "object",
-            "defaultValue": {"four": "d", "five": "e", "six": "f"}
+            "defaultValue": {"three": "c", "four": "d", "five": "e"}
         },
         "firstArray": {
             "type": "array",
@@ -939,7 +1121,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
         },
         "secondArray": {
             "type": "array",
-            "defaultValue": ["four", "five"]
+            "defaultValue": ["three", "four"]
         }
     },
     "resources": [
@@ -957,9 +1139,12 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-配列またはオブジェクト。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| objectOutput | オブジェクト | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
+| arrayOutput | array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

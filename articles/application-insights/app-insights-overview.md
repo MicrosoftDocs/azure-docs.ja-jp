@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: e57912a197394fbb8ea8bc374a1f3934ae0ff464
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: d06bb37ba38ad7bc2b9b3c5c09b45be6c7fd17bb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?

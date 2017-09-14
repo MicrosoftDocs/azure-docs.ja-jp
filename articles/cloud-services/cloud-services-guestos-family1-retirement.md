@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/21/2017
+ms.date: 5/21/2017
 ms.author: raiye
-translationtype: Human Translation
-ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
-ms.openlocfilehash: 578059c397319147c8716e2152901dfdc15a28cd
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -35,9 +36,9 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。
 2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。 現在、この場合、既定値として "1" が使用されます。
-3. Azure クラシック ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
+3. Azure Portal で、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
 
-クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell](/powershell/azureps-cmdlets-docs) を設定する必要があります。 スクリプトの詳細については、「[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)」を参照してください。 
+クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell](/powershell/azureps-cmdlets-docs) を設定する必要があります。 スクリプトの詳細については、「[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)」を参照してください。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -74,5 +75,4 @@ foreach($subscription in Get-AzureSubscription) {
 
 ## <a name="next-steps"></a>次のステップ
 最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
-
 

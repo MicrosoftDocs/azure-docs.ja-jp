@@ -1,6 +1,6 @@
 ---
-title: "Data Factory を使用して Oracle との間でデータを移動する | Microsoft Docs"
-description: "Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータを移動する方法を説明します。"
+title: "Data Factory を使用して Oracle との間でデータをコピーする | Microsoft Docs"
+description: "Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータをコピーする方法を説明します。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 18fffb6cae9107b9301ff702d483b598836ac180
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: bb6af719fe6f1a30c5933ce4342a4c0c072f3ff4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="move-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータを移動する
+# <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Oracle データベースとの間でデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -570,15 +570,15 @@ Oracle からデータを移動すると、Oracle データ型から .NET 型へ
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Decimal |
-| INTEGER |Decimal |
+| FLOAT |Decimal、String (有効桁数が 28 を超える場合) |
+| INTEGER |Decimal、String (有効桁数が 28 を超える場合) |
 | INTERVAL YEAR TO MONTH |Int32 |
 | INTERVAL DAY TO SECOND |timespan |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Decimal |
+| NUMBER |Decimal、String (有効桁数が 28 を超える場合) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

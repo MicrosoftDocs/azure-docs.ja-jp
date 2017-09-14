@@ -1,6 +1,6 @@
 ---
 title: "SQL Database の XEvent イベント ファイル コード | Microsoft Docs"
-description: "Azure SQL Database の拡張イベントのイベント ファイル ターゲットを示す&2; 段階コード サンプルの PowerShell と Transact-SQL を提供します。 Azure Storage はこのシナリオの必須の部分です。"
+description: "Azure SQL Database の拡張イベントのイベント ファイル ターゲットを示す 2 段階コード サンプルの PowerShell と Transact-SQL を提供します。 Azure Storage はこのシナリオの必須の部分です。"
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
-ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e8c7a9af11ac4c22be00426337ab7c8b8ff0860f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
@@ -270,7 +269,7 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 
 ### <a name="transact-sql-code"></a>Transact-SQL コード
 
-```tsql
+```sql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -466,7 +465,7 @@ GO
 
 実行時にターゲットがアタッチできなかった場合、イベント セッションを停止し、再起動する必要があります。
 
-```tsql
+```sql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
@@ -476,9 +475,9 @@ GO
 
 ## <a name="output"></a>出力
 
-Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **<event>** 要素が&1; つ表示されます。これに UPDATE ステートメントが&1; つ表示されます。
+Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
 
-ここに、テスト中に生成された **<event>** 要素が&1; つあります。
+ここに、テスト中に生成された **<event>** 要素が 1 つあります。
 
 
 ```xml
@@ -544,7 +543,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
-* [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
+* [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [コンテナー、BLOB、メタデータの名前付けと参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [ルート コンテナーの使用](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](http://msdn.microsoft.com/library/dn466430.aspx)

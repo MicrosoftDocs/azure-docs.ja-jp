@@ -3,8 +3,8 @@ title: "Visual Studio WebApi プロジェクトで Azure AD の使用を開始�
 description: "Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、Web API プロジェクトで Azure AD の使用を開始する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: bf1eb32d-25cd-4abf-8679-2ead299fedaa
 ms.service: active-directory
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 333db54fe01aad42cfcd050995b64f3725b31ae9
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-webapi-projects"></a>Azure Active Directory と Visual Studio 接続済みサービスの概要 (Web API プロジェクト)

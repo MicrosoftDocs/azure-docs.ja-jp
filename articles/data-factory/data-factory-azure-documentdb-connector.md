@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/20/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: f665ff5ca345d96bac9b51c3c798874e55738a62
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 7a11c6ade0325b08ad520448bbf82d64a0a555f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -56,6 +56,20 @@ JSON ファイルまたは他の Cosmos DB コレクションとの間でデー�
 | --- | --- | --- |
 | type |type プロパティを **DocumentDB** |はい |
 | connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |あり |
+
+例:
+
+```JSON
+{
+  "name": "CosmosDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+    }
+  }
+}
+```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。

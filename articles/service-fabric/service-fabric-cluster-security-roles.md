@@ -12,17 +12,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: subramar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
 ms.openlocfilehash: 09ddabf97028525e04f930f935f6ddf7ae132567
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/03/2017
-
 
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>ロール ベースのアクセス制御 (Service Fabric クライアント用)
-Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の&2; つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。  
+Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。  
 
 **管理者** には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) が付与されています。 **ユーザー** には、管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみが既定で付与されています。
 

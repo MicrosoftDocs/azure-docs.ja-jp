@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 05/17/2017
+ms.date: 08/17/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 6d0a1501b97ddb2c819361b00a85ebec12f7b50e
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: f65b992297c429eda2090f744b9b88b1ede39533
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
@@ -59,7 +58,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 [EventHubDescription](/dotnet/api/microsoft.servicebus.messaging.eventhubdescription) クラスには、承認規則、メッセージの保有期間、パーティション ID、状態、パスなど、イベント ハブの詳細が含まれています。 このクラスを使用し、イベント ハブのメタデータを更新できます。
 
 ## <a name="create-an-event-hubs-client"></a>Event Hub クライアントの作成
-Event Hubs とやり取りするための主要クラスは [Microsoft.ServiceBus.Messaging.EventHubClient][] です。 このクラスは送信機能と受信機能の両方を提供します。 次の例のように、 [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) メソッドを利用してこのクラスをインスタンス化できます。
+Event Hubs とやり取りするための主要クラスは [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient] です。 このクラスは送信機能と受信機能の両方を提供します。 次の例のように、 [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) メソッドを利用してこのクラスをインスタンス化できます。
 
 ```csharp
 var client = EventHubClient.Create(description.Path);
@@ -109,6 +108,8 @@ var client = factory.CreateEventHubClient("MyEventHub");
 - 破棄 (重要ではないメッセージを破棄する)
 - 再試行 (表示されるメッセージが適切になるまで再試行する)
 - [配信不可](../service-bus-messaging/service-bus-dead-letter-queues.md) (キューまたは別のイベント ハブを使用して、処理できないメッセージのみを配信不能にする)
+
+可用性と一貫性の間のトレードオフに関する情報と詳細については、「[Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)」を参照してください。 
 
 ## <a name="batch-event-send-operations"></a>イベントのバッチ送信処理
 イベントをバッチ送信すると、スループットが劇的に上がります。 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) メソッドは [EventData][] 型の **IEnumerable** パラメーターを受け取り、バッチ全体をアトミック操作としてイベント ハブに送信します。
@@ -187,6 +188,7 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 
 * [Event Hubs API 概要](event-hubs-api-overview.md)
 * [Event Hubs とは](event-hubs-what-is-event-hubs.md)
+* [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [イベント プロセッサ ホスト API リファレンス](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager

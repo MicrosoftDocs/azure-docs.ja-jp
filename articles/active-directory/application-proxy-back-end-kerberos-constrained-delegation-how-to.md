@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 209d4f3874123b3f630d3648264e9afc438da184
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 0651f497de446bd6b66f8eaccd7114d262925afd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -47,7 +47,7 @@ Azure アプリケーション プロキシは、かなり多くの種類のイ�
 
 Windows Server 2012 R2 における KCD の構成に関するセクションは特に重要です。KCD の構成に関して、以前のバージョンの Windows とは根本的に異なるアプローチが採用されているためです。その他、次の事柄についても十分考慮するようにしてください。
 
--   特定のドメイン コントローラーとの間でセキュリティで保護されたチャネルを開くためのダイアログをドメイン メンバー サーバーが変更することは珍しくありません。 後で変わる可能性があるため、通常コネクタ ホストは、特定のローカル サイトの DC とのみ通信できればよいというわけではありません。
+-   特定のドメイン コントローラーとのセキュリティで保護されたチャネル ダイアログをドメイン メンバー サーバーが開くことは珍しくありません。 いつでも別のダイアログに移動するため、通常コネクタ ホストは、特定のローカル サイトの DC とのみ通信できるという制約は受けません。
 
 -   上記の点と同様、クロス ドメインのシナリオでは、参照によってローカル ネットワークの境界外に存在する DC にコネクタ ホストが誘導される場合があります。 このシナリオでは、他の各ドメインの DC に向かうトラフィックを許可することも重要となります。そうしなければ委任に失敗します。
 

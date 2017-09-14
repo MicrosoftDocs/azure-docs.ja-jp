@@ -2,7 +2,7 @@
 title: "Azure Resource Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。"
 services: azure-resource-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

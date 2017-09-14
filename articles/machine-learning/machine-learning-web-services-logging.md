@@ -12,45 +12,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 06/15/2017
 ms.author: raymondl;garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f307a26bfbb55b395f4073f4368432ae69b867ae
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7d0b2db01427430d6b0a317cdfefc265dd4b06e2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Machine Learning Web サービスのログ記録の有効化
-このドキュメントは、クラシック Web サービスのログ記録機能について説明します。 Web サービスでのログ記録を有効にすると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
+このドキュメントは、Machine Learning Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
 
-Azure クラシック ポータルで Web サービスのログ記録を有効化するには:   
+## <a name="how-to-enable-logging-for-a-web-service"></a>Web サービスでのログ記録を有効にする方法
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-2. 左側の機能の列で、**[MACHINE LEARNING]** をクリックします。
-3. ワークスペース、**[Web サービス]** の順にクリックします。
-4. Web サービスの一覧で、Web サービスの名前をクリックします。
-5. エンドポイントの一覧で、エンドポイントの名前をクリックします。
-6. **[構成]**をクリックします。
-7. **[診断トレース レベル]** を *[エラー]* または *[すべて]* に設定し、**[保存]** をクリックします。
+[Azure Machine Learning Web Services](https://services.azureml.net) ポータルからログ記録を有効にすることができます。 
 
-Azure Machine Learning Web Services ポータルでのログ記録を有効にするには:
+1. Azure Machine Learning Web サービス ポータル ([https://services.azureml.net](https://services.azureml.net)) にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の Machine Learning Web サービス ページで **[New Web Services Experience] \(新しい Web サービス エクスペリエンス\)** をクリックします。
 
-1. [Azure Machine Learning Web サービス ポータル](https://services.azureml.net)にサインインします。
-2. [Classic Web Services (クラシック Web サービス)] をクリックします。
-3. Web サービスの一覧で、Web サービスの名前をクリックします。
-4. エンドポイントの一覧で、エンドポイントの名前をクリックします。
-5. **[構成]**をクリックします。
-6. **ログ** を *[エラー]* または *[すべて]* に設定し、**[保存]** をクリックします。
+   ![[New Web Services Experience] \(新しい Web サービス エクスペリエンス\) リンク](media/machine-learning-web-services-logging/new-web-services-experience-link.png)
+
+2. メニュー バーで、新しい Web サービスの **[Web サービス]** をクリックします。クラシック Web サービスの場合は **[Classic Web Services (クラシック Web サービス)]** をクリックします。
+
+   ![新しい Web サービスまたはクラシック Web サービスの選択](media/machine-learning-web-services-logging/select-web-service.png)
+
+3. 新しい Web サービスの場合は、Web サービス名をクリックします。 クラシック Web サービスの場合は、Web サービス名をクリックし、次のページで適切なエンドポイントをクリックします。
+
+4. 上部のメニュー バーで **[構成]** をクリックします。
+
+5. エラーのみをログに記録する場合は **[ログを有効にする]** オプションを *[エラー]* に設定し、すべてログに記録するには *[すべて]* に設定します。
+
+   ![ログ記録レベルの選択](media/machine-learning-web-services-logging/enable-logging.png)
+
+6. [ **Save**] をクリックします。
+
+7. クラシック Web サービスの場合は、**ml-diagnostics** コンテナーを作成します。
+
+   すべての Web サービス ログは、Web サービスに関連付けられているストレージ アカウントの **ml-diagnostics** という BLOB コンテナーに保存されます。 新しい Web サービスの場合、Web サービスに初めてアクセスしたときに、このコンテナーが作成されます。 クラシック Web サービスの場合、コンテナーが存在しない場合は作成する必要があります。 
+
+   1. [Azure ポータル](https://portal.azure.com)で、Web サービスに関連付けられているストレージ アカウントに移動します。
+
+   2. **[Blob service]** の **[コンテナー]** をクリックします。
+
+   3. コンテナー **ml-diagnostics** が存在しない場合は、**[ コンテナー]** をクリックし、コンテナーに "ml-diagnostics" という名前を付け、**[アクセスの種類]** を "BLOB" に設定します。 **[OK]**をクリックします。
+
+      ![ログ記録レベルの選択](media/machine-learning-web-services-logging/create-ml-diagnostics-container.png)
+
+> [!TIP]
+>
+> クラシック Web サービスの場合、Machine Learning Studio の Web サービスのダッシュボードにも、ログ機能を有効にするスイッチがあります。 ただし、ログ機能は Web サービス ポータルで管理されるようになったため、この記事で説明しているように、ポータルでログ機能を有効にする必要があります。 Studio で既にログ記録を有効にしている場合は、Web サービス ポータルでログ記録を無効にしてから、再び有効にします。
+
 
 ## <a name="the-effects-of-enabling-logging"></a>ログ記録の有効化による効果
-ログ記録が有効な場合、選択したエンドポイントのすべての診断とエラーが、ユーザーのワークスペースにリンクされている Azure ストレージ アカウントに記録されます。 このストレージ アカウントは、ワークスペースの Azure クラシック ポータルの [ダッシュボード] ビュー ([概要] セクションの下部) で確認できます。  
+ログ記録が有効な場合、Web サービス エンドポイントの診断とエラーのログは、ユーザーのワークスペースにリンクされている Azure ストレージ アカウントの **ml-diagnostics** BLOB コンテナーに記録されます。 このコンテナーには、このストレージ アカウントに関連付けられているすべてのワークスペースの Web サービス エンドポイントの診断情報が保持されています。
 
-Azure のストレージ アカウントを探索できる複数のツールを使って、ログを表示できます。 最も簡単な方法は、Azure クラシック ポータルで [ストレージ アカウント] に移動し、**[コンテナー]** をクリックすることです。 そうすることで、 **"ml-diagnostics"**という名前のコンテナーを確認できます。 このコンテナーには、このストレージ アカウントに関連付けられているすべてのワークスペースの Web サービス エンドポイントの診断情報が保持されています。 
+Azure のストレージ アカウントを探索できる複数のツールを使って、ログを表示できます。 最も簡単な方法は、Azure ポータルでストレージ アカウントに移動し、**[コンテナー]** をクリックし、コンテナー **ml-diagnostics** をクリックすることです。  
 
 ## <a name="log-blob-detail-information"></a>ログ BLOB の詳細情報
-コンテナーの各 BLOB には、次の診断情報が 1 つだけ保持されています。
+コンテナーの各 BLOB には、次のアクションの 1 つだけについて診断情報が保持されています。
 
 * バッチ実行メソッドの実行  
 * 要求応答メソッドの実行  
@@ -58,9 +78,11 @@ Azure のストレージ アカウントを探索できる複数のツールを�
 
 各 BLOB の名前には次の形式の接頭辞が付きます。 
 
-{ワークスペース ID}-{Web サービス ID}-{エンドポイント ID}/{ログの種類}  
 
-ログの種類は次のいずれかの値です。  
+`{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
+
+
+_ログの種類_は次のいずれかの値です。  
 
 * batch (バッチ)  
 * score/requests (スコア/要求)  

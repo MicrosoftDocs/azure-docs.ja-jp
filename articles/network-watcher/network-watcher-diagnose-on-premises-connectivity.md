@@ -14,27 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2776f640bc192b0775b0ccbaaf62bb719b3bb790
-ms.lasthandoff: 04/19/2017
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 8f5534c83adf2ee4a696131afb45a658c89dd298
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 
-# <a name="diagnose-on-premise-connectivity-via-vpn-gateways"></a>VPN Gateway 経由でオンプレミスの接続を診断する
+# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN Gateway を使用してオンプレミスの接続を診断する
 
-Azure VPN Gateway を使うと、オンプレミス ネットワークと Azure Virtual Network との間の接続のセキュリティ保護に取り組むハイブリッド ソリューションを作成できます。 要件が一意であるため、オンプレミスの VPN デバイスの選択も一意です。 Azure では現在、デバイス ベンダーと協力して常に検証している、[複数の VPN デバイス](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices-and-device-configuration-guides)をサポートしています。 オンプレミスの VPN デバイスを構成する前に、デバイス固有の構成設定を見直します。 同様に、Azure VPN Gateway は接続の確立に使用されている、[サポート対象の IPsec パラメーター](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-nameipsecaipsecike-parameters)のセットで構成されています。 現在、Azure VPN Gateway から特定の IPsec パラメーターの組み合わせを指定または選択する方法はありません。 オンプレミスと Azure との間の接続を正常に確立するには、オンプレミス VPN デバイスの設定が Azure VPN Gateway で規定されている IPsec パラメーターに従っている必要があります。 この規定に従っていない場合は、接続が失われます。これまではこれらの問題をトラブルシューティングするのは簡単ではなく、たいてい何時間もかけて問題を特定して、修正していました。
+Azure VPN Gateway を使うと、オンプレミス ネットワークと Azure Virtual Network との間の接続のセキュリティ保護に取り組むハイブリッド ソリューションを作成できます。 要件が一意であるため、オンプレミスの VPN デバイスの選択も一意です。 Azure では現在、デバイス ベンダーと協力して常に検証している、[複数の VPN デバイス](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)をサポートしています。 オンプレミスの VPN デバイスを構成する前に、デバイス固有の構成設定を見直します。 同様に、Azure VPN Gateway は接続の確立に使用されている、[サポート対象の IPsec パラメーター](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)のセットで構成されています。 現在、Azure VPN Gateway から特定の IPsec パラメーターの組み合わせを指定または選択する方法はありません。 オンプレミスと Azure との間の接続を正常に確立するには、オンプレミス VPN デバイスの設定が Azure VPN Gateway で規定されている IPsec パラメーターに従っている必要があります。 設定が正しくない場合は、接続が失われます。これまではこれらの問題をトラブルシューティングするのは簡単ではなく、たいてい何時間もかけて問題を特定して、修正していました。
 
 Azure Network Watcher のトラブルシューティング機能により、Gateway と Connections のどんな問題でも診断できるようになり、数分以内に十分な情報に基づいて問題を修正できるようになりました。
 
 ## <a name="scenario"></a>シナリオ
 
-オンプレミスの VPN Gateway として Cisco ASA を使用して、Azure とオンプレミスとの間のサイト間接続を構成するとします。 このシナリオを成し遂げるには、次のセットアップが必要です。
+オンプレミスの VPN Gateway として FortiGate を使用して、Azure とオンプレミスとの間のサイト間接続を構成するとします。 このシナリオを成し遂げるには、次のセットアップが必要です。
 
 1. Virtual Network Gateway - Azure 上の VPN Gateway
-1. Local Network Gateway - Azure クラウドで表示されている、[オンプレミスの (CISCO ASA) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)
-1. サイト間接続 (ポリシー ベース) - [VPN Gateway とオンプレミスの CISCO ASA との間の接続](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#a-namecreateconnectiona8-create-a-site-to-site-vpn-connection)
-1. [CISCO ASA の構成](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA)
+1. Local Network Gateway - Azure クラウドで表示されている、[オンプレミスの (FortiGate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)
+1. サイト間接続 (ポリシー ベース) - [VPN Gateway とオンプレミス ルーター間の接続](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
+1. [FortiGate の構成](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 サイト間構成を構成するための詳細なステップ バイ ステップ ガイダンスについては、「[Azure Portal を使用したサイト間接続を持つ VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)」をご覧ください。
 
@@ -51,7 +52,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 | ハッシュ アルゴリズム |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
 | フェーズ 1 のセキュリティ アソシエーション (SA) の有効期間 (時間) |28,800 秒 |10,800 秒 |
 
-ユーザーとして、CISCO ASA を構成する必要があります。構成のサンプルは [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Cisco/Current/ASA/ASA_9.1_and_above_Show_running-config.txt) で参照できます。 他の構成の中でもとりわけ、ハッシュ アルゴリズムを指定する必要があります。 CISCO ASA では、Azure VPN Gateway よりも多く[暗号化とハッシュ アルゴリズム](http://www.cisco.com/c/en/us/about/security-center/next-generation-cryptography.html)をサポートしています。 知らないうちに CISCO ASA に対して SHA-512 をハッシュ アルゴリズムとして使用するように構成したとします。 このアルゴリズムはポリシー ベースの接続でサポートされていないため、VPN 接続が機能しません。
+ユーザーとして、FortiGate を構成する必要があります。構成のサンプルは [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt) で参照できます。 知らないうちに FortiGate に対して SHA-512 をハッシュ アルゴリズムとして使用するように構成したとします。 このアルゴリズムはポリシー ベースの接続でサポートされていないため、VPN 接続が機能しません。
 
 これら問題をトラブルシューティングするのは難しく、根本的な原因は直感とは異なる場合が多いです。 この場合はサポート チケットを開いて、問題解決のためにサポートを受けることができます。 一方で、Azure Network Watcher のトラブルシューティング API を使用すると、これらの問題を自分で特定できます。
 
@@ -101,7 +102,7 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 | UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。  | いいえ |
 | VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
 | ConnectionEntityNotFound | 接続の構成がありません。 | なし |
-| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |なし|
+| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ|
 | ConnectionNotConfiguredOnGateway | 基になるサービスで接続が構成されていません。 | はい |
 | ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| はい|
 | 認証 | 事前共有キーが一致しません。 | はい|

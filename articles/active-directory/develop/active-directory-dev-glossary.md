@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2017
+ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 1d65d5292d51c58b92f68dd469bf1eb0ccdc47ca
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集

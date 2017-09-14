@@ -2,7 +2,7 @@
 title: "Azure DNS のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Azure ドメイン ネーム システムを使用して、DNS レコードを管理する方法について説明します。 ドキュメントでは、ドメイン名の DNS ゾーンとレコードをセットアップして管理する方法を紹介します。"
 services: dns
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 659e0989e3a1f7114796c2211606e5d629cf68fd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
 
 ---

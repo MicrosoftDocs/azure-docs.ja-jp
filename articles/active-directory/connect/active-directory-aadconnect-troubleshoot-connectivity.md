@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: 9684a04b9ce12e6ca09e60909167f7557212c8be
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/07/2017
-
 
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング

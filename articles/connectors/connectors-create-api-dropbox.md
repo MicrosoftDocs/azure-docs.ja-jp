@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 953a99a1fc09a960c94eebbc0486e4782e5dd87c
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0d09580c60fd620811b539147439d0922839fe7e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -62,9 +62,9 @@ Dropbox に接続してファイルを管理します。 Dropbox のファイル
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
 6. 作業内容を保存し、Dropbox に新しいファイルを作成してワークフローをアクティブ化します。  
 
-## <a name="view-the-swagger"></a>Swagger の表示
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[Swagger の詳細](/connectors/dropbox/)を参照してください。
+[コネクタの詳細](/connectors/dropbox/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
 
 ## <a name="more-connectors"></a>その他のコネクタ
 [API リスト](apis-list.md)に戻ります。

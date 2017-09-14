@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/31/2017
 ms.author: billmath
-ms.custom: pim ; H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: be32a7125807905f12699dba92b260d80ac2c4de
+ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 693785d5c9ae64275ae75721fe1f8f143dcd8c36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM での別の管理者ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Azure AD の別の管理者ロールに組織内のユーザーを割り当てることができます。 これらのロール割り当てによって、ユーザーの追加や削除、サービス設定の変更などのタスクが制御され、ユーザーは Azure AD、Office 365、およびその他の Microsoft オンライン サービスと接続型アプリケーションを実行できます。  
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
 グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)で説明されているとおりにクラシックポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
 

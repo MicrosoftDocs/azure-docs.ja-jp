@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2017
+ms.date: 7/26/2017
 ms.author: v-six
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fae727ec3496737fca37236b4f36b4accf0afc63
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>クラウド サービスのデプロイメントに関する問題のトラブルシューティング

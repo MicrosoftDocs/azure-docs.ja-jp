@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/27/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: b1d31112f024ddc8856835f639f58e2defd67bdf
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/10/2017
-
 
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する

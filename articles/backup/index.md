@@ -2,7 +2,7 @@
 title: "Azure Backup のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Backup に関するドキュメントを使用して、クラウドにバックアップする方法を説明します。 アプリケーション、Windows サーバー、Azure 仮想マシンのバックアップに関するチュートリアルとビデオをご覧ください。"
 services: backup
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

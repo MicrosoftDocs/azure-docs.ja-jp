@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 08/28/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7f3212350b1158cd51a34ee1b20a456a73d41672
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 193e59c610d5c5b553469cf2ea2ecc150236ac27
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
@@ -32,19 +32,22 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは 1 つだけ作成できます。  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager 仮想ネットワークで Azure AD Domain Services を有効にすることはできますか。
-いいえ。 Azure AD Domain Services は、クラシック Azure 仮想ネットワークでのみ有効にすることができます。 仮想ネットワーク ピアリングを使用してクラシック仮想ネットワークを Resource Manager 仮想ネットワークに接続すると、Resource Manager 仮想ネットワークで管理対象ドメインを使用することができます。
+はい。 Azure AD Domain Services は Azure Resource Manager 仮想ネットワークで有効にすることができます。 現在この機能はプレビュー版です。
 
-#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-can-i-enable-azure-ad-domain-services-for-this-directory"></a>フェデレーション Azure AD ディレクトリの Azure AD Domain Services を有効にすることはできますか。 ADFS を使用して、Office 365 へのアクセスをユーザーに認証しています。 このディレクトリの Azure AD Domain Services を有効にすることはできますか。
+#### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行することはできますか。
+現時点では連携しません。 将来的には、既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行するメカニズムを提供します。 更新されるまでお待ちください。
+
+#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>フェデレーション Azure AD ディレクトリの Azure AD Domain Services を有効にすることはできますか。 Office 365 にアクセスするユーザーの認証に ADFS を使い、パスワード ハッシュを Azure AD と同期しません。 このディレクトリの Azure AD Domain Services を有効にすることはできますか。
 いいえ。 Azure AD Domain Services では、NTLM または Kerberos を通じたユーザーの認証で、ユーザー アカウントのパスワード ハッシュへのアクセスが必要になります。 フェデレーション ディレクトリでは、パスワード ハッシュは Azure AD ディレクトリに格納されません。 そのため、Azure AD Domain Services では、このような Azure AD ディレクトリは使用されません。
 
 #### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services をサブスクリプション内の複数の仮想ネットワークで利用できますか。
-このサービスそのものが、そのようなシナリオを直接サポートすることはありません。 Azure AD Domain Services は一度に 1 つの仮想ネットワークでのみ利用できます。 ただし、Azure AD Domain Services を他の仮想ネットワークに公開するために複数の仮想ネットワーク間の接続を構成できます。 記事「 [Azure で仮想ネットワークに接続する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」の説明に従って、これを実行できます。
+このサービスそのものが、そのようなシナリオを直接サポートすることはありません。 管理対象ドメインは一度に 1 つの仮想ネットワークでのみ利用できます。 ただし、Azure AD Domain Services を他の仮想ネットワークに公開するために複数の仮想ネットワーク間の接続を構成できます。 [Azure で仮想ネットワークに接続する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)方法をご覧ください。
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell を使用して Azure AD ドメイン サービスを有効にできますか。
 PowerShell/Azure AD Domain Services の自動デプロイは、現時点では利用できません。
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Azure AD Domain Services は新しい Azure Portal で利用できますか。
-いいえ。 Azure AD ドメイン サービスは、 [Azure クラシック ポータル](https://manage.windowsazure.com)でのみ構成できます。 今後、[Azure Portal](https://portal.azure.com) へとサポートを拡大する予定です。
+はい。 Azure AD Domain Services は、[Azure Portal](https://portal.azure.com) を使って構成できます。 [従来の Azure Portal](https://manage.windowsazure.com) のサポートは将来停止される予定です。
 
 #### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインにドメイン コント ローラーを追加することはできますか。
 いいえ。 管理対象ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、または管理する必要はありません。これらの管理作業は Microsoft によるサービスとして提供されます。 そのため、管理対象ドメインに追加のドメイン コント ローラー (読み取り/書き込みも読み取り専用も) を追加することはできません。

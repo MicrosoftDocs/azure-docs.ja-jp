@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - SQL データベースとエラスティック プールの移動 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用したエラスティック プール間での SQL データベースの移動"
+title: "PowerShell サンプル - Azure SQL データベースの移動 - SQL エラスティック プール | Microsoft Docs"
+description: "PowerShell を使用してエラスティック プール間で SQL データベースを移動するための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,17 +14,17 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3e483b2f3fe180219334d0c08512eae82a47a8a7
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 05dede26c870ccda35b1cb8c392ad4abeedde4ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
-# <a name="create-elastic-pools-and-move-databases-between-pools-and-out-of-a-pool-using-powershell"></a>PowerShell を使用してエラスティック プールを作成し、データベースをプール間およびプールの外へ移動する
+# <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>PowerShell を使用してエラスティック プールを作成し、エラスティック プール間でデータベースを移動する
 
 この PowerShell のサンプル スクリプトは、2 つのエラスティック プールを作成し、一方のエラスティック プールからもう一方のエラスティック プールにデータベースを移動し、その後、1 つのデータベースを 1 つのエラスティック プールから単一のデータベース パフォーマンス レベルに移動します。 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

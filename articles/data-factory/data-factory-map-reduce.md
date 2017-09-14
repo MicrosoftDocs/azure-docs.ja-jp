@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/24/2017
+ms.date: 08/14/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: afa8c08fc89103a14cc393c62e7f2c9d985426c2
-ms.lasthandoff: 03/14/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e5dfe0cf0ba7b77a5b23dddc5c5d784e0a0565cc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
@@ -35,6 +35,9 @@ ms.lasthandoff: 03/14/2017
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
+
+> [!NOTE] 
+> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。  
 
 ## <a name="introduction"></a>はじめに
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、HDInsight MapReduce アクティビティを使用する方法について説明しています。

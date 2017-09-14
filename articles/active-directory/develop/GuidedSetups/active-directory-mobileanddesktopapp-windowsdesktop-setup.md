@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8c9d5482a83f92ac406c228b46df18d03dcf15d3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4065727aef04d7969d438c6ef79127bb44568be1
 ms.contentlocale: ja-jp
 
 
@@ -32,12 +33,12 @@ ms.contentlocale: ja-jp
 
 
 ### <a name="create-your-application"></a>アプリケーションの作成
-1. Visual Studioで、[`File`] (ファイル)  >  [`New`] (新規)  >  [`Project`] (プロジェクト) を選択します。<br/>
+1. Visual Studioで、[`File`] \(ファイル)  >  [`New`] \(新規)  >  [`Project`] \(プロジェクト) を選択します。<br/>
 2. *"テンプレート"* から `Visual C#` を選択します。
-3. [`WPF App`] (WPF アプリ) を選択します (または、Visual Studio のバージョンによっては [*WPF アプリケーション*])。
+3. [`WPF App`] \(WPF アプリ) を選択します (または、Visual Studio のバージョンによっては [*WPF アプリケーション*])。
 
 ## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>プロジェクトへの Microsoft Authentication Library (MSAL) の追加
-1. Visual Studio で、[`Tools`] (ツール)  >  [`Nuget Package Manager`] (NuGet パッケージ マネージャー)  >  [`Package Manager Console`] (パッケージ マネージャー コンソール) を選択します。
+1. Visual Studio で、[`Tools`] \(ツール)  >  [`Nuget Package Manager`] \(NuGet パッケージ マネージャー)  >  [`Package Manager Console`] \(パッケージ マネージャー コンソール) を選択します。
 2. [パッケージ マネージャー コンソール] ウィンドウで、以下をコピーして貼り付けます。
 
 ```powershell
@@ -76,7 +77,7 @@ public partial class App : Application
 ## <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
 以下のセクションでは、アプリケーションで、Microsof Graph のような保護されたバックエンド サーバーにクエリを実行する方法を示します。 MainWindow.xaml ファイルは、プロジェクト テンプレートの一部として自動的に作成されます。 このファイルを開き、以下の手順を実行します。
 
-1.    アプリケーションの `<Grid>` を以下のように置き換えます。
+アプリケーションの `<Grid>` を以下のように置き換えます。
 
 ```xml
 <Grid>

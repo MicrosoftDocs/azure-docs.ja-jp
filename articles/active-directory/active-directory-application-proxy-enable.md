@@ -11,51 +11,61 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2017
+ms.date: 08/02/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 8bfdc2f4b86e38d707c026365e3ffcce471d5367
-ms.lasthandoff: 04/07/2017
-
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 77acb23f33fd656a12c27107cb159613a8b2aec4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/05/2017
 
 ---
 
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>アプリケーション プロキシの概要とコネクタのインストール
 この記事では、Microsoft Azure AD アプリケーション プロキシを Azure AD のクラウド ディレクトリに対して有効にする手順について説明します。
 
-アプリケーション プロキシが何に役立つのかよくわからない場合は、「 [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」で詳細を確認してください。
+アプリケーション プロキシが組織にもたらすセキュリティと生産性の利点については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」を参照してください。
 
 ## <a name="application-proxy-prerequisites"></a>アプリケーション プロキシの前提条件
 アプリケーション プロキシ サービスを有効にして使用するためには、次の条件を満たしておく必要があります。
 
 * [Microsoft Azure AD の Basic または Premium サブスクリプション](active-directory-editions.md) に加え、自分が全体管理者となっている Azure AD ディレクトリ。
-* アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。 このサーバーは、クラウド内のアプリケーション プロキシ サービスに要求を送信します。また、発行するアプリケーションには HTTP または HTTPS で接続する必要があります。
-  * 発行したアプリケーションへのシングル サインオンを実行するには、そのアプリケーションと同じ AD ドメインにこのコンピューターが参加済みであることが必要です。 詳細については、「[アプリケーション プロキシを使用したシングル サインオン](active-directory-application-proxy-sso-using-kcd.md)」を参照してください。
+* アプリケーション プロキシ コネクタをインストールできる、Windows Server 2012 R2 または 2016 が実行されているサーバー。 このサーバーは、クラウド内のアプリケーション プロキシ サービスと公開するオンプレミス アプリケーションに接続できなければなりません。
+  * Kerberos 制約付き委任を利用し、発行したアプリケーションへのシングル サインオンを実行するには、そのアプリケーションと同じ AD ドメインにこのコンピューターが参加済みであることが必要です。 詳細については、「[KCD for single sign-on with Application Proxy](active-directory-application-proxy-sso-using-kcd.md)」 (アプリケーション プロキシを使用したシングル サインオンのための KCD) を参照してください。
 
-組織でインターネットへの接続にプロキシ サーバーを使用している場合、構成方法の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-working-with-proxy-servers.md)」を参照してください。
+組織でインターネットへの接続にプロキシ サーバーを使用している場合、アプリケーション プロキシを開始する前にサーバーを構成する方法の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-working-with-proxy-servers.md)」を参照してください。
 
 ## <a name="open-your-ports"></a>ポートを開く
 
-経路上にファイアウォールがある場合、コネクタからアプリケーション プロキシに HTTPS (TCP) 要求を送信できるように、ファイアウォールを開放する必要があります。 コネクタは、上位ドメイン msappproxy.net および servicebus.windows.net に属しているサブドメインと併せて、以下のポートを使用します。 以下の各ポートを **送信** トラフィックに対して開放してください。
+Azure AD アプリケーション プロキシの環境を準備するには、まず Azure データ センターとの通信を有効にする必要があります。 経路上にファイアウォールがある場合、コネクタからアプリケーション プロキシに HTTPS (TCP) 要求を送信できるように、ファイアウォールを開放する必要があります。
 
-| ポート番号 | 説明 |
-| --- | --- |
-| 80 |セキュリティ検証用の送信 HTTP トラフィックに使用されます。 |
-| 443 |Azure AD に対するユーザー認証に使用されます (コネクタ登録プロセスでのみ必要)。<br>コネクタのブートストラップ シーケンスおよび自動更新を有効にする<br>コネクタと Azure サービスの間での受信要求の通信に使用されます。  |
-| 10100–10120 |プロキシに送り返される LOB HTTP 応答に使用されます。 |
-| 9350 |省略可能。受信要求のパフォーマンス向上に使用されます。 |
-| 8080 |コネクタのブートストラップ シーケンスとコネクタの自動更新を有効にする |
-| 9090 |コネクタの登録を有効にする (コネクタ登録プロセスでのみ必要) |
-| 9091 |コネクタの信頼証明書の自動更新を有効にする |
+1. 以下の各ポートを**送信**トラフィックに対して開放します。
 
-> [!IMPORTANT]
-> テーブルには、コネクタの最新バージョンのポートの要件が反映されます。 バージョン 1.5 よりも古いコネクタを使用している場合は、9350、9352、および 5671 も有効にする必要があります。 これらのポートは、古いコネクタと Azure サービスの間での受信要求の通信に使用されます。 
+   | ポート番号 | 用途 |
+   | --- | --- |
+   | 80 | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
+   | 443 | アプリケーション プロキシ サービスとのすべての送信通信 |
 
-ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。 また、NT Authority\System に対しては必ずポート 8080 を有効にしてください。
+   ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
 
-[Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使用して、コネクタが、アプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 その他の場合は、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。 
+   > [!IMPORTANT]
+   > テーブルには、バージョン 1.5.132.0 以降のコネクタのポート要件が反映されます。 コネクタのバージョンがこれより古い場合は、80 と 443 に加え、5671、8080、9090、9091、9350、9352、10100 - 10120 ポートも有効にする必要があります。
+   >
+   >コネクタを最新バージョンに更新する方法の詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-understand-connectors.md#automatic-updates)」を参照してください。
 
+2. ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、msappproxy.net と servicebus.windows.net への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure DataCenter IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。
+
+3. Microsoft は 4 つのアドレスを使用して証明書を検証します。 次の URL へのアクセスを他の製品に関してまだ許可していない場合は、アクセスを許可します。
+   * mscrl.microsoft.com:80
+   * crl.microsoft.com:80
+   * ocsp.msocsp.com:80
+   * www.microsoft.com:80
+
+4. コネクタは登録プロセスのために login.windows.net と login.microsoftonline.net にアクセスする必要があります。
+
+5. [Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使った、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 その他の場合は、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。
@@ -68,31 +78,34 @@ ms.lasthandoff: 04/07/2017
 
    ![コネクタのダウンロード](./media/active-directory-application-proxy-enable/download_connector.png)
 
-4. 前提条件に従って用意したサーバーで、 **AADApplicationProxyConnectorInstaller.exe** を実行します。
-5. ウィザードの指示に従ってインストールします。
-6. インストール時に、Azure AD テナントのアプリケーション プロキシにコネクタを登録するように求められます。
-   
+5. 前提条件に従って用意したサーバーで、 **AADApplicationProxyConnectorInstaller.exe** を実行します。
+6. ウィザードの指示に従ってインストールします。 インストール時に、Azure AD テナントのアプリケーション プロキシにコネクタを登録するように求められます。
+
    * Azure AD グローバル管理者の資格情報を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
    * コネクタを登録する管理者が属しているディレクトリは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じになるようにしてください。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他のエイリアスであることが必要です。
-   * コネクタをインストールするサーバーで **[IE セキュリティ強化の構成]** を **[オン]** に設定している場合、登録画面がブロックされることがあります。 エラー メッセージに示された指示に従って、アクセスを許可してください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
-   * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md)」をご覧ください。  
-7. インストールが完了すると、次に示す 2 つの新しいサービスがサーバーに追加されます。
-   
+   * コネクタをインストールするサーバーで **[IE セキュリティ強化の構成]** を **[オン]** に設定している場合、登録画面が表示されないことがあります。 アクセスするには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
+
+高可用性を確保するには、コネクタを少なくとも 2 つデプロイする必要があります。 各コネクタは個別に登録する必要があります。
+
+## <a name="test-that-the-connector-installed-correctly"></a>コネクタが正しくインストールされていることをテストする
+
+Azure Portal とサーバーのいずれかで、新しいコネクタが正しくインストールされていることを確認できます。 
+
+Azure Portal で、テナントにサインインし、**[Azure Active Directory]** > **[アプリケーション プロキシ]** の順に移動します。 コネクタとコネクタ グループはすべてこのページに表示されます。 コネクタを選択してその詳細を見るか、別のコネクタ グループに移動させます。 
+
+サーバーで、コネクタとコネクタ アップデーターのアクティブなサービスの一覧を確認します。 2 つのサービスがすぐに起動するはずです。起動しない場合、オンにしてください。 
+
    * **Microsoft AAD アプリケーション プロキシ コネクタ** : 接続を有効にします。
-     
-   * **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター** : 定期的にコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新する自動更新サービスです。
-     
+
+   * **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター**は自動更新サービスです。 アップデーターはコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新します。
+
    ![App Proxy Connector services - screenshot](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 
-コネクタの詳細については、「[Understand Azure AD Application Proxy connectors (Azure AD アプリケーション プロキシ コネクタについて)](application-proxy-understand-connectors.md)」を参照してください。 
+コネクタの詳細とコネクタを最新の状態に維持する方法については、「[Understand Azure AD Application Proxy connectors](application-proxy-understand-connectors.md)」 (Azure AD アプリケーション プロキシ コネクタについて) を参照してください。
 
-高可用性を確保するには、コネクタを少なくとも 2 つデプロイする必要があります。 さらに多くのコネクタをデプロイするには、手順 2 および 3 を繰り返してください。 各コネクタは個別に登録する必要があります。
-
-コネクタをアンインストールする場合は、コネクタ サービスと更新サービスの両方をアンインストールします。 コンピューターを再起動して、サービスを完全に削除します。
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリケーションを発行](application-proxy-publish-azure-portal.md)する準備がこれで整いました。
 
-別のネットワークや異なる場所にアプリケーションがある場合、コネクタ グループを使用すると、さまざまなコネクタで論理ユニットを編成することができます。 アプリケーション プロキシ コネクタの使用方法の詳細については、 [こちら](active-directory-application-proxy-connectors-azure-portal.md)を参照してください。
-
+別のネットワークや異なる場所にアプリケーションがある場合、コネクタ グループを使用し、さまざまなコネクタで論理ユニットを編成します。 アプリケーション プロキシ コネクタの使用方法の詳細については、 [こちら](active-directory-application-proxy-connectors-azure-portal.md)を参照してください。
 

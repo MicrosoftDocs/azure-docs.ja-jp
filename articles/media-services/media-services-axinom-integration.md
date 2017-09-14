@@ -4,7 +4,7 @@ description: "この記事では、PlayReady と Widevine DRM の両方を使用
 services: media-services
 documentationcenter: 
 author: willzhan
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 9c93fa4e-b4da-4774-ab6d-8b12b371631d
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c02b75dc2c783b96dc9e1256051b8c6df290d425
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom を使用して Azure Media Services に Widevine ライセンスを配信する

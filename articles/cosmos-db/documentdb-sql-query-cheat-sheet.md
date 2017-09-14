@@ -13,18 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 06/05/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: e714d3585b78d28aba069464a444162103739657
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="azure-cosmos-db-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB SQL クエリのチート シート PDF
-**Azure Cosmos DB SQL クエリのチート シート**は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、キーワード、組み込み関数、演算子が記載されており、これを利用すれば Azure Cosmos DB データのクエリをすばやく記述できます。 
+# <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB: DocumentDB API SQL クエリのチート シート PDF
+**Azure Cosmos DB: DocumentDB API SQL クエリのチート シート**は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、キーワード、組み込み関数、演算子が記載されており、これを利用すれば DocumentDB API データのクエリをすばやく記述できます。 
 
 Cosmos DB は、[SQL](documentdb-sql-query.md) を利用した JSON ドキュメントのリレーショナル クエリ、階層クエリ、空間クエリにサポートしています。スキーマやセカンダリ インデックスを指定する必要がありません。 標準 ANSI-SQL のキーワードと演算子に加え、Cosmos DB は JavaScript のユーザー定義関数 (UDF)、JavaScript 演算子、さまざまな組み込み関数に対応しています。
 
@@ -40,7 +39,7 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 
 ## <a name="more-help-with-writing-sql-queries"></a>SQL クエリの記述に関するその他のヘルプ
 * Cosmos DB で利用できるクエリ オプションのチュートリアルについては、「[Cosmos DB のクエリ](documentdb-sql-query.md)」を参照してください。
-* 関連リファレンス ドキュメントについては、「[Cosmos DB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
+* 関連するリファレンス ドキュメントについては、「[Azure Cosmos DB DocumentDB API: SQL 構文リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
 ## <a name="release-notes"></a>リリース ノート
 TOP を含めるために 2016 年 7 月 29 日に更新されました。

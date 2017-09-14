@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 07/20/2017
 ms.author: jeedes
+ms.reviewer: jeedes
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 61999ebea05371c53e5ff27644a68039db1aef96
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル: Azure Active Directory と Amazon Web Services (AWS) の統合
@@ -133,7 +133,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     | 属性名  | 属性値 | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | 役割               | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | 役割            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
     >AWS コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成する必要があります。 次のプロビジョニングの手順を参照してください。
@@ -172,13 +172,13 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
    
     ![Configure Single Sign-On][14]
  
-      a. **[Provider Type]** として **[SAML]** を選択します。
+    a. **[Provider Type]** として **[SAML]** を選択します。
 
-      b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
+    b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
-      c. ダウンロードしたメタデータ ファイルをアップロードするには、 **[Choose file]**をクリックします。
+    c. ダウンロードしたメタデータ ファイルをアップロードするには、 **[Choose file]**をクリックします。
 
-      d. ページの下部にある **[Next Step]**」を参照してください。
+    d. ページの下部にある **[Next Step]**」を参照してください。
 
 13. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。 
     
@@ -192,25 +192,25 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![[シングル サインオンの構成]][17] 
 
-      a. **[Role Name]** ボックスにロール名を入力します (例: *TestUser*)。 
+    a. **[Role Name]** ボックスにロール名を入力します (例: *TestUser*)。 
 
-      b. ページの下部にある **[Next Step]**」を参照してください。
+    b. ページの下部にある **[Next Step]**」を参照してください。
 
 16. **[Select Role Type]** ダイアログで、次の手順を実行します。 
     
     ![[シングル サインオンの構成]][18] 
 
-      a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[Role For Identity Provider Access]** を選択します。 
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[Role For Identity Provider Access]** を選択します。 
 
-      b. **[Grant Web Single Sign-On (WebSSO) access to SAML providers]** セクションで、**[Select]** をクリックします。
+    b. **[Grant Web Single Sign-On (WebSSO) access to SAML providers]** セクションで、**[Select]** をクリックします。
 
 17. **Establish Trust** ダイアログで、次の手順を実行します。  
     
     ![[シングル サインオンの構成]][19] 
 
-      a. SAML プロバイダーとして、先ほど作成した SAML プロバイダーを選択します (例: *WAAD*)。
+    a. SAML プロバイダーとして、先ほど作成した SAML プロバイダーを選択します (例: *WAAD*)。
   
-      b. ページの下部にある **[Next Step]**」を参照してください。
+    b. ページの下部にある **[Next Step]**」を参照してください。
 
 18. **[Verify Role Trust]** ダイアログで、**[Next Step]** をクリックします。
     
@@ -224,7 +224,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![[シングル サインオンの構成]][34]
  
-      a. **[Create Role]** をクリックします。
+    a. **[Create Role]** をクリックします。
 
     b. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 

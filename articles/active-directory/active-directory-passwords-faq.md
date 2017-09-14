@@ -6,22 +6,21 @@ keywords: "Active Directory パスワード管理, パスワード管理, Azure 
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 00acd4090ed981ab2b05e955e93d1c689ea1a2e6
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fed9008d41b43b2c118aba4939260e819c211d67
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
@@ -39,6 +38,7 @@ ms.lasthandoff: 05/03/2017
 * [**パスワード ライトバックに関する質問**](#password-writeback)
 
 ## <a name="password-reset-registration"></a>パスワード リセット登録
+
 * **Q: ユーザーが自分のパスワード リセット データを登録することはできますか。**
 
   > **A:** はい。パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (http://aka.ms/ssprsetup) で、認証情報を登録できます。 また、ユーザーは、アクセス パネル (http://myapps.microsoft.com) の [プロファイル] タブをクリックし、[パスワード リセットの登録] オプションをクリックして登録することもできます。
@@ -75,7 +75,7 @@ ms.lasthandoff: 05/03/2017
   >
 * **Q: 登録ポータルでユーザーに対して表示されるオプションはどのように決定されていますか。**
 
-  > **A:** パスワード リセット登録ポータルには、ユーザーに対して有効にしたオプションのみが表示されます。 これらのオプションは、ディレクトリの [構成] タブの [ユーザー パスワードのリセット ポリシー] セクションにあります。 つまり、たとえば、セキュリティの質問を有効にしていない場合、ユーザーはそのオプションに登録できません。
+  > **A:** パスワード リセット登録ポータルには、ユーザーに対して有効にしたオプションのみが表示されます。 これらのオプションは、ディレクトリの [構成] タブの [ユーザー パスワードのリセット ポリシー] セクションにあります。つまり、たとえば、セキュリティの質問を有効にしていない場合、ユーザーはそのオプションに登録できません。
   >
   >
 * **Q: ユーザーが登録されたと見なされるのはどのタイミングですか。**
@@ -83,7 +83,9 @@ ms.lasthandoff: 05/03/2017
   > **A:** ユーザーは、[Azure ポータル](https://portal.azure.com)で設定されている**リセットに必要な方法の数**以上で登録した場合に、SSPR に登録されたとみなされます。
   >
   >
+
 ## <a name="password-reset"></a>パスワード リセット
+
 * **Q: パスワード リセットしてから電子メール、SMS、または電話呼び出しを受け取るまでにどのくらいの時間がかかりますか。**
 
   > **A:** 電子メール、SMS メッセージ、および電話呼び出しを受け取るまでにかかる時間は 1 分以内です (通常は 5 ～ 20 秒)。
@@ -106,7 +108,7 @@ ms.lasthandoff: 05/03/2017
   >
 * **Q: パスワードをリセットするためにアクセスする場所を、どのようにユーザーに案内すればよいですか。**
 
-  > **A:** https://passwordreset.microsoftonline.com directly に直接アクセスするように案内するか、会社または学校のサインイン ページにある**アカウントにアクセスできない場合のリンク**をクリックするように案内してください。 これらのリンク先は、ユーザーが簡単にアクセスできる場所に公開することもできます。
+  > **A:** [SSPR のデプロイの記事](active-directory-passwords-best-practices.md#email-based-rollout)内の提案をいくつか試してください
   >
   >
 * **Q: モバイル デバイスからこのページを使用できますか。**
@@ -159,6 +161,11 @@ ms.lasthandoff: 05/03/2017
   > **A:** はい。登録用とリセット用にそれぞれ制限を設定できます。 登録用とリセット用にそれぞれ 3 ～ 5 個のセキュリティの質問が必要になるように設定できます。
   >
   >
+* **Q: リセットの場合はユーザーにセキュリティの質問の使用を要求するようにポリシーを構成しましたが、Azure 管理者に対する設定は異なるように見えます。**
+
+  > **A:** これは正しい動作です。 Microsoft では、任意の Azure 管理者ロールに強力な既定の 2 ゲート パスワードのリセット ポリシーを適用します。 これにより、管理者はセキュリティの質問を使用できなくなります。 このポリシーについて詳しくは、[「Azure Active Directory のパスワード ポリシーと制限」](active-directory-passwords-policy.md#administrator-password-policy-differences)をご覧ください
+  >
+  >
 * **Q: リセットに必要な質問の最大数を超える数の質問をユーザーが登録した場合、セキュリティの質問はリセット時にどのように選択されますか。**
 
   > **A:** ユーザーが登録したすべてのセキュリティの質問の中から N 個の質問がランダムに選択されます (ここで N は、**リセットのために必要な質問の数**です)。 たとえば、リセット操作に必要なセキュリティの質問の数が 3 つであるにもかかわらずユーザーが 5 つの質問を登録している場合、リセット時に 5 つの中から 3 つがランダムに選択されて表示されます。 ユーザーが質問の答えを間違えた場合、同じ質問が表示されるのを防ぐために、選択プロセスが再度実行されます。
@@ -176,6 +183,7 @@ ms.lasthandoff: 05/03/2017
   >
 
 ## <a name="password-change"></a>パスワードの変更
+
 * **Q: ユーザーがパスワードを変更するにはどこにアクセスすればよいですか。**
 
   > **A:** ユーザーは [Office 365](https://portal.office.com) や[アクセス パネル](https://myapps.microsoft.com)など、右上隅にプロフィール画像やアイコンが表示されるページであればどこでもパスワードを変更できます。 ユーザーは[アクセス パネルのプロフィール ページ](https://account.activedirectory.windowsazure.com/r#/profile)からパスワードを変更できます。 また、パスワードの有効期限が切れている場合は、Azure AD のサインイン時に自動的にパスワードを変更するように求められます。 最終的には、[Azure AD のパスワード変更ポータル](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)に直接移動してパスワードを変更できます。
@@ -188,6 +196,7 @@ ms.lasthandoff: 05/03/2017
   >
 
 ## <a name="password-management-reports"></a>パスワード管理レポート
+
 * **Q: データがパスワード管理レポートに表示されるまでにどのくらいの時間がかかりますか。**
 
   > **A:** データは、5 ～ 10 分以内にパスワード管理レポートに表示されます。 場合によっては、最大 1 時間かかることもあります。
@@ -220,6 +229,7 @@ ms.lasthandoff: 05/03/2017
   >
 
 ## <a name="password-writeback"></a>パスワードの書き戻し
+
 * **Q: パスワード ライトバックは、バックグラウンドでどのように動作しますか。**
 
   > **A:** パスワード ライトバックを有効にした場合の動作、およびシステム内でデータがオンプレミスの環境に戻る経路の詳細については、「[How password writeback works](active-directory-passwords-writeback.md)」(パスワード ライトバックのしくみ) をご覧ください。
@@ -260,8 +270,8 @@ ms.lasthandoff: 05/03/2017
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフ サービスによるパスワードのリセットの管理を始めることができます 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します
+* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
+* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
 * [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
 * [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。

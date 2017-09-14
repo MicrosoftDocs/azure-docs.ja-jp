@@ -1,0 +1,71 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Web Apps for Containers のドキュメント
+metadata:
+  document_id: 2239df92-8506-4ee4-b5b0-9ab512c487b2
+  title: Azure Web Apps for Containers のドキュメント - チュートリアル、API リファレンス
+  meta.description: Learn how to use Web Apps for Containers to build and host websites and web applications leveraging Docker.
+  services: app-service
+  author: syntaxc4
+  manager: carolz
+  ms.service: app-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/05/2017
+  ms.author: cfowler
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_net.svg'
+            text: .NET Core
+            href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-dotnetcore'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_nodejs.svg'
+            text: Node.js
+            href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-nodejs'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_php.svg'
+            text: PHP
+            href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-php'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_java.svg'
+            text: Java
+            href: 'https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json'
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Web Apps for Containers でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="en-us/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core と Azure SQL DB</a> または <a href="en-us/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
+          - html: <a href="/en-us/azure/app-service-web/app-service-web-tutorial-custom-domain">既存のカスタム ドメインをアプリケーションにマップする</a>
+          - html: <a href="/en-us/azure/app-service-web/app-service-web-tutorial-custom-SSL">既存の SSL 証明書をアプリケーションにバインドする</a>
+          - html: <a href="/en-us/azure/app-service-web/app-service-web-tutorial-content-delivery-network">CDN をアプリケーションに追加する</a>
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: 一般的なタスクを管理するためのスクリプトを探します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/en-us/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
+          - html: <a href="/cli/azure/appservice">Azure CLI 2.0</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/en-us/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI 2.0</a></p>
+          - title: 言語
+            html: <p><a href="/en-us/dotnet/api">.NET</a></p><p><a href="/en-us/java/api/">Java</a></p>
+          - title: REST ()
+            html: <p><a href="/en-us/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI 2.0</a></p>

@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 3011fd608ba83561c319e57c8a7b5a4f3c4c2284
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
 
 IoT Suite コネクテッド ファクトリの[事前構成済みソリューション][lnk-preconfigured-solutions]は、次の処理を行うエンド ツー エンドの産業ソリューションの実装です。
 
-* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[FAQ][lnk-faq] を参照してください。
+* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 * このようなデバイスと生産ラインの運用 KPI と OEE を表示します。
 * OPC UA サーバー システムを操作するためにクラウドベースのアプリケーションがどのように使用されているかを示します。
 * 独自の OPC UA サーバー デバイスを接続できるようにします。
@@ -42,11 +41,20 @@ IoT Suite コネクテッド ファクトリの[事前構成済みソリュー�
 * 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
 * Azure サービスを利用する独自の IoT ソリューションを設計する。
 
+詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
 次の図は、事前構成済みソリューションの論理コンポーネントの概要を示したものです。
 
 ![コネクテッド ファクトリの論理アーキテクチャ][connected-factory-logical]
+
+## <a name="communication-patterns"></a>通信パターン
+
+ソリューションは、[OPC UA Pub/Sub 仕様](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/)を使用して、OPC UA テレメトリ データを IoT Hub に JSON 形式で送信します。 この目的のために、ソリューションは [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge モジュールを使用します。
+
+ソリューションには、オンプレミスの OPC UA サーバーとの接続を確立できる Web アプリケーションに統合された OPC UA クライアントもあります。 クライアントは[リバースプロキシ](https://wikipedia.org/wiki/Reverse_proxy)を使用し、IoT Hub からの支援を受けて、オンプレミスのファイアウォールでポートを開かずに接続を確立します。 この通信方式は、[サービス支援通信](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)と呼ばれます。 この目的のために、ソリューションは [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge モジュールを使用します。
+
 
 ## <a name="simulation"></a>シミュレーション
 
@@ -122,6 +130,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+* [構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
@@ -132,4 +141,4 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+

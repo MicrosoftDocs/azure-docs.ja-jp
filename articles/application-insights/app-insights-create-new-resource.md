@@ -12,24 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
-ms.openlocfilehash: f73a24993fdeaced422b2f7a1283722a82c2be77
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 054e49478e70aeb15a012592fbb9642c39a60496
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/13/2016
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
-Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、これは IDE によって自動的に行うことができ、可能な場合には常にそうするよう勧められています。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
+Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、リソースの作成は IDE によって自動的に行われます。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
 
-リソースを作成した後、インストルメンテーション キーを取得し、それを使用してアプリケーション内の SDK を構成します。 これは、リソースにテレメトリを送信します。
+リソースを作成した後、インストルメンテーション キーを取得し、それを使用してアプリケーション内の SDK を構成します。 リソース キーによって、テレメトリがリソースに紐付けられます。
 
 ## <a name="sign-up-to-microsoft-azure"></a>Microsoft Azure へのサインアップ
 取得していない場合、[Microsoft アカウントをここで取得してください](http://live.com)。 (Outlook.com、OneDrive、Windows Phone、XBox Live などのサービスを利用している場合、Microsoft アカウントを持っています。)
 
-[Microsoft Azure](http://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金されるのは使用分に対してのみで、既定の Basic プランでは、試験段階の一定量を無料で使用できます。
+[Microsoft Azure](http://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金対象となるのは、使用した分だけです。 既定の Basic プランでは、試験段階の一定量を無料で使用できます。
 
 サブスクリプションへのアクセスを取得したら、Application Insights ( [http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
 
@@ -61,11 +60,11 @@ Azure Application Insights には、Microsoft Azure *リソース*のアプリ�
 SDK には、コードを記述せずにテレメトリを送信する標準的なモジュールが含まれています。 ユーザーの操作を追跡したり、問題をより詳しく診断したりするには、[API を使用][api]して、独自のテレメトリを送信します。
 
 ## <a name="monitor"></a>テレメトリ データを参照
-クイック スタート ブレードを閉じ、Azure ポータルのアプリケーション ブレードに戻ります。
+クイック スタート ブレードを閉じ、Azure Portal のアプリケーション ブレードに戻ります。
 
 [検索] タイルをクリックして [[診断検索]][diagnostic] を確認します。ここには、最初のイベントが表示されます。 
 
-大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
+大量のデータが予想される場合は、数秒後に **[最新の情報に更新]** をクリックします。
 
 ## <a name="creating-a-resource-automatically"></a>リソースの自動作成
 [PowerShell スクリプト](app-insights-powershell.md) を作成して、リソースを自動で作成できます。

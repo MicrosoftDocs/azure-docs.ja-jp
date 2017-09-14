@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0a66567d7381f38787f9aa7652c944e4bb3aef82
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 311cee724fc77256748153b5167d2a38ccba9775
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
@@ -41,19 +40,21 @@ Application Insights の課金の仕組みについてご質問があれば、[�
 Basic プランは新しい Application Insights リソースを作成する場合の既定のプランであり、ほとんどのお客様は Basic プランで十分です。
 
 * Basic プランでは、データ量、つまり Application Insights で受信したテレメトリのバイト数に応じて課金されます。 データ量は、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。
+[Analytics にインポートされた表形式データ](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。  
 * いずれのアプリについても、最初の 1 GB 無料です。そのため、試験や開発の段階で換金されることはあまりありません。
 * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。
-* Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)を 1 GB ごとの追加料金で利用できます (2017 年 3 月上旬まで無料)。
+* Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)を 1 GB ごとの追加料金で利用できます。
 
 ### <a name="enterprise-plan"></a>Enterprise プラン
 
-* Enterprise プランでは、Application Insights のすべての機能をアプリで使用できます。 Enterprise プランでは、[連続エクスポート](app-insights-export-telemetry.md)と [Log Analytics コネクタ](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)を追加料金なしでご利用いただけます。
+* Enterprise プランでは、Application Insights のすべての機能をアプリで使用できます。 Enterprise プランでは、[連続エクスポート](app-insights-export-telemetry.md)と 
+
+[Log Analytics コネクタ](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)を追加料金なしでご利用いただけます。
 * Enterprise プランでは、アプリに対してテレメトリを送信しているノードごとに料金が課金されます。 
  * *ノード*とは、アプリをホストする物理または仮想サーバー マシン (または Platform-as-a-Service (PaaS) ロール インスタンス) のことです。
  * 開発マシン、クライアントのブラウザー、およびモバイル デバイスはノードとしてカウントされません。
  * テレメトリを送信するコンポーネント (Web サービスやバックエンド ワーカーなど) がアプリに複数ある場合、それらは個別にカウントされます。
- * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。
-* サブスクリプション全体を通じて、料金はノード単位で計算されます (アプリ単位ではありません)。 12 のアプリに対して 5 つのノードがテレメトリを送信している場合、料金は 5 ノード分になります。
+ * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。サブスクリプション全体を通じて、料金はノード単位で計算されます (アプリ単位ではありません)。 12 のアプリに対して 5 つのノードがテレメトリを送信している場合、料金は 5 ノード分になります。
 * 料金の見積りは月単位で計算されますが、実際の料金は、ノードがアプリからテレメトリを送信した時間分しか課金されません。 1 時間あたりの料金は、1 か月あたりの見積り額/744 です (1 か月 31 日の時間数)。
 * 検出された各ノードに、1 日あたり 200 MB のデータ量の割り当てが (時間単位の精度で) 与えられます。 未使用のデータ割り当て分が日をまたいで繰り越されることはありません。
  * Enterprise の価格オプションを選んだお客様には、テレメトリをサブスクリプション内の Application Insights リソースに送信するノードの数に基づいて、日単位の無料データ利用分が提供されます。 したがって、終日データを送信する 5 つのノードがある場合、サブスクリプション内のすべての Application Insights リソースに 1 GB の許容量が適用されます。 無料データ利用分はすべてのノードで共有されるため、一部のノードのデータ送信量が他のノードより多くても問題はありません。 特定の日に、Application Insights リソースがサブスクリプションの日単位の無料データ割り当て分を超えるデータを受信した場合は、1 GB ごとに超過データ料金が適用されます。 
@@ -79,9 +80,18 @@ Basic プランは新しい Application Insights リソースを作成する場�
 [複数ステップ Web テスト](app-insights-monitor-web-app-availability.md#multi-step-web-tests)に対しては、追加料金が発生します。 これは、一連のアクションを実行する Web テストのことです。 
 
 単一ページの ping テストについては、個別の料金はかかりません。 Ping テストと複数ステップ テストの両方からのテレメトリについては、アプリの他のテレメトリと一緒に課金されます。
+ 
+## <a name="operations-management-suite-subscription-entitlement"></a>Operations Management Suite のサブスクリプションの権利
 
-## <a name="review-pricing-plan-and-estimate-costs-for-your-application-insights-resource"></a>Application Insights リソースの価格プランの確認とコストの見積もり
-お使いのアプリケーションの Application Insights リソースの [Features + Pricing (機能と価格設定)] ブレードを開きます。
+[最近発表](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/)されたとおり、Microsoft Operations Management Suite E1 および E2 を購入した顧客は、追加コストなしで追加コンポーネントとして Application Insights Enterprise を取得できます。 具体的には、Operations Management Suite E1 および E2 の各ユニットには、Application Insights の Enterprise プラン 1 ノード分の権利が含まれています。 前述のように、Application Insights の各ノードは、追加コストなしで、1 日あたり最大 200 MB のデータを取り込み (Log Analytics のデータ取り込みを除く)、90 日間保持できます。 
+
+> [!NOTE]
+> この権利を取得するには、Enterprise 価格プランで Application Insights リソースを取得する必要があります。 この権利は、ノードとしてのみ適用されるため、Basic プランの Application Insights リソースはこの利点を受けられません。 この権利は、機能 + 価格ブレードに表示される見積もりコストには表示されません。 
+>
+ 
+## <a name="review-pricing-plans-and-estimate-costs"></a>価格プランを確認してコストを見積もる
+
+Applicaition Insights では、利用可能な価格プランと最近の使用パターンに基づくコストを簡単に理解できるようになっています。 Azure ポータルで Application Insights リソースの **[Features + Pricing (機能と価格設定)]** ブレードを開きます。
 
 ![[Pricing (価格設定)] を選択します。](./media/app-insights-pricing/01-pricing.png)
 

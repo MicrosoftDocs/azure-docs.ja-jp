@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 82d64d159412af6ff2bba1d625af66cdd18a4616
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 7889bf9e4e02143b6bb4c797531afa54f8647ce5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 05/10/2017
 
 2. Encode AS2 Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
 
-3.    検索ボックスに、フィルターとして「AS2」と入力します。 **[AS2 - Encode AS2 Message (AS2 - AS2 メッセージのエンコード)]** を選択します。
+3.  検索ボックスに、フィルターとして「AS2」と入力します。 **[AS2 - Encode AS2 Message (AS2 - AS2 メッセージのエンコード)]** を選択します。
    
     !["AS2" の検索](./media/logic-apps-enterprise-integration-as2-encode/as2decodeimage1.png)
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 05/10/2017
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-5.    完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
+5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
    
     ![統合の接続の詳細](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage2.png)
 

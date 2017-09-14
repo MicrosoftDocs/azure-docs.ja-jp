@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c76870c49f5c8e51f521fd4be920d976e4cdbcef
 ms.openlocfilehash: 7100856b02935fba7bbf1427d86859ddb7a2b5f3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
-
 
 ---
 # <a name="use-direct-methods-on-your-iot-device-with-nodejs"></a>Node.js を使用した IoT デバイスでのダイレクト メソッドの使用

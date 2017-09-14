@@ -12,19 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 07/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7d2bc89943087323e92cf06981bbacaf4b8ff060
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
-この記事では、[Python Tools for Visual Studio][Python Tools for Visual Studio] で Python Web ロールと Python worker ロールを扱う方法について概説します。 Python を使用する基本的なクラウド サービスを、Visual Studio を使って作成、デプロイする方法を学習します。
+この記事では、[Python Tools for Visual Studio][Python Tools for Visual Studio] で Python Web ロールと Python worker ロールを扱う方法について概説します。 Python を使用する基本的なクラウド サービスを、Visual Studio を使用して作成およびデプロイする方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 * [Visual Studio 2013、2015、または 2017](https://www.visualstudio.com/)
@@ -37,13 +36,13 @@ ms.lasthandoff: 04/18/2017
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Python Web ロールと Python worker ロールについて
-Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロント エンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[クラウド サービスとは]」を参照してください。
 
 > [!NOTE]
 > *単純な Web サイトを構築する場合*
-> シナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。 Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。 Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。
+> シナリオが単純な Web サイトのフロント エンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。 Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。 Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。
 > <br />
 > 
 > 
@@ -102,7 +101,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 </Startup>
 ```
 
-**PYTHON2** 変数と **PYPATH** 変数は worker スタートアップ タスクに追加する必要があります。 **PYPATH** 変数は、**PYTHON2** 変数を **on** に設定した場合にのみ使用します。
+**PYTHON2** 変数と **PYPATH** 変数は、worker スタートアップ タスクに追加する必要があります。 **PYPATH** 変数は、**PYTHON2** 変数を **on** に設定した場合にのみ使用します。
 
 ```xml
 <Runtime>
@@ -325,7 +324,7 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 
 ![Microsoft Azure Activity Log Window](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-数分経過するとデプロイメントが完了し、Web ロールまたは worker ロールが Azure 上で稼働状態となります。
+数分経過するとデプロイが完了し、Web ロールまたは worker ロールが Azure 上で稼働状態となります。
 
 ### <a name="investigate-logs"></a>ログを調査する
 クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
@@ -351,9 +350,9 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
-[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
-[Table Service]: ../storage/storage-python-how-to-use-table-storage.md
+[Blob Service]:../storage/blobs/storage-python-how-to-use-blob-storage.md
+[Queue Service]: ../storage/queues/storage-python-how-to-use-queue-storage.md
+[Table Service]:../cosmos-db/table-storage-how-to-use-python.md
 [Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
 [Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 

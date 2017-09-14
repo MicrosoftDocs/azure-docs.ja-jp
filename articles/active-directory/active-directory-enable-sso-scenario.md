@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f6bceb2fd03230e4a39c22605ad1fea8dd422be1
-ms.lasthandoff: 12/29/2016
-
+ms.reviewer: asteen
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションの管理

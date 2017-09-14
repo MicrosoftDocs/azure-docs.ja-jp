@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 014b726c2e960029cf5896e07063e807e9ae1915
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cc64441617eb5e7d5e70c1cf5c491a672428bc51
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
@@ -71,7 +70,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
     > [!TIP]
     > この方法を使用すると、すべてのコネクタで使用できるトリガーとアクションを、最も簡単に確認することもできます。 `oracle` など、コネクタ名の一部を入力すると、 その名前に一致するトリガーとアクションの一覧が表示されます。 
 
-5. **[Oracle Database - Get row (Oracle Database - 行を取得する)]** など、アクションのいずれかを選択します。 **[オンプレミスのデータ ゲートウェイ経由で接続]** を選択します。 Oracle サーバー名、認証方法、ユーザー名、パスワードを入力し、ゲートウェイを選択します。
+5. **[Oracle Database - Get row (Oracle Database - 行を取得する)]** など、アクションのいずれかを選択します。 **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** を選択します。 Oracle サーバー名、認証方法、ユーザー名、パスワードを入力し、ゲートウェイを選択します。
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -124,8 +123,9 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 * 複合キーが含まれるテーブル
 * テーブル内の入れ子になったオブジェクトの種類
  
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/oracle/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/oracle/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="get-some-help"></a>ヘルプ情報
 

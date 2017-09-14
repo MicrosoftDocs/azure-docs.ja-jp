@@ -12,43 +12,42 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 07/10/2017
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 85f87cb0b7de40c9425d7f752f968a529ad555fa
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a8f4f34aa99c4a9966957cac213ec9170de80a46
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="schedule-and-broadcast-jobs"></a>ジョブのスケジュールとブロードキャスト
+# <a name="schedule-and-broadcast-jobs-netnodejs"></a>ジョブのスケジュールとブロードキャスト (.NET/Node.js)
+
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-## <a name="introduction"></a>はじめに
-Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更新するジョブをバックエンド アプリで作成したり追跡したりできるようにする完全に管理されたサービスです。  ジョブは次のアクションに使用できます。
+Azure IoT Hub を使用して、数百万のデバイスを更新するジョブのスケジュールと追跡を行います。 ジョブを使用して、
 
 * 必要なプロパティを更新する
 * タグを更新する
 * ダイレクト メソッドを呼び出す
 
-概念的には、ジョブはこれらのアクションのいずれかをラップし、デバイス ツイン クエリで定義される一連のデバイスに対して実行の進行状況を追跡します。  たとえば、バックエンド アプリでは、ジョブを使用して、10,000 台のデバイスに対して reboot メソッドを呼び出すことができます。これは、デバイス ツイン クエリで指定され、将来の時刻にスケジュールされます。  これで、これらの各デバイスが reboot メソッドを受信し、実行する進行状況を追跡できます。
+ジョブはこれらのアクションの 1 つをラップし、デバイス ツイン クエリで定義されるデバイスのセットに対して実行状況を追跡します。 たとえば、バックエンド アプリは、ジョブを使用して 10,000 台のデバイスでダイレクト メソッドを呼び出し、デバイスを再起動できます。 デバイス ツイン クエリでデバイスのセットを指定し、ジョブが将来実行されるようにスケジュールを設定します。 各デバイスが再起動のダイレクト メソッドを受信し、実行するたびに、ジョブは進行状況を追跡します。
 
-これらの各機能について詳しくは、次の記事をご覧ください。
+これらの各機能の詳細については、次の記事をご覧ください。
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要][lnk-get-started-twin]に関する記事と[デバイス ツインのプロパティの使用方法に関するチュートリアル][lnk-twin-props]
 * ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドの使用に関するチュートリアル][lnk-c2d-methods]
 
 このチュートリアルでは、次の操作方法について説明します。
 
-* バックエンド アプリから呼び出すことができ、**lockDoor** を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
-* ジョブを使用してシミュレート対象デバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新する .NET コンソール アプリを作成します。
+* バックエンド アプリから呼び出し可能な **lockDoor** と呼ばれるダイレクト メソッドを実装するデバイス アプリを作成します。 また、デバイス アプリはバックエンド アプリから必要なプロパティの変更を受信します。
+* 複数のデバイスで **lockDoor** ダイレクト メソッドを呼び出すジョブを作成するバックエンド アプリを作成します。 もう 1 つのジョブは、必要なプロパティの更新を複数のデバイスに送信します。
 
 このチュートリアルが終わると、次の Node.js コンソール デバイス アプリと .NET (C#) コンソール バックエンド アプリが完成しています。
 
-**simDevice.js**。デバイス ID で IoT ハブに接続し、**lockDoor** ダイレクト メソッドを受信します。
+**simDevice.js** は IoT Hub に接続して、**lockDoor** ダイレクト メソッドを実装し、必要なプロパティの変更を処理します。
 
-**ScheduleJob**。シミュレート対象デバイス アプリでダイレクト メソッドを呼び出し、ジョブを使用してデバイス ツインの必要なプロパティを更新します。
+**ScheduleJob** はジョブを使用して **lockDoor** ダイレクト メソッドを呼び出し、複数のデバイスでデバイス ツインの必要なプロパティを更新します。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -60,8 +59,9 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>ダイレクト メソッドを呼び出し、デバイス ツインのプロパティを更新するジョブのスケジュール
-このセクションでは、ダイレクト メソッドを使用してデバイスでリモート **lockDoor** を開始し、デバイス ツインのプロパティを更新する Node.js コンソール アプリを作成します (C# を使用します)。
+## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>ダイレクト メソッドを呼び出し、デバイス ツインの更新を送信するジョブのスケジュール
+
+このセクションでは、ジョブを使用して **lockDoor** ダイレクト メソッドを呼び出し、複数のデバイスに必要なプロパティの更新を送信する .NET コンソール アプリ (C# を使用) を作成します。
 
 1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトの名前として「**ScheduleJob**」と入力します。
 
@@ -72,118 +72,137 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
     ![NuGet Package Manager window][img-servicenuget]
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
-   
-        using Microsoft.Azure.Devices;
-        using Microsoft.Azure.Devices.Shared;
+    
+    ```csharp
+    using Microsoft.Azure.Devices;
+    using Microsoft.Azure.Devices.Shared;
+    ```
 
 1. 既定のステートメント内に存在しない場合は、次の `using` ステートメントを追加します。
 
-        using System.Threading.Tasks;
-        
+    ```csharp
+    using System.Threading.Tasks;
+    ```
+
 1. **Program** クラスに次のフィールドを追加します。 プレースホルダーは、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
-   
-        static string connString = "{iot hub connection string}";
-        static ServiceClient client;
-        static JobClient jobClient;
-        
-1. **Program** クラスに次のメソッドを追加します。
-   
-        public static async Task MonitorJob(string jobId)
-        {
-            JobResponse result;
-            do
-            {
-                result = await jobClient.GetJobAsync(jobId);
-                Console.WriteLine("Job Status : " + result.Status.ToString());
-                Thread.Sleep(2000);
-            } while ((result.Status != JobStatus.Completed) && (result.Status != JobStatus.Failed));
-        }
-                
-1. **Program** クラスに次のメソッドを追加します。
 
-        public static async Task StartMethodJob(string jobId)
-        {
-            CloudToDeviceMethod directMethod = new CloudToDeviceMethod("lockDoor", TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
-
-            JobResponse result = await jobClient.ScheduleDeviceMethodAsync(jobId,
-                "deviceId='myDeviceId'",
-                directMethod,
-                DateTime.Now,
-                10);
-
-            Console.WriteLine("Started Method Job");
-        }
+    ```csharp
+    static string connString = "{iot hub connection string}";
+    static ServiceClient client;
+    static JobClient jobClient;
+    ```
 
 1. **Program** クラスに次のメソッドを追加します。
 
-        public static async Task StartTwinUpdateJob(string jobId)
+    ```csharp
+    public static async Task MonitorJob(string jobId)
+    {
+        JobResponse result;
+        do
         {
-            var twin = new Twin();
-            twin.Properties.Desired["Building"] = "43";
-            twin.Properties.Desired["Floor"] = "3";
-            twin.ETag = "*";
+            result = await jobClient.GetJobAsync(jobId);
+            Console.WriteLine("Job Status : " + result.Status.ToString());
+            Thread.Sleep(2000);
+        } while ((result.Status != JobStatus.Completed) && (result.Status != JobStatus.Failed));
+    }
+    ```
 
-            JobResponse result = await jobClient.ScheduleTwinUpdateAsync(jobId,
-                "deviceId='myDeviceId'",
-                twin,
-                DateTime.Now,
-                10);
+1. **Program** クラスに次のメソッドを追加します。
 
-            Console.WriteLine("Started Twin Update Job");
-        }
- 
+    ```csharp
+    public static async Task StartMethodJob(string jobId)
+    {
+        CloudToDeviceMethod directMethod = new CloudToDeviceMethod("lockDoor", TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
+
+        JobResponse result = await jobClient.ScheduleDeviceMethodAsync(jobId,
+            "deviceId='myDeviceId'",
+            directMethod,
+            DateTime.Now,
+            10);
+
+        Console.WriteLine("Started Method Job");
+    }
+    ```
+
+1. **Program** クラスに次のメソッドを追加します。
+
+    ```csharp
+    public static async Task StartTwinUpdateJob(string jobId)
+    {
+        var twin = new Twin();
+        twin.Properties.Desired["Building"] = "43";
+        twin.Properties.Desired["Floor"] = "3";
+        twin.ETag = "*";
+
+        JobResponse result = await jobClient.ScheduleTwinUpdateAsync(jobId,
+            "deviceId='myDeviceId'",
+            twin,
+            DateTime.Now,
+            10);
+
+        Console.WriteLine("Started Twin Update Job");
+    }
+    ```
 
 1. 最後に、 **Main** メソッドに次の行を追加します。
-   
-        jobClient = JobClient.CreateFromConnectionString(connString);
 
-        string methodJobId = Guid.NewGuid().ToString();
+    ```csharp
+    jobClient = JobClient.CreateFromConnectionString(connString);
 
-        StartMethodJob(methodJobId);
-        MonitorJob(methodJobId).Wait();
-        Console.WriteLine("Press ENTER to run the next job.");
-        Console.ReadLine();
+    string methodJobId = Guid.NewGuid().ToString();
 
-        string twinUpdateJobId = Guid.NewGuid().ToString();
+    StartMethodJob(methodJobId);
+    MonitorJob(methodJobId).Wait();
+    Console.WriteLine("Press ENTER to run the next job.");
+    Console.ReadLine();
 
-        StartTwinUpdateJob(twinUpdateJobId);
-        MonitorJob(twinUpdateJobId).Wait();
-        Console.WriteLine("Press ENTER to exit.");
-        Console.ReadLine();
+    string twinUpdateJobId = Guid.NewGuid().ToString();
+
+    StartTwinUpdateJob(twinUpdateJobId);
+    MonitorJob(twinUpdateJobId).Wait();
+    Console.WriteLine("Press ENTER to exit.");
+    Console.ReadLine();
+    ```
 
 1. ソリューション エクスプ ローラーで、**[スタートアップ プロジェクトの設定...]** を開き、**ScheduleJob** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
 
 ## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
+
 このセクションでは、クラウドで呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。このアプリによってシミュレートされたデバイスの再起動が開始され、報告されるプロパティを使用してデバイスと最後の再起動時間をデバイス ツインのクエリで識別できるようになります。
 
 1. **simDevice** という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**simDevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
-   
-    ```
+
+    ```cmd/sh
     npm init
     ```
+
 1. コマンド プロンプトで、**simDevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
+
 1. テキスト エディターを使用して、**simDevice** フォルダーに新しい **simDevice.js** ファイルを作成します。
+
 1. **simDevice.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
-   
-    ```
+
+    ```nodejs
     'use strict';
    
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
+
 1. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 プレース ホルダーをセットアップに適切な値に置き換えるのを忘れないようにします。
-   
-    ```
+
+    ```nodejs
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
+
 1. **lockDoor** メソッドを処理する次の関数を追加します。
-   
-    ```
+
+    ```nodejs
     var onLockDoor = function(request, response) {
    
         // Respond the cloud app for the direct method
@@ -198,9 +217,10 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         console.log('Locking Door!');
     };
     ```
+
 1. **lockDoor** メソッドのハンドラーを登録する次のコードを追加します。
-   
-    ```
+
+    ```nodejs
     client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -210,21 +230,22 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         }
     });
     ```
+
 1. **simDevice.js** ファイルを保存して閉じます。
 
 > [!NOTE]
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
-> 
-> 
 
 ## <a name="run-the-apps"></a>アプリの実行
+
 これで、アプリを実行する準備が整いました。
 
 1. コマンド プロンプトで、**simDevice** フォルダーに移動し、次のコマンドを実行して再起動のダイレクト メソッドのリッスンを開始します。
-   
-    ```
+
+    ```cmd/sh
     node simDevice.js
     ```
+
 1. C# コンソール アプリ **ScheduleJob** を実行します。**ScheduleJob** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順に選択します。
 
 1. デバイスとバックエンド アプリの両方からの出力が表示されます。
@@ -232,6 +253,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ![アプリを実行して、ジョブをスケジュールします。][img-schedulejobs]
 
 ## <a name="next-steps"></a>次のステップ
+
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
 IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、「[チュートリアル: ファームウェアを更新する方法][lnk-fwupdate]」を参照してください。

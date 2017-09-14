@@ -12,35 +12,32 @@ ms.devlang: csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 1d2b52ea005ab520bf294efa603512c00a92ee63
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/06/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-using-routes-net"></a>ルートを使用した IoT Hub のデバイスからクラウドへのメッセージの処理 (.NET)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。 他のチュートリアル ([IoT Hub の使用]と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d]に関するチュートリアル) では、IoT Hub のデバイスからクラウドおよびクラウドからデバイスのメッセージングについて、基本的な機能の使用方法を説明しています。
+このチュートリアルは、チュートリアル「[IoT Hub の概要]」に基づいています。 このチュートリアルでは以下を行います。
 
-このチュートリアルは、「[IoT Hub の使用]」チュートリアルに基づいて作成されています。このチュートリアルでは、ルーティング規則を使用して、簡単な構成ベースの方法でデバイスからクラウドへのメッセージをディスパッチする方法を説明します。 このチュートリアルでは、さらに処理するために早急な対応を必要とするメッセージを、ソリューションのバックエンドから分離する方法を示しています。 たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。 これに対して、データポイント メッセージは、分析エンジンにフィードされるだけです。 たとえば、後の分析用に保存されるデバイスの温度テレメトリはデータポイント メッセージです。
+* ルーティング規則を使用して、簡単な構成ベースの方法でデバイスからクラウドにメッセージをディスパッチする方法について説明します。
+* さらに処理するために早急な対応を必要とする対話型メッセージを、ソリューションのバックエンドから分離する方法を示します。 たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。 これに対して、温度テレメトリなどのデータポイント メッセージは、分析エンジンにフィードされます。
 
 このチュートリアルの最後に、次の 3 つの .NET コンソール アプリを実行します。
 
-* **SimulatedDevice**: [IoT Hub の使用]に関するチュートリアルで作成したアプリを変更したものです。デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージを 10 秒ごとに送信します。 このアプリでは、IoT Hub との通信に AMQP プロトコルを使用します。
-* **ReadDeviceToCloudMessages**。シミュレート デバイス アプリから送信された、重大ではないテレメトリを表示します。
-* **ReadCriticalQueue**。シミュレート デバイス アプリから IoT hub に接続された Service Bus キューに送信された重大なメッセージをデキューします。
+* **SimulatedDevice** は [IoT Hub の概要]に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージを 10 秒ごとに送信します。
+* **ReadDeviceToCloudMessages**: デバイス アプリから送信された重大ではないテレメトリを表示します。
+* **ReadCriticalQueue** は Service Bus キューからデバイス アプリによって送信された重大なメッセージをデキューします。 このキューは、IoT hub に接続されています。
 
 > [!NOTE]
-> IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのシミュレート対象デバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法については、「[Azure IoT デベロッパー センター]」をご覧ください。
-> 
-> 
+> IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのシミュレート対象デバイスを物理デバイスに置き換える方法については、「[Azure IoT デベロッパー センター]」をご覧ください。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -49,12 +46,13 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
-## <a name="send-interactive-messages-from-a-simulated-device-app"></a>シミュレート対象デバイス アプリからの対話型メッセージの送信
-このセクションでは、「[IoT Hub の使用]」チュートリアルで作成したシミュレート デバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
+## <a name="send-interactive-messages"></a>対話型メッセージの送信
+
+[IoT Hub の概要]に関するチュートリアルで作成したデバイス アプリを変更して、対話型メッセージをランダムに送信するようにします。
 
 Visual Studio で、**SimulatedDevice** プロジェクトの `SendDeviceToCloudMessagesAsync` メソッドを次のコードに置き換えます。
 
-```
+```csharp
 private static async void SendDeviceToCloudMessagesAsync()
 {
     double minTemperature = 20;
@@ -104,7 +102,8 @@ private static async void SendDeviceToCloudMessagesAsync()
 > [!NOTE]
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「 [Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
-## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>IoT hub へのキューの追加とキューへのメッセージのルーティング
+## <a name="route-messages-to-a-queue-in-your-iot-hub"></a>メッセージを IoT ハブのキューにルーティングする
+
 このセクションでは、次の作業を行います。
 
 * Service Bus キューを作成する。
@@ -114,6 +113,9 @@ private static async void SendDeviceToCloudMessagesAsync()
 Service Bus キューのメッセージを処理する方法の詳細については、「[Service Bus キューの使用][Service Bus queue]」を参照してください。
 
 1. 「[Service Bus キューの使用][Service Bus queue]」の説明に従って、Service Bus キューを作成します。 キューは、IoT Hub と同じサブスクリプションとリージョン内にある必要があります。 名前空間とキューの名前をメモしておきます。
+
+    > [!NOTE]
+    > IoT Hub エンドポイントとして使用される Service Bus のキューとトピックでは、**セッション**または**重複データ検出**が有効になっていてはいけません。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
 
 2. Azure Portal で、IoT Hub を開き、**[エンドポイント]** をクリックします。
     
@@ -132,6 +134,7 @@ Service Bus キューのメッセージを処理する方法の詳細につい�
     ![フォールバック ルート][33]
 
 ## <a name="read-from-the-queue-endpoint"></a>キュー エンドポイントからの読み取り
+
 このセクションでは、キュー エンドポイントからメッセージを読み取ります。
 
 1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **ReadCriticalQueue** という名前を付けます。
@@ -142,14 +145,14 @@ Service Bus キューのメッセージを処理する方法の詳細につい�
 
 4. **Program.cs** ファイルの先頭に、次の **using** ステートメントを追加します。
    
-    ```
+    ```csharp
     using System.IO;
     using Microsoft.ServiceBus.Messaging;
     ```
 
 5. 最後に、 **Main** メソッドに次の行を追加します。 接続文字列を、キューの **Listen** アクセス許可に置き換えます。
    
-    ```
+    ```csharp
     Console.WriteLine("Receive critical messages. Ctrl-C to exit.\n");
     var connectionString = "{service bus listen string}";
     var queueName = "{queue name}";
@@ -188,46 +191,20 @@ IoT Hub でのメッセージのルーティングの詳細については、[Io
 
 <!-- Images. -->
 [50]: ./media/iot-hub-csharp-csharp-process-d2c/run1.png
-[10]: ./media/iot-hub-csharp-csharp-process-d2c/create-identity-csharp1.png
-
 [30]: ./media/iot-hub-csharp-csharp-process-d2c/click-endpoints.png
 [31]: ./media/iot-hub-csharp-csharp-process-d2c/endpoint-creation.png
 [32]: ./media/iot-hub-csharp-csharp-process-d2c/route-creation.png
 [33]: ./media/iot-hub-csharp-csharp-process-d2c/fallback-route.png
 
 <!-- Links -->
-
-[Azure blob storage]: ../storage/storage-dotnet-how-to-use-blobs.md
-[Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
-[HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
 [Service Bus queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
-
-[IoT Hub developer guide - Device to cloud]: iot-hub-devguide-messaging.md
-
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
-
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[IoT Hub の使用]: iot-hub-csharp-csharp-getstarted.md
+[IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
-[lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
-[lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-event-hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
-[Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh675232.aspx
-
-<!-- Links -->
-[About Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
-[Get Started with Event Hubs]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[Azure Storage scalability Guidelines]: ../storage/storage-scalability-targets.md
-[Azure Block Blobs]: https://msdn.microsoft.com/library/azure/ee691964.aspx
-[Event Hubs]: ../event-hubs/event-hubs-overview.md
-[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Event Hubs Programming Guide]: ../event-hubs/event-hubs-programming-guide.md
-[Transient Fault Handling (一時的な障害の処理) (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Build multi-tier applications with Service Bus]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-
-[lnk-classic-portal]: https://manage.windowsazure.com
+[Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 

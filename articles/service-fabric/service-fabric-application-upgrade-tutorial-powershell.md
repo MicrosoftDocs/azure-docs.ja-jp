@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: subramar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: c685deaa008cfdba5971cef4cfc7dfa41b1df64d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード

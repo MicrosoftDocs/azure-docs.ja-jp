@@ -3,7 +3,7 @@ title: "Azure SQL Database のバックアップ - 自動、geo 冗長 | Microso
 description: "SQL Database は数分ごとにローカル データベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 3ee3d49d-16fa-47cf-a3ab-7b22aa491a8d
@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2016
-ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: d849eeedae65c8cc35271c2e9b63236760c4629c
-ms.lasthandoff: 04/15/2017
-
+ms.date: 07/05/2017
+ms.author: carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 88ee5b5c4a57b67190f3da2ebc8aed0964b804d5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="learn-about-sql-database-backups"></a>SQL Database バックアップについての詳細情報
+# <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
 SQL Database はデータベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性を提供します。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 独自のストレージ コンテナーにバックアップを保持したい場合は、長期的なバックアップの保持ポリシーを構成できます。 詳細については、[長期保存](sql-database-long-term-retention.md)に関する記事をご覧ください。
 
@@ -41,7 +41,6 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 
 > [!NOTE]
 > Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
-> 
 > 
 
 ## <a name="how-much-backup-storage-is-included-at-no-cost"></a>無償のバックアップ ストレージはどのくらい含まれますか。
@@ -69,7 +68,6 @@ Basic サービス レベルから Standard または Premium にデータベー
 > [!IMPORTANT]
 > SQL Database をホストする Azure SQL サーバーを削除すると、サーバーに属するすべてのデータベースも削除され、復元できなくなります。 削除されたサーバーを復元することはできません。
 > 
-> 
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>バックアップの保有期間を延長するにはどうすればよいですか。
 アプリケーションで、バックアップがより長期間使用可能である必要がある場合、個別のデータベースの長期的バックアップ保持ポリシー (LTR ポリシー) を構成することによって、組み込みの保有期間を延長できます。 これにより、組み込みの保有期間を 35 日から 10 年に延長できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
@@ -79,6 +77,10 @@ Azure Portal または API を使用して LTR ポリシーをデータベース
 > [!TIP]
 > ハウツー ガイドについては、「[Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する](sql-database-long-term-backup-retention-configure.md)」を参照してください
 >
+
+## <a name="are-backups-encrypted"></a>バックアップは暗号化されますか?
+
+Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

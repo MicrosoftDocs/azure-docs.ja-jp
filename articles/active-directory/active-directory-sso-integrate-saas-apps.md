@@ -1,5 +1,4 @@
 ---
-
 title: "SaaS アプリと Azure Active Directory シングル サインオンを統合する | Microsoft Docs"
 description: "Azure Active Directory での SaaS アプリのシングル サインオン認証およびユーザー プロビジョニングによるアクセス管理の一元化を有効にします。 Azure Active Directory を SaaS アプリに統合する方法の概要について説明します。"
 services: active-directory
@@ -14,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 08/17/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: b48488719d8bcef54e3742a338f0444db82f76d1
+ms.reviewer: aaronsm
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: fc0d297598c334ca8f6f8a2bd3ae948c87956342
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="integrate-azure-active-directory-single-sign-on-with-saas-apps"></a>SaaS アプリと Azure Active Directory シングル サインオンを統合する
@@ -34,6 +33,9 @@ ms.lasthandoff: 05/08/2017
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
 組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory (Azure AD) 内にある既存のディレクトリを使用します。 Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。 これらのうち 2 つ以上を所有している場合は、「 [Azure AD ディレクトリの管理](active-directory-administer.md) 」を参照して、どれを使用するかを判断してください。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターで管理者ロールを割り当てる方法については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-enterprise-apps-manage-sso.md)」を参照してください。
 
 ## <a name="authentication"></a>認証
 プロトコル SAML 2.0、Ws-federation、または OpenID Connect をサポートしているアプリケーションは、Azure Active Directory を使用して署名証明書を信頼関係を確立できます。 詳細については、「 [フェデレーション シングル サインオンのための証明書の管理](active-directory-sso-certs.md)」を参照してください。
@@ -73,7 +75,7 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 アプリケーション ギャラリーにないアプリは、 [カスタム アプリケーションとして Azure AD アプリケーション ギャラリーに追加](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)できます。
 
-Azure.com ライブラリには、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をはじめとして、ここで紹介した問題に関する詳細情報があります。
+Azure.com ライブラリには、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をはじめとして、ここで紹介した問題に関する詳細情報があります。
 
 「[Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)」も是非ご覧ください。
 

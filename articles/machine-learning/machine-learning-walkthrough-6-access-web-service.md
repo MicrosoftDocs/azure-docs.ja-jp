@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
-ms.openlocfilehash: 89bec0e3af42b03ef21e3e8c4059f6aad86db4c0
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: d309f6c4749a80c81859b693a2bd5927e8fe0e54
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -48,6 +49,6 @@ Web アプリ テンプレートの使用方法の詳細については、「[We
 
 R、C#、Python プログラミング言語で提供されるスターター コードを使用して、Web サービスにアクセスするカスタム アプリケーションを開発することもできます。
 
-詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
+詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 

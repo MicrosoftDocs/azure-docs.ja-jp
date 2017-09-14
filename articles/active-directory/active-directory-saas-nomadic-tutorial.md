@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/27/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 450b84a2df3d85c07388b679359ee69dd3cd4af4
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 1817a1395c2ffa7268abfff268d9d041f7f21a57
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>チュートリアル: Azure Active Directory と Nomadic の統合
@@ -27,177 +28,169 @@ ms.lasthandoff: 04/03/2017
 Nomadic と Azure AD の統合には、次の利点があります。
 
 - Nomadic にアクセスするユーザーを Azure AD で制御できます。
-- ユーザーが各自の Azure AD アカウントで Nomadic に自動的にシングル サインオン (SSO) できるようにすることが可能です
-- 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
+- ユーザーが各自の Azure AD アカウントで Nomadic に自動的にサインオン (シングル サインオン) できるようにすることが可能です。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Nomadic と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Nomadic での SSO が有効なサブスクリプション
+- Nomadic でのシングル サインオンが有効なサブスクリプション
 
->[!NOTE]
->このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
->
->
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD SSO をテストします。 
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
- 
 1. ギャラリーからの Nomadic の追加
-2. Azure AD SSO の構成とテスト
+2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="add-nomadic-from-the-gallery"></a>ギャラリーからの Nomadic の追加
 Azure AD への Nomadic の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Nomadic を追加する必要があります。
 
 **ギャラリーから Nomadic を追加するには、次の手順を実行します。**
 
-1. **[Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Active Directory][1]
- 
+    ![Azure Active Directory のボタン][1]
+
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. ダイアログの上部にある **[追加]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「**Nomadic**」と入力します。
+4. 検索ボックスに「**Nomadic**」と入力し、結果ウィンドウで **Nomadic** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_001.png)
+    ![結果一覧の Nomadic](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_addfromgallery.png)
 
-5. 結果ウィンドウで **[Nomadic]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_0001.png)
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Nomadic で Azure AD のシングル サインオンを構成し、テストします。
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Nomadic で Azure AD の SSO を構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Nomadic ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Nomadic の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-SSO を機能させるには、Azure AD ユーザーに対応する Nomadic ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Nomadic の関連ユーザーの間で、リンク関係が確立されている必要があります。
+Nomadic で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Nomadic の **[Username]** の値として割り当てます。
+Nomadic で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-Nomadic で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Nomadic のテスト ユーザーの作成](#create-a-nomadic-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Nomadic で作成します。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Nomadic のテスト ユーザーの作成](#creating-a-nomadic-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Nomadic で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Nomadic アプリケーションでシングル サインオンを構成します。
 
-このセクションでは、Azure 管理ポータルで Azure AD の SSO を有効にし、Nomadic アプリケーションでシングル サインオンを構成します。
+**Nomadic で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-**Nomadicで Azure AD SSO を構成するには、次の手順に従います。**
+1. Azure Portal の **Nomadic** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-1. Azure 管理ポータルの **Nomadic** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+    ![シングル サインオン構成のリンク][4]
 
-    ![[シングル サインオンの構成]][4]
-
-2. **[シングル サインオン]** ダイアログ ページで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_01.png)
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_samlbase.png)
 
 3. **[Nomadic のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_02.png)
-  1. **[サインオン URL]** ボックスに、`https://<company name>.nomadic.fm/signin` のパターンを使用して URL を入力します。
-  2. **[識別子]** ボックスに、`https://<company name>.nomadic.fm/auth/saml2/sp` のパターンで URL を入力します。
+    ![[Nomadic のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_url.png)
 
-     >[!NOTE] 
-     >これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 これらの値を取得するには、[Nomadic サポート チーム](mailto:help@nomadic.fm)に連絡してください。
-     >
-     >
+    a. **[サインオン URL]** ボックスに、`https://<company name>.nomadic.fm/signin` のパターンを使用して URL を入力します。
 
-4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
+    b. **[Identifier]\(識別子\)** ボックスに、`https://<company name>.nomadic.fm/auth/saml2/sp`、`https://<company name>.staging.nomadic.fm/auth/saml2/sp` のパターンで URL を入力します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_03.png)     
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Nomadic クライアント サポート チーム](mailto:help@nomadic.fm)に連絡してください。 
+ 
 
-5. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_general_300.png)
+4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-6. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_certificate.png) 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_04.png)
+5. **[保存]** ボタンをクリックします。
 
-7. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-nomadic-tutorial/tutorial_general_400.png)
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_general_400.png)
+6.  アプリケーション用に構成された SSO を入手するには、[Nomadic サポート チーム](mailto:help@nomadic.fm)に連絡して、ダウンロードした**メタデータ**を提供してください。
 
-8. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_05.png) 
-
-9. アプリケーション用に構成された SSO を入手するには、[Nomadic サポート チーム](mailto:help@nomadic.fm)に連絡して、ダウンロードした**メタデータ**を提供してください。
-  
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+   ![Azure AD のテスト ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadic-tutorial/create_aaduser_01.png) 
+    ![Azure Active Directory のボタン](./media/active-directory-saas-nomadic-tutorial/create_aaduser_01.png)
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadic-tutorial/create_aaduser_02.png) 
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-nomadic-tutorial/create_aaduser_02.png)
+
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+
+    ![[追加] ボタン](./media/active-directory-saas-nomadic-tutorial/create_aaduser_03.png)
+
+4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+
+    ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-nomadic-tutorial/create_aaduser_04.png)
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
+
+    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+
+    d. **[作成]**をクリックします。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadic-tutorial/create_aaduser_03.png) 
-
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nomadic-tutorial/create_aaduser_04.png) 
-  1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-  2. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-  3. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
-  4. **[作成]**をクリックします。 
-
 ### <a name="create-a-nomadic-test-user"></a>Nomadic のテスト ユーザーの作成
 
 このセクションでは、Nomadic で Britta Simon というユーザーを作成します。 [Nomadic サポート チーム](mailto:help@nomadic.fm)と連携して、Nomadic プラットフォームにユーザーを追加してください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Nomadic へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようにします。
+このセクションでは、Britta Simon に Nomadic へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-![ユーザーの割り当て][200] 
+![ユーザー ロールを割り当てる][200] 
 
 **Britta Simon を Nomadic に割り当てるには、次の手順を実行します。**
 
-1. Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
 2. アプリケーションの一覧で **[Nomadic]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_50.png) 
+    ![アプリケーションの一覧の Nomadic のリンク](./media/active-directory-saas-nomadic-tutorial/tutorial_nomadic_app.png)  
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202] 
+    ![[ユーザーとグループ] リンク][202]
 
 4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ][203]
 
 5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
@@ -205,12 +198,12 @@ Nomadic で Azure AD の SSO を構成してテストするには、次の構成
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
-
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Nomadic] タイルをクリックすると、Nomadic アプリケーションに自動的にサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -232,4 +225,5 @@ Nomadic で Azure AD の SSO を構成してテストするには、次の構成
 [201]: ./media/active-directory-saas-nomadic-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-nomadic-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-nomadic-tutorial/tutorial_general_203.png
+
 

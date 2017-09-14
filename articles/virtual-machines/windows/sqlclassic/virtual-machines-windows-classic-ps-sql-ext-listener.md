@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/28/2016
+ms.date: 05/31/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d9138b17e54aa1c4bf1982b09d3d0ad10e936d4c
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 8e506be42aea4fb3c48c29b771a78dcf694f4518
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -95,7 +96,7 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>PowerShell でクラスター リソースを構成する
-1. 外部負荷分散の場合、レプリカが含まれるクラウド サービスのパブリック仮想 IP アドレスを取得する必要があります。 Azure クラシック ポータルにログインします。 可用性グループの VM が含まれるクラウド サービスに移動します。 **[ダッシュボード]** ビューを開きます。
+1. 外部負荷分散の場合、レプリカが含まれるクラウド サービスのパブリック仮想 IP アドレスを取得する必要があります。 Azure Portal にログインします。 可用性グループの VM が含まれるクラウド サービスに移動します。 **[ダッシュボード]** ビューを開きます。
 2. **[パブリック仮想 IP (VIP) アドレス]**に表示されているアドレスをメモします。 ソリューションが複数の VNet にまたがっている場合は、レプリカをホストする VM が含まれるクラウド サービスごとにこの手順を繰り返します。
 3. VM のいずれかで、次の PowerShell スクリプトをテキスト エディターにコピーし、変数を先ほどメモした値に設定します。
    

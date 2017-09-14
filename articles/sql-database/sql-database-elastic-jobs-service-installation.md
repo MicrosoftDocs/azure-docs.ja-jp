@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9b8033a9dfc8063f96e168a154696e7fe6fef8ff
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 960e5e311571d1054a2ef5c15c33291de27b0878
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
@@ -95,7 +94,7 @@ ms.lasthandoff: 04/27/2017
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Standard エディションのサービス レベル目標を指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3 のパラメーター値を指定できます。Azure SQL Database で各 SLO が使用されます。 SQL Database の SLO について詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>Standard エディションのサービス レベル目標を指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3/S4/S6/S9/S12 のパラメーター値を指定できます。Azure SQL Database では各 SLO が使用されます。 SQL Database の SLO について詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
 </tr>
 
 </tr>
@@ -163,7 +162,7 @@ ms.lasthandoff: 04/27/2017
 4. [サービスのインストール] ビューで、 **[ジョブの資格情報]**をクリックします。
    
     ![サービスのインストール][1]
-5. データベース管理者のユーザー名とパスワードを入力します。 インストールの一環として、新しい Azure SQL Database サーバーが作成されます。 この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、Elastic Database ジョブのメタデータの格納に使用されます。 ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。 プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。
+5. データベース管理者のユーザー名とパスワードを入力します。インストールの一環として、新しい Azure SQL Database サーバーが作成されます。 この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、Elastic Database ジョブのメタデータの格納に使用されます。 ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。 プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。
    
     ![ユーザー名とパスワードの作成][2]
 6. [OK] ボタンをクリックします。 新しい [リソース グループ](../azure-resource-manager/resource-group-overview.md)にコンポーネントが数分で作成されます。 下記に示すように、新しいリソース グループがスタート ボードに固定表示されています。 作成されると、弾力性データベース ジョブ (クラウド サービス、SQL Database、Service Bus、ストレージ記憶域) は、すべてグループ内に作成されます。

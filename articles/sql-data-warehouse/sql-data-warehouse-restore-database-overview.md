@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ea42b7135d0695b66d569095e70bb3d9f8b9594b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL Data Warehouse の復元
@@ -58,7 +58,12 @@ Yes, you can restore the last available restore point.
 Yes, for the next seven calendar days. When you delete a data warehouse, SQL Data Warehouse actually keeps the data warehouse and its snapshots for seven days just in case you need the data. After seven days, you won't be able to restore to any of the restore points. -->
 
 ## <a name="geo-redundant-restore"></a>geo 冗長復元
-geo 冗長ストレージを使用している場合は、異なるリージョンにある[ペアのデータ センター](../best-practices-availability-paired-regions.md)にデータ ウェアハウスを復元できます。 データ ウェアハウスは、最新の日次バックアップから復元されます。 
+選択したパフォーマンス レベルで、データ ウェアハウスを Azure SQL Data Warehouse をサポートするリージョンに復元できます。 DWU 9000 と 18000 は、プレビュー中のすべてのリージョンではサポートされないことに注意してください。
+
+> [!NOTE]
+> geo 冗長復元を実行するには、この機能の使用を中止しないようにする必要があります。
+> 
+> 
 
 ## <a name="restore-timeline"></a>タイムライン復元
 過去 7 日間の任意の復元ポイントにデータベースを復元できます。 スナップショットは 4 ～ 8 時間ごとに開始され、7 日間使用できます。 スナップショットが 7 日間以上経過した場合、期限切れとなり、復元ポイントは使用できなくなります。

@@ -4,25 +4,24 @@ description: "Azure Functions を使用して非同期ワークロードを最�
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: cfowler;mahender;glenga
+ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 7fcf35b99cc410655f2a3b9b6961f5e3bef3aeb5
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  

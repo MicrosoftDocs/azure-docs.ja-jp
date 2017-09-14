@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/16/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3580bf0712d704e46e785aa95ef0ab6b54f0ba10
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 7b3d01b32c2d5a40448fc22861cd45f612238f2f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinandroid-apps"></a>Xamarin.Android アプリ用 Azure Mobile Engagement の使用
@@ -25,6 +26,9 @@ ms.openlocfilehash: 3580bf0712d704e46e785aa95ef0ab6b54f0ba10
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握する方法と、Xamarin.Android アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
 このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 このシナリオでは、基本的なデータを収集し、Google Cloud Messaging (GCM) を使ってプッシュ通知を受信する空の Xamarin.Android アプリを作成します。
+
+> [!NOTE]
+> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
 
 このチュートリアルには、次のものが必要です。
 
@@ -36,10 +40,10 @@ ms.openlocfilehash: 3580bf0712d704e46e785aa95ef0ab6b54f0ba10
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-android-app"></a><a id="setup-azme"></a>Android アプリ用のモバイル エンゲージメントの設定
+## <a id="setup-azme"></a>Android アプリ用のモバイル エンゲージメントの設定
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 
 
 統合のデモンストレーションを行うために、Xamarin Studio で基本的なアプリを作成します。
@@ -78,7 +82,7 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
         EngagementAgent.Init(engagementConfiguration);
 
 ### <a name="add-permissions-and-a-service-declaration"></a>アクセス権限とサービス宣言を追加する
-1. Properties フォルダーの下にある **Manifest.xml** ファイルを開きます。 [Source] (ソース) タブを選択して、XML ソースを直接更新します。
+1. Properties フォルダーの下にある **Manifest.xml** ファイルを開きます。 [Source] \(ソース) タブを選択して、XML ソースを直接更新します。
 2. 次のアクセス許可を、プロジェクトの Manifest.xml 内の `<application>` タグの直前または直後に追加します (Manifest.xml は **Properties** フォルダーの下にあります)。
    
         <uses-permission android:name="android.permission.INTERNET"/>
@@ -115,10 +119,10 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
                 base.OnPause();            
             }
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement を導入すると、プッシュ通知とアプリ内メッセージングを利用して、ユーザーにキャンペーン情報を提供できます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -135,9 +139,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [4]: ./media/mobile-engagement-xamarin-android-get-started/4.png
 [5]: ./media/mobile-engagement-xamarin-android-get-started/5.png
 [6]: ./media/mobile-engagement-xamarin-android-get-started/6.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

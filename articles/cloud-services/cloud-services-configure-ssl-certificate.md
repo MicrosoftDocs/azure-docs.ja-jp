@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
 ms.openlocfilehash: edb9aaf6dae11c9b8a171b22bc8a17003f80d86b
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 12/16/2016
 
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
@@ -37,8 +38,6 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 このタスクでは、運用環境のデプロイを使用します。 ステージング環境のデプロイを使用する場合の情報については、このトピックの最後で紹介します。
 
 クラウド サービスを作成していない場合は、[こちらの記事](cloud-services-how-to-create-deploy.md)を先に参照してください。
-
-[!INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 ## <a name="step-1-get-an-ssl-certificate"></a>手順 1. SSL 証明書を取得する
 アプリケーションの SSL を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された SSL 証明書を取得する必要があります。 まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。
@@ -187,9 +186,4 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
 [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
 [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png  
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

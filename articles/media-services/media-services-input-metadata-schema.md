@@ -2,7 +2,7 @@
 title: "Azure Media Services 入力メタデータのスキーマ | Microsoft Docs"
 description: "このトピックでは、Azure Media Services 入力メタデータのスキーマの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 07/19/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 21cbbb10065df9ae9c63b775a6526ea9c4f92136
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="input-metadata"></a>入力メタデータ
@@ -32,7 +33,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 > 
 > 
 
-## <a name="a-nameassetfilesa-assetfiles-element-root-element"></a><a name="AssetFiles"></a> AssetFiles 要素 (ルート要素)
+## <a name="AssetFiles"></a> AssetFiles 要素 (ルート要素)
 エンコード ジョブの [AssetFile 要素](media-services-input-metadata-schema.md#AssetFile)のコレクションが含まれます。  
 
 XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
@@ -41,7 +42,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |1 つの子要素。 詳細については、「[AssetFile 要素](media-services-input-metadata-schema.md#AssetFile)」を参照してください。 |
 
-## <a name="a-nameassetfilea-assetfile-element"></a><a name="AssetFile"></a> AssetFile 要素
+## <a name="AssetFile"></a> AssetFile 要素
  資産ファイルについて記述する属性と要素が含まれます。  
 
  XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
@@ -71,7 +72,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **AudioTracks**<br /><br /> minOccurs="0" | |各物理資産ファイルには、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 この要素には、資産ファイルの一部であるすべての [AudioTracks 要素](media-services-input-metadata-schema.md#AudioTracks)のコレクションが含まれます。 |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |キー\値文字列として表される資産ファイルのメタデータ。 次に例を示します。<br /><br /> **&lt;Metadata key="language" value="eng" /&gt;** |
 
-## <a name="a-nametracktypea-tracktype"></a><a name="TrackType"></a> TrackType
+## <a name="TrackType"></a> TrackType
 XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
@@ -96,7 +97,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |プレゼンテーション情報が含まれます (特定のオーディオ トラックが視覚障碍者向けかどうか、など)。 |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |さまざまな情報を保持する際に使用できる汎用的なキー/値文字列。 例: key=”language”、value=”eng”。 |
 
-## <a name="a-nameaudiotracktypea-audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a> AudioTrackType (TrackType から継承)
+## <a name="AudioTrackType"></a> AudioTrackType (TrackType から継承)
  **AudioTrackType** は、[TrackType](media-services-input-metadata-schema.md#TrackType) から継承されるグローバルな複合型です。  
 
  型は、資産ファイル内の特定のオーディオ トラックを表します。  
@@ -109,11 +110,11 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **SampleFormat** |**xs:string** |サンプル形式。 |
 | **ChannelLayout** |**xs:string** |チャネル レイアウト。 |
 | **Channels**<br /><br /> 必須 |**xs:int** |オーディオ チャネルの数 (0 以上)。 |
-| **SamplingRate**<br /><br /> 必須 |**xs:int** |オーディオ サンプリング レート (サンプル数/秒または Hz) |
+| **SamplingRate**<br /><br /> 必須 |**xs:int** |オーディオ サンプリング レート (サンプル数/秒または Hz)。 |
 | **Bitrate** |**xs:int** |資産ファイルから計算された、平均オーディオ ビット レート (ビット/秒)。 基本ストリーム ペイロードのみがカウントされます。この値には、パッケージのオーバーヘッドは含まれません。 |
 | **BitsPerSample** |**xs:int** |wFormatTag 形式タイプのサンプルあたりのビット数。 |
 
-## <a name="a-namevideotracktypea-videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a> VideoTrackType (TrackType から継承)
+## <a name="VideoTrackType"></a> VideoTrackType (TrackType から継承)
 **VideoTrackType** は、[TrackType](media-services-input-metadata-schema.md#TrackType) から継承されるグローバルな複合型です。  
 
 型は、資産ファイル内の特定のビデオ トラックを表します。  
@@ -139,7 +140,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **MaxGOPBitrate** |**xs:int** |このビデオ トラックの最大 GOP 平均ビットレート (キロビット数/秒)。 |
 | **HasBFrames** |**xs:int** |B フレームのビデオ トラック数。 |
 
-## <a name="a-namemetadatatypea-metadatatype"></a><a name="MetadataType"></a> MetadataType
+## <a name="MetadataType"></a> MetadataType
 **MetadataType** は、資産ファイルのメタデータをキー/値文字列として記述する、グローバルな複合型です。 例: key=”language”、value=”eng”。  
 
 XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
@@ -150,7 +151,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **key**<br /><br /> 必須 |**xs:string** |キー/値ペアのキー。 |
 | **値**<br /><br /> 必須 |**xs:string** |キー/値ペアの値。 |
 
-## <a name="a-nameprogramtypea-programtype"></a><a name="ProgramType"></a> ProgramType
+## <a name="ProgramType"></a> ProgramType
 **ProgramType** は、プログラムを記述するグローバルな複合型です。  
 
 ### <a name="attributes"></a>属性
@@ -163,7 +164,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **StartPTS** |**xs: long** |プレゼンテーション開始のタイム スタンプ。 |
 | **EndPTS** |**xs: long** |プレゼンテーション終了のタイム スタンプ。 |
 
-## <a name="a-namestreamdispositiontypea-streamdispositiontype"></a><a name="StreamDispositionType"></a> StreamDispositionType
+## <a name="StreamDispositionType"></a> StreamDispositionType
 **StreamDispositionType** は、ストリームを記述するグローバルな複合型です。  
 
 XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
@@ -183,7 +184,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | **CleanEffects**<br /><br /> 必須 |**xs:int** |この属性を 1 に設定して、このトラックにクリーン効果があることを示します。 |
 | **AttachedPic**<br /><br /> 必須 |**xs:int** |この属性を 1 に設定して、このトラックに画像が含まれることを示します。 |
 
-## <a name="a-nameprogramsa-programs-element"></a><a name="Programs"></a> Programs 要素
+## <a name="Programs"></a> Programs 要素
 複数の **Program** 要素が保持されているラッパー要素。  
 
 ### <a name="child-elements"></a>子要素
@@ -191,7 +192,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |MPEG-TS 形式の資産ファイルについては、資産ファイルのプログラムに関する情報が含まれます。 |
 
-## <a name="a-namevideotracksa-videotracks-element"></a><a name="VideoTracks"></a> VideoTracks 要素
+## <a name="VideoTracks"></a> VideoTracks 要素
  複数の **VideoTrack** 要素が保持されているラッパー要素。  
 
  XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
@@ -201,7 +202,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (TrackType から継承)](media-services-input-metadata-schema.md#VideoTrackType) |資産ファイルのビデオ トラックに関する情報が含まれます。 |
 
-## <a name="a-nameaudiotracksa-audiotracks-element"></a><a name="AudioTracks"></a> AudioTracks 要素
+## <a name="AudioTracks"></a> AudioTracks 要素
  複数の **AudioTrack** 要素が保持されているラッパー要素。  
 
  XML の例については、このトピックの最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
@@ -211,7 +212,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (TrackType から継承)](media-services-input-metadata-schema.md#AudioTrackType) |資産ファイルのオーディオ トラックに関する情報が含まれます。 |
 
-## <a name="a-namecodea-schema-code"></a><a name="code"></a> スキーマ コード
+## <a name="code"></a> スキーマ コード
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
@@ -610,7 +611,7 @@ XML の例については、このトピックの最後の「[XML の例](media-
     </xs:schema>  
 
 
-## <a name="a-namexmla-xml-example"></a><a name="xml"></a> XML の例
+## <a name="xml"></a> XML の例
 入力メタデータ ファイルの例を次に示します。  
 
     <?xml version="1.0" encoding="utf-8"?>  
@@ -645,10 +646,5 @@ XML の例については、このトピックの最後の「[XML の例](media-
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

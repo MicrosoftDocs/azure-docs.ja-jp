@@ -2,112 +2,124 @@
   href: index.yml
 - name: 概要
   items:
-  - name: Azure DB for PostgreSQL
-    href: overview.md
+    - name: Azure DB for PostgreSQL
+      href: overview.md
 - name: クイック スタート
   expanded: true
   items:
-  - name: DB の作成 - ポータル
-    href: quickstart-create-server-database-portal.md
-  - name: DB の作成 - Azure CLI
-    href: quickstart-create-server-database-azure-cli.md
-  - name: 接続とクエリ
-    items: 
-    - name: Python
-      href: connect-python.md
-    - name: Node.js
-      href: connect-nodejs.md
-    - name: .NET
-      href: connect-csharp.md
+    - name: DB の作成 - ポータル
+      href: quickstart-create-server-database-portal.md
+    - name: DB の作成 - Azure CLI
+      href: quickstart-create-server-database-azure-cli.md
+    - name: 接続とクエリ
+      items:
+        - name: Python
+          href: connect-python.md
+        - name: Node.js
+          href: connect-nodejs.md
+        - name: Java
+          href: connect-java.md
+        - name: Ruby
+          href: connect-ruby.md
+        - name: PHP
+          href: connect-php.md
+        - name: .NET
+          href: connect-csharp.md
+        - name: Go
+          href: connect-go.md
 - name: チュートリアル
   items:
-  - name: 1 - データベースの設計
-    items:
-    - name: Azure ポータル
-      href: tutorial-design-database-using-azure-portal.md
-    - name: Azure CLI
-      href: tutorial-design-database-using-azure-cli.md
-  - name: 2 - Web アプリの設計 - Python
-    href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+    - name: 1 - データベースの設計
+      items:
+        - name: Azure ポータル
+          href: tutorial-design-database-using-azure-portal.md
+        - name: Azure CLI
+          href: tutorial-design-database-using-azure-cli.md
+    - name: 2 - Web アプリの設計 - Python
+      href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
 - name: サンプル
   items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+    - name: Azure CLI
+      href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-  - name: DB とサーバー
-    items:
-    - name: サーバー
-      href: concepts-servers.md
-    - name: サポートされているバージョン
-      href: concepts-supported-versions.md
-    - name: PostgreSQL 拡張機能
-      href: concepts-extensions.md
-    - name: サーバー ログ
-      href: concepts-server-logs.md
-  - name: リソース
-    items:
-    - name: 価格レベル
-      href: concepts-service-tiers.md
-    - name: コンピューティング ユニット
-      href: concepts-compute-unit-and-storage.md
-    - name: 制限
-      href: concepts-limits.md
-  - name: データ アクセスとセキュリティ
-    items:
-    - name: ファイアウォール規則
-      href: concepts-firewall-rules.md
-    - name: SSL の構成
-      href: concepts-ssl-connection-security.md
-  - name: 開発
-    items:
-    - name: 接続ライブラリ
-      href: concepts-connection-libraries.md
+    - name: DB とサーバー
+      items:
+        - name: サーバー
+          href: concepts-servers.md
+        - name: サポートされているバージョン
+          href: concepts-supported-versions.md
+        - name: PostgreSQL 拡張機能
+          href: concepts-extensions.md
+        - name: サーバー ログ
+          href: concepts-server-logs.md
+    - name: リソース
+      items:
+        - name: 価格レベル
+          href: concepts-service-tiers.md
+        - name: コンピューティング ユニット
+          href: concepts-compute-unit-and-storage.md
+        - name: 制限
+          href: concepts-limits.md
+    - name: データ アクセスとセキュリティ
+      items:
+        - name: ファイアウォール規則
+          href: concepts-firewall-rules.md
+        - name: SSL の構成
+          href: concepts-ssl-connection-security.md
+    - name: 開発
+      items:
+        - name: 接続ライブラリ
+          href: concepts-connection-libraries.md
 - name: ハウツー ガイド
   items:
-  - name: ファイアウォール規則
-    items:
-    - name: Azure ポータル
-      href: howto-manage-firewall-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-firewall-using-cli.md
-  - name: サーバーの復元
-    items:
-    - name: Azure ポータル
-      href: howto-restore-server-portal.md
-    - name: Azure CLI
-      href: howto-restore-server-cli.md
-  - name: データの移行
-    items:
-    - name: ダンプと復元
-      href: howto-migrate-using-dump-and-restore.md
-    - name: インポートとエクスポート
-      href: howto-migrate-using-export-and-import.md
-  - name: サーバー構成パラメーターのカスタマイズ
-    items:
-    - name: Azure CLI
-      href: howto-configure-server-parameters-using-cli.md
-  - name: サーバー ログ
-    items:
-    - name: Azure CLI
-      href: howto-configure-server-logs-using-cli.md
+    - name: ファイアウォール規則
+      items:
+        - name: Azure ポータル
+          href: howto-manage-firewall-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-firewall-using-cli.md
+    - name: サーバーの復元
+      items:
+        - name: Azure ポータル
+          href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
+    - name: データの移行
+      items:
+        - name: ダンプと復元
+          href: howto-migrate-using-dump-and-restore.md
+        - name: インポートとエクスポート
+          href: howto-migrate-using-export-and-import.md
+    - name: サーバー構成パラメーターのカスタマイズ
+      items:
+        - name: Azure CLI
+          href: howto-configure-server-parameters-using-cli.md
+    - name: サーバー ログ
+      items:
+        - name: Azure CLI
+          href: howto-configure-server-logs-using-cli.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/postgres
+    - name: Azure CLI
+      href: /cli/azure/postgres
+    - name: REST API
+      href: /rest/api/postgresql
 - name: リソース
   items:
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/postgresql/
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
-  - name: ビデオ
-    href: videos.md    
-  - name: フィードバック フォーラム
-    href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
-  - name: 利用可能なリージョン
-    href: https://azure.microsoft.com/regions/services/
-  - name: サポート オプション
-    href: https://azure.microsoft.com/support/options/
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/postgresql/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-database-postgresql'
+    - name: ビデオ
+      href: videos.md
+    - name: フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

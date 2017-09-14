@@ -3,7 +3,7 @@ title: Storage accounts in Azure Stack | Microsoft Docs
 description: Learn how to create an Azure Stack storage account.
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
+author: vhorne
 manager: byronr
 editor: 
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 3/1/2017
-ms.author: erikje
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 1a0e04d3a5d4c90484c9323097daf1a84c29d6ba
-ms.lasthandoff: 04/06/2017
-
+ms.author: victorh
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: de32c0ce79e8357274cc19cd1ea4ec23b85b918f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Storage accounts in Azure Stack
@@ -34,10 +34,10 @@ Storage accounts include Blob and Table services, and the unique namespace for y
 
     ![](media/azure-stack-provision-storage-account/image03.png)
 
-## <a name="next-steps"></a>Next steps
+### <a name="next-steps"></a>Next steps
 [Use Azure Resource Manager templates](azure-stack-arm-templates.md)
 
-[Learn about Azure storage accounts](../storage/storage-create-storage-account.md)
+[Learn about Azure storage accounts](../storage/common/storage-create-storage-account.md)
 
 [Download the Azure Stack Azure-consistent Storage Validation Guide](http://aka.ms/azurestacktp1doc)
 

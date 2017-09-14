@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Server との間でのデータの移動 | Microsoft Docs"
 description: "Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。"
 services: data-factory
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 06/09/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 25fca1ac29817fc6d72dd5ec5033a2962f3f0be4
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 9cd2077d897631457925cda5ef5e6df3c0c33177
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -53,7 +53,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
-1. **Data Factory**を作成します。 データ ファクトリは、1 つまたは複数のパイプラインを含むことができます。 
+1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
 2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、SQL Server データベースから Azure Blob Storage にデータをコピーする場合、リンクされたサービスを 2 つ作成して、SQL Server データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 SQL Server データベースに固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。 
 3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む SQL Server データベース内の SQL テーブルを指定します。 また、もう 1 つのデータセットを作成して、BLOB コンテナーと SQL Server データベースからコピーされたデータを保持するフォルダーを指定します。 SQL Server データベースに固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
 4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして SqlSource を、シンクとして BlobSink を使います。 同様に、Azure Blob Storage から SQL Server データベースにコピーする場合は、BlobSource と SqlSink をコピー アクティビティで使います。 SQL Server データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。 
@@ -99,7 +99,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 ```
 **Windows 認証を使用している場合の JSON**
 
-ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
+Data Management Gateway はその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 
 
 ```json
 {
@@ -163,8 +163,8 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 | --- | --- | --- | --- |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
-| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |クエリ ステートメント。 |いいえ |
-| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
+| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳しくは、「[反復可能なコピー](#repeatable-copy)」のセクションをご覧ください。 |クエリ ステートメント。 |いいえ |
+| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳しくは、「[反復可能なコピー](#repeatable-copy)」のセクションをご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
 | sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |いいえ |
@@ -633,24 +633,16 @@ create table dbo.TargetTbl
 
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
-## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
-
-## <a name="repeatable-copy"></a>反復可能なコピー
-SQL Server Database にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 代わりに UPSERT を実行するには、「[SqlSink への反復可能な書き込み](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)」を参照してください。 
-
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
-
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>SQL シンクからのストアド プロシージャの呼び出し
 パイプラインのコピー アクティビティで SQL シンクからストアド プロシージャを呼び出す例については、[コピー アクティビティでの SQL シンクのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。
 
-## <a name="type-mapping-for-sql-server--azure-sql"></a>SQL Server と Azure SQL の型のマッピング
+## <a name="type-mapping-for-sql-server"></a>SQL Server の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。
+SQL Server との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。
 
 マッピングは ADO.NET の SQL Server データ型マッピングと同じです。
 
@@ -691,6 +683,11 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 ## <a name="mapping-source-to-sink-columns"></a>ソース列からシンク列へのマッピング
 ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+
+## <a name="repeatable-copy"></a>反復可能なコピー
+SQL Server Database にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 代わりに UPSERT を実行するには、「[SqlSink への反復可能な書き込み](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)」を参照してください。 
+
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

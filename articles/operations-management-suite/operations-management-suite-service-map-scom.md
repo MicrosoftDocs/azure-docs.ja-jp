@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 0b710c338be3a2c2fde6bba43173f7c5f480e357
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a7dbe54ffb4daa941c19b51ba263dd3d23b7a98b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]
-  > この機能はプライベート プレビュー段階にあるため、運用システムでは使用しないでください。
+  > この機能はパブリック プレビュー段階にあります。
   > 
   
 Operations Management Suite のサービス マップでは、Windows および Linux システムのアプリケーション コンポーネントが自動的に検出され、サービス間の通信がマップされます。 サービス マップを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして、思うように表示することができます。 サービス マップには、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続が表示されます。その際、エージェントのインストール以外の構成は必要ありません。 詳細については、[サービス マップのドキュメント](operations-management-suite-service-map.md)を参照してください。
@@ -62,17 +61,21 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     ![Operations Manager 構成ワークスペース](media/oms-service-map/scom-config-workspace.png)
 
-4. **[サーバーの選択]** ウィンドウで、Operations Manager とサービス マップの同期を行うサーバーを指定して、サーバー マップ サーバー グループを構成します。 **[サーバーの追加と削除]** をクリックします。   
+4. **[Machine Group Selection]\(コンピューター グループの選択\)** ウィンドウで、Operations Manager に同期する Service Map コンピューター グループを選びます。 **[Add/Remove Machine Groups]\(コンピューター グループの追加/削除\)** をクリックして、**[Available Machine Groups]\(使用可能なコンピューター グループ\)** の一覧からグループを選択し、**[追加]** をクリックします。  グループの選択が完了したら、**[OK]** をクリックして完了します。
+    
+    ![Operations Manager 構成コンピューター グループ](media/oms-service-map/scom-config-machine-groups.png)
+    
+5. **[サーバーの選択]** ウィンドウで、Operations Manager とサービス マップの同期を行うサーバーを指定して、サーバー マップ サーバー グループを構成します。 **[サーバーの追加と削除]** をクリックします。   
     
     この統合によりサーバーの分散アプリケーション ダイアグラムを作成するには、サーバーが次の条件を満たす必要があります。
 
-    * Operations Manager で管理されている。
-    * サービス マップで管理されている。
-    * サービス マップ サーバー グループに登録されている。
+    * Operations Manager で管理されている
+    * Service Map で管理されている
+    * Service Map サーバー グループに登録されている
 
     ![Operations Manager 構成グループ](media/oms-service-map/scom-config-group.png)
 
-5. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
+6. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
 
     ![Operations Manager 構成リソース プール](media/oms-service-map/scom-config-pool.png)
 
@@ -80,23 +83,22 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     ![Operations Manager 構成リソース プール](media/oms-service-map/scom-config-success.png)
 
-    >[!NOTE]
-    >既定の同期間隔は 60 分に設定されています。 この同期間隔は、上書きを構成することで変更できます。 また、**[作成]** ウィンドウで、サーバーをサービス マップ サーバー グループに手動で追加することもできます。 それには、**[グループ]** を選択し、**サービス マップ サーバー グループ**を検索します。 そのサーバーのサーバー マップは次の同期サイクルで同期されます。この同期のタイミングは、構成された同期間隔に基づきます。
 
 ## <a name="monitor-service-map"></a>サービス マップの監視
 Operations Management Suite ワークスペースが接続されると、Operations Manager コンソールの **[監視]** ウィンドウに、サービス マップという名前の新しいフォルダーが表示されます。
 
 ![Operations Manager の [監視] ウィンドウ](media/oms-service-map/scom-monitoring.png)
 
-サービス マップ フォルダーには 3 つのノードがあります。
-* **アクティブなアラート**: Operations Manager と Operations Management Suite のサービス マップ ソリューションの間の通信に関するアクティブなアラートの一覧が表示されます。
-
-    >[!NOTE]
-    >このアラートは、Operations Manager に表示される Operations Management Suite アラートではありません。
+Service Map フォルダーには 4 つのノードがあります。
+* **アクティブなアラート**: Operations Manager と Service Map の間の通信に関するアクティブなアラートの一覧が表示されます。  このアラートは、Operations Manager に同期されている Operations Management Suite アラートではないことにご注意ください。 
 
 * **サーバー**: サービス マップと同期するように構成されている監視対象サーバーの一覧が表示されます。
 
     ![Operations Manager の [監視] の [サーバー] ウィンドウ](media/oms-service-map/scom-monitoring-servers.png)
+
+* **コンピューター グループ依存関係ビュー**: Service Map と同期されているすべてのコンピューター グループが一覧表示されます。 グループをクリックすると、その分散アプリケーション ダイアグラムを確認できます。
+
+    ![Operations Manager の分散アプリケーション ダイアグラム](media/oms-service-map/scom-group-dad.png)
 
 * **サーバー依存関係ビュー**: サービス マップと同期されているサーバーの一覧が表示されます。 サーバーをクリックすると、その分散アプリケーション ダイアグラムを確認できます。
 
@@ -120,14 +122,15 @@ Operations Management Suite ワークスペースが接続されると、Operati
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限
 
 現在の設計には次の問題と制限があります。
-* **[作成]** ウィンドウでサーバーをサービス マップ サーバー グループに手動で追加できますが、そのサーバーのマップは、次の同期サイクルまでサービス マップと同期されません。 既定値は 60 分ですが、このタイミングは上書きできます。 
 * 接続できる Operations Management Suite ワークスペースは 1 つだけです。
+* **[作成]** ウィンドウでサーバーを Service Map サーバー グループに手動で追加できますが、そのサーバーのマップは、即座には同期されません。  次回の同期サイクル中に Service Map から同期されます。
+* 管理パックによって作成された分散アプリケーション ダイアグラムに変更を加える場合は、Service Map による次回同期の際に、これらの変更が上書きされる可能性があります。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 サービス プリンシパル作成に関する Azure の公式ドキュメントについては、次を参照してください。
-* [PowerShell を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Azure CLI を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Azure Portal を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [PowerShell を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Azure CLI を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Azure Portal を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
 ### <a name="feedback"></a>フィードバック
 サービス マップやこのドキュメントについてフィードバックはありますか。 [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。

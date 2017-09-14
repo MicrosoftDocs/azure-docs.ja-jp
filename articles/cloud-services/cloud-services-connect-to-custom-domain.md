@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5489762a7a392e4e4098d85cba22d560e9858267
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: bc7e9a53f71eff828eaf8c45c104c5dc73018824
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
@@ -29,12 +29,12 @@ ms.lasthandoff: 04/27/2017
 1. このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。 Azure PowerShell の設定方法については、「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 2. AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNet 内にある必要があります。
 
-このステップ バイ ステップ ガイドに従って作業しているときに問題が発生した場合はコメントを残してください。 私たちはコメントを必ず読んでいるので、だれかが対応します。
+このステップ バイ ステップ ガイドに従って作業しているときに問題が発生した場合は、この記事の最後にコメントを残してください。 私たちはコメントを必ず読んでいるので、だれかが対応します。
 
 クラウド サービスによって参照されるネットワークは、**従来の仮想ネットワーク**にする必要があります。
 
-## <a name="create-a-virtual-network"></a>Virtual Network の作成
-Azure に仮想ネットワークを作成するには、Azure クラシック ポータルか PowerShell を使います。 このチュートリアルでは、PowerShell を使用します。 Azure クラシック ポータルを使用して Virtual Network を作成するには、「 [仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。
+## <a name="create-a-virtual-network"></a>仮想ネットワークを作成します
+Azure に Virtual Network を作成するには、Azure Portal か PowerShell を使います。 このチュートリアルでは、PowerShell を使用します。 Azure Portal を使用して Virtual Network を作成するには、[Virtual Network の作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)に関する記事をご覧ください。
 
 ```powershell
 #Create Virtual Network
@@ -95,10 +95,10 @@ VM にログインするには、PowerShell で次のコマンドを使用して
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-VM にログインした後、 [カスタム AD ドメイン コントローラーの設定方法](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)に関するステップ バイ ステップ ガイドに従って仮想マシンを AD ドメイン コントローラーとして設定します。
+VM にサインインした後、[カスタム AD ドメイン コントローラーの設定方法](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)に関するステップ バイ ステップ ガイドに従って仮想マシンを AD ドメイン コントローラーとして設定します。
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>クラウド サービスを Virtual Network に追加する
-次に、先ほど作成した VNet にクラウド サービス デプロイメントを追加する必要があります。 そのためには、Visual Studio または任意のエディターを使用して cscfg に該当するセクションを追加して、クラウド サービスの cscfg を変更します。
+次に、新しい VNet にクラウド サービス デプロイメントを追加する必要があります。 そのためには、Visual Studio または任意のエディターを使用して cscfg に該当するセクションを追加して、クラウド サービスの cscfg を変更します。
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -150,7 +150,7 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 
 以上です。
 
-クラウド サービスがカスタム ドメイン コントローラーに参加します。 AD ドメイン拡張機能を構成するための他のオプションを調べるには、次のように PowerShell のヘルプを使用します。
+クラウド サービスがカスタム ドメイン コントローラーに結合されます。 AD ドメイン拡張機能を構成するための他のオプションを調べるには、PowerShell のヘルプを使用します。 いくつかの例を次に示します。
 
 ```powershell
 help Set-AzureServiceADDomainExtension

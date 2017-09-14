@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/28/2015
+ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: b4232f2d27624e44a720047ad44991059316413e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/14/2017
-
 
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure Active Directory テナントを取得する方法

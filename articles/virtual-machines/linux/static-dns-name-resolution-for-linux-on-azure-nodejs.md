@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 72efef9eb7a2ab61743fa54c5340160de89f6ece
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: bfba2cf38a0624e8480a32bf153f391d820da5a1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -183,8 +183,6 @@ azure vm create jenkins \
 CLI フラグを使用して既存のリソースを呼び出すことで、既存のネットワーク内に VM をデプロイするよう Azure に指示します。  繰り返しますが、VNet とサブネットをデプロイしたら、Azure リージョン内でこれらを静的または永続的なリソースにしておくことができます。  
 
 ## <a name="next-steps"></a>次のステップ
-
-* [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](../windows/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [テンプレートを使用して Azure に Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

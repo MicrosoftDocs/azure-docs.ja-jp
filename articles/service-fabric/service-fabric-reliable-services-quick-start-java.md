@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 5a29d6838af7f3952ad96158e5962b17c0f4cb6b
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1ebabe4844732412e04bab8c277f7ebbc4a5737c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
@@ -158,15 +158,24 @@ public static void main(String[] args) throws Exception {
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
-Yeoman スキャフォールディングには、アプリケーションをビルドするための gradle スクリプトと、アプリケーションをデプロイおよびデプロイ解除するための bash スクリプトが含まれています。 アプリケーションを実行するには、最初に gradle を使用してアプリケーションをビルドします。
+
+Yeoman スキャフォールディングには、アプリケーションをビルドするための gradle スクリプトと、アプリケーションをデプロイおよび削除するための bash スクリプトが含まれています。 アプリケーションを実行するには、最初に gradle を使用してアプリケーションをビルドします。
 
 ```bash
 $ gradle
 ```
 
-これにより、Service Fabric Azure CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。 Install.sh スクリプトには、アプリケーション パッケージを展開するために必要な Azure CLI コマンドが含まれています。 install.sh スクリプトを実行してデプロイします。
+これにより、Service Fabric CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。
+
+### <a name="deploy-with-service-fabric-cli"></a>Service Fabric CLI を使用したデプロイ
+
+Install.sh スクリプトには、アプリケーション パッケージを展開するために必要な Service Fabric CLI コマンドが含まれています。 アプリケーションをデプロイするには、install.sh スクリプトを実行します。
 
 ```bash
 $ ./install.sh
 ```
+
+## <a name="next-steps"></a>次のステップ
+
+* [Service Fabric CLI の概要](service-fabric-cli.md)
 

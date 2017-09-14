@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 22c0ee5090d67430fc63ad3f3c09076de0be067c
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 6d6afd2b9b956138ed400fbd6cabd3b480fde0f0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
@@ -66,7 +65,7 @@ VNet を相互に接続できるため、一方の VNet に接続されている
 - **サイト間 VPN:** VPN デバイスと Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPSec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
 - **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 トラフィックがインターネットを経由しないため、ExpressRoute 接続の待ち時間は予測可能です。
 
-ここまでに説明したすべての接続オプションの詳細については、「[接続トポロジの図](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams)」を参照してください。
+ここまでに説明したすべての接続オプションの詳細については、「[接続トポロジの図](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)」を参照してください。
 
 ## <a name="filtering"></a>ネットワーク トラフィックをフィルター処理する
 次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
@@ -92,4 +91,5 @@ Virtual Network についてよく寄せられる質問を確認するには、[
 
 - 「[最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)」の手順を実行して、最初の VNet を作成し、その VNet にいくつかの VM を接続します。
 - [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を実行して、VNet に対するポイント対サイト接続を作成します。
+- Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について参照してください。
 

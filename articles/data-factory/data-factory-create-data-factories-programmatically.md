@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 2f33c266c14b62f51745ff67069358c007bc00a2
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 9d9dac75321c5d4e079f49320d9b7c6f56e48754
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
@@ -90,7 +89,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 9. アプリケーション ID を取得します。
 
     ```PowerShell
-    $azureAdApplication    
+    $azureAdApplication 
     ```
     出力のアプリケーション ID (applicationID) をメモします。
 
@@ -124,7 +123,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
         <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+            <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
             <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
@@ -174,7 +173,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     ```
 
    > [!IMPORTANT]
-   > **resourceGroupName** の値を、使用する Azure リソース グループの名前で置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](/powershell/module/azure/new-azureresourcegroup?view=azuresmps-3.7.0) コマンドレットを使用します。
+   > **resourceGroupName** の値を、使用する Azure リソース グループの名前で置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用します。
    >
    > データ ファクトリの名前 (dataFactoryName) が一意になるように更新します。 データ ファクトリの名前はグローバルに一意にする必要があります。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。

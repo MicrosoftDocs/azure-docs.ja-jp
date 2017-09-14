@@ -5,21 +5,21 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: b283796a-9679-4c79-b703-802bb850f65d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 07/23/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: d37f37f77a32f388fac4271af2a5ebda21c014eb
+ms.reviewer: harshja
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: fc65c4053c45d9c16c62ee0fe65924133a4bb94a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する

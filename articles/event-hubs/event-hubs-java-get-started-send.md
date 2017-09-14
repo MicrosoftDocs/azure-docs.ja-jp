@@ -12,21 +12,20 @@ ms.workload: core
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 45776b0920f65ae9749b00978656bcefa2bf01a8
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: b31771001989e20b88bc8d7bca1afceb58ec197c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs にイベントを送信する
 
 ## <a name="introduction"></a>はじめに
-Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
+Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して変換と格納を実行できます。
 
 詳細については、「[Event Hubs の概要][Event Hubs overview]」をご覧ください。
 
@@ -38,9 +37,9 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 * アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 ## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
-Event Hubs の Java クライアント ライブラリは、 [Maven セントラル リポジトリ](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22)の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。    
+[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) の Maven プロジェクトで Event Hub 用の Java クライアント ライブラリを使用できます。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。    
 
-```XML
+```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
@@ -48,14 +47,13 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
 </dependency>
 ```
 
-ビルド環境の種類に応じて、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) または [GitHub のリリース配付ポイント](https://github.com/Azure/azure-event-hubs/releases)から最新リリースの JAR ファイルを明示的に取得できます。  
+ビルド環境の種類に応じて、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) から最新リリースの JAR ファイルを明示的に取得できます。  
 
 単純なイベント パブリッシャーの場合は、Event Hubs クライアント クラス用の *com.microsoft.azure.eventhubs* パッケージと、Azure Service Bus メッセージング クライアントと共有される一般的な例外などのユーティリティ クラス用の *com.microsoft.azure.servicebus* パッケージをインポートします。 
 
-次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 このクラスを `Send`と呼びます。     
+次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 クラスに `Send` という名前を付けます。     
 
-```Java
-
+```java
 import java.io.IOException;
 import java.nio.charset.*;
 import java.util.*;
@@ -73,7 +71,7 @@ public class Send
 
 名前空間とイベント ハブの名前を、イベント ハブの作成時に使用した値に置き換えます。
 
-```Java
+```java
     final String namespaceName = "----ServiceBusNamespaceName-----";
     final String eventHubName = "----EventHubName-----";
     final String sasKeyName = "-----SharedAccessSignatureKeyName-----";
@@ -83,7 +81,7 @@ public class Send
 
 次に、文字列を UTF-8 バイト エンコードに変換して単数のイベントを作成します。 その後、接続文字列から新しい Event Hubs クライアント インスタンスを作成し、メッセージを送信します。   
 
-```Java 
+```java 
 
     byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");
     EventData sendEvent = new EventData(payloadBytes);

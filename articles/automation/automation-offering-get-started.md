@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/16/2017
+ms.date: 08/31/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 800c4c5928f24a7e879a433d46b096dfbbbaa910
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -35,15 +35,15 @@ Azure Automation は、Runbook を使用してプロセスを自動化し、Desi
 
 Azure で実行する Runbook は、Azure のプラットフォームとしてのサービス (PaaS) 仮想マシンでホストされる Automation サンドボックスで実行されます。  Automation サンドボックスの使用により、Runbook の実行のあらゆる側面 (モジュール、ストレージ、メモリ、ネットワーク通信、ジョブ ストリームなど) においてテナントの分離性が生み出されます。このロールは、サービスによって管理されており、Azure アカウントまたは Azure Automation アカウントからアクセスして自分で管理することはできません。         
 
-ご利用のローカル データ センターまたは他のクラウド サービス上のリソースのデプロイと管理を自動化する場合は、Automation アカウントを作成した後で、[Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) ロールを実行する 1 つ以上のマシンを指定できます。  各 HRW には、Microsoft Management Agent (MMA) のほかに、Automation アカウントと Log Analytics ワークスペースへの接続が必要です。  Log Analytics は、インストールのブートストラップ、MMA エージェントの管理、および HRW の機能の監視に使用されます。  Runbook の配信と Runbook の実行指示は、Azure Automation によって行われます。
+ご利用のローカル データ センターまたは他のクラウド サービス上のリソースのデプロイと管理を自動化する場合は、Automation アカウントを作成した後で、[Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) ロールを実行する 1 つ以上のマシンを指定できます。  各 HRW には、Microsoft Management Agent のほかに、Automation アカウントと Log Analytics ワークスペースへの接続が必要です。  Log Analytics は、インストールのブートストラップ、Microsoft Management Agent の管理、および HRW の機能の監視に使用されます。  Runbook の配信と Runbook の実行指示は、Azure Automation によって行われます。
 
-複数の HRW をデプロイすると、Runbook の高可用性を実現し、Runbook ジョブの負荷を分散できます。場合によっては、Runbook を特定のワークロードや環境専用にすることもできます。  HRW は、TCP 送信ポート 443 を介して Automation サービスと通信します。  データ センター内の他のコンピューターやサービスに対する管理タスクを実行する Runbook をデータ センター内の HRW で実行する場合、その Runbook では他のポートにアクセスすることが必要になる可能性があります。  IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)に関する記事を参照してください。OMS ゲートウェイは HRW のプロキシとして機能して、ジョブの状態を収集し、Automation アカウントから構成情報を受け取ります。
+複数の HRW をデプロイすると、Runbook の高可用性を実現し、Runbook ジョブの負荷を分散できます。場合によっては、Runbook を特定のワークロードや環境専用にすることもできます。  HRW で Microsoft Monitoring Agent は、TCP ポート 443 経由で Automation サービスとの通信を開始します。入力方向のファイアウォール要件はありません。  環境内の他のコンピューターやサービスに対する管理タスクを実行する Runbook をその環境内の HRW で実行する場合、その Runbook では他のポートにアクセスすることが必要になる可能性があります。  IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)に関する記事を参照してください。OMS ゲートウェイは HRW のプロキシとして機能して、ジョブの状態を収集し、Automation アカウントから構成情報を受け取ります。
 
 HRW で実行される Runbook は、コンピューターのローカル システム アカウントのコンテキストで実行されます。これは、ローカルの Windows コンピューターで管理操作を実行する場合に推奨されるセキュリティ コンテキストです。 Runbook でローカル コンピューターの外部にあるリソースに対するタスクを実行する必要がある場合は、Runbook からアクセスでき、外部リソースへの認証に使用できる、セキュリティで保護された資格情報資産を Automation アカウントに定義することが必要なことがあります。 資格情報を指定できるコマンドレットで Runbook の[資格情報](automation-credentials.md)資産、[証明書](automation-certificates.md)資産、および[接続](automation-connections.md)資産を使用することで、さまざまなリソースへの認証が可能になります。
 
 Azure Automation に格納されている DSC 構成 は、Azure 仮想マシンに直接適用できます。 それ以外の物理マシンと仮想マシンは、Azure Automation DSC プル サーバーに構成を要求できます。  オンプレミスの物理または仮想 Windows システムおよび Linux システムの構成を管理するために、Automation DSC プル サーバーをサポートするインフラストラクチャをデプロイする必要はありません。必要なのは Automation DSC によって管理される各システムからの発信インターネット アクセスのみで、OMS サービスとは TCP ポート 443 を介して通信します。   
 
-## <a name="requirements"></a>必要条件
+## <a name="prerequisites"></a>前提条件
 
 ### <a name="automation-dsc"></a>Automation DSC
 以下のさまざまなマシンを管理する際に、Azure Automation DSC を使用できます。
@@ -64,6 +64,14 @@ Hybrid Runbook のジョブを実行するコンピューターを指定する�
 * 少なくとも 2 つのコア
 * 少なくとも 4 GB の RAM
 
+### <a name="permissions-required-to-create-automation-account"></a>Automation アカウントを作成するために必要なアクセス許可
+Automation アカウントを作成したり更新したりするには、このトピックの作業で要求される以下に記載した特権とアクセス許可が必要となります。   
+ 
+* Automation アカウントを作成するためには、ご利用の AD ユーザー アカウントが、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」の記事に記載されている Microsoft.Automation リソースの所有者ロールに相当するアクセス許可を備えたロールに追加されている必要があります。  
+* [アプリの登録] が **[はい]** に設定されている場合、Azure AD テナントの非管理者ユーザーが [AD アプリケーションを登録](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)できます。  [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。 
+
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という 警告が **[Automation アカウントの追加]** ブレードに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
+
 ## <a name="authentication-planning"></a>認証の計画
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、他のクラウド プロバイダーのリソースに対するタスクを自動化できます。  Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。  
 
@@ -76,6 +84,8 @@ Azure Automation で Azure コマンドレットを使用してリソースに�
 * **統合モジュール** - Azure Automation アカウントに含まれる、コマンドレットを Runbook や DSC 構成内で利用するための PowerShell モジュールです。
 * **スケジュール** - Runbook を指定時刻に開始または終了するためのスケジュールと繰り返し頻度が含まれます。
 * **変数** - Runbook または DSC 構成で使用可能な値が含まれます。
+* **DSC 構成** - オペレーティング システムの機能や設定の構成方法、Windows コンピューターまたは Linux コンピューターへのアプリケーションのインストール方法を記述した PowerShell スクリプトです。  
+* **Runbook** - Windows PowerShell をベースに自動化された何らかの処理を Azure Automation で実行する一連のタスクです。    
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではサブスクリプションのすべてのリソースを管理できます。 ポリシーにより、データやリソースを特定のリージョンに分離する必要がある場合は、異なるリージョンで Automation アカウントを作成します。
 
@@ -148,13 +158,6 @@ Azure Portal で Automation アカウントを作成する方法は複数あり�
 ### <a name="create-automation-account-integrated-with-oms"></a>OMS と統合された Automation アカウントを作成する
 Automation の推奨されるオンボード方法は、Marketplace から [Automation & Control] サービスを選択することです。  このサービスでは、Automation アカウントが作成され、OMS ワークスペースとの統合が確立されます。このサービスで使用できる管理ソリューションをインストールすることもできます。  
 
->[!NOTE]
->Automation アカウントを作成するためには、サービス管理者ロールのメンバーであるか、サブスクリプションのアクセス権を付与できる共同管理者である必要があります。 また、そのサブスクリプションの既定の Active Directory インスタンスにユーザーとして追加されている必要があります。 このアカウントを特権ロールに割り当てる必要はありません。
->
->サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という 警告が **[Automation アカウントの追加]** ブレードに表示されます。
->
->先に共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
-
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
 
 2. **[新規]**をクリックします。<br><br> ![Azure Portal での [新規] オプションの選択](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
@@ -167,8 +170,7 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
    - 新しい **OMS ワークスペース**の名前を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、リソース グループを作成するか、既存のリソース グループを選択できます。  
-   - **[場所]**を選択します。  現在選択できる場所は、**オーストラリア南東部**、**米国東部**、**東南アジア**、**米国中西部**、および**西ヨーロッパ**のみです。
-   - **[価格レベル]** を選択します。  このソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
+   - **[場所]**を選択します。  詳細については、[Azure Automation を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。  ソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
    - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。 
   - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 

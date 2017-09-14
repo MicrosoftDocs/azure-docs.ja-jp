@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアルのレッスン 4: リレ�
 description: "この Azure Analysis Services チュートリアル プロジェクトでは、リレーションショップを作成する方法について説明します。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

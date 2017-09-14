@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 5/11/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 6e91a8b21fe7bfe2c6944cfa1c10d835a75ddd13
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 848284f37ae2470a169d8f8a8c9c0bb5b926abe3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -64,8 +64,7 @@ Azure Site Recovery モビリティ サービスは、コンピューター上�
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>GUI を使用して、モビリティ サービスを手動でインストールする
 
 >[!IMPORTANT]
-> GUI ベースのインストールは、Windows オペレーティング システムでのみ機能します。
-> ある Azure サブスクリプション/リージョンから別の Azure サブスクリプション/リージョンに Azure IaaS 仮想マシンをレプリケートする目的で構成サーバーを使用している場合は、コマンド ライン ベースのインストール方法を使用してください。
+> ある Azure サブスクリプション/リージョンから別の Azure サブスクリプション/リージョンに **Azure IaaS 仮想マシン**をレプリケートする目的で**構成サーバー**を使用している場合は、**コマンド ライン ベースのインストール**方法を使用してください。
 
 [!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
 

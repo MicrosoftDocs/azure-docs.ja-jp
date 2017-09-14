@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 79156c0b511dafcb43ed91800f01338dbb7ee5f3
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 2cb4bd74ea973c8ff980d208a8c5f63a98ec1edd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB の概要: DocumentDB API
@@ -50,8 +49,10 @@ DocumentDB API を使った場合の Azure Cosmos DB の主な機能とメリッ
 
 * **自動インデックス作成:** 既定では、Azure Cosmos DB がデータベース内のすべてのドキュメントについて自動的にインデックスを作成するため、スキーマや、セカンダリ インデックスの作成は不要です。 すべてにはインデックスを作成したくない場合もあります。 その場合は、 [JSON ファイルでパスを除外](indexing-policies.md) することもできます。
 
+* **Change Feed サポート:** Change Feed からは、Azure Cosmos DB コレクション内の一連のドキュメントをその更新日時順に並べ替えて取得することができます。 このフィードを使ってデータに対する変更をリッスンし、更新時にデータのレプリケート、API 呼び出しのトリガー、ストリーミング処理などを行うことができます。 Change Feed は自動的に有効になります。また使い方は簡単です。Change Feed について詳しくは、[こちら](https://docs.microsoft.com/azure/cosmos-db/change-feed)をご覧ください。 
+
 ## <a name="data-management"></a>DocumentDB API を使ってデータを管理する方法
-DocumentDB API には明確に定義されたデータベース リソースが用意されているため、JSON データの管理に役立ちます。 これらのリソースは、高可用性を確保するためにレプリケートされ、論理 URI によって一意にアドレス指定されます。 DocumentDB のすべてのリソースには、HTTP ベースのシンプルで RESTful なプログラミング モデルを適用することができます。 
+DocumentDB API は、明確に定義されたデータベース リソースを通じて JSON データを管理するのに役立ちます。 これらのリソースは、高可用性を確保するためにレプリケートされ、論理 URI によって一意にアドレス指定されます。 DocumentDB API のすべてのリソースには、HTTP ベースのシンプルで RESTful なプログラミング モデルを適用することができます。 
 
 
 Azure Cosmos DB データベース アカウントは、Azure Cosmos DB にアクセスできる一意の名前空間です。 データベース アカウントを作成するには、事前に Azure サブスクリプションが必要です。このサブスクリプションで、多様な Azure サービスにアクセスできます。 
@@ -87,16 +88,16 @@ Azure Cosmos DB が公開するリソースには、HTTP/HTTPS 要求機能を�
 DocumentDB API には、作成、読み取り、更新、削除という基本的な操作以外にも、JSON ドキュメントを検索するための多彩な SQL クエリ インターフェイスが備わっているほか、JavaScript のアプリケーション ロジックをサーバー側でトランザクション実行する機能がサポートされています。 クエリとスクリプトの実行インターフェイスは、REST API に加え、あらゆるプラットフォーム ライブラリから利用できます。 
 
 ### <a name="sql-query"></a>SQL クエリ
-DocumentDB API では、JavaScript の型システムにマッチした SQL 言語と、リレーショナル クエリや階層クエリ、空間クエリに対応した式とを使用してドキュメントを照会することができます。 DocumentDB のクエリ言語は、JSON ドキュメントを照会するための、シンプルでありながら強力なインターフェイスとなっています。 この言語は、ANSI SQL の文法のサブセットをサポートしたうえで、深いレベルで JavaScript のオブジェクト、配列、オブジェクト生成、関数呼び出しとの統合が図られています。 DocumentDB のクエリ モデルでは、スキーマやインデックスのヒントを開発者が明示的に指定する必要がありません。
+DocumentDB API では、JavaScript の型システムにマッチした SQL 言語と、リレーショナル クエリや階層クエリ、空間クエリに対応した式とを使用してドキュメントを照会することができます。 DocumentDB のクエリ言語は、JSON ドキュメントを照会するための、シンプルでありながら強力なインターフェイスとなっています。 この言語は、ANSI SQL の文法のサブセットをサポートしたうえで、深いレベルで JavaScript のオブジェクト、配列、オブジェクト生成、関数呼び出しとの統合が図られています。 DocumentDB API のクエリ モデルでは、スキーマやインデックスのヒントを開発者が明示的に指定する必要がありません。
 
 カスタム アプリケーション ロジックへの対応は、ユーザー定義関数 (UDF) を DocumentDB API に登録して SQL クエリの中で参照するという、文法の拡張によって実現できます。 これらの UDF は JavaScript プログラムで記述し、データベース内から実行します。 
 
-.NET の開発者にとっては、DocumentDB [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) により LINQ クエリ プロバイダーが提供される点も見逃せません。 
+.NET の開発者にとっては、DocumentDB API [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) により LINQ クエリ プロバイダーが提供される点も見逃せません。 
 
 ### <a name="transactions-and-javascript-execution"></a>トランザクションと JavaScript の実行
 DocumentDB API では、アプリケーション ロジックを JavaScript だけで、名前付きのプログラムとして記述できます。 これらのプログラムは、コレクションに登録され、特定のコレクション内のドキュメントに対してデータベース操作を発行できるようになっています。 JavaScript は、トリガー、ストアド プロシージャ、ユーザー定義関数のいずれかとして登録することができます。 トリガーとストアド プロシージャは、ドキュメントの作成、読み取り、更新、削除を実行できます。これに対し、ユーザー定義関数はクエリの一部として実行され、コレクションに対する書き込みアクセス権はありません。
 
-DocumentDB API における JavaScript は、Transact-SQL の後継として、リレーショナル データベース システムによって裏付けられた概念に沿って実行がモデル化されています。 すべての JavaScript ロジックは、スナップショット分離機能を使用し、現在参加している ACID トランザクション内で実行されます。 その実行中に JavaScript で例外がスローされた場合、トランザクション全体が中止されます。
+Cosmos DB における JavaScript は、Transact-SQL の後継として、リレーショナル データベース システムによって裏付けられた概念に沿って実行がモデル化されています。 すべての JavaScript ロジックは、スナップショット分離機能を使用し、現在参加している ACID トランザクション内で実行されます。 その実行中に JavaScript で例外がスローされた場合、トランザクション全体が中止されます。
 
 ## <a name="are-there-any-online-courses-on-azure-cosmos-db"></a>Azure Cosmos DB にオンライン コースはありますか。
 

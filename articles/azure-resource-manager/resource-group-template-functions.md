@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 08/01/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: d7eecb36d8cb786c7eec5080cf37574c2fc93173
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1324bed07e991e9d84cb6832afe78bdb2d3348fa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure リソース マネージャーのテンプレートの関数
 このトピックでは、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
+
+テンプレート内の関数はそれぞれかっこ (`[` と `]`) で囲んで追加します。 式は配置時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、配列、オブジェクト、整数など、さまざまな JSON 型にすることができます。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
+
+テンプレート式は、24,576 文字を超えることはできません。
 
 テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。 たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。 評価の際、関数は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。 特定のリソースの種類では、関数の評価方法とは無関係に、大文字/小文字の要件が存在する場合があります。
 
@@ -55,6 +58,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 * [empty](resource-group-template-functions-array.md#empty)
 * [first](resource-group-template-functions-array.md#first)
 * [intersection](resource-group-template-functions-array.md#intersection)
+* [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
 * [length](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
@@ -101,6 +105,15 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="mul" />
 <a id="sub" />
 
+## <a name="logical-functions"></a>論理関数
+リソース マネージャーには、論理の条件を操作する次の関数が用意されています。
+
+* [and](resource-group-template-functions-logical.md#and)
+* [bool](resource-group-template-functions-logical.md#bool)
+* [if](resource-group-template-functions-logical.md#if)
+* [not](resource-group-template-functions-logical.md#not)
+* [or](resource-group-template-functions-logical.md#or)
+
 ## <a name="numeric-functions"></a>数値関数
 リソース マネージャーには、整数を操作する次の関数が用意されています。
 
@@ -136,7 +149,6 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="base64" />
 <a id="base64tojson" />
 <a id="base64tostring" />
-<a id="bool" />
 <a id="concat" />
 <a id="containsstring" />
 <a id="datauri" />
@@ -170,7 +182,6 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [bool](resource-group-template-functions-string.md#bool)
 * [concat](resource-group-template-functions-string.md#concat)
 * [contains](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: f8b0917b6eb0295641360c4e0a80e81100809f6e
-ms.openlocfilehash: e3ce01d20f6b47c6fe68fdbfe31679cc2c92f2e7
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -52,8 +54,7 @@ FunctionImport ノードは、エンド ユーザーにサービスを公開す�
 
 FunctionImport ノードで公開されている追加の属性 (または属性への追加事項) を次に示します。
 
-**d:BaseUri**  -
- Marketplace に公開される REST リソースの URI テンプレートです。 Marketplace では、テンプレートを使用して、REST Web サービスに対するクエリを作成します。 URI テンプレートには、パラメーターのプレースホルダーが {parameterName} の形式で含まれています。parameterName はパラメーターの名前です。 例: apiVersion の場合は {apiVersion} になります。
+**d:BaseUri** - Marketplace に公開される REST リソースの URI テンプレートです。 Marketplace では、テンプレートを使用して、REST Web サービスに対するクエリを作成します。 URI テンプレートには、パラメーターのプレースホルダーが {parameterName} の形式で含まれています。parameterName はパラメーターの名前です。 例: apiVersion の場合は {apiVersion} になります。
 パラメーターは、URI パラメーターとして、または URI パスの一部として表記できます。 パス内に表記する場合は、常に必須になります (null 許容型としてマークすることはできません)。 *例:* `d:BaseUri="http://api.MyWeb.com/Site/{url}/v1/visits?start={start}&amp;end={end}&amp;ApiKey=3fadcaa&amp;Format=XML"`
 
 **Name** - インポートされる関数の名前。  CSDL で定義されている他の名前と同じ名前にすることはできません。  例: Name="GetModelUsageFile"
@@ -102,7 +103,7 @@ FunctionImport ノード内の追加の (CSDL ドキュメントに記載され�
         ]]>
         </d:RequestBody>`
 
-**d:Namespaces** および **d:Namespace** - このノードには、関数インポート (URI エンドポイント) によって返される XML で定義された名前空間が記述されます。 バックエンド サービスによって返される XML には、返すコンテンツを区別するために、任意の数の名前空間が含まれる場合があります。 **d:Map または d:Match の XPath クエリで使用されている場合は、これらの名前空間がすべて一覧で記述される必要があります。**  d:Namespaces ノードには、d:Namespace ノードのセット/一覧が含まれています。 ノードごとに、バックエンド サービスの応答で使用される名前空間が 1 つ記述されます。 d:Namespace ノードの属性を次に示します。
+**d:Namespaces** および **d:Namespace** - このノードには、関数インポート (URI エンドポイント) によって返される XML で定義された名前空間が記述されます。 バックエンド サービスによって返される XML には、返すコンテンツを区別するために、任意の数の名前空間が含まれる場合があります。 **d:Map または d:Match の XPath クエリで使用されている場合は、これらの名前空間がすべて一覧で記述される必要があります。** d:Namespaces ノードには、d:Namespace ノードのセット/一覧が含まれています。 ノードごとに、バックエンド サービスの応答で使用される名前空間が 1 つ記述されます。 d:Namespace ノードの属性を次に示します。
 
 * **d:Prefix:** 名前空間のプレフィックス。サービスによって返される XML 結果に記述されている形式。例: f:FirstName、f:LastName (f はプレフィックス)
 * **d:Uri:** 結果ドキュメントで使用されている名前空間の完全 URI。 プレフィックスが実行時に解決される値を表します。
@@ -198,8 +199,7 @@ CSDL の仕様に追加された属性を次に示します。
 ## <a name="property-node"></a>Property ノード
 このノードには、レコードのプロパティの 1 つが含まれています。
 
-このノードの詳細については、[http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) を参照してください (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:*
-        `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
+このノードの詳細については、[http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) を参照してください (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:* `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
         <Property Name="Name"     Type="String" Nullable="true" d:Map="./Service/Name" d:IsPrimaryKey="true" DefaultValue=”Joe Doh” MaxLength="25" FixedLength="true" />
         ...
         </EntityType>`
@@ -260,7 +260,7 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 | Null |値がないことを表します。 |
 | Boolean |2 値論理という数学的概念を表します。 |
 | Byte |8 ビットの符号なし整数値。 |
-| DateTime |日付と時刻を、西暦 1753 年 1 月 1 日深夜 12:00:00  から西暦 9999 年 12 月 31 日午後 11:59:59 までの値で表します。 |
+| DateTime |日付と時刻を、西暦 1753 年 1 月 1 日深夜 12:00:00 から 西暦 9999 年 12 月 31 日午後 11:59:59 までの値で表します。 |
 | Decimal |固定の有効桁数および小数点以下桁数を指定して数値を表します。 この型は、負の 10^255 + 1 から正の 10^255 -1 の間の数値を記述できます。 |
 | Double |およそ ± 2.23e -308 から ± 1.79e +308 の範囲の値を表すことができる有効桁数 15 桁の浮動小数点数を表します。 **Exel のエクスポートに関する問題が発生するため、10 進数を使用します。** |
 | Single |およそ ± 1.18e -38 から ± 3.40e +38 の範囲の値を表すことができる有効桁数 7 桁の浮動小数点数を表します。 |
@@ -274,9 +274,4 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 * 全体的な OData マッピングのプロセスと目的を理解したい場合は、こちらの [データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) に関する記事を読んで、定義、構造、手順を確認してください。
 * 例を確認したい場合は、 [データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 * データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

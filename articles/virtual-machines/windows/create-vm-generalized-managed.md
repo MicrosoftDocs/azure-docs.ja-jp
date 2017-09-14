@@ -13,32 +13,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/7/2017
+ms.date: 05/22/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e308b75581ca5372a4de168895f2eeb140a69a78
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4b2593067193fe928cb8ac2b662fc3fd8ba7aedf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
-# <a name="create-a-vm-from-a-generalized-managed-vm-image"></a>一般化された管理 VM イメージから VM を作成する
+# <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
 Azure では、管理 VM イメージから複数の VM を作成できます。 管理 VM イメージには、OS や データ ディスクなど、VM の作成に必要な情報が含まれています。 OS ディスクやデータ ディスクなど、イメージを構成する VHD は、管理ディスクとして保管されます。 
-
-一般化した VM イメージでは、[Sysprep](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してすべての個人アカウント情報が削除されています。 一般化した VM を作成するには、オンプレミスの VM で Sysprep を実行してから [VHD を Azure にアップロード](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)するか、既存の Azure VM で Sysprep を実行してから [VM のイメージをキャプチャ](capture-image-resource.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)します。
-
 
 
 ## <a name="prerequisites"></a>前提条件
 
 新しい VM の作成に使用する[管理 VM イメージを作成](capture-image-resource.md)しておく必要があります。 
 
-AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
+AzureRM.Compute および AzureRM.Network の PowerShell モジュールが最新バージョンであることを確認してください。 管理者として PowerShell プロンプトを開き、次のコマンドを実行してこれらをインストールします。
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute,AzureRM.Network
 ```
 詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 

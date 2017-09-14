@@ -4,8 +4,8 @@ description: "無料サブスクリプションから従量課金制にアップ
 keywords: "従量課金制へのアップグレード"
 services: 
 documentationcenter: 
-author: adpick
-manager: adpick
+author: jlian
+manager: jlian
 editor: 
 tags: billing
 ms.assetid: 0b4ac8f3-3df0-478a-8a07-b18b40f0cf5f
@@ -17,10 +17,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 55c195754f18cd52fc098061f0e16607292a1948
-ms.lasthandoff: 03/17/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 18fd43d0b1d6276ebc41a0ad33d861a27a472551
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
@@ -34,6 +35,6 @@ Azure アカウント ポータルで、[無料試用版](https://azure.microsof
    
     ![サブスクリプションのアップグレードを確認するために選ぶものを示すスクリーンショット](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
-30 日間の制限や 200 ドルのクレジットのような無料試用版から残されたすべての特典を使用します。 サブスクリプションは、すべての特典を使用した後でアップグレードされます。
+30 日間の制限やクレジットなど、無料試用版から残されたすべての特典を使用します。 サブスクリプションは、すべての特典を使用した後でアップグレードされます。
 
 

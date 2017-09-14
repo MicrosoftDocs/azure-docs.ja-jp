@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 1cab9d2f814e0c36dadcdd7bbc3cdc736de0af49
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: cdae291b546fef4d7fdb8b067c8e4f4c9708d43f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>Log Analytics エージェントで Log Analytics に Azure 仮想マシンを接続する
@@ -414,8 +413,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
    * [Linux VM に Azure VM エージェントをインストールします。](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 2. それ以外の異常な状態については、OMS Agent for Linux VM 拡張機能のログ ファイル (`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` および `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`) を確認してください。
 3. 拡張機能が正常な状態であるにもかかわらず、データがアップロードされない場合は、OMS Agent for Linux のログ ファイル (`/var/opt/microsoft/omsagent/log/omsagent.log`) を確認してください。
-
-詳細については、[Linux 拡張機能のトラブルシューティング](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * 収集するログとメトリックを指定するために、 [Log Analytics のデータ ソース](log-analytics-data-sources.md) を構成します。

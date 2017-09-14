@@ -1,7 +1,6 @@
 ---
-
 title: "Azure Active Directory レポート | Microsoft Docs"
-description: "Azure Active Directory で使用可能なさまざまなレポートの一覧を示します。"
+description: "Azure Active Directory レポートの概要を紹介します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -13,190 +12,110 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 07/13/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: c7fe995f097c72ab5275249538fe2bb65efac256
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
 
+Azure Active Directory レポートを通じて、自分が管理する環境がどのような状態にあるのか、洞察を得ることができます。  
+レポートから得たデータによって次のことが可能となります。
 
-*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です。*
+- 管理下にあるユーザーがアプリとサービスをどのように利用しているかを明らかにする。
+- 自分が管理している環境の正常性に影響する潜在的リスクを検出する。
+- ユーザーの作業を妨げている問題をトラブルシューティングする。  
 
-環境の動作状況を判断するために必要な情報は、Azure Active Directory (Azure AD) レポートで入手できます。
+このレポート機能のアーキテクチャは、大きく次の 2 つの要素から成ります。
 
-レポートには、次の 2 つの主要な領域があります。
+- セキュリティ レポート
+- アクティビティ レポート
 
-* **サインイン アクティビティ** – マネージ アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
-* **監査ログ** - ユーザーとグループの管理や、マネージ アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報
+![レポート](./media/active-directory-reporting-azure-portal/01.png)
 
-必要なデータのスコープに応じて、[Azure Portal](https://portal.azure.com) のサービス一覧で **[ユーザーとグループ]** または **[エンタープライズ アプリケーション]** をクリックして、これらのレポートにアクセスできます。
 
-## <a name="sign-in-activities"></a>サインイン アクティビティ
-### <a name="user-sign-in-activities"></a>ユーザー サインイン アクティビティ
-ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
-* ユーザーのサインインにどのようなパターンがあるか。
-* 1 週間で何人のユーザーがユーザー サインインを行ったか。
-* これらのサインインはどのような状態か。
+## <a name="security-reports"></a>セキュリティ レポート
 
-このデータへのエントリ ポイントは、**[ユーザーとグループ]** の **[概要]** セクションにあるユーザー サインイン グラフです。
+Azure Active Directory のセキュリティ レポートは、組織の ID 保護に役立てることができます。  
+Azure Active Directory には、次の 2 種類のセキュリティ レポートがあります。
 
- ![レポート](./media/active-directory-reporting-azure-portal/05.png "レポート")
+- **リスクのフラグ付きユーザー** - [リスクのフラグ付きユーザー セキュリティ レポート](active-directory-reporting-security-user-at-risk.md)では、セキュリティが侵害されている可能性のあるユーザー アカウントの概要を把握することができます。
 
-ユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
+- **危険なサインイン** - [危険なサインイン セキュリティ レポート](active-directory-reporting-security-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
 
-![レポート](./media/active-directory-reporting-azure-portal/02.png "レポート")
+**セキュリティ レポートにアクセスするために必要な Azure AD ライセンス**  
+"リスクのフラグ付きユーザー" レポートと "危険なサインイン" レポートは、Azure Active Directory の全エディションで利用できます。  
+ただしエディションによってレポートの粒度が異なります。 
 
-サインイン グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
+- リスクのフラグ付きユーザーと危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**でも一覧表示できます。 
 
-![レポート](./media/active-directory-reporting-azure-portal/03.png "レポート")
+- **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
 
-サインイン アクティビティの一覧内の各行には、選択したサインインに関する次のような詳細情報が表示されます。
+- **Azure Active Directory Premium 2** エディションでは、基になるリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
 
-* サインインしたのはだれか。
-* 関連する UPN は何だったか。
-* サインインの対象となったのはどのアプリケーションか。
-* サインインの IP アドレスは何か。
-* サインインはどのような状態だったか。
 
-### <a name="usage-of-managed-applications"></a>マネージ アプリケーションの使用状況
-アプリケーションを中心にしてサインイン データを表示すると、次のような疑問に答えることができます。
+## <a name="activity-reports"></a>アクティビティ レポート
 
-* アプリケーションをだれが使用しているか。
-* 組織内の上位 3 つのアプリケーションはどれか。
-* 最近ロールアウトしたアプリケーションは、 どのような状況か。
+Azure Active Directory には、次の 2 種類のアクティビティ レポートがあります。
 
-このデータへのエントリ ポイントは、**[エンタープライズ アプリケーション]** の **[概要]** セクションにある過去 30 日間のレポートに示される、組織内の上位 3 つのアプリケーションです。
+- **監査ログ** - テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](active-directory-reporting-activity-audit-logs.md)で把握できます。
 
- ![レポート](./media/active-directory-reporting-azure-portal/06.png "レポート")
+- **サインイン** -  監査ログ レポートによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](active-directory-reporting-activity-sign-ins.md)で明らかにすることができます。
 
-アプリ使用状況グラフは、特定の期間の上位 3 つのアプリへのサインインを週ごとに集計します。 期間の既定値は 30 日です。
 
-![レポート](./media/active-directory-reporting-azure-portal/78.png "レポート")
 
-必要に応じて、特定のアプリケーションにフォーカスを設定できます。
+**監査ログ レポート**から得られるシステム アクティビティの記録は、コンプライアンスに利用することができます。
+特に、レポートから得たデータによって、日常的に発生する次のようなシナリオに対処することができます。
 
-![レポート](./media/active-directory-reporting-azure-portal/single_spp_usage_graph.png "レポート")
+- テナント内のだれかが管理者グループにアクセスした。 だれがアクセス権を与えたのか。 
 
-アプリ使用状況グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
+- 最近自分が配布準備をしたアプリの状況を知るために、特定のアプリにサインインしている一連のユーザーを把握したい。
 
-![レポート](./media/active-directory-reporting-azure-portal/top_app_sign_ins.png "レポート")
+- テナント内でパスワード リセットが何回実行されたかを知りたい。
 
-**[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
-![レポート](./media/active-directory-reporting-azure-portal/85.png "レポート")
+**監査ログ レポートにアクセスするために必要な Azure AD ライセンス**  
+監査ログ レポートは、自分がライセンスを所有している機能に関して利用できます。 特定の機能のライセンスがある場合、その機能の監査ログ情報にもアクセスすることができます。
 
-列選択機能を使用すると、表示するデータ フィールドを選択できます。
+詳細については、「[Azure Active Directory の機能と働き](https://www.microsoft.com/cloud-platform/azure-active-directory-features)」の「**Free、Basic、および Premium エディションの一般公開されている機能の比較**」を参照してください。   
 
-![レポート](./media/active-directory-reporting-azure-portal/column_chooser.png "レポート")
 
-### <a name="filtering-sign-ins"></a>サインインのフィルター処理
-表示されるデータの量を制限するために、次のフィールドを使用してサインインをフィルター処理できます。
 
-* 日付と時刻 
-* ユーザーのユーザー プリンシパル名
-* アプリケーション名
-* クライアント名
-* サインインの状態
+**サインイン アクティビティ レポート**によって、次のような疑問に対する答えを見つけることができます。
 
-![レポート](./media/active-directory-reporting-azure-portal/293.png "レポート")
+- ユーザーのサインインにどのようなパターンがあるか。
+- 1 週間で何人のユーザーがユーザー サインインを行ったか。
+- これらのサインインはどのような状態か。
 
-サインイン アクティビティのエントリをフィルター処理するためのもう 1 つの方法は、特定のエントリを検索することです。
-検索機能を使用すると、表示するサインインを特定の**ユーザー**、**グループ**、または**アプリケーション**に限定できます。
 
-![レポート](./media/active-directory-reporting-azure-portal/84.png "レポート")
+**サインイン アクティビティ レポートにアクセスするために必要な Azure AD ライセンス**  
+サインイン アクティビティ レポートにアクセスするためには、ご利用のテナントに Azure AD Premium ライセンスが関連付けられている必要があります。
 
-## <a name="audit-logs"></a>監査ログ
-Azure Active Directory の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。
 
-Azure Portal には、監査関連のアクティビティとして、次の 3 つの主要カテゴリがあります。
+## <a name="programmatic-access"></a>プログラムによるアクセス
 
-* [概要]   
-* アプリケーション
-* Directory   
+Azure Active Directory レポートでは、ユーザー インターフェイスからだけでなく、レポート データに[プログラムからアクセス](active-directory-reporting-api-getting-started-azure-portal.md)することができます。 これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに非常に役立ちます。 Azure AD レポート API は、一連の REST ベースの API を使用してプログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 
 
-監査レポート アクティビティの完全な一覧については、 [監査レポートのイベントの一覧](active-directory-reporting-audit-events.md#list-of-audit-report-events)を参照してください。
-
-すべての監査データへのエントリ ポイントは、**[Azure Active Directory]** の **[アクティビティ]** セクションの **[監査ログ]** です。
-
-![監査](./media/active-directory-reporting-azure-portal/61.png "監査")
-
-監査ログには、アクター (だれが)、アクティビティ (どうした)、および対象を示すリスト ビューがあります。
-
-![監査](./media/active-directory-reporting-azure-portal/345.png "監査")
-
-リスト ビュー内の項目をクリックすると、その詳細が表示されます。
-
-![監査](./media/active-directory-reporting-azure-portal/873.png "監査")
-
-### <a name="users-and-groups-audit-logs"></a>ユーザーとグループの監査ログ
-ユーザーとグループ ベースの監査レポートを使用すると、次のような疑問に対する答えを得ることができます。
-
-* どの種類の更新プログラムがユーザーによって適用されているか。
-* 何人のユーザーが変更されたか。
-* 何個のパスワードが変更されたか。
-* 管理者がディレクトリで何を行ったか。
-* 追加されたのはどのグループか。
-* メンバーシップが変更されたグループはあるか。
-* グループの所有者は変更されたか。
-* グループまたはユーザーにどのライセンスが割り当てられているか。
-
-ユーザーとグループに関連する監査データだけを確認する場合は、**[ユーザーとグループ]** の **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。
-
-![監査](./media/active-directory-reporting-azure-portal/93.png "監査")
-
-### <a name="application-audit-logs"></a>アプリケーションの監査ログ
-アプリケーション ベースの監査レポートを使用すると、次のような疑問に対する答えを得ることができます。
-
-* 追加または更新されたのはどのアプリケーションか。
-* 削除されたのはどのアプリケーションか。
-* アプリケーションのサービス プリンシパルは変更されたか。
-* アプリケーションの名前は変更されたか。
-* アプリケーションに同意したのはだれか。
-
-アプリケーションに関連する監査データだけを確認する場合は、**[エンタープライズ アプリケーション]** の **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。
-
-![監査](./media/active-directory-reporting-azure-portal/134.png "監査")
-
-### <a name="filtering-audit-logs"></a>監査ログのフィルター処理
-表示されるデータの量を制限するために、次のフィールドを使用してサインインをフィルター処理できます。
-
-* 日付と時刻
-* アクターのユーザー プリンシパル名
-* アクティビティの種類
-* アクティビティ
-
-![監査](./media/active-directory-reporting-azure-portal/356.png "監査")
-
-**[アクティビティの種類]** 一覧の内容は、このブレードへのエントリ ポイントに関連付けられています。  
-エントリ ポイントが Azure Active Directory の場合、この一覧には使用可能なすべてのアクティビティの種類が含まれます。
-
-* アプリケーション 
-* グループ 
-* User
-* デバイス
-* Directory
-* [ポリシー]
-* その他
-
-![監査](./media/active-directory-reporting-azure-portal/825.png "監査")
-
-一覧に表示されるアクティビティのスコープは、アクティビティの種類に基づいて決定されます。
-たとえば、**[アクティビティの種類]** として **[グループ]** が選択されている場合、**[アクティビティ]** 一覧にはグループ関連のアクティビティだけが含まれます。   
-
-![監査](./media/active-directory-reporting-azure-portal/654.png "監査")
-
-監査ログのエントリをフィルター処理するためのもう 1 つの方法は、特定のエントリを検索することです。
-
-![監査](./media/active-directory-reporting-azure-portal/237.png "監査")
 
 ## <a name="next-steps"></a>次のステップ
-「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
+
+Azure Active Directory における各種レポートの詳細については、次のページを参照してください。
+
+- [リスクのフラグ付きユーザー レポート](active-directory-reporting-security-user-at-risk.md)
+- [リスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)
+- [監査ログ レポート](active-directory-reporting-activity-audit-logs.md)
+- [サインイン ログ レポート](active-directory-reporting-activity-sign-ins.md)
+
+レポート API を使ったレポート データへのアクセスについて詳しくは、次のページを参照してください。 
+
+- [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started-azure-portal.md)
 
 
+<!--Image references-->
+[1]: ./media/active-directory-reporting-azure-portal/ic195031.png

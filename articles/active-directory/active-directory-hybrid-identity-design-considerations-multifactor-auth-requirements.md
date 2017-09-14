@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/18/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: cfb4104dd58f2af8b3ffed7491c91ae6c6557ddc
 ms.openlocfilehash: f5006b6ce1b409fae5e540d8414e8e56651f9349
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
-
 
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの多要素認証要件の決定

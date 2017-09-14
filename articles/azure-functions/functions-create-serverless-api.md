@@ -3,19 +3,19 @@ title: "Azure Functions を使用してサーバーレス API を作成する | 
 description: "Azure Functions を使用してサーバーレス API を作成する方法"
 services: functions
 author: mattchenderson
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2b11d08b95d658ae2b0303107367549e6d0b5dff
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f5d0bb05d0e9caebfc6c13d983518d65f7409527
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -35,7 +35,7 @@ Azure Portal を開きます。 そのためには、Azure アカウントで [h
 
 ## <a name="customize-your-http-function"></a>HTTP 関数のカスタマイズ
 
-既定では、HTTP によってトリガーされる関数は任意の HTTP メソッドを受け入れるように構成されます。 また、フォームの既定の URL は次のとおりです: `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`。 クイックスタートの手順に従っている場合、`<funcname>` にはおそらく何か ("HttpTriggerJS1" など) が表示されています。 このセクションでは、`/api/hello` ルートに対する GET 要求にのみ応答するように関数を変更します。 
+既定では、HTTP によってトリガーされる関数は任意の HTTP メソッドを受け入れるように構成されます。 また、フォームの既定の URL は次のとおりです: `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`。 クイックスタートの手順に従っている場合、`<funcname>` にはおそらく "HttpTriggerJS1" のように表示されています。 このセクションでは、`/api/hello` ルートに対する GET 要求にのみ応答するように関数を変更します。 
 
 Azure Portal で関数に移動します。 左側のナビゲーションで、**[統合]** を選択します。
 
@@ -43,7 +43,7 @@ Azure Portal で関数に移動します。 左側のナビゲーションで、
 
 次の表で指定されている HTTP トリガーの設定を使用します。
 
-| フィールド | 値の例 | Description |
+| フィールド | 値の例 | 説明 |
 |---|---|---|
 | [許可されている HTTP メソッド] | 選択したメソッド | この関数の呼び出しに使用する HTTP メソッドを決定します |
 | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
@@ -51,7 +51,7 @@ Azure Portal で関数に移動します。 左側のナビゲーションで、
 
 ルート テンプレートには `/api` ベース パス プレフィックスを含めないよう注意してください。このパス プレフィックスはグローバル設定で処理します。
 
-[ **Save**] をクリックします。
+**[保存]** をクリックします。
 
 HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint)」をご覧ください。
 
@@ -71,7 +71,7 @@ URL をブラウザーの新しいタブまたはお使いの REST クライア�
 
 ## <a name="proxies-overview"></a>Proxies の概要
 
-次のセクションでは、プロキシを経由して API サーフェスを使用します。 Azure Functions Proxies は、その他のリソースに要求を転送できるプレビュー機能です。 HTTP トリガーなどの HTTP エンドポイントを定義しますが、エンドポイントの呼び出しの際に実行するコードを記述する代わりに、リモートでの実装のために URL を提供します。 これにより、クライアントが簡単に使用できる単一の API サーフェスに複数の API ソースをまとめることができます。 これは、API をマイクロサービスとして構築する場合に特に役立ちます。
+次のセクションでは、プロキシを経由して API サーフェスを使用します。 Azure Functions Proxies は、その他のリソースに要求を転送できるプレビュー機能です。 HTTP トリガーの場合と同様に HTTP エンドポイントを定義しますが、エンドポイントの呼び出しの際に実行するコードを記述する代わりに、リモートでの実装のために URL を提供します。 これにより、クライアントが簡単に使用できる単一の API サーフェスに複数の API ソースをまとめることができます。 これは、API をマイクロサービスとして構築する場合に特に役立ちます。
 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
@@ -87,9 +87,9 @@ URL をブラウザーの新しいタブまたはお使いの REST クライア�
 
 ### <a name="setting-up-the-frontend-environment"></a>フロントエンド環境のセットアップ
 
-「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を確認し、プロキシを作成する新しい Function App を作成します。 この新しいアプリは、API のフロントエンドとして機能し、以前編集した Function App はバックエンドとして機能します。
+「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリは、API のフロントエンドとして機能し、以前編集した Function App はバックエンドとして機能します。
 
-Azure Portal で新しいフロントエンドの Function App に移動します。
+ポータルで新しいフロントエンドの Function App に移動します。
 
 **[設定]**を選択します。 次に、**[Azure Functions プロキシの有効化 (プレビュー)]** をオンにします。
 
@@ -100,11 +100,11 @@ Azure Portal で新しいフロントエンドの Function App に移動しま�
 > [!NOTE] 
 > ハード コーディングよるプロキシの環境依存を防ぐために、ホストの構成に対してアプリ設定を使用することをお勧めします。 アプリ設定を使用すると、プロキシの構成を環境間で移動でき、その環境に合わせたアプリ設定が適用されます。
 
-[ **Save**] をクリックします。
+**[保存]** をクリックします。
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>フロントエンドのプロキシの作成
 
-Azure Portal でフロントエンドの Function App に移動します。
+ポータルでフロントエンドの Function App に移動します。
 
 左側のナビゲーションで、[プロキシ (プレビュー)] の横にあるプラス記号 [+] をクリックします。
 
@@ -112,7 +112,7 @@ Azure Portal でフロントエンドの Function App に移動します。
 
 次の表で指定されているプロキシの設定を使用します。
 
-| フィールド | 値の例 | Description |
+| フィールド | 値の例 | 説明 |
 |---|---|---|
 | 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
 | [ルート テンプレート] | /api/hello | このプロキシの呼び出しに使用するルートを決定します |
@@ -203,3 +203,4 @@ backendUri プロパティを変更することなく、"GetUserByName" とい�
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
 [Azure Functions Proxies (プレビュー) の操作]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mithal;garye
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: d109c50be94a227efd39f151c01070a8e30b237d
-ms.lasthandoff: 03/17/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: e212b2c935eb0ae64ed1cd2e6dc1564f8fcd503b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/17/2017
 ## <a name="more-help-with-machine-learning-studio"></a>Machine Learning Studio に役立つその他の情報
 * Microsoft Azure Machine Learning の概要については、「 [Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」を参照してください。
 * スコアリング Web サービスをデプロイする方法については、「 [Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
-* スコアリング Web サービスを使用する方法については、「 [Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+* スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

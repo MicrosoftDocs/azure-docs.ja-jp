@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7b4e14ff2e7e6575574e9da412d29cc2c228990f
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -101,8 +101,9 @@ Twitter コネクタでは、次のことが可能です。
 7. 作業内容を保存し、#Seattle というハッシュタグを含めたツイートを送信してワークフローをアクティブにします。  
 
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/twitterconnector/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/twitterconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)

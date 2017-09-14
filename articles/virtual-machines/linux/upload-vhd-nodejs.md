@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 99d18aa55ea7bd7abcb50ba32c8f6a5f130ec031
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してカスタム ディスク イメージをアップロードし、Linux VM を作成する
@@ -139,7 +139,7 @@ azure group create myResourceGroup --location "WestUS"
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-VM は、ストレージ アカウント内にページ BLOB として保存されます。 Azure BLOB ストレージの詳細については [こちら](../../storage/storage-introduction.md#blob-storage)をご覧ください。 カスタム ディスク イメージと VM 用に、ストレージ アカウントを作成します。 カスタム ディスク イメージから作成する VM は、必ずそのイメージと同じストレージ アカウント内に存在する必要があります。
+VM は、ストレージ アカウント内にページ BLOB として保存されます。 Azure BLOB ストレージの詳細については [こちら](../../storage/common/storage-introduction.md#blob-storage)をご覧ください。 カスタム ディスク イメージと VM 用に、ストレージ アカウントを作成します。 カスタム ディスク イメージから作成する VM は、必ずそのイメージと同じストレージ アカウント内に存在する必要があります。
 
 次の例では、`mystorageaccount` という名前のストレージ アカウントを以前に作成したリソース グループに作成します。
 
@@ -149,7 +149,7 @@ azure storage account create mystorageaccount --resource-group myResourceGroup \
 ```
 
 ## <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 `azure storage account keys list` コマンドを実行すると、アクセス キーを表示できます。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 `azure storage account keys list` コマンドを実行すると、アクセス キーを表示できます。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 

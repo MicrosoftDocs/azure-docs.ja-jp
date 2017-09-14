@@ -14,13 +14,13 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 06/13/2017
 ms.author: daleche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 608cbc0fd1cc1d73d28056909ed06618457bd9c0
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ae081fc0432e36bf9f4d4f06f289386ddce37990
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -164,7 +164,7 @@ Azure SQL Database に接続するために必要な接続文字列は、Microso
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
 
 ### <a name="connection-ip-address"></a>接続: IP アドレス
-SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。 この構成は、 [Azure ポータル](https://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
+SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。 この構成は、[Azure ポータル](https://portal.azure.com/)を介してファイアウォールの設定を編集することによって行います。
 
 IP アドレスの構成を怠った場合、必要な IP アドレスを示した親切なエラー メッセージがプログラムで表示されます。
 

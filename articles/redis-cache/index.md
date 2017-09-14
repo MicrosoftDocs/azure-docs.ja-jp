@@ -2,7 +2,7 @@
 title: "Azure Redis Cache のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
 services: redis-cache
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
 ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="redis-cache-documentation"></a>Redis Cache のドキュメント
@@ -195,10 +197,5 @@ ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

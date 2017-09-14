@@ -1,231 +1,255 @@
 ---
-title: "チュートリアル: Azure Active Directory と eTouches の統合 | Microsoft Docs"
-description: "Azure Active Directory と eTouches の間でシングル サインオンを構成する方法について説明します。"
+title: "チュートリアル: Azure Active Directory と etouches の統合 | Microsoft Docs"
+description: "Azure Active Directory と etouches の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
+ms.reviewer: joflore
 ms.assetid: 76cccaa8-859c-4c16-9d1d-8a6496fc7520
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2017
+ms.date: 07/19/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
-ms.openlocfilehash: e5706f1c33e5fb9305090c6c4444cf0adb5737c2
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 3cd9e9d6aae924369065ca492b1f6380c0ddc5fe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-etouches"></a>チュートリアル: Azure Active Directory と eTouches の統合
-このチュートリアルでは、eTouches と Azure Active Directory (Azure AD) を統合する方法について説明します。
+# <a name="tutorial-azure-active-directory-integration-with-etouches"></a>チュートリアル: Azure Active Directory と etouches の統合
 
-eTouches と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、etouches と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-* eTouches にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に eTouches にシングル サインオン (SSO) できるようにします
-* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+etouches と Azure AD の統合には、次の利点があります。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- etouches にアクセスする Azure AD ユーザーを制御できます
+- ユーザーが自分の Azure AD アカウントで自動的に etouches にサインオン (シングル サインオン) できるようにします
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-eTouches と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション
-* eTouches での SSO が有効なサブスクリプション
+etouches と Azure AD の統合を構成するには、次のものが必要です。
 
->[!NOTE]
->このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
-> 
+- Azure AD サブスクリプション
+- etouches でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-* 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD SSO をテストします。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+1. ギャラリーからの etouches の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. ギャラリーからの eTouches の追加
-2. Azure AD SSO の構成とテスト
+## <a name="adding-etouches-from-the-gallery"></a>ギャラリーからの etouches の追加
+Azure AD への etouches の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に etouches を追加する必要があります。
 
-## <a name="adding-etouches-from-the-gallery"></a>ギャラリーからの eTouches の追加
-Azure AD への eTouches の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に eTouches を追加する必要があります。
+**ギャラリーから etouches を追加するには、次の手順に従います。**
 
-**ギャラリーから eTouches を追加するには、次の手順に従います。**
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+    ![Azure Active Directory のボタン][1]
+
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+
+    ![[エンタープライズ アプリケーション] ブレード][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+    ![[新しいアプリケーション] ボタン][3]
+
+4. 検索ボックスに「**etouches**」と入力し、結果ウィンドウで **etouches** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+
+    ![結果一覧の etouches](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_addfromgallery.png)
+
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、etouches で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する etouches ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと etouches の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+etouches で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+
+etouches で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[etouches のテスト ユーザーの作成](#create-an-etouches-test-user)** - etouches で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、etouches アプリケーションでシングル サインオンを構成します。
+
+**etouches で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure Portal の **etouches** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![[シングル サインオンの構成]][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_samlbase.png)
+
+3. **[etouches のドメインと URL]** セクションで、次の手順に従います。
+
+    ![[etouches のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_url.png)
+
+    a. **[サインオン URL]** ボックスに、`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスに、`https://www.eiseverywhere.com/<instance name>` の形式で URL を入力します。
+
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子に値を置き換えます。実際の値については後で説明します。
+    > 
+
+4. etouches アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーションの **[ユーザー属性]** から管理できます。 次のスクリーンショットはその例です。 
+
+    ![ユーザー属性](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_attribute.png) 
+
+5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+    
+    | 属性名 | 属性値 |
+    | ------------------- | -------------------- |
+    | 電子メール | User.mail |    
+    
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+
+    ![[属性の追加]](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_04.png)
+
+    ![[属性の追加] ダイアログ](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_05.png)
+
+    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+
+    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    
+    d. **[OK]**をクリックします。 
+
+6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_certificate.png) 
+
+7. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-etouches-tutorial/tutorial_general_400.png)
+
+8. お使いのアプリケーション用に構成された SSO を取得するには、etouches アプリケーションで次の手順を実行します。 
+
+    ![etouches の構成](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_06.png) 
+
+    a. 管理者権限を使用して **etouches** アプリケーションにログインします。
    
-    ![Active Directory][1]
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-    ![[アプリケーション]][2]
-4. ページの下部にある **[追加]** をクリックします。
-   
-    ![アプリケーション][3]
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-    ![アプリケーション][4]
-6. 検索ボックスに、「 **eTouches**」と入力します。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_01.png)
-7. 結果ウィンドウで **[eTouches]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_02.png)
+    b. **[SAML 構成]** に移動します。
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、eTouches で Azure AD の SSO を構成し、テストします。
+    c. **[General Settings]\(全般設定\)** セクションで、Azure Portal からダウンロードした証明書をメモ帳で開き、内容をコピーして、[IDP metadata]\(IDP メタデータ\) ボックスに貼り付けます。 
 
-SSO を機能させるには、Azure AD ユーザーに対応する eTouches ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと eTouches の関連ユーザーの間で、リンク関係が確立されている必要があります。
+    d. **[Save & Stay (保存のみ)]** ボタンをクリックします。
+  
+    e. [SAML Metadata (SAML メタデータ)] セクションの **[Update Metadata (メタデータの更新)]** をクリックします。 
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を eTouches の **[Username (ユーザー名)]** の値として割り当てます。
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 ページが開き、SSO が実行されます。 SSO が実行されたら、ユーザー名を設定できます。
 
-eTouches で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
+    g. [Username]\(ユーザー名\) フィールドで、次の画像に示すように **emailaddress** を選びます。 
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[eTouches のテスト ユーザーの作成](#creating-a-predictix-price-reporting-test-user)** - eTouches で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+    h. **SP エンティティ ID** の値をコピーし、Azure Portal の **[etouches のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、eTouches アプリケーションでシングル サインオンを構成します。
-
-eTouches アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーションの **[属性]** タブから管理できます。 次のスクリーンショットはその例です。 
-
-![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_07.png) 
-
-**eTocuhes で Azure AD SSO を構成するには、次の手順に従います。**
-
-1. Azure クラシック ポータルの **eTouches** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
+    i. **SSO URL/ACS** の値をコピーし、Azure Portal の **[etouches のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_general_80.png) 
-2. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。
-   
-   | 属性名 | 属性値 |
-   | --- | --- |
-   | 電子メール |User.mail |
-   
- 1. **[ユーザー属性の追加]** をクリックして、**[ユーザー属性の追加]** ダイアログを開きます。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_general_81.png) 
-  2. **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
-  3. **[属性値]** 一覧から、その行に対して表示される属性値を選択します。
-  4. ページの下部にある **[完了]**」を参照してください。    
-3. クラシック ポータルの **eTouches** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-    ![[シングル サインオンの構成]][6] 
-4. **[ユーザーの eTouches へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_03.png) 
-5. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
-   
-    ![Configure Single Sign-On](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_04.png)   
-  1. **[サインオン URL]** ボックスに、ユーザーが eTouches アプリケーションへのサインオンに使用する URL を **https://www.eiseverywhere.com/saml/accounts/?sso&accountid=\<accountid\>** の形式で入力します。
-  2. **[次へ]**をクリックします。
-6. **[eTouches でのシングル サインオンの構成]** ページで、次の手順を実行します。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_05.png)  
-  1. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
-  2. **[次へ]**をクリックします。
-7. お使いのアプリケーション用に構成された SSO を取得するには、eTouches アプリケーションで次の手順を実行します。  
-  1. 管理者権限を使用して **eTouches** アプリケーションにログインします。 
-  2. **[SAML 構成]** に移動します。
-  3. **[General Settings (全般設定)]** セクションで、Azure AD のフェデレーション メタデータの内容をテキスト ボックスに貼り付けます。
-  4. **[Save & Stay (保存のみ)]** ボタンをクリックします。
-  5. [SAML Metadata (SAML メタデータ)] セクションの **[Update Metadata (メタデータの更新)]** をクリックします。 
-  6. ページが開き、SSO が実行されます。 SSO が実行されたら、ユーザー名を設定できます。
-  7. **[Username (ユーザー名)]** フィールドで、次の画像に示すように **emailaddress** を選択します。 
-  8. **[SSO URL / ACS]** の値をコピーし、Azure AD アプリケーションの構成ウィザードの [サインオン URL] ボックスに貼り付けます。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_06.png)
-8. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]**をクリックします。
-   
-    ![Azure AD のシングル サインオン][10]
-9. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
-
-    ![Azure AD のシングル サインオン][11]
-
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][20]
+![Azure AD のテスト ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_09.png) 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_03.png) 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
- ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_05.png) 
-  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-  3. **[次へ]**をクリックします。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+    ![Azure Active Directory のボタン](./media/active-directory-saas-etouches-tutorial/create_aaduser_01.png) 
 
- ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_06.png)  
-  1. **[名]** ボックスに「**Britta**」と入力します。   
-  2. **[姓]** ボックスに「**Simon**」と入力します。
-  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-  5. **[次へ]**をクリックします。
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
-   
-  ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_07.png) 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
-   
-  ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-etouches-tutorial/create_aaduser_08.png)   
-  1. **[新しいパスワード]** の値を書き留めます。
-  2. **[完了]** をクリックします。   
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-etouches-tutorial/create_aaduser_02.png) 
 
-### <a name="create-an-etouches-test-user"></a>eTouches テスト ユーザーの作成
-このセクションでは、eTouches で Britta Simon というユーザーを作成します。 eTouches サポート チームと連携し、eTouches プラットフォームにユーザーを追加してください。
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
+    ![[追加] ボタン](./media/active-directory-saas-etouches-tutorial/create_aaduser_03.png) 
+
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
+    ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+
+    d. **[作成]**をクリックします。
+ 
+### <a name="create-an-etouches-test-user"></a>etouches テスト ユーザーの作成
+
+このセクションでは、etouches で Britta Simon というユーザーを作成します。 [etouches クライアント サポート チーム](https://www.etouches.com/event-software/support/customer-support/)と協力して、etouches プラットフォームにユーザーを追加します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションでは、Britta Simon に eTouches へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+このセクションでは、Britta Simon に etouches へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-**eTouches に Britta Simon を割り当てるには、次の手順に従います。**
+![ユーザー ロールを割り当てる][200] 
 
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
+**etouches に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+
     ![ユーザーの割り当て][201] 
-2. アプリケーションの一覧で **[eTouches]**を選択します。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_50.png) 
-3. 上部のメニューで **[ユーザー]**をクリックします。
-   
-    ![ユーザーの割り当て][203]
-4. ユーザーの一覧で **[Britta Simon]**を選択します。
-5. 下部にあるツール バーで **[割り当て]**をクリックします。
-   
-    ![ユーザーの割り当て][205]
 
+2. アプリケーションの一覧で **[etouches]**を選択します。
+
+    ![アプリケーションの一覧の etouches のリンク](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_app.png) 
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![[ユーザーとグループ] リンク][202] 
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[割り当ての追加] ウィンドウ][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
-このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
 
-アクセス パネルで eTouches のタイルをクリックすると、自動的に eTouches アプリケーションにサインオンします。
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで etouches のタイルをクリックすると、自動的に etouches アプリケーションにサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース
+
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 
@@ -234,14 +258,11 @@ eTouches アプリケーションは、特定の形式で構成された SAML �
 [3]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_205.png
+
 

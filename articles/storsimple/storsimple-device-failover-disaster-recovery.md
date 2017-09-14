@@ -1,5 +1,5 @@
 ---
-title: "StorSimple のフェールオーバーと災害復旧 | Microsoft Docs"
+title: "StorSimple のフェールオーバーとディザスター リカバリー | Microsoft Docs"
 description: "StorSimple デバイスを、そのデバイス自体、別の物理デバイス、または別の仮想デバイスにフェールオーバーする方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -14,24 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
-# <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple デバイスのフェールオーバーと災害復旧
+# <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple デバイスのフェールオーバーとディザスター リカバリー
 ## <a name="overview"></a>概要
 このチュートリアルでは、災害が発生した場合の StorSimple デバイスのフェールオーバーに必要な手順について説明します。 フェールオーバーにより、データをデータ センターのソース デバイスから、同じ場所または別の場所にある物理デバイスや仮想デバイスに移行できます。 
 
-デバイスのフェールオーバーは災害復旧 (DR) 機能によって調整され、 **[デバイス]** ページから開始されます。 このページには、StorSimple Manager サービスに接続されているすべての StorSimple デバイスの一覧が表示されます。 デバイスごとに、表示名、状態、プロビジョニング容量と最大容量、種類、およびモデルが表示されます。
+デバイスのフェールオーバーはディザスター リカバリー (DR) 機能によって調整され、 **[デバイス]** ページから開始されます。 このページには、StorSimple Manager サービスに接続されているすべての StorSimple デバイスの一覧が表示されます。 デバイスごとに、表示名、状態、プロビジョニング容量と最大容量、種類、およびモデルが表示されます。
 
 ![[デバイス] ページ](./media/storsimple-device-failover-disaster-recovery/IC740972.png)
 
 このチュートリアルのガイダンスは、StorSimple 物理および仮想デバイスのすべてのソフトウェア バージョンに適用されます。
 
-## <a name="disaster-recovery-dr-and-device-failover"></a>災害復旧 (DR) とデバイスのフェールオーバー
-災害復旧 (DR) シナリオでは、プライマリ デバイスの機能が停止します。 この場合、プライマリ デバイスを*ソース*として使用し、別のデバイスを*ターゲット*に指定することにより、災害が発生したデバイスに関連付けられているクラウドのデータを別のデバイスに移動できます。 ターゲット デバイスに移行するボリューム コンテナーを 1 つ以上選択できます。 このプロセスを *フェールオーバー*といいます。 
+## <a name="disaster-recovery-dr-and-device-failover"></a>ディザスター リカバリー (DR) とデバイスのフェールオーバー
+ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 この場合、プライマリ デバイスを*ソース*として使用し、別のデバイスを*ターゲット*に指定することにより、障害が発生したデバイスに関連付けられているクラウドのデータを別のデバイスに移動できます。 ターゲット デバイスに移行するボリューム コンテナーを 1 つ以上選択できます。 このプロセスを *フェールオーバー*といいます。 
 
 フェールオーバー時には、ソース デバイスのボリューム コンテナーの所有権が変更され、ターゲット デバイスに転送されます。 ボリューム コンテナーは所有権が変更されるとソース デバイスから削除されます。 削除が完了すると、ターゲット デバイスはフェールバックできるようになります。
 
@@ -46,6 +48,7 @@ ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
 
 ## <a name="considerations-for-device-failover"></a>デバイスのフェールオーバーに関する考慮事項
 災害が発生した場合、StorSimple デバイスを次のデバイスに対してフェールオーバーできます。
+
 
 * 物理デバイス 
 * StorSimple デバイス自体
@@ -170,18 +173,13 @@ Q. **ソース デバイスのボリューム コンテナーに関連付けら�
 
 A.  削除ジョブが失敗した場合、ボリューム コンテナーの削除を手動でトリガーする必要があります。 **[デバイス]** ページで、目的のソース デバイスを選択し、**[ボリューム コンテナー]** をクリックします。 フェールオーバーしたボリューム コンテナーをページ下部で選択し、**[削除]** をクリックします。 ソース デバイス上のフェールオーバーしたすべてのボリューム コンテナー削除したら、フェールバックを開始できるようになります。
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>ビジネス継続性災害復旧 (BCDR)
-ビジネス継続性災害復旧 (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。 このような状況が発生すると、StorSimple Manager サービスと関連する StorSimple デバイスに影響が及ぶ可能性があります。
+## <a name="business-continuity-disaster-recovery-bcdr"></a>ビジネス継続性ディザスター リカバリー (BCDR)
+ビジネス継続性ディザスター リカバリー (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。 このような状況が発生すると、StorSimple Manager サービスと関連する StorSimple デバイスに影響が及ぶ可能性があります。
 
-災害が発生する直前に登録された StorSimple デバイスがある場合は、これらの StorSimple デバイスを工場出荷時の設定に戻すことが必要になることがあります。 災害の発生後、StorSimple デバイスはオフラインとして表示されます。 このポータルから StorSimple デバイスを削除した後、設定を工場出荷時の設定に戻し、再度登録する必要があります。
+災害が発生する直前に登録された StorSimple デバイスがある場合は、これらの StorSimple デバイスを工場出荷時の設定に戻すことが必要になることがあります。 障害の発生後、StorSimple デバイスはオフラインとして表示されます。 このポータルから StorSimple デバイスを削除した後、設定を工場出荷時の設定に戻し、再度登録する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 * フェールオーバーの実行後、必要に応じて [StorSimple デバイスを非アクティブ化または削除](storsimple-deactivate-and-delete-device.md)します。
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

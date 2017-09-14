@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
 ms.openlocfilehash: 65e5e6938ce67b6ba9751e38d23715f3512c4b93
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/06/2017
 
 ---
 # <a name="windows-powershell-connector-technical-reference"></a>Windows PowerShell コネクタに関するテクニカル リファレンス
@@ -106,7 +107,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 | ConfigParameters |[KeyedCollection][keyk] [string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
 
-このスクリプトは&1; つの [Schema][schema] オブジェクトをパイプラインに返す必要があります。 Schema オブジェクトは、オブジェクトの種類 (ユーザー、グループなど) を表す [SchemaType][schemaT] オブジェクトで構成されます。 SchemaType オブジェクトには、特定の種類の属性 (名、姓、郵便住所など) を表す一連の [SchemaAttribute][schemaA] オブジェクトが含まれています。
+このスクリプトは 1 つの [Schema][schema] オブジェクトをパイプラインに返す必要があります。 Schema オブジェクトは、オブジェクトの種類 (ユーザー、グループなど) を表す [SchemaType][schemaT] オブジェクトで構成されます。 SchemaType オブジェクトには、特定の種類の属性 (名、姓、郵便住所など) を表す一連の [SchemaAttribute][schemaA] オブジェクトが含まれています。
 
 **追加パラメーター**  
 標準的な構成設定に加え、コネクタのインスタンスに固有のカスタム構成設定を追加で定義できます。 追加パラメーターはコネクタ、パーティション、実行ステップのレベルで指定し、関連 Windows PowerShell スクリプトからアクセスできます。 カスタム構成設定は同期サービス データベースに平文で保存するか、暗号化して保存できます。 同期サービスは、必要に応じて、安全な構成設定を自動的に暗号化し、復号化します。
@@ -134,9 +135,9 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 | 差分インポートの有効化 |選択した場合、コネクタはインポート スクリプトから差分を要求できます。 |
 | エクスポートの有効化 |選択した場合、コネクタはエクスポート スクリプトでデータをエクスポートします。 |
 | 完全エクスポートの有効化 |選択した場合、エクスポート スクリプトはコネクタ スペース全体のエクスポートに対応します。 このオプションを使用するには、エクスポート有効化も選択する必要があります。 |
-| 最初のエクスポート パスに参照値なし |選択した場合、参照属性は&2; 番目のエクスポート パスでエクスポートされます。 |
+| 最初のエクスポート パスに参照値なし |選択した場合、参照属性は 2 番目のエクスポート パスでエクスポートされます。 |
 | オブジェクトの名前変更の有効化 |選択した場合、識別名を変更できます。 |
-| 置換として削除/追加 |選択した場合、削除/追加操作が&1; つの置換としてエクスポートされます。 |
+| 置換として削除/追加 |選択した場合、削除/追加操作が 1 つの置換としてエクスポートされます。 |
 | パスワード操作の有効化 |選択した場合、パスワード同期スクリプトを利用できます。 |
 | 最初のパスのエクスポート パスワードの有効化 |選択した場合、プロビジョニング中に設定されたパスワードがオブジェクトの作成時にエクスポートされます。 |
 
@@ -144,7 +145,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 管理エージェント デザイナーの [Global Parameters (グローバル パラメーター)] タブでは、コネクタによって実行される Windows PowerShell スクリプトを構成できます。 また、[接続] タブで定義されているカスタム構成設定のグローバル値を構成できます。
 
 **パーティション検出**  
-パーティションは、1 つの共有スキーマ内の別個の名前空間です。 たとえば、Active Directory では、各ドメインは&1; つのフォレスト内のパーティションになります。 パーティションは、インポート操作とエクスポート操作を論理的にグループ化します。 インポートとエクスポートにはコンテキストとしてパーティションがあり、すべての操作はそのコンテキストで実行されます。 パーティションは LDAP の階層を表します。 パーティションの識別名は、返されたすべてのオブジェクトがパーティションの範囲内にあることを検証するためにインポートで使用されます。 パーティションの識別名は、メタバースからコネクタ スペースにプロビジョニングし、エクスポート中にオブジェクトを関連付けるパーティションを決定する際にも使用されます。
+パーティションは、1 つの共有スキーマ内の別個の名前空間です。 たとえば、Active Directory では、各ドメインは 1 つのフォレスト内のパーティションになります。 パーティションは、インポート操作とエクスポート操作を論理的にグループ化します。 インポートとエクスポートにはコンテキストとしてパーティションがあり、すべての操作はそのコンテキストで実行されます。 パーティションは LDAP の階層を表します。 パーティションの識別名は、返されたすべてのオブジェクトがパーティションの範囲内にあることを検証するためにインポートで使用されます。 パーティションの識別名は、メタバースからコネクタ スペースにプロビジョニングし、エクスポート中にオブジェクトを関連付けるパーティションを決定する際にも使用されます。
 
 パーティション検出スクリプトは、コネクタから次のパラメーターを受け取ります。
 
@@ -153,7 +154,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
 
-このスクリプトは&1; つの [Partition][part] オブジェクトか Partition オブジェクトの List[T] をパイプラインに返します。
+このスクリプトは 1 つの [Partition][part] オブジェクトか Partition オブジェクトの List[T] をパイプラインに返します。
 
 **階層検出**  
 階層検出スクリプトは、識別名様式の機能が LDAP の場合にのみ使用されます。 このスクリプトは、インポート操作とエクスポート操作の対象となる/ならない一連のコンテナーを閲覧、選択できるようにするために使用されます。 このスクリプトは、スクリプトに指定されたルート ノードの直接的な子となるノードの一覧のみを提供します。
@@ -166,7 +167,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
 | ParentNode |[HierarchyNode][hn] |階層のルート ノードであり、この下にある直接の子をスクリプトが返します。 |
 
-スクリプトは&1; つの子 HierarchyNode オブジェクトか子 HierarchyNode オブジェクトの List[T] を返します。
+スクリプトは 1 つの子 HierarchyNode オブジェクトか子 HierarchyNode オブジェクトの List[T] を返します。
 
 #### <a name="import"></a>インポート
 インポート操作をサポートするコネクタは、3 つのスクリプトを実装する必要があります。
@@ -183,7 +184,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 | OpenImportConnectionRunStep |[OpenImportConnectionRunStep][oicrs] |インポート実行の種類 (差分または完全)、パーティション、階層、透かし、予想ページ サイズをスクリプトに通知します。 |
 | 型 |[Schema][schema] |インポートするコネクタ スペースのスキーマ。 |
 
-このスクリプトは&1; つの [OpenImportConnectionResults][oicres] オブジェクトをパイプラインに返します (たとえば `Write-Output (New-Object Microsoft.MetadirectoryServices.OpenImportConnectionResults)`)。
+このスクリプトは 1 つの [OpenImportConnectionResults][oicres] オブジェクトをパイプラインに返します (たとえば `Write-Output (New-Object Microsoft.MetadirectoryServices.OpenImportConnectionResults)`)。
 
 **データのインポート**  
 データのインポート スクリプトはコネクタによって呼び出され、インポートするデータがなくなったらそのことを示します。 Windows PowerShell コネクタのページ サイズは 9,999 オブジェクトです。 スクリプトがインポートするオブジェクトを 10,000 個以上返す場合、ページングを利用する必要があります。 コネクタは、透かしを保存するためのカスタム データ プロパティを公開します。透かしを保存すると、データのインポート スクリプトが呼び出されるたびに、スクリプトが前回中断した部分からオブジェクトのインポートが再開されます。
@@ -212,10 +213,10 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 | OpenImportConnectionRunStep |[OpenImportConnectionRunStep][oicrs] |インポート実行の種類 (差分または完全)、パーティション、階層、透かし、予想ページ サイズをスクリプトに通知します。 |
 | CloseImportConnectionRunStep |[CloseImportConnectionRunStep][cecrs] |インポートが終了した理由をスクリプトに通知します。 |
 
-このスクリプトは&1; つの [CloseImportConnectionResults][cicres] オブジェクトをパイプラインに返します (たとえば `Write-Output (New-Object Microsoft.MetadirectoryServices.CloseImportConnectionResults)`)。
+このスクリプトは 1 つの [CloseImportConnectionResults][cicres] オブジェクトをパイプラインに返します (たとえば `Write-Output (New-Object Microsoft.MetadirectoryServices.CloseImportConnectionResults)`)。
 
 #### <a name="export"></a>エクスポート
-コネクタのインポート アーキテクチャと同じです。エクスポートをサポートするコネクタは&3; つのスクリプトを実装する必要があります。
+コネクタのインポート アーキテクチャと同じです。エクスポートをサポートするコネクタは 3 つのスクリプトを実装する必要があります。
 
 **エクスポート開始**  
 エクスポート開始スクリプトは、エクスポート実行手順の最初に実行されます。 この手順の間、ソース システムに接続し、接続したシステムにデータをエクスポートする前の準備手順を実行できます。
@@ -342,9 +343,4 @@ $account.Translate([System.Security.Principal.SecurityIdentifier]).Value
 [pwdex2]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordillformedexception.aspx
 [pwdex3]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordextensionexception.aspx
 [samp]: http://go.microsoft.com/fwlink/?LinkId=394291
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

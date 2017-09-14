@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2017
+ms.date: 08/24/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c844f9a84878f12fbdf7a5b4eaf7bbf19f4ce666
 ms.openlocfilehash: 4a1615c4bea8c54d506c3252e2de42642bb55e46
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/27/2017
-
 
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>デバイスをリモート監視構成済みソリューションに接続する (Linux)

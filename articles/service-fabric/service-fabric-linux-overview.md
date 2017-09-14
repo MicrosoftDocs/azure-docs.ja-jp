@@ -12,13 +12,13 @@ ms.devlang: Java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: SubramaR
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 62d7e0088c66a538dff7f3b99882ebef4949211b
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: dddc9f698d9776999d406117b46285a0f90d9620
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="service-fabric-on-linux"></a>Linux 上の Service Fabric
@@ -40,13 +40,14 @@ Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric 
 
 
 ## <a name="supported-tooling"></a>サポートされているツール
-プレビューでは、Azure CLI を介したクラスターの対話操作がサポートされています。 Java 開発者のために、Eclipse および Yeoman との統合が提供されており、Eclipse は Linux および OSX 上でサポートされています。 OSX の統合では、内部的には vagrant を介して Linux VM を使用します。 C# 開発者のためには、アプリケーション テンプレートを生成できるように、Yeoman との統合が提供されています。
+プレビューでは、Service Fabric CLI を介したクラスターの対話操作がサポートされています。 Java 開発者のために、Eclipse および Yeoman との統合が提供されており、Eclipse は Linux および OSX 上でサポートされています。 OSX の統合では、内部的には vagrant を介して Linux VM を使用します。 C# 開発者のためには、アプリケーション テンプレートを生成できるように、Yeoman との統合が提供されています。
 
 ## <a name="next-steps"></a>次のステップ
-1. [Reliable Actors](service-fabric-reliable-actors-introduction.md) および [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング フレームワークを理解します。
-2. [Linux で開発環境を準備する](service-fabric-get-started-linux.md)
-3. [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
-4. [Linux 上で最初の Service Fabric Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
-5. [Jenkins と GitHub による Service Fabric の継続的インテグレーションとデプロイの設定](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
-6. [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
+
+* [Reliable Actors](service-fabric-reliable-actors-introduction.md) および [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング フレームワークを理解する
+* [Linux で開発環境を準備する](service-fabric-get-started-linux.md)
+* [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
+* [Linux 上で最初の Service Fabric Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
+* [Jenkins と GitHub による Service Fabric の継続的インテグレーションとデプロイの設定](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+* [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
 

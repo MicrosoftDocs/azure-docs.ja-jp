@@ -12,20 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/14/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: c0c4ea4eba742e4abe3da9e92508665ec1d91490
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: dc9b64062d7f68c83aa090eec96744819a5ca423
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 このトピックでは、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
-
-テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
 
 ## <a name="template-format"></a>テンプレートの形式
 最も単純な構造のテンプレートは、次の要素で構成されます。
@@ -78,19 +76,34 @@ ms.lasthandoff: 05/11/2017
     },
     "resources": [
       {
+          "condition": "<boolean-value-whether-to-deploy>",
           "apiVersion": "<api-version-of-resource>",
           "type": "<resource-provider-namespace/resource-type-name>",
           "name": "<name-of-the-resource>",
           "location": "<location-of-resource>",
-          "tags": "<name-value-pairs-for-resource-tagging>",
+          "tags": {
+              "<tag-name1>": "<tag-value1>",
+              "<tag-name2>": "<tag-value2>"
+          },
           "comments": "<your-reference-notes>",
+          "copy": {
+              "name": "<name-of-copy-loop>",
+              "count": "<number-of-iterations>",
+              "mode": "<serial-or-parallel>",
+              "batchSize": "<number-to-deploy-serially>"
+          },
           "dependsOn": [
               "<array-of-related-resource-names>"
           ],
-          "properties": "<settings-for-the-resource>",
-          "copy": {
-              "name": "<name-of-copy-loop>",
-              "count": "<number-of-iterations>"
+          "properties": {
+              "<settings-for-the-resource>",
+              "copy": [
+                  {
+                      "name": ,
+                      "count": ,
+                      "input": {}
+                  }
+              ]
           },
           "resources": [
               "<array-of-child-resources>"
@@ -172,7 +185,7 @@ ms.lasthandoff: 05/11/2017
 
 パラメーターを省略可能に指定するには、defaultValue を設定します (空の文字列を指定できます)。 
 
-コマンドのパラメーターと同じ名前のパラメーターをテンプレートで指定して、そのテンプレートをデプロイすると、指定する値があいまいになる可能性があります。 Resource Manager では、接尾辞 **FromTemplate** をテンプレート パラメーターに追加することで、このような混乱を防ぎます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment][deployment2cmdlet] コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+コマンドのパラメーターと同じ名前のパラメーターをテンプレートで指定して、そのテンプレートをデプロイすると、指定する値があいまいになる可能性があります。 Resource Manager では、接尾辞 **FromTemplate** をテンプレート パラメーターに追加することで、このような混乱を防ぎます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 > [!NOTE]
 > すべてのパスワード、キー、およびその他のシークレットでは、 **secureString** 型を使用する必要があります。 JSON オブジェクトに機密データを渡す場合は、**secureObject** 型を使用します。 secureString 型または secureObject 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
@@ -281,6 +294,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ```json
 "resources": [
   {
+      "condition": "<boolean-value-whether-to-deploy>",
       "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
@@ -290,13 +304,24 @@ resources セクションでは、デプロイまたは更新されるリソー�
           "<tag-name2>": "<tag-value2>"
       },
       "comments": "<your-reference-notes>",
+      "copy": {
+          "name": "<name-of-copy-loop>",
+          "count": "<number-of-iterations>",
+          "mode": "<serial-or-parallel>",
+          "batchSize": "<number-to-deploy-serially>"
+      },
       "dependsOn": [
           "<array-of-related-resource-names>"
       ],
-      "properties": "<settings-for-the-resource>",
-      "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>"
+      "properties": {
+          "<settings-for-the-resource>",
+          "copy": [
+              {
+                  "name": ,
+                  "count": ,
+                  "input": {}
+              }
+          ]
       },
       "resources": [
           "<array-of-child-resources>"
@@ -305,17 +330,18 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ]
 ```
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | Description |
 |:--- |:--- |:--- |
+| condition | いいえ | リソースをデプロイするかどうかを示すブール値。 |
 | apiVersion |はい |リソースの作成に使用する REST API バージョン。 |
 | type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
 | name |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスは、名前が別の ID になりすますことがないように、その名前を検証します。 |
 | location |多様 |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 「[Azure Resource Manager テンプレートでリソースの場所を設定する](resource-manager-template-location.md)」を参照してください。 |
 | tags |いいえ |リソースに関連付けられたタグ。 ｢[Azure Resource Manager テンプレートのリソースにタグを付ける](resource-manager-template-tags.md)」を参照してください。 |
 | コメント |いいえ |テンプレート内にドキュメント化するリソースについてのメモ。 |
+| copy |いいえ |複数のインスタンスが必要な場合に作成するリソースの数。 既定のモードはパラレルです。 すべてのリソースを同時にデプロイする必要がない場合は、シリアル モードを指定します。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。 |
 | dependsOn |なし |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 不要な依存関係は追加しないでください。こうした依存関係によりデプロイの速度が遅くなり、循環依存関係を作成されることがあります。 詳細については、[Azure Resource Manager テンプレートの依存関係の定義](resource-group-define-dependencies.md)に関するページをご覧ください。 |
-| properties |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 |
-| copy |いいえ |複数のインスタンスが必要な場合に作成するリソースの数。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。 |
+| properties |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 コピー配列を指定して、1 つのプロパティの複数のインスタンスを作成することもできます。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。 |
 | resources |いいえ |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 子リソースの完全修飾型には親リソースの種類が含まれます (例: **Microsoft.Web/sites/extensions**)。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 |
 
 resources セクションには、デプロイの対象となる一連のリソースが記述されます。 また、リソースごとに子リソースを複数定義することができます。 その場合、resources セクションは次のような構造となります。
@@ -344,8 +370,71 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 子リソースの定義の詳細については、「[Resource Manager テンプレートの子リソースに関する名前と種類の設定](resource-manager-template-child-resource.md)」を参照してください。
 
-## <a name="outputs"></a>出力
+**condition** 要素は、リソースがデプロイされているかどうかを指定します。 この要素の値は、true または false に解決されます。 たとえば、新しいストレージ アカウントをデプロイするかどうかを指定するには、次のコードを使用します。
 
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+新規または既存のリソースの使用例については、[新規または既存の condition テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json)を参照してください。
+
+パスワードと SSH キーのどちらを使って仮想マシンをデプロイするかを指定するには、テンプレートで 2 つのバージョンの仮想マシンを定義し、**condition** を使用して使用法を区別します。 デプロイするシナリオを指定するパラメーターを渡します。
+
+```json
+{
+    "condition": "[equals(parameters('passwordOrSshKey'),'password')]",
+    "apiVersion": "2016-03-30",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[concat(variables('vmName'),'password')]",
+    "properties": {
+        "osProfile": {
+            "computerName": "[variables('vmName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]"
+        },
+        ...
+    },
+    ...
+},
+{
+    "condition": "[equals(parameters('passwordOrSshKey'),'sshKey')]",
+    "apiVersion": "2016-03-30",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[concat(variables('vmName'),'ssh')]",
+    "properties": {
+        "osProfile": {
+            "linuxConfiguration": {
+                "disablePasswordAuthentication": "true",
+                "ssh": {
+                    "publicKeys": [
+                        {
+                            "path": "[variables('sshKeyPath')]",
+                            "keyData": "[parameters('adminSshKey')]"
+                        }
+                    ]
+                }
+            }
+        },
+        ...
+    },
+    ...
+}
+``` 
+
+パスワードまたは SSH キーを使用して仮想マシンをデプロイする例については、[ユーザー名または SSH condition テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json)を参照してください。
+
+## <a name="outputs"></a>出力
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。
 
 次の例では、出力の定義の構造を示します。
@@ -378,11 +467,23 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 出力を操作する方法の詳細については、「 [Azure Resource Manager のテンプレートでの状態の共有](best-practices-resource-manager-state.md)」をご覧ください。
 
+## <a name="template-limits"></a>テンプレートの制限
+
+テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
+
+また、以下のように制限されます。
+
+* パラメーター 256 個
+* 変数 256 個
+* リソース (コピー数を含む) 800 個
+* 出力値 64 個
+* テンプレート式内で 24,576 文字
+
+入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](resource-manager-objects-as-parameters.md)に関する記事をご覧ください。
+
 ## <a name="next-steps"></a>次のステップ
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
 * 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。 このシナリオは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。 詳細については、 [resourceId 関数](resource-group-template-functions-resource.md#resourceid)に関するセクションをご覧ください。
-
-[deployment2cmdlet]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment
 

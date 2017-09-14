@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 5fdf061d6bf9961455377935304e9075ef4e59fa
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: db1a550b9273925b304fe4280f2a1b0e115f856d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/12/2017
 MongoDB をインストールして構成する前に、VM を作成し、できればそれにデータ ディスクを追加する必要があります。 VM を作成し、データ ディスクを追加するには、以下の記事を参照してください。
 
 * [Azure Portal](quick-create-portal.md) または [Azure PowerShell](quick-create-powershell.md) を使用して Windows Server VM を作成します。
-* [Azure Portal](attach-disk-portal.md) または [Azure PowerShell](attach-disk-ps.md) を使用して Windows Server VM にデータ ディスクを接続します。
+* [Azure Portal](attach-managed-disk-portal.md) または [Azure PowerShell](attach-disk-ps.md) を使用して Windows Server VM にデータ ディスクを接続します。
 
 MongoDB のインストールと構成を開始するには、リモート デスクトップを使用して [Windows Server VM にログオン](connect-logon.md)してください。
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a12e9d342daf41ee9f83cadb9e29ee867be055de
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 65e9bba4ce9ac41ae2a9a8c3fa7f661165fc1403
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
@@ -74,7 +73,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 1. **appGatewayBackEndHttpSettings** 設定ブレードで、**[カスタム プローブの使用]** チェックボックスをオンにし、「[プローブの作成](#createprobe)」セクションで作成したプローブを **[カスタム プローブ]** ドロップダウンで選択します。
 完了したら、**[保存]** をクリックし、設定を適用します。
 
-既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。 カスタム プローブが作成されたら、Application Gateway は、定義されているカスタム パスを使用して、バックエンド サーバーの正常性を監視します。 定義された条件に基づいて、Application Gateway は、プローブで指定されているパスをチェックします。 host:Port/path への呼び出しによって HTTP 200-299 という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。 プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。 インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
+既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。 カスタム プローブが作成されたら、Application Gateway は、定義されているカスタム パスを使用して、バックエンド サーバーの正常性を監視します。 定義された条件に基づいて、Application Gateway は、プローブで指定されているパスをチェックします。 host:Port/path への呼び出しによって HTTP 200-399 という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。 プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。 インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
 
 ## <a name="next-steps"></a>次のステップ
 

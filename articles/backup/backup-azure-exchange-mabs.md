@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: pullabhk
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/27/2017
 
 

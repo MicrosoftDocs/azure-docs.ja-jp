@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 89bf300bf3205f6c8cbce6ba29571431e5c67212
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 11ecaa8ec017a9eb1285928e3d3d367ddfc43022
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Make web, mobile, and API apps available to your Azure Stack users
 
-As an Azure Stack administrator, you can create offers that let your users (tenants) create Azure Functions and web, mobile, and API applications. By providing access to these on-demand, cloud-based apps to your users, you can save them time and resources. To set this up, you will:
+As an Azure Stack cloud administrator, you can create offers that let your users (tenants) create Azure Functions and web, mobile, and API applications. By providing access to these on-demand, cloud-based apps to your users, you can save them time and resources. To set this up, you will:
 
 > [!div class="checklist"]
 > * Deploy the App Service resource provider
@@ -33,25 +33,25 @@ As an Azure Stack administrator, you can create offers that let your users (tena
 
 ## <a name="deploy-the-app-service-resource-provider"></a>Deploy the App Service resource provider
 
-1. [Prepare the POC host](azure-stack-app-service-before-you-get-started.md). This includes deploying the SQL Server resource provider, which is required for creating some apps.
+1. [Prepare the Azure Stack Development Kit host](azure-stack-app-service-before-you-get-started.md). This includes deploying the SQL Server resource provider, which is required for creating some apps.
 2. [Download the installer and helper scripts](azure-stack-app-service-deploy.md#download-the-required-components).
 3. [Run the helper script to create required certificates](azure-stack-app-service-deploy.md#create-certificates-required-by-app-service-on-azure-stack).
 4. [Install the App Service resource provider](azure-stack-app-service-deploy.md#use-the-installer-to-download-and-install-app-service-on-azure-stack) (it will take a couple hours to install and for all the worker roles to appear).
-5. [Validate the installation](azure-stack-app-service-deploy.md#validate-app-service-on-azure-stack-installation).
+5. [Validate the installation](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
 
 ## <a name="create-an-offer"></a>Create an offer
 
 As an example, you can create an offer that lets users create DNN web content management systems. It requires the SQL Server service which you already enabled by installing the SQL Server resource provider.
 
-1.    [Set a quota](azure-stack-setting-quotas.md) and name it *AppServiceQuota*. Select **Microsoft.Web** for the **Namespace** field.
-2.    [Create a plan](azure-stack-create-plan.md). Name it *TestAppServicePlan*, select the the **Microsoft.SQL** service, and **AppService Quota** quota.
+1.  [Set a quota](azure-stack-setting-quotas.md) and name it *AppServiceQuota*. Select **Microsoft.Web** for the **Namespace** field.
+2.  [Create a plan](azure-stack-create-plan.md). Name it *TestAppServicePlan*, select the the **Microsoft.SQL** service, and **AppService Quota** quota.
 
     > [!NOTE]
     > To let users create other apps, other services might be required in the plan. For example, Azure Functions requires that the plan     include the **Microsoft.Storage** service, while Wordpress requires **Microsoft.MySQL**.
     > 
     >
 
-3.    [Create an offer](azure-stack-create-offer.md), name it **TestAppServiceOffer** and select the **TestAppServicePlan** plan.
+3.  [Create an offer](azure-stack-create-offer.md), name it **TestAppServiceOffer** and select the **TestAppServicePlan** plan.
 
 ## <a name="test-the-offer"></a>Test the offer
 

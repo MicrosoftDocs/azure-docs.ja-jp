@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 7d82c86662467979b11b87434707946c30cd8cfa
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 7e48c60eb7305a1044db88489cad1f1b7fb3d522
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -32,9 +32,9 @@ Box に接続し、ファイルの作成、削除などを行います。 Box �
 
 まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
 
-## <a name="view-the-swagger"></a>Swagger の表示
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[Swagger の詳細](/connectors/box/)を参照してください。
+[コネクタの詳細](/connectors/box/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
 
 ## <a name="more-connectors"></a>その他のコネクタ
 [API リスト](apis-list.md)に戻ります。

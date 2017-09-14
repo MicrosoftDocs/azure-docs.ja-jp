@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/21/2017
+ms.date: 08/14/2017
 ms.author: shlo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: c27123ad54bbd6e1d2b416c6bffd4c8560514cdc
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 537bdee67ed9648c3cba2099553d847399609705
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 

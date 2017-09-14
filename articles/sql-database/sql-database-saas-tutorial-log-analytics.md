@@ -1,11 +1,11 @@
 ---
 title: "SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs"
-description: "Azure SQL Database のサンプル Wingtip Tickets (WTP) アプリで Log Analytics (OMS) を設定して使用します"
+description: "Azure SQL Database のサンプル Wingtip SaaS アプリで Log Analytics (OMS) を設定して使用します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -14,19 +14,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/26/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: 813a947ce4deb0755b44f4d287e00ae5218abfc4
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 26f6f519ecb3abf6343dc2776aa141dff99ced15
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="setup-and-use-log-analytics-oms-with-the-wtp-sample-saas-app"></a>WTP サンプル SaaS アプリで Log Analytics (OMS) を設定して使用する
+# <a name="setup-and-use-log-analytics-oms-with-the-wingtip-saas-app"></a>Wingtip SaaS アプリで Log Analytics (OMS) を設定して使用する
 
-このチュートリアルでは、エラスティック プールとデータベースを監視するために、WTP アプリで *Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* を設定して使用します。 このチュートリアルは[パフォーマンスの監視と管理を行うためのチュートリアル](sql-database-saas-tutorial-performance-monitoring.md)に基づいています。ここでは、*Log Analytics* を使用して、Azure ポータルで提供される監視とアラートの機能を強化する方法を示します。 Log Analytics は、数百のプールや数千のデータベースをサポートするため、大規模な監視とアラートに適しています。 それは、単一監視ソリューションも提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+このチュートリアルでは、エラスティック プールとデータベースを監視するために、*Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* を設定して使用します。 このチュートリアルは[パフォーマンスの監視と管理を行うためのチュートリアル](sql-database-saas-tutorial-performance-monitoring.md)に基づいています。ここでは、*Log Analytics* を使用して、Azure ポータルで提供される監視とアラートの機能を強化する方法を示します。 Log Analytics は、数百のプールや数千のデータベースをサポートするため、大規模な監視とアラートに適しています。 それは、単一監視ソリューションも提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 05/23/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* WTP アプリがデプロイされている。 5 分未満でデプロイする方法については、[WTP SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
+* Wingtip SaaS アプリがデプロイされている。 5 分未満でデプロイするには、[Wingtip SaaS アプリケーションのデプロイと確認](sql-database-saas-tutorial.md)に関するページを参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理を行うためのチュートリアル](sql-database-saas-tutorial-performance-monitoring.md)を参照してください。
@@ -65,7 +64,7 @@ Wingtip Tickets のスクリプトとアプリケーションのソース コー
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Log Analytics と Azure SQL Analytics ソリューションをインストールして構成する
 
-Log Analytics は構成する必要がある独立したサービスです。 Log Analytics は、ログ データ、テレメトリ、およびメトリックをログ分析ワークスペース内に収集します。 ワークスペースは Azure の他のリソースと同じようにリソースであるため、作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありませんが、多くの場合は、そうすることが最も道理にかなっています。 WTP アプリの場合、これを行うと、リソース グループを削除するだけで、アプリケーションでワークスペースを簡単に削除できます。
+Log Analytics は構成する必要がある独立したサービスです。 Log Analytics は、ログ データ、テレメトリ、およびメトリックをログ分析ワークスペース内に収集します。 ワークスペースは Azure の他のリソースと同じようにリソースであるため、作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありませんが、多くの場合は、そうすることが最も道理にかなっています。 Wingtip SaaS アプリの場合、これを行うと、リソース グループを削除するだけで、アプリケーションでワークスペースを簡単に削除できます。
 
 1. **PowerShell ISE** で ...\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\*Demo-LogAnalytics.ps1* を開きます。
 1. **F5** キーを押して、スクリプトを実行します。
@@ -76,7 +75,7 @@ Log Analytics は構成する必要がある独立したサービスです。 Lo
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Log Analytics と SQL Analytics ソリューションを使用してプールとデータベースを監視する
 
 
-この演習では、Log Analytics と OMS ポータルを開いて、WTP データベースとプールで収集されるテレメトリを調べます。
+この演習では、Log Analytics と OMS ポータルを開き、データベースとプールで収集されるテレメトリを調べます。
 
 1. [Azure ポータル](https://portal.azure.com)に移動し、[その他のサービス] をクリックして Log Analytics を検索することで、Log Analytics を開きます。
 
@@ -134,7 +133,7 @@ Log Analytics for SQL Database は、ワークスペース内のデータ量に�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets Platform (WTP) アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* [Wingtip SaaS アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
 * [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)
 

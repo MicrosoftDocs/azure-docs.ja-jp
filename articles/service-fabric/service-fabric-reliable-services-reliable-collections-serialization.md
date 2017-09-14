@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 12af426a7392ca96f4a98df5da0cf8d16e58f897
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: c14794b71ce7340d9e90a56d781c712e247ded06
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -54,9 +54,9 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 
 ## <a name="custom-serialization"></a>カスタムのシリアル化
 
-カスタムのシリアライザーは通常、パフォーマンスを向上させたり、ネットワーク上とディスクのデータを暗号化したりするために使用します。 その主な理由は、型に関する情報をシリアル化する必要がある汎用シリアライザーに比べて、一般的にカスタム シリアライザーの方が効率性に優れているためです。 
+カスタムのシリアライザーは通常、パフォーマンスを向上させたり、ネットワーク上とディスクのデータを暗号化したりするために使用します。 その主な理由は、型に関する情報をシリアル化する必要がないため、汎用シリアライザーに比べて、一般的にカスタム シリアライザーの方が効率性に優れているためです。 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) を使用して、T 型用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
+[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
 
 ```C#
 public StatefulBackendService(StatefulServiceContext context)

@@ -3,7 +3,7 @@ title: "Azure API Management のユーザー プロファイル テンプレー�
 description: "Azure API Management で開発者ポータルの ユーザー プロファイル ページの内容をカスタマイズ方法について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
@@ -35,7 +37,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
   
-##  <a name="a-nameprofilea-profile"></a><a name="Profile"></a> プロファイル  
+##  <a name="Profile"></a> プロファイル  
  **プロファイル** テンプレートを使用して、開発者ポータルのユーザー プロファイル ページの[ユーザー プロファイル] セクションをカスタマイズできます。  
   
  ![ユーザー プロファイル ページ](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM ユーザー プロファイルページ")  
@@ -180,7 +182,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-namesubscriptionsa-subscriptions"></a><a name="Subscriptions"></a>サブスクリプション  
+##  <a name="Subscriptions"></a>サブスクリプション  
  **サブスクリプション** テンプレートを使用して、開発者ポータルのユーザー プロファイル ページの [サブスクリプション] セクションをカスタマイズできます。  
   
  ![ユーザー サブスクリプション ページ](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM ユーザー サブスクリプション ページ")  
@@ -401,7 +403,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-nameapplicationsa-applications"></a><a name="Applications"></a>アプリケーション  
+##  <a name="Applications"></a>アプリケーション  
  **アプリケーション** テンプレートを使用して、開発者ポータルのユーザー プロファイル ページの [アプリケーション] セクションをカスタマイズできます。  
   
  ![ユーザー アカウントの [アプリケーション] ページ](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM ユーザー アカウントの [アプリケーション] ページ")  
@@ -564,7 +566,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-nameupdateaccountinfoa-update-account-info"></a><a name="UpdateAccountInfo"></a> アカウント情報の更新  
+##  <a name="UpdateAccountInfo"></a> アカウント情報の更新  
  **アカウント情報の更新**テンプレートを使用して、開発者ポータルの **[アカウント情報の更新]** ページをカスタマイズできます。  
   
  ![開発者ポータル ユーザー アカウント情報ページ テンプレート](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM 開発者ポータル ユーザー アカウント情報ページ テンプレート")  
@@ -623,8 +625,3 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 ## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

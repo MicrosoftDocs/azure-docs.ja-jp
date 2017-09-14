@@ -1,6 +1,6 @@
 ---
-title: "App Service 環境の概要"
-description: "すべてのアプリを実行するためのセキュリティで保護され VNet に参加している専用のスケール ユニットを提供する、App Service 環境の機能について説明します。"
+title: "App Service Environment v1 の概要"
+description: "すべてのアプリを実行するためのセキュリティで保護され、VNet に参加している専用のスケール ユニットを提供する、App Service Environment v1 の機能について説明します。"
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -12,16 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
-ms.author: stefsch
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 91b1d6315a9414789b28442f3f19d14c2aed8f00
-ms.lasthandoff: 03/01/2017
-
+ms.date: 07/11/2017
+ms.author: ccompy
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 38cb79eb32bd61cdbfb6da91d50e6713d71a2b0d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="introduction-to-app-service-environment"></a>App Service 環境の概要
+# <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
+
+> [!NOTE]
+> この記事は、App Service Environment v1 に関するものです。  より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](../app-service/app-service-environment/intro.md)」を参照してください。
+> 
+
 ## <a name="overview"></a>概要
 App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、[Web Apps][WebApps]、[Mobile Apps][MobileApps]、[API Apps][APIApps] が含まれています。  
 
@@ -30,7 +35,7 @@ App Service 環境は、以下を必要とするアプリケーション ワー�
 * 高スケール
 * 分離およびセキュリティで保護されたネットワーク アクセス
 
-顧客は、複数の App Service 環境を&1; つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。  そのため、App Service 環境は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
+顧客は、複数の App Service 環境を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。  そのため、App Service 環境は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
 App Service 環境は、単一の顧客のアプリケーションだけを実行するために分離され、常に仮想ネットワークにデプロイされます。  顧客は、受信および送信アプリケーション ネットワーク トラフィックをきめ細かく制御できます。また、アプリケーションは、オンプレミスの企業リソースへの仮想ネットワーク経由のセキュリティで保護された高速接続を確立できます。
 
@@ -47,15 +52,15 @@ App Service 環境で実行されるアプリへのアクセスは、Web アプ�
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>専用のコンピューティング リソース
-App Service 環境内のすべてのコンピューティング リソースは、1 つのサブスクリプション専用です。App Service 環境は、1 つのアプリケーションだけが使用する最大&50; 個のコンピューティング リソースで構成できます。
+App Service 環境内のすべてのコンピューティング リソースは、1 つのサブスクリプション専用です。App Service 環境は、1 つのアプリケーションだけが使用する最大 50 個のコンピューティング リソースで構成できます。
 
-App Service 環境は、1 つのフロントエンド コンピューティング リソース プールと、1 ～&3; 個の worker コンピューティング リソース プールで構成されます。 
+App Service 環境は、1 つのフロントエンド コンピューティング リソース プールと、1 ～ 3 個の worker コンピューティング リソース プールで構成されます。 
 
 フロントエンド プールには、SSL ターミネーションと、App Service 環境内でのアプリ要求の自動負荷分散を担当するコンピューティング リソースが含まれます。 
 
-各ワーカー プールには、[App Service プラン][AppServicePlan]に割り当てられたコンピューティング リソースが含まれ、コンピューティング リソースには&1; つ以上の Azure App Service アプリが含まれます。  App Service 環境には、異なるワーカー プールを&3; つまで配置できるため、ワーカー プールごとに異なるコンピューティング リソースを柔軟に選択できます。  
+各ワーカー プールには、[App Service プラン][AppServicePlan]に割り当てられたコンピューティング リソースが含まれ、コンピューティング リソースには 1 つ以上の Azure App Service アプリが含まれます。  App Service 環境には、異なるワーカー プールを 3 つまで配置できるため、ワーカー プールごとに異なるコンピューティング リソースを柔軟に選択できます。  
 
-たとえば、これにより、開発アプリまたはテスト アプリ向けの App Service プランでは、性能の低いコンピューティング リソースを含むワーカー プールを&1; つ作成できます。  2 番目 (または&3; 番目) のワーカー プールでは、実稼働アプリを実行する App Service プラン向けにより性能の高いコンピューティング リソースを使用することができます。
+たとえば、これにより、開発アプリまたはテスト アプリ向けの App Service プランでは、性能の低いコンピューティング リソースを含むワーカー プールを 1 つ作成できます。  2 番目 (または 3 番目) のワーカー プールでは、実稼働アプリを実行する App Service プラン向けにより性能の高いコンピューティング リソースを使用することができます。
 
 フロントエンドとワーカー プールで使用可能なコンピューティング リソースの量の詳細については、[App Service Environment の構成方法][HowToConfigureanAppServiceEnvironment]に関するページを参照してください。  
 

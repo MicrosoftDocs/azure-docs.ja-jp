@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
 ms.openlocfilehash: cd09b7c5d45d07a3fbcc5d6f0c02400dcd36d61b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/02/2017
-
 
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理

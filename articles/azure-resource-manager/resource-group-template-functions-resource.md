@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 08/09/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 66c71906614e5d0c8e8531271444fc59a5cb779f
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 494ade55f21c19d9c68d5cc52756528401d9bb77
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
@@ -52,47 +51,6 @@ list 操作をサポートする任意の種類のリソースの値を返しま
 | resourceName または resourceIdentifier |あり |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
 
-### <a name="remarks"></a>解説
-
-**list** で始まるすべての操作は、テンプレート内で関数として使用できます。 使用可能な操作には、listKeys だけでなく、`list`、`listAdminKeys`、`listStatus` などの操作も含まれます。 どのリソースの種類にリスト操作が含まれているのかを判断するには、次のオプションを使用できます。
-
-* リソース プロバイダーの [REST API の操作](/rest/api/)に関するページを参照して、リスト操作を検索します。 たとえば、ストレージ アカウントには [listKeys 操作](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys)があります。
-* [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell コマンドレットを使用します。 次の例では、ストレージ アカウントのすべてのリスト操作が取得されます。
-
-  ```powershell
-  Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
-  ```
-* 次の Azure CLI コマンドと、JSON ユーティリティ [jq](http://stedolan.github.io/jq/download/) を使用して、リスト操作のみをフィルター処理します。
-
-  ```azurecli
-  azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains(\"list\"))"
-  ```
-
-[resourceId 関数](#resourceid)または `{providerNamespace}/{resourceType}/{resourceName}` の形式を使用してリソースを指定します。
-
-### <a name="examples"></a>例
-
-次の例は、outputs セクションでストレージ アカウントのプライマリ キーとセカンダリ キーを返す方法を示しています。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountId": {
-            "type": "string"
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "storageKeysOutput": {
-            "value": "[listKeys(parameters('storageAccountId'), '2016-01-01')]",
-            "type" : "object"
-        }
-    }
-}
-``` 
-
 ### <a name="return-value"></a>戻り値
 
 listKeys から返されるオブジェクトの形式は次のとおりです。
@@ -116,6 +74,50 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 
 他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。 
 
+### <a name="remarks"></a>解説
+
+**list** で始まるすべての操作は、テンプレート内で関数として使用できます。 使用可能な操作には、listKeys だけでなく、`list`、`listAdminKeys`、`listStatus` などの操作も含まれます。 ただし、要求本文の値が必要な **list** 操作は使用できません。 たとえば、[List Account SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) 操作には、*signedExpiry* など、要求本文のパラメーターが必要なので、テンプレート内では使用できません。
+
+どのリソースの種類にリスト操作が含まれているのかを判断するには、次のオプションを使用できます。
+
+* リソース プロバイダーの [REST API の操作](/rest/api/)に関するページを参照して、リスト操作を検索します。 たとえば、ストレージ アカウントには [listKeys 操作](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys)があります。
+* [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell コマンドレットを使用します。 次の例では、ストレージ アカウントのすべてのリスト操作が取得されます。
+
+  ```powershell
+  Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
+  ```
+* 次の Azure CLI コマンドを使って、リスト操作のみをフィルター処理します。
+
+  ```azurecli
+  az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
+  ```
+
+[resourceId 関数](#resourceid)または `{providerNamespace}/{resourceType}/{resourceName}` の形式を使用してリソースを指定します。
+
+
+### <a name="example"></a>例
+
+次の例は、outputs セクションでストレージ アカウントのプライマリ キーとセカンダリ キーを返す方法を示しています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountId": {
+            "type": "string"
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "storageKeysOutput": {
+            "value": "[listKeys(parameters('storageAccountId'), '2016-01-01')]",
+            "type" : "object"
+        }
+    }
+}
+``` 
+
 <a id="providers" />
 
 ## <a name="providers"></a>providers
@@ -129,24 +131,6 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
 | resourceType |なし |string |指定した名前空間内にあるリソースの種類。 |
-
-### <a name="examples"></a>例
-
-次の例は、provider 関数の使用方法を示しています。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "providerOutput": {
-            "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
-            "type" : "object"
-        }
-    }
-}
-```
 
 ### <a name="return-value"></a>戻り値
 
@@ -162,6 +146,46 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 
 戻り値の配列の順序は保証されません。
 
+### <a name="example"></a>例
+
+次の例は、provider 関数の使用方法を示しています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "providerOutput": {
+            "value": "[providers('Microsoft.Web', 'sites')]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+前の例では、次の形式のオブジェクトが返されます。
+
+```json
+{
+  "resourceType": "sites",
+  "locations": [
+    "South Central US",
+    "North Europe",
+    "West Europe",
+    "Southeast Asia",
+    ...
+  ],
+  "apiVersions": [
+    "2016-08-01",
+    "2016-03-01",
+    "2015-08-01-preview",
+    "2015-08-01",
+    ...
+  ]
+}
+```
+
 <a id="reference" />
 
 ## <a name="reference"></a>reference
@@ -173,8 +197,12 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
+| resourceName または resourceIdentifier |あり |string |名前またはリソースの一意の識別子。 |
 | apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+
+### <a name="return-value"></a>戻り値
+
+あらゆるリソースの種類で、reference 関数のさまざまなプロパティが返されます。 この関数は、定義済みの単一の形式を返しません。 あるリソースの種類のプロパティを確認するには、この例に示すように、outputs セクションでオブジェクトを返します。
 
 ### <a name="remarks"></a>解説
 
@@ -184,30 +212,24 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 
 ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
 
-### <a name="examples"></a>例
-
-次の例では、このテンプレートでデプロイされないが、同じリソース グループ内に存在するストレージ アカウントが参照されます。
+通常、**reference** 関数は、BLOB エンドポイント URI や完全修飾ドメイン名などのオブジェクトから特定の値を返すために使用します。
 
 ```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountName": {
-            "type": "string"
-        }
+"outputs": {
+    "BlobUri": {
+        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "type" : "string"
     },
-    "resources": [],
-    "outputs": {
-        "ExistingStorage": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
-            "type" : "object"
-        }
+    "FQDN": {
+        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
+        "type" : "string"
     }
 }
 ```
 
-または、同じテンプレート内のリソースをデプロイして参照することができます。
+### <a name="example"></a>例
+
+同じテンプレート内のリソースをデプロイして参照するには、次を使います。
 
 ```json
 {
@@ -242,24 +264,44 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 }
 ``` 
 
-通常、reference 関数は、BLOB エンドポイント URI や完全修飾ドメイン名などのオブジェクトから特定の値を返すために使用します。
+前の例では、次の形式のオブジェクトが返されます。
 
 ```json
-"outputs": {
-    "BlobUri": {
-        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-        "type" : "string"
-    },
-    "FQDN": {
-        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
-        "type" : "string"
-    }
+{
+   "creationTime": "2017-06-13T21:24:46.618364Z",
+   "primaryEndpoints": {
+     "blob": "https://examplestorage.blob.core.windows.net/",
+     "file": "https://examplestorage.file.core.windows.net/",
+     "queue": "https://examplestorage.queue.core.windows.net/",
+     "table": "https://examplestorage.table.core.windows.net/"
+   },
+   "primaryLocation": "southcentralus",
+   "provisioningState": "Succeeded",
+   "statusOfPrimary": "available",
+   "supportsHttpsTrafficOnly": false
 }
 ```
 
-### <a name="return-value"></a>戻り値
+次の例では、このテンプレートでデプロイされていないストレージ アカウントが参照されます。 このストレージ アカウントは既に同じリソース グループ内に存在します。
 
-あらゆるリソースの種類で、reference 関数のさまざまなプロパティが返されます。 この関数は、定義済みの単一の形式を返しません。 あるリソースの種類のプロパティを確認するには、この例に示すように、outputs セクションでオブジェクトを返します。
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountName": {
+            "type": "string"
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "ExistingStorage": {
+            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
+            "type" : "object"
+        }
+    }
+}
+```
 
 <a id="resourcegroup" />
 
@@ -268,7 +310,40 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 
 現在のリソース グループを表すオブジェクトを返します。 
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+返されるオブジェクトの形式は次のとおりです。
+
+```json
+{
+  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+  "name": "{resourceGroupName}",
+  "location": "{resourceGroupLocation}",
+  "tags": {
+  },
+  "properties": {
+    "provisioningState": "{status}"
+  }
+}
+```
+
+### <a name="remarks"></a>解説
+
+resourceGroup 関数の一般的な用途では、リソース グループと同じ場所にリソースを作成します。 次の例では、リソース グループの場所を使用して、Web サイトの場所を割り当てます。
+
+```json
+"resources": [
+   {
+      "apiVersion": "2016-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[parameters('siteName')]",
+      "location": "[resourceGroup().location]",
+      ...
+   }
+]
+```
+
+### <a name="example"></a>例
 
 次のテンプレートは、リソース グループのプロパティを返します。
 
@@ -286,33 +361,15 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 }
 ```
 
-resourceGroup 関数の一般的な用途では、リソース グループと同じ場所にリソースを作成します。 次の例では、リソース グループの場所を使用して、Web サイトの場所を割り当てます。
-
-```json
-"resources": [
-   {
-      "apiVersion": "2014-06-01",
-      "type": "Microsoft.Web/sites",
-      "name": "[parameters('siteName')]",
-      "location": "[resourceGroup().location]",
-      ...
-   }
-]
-```
-
-### <a name="return-value"></a>戻り値
-
-返されるオブジェクトの形式は次のとおりです。
+前の例では、次の形式のオブジェクトが返されます。
 
 ```json
 {
-  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
-  "name": "{resourceGroupName}",
-  "location": "{resourceGroupLocation}",
-  "tags": {
-  },
+  "id": "/subscriptions/{subscription-id}/resourceGroups/examplegroup",
+  "name": "examplegroup",
+  "location": "southcentralus",
   "properties": {
-    "provisioningState": "{status}"
+    "provisioningState": "Succeeded"
   }
 }
 ```
@@ -334,32 +391,43 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 | resourceName1 |はい |string |リソースの名前。 |
 | resourceName2 |なし |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
 
-次の例では、リソース グループ内にあるストレージ アカウントのリソース ID を返します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "resourceIdOutput": {
-            "value": "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]",
-            "type" : "string"
-        }
-    }
-}
-```
-
-次の例では、別のリソース グループの Web サイトと、別のリソース グループのデータベースのリソース ID を取得する方法を示します。
+識別子は、次の形式で返されます。
 
 ```json
-[resourceId('otherResourceGroup', 'Microsoft.Web/sites', parameters('siteName'))]
-[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用するときには、多くの場合にこの関数を使用する必要があります。 ストレージ アカウントや仮想ネットワークは、複数のリソース グループ間で使用される場合があるので、単一のリソース グループを削除するときにそれらを削除しないでください。 次の例は、外部のリソース グループのリソースを簡単に使用する方法を示しています。
+### <a name="remarks"></a>解説
+
+指定するパラメーター値は、リソースが現在のデプロイと同じサブスクリプションおよびリソース グループに含まれるかどうかによって異なります。
+
+同じサブスクリプションとリソース グループ内にあるストレージ アカウントのリソース ID を取得するには、次のようにします。
+
+```json
+"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
+```
+
+サブスクリプションは同じでもリソース グループが異なるストレージ アカウントのリソース ID を取得するには、次のようにします。
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+```
+
+サブスクリプションとリソース グループが異なるストレージ アカウントのリソース ID を取得するには、次のようにします。
+
+```json
+"[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+```
+
+異なるリソース グループ内のデータベースのリソース ID を取得するには、次のようにします。
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
+```
+
+代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用するときには、多くの場合にこの関数を使用する必要があります。 次の例は、外部のリソース グループのリソースを簡単に使用する方法を示しています。
 
 ```json
 {
@@ -404,13 +472,44 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 }
 ```
 
-### <a name="return-value"></a>戻り値
+### <a name="example"></a>例
 
-識別子は、次の形式で返されます。
+次の例では、リソース グループ内にあるストレージ アカウントのリソース ID を返します。
 
 ```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "sameRGOutput": {
+            "value": "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]",
+            "type" : "string"
+        },
+        "differentRGOutput": {
+            "value": "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]",
+            "type" : "string"
+        },
+        "differentSubOutput": {
+            "value": "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]",
+            "type" : "string"
+        },
+        "nestedResourceOutput": {
+            "value": "[resourceId('Microsoft.SQL/servers/databases', 'serverName', 'databaseName')]",
+            "type" : "string"
+        }
+    }
+}
 ```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | String | /subscriptions/{different-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 <a id="subscription" />
 
@@ -419,7 +518,20 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 現在のデプロイのサブスクリプションの詳細を返します。 
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+この関数は次の形式を返します。
+
+```json
+{
+    "id": "/subscriptions/{subscription-id}",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}",
+    "displayName": "{name-of-subscription}"
+}
+```
+
+### <a name="example"></a>例
 
 次の例は、outputs セクションで呼び出される subscription 関数を示しています。 
 
@@ -434,19 +546,6 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
             "type" : "object"
         }
     }
-}
-```
-
-### <a name="return-value"></a>戻り値
-
-この関数は次の形式を返します。
-
-```json
-{
-    "id": "/subscriptions/{subscription-id}",
-    "subscriptionId": "{subscription-id}",
-    "tenantId": "{tenant-id}",
-    "displayName": "{name-of-subscription}"
 }
 ```
 

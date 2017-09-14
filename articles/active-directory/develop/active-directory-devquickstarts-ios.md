@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 384f4bc285f62b102778118a92a912e73d241663
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -60,8 +60,8 @@ iOS のリダイレクト URI の形式は次のとおりです。
 <app-scheme>://<bundle-id>
 ```
 
-* **aap-scheme**: これは XCode プロジェクトに登録されています。 他のアプリケーションから呼び出す方法を示します。 XCode プロジェクトで、**Info.plist** > **URL types** > **URL ID** を参照すると確認できます。 まだ 1 つも構成していない場合は作成する必要があります。
-* **bundle-id**: XCode プロジェクトの設定の "**identity (ID)**" の下にある Bundle Identifier です。
+* **aap-scheme** - これは XCode プロジェクトに登録されています。 他のアプリケーションから呼び出す方法を示します。 これは、Info.plist、URL types、URL ID の順に探すと見つかります。 まだ 1 つも構成していない場合は作成する必要があります。
+* **bundle-id** : XCode プロジェクトの設定の "identity" の下にある Bundle Identifier です。
 
 この QuickStart コードの例は次のようになります。 ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 

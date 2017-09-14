@@ -5,21 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
+ms.date: 07/14/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 95c1eb534b4b51db18a2caf46f17a559243ea036
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 173353d67772c2549aa1b8ec9f2a471bd1c65677
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -35,11 +35,22 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **CLIENT_CERT_INSTALL_ERROR** | テナントへのクライアント証明書のインストールまたは関連付けに問題がある可能性があります。 [MFA NPS 拡張機能のトラブルシューティング](multi-factor-authentication-nps-extension.md#troubleshooting)の手順に従って、クライアント証明書に関する問題を調査します。 |
 | **ESTS_TOKEN_ERROR** | [MFA NPS 拡張機能のトラブルシューティング](multi-factor-authentication-nps-extension.md#troubleshooting)の手順に従って、クライアント証明書および ADAL トークンに関する問題を調査します。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS サーバーが、Azure MFA から応答を受信できません。 ファイアウォールが https://adnotifications.windowsazure.com との間で送受信されるトラフィックに対して双方向に開いていることを確認します |
-| **HTTP_CONNECT_ERROR** | NPS 拡張機能が実行されているサーバーで、https://adnotifications.windowsazure.com と https://login.windows.net/ にアクセスできることを確認します。 このサイトが読み込まれない場合は、そのサーバーで接続のトラブルシューティングを行います。 |
+| **HTTP_CONNECT_ERROR** | NPS 拡張機能が実行されているサーバーで、https://adnotifications.windowsazure.com と https://login.microsoftonline.com/ にアクセスできることを確認します。 このサイトが読み込まれない場合は、そのサーバーで接続のトラブルシューティングを行います。 |
 | **REGISTRY_CONFIG_ERROR** | レジストリにアプリケーションに対するキーが見つかりません。原因としては、[PowerShell スクリプト](multi-factor-authentication-nps-extension.md#install-the-nps-extension)がインストール後に実行されていないことが考えられます。 見つからないキーは、エラー メッセージに示されています。 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa に、そのキーがあることを確認してください。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 要求に、必須の Radius userName\Identifier 属性がありません。NPS が RADIUS 要求を受信していることを確認します | このエラーは、通常、インストールに問題があることを示します。 NPS 拡張機能は、RADIUS 要求を受信できる NPS サーバーにインストールする必要があります。 RDG、RRAS などのサービスの依存関係としてインストールされた NPS サーバーは、RADIUS 要求を受信しません。 このようにインストールされ、エラーが発生した場合、NPS 拡張機能は、認証要求から詳細情報を読み取ることができないため動作しません。 |
-| **REQUEST_MISSING_CODE** | SMS または OATH トークンがセカンダリ認証方法として使用されている場合、NPS サーバーと NAS サーバーの間のパスワード暗号化プロトコルは PAP である必要があります。 現在 NPS 拡張機能では、その他のパスワード暗号化方法はサポートされていません。|
+| **REQUEST_MISSING_CODE** | NPS サーバーと NAS サーバーの間のパスワード暗号化プロトコルが 2 つ目として使用している認証方法に対応していることを確認します。 **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。 **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。 |
 | **USERNAME_CANONICALIZATION_ERROR** | ユーザーがオンプレミスの Active Directory インスタンスに存在すること、また、ディレクトリへのアクセス許可が NPS サービスに付与されていることを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+
+
+   
+
+### <a name="alternate-login-id-errors"></a>代替ログイン ID エラー
+
+| エラー コード | エラー メッセージ | トラブルシューティングの手順 |
+| ---------- | ------------- | --------------------- |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー: userObjectSid の検索に失敗しました | ユーザーがオンプレミスの Active Directory インスタンスに存在することを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
 
 
 ## <a name="errors-your-users-may-encounter"></a>ユーザー側で発生する可能性があるエラー

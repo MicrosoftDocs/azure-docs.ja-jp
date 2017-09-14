@@ -4,7 +4,7 @@ description: "Azure Media Services を使用した開発用に環境をセット
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 0258a633-8b42-4853-acc7-3b5162d1d8cd
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 07/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e16620b457e82260b27fe484abee715bb4b3aa24
-ms.openlocfilehash: fe69fc0ace47967e1ddf083e47dd25beb8d91d84
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f992ec4ff2b36208f740320a133b5eece47919bb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Media Services 開発環境の設定
-
 
 以下の手順は、Azure Media Services で開発を行うために必要な前提条件を説明したものです。
 
@@ -40,20 +40,12 @@ REST 開発環境を設定するには、[こちら](media-services-rest-how-to-
 
 ## <a name="connect-programmatically"></a>プログラムによる接続
 
-.NET を使用して Azure Media Services に接続するには、[こちら](media-services-dotnet-connect-programmatically.md)のトピックを参照してください。  
-
-REST を使用して Azure Media Services に接続するには、[こちら](media-services-rest-connect-programmatically.md)のトピックを参照してください。  
-
+Azure Media Services API に接続するには、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。  
 
 ## <a name="next-steps-azure-media-services-learning-paths"></a>次のステップ: Azure Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -2,7 +2,7 @@
 title: "Azure セキュリティのドキュメント - チュートリアル | Microsoft Docs"
 description: "クラウド内でのサービスやデータのデプロイの要件を満たすように Azure サービスのセキュリティ オプションをカスタマイズする方法について説明します。"
 services: security
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

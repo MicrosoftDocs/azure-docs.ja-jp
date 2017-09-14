@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/07/2017
 ms.author: sethm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: 297c01ec31b584b354fbd751a9c3c86a379ac63e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/21/2017
-
 
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する

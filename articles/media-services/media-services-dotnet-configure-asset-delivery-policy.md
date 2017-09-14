@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Media Services .NET SDK を利用
 services: media-services
 documentationcenter: 
 author: Mingfeiy
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
 ms.service: media-services
@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/13/2017
 ms.author: juliako;mingfeiy
-translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 0649f36f55696d2c9a9d31a9f87bc3b34373f273
-ms.lasthandoff: 01/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 93a3bba0fbc635bd04063168796eac0d89fba87c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>.NET SDK を使用して資産配信ポリシーを構成する
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ## <a name="overview"></a>概要
-Media Services で暗号化した資産を配信する場合、コンテンツ配信ワークフローの手順の&1; つとして、資産の配信ポリシーを構成します。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
+Media Services で暗号化した資産を配信する場合、コンテンツ配信ワークフローの手順の 1 つとして、資産の配信ポリシーを構成します。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。
 
@@ -35,7 +35,7 @@ Media Services で暗号化した資産を配信する場合、コンテンツ�
 >また、ダイナミック パッケージと動的暗号化を使用するには、資産に一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。
 
 
-1 つの資産にはさまざまなポリシーを適用できます。 たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する&1; つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
+1 つの資産にはさまざまなポリシーを適用できます。 たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
 
 ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があります。 資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。 たとえば、Advanced Encryption Standard (AES) エンベロープ暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を **DynamicEnvelopeEncryption**に設定します。 ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を **NoDynamicEncryption**に設定します。 これらのポリシーの種類を構成する例を次に示します。
 
@@ -59,7 +59,7 @@ MPEG DASH
 ## <a name="considerations"></a>考慮事項
 * 資産に対して OnDemand (ストリーミング) ロケーターが存在するときは、資産に関連付けられている AssetDeliveryPolicy を削除することはできません。 ポリシーを削除する前に、資産からポリシーを削除することをお勧めします。
 * 資産配信ポリシーが設定されていない場合、ストレージ暗号化資産のストリーミング ロケーターは作成できません。  資産がストレージ暗号化資産でない場合はロケーターを作成でき、資産配信ポリシーのない暗号化されていない資産がストリーミングされます。
-* 1 つの資産に複数の資産配信ポリシーを関連付けることができますが、特定の AssetDeliveryProtocol を処理する方法は&1; つだけ指定できます。  つまり、AssetDeliveryProtocol.SmoothStreaming プロトコルを指定する&2; つの配信ポリシーをリンクしようとすると、エラーが発生します。これは、クライアントが Smooth Streaming 要求を行ったときにどのポリシーを適用するか、システムがわからないためです。
+* 1 つの資産に複数の資産配信ポリシーを関連付けることができますが、特定の AssetDeliveryProtocol を処理する方法は 1 つだけ指定できます。  つまり、AssetDeliveryProtocol.SmoothStreaming プロトコルを指定する 2 つの配信ポリシーをリンクしようとすると、エラーが発生します。これは、クライアントが Smooth Streaming 要求を行ったときにどのポリシーを適用するか、システムがわからないためです。
 * 既存のストリーミング ロケーターを持つ資産が存在する場合、その資産に新しいポリシーをリンクすることはできません (資産から既存のポリシーのリンクを解除するか、資産に関連付けられている配信ポリシーを更新できます)。  先にストリーミング ロケーターを削除し、ポリシーを調整した後、ストリーミング ロケーターを再作成する必要があります。  ストリーミング ロケーターを再作成するときに同じ locatorId を使用できますが、コンテンツが最初の CDN またはダウンストリーム CDN によってキャッシュされる可能性があるため、クライアントで問題が発生しないことを確認する必要があります。
 
 ## <a name="clear-asset-delivery-policy"></a>資産の配信ポリシーを解除する
@@ -80,7 +80,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption 資産の配信ポリシー
 
-次の **CreateAssetDeliveryPolicy** メソッドでは、動的で一般的な暗号化 (**DynamicCommonEncryption**) を Smooth Streaming プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。 メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**CommonEncryption** タイプのコンテンツ キー。詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md#common_contentkey)に関するページを参照) の&2; つのパラメーターがあります。
+次の **CreateAssetDeliveryPolicy** メソッドでは、動的で一般的な暗号化 (**DynamicCommonEncryption**) を Smooth Streaming プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。 メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**CommonEncryption** タイプのコンテンツ キー。詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md#common_contentkey)に関するページを参照) の 2 つのパラメーターがあります。
 
 AssetDeliveryPolicy を作成する際に指定できる値については、 [AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。
 
@@ -154,7 +154,7 @@ Azure Media Services では、Widevine による暗号化を追加すること�
 > 
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption 資産の配信ポリシー
-次の **CreateAssetDeliveryPolicy** メソッドでは、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を Smooth Streaming、HLS、DASH の各プロトコルに適用するように構成された **AssetDeliveryPolicy** を作成します (指定していないプロトコルはストリーミングからブロックされます)。 メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**EnvelopeEncryption** タイプのコンテンツ キーの&2; つのパラメーターがあります。詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md#envelope_contentkey)に関するページを参照してください)。
+次の **CreateAssetDeliveryPolicy** メソッドでは、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を Smooth Streaming、HLS、DASH の各プロトコルに適用するように構成された **AssetDeliveryPolicy** を作成します (指定していないプロトコルはストリーミングからブロックされます)。 メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**EnvelopeEncryption** タイプのコンテンツ キーの 2 つのパラメーターがあります。詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md#envelope_contentkey)に関するページを参照してください)。
 
 AssetDeliveryPolicy を作成する際に指定できる値については、 [AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。   
 
@@ -196,11 +196,12 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     }
 
 
-## <a name="a-idtypesatypes-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
-### <a name="a-idassetdeliveryprotocolaassetdeliveryprotocol"></a><a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
-    /// <summary>
-    /// Delivery protocol for an asset delivery policy.
-    /// </summary>
+## <a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
+
+### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
+
+次の enum は、資産配信プロトコルに対して設定できる値を表しています。
+
     [Flags]
     public enum AssetDeliveryProtocol
     {
@@ -224,16 +225,18 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
         /// </summary>
         HLS = 0x4,
 
+        ProgressiveDownload = 0x10, 
+ 
         /// <summary>
         /// Include all protocols.
         /// </summary>
         All = 0xFFFF
     }
 
-### <a name="a-idassetdeliverypolicytypeaassetdeliverypolicytype"></a><a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
-    /// <summary>
-    /// Policy type for dynamic encryption of assets.
-    /// </summary>
+### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
+
+次の enum は、資産配信ポリシーに対して設定できる値を表しています。  
+
     public enum AssetDeliveryPolicyType
     {
         /// <summary>
@@ -261,27 +264,30 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
         /// Apply Dynamic Common encryption.
         /// </summary>
         DynamicCommonEncryption
-    }
+        }
 
-### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
-    /// <summary>
-    /// Delivery method of the content key to the client.
-    /// </summary>
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+
+次の enum は、クライアントへのコンテンツ キーの配信方法を構成するときに使用できる値を表しています。
+    
     public enum ContentKeyDeliveryType
     {
         /// <summary>
         /// None.
-        /// </summary>
+        ///
+        </summary>
         None = 0,
 
         /// <summary>
         /// Use PlayReady License acquistion protocol
-        /// </summary>
+        ///
+        </summary>
         PlayReadyLicense = 1,
 
         /// <summary>
         /// Use MPEG Baseline HTTP key protocol.
-        /// </summary>
+        ///
+        </summary>
         BaselineHttp = 2,
 
         /// <summary>
@@ -292,10 +298,10 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
 
     }
 
-### <a name="a-idassetdeliverypolicyconfigurationkeyaassetdeliverypolicyconfigurationkey"></a><a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
-    /// <summary>
-    /// Keys used to get specific configuration for an asset delivery policy.
-    /// </summary>
+### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
+
+次の enum は、資産配信ポリシーの特定の構成を取得するためのキーを構成するときに設定できる値を表しています。
+
     public enum AssetDeliveryPolicyConfigurationKey
     {
         /// <summary>

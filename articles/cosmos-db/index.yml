@@ -6,94 +6,94 @@ metadata:
   title: Azure Cosmos DB のドキュメント - チュートリアル、API リファレンス
   description: Azure Cosmos DB を使用して、グローバルに分散されたマルチモデル データベースを構築する方法について説明します。 チュートリアルでは、ドキュメント、キー/値、グラフ データベースを作成して照会する方法について説明します。
   services: cosmos-db
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/28/2017
+  ms.date: 07/24/2017
   ms.author: carolz
 abstract:
   description: Azure Cosmos DB は、グローバルな分散データベース サービスで、包括的な SLA により、任意の数の地理的リージョンでスループットとストレージを柔軟かつ個別にスケーリングできるよう設計されています。  Cosmos DB では、人気のある一連の API とプログラミング モデルを使用して、ドキュメント、キー/値、またはグラフ データベースを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Cosmos DB の使用方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 'Azure Cosmos DB といずれかのマルチモデル API を使用して、グローバル分散データベースを作成する方法の詳細:'
-  - type: table
-    style: dataMatrix
-    columns:
-      - image:
-          src: media/index/logo_net.svg
-      - image:
-          src: media/index/logo_java.svg
-      - image:
-          src: media/index/logo_nodejs.svg
-      - image:
-          src: media/index/logo_python.svg
-      - image:
-          src: media/index/logo_gremlin.svg
-    rows:
-      - title: DocumentDB API
-        values:
-        - href: /azure/cosmos-db/create-documentdb-dotnet
-        - href: /azure/cosmos-db/create-documentdb-java
-        - href: /azure/cosmos-db/create-documentdb-nodejs
-        - href: /azure/cosmos-db/create-documentdb-python
-        - href:
-      - title: MongoDB API
-        values:
-          - href: /azure/cosmos-db/create-mongodb-dotnet
-          - href: /azure/cosmos-db/create-mongodb-java
-          - href: /azure/cosmos-db/create-mongodb-nodejs
-          - href: 
-          - href: 
-      - title: Graph API
-        values:
-          - href: /azure/cosmos-db/create-graph-dotnet
-          - href: /azure/cosmos-db/create-graph-java
-          - href: /azure/cosmos-db/create-graph-nodejs
-          - href:
-          - href: /azure/cosmos-db/create-graph-gremlin-console
-      - title: テーブル API
-        values:
-          - href: /azure/cosmos-db/create-table-dotnet
-          - href:
-          - href:
-          - href:
-          - href:
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: 'Azure Cosmos DB を使用したアプリの開発方法の詳細&#58;'
-  - type: list
-    style: ordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: 'Cosmos DB でアプリを開発する&#58; <a href="/azure/cosmos-db/tutorial-develop-documentdb-dotnet">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a>'
-    - html: 'Cosmos DB にデータをインポートする&#58; <a href="documentdb-import-data">DocumentDB</a> | <a href="documentdb-mongodb-migrate">MongoDB</a>'
-    - html: 'Cosmos DB でデータのクエリを実行する&#58; <a href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>'
-    - html: 'Cosmos DB でのグローバル データベース レプリケーション&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>'
-    - html: <a href="local-emulator">エミュレーターを使用してアプリケーションをローカルに開発する</a>
-- title: サンプル
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Azure Cosmos DB といずれかのマルチモデル API を使用して、グローバル分散データベースを作成する方法の詳細:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_net.svg
+          - image:
+              src: media/index/logo_java.svg
+          - image:
+              src: media/index/logo_nodejs.svg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_gremlin.svg
+        rows:
+          - title: DocumentDB API
+            values:
+              - href: /azure/cosmos-db/create-documentdb-dotnet
+              - href: /azure/cosmos-db/create-documentdb-java
+              - href: /azure/cosmos-db/create-documentdb-nodejs
+              - href: /azure/cosmos-db/create-documentdb-python
+              - href: null
+          - title: MongoDB API
+            values:
+              - href: /azure/cosmos-db/create-mongodb-dotnet
+              - href: /azure/cosmos-db/create-mongodb-java
+              - href: /azure/cosmos-db/create-mongodb-nodejs
+              - href: null
+              - href: null
+          - title: Graph API
+            values:
+              - href: /azure/cosmos-db/create-graph-dotnet
+              - href: /azure/cosmos-db/create-graph-java
+              - href: /azure/cosmos-db/create-graph-nodejs
+              - href: null
+              - href: /azure/cosmos-db/create-graph-gremlin-console
+          - title: テーブル API
+            values:
+              - href: /azure/cosmos-db/create-table-dotnet
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/cosmos-db/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/cosmos-db/powershell-samples">Azure PowerShell</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Azure Cosmos DB を使用したアプリの開発方法の詳細&#58;'
+      - type: list
+        style: ordered
+        items:
+          - html: 'Cosmos DB でアプリを開発する&#58; <a href="/azure/cosmos-db/tutorial-develop-documentdb-dotnet">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a>'
+          - html: 'Cosmos DB にデータをインポートする&#58; <a href="import-data">DocumentDB</a> | <a href="mongodb-migrate">MongoDB</a>'
+          - html: 'Cosmos DB でデータのクエリを実行する&#58; <a href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>'
+          - html: 'Cosmos DB でのグローバル データベース レプリケーション&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>'
+          - html: <a href="local-emulator">エミュレーターを使用してアプリケーションをローカルに開発する</a>
+  - title: サンプル
     items:
-    - title: DocumentDB API
-      html: '<p><a href="/rest/api/documentdb/">REST ()</a></p><p><a href="https://aka.ms/acdbnetref">.NET</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a href="https://aka.ms/acdbnoderef">Node.JS</a></p><p><a href="https://aka.ms/acdbjavaref">Java</a></p><p><a href="https://aka.ms/acdbpythonref">Python</a></p><p><a href="documentdb-sql-query-reference.md">SQL</a></p>'
-    - title: MongoDB API
-      html: '<p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.JS</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>'
-    - title: テーブル API
-      html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST ()</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p>
-    - title: Gremlin API
-      html: '<p><a href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>'
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/cosmos-db/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/cosmos-db/powershell-samples">Azure PowerShell</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: DocumentDB API
+            html: '<p><a href="/rest/api/documentdb/">REST ()</a></p><p><a href="https://aka.ms/acdbnetref">.NET</a></p><p><a href="documentdb-sdk-dotnet-changefeed">.NET Change Feed</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a href="https://aka.ms/acdbnoderef">Node.JS</a></p><p><a href="https://aka.ms/acdbjavaref">Java</a></p><p><a href="https://aka.ms/acdbpythonref">Python</a></p><p><a href="/rest/api/documentdbresourceprovider/">REST リソース プロバイダー</a></p><p><a href="documentdb-sql-query-reference">SQL</a></p>'
+          - title: MongoDB API
+            html: '<p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.JS</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>'
+          - title: テーブル API
+            html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST ()</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p>
+          - title: Gremlin API
+            html: '<p><a href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>'

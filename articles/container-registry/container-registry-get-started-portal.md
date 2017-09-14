@@ -17,19 +17,18 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e74c5428f0e31d9d3cf06b85aa8cefde868e9d67
-ms.lasthandoff: 03/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7fbbb56d775ee96c9a44363a4e41d4fc3c630582
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>Azure Portal を使用したプライベート Docker コンテナー レジストリの作成
-Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md)を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md)または [Azure PowerShell](container-registry-get-started-powershell.md) を使用して行うことができるほか、Container Registry の [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
 
 背景と概念については、[概要](container-registry-intro.md)に関するページを参照してください。
-
-
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 1. [Azure Portal](https://portal.azure.com) で、**[+新規]** をクリックします。
@@ -53,7 +52,7 @@ Azure Portal を使用して、コンテナー レジストリを作成し、そ
       > Container Registr では、管理者ユーザー アカウントによるアクセス権の提供だけでなく、Azure Active Directory サービス プリンシパルによる認証もサポートしています。 詳細と考慮事項については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
       >
 
-    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 現在、Premium Storage はサポートされていません。
+    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/common/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 現在、Premium Storage はサポートされていません。
 
 ## <a name="manage-registry-settings"></a>レジストリ設定の管理
 レジストリを作成すると、ポータルの **[Container Registries (コンテナー レジストリ)]** ブレードからレジストリ設定を検索できます。 たとえば、レジストリにログインするための設定が必要な場合や、管理者ユーザーを有効または無効にすることが必要な場合があります。

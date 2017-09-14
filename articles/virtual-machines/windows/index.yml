@@ -4,9 +4,9 @@ title: Windows 仮想マシンのドキュメント
 metadata:
   document_id: 1d98d530-28c7-635f-d41b-8da3ae02970c
   title: Azure Windows 仮想マシンのドキュメント - チュートリアル、API リファレンス
-  meta.description: Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.
+  meta.description: 'Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.'
   services: virtual-machines\windows
-  author: apexprodleads
+  author: czeumault
   manager: carolz
   ms.service: virtual-machines-windows
   ms.tgt_pltfrm: na
@@ -18,88 +18,90 @@ abstract:
   description: Azure Windows 仮想マシンでは、Windows Server を使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Windows VM の作成、構成、管理、スケーリングを行う方法を確認してください。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/create-windows-server-virtual-machine.png
-      width: 250  
+      src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/create-windows-server-virtual-machine.png'
+      width: 250
     title: 'Windows Server 仮想マシンを作成する。 (3:58)'
-    href: https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/
+    href: 'https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 'Learn how to deploy an IIS web-server within a Virtual Machine running Windows Server 2016:'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Learn how to deploy, manage, and monitor Windows VMs on Azure
-  - type: list
-    style: ordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">Create and manage Windows VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">Create and manage VM disks</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">Automate VM configuration</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">Create custom VM images</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">Create highly available VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">Create a VM scale set</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">Load balance VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">Manage VMs with virtual networks</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">Backup VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Monitor VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Manage security on VMs</a>
-- title: 無料の Pluralsight ビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - type: paragraph
+        text: Windows Server 2016 を実行している仮想マシン内で IIS Web サーバーをデプロイする方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/portal.svg'
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/cli.svg'
+            text: Azure CLI
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Managing Infrastructure</a></p>
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png
-        href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with Virtual Machines</a></p>
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png
-        href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with IaaS Monitoring</a></p>
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png
-        href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: サンプル
-  items:
-  - type: paragraph
-    text: Deploy your first application to Azure.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Azure で Windows VM のデプロイ、管理、スケーリングを行う方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">Windows VM の作成と管理</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">VM ディスクの作成と管理</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">VM 構成の自動化</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">カスタム VM イメージを作成する</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">高可用性 VM の作成</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">VM スケール セットの作成</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">VM の負荷分散</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">仮想ネットワークを使用した VM の管理</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">VM のバックアップ</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">VM の監視</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">VM のセキュリティの管理</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Visual Studio を使用した継続的インテグレーション パイプラインの作成</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">SSL による Web サーバーのセキュリティ保護</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
     items:
-    - html: <a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a>
-    - html: <a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">インフラストラクチャの管理</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png'
+              href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Virtual Machines の概要</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png'
+              href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">IaaS 監視の概要</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png'
+              href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+  - title: サンプル
     items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/vm">Azure CLI</a></p>
-    - title: 言語
-      html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node​.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/compute">Compute REST API Reference</a></p>
+      - type: paragraph
+        text: 初めてのアプリケーションを Azure にデプロイします。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a>
+          - html: <a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/vm">Azure CLI</a></p>
+          - title: 言語
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.JS</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST ()
+            html: <p><a href="/rest/api/compute">Compute REST API リファレンス</a></p>

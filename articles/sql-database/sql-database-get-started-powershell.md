@@ -13,7 +13,7 @@ ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 04/17/2017
 ms.author: carlrab
 ms.translationtype: Human Translation

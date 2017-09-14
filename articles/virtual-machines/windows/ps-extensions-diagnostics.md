@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0a4c7df2ef385b8bdec467859af64fc243241d77
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 9d3b4abdd395806b1a53d4f23d45ba8b449978a9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -52,7 +53,7 @@ VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtens
 
     Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-コマンドレットから返される *PublicSettings*には、Base64 でエンコードされた形式の XML 構成が含まれます。 XML を読み取るには、デコードする必要があります。
+コマンドレットから返される *PublicSettings* には診断構成が含まれます。 サポートされている構成は WadCfg と xmlCfg の 2 種類です。 WadCfg は JSON 構成で、xmlCfg は Base64 でエンコードされた形式の XML 構成です。 XML を読み取るには、デコードする必要があります。
 
     $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg

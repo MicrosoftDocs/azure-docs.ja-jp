@@ -1,8 +1,8 @@
 ---
 title: "Azure Portal での手動または自動によるインスタンス数のスケール変更 | Microsoft Docs"
 description: "Azure のサービスのスケールを変更する方法について説明します。"
-author: rboucher
-manager: carmonm
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
-ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.date: 06/06/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d171538ea57839eccddcc74ca099a39aee34ea10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>手動または自動によるインスタンス数のスケール変更
@@ -27,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 
 インスタンス数に基づいたスケール変更を行う前に、スケール変更は、インスタンス数に加えて **価格レベル** の影響を受けることを考慮する必要があります。 価格レベルに応じてコアとメモリの数も異なるため、インスタンス数が同じでもパフォーマンスが向上することがあります (これが "*スケールアップ*" または "*スケールダウン*" です)。 この記事では、特に、"*スケールイン*" と "*スケールアウト*" について説明します。
 
-ポータルでスケール変更することも、[REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して手動または自動でスケールを調整することもできます。
+ポータルでスケール変更することも、[REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用して手動または自動でスケールを調整することもできます。
 
 > [!NOTE]
 > この記事では、ポータル ([http://portal.azure.com](http://portal.azure.com)) で自動スケール設定を作成する方法について説明します。 このポータルで作成した自動スケール設定は、クラシック ポータル ([http://manage.windowsazure.com](http://manage.windowsazure.com)) では編集できません。

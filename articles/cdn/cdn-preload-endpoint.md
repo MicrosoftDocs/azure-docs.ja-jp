@@ -3,7 +3,7 @@ title: "Azure CDN エンドポイント上のアセットを事前に読み込�
 description: "Azure CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
 services: cdn
 documentationcenter: 
-author: zhangmanling
+author: smcevoy
 manager: erikre
 editor: 
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 242c3a6bf656da9b029a780e8b80667405b7b92f
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -52,7 +53,7 @@ ms.lasthandoff: 03/04/2017
    > 
    > パスは、次の[正規表現](https://msdn.microsoft.com/library/az24scfc.aspx)に準拠する相対 URL にする必要があります。  
    > >1 つのファイルの読み込み: `@"^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$"`  
-   > >クエリ文字列を使用した&1; つのファイルの読み込み: `@"^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$";`  
+   > >クエリ文字列を使用した 1 つのファイルの読み込み: `@"^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$";`  
    > 
    > 資産ごとに独自のパスが必要です。  資産を事前に読み込むためのワイルドカード機能はありません。
    > 
@@ -64,7 +65,7 @@ ms.lasthandoff: 03/04/2017
     ![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-button.png)
 
 > [!NOTE]
-> 読み込み要求は、CDN プロファイルごとに 1 分あたり 10 件に制限されています。
+> 読み込み要求は、CDN プロファイルごとに 1 分あたり 10 件に制限されています。 1 回の要求ごとに 50 パスが許可されます。 各パスの、パスの長さの上限値は 1024 文字です。
 > 
 > 
 

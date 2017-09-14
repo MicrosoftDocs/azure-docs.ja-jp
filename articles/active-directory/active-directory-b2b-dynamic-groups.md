@@ -13,13 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 05/04/2017
-ms.author: sasubram
+ms.date: 06/27/2017
+ms.author: curtand
+ms.reviewer: sasubram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: a694d01281cfdc4559f779f18b92d0412d59cf45
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 5818c41610c8c5df89abcb0dcd058bcbe9579ce7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.lasthandoff: 05/05/2017
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 
 ## <a name="what-are-dynamic-groups"></a>動的グループとは
-Azure Active Directory (Azure AD) のセキュリティ グループ メンバーシップの動的な構成は、[Azure Portal](https://portal.azure.com) で利用できます。 管理者は、ユーザー属性 (userType、部門、国など) に基づいて、Azure Active Directory で作成されたグループのメンバーを設定するためのルールを指定できます。 このルールにより、メンバーは属性の変化に基づいて自動的にセキュリティ グループに追加されたり、セキュリティ グループから削除されたりします。 これらのグループを使用すると、アプリケーションやクラウド リソース (SharePoint サイトやドキュメントなど) へのアクセスを付与したり、メンバーにライセンスを割り当てたりすることができます。 動的なグループの詳細については、「[Azure Active Directory の専用グループ](active-directory-accessmanagement-dedicated-groups.md)」を参照してください。
+Azure Active Directory (Azure AD) のセキュリティ グループ メンバーシップの動的な構成は、[Azure Portal](https://portal.azure.com) で利用できます。 管理者は、ユーザー属性 (userType、部門、国など) に基づいて、Azure Active Directory で作成されたグループのメンバーを設定するためのルールを指定できます。 メンバーを属性に基づいて自動的にセキュリティ グループに追加したり、セキュリティ グループから削除したりすることができます。 これらのグループを使用すると、アプリケーションやクラウド リソース (SharePoint サイト、ドキュメント) へのアクセスを付与したり、メンバーにライセンスを割り当てたりすることができます。 動的なグループの詳細については、「[Azure Active Directory の専用グループ](active-directory-accessmanagement-dedicated-groups.md)」を参照してください。
 
-AAD Premium P1 または P2 サブスクリプションでは、Azure Portal で Azure Active Directory グループに対してより複雑な属性ベースの動的メンバーシップを利用できる高度なルールを作成できるようになりました。 高度なルールの作成の詳細については、「[属性を使用して Azure Active Directory のグループ メンバーシップの高度なルールを作成する](active-directory-groups-dynamic-membership-azure-portal.md)」を参照してください。
+動的グループを作成および使用するには、適切な [Azure AD Premium P1 または P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。 詳細については「[Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する](active-directory-groups-dynamic-membership-azure-portal.md)」の記事を参照してください。
 
 ## <a name="what-are-the-built-in-dynamic-groups"></a>組み込みの動的グループとは
 **[すべてのユーザー]** 動的グループを使用すると、テナント管理者は、テナントのすべてのユーザーを含むグループをワンクリックで作成できます。 既定では、**[すべてのユーザー]** グループには、メンバーとゲストを含む、ディレクトリ内のすべてのユーザーが含まれます。
@@ -37,12 +38,13 @@ AAD Premium P1 または P2 サブスクリプションでは、Azure Portal で
 
 ![組み込みグループ](media/active-directory-b2b-dynamic-groups/built-in-groups.png)
 
-[すべてのユーザー] 動的グループを強化できます。既定では、**[すべてのユーザー]** グループには B2B コラボレーション (ゲスト) ユーザーも含まれます。 ゲスト ユーザーを削除して、**[すべてのユーザー]** グループのセキュリティを強化する場合、操作は簡単です。**[すべてのユーザー]** グループの属性ベースのルールを変更するだけです。 次の図は、ゲストを除外するように変更された **[すべてのユーザー]** グループを示しています。
+## <a name="hardening-the-all-users-dynamic-group"></a>[すべてのユーザー] 動的グループの強化
+既定では、**[すべてのユーザー]** グループには B2B コラボレーション (ゲスト) ユーザーも含まれます。 ゲスト ユーザーを削除するルールを使用して、**[すべてのユーザー]** グループをさらに保護することができます。 次の図は、ゲストを除外するように変更された **[すべてのユーザー]** グループを示しています。
 
 ![すべてのユーザー グループを有効にする](media/active-directory-b2b-dynamic-groups/enable-all-users-group.png)
 
-ゲスト ユーザーのみが含まれている新しい動的グループを作成すると便利な場合もあります。 このようなグループは、ポリシー (条件付きアクセス ポリシーなど) でゲスト ユーザーを対象にする場合に非常に便利です。
-次の図は、そのようなグループがどのようなものかを示しています。
+ゲスト ユーザーにポリシー (Azure AD の条件付きアクセス ポリシーなど) を適用できるように、ゲスト ユーザーのみが含まれる新しい動的グループを作成すると便利な場合もあります。
+グループは次のようになります。
 
 ![ゲスト ユーザーを除外する](media/active-directory-b2b-dynamic-groups/exclude-guest-users.png)
 

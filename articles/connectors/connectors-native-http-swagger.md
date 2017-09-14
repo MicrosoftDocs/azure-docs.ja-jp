@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: a881336bcb2384aaa57a75483c0e6fcd97096905
-ms.lasthandoff: 04/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger アクションの概要
@@ -56,7 +56,7 @@ HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](
 
 Azure Storage で Swagger ドキュメントを作成、構成し、格納する手順を次に示します。
 
-1. [Azure BLOB ストレージでストレージ アカウントを作成します](../storage/storage-create-storage-account.md)  この手順を実行するには、アクセス許可を **[パブリック アクセス]** に設定します。
+1. [Azure BLOB ストレージでストレージ アカウントを作成します](../storage/common/storage-create-storage-account.md)  この手順を実行するには、アクセス許可を **[パブリック アクセス]** に設定します。
 
 2. BLOB で CORS を有効にします。 
 

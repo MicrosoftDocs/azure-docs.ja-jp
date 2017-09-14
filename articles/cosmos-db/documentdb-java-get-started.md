@@ -1,6 +1,6 @@
 ---
-title: "NoSQL チュートリアル: Azure DocumentDB Java SDK | Microsoft Docs"
-description: "DocumentDB Java SDK を使用してオンライン データベースと Java コンソール アプリケーションを作成する NoSQL チュートリアル。 Azure DocumentDB は、JSON 用の NoSQL データベースです。"
+title: "Node.js チュートリアル: Azure Cosmos Java SDK 用 DocumentDB API | Microsoft Docs"
+description: "Azure Cosmos DB 用 DocumentDB API を使用してオンライン データベースと Java コンソール アプリケーションを作成する NoSQL チュートリアル。 Azure DocumentDB は、JSON 用の NoSQL データベースです。"
 keywords: "NoSQL チュートリアル, オンライン データベース, Java コンソール アプリケーション"
 services: cosmos-db
 documentationcenter: Java
@@ -12,18 +12,17 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 96ed03c48c4be12638aae6ab30f3843a7e68c995
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 5c4bcda308f001572e1c34e991616fc209250a02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
-# <a name="nosql-tutorial-build-a-documentdb-java-console-application"></a>NoSQL チュートリアル: DocumentDB Java コンソール アプリケーションの作成
+# <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL チュートリアル: DocumentDB API Java コンソール アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -34,7 +33,7 @@ ms.lasthandoff: 05/31/2017
 >  
 > 
 
-Azure DocumentDB Java SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
+Azure Cosmos DB Java SDK 用 DocumentDB API の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、Azure Cosmos DB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
 説明内容は次のとおりです。
 
@@ -68,11 +67,11 @@ Azure DocumentDB Java SDK の NoSQL チュートリアルへようこそ。 こ�
 ## <a id="GitClone"></a>手順 2: GitHub プロジェクトを複製する
 最初に、[Azure Cosmos DB と Java の概要](https://github.com/Azure-Samples/documentdb-java-getting-started)に関する GitHub リポジトリを複製します。 たとえば、ローカル ディレクトリで次のコマンドを実行し、サンプル プロジェクトをローカルに取得します。
 
-    git clone git@github.com:Azure-Samples/documentdb-java-getting-started.git
+    git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
 
-    cd documentdb-java-getting-started
+    cd azure-cosmos-db-documentdb-java-getting-started
 
-ディレクトリには、プロジェクトの `pom.xml` のほか、Java ソース コードが含まれた `src` フォルダーがあります。このフォルダーには、ドキュメントの作成やコレクション内のデータのクエリなど、Azure DocumentDB での単純な操作の実行方法を示す `Program.java` が含まれています。 `pom.xml` には、[DocumentDB Java SDK on Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) の依存関係が含まれています。
+ディレクトリには、プロジェクトの `pom.xml` のほか、Java ソース コードが含まれた `src` フォルダーがあります。このフォルダーには、ドキュメントの作成やコレクション内のデータのクエリなど、Azure Cosmos DB での単純な操作の実行方法を示す `Program.java` が含まれています。 `pom.xml` には、[DocumentDB Java SDK on Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) の依存関係が含まれています。
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -83,18 +82,18 @@ Azure DocumentDB Java SDK の NoSQL チュートリアルへようこそ。 こ�
 ## <a id="Connect"></a>手順 3: Azure Cosmos DB アカウントに接続する
 次に、[Azure Portal](https://portal.azure.com) に戻り、エンドポイントとプライマリ マスター キーを取得します。 Azure Cosmos DB のエンドポイントとプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。
 
-Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** をクリックします。 ポータルから URI をコピーし、Program.java ファイルの `<your endpoint URI>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `<your key>`に貼り付けます。
+Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** をクリックします。 ポータルから URI をコピーし、Program.java ファイルの `https://FILLME.documents.azure.com` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `FILLME`に貼り付けます。
 
     this.client = new DocumentClient(
-        "<your endpoint URI>",
-        "<your key>"
+        "https://FILLME.documents.azure.com",
+        "FILLME"
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
 ![Java コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーン ショット。 アクティブなハブが強調表示され、[Azure Cosmos DB account]\(Azure Cosmos DB アカウント\) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている Azure Cosmos DB アカウントを示します][keys]
 
 ## <a name="step-4-create-a-database"></a>手順 4: データベースを作成する
-Azure Cosmos DB [データベース](documentdb-resources.md#databases)は、**DocumentClient** クラスの [createDatabase](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createDatabase-com.microsoft.azure.documentdb.Database-com.microsoft.azure.documentdb.RequestOptions-) メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
+Azure Cosmos DB [データベース](documentdb-resources.md#databases)は、**DocumentClient** クラスの [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
 
     Database database = new Database();
     database.setId("familydb");
@@ -102,11 +101,11 @@ Azure Cosmos DB [データベース](documentdb-resources.md#databases)は、**D
 
 ## <a id="CreateColl"></a>手順 5: コレクションを作成する
 > [!WARNING]
-> **createCollection** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+> **createCollection** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 > 
 > 
 
-[コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [createCollection](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createCollection-java.lang.String-com.microsoft.azure.documentdb.DocumentCollection-com.microsoft.azure.documentdb.RequestOptions-) メソッドを使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
+[コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) メソッドを使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -120,7 +119,7 @@ Azure Cosmos DB [データベース](documentdb-resources.md#databases)は、**D
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createDocument-java.lang.String-java.lang.Object-com.microsoft.azure.documentdb.RequestOptions-boolean-) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -143,7 +142,7 @@ Azure Cosmos DB [データベース](documentdb-resources.md#databases)は、**D
 ![Java コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるアカウント、オンライン データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>手順 7: Azure Cosmos DB リソースにクエリを実行する
-Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](documentdb-sql-query.md)がサポートされています。  次のサンプル コードは、[queryDocuments](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#queryDocuments-java.lang.String-com.microsoft.azure.documentdb.SqlQuerySpec-com.microsoft.azure.documentdb.FeedOptions-) メソッドが含まれている SQL 構文を使用して Azure Cosmos DB のドキュメントを照会する方法を示します。
+Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](documentdb-sql-query.md)がサポートされています。  次のサンプル コードは、[queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) メソッドが含まれている SQL 構文を使用して Azure Cosmos DB のドキュメントを照会する方法を示します。
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
         "/dbs/familydb/colls/familycoll",
@@ -156,7 +155,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
     }
 
 ## <a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
-Azure Cosmos DB では、[replaceDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#replaceDocument-com.microsoft.azure.documentdb.Document-com.microsoft.azure.documentdb.RequestOptions-) メソッドを使用した JSON ドキュメントの更新がサポートされています。
+Azure Cosmos DB では、[replaceDocument](/java/api/com.microsoft.azure.documentdb._document_client.replacedocument) メソッドを使用した JSON ドキュメントの更新がサポートされています。
 
     // Update a property
     andersenFamily.Children[0].Grade = 6;
@@ -167,7 +166,7 @@ Azure Cosmos DB では、[replaceDocument](http://azure.github.io/azure-document
         null);
 
 ## <a id="DeleteDocument"></a>手順 9: JSON ドキュメントを削除する
-同様に、Azure Cosmos DB では、[deleteDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#deleteDocument-java.lang.String-com.microsoft.azure.documentdb.RequestOptions-) メソッドを使用した JSON ドキュメントの削除がサポートされています。  
+同様に、Azure Cosmos DB では、[deleteDocument](/java/api/com.microsoft.azure.documentdb._document_client.deletedocument) メソッドを使用した JSON ドキュメントの削除がサポートされています。  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
@@ -177,7 +176,7 @@ Azure Cosmos DB では、[replaceDocument](http://azure.github.io/azure-document
     this.client.deleteDatabase("/dbs/familydb", null);
 
 ## <a id="Run"></a>手順 11: Java コンソール アプリケーションの全体的な実行の流れ
-コンソールからアプリケーションを実行するには、最初に Maven を使用してコンパイルを行います。
+コンソールからアプリケーションを実行するには、プロジェクト フォルダーに移動し、Maven を使用してコンパイルします。
     
     mvn package
 

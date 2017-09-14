@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0779371b10e64a12ef994c63ee0fba724be88c4a
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5f888c9d92a9164cc7d3d1aed66c29a724b365d7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure DevTest Labs で Azure Marketplace イメージの設定を構成する
@@ -28,21 +28,21 @@ DevTest Labs では、実際のラボで使用する Azure Marketplace イメー
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。 
-4. ラボのブレードで、 **[構成]**を選択します。
-5. ラボの **[構成]** ブレードで、**[Marketplace images (Marketplace イメージ)]** を選択します。
+4. ラボのブレードで、**[構成とポリシー]** を選択します。
+5. ラボの **[Configuration and policies]\(構成とポリシー\)** ブレードの **[Virtual Machine Bases](\仮想マシンのベース\)** の下で **[Marketplace images](\Marketplace イメージ\)** を選択します。
 6. 対象となるすべての Azure Marketplace イメージを新しい VM のベースとして利用できるようにするかどうかを指定します。 **[はい]**を選択すると、次の条件をすべて満たす Azure Marketplace イメージのすべてがラボで使用できるようになります。
    
    * イメージは 1 つの VM を作成する、 **かつ**
    * イメージは Azure Resource Manager を使用して VM をプロビジョニングする、 **かつ**
    * イメージは追加のライセンス プランの購入を必要としない。
      
-     イメージの使用を許可しない場合、または使用できるようにするイメージを指定する場合は、 **[いいえ]**を選択します。
+    イメージの使用を許可しない場合、または使用できるようにするイメージを指定する場合は、 **[いいえ]**を選択します。
      
      ![すべての Marketplace イメージを VM のベース イメージとして使用できるようにするオプション](./media/devtest-lab-configure-marketplace-images/allow-all-marketplace-images.png)
 7. 前の手順で **[いいえ]** を選択した場合は、**[Allowed images (許可するイメージ)] の [すべて選択]** チェック ボックスが有効になります。 
    このオプションを検索ボックスと組み合わせて使用すると、一覧に表示されたすべてのアイテムをすばやく選択または選択解除することができます。
-   Azure Marketplace イメージに対応するチェック ボックスをオンにすることで、VM の作成で使用できるようにするイメージを個別に選択することもできます。
-   どの Azure Marketplace イメージもラボでの使用を許可しない場合は、一覧で何も選択しないでください。
+   * Azure Marketplace イメージの対応するチェック ボックスをオンにすると、VM の作成に使用するイメージが個別に選択されます。
+   * どの Azure Marketplace イメージもラボでの使用を許可しない場合は、一覧で何も選択しないでください。
    
     ![どの Azure Marketplace イメージを VM のベース イメージとして使用できるようにするかを指定できる](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 

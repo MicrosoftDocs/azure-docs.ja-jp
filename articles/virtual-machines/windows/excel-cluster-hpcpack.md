@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/11/2017
+ms.date: 06/01/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8c40a0d44463c75e92444b393336db1daf270ee1
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: acd2ee7fb94c43493ffd9ffee157f2c3e795b63e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -60,7 +61,7 @@ Azure クイックスタート テンプレートを使用すると、Azure Port
    
    a. **[パラメーター]** ページで、テンプレート パラメーターの値を入力または変更します  (各設定の隣のアイコンをクリックするとヘルプ情報が表示されます)。次の画面に示されているのはサンプルの値です。 この例では、1 つのヘッド ノードと 2 つの計算ノードで構成される *hpc01* という名前のクラスターが、*hpc.local* ドメインに作成されます。 コンピューティング ノードは、Microsoft Excel を含む HPC Pack VM イメージから作成されます。
    
-   ![パラメーターを入力する][parameters]
+   ![パラメーターを入力する][parameters-new-portal]
    
    > [!NOTE]
    > ヘッド ノードの VM は、Windows Server 2012 R2 上の HPC Pack 2012 R2 の [最新の Marketplace イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) から自動的に作成されます。 現時点では、イメージは HPC Pack 2012 R2 Update 3 に基づいています。
@@ -78,9 +79,9 @@ Azure クイックスタート テンプレートを使用すると、Azure Port
    e. **[法律条項]** ページで、条項を確認します。 同意する場合は、**[購入]** をクリックします。 テンプレートの値の設定が完了したら、**[作成]** をクリックします。
 4. デプロイが完了したら (通常約 30 分かかります)、クラスターのヘッド ノードからクラスターの証明書ファイルをエクスポートします。 後の手順でこのパブリック証明書をクライアント コンピューターにインポートし、セキュリティで保護された HTTP バインディングのサーバー側認証を提供します。
    
-   a. Azure ポータルからリモート デスクトップでヘッド ノードに接続します。
+   a. Azure ポータルで、ダッシュボードに移動し、ヘッド ノードを選択して、ページの上部にある **[接続]** をクリックし、リモート デスクトップを使用して接続します。
    
-    ![ヘッド ノードに接続する][connect]
+    <!-- ![Connect to the head node][connect] -->
    
    b. 標準的な手順で証明書マネージャーを使用して、秘密キーを含まないヘッド ノード証明書 (Cert:\LocalMachine\My の下にあります) をエクスポートします。 この例では、*CN = hpc01.eastus.cloudapp.azure.com* をエクスポートします。
    
@@ -332,12 +333,12 @@ Azure ストレージ キューなしで Http バインディングを使用す�
 ```
 
 ### <a name="use-nettcp-binding"></a>NetTcp バインディングを使用する
-NetTcp バインディングを使用するための構成は、オンプレミスのクラスターに接続する場合と似ています。 ヘッド ノード VM でいくつかのエンドポイントを開く必要があります。 クラスターを作成する HPC Pack IaaS デプロイ スクリプトを使用した場合、Azure クラシック ポータルで次の手順を実行して、エンドポイントを設定します。
+NetTcp バインディングを使用するための構成は、オンプレミスのクラスターに接続する場合と似ています。 ヘッド ノード VM でいくつかのエンドポイントを開く必要があります。 クラスターを作成する HPC Pack IaaS デプロイ スクリプトを使用した場合、Azure ポータルで次の手順を実行して、エンドポイントを設定します。
 
 1. VM を停止します。
 2. セッション用、ブローカー用、ブローカー ワーカー用、Data Services 用に、それぞれ TCP ポート 9090、9087、9091、9094 を追加します。
    
-    ![エンドポイントを構成する][endpoint]
+    ![エンドポイントを構成する][endpoint-new-portal]
 3. VM を起動します。
 
 SOA クライアント アプリケーションでは、IaaS クラスターの完全な名前にヘッド名を変更する以外の変更は不要です。
@@ -351,6 +352,7 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [github]: ./media/excel-cluster-hpcpack/github.png
 [template]: ./media/excel-cluster-hpcpack/template.png
 [parameters]: ./media/excel-cluster-hpcpack/parameters.png
+[parameters-new-portal]: ./media/excel-cluster-hpcpack/parameters-new-portal.png
 [create]: ./media/excel-cluster-hpcpack/create.png
 [connect]: ./media/excel-cluster-hpcpack/connect.png
 [cert]: ./media/excel-cluster-hpcpack/cert.png
@@ -359,5 +361,6 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [options]: ./media/excel-cluster-hpcpack/options.png
 [run]: ./media/excel-cluster-hpcpack/run.png
 [endpoint]: ./media/excel-cluster-hpcpack/endpoint.png
+[endpoint-new-portal]: ./media/excel-cluster-hpcpack/endpoint-new-portal.png
 [udf]: ./media/excel-cluster-hpcpack/udf.png
 

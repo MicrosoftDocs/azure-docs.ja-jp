@@ -12,32 +12,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/27/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 524b87d95d3060c780b296350797501847c80638
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: e3079b55036a514b31249e5930f40ab4346f437a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Redshift からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
-Amazon Redshift から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 データ ファクトリは、他のデータ ストアから Amazon Redshift へのデータの移動ではなく、Amazon Redshift から他のデータ ストアへのデータの移動のみをサポートします。
+Amazon Redshift から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションをご覧ください。 データ ファクトリは、他のデータ ストアから Amazon Redshift へのデータの移動ではなく、Amazon Redshift から他のデータ ストアへのデータの移動をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 * データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 次に、Data Management Gateway (コンピューターの IP アドレスを使用) に、Amazon Redshift クラスターへのアクセスを付与します。 手順については、「 [クラスターへのアクセスを承認する](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 」を参照してください。
-* Azure データ ストアにデータを移動する場合、Microsoft Azure データ センターで使用されるコンピューティング IP アドレス (SQL 範囲を含む) については 「 [Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653) 」を参照してください。
+* Azure データ ストアにデータを移動する場合、Azure データ センターで使用されるコンピューティング IP アドレスと SQL 範囲については、「[Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)」をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、Amazon Redshift ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
-ツールまたは API のいずれを使用した場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
@@ -62,7 +62,7 @@ Amazon Redshift から、サポートされている任意のシンク データ
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
-**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (Amazon Redshift データセットを含む) の typeProperties セクションには次のプロパティがあります。
+**typeProperties** セクションは、データセットの型ごとに異なります。 データ ストアのデータの場所に関する情報を提供します。 **RelationalTable** 型のデータセット (Amazon Redshift データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -127,7 +127,7 @@ Amazon Redshift から、サポートされている任意のシンク データ
 ```
 **Amazon Redshift の入力データセット:**
 
-**”external” を true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。 パイプラインのアクティビティで生成されない入力データセットで、このプロパティを true に設定します。
+`"external": true` の設定により、このデータセットがデータ ファクトリの外部にあり、データ ファクトリのアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。 パイプラインのアクティビティで生成されない入力データセットで、このプロパティを true に設定します。
 
 ```json
 {
@@ -280,10 +280,10 @@ Amazon Redshift にデータを移動する場合、Amazon Redshift 型から .N
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能な読み取り
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 [リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するセクションをご覧ください
+## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

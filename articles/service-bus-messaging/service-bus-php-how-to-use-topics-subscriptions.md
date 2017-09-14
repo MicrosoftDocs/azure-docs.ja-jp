@@ -14,14 +14,15 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 7dc72dbdf944432fff7635665c8a1d27def3aa94
-ms.lasthandoff: 04/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: afa9efcb6335786198021ec81dd087287c39bda9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Service Bus のトピックとサブスクリプションの使用方法
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
+
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。 ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
@@ -65,7 +66,7 @@ use WindowsAzure\Common\ServicesBuilder;
 Service Bus クライアントをインスタンス化するには、まず次の形式の有効な接続文字列が必要です。
 
 ```
-Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
+Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
 ここで、`Endpoint` の一般的な形式は `https://[yourNamespace].servicebus.windows.net` です。
@@ -84,7 +85,7 @@ require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 
-$connectionString = "Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]";
+$connectionString = "Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]";
 
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 ```
@@ -112,7 +113,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here: 
-    // http://msdn.microsoft.com/library/windowsazure/dd179357
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -148,7 +149,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here: 
-    // http://msdn.microsoft.com/library/azure/dd179357
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -217,7 +218,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here: 
-    // http://msdn.microsoft.com/library/azure/hh780775
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -283,7 +284,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/hh780735
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -319,7 +320,7 @@ try    {
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here: 
-    // http://msdn.microsoft.com/library/azure/dd179357
+    // https://docs.microsoft.com/rest/api/storageservices/Common-REST-API-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";

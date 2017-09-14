@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: subramar;chackdan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c83c4db0ada77998354b3fca4e2297335899a9bd
 ms.openlocfilehash: 20a3277370583ccf93b36191a70149ed7d814238
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック

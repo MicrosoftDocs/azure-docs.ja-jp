@@ -4,7 +4,7 @@ description: "App Services アプリケーションに Google 認証を構成す
 services: app-service
 documentationcenter: 
 author: mattchenderson
-manager: adrianha
+manager: syntaxc4
 editor: 
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: 09db38cfb5fb4277d4ca259eb10e388af33f1773
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google ログインを使用するように App Service アプリケーションを構成する方法
@@ -37,8 +37,8 @@ ms.lasthandoff: 03/09/2017
 6. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins (承認された JavaScript 作成元)]** に、リダイレクト URI を **[Authorized Redirect URI (承認されたリダイレクト URI)]** に貼り付けます。 リダイレクト URI は、アプリケーションの URL にパス */.auth/login/google/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。 **[Create]**をクリックします。
 7. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
 
-    > [AZURE.IMPORTANT]
-    クライアント シークレットは、重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > [!IMPORTANT]
+    > クライアント シークレットは、重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する

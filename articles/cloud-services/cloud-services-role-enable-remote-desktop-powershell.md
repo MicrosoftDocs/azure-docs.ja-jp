@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ee3a2e0fe4c8a554d763befc466d7fc0638964ce
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 9c56bf57250093e5f76e2e4e02e8734af6cf4102
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
@@ -110,5 +110,5 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>その他のリソース
 
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
-[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md#remote-desktop)
+[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md)
 

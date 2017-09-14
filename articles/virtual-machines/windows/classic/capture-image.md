@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 06a97b48fed8f80679632f5c0320d4dd73b8e1e2
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 6032263848c469ce2f416306e5c91c29f4cb30e4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 リソース マネージャー モデルについては、「[Create a copy Windows VM running in Azure」 (Azure で実行されている Windows VM のコピーを作成する)](../../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 リソース マネージャー モデルについては、「[Azure で一般化された VM の管理対象イメージをキャプチャする](../capture-image-resource.md)」を参照してください。
 
 ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。 このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。 ネットワーク構成は含まれないため、イメージを使用する他の仮想マシンを作成するときは、ネットワーク構成を設定する必要があります。
 
@@ -55,7 +56,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
    * **[OK]**をクリックします。
 
    ![Sysprep を実行する](./media/capture-image/SysprepGeneral.png)
-5. Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure クラシック ポータルの仮想マシンの状態が **[停止済み]** に変わります。
+5. Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
 6. Azure Portal で **[仮想マシン (クラシック)]** をクリックし、キャプチャする仮想マシンを選択します。 **[VM イメージ (クラシック)]** グループは、**[その他のサービス]** を表示したときに **[Compute]** の下に表示されます。
 
 7. コマンド バーで、 **[取り込み]**をクリックします。

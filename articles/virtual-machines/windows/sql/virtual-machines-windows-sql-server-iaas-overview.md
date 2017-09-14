@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/09/2017
+ms.date: 08/07/2017
 ms.author: jroth
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 10840ee4ff070436e2c21d51846ea6363825abac
-ms.lasthandoff: 04/22/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: f0100423550046d18642180ce98e93ce3609749b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server の概要
@@ -52,7 +52,7 @@ ms.lasthandoff: 04/22/2017
 | 08:32 |デモ: SQL Server 2016 VM の作成 |
 
 > [!NOTE]
-> このビデオでは、SQL Server 2016 を取り上げていますが、Azure には、SQL Server の多くのバージョン (2008、2012、2014、2016) の VM イメージが用意されています。 
+> このビデオでは、SQL Server 2016 を取り上げていますが、Azure には、SQL Server の多くのバージョン (2012、2014、2016) の VM イメージが用意されています。 
 > 
 > 
 
@@ -80,7 +80,6 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 | **SQL Server 2016 SP1** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1StandardWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1WebWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1ExpressWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1DeveloperWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
 | **SQL Server 2012 SP3** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3ExpressWindowsServer2012R2) |
-| **SQL Server 2008 R2 SP3** |Windows Server 2008 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2) |
 
 この一覧のほかに、SQL Server のバージョンとオペレーティング システムの別の組み合わせも使用できます。 他のイメージを探すには、Azure Portal で Marketplace 検索を行います。 
 
@@ -130,10 +129,8 @@ Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patchin
 詳細については、「[使用許諾契約への同意](https://msdn.microsoft.com/library/ms143343.aspx)」の CEIP に関するセクションを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
-[ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。
 
 料金については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」および [Azure の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)に関するページを参照してください。 **[OS/ソフトウェア]** ボックスの一覧で、SQL Server の目的のエディションを選択してください。 次に、さまざまなサイズの仮想マシンの価格を確認します。
 
 質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。 SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
-
 

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
 ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Windows デスクトップ アプリでの使用状況とパフォーマンスの監視

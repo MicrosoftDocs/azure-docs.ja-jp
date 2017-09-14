@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bf8b96f7d7e73a978a66ed2f3dd307c348ef695f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 972cc48057c13271d725b0c973c3ccf651ad27c4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -54,7 +54,6 @@ API 呼び出し結果の画面に、Microsoft Graph API の呼び出しによ�
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
 Graph API は、ユーザー プロファイルの読み取りに `user.read` スコープが必要です。 このスコープは既定では、登録ポータルに登録されるすべてのアプリケーションで自動的に追加されます。 バックエンド サーバーのカスタム API に加え、他のいくつかの Graph API は、追加のスコープを必要とします。 たとえば Graph では、ユーザーの予定表を一覧表示するのに `Calendars.Read` が必要です。 アプリケーションのコンテキストでユーザーの予定表にアクセスするには、`Calendars.Read` が委任されたアプリケーション登録の情報を追加してから、`AcquireTokenAsync` 呼び出しに `Calendars.Read` を追加する必要があります。 スコープの数を増やすと、ユーザーは追加で同意を求められる可能性があります。
 
-バックエンド API でスコープを必要としない (推奨されません) 場合は、`AcquireTokenAsync` 呼び出し内のスコープとして `ClientId` を使用できます。
 <!--end-collapse-->
 
 

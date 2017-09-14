@@ -16,10 +16,10 @@ ms.date: 05/04/2017
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: 89174dad8fcd3bcceafd728feb2211926266720a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 44867f16acb620fd29957eae90311ef6c8fde559
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/28/2017
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。  
 
 > [!NOTE]
-> Privileged Identity Management は、Azure Active Directory の Premium P2 エディションでのみ使用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> Azure Active Directory の Premium P2 版のライセンスを管理者に与えると、Privileged Identity Management を組織全体で利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 組織では、セキュリティで保護された情報やリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にする可能性が抑えられるためです。 しかし一方で、ユーザーは、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。 組織は、ユーザーが管理者特権で行う操作を監視することなく、Azure AD でユーザーに特権アクセスを与えます。 Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。  
 
@@ -37,6 +37,7 @@ Azure AD Privileged Identity Management では、次のことが可能です。
 * Office 365 や Intune などの Microsoft Online Services へのオンデマンドの "ジャスト イン タイム" な管理アクセスを可能にする
 * 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する
 * 特権ロールへのアクセスに関するアラートを受け取る
+* アクティブ化の前に承認を要求する (プレビュー)
 
 Azure AD Privileged Identity Management では、次のような組み込みの Azure AD 組織ロールを管理できます (ただし、これらに限定されません)。  
 
@@ -64,13 +65,13 @@ Azure AD Privileged Identity Management の使用は、 [Azure Portal](https://p
 
 他の管理者のアクセスを管理できるのは、特権ロール管理者のみです。 特権ロール管理者は [PIM で管理する権限を他のユーザーに付与する](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)ことができます。
 
-## <a name="privileged-identity-management-dashboard"></a>Privileged Identity Management ダッシュボード
-Azure AD Privileged Identity Manager には、次のような重要な情報を提供するダッシュボードがあります。
+## <a name="privileged-identity-management-admin-dashboard"></a>Privileged Identity Management 管理ダッシュボード
+Azure AD Privileged Identity Manager には、次のような重要な情報を提供する管理ダッシュボードがあります。
 
 * セキュリティ強化の機会を知らせるアラート
 * 各特権ロールに割り当てられているユーザーの数  
 * 管理者候補および永続的管理者の数
-* 実行中のアクセス レビュー
+* ディレクトリの特権ロール アクティブ化のグラフ
 
 ![PIM dashboard - screenshot][2]
 
@@ -84,7 +85,9 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 
 * ロールのアクティブ化の期間
 * ロールのアクティブ化の通知
-* ロール アクティブ化プロセス中にユーザーが提供する必要のある情報  
+* ロール アクティブ化プロセス中にユーザーが提供する必要のある情報
+* サービス チケットまたはインシデントの番号
+* [承認ワークフロー要件 - プレビュー](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
 
 ![PIM 設定 - 管理者アクティブ化 - スクリーンショット][4]
 
@@ -100,14 +103,14 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 ![PIM 管理者のロール アクティブ化要求 - スクリーン ショット][5]
 
 ## <a name="review-role-activity"></a>ロール アクティビティの確認
-従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。 1 つ目の方法は、 [監査履歴](active-directory-privileged-identity-management-how-to-use-audit-log.md)を使用する方法です。 監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更を追跡します。
+従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。 1 つ目の方法は、[ディレクトリ ロール監査履歴](active-directory-privileged-identity-management-how-to-use-audit-log.md)を使用する方法です。 監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更を追跡します。
 
 ![PIM アクティブ化履歴 - スクリーンショット][6]
 
 2 番目の方法は、標準的な [アクセス レビュー](active-directory-privileged-identity-management-how-to-start-security-review.md)を設定する方法です。 これらのアクセス レビューは、割り当てられたレビュー担当者 (たとえば、チーム マネージャー) によって実行することも、従業員が自分自身の確認を行うこともできます。 これは、アクセスを必要としているユーザーとアクセスを必要としなくなったユーザーを監視するための最善の方法です。
 
 ## <a name="azure-ad-pim-at-subscription-expiration"></a>Azure AD PIM のサブスクリプションの有効期限
-Azure AD PIM は一般公開前のプレビュー段階にあり、テナントで Azure AD PIM をプレビューするためのライセンスのチェックがありませんでした。  Azure AD PIM が一般公開で利用できるようになったため、2016 年 12 月以降、PIM の使用を継続するには、試用版または有料サブスクリプションがテナントに存在する必要があります。  組織が Azure AD Premium P2 を購入していなかったり、サブスクリプションの有効期限が切れている場合は、テナントで Azure AD PIM を利用できなくなります。  詳しくは、「[Azure AD PIM subscription requirements](./privileged-identity-management/subscription-requirements.md)」(Azure AD PIM サブスクリプションの要件) をご覧ください。
+Azure AD PIM は一般公開前のプレビュー段階にあり、テナントで Azure AD PIM をプレビューするためのライセンスのチェックがありませんでした。  Azure AD PIM が一般公開で利用できるようになったため、PIM の使用を継続するには、試用版または有料のライセンスをテナントの管理者に割り当てる必要があります。  組織が Azure AD Premium P2 を購入していない場合や、試用版の有効期限が切れている場合は、テナントで Azure AD PIM の大半の機能が利用できなくなります。  詳しくは、「[Azure AD PIM subscription requirements](./privileged-identity-management/subscription-requirements.md)」(Azure AD PIM サブスクリプションの要件) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
@@ -115,9 +118,9 @@ Azure AD PIM は一般公開前のプレビュー段階にあり、テナント�
 <!--Image references-->
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-configure/PIM_Dash.png
+[2]: ./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png
 [3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
-[4]: ./media/active-directory-privileged-identity-management-configure/PIM_RoleActivationSettings.png
+[4]: ./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/14/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 445dd0dcd05aa25cc531e2d10cc32ad8f32a6e8c
 ms.openlocfilehash: def038842dc3c1037d5dd11ffef6a9e2de3cf09f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/09/2017
-
 
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード

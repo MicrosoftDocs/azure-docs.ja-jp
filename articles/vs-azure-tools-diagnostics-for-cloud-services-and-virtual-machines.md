@@ -3,8 +3,8 @@ title: "Azure Cloud Services および Virtual Machines 用の診断の構成 | 
 description: "Azure Cloud Services と Azure Virtual Machines (VM) を Visual Studio でデバッグするために必要な診断情報を構成する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 76bcb201bb8d862426048b828c0c4cce0335455c
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 2516c0eb8ce470577731db9b844d5b9038465477
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="configuring-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure クラウド サービスおよび仮想マシン用の診断の構成
@@ -41,7 +42,7 @@ Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに
 * Azure SDK 2.4 以前では、診断プラグインが診断ログを転送するためのストレージ アカウント情報を取得する目的でラインタイムとして接続文字列を使用していました。
 * Azure SDK 2.6 以降では、Visual Studio が発行時に適切なストレージ アカウント情報を使って診断拡張機能を構成する目的で診断接続文字列を使用します。 Visual Studio が発行時に使用する各種サービス構成に対し、異なるストレージ アカウントを接続文字列で定義することができます。 しかし、(Azure SDK 2.5 以降) 診断プラグインが使用できなくなったため、.cscfg ファイルだけでは診断拡張機能を有効にできません。 Visual Studio や PowerShell などのツールを使用して個別に拡張機能を有効にする必要があります。
 * PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。 Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。 このパブリック構成ファイルは、PaaSDiagnostics.&lt;RoleName>.PubConfig.xml という形式の名前で Extensions フォルダーに作成されます。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
-* .cscfg ファイル内の接続文字列は、 [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040) で診断データにアクセスするときにも使用されるため、 **[監視]** タブで確認できます。 ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
+* .cscfg ファイル内の接続文字列は、 [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040) で診断データにアクセスするときにも使用されるため、 **[監視]** タブで確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
 
 ## <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Azure SDK 2.6 以降へのプロジェクトの移行
 Azure SDK 2.5 から Azure SDK 2.6 以降に移行するとき、.wadcfgx ファイルで指定した診断ストレージ アカウントがある場合、そのアカウントが維持されます。 さまざまなストレージ構成で異なるストレージ アカウントの使用の柔軟性を利用するには、接続文字列をプロジェクトに手動で追加する必要があります。 Azure SDK 2.4 以前から Azure SDK 2.6 にプロジェクトを移行する場合は、診断接続文字列が保持されます。 ただし、前のセクションでも触れたように、Azure SDK 2.6 では接続文字列の扱いが変更されているので注意してください。
@@ -89,7 +90,7 @@ Azure SDK 2.5 から Azure SDK 2.6 以降に移行するとき、.wadcfgx ファ
     ![Enable Azure diagnostics and configuration](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. この例では、収集するデータをカスタマイズできるよう、 **[カスタム プラン]** オプションを選択します。
 7. **[ディスク クォータ (MB)]** ボックスでは、ストレージ アカウントで診断データ用に割り当てる容量を指定します。 既定の値は必要に応じて変更可能です。
-8. 収集する診断データに対応する各タブで、**[<log type> の転送を有効にする]** チェック ボックスをオンにします。 たとえば、アプリケーション ログを収集する場合は、**[アプリケーション ログ]** タブで **[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。 それ以外にも、診断データの種類ごとに必要な情報があれば指定します。 各タブの構成情報については、このトピックの後半にある「 **診断データのソースを構成する** 」セクションを参照してください。
+8. 収集する診断データに対応する各タブで、**[<log type> の転送を有効にする]** チェック ボックスをオンにします。 たとえば、アプリケーション ログを収集する場合は、**[アプリケーション ログ]** タブで **[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。それ以外にも、診断データの種類ごとに必要な情報があれば指定します。 各タブの構成情報については、このトピックの後半にある「 **診断データのソースを構成する** 」セクションを参照してください。
 9. 目的の診断データの収集をすべて有効にしたら、 **[OK]** ボタンをクリックします。
 10. Visual Studio で Azure クラウド サービス プロジェクトを通常どおり実行します。 アプリケーションを使用すると、有効にしたログ情報が、指定した Azure ストレージ アカウントに保存されます。
 
@@ -122,7 +123,7 @@ Azure Virtual Machines の診断データを Visual Studio で収集すること
 8. **[ディスク クォータ (MB)]** ボックスでは、ストレージ アカウントで診断データ用に割り当てる容量を指定します。 既定の値は必要に応じて変更可能です。
 9. 収集する診断データに対応する各タブで、**[<log type> の転送を有効にする]** チェック ボックスをオンにします。
    
-    たとえば、アプリケーション ログを収集する場合は、**[アプリケーション ログ]** タブで **[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。 それ以外にも、診断データの種類ごとに必要な情報があれば指定します。 各タブの構成情報については、このトピックの後半にある「 **診断データのソースを構成する** 」セクションを参照してください。
+    たとえば、アプリケーション ログを収集する場合は、**[アプリケーション ログ]** タブで **[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。それ以外にも、診断データの種類ごとに必要な情報があれば指定します。 各タブの構成情報については、このトピックの後半にある「 **診断データのソースを構成する** 」セクションを参照してください。
 10. 目的の診断データの収集をすべて有効にしたら、 **[OK]** ボタンをクリックします。
 11. 更新したプロジェクトを保存します。
     
@@ -158,7 +159,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
 
   ![パフォーマンス カウンター](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758147.png)
 
-リストにないパフォーマンス カウンターを追跡するには、構文の候補を使用してパフォーマンス カウンターを入力し、 **[追加]** ボタンをクリックします。 追跡できるパフォーマンス カウンターは、仮想マシンのオペレーティング システムによって決まります。 構文の詳細については、 [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193.aspx)に関するページを参照してください。
+リストにないパフォーマンス カウンターを追跡するには、構文の候補を使用してパフォーマンス カウンターを入力し、 **[追加]** ボタンをクリックします。 追跡できるパフォーマンス カウンターは、仮想マシンのオペレーティング システムによって決まります。構文の詳細については、 [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193.aspx)に関するページを参照してください。
 
 ### <a name="infrastructure-logs"></a>インフラストラクチャ ログ
 インフラストラクチャ ログには、Azure 診断インフラストラクチャや RemoteAccess モジュール、RemoteForwarder モジュールに関する情報が記録されます。インフラストラクチャ ログを取り込むには、**[診断インフラストラクチャのログの転送を有効にする]** チェック ボックスをオンにします。 ログをストレージ アカウントに転送する間隔 (分) は、[転送期間 (分)] の値を変更することで増減できます。
@@ -283,7 +284,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
 
 **OnStart など RoleEntryPoint のメソッドからトレース情報を取得できません。何か問題があるのでしょうか。**
 
-RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテキストで呼び出されます。 そのため、通常であればトレースが有効になる web.config の構成情報が適用されません。 この問題を解決するには、Web ロール プロジェクトに .config ファイルを追加し、RoleEntryPoint コードを含む出力アセンブリと同じ名前を付けます。 既定の Web ロール プロジェクトでは、.config ファイルの名前は WAIISHost.exe.config です。 そのうえで、このファイルに次の行を追加します。
+RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテキストで呼び出されます。 そのため、通常であればトレースが有効になる web.config の構成情報が適用されません。 この問題を解決するには、Web ロール プロジェクトに .config ファイルを追加し、RoleEntryPoint コードを含む出力アセンブリと同じ名前を付けます。 既定の Web ロール プロジェクトでは、.config ファイルの名前は WAIISHost.exe.config です。そのうえで、このファイルに次の行を追加します。
 
 ```
 <system.diagnostics>
@@ -301,10 +302,5 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 
 ## <a name="next-steps"></a>次のステップ
 Azure の診断ログの詳細については、[Azure Cloud Services および Virtual Machines での診断の有効化](cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

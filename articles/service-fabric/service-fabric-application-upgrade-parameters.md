@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: aa26d72524f035cca92cd39062873ceb15bffac1
-ms.lasthandoff: 03/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
@@ -65,7 +65,7 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService、MaxPerce
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
 
-[Linux での Azure CLI を使用したアプリケーションのアップグレード](service-fabric-azure-cli.md#upgrading-your-application)に関する記事では、Azure CLI を使用してアプリケーションをアップグレードする方法について説明します。
+[Linux での Service Fabric CLI を使用したアプリケーションのアップグレード](service-fabric-application-lifecycle-sfctl.md#upgrade-application)に関する記事では、Service Fabric CLI を使用してアプリケーションをアップグレードする方法について説明します。
 
 [Service Fabric Eclipse プラグインを使用したアプリケーションのアップグレード](service-fabric-get-started-eclipse.md#upgrade-your-service-fabric-java-application)
 
@@ -73,5 +73,5 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService、MaxPerce
 
 [高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
 
-「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 

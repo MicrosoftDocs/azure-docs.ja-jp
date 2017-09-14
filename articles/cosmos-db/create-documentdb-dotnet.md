@@ -12,15 +12,14 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 899c710318fee46a93b3f54a68cb9027589f7177
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 9bb863261da64c97f99757d4a0cb3474a7755591
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: .NET と Azure Portal による DocumentDB API Web アプリの構築
@@ -35,7 +34,8 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
@@ -52,28 +52,35 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 これで、データ エクスプローラーを使用して、新しいコレクションにデータを追加できます。
 
-1. データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **[項目]** データベースを展開し、**[ToDoList]** コレクションを展開して、**[ドキュメント]** をクリックし、**[新しいドキュメント]** をクリックします。 
+1. データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **[タスク]** データベースを展開し、**[項目]** コレクションを展開して、**[ドキュメント]** をクリックし、**[新しいドキュメント]** をクリックします。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-new-document.png)
   
-2. ここで、次の構造でコレクションにいくつかのドキュメントを追加します。各ドキュメントで id に一意の値を挿入して、必要に応じてその他のプロパティを変更します。 Azure Cosmos DB では、データにスキーマを課さないため、新しいドキュメントは必要な任意の構造にすることができます。
+2. ここで、次の構造のドキュメントをコレクションに追加します。
 
      ```json
      {
          "id": "1",
          "category": "personal",
          "name": "groceries",
-         "description": "Pick up apples and strawberries."
+         "description": "Pick up apples and strawberries.",
+         "isComplete": false
      }
      ```
 
-     これで、データ エクスプローラーでクエリを使用して、データを取得できるようになりました。 既定で、データ エクスプローラーは、`SELECT * FROM c` を使用して、コレクション内のすべてのドキュメントを取得しますが、これを `SELECT * FROM c ORDER BY c.name ASC` に変更し、name プロパティのアルファベットの昇順ですべてのドキュメントを返すようにすることができます。 
+3. json を **[ドキュメント]** タブに追加したら、**[保存]** をクリックします。
+
+    ![json データをコピーし、Azure Portal のデータ エクスプローラーで [保存] をクリックします。](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-save-document.png)
+
+4.  もう 1 つドキュメントを作成して保存します。`id` プロパティには一意の値を挿入し、その他のプロパティについては適宜変更してください。 Azure Cosmos DB では、データにスキーマを課さないため、新しいドキュメントは必要な任意の構造にすることができます。
+
+     これで、データ エクスプローラーでクエリを使用して、データを取得できるようになりました。 既定では、データ エクスプローラーにより `SELECT * FROM c` を使用してコレクション内のすべてのドキュメントが取得されますが、[SQL クエリ](documentdb-sql-query.md)を `SELECT * FROM c ORDER BY c._ts DESC` のように変更すると、すべてのドキュメントをそのタイムスタンプの降順で取得できます。
  
      さらに、データ エクスプローラーを使用して、ストアド プロシージャ、UDF、トリガーを作成し、サーバー側ビジネス ロジックを実行できるほか、スループットをスケールすることもできます。 データ エクスプローラーでは、API で使用可能な、組み込みのプログラムによるデータ アクセスがすべて公開されていますが、Azure Portal でデータに簡単にアクセスできます。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github から DocumentDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+次は、コードを使った作業に移りましょう。 GitHub から DocumentDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. git ターミナル ウィンドウ (git bash など) を開き、`CD` を実行して作業ディレクトリに移動します。  
 
@@ -83,25 +90,25 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
     git clone https://github.com/Azure-Samples/documentdb-dotnet-todo-app.git
     ```
 
-3. 次に、Visual Studio でソリューション ファイルを開きます。 
+3. 次に、Visual Studio で todo ソリューション ファイルを開きます。 
 
 ## <a name="review-the-code"></a>コードの確認
 
 アプリで何が行われているかを簡単に確認してみましょう。 DocumentDBRepository.cs ファイルを開くと、これらのコード行によって、Azure Cosmos DB リソースが作成されることがわかります。 
 
-* DocumentClient が初期化されます。
+* 73 行目では、DocumentClient が初期化されます。
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);`
     ```
 
-* 新しいデータベースが作成されます。
+* 88 行目では、新しいデータベースが作成されます。
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* 新しいコレクションが作成されます。
+* 107 行目では、新しいコレクションが作成されます。
 
     ```csharp
     await client.CreateDocumentCollectionAsync(
@@ -110,7 +117,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
         new RequestOptions { OfferThroughput = 1000 });
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
@@ -124,7 +131,7 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
     `<add key="endpoint" value="FILLME" />`
 
-4. ポータルから PRIMARY KEY 値をコピーし、web.config の authKey の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+4. ポータルから PRIMARY KEY 値をコピーし、web.config の authKey の値に設定します。これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
     `<add key="authKey" value="FILLME" />`
     

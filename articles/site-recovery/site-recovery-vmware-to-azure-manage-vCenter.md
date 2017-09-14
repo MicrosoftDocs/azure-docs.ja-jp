@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 2/14/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
-translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: 5578dea457f3eeda72e3a1e4e61382cdf0de285d
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 091f0884417535427c52beee7bcdc5ed1dd83315
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -26,9 +27,9 @@ ms.lasthandoff: 02/22/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-**VMware vCenter および VMware vSphere ESX ホストのサポート** | **詳細**
---- | ---
-**オンプレミスの VMware サーバー** | 1 台以上の VMware vSphere サーバー (6.0、5.5、または 5.1 を実行し、最新の更新プログラムがインストール済みであること)。 サーバーは、構成サーバー (または別のプロセス サーバー) と同じネットワークに配置する必要があります。<br/><br/> vCenter サーバー (6.0 または 5.5 を実行し、最新の更新プログラムがインストール済みであること) を使用してホストを管理することをお勧めします。 バージョン 6.0 をデプロイする場合は、5.5 で利用できる機能のみがサポートされます。
+**VMware vCenter および VMware vSphere ESX ホストのサポート** | **詳細** |
+|--- | --- |
+|**オンプレミスの VMware サーバー** | 1 台以上の VMware vSphere サーバー (6.0、5.5、または 5.1 を実行し、最新の更新プログラムがインストール済みであること)。 サーバーは、構成サーバー (または別のプロセス サーバー) と同じネットワークに配置する必要があります。<br/><br/> vCenter サーバー (6.0 または 5.5 を実行し、最新の更新プログラムがインストール済みであること) を使用してホストを管理することをお勧めします。 バージョン 6.0 をデプロイする場合は、5.5 で利用できる機能のみがサポートされます。|
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>自動検出用のアカウントを準備する
 Site Recovery は、プロセス サーバーで仮想マシンを自動検出するため、また仮想マシンのフェールオーバーおよびフェールバックのために、VMware にアクセスできる必要があります。

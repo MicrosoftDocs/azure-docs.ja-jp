@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 08/14/2017
 ms.author: shlo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: deda1cc7be197fc3d59b71038224dc6e8089267b
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項
@@ -58,10 +59,5 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 ソリューションの製品推奨戦略を最適化し、経営目標に合わせて調整することで、オンライン小売業者の販売とマーケティングの目標を達成することができます。 また、この小売業者は、効率的で信頼性とコスト効果が高い方法で製品推奨ワークフローを運用および管理できるようになりました。 そのアプローチにより、クリックから売上への転換の成功の測定に基づいて、モデルを更新し、効果を微調整しやすくなりました。 小売業者は Azure Data Factory を使用することで、時間と費用がかかる手動のクラウド リソース管理を止め、オンデマンドのクラウド リソース管理に移行できました。 そして、時間と費用を節約し、ソリューションのデプロイメントにかかる時間を短縮することができました。 Azure ポータルから実行できる Data Factory の監視および管理の UI で、データ系列ビューと運用サービスのヘルス状態の確認とトラブルシューティングが簡単になりました。 完了データが確実に生成され、ユーザーに提供されるように、ソリューションをスケジュールできるようになりました。また、データと処理の依存関係は自動的に管理されるようになり、人の操作は不要になりました。
 
 オンライン小売業者は、この個人用に設定されたショッピング エクスペリエンスを提供することで、より競争力が高く、魅力的なカスタマー エクスペリエンスを作り、売上と全体的な顧客満足度を向上しています。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

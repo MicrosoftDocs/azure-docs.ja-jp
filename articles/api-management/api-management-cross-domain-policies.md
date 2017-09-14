@@ -3,7 +3,7 @@ title: "Azure API Management のクロス ドメイン ポリシー | Microsoft 
 description: "Azure API Management で使用できるクロス ドメイン ポリシーについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
-##  <a name="a-namecrossdomainpoliciesa-cross-domain-policies"></a><a name="CrossDomainPolicies"></a> クロス ドメイン ポリシー  
+##  <a name="CrossDomainPolicies"></a> クロス ドメイン ポリシー  
   
 -   [クロスドメイン呼び出しを許可](api-management-cross-domain-policies.md#AllowCrossDomainCalls) - Adobe Flash や Microsoft Silverlight ブラウザーベースのクライアントから API を利用できるようにします。  
   
@@ -30,7 +32,7 @@ ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
   
 -   [JSONP](api-management-cross-domain-policies.md#JSONP) - JSON with padding (JSONP) のサポートを操作または API に追加して、JavaScript ブラウザーベースのクライアントからのクロスドメイン呼び出しを可能にします。  
   
-##  <a name="a-nameallowcrossdomaincallsa-allow-cross-domain-calls"></a><a name="AllowCrossDomainCalls"></a> クロスドメイン呼び出しを許可  
+##  <a name="AllowCrossDomainCalls"></a> クロスドメイン呼び出しを許可  
  `cross-domain`ポリシーを使用して、Adobe Flash や Microsoft Silverlight ブラウザーベースのクライアントから API を利用できるようにします。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -65,7 +67,7 @@ ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
   
 -   **ポリシー スコープ:** グローバル  
   
-##  <a name="a-namecorsa-cors"></a><a name="CORS"></a> CORS  
+##  <a name="CORS"></a> CORS  
  `cors`ポリシーは、クロス オリジン リソース共有 (CORS) のサポートを操作または API に追加して、ブラウザーベースのクライアントからのドメイン間呼び出しを可能にします。  
   
  CORS を使用すると、ブラウザーとサーバーは、やり取りを介して、特定のクロス オリジン要求 (たとえば、他のドメインに対して Web ページの JavaScript で実行された XMLHttpRequests 呼び出し) を許可するかどうかを決めることができます。 これにより、単に同一オリジンの要求を許可するよりも高い柔軟性が得られる一方、すべてのクロス オリジン要求を許可するよりも高いセキュリティを実現できます。  
@@ -127,13 +129,13 @@ ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |cors|ルート要素。|はい|該当なし|  
-|allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む&1; つの `origin` 要素か、URI を含む&1; つ以上の `origin` 要素です。|はい|該当なし|  
+|allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む 1 つの `origin` 要素か、URI を含む 1 つ以上の `origin` 要素です。|はい|該当なし|  
 |origin|値として使用できるのは、すべての配信元を許可する `*` か、1 つの配信元を指定する URI です。 URI には、スキーム、ホスト、およびポートを含める必要があります。|はい|URI でポートが省略されると、HTTP ではポート 80、HTTPS ではポート 443 が使用されます。|  
 |allowed-methods|この要素は、GET または POST 以外のメソッドが許可される場合に必須です。 サポートされる HTTP 動詞を指定する `method` 要素が含まれます。|いいえ|このセクションが存在しない場合、GET と POST がサポートされます。|  
-|静的メソッド|HTTP 動詞を指定します。|`allowed-methods` セクションが存在する場合、少なくとも&1; つの `method` 要素が必要です。|該当なし|  
+|静的メソッド|HTTP 動詞を指定します。|`allowed-methods` セクションが存在する場合、少なくとも 1 つの `method` 要素が必要です。|該当なし|  
 |allowed-headers|この要素には、要求に組み込むことができるヘッダーの名前を指定する `header` 要素が含まれます。|なし|該当なし|  
 |expose-headers|この要素には、クライアントがアクセスできるヘッダーの名前を指定する `header` 要素が含まれます。|いいえ|該当なし|  
-|ヘッダー|ヘッダー名を指定します。|セクションが存在する場合、少なくとも&1; つの `header` 要素が `allowed-headers` または `expose-headers` に必要です。|該当なし|  
+|ヘッダー|ヘッダー名を指定します。|セクションが存在する場合、少なくとも 1 つの `header` 要素が `allowed-headers` または `expose-headers` に必要です。|該当なし|  
   
 ### <a name="attributes"></a>属性  
   
@@ -149,7 +151,7 @@ ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
   
 -   **ポリシー スコープ:** API、操作  
   
-##  <a name="a-namejsonpa-jsonp"></a><a name="JSONP"></a> JSONP  
+##  <a name="JSONP"></a> JSONP  
  `jsonp`ポリシーは、JSON with padding (JSONP) のサポートを操作または API に追加して、JavaScript ブラウザーベースのクライアントからのクロス ドメイン呼び出しを可能にします。 JSONP は、異なるドメインのサーバーのデータを要求するために JavaScript プログラムで使用される方法です。 JSONP を使用すると、Web ページへのアクセスが同じドメイン内である必要があるという、ほとんどの Web ブラウザーで適用される制限を回避できます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -189,8 +191,3 @@ ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
   
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-
-
-<!--HONumber=Jan17_HO2-->
-
-

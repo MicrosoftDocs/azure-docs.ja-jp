@@ -1,54 +1,55 @@
 ---
-title: "複数のロール、マイクロサービス、およびコンテナーに対する Azure Application Insights のサポート | Microsoft Docs"
+title: "複数のコンポーネント、マイクロサービス、コンテナーに対する Azure Application Insights のサポート | Microsoft Docs"
 description: "複数のコンポーネントまたはロールから成るアプリのパフォーマンスと使用状況を監視。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: dad17277452081427a01d077128a3a137b2190f5
+ms.date: 05/17/2017
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: d8b466caba7201a5bb8612e773ad61943f6d1cf2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="monitor-multi-role-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチロール アプリケーションを監視する
+# <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチコンポーネント アプリケーションを監視する
 
-複数のコンポーネント、ロール、またはサービスから成るアプリを、[Azure Application Insights](app-insights-overview.md) で監視することができます。 ロールの正常性とロール間の関係は、単一のアプリケーション マップに表示されます。 複数のロールによる個々の操作を、自動 HTTP 関連付けでトレースすることができます。 コンテナー診断は、アプリケーション テレメトリに統合し、関連付けることができます。 アプリケーションのすべてのロールに対して、単一の Application Insights リソースを使用します。 
+複数のサーバー コンポーネント、ロール、またはサービスからなるアプリを、[Azure Application Insights](app-insights-overview.md) で監視できます。 コンポーネントの正常性とコンポーネント間の関係は、単一のアプリケーション マップに表示されます。 複数のコンポーネントによる個々の操作を、自動 HTTP 関連付けでトレースできます。 コンテナー診断は、アプリケーション テレメトリに統合し、関連付けることができます。 アプリケーションのすべてのコンポーネントに対して、単一の Application Insights リソースを使用します。 
 
-![マルチロール アプリケーション マップ](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![マルチコンポーネントのアプリケーション マップ](./media/app-insights-monitor-multi-role-apps/app-map.png)
 
-ここでは "ロール" は広い意味で使用されており、個別のプロジェクトとして構築された任意のアプリケーション コンポーネントまたはサービスを指します。 たとえば、典型的なビジネス アプリケーションは、REST API を通じて通信する複数のロールで構成されています。 ロールは、Docker、Service Fabric などのコンテナーや、クラウドまたはオンプレミスのホストでホストできます。 
+ここでは、"コンポーネント" は大きなアプリケーションの各機能部分を意味しています。 たとえば、典型的なビジネス アプリケーションは、Web ブラウザーで動作するクライアント コードからなり、そのコードは 1 つ以上の Web アプリケーション サービスとやりとりし、さらにそのサービスはバックエンド サービスを使用します。 サーバー コンポーネントは、クラウドでホストされるオンプレミスであることもあれば、Azure Web と worker ロールであることもあり、Docker や Service Fabric などのコンテナーで実行されることもあります。 
 
 ### <a name="sharing-a-single-application-insights-resource"></a>単一の Application Insights リソースの共有 
 
-ここでの主要なテクニックは、アプリケーションのすべてのロールから同じ Application Insights リソースにテレメトリを送信し、必要であれば `cloud_RoleName` プロパティを使用してロールを区別することです。 
+ここでの主要なテクニックは、アプリケーションのすべてのコンポーネントから同じ Application Insights リソースにテレメトリを送信し、必要であれば `cloud_RoleName` プロパティを使用してロールを区別することです。 Application Insights SDK は、`cloud_RoleName` プロパティをテレメトリ コンポーネントの出力に追加します。 たとえば、Web サイト名またはサービス ロール名を `cloud_RoleName` プロパティに追加します。 この値は、telemetryinitializer でオーバーライドできます。 アプリケーション マップは、`cloud_RoleName` プロパティを使用してマップ上のコンポーネントを識別します。
 
-一部のケースでは、この方法が適切ではなく、ロールのグループごとに個別のリソースを使用する方がよい場合があります。 たとえば、管理や課金のために、異なるリソースを使用しなければならないことがあります。 個別のリソースを使用する場合は、すべてのロールが単一のアプリケーション マップには表示されず、[Analytics](app-insights-analytics.md) で複数のロールにわたるクエリを実行することができません。 また、リソースごとにセットアップを行う必要があります。
+`cloud_RoleName` プロパティをオーバーライドする方法については、「[プロパティの追加: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer)」を参照してください。  
 
-そのことを考慮して、このドキュメントの残りの部分では、複数のロールから 1 つの Application Insights リソースにデータを送信することを想定しています。
+一部のケースでは、この方法が適切ではなく、コンポーネントのグループごとに個別のリソースを使用する方がよい場合があります。 たとえば、管理や課金のために、異なるリソースを使用しなければならないことがあります。 個別のリソースを使用する場合は、すべてのコンポーネントが単一のアプリケーション マップには表示されず、[Analytics](app-insights-analytics.md) で複数のコンポーネントにわたるクエリを実行することができません。 また、リソースごとにセットアップを行う必要があります。
 
-## <a name="configure-multi-role-applications"></a>マルチロール アプリケーションを構成する
+そのことを考慮して、このドキュメントの残りの部分では、複数のコンポーネントから 1 つの Application Insights リソースにデータを送信することを想定しています。
 
-マルチロール アプリケーション マップを取得するには、以下の目標を達成する必要があります。
+## <a name="configure-multi-component-applications"></a>マルチコンポーネント アプリケーションを構成する
 
-* アプリケーションの各ロールに、Application Insights パッケージの**最新のプレリリースをインストール**します。 
-* アプリケーションのすべてのロールで、**単一の Application Insights リソースを共有**します。
+マルチコンポーネント アプリケーション マップを取得するには、以下の目標を達成する必要があります。
+
+* アプリケーションの各コンポーネントに、Application Insights パッケージの**最新のプレリリースをインストール**します。 
+* アプリケーションのすべてのコンポーネントで、**単一の Application Insights リソースを共有**します。
 * [プレビュー] ブレードで、**マルチロール アプリケーション マップを有効**にします。
 
-アプリケーションの各ロールを、その種類に適した方法で構成します  ([ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md))。
+アプリケーションの各コンポーネントを、その種類に適した方法で構成します。 ([ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、[JavaScript](app-insights-javascript.md)。)
 
 ### <a name="1-install-the-latest-pre-release-package"></a>1.最新のプレリリース パッケージをインストールする
 
-各ロールのプロジェクトで、Appication Insights パッケージを更新するかインストールします。 Visual Studio を使用している場合:
+各サーバー コンポーネントのプロジェクトで、Appication Insights パッケージを更新するかインストールします。 Visual Studio を使用している場合:
 
 1. プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 
 2. **[プレリリースを含める]** を選択します。
@@ -57,16 +58,16 @@ ms.lasthandoff: 05/17/2017
     表示されない場合は、以下の適切なパッケージを参照してインストールします。
     
     * Microsoft.ApplicationInsights.WindowsServer
-    * Microsoft.ApplicationInsights.ServiceFabric - Service Fabric アプリケーションで実行されているゲスト実行可能ファイルや Docker コンテナーとして実行されているロールの場合
+    * Microsoft.ApplicationInsights.ServiceFabric - ゲスト実行可能ファイルとして動作しているコンテナーや Service Fabric アプリケーションで実行されている Docker コンテナーの場合
     * Microsoft.ApplicationInsights.ServiceFabric.Native - ServiceFabric アプリケーションのリライアブル サービスの場合
-    * Microsoft.ApplicationInsights.Kubernetes - Kubernetes 上の Docker で実行されているロールの場合
+    * Microsoft.ApplicationInsights.Kubernetes - Kubernetes 上の Docker で実行されているコンポーネントの場合
 
 ### <a name="2-share-a-single-application-insights-resource"></a>2.単一の Application Insights リソースを共有する
 
 * Visual Studio でプロジェクトを右クリックして **[Application Insights の構成]** を選択するか、**[Application Insights] > [構成]** の順に選択します。 最初のプロジェクトでは、ウィザードを使用して Application Insights リソースを作成します。 その後のプロジェクトでは、同じリソースを選択します。
 * [Application Insights] メニューがない場合は、次のようにして手動で構成します。
 
-   1. [Azure Portal](https://portal,azure.com) で、他のロール用に既に作成した Application Insights リソースを開きます。
+   1. [Azure Portal](https://portal,azure.com) で、他のコンポーネント用に既に作成した Application Insights リソースを開きます。
    2. [概要] ブレードで [要点] ドロップダウン タブを開き、**インストルメンテーション キー**をコピーします。
    3. プロジェクトで ApplicationInsights.config を開き、`<InstrumentationKey>your copied key</InstrumentationKey>` を挿入します。
 
@@ -79,7 +80,7 @@ Azure Portal でアプリケーションのリソースを開きます。 [プ�
 
 ### <a name="4-enable-docker-metrics-optional"></a>4.Docker メトリックを有効にします (省略可能) 
 
-Azure Windows VM でホストされている Docker でロールが実行されている場合は、コンテナーから追加のメトリックを収集できます。 [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics.md)構成ファイルに次のコードを挿入します。
+Azure Windows VM でホストされている Docker でコンポーネントが実行されている場合は、コンテナーから追加のメトリックを収集できます。 [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics.md)構成ファイルに次のコードを挿入します。
 
 ```
 "DiagnosticMonitorConfiguration": {
@@ -105,24 +106,24 @@ Azure Windows VM でホストされている Docker でロールが実行され�
 
 ```
 
-## <a name="use-cloudrolename-to-separate-roles"></a>cloud_RoleName を使用してロールを区別する
+## <a name="use-cloudrolename-to-separate-components"></a>cloud_RoleName を使用してコンポーネントを区別する
 
-`cloud_RoleName` プロパティは、すべてのテレメトリに関連付けられます。 このプロパティで、テレメトリを生成したロールまたはサービスを識別できます  (cloud_RoleInstance とは異なります。このプロパティは、複数のサーバー プロセスやマシンで並列して実行されている同じロールを区別するものです)。
+`cloud_RoleName` プロパティは、すべてのテレメトリに関連付けられます。 このプロパティで、テレメトリを生成したコンポーネント (ロールまたはサービス) を識別できます。 (cloud_RoleInstance とは異なります。このプロパティは、複数のサーバー プロセスやマシンで並列して実行されている同じロールを区別するものです)。
 
 ポータルでこのプロパティを使用して、テレメトリをフィルター処理したりセグメント化したりすることができます。 この例では [障害] ブレードがフィルター処理され、フロントエンド Web サービスからの情報だけが表示されます。CRM API バックエンドの障害は除外されます。
 
 ![クラウド ロール名によってセグメント化されたメトリック グラフ](./media/app-insights-monitor-multi-role-apps/cloud-role-name.png)
 
-## <a name="trace-operations-between-roles"></a>ロール間の操作をトレースする
+## <a name="trace-operations-between-components"></a>コンポーネント間の操作をトレースする
 
-個々の操作の処理中に行われた、1 つのサービスから別のサービスへの呼び出しをトレースすることができます。
+個々の操作の処理中に行われた、1 つのコンポーネントから別のコンポーネントへの呼び出しをトレースすることができます。
 
 
 ![操作のテレメトリを表示する](./media/app-insights-monitor-multi-role-apps/show-telemetry-for-operation.png)
 
 クリックして、フロントエンド Web サーバーとバックエンド API を対象に、この操作に関連するテレメトリの一覧を表示します。
 
-![複数のロールにわたって検索する](./media/app-insights-monitor-multi-role-apps/search-across-components.png)
+![コンポーネント間の検索](./media/app-insights-monitor-multi-role-apps/search-across-components.png)
 
 
 ## <a name="next-steps"></a>次のステップ

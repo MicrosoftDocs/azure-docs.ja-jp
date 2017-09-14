@@ -11,15 +11,16 @@ keywords:
 ms.assetid: 64fbe43f-fdde-4c17-a39a-d04f2d6d90a1
 ms.service: container-registry
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: b6c26f28aa1e574ba3aabe53eda359cb6bf2edcc
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/27/2017
 
 ---

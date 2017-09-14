@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 06/22/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d688b5c6f918542b73d95c795f5dbb82070b17c8
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: 792a551ae3dae46c503e5f0dda74cd0ac3a69c3a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -460,7 +460,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
    }
 }
 ```
-### <a name="type-mapping-for-azure-table"></a>Azure テーブルの型のマッピング
+## <a name="type-mapping-for-azure-table"></a>Azure テーブルの型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
@@ -475,8 +475,8 @@ Azure テーブル間でデータの移動時に、次の [Azure テーブル �
 | Edm.DateTime |DateTime |世界協定時刻 (UTC) を表す 64 ビット値。 サポートされている DateTime 範囲は西暦 1601 年 1 月 1 日 UTC 深夜 12:00 から 始まります。 この範囲は 9999 年 12 月 31 日に終了します。 |
 | Edm.Double |double |64 ビットの浮動小数点値。 |
 | Edm.Guid |Guid |グローバルで一意となる 128 ビットの識別子。 |
-| Edm.Int32 |Int32 または int |32 ビットの整数。 |
-| Edm.Int64 |Int64 または long |64 ビットの整数。 |
+| Edm.Int32 |Int32 |32 ビットの整数。 |
+| Edm.Int64 |Int64 |64 ビットの整数。 |
 | Edm.String |String |UTF-16 エンコードの値。 文字列値は最大 64 KB になります。 |
 
 ### <a name="type-conversion-sample"></a>型変換の例

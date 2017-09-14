@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: 939d6adc548d5d6ef66909bcf52f11a4106c3be9
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 40db7e4dd151ec391c754dc6d4145aeeb8058eca
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-universal-apps"></a>Windows ユニバーサル アプリの Azure Mobile Engagement の概要
@@ -27,13 +27,16 @@ ms.lasthandoff: 03/01/2017
 このトピックでは、アプリの使用状況を理解して、プッシュ通知を Windows ユニバーサル アプリケーションのセグメント化されたユーザーに送信するために、Azure モバイル エンゲージメントの使用方法を説明します。
 このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 基本的なアプリ使用状況データを収集し、Windows 通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ユニバーサル アプリを作成します。
 
+> [!NOTE]
+> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
 ## <a name="set-up-mobile-engagement-for-your-windows-universal-app"></a>Windows ユニバーサル アプリの Mobile Engagement の設定
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 完全な統合のドキュメントについては、「 [Mobile Engagement Windows ユニバーサル SDK の統合](mobile-engagement-windows-store-sdk-overview.md)」を参照してください。
 
 統合の実例を示すために、Visual Studio で基本的なアプリを作成します。
@@ -60,7 +63,7 @@ ms.lasthandoff: 03/01/2017
     ![][3]
 
     > [!TIP]
-    > アプリの対象プラットフォームを Windows と Windows Phone の両方にする場合、2 つの Mobile Engagement アプリケーションを作成する必要があります (サポートされているプラットフォームごとに&1; つずつ)。 2 つのアプリがあれば、対象ユーザーを適切に分け、各プラットフォームに合わせた通知を送信できます。
+    > アプリの対象プラットフォームを Windows と Windows Phone の両方にする場合、2 つの Mobile Engagement アプリケーションを作成する必要があります (サポートされているプラットフォームごとに 1 つずつ)。 2 つのアプリがあれば、対象ユーザーを適切に分け、各プラットフォームに合わせた通知を送信できます。
 
     > [!IMPORTANT]
     > NuGet は、Windows 10 UWP アプリケーションで SDK のリソースを自動的にコピーしません。 NuGet パッケージのインストール時に表示される手順 (readme.txt) に従って、手動で行う必要があります。  
@@ -98,8 +101,8 @@ ms.lasthandoff: 03/01/2017
               //... rest of the code
             }
 
-## <a name="a-idmonitoraenable-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を有効にする
-データを送信してユーザーがアクティブであることを確認するには、少なくとも&1; つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
+## <a id="monitor"></a>リアルタイム監視を有効にする
+データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
 1. **MainPage.xaml.cs** に、次の `using` ステートメントを追加します。
 
@@ -120,10 +123,10 @@ ms.lasthandoff: 03/01/2017
 >
 > **Windows 10 ユニバーサル アプリ**の場合は、上記の方法ではなく、「[Windows ユニバーサル アプリ Engagement SDK を使用した詳細なレポート](mobile-engagement-windows-store-advanced-reporting.md)」の「推奨される方法: Page クラスをオーバーロードします」で推奨されている方法を使用してください。
 
-## <a name="a-idmonitoraconnect-app-with-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegrate-pushaenable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement を導入すると、キャンペーンとの関連でプッシュ通知とアプリ内メッセージングを利用し、ユーザーに情報を提供できます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -167,7 +170,7 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
     ![][7]
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>アプリへ通知を送信する
+## <a id="send"></a>アプリへ通知を送信する
 [!INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
 アプリが実行中の場合は、アプリ内通知が表示されます。 アプリが閉じている場合は、トースト通知が表示されます。

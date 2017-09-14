@@ -4,7 +4,7 @@ description: "Azure Functions で Twilio バインドを使用する方法を説
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/20/2016
-ms.author: wesmc, glenga
+ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e8c5e8f2dfedae26486e1c8afbe0cec3f3228e86
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>Twilio 出力バインディングを使用した Azure Functions からの SMS メッセージの送信
@@ -36,14 +36,16 @@ Azure Functions では、関数で SMS テキスト メッセージを送信で�
 ## <a name="functionjson-for-the-twilio-output-binding"></a>Twilio 出力バインディングの function.json
 function.json ファイルは、次のプロパティを提供します。
 
-* `name`: Twilio SMS テキスト メッセージの関数コードで使用される変数名です。
-* `type`: *"twilioSms"* に設定する必要があります。
-* `accountSid`: この値には、Twilio アカウント SID を保持するアプリ設定の名前を指定する必要があります。
-* `authToken`: この値には、Twilio 認証トークンを保持するアプリ設定の名前を指定する必要があります。
-* `to`: この値は、SMS テキストの送信先の電話番号に設定されます。
-* `from`: この値は、SMS テキストの送信元の電話番号に設定されます。
-* `direction` : *"out"*に設定する必要があります。
-* `body`: この値は、SMS テキスト メッセージを関数のコードで動的に設定する必要がない場合に、メッセージをハード コーディングするために使用できます。 
+|プロパティ  |Description  |
+|---------|---------|
+|**name**| Twilio SMS テキスト メッセージの関数コードで使用される変数名です。 |
+|**type**| `twilioSms` に設定する必要があります。|
+|**accountSid**| この値には、Twilio アカウント SID を保持するアプリ設定の名前を指定する必要があります。|
+|**authToken**| この値には、Twilio 認証トークンを保持するアプリ設定の名前を指定する必要があります。|
+|**to**| この値は、SMS テキストの送信先の電話番号に設定されます。|
+|**from**| この値は、SMS テキストの送信元の電話番号に設定されます。|
+|**direction**| `out` に設定する必要があります。|
+|**body**| この値は、SMS テキスト メッセージを関数のコードで動的に設定する必要がない場合に、メッセージをハード コーディングするために使用できます。 |
 
 function.json の例:
 

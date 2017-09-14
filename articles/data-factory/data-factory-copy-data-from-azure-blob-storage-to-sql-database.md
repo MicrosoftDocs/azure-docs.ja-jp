@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 74301d651ae96588e5fd076900aada198c76deb0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 730140d15f4dec7ddc1280c2e4da1d247902fe4a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -47,7 +46,7 @@ ms.lasthandoff: 04/28/2017
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
 * **Azure SQL データベース**。 このチュートリアルでは、Azure SQL Database を **コピー先** データ ストアとして使用します。 このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「 [Azure SQL Database を作成して構成する方法](../sql-database/sql-database-get-started.md) 」を参照してください。
 * **SQL Server 2012/2014 または Visual Studio 2013**。 サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
 
@@ -117,7 +116,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 これで前提条件を完了しました。 データ ファクトリを作成するには、次のいずれかの方法を使用します。 上部にあるドロップダウン リストのいずれかのオプションまたは次のリンクをクリックして、チュートリアルを実行します。     
 
 * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-* [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+* [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)

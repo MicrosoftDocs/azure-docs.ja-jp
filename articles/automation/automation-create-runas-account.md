@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/01/2017
+ms.date: 07/27/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 431049c714a58f85ebb73165fe338d927d27039a
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 09ddca83fc0f39d7911813e488317f9434fdcfc8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -42,6 +42,14 @@ ms.lasthandoff: 06/03/2017
 2. **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。 
 3. **[プロパティ]** ブレードに表示される値をメモします。<br><br> ![Automation アカウントの "プロパティ" ブレード](media/automation-create-runas-account/automation-account-properties.png)  
 
+### <a name="required-permissions-to-update-your-automation-account"></a>Automation アカウントを更新するために必要なアクセス許可
+Automation アカウントを更新するには、このトピックの作業で要求される以下に記載した特権とアクセス許可が必要となります。   
+ 
+* ご利用の AD ユーザー アカウントが、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md#contributor-role-permissions)」の記事に記載されている Microsoft.Automation リソースの共同作成者ロールに相当するアクセス許可を備えたロールに追加されている必要があります。  
+* [アプリの登録] が **[はい]** に設定されている場合、Azure AD テナントの非管理者ユーザーが [AD アプリケーションを登録](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)できます。  [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。 
+
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という 警告が **[Automation アカウントの追加]** ブレードに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
+
 ## <a name="create-run-as-account-from-the-portal"></a>ポータルで実行アカウントを作成する
 このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。  実行アカウントとクラシック実行アカウントをそれぞれ作成します。Azure クラシック ポータル でリソースを管理する必要がない場合は、Azure 実行アカウントのみを作成してください。  
 
@@ -57,7 +65,6 @@ Automation アカウントに次の項目が作成されます。
 
 * 指定された Automation アカウントに *AzureClassicRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
 * 指定された Automation アカウントに *AzureClassicRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、証明書の資産名が格納されます。
-
 
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
 2. [Automation アカウント] ブレードで、**[アカウント設定]** セクションの **[実行アカウント]** を選択します。  
@@ -149,7 +156,7 @@ Automation アカウントに次の項目が作成されます。
 
         $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
         $KeyCredential.StartDate = $CurrentDate
-        $KeyCredential.EndDate= [DateTime]$PfxCert.GetExpirationDateString()
+        $KeyCredential.EndDate = Get-Date $PfxCert.GetExpirationDateString()
         $KeyCredential.EndDate = $KeyCredential.EndDate.AddDays(-1)
         $KeyCredential.KeyId = $KeyId
         $KeyCredential.CertValue  = $keyValue

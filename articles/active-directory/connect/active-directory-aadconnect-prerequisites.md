@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 0ce1dbf9f2baf9369875370866690010fe8e9e37
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: eb9697edc5a6085417ec1339c334db6451ebbf12
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
@@ -63,7 +62,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
 * Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされています。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。
 * 別の SQL Server を使用する場合は、次の要件が適用されます。
-  * Azure AD Connect では、SQL Server 2008 (最新の Service Pack) から SQL Server 2016 まで、すべてのエディションの Microsoft SQL Server がサポートされています。 Microsoft Azure SQL Database は、データベースとして **サポートされていません** 。
+  * Azure AD Connect では、SQL Server 2008 (最新の Service Pack) から SQL Server 2016 SP1 まで、すべてのエディションの Microsoft SQL Server がサポートされています。 Microsoft Azure SQL Database は、データベースとして **サポートされていません** 。
   * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらの照合順序は、名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は**サポートされていません**。
   * 1 つの SQL インスタンスにつき保持できる同期エンジンは 1 つだけです。 FIM/MIM Sync、DirSync、または Azure AD Sync との SQL インスタンスの共有は**サポートされていません**。
 
@@ -155,8 +154,8 @@ Azure AD Connect を使用して Active Directory フェデレーション サ�
   * ターゲット コンピューター (WAP コンピューター) での要件
     * サービス スナップインから winrm (Windows Remote Management / WS-Management) サービスが実行されていることを確認します。
     * 管理者特権の PSH コマンド ウィンドウで、 `Enable-PSRemoting –force`
-      * ウィザードを実行しているコンピューターでの要件 (ターゲット コンピューターがドメインに参加していないか、信頼されていないドメインにある場合)
-      * 管理者特権の PSH コマンド ウィンドウで、 `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+  * ウィザードを実行しているコンピューターでの要件 (ターゲット コンピューターがドメインに参加していないか、信頼されていないドメインにある場合)
+    * 管理者特権の PSH コマンド ウィンドウで、 `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
     * サーバー マネージャーでの要件
       * DMZ WAP ホストをコンピューターのプールに追加します ([サーバー マネージャー]、[管理]、[サーバーの追加] の順にクリックし、[DNS] タブを使用)。
       * サーバー マネージャーの [すべてのサーバー] タブで、 WAP サーバーを右クリックし、[管理に使用する資格情報] を選択し、WAP コンピューターのローカルの資格情報 (ドメインの資格情報ではない) を入力します。

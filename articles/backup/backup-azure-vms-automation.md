@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/25/2017
+ms.date: 08/30/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: dcbcdf6f81d2acc9d515eca6915ac783b082d5b0
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 414fb9adaa1535d82b1bc385ff0864394efb837c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする
@@ -115,7 +114,7 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/storage-redundancy.md#geo-redundant-storage) を使用できます。 次に示す例では、testvault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) を使用できます。 次に示す例では、testvault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
 
     ```
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testvault"
@@ -197,6 +196,14 @@ PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM"
 
 ```
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToKeys backup,get,list -PermissionsToSecrets get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
+PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
+```
+
+暗号化された VM (BEK のみを使用して暗号化) で保護を有効にするには、Azure Backup サービスに許可を付与し、シークレットをキー コンテナーから読み取る必要があります。
+
+```
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
 PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
@@ -373,20 +380,39 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
    PS C:\> $vm = New-AzureRmVMConfig -VMSize $obj.'properties.hardwareProfile'.vmSize -VMName "testrestore"
     ```
 
-4. OS ディスクとデータ ディスクを接続します。
+4. OS ディスクとデータ ディスクを接続します。 VM の構成に応じて関連するセクションを参照し、それぞれのコマンドレットを確認します。
 
-  管理対象外の暗号化されていない VM には、次のサンプルを使用します。
+    #### <a name="non-managed-non-encrypted-vms"></a>管理対象外の暗号化されていない VM
+
+    管理対象外の暗号化されていない VM には、次のサンプルを使用します。
 
     ```
     PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
     PS C:\> foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+    {
+    $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+    }
+    ```
+
+    #### <a name="non-managed-encrypted-vms-bek-only"></a>管理対象外の暗号化された VM (BEK のみ)
+
+    管理対象外の暗号化された VM (BEK のみを使用して暗号化) では、ディスクをアタッチする前に、キー コンテナーにシークレットを復元する必要があります。 詳細については、記事[「Azure Backup 復旧ポイントから暗号化された仮想マシンを復元する](backup-azure-restore-key-secret.md)」を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。
+
+    ```
+    PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+    PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
+    PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
      {
      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
 
-  管理対象外の暗号化された VM では、ディスクをアタッチする前に、キー コンテナーにキーとシークレットを復元する必要があります。 詳細については、記事[「Azure Backup 復旧ポイントから暗号化された仮想マシンを復元する](backup-azure-restore-key-secret.md)」を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。
+    #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>管理対象外の暗号化された VM (BEK と KEK)
+
+    管理対象外の暗号化された VM (BEK と KEK を使用して暗号化) では、ディスクをアタッチする前に、キー コンテナーにキーとシークレットを復元する必要があります。 詳細については、記事[「Azure Backup 復旧ポイントから暗号化された仮想マシンを復元する](backup-azure-restore-key-secret.md)」を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -400,25 +426,49 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
      }
     ```
 
-  管理対象の暗号化された VM の場合は、BLOB ストレージから管理対象ディスクを作成し、ディスクをアタッチする必要があります。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 次のサンプル コードでは、管理対象の暗号化された VM のデータ ディスクをアタッチする方法を示します。
+    #### <a name="managed-non-encrypted-vms"></a>管理対象の暗号化されていない VM
+
+    管理対象の暗号化されていない VM の場合は、BLOB ストレージから管理対象ディスクを作成し、ディスクをアタッチする必要があります。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 次のサンプル コードでは、管理対象の暗号化されていない VM のデータ ディスクをアタッチする方法を示します。
 
     ```
+    PS C:\> $storageType = "StandardLRS"
+    PS C:\> $osDiskName = $vm.Name + "_osdisk"
+    PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
+    PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
+    PS C:\> $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -CreateOption "Attach" -Windows
+    PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
+     {
+     $dataDiskName = $vm.Name + $dd.name ;
+     $dataVhdUri = $dd.vhd.uri ;
+     $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
+     $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
+     Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
+    }
+    ```
+
+    #### <a name="managed-encrypted-vms-bek-and-kek"></a>管理対象の暗号化された VM (BEK と KEK)
+
+    管理対象の暗号化された VM (BEK と KEK を使用して暗号化) では、BLOB ストレージから管理対象ディスクを作成し、ディスクをアタッチする必要があります。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 次のサンプル コードでは、管理対象の暗号化された VM のデータ ディスクをアタッチする方法を示します。
+
+     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
     PS C:\> $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
     PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
     PS C:\> $storageType = "StandardLRS"
     PS C:\> $osDiskName = $vm.Name + "_osdisk"
+    PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
     PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
     PS C:\> $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
     PS C:\> Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
     PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-      {
-        $dataDiskName = $vm.Name + $dd.name ;
-        $dataVhdUri = $dd.vhd.uri ;
-        $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-        $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-        Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-      }
+     {
+     $dataDiskName = $vm.Name + $dd.name ;
+     $dataVhdUri = $dd.vhd.uri ;
+     $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
+     $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
+     Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
+     }
     ```
 
 5. ネットワーク設定を設定します。

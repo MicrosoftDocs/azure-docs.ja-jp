@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 41d63ef88e9f0caf3d5f74841ec4670875fdaad1
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: aadbe872dd3384c8d337b432fb3be69422ca322b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)] 以下のガイドでは、Verizon プロファイルの管理ポータルを使用してコア レポートを表示する手順について説明します。 [Azure Portal を使用](cdn-log-analysis.md)して、Verizon と Akamai 両方のプロファイルについて、コア分析データをストレージ、イベント ハブ、またはログ分析 (oms) にエクスポートすることもできます。
+
+[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+
+以下のガイドでは、Verizon プロファイルの管理ポータルを使用してコア レポートを表示する手順について説明します。 [Azure Portal を使用](cdn-log-analysis.md)して、Verizon と Akamai 両方のプロファイルについて、コア分析データをストレージ、イベント ハブ、またはログ分析 (oms) にエクスポートすることもできます。
 
 次のレポートを使用して、CDN の使用パターンを表示できます。
 

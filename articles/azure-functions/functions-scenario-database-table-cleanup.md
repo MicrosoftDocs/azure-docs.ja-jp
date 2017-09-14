@@ -1,10 +1,10 @@
 ---
 title: "スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Docs"
-description: "イベント タイマーに従って実行される C# 関数を Azure Functions で作成します。"
+description: "Azure Functions を使用して、Azure SQL Database に接続し、定期的に行をクリーンアップするタスクをスケジュールします。"
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
@@ -13,91 +13,116 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 05/22/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b873a7d0ef9efa79c9a173a8bfd3522b12522322
-ms.openlocfilehash: c0b4a963275dae5bbf203388cb61086393803b15
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 6fd0e32374827b249f5aba1cbfc39117c88c6272
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/29/2016
-
+ms.lasthandoff: 05/25/2017
 
 ---
-# <a name="use-azure-functions-to-perform-a-scheduled-clean-up-task"></a>スケジュールされたクリーンアップ タスクを Azure Functions で実行する
-このトピックでは、Azure Functions を使用して C# の新しい関数を作成する方法を紹介します。作成するのは、イベント タイマーに従ってデータベース テーブル内の行をクリーンアップする関数です。 この新しい関数は、Azure Functions ポータルで定義済みテンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリの App Service 設定として設定する作業が必要となります。 
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
+このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# 関数は、Azure ポータルの定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリの設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 Mobile Apps のテーブルにおける CRUD 操作を関数で個別に処理する場合は、[Mobile Apps バインド](functions-bindings-mobile-apps.md)を使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
-関数を作成するには、アクティブな Azure アカウントを用意する必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
 
-このトピックでは、SQL Database の *TodoItems* というテーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 この TodoItems テーブルは、 [Azure App Service Mobile Apps のクイック スタート チュートリアル](../app-service-mobile/app-service-mobile-ios-get-started.md)で作成したものです。 サンプル データベースを使用してもかまいませんが、別のテーブルを使う場合はコマンドを適宜変更する必要があります。
++ このトピックでは、タイマーによってトリガーされる関数を使用します。 トピック「[Azure でタイマーによってトリガーされる関数を作成する](functions-create-scheduled-function.md)」の手順を実行して、この関数の C# バージョンを作成します。   
 
-Mobile Apps バックエンドで使用する接続文字列は、ポータルから **[すべての設定]** > **[アプリケーション設定]** > **[接続文字列]** > **[接続文字列の値の表示]** > **[MS_TableConnectionString]** の順に選択して取得できます。 また、ポータルから **[すべての設定]** > **[プロパティ]** > **[データベース接続文字列の表示]** > **[ADO.NET (SQL 認証)]** の順に選択して直接 SQL Database から接続文字列を取得することもできます。
++ このトピックでは、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、トピック「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」の手順を実行します。 
 
-このシナリオではデータベースに対する一括操作を使用しています。 Mobile Apps のテーブルにおける CRUD 操作を関数で個別に処理する場合は、Mobile Table バインドを使用する必要があります。
+## <a name="get-connection-information"></a>接続情報の取得
 
-## <a name="set-a-sql-database-connection-string-in-the-function-app"></a>関数アプリにおける SQL Database の接続文字列の設定
-関数アプリは Azure での関数の実行をホストします。 接続文字列をはじめとするシークレットは、関数アプリの設定に保存することをお勧めします。 そうすれば、最終的に関数のコードが置かれるリポジトリから意図せずシークレットが漏えいするのを防ぐことができます。 
+「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を完了したときに作成したデータベースの接続文字列を取得する必要があります。
 
-1. [Azure Functions ポータル](https://functions.azure.com/signin) に移動し、Azure アカウントでサインインします。
-2. 使用する既存の関数アプリがある場合は、**[Your function apps (関数アプリ)]** から選択し、**[開く]** をクリックします。 新しい関数アプリを作成するには、アプリ用に一意の **[名前]** を入力するか、生成された名前をそのまま使用し、希望する **[リージョン]** を選択して **[Create + get started (作成 + 開始)]** をクリックします。 
-3. 関数アプリで、**[Function App Settings (関数アプリの設定)]** > **[Go to App Service Settings (App Service の設定に移動)]** の順にクリックします。 
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
+ 
+3. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+
+4. **[データベース接続文字列の表示]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。
+
+    ![ADO.NET の接続文字列をコピーします。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
+
+## <a name="set-the-connection-string"></a>接続文字列の設定 
+
+関数アプリは Azure での関数の実行をホストします。 接続文字列をはじめとするシークレットは、関数アプリの設定に保存することをお勧めします。 アプリケーション設定を使用して、コードによって誤って接続文字列が公開されることを防ぎます。 
+
+1. 「[Azure でタイマーによってトリガーされる関数を作成する](functions-create-scheduled-function.md)」で作成した関数アプリに移動します。
+
+2. **[プラットフォーム機能]** > **[アプリケーション設定]** を選択します。
    
-    ![関数アプリの設定のブレード](./media/functions-create-an-event-processing-function/functions-app-service-settings.png)
-4. 関数アプリで **[すべての設定]** をクリックし、下へスクロールして **[アプリケーション設定]** に移動します。次に、**[接続文字列]** の **[名前]** に `sqldb_connection` と入力し、**[値]** に接続文字列を貼り付けます。その後 **[保存]** をクリックし、関数アプリのブレードを閉じて Functions ポータルに戻ります。
+    ![関数アプリのアプリケーション設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+
+2. **[接続文字列]** まで下へスクロールして、テーブルに指定されている設定を使用して接続文字列を追加します。
    
-    ![App Service setting connection string](./media/functions-create-an-event-processing-function/functions-app-service-settings-connection-strings.png)
+    ![接続文字列を関数アプリ設定に追加します。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+
+    | Setting       | 推奨値 | Description             | 
+    | ------------ | ------------------ | --------------------- | 
+    | **名前**  |  sqldb_connection  | 関数コードで保存されている接続文字列にアクセスするために使用します。    |
+    | **値** | コピーされた文字列  | 前のセクションでコピーした接続文字列を貼り付けます。 |
+    | **型** | SQL Database | 既定の SQL Database 接続を使用します。 |   
+
+3. [ **Save**] をクリックします。
 
 それでは、SQL Database に接続する C# 関数のコードを追加しましょう。
 
-## <a name="create-a-timer-triggered-function-from-the-template"></a>タイマーでトリガーされる関数をテンプレートから作成する
-1. 関数アプリで **[+ 新しい関数]** > **[TimerTrigger - C#]** > **[作成]** の順にクリックします。 既定のスケジュールで (1 分おきに) 実行される関数が既定の名前で作成されます。 
-   
-    ![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
-2. **[開発]** タブの **[コード]** ウィンドウで、既存の関数コードの一番上に次のアセンブリ参照を追加します。
+## <a name="update-your-function-code"></a>関数コードの更新
+
+1. 関数アプリで、タイマーによってトリガーされる関数を選択します。
+ 
+3. 既存の関数コードの一番上に次のアセンブリ参照を追加します。
+
     ```cs
-        #r "System.Configuration"
-        #r "System.Data"
+    #r "System.Configuration"
+    #r "System.Data"
     ```
 
 3. 次の `using` ステートメントを関数に追加します。
     ```cs
-        using System.Configuration;
-        using System.Data.SqlClient;
-        using System.Threading.Tasks;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.Threading.Tasks;
     ```
 
 4. 既存の **Run** 関数を次のコードに置き換えます。
     ```cs
-        public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    {
+        var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
+        using (SqlConnection conn = new SqlConnection(str))
         {
-            var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(str))
+            conn.Open();
+            var text = "UPDATE SalesLT.SalesOrderHeader " + 
+                    "SET [Status] = 5  WHERE ShipDate < GetDate();";
+
+            using (SqlCommand cmd = new SqlCommand(text, conn))
             {
-                conn.Open();
-                var text = "DELETE from dbo.TodoItems WHERE Complete='True'";
-                using (SqlCommand cmd = new SqlCommand(text, conn))
-                {
-                    // Execute the command and log the # rows deleted.
-                    var rows = await cmd.ExecuteNonQueryAsync();
-                    log.Info($"{rows} rows were deleted");
-                }
+                // Execute the command and log the # rows affected.
+                var rows = await cmd.ExecuteNonQueryAsync();
+                log.Info($"{rows} rows were updated");
             }
         }
+    }
     ```
 
-5. **[保存]** をクリックして、次に関数が実行されるようすを **[ログ]** ウィンドウで観察し、TodoItems テーブルから削除された行数をメモします。
-6. (省略可) [Mobile Apps クイック スタート アプリ](../app-service-mobile/app-service-mobile-ios-get-started.md)を使用して、新たにいくつかの項目を "完了済み" に設定します。その後 **[ログ]** ウィンドウに戻り、次回関数が実行されたときに、同数の行が削除されるようすを観察してください。 
+    このサンプル コマンドは、出荷日に基づいて **[ステータス]** 列を更新します。 これは、32 行のデータが更新されるはずです。
+
+5. **[保存]** をクリックして、次に関数が実行されるようすを **[ログ]** ウィンドウで観察し、**SalesOrderHeader** テーブルの更新された行数をメモします。
+
+    ![関数のログを表示します。](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
 ## <a name="next-steps"></a>次のステップ
-Azure Functions の詳細については、次のトピックを参照してください。
+
+次に、Logic Apps で Functions を使用して、その他のサービスと統合する方法を説明します。
+
+> [!div class="nextstepaction"] 
+> [Logic Apps と統合される関数を作成する](functions-twitter-email.md)
+
+Functions の詳細については、次のトピックを参照してください。
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-   関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
+  関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 * [Azure Functions のテスト](functions-test-a-function.md)  
-   関数をテストするための各種ツールと手法について説明します。
-* [Azure Functions のスケーリング方法](functions-scale.md)  
-  Azure Functions で利用できるサービス プラン (従量課金プランを含む) と、適切なプランを選択する方法について説明します。  
-
-
-
+  関数をテストするための各種ツールと手法について説明します。  
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: B2C カスタム ポリシーの手順としての REST API 要求交換 | Microsoft Docs"
-description: "Azure Active Directory B2C のカスタム ポリシーと API の統合に関するトピック"
+title: "Azure Active Directory B2C: オーケストレーション手順としての REST API 要求の交換 | Microsoft Docs"
+description: "API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック"
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -15,43 +15,49 @@ ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 27d066cc6f985565a765989837e4a2744387a628
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: dc319c97e64e55861b84cc3943667418077a05d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/24/2017
 
 ---
 
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journeys-as-an-orchestration-step"></a>チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
 
-ID 開発者は、Azure AD B2C の基盤となる **Identity Experience Framework** (IEF) を使用して、RESTful API との対話をユーザー体験に統合できます。  
+ID 開発者は、Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework (IEF) を使用して、RESTful API との対話をユーザー体験に統合できます。  
 
 このチュートリアルの最後では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成することができます。
 
-IEF では、要求を介してデータが送受信されます。  REST API 要求交換は、オーケストレーション手順として設計できます。
+IEF では、要求を介してデータが送受信されます。 REST API 要求の交換は、
 
-- これにより、外部アクションをトリガーできます (たとえば、外部データベースにイベントを記録できます)。
-- 値をフェッチし、その後その値をユーザー データベースに格納することもできます。
-- 受信した要求は、後で実行フローを変更するために使用できます。
+- オーケストレーション手順として設計できます。
+- 外部アクションをトリガーできます。 たとえば、外部データベースにイベントを記録できます。
+- 値をフェッチしてユーザー データベースに格納するために使用できます。
 
-対話は検証プロファイルとして設計することもできます。 詳細については、「[チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」を参照してください。
+受信した要求は、後で実行フローを変更するために使用できます。
 
-このシナリオでは、ユーザーがプロファイルの編集を実行したときに、外部システムでユーザーを検索し、そのユーザーが登録されている市区町村を取得し、その属性を要求としてアプリケーションに返します。
+検証プロファイルとして対話を設計することもできます。 詳細については、「[チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」を参照してください。
+
+このシナリオでは、ユーザーがプロファイルの編集を実行するときに、以下の操作を実行できるようにします。
+
+1. 外部システム内のユーザーを検索します。
+2. そのユーザーが登録されている都市を取得します。
+3. その属性を要求としてアプリケーションに返します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [概要](active-directory-b2c-get-started-custom.md)に関するページに記載されたローカル アカウントのサインアップ/サインインを完了するための Azure AD B2C テナントの構成。
-- 対話する REST API エンドポイント。このチュートリアルでは、例として非常にシンプルな Azure Function App webhook を使用します。
-- **推奨**: [検証手順としての REST API 要求交換チュートリアル](active-directory-b2c-rest-api-validation-custom.md)を完了します。
+- [概要](active-directory-b2c-get-started-custom.md)に関するページに記載されたローカル アカウントのサインアップ/サインインを完了するように構成された Azure AD B2C テナント。
+- 対話する REST API エンドポイント。 このチュートリアルでは、単純な Azure 関数アプリの Webhook を例として使用します。
+- *推奨*: [検証手順としての REST API 要求交換チュートリアル](active-directory-b2c-rest-api-validation-custom.md)を完了します。
 
-## <a name="step-1---prepare-the-rest-api-function"></a>手順 1 - REST API 関数を準備する
+## <a name="step-1-prepare-the-rest-api-function"></a>手順 1: REST API 関数を準備する
 
 > [!NOTE]
-> REST API 関数の設定は、この記事の範囲外です。 [Azure Function App](https://docs.microsoft.com/azure/azure-functions/functions-reference) は、クラウドで RESTful サービスを作成する優れたツールキットを提供します。
+> REST API 関数の設定は、この記事の範囲外です。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) に、クラウドで RESTful サービスを作成するための優れたツールキットが用意されています。
 
-単に要求 `email` を受け取り、値 `Redmond` が割り当てられた要求 `city` を返す Azure 関数を既に設定してあります。 このサンプル Azure 関数の入手先: [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples)
+`email` という名前の要求を受け取った後、値 `Redmond` が割り当てられた要求 `city` を返す Azure 関数が既に設定されています。 このサンプル Azure 関数は [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) から入手できます。
 
-Azure 関数によって返される `userMessage` 要求はこのコンテキストでは省略可能であり、IEF によって無視されます。  これは、アプリケーションに渡されてユーザーに表示されるメッセージとして使用することができます。
+Azure 関数によって返される `userMessage` 要求はこのコンテキストでは省略可能であり、IEF はそれを無視します。 これは、アプリケーションに渡して後でユーザーに表示されるメッセージとして使用できます。
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -74,14 +80,14 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-**Azure Function App** を使用すると、特定の関数の識別子を含む関数の URL を簡単に取得できます。  このケースでの URL は https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw== です。この URL はテストの目的で使用することができます。
+Azure Function App を使用すると、特定の関数の識別子を含む関数の URL を簡単に取得できます。 このケースでの URL は https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw== です。 それは、テストの目的で使用できます。
 
-## <a name="step-2---configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>手順 2 - RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>手順 2: RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
 
-技術プロファイルは、RESTful サービスで必要となる交換の完全な構成です。 `TrustFrameworkExtensions.xml` ファイルを開き、次の XML スニペットを `<ClaimsProvider>` 要素内に追加します。
+技術プロファイルは、RESTful サービスで必要となる交換の完全な構成です。 TrustFrameworkExtensions.xml ファイルを開き、次の XML スニペットを `<ClaimsProvider>` 要素の中に追加します。
 
 > [!NOTE]
-> 以下でプロトコルとして記述されている "Restful Provider, Version 1.0.0.0" は、外部サービスと対話する関数として考えてください。  スキーマの完全な定義の取得先: <!-- TODO: Link to RESTful Provider schema definition>-->
+> 次の XML では、RESTful プロバイダー `Version=1.0.0.0` はプロトコルとして記述されます。 これを外部サービスと対話する関数と考えてください。 <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```XML
 <ClaimsProvider>
@@ -107,13 +113,13 @@ return request.CreateResponse<ResponseContent>(
 </ClaimsProvider>
 ```
 
-`<InputClaims>` 要素は、IEF から REST サービスに送信される要求を定義します。 上の例では、要求 `givenName` の内容が要求 `email` として REST サービスに送信されます。  
+`<InputClaims>` 要素は、IEF から REST サービスに送信される要求を定義します。 この例では、要求 `givenName` の内容が要求 `email` として REST サービスに送信されます。  
 
-`<OutputClaims>` 要素は、IEF が期待する REST サービスからの要求を定義します。 受信した要求の数に関係なく、IEF はここで識別されている要求のみを使用します。 この例では、`city` として受信された要求は IEF 要求 `city` にマッピングされます。
+`<OutputClaims>` 要素は、IEF が期待する REST サービスからの要求を定義します。 受信した要求の数に関係なく、IEF はここで識別されている要求のみを使用します。 この例では、`city` として受信された要求は、`city` という名前の IEF 要求にマッピングされます。
 
-## <a name="step-3---add-a-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>手順 3 - 新しい要求 `city` を TrustFrameworkExtensions.xml ファイルのスキーマに追加する
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>手順 3: 新しい要求 `city` を TrustFrameworkExtensions.xml ファイルのスキーマに追加する
 
-要求 `city` はスキーマのどこにも定義されていません。 そこで、`TrustFrameworkExtensions.xml` ファイルの先頭にある要素 `<BuildingBlocks>` 内に定義を追加します。
+要求 `city` は、まだスキーマのどこにも定義されていません。 そのため、要素 `<BuildingBlocks>` の中に定義を追加します。 この要素は、TrustFrameworkExtensions.xml ファイルの先頭で見つけることができます。
 
 ```XML
 <BuildingBlocks>
@@ -130,14 +136,14 @@ return request.CreateResponse<ResponseContent>(
 </BuildingBlocks>
 ```
 
-## <a name="step-4---include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-your-trustframeworkextensionsxml"></a>手順 4 - TrustFrameworkExtensions.xml のプロファイルの編集ユーザー体験に REST サービス要求交換をオーケストレーション手順として含める
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>手順 4: TrustFrameworkExtensions.xml のプロファイルの編集ユーザー体験に REST サービス要求交換をオーケストレーション手順として含める
 
-ユーザーが認証され (オーケストレーション手順 1. ～ 4. 以下を参照)、ユーザーから更新されたプロファイル情報が提供された (手順 5.) 後の手順をプロファイルの編集ユーザー体験に追加しましょう。
+プロファイルの編集ユーザー体験に手順を追加します。追加場所は、ユーザーが認証され (次の XML 内のオーケストレーション手順 1 ～ 4)、ユーザーから更新されたプロファイル情報が提供された (手順 5) 後です。
 
 > [!NOTE]
-> REST API 呼び出しをオーケストレーション手順として使用できる多くのユース ケースがあります。  オーケストレーション手順としては、ユーザーが最初の登録やプロファイルの更新などのタスクを正常に完了した後に REST API 呼び出しを外部システムに対する更新として使用して、情報の同期状態を保つことができます。  このケースでは、プロファイルの編集後にアプリケーションに提供される情報を増やすために使用されています。
+> REST API 呼び出しをオーケストレーション手順として使用できる多くのユース ケースがあります。 オーケストレーション手順としては、ユーザーが最初の登録などのタスクを正常に完了した後の外部システムに対する更新として、または情報の同期状態を保つためのプロファイルの更新として使用できます。 このケースでは、プロファイルの編集後にアプリケーションに提供される情報を増やすために使用されています。
 
-プロファイル編集ユーザー体験 XML コードを `TrustFrameworkBase.xml` ファイルから `TrustFrameworkExtensions.xml` ファイルの `<UserJourneys>` 要素内にコピーし、手順 6. で修正を加えます。
+プロファイルの編集ユーザー体験の XML コードを、TrustFrameworkBase.xml ファイルから TrustFrameworkExtensions.xml ファイルの `<UserJourneys>` 要素の中にコピーします。 次に、手順 6 の変更を行います。
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -148,9 +154,9 @@ return request.CreateResponse<ResponseContent>(
 ```
 
 > [!IMPORTANT]
-> 使用しているバージョンと順序が一致しない場合は、ClaimsExchange 型 `SendClaims` の前の手順として挿入します。
+> 使用しているバージョンと順序が一致しない場合は、`ClaimsExchange` 型 `SendClaims` の前に、コードを手順として挿入してください。
 
-最終的な UserJourney XML は次のようになります。
+ユーザー体験の最終的な XML は次のようになります。
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -196,7 +202,7 @@ return request.CreateResponse<ResponseContent>(
                 <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
             </ClaimsExchanges>
         </OrchestrationStep>
-        <!-- Add a step 6 to the user journey before the jwt token is created-->
+        <!-- Add a step 6 to the user journey before the JWT token is created-->
         <OrchestrationStep Order="6" Type="ClaimsExchange">
             <ClaimsExchanges>
                 <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
@@ -208,11 +214,11 @@ return request.CreateResponse<ResponseContent>(
 </UserJourney>
 ```
 
-## <a name="step-5---add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>手順 5 - 要求がアプリケーションに送信されるように要求 "city" を証明書利用者ポリシー ファイルに追加する
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>手順 5: 要求 `city` がアプリケーションに送信されるように証明書利用者ポリシー ファイルに追加する
 
-これを行うには、`ProfileEdit.xml` RP ファイルを編集し、`<TechnicalProfile Id="PolicyProfile">` 要素を修正して `<OutputClaim ClaimTypeReferenceId="city" />` を追加します。
+ProfileEdit.xml 証明書利用者 (RP) ファイルを編集し、`<TechnicalProfile Id="PolicyProfile">` 要素を修正して `<OutputClaim ClaimTypeReferenceId="city" />` を追加します。
 
-新しい要求を追加した後の TechnicalProfile は次のようになります。
+新しい要求を追加した後の技術プロファイルは次のようになります。
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -225,15 +231,15 @@ return request.CreateResponse<ResponseContent>(
 </TechnicalProfile>
 ```
 
-## <a name="step-6---upload-your-changes-and-test"></a>手順 6 - 変更内容をアップロードし、テストする
+## <a name="step-6-upload-your-changes-and-test"></a>手順 6: 変更内容をアップロードしてテストする
 
-ポリシーの既存のバージョンは上書きされます。
+ポリシーの既存のバージョンを上書きします。
 
-1.    (省略可能) 続行する前に、拡張機能ファイルの既存のバージョンを (ダウンロードして) 保存します。  最初の複雑さを低く抑えるために、拡張機能ファイルの複数のバージョンをアップロードしないことをお勧めします。
-2.    (省略可能) PolicyId="B2C_1A_TrustFrameworkProfileEdit" を変更することで、ポリシーの編集ファイル PolicyId の新しいバージョンの名前を変更することができます。
-3.    拡張機能ファイルをアップロードします。
-4.    ポリシーの編集証明書利用者ファイルをアップロードします。
-5.    **[今すぐ実行]** を使用してポリシーをテストします。  IEF からアプリケーションに返されたトークンを確認します。
+1.  (省略可能) 続行する前に、拡張機能ファイルの既存のバージョンを (ダウンロードして) 保存します。 最初の複雑さを低く抑えるために、拡張機能ファイルの複数のバージョンをアップロードしないことをお勧めします。
+2.  (省略可能) ポリシー編集ファイルに対するポリシー ID の新しいバージョンを、`PolicyId="B2C_1A_TrustFrameworkProfileEdit"` を変更することで、その名前を変更します。
+3.  拡張機能ファイルをアップロードします。
+4.  ポリシー編集 RP ファイルをアップロードします。
+5.  **[今すぐ実行]** を使用してポリシーをテストします。 IEF からアプリケーションに返されるトークンを確認します。
 
 すべてが適切に設定されている場合、トークンに新しい要求 `city` が含まれ、その値が `Redmond` となります。
 

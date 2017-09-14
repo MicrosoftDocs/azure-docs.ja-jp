@@ -13,28 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 05/24/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0065a4a73ddd7eb9877359626bac231ec3fdef7c
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 7c5ba9310568571991708ab54a5275df6ea84a39
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 
-サイト間 VPN トンネルのクロスプレミス VPN 接続が失われた場合、Azure VPN Gateway をリセットすることによって解決できる場合があります。 この状況では、オンプレミスの VPN デバイスがすべて正しく機能していても、Azure VPN Gateway との間で IPsec トンネルを確立することができません。 この記事では、Azure VPN Gateway をリセットする方法を紹介します。 
+1 つ以上のサイト間 VPN トンネルのクロスプレミス VPN 接続が失われた場合、Azure VPN Gateway をリセットすることによって解決できる場合があります。 この状況では、オンプレミスの VPN デバイスがすべて正しく機能していても、Azure VPN Gateway との間で IPsec トンネルを確立することができません。 この記事では、VPN ゲートウェイをリセットすることができます。
 
-各 Azure VPN Gateway は、アクティブ/スタンバイ構成で動作する 2 つの VM インスタンスから成る仮想ネットワーク ゲートウェイです。 ゲートウェイをリセットすると、ゲートウェイが再起動してクロスプレミス構成が再適用されます。 ゲートウェイに割り当てられているパブリック IP アドレスはそのまま維持されます。 つまり、VPN ルーターの構成を Azure VPN Gateway の新しいパブリック IP アドレスで更新する必要がありません。  
+### <a name="what-happens-during-a-reset"></a>リセット中の動作
 
-このコマンドを実行すると、現在アクティブな Azure VPN Gateway のインスタンスが直ちに再起動されます。 再起動中のアクティブ インスタンスからスタンバイ インスタンスにフェールオーバーされる際に、わずかな時間差が生じます。 通常、時間差は 1 分未満です。
+VPN Gateway は、アクティブ/スタンバイ構成で動作する 2 つの VM インスタンスから成ります。 ゲートウェイをリセットすると、ゲートウェイが再起動してクロスプレミス構成が再適用されます。 ゲートウェイに割り当てられているパブリック IP アドレスはそのまま維持されます。 つまり、VPN ルーターの構成を Azure VPN Gateway の新しいパブリック IP アドレスで更新する必要がありません。
+
+このコマンドを実行してゲートウェイをリセットすると、現在アクティブな Azure VPN Gateway のインスタンスが直ちに再起動されます。 再起動中のアクティブ インスタンスからスタンバイ インスタンスにフェールオーバーされる際に、わずかな時間差が生じます。 通常、時間差は 1 分未満です。
 
 初回再起動で接続が復元されない場合は、同じコマンドを再度実行して、2 つ目の VM インスタンス (新しくアクティブになった方のゲートウェイ) を再起動してください。 連続して 2 回の再起動が必要であった場合、アクティブとスタンバイの両方の VM インスタンスを再起動する分、1 回で済んだ場合よりもわずかに時間がかかります。 この場合、VPN 接続の途切れが長引いて、両方の VM が再起動を完了するまでに最大 2 ～ 4 分かかります。
 
 2 回再起動してもクロスプレミス接続の問題が解消しない場合は、Azure ポータルからサポート リクエストを作成してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="before"></a>開始する前に
+
 ゲートウェイをリセットする前に、個々の IPsec サイト間 (S2S) VPN トンネルについて、以下に挙げた主な項目を確認してください。 いずれか 1 つの項目でも不備があると、S2S VPN トンネルの接続が失われます。 オンプレミスの VPN ゲートウェイと Azure VPN Gateway に使用されている構成を確認して修正すれば、そのゲートウェイ上で正常に機能している他の接続に対して無駄な再起動や中断を行わずに済みます。
 
 ゲートウェイをリセットする前に以下の項目をご確認ください。
@@ -43,47 +46,60 @@ ms.lasthandoff: 04/27/2017
 * Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイが同じ事前共有キーを持っていること。
 * 暗号化、ハッシュ アルゴリズム、PFS (Perfect Forward Secrecy) など特定の IPsec/IKE 構成を適用する場合、Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイとに、必ず同じ構成を適用すること。
 
-## <a name="reset-a-vpn-gateway-using-the-azure-portal"></a>Azure Portal を使用して VPN Gateway をリセットする
+## <a name="portal"></a>Azure Portal
 
 Azure Portal を使用して Resource Manager VPN Gateway をリセットできます。 クラシック ゲートウェイをリセットする場合は、[PowerShell](#resetclassic) の手順を参照してください。
 
 ### <a name="resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデル
 
-1. Azure Portal を開いて、リセットする Resource Manager 仮想ネットワーク ゲートウェイに移動します。
+1. [Azure Portal](https://portal.azure.com) を開いて、リセットする Resource Manager 仮想ネットワーク ゲートウェイに移動します。
 2. 仮想ネットワーク ゲートウェイのブレードで、[リセット] をクリックします。
 
-    ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+  ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+3. [リセット] ブレードで、**[リセット]** ボタンをクリックします。
 
-3. [リセット] ブレードで、 ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-button.png) ボタンを選択します。
-
-
-## <a name="reset-a-vpn-gateway-using-powershell"></a>PowerShell を使用して VPN Gateway をリセットする
+## <a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデル
 
-最新バージョンの PowerShell コマンドレットが必要になります。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 ゲートウェイをリセットするための PowerShell Resource Manager コマンドレットは、 `Reset-AzureRmVirtualNetworkGateway`です。 次の例では、リソース グループ "TestRG1" の Azure VPN ゲートウェイ "VNet1GW" をリセットします。
+ゲートウェイをリセットするためのコマンドレットは **Reset-AzureRmVirtualNetworkGateway** です。 リセットを実行する前に [Resource Manager PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)の最新版があることを確認します。 次の例では、TestRG1 リソース グループの VNet1GW という名前の仮想ネットワーク ゲートウェイをリセットします。
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
 Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
+結果:
+
+返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、**'GatewayName' から [リソース正常性]** に移動します。
+
 ### <a name="resetclassic"></a>クラシック デプロイ モデル
 
-最新バージョンの PowerShell コマンドレットが必要になります。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 Azure VPN Gateway をリセットするための PowerShell コマンドレットは **Reset-AzureVNetGateway** です。 次の例では、"ContosoVNet" という仮想ネットワークの Azure VPN Gateway をリセットしています。
+ゲートウェイをリセットするためのコマンドレットは **Reset-AzureVNetGateway** です。 リセットを実行する前に [Service Management (SM) PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-azure-ps?view=azuresmps-3.7.0) の最新版があることを確認します。 次の例では、"ContosoVNet" という仮想ネットワークのゲートウェイをリセットしています。
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”
-``` 
+```
 
-結果は次のとおりです。
+結果:
 
-    Error          :
-    HttpStatusCode : OK
-    Id             : f1600632-c819-4b2f-ac0e-f4126bec1ff8
-    Status         : Successful
-    RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
-    StatusCode     : OK
+```powershell
+Error          :
+HttpStatusCode : OK
+Id             : f1600632-c819-4b2f-ac0e-f4126bec1ff8
+Status         : Successful
+RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
+StatusCode     : OK
+```
 
+## <a name="cli"></a>Azure CLI
 
+ゲートウェイをリセットするには [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway#reset) コマンドを使用します。 次の例では、TestRG5 リソース グループの VNet5GW という名前の仮想ネットワーク ゲートウェイをリセットします。
 
+```azurecli
+az network vnet-gateway reset -n VNet5GW -g TestRG5
+```
+
+結果:
+
+返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、**'GatewayName' から [リソース正常性]** に移動します。

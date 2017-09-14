@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 209d1cbe4f1ad08a98caf0a8d16f5b0ee45468ca
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 008952b4fee6bffe1e20259dc86fd6d5122777ec
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -71,7 +72,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 > 
 
 ### <a name="the-web-service"></a>Web サービス
-予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>一般的でないケース: 非予測 Web サービスの作成
 実験で予測分析モデルをトレーニングしない場合、トレーニング実験とスコア付け実験の両方を作成する必要はありません。実験は 1 つのみになり、この実験を Web サービスとしてデプロイすることができます。 Machine Learning Studio は、使用したモジュールを分析することで、実験に予測モデルが含まれるかどうかを検出します。

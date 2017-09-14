@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2017
+ms.date: 07/11/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 46cee1099e487799ad6cf657253cc7f3c9b194e2
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: b12bb8edc0d0ac805efaeb9104e067bd353d99e1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの PostgreSQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-オンプレミスの PostgreSQL データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 Data Factory は、現時点では PostgreSQL データ ストアから他のデータ ストアへのデータ移動のみをサポートし、他のデータ ストアから PostgreSQL データ ストアへのデータ移動に関してはサポートしていません。 
+オンプレミスの PostgreSQL データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 Data Factory は、現時点では PostgreSQL データベースから他のデータ ストアへのデータ移動をサポートしていますが、他のデータ ストアから PostgreSQL データベースへのデータ移動に関してはサポートしていません。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,13 +36,21 @@ PostgreSQL データベースが Azure IaaS VM でホストされている場合
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で PostgreSQL Databases に接続するには、 [PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)の 2.0.12 以降を Data Management Gateway と同じシステムにインストールする必要があります。 PostgreSQL バージョン 7.4 以降がサポートされています。
+Data Management Gateway で PostgreSQL Databases に接続するには、[PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)の 2.0.12 以降を Data Management Gateway と同じシステムにインストールしてください。 PostgreSQL バージョン 7.4 以降がサポートされています。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの PostgreSQL データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- また、次のツールを使用してパイプラインを作成することもできます。 
+    - Azure ポータル
+    - Visual Studio
+    - Azure PowerShell
+    - Azure Resource Manager テンプレート
+    - .NET API
+    - REST API
+
+     コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -69,7 +77,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、 [Postg
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型でほぼ同じです。
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (PostgreSQL データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
@@ -89,11 +97,11 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 | query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 > [!NOTE]
-> スキーマとテーブルの名前は、大文字と小文字を区別します。クエリ内では、`""` (二重引用符) で囲む必要があります。  
+> スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、これらを `""` (二重引用符) で囲んでください。  
 
 **例:**
 
- "query": "select * from \"MySchema\".\"MyTable\""
+ `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON の使用例: PostgreSQL から Azure BLOB へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、PostgreSQL データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
@@ -149,7 +157,7 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
 このサンプルでは、PostgreSQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
 
-"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+`"external": true` の設定により、このデータセットがデータ ファクトリの外部にあり、データ ファクトリのアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {

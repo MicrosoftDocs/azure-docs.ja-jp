@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: jonatul
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: cbd906d7fb9756eabc95cb79961fcf285170561a
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 9543759d7ba88c7c5068021cebbeec6b8d63633e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -51,7 +51,7 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 
 ## <a name="create-a-dns-record"></a>DNS レコードの作成
 
-DNS レコードを作成するには、`az network dns record-set <record-type> add-record` コマンドを使用します (`<record-type>` は srv や txt など、 レコードの種類です)。`az network dns record-set --help` を使用すると、ヘルプが表示されます。
+DNS レコードを作成するには、`az network dns record-set <record-type> set-record` コマンドを使用します (`<record-type>` は srv や txt など、 レコードの種類です)。`az network dns record-set --help` を使用すると、ヘルプが表示されます。
 
 レコードの作成時に、リソース グループ名、ゾーン名、レコード セット名、レコードの種類、および作成するレコードの詳細を指定する必要があります。 指定するレコード セット名は、ゾーン名を除いた*相対*名にする必要があります。
 
@@ -62,13 +62,13 @@ DNS レコードを作成するには、`az network dns record-set <record-type>
 次の例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* に *www* という A レコードを作成します。 A レコードの IP アドレスは、*1.2.3.4* です。
 
 ```azurecli
-az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
+az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
 ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。
 
 ```azurecli
-az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
+az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
 ```
 
 ## <a name="create-a-dns-record-set"></a>DNS レコード セットを作成する
@@ -91,13 +91,13 @@ az network dns record-set a create --resource-group myresourcegroup --zone-name 
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
-空のレコード セットが作成されたため、「[DNS レコードの作成](#create-a-dns-record)」で説明したように、`azure network dns record-set <record-type> add-record` を使用してレコードを追加することができます。
+空のレコード セットが作成されたため、「[DNS レコードの作成](#create-a-dns-record)」で説明したように、`azure network dns record-set <record-type> set-record` を使用してレコードを追加することができます。
 
 ## <a name="create-records-of-other-types"></a>その他の種類のレコードの作成
 
 先ほど "A" レコードの作成方法について詳しく説明しましたが、次の例では、Azure DNS でサポートされているその他の種類のレコードの作成方法を示します。
 
-レコード データを指定するためのパラメーターは、レコードの種類によって異なります。 たとえば、種類 "A" のレコードの場合は、パラメーター `--ipv4-address <IPv4 address>` に IPv4 アドレスを指定します。 各レコードの種類のパラメーターは、`az network dns record-set <record-type> add-record --help` を使用して表示できます。
+レコード データを指定するためのパラメーターは、レコードの種類によって異なります。 たとえば、種類 "A" のレコードの場合は、パラメーター `--ipv4-address <IPv4 address>` に IPv4 アドレスを指定します。 各レコードの種類のパラメーターは、`az network dns record-set <record-type> set-record --help` を使用して表示できます。
 
 各ケースで、1 つのレコードの作成方法を説明します。 レコードは、既存のレコード セットまたは暗黙的に作成されたレコード セットに追加されます。 レコード セットを作成してレコード セット パラメーターを明示的に定義する方法の詳細については、「[DNS レコード セットを作成する](#create-a-dns-record-set)」を参照してください。
 
@@ -106,7 +106,7 @@ SOA レコード セットを作成する例は示しません。SOA は各 DNS 
 ### <a name="create-an-aaaa-record"></a>AAAA レコードの作成
 
 ```azurecli
-az network dns record-set aaaa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
+az network dns record-set aaaa set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
 ```
 
 ### <a name="create-a-cname-record"></a>CNAME レコードを作成する
@@ -117,7 +117,7 @@ az network dns record-set aaaa add-record --resource-group myresourcegroup --zon
 > 詳細については、「[CNAME レコード](dns-zones-records.md#cname-records)」を参照してください。
 
 ```azurecli
-az network dns record-set cname add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
+az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
 ```
 
 ### <a name="create-an-mx-record"></a>MX レコードの作成
@@ -125,13 +125,13 @@ az network dns record-set cname add-record --resource-group myresourcegroup --zo
 この例では、レコード セット名 "@" を使用してゾーンの頂点 (この場合は "contoso.com" ) に MX レコードを作成します。
 
 ```azurecli
-az network dns record-set mx add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
+az network dns record-set mx set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
 ```
 
 ### <a name="create-an-ns-record"></a>NS レコードの作成
 
 ```azurecli
-az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
+az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
 ```
 
 ### <a name="create-a-ptr-record"></a>PTR レコードの作成
@@ -139,7 +139,7 @@ az network dns record-set ns add-record --resource-group myresourcegroup --zone-
 ここで "my-arpa-zone.com" は IP 範囲を表す ARPA ゾーンを表します。 このゾーンの各 PTR レコード セットは、この IP の範囲内の IP アドレスに対応します。  レコード名「10」は、このレコードによって表されるこの IP 範囲内の IP アドレスの最後のオクテットです。
 
 ```azurecli
-az network dns record-set ptr add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
+az network dns record-set ptr set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
 ```
 
 ### <a name="create-an-srv-record"></a>SRV レコードの作成
@@ -147,7 +147,7 @@ az network dns record-set ptr add-record --resource-group myresourcegroup --zone
 [SRV レコード セット](dns-zones-records.md#srv-records)を作成するときは、レコード セット名に *\_service* と *\_protocol* を指定します。 ゾーンの頂点で SRV レコード セットを作成するときは、レコード セット名に "@" を含める必要はありません。
 
 ```azurecli
-az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
+az network dns record-set srv set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
 ### <a name="create-a-txt-record"></a>TXT レコードの作成
@@ -155,7 +155,7 @@ az network dns record-set srv add-record --resource-group myresourcegroup --zone
 次の例は、TXT レコードを作成する方法を示しています。 TXT レコードでサポートされている文字列の最大長の詳細については、[TXT レコード](dns-zones-records.md#txt-records)に関するセクションを参照してください。
 
 ```azurecli
-az network dns record-set txt add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
+az network dns record-set txt set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
 ```
 
 ## <a name="get-a-record-set"></a>レコード セットの取得
@@ -188,7 +188,7 @@ az network dns record-set a list --resource-group myresourcegroup --zone-name co
 
 ## <a name="add-a-record-to-an-existing-record-set"></a>既存のレコード セットへのレコードの追加
 
-`az network dns record-set <record-type> add-record` は、新しいレコード セットのレコードの作成と、既存のレコード セットへのレコードの追加の両方に、使用することができます。
+`az network dns record-set <record-type> set-record` は、新しいレコード セットのレコードの作成と、既存のレコード セットへのレコードの追加の両方に、使用することができます。
 
 詳細については、上述の「[DNS レコードの作成](#create-a-dns-record)」と「[その他の種類のレコードの作成](#create-records-of-other-types)」を参照してください。
 
@@ -198,7 +198,7 @@ az network dns record-set a list --resource-group myresourcegroup --zone-name co
 
 このコマンドは、DNS レコードをレコード セットから削除します。 レコード セットの最後のレコードを削除すると、レコード セット自体も削除されます。 代わりに空のレコード セットを維持するには、`--keep-empty-record-set` オプションを使用します。
 
-削除するレコードと、該当レコードを削除するゾーンを指定する必要があります。レコード作成時と同じパラメーター `az network dns record-set <record-type> add-record` を使用します。 このパラメーターについては、上述の「[DNS レコードの作成](#create-a-dns-record)」と「[その他の種類のレコードの作成](#create-records-of-other-types)」で説明しています。
+削除するレコードと、該当レコードを削除するゾーンを指定する必要があります。レコード作成時と同じパラメーター `az network dns record-set <record-type> set-record` を使用します。 このパラメーターについては、上述の「[DNS レコードの作成](#create-a-dns-record)」と「[その他の種類のレコードの作成](#create-records-of-other-types)」で説明しています。
 
 次の例では、リソース グループ *MyResourceGroup* のゾーン *contoso.com* の *www* というレコード セットから値 '1.2.3.4' を持つ A レコードを削除します。
 
@@ -217,7 +217,7 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 次の例では、'A' レコードを IP アドレス 1.2.3.4 から IP アドレス 5.6.7.8 に変更する方法を示します。
 
 ```azurecli
-az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
+az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
@@ -258,7 +258,7 @@ az network dns record-set soa update --resource-group myresourcegroup --zone-nam
 次の例は、ゾーンの頂点にある NS レコード セットにネーム サーバーを追加する方法を示しています。
 
 ```azurecli
-az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
+az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>既存のレコード セットの TTL を変更するには

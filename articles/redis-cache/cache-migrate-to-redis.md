@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/08/2017
+ms.date: 05/30/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: af5e181ce254fefe55c847d9988dd8245c75e864
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Managed Cache Service から Azure Redis Cache への移行
 Azure Managed Cache Service を使用するアプリケーションの Azure Redis Cache への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 このトピックでは、Managed Cache Service アプリケーションを Azure Redis Cache を使用するように移行するために必要な構成とアプリケーションの変更を行う方法、および Azure Redis Cache の機能を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
+
+>[!NOTE]
+>Managed Cache Service および In-Role Cache は、2016 年 11 月 30 日に[廃止](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)されました。 Azure Redis Cache に移行する In-Role Cache デプロイメントがある場合は、この記事の手順に従って実行できます。
 
 ## <a name="migration-steps"></a>移行の手順
 Managed Cache Service アプリケーションを Azure Redis Cache を使用するように移行するには、以下の手順で行う必要があります。
@@ -59,7 +63,7 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 
 * **Basic** – 単一ノード。 複数のサイズ、最大 53 GB
 * **Standard** – 2 ノード (プライマリ/レプリカ)。 複数のサイズ、最大 53 GB 99.9% の SLA。
-* **Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。 6 GB から 530 GB までの複数のサイズ (詳細はお問い合わせください)。 Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。 99.9% の SLA。
+* **Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。 6 GB から 530 GB までの複数のサイズ。 Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。 99.9% の SLA。
 
 各レベルは、機能と価格ごとに異なります。 機能については、このガイドで後述します。価格の詳細については、[キャッシュ価格の詳細](https://azure.microsoft.com/pricing/details/cache/)ページをご覧ください。
 

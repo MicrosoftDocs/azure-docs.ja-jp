@@ -1,5 +1,5 @@
 ---
-title: "プログラムで Hadoop YARN アプリケーション ログにアクセスする| Microsoft Docs"
+title: "Hadoop YARN アプリケーション ログにプログラムを使用してアクセスする - Azure | Microsoft Docs"
 description: "HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。"
 services: hdinsight
 documentationcenter: 
@@ -17,18 +17,17 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: ce07cf026ca9dae40afe3205685f3ab463492e39
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 798bd85dc136853a73e8a675f7a060a2ad2cf246
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での YARN アプリケーション ログへのアクセス
 このトピックでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します
 
 > [!IMPORTANT]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「 [Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「 [Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
@@ -60,7 +59,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計][log-aggregation]機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。 ログの集計機能により、アプリケーションのログへのアクセスはより確実になります。この機能は、ワーカー ノード上のすべてのコンテナーでログを集計し、アプリケーションが終了した後でワーカー ノードごとに 1 つの集計されたログ ファイルとして既定のファイル システムに保存します。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。つまりアプリケーションで使用するワーカー ノードごとに 1 つのログ ファイルが生成されます。 ログの集計は、HDInsight クラスターでは既定で有効になっており (バージョン 3.0 以上)、集計されたログは、クラスターの既定のコンテナーの次の場所にあります。
 
-    wasbs:///app-logs/<user>/logs/<applicationId>
+    wasb:///app-logs/<user>/logs/<applicationId>
 
 ここで、*user* はアプリケーションを開始したユーザーの名前であり、*applicationId* は YARN リソース マネージャーにより割り当てられたアプリケーションの一意の識別子です。
 

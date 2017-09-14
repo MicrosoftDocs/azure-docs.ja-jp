@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center でストレージ アカウントの暗号化を有効にする | Microsoft Docs"
-description: "このドキュメントでは、「**Enable encryption for Azure Storage Account**」 (Azure Storage アカウント暗号化の有効化) という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、**Azure Storage アカウントの暗号化を有効にする** Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 7b5df25f46a2824acb361401ab90c960b8e5978f
-ms.openlocfilehash: 5b580183002ae5c42cc08343cea7f659c635d590
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Azure Security Center での Azure Storage アカウント暗号化の有効化
 Azure Security Center は、Azure Storage Service Encryption for Data at Rest の有効化を勧める場合があります。
 
-Storage Service Encryption (SSE) は、データが Azure ストレージに書き込まれたときに暗号化し、データが取得される前に復号化します。  現在、SSE は Azure Blob service のみに対応し、ブロック BLOB、ページ BLOB、追加 BLOB で使用できます。  詳細については、「[Storage Service Encryption for Data at Rest](../storage/storage-service-encryption.md)」を参照してください。
+Storage Service Encryption (SSE) は、データが Azure ストレージに書き込まれたときに暗号化し、データが取得される前に復号化します。  現在、SSE は Azure Blob service のみに対応し、ブロック BLOB、ページ BLOB、追加 BLOB で使用できます。  詳細については、「[Storage Service Encryption for Data at Rest](../storage/common/storage-service-encryption.md)」を参照してください。
 
 
 > [!Note]
-> 暗号化を有効にしたとき、暗号化されるのは新しいデータのみです。 ストレージ アカウント内の既存の BLOB は暗号化されません。 既存の BLOB を暗号化するには、[Storage Service Encryption の FAQ](../storage/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest) に関する記事を参照してください。
+> 暗号化を有効にしたとき、暗号化されるのは新しいデータのみです。 ストレージ アカウント内の既存の BLOB は暗号化されません。 既存の BLOB を暗号化するには、[Storage Service Encryption の FAQ](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest) に関する記事を参照してください。
 >
 >
 
@@ -53,7 +54,7 @@ Storage Service Encryption は Resource Manager ストレージ アカウント�
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、「Enable encryption for Azure Storage Account」 (Azure Storage アカウント暗号化の有効化) という Security Center の推奨事項を実装する方法について説明しました。 Azure Storage Service Encryption の詳細については、次のリソースを参照してください。
 
-* [Azure Storage Service Encryption for Data at Rest](../storage/storage-service-encryption.md)
+* [Azure Storage Service Encryption for Data at Rest](../storage/common/storage-service-encryption.md)
 
 セキュリティ センターの詳細については、次を参照してください。
 
@@ -68,9 +69,4 @@ Storage Service Encryption は Resource Manager ストレージ アカウント�
 [1]: ./media/security-center-enable-encryption-for-storage-account/enable-encryption-for-storage-account.png
 [2]: ./media/security-center-enable-encryption-for-storage-account/enable-storage-encryption.png
 [3]: ./media/security-center-enable-encryption-for-storage-account/encryption-blade.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

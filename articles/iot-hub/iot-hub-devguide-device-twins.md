@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: e72fcd696a4f21aa4b2cff7ae7178dbc372f1929
-ms.lasthandoff: 03/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: b316aa419d558547f90a914a22fb29935076de21
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
@@ -37,9 +37,9 @@ ms.lasthandoff: 03/10/2017
 ### <a name="when-to-use"></a>使用時の注意
 次の場合にデバイス ツインを使用します。
 
-* デバイス固有のメタデータをクラウドに格納する (例: 自動販売機の設置場所)。 For example, the deployment location of a vending machine.
-* デバイス アプリで利用できる機能や状態などの現在の状態に関する情報を報告する (例: デバイスが携帯ネットワークと WiFi のどちらで IoT ハブに接続されているか)。 For example, a device is connected to your IoT hub over cellular or WiFi.
-* デバイス アプリとバックエンド アプリの間で実行時間の長いワークフローの状態を同期する (例: ソリューション バックエンドがインストールする新しいファームウェアのバージョンを指定し、デバイス アプリが更新プロセスのさまざまな段階を報告するとき)。 For example, when the solution back end specifies the new firmware version to install, and the device app reports the various stages of the update process.
+* デバイス固有のメタデータをクラウドに格納します。 例: 自動販売機の設置場所。
+* デバイス アプリで利用できる機能や状態などの現在の状態に関する情報を報告する。 たとえば、デバイスが携帯電話または WiFi を介して IoT ハブに接続されている場合。
+* デバイス アプリとバックエンドの間で実行時間の長いワークフロー の状態を同期する。 たとえば、ソリューション バックエンドがインストールする新しいファームウェアのバージョンを指定し、デバイス アプリが更新プロセスのさまざまな段階を報告する場合。
 * デバイス メタデータ、構成、または状態を照会する。
 
 報告されるプロパティ、device-to-cloud メッセージ、ファイルのアップロードのどれを使用するべきかの指針については、「[device-to-cloud 通信に関するガイダンス][lnk-d2c-guidance]」を参照してください。
@@ -145,7 +145,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="back-end-operations"></a>バック エンドの操作
 ソリューション バックエンドは、HTTP を介して公開される次のアトミック操作を使用して、デバイス ツインを操作します。
 
-1. **デバイス ツインを ID で取得する**。 この操作は、デバイス ツインのドキュメント (タグ、必要なプロパティ、報告されるプロパティ、システム プロパティなど) を返します。
+1. **デバイス ツインを ID で取得する**。この操作は、デバイス ツインのドキュメント (タグ、必要なプロパティ、報告されるプロパティ、システム プロパティなど) を返します。
 2. **デバイス ツインを部分的に更新する**。 この操作では、ソリューション バックエンドがデバイス ツインのタグまたは必要なプロパティを部分的に更新できます。 部分的な更新は JSON ドキュメントとして表され、プロパティが追加または更新されます。 `null` に設定されたプロパティが削除されます。 次の例では、`{"newProperty": "newValue"}` の値を持つ新しい必要なプロパティが作成され、`existingProperty` の既存の値が `"otherNewValue"` で上書きされ、`otherOldProperty` が削除されます。 それ以外、既にある必要なプロパティまたはタグは変更されません。
    
         {
@@ -161,13 +161,52 @@ ms.lasthandoff: 03/10/2017
         }
 3. **必要なプロパティの置換** この操作では、ソリューション バックエンドによって既存の必要なプロパティをすべて完全に上書きし、`properties/desired` の新しい JSON ドキュメントに置き換えられます。
 4. **タグの置換** この操作では、ソリューション バックエンドによって既存のタグをすべて完全に上書きし、`tags` の新しい JSON ドキュメントに置き換えられます。
+5. **ツイン通知の受信** この操作は、ソリューション バックエンドでツインが変更されたときに通知できるようにします。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *twinChangeEvents* に設定する必要があります。 既定では、ツイン通知は送信されません。つまり、このようなルートは事前に存在しません。 変化率が高すぎる場合、または内部エラーなどの理由のために、IoT Hub はすべての変更を含む通知だけを送信する場合があります。 そのため、アプリケーションに信頼性の高い監査とすべての中間状態のログ記録が必要になる場合は、D2C メッセージを使用することをお勧めします。 ツイン通知メッセージには、プロパティおよび本文が含まれます。
+
+    - プロパティ
+
+    | Name | 値 |
+    | --- | --- |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  通知が送信された時刻 |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | utf-8 |
+    deviceId | デバイスの ID |
+    hubName | IoT Hub の名前 |
+    operationTimestamp | 操作の [ISO8601] タイムスタンプ |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" または "updateTwin" |
+
+    メッセージのシステム プロパティには、`'$'` シンボルが付きます。
+
+    - 本文
+        
+    このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
+    ```
+    {
+        "properties": {
+            "desired": {
+                "$metadata": {
+                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
+                },
+                "$version": 1
+            },
+            "reported": {
+                "$metadata": {
+                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
+                },
+                "$version": 1
+            }
+        }
+    }
+    ``` 
 
 上述の操作はすべて[オプティミスティック同時実行制御][lnk-concurrency]をサポートしており、[セキュリティ][lnk-security]に関する記事で定義されているとおり、**ServiceConnect** アクセス許可を必要とします。
 
-これらの操作以外に、ソリューション バックエンドは
+これらの操作の他に、ソリューション バックエンドでは以下を実行できます。
 
-* SQL に似た [IoT Hub クエリ言語][lnk-query]を使用してデバイス ツインのクエリを実行したり、
-* [ジョブ][lnk-jobs]を使用して多数のデバイス ツインの操作を実行したりできます。
+* SQL ライクな [IoT Hub クエリ言語][lnk-query]を使用して、デバイス ツインを照会します。
+* [ ジョブ][lnk-jobs]を使用して、大量のデバイス ツインで操作を実行します。
 
 ## <a name="device-operations"></a>デバイスの操作
 デバイス アプリは、次のアトミック操作を使用して、デバイス ツインを操作します。
@@ -273,7 +312,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
 タグ、必要なプロパティ、報告されたプロパティはすべて、オプティミスティック同時実行制御をサポートします。
 タグは、[RFC7232] に従って ETag を持ちます。これは、タグの JSON 表現を表します。 ETag を使用すると、条件付き更新操作をソリューション バックエンドから実行し、一貫性を保持できます。
 
-デバイス ツインの必要なプロパティと報告されるプロパティには ETag はありませんが、`$version` の値によって確実に増分されます。 ETag と同様に、更新側 (報告されるプロパティの場合はデバイス アプリ、必要なプロパティの場合はソリューション バックエンド) でバージョンを使用することで、整合性を保つために更新を強制的に適用できます。 For example, a device app for a reported property or the solution back end for a desired property.
+デバイス ツインの必要なプロパティと報告されるプロパティには ETag はありませんが、`$version` の値によって確実に増分されます。 ETag と同様、更新側がバージョンを使用することで更新プログラムの一貫性を確保することができます。 たとえば、報告されたプロパティ用のデバイス アプリ、または目的のプロパティのソリューション バックエンドです。
 
 バージョンは、監視エージェント (必要なプロパティを監視するデバイス アプリなど) が取得操作に関する結果と更新の通知の間の競合を調整する場合に便利です。 詳細は、「[デバイスの再接続フロー][lnk-reconnection]」を参照してください。
 
@@ -297,7 +336,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT ハブがランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。
 * [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
 * [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
-* [デバイス ツインとジョブの IoT Hub クエリ言語][lnk-query]: IoT Hub からデバイス ツインとジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
+* [デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: デバイス ツインとジョブに関する情報を IoT Hub から取得するために使用できる IoT Hub クエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -319,7 +358,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-jobs]: iot-hub-devguide-jobs.md
 [lnk-identity]: iot-hub-devguide-identity-registry.md
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-d2c]: iot-hub-devguide-messages-d2c.md
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-security]: iot-hub-devguide-security.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md

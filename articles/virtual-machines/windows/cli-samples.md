@@ -17,10 +17,10 @@ ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 35ddd5c90dfba7e2e368a5f69e33616998581ff7
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: f4b2e8a5583855df7472af3fbef01ac641caf6bf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 06/06/2017
 
 
 ---
@@ -38,6 +38,8 @@ ms.lasthandoff: 03/31/2017
 | [VM の作成と DSC 構成の実行](./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md?toc=%2fcli%2fazure%2ftoc.json) | 仮想マシンを作成し、Azure Desired State Configuration (DSC) の拡張機能を使用して IIS をインストールします。 |
 |**ネットワークの仮想マシン**||
 | [仮想マシン間のネットワーク トラフィックのセキュリティ保護](./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md?toc=%2fcli%2fazure%2ftoc.json) | 2 つの仮想マシン、すべての関連リソース、および内部と外部のネットワーク セキュリティ グループ (NSG) を作成します。 |
+|**セキュリティ保護された仮想マシン**||
+| [VM とデータ ディスクを暗号化する](./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Key Vault、暗号化キー、およびサービス プリンシパルを作成し、VM を暗号化します。 |
 |**仮想マシンの監視**||
 | [Operations Management Suite による VM の監視](./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | 仮想マシンを作成し、Operations Management Suite エージェントをインストールし、OMS ワークスペースに VM を登録します。  |
 | | |

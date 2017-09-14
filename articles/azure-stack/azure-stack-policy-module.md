@@ -12,27 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/9/2017
+ms.date: 7/28/2017
 ms.author: helaw
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 7a3949a2036b12f4bd09b63a2ce10613f887e920
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 22251dd0428b959069dfc392f4ccdda19b08b9de
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Manage Azure policy using the Azure Stack Policy Module
-The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps for Azure Stack.  
+The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps targeted for Azure Stack.  
 
 ## <a name="install-the-module"></a>Install the module
 1. Install the required version of the AzureRM PowerShell module, as described in Step1 of [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).   
 2. [Download the Azure Stack tools from GitHub](azure-stack-powershell-download.md)  
-3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure.md)
+3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure-user.md)
 
 4. Import the AzureStack.Policy.psm1 module:
 
    ```PowerShell
-   import-module .\Policy\AzureStack.Policy.psm1
+   Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
 ## <a name="apply-policy-to-subscription"></a>Apply policy to subscription

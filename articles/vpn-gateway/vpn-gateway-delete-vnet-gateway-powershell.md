@@ -13,20 +13,21 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 06/20/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f3b464350f027bb1966638542fcc64d6fdc00a71
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 4d0f085423d5bd60b24d88649ee1d77bcd1d009f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/21/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [クラシック - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 >
 
@@ -39,9 +40,11 @@ VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削
 ## <a name="before-beginning"></a>作業を開始する前に
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1.最新の Azure Resource Manager PowerShell コマンドレットをダウンロードします。
+
 Azure Resource Manager PowerShell コマンドレットの最新版をダウンロードしてインストールします。 PowerShell コマンドレットのダウンロードとインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
 
-### <a name="2-connect-to-your-azure-account"></a>2.Azure アカウントに接続します。 
+### <a name="2-connect-to-your-azure-account"></a>2.Azure アカウントに接続します。
+
 PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
 ```powershell
@@ -84,57 +87,59 @@ $Conns=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | whe
 ```
 
 ### <a name="3-delete-all-connections"></a>3.すべての接続を削除します。
+
 各接続の削除の確認を求めるメッセージが表示される場合があります。
 
 ```powershell
 $Conns | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 ```
 
-### <a name="4-get-the-list-of-the-corresponding-local-network-gateways"></a>4.対応するローカル ネットワーク ゲートウェイの一覧を取得します。
+### <a name="4-delete-the-virtual-network-gateway"></a>4.仮想ネットワーク ゲートウェイを削除します。
 
-```powershell
-$LNG=Get-AzureRmLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
-```
-    
-### <a name="5-delete-the-local-network-gateways"></a>5.ローカル ネットワーク ゲートウェイを削除します。
-各ローカル ネットワーク ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。
+ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。 S2S 構成に加えてこの VNet に対する P2S 構成がある場合は、仮想ネットワーク ゲートウェイを削除すると、警告なしにすべての P2S クライアントが自動的に切断されます。
 
-```powershell
-$LNG | ForEach-Object {Remove-AzureRmLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
-```
-
-### <a name="6-delete-the-virtual-network-gateway"></a>6.仮想ネットワーク ゲートウェイを削除します。
-ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。
-
->[!NOTE]
-> S2S 構成に加えてこの VNet に対する P2S 構成がある場合は、仮想ネットワーク ゲートウェイを削除すると、警告なしにすべての P2S クライアントが自動的に切断されます。
->
->
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="7-get-the-ip-configurations-of-the-virtual-network-gateway"></a>7.仮想ネットワーク ゲートウェイの IP 構成を取得します。
+この時点で、仮想ネットワーク ゲートウェイは削除されています。 次の手順を使用して、使用されなくなったリソースを削除できます。
+
+### <a name="5-delete-the-local-network-gateways"></a>5. ローカル ネットワーク ゲートウェイを削除します。
+
+対応するローカル ネットワーク ゲートウェイの一覧を取得します。
+
+```powershell
+$LNG=Get-AzureRmLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
+```
+
+ローカル ネットワーク ゲートウェイを削除します。 各ローカル ネットワーク ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。
+
+```powershell
+$LNG | ForEach-Object {Remove-AzureRmLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
+```
+
+### <a name="6-delete-the-public-ip-address-resources"></a>6.パブリック IP アドレス リソースを削除します。
+
+仮想ネットワーク ゲートウェイの IP 構成を取得します。
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-### <a name="8-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>8.この仮想ネットワーク ゲートウェイに使用されるパブリック IP アドレスの一覧を取得します。 
-仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
+この仮想ネットワーク ゲートウェイに使用されるパブリック IP アドレス リソースの一覧を取得します。 仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-### <a name="9-delete-the-public-ips"></a>9.パブリック IP を削除します。
+パブリック IP リソースを削除します。
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
-### <a name="10-delete-the-gateway-subnet-and-set-the-configuration"></a>10.ゲートウェイ サブネットを削除し、構成を設定します。
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7.ゲートウェイ サブネットを削除し、構成を設定します。
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -170,6 +175,7 @@ get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-obje
 ```
 
 ### <a name="3-get-the-list-of-connections-in-both-directions"></a>3.双方向の接続の一覧を取得します。
+
 これは VNet 間の構成であるため、双方向の接続の一覧が必要です。
 
 ```powershell
@@ -183,6 +189,7 @@ $ConnsL=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | wh
  ```
 
 ### <a name="4-delete-all-connections"></a>4.すべての接続を削除します。
+
 各接続の削除の確認を求めるメッセージが表示される場合があります。
 
 ```powershell
@@ -191,39 +198,36 @@ $ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_
 ```
 
 ### <a name="5-delete-the-virtual-network-gateway"></a>5.仮想ネットワーク ゲートウェイを削除します。
-仮想ネットワーク ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。
 
->[!NOTE]
-> V2V 構成に加えて VNet に対する P2S 構成がある場合は、仮想ネットワーク ゲートウェイを削除すると、警告なしにすべての P2S クライアントが自動的に切断されます。
->
->
-
+仮想ネットワーク ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。 V2V 構成に加えて VNet に対する P2S 構成がある場合は、仮想ネットワーク ゲートウェイを削除すると、警告なしにすべての P2S クライアントが自動的に切断されます。
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="6-get-the-ip-configurations-of-the-virtual-network-gateway"></a>6.仮想ネットワーク ゲートウェイの IP 構成を取得します。
+この時点で、仮想ネットワーク ゲートウェイは削除されています。 次の手順を使用して、使用されなくなったリソースを削除できます。
+
+### <a name="6-delete-the-public-ip-address-resources"></a>6.パブリック IP アドレス リソースを削除します。
+
+仮想ネットワーク ゲートウェイの IP 構成を取得します。
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-### <a name="7-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>7.この仮想ネットワーク ゲートウェイに使用されるパブリック IP アドレスの一覧を取得します。 
-仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
+この仮想ネットワーク ゲートウェイに使用されるパブリック IP アドレス リソースの一覧を取得します。 仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-### <a name="8-delete-the-public-ips"></a>8.パブリック IP を削除します。
-パブリック IP の削除の確認を求めるメッセージが表示される場合があります。
+パブリック IP リソースを削除します。 パブリック IP の削除の確認を求めるメッセージが表示される場合があります。
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="9-delete-the-gateway-subnet-and-set-the-configuration"></a>9.ゲートウェイ サブネットを削除し、構成を設定します。
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7.ゲートウェイ サブネットを削除し、構成を設定します。
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -253,33 +257,36 @@ $Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2.仮想ネットワーク ゲートウェイを削除します。
+
 仮想ネットワーク ゲートウェイの削除の確認を求めるメッセージが表示される場合があります。
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="3-get-the-ip-configurations-of-the-virtual-network-gateway"></a>手順 3.仮想ネットワーク ゲートウェイの IP 構成を取得します。
+この時点で、仮想ネットワーク ゲートウェイは削除されています。 次の手順を使用して、使用されなくなったリソースを削除できます。
+
+### <a name="3-delete-the-public-ip-address-resources"></a>3.パブリック IP アドレス リソースを削除します。
+
+仮想ネットワーク ゲートウェイの IP 構成を取得します。
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-### <a name="4-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>4.この仮想ネットワーク ゲートウェイに使用されるパブリック IP アドレスの一覧を取得します。 
-仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
+この仮想ネットワーク ゲートウェイに使用されるパブリック IP アドレスの一覧を取得します。 仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-### <a name="5-delete-the-public-ips"></a>5.パブリック IP を削除します。
-パブリック IP の削除の確認を求めるメッセージが表示される場合があります。
+パブリック IP を削除します。 パブリック IP の削除の確認を求めるメッセージが表示される場合があります。
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="6-delete-the-gateway-subnet-and-set-the-configuration"></a>6.ゲートウェイ サブネットを削除し、構成を設定します。
+### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4.ゲートウェイ サブネットを削除し、構成を設定します。
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -297,6 +304,7 @@ Get-AzureRmResourceGroup
 ```
 
 ### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2.削除するリソース グループを探します。
+
 削除するリソース グループを見つけ、そのリソース グループ内のリソースの一覧を表示します。 この例では、リソース グループの名前は RG1 です。 すべてのリソースの一覧を取得するように、例を変更します。
 
 ```powershell
@@ -304,9 +312,11 @@ Find-AzureRmResource -ResourceGroupNameContains RG1
 ```
 
 ### <a name="3-verify-the-resources-in-the-list"></a>3.一覧のリソースを確認します。
+
 一覧が返されたら、内容を調べて、リソース グループ内のすべてのリソースのほか、リソース グループ自体も削除してよいことを確認します。 リソース グループ内の一部のリソースを保持する場合は、この記事の前のセクションに記載した手順を使用して、ゲートウェイを削除します。
 
 ### <a name="4-delete-the-resource-group-and-resources"></a>4.リソース グループとリソースを削除します。
+
 リソース グループと、リソース グループに含まれているすべてのリソースを削除するには、例を変更して実行します。
 
 ```powershell
@@ -314,6 +324,7 @@ Remove-AzureRmResourceGroup -Name RG1
 ```
 
 ### <a name="5-check-the-status"></a>5.状態を確認します。
+
 Azure によってすべてのリソースが削除されるまで、しばらく時間がかかります。 リソース グループの状態を確認するには、このコマンドレットを使用します。
 
 ```powershell
@@ -322,7 +333,8 @@ Get-AzureRmResourceGroup -ResourceGroupName RG1
 
 結果が返され、"Succeeded" と表示されます。
 
-    ResourceGroupName : RG1
-    Location          : eastus
-    ProvisioningState : Succeeded
-
+```
+ResourceGroupName : RG1
+Location          : eastus
+ProvisioningState : Succeeded
+```

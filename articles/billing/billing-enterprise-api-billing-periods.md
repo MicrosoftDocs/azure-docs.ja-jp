@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: ab8d7fefb64b1358bb1b9667d280cb53fc2f636c
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: c6880b79189e0683387a7aafbd6fa4805b3b42ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---billing-periods-preview"></a>企業ユーザー向けの Reporting API - 請求期間 (プレビュー)
+# <a name="reporting-apis-for-enterprise-customers---billing-periods"></a>企業ユーザー向けの Reporting API - 請求期間
 
 Billing Periods API は、指定した加入契約の消費量データが含まれる請求期間リストを逆時系列順に返します。 各期間には、BalanceSummary、UsageDetails、Marktplace Charges、および PriceSheet の 4 セットのデータの API ルートを示すプロパティが含まれています。 期間にデータがない場合、対応するプロパティは null です。 
 
@@ -33,25 +32,28 @@ Billing Periods API は、指定した加入契約の消費量データが含ま
 
 |メソッド | 要求 URI|
 |-|-|
-|GET| https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingperiods|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingperiods|
 
+> [!Note]
+> プレビュー版の API を使用するには、上記の URL で v2 を v1 で置き換えます。
+>
 
 ## <a name="response"></a>応答
  
     
     
-        [
+      [
             {
-                  "billingPeriodId": "201704",
-                  "billingStart": "2017-04-01T00:00:00Z",
-                  "billingEnd": "2017-04-30T11:59:59Z",
+                "billingPeriodId": "201704",
+                "billingStart": "2017-04-01T00:00:00Z",
+                "billingEnd": "2017-04-30T11:59:59Z",
                 "balanceSummary": "/v1/enrollments/100/billingperiods/201704/balancesummary",
-                  "usageDetails": "/v1/enrollments/100/billingperiods/201704/usagedetails",
-                  "marketplaceCharges": "/v1/enrollments/100/billingperiods/201704/marketplacecharges",
-                  "priceSheet": "/v1/enrollments/100/billingperiods/201704/pricesheet"
-            },            
+                "usageDetails": "/v1/enrollments/100/billingperiods/201704/usagedetails",
+                "marketplaceCharges": "/v1/enrollments/100/billingperiods/201704/marketplacecharges",
+                "priceSheet": "/v1/enrollments/100/billingperiods/201704/pricesheet"
+            },          
             ....
-        ]
+      ]
     
 
 **応答プロパティの定義**
@@ -68,6 +70,7 @@ Billing Periods API は、指定した加入契約の消費量データが含ま
 
 <br/>
 ## <a name="see-also"></a>関連項目
+
 * [Balance and Summary API](billing-enterprise-api-balance-summary.md)
 
 * [Usage Detail API](billing-enterprise-api-usage-detail.md) 

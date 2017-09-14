@@ -46,6 +46,7 @@
 ## [トークンを構成する](active-directory-b2c-token-session-sso.md)
 ## [MFA を有効にする](active-directory-b2c-reference-mfa.md)
 ## [カスタム属性を使用する](active-directory-b2c-reference-custom-attr.md)
+## [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity.md)
 ## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
 ### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
@@ -55,10 +56,13 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業の開始](active-directory-b2c-get-started-custom.md)
-### OIDC プロバイダーの構成
+### [概要](active-directory-b2c-get-started-custom.md)
+### OIDC/OAUTH2 プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+#### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
+#### [Google+](active-directory-b2c-custom-setup-goog-idp.md)
 ### SAML プロバイダーの構成
+#### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API の統合
 #### [ユーザー入力の検証](active-directory-b2c-rest-api-validation-custom.md)
@@ -68,12 +72,14 @@
 #### [カスタム属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+#### [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity-custom.md)
 ### トラブルシューティング
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
-
+### [信頼フレームワークの定義](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 用語集
 ### [アプリケーションの種類](active-directory-b2c-apps.md)
 ### [認証プロトコル](active-directory-b2c-reference-protocols.md)
@@ -82,16 +88,19 @@
 ## [課金の有効化](active-directory-b2c-how-to-enable-billing.md)
 ## [脅威管理](active-directory-b2c-reference-threat-management.md)
 ## [ディレクトリを作成する際の問題](active-directory-b2c-support-create-directory.md)
+## [Extensions アプリ](active-directory-b2c-reference-extensions-app.md)
 
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [多要素認証](../multi-factor-authentication/multi-factor-authentication.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure AD B2C フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [よく寄せられる質問](active-directory-b2c-faqs.md)
+## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [サポート](active-directory-b2c-support.md)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)

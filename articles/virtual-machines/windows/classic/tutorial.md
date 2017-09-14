@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 6259c2d163cc2036964d119eb0b54ba108c5cd0a
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 0981872ff819fdf49a9cc97afce3c212013ce76b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Windows を実行する仮想マシンを Azure ポータルで作成する
 > [!div class="op_single_selector"]
-> * [Azure クラシック ポータル](tutorial.md)
+> * [Azure ポータル](tutorial.md)
 > * [PowerShell: クラシック デプロイ](create-powershell.md)
 >
 >

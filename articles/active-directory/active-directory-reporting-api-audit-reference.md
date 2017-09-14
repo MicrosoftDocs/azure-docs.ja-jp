@@ -3,7 +3,7 @@ title: "Azure Active Directory 監査 API リファレンス | Microsoft Docs"
 description: "Azure Active Directory 監査 API の概要について説明します。"
 services: active-directory
 documentationcenter: 
-author: markusvi
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2017
+ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 87c7990834eaf2aa6c4aff0c341150ba9bd9eed4
-ms.lasthandoff: 04/10/2017
-
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 監査 API リファレンス
@@ -28,10 +29,17 @@ Azure AD レポートは、コードまたは関連ツールを使用して監�
 
 参照:
 
-* [監査ログ](active-directory-reporting-azure-portal.md#audit-logs)に関する記事
+* [監査ログ](active-directory-reporting-azure-portal.md#activity-reports)に関する記事
+
 * [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
-質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
+
+お困りの場合:
+
+- よくあるご質問については、こちらの [FAQ](active-directory-reporting-faq.md) を参照してください。 
+
+- 問題については、[サポート チケットを提出](active-directory-troubleshooting-support-howto.md)してください。 
+
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 * セキュリティ管理者またはセキュリティ リーダーの役割のユーザー

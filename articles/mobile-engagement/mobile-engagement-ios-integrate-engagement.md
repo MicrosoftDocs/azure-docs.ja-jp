@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7c4e962527d0b4cd66f6ca4974851c5e5d523de7
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>Engagement を iOS に統合する方法
@@ -26,17 +27,17 @@ ms.openlocfilehash: 7c4e962527d0b4cd66f6ca4974851c5e5d523de7
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 > * [iOS](mobile-engagement-ios-integrate-engagement.md)
 > * [Android](mobile-engagement-android-integrate-engagement.md)
-> 
-> 
+>
+>
 
 この手順では、iOS アプリケーションで Engagement の分析機能、監視機能を有効化する最も簡単な方法を説明します。
 
-Engagement SDK には、iOS6 以降と Xcode 8 が必要です。アプリケーションのデプロイ ターゲットは iOS6 以降である必要があります。
+Engagement SDK には、iOS7 以降と Xcode 8 が必要です。アプリケーションのデプロイ ターゲットは iOS7 以降である必要があります。
 
 > [!NOTE]
 > XCode 7 に依存している場合は、 [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh)を使用できます。 この以前のバージョンの Reach モジュールには、iOS 10 デバイスで実行したときに既知のバグがあります。詳細については、[Reach モジュールの統合](mobile-engagement-ios-integrate-engagement-reach.md)に関する記事をご覧ください。 SDK v3.2.4 を使用する場合は、次の手順で `UserNotifications.framework` のインポートをスキップしてください。
-> 
-> 
+>
+>
 
 次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報を計算するのに必要なログのレポートを有効にするためのものです。 イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([iOS アプリで高度な Mobile Engagement タグ付け API を使用する方法](mobile-engagement-ios-use-engagement-api.md)を参照)。
 
@@ -44,7 +45,7 @@ Engagement SDK には、iOS6 以降と Xcode 8 が必要です。アプリケー
 * [ここ](http://aka.ms/qk2rnj)から iOS SDK をダウンロードします。
 * Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ... (... にファイルを追加)]** を選択して、`EngagementSDK` フォルダーを選択します。
 * Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。 次に、**[Build phases (ビルド フェーズ)]** タブを開き、**[Link Binary With Libraries (バイナリをライブラリにリンクする)]** メニューでこれらのフレームワークを追加します。
-  
+
   * `UserNotifications.framework` - リンクを `Optional` として設定します。
   * `AdSupport.framework` - リンクを `Optional` として設定します。
   * `SystemConfiguration.framework`
@@ -55,18 +56,18 @@ Engagement SDK には、iOS6 以降と Xcode 8 が必要です。アプリケー
 
 > [!NOTE]
 > AdSupport フレームワークは削除してもかまいません。 Engagement では、IDFA の収集のためこのフレームワークが必要です。 ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
-> 
-> 
+>
+>
 
 ## <a name="initialize-the-engagement-sdk"></a>Engagement SDK を初期化する
 アプリケーション デリゲートを変更する必要がある:
 
 * 実装ファイルの先頭で、Engagement エージェントをインポートします。
-  
+
       [...]
       #import "EngagementAgent.h"
 * メソッド '**applicationDidFinishLaunching:**' または '**application:didFinishLaunchingWithOptions:**' 内で Engagement を初期化します。
-  
+
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
       {
         [...]
@@ -108,13 +109,13 @@ Engagement でのユーザー、セッション、アクティビティ、クラ
 
 > [!IMPORTANT]
 > iOS SDK は、アプリケーションが閉じられると、`endActivity()` メソッドを自動的に呼び出します。 そのため、ユーザーのアクティビティが変化するごとに `startActivity` メソッドを呼び出し、`endActivity` メソッドは "*決して*" 呼び出さないようにすることを "*強く*" お勧めします。このメソッドを呼び出すと現在のセッションを強制的に終了します。
-> 
-> 
+>
+>
 
 ## <a name="location-reporting"></a>場所レポート
 Apple の規約では、統計の目的に限定されたアプリケーションでの場所の追跡の使用は認められていません。 このため、アプリケーションが他の目的でも場所の追跡機能を使用する場合にのみ、場所レポートを有効にすることをお勧めします。
 
-iOS 8 以降では、アプリケーションの Info.plist ファイルにキー [NSLocationWhenInUseUsageDescription] または [NSLocationAlwaysUsageDescription] の文字列を設定して、アプリケーションで場所サービスをどのように使用するかの説明を提供する必要があります。 Engagement を使って背景で場所をレポートするには、キー NSLocationAlwaysUsageDescription を追加します。 それ以外の場合は、キー NSLocationWhenInUseUsageDescription を追加します。
+iOS 8 以降では、アプリケーションの Info.plist ファイルにキー [NSLocationWhenInUseUsageDescription] または [NSLocationAlwaysUsageDescription] の文字列を設定して、アプリケーションで場所サービスをどのように使用するかの説明を提供する必要があります。 Engagement を使って背景で場所をレポートするには、キー NSLocationAlwaysUsageDescription を追加します。 それ以外の場合は、キー NSLocationWhenInUseUsageDescription を追加します。 iOS 11 で背景の場所をレポートするには、NSLocationAlwaysAndWhenInUseUsageDescription と NSLocationWhenInUseUsageDescription の両方が必要です。
 
 ### <a name="lazy-area-location-reporting"></a>大まかなエリアの位置報告
 大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。 このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。 デバイス エリアがセッションごとに最大 1 回レポートされます。 GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
@@ -151,8 +152,8 @@ iOS 8 以降では、アプリケーションの Info.plist ファイルにキ�
 
 > [!NOTE]
 > アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
-> 
-> 
+>
+>
 
 この機能を実装すると、アプリケーションが背景になったときに、 [startMonitoringSignificantLocationChanges] が呼び出されます。 これにより、新しい場所イベントが発生すると、アプリケーションが背景に自動的に再起動されることに注意してください。
 
@@ -210,9 +211,4 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [NSLocationAlwaysUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
 [startMonitoringSignificantLocationChanges]:http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]:https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

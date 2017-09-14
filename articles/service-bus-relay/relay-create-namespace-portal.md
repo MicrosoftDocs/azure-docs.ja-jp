@@ -12,7 +12,7 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/17/2017
+ms.date: 08/23/2017
 ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0

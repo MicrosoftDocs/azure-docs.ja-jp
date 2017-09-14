@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 07/03/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 64874564c54dd37108f1075fb54181f2324cb229
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 95589ca169926362fa77f0e307afd449014c8402
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay の認証と承認
-アプリケーションは、Shared Access Signature (SAS) 認証を使用して Azure Relay に対して認証できます。 [Service Bus メッセージング](../service-bus-messaging/service-bus-authentication-and-authorization.md)と同様に、Shared Access Signature 認証により、アプリケーションは、Relay 名前空間で構成されたアクセス キーを使用して Azure Relay サービスに対して認証できます。 次に、このキーを使用して、クライアントがリレー サービスに対する認証に使用できる Shared Access Signature トークンを生成できます。
+アプリケーションは、Shared Access Signature (SAS) 認証を使用して Azure Relay に対して認証できます。 [Service Bus メッセージング](../service-bus-messaging/service-bus-authentication-and-authorization.md)と同様に、アプリケーションは SAS 認証により、Relay 名前空間で構成されたアクセス キーを使用して Azure Relay サービスへの認証を行うことができます。 次に、このキーを使用して、クライアントがリレー サービスに対する認証に使用できる Shared Access Signature トークンを生成できます。
 
 ## <a name="shared-access-signature-authentication"></a>Shared Access Signature 認証
-[SAS 認証](../service-bus-messaging/service-bus-sas.md)により、特定の権限で Service Bus Relay リソースにアクセスできるようになります。 SAS 認証を使用するには、リソースに対する関連した権限を使用して暗号化キーを構成する必要があります。 これにより、クライアントは SAS トークンを提示してリソースへのアクセス権を取得できます。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限から成ります。
+[SAS 認証](../service-bus-messaging/service-bus-sas.md)により、特定の権限で Azure Relay リソースにアクセスできるようになります。 SAS 認証を使用するには、リソースに対する関連した権限を使用して暗号化キーを構成する必要があります。 これにより、クライアントは SAS トークンを提示してリソースへのアクセス権を取得できます。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限から成ります。
 
 SAS のキーは Relay 名前空間で構成できます。 Service Bus メッセージングとは異なり、[Relay ハイブリッド接続](relay-hybrid-connections-protocol.md)では、許可されていない送信者や匿名の送信者がサポートされます。 ポータルの次のスクリーン ショットに示すように、エンティティの作成時に、そのエンティティの匿名アクセスを有効することができます。
 

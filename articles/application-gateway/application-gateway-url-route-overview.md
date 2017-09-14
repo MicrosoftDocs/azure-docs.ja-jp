@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 4b649379ce41a4d6cea93b42fc492fdc0940e689
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 75c3279d2d02cb3c6e949d191c88a1eb18b58a27
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
@@ -33,7 +32,10 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
 http://contoso.com/video* に対する要求は VideoServerPool に、http://contoso.com/images* に対する要求は ImageServerPool に、それぞれルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
-    
+
+> [!IMPORTANT]
+> 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
+
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 構成要素
 
 urlPathMap 要素は、パス パターンのバックエンド サーバー プールのマッピングへの指定に使用します。 次のコード例は、テンプレート ファイルの urlPathMap 要素のスニペットです。

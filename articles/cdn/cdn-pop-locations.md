@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 01/25/2017
 | 南ヨーロッパ |マドリード (スペイン)<br />ミラノ (イタリア) |**&#x2713;**\* |
 | 東アジア |東京 (日本)<br />大阪 (日本)<br />バタム (インドネシア)<br />ジャカルタ (インドネシア)<br />香港特別行政区<br />高雄 (台湾)<br />ソウル (韓国)<br />シンガポール |**&#x2713;**\* |
 | 南および中央アジア |バンガロール (インド)<br />チェンナイ (インド)<br />デリー (インド)<br />ムンバイ (インド) |**&#x2713;**\* |
-| 中東/西アジア |マスカット (オマーン) |**&#x2713;**\* |
+| 中東/西アジア |マスカット (オマーン) <br /> フジャイラ (アラブ首長国連邦) |**&#x2713;**\* |
 | アフリカ | |**&#x2713;**\* |
 | オーストラリアとニュージーランド |メルボルン (オーストラリア)<br />シドニー (オーストラリア) |**&#x2713;**\* |
 

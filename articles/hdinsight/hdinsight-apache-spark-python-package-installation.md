@@ -1,6 +1,6 @@
 ---
-title: "スクリプト アクション: Azure HDInsight の Jupyter Notebook で Python パッケージをインストールする | Microsoft Docs"
-description: "HDInsight Spark クラスター内の Jupyter Notebook で外部の Python パッケージを使用するための構成手順を説明します。"
+title: "スクリプト アクション - Azure HDInsight の Jupyter で Python パッケージをインストールする | Microsoft Docs"
+description: "スクリプト アクションを使用して HDInsight の Spark clusters で Jupyter notebooks を構成し、外部の Python パッケージを使用する方法に関する詳細な手順。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
-ms.openlocfilehash: b0d6e509c5bacd828e9a9938edb860bbf0c0a8f3
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 20cf384c96d4ff4eaf064c8880ad128d521fb9bf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -54,7 +55,7 @@ ms.lasthandoff: 01/24/2017
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter Notebook で外部のパッケージを使用する
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
 2. Spark クラスター ブレードで、**[Usage (使用法)]** の **[スクリプト アクション]** をクリックします。 ヘッド ノードと worker ノードに TensorFlow をインストールするカスタム アクションを実行します。 Bash スクリプトは https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh から参照できます。[カスタム スクリプト アクションの使用方法](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)に関するドキュメントを参照してください。
 
@@ -65,11 +66,11 @@ ms.lasthandoff: 01/24/2017
 
 3. PySpark Jupyter Notebook を開きます
 
-    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-python-package-installation/hdispark.note.jupyter.createpysparknotebook.png "新しい Jupyter Notebook の作成")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook の作成")
 
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
-    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Notebook の名前を指定")
 
 5. 次に `import tensorflow` によって、hello world の例を実行します。 
 
@@ -104,7 +105,7 @@ ms.lasthandoff: 01/24/2017
 * [HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

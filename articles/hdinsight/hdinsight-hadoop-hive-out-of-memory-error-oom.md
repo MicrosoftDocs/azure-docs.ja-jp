@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/25/2017
+ms.date: 08/17/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 9992310219cd3d0aa9d534c74e99908e28060ac0
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: da1247070ade11f78b505524f5e970e18eb16d10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Hive メモリ不足エラーの解決
 
 大きなテーブルを処理するときに Hive で発生するメモリ不足エラーを、Hive のメモリ設定を構成することによって解決する方法を紹介します。
 
-## <a name="scenario-run-a-hive-query-against-large-tables"></a>シナリオ: 大きなテーブルに対して Hive クエリを実行する
+## <a name="run-hive-query-against-large-tables"></a>大きなテーブルに対して Hive クエリを実行する
 
 ユーザーが次の Hive クエリを実行したとします。
 
@@ -124,10 +123,6 @@ D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,24
 
 この新しい設定では、クエリが 10 分間未満で正常に実行されました。
 
-## <a name="conclusion-oom-errors-and-container-size"></a>結論: OOM エラーとコンテナー サイズ
-
-OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。 コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。
-
 ## <a name="next-steps"></a>次のステップ
 
-- Hive クエリの最適化については、「[HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)」を参照してください。
+OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。 コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。 Hive クエリの最適化については、「[HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)」を参照してください。

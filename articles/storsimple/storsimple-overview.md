@@ -4,7 +4,7 @@ description: "StorSimple 階層化と、デバイス、仮想デバイス、サ�
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 7144d218-db21-4495-88fb-e3b24bbe45d1
 ms.service: storsimple
@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/05/2016
+ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 8824568e9e4204a567cc08a10608cf835aa7164b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 86b8300553caa0741e8aca3c0e7621ec80cc5b21
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
@@ -28,46 +27,38 @@ Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミス
 
 StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を使用し、さまざまなストレージ メディアに格納されているデータを管理します。 現在作業中のセットはオンプレミスのソリッド ステート ドライブ (SSD) へ、あまり頻繁に使用しないデータはハード ディスク ドライブ (HDD) へ格納され、アーカイブ化したデータはクラウドへプッシュされます。 また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。 詳細については、「 [重複除去と圧縮](#deduplication-and-compression)」を参照してください。 StorSimple 8000 シリーズの文書で使用されている他の用語と概念の定義については、本記事の終わりに収録されている「 [StorSimple 用語集](#storsimple-terminology) 」を参照してください。
 
-StorSimple Update 2 では、適切なボリュームを *ローカル固定* として識別し、プライマリ データをデバイスのローカルに保持されたままにして、クラウドに階層化しないようにすることができます。 これにより、ローカル固定ボリューム上で、SQL および仮想マシンのワークロードなど、クラウドの待機時間に影響を受けやすいワークロードを実行しながら、引き続きクラウドをバックアップに使用できます。 ローカル固定ボリュームの詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes-u2.md)」を参照してください。 
-
-また、Update 2 では、Azure Premium Storage で提供される短い待機時間と高いパフォーマンスを活用した StorSimple 仮想デバイスを作成することもできます。 StorSimple Premium 仮想デバイスの詳細については、「 [Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u2.md)」を参照してください。 Azure Premium Storage の詳細については、「 [Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
-
 ストレージ管理に加えて、StorSimple データ保護機能を使用すると、オンデマンド バックアップやスケジュールされたバックアップを作成して、ローカルやクラウドに格納できるようになります。 バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。 クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
 
 ![動画アイコン](./media/storsimple-overview/video_icon.png) この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
-> 
-> 
 
 ## <a name="why-use-storsimple"></a>StorSimple を使用する理由
 次の表には、Microsoft Azure StorSimple の長所をいくつかまとめてあります。
 
 | 機能 | 長所 |
 | --- | --- |
-| 透過的な統合 |Microsoft Azure StorSimple は、iSCSI プロトコルを使用して、ユーザーに意識させることなくデータ ストレージ設備を連結します。 データは、その保存先がクラウドであれ、データ センターであれ、リモート サーバーであれ、すべて同じ場所に保存されているように見えます。 |
-| ストレージ コストの削減 |Microsoft Azure StorSimple は、現在の需要と照らして妥当な量のローカル ストレージまたはクラウド ストレージを割り当て、必要なときにのみクラウド ストレージを拡張します。 また、重複するデータを排除 (重複除去) したり圧縮を使用したりすることによって、ストレージの要件と費用を削減します。 |
-| ストレージ管理の単純化 |Microsoft Azure StorSimple には、システム管理ツールが用意されており、オンプレミス、リモート サーバー、クラウドに保存されているいずれのデータも、このツールを使って構成、管理することができます。 加えて、バックアップと復元の機能は、Microsoft 管理コンソール (MMC) スナップインから管理することができます。 StorSimple にオプションで用意されている独立したインターフェイスを使うと、StorSimple の管理およびデータ保護サービスの利用範囲を、SharePoint サーバーに保存されているコンテンツにまで拡大することができます。 |
-| 障害復旧とコンプライアンスの強化 |Microsoft Azure StorSimple は、無駄に長い時間を復旧に費やしません。 データは必要に応じて復元されます。 つまり、最小限の中断で通常の業務を継続することができます。 また、バックアップ スケジュールとデータ保持の設定を指定したポリシーを構成できます。 |
-| データのモビリティ |Microsoft Azure クラウド サービスにアップロードしたデータに他のサイトからアクセスし、復旧や移行の用途に利用することができます。 また、Microsoft Azure 内で実行されている仮想マシン (VM) に対し、StorSimple を使って StorSimple 仮想デバイスを構成することができます。 この VM は、仮想デバイスを使用して、保存されているデータにアクセスし、テスト目的や復旧に利用することができます。 |
-| 他のクラウド サービス プロバイダーのサポート |ソフトウェア Update 1 以降の StorSimple 8000 シリーズでは、Amazon S3 with RRS、HP、OpenStack クラウド サービス、Microsoft Azure をサポートします (デバイスの管理が目的の場合は Microsoft Azure ストレージ アカウントが必要になります)。詳細については、「[Update 1.2 の新機能](storsimple-update1-release-notes.md#whats-new-in-update-12)」を参照してください。 |
-| ビジネス継続性 |Update 1 以降には新しい移行機能が追加されました。StorSimple 5000-7000 シリーズのユーザーは、データを StorSimple 8000 シリーズのデバイスに移行できます。 |
-| Azure Government ポータルで入手可能 |StorSimple Update 1 以降は、Azure Government ポータルから入手できます。 詳細については、「 [Government Portal でのオンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-gov.md)」を参照してください。 |
-| データの保護と可用性 |StorSimple 8000 シリーズの Update 1 以降では、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートされます。 ZRS の詳細については、 [Azure Storage の冗長オプションに関する記事](https://azure.microsoft.com/documentation/articles/storage-redundancy/) を参照してください。 |
-| クリティカル アプリケーションのサポート |StorSimple Update 2 では、適切なボリュームをローカル固定として識別できます。 この機能により、クリティカル アプリケーションで必要なデータをクラウドに階層化しないようにすることができます。 ローカル固定ボリュームは、クラウドの待機時間や接続の問題によって影響を受けることはありません。 ローカル固定ボリュームの詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes-u2.md)」を参照してください。 |
-| 短い待機時間と高いパフォーマンス |StorSimple Update 2 では、Azure Premium Storage の高いパフォーマンスと短い待機時間の特徴を利用する仮想デバイスを作成することができます。 StorSimple Premium 仮想デバイスの詳細については、「 [Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u2.md)」を参照してください。 |
+| 透過的な統合 |iSCSI プロトコルを使用して、ユーザーに意識させることなくデータ ストレージ設備を連結します。 データは、その保存先がクラウドであれ、データ センターであれ、リモート サーバーであれ、すべて同じ場所に保存されているように見えます。 |
+| ストレージ コストの削減 |現在の需要と照らして妥当な量のローカル ストレージまたはクラウド ストレージを割り当て、必要なときにのみクラウド ストレージを拡張します。 また、重複するデータを排除 (重複除去) したり圧縮を使用したりすることによって、ストレージの要件と費用を削減します。 |
+| ストレージ管理の単純化 |オンプレミス、リモート サーバー、およびクラウドに保存されているデータを構成して管理するためのシステム管理ツールが用意されています。 加えて、バックアップと復元の機能は、Microsoft 管理コンソール (MMC) スナップインから管理することができます。|
+| 障害復旧とコンプライアンスの強化 |時間のかかる復旧は必要ありません。 データは必要に応じて復元されます。 つまり、最小限の中断で通常の業務を継続することができます。 また、バックアップ スケジュールとデータ保持の設定を指定したポリシーを構成できます。 |
+| データのモビリティ |Microsoft Azure クラウド サービスにアップロードしたデータに他のサイトからアクセスし、復旧や移行の用途に利用することができます。 また、Microsoft Azure で実行されている仮想マシン (VM) に対して、StorSimple を使用して StorSimple Cloud Appliance を構成することができます。 この VM は、仮想デバイスを使用して、保存されているデータにアクセスし、テスト目的や復旧に利用することができます。 |
+| ビジネス継続性 |StorSimple 5000 ～ 7000 シリーズのユーザーは、データを StorSimple 8000 シリーズのデバイスに移行できます。 |
+| Azure Government ポータルで入手可能 |StorSimple は、Azure Government ポータルから入手できます。 詳細については、「 [Government Portal でのオンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-gov-u2.md)」を参照してください。 |
+| データの保護と可用性 |StorSimple 8000 シリーズでは、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートします。 ZRS の詳細については、 [Azure Storage の冗長オプションに関する記事](https://azure.microsoft.com/documentation/articles/storage-redundancy/) を参照してください。 |
+| クリティカル アプリケーションのサポート |StorSimple を使用してローカル固定ボリュームに適したボリュームを識別し、クリティカル アプリケーションで必要なデータがクラウドに階層化されないようにすることができます。 ローカル固定ボリュームは、クラウドの待機時間や接続の問題によって影響を受けることはありません。 ローカル固定ボリュームの詳細については、「[StorSimple Device Manager サービスを使用してボリュームを管理する](storsimple-8000-manage-volumes-u2.md)」をご覧ください。 |
+| 短い待機時間と高いパフォーマンス |Azure Premium Storage の高いパフォーマンスと短い待機時間の特徴を活用するクラウド アプライアンスを作成できます。 StorSimple Premium クラウド アプライアンスの詳細については、[Azure での StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事を参照してください。 |
 
-![動画アイコン](./media/storsimple-overview/video_icon.png) StorSimple 8000 シリーズの機能と長所の概要については、 [この動画](https://www.youtube.com/watch?v=4MhJT5xrvQw&feature=youtu.be) をご覧ください。
 
 ## <a name="storsimple-components"></a>StorSimple のコンポーネント
 Microsoft Azure StorSimple ソリューションには、次のコンポーネントが含まれています。
 
 * **Microsoft Azure StorSimple デバイス** - SSD と HDD に冗長コントローラーと自動フェールオーバー機能を組み合わせた、オンプレミスのハイブリッド ストレージ アレイです。 ストレージの階層管理はコントローラーによって行われます。現在使用されているデータ (ホット データ) はローカル ストレージ (デバイスまたはオンプレミス サーバー) に配置され、使用頻度の低いデータはクラウドに移動されます。
-* **StorSimple 仮想デバイス** - 物理ハイブリッド ストレージ デバイスのアーキテクチャと大部分の機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple 仮想アプライアンス)。 StorSimple 仮想デバイスは、Azure 仮想マシン内の単一ノードで動作します。 Azure Premium Storage を利用する Premium 仮想デバイスは、Update 2 以降で使用できます。
-* **StorSimple Manager サービス** - StorSimple デバイスまたは StorSimple 仮想デバイスを単一の Web インターフェイスから管理できる、Azure クラシック ポータルの拡張機能です。 StorSimple Manager サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
+* **StorSimple Cloud Appliance** - 物理的なハイブリッド ストレージ デバイスのアーキテクチャと大部分の機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple Virtual Appliance)。 StorSimple Cloud Appliance は、Azure 仮想マシン内の単一ノードで動作します。 Azure Premium Storage を利用する Premium 仮想デバイスは、Update 2 以降で使用できます。
+* **StorSimple デバイス マネージャー サービス** - StorSimple デバイスまたは StorSimple Cloud Appliance を単一の Web インターフェイスから管理できる、Azure ポータルの拡張機能です。 StorSimple デバイス マネージャー サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
 * **StorSimple 用 Windows PowerShell** - StorSimple デバイスの管理に使用するコマンドライン インターフェイスです。 StorSimple 用 Windows PowerShell の機能を使って、StorSimple デバイスの登録、デバイスのネットワーク インターフェイスの構成、特定の種類の更新プログラムのインストール、サポート セッションへのアクセスによるデバイスのトラブルシューティング、デバイスの状態の変更などを行うことができます。 StorSimple 用 Windows PowerShell には、シリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
 * **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0#azure)」を参照してください。
-* **StorSimple Snapshot Manager** - ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合性のあるバックアップを生成する MMC スナップインです。 また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。 
+* **StorSimple Snapshot Manager** - ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合性のあるバックアップを生成する MMC スナップインです。 また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。
 * **SharePoint 用 StorSimple アダプター** - Microsoft Azure StorSimple のストレージとデータ保護を SharePoint サーバー ファームにまで透過的に拡張すると共に、SharePoint サーバーの全体管理ポータルで Azure StorSimple ストレージを表示して管理できるようにするツールです。
 
 次の図は、Microsoft Azure StorSimple のアーキテクチャとコンポーネントの全体像を示したものです。
@@ -88,25 +79,25 @@ StorSimple デバイスには、SSD とハード ディスク ドライブ (HDD)
 * クラスター対応更新: フェールオーバー クラスター内のサーバーでソフトウェアの更新を管理することで、更新によるサービスの可用性への影響を最小限にするか、まったくないようにします
 * クラスター サービス: バックエンド クラスターのように機能して高可用性を提供し、HDD または SSD に障害が発生した場合やオフラインになった場合に発生する可能性がある悪影響を最小限に抑えます
 
-どの時点でも、1 つのコントローラーのみがアクティブです。 アクティブなコントローラーに障害が発生すると、2 つ目のコントローラーが自動的にアクティブになります。 
+どの時点でも、1 つのコントローラーのみがアクティブです。 アクティブなコントローラーに障害が発生すると、2 つ目のコントローラーが自動的にアクティブになります。
 
-詳細については、「 [StorSimple のハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)」を参照してください。
+詳細については、「 [StorSimple のハードウェア コンポーネントと状態](storsimple-8000-monitor-hardware-status.md)」を参照してください。
 
-## <a name="storsimple-virtual-device"></a>StorSimple 仮想デバイス
-StorSimple を使用すると、物理ハイブリッド ストレージ デバイスのアーキテクチャと機能をレプリケートする仮想デバイスを作成できます。 StorSimple 仮想デバイス (仮想アプライアンスともいいます) は、Azure 仮想マシン内の単一ノードで動作します。 (仮想デバイスは、Azure 仮想マシンにのみ作成できます。 StorSimple デバイスまたはオンプレミス サーバーには作成できません)。 
+## <a name="storsimple-cloud-appliance"></a>StorSimple Cloud Appliance
+StorSimple を使用して、物理的なハイブリッド ストレージ デバイスのアーキテクチャと機能を再現するクラウド アプライアンスを作成できます。 StorSimple Cloud Appliance (StorSimple Virtual Appliance とも言います) は、Azure 仮想マシン内の単一ノードで動作します  (クラウド アプライアンスは、Azure 仮想マシン上にのみ作成できます。 StorSimple デバイスまたはオンプレミス サーバーには作成できません)。
 
-仮想デバイスには、次の機能があります。
+クラウド アプライアンスには、次の機能があります。
 
-* 物理アプライアンスのように動作し、クラウドの仮想マシンに iSCSI インターフェイスを提供できます。 
-* クラウドに仮想デバイスを無限に作成し、必要に応じてオン/オフを切り替えることができます。 
-* 障害復旧、開発、テストなどのシナリオでオンプレミスの環境をシミュレーションし、アイテムレベルでバックアップから復旧できます。 
+* 物理アプライアンスのように動作し、クラウドの仮想マシンに iSCSI インターフェイスを提供できます。
+* クラウド アプライアンスは、クラウド内に無制限に作成でき、必要に応じてオン/オフを切り替えることができます。
+* 障害復旧、開発、テストなどのシナリオでオンプレミスの環境をシミュレーションし、アイテムレベルでバックアップから復旧できます。
 
-Update 2 以降では、StorSimple 仮想デバイスは 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。 8010 デバイスの最大容量は 30 TB です。 Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。 (ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。)Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。 Premium Storage の詳細については、「 [Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+StorSimple Cloud Appliance は 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。 8010 デバイスの最大容量は 30 TB です。 Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。 (ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。)Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。 Premium Storage の詳細については、「 [Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/common/storage-premium-storage.md)」を参照してください。
 
-StorSimple 仮想デバイスの詳細については、「 [Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u2.md)」を参照してください。
+StorSimple Cloud Appliance の詳細については、[Azure での StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事を参照してください。
 
-## <a name="storsimple-manager-service"></a>StorSimple Manager サービス
-Microsoft Azure StorSimple には Web ベースのユーザー インターフェイス (StorSimple Manager サービス) があり、データ センターとクラウド ストレージを一元管理できます。 StorSimple Manager サービスを使用して、次のタスクを実行できます。
+## <a name="storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービス
+Microsoft Azure StorSimple には、データセンターとクラウド ストレージを一元管理できる Web ベースのユーザー インターフェイス (StorSimple デバイス マネージャー サービス) が用意されています。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
 
 * StorSimple デバイスのシステム設定を構成する。
 * StorSimple デバイスのセキュリティ設定を構成および管理する 
@@ -117,9 +108,9 @@ Microsoft Azure StorSimple には Web ベースのユーザー インターフ�
 * パフォーマンスを監視する。
 * システム設定を確認し、問題の可能性を特定する。
 
-StorSimple Manager サービスを使用すると、初期のセットアップや更新プログラムのインストールなど、システムのダウン タイムが必要なタスクを除き、すべての管理タスクを実行できます。
+StorSimple デバイス マネージャー サービスを使用して、システムのダウン タイムが必要なタスク (初回のセットアップや更新プログラムのインストールなど) を除くすべての管理タスクを実行できます。
 
-詳細については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+詳細については、「[StorSimple Device Manager サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)」をご覧ください。
 
 ## <a name="windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell
 StorSimple 用 Windows PowerShell にはコマンドライン インターフェイスがあり、Microsoft Azure StorSimple サービスの作成と管理、および StorSimple デバイスのセットアップと監視に使用できます。 これは Windows PowerShell ベースのコマンドライン インターフェイスであり、StorSimple デバイスの管理専用のコマンドレットが含まれています。 StorSimple 用 Windows PowerShell には、次の機能があります。
@@ -130,9 +121,9 @@ StorSimple 用 Windows PowerShell にはコマンドライン インターフェ
 * サポート セッションにアクセスしてデバイスのトラブルシューティングを行う。
 * デバイスの状態を変更する。
 
-StorSimple 用 Windows PowerShell には、(デバイスに直接接続されているホスト コンピューター上の) シリアル コンソールを使用してアクセスできるほか、Windows PowerShell リモート処理を使用してリモート アクセスできます。 デバイスの最初の登録など、StorSimple 用 Windows PowerShell の一部のタスクは、シリアル コンソールでのみ実行できます。 
+StorSimple 用 Windows PowerShell には、(デバイスに直接接続されているホスト コンピューター上の) シリアル コンソールを使用してアクセスできるほか、Windows PowerShell リモート処理を使用してリモート アクセスできます。 デバイスの最初の登録など、StorSimple 用 Windows PowerShell の一部のタスクは、シリアル コンソールでのみ実行できます。
 
-詳細については、「 [Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」を参照してください。
+詳細については、「 [Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-8000-windows-powershell-administration.md)」を参照してください。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>StorSimple 用 Azure PowerShell コマンドレット
 StorSimple 用 Azure PowerShell コマンドレットは、コマンド ラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。 StorSimple 用の Azure PowerShell コマンドレットの詳細については、「 [コマンドレット リファレンス](/powershell/module/azure/?view=azuresmps-3.7.0)」を参照してください。
@@ -174,19 +165,18 @@ Microsoft Azure StorSimple では、現在の使用量、保有期間、およ�
 
 > [!NOTE]
 > Update 2 以降では、ボリュームをローカル固定として指定できます。その場合、データはローカル デバイス上に保持され、クラウドに階層化されません。 
-> 
-> 
+
 
 StorSimple は、使用パターンの変化に応じて、データとストレージの割り当てを調整し、再整理します。 たとえば、時間の経過と共に一部の情報があまりアクティブではなくなったとします。 アクティブな程度の低下に従って、データは SSD から HDD へ、また HDD からクラウドへと移行されます。 この同じデータが再びアクティブになると、また元のストレージ デバイスに移行されます。
 
 ストレージの階層化プロセスは次のように行われます。
 
 1. システム管理者が、Microsoft Azure のクラウド ストレージ アカウントを設定します。
-2. 管理者がシリアル コンソールと StorSimple Manager サービス (Azure クラシック ポータルで実行) を使用して、デバイスとファイル サーバーを構成し、ボリュームとデータ保護ポリシーを作成します。 オンプレミスのコンピューター (ファイル サーバーなど) は、Internet Small Computer System Interface (iSCSI) を使用して StorSimple デバイスにアクセスします。
+2. 管理者は、シリアル コンソールと StorSimple デバイス マネージャー サービス (Azure ポータルで実行) を使用して、デバイスとファイル サーバーを構成し、ボリュームとデータ保護ポリシーを作成します。 オンプレミスのコンピューター (ファイル サーバーなど) は、Internet Small Computer System Interface (iSCSI) を使用して StorSimple デバイスにアクセスします。
 3. 最初、StorSimple はデバイスの高速 SSD 階層にデータを格納します。
 4. SSD 階層が容量に近づくと、StorSimple は最も古いデータ ブロックを重複除去して圧縮し、HDD 階層に移動します。
 5. HDD 階層が容量に近づくと、StorSimple は最も古いデータ ブロックを暗号化し、HTTPS 経由で Microsoft Azure ストレージ アカウントに安全に送信します。
-6. Microsoft Azure はデータセンターとリモート データセンターにデータの複数のレプリカを作成し、障害が発生した場合にデータを復旧できるようにします。 
+6. Microsoft Azure はデータセンターとリモート データセンターにデータの複数のレプリカを作成し、障害が発生した場合にデータを復旧できるようにします。
 7. クラウドに格納されているデータをファイル サーバーが要求すると、StorSimple はデータをシームレスに返送し、StorSimple デバイスの SSD 階層にコピーを格納します。
 
 #### <a name="how-storsimple-manages-cloud-data"></a>StorSimple によるクラウド データの管理方法
@@ -240,7 +230,7 @@ StorSimple 8000 シリーズ デバイスでは、次のワークロードはサ
 * コンテンツ配信
 * SCSI から起動
 
-StorSimple がサポートするインフラストラクチャ コンポ―ネントの一覧を次に示します。 
+StorSimple がサポートするインフラストラクチャ コンポ―ネントの一覧を次に示します。
 
 | シナリオ | ワークロード | サポートされています | 制限 | バージョン |
 | --- | --- | --- | --- | --- |
@@ -252,6 +242,15 @@ StorSimple がサポートするインフラストラクチャ コンポ―ネ�
 
 *はい&#42; - ソリューション ガイドラインと制限事項を適用する必要があります。*
 
+ソリューションをビルドするためにStorSimple と連携して使用されるその他のソフトウェアの一覧を次に示します。
+
+| ワークロードの種類 | StorSimple と連携して使用されるソフトウェア | サポートされているバージョン|ソリューション ガイドへのリンク| 
+| --- | --- | --- | --- |
+| バックアップ ターゲット |Veeam |Veeam v 9 以降 |[Veeam を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backup-target-veeam.md)|
+| バックアップ ターゲット |Veritas Backup Exec |Backup Exec 16 以降 |[Backup Exec を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backup-target-using-backup-exec.md)|
+| バックアップ ターゲット |Veritas NetBackup |NetBackup 7.7.x 以降  |[NetBackup を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backuptarget-netbackup.md)|
+| グローバルなファイル共有 <br></br> コラボレーション |Talon  |[StorSimple と Talon](https://www.talonstorage.com/products/fast-deployment-azure-storsimple) | |
+
 ## <a name="storsimple-terminology"></a>StorSimple 用語集
 Microsoft Azure StorSimple ソリューションをデプロイする前に、以下の用語と定義を確認することをお勧めします。
 
@@ -262,7 +261,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | AES-256 |クラウドとの間でやり取りされるデータを暗号化するための 256 ビットの Advanced Encryption Standard (AES) アルゴリズム。 |
 | アロケーション ユニット サイズ (AUS) |Windows ファイル システムのファイルを保持するために割り当てることができるディスク領域の最小サイズ。 ファイルのサイズがクラスター サイズの偶数倍でない場合は、ファイルを保持するために余分な領域を使用する必要があり (最大でクラスター サイズの次の倍数)、領域の損失やハード ディスクの断片化につながります。 <br>Azure StorSimple ボリュームに推奨される AUS は、重複除去アルゴリズムとの相性がよい 64 KB です。 |
 | 自動ストレージ階層化 |使用頻度の低いデータの SSD から HDD への、次にクラウド内階層への自動的な移動と、集中ユーザー インターフェイスからの全ストレージの管理の有効化。 |
-| バックアップ カタログ |バックアップのコレクション。通常は、使用されたアプリケーションのタイプによって関連付けられます。 このコレクションは、StorSimple Manager サービス UI の [バックアップ カタログ] ページに表示されます。 |
+| バックアップ カタログ |バックアップのコレクション。通常は、使用されたアプリケーションのタイプによって関連付けられます。 このコレクションは、StorSimple デバイス マネージャー サービス UI の [バックアップ カタログ] ブレードに表示されます。 |
 | バックアップ カタログ ファイル |StorSimple Snapshot Manager のバックアップ データベースに現在格納されている利用可能なスナップショットの一覧を含むファイル。 |
 | バックアップ ポリシー |定義済みのスケジュールでバックアップを作成できるようにする、ボリューム、バックアップの種類、およびタイムテーブルの選択。 |
 | バイナリ ラージ オブジェクト (BLOB) |データベース管理システムに単一のエンティティとして格納されるバイナリ データのコレクション。 Blob は通常は画像、オーディオ、その他のマルチメディア オブジェクトですが、バイナリの実行可能コードが BLOB として保存されることもあります。 |
@@ -294,13 +293,13 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | 主エンクロージャ |アプリケーション プラットフォーム コントローラーが含まれている StorSimple デバイスの主要なエンクロージャ。 |
 | 目標復旧時間 (RTO) |障害発生後にビジネス プロセスまたはシステムが完全に復元するまでに要する最長時間。 |
 | Serial Attached SCSI (SAS) |ハード ディスク ドライブ (HDD) の種類。 |
-| サービス データ暗号化キー |StorSimple Manager サービスに登録したすべての新しい StorSimple デバイスが使用できるようになるキー。 StorSimple Manager サービスとデバイスの間で転送される構成データは、公開キーを使用して暗号化され、デバイス上では秘密キーを使用してのみ暗号化を解除できます。 サービス データ暗号化キーを使用すると、サービスは暗号化解除用のこの秘密キーを取得できます。 |
-| サービス登録キー |StorSimple Manager サービスへの StorSimple デバイスの登録を助けるキー。管理作業用に Azure クラシック ポータルに表示されるようにします。 |
+| サービス データ暗号化キー |StorSimple デバイス マネージャー サービスに登録したすべての新しい StorSimple デバイスが使用できるキー。 StorSimple デバイス マネージャー サービスとデバイス間で転送される構成データは、公開キーを使用して暗号化され、デバイス上では秘密キーを使用してのみ暗号化を解除できます。 サービス データ暗号化キーを使用すると、サービスは暗号化解除用のこの秘密キーを取得できます。 |
+| サービス登録キー |StorSimple デバイス マネージャー サービスへの StorSimple デバイスの登録を助けるキー。管理作業を容易にするために Azure ポータルに表示されます。 |
 | Small Computer System Interface (SCSI) |コンピューターの物理的接続とコンピューター間のデータの受け渡しのための標準のセット。 |
 | ソリッド ステート ドライブ (SSD) |可動部分を含まないディスク。たとえば、フラッシュ ドライブです。 |
 | ストレージ アカウント |特定のクラウド サービス プロバイダーのストレージ アカウントにリンクされたアクセス資格情報のセット。 |
 | SharePoint 用 StorSimple アダプター |StorSimple ストレージおよびデータ保護を SharePoint サーバー ファームまで透過的に拡張する Microsoft Azure StorSimple のコンポーネント。 |
-| StorSimple Manager サービス |Azure StorSimple のオンプレミスのデバイスおよび仮想デバイスを管理できるようにする Azure クラシック ポータルの拡張機能。 |
+| StorSimple デバイス マネージャー サービス |Azure StorSimple のオンプレミスのデバイスと仮想デバイスを管理できるようにする Azure ポータルの拡張機能。 |
 | StorSimple Snapshot Manager |Microsoft Azure StorSimple でのバックアップおよび復元操作を管理するための Microsoft 管理コンソール (MMC) スナップイン。 |
 | バックアップの作成 |ユーザーがボリュームの対話型バックアップを作成できるようにする機能。 定義済みポリシーによる自動バックアップ作成に対して、手動でボリュームのバックアップを作成する代替手段です。 |
 | 仮想プロビジョニング |使用可能なストレージ スペースをストレージ システムで使用する効率を最適化する方法。 仮想プロビジョニングでは、ストレージは任意の時点で各ユーザーが必要な最小容量に基づいて複数のユーザーに割り当てられます。 「 *ファット プロビジョニング*」もご覧ください。 |
@@ -312,6 +311,6 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | StorSimple 用 Windows PowerShell |StorSimple デバイスを操作および管理するために使用される Windows PowerShell ベースのコマンド ライン インターフェイス。 このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。 |
 
 ## <a name="next-steps"></a>次のステップ
-[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認します。
+[StorSimple のセキュリティ](storsimple-8000-security.md)の詳細を確認します。
 
 

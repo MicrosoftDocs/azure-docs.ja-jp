@@ -34,7 +34,6 @@
 ### [Azure Mobile Apps での認証および承認](app-service-mobile-auth.md)
 ### [Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md)
 ### [Azure App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Azure App Service と既存の Azure サービス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [App Service プランの詳細](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [高密度ホスティング](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure App Service での Web ジョブの使用](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -124,11 +123,9 @@
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [独自のカスタム ドメインをマップする](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [GoDaddy ドメインを構成する](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Traffic Manager でのカスタム ドメイン](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### [既存のアプリを複製する](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [オンプレミス接続](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [詳細な構成](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [リソース グループ](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -150,7 +147,6 @@
 #### [Node.JS バックエンド](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
 
 ## [セキュリティ保護](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Azure App Service でのアプリのセキュリティ保護](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [認証と権限承認](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### ID プロバイダーで認証する
 #### [Azure Active Directory 認証](app-service-mobile-how-to-configure-active-directory-authentication.md)
@@ -173,7 +169,6 @@
 ## バックアップ
 ### [Azure でのアプリのバックアップ](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure でのアプリの復元](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [REST を使用して App Service アプリのバックアップと復元を実行する](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [監視](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -182,19 +177,14 @@
 ## 自動化
 ### [アジャイル開発](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure Resource Manager デプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Web + GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Web + SQL](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [カスタム ホスト名と SSL 証明書を使用した MSDeploy](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### Powershell
 #### [バックアップと復元を自動化する](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [アプリの複製](../app-service-web/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [SSL 証明書バインディング](../app-service-web/app-service-web-app-powershell-ssl-binding.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [PowerShell で Azure Resource Manager を使用する](../app-service-web/app-service-web-app-azure-resource-manager-powershell.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Azure Automation を使用してアプリを管理する](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## 統合
-### [ハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [SendGrid を使用した Azure での電子メールの送信方法](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [PowerApps および Microsoft Flow にエクスポートする](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## トラブルシューティング
 ### Mobile Apps の一般的なトラブルシューティング
@@ -214,24 +204,25 @@
 
 # 関連項目
 ## [GitHub リポジトリ](https://github.com/Azure/azure-mobile-apps)
-## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # リソース
-## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Web ジョブのリソースの一覧](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
+## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## サンプル
 ### [フィールド エンジニア](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
 ### [構造化データの同期](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
 ### クイック スタートの完了
-#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
-#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
 #### [.NET バックエンド](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/)
 #### [Node.JS バックエンド](https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
-## [App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [Web ジョブのリソースの一覧](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
+#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
 
 
 

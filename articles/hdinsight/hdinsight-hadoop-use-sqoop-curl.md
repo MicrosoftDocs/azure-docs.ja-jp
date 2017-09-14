@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Sqoop と Curl の使用 | Microsoft Docs"
+title: "HDInsight での Hadoop Sqoop と Curl の使用 - Azure | Microsoft Docs"
 description: "Curl を使用して Sqoop ジョブを HDInsight にリモートで送信する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: eabcd8b70411a915722a2f1b8e8b70271cd8c7c2
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 0975aedf58c6e110726dd3308eae5f9ad3907cc7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>HDInsight の Hadoop で Curl を使用して Sqoop ジョブを実行する
@@ -69,7 +68,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
      URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 
 2. 次のコマンドを使用して sqoop ジョブを送信します。
 
-        curl -u USERNAME:PASSWORD -d user.name=USERNAME -d command="export --connect jdbc:sqlserver://SQLDATABASESERVERNAME.database.windows.net;user=USERNAME@SQLDATABASESERVERNAME;password=PASSWORD;database=SQLDATABASENAME --table log4jlogs --export-dir /tutorials/usesqoop/data --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasbs:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/sqoop
+        curl -u USERNAME:PASSWORD -d user.name=USERNAME -d command="export --connect jdbc:sqlserver://SQLDATABASESERVERNAME.database.windows.net;user=USERNAME@SQLDATABASESERVERNAME;password=PASSWORD;database=SQLDATABASENAME --table log4jlogs --export-dir /tutorials/usesqoop/data --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasb:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/sqoop
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
@@ -95,7 +94,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
    > この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
    > 
    > 
-2. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。この場合は、**wasbs:///example/curl** になります。 このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
+2. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。この場合は、**wasb:///example/curl** になります。 このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
    
     これらのファイルを一覧表示およびダウンロードするには [Azure CLI](../cli-install-nodejs.md)を使用します。 たとえば、 **example/curl**内のファイルを一覧表示するには、次のコマンドを使用します。
    

@@ -39,12 +39,14 @@
 ### [HDInsight の Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
 
 ## Azure サービスと統合する
+### HDInsight を使用
+#### [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+#### [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+#### [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+#### [Azure テンプレートの使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [Azure VNET 内の VM からアクセスする](data-lake-store-connectivity-from-vnets.md)
 ### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [Data Lake Store を使用する HDInsight - ポータル](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [既定のストレージとして Data Lake Store を使用する HDInsight - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-### [追加のストレージとして Data Lake Store を使用する HDInsight - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [Data Lake Store を使用する HDInsight - Azure テンプレート](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [Azure Event Hubs で使用する](data-lake-store-archive-eventhub-capture.md)
 ### [Data Factory で使用する](../data-factory/data-factory-azure-datalake-connector.md)
 ### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
 ### [Power BI で使用する](data-lake-store-power-bi.md)
@@ -55,11 +57,12 @@
 
 ## 管理
 ### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
-### [高可用性向けの計画](data-lake-store-troubleshooting-guidance.md)
+### [高可用性向けの計画](data-lake-store-disaster-recovery-guidance.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
 ## [PowerShell](/powershell/module/azurerm.datalakestore)
-## [.NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datalake.store)
+## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
 ## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
@@ -68,10 +71,12 @@
 ## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
-## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
-## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
+## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

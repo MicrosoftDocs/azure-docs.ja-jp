@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 07/20/2017
 ms.author: jeedes
+ms.reviewer: jeedes
 ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9b3f305e71502119e5dee6592347cf30bafef157
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana-cloud-platform-identity-authentication"></a>チュートリアル: Azure Active Directory と SAP HANA Cloud Platform Identity Authentication の統合

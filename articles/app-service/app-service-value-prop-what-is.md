@@ -50,7 +50,7 @@ App Service には、*アプリの種類*が複数用意されており、それ
 * [**Web Apps**](../app-service-web/app-service-web-overview.md) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
 * [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) - モバイル アプリのバックエンドをホストするためのアプリの種類。
 * [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) - RESTful API をホストするためのアプリの種類。
-* [**Logic Apps**](../logic-apps/logic-apps-what-are-logic-apps.md) - コードを記述せずに、ビジネス プロセスを自動化し、クラウド全体でシステムとデータを統合するためののアクセスと使用を自動化するためのアプリの種類。
+* [**Logic Apps**](../logic-apps/logic-apps-what-are-logic-apps.md) - コードを記述せずに、ビジネス プロセスを自動化し、クラウド全体でシステムとデータを統合するためのアプリの種類。
 
 ここで言う "*アプリ*" とは、ワークロードの実行専用のホスティング リソースを指しています。 "Web アプリ" を例にとると、Web アプリをコンピューティング リソースとアプリケーション コードの両方の観点から捉えることに皆さんおそらく慣れていることでしょう。この両者が合わさって、ブラウザーに機能が提供されます。 しかし、App Service の "*Web アプリ*" とは、アプリケーション コードをホストするために Azure が提供するコンピューティング リソースです。 
 

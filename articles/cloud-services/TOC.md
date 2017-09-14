@@ -17,12 +17,10 @@
 ### [Node.js アプリケーションの構築とデプロイ](cloud-services-nodejs-develop-deploy-app.md)
 ### [Express を使用した Node.js Web アプリケーションの構築](cloud-services-nodejs-develop-deploy-express-app.md)
 ### Storage と Visual Studio
-#### [Blob Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-blobs.md)
-#### [Queue Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-queues.md)
-#### [Table Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-tables.md)
+#### [Blob Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
+#### [Queue Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
+#### [Table Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
 ### 継続的なビルドおよびデプロイのためのパッケージの構成
-#### [Visual Studio Team Services と Git](cloud-services-continuous-delivery-use-vso-git.md)
-#### [Visual Studio Team Services](cloud-services-continuous-delivery-use-vso.md)
 #### [TFS およびチームのビルド](cloud-services-dotnet-continuous-delivery.md)
 ### [ロールのトラフィック規則の構成](cloud-services-enable-communication-role-instances.md)
 ### [クラウド サービスのライフサイクル イベントの処理](cloud-services-role-lifecycle-dotnet.md)
@@ -109,13 +107,16 @@
 #### [デプロイに関するよくあるご質問](cloud-services-deployment-faq.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
+## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

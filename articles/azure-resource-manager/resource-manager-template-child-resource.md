@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 06/01/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: d7560b689d7cea56d40ffa2db9542f74a649f9c1
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -28,7 +29,17 @@ ms.lasthandoff: 03/03/2017
 
 子リソースの名前の形式は次の通りです。`{parent-resource-name}/{child-resource-name}`
 
-しかし、テンプレート内の種類と名前の指定方法は、親リソース内で入れ子になっているか、単独で最上位レベルにあるかによって異なります。 このトピックでは、この&2; つのアプローチに対する対応方法について説明します。
+しかし、テンプレート内の種類と名前の指定方法は、親リソース内で入れ子になっているか、単独で最上位レベルにあるかによって異なります。 このトピックでは、この 2 つのアプローチに対する対応方法について説明します。
+
+リソースに対する完全修飾参照を作成する場合、種類と名前からセグメントを結合する順序は、単に 2 つの連結ではありません。  名前空間の後に、"*種類/名前*" のペアを具体性の低いものから高いものへの順に使用します。
+
+```json
+{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
+```
+
+For example:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`は正しい`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`は正しくない
 
 ## <a name="nested-child-resource"></a>入れ子になった子リソース
 子リソースを定義する最も簡単な方法では、親のリソース内で入れ子にすることです。 次の例では、SQL Server 内で入れ子になっている SQL データベースを示します。

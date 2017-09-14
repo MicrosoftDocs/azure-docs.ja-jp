@@ -3,7 +3,7 @@ title: "スタンドアロン Azure Service Fabric クラスターのセット�
 description: "同じコンピューター上で動作する 3 つのノードで開発用のスタンドアロン クラスターを作成します。 このセットアップを終えれば、いつでも複数マシンのクラスターを作成することができます。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 
@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/11/2017
-ms.author: ryanwi
-translationtype: Human Translation
+ms.date: 07/06/2017
+ms.author: dekapur
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 
@@ -60,11 +60,11 @@ Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
 
-NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
--------------------- -------- --------------- --------  ----------- ------------- ---------- ---------- ------------ -----------
-                     vm2      localhost       NodeType2 5.5.216.0   0                     Up 03:00:07   00:00:00              Ok
-                     vm1      localhost       NodeType1 5.5.216.0   0                     Up 03:00:02   00:00:00              Ok
-                     vm0      localhost       NodeType0 5.5.216.0   0                     Up 03:00:01   00:00:00              Ok
+NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
+-------------------- -------- --------------- --------  -----------  ------------- ---------- ---------- ------------ -----------
+                     vm2      localhost       NodeType2 5.6.220.9494 0                     Up 00:03:38   00:00:00              OK
+                     vm1      localhost       NodeType1 5.6.220.9494 0                     Up 00:03:38   00:00:00              OK
+                     vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
 ## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化

@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 06/05/2017
 ms.author: v-sharos
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7651a2ba6c206bb39d7cf8839f6f0f828fb3bc16
-ms.openlocfilehash: 25265349cb8cb47e93b7bea7103f1d06878a6158
-ms.lasthandoff: 02/28/2017
+ms.custom: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b48c507e38eb7cadff56259f617e336e4efe5708
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -126,7 +127,7 @@ StorSimple Snapshot Manager の操作を次の表に示します。
 | ボリュームの再スキャン |**[ボリューム]** ノードを右クリックします。 |**結果**ウィンドウに表示されるボリュームのリストを更新するには、**[ボリュームの再スキャン]** をクリックします。 |
 | 復元 |**[バックアップ カタログ]** を展開し、ボリューム グループを展開します。次に、**[ローカル スナップショット]** または **[クラウド スナップショット]** を展開し、バックアップを右クリックします。 |現在のボリューム グループのデータを、選択したバックアップのデータに置き換えるには、 **[復元]** をクリックします。 |
 | バックアップの作成 |次のいずれかを実行します。<ul><li>**[ボリューム グループ]** を展開し、ボリューム グループを右クリックします。</li><li>**[バックアップ カタログ]** を展開し、ボリューム グループを右クリックします。</li></ul> |バックアップ ジョブをすぐに開始するには、 **[バックアップの作成]** をクリックします。 |
-| インポートの表示の切り替え |**スコープ** ウィンドウで最上位ノード (この例では **[StorSimple Snapshot Manager]** ノード) を右クリックします。 |StorSimple Manager サービス ダッシュボードからインポートされたボリューム グループおよび関連するバックアップの表示/非表示を切り替えるには、 **[インポートの表示の切り替え]** をクリックします。 |
+| インポートの表示の切り替え |**スコープ** ウィンドウで最上位ノード (この例では **[StorSimple Snapshot Manager]** ノード) を右クリックします。 |StorSimple デバイス マネージャー サービス ダッシュボードからインポートされたボリューム グループおよび関連するバックアップの表示/非表示を切り替えるには、**[インポートの表示の切り替え]** をクリックします。 |
 
 ### <a name="view-menu"></a>[表示] メニュー
 **結果**ウィンドウの内容のカスタム ビューを作成するには、**[表示]** メニューを使用します。 **[表示]** メニューには、**[列の追加と削除]** オプションと **[カスタマイズ]** オプションがあります。
@@ -208,7 +209,7 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 |:--- |:--- |
 | ![左矢印](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |前のページに戻るには、左矢印アイコンをクリックします。 |
 | ![右矢印](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |次のページに移動するには、右矢印アイコンをクリックします (矢印がグレーの場合、この操作は使用できません)。 |
-| ![1 つ上のレベル アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) |コンソール ツリー ( **スコープ** ウィンドウ) で&1; レベル上に移動するには、"1 つ上のレベル" アイコンをクリックします。 |
+| ![1 つ上のレベル アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) |コンソール ツリー ( **スコープ** ウィンドウ) で 1 レベル上に移動するには、"1 つ上のレベル" アイコンをクリックします。 |
 | ![コンソール ツリーの表示/非表示](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowConsoleTree.png) |**スコープ** ウィンドウの表示/非表示を切り替えるには、"コンソール ツリーの表示/非表示" アイコンをクリックします。 |
 | ![リストのエクスポート](./media/storsimple-use-snapshot-manager/HCS_SSM_ExportListIcon.png) |指定した CSV ファイルにリストをエクスポートするには、"リストのエクスポート" アイコンをクリックします。 |
 | ![ヘルプ アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpIcon.png) |MMC のオンライン ヘルプ トピックを開くには、"ヘルプ" アイコンをクリックします。 |
@@ -273,8 +274,7 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 
 > [!NOTE]
 > 最大 64 個のバックアップを保持できます。
-> 
-> 
+
 
 ### <a name="backup-catalog-node"></a>[バックアップ カタログ] ノード
 **[バックアップ カタログ]** ノードには、Azure StorSimple ボリュームのオンサイトおよびオフサイトのバックアップのリストが含まれます。 このノードはボリューム グループ別に整理されており、各ボリューム グループ コンテナーには、ローカル スナップショット (**[ローカル スナップショット]** ノード) とクラウド スナップショット (**[クラウド スナップショット]** ノード) の個別の構造が含まれています。 各ボリューム グループ コンテナーを展開すると、対話形式または構成済みポリシーで作成された正常なバックアップがすべて表示されます。
@@ -429,7 +429,7 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 | V |**[表示]** メニューを開きます。 |
 | W |**[ボリューム グループ]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。 |
 | F |StorSimple Snapshot Manager コンソールを更新します。 |
-| L |**[リストのエクスポート] **ページを開きます。 |
+| L |**[リストのエクスポート]** ページを開きます。 |
 | H |オンライン ヘルプを開きます。 |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>[バックアップ カタログ] ノードのショートカット キー

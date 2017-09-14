@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
-ms.openlocfilehash: 6766242bef4e6f976a621547941e8e34a4915c6c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7e5da1c32484b0b94d2ad32ead6bb7c28f9744aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
@@ -55,11 +54,11 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 
 - PowerShell
-    - [Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
+    - [Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
 
 ## <a name="code-samples"></a>コード サンプル
 
-関連するトピックで次の&2; つのコード サンプルを提供します。
+関連するトピックで次の 2 つのコード サンプルを提供します。
 
 
 - [SQL Database の拡張イベントのためのリング バッファー ターゲット コード](sql-database-xevent-code-ring-buffer.md)
@@ -127,7 +126,7 @@ Microsoft SQL Server では、同様のカタログ ビューは次のように�
 
 簡単な SQL **SELECT** を実行して、使用可能なイベント、アクション、ターゲットのリストを取得できます。
 
-```tsql
+```sql
 SELECT
         o.object_type,
         p.name         AS [package_name],
@@ -196,10 +195,10 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 
 ## <a name="related-links"></a>関連リンク
 
-- [Azure Storage における Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)。
+- [Azure Storage における Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md)。
 - [Azure Storage コマンドレット](http://msdn.microsoft.com/library/dn806401.aspx)
-- [Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
-- [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
+- [Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
+- [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias の Microsoft SQL Server の拡張イベントに関するブログ投稿](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)

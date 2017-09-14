@@ -12,14 +12,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 08/25/2017
 ms.author: obloch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 1da12a5beaf1af3ac5b6a2e0f089b329ccc7e834
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 459b630f28fe48064f4ba280974f3fdbdb82f0a6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK

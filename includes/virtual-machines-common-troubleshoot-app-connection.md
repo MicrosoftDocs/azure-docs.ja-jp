@@ -113,6 +113,10 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 * クライアント コンピューターから Azure 仮想マシンへのアプリケーション リクエスト送信トラフィック。
 * Azure 仮想マシンからのアプリケーション応答受信トラフィック。
 
+## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>手順 4: アプリケーションにアクセスできない場合は、IP 検証を使用して設定を確認します。 
+
+詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
+
 ## <a name="additional-resources"></a>その他のリソース
 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 

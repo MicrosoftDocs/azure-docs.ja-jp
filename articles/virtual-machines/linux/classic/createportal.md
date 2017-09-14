@@ -1,6 +1,6 @@
 ---
 title: "カスタムの Linux 仮想マシンの作成 | Microsoft Docs"
-description: "クラシック デプロイ モデルを使用して Azure クラシック ポータルからカスタムの Linux 仮想マシンを作成する方法を説明します。"
+description: "クラシック デプロイ モデルを使用して Azure Portal からカスタムの Linux 仮想マシンを作成する方法を説明します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 05/31/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ba0d95c92a9e5dba507af16b126de484ac7c40e7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 385102662ef46d7eca51d6e5e10ed7aa77bb1a43
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---

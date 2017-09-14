@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Event Grid のドキュメント
+metadata:
+  title: Azure Event Grid のドキュメント - チュートリアル、API リファレンス
+  description: Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。
+  services: event-grid
+  author: czeumault
+  manager: carolz
+  ms.service: event-grid
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/10/2017
+  ms.author: carolz
+abstract:
+  description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: カスタム イベントを作成してサブスクライブする方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/app-service-api/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/event-grid/custom-event-quickstart
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: イベントに対応するアプリケーションを開発する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API
+            html: <p><a href="/rest/api/eventgrid">REST ()</a></p>
+          - title: スキーマ
+            html: <p><a href="/azure/event-grid/subscription-creation-schema ">サブスクリプション スキーマ</a></p><p><a href="/azure/event-grid/event-schema">イベント スキーマ</a></p>

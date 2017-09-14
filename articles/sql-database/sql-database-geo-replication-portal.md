@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/062/2016
+ms.date: 03/06/2016
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: c9376b95e4686f804d34f648e15cfcc0f2847718
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: db90fad2fe397f0c8466db6bdc1bd8c8d1cf8f15
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -28,11 +28,6 @@ ms.lasthandoff: 05/18/2017
 この記事では、[Azure Portal](http://portal.azure.com) を使用して SQL Database のアクティブ geo レプリケーションを構成し、フェールオーバーを開始する方法について説明します。
 
 Azure Portal を使用してフェールオーバーを開始するには、「 [Azure Portal を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-portal.md)」を参照してください。
-
-> [!NOTE]
-> すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。 2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
-> 
-> 
 
 Azure Portal を使ってアクティブ geo レプリケーションを構成するには、次のリソースが必要です。
 

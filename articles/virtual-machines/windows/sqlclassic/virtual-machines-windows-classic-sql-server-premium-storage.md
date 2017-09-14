@@ -15,22 +15,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: aba69b95db8313dd9ce711ddc6c26e5df55d79a4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6790db207fc7ec8a4b1546ef07c97ef30abe9513
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/04/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要
-[Azure Premium Storage](../../../storage/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
+[Azure Premium Storage](../../../storage/common/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
-この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。 これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
+この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。 これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
 
 これは、IAAS VM 上の SQL Server で Azure Premium Storage を利用するエンド ツー エンド プロセスを理解するのに重要です。 次のトピックがあります。
 
@@ -101,7 +100,7 @@ Premium Storage アカウントの一部であるディスクの作成の主な�
 VHD をアタッチした後は、キャッシュの設定を変更できません。 VHD をいったんデタッチし、キャッシュの設定を更新して VHD を再アタッチする必要があります。
 
 ### <a name="windows-storage-spaces"></a>Windows 記憶域スペース
-以前の Standard Storage と同じように、[Windows 記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用できます。これにより、既に記憶域スペースを使用している VM を移行できます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の例では (手順 9 以降)、複数の VHD がアタッチされている VM を抽出してインポートする PowerShell コードが示されています。
+以前の Standard Storage と同じように、[Windows 記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用できます。これにより、既に記憶域スペースを使用している VM を移行できます。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)の例では (手順 9 以降)、複数の VHD がアタッチされている VM を抽出してインポートする PowerShell コードが示されています。
 
 記憶域プールを Standard Azure ストレージ アカウントと共に使用して、スループットを上げ、遅延を短縮しています。 新しいデプロイ用に Premium Storage で記憶域プールをテストする価値はありますが、記憶域のセットアップが複雑になります。
 
@@ -140,12 +139,12 @@ VHD をアタッチした後は、キャッシュの設定を変更できませ�
 
 この情報を使用して、アタッチされているVHD を記憶域プールの物理ディスクに関連付けることができます。
 
-VHD を記憶域プールの物理ディスクにマップした後は、デタッチして Premium Storage アカウントにコピーし、正しいキャッシュ設定でアタッチできます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の手順 8 ～ 12 の例を参照してください。 これらの手順では、VM にアタッチされた VHD ディスクの構成を CSV ファイルに抽出し、VHD をコピーし、ディスク構成のキャッシュ設定を変更し、最後にすべてのディスクをアタッチして DS シリーズ VM として VM をデプロイする方法が示されています。
+VHD を記憶域プールの物理ディスクにマップした後は、デタッチして Premium Storage アカウントにコピーし、正しいキャッシュ設定でアタッチできます。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)の手順 8 ～ 12 の例を参照してください。 これらの手順では、VM にアタッチされた VHD ディスクの構成を CSV ファイルに抽出し、VHD をコピーし、ディスク構成のキャッシュ設定を変更し、最後にすべてのディスクをアタッチして DS シリーズ VM として VM をデプロイする方法が示されています。
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>VM ストレージの帯域幅と VHD ストレージのスループット
 ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。 VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。 具体的な帯域幅については、[Azure の仮想マシンおよびクラウド サービスのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
-ディスク サイズを大きくすると IOPS が向上します。 移行パスについて考えるときはこれを検討する必要があります。 詳しくは、[IOPS とディスク タイプの表](../../../storage/storage-premium-storage.md#scalability-and-performance-targets)をご覧ください。
+ディスク サイズを大きくすると IOPS が向上します。 移行パスについて考えるときはこれを検討する必要があります。 詳しくは、[IOPS とディスク タイプの表](../../../storage/common/storage-premium-storage.md#scalability-and-performance-targets)をご覧ください。
 
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。 高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。 たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。 ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
@@ -419,7 +418,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 8. 検証が成功した後、すべての SQL Server サービスを開始します。
 9. トランザクション ログをバックアップし、ユーザー データベースを復元します。
 10. Always On 可用性グループに新しいノードを追加して、レプリケーションを **同期**に設定します。
-11. [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)のマルチサイトの例に基づいて、PowerShell を使用して、新しいクラウド サービス ILB/ELB の IP アドレス リソースを Always On に追加します。 Windows クラスタリングで、新しいノードに対する **IP アドレス** リソースの**実行可能な所有者**を古いものに設定します。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
+11. [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)のマルチサイトの例に基づいて、PowerShell を使用して、新しいクラウド サービス ILB/ELB の IP アドレス リソースを Always On に追加します。 Windows クラスタリングで、新しいノードに対する **IP アドレス** リソースの**実行可能な所有者**を古いものに設定します。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
 12. 新しいノードのいずれかにフェールオーバーします。
 13. 新しいノードを自動フェールオーバー パートナーにして、フェールオーバーをテストします。
 14. 可用性グループから元のノードを削除します。
@@ -467,7 +466,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 ##### <a name="points-of-downtime"></a>ダウンタイムのポイント
 * 負荷分散エンドポイントで最後のノードを更新するときにダウンタイムが発生します。
 * クライアント/DNS の構成によっては、クライアントの再接続が遅れる可能性があります。
-* IP アドレスをスワップするために Always On クラスター グループをオフラインにする場合は、追加のダウンタイムが発生します。 追加される IP アドレス リソースに対して OR 依存関係と実行可能な所有者を使用することで、これを回避できます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
+* IP アドレスをスワップするために Always On クラスター グループをオフラインにする場合は、追加のダウンタイムが発生します。 追加される IP アドレス リソースに対して OR 依存関係と実行可能な所有者を使用することで、これを回避できます。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
 
 > [!NOTE]
 > 追加されるノードを Always On フェールオーバー パートナーにする場合は、負荷分散セットへの参照を持つ Azure エンドポイントを追加する必要があります。 **Add-azureendpoint** コマンドを実行してこれを行うと、現在の接続は開いたままになりますが、ロード バランサーが更新されるまでリスナーへの新しい接続は確立できません。 テストではこれは 90 ～ 120 秒継続しましたが、テストする必要があります。
@@ -489,7 +488,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
   * クラスター クォーラムを正しく構成したことを確認します。  
 
 ##### <a name="high-level-steps"></a>手順の概要
-このドキュメントでは完全なエンド ツー エンドの例は説明しませんが、この実行に利用できる詳細な情報を [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) で提供します。
+このドキュメントでは完全なエンド ツー エンドの例は説明しませんが、この実行に利用できる詳細な情報を [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) で提供します。
 
 ![MinimalDowntime][8]
 
@@ -499,7 +498,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * ILB/ELB を構成し、エンドポイントを追加します。
 * 次のいずれかでリスナーを更新します。
   * Always On グループをオフラインにし、新しい ILB/ELB IP アドレスで Always On リスナーを更新します。
-  * または、PowerShell を使用して Windows クラスターに新しいクラウド サービスの ILB/ELB の IP アドレス リソースを追加します。 その後、IP アドレス リソースの実行可能な所有者を移行済みのノード、SQL2 に設定し、これをネットワーク名で OR 依存関係として設定します。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
+  * または、PowerShell を使用して Windows クラスターに新しいクラウド サービスの ILB/ELB の IP アドレス リソースを追加します。 その後、IP アドレス リソースの実行可能な所有者を移行済みのノード、SQL2 に設定し、これをネットワーク名で OR 依存関係として設定します。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
 * DNS の構成およびクライアントへの伝達を確認します。
 * SQL1 VM を移行し、手順 2 ～ 4 を実行します。
 * 手順 5ii を使用する場合、追加される IP アドレス リソースの実行可能な所有者として SQL1 追加します。
@@ -1098,7 +1097,7 @@ IP アドレスの追加については、 [付録](#appendix-migrating-a-multis
     ![Appendix15][25]
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure Premium Storage](../../../storage/storage-premium-storage.md)
+* [Azure Premium Storage](../../../storage/common/storage-premium-storage.md)
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 

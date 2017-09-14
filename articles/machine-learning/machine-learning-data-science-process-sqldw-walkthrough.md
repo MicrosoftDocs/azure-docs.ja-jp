@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 55e3f99cd3202abc012d310b43358d3795c8531e
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ce7de48af0f2f21576c66a962b88635a0f9f8333
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
@@ -71,7 +71,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **独自の Azure BLOB ストレージ アカウントを作成する**
 
 * 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。 データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。 Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。
-* 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」に示されている手順に従います。 以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
+* 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」に示されている手順に従います。 以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
   
   * **ストレージ アカウント名**
   * **ストレージ アカウント キー**
@@ -320,13 +320,13 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 コピー元のファイルとコピー先のファイルが重複する場合は、どのように対処するかを決定する必要があります。
 
 > [!NOTE]
-> パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「 **n** 」と入力します。 **すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
+> パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「**n**」と入力します。 **すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
 > 
 > 
 
 ![プロット #21][21]
 
-独自のデータを使用することができます。 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure BLOB ストレージにアップロードできます。 アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
+独自のデータを使用することができます。 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure Blob Storage にアップロードできます。 アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
 
 > [!TIP]
 > 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。 この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。

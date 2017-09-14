@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
-ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
-ms.openlocfilehash: 6006df4b4ecd6dede94c1013881ddf699e741e51
-ms.lasthandoff: 02/07/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -79,7 +80,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
     次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
     データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
 
-12. **[応答]**アクションを追加するには、**[アクションの追加]** を選択します。
+12.    **[応答]**アクションを追加するには、**[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 

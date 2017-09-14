@@ -1,6 +1,6 @@
 ---
-title: "JDBC で Hive をクエリする - Azure HDInsight | Microsoft Docs"
-description: "JDBC を使用して Azure HDInsight の Hadoop クラスター上の Hive に接続する方法について説明します。"
+title: "JDBC ドライバーを使用して Hive のクエリを実行する - Azure HDInsight | Microsoft Docs"
+description: "Java アプリケーションから JDBC ドライバーを使用して、Hive のクエリを HDInsight 上の Hadoop に発行する方法について説明します。 プログラムを使用して、SQuirrel SQL クライアントから接続します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -9,26 +9,25 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 928f8d2a-684d-48cb-894c-11c59a5599ae
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 08/14/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: dd76e2450be2b05d011de7ded49bfa9630190e71
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 14bfdd8554b075b0c19a75bb572f1214a45ff471
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
-# <a name="query-hive-through-jdbc"></a>JDBC で Hive をクエリする
+# <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight で JDBC ドライバーを使用して Hive のクエリを実行する
 
 [!INCLUDE [ODBC-JDBC-selector](../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Java アプリケーションから JDBC を使用して、Hive クエリを Azure HDInsight の Hadoop に発行する方法につい説明します。 このドキュメントの情報では、プログラミングによって SQuirrel SQL クライアントから接続する方法を示します。
+Java アプリケーションから JDBC ドライバーを使用して、Hive のクエリを Azure HDInsight 上の Hadoop に発行する方法について説明します。 このドキュメントの情報では、プログラミングによって SQuirrel SQL クライアントから接続する方法を示します。
 
 Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)を参照してください。
 
@@ -37,7 +36,7 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 * HDInsight クラスターでの Hadoop。 Linux または Windows ベースのクラスターが動作します。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight 3.3 の廃止](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)に関するページを参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳しくは、[HDInsight 3.3 の廃止](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関するページをご覧ください。
 
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL は、JDBC クライアント アプリケーションです。
 
@@ -49,7 +48,7 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 
 Azure の HDInsight クラスターに対する JDBC 接続は 443 を使用して行われ、トラフィックは SSL を使用してセキュリティで保護されます。 クラスターが背後に存在するパブリックのゲートウェイは HiveServer2 が実際にリッスンするポートにトラフィックをリダイレクトします。 接続文字列の例を次に示します。
 
-    jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2
+    jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 `CLUSTERNAME` を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -117,7 +116,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 4. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
 
     * **Name**: Hive
-    * **Example URL**: `jdbc:hive2://localhost:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2`
+    * **Example URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
     * **Extra Class Path**: [Add] ボタンを使用して、以前にダウンロードした jar ファイルを追加します
     * **Class Name**: org.apache.hive.jdbc.HiveDriver
 
@@ -135,7 +134,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     * **Driver**: ドロップダウンを使用して、**[Hive]** ドライバーを選択します
 
-    * **URL**: jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2
+    * **URL**: jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
         **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -143,7 +142,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     * **Password**: クラスター ログイン アカウントのパスワード。
 
-    ![[Add Alias] ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/addalias.png)
+ ![[Add Alias] ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/addalias.png)
 
     **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight]** ダイアログが表示されたら、**[Connect]** を選択してテストを実行します。 テストが成功した場合、**[Connection successful\(接続成功\)]** ダイアログが表示されます。
 

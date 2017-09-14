@@ -13,14 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 08/29/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 6f1c43ca0113dc7579b0fc3743d3314c16ce78a4
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: c407152f54a6e7eb25a580491bd27ad291410d86
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
@@ -54,7 +53,7 @@ TTL 機能は、コレクション レベルとドキュメント レベルの 2
 | ドキュメントに対する TTL が n である |ドキュメント レベルでオーバーライドされません。 ドキュメントの TTL はシステムで解釈されません。 |TTL が n のドキュメントは n (秒単位) 期間が経過すると期限切れになります。 その他のドキュメントは -1 の期間を継承し、期限切れになることはありません。 |TTL が n のドキュメントは n (秒単位) 期間が経過すると期限切れになります。 その他のドキュメントは、コレクションから "n" 期間を継承します。 |
 
 ## <a name="configuring-ttl"></a>TTL の構成
-既定では、すべての Cosmos DB コレクションおよびすべてのドキュメントの TTL が無効になります。
+既定では、すべての Cosmos DB コレクションおよびすべてのドキュメントの TTL が無効になります。 TTL はプログラミングで設定することも、Azure Portal においてコレクションの **[設定]** セクションで設定することもできます。 
 
 ## <a name="enabling-ttl"></a>TTL の有効化
 コレクションまたはコレクション内のドキュメントに対して TTL を有効にするには、コレクションの DefaultTTL プロパティを -1、またはゼロ以外の正数に設定する必要があります。 DefaultTTL を -1 に設定すると、既定でコレクションのすべてのドキュメントは永続的に存続しますが、Cosmos DB サービスはこの既定値をオーバーライドしたドキュメントに対するこのコレクションを監視する必要があります。

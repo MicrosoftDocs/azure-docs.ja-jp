@@ -2,8 +2,8 @@
 title: "Mobile Apps でユニバーサル Windows プラットフォーム (UWP) アプリのオフライン同期を有効にする | Microsoft Docs"
 description: "Azure Mobile App を使用して、ユニバーサル Windows プラットフォーム (UWP) アプリでオフライン データをキャッシュおよび同期する方法について説明します。"
 documentationcenter: windows
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 7da4d87c6225754fe878a1812701c4dbafaea07a
-ms.lasthandoff: 03/09/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure Mobile App バックエンドを使用して、ユニバーサル Windows プラットフォーム (UWP) アプリにオフライン サポートを追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
 
 このチュートリアルでは、「[Create a Windows app (Windows アプリの作成)]」チュートリアルからの UWP アプリ プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
@@ -45,8 +45,8 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 1. [ユニバーサル Windows プラットフォーム用の SQLite ランタイム](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)をインストールします。
 2. Visual Studio で、「[Create a Windows app (Windows アプリの作成)]」チュートリアルで完了した UWP アプリ プロジェクトの NuGet パッケージ マネージャーを開きます。
     **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを検索してインストールします。
-3. ソリューション エクスプローラーで、**[参照]** > **[参照の追加...]** > **[ユニバーサル Windows]** > **[拡張機能]** の順に右クリックおよびクリックして、**[SQLite for Universal Windows Platform]** と **[Visual C++ 2015 Runtime for Universal Windows Platform apps]** の両方を有効にします。
-   
+3. ソリューション エクスプ ローラーで、**[参照]** > **[参照の追加]**> **[ユニバーサル Windows]** > **[拡張機能]** の順に右クリックおよびクリックして、**[ユニバーサル Windows プラットフォーム用 SQLite]** と **[Visual C++ 2015 Runtime for Universal Windows Platform apps]\(ユニバーサルWindows プラットフォーム アプリ用 Visual C++ 2015 ランタイム\)** の両方を有効にします。
+
     ![SQLite UWP リファレンスを追加する][1]
 4. MainPage.xaml.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED`の定義をコメント解除します。
 5. Visual Studio で、 **F5** キーを押してクライアント アプリをリビルドして実行します。 アプリは、オフライン同期を有効にする前と同じように動作します。 ただし今度は、オフライン シナリオで使用できるデータがローカル データベースに格納されます。
@@ -55,9 +55,9 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 ここでは、オフライン状況をシミュレートするために、モバイル アプリ バックエンドへの接続を解除します。 データ項目を追加すると、例外ハンドラーによって、アプリがオフライン モードであることが通知されます。 この状態では、新しい項目はローカル ストアに追加され、プッシュが次に接続状態で実行したときに、モバイル アプリ バックエンドに同期されます。
 
 1. 共有プロジェクトで App.xaml.cs を編集します。 **MobileServiceClient** の初期化をコメント アウトし、無効なモバイル アプリ URL を使用する次の行を追加します。
-   
+
          public static MobileServiceClient MobileService = new MobileServiceClient("https://your-service.azurewebsites.fail");
-   
+
     また、デバイス上で Wi-Fi および移動体通信ネットワークを無効にしてオフライン動作をデモンストレーションすることも、機内モードを使用することもできます。
 2. **F5** キーを押し、アプリケーションをビルドして実行します。 アプリを起動した際の更新時には同期が失敗することに注意してください。
 3. 新しい項目を入力し、 [保存] をクリックするたびに **CancelledByNetworkError**ステータスでプッシュが失敗することを確認します。 ただし、新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内に存在します。  運用アプリでは、これらの例外を抑制した場合、クライアント アプリはモバイル アプリ バックエンドにまだ接続されているかのように動作します。
@@ -74,16 +74,14 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 2. **F5** キーを押して、アプリケーションをリビルドして実行します。 アプリは、`OnNavigatedTo` イベント ハンドラーが実行されると、プッシュとプルの操作によって、ローカルでの変更を Azure Mobile Apps バックエンドに同期します。
 3. (省略可能) SQL Server Object Explorer または Fiddler などの REST ツールを使用して、更新データを表示します。 データが同期されるのは、Azure モバイル アプリのバックエンドのデータベースとローカル ストアの間であることに注意してください。
 4. アプリケーションで、ローカル ストアで完了させる項目の横にあるチェック ボックスをクリックします。
-   
+
    `UpdateCheckedTodoItem` は `SyncAsync` を呼び出し、完了した各項目をモバイル アプリ バックエンドと同期します。 `SyncAsync` はプッシュとプルの両方を呼び出します。 ただし、**クライアントが変更したテーブルに対してプルを実行するたびに、プッシュが常に自動的に実行されます**。 この動作は、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。 この動作によって、予期しないプッシュが行われることがあります。  この動作については、「 [Azure Mobile Apps でのオフライン データ同期]」を参照してください。
 
 ## <a name="api-summary"></a>API の概要
 モバイル サービスのオフライン機能をサポートするために、[IMobileServiceSyncTable] インターフェイスを使用して、ローカル SQLite データベースで [MobileServiceClient.SyncContext][synccontext] を初期化しました。 オフラインのときは、モバイル アプリに対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、操作はローカル ストアに対して発生したかのように動作します。 ローカル ストアをサーバーと同期するには、次のメソッドを使用します。
 
 * **[PushAsync]** このメソッドは [IMobileServicesSyncContext] のメンバーなので、すべてのテーブルに対する変更はバックエンドにプッシュされます。 ローカルに変更されたレコードのみが、サーバーに送信されます。
-* **[PullAsync]**
-   プルは [IMobileServiceSyncTable] から開始されます。 テーブルに追跡されている変更がある場合は、ローカル ストア内のすべてのテーブルとリレーションシップの一貫性が保持されるように、暗黙のプッシュが実行されます。 *pushOtherTables* パラメーターは、コンテキスト内の他のテーブルが暗黙のプッシュでプッシュされるかどうかを制御します。 *query* パラメーターは、[IMobileServiceTableQuery<T>][IMobileServiceTableQuery]
-   または OData クエリ文字列を受け取り、返されたデータをフィルター処理します。 *queryId* パラメーターは、増分同期の定義に使用されます。 詳細については、「 [Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
+* **[PullAsync]** プルは [IMobileServiceSyncTable] から開始されます。 テーブルに追跡されている変更がある場合は、ローカル ストア内のすべてのテーブルとリレーションシップの一貫性が保持されるように、暗黙のプッシュが実行されます。 *pushOtherTables* パラメーターは、コンテキスト内の他のテーブルが暗黙のプッシュでプッシュされるかどうかを制御します。 *query* パラメーターは、[IMobileServiceTableQuery<T>][IMobileServiceTableQuery] または OData クエリ文字列を受け取り、返されたデータをフィルター処理します。 *queryId* パラメーターは、増分同期の定義に使用されます。 詳細については、「[Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
 * **[PurgeAsync]** アプリはこのメソッドを定期的に呼び出して、ローカル ストアから古いデータを消去する必要があります。 まだ同期されていないすべての変更を消去する必要がある場合は、 *force* パラメーターを使用します。
 
 これらの概念の詳細については、「 [Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。

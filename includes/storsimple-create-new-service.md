@@ -10,7 +10,7 @@
    2. サービスの **[場所]** を指定します。 一般的に、デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 あるいは次も考慮できます。 
       
       * Azure 内の既存のワークロードを StorSimple デバイスにもデプロイする場合、そのデータセンターを使用する必要があります。
-      * StorSimple Manager サービスと Azure Storage は 2 つの別々の場所に置くことができます。 その場合、StorSimple Manager と Azure Storage のアカウントを別々に作成する必要があります。 Azure Storage アカウントを作成するには、Azure クラシック ポータルで Azure Storage サービスに移動し、「[ストレージ アカウントの作成](../articles/storage/storage-create-storage-account.md#create-a-storage-account)」に記載されている手順に従います。 このアカウントを作成したら、「[サービスの新しいストレージ アカウントを構成する](../articles/storsimple/storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service)」に記載されている手順に従って、StorSimple Manager サービスにアカウントを追加します。
+      * StorSimple Manager サービスと Azure Storage は 2 つの別々の場所に置くことができます。 その場合、StorSimple Manager と Azure Storage のアカウントを別々に作成する必要があります。 Azure Storage アカウントを作成するには、Azure クラシック ポータルで Azure Storage サービスに移動し、「[ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)」に記載されている手順に従います。 このアカウントを作成したら、「[サービスの新しいストレージ アカウントを構成する](../articles/storsimple/storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service)」に記載されている手順に従って、StorSimple Manager サービスにアカウントを追加します。
    3. **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。 サブスクリプションは、課金アカウントにリンクされます。 このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
    4. **[新しいストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。 このストレージ アカウントは、"storsimplebwv8c6dcnf" などの特別な名前になります。 別の場所でデータが必要になる場合、このボックスをオフにします。 
    5. **[StorSimple Manager の作成]** をクリックしてサービスを作成します。

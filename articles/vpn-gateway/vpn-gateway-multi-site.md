@@ -15,18 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c000669f4a45c7c4292154ce537c451dc70766e7
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: bb3129f70f5eeed99d5889226aa6727f675b6217
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 
+[!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
+
 > [!div class="op_single_selector"]
-> * [Resource Manager - ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [クラシック - PowerShell](vpn-gateway-multi-site.md)
+> * [Azure ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [PowerShell (クラシック)](vpn-gateway-multi-site.md)
 >
 >
 
@@ -69,7 +71,7 @@ ms.lasthandoff: 04/27/2017
 動的ルーティング ゲートウェイを持つサイト間 VPN が既に存在する場合は、 [仮想ネットワーク構成設定のエクスポート](#export)に進んでください。 まだ作成していない場合は、以下の作業を行います。
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>サイト間仮想ネットワークは既に存在するが、静的な (ポリシー ベースの) ルーティング ゲートウェイの場合:
-1. ゲートウェイ タイプを動的ルーティングに変更します。 マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。 ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。 手順については、「 [ゲートウェイの VPN ルーティングの種類を変更する方法](vpn-gateway-configure-vpn-gateway-mp.md#how-to-change-the-vpn-routing-type-for-your-gateway)」を参照してください。  
+1. ゲートウェイ タイプを動的ルーティングに変更します。 マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。 ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。 手順については、「 [ゲートウェイの VPN ルーティングの種類を変更する方法](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。  
 2. 新しいゲートウェイを構成し、VPN トンネルを作成します。 手順については、「 [Azure クラシック ポータルで VPN ゲートウェイを構成する](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。 最初に、ゲートウェイ タイプを動的ルーティングに変更します。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>サイト間仮想ネットワークが存在しない場合:

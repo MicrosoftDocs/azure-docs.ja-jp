@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2015
+ms.date: 05/30/2017
 ms.author: diviso
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: aed46cbf5a57d73f4ce5bab42fdd20ae11d86373
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -59,7 +60,8 @@ Chef ワークステーションは管理者用のワークステーションで
 
 Azure 設定ファイルをダウンロードして Chef が Azure のサブスクリプションと通信できるようにする必要があります。
 
-パブリッシュ設定は、 [ここ](https://manage.windowsazure.com/publishsettings/)からダウンロードしてください。
+<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
+PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) コマンドを使用して、発行設定をダウンロードします。 
 
 発行設定ファイルを C:\chef に保存します。
 
@@ -221,7 +223,7 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 ご覧のように、クリエイティブな html コードにしました。
 
-また、ポート 3389 を経由して Azure クラシック ポータルから RDP セッションを通じて接続できます。
+また、ポート 3389 を経由して Azure Portal から RDP セッションを通じて接続できます。
 
 お役に立てれば幸いです。 今すぐ Azure でコードを工夫したインフラストラクチャを始めてください。
 

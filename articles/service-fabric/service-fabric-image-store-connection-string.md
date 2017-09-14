@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: alexwun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be4275d55410a763d38dcb954df5349db287c015
-ms.openlocfilehash: 5eb8f9489dcc29122892165111f62d63be1766f2
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f497006a8ba48da0032b82113702d8014952ca20
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString 設定を理解する
@@ -28,9 +27,9 @@ ms.lasthandoff: 02/14/2017
 
 ![クラスター マニフェスト][img_cm]
 
-Service Fabric は、マイクロソフトの社内で数多くの多様なチームが使用するためのプラットフォームとして始まったため、いくつかの側面は高度にカスタマイズ可能であり、"イメージ ストア" もそのような側面の&1; つです。 本質的に、イメージ ストアは、アプリケーション パッケージを格納するためのプラグ可能なリポジトリです。 アプリケーションがクラスター内のノードにデプロイされると、そのノードは、イメージ ストアからアプリケーション パッケージの内容をダウンロードします。 ImageStoreConnectionString は、クライアントとノードが、特定のクラスター用の適切なイメージ ストアを検索するために必要なすべての情報を含む設定です。
+Service Fabric は、マイクロソフトの社内で数多くの多様なチームが使用するためのプラットフォームとして始まったため、いくつかの側面は高度にカスタマイズ可能であり、"イメージ ストア" もそのような側面の 1 つです。 本質的に、イメージ ストアは、アプリケーション パッケージを格納するためのプラグ可能なリポジトリです。 アプリケーションがクラスター内のノードにデプロイされると、そのノードは、イメージ ストアからアプリケーション パッケージの内容をダウンロードします。 ImageStoreConnectionString は、クライアントとノードが、特定のクラスター用の適切なイメージ ストアを検索するために必要なすべての情報を含む設定です。
 
-現時点では、次の&3; つの可能な種類のイメージ ストア プロバイダーがあり、対応する接続文字列は次のようになります。
+現時点では、次の 3 つの可能な種類のイメージ ストア プロバイダーがあり、対応する接続文字列は次のようになります。
 
 1. イメージ ストア サービス: "fabric:ImageStore"
 
@@ -46,7 +45,7 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 
 ファイル システム プロバイダーは、ローカルのワンボックス クラスターの開発時に、クラスターのブート処理を少しでも速くするためにイメージ ストア サービスの代わりに使用されます。 通常、その違いは小さいものですが、開発時には有効な最適化です。 ローカルのワンボックス クラスターを他の種類のストレージ プロバイダーでデプロイすることもできますが、プロバイダーが何であっても、開発/テスト ワークフローは変わらないため、通常はそうする理由がありません。 このような使い方の他に、ファイル システム プロバイダーと Azure Storage プロバイダーは、古いバージョンをサポートするために存在しています。
 
-したがって、ImageStoreConnectionString は構成可能ではありますが、通常は、単純に既定の設定を使用します。 [Visual Studio][12] 経由で Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターは、どちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
+したがって、ImageStoreConnectionString は構成可能ではありますが、通常は、単純に既定の設定を使用します。 [Visual Studio][12] 経由で Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
 
 ### <a name="next-steps"></a>次のステップ
 [PowerShell を使用してアプリケーションのデプロイと削除を実行する][10]

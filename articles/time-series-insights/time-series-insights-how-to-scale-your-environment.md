@@ -8,7 +8,7 @@ author: sandshadow
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na

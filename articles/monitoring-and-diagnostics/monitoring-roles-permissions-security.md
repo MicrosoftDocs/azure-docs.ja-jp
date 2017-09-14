@@ -2,7 +2,7 @@
 title: "Azure Monitor での役割、アクセス許可、およびセキュリティの使用 | Microsoft Docs"
 description: "Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: johnkem
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 26e12a27693fe94ae88b70328ed5dd0d9d5b4c10
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: a28f971ae898ffdd1168550a909f2a48e1b3b652
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
@@ -32,8 +33,8 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](insights-powershell-samples.md)、または[クロスプラットフォーム CLI](insights-cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
-* リソースの [診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) を表示する。
-* サブスクリプションの [ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles) を表示する。
+* リソースの [診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) を表示する。
+* サブスクリプションの [ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) を表示する。
 * 自動スケールの設定を表示する。
 * アラート アクティビティと設定を表示する。
 * Application Insights データにアクセスし、AI Analytics のデータを表示する。
@@ -53,8 +54,8 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージ サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
-* リソースの[診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を設定する。*
-* サブスクリプションの[ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles)を設定する。*
+* リソースの[診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)を設定する。*
+* サブスクリプションの[ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)を設定する。*
 * アラート アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
 * Log Analytics (OMS) ワークスペースの共有キーを一覧表示する。
@@ -62,7 +63,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * Log Analytics (OMS) に保存された検索を作成および削除する。
 * Log Analytics (OMS) ストレージ構成を作成および削除する。
 
-* 診断設定またはログ プロファイルを設定するには、ターゲット リソース (ストレージ アカウントまたはイベント ハブ名前空間) で、ListKeys アクセス許可がユーザーに対して個別に付与されている必要があります。
+*診断設定またはログ プロファイルを設定するには、ターゲット リソース (ストレージ アカウントまたはイベント ハブ名前空間) で、ListKeys アクセス許可がユーザーに対して個別に付与されている必要があります。
 
 > [!NOTE]
 > この役割では、イベント ハブにストリーミングされたログ データ、またはストレージ アカウントに保存されたログ データへの読み取りアクセス権は付与されません。 [以下を参照](#security-considerations-for-monitoring-data) してください。
@@ -169,10 +170,5 @@ New-AzureRmRoleDefinition -Role $role
 ## <a name="next-steps"></a>次のステップ
 * [Resource Manager で RBAC とアクセス許可を確認します](../active-directory/role-based-access-control-what-is.md)
 * [Azure で監視の概要を確認します](monitoring-overview.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

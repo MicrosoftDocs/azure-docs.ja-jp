@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dde6242211ca3d8d7b47c0ec4a01965e1439adeb
 ms.openlocfilehash: d3b900b40f683cd446b41696c4f9e617299bf0b1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/22/2017
-
 
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法

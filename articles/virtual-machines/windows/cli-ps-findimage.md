@@ -1,9 +1,9 @@
 ---
-title: "Windows VM イメージへの移動と選択 | Microsoft Docs"
-description: "リソース マネージャー デプロイ モデルで Windows 仮想マシンを作成するときに、イメージの発行元、プラン、および SKU を決定する方法について説明します。"
+title: "Azure で Windows VM イメージを選択する | Microsoft Docs"
+description: "Azure PowerShell を使用して、Marketplace VM イメージの発行元、プラン、SKU、バージョンを判別する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
-author: squillace
+author: dlepow
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,37 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/23/2016
-ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 28bb214570fcca94c5ceb6071c4851b81ec00c8d
-ms.lasthandoff: 04/27/2017
-
+ms.date: 07/12/2017
+ms.author: danlep
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 630f555b003b0efc45b372a7009dbf036aa8c737
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="navigate-and-select-windows-virtual-machine-images-in-azure-with-powershell"></a>Powershell を使用した Azure での Windows 仮想マシン イメージへの移動と選択
-このトピックでは、デプロイする可能性のある場所ごとに、VM イメージの発行元、プラン、SKU、およびバージョンを検索する方法について説明します。 たとえば、次のような Windows VM イメージが一般的に使用されます。
+# <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell を使用して Azure Marketplace で Windows VM イメージを検索する方法
+
+このトピックでは、Azure PowerShell を使用して Azure Marketplace 内で VM イメージを検索する方法について説明します。 この情報は、Windows VM の作成時に Marketplace イメージを指定するためにご利用ください。
+
+最新の [Azure PowerShell モジュール](/powershell/azure/install-azurerm-ps)がインストールおよび構成されていることを確認してください。
+
+
 
 ## <a name="table-of-commonly-used-windows-images"></a>一般的に使用される Windows イメージの表
 | 発行元 | プラン | SKU |
 |:--- |:--- |:--- |:--- |
-| MicrosoftDynamicsNAV |DynamicsNAV |2015 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2013 |
-| MicrosoftSQLServer |SQL2014-WS2012R2 |Enterprise-Optimized-for-DW |
-| MicrosoftSQLServer |SQL2014-WS2012R2 |Enterprise-Optimized-for-OLTP |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
+| MicrosoftWindowsServer |WindowsServer |2016-Nano-Server |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2008-R2-SP1 |
-| MicrosoftWindowsServer |WindowsServer |Windows-Server-Technical-Preview |
-| MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |
+| MicrosoftDynamicsNAV |DynamicsNAV |2017 |
+| MicrosoftSharePoint |MicrosoftSharePointServer |2016 |
+| MicrosoftSQLServer |SQL2016-WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2014SP2-WS2012R2 |Enterprise |
 | MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |
+| MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |
 
-## <a name="find-azure-images-with-powershell"></a>PowerShell を使った Azure イメージの検索
-> [!NOTE]
-> [最新の Azure PowerShell](/powershell/azure/overview)をインストールして構成します。 バージョン 1.0 より前の Azure PowerShell を使用する場合でも以下のコマンドを使用できますが、初めに `Switch-AzureMode AzureResourceManager`を実行する必要があります。 
-> 
-> 
+## <a name="find-specific-images"></a>特定のイメージを検索する
+
 
 Azure リソース マネージャーを使用して新しい仮想マシンを作成するとき、場合によっては、以下のイメージ プロパティの組み合わせによりイメージを指定する必要があります。
 
@@ -51,9 +55,9 @@ Azure リソース マネージャーを使用して新しい仮想マシンを�
 * プラン
 * SKU
 
-たとえば、これらの値は、 `Set-AzureRMVMSourceImage` PowerShell コマンドレットや、作成する仮想マシンの種類を指定する必要のあるリソース グループ テンプレート ファイルで必要となります。
+たとえば、これらの値は、[Set-AzureRMVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) PowerShell コマンドレットや、作成する VM の種類を指定する必要のあるリソース グループのテンプレートで使用します。
 
-これらの値を判別する必要がある場合は、以下の方法で、イメージをナビゲートしてそれらの値を判別できます。
+これらの値を特定する必要がある場合は、[Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher)、[Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer)、[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) コマンドレットを実行してイメージを移動します。 次のような値を特定できます。
 
 1. イメージの発行元を一覧表示する。
 2. 指定された発行元について、そのプランを一覧表示する。
@@ -80,14 +84,19 @@ $offerName="<offer>"
 Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 ```
 
-`Get-AzureRMVMImageSku` コマンドの表示から、新しい仮想マシンのイメージを指定するために必要なすべての情報が得られます。
+`Get-AzureRMVMImageSku` コマンドの出力から、新しい仮想マシンのイメージを指定するために必要なすべての情報が得られます。
 
 完全な例を次に示します。
 
 ```powershell
-PS C:\> $locName="West US"
-PS C:\> Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
+$locName="West US"
+Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
 
+```
+
+出力:
+
+```
 PublisherName
 -------------
 a10networks
@@ -106,32 +115,48 @@ Canonical
 "MicrosoftWindowsServer" が発行元の場合:
 
 ```powershell
-PS C:\> $pubName="MicrosoftWindowsServer"
-PS C:\> Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+$pubName="MicrosoftWindowsServer"
+Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+```
 
+出力:
+
+```
 Offer
 -----
+Windows-HUB
 WindowsServer
+WindowsServer-HUB
 ```
 
 "WindowsServer" プランの場合:
 
 ```powershell
-PS C:\> $offerName="WindowsServer"
-PS C:\> Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+$offerName="WindowsServer"
+Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+```
 
+出力:
+
+```
 Skus
 ----
 2008-R2-SP1
+2008-R2-SP1-smalldisk
 2012-Datacenter
+2012-Datacenter-smalldisk
 2012-R2-Datacenter
-2016-Nano-Server-Technical-Previe
-2016-Technical-Preview-with-Conta
-Windows-Server-Technical-Preview
+2012-R2-Datacenter-smalldisk
+2016-Datacenter
+2016-Datacenter-Server-Core
+2016-Datacenter-Server-Core-smalldisk
+2016-Datacenter-smalldisk
+2016-Datacenter-with-Containers
+2016-Nano-Server
 ```
 
 この一覧から選択した SKU の名前をコピーすれば、 `Set-AzureRMVMSourceImage` PowerShell コマンドレットやリソース グループ テンプレートに必要なすべての情報が得られます。
 
 ## <a name="next-steps"></a>次のステップ
-これで、使用するイメージを正確に選択できます。 検出したイメージ情報を使用して仮想マシンをすばやく作成する方法や、そのイメージ情報のあるテンプレートを使用する方法については、「[Resource Manager と PowerShell を使用して Windows VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+これで、使用するイメージを正確に選択できます。 今調べたイメージの情報を使用して仮想マシンをすばやく作成するには、「[PowerShell で Windows 仮想マシンを作成する](quick-create-powershell.md)」をご覧ください。
 

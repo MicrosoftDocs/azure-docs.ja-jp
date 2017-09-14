@@ -2,7 +2,7 @@
 title: "サービス正常性通知とは | Microsoft Docs"
 description: "サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを確認できます。"
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: c7ea129346c5fddcff9f824dc69478cf6fb1c67a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="service-health-notifications"></a>サービス正常性通知
@@ -50,7 +50,7 @@ resourceProviderName | 影響を受けるリソースのリソース プロバ�
 resourceType| 影響を受けるリソースの種類。
 subStatus | 通常は対応する REST 呼び出しの HTTP 状態コードですが、副状態を示す他の文字列が含まれる場合もあります。たとえば、OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code: 503)、Gateway Timeout (HTTP Status Code: 504) などの一般的な値が含まれる場合があります。
 eventTimestamp | イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。
-submissionTimestamp |     イベントがクエリで使用できるようになったときのタイムスタンプ。
+submissionTimestamp |   イベントがクエリで使用できるようになったときのタイムスタンプ。
 subscriptionId | このイベントが記録された Azure サブスクリプション
 status | 操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。
 operationName | 操作の名前。
@@ -68,15 +68,15 @@ Properties.communicationId | このイベントが関連付けられている通
 
 
 ## <a name="viewing-your-service-health-notifications-in-the-azure-portal"></a>Azure Portal でサービス正常性通知を確認する
-1.    [ポータル](https://portal.azure.com)で、**[モニター]** サービスに移動します。
+1.  [ポータル](https://portal.azure.com)で、**[モニター]** サービスに移動します。
 
     ![監視](./media/monitoring-service-notifications/home-monitor.png)
-2.    **[モニター]** オプションをクリックして、[モニター] ブレードを開きます。 このブレードは、すべての監視設定とデータが 1 つにまとめられた統合ビューです。 最初に開くのは **[アクティビティ ログ]** セクションです。
+2.  **[モニター]** オプションをクリックして、[モニター] ブレードを開きます。 このブレードは、すべての監視設定とデータが 1 つにまとめられた統合ビューです。 最初に開くのは **[アクティビティ ログ]** セクションです。
 
-3.    これで **[サービスの通知]** セクションをクリックします。
+3.  これで **[サービスの通知]** セクションをクリックします。
 
     ![監視](./media/monitoring-service-notifications/service-health-summary.png)
-4.    行項目のいずれかをクリックして詳細を表示します。
+4.  行項目のいずれかをクリックして詳細を表示します。
 
 5. **[+ アクティビティ ログ アラートの追加]** オペレーションをクリックして通知を受け取り、今後この種類のサービス通知を受け取るようにします。 サービス通知のアラートを構成する方法について詳しくは、[こちらをクリック](monitoring-activity-log-alerts-on-service-notifications.md)してください。
 

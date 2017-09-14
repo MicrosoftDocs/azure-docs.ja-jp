@@ -1,19 +1,18 @@
 ---
-
 title: "Azure AD のセルフサービスによるパスワードのリセットの概要 | Microsoft Docs"
 description: "Azure AD のセルフサービスによるパスワードのリセットが組織に提供するものは何か。"
 services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -21,7 +20,6 @@ ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
 ms.openlocfilehash: 9f72a4900f20282827ff939aa41bc4f306e547a3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/20/2017
-
 
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット

@@ -1,22 +1,25 @@
-<properties
-   pageTitle="Azure Search のシノニム (プレビュー) |Microsoft Docs"
-   description="Azure Search REST API で公開されているシノニム (プレビュー) 機能の暫定版ドキュメント。"
-   services="search"
-   documentationCenter=""
-   authors="mhko"
-   manager="pablocas"
-   editor=""/>
+---
+pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
+description: "Azure Search REST API で公開されているシノニム (プレビュー) 機能の暫定版ドキュメント。"
+services: search
+documentationCenter: 
+authors: mhko
+manager: pablocas
+editor: 
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 07/07/2016
+ms.author: nateko
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
-<tags
-   ms.service="search"
-   ms.devlang="rest-api"
-   ms.workload="search"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.date="07/07/2016"
-   ms.author="nateko"/>
-
-
+---
 # <a name="synonyms-in-azure-search-preview"></a>Azure Search のシノニム (プレビュー)
 
 検索エンジンのシノニムは、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを暗黙的に拡張する同等の用語を関連付けます。 たとえば、用語 "dog" と、"canine" と "puppy" のシノニムの関連付けを指定すると、"dog"、"canine"、または "puppy" を含むすべてのドキュメントがクエリのスコープ内に収まります。
@@ -35,9 +38,9 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 検索アプリケーションにシノニムを組み込むことは、2 段階のプロセスです。
 
-1.    次の API によって、検索サービスにシノニム マップを追加します。  
+1.  次の API によって、検索サービスにシノニム マップを追加します。  
 
-2.    インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
+2.  インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
 
 ### <a name="synonymmaps-resource-apis"></a>SynonymMaps リソース API
 

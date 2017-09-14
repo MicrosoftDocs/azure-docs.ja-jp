@@ -4,7 +4,7 @@ description: "JavaScript を使用して関数を開発する方法について�
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -14,14 +14,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/06/2017
-ms.author: chrande, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: ff8a92c66303c81075c8a42baaa841301d65daf1
+ms.date: 05/25/2017
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 641afd78aae145c5e1b16a08567a22c1aafe59a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
@@ -137,6 +136,21 @@ context.log.warn("Something has happened.");
 ```
 host.json ファイルにログを記録する場合のトレース レベルのしきい値を設定したり、それを無効にしたりできます。  ログに書き込む方法の詳細については、次のセクションを参照してください。
 
+## <a name="binding-data-type"></a>バインド データ型
+
+入力バインドのデータ型を定義するには、バインド定義の `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+`dataType` のその他のオプションは、`stream` と `string` です。
+
 ## <a name="writing-trace-output-to-the-console"></a>トレース出力をコンソールに書き込む 
 
 関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 この時点では、`console.log` を使用してコンソールに書き込むことはできません。
@@ -183,7 +197,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 ```json
 { 
     "tracing": {      
-        "consoleLevel": "verbose"      
+        "consoleLevel": "verbose"     
     }
 }  
 ```
@@ -266,7 +280,7 @@ Node のバージョンは、現在、 `6.5.0`にロックされています。 
 2. **[デバッグ コンソール]** > **[CMD]** をクリックします。
 
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
-    関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files)」を参照してください。 
+    関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
 
 4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。  
     この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。

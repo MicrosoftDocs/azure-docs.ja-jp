@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 726f1e2caa4ad313510355c52bcdc100fc1fb488
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6505d9aa2c7ae003bd928e2fa82cd923a9615394
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
@@ -45,7 +44,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 - SQL Server データベース  SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
-> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。
+> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 詳細については、[コピー アクティビティからのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。 プロパティの詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。 コピー アクティビティを使用して Azure SQL Data Warehouse にデータをコピー中に、ストアド プロシージャを呼び出すことはできません。 しかし、SQL Data Warehouse のストアド プロシージャを呼び出すためにストアド プロシージャのアクティビティを使用することは可能です。 
 >  
 > Azure SQL Database、SQL Server、または Azure SQL Data Warehouse からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。          
 

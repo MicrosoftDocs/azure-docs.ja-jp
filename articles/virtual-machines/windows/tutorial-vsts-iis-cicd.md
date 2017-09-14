@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: b4074c67c7a8214f8e103385d5aea75f019d2da6
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a587f58fad2ec74c7633823c4d34f900e7c01f7e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -232,7 +232,7 @@ IIS で Web アプリケーションが実行されている状態で、今度�
 > * 新しい Web デプロイ パッケージを IIS に発行するためのリリース定義を作成する
 > * CI/CD パイプラインのテスト
 
-次のリンクをクリックして、あらかじめ用意されている仮想マシン スクリプト サンプルをご覧ください。
+次のチュートリアルに進み、SSL を使用して Web サーバーをセキュリティで保護する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [Windows 仮想マシンのスクリプト サンプル](./powershell-samples.md)
+> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)

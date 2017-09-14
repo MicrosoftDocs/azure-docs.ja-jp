@@ -2,8 +2,8 @@
 title: "Azure Mobile Apps (Cordova) に対するオフライン同期の有効化 | Microsoft Docs"
 description: "App Service Mobile App を使用して、Cordova アプリケーション内のオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: cordova
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 services: app-service\mobile
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: 425ad7581ec92aed306d4a1c22fbc00e7105a1c1
-ms.openlocfilehash: af80f8fac043f3c0f4c666fffd60b89c2b43818d
-ms.lasthandoff: 02/16/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 45e80ca672dfdb6defc6e5c1aac3d29f5479125c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova モバイル アプリのオフライン同期を有効にする
@@ -173,7 +173,7 @@ ms.lasthandoff: 02/16/2017
 
 5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
 
-    Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、  **[SQL Server オブジェクト エクスプローラーで開く]**を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
+    Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]**を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
 
 ## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(省略可能) モバイル バックエンドへの再接続のテスト
 

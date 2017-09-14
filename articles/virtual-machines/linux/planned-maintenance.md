@@ -1,6 +1,6 @@
 ---
-title: "Azure で Linux VM の計画的メンテナンスのスケジュールを設定する方法 | Microsoft Docs"
-description: "Azure の計画的なメンテナンスの概要と、それが Azure で実行されている Windows 仮想マシンに及ぼす影響について説明します。"
+title: "Azure での Linux VM のメンテナンスと更新 | Microsoft Docs"
+description: "Azure で実行されている Linux 仮想マシンのメンテナンスと更新の概要。"
 services: virtual-machines-linux
 documentationcenter: 
 author: zivr
@@ -13,27 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 08/14/2017
 ms.author: zivr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 28c2fb5a67eca0c5ab2f0299bba7c11375e10558
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 6ead5f0b6a065710a70f1e44d9672c6d8cc4c1e2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画的メンテナンス 
 
-Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシンの基盤となるホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 そうした更新は、ホスティング環境のソフトウェア コンポーネント (ホストに展開されている OS、ハイパーバイザー、各種エージェント) の修正から、ネットワーク コンポーネントのアップグレード、ハードウェアの使用停止にいたるまで、さまざまな範囲に及んでいます。
+[!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
-これらの更新のほとんどは、ホストされている仮想マシンやクラウド サービスに影響を及ぼすことなく実行されます。
+## <a name="next-steps"></a>次のステップ
 
-ただし、更新がホストされた仮想マシンに影響を与える場合があります。
+[Azure Metadata Service](instance-metadata-service.md) を利用すると、Azure でホストされている仮想マシンに関する情報を発見できます。 
 
--   インプレース VM 移行を使用する VM 保持メンテナンスでは、メンテナンス中に仮想マシンを再起動しない更新クラスについて説明しています。
 
--   VM 再起動メンテナンスでは、ホストされた仮想マシンの再起動または再配置が必要です。
-
-このページでは、Microsoft Azure による計画的なメンテナンスの実行について説明しています。 計画外のイベント (停止) の詳細については、「 [仮想マシンの可用性管理](../windows/manage-availability.md)」をご覧ください。

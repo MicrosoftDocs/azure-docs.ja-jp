@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: 866d2b54b0b517cb9984fd5e98840fe3a6c69965
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 59879dc0b3fc1d7af3e2a1f67f1701f451de9126
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -54,7 +53,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
     ![Microsoft account - Live SDK support](./media/active-directory-b2c-setup-msa-app/msa-live-sdk-support.png)
 
 ## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Microsoft アカウントを構成する
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
+1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
 2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「MSA」と入力します。

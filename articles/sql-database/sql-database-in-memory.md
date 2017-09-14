@@ -13,24 +13,25 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/24/2017
 ms.author: jodebrui
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a7273c50f2619c776268406aa14f6c00dcfbfbbe
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 4cb45551c486263f26947e5684d54b4f2ecc7410
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/25/2017
 
 ---
-
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
 Azure SQL Database のインメモリ テクノロジを使用することで、トランザクション (オンライン トランザクション処理 (OLTP))、分析 (オンライン分析処理 (OLAP))、およびその混合 (ハイブリッド トランザクション/分析処理 (HTAP)) といった、さまざまなワークロードでパフォーマンスの向上を実現できます。 クエリとトランザクションの処理が効率化するため、インメモリ テクノロジはコストの低減にも役立ちます。 通常は、パフォーマンスの向上を実現するためにデータベースの価格レベルをアップグレードする必要はありません。 場合によっては、インメモリ テクノロジでパフォーマンスを向上させながら価格レベルを下げられる場合さえあります。
 
 インメモリ OLTP がパフォーマンスの著しい向上を促した例を 2 つ紹介します。
 
-- インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU (つまり、リソースの消費量) を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
-- [Azure SQL Database のインメモリ OLTP のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)では、サンプル ワークロードでリソースの消費量が大幅に向上したことが示されています。 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)を参照してください。
+- インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
+    - DTU とは "*データベース スループット ユニット*" のことで、リソース消費量の測定値が含まれます。
+- [Azure SQL Database のインメモリ OLTP のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)では、サンプル ワークロードでリソースの消費量が大幅に向上したことが示されています。
+    - 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)を参照してください。
 
 インメモリ テクノロジは、Premium エラスティック プール内のデータベースを含む Premium レベル内のすべてのデータベースで利用できます。
 
@@ -45,11 +46,14 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 - *インメモリ OLTP*: スループットが向上し、トランザクション処理の遅延が減少します。 インメモリ OLTP が有益なシナリオには、取引やゲームなどのスループットの高いトランザクション処理、イベントまたは IoT デバイスからのデータの取り込み、キャッシュ、データの読み込み、一時テーブルやテーブル変数のシナリオなどがあります。
 - "*クラスター化列ストア インデックス*": ストレージのフットプリントを減らし (最大 10 倍)、レポートと分析のクエリのパフォーマンスを向上させます。 データ マートでファクト テーブルと共に使用してデータベースにより多くのデータを格納し、パフォーマンスを向上させることができます。 さらに、オペレーション データベースで履歴データと共に使用してアーカイブし、最大で 10 倍のデータのクエリを実行可能にすることができます。
 - HTAP 用の "*非クラスター化列ストア インデックス*": オペレーション データベースに直接クエリを実行して、ビジネスのリアルタイムの情報を取得します。抽出、変換、ロード (ETL) の高コストなプロセスを実行してデータ ウェアハウスが設定されるまで待機する必要はありません。 非クラスター化列ストア インデックスにより、OLTP データベースで非常に高速の分析クエリを実行しながら、運用ワークロードの影響を軽減できます。
-- インメモリ OLTP と列ストア インデックスを組み合わせることもできます。 列ストア インデックス付きのメモリ最適化テーブルを使用できます。 これを使用すると、高速なトランザクション処理を実行できると同時に、同じデータに対して分析クエリを迅速に実行できます。
+- メモリ最適化テーブルと列ストア インデックスを組み合わせて使用することもできます。 これにより、高速なトランザクション処理を実行すると*同時に*、同じデータに対して分析クエリを迅速に実行できます。
 
 列ストア インデックスは 2012 年以降、インメモリ OLTP は 2014 年以降、SQL Server 製品の一部です。 Azure SQL Database と SQL Server では、インメモリ テクノロジの同一の実装が使用されています。 今後、これらのテクノロジの新しい機能は最初に Azure SQL Database でリリースされてから、SQL Server でリリースされます。
 
-このトピックでは、Azure SQL Database に固有のインメモリ OLTP と列ストア インデックスの側面について説明し、サンプルも示します。 まず、これらのテクノロジがストレージに及ぼす影響と、データ サイズの上限について説明します。 次に、これらのテクノロジを活用するデータベースを、異なる価格レベルの間で移動する際の管理方法を説明します。 最後に、インメモリ OLTP と列ストア インデックスを Azure SQL Database で使用する方法を示す 2 つのサンプルを確認します。
+このトピックでは、Azure SQL Database に固有のインメモリ OLTP と列ストア インデックスの側面について説明し、サンプルも示します。
+- これらのテクノロジがストレージに及ぼす影響と、データ サイズの上限について説明します。
+- これらのテクノロジを活用するデータベースを、異なる価格レベルの間で移動する際の管理方法を説明します。
+- インメモリ OLTP と列ストア インデックスを Azure SQL Database で使用する方法を示す 2 つのサンプルを確認します。
 
 詳細については、次のリソースを参照してください。
 
@@ -66,7 +70,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 - [Azure SQL Database のインメモリ OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (パフォーマンス上のメリットと、こうした結果を自身で再現する手順を示しています)
 - [In-Memory OLTP Videos: What it is and When/How to use it (インメモリ OLTP のビデオ: 概要と使用方法)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
-- [Ignite 2016 からの列ストア インデックス: インメモリ分析 (つまり列ストア インデックス) のビデオ](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Ignite 2016 からの列ストア インデックス: インメモリ分析のビデオ](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ## <a name="storage-and-data-size"></a>ストレージとデータのサイズ
 
@@ -84,7 +88,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 - メモリ最適化テーブル上のインデックス。
 - ALTER TABLE 操作の運用上のオーバーヘッド。
 
-上限に達した場合、クォータ不足エラーが発生し、データの挿入や更新ができなくなります。 これを軽減するには、データを削除するか、データベースまたはプールの価格レベルを上げます。
+上限に達した場合、クォータ不足エラーが発生し、データの挿入や更新ができなくなります。 このエラーを軽減するには、データを削除するか、データベースまたはプールの価格レベルを上げます。
 
 インメモリ OLTP のストレージ使用率を監視する方法と、ほぼ上限に達したときのアラートを構成する方法の詳細については、[インメモリ ストレージの監視](sql-database-in-memory-oltp-monitoring.md)に関するページを参照してください。
 
@@ -99,7 +103,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 列ストア インデックスはメモリに収まる必要がありません。 そのため、インデックス サイズの唯一の上限は、[SQL Database のサービス レベル](sql-database-service-tiers.md)に関する記事で記述されているデータベース全体の最大サイズです。
 
-クラスター化列ストア インデックスを使用する場合、ベース テーブル ストレージでは列圧縮が使用されます。 これにより、ユーザー データのストレージ フットプリントが大幅に削減されるため、データベースにより多くのデータを格納できます。 これは、[列アーカイブ圧縮](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression)でさらに拡張できます。 実行できる圧縮の量はデータの性質に依存しますが、10 倍の圧縮は珍しくありません。
+クラスター化列ストア インデックスを使用する場合、ベース テーブル ストレージでは列圧縮が使用されます。 この圧縮により、ユーザー データのストレージ フットプリントが大幅に削減されるため、データベースにより多くのデータを格納できます。 これは、[列アーカイブ圧縮](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression)でさらに拡張できます。 実行できる圧縮の量はデータの性質に依存しますが、10 倍の圧縮は珍しくありません。
 
 たとえば、最大サイズが 1 テラバイト (TB) のデータベースがあり、列ストア インデックスを使用して 10 倍の比率で圧縮した場合、データベースに合計 10 TB のユーザー データを書き込むことができます。
 
@@ -107,7 +111,9 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 ## <a name="moving-databases-that-use-in-memory-technologies-between-pricing-tiers"></a>インメモリ テクノロジが使用されているデータベースを価格レベルをまたいで移動
 
-より高い価格レベルは、常により多くの機能とリソースを備えているため、インメモリ テクノロジが使用されているデータベースの価格レベルを上げる際に特別な考慮事項はありません。 価格レベルを下げると、データベースに影響が生じる可能性があります。 これは特に、Premium から Standard または Basic に移動する場合と、インメモリ OLTP を使用するデータベースを下位の Premium レベルに移動する場合に当てはまります。 エラスティック プールの価格レベルを下げる場合、またはインメモリ テクノロジを使用しているデータベースを Standard または Basic のエラスティック プールに移動する場合にも同じ考慮事項が該当します。
+Standard から Premium など、より上位の価格レベルにアップグレードしても互換性などの問題は発生しません。 使用可能な機能とリソースが増えるだけです。
+
+一方、価格レベルを下げると、データベースに悪影響が及ぶことがあります。 データベースにインメモリ OLTP オブジェクトが含まれている場合に Premium から Standard または Basic にダウングレードすると、影響が特に大きくなります。 ダウングレードした後は、メモリ最適化テーブルと列ストア インデックスは (引き続き表示されたとしても) 使用できません。 エラスティック プールの価格レベルを下げる場合、またはインメモリ テクノロジを使用しているデータベースを Standard または Basic のエラスティック プールに移動する場合にも同じ考慮事項が該当します。
 
 ### <a name="in-memory-oltp"></a>インメモリ OLTP
 
@@ -128,9 +134,9 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 ### <a name="columnstore-indexes"></a>列ストア インデックス
 
-"*Basic または Standard へのダウングレード*": Standard または Basic レベルのデータベースでは、列ストア インデックスはサポートされていません。 Standard または Basic にデータベースをダウングレードすると、列ストア インデックスを使用できなくなります。 つまり、クラスター化列ストア インデックスを使用している場合は、テーブル全体が使用できなくなります。
+"*Basic または Standard へのダウングレード*": 列ストア インデックスは Premium 価格レベルでのみサポートされています。Standard や Basic ではサポートされません。 Standard または Basic にデータベースをダウングレードすると、列ストア インデックスは使用できなくなります。 システムには列ストア インデックスが維持されますが、インデックスは使用されません。 Premium に戻すと、列ストア インデックスはすぐに利用可能になります。
 
-データベースを Standard または Basic にダウングレードする前に、クラスター化列ストア インデックスをすべて削除してください。
+**クラスター化**された列ストア インデックスがある場合、ダウングレード後はテーブル全体が使用できなくなります。 そのため、Premium から下位レベルにデータベースをダウングレードする前に、"*クラスター化*" された列ストア インデックスをすべて削除することをお勧めします。
 
 "*下位の Premium レベルへのダウングレード*": これは、データベース全体がターゲット価格レベルの最大データベース サイズまたはエラスティック プールの使用可能なストレージに収まっている限りは成功します。 列ストア インデックスからの特定の影響はありません。
 
@@ -321,9 +327,10 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 
 1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。
-```
-EXECUTE Demo.usp_DemoReset;
-```
+
+    ``` tsql
+    EXECUTE Demo.usp_DemoReset;
+    ```
 
 2. 上記の ostress.exe コマンドラインのテキストをクリップボードにコピーします。
 

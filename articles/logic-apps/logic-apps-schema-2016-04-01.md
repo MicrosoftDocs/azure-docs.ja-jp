@@ -15,12 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dab219386a32f519e50f76e18013f8f94a2266ff
-ms.openlocfilehash: 9d8f0be3d5c8e2c2e5f169dc1d0851c95a641d0c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
@@ -31,7 +30,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
 * [条件とループ](#conditions-loops)がアクションに昇格しました。
 * `runAfter` プロパティ (`dependsOn` の後継) でアクションの実行順序をより正確に定義できるようになりました。
 
-ロジック アプリを 2015 年 8 月 1 日の preview スキーマから 2016 年 6 月 1 日のスキーマにアップグレードするには、[アップグレードに関するセクションを参照](#upgrading-to-2016-06-01-schema)してください。
+ロジック アプリを 2015 年 8 月 1 日の preview スキーマから 2016 年 6 月 1 日のスキーマにアップグレードするには、[アップグレードに関するセクションを参照](##upgrade-your-schema)してください。
 
 <a name="scopes"></a>
 ## <a name="scopes"></a>スコープ
@@ -115,8 +114,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
     ![[スキーマの更新] を選択][1]
    
     アップグレード後の定義が返されます。これは、必要に応じてコピーしてリソース定義に貼り付けることができます。 
-    ただし、アップグレード後のロジック アプリで使われている接続の参照がすべて有効であることを確認するために、**[名前を付けて保存]** 
-    を選択することを**強くお勧めします**。
+    ただし、アップグレード後のロジック アプリで使われている接続の参照がすべて有効であることを確認するために、**[名前を付けて保存]** を選択することを**強くお勧め**します。
 
 3. アップグレードのブレードのツール バーで **[名前を付けて保存]** を選択します。
 

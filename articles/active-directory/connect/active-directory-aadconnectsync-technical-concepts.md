@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi;andkjell
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
 ms.openlocfilehash: 3623537c80bd0e4190d1e51f289a4b194c13878d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/25/2017
-
 
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect Sync: 技術的概念

@@ -12,18 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 05/25/17
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1eacd13562adcff96fdd0dd3fd91c78ef6a26dbf
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 32d5baf404efddd2e3ce122b14ea8c256bf56299
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
-# <a name="reference---iot-hub-query-language-for-device-twins-and-jobs"></a>リファレンス - デバイス ツインとジョブの IoT HUb クエリ言語
-## <a name="overview"></a>概要
-IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
+# <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>リファレンス - デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
+
+IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]、および[メッセージ ルーティング][lnk-devguide-messaging-routes]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
 * 言語の詳しい説明
@@ -32,100 +33,114 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 [デバイス ツイン][lnk-twins]には、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、デバイス ツインに関するすべての情報を含む 1 つの JSON ドキュメントとしてデバイス ツインにクエリを実行できます。
 たとえば、IoT Hub デバイス ツインが次の構造を持っていると仮定します。
 
-        {                                                                      
-            "deviceId": "myDeviceId",                                            
-            "etag": "AAAAAAAAAAc=",                                              
-            "tags": {                                                            
-                "location": {                                                      
-                    "region": "US",                                                  
-                    "plant": "Redmond43"                                             
-                }                                                                  
-            },                                                                   
-            "properties": {                                                      
-                "desired": {                                                       
-                    "telemetryConfig": {                                             
-                        "configId": "db00ebf5-eeeb-42be-86a1-458cccb69e57",            
-                        "sendFrequencyInSecs": 300                                          
-                    },                                                               
-                    "$metadata": {                                                   
-                    ...                                                     
-                    },                                                               
-                    "$version": 4                                                    
-                },                                                                 
-                "reported": {                                                      
-                    "connectivity": {                                                
-                        "type": "cellular"                            
-                    },                                                               
-                    "telemetryConfig": {                                             
-                        "configId": "db00ebf5-eeeb-42be-86a1-458cccb69e57",            
-                        "sendFrequencyInSecs": 300,                                         
-                        "status": "Success"                                            
-                    },                                                               
-                    "$metadata": {                                                   
-                    ...                                                
-                    },                                                               
-                    "$version": 7                                                    
-                }                                                                  
-            }                                                                    
+```json
+{
+    "deviceId": "myDeviceId",
+    "etag": "AAAAAAAAAAc=",
+    "tags": {
+        "location": {
+            "region": "US",
+            "plant": "Redmond43"
         }
+    },
+    "properties": {
+        "desired": {
+            "telemetryConfig": {
+                "configId": "db00ebf5-eeeb-42be-86a1-458cccb69e57",
+                "sendFrequencyInSecs": 300
+            },
+            "$metadata": {
+            ...
+            },
+            "$version": 4
+        },
+        "reported": {
+            "connectivity": {
+                "type": "cellular"
+            },
+            "telemetryConfig": {
+                "configId": "db00ebf5-eeeb-42be-86a1-458cccb69e57",
+                "sendFrequencyInSecs": 300,
+                "status": "Success"
+            },
+            "$metadata": {
+            ...
+            },
+            "$version": 7
+        }
+    }
+}
+```
 
 IoT Hub はデバイス ツインを **devices** という名前のドキュメント コレクションとして公開します。
 したがって、次のクエリでは、デバイス ツインのセット全体が取得されます。
 
-        SELECT * FROM devices
+```sql
+SELECT * FROM devices
+```
 
 > [!NOTE]
 > [Azure IoT Hub SDK][lnk-hub-sdks] では、大量の結果をページングできます。
->
->
 
 IoT Hub は、任意の条件でフィルター処理してデバイス ツインを取得できます。 たとえば、
 
-        SELECT * FROM devices
-        WHERE tags.location.region = 'US'
+```sql
+SELECT * FROM devices
+WHERE tags.location.region = 'US'
+```
 
 の場合、**US** に設定された **location.region** タグの付いたデバイス ツインを取得します。
 ブール演算子と算術比較も同様にサポートされています。たとえば、
 
-        SELECT * FROM devices
-        WHERE tags.location.region = 'US'
-            AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
+```sql
+SELECT * FROM devices
+WHERE tags.location.region = 'US'
+    AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
+```
 
 の場合、米国にあり、テレメトリの送信頻度が 1 分未満に設定されているすべてのデバイス ツインが取得されます。 必要に応じて、**IN** や **NIN** (含まれない) 演算子とともに配列定数も使用できます。 たとえば、
 
-        SELECT * FROM devices
-        WHERE property.reported.connectivity IN ['wired', 'wifi']
+```sql
+SELECT * FROM devices
+WHERE properties.reported.connectivity IN ['wired', 'wifi']
+```
 
 の場合、Wi-Fi 接続か有線接続を報告したデバイス ツインをすべて取得します。 特定のプロパティを含むすべてのデバイス ツインを識別する必要がある場合があります。 IoT Hub では、この目的で関数 `is_defined()` がサポートされています。 たとえば、
 
-        SELECT * FROM devices
-        WHERE is_defined(property.reported.connectivity)
+```SQL
+SELECT * FROM devices
+WHERE is_defined(properties.reported.connectivity)
+```
 
 の場合、`connectivity` 報告プロパティを定義するデバイス ツインをすべて取得します。 フィルター処理機能の詳細なリファレンスは、「[WHERE 句][lnk-query-where]」セクションをご覧ください。
 
 グループ化と集計もサポートされています。 たとえば、
 
-        SELECT properties.reported.telemetryConfig.status AS status,
-            COUNT() AS numberOfDevices
-        FROM devices
-        GROUP BY properties.reported.telemetryConfig.status
+```sql
+SELECT properties.reported.telemetryConfig.status AS status,
+    COUNT() AS numberOfDevices
+FROM devices
+GROUP BY properties.reported.telemetryConfig.status
+```
 
 の場合、各テレメトリ構成状態のデバイスの数を返します。
 
-        [
-            {
-                "numberOfDevices": 3,
-                "status": "Success"
-            },
-            {
-                "numberOfDevices": 2,
-                "status": "Pending"
-            },
-            {
-                "numberOfDevices": 1,
-                "status": "Error"
-            }
-        ]
+```json
+[
+    {
+        "numberOfDevices": 3,
+        "status": "Success"
+    },
+    {
+        "numberOfDevices": 2,
+        "status": "Pending"
+    },
+    {
+        "numberOfDevices": 1,
+        "status": "Error"
+    }
+]
+```
 
 上述の例では、3 つのデバイスが正常な構成を報告し、2 つは構成を適用中であり、1 つがエラーを報告しています。
 
@@ -133,15 +148,17 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 クエリ機能は **RegistryManager** クラスの [C# service SDK][lnk-hub-sdks] で公開されます。
 簡単なクエリの使用例を次に示します。
 
-        var query = registryManager.CreateQuery("SELECT * FROM devices", 100);
-        while (query.HasMoreResults)
-        {
-            var page = await query.GetNextAsTwinAsync();
-            foreach (var twin in page)
-            {
-                // do work on twin object
-            }
-        }
+```csharp
+var query = registryManager.CreateQuery("SELECT * FROM devices", 100);
+while (query.HasMoreResults)
+{
+    var page = await query.GetNextAsTwinAsync();
+    foreach (var twin in page)
+    {
+        // do work on twin object
+    }
+}
+```
 
 **query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**GetNextAsTwinAsync** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
 クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
@@ -150,22 +167,24 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 クエリ機能は **Registry** オブジェクトの [Azure IoT service SDK for Node.js][lnk-hub-sdks] で公開されます。
 簡単なクエリの使用例を次に示します。
 
-        var query = registry.createQuery('SELECT * FROM devices', 100);
-        var onResults = function(err, results) {
-            if (err) {
-                console.error('Failed to fetch the results: ' + err.message);
-            } else {
-                // Do something with the results
-                results.forEach(function(twin) {
-                    console.log(twin.deviceId);
-                });
+```nodejs
+var query = registry.createQuery('SELECT * FROM devices', 100);
+var onResults = function(err, results) {
+    if (err) {
+        console.error('Failed to fetch the results: ' + err.message);
+    } else {
+        // Do something with the results
+        results.forEach(function(twin) {
+            console.log(twin.deviceId);
+        });
 
-                if (query.hasMoreResults) {
-                    query.nextAsTwin(onResults);
-                }
-            }
-        };
-        query.nextAsTwin(onResults);
+        if (query.hasMoreResults) {
+            query.nextAsTwin(onResults);
+        }
+    }
+};
+query.nextAsTwin(onResults);
+```
 
 **query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**nextAsTwin** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
 クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
@@ -173,8 +192,6 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 ### <a name="limitations"></a>制限事項
 > [!IMPORTANT]
 > クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を利用して個々のデバイス ツインにクエリを実行する場合、デバイス ツイン API を取得することが常に推奨されます。常に最新の値が含まれ、調整制限がより高くなります。
->
->
 
 現時点では、比較はプリミティブ型間 (オブジェクトなし) でのみサポートされます。たとえば、`... WHERE properties.desired.config = properties.reported.config` は、これらのプロパティがプリミティブ値を持つ場合にのみサポートされます。
 
@@ -182,32 +199,34 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 [ジョブ][lnk-jobs]には、一連のデバイスで演算子を実行する機能が備わっています。 各デバイス ツインにはジョブに関する情報が含まれます。これは、**jobs**.という名前のコレクションの一部です。
 論理的には、次のようになります。
 
-        {                                                                      
-            "deviceId": "myDeviceId",                                            
-            "etag": "AAAAAAAAAAc=",                                              
-            "tags": {                                                            
-                ...                                                              
-            },                                                                   
-            "properties": {                                                      
-                ...                                                                 
-            },
-            "jobs": [
-                {
-                    "deviceId": "myDeviceId",
-                    "jobId": "myJobId",    
-                    "jobType": "scheduleTwinUpdate",            
-                    "status": "completed",                    
-                    "startTimeUtc": "2016-09-29T18:18:52.7418462",
-                    "endTimeUtc": "2016-09-29T18:20:52.7418462",
-                    "createdDateTimeUtc": "2016-09-29T18:18:56.7787107Z",
-                    "lastUpdatedDateTimeUtc": "2016-09-29T18:18:56.8894408Z",
-                    "outcome": {
-                        "deviceMethodResponse": null   
-                    }                                         
-                },
-                ...
-            ]                                                             
-        }
+```json
+{
+    "deviceId": "myDeviceId",
+    "etag": "AAAAAAAAAAc=",
+    "tags": {
+        ...
+    },
+    "properties": {
+        ...
+    },
+    "jobs": [
+        {
+            "deviceId": "myDeviceId",
+            "jobId": "myJobId",
+            "jobType": "scheduleTwinUpdate",
+            "status": "completed",
+            "startTimeUtc": "2016-09-29T18:18:52.7418462",
+            "endTimeUtc": "2016-09-29T18:20:52.7418462",
+            "createdDateTimeUtc": "2016-09-29T18:18:56.7787107Z",
+            "lastUpdatedDateTimeUtc": "2016-09-29T18:18:56.8894408Z",
+            "outcome": {
+                "deviceMethodResponse": null
+            }
+        },
+        ...
+    ]
+}
+```
 
 現在のところ、このコレクションには IoT Hub のクエリ言語の **devices.jobs** でクエリを実行できます。
 
@@ -218,25 +237,31 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 
 たとえば、1 つのデバイスに影響を与えるすべてのジョブ (過去のジョブおよびスケジュールが設定されたジョブ) を取得するには、次のクエリを使用することができます。
 
-        SELECT * FROM devices.jobs
-        WHERE devices.jobs.deviceId = 'myDeviceId'
+```sql
+SELECT * FROM devices.jobs
+WHERE devices.jobs.deviceId = 'myDeviceId'
+```
 
 このクエリによって、返されたそれぞれのジョブのデバイス固有の状態 (および、ダイレクト メソッドの応答) がどのように適用されるのかをご確認ください。
 さらに、**devices.jobs** コレクションのオブジェクトのすべてのプロパティに対して任意のブール条件でフィルター処理をすることもできます。
 たとえば、次のクエリについて考えてみましょう。
 
-        SELECT * FROM devices.jobs
-        WHERE devices.jobs.deviceId = 'myDeviceId'
-            AND devices.jobs.jobType = 'scheduleTwinUpdate'
-            AND devices.jobs.status = 'completed'
-            AND devices.jobs.createdTimeUtc > '2016-09-01'
+```sql
+SELECT * FROM devices.jobs
+WHERE devices.jobs.deviceId = 'myDeviceId'
+    AND devices.jobs.jobType = 'scheduleTwinUpdate'
+    AND devices.jobs.status = 'completed'
+    AND devices.jobs.createdTimeUtc > '2016-09-01'
+```
 
 この場合、デバイス **myDeviceId** に対して 2016 年 9 月以降に作成された、すべての完了したデバイス ツインの更新ジョブが取得されます。
 
 また、1 つのジョブによるデバイスごとの結果を取得することもできます。
 
-        SELECT * FROM devices.jobs
-        WHERE devices.jobs.jobId = 'myJobId'
+```sql
+SELECT * FROM devices.jobs
+WHERE devices.jobs.jobId = 'myJobId'
+```
 
 ### <a name="limitations"></a>制限事項
 現在のところ、**devices.jobs** に対するクエリはサポートされていません。
@@ -249,25 +274,31 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 
 [デバイスからクラウドへのルート][lnk-devguide-messaging-routes]を使用して、個々のメッセージに対して評価される式に基づき、デバイスからクラウドへのメッセージをさまざまなエンドポイントに送るよう、IoT Hub を構成することができます。
 
-ルートの[条件][lnk-query-expressions]では、ツインおよびジョブ クエリの条件と同じ IoT Hub クエリ言語を使用します。 ルートの条件は、次の JSON の表現を仮定して、メッセージのプロパティで評価されます。
+ルートの[条件][lnk-query-expressions]では、ツインおよびジョブ クエリの条件と同じ IoT Hub クエリ言語を使用します。 ルート条件は、メッセージ ヘッダーと本文で評価されます。 ルーティング クエリ式には、メッセージ ヘッダーのみ、メッセージ本文のみ、またはメッセージ ヘッダーとメッセージ本文の両方が含まれることがあります。 IoT Hub は、メッセージをルーティングするためにヘッダーとメッセージ本文の特定のスキーマを想定します。次のセクションで、IoT Hub が正しくルーティングするために必要なものについて説明します。
 
-        {
-            "$messageId": "",
-            "$enqueuedTime": "",
-            "$to": "",
-            "$expiryTimeUtc": "",
-            "$correlationId": "",
-            "$userId": "",
-            "$ack": "",
-            "$connectionDeviceId": "",
-            "$connectionDeviceGenerationId": "",
-            "$connectionAuthMethod": "",
-            "$content-type": "",
-            "$content-encoding": ""
+### <a name="routing-on-message-headers"></a>メッセージ ヘッダーでのルーティング
 
-            "userProperty1": "",
-            "userProperty2": ""
-        }
+IoT Hub は、メッセージのルーティングのために、メッセージ ヘッダーの次の JSON 表現を想定しています。
+
+```json
+{
+    "$messageId": "",
+    "$enqueuedTime": "",
+    "$to": "",
+    "$expiryTimeUtc": "",
+    "$correlationId": "",
+    "$userId": "",
+    "$ack": "",
+    "$connectionDeviceId": "",
+    "$connectionDeviceGenerationId": "",
+    "$connectionAuthMethod": "",
+    "$content-type": "",
+    "$content-encoding": "",
+
+    "userProperty1": "",
+    "userProperty2": ""
+}
+```
 
 メッセージのシステム プロパティには、`'$'` シンボルが付きます。
 ユーザー プロパティは、常にその名前でアクセスされます。 ユーザー プロパティの名前が、システム プロパティと一致する場合 (`$to` など)、とユーザー プロパティは、`$to` 式で取得されます。
@@ -281,25 +312,47 @@ IoT Hub は、任意の条件でフィルター処理してデバイス ツイ�
 
 たとえば、`messageType` プロパティを使用する場合、すべてのテレメトリを 1 つのエンドポイントにルーティングし、すべての警告を別のエンドポイントにルーティングすることを望むかもしれません。 次の式を記述してテレメトリをルーティングします。
 
-        messageType = 'telemetry'
+```sql
+messageType = 'telemetry'
+```
 
 また、次の式を記述して警告メッセージをルーティングします。
 
-        messageType = 'alert'
+```sql
+messageType = 'alert'
+```
 
 ブール式と関数もサポートされています。 この機能により、例えば次のように重大度レベルを区別できます。
 
-        messageType = 'alerts' AND as_number(severity) <= 2
+```sql
+messageType = 'alerts' AND as_number(severity) <= 2
+```
 
 サポートされている演算子と関数の完全な一覧については、「[式と条件][lnk-query-expressions]」セクションを参照してください。
+
+### <a name="routing-on-message-bodies"></a>メッセージ本文でのルーティング
+
+IoT Hub は、メッセージ本文が、UTF-8、UTF-16、または UTF-32 でエンコードされた適切な形式の JSON である場合のみ、メッセージ本文のコンテンツに基づいてルーティングできます。 IoT Hub が本文のコンテンツに基づいてメッセージをルーティングできるようにするには、メッセージのコンテンツの種類を `application/json` に設定し、コンテンツのエンコーディングを、メッセージ ヘッダーでサポートされているいずれかの UTF エンコーディングに設定する必要があります。 いずれかのヘッダーが指定されていない場合、IoT Hub は、メッセージに対して、本文を含むクエリ式を評価しようとしません。 メッセージが JSON メッセージでない場合、またはメッセージでコンテンツの種類とコンテンツのエンコーディングを指定しない場合でも、メッセージ ルーティングを使用して、メッセージ ヘッダーに基づいてメッセージをルーティングできます。
+
+クエリ式で `$body` を使用して、メッセージをルーティングできます。 クエリ式で、簡単な本文参照、本文配列参照、または複数の本文参照を使用できます。 クエリ式で、本文参照とメッセージ ヘッダー参照を組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。
+
+```sql
+$body.message.Weather.Location.State = 'WA'
+$body.Weather.HistoricalData[0].Month = 'Feb'
+$body.Weather.Temperature = 50 AND $body.message.Weather.IsEnabled
+length($body.Weather.Location.State) = 2
+$body.Weather.Temperature = 50 AND Status = 'Active'
+```
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub クエリの基礎
 IoT Hub のすべてのクエリは、SELECT 句と FROM 句、オプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は (**devices** や **devices.jobs**) で繰り返されるドキュメント コレクションを示します。 次に、WHERE 句でフィルター処理が適用されます。 集計の場合、この手順の結果は GROUP BY 句で指定した方法でグループ化され、グループごとに、SELECT 句で指定した方法で列が生成されます。
 
-        SELECT <select_list>
-        FROM <from_specification>
-        [WHERE <filter_condition>]
-        [GROUP BY <group_specification>]
+```sql
+SELECT <select_list>
+FROM <from_specification>
+[WHERE <filter_condition>]
+[GROUP BY <group_specification>]
+```
 
 ## <a name="from-clause"></a>FROM 句
 **FROM <from_specification>** 句には、デバイス ツインのクエリを実行するための **FROM devices** とデバイスの詳細ごとにジョブのクエリを実行するための **FROM devices.jobs** の 2 つの値のみを使用できます。
@@ -315,23 +368,25 @@ FROM コレクションのフィルター処理されたサブセット (さら�
 
 SELECT 句の文法を次に示します。
 
-        SELECT [TOP <max number>] <projection list>
+```
+SELECT [TOP <max number>] <projection list>
 
-        <projection_list> ::=
-            '*'
-            | <projection_element> AS alias [, <projection_element> AS alias]+
+<projection_list> ::=
+    '*'
+    | <projection_element> AS alias [, <projection_element> AS alias]+
 
-        <projection_element> :==
-            attribute_name
-            | <projection_element> '.' attribute_name
-            | <aggregate>
+<projection_element> :==
+    attribute_name
+    | <projection_element> '.' attribute_name
+    | <aggregate>
 
-        <aggregate> :==
-            count()
-            | avg(<projection_element>)
-            | sum(<projection_element>)
-            | min(<projection_element>)
-            | max(<projection_element>)
+<aggregate> :==
+    count()
+    | avg(<projection_element>)
+    | sum(<projection_element>)
+    | min(<projection_element>)
+    | max(<projection_element>)
+```
 
 この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、「[ツインのクエリの概要][lnk-query-getstarted]」セクションに記載されています。
 
@@ -342,17 +397,21 @@ SELECT 句の文法を次に示します。
 
 次は GROUP BY を使用したクエリの例です。
 
-        SELECT properties.reported.telemetryConfig.status AS status,
-            COUNT() AS numberOfDevices
-        FROM devices
-        GROUP BY properties.reported.telemetryConfig.status
+```sql
+SELECT properties.reported.telemetryConfig.status AS status,
+    COUNT() AS numberOfDevices
+FROM devices
+GROUP BY properties.reported.telemetryConfig.status
+```
 
 GROUP BY の正式な構文は次のとおりです。
 
-        GROUP BY <group_by_element>
-        <group_by_element> :==
-            attribute_name
-            | < group_by_element > '.' attribute_name
+```
+GROUP BY <group_by_element>
+<group_by_element> :==
+    attribute_name
+    | < group_by_element > '.' attribute_name
+```
 
 この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。
 
@@ -368,29 +427,31 @@ GROUP BY の正式な構文は次のとおりです。
 
 式の構文は次のとおりです。
 
-        <expression> ::=
-            <constant> |
-            attribute_name |
-            <function_call> |
-            <expression> binary_operator <expression> |
-            <create_array_expression> |
-            '(' <expression> ')'
+```
+<expression> ::=
+    <constant> |
+    attribute_name |
+    <function_call> |
+    <expression> binary_operator <expression> |
+    <create_array_expression> |
+    '(' <expression> ')'
 
-        <function_call> ::=
-            <function_name> '(' expression ')'
+<function_call> ::=
+    <function_name> '(' expression ')'
 
-        <constant> ::=
-            <undefined_constant>
-            | <null_constant>
-            | <number_constant>
-            | <string_constant>
-            | <array_constant>
+<constant> ::=
+    <undefined_constant>
+    | <null_constant>
+    | <number_constant>
+    | <string_constant>
+    | <array_constant>
 
-        <undefined_constant> ::= undefined
-        <null_constant> ::= null
-        <number_constant> ::= decimal_literal | hexadecimal_literal
-        <string_constant> ::= string_literal
-        <array_constant> ::= '[' <constant> [, <constant>]+ ']'
+<undefined_constant> ::= undefined
+<null_constant> ::= null
+<number_constant> ::= decimal_literal | hexadecimal_literal
+<string_constant> ::= string_literal
+<array_constant> ::= '[' <constant> [, <constant>]+ ']'
+```
 
 各値の説明:
 
@@ -426,7 +487,7 @@ GROUP BY の正式な構文は次のとおりです。
 | ABS(x) | 指定された数値式の絶対値 (正の値) を返します。 |
 | EXP(x) | 指定された数値式の指数値を返します (e^x)。 |
 | POWER(x,y) | 指定されたべき乗の指定された式の値を返します (x^y)。|
-| SQUARE(x)    | 指定された数値の 2 乗を返します。 |
+| SQUARE(x) | 指定された数値の 2 乗を返します。 |
 | CEILING(x) | 指定された数値式以上の最小の整数値を返します。 |
 | FLOOR(x) | 指定された数値式未満の最大の整数を返します。 |
 | SIGN(x) | 指定された数値式の正 (+1)、ゼロ (0)、または負 (-1) の符号を返します。|
@@ -472,9 +533,9 @@ GROUP BY の正式な構文は次のとおりです。
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messaging.md#routing-rules
-[lnk-devguide-messaging-format]: iot-hub-devguide-messaging.md#message-format
-
+[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-read-custom.md
+[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
+[lnk-devguide-messaging-routes]: ./iot-hub-devguide-messages-read-custom.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 

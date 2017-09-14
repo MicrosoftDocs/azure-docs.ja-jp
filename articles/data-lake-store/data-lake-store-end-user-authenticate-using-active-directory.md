@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: c20f5c39b00992d801909c8e5de292f3c2f12673
-ms.lasthandoff: 04/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: f10bc67e4ee814d5aa0accff1a3dc1426b818084
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証
@@ -35,26 +35,26 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
 
-この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション**の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、「[Service-to-service authentication with Data Lake Store using Azure Active Directory (Data Lake Store での Azure Active Directory を使用したサービス間認証)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
+この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション**の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、「[Data Lake Store での Azure Active Directory を使用したサービス間認証](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* サブスクリプション ID。 これは Azure ポータルから取得できます。 たとえば、[Data Lake Store アカウント] ブレードから入手できます。
+* サブスクリプション ID。 これは Azure Portal から取得できます。 たとえば、[Data Lake Store アカウント] ブレードから入手できます。
   
     ![サブスクリプション ID の取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Azure AD ドメイン名。 Azure ポータルの右上隅にマウスを置くことで取得できます。 次のスクリーンショットでは、ドメイン名は **contoso.onmicrosoft.com** であり、丸かっこ内の GUID はテナント ID です。 
+* Azure AD ドメイン名。 Azure Portal の右上隅にマウスを置くことで取得できます。 次のスクリーンショットでは、ドメイン名は **contoso.onmicrosoft.com** であり、丸かっこ内の GUID はテナント ID です。 
   
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 ## <a name="end-user-authentication"></a>エンドユーザー認証
-これは、エンドユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
+これは、エンド ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
 
-エンドユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに与えられます。 アクセス トークンは Data Lake Store または Data Lake Analytics に対するすべての要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、定期的に使用されるのであれば、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
+エンド ユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに付与されます。 アクセス トークンは Data Lake Store または Data Lake Analytics に対するすべての要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
 
 ### <a name="using-the-oauth-20-pop-up"></a>OAuth 2.0 ポップアップの使用
-アプリケーションで、エンドユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。 
+アプリケーションで、エンド ユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。 
 
 > [!NOTE]
 > この方法は、Python または Java 用の Azure AD Authentication Library (ADAL) ではまだサポートされていません。
@@ -62,10 +62,10 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>ユーザーの資格情報を直接渡す
-アプリケーションで、ユーザーの資格情報を Azure AD に直接提供できます。 この方法は、組織 ID ユーザー アカウントのみで機能します。@outlook.com や @live.com で終わる個人/"Live ID" ユーザー アカウントには対応しません。 さらに、この方法は、Azure AD の 2 要素認証 (2FA) を必要とするユーザー アカウントには対応しません。
+アプリケーションで、ユーザーの資格情報を Azure AD に直接提供できます。 この方法は、組織 ID ユーザー アカウントのみで機能します。@outlook.com や @live.com で終わるアカウントを含む個人や "live ID" のユーザー アカウントには対応しません。さらに、この方法は、Azure AD の 2 要素認証 (2FA) を必要とするユーザー アカウントには対応しません。
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>この方法を使用するには何が必要か
-* Azure AD ドメイン名。 これは、この記事の前提条件で既に示されています。
+* Azure AD ドメイン名。 この要件は、この記事の前提条件で既に示されています。
 * Azure AD **ネイティブ アプリケーション**
 * Azure AD ネイティブ アプリケーションのアプリケーション ID
 * Azure AD ネイティブ アプリケーションのリダイレクト URI
@@ -76,17 +76,17 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 Azure Active Directory を使用して Azure Data Lake Store でのエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
-上記に示したリンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[ネイティブ]** を必ず選択してください。
+リンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[ネイティブ]** を必ず選択してください。
 
 ![Web アプリの作成](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "ネイティブ アプリの作成")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2: アプリケーション ID とリダイレクト URI を取得する
 
-[アプリケーション ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)手順を参照して、Azure AD ネイティブ アプリケーションのアプリケーション ID (Azure クラシック ポータルではクライアント ID) を取得します。
+[アプリケーション ID の取得](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページを参照して、Azure AD ネイティブ アプリケーションのアプリケーション ID (Azure クラシック ポータルではクライアント ID) を取得します。
 
 リダイレクト URI を取得するには、次の手順に従います。
 
-1. Azure Portal で、**[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成したばかりの Azure AD ネイティブ アプリケーションを見つけてクリックします。
+1. Azure Portal で **[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
 
 2. アプリケーションの **[設定]** ブレードで、**[リダイレクト URI]** をクリックします。
 
@@ -97,15 +97,15 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 
 ## <a name="step-3-set-permissions"></a>手順 3: アクセス許可を設定する
 
-1. Azure Portal で、**[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成したばかりの Azure AD ネイティブ アプリケーションを見つけてクリックします。
+1. Azure Portal で **[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
 
 2. アプリケーションの **[設定]** ブレードで、**[必要なアクセス許可]** をクリックし、**[追加]** をクリックします。
 
-    ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. **[API アクセスの追加]** ブレードで、**[API を選択します]** をクリックします。**[Azure Data Lake]** をクリックし、**[選択]** をクリックします。
 
-    ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
 4.  **[API アクセスの追加]** ブレードで、**[アクセス許可の選択]** をクリックします。**[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、**[選択]** をクリックします。
 

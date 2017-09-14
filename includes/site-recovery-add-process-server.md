@@ -1,5 +1,5 @@
 1. Azure Site Recovery UnifiedSetup.exe の起動
-2. **[開始する前に]** で **[Add additional process servers to scale out deployment] (デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
+2. **[開始する前に]** で **[Add additional process servers to scale out deployment] \(デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
 
   ![プロセス サーバーの追加](./media/site-recovery-add-process-server/ps-page-1.png)
 
@@ -10,8 +10,8 @@
 
   ![プロセス サーバーの追加 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
-   * マシンで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings] (既存のプロキシ設定を使用して接続する)** を選択します。
-   * プロバイダーから直接接続するには、**[Connect directly without a proxy] (プロキシなしで直接接続する)** を選択します。
+   * マシンで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings] \(既存のプロキシ設定を使用して接続する)** を選択します。
+   * プロバイダーから直接接続するには、**[Connect directly without a proxy] \(プロキシなしで直接接続する)** を選択します。
    * 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
 
      * カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。

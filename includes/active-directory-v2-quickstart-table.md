@@ -1,7 +1,7 @@
 | モバイル アプリとネイティブ アプリ | Web Apps と Web API | プロトコルと直接統合する |
 | --- | --- | --- |
-| [サインインを iOS アプリに追加する](https://github.com/Azure-Samples/active-directory-msal-ios-swift) | [サインインを JS SPA に追加する](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |[アプリケーションを登録する](../articles/active-directory/develop/active-directory-v2-app-registration.md) |
+| [サインインを iOS アプリに追加する](../articles/active-directory/develop/GuidedSetups/active-directory-ios.md) | [サインインを JS SPA に追加する](../articles/active-directory/develop/GuidedSetups/active-directory-javascriptspa.md) |[アプリケーションを登録する](../articles/active-directory/develop/active-directory-v2-app-registration.md) | 
 | [サインインを Android アプリに追加する](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [サインインを .NET MVC アプリに追加する](../articles/active-directory/develop/guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) |[OAuth 2.0 を使用する Mobile Apps](../articles/active-directory/develop/active-directory-v2-protocols-oauth-code.md) |
 | [サインインを Windows デスクトップ アプリに追加する](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |[サインインを Node JS Web アプリに追加する](../articles/active-directory/develop/active-directory-v2-devquickstarts-node-web.md) |[OpenID Connect を使用する Web Apps](../articles/active-directory/develop/active-directory-v2-protocols-oidc.md) |
-|  |  |[OpenID Connect を使用する単一ページ アプリ](../articles/active-directory/develop/active-directory-v2-protocols-implicit.md) |
+| [マルチプラットフォームの Xamarin アプリにサインインを追加する](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)|  |[OpenID Connect を使用する単一ページ アプリ](../articles/active-directory/develop/active-directory-v2-protocols-implicit.md) |
 |  |  | [クライアント資格情報を使用したデーモン アプリのフロー](../articles/active-directory/develop/active-directory-v2-protocols-oauth-client-creds.md) |

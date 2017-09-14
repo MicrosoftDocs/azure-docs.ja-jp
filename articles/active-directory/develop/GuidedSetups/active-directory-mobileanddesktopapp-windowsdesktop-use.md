@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4c0e6cd7ec4a91040af588a406fbad8b8c1607e9
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 826ba0a00b26993d4f37f0a8ce587d7bb77e7eb4
 ms.contentlocale: ja-jp
 
 
@@ -27,7 +27,7 @@ ms.contentlocale: ja-jp
 
 このセクションでは、MSAL を使用して Microsoft Graph API のトークンを取得する方法を示します。
 
-1.    `MainWindow.xaml.cs` で、次の手順に従ってクラスに MSAL の参照を追加します。
+1.  `MainWindow.xaml.cs` で、次の手順に従ってクラスに MSAL の参照を追加します。
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -104,9 +104,9 @@ public partial class MainWindow : Window
 `AcquireTokenSilentAsync` は、ユーザーの操作なしでトークンの取得や更新を行います。 最初に `AcquireTokenAsync` が実行されたあと、保護されたリソースへのアクセスに使用するトークンを取得するには、通常、`AcquireTokenSilentAsync` メソッドが使用されます。トークンの要求や更新などの後続の呼び出しが自動で行われるからです。
 `AcquireTokenSilentAsync` は最終的に失敗することになります。例えば、ユーザーがサインアウトした場合や、パスワードが別のデバイスで変更された場合などです。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-1.    すぐに `AcquireTokenAsync` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイドではこの方法でサンプルを作成します。サンプルを最初に実行するときは、まだ誰もそのアプリケーションを使用していない状態であるため、サインインを求めるウィンドウが表示されます。`PublicClientApp.Users.FirstOrDefault()` は null 値を含み、`MsalUiRequiredException` 例外がスローされます。 サンプルのコードでは、ユーザーのサインインを求める `AcquireTokenAsync` を呼び出すことで、この例外を処理します。
+1.  すぐに `AcquireTokenAsync` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイドのセットアップで生成されたサンプルではこの方法を使用します。サンプルを最初に実行するときは、まだ誰もそのアプリケーションを使用していない状態であるため、サインインを求めるウィンドウが表示されます。`PublicClientApp.Users.FirstOrDefault()` は null 値を含み、`MsalUiRequiredException` 例外がスローされます。 サンプルのコードでは、ユーザーのサインインを求める `AcquireTokenAsync` を呼び出すことで、この例外を処理します。
 
-2.    ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `AcquireTokenSilentAsync` を再試行できるようにします。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、アプリケーションの他の機能を中断せずに使用できる場合は、通常、この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `AcquireTokenSilentAsync` を再試行できます。
+2.  ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `AcquireTokenSilentAsync` を再試行できるようにします。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、アプリケーションの他の機能を中断せずに使用できる場合は、通常、この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `AcquireTokenSilentAsync` を再試行できます。
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>取得したトークンを使用して Microsoft Graph API を呼び出す

@@ -3,7 +3,7 @@ title: "Azure Network Watcher のトポロジの概要 | Microsoft Docs"
 description: "このページでは、Network Watcher のトポロジ機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: e753a435-38e0-482b-846b-121cb547555c
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
+ms.author: jdial
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fa79ab0ab80481c8969c6fa653e92b10985cab3b
 ms.openlocfilehash: 42443f614b76b8180ac163b9889163021adbf048
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 ---

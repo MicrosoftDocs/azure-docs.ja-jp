@@ -17,10 +17,10 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 36ea3356648a1a6333c2a1e2c042d27ae2f829b4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a322365b2764dc13b5079f2c4c0634c9c950d92
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/27/2017
 
 グループベースのライセンスの機能はすべて [Azure ポータル](https://portal.azure.com)を通じて利用できます。現在、PowerShell のサポートは制限されていますが、 既存の [MSOnline PowerShell コマンドレット](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory)を使用して実行できる便利なタスクがいくつかあります。 このドキュメントでは、利用できる機能のいくつかの例を示します。
 
-> [!NOTE] 
+> [!NOTE]
 > コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、テナントに接続していることを確認します。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>グループに割り当てられた製品ライセンスの表示
@@ -60,7 +60,7 @@ Get-MsolGroup | Where {$_.Licenses}
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
-    @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}} 
+    @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
 ```
 
 出力:
@@ -77,8 +77,8 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ライセンスを持つグループの基本的な統計情報を報告できます。 次の例では、合計ユーザー数、グループに既に割り当てられているライセンスを持つユーザーの数、およびグループにライセンスを割り当てることができなかったユーザーの数を一覧表示しています。
 
 ```
-#get all groups with licenses 
-Get-MsolGroup -All | Where {$_.Licenses}  | Foreach { 
+#get all groups with licenses
+Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $groupId = $_.ObjectId;
     $groupName = $_.DisplayName;
     $groupLicenses = $_.Licenses | Select -ExpandProperty SkuPartNumber
@@ -86,10 +86,10 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $licenseAssignedCount = 0;
     $licenseErrorCount = 0;
 
-    Get-MsolGroupMember -All -GroupObjectId $groupId | 
+    Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} | 
-    Foreach { 
+    Get-MsolUser -ObjectId {$_.ObjectId} |
+    Foreach {
         $user = $_;
         $totalCount++
 
@@ -106,14 +106,14 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     }
 
     #aggregate results for this group
-    New-Object Object | 
+    New-Object Object |
                     Add-Member -NotePropertyName GroupName -NotePropertyValue $groupName -PassThru |
                     Add-Member -NotePropertyName GroupId -NotePropertyValue $groupId -PassThru |
                     Add-Member -NotePropertyName GroupLicenses -NotePropertyValue $groupLicenses -PassThru |
                     Add-Member -NotePropertyName TotalUserCount -NotePropertyValue $totalCount -PassThru |
                     Add-Member -NotePropertyName LicensedUserCount -NotePropertyValue $licenseAssignedCount -PassThru |
                     Add-Member -NotePropertyName LicenseErrorCount -NotePropertyValue $licenseErrorCount -PassThru
- 
+
     } | Format-Table
 ```
 
@@ -135,7 +135,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ## <a name="get-all-groups-with-license-errors"></a>ライセンス エラーがあるすべてのグループを取得する
 ライセンスを割り当てることができなかったユーザーを含むグループを見つけるには、次の操作を実行します。
 ```
-Get-MsolGroup -HasLicenseErrorsOnly \$true
+Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
 出力:
 ```
@@ -160,7 +160,7 @@ Get-MsolGroupMember -All -GroupObjectId $groupId |
     #display id, name and error detail. Note: we are filtering out license errors from other groups
     Select ObjectId, `
            DisplayName, `
-           @{Name="LicenseError";Expression={$_.IndirectLicenseErrors | Where {$_.ReferencedObjectId -eq $groupId} | Select -ExpandProperty Error}} 
+           @{Name="LicenseError";Expression={$_.IndirectLicenseErrors | Where {$_.ReferencedObjectId -eq $groupId} | Select -ExpandProperty Error}}
 ```
 
 出力:
@@ -173,14 +173,14 @@ ObjectId                             DisplayName      License Error
 
 1 つ以上のグループからのライセンス エラーを持つすべてのユーザーを一覧表示するには、次のスクリプトを使用できます。 このスクリプトには、ユーザーあたり、またライセンス エラーあたり 1 行を表示するため、各エラーのソースを明確に識別することができます。
 
-> [!NOTE] 
+> [!NOTE]
 > このスクリプトではテナントのすべてのユーザーが列挙されるため、大きなテナントでは最適でない場合があります。
 
 ```
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
     $user = $_;
     $user.IndirectLicenseErrors | % {
-            New-Object Object | 
+            New-Object Object |
                 Add-Member -NotePropertyName UserName -NotePropertyValue $user.DisplayName -PassThru |
                 Add-Member -NotePropertyName UserId -NotePropertyValue $user.ObjectId -PassThru |
                 Add-Member -NotePropertyName GroupId -NotePropertyValue $_.ReferencedObjectId -PassThru |
@@ -206,13 +206,13 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
     $user = $_;
     $user.IndirectLicenseErrors | % {
-            New-Object Object | 
+            New-Object Object |
                 Add-Member -NotePropertyName UserName -NotePropertyValue $user.DisplayName -PassThru |
                 Add-Member -NotePropertyName UserId -NotePropertyValue $user.ObjectId -PassThru |
                 Add-Member -NotePropertyName GroupId -NotePropertyValue $_.ReferencedObjectId -PassThru |
                 Add-Member -NotePropertyName LicenseError -NotePropertyValue $_.Error -PassThru
         }
-    } 
+    }
 ```
 
 ## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>ユーザー ライセンスが直接割り当てられたものか、グループから継承されたものかを確認する
@@ -243,7 +243,7 @@ function UserHasLicenseAssignedDirectly
             #Note: the license may also be assigned through one or more groups in addition to being assigned directly
             foreach ($assignmentSource in $license.GroupsAssigningLicense)
             {
-                if ($assignmentSource -ieq $user.ObjectId) 
+                if ($assignmentSource -ieq $user.ObjectId)
                 {
                     return $true
                 }
@@ -269,7 +269,7 @@ function UserHasLicenseAssignedFromGroup
             {
                 #If the collection contains at least one ID not matching the user ID this means that the license is inherited from a group.
                 #Note: the license may also be assigned directly in addition to being inherited
-                if ($assignmentSource -ine $user.ObjectId) 
+                if ($assignmentSource -ine $user.ObjectId)
                 {
                     return $true
                 }
@@ -278,10 +278,10 @@ function UserHasLicenseAssignedFromGroup
         }
     }
     return $false
-} 
+}
 ```
 
-このスクリプトは、入力値として SKU ID を使用して、テナントの各ユーザーにこれらの関数を実行します。
+このスクリプトは、SKU ID を入力値として利用し、テナントの各ユーザーに関数を実行します。この例では、*Enterprise Mobility + Security* のライセンスに注目します。テナントでこれは *contoso:EMS* という ID で表されます。
 ```
 #the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"
@@ -291,7 +291,7 @@ Get-MsolUser -All | where {$_.isLicensed -eq $true -and $_.Licenses.AccountSKUID
     ObjectId, `
     @{Name="SkuId";Expression={$skuId}}, `
     @{Name="AssignedDirectly";Expression={(UserHasLicenseAssignedDirectly $_ $skuId)}}, `
-    @{Name="AssignedFromGroup";Expression={(UserHasLicenseAssignedFromGroup $_ $skuId)}} 
+    @{Name="AssignedFromGroup";Expression={(UserHasLicenseAssignedFromGroup $_ $skuId)}}
 ```
 
 出力:
@@ -305,68 +305,11 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>グループ ライセンスを持つユーザーの直接付与されたライセンスを削除する
 このスクリプトの目的は、グループから既に同じライセンスを継承している (例: [グループベースのライセンスへの移行](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)の一環として) ユーザーの不要な直接ライセンスを削除することです。
-> [!NOTE] 
+> [!NOTE]
 > まず、削除する直接ライセンスで、継承されたライセンスより多い数のサービス機能が有効にされないことを検証することが重要です。 そうしないと、直接付与されたライセンスを削除したときに、ユーザーのサービスおよびデータへのアクセスが無効になる可能性があります。 現在、継承されたライセンスまたは直接ライセンスによって有効になっているサービスを PowerShell で確認することはできません。 スクリプトでは、グループから継承されることがわかっているサービスの最小レベルを指定し、それに照らして確認を行います。
 
 ```
-#the group to be processed
-$groupId = "48ca647b-7e4d-41e5-aa66-40cab1e19101"
-
-#license to be removed - Office 365 E3
-$skuId = "contoso:ENTERPRISEPACK"
-
-#minimum set of service plans we know are inherited from groups - we want to make sure that there aren't any users who have more services enabled
-#which could mean that they may lose access after we remove direct licenses
-$servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFFICESUBSCRIPTION")
-
-$expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
-
-#process all members in the group
-Get-MsolGroupMember -All -GroupObjectId $groupId | 
-    #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} | 
-    Foreach { 
-        $user = $_;
-        $operationResult = "";
-
-        #check if Direct license exists on the user
-        if (UserHasLicenseAssignedDirectly $user $skuId)
-        {
-            #check if the license is assigned from this group, as expected
-            if (UserHasLicenseAssignedFromThisGroup $user $skuId $groupId)
-            {
-                #check if there are any extra plans we didn't expect - we are being extra careful not to remove unexpected services
-                $extraPlans = GetUnexpectedEnabledPlansForUser $user $skuId $expectedDisabledPlans
-                if ($extraPlans.Count -gt 0)
-                {
-                    $operationResult = "User has extra plans that may be lost - license removal was skipped. Extra plans: $extraPlans"
-                }
-                else
-                {
-                    #remove the direct license from user
-                    Set-MsolUserLicense -ObjectId $user.ObjectId -RemoveLicenses $skuId
-                    $operationResult = "Removed direct license from user."   
-                }
-
-            }
-            else
-            {
-                $operationResult = "User does not inherit this license from this group. License removal was skipped."
-            }
-        }
-        else
-        {
-            $operationResult = "User has no direct license to remove. Skipping."
-        }
-
-        #format output
-        New-Object Object | 
-                    Add-Member -NotePropertyName UserId -NotePropertyValue $user.ObjectId -PassThru |
-                    Add-Member -NotePropertyName OperationResult -NotePropertyValue $operationResult -PassThru 
-    } | Format-Table
-
-
-#Below are helper functions used by the script above
+#BEGIN: Helper functions used by the script
 
 #Returns TRUE if the user has the license assigned directly
 function UserHasLicenseAssignedDirectly
@@ -389,7 +332,7 @@ function UserHasLicenseAssignedDirectly
         #Note: the license may also be assigned through one or more groups in addition to being assigned directly
         foreach ($assignmentSource in $license.GroupsAssigningLicense)
         {
-            if ($assignmentSource -ieq $user.ObjectId) 
+            if ($assignmentSource -ieq $user.ObjectId)
             {
                 return $true
             }
@@ -413,7 +356,7 @@ function UserHasLicenseAssignedFromThisGroup
         {
             #If the collection contains at least one ID not matching the user ID this means that the license is inherited from a group.
             #Note: the license may also be assigned directly in addition to being inherited
-            if ($assignmentSource -ieq $groupId) 
+            if ($assignmentSource -ieq $groupId)
             {
                 return $true
             }
@@ -465,6 +408,65 @@ function GetUnexpectedEnabledPlansForUser
     }
     return $extraPlans
 }
+#END: helper functions
+
+#BEGIN: executing the script
+#the group to be processed
+$groupId = "48ca647b-7e4d-41e5-aa66-40cab1e19101"
+
+#license to be removed - Office 365 E3
+$skuId = "contoso:ENTERPRISEPACK"
+
+#minimum set of service plans we know are inherited from groups - we want to make sure that there aren't any users who have more services enabled
+#which could mean that they may lose access after we remove direct licenses
+$servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFFICESUBSCRIPTION")
+
+$expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
+
+#process all members in the group
+Get-MsolGroupMember -All -GroupObjectId $groupId |
+    #get full info about each user in the group
+    Get-MsolUser -ObjectId {$_.ObjectId} |
+    Foreach {
+        $user = $_;
+        $operationResult = "";
+
+        #check if Direct license exists on the user
+        if (UserHasLicenseAssignedDirectly $user $skuId)
+        {
+            #check if the license is assigned from this group, as expected
+            if (UserHasLicenseAssignedFromThisGroup $user $skuId $groupId)
+            {
+                #check if there are any extra plans we didn't expect - we are being extra careful not to remove unexpected services
+                $extraPlans = GetUnexpectedEnabledPlansForUser $user $skuId $expectedDisabledPlans
+                if ($extraPlans.Count -gt 0)
+                {
+                    $operationResult = "User has extra plans that may be lost - license removal was skipped. Extra plans: $extraPlans"
+                }
+                else
+                {
+                    #remove the direct license from user
+                    Set-MsolUserLicense -ObjectId $user.ObjectId -RemoveLicenses $skuId
+                    $operationResult = "Removed direct license from user."   
+                }
+
+            }
+            else
+            {
+                $operationResult = "User does not inherit this license from this group. License removal was skipped."
+            }
+        }
+        else
+        {
+            $operationResult = "User has no direct license to remove. Skipping."
+        }
+
+        #format output
+        New-Object Object |
+                    Add-Member -NotePropertyName UserId -NotePropertyValue $user.ObjectId -PassThru |
+                    Add-Member -NotePropertyName OperationResult -NotePropertyValue $operationResult -PassThru
+    } | Format-Table
+#END: executing the script
 ```
 
 出力:

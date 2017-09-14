@@ -3,8 +3,8 @@ title: "Mobile Services の使用時に App Service はどのように役立つ�
 description: "既存の Mobile Services プロジェクトに App Service がもたらす利点について説明します。"
 services: app-service\mobile
 documentationcenter: ios
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
-ms.lasthandoff: 12/08/2016
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 22397b6b448b418d5b54a457c3bafaf5c68ecc7b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
@@ -64,5 +64,4 @@ Mobile services では、バックエンド コードのすべてのインスタ
 *Azure App Service* を使用することにより、モバイル アプリ用に複数のプライベートなテスト環境とステージング環境を作成できるようになりました。 これらを使用して、デプロイ前にテストを実行します。 ダウンタイムなしで運用環境と交換します。 Web アプリは事前に読み込まれ、優れたカスタマー エクスペリエンスを実現します。
 
 こちらの *チュートリアル* に従って、既存のモバイル サービスに [App Service](app-service-mobile-migrating-from-mobile-services.md)を活用することができます。
-
 

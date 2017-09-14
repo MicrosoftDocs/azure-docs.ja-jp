@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ab0df01d637c15b05c2d83f1936a0154118034f7
-ms.openlocfilehash: f88c4914478c3adf823fc22a0e049e73fb43e8db
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 77f66a4d18e0882cf84afc9fcf2926ab764d17c1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/08/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs メッセージングの例外
-この記事では、Event Hubs を含む、Azure Service Bus のメッセージング API によって生成される例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
+この記事では、Event Hubs を含む、Azure Service Bus のメッセージング API によって生成されるいくつかの例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
 
 ## <a name="exception-categories"></a>例外のカテゴリ
 Event Hubs API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。
@@ -76,10 +75,8 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 ### <a name="common-causes"></a>一般的な原因
 この例外の一般的な原因には、次の 2 つがあります。正しくない構成と、一時的なサービス エラーです。
 
-1. **構成が正しくない**
-    操作状態に対して、操作タイムアウトが小さすぎる可能性があります。 クライアント SDK の操作タイムアウトの既定値は 60 秒です。 コードに小さすぎる値を設定していないかどうかを確認します。 ネットワークの状態と CPU 使用率は、特定の操作が完了する時間に影響します。このため、操作タイムアウトに小さい値を設定することは推奨されません。
-2. **一時的なサービス エラー**
-    Event Hubs サービスで、要求の処理に遅延が発生する場合 (トラフィック量の多い場合など) があります。 このような場合、操作が成功するまで、遅延後に操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、「 [Azure Status](https://azure.microsoft.com/status/) 」にアクセスして、既知のサービス停止がないかどうかを確認してください。
+1. **構成が正しくない** 操作状態に対して、操作タイムアウトが小さすぎる可能性があります。 クライアント SDK の操作タイムアウトの既定値は 60 秒です。 コードに小さすぎる値を設定していないかどうかを確認します。 ネットワークの状態と CPU 使用率は、特定の操作が完了する時間に影響します。このため、操作タイムアウトに小さい値を設定することは推奨されません。
+2. **一時的なサービス エラー** Event Hubs サービスで、要求の処理に遅延が発生する場合 (トラフィック量の多い場合など) があります。 このような場合、操作が成功するまで、遅延後に操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、「 [Azure Status](https://azure.microsoft.com/status/) 」にアクセスして、既知のサービス停止がないかどうかを確認してください。
 
 ## <a name="serverbusyexception"></a>ServerBusyException
 

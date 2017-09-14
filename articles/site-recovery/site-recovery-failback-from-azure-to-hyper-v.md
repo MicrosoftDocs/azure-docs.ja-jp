@@ -12,23 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/31/2017
+ms.date: 08/11/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ecfe9d512b0ffc891120d899f0541d3d3c9f6498
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 3116e2c15242ea7be8eeb77281b40bc4b38b846e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/15/2017
 
 ---
 
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Site Recovery によって保護された Hyper-V 仮想マシンのフェールバック
 
-> [!div class="op_single_selector"]
-> * [Azure から VMware/物理マシン](site-recovery-how-to-failback-azure-to-vmware.md)
-> * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
-
-この記事では、Site Recovery によって保護された仮想マシンをフェールバックする方法について説明します。 
+この記事では、Site Recovery によって保護された仮想マシンをフェールバックする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 1. プライマリ サイトの VMM サーバー/Hyper-V サーバーが接続されていることを確認します。
@@ -55,7 +51,7 @@ Azure は高可用性環境であり、皆さんの仮想マシンはいつで�
 
     - **[フェールオーバー中にのみデータを同期する (すべてダウンロードする)]**- Azure の実行期間が長い場合にこのオプションを使用します。 ほとんどのディスクを変更し、チェックサム計算に時間をかけたくない場合は、このオプションの方が高速です。 ディスクのダウンロードが実行されます。 また、オンプレミスの仮想マシンを削除した場合にも便利です。
 
-    >[!NOTE] 
+    >[!NOTE]
     >Azure を長期間 (1 か月間以上) 実行している場合、またはオンプレミスの仮想マシンを削除した場合にこのオプションを使用することをお勧めします。このオプションを選択しても、チェックサム計算は実行されません。
     >
     >
@@ -99,6 +95,4 @@ Azure は高可用性環境であり、皆さんの仮想マシンはいつで�
 フェールバック ジョブが完了したら、仮想マシンを**コミット**します。 コミットすることによって Azure 仮想マシンとそのディスクが削除され、再び VM が保護された状態になります。
 
 **コミット**後、逆レプリケーション ("*レプリケーションの反転*") を開始できます。 この操作を境として、仮想マシンの保護の方向が再びオンプレミスから Azure となります。 このときにレプリケートされるのは、Azure で VM を停止した後に生じた変更のみであることに注意してください。つまり送信されるのは差分変更だけです。
-
-
 

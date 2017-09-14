@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 817f6763ba663de994a40aefcda31dc8466ef12a
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7b3a089d2f6386afcc46cbc4377594be0d758fc6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -36,9 +36,10 @@ ms.lasthandoff: 06/01/2017
 > * 動作中のロード バランサーを表示する
 > * ロード バランサーに VM を追加または削除する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
 Azure Load Balancer は、着信トラフィックを正常な VM に分散することで高可用性を実現する第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーの正常性プローブは、各 VM の特定のポートを監視し、稼働している VM にのみトラフィックを分散します。
@@ -60,7 +61,7 @@ az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/public-ip#create) で作成します。 次の例では、*myPublicIP* という名前のパブリック IP アドレスを *myResourceGroupLoadBalancer* リソース グループに作成します。
+インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip#create) で作成します。 次の例では、*myPublicIP* という名前のパブリック IP アドレスを *myResourceGroupLoadBalancer* リソース グループに作成します。
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -119,7 +120,7 @@ az network lb rule create \
 一部の VM をデプロイしてバランサーをテストする前に、関連する仮想ネットワーク リソースを作成します。 仮想ネットワークの詳細については、[Azure 仮想ネットワークの管理](tutorial-virtual-network.md)に関するチュートリアルを参照してください。
 
 ### <a name="create-network-resources"></a>ネットワーク リソースを作成する
-[az network vnet create](/cli/azure/vnet#create) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* という名前のサブネットと共に、*myVnet* という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#create) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* という名前のサブネットと共に、*myVnet* という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -166,7 +167,9 @@ done
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
 ### <a name="create-cloud-init-config"></a>cloud-init 構成を作成する
-[Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 *cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。
+[Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。
+
+現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -218,9 +221,7 @@ runcmd:
 ```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupLoadBalancer \
-    --name myAvailabilitySet \
-    --platform-fault-domain-count 3 \
-    --platform-update-domain-count 2
+    --name myAvailabilitySet
 ```
 
 これで、[az vm create](/cli/azure/vm#create) を使用して VM を作成できるようになりました。 次の例では、3 台の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
@@ -232,7 +233,7 @@ for i in `seq 1 3`; do
         --name myVM$i \
         --availability-set myAvailabilitySet \
         --nics myNic$i \
-        --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+        --image UbuntuLTS \
         --admin-username azureuser \
         --generate-ssh-keys \
         --custom-data cloud-init.txt \
@@ -240,7 +241,7 @@ for i in `seq 1 3`; do
 done
 ```
 
-3 台の VM をすべて作成して構成するには、数分かかります。 それぞれの VM でアプリがいつ実行されるかは、ロード バランサーの正常性プローブによって自動的に検出されます。 アプリが実行状態になると、ロード バランサー規則によってトラフィックの負荷分散が開始されます。
+Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 `--no-wait` パラメーターは、すべてのタスクが完了するまで待機しません。 アプリにアクセスできるようになるには、さらに数分かかる場合があります。 それぞれの VM でアプリがいつ実行されるかは、ロード バランサーの正常性プローブによって自動的に検出されます。 アプリが実行状態になると、ロード バランサー規則によってトラフィックの負荷分散が開始されます。
 
 
 ## <a name="test-load-balancer"></a>ロード バランサーをテストする
@@ -254,7 +255,7 @@ az network public-ip show \
     --output tsv
 ```
 
-このパブリック IP アドレスを Web ブラウザーに入力できます。 次の例のように、アプリが表示され、ロード バランサーによって負荷分散されたトラフィックの宛先となった VM のホスト名が表示されます。
+このパブリック IP アドレスを Web ブラウザーに入力できます。 ロード バランサーがトラフィックの分散を開始する前に、VM の準備が整うまで数分かかることを忘れないでください。 次の例のように、アプリが表示され、ロード バランサーによって負荷分散されたトラフィックの宛先となった VM のホスト名が表示されます。
 
 ![実行中の Node.js アプリ](./media/tutorial-load-balancer/running-nodejs-app.png)
 

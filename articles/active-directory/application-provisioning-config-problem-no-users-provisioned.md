@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 05/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a51fb6e5a10e09205822e055659794aea2f6a4fb
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 30db71c0706de1dcc0d48fb72fa5d62475a14ba7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.lasthandoff: 04/18/2017
 
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 
-アプリケーションで自動プロビジョニングが構成されると (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認など)、 ユーザーまたはグループがアプリにプロビジョニングされます。これは、次の情報に基づいて決定されます。
+アプリケーションで自動プロビジョニングが構成されると (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認など)、 ユーザーやグループがアプリにプロビジョニングされます。これは、次の情報に基づいて決定されます。
 
 -   どのユーザーとグループがアプリケーションに**割り当てられている**か。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)」を参照してください。
 

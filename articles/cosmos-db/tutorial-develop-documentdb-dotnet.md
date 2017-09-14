@@ -10,17 +10,17 @@ tags:
 ms.assetid: 
 ms.service: cosmos-db
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 485fb2e8ac96e2cdb8e4293b63971af1c1b9baf4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2eed74ae9bd173b0944ec190dfe5d9a4bdc54c37
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -108,14 +108,14 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 
 ポータルから URI をコピーし、program.cs ファイルの上の `<your endpoint URL>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、`<your primary key>` に貼り付けます。 `<` と `>` は削除してください。
 
-![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーン ショット。 Azure Cosmos DB アカウント ブレードで KEYS が強調表示された Azure Cosmos DB アカウントと、[キー] ブレードで強調表示された URI と PRIMARY KEY の値を示します[キー]
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーンショット。 Azure Cosmos DB アカウント ブレードで KEYS が強調表示された Azure Cosmos DB アカウントと、[キー] ブレードで強調表示された URI と PRIMARY KEY の値を示します](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-keys.png)
 
 ## <a id="instantiate"></a>DocumentClient をインスタンス化する
 
 ここでは、**DocumentClient** の新しいインスタンスを作成します。
 
 ```csharp
-DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
+DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 ```
 
 ## <a id="create-database"></a>データベースを作成する

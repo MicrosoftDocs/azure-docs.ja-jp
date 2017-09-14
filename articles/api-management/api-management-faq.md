@@ -3,7 +3,7 @@ title: "Azure API Management の FAQ | Microsoft Docs"
 description: "Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 7d58748c4b0195246fffafe2e5544678b83dfd60
-ms.lasthandoff: 04/14/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: a0bf8995913511b0e14304a1259f13de4aa9e04b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
@@ -65,7 +66,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 * HTTP 基本認証を使用します。 詳細については、「 [API 設定の構成](api-management-howto-create-apis.md#configure-api-settings)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
 * バックエンド サービスで IP ホワイトリストを使用します。 Standard レベルまたは Premium レベルの API Management インスタンスを使用している場合は、ゲートウェイの IP アドレスが変わることはありません。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
-* API Management インスタンスを Azure Virtual Network に接続します。 
+* API Management インスタンスを Azure Virtual Network に接続します。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
 複数の方法で API Management インスタンスを新しいインスタンスにコピーできます。 そのための方法は次のとおりです。
@@ -94,6 +95,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
 3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して、シングル サインオン URL を取得します。
 4. この URL を使って管理ポータルにアクセスできます。
+
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>追加するポリシーがポリシー エディターで利用できないのはなぜですか。
 追加するポリシーがポリシー エディターで薄く表示されたり網掛けになったりしている場合は、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクションで使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、「[API Management policies (API Management ポリシー)](https://msdn.microsoft.com/library/azure/dn894080.aspx)」で、目的のポリシーの「Usage (使用方法)」セクションを参照してください。
 
@@ -103,6 +105,7 @@ API Management では API のバージョン管理を複数の方法で使用で
 * API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という 2 つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
 * バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 たとえば、/resource という [URL](api-management-howto-add-operations.md#url-template) テンプレートと /v1/Resource という[書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。 バージョン セグメントの値は各操作で個別に変更できます。
 * API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
+
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
 テスト環境と運用環境など、複数の環境を 1 つの API でセットアップする方法は 2 つあります。 そのための方法は次のとおりです。
 
@@ -129,7 +132,7 @@ IP アドレス (複数リージョンのデプロイの場合は複数個) は 
 Active Directory フェデレーション サービス (AD FS) セキュリティを使用して OAuth 2.0 承認サーバーを構成する方法の詳細については、「[Using ADFS in API Management (API Management での AD FS の使用)](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)」を参照してください。
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>複数の地理的な場所へのデプロイでは、API Management はどのようなルーティング方法を使用しますか。
-API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
+API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#priority)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。
 はい。 詳細については、[Azure API Management サービス](http://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。

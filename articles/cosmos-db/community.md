@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 371976a35ae285942decaf8e22651e98f6217a95
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="community-portal"></a>コミュニティ ポータル
@@ -57,7 +56,7 @@ TypeScript で記述された Node.js クライアントのラッパーです (�
 ### <a name="swagger-rest-api-for-documentdb"></a>DocumentDB 用 Swagger REST API
 *作者: Howard Edidin*
 
-API アプリとして簡単にデプロイできる Azure Cosmos DB DocumentDB REST API Swagger ファイル。
+API アプリとして簡単にデプロイできる DocumentDB API の Azure Cosmos DB REST API Swagger ファイル。
 
 [GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
 
@@ -105,7 +104,7 @@ Azure Cosmos DB の最新のニュースと機能については、[Microsoft �
 |[South Florida Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB (南フロリダ コードキャンプ: Azure DocumentDB を使って 10 分以下でできる .NET 開発者向け NoSQL)](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|デイビー (フロリダ州)|2017 年 3 月 11 日|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
 |[Orlando Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB (オーランド コードキャンプ: Azure DocumentDB を使って 10 分以下でできる .NET 開発者向け NoSQL)](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|サンフォード (フロリダ州)|2017 年 4 月 8 日|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
 |[Global Azure Bootcamp: Serverless computing in Azure with Azure Functions and DocumentDB (グローバル Azure ブートキャンプ: Azure Functions と DocumentDB を使用した Azure でのサーバーレス コンピューティング)](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|アトランタ (ジョージア州)|2017 年 4 月 22 日|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
-|[NDC Oslo 2017: Azure DocumentDB - The Best NoSQL Database You're Probably Not Using (Yet) (NDC Oslo 2017: (まだ) お使いでない場合に最良のお勧め NoSQL データベース)](http://ndcoslo.com/talk/azure-documentdb-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|オスロ (ノルウェー)|2017 年 6 月 14 日|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
+|[NDC Oslo 2017: Azure DocumentDB - The Best NoSQL Database You're Probably Not Using (Yet) (NDC Oslo 2017: (まだ) お使いでない場合に最良のお勧め NoSQL データベース)](http://ndcoslo.com/talk/azure-cosmos-db-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|オスロ (ノルウェー)|2017 年 6 月 14 日|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
 
 *イベントで講演を行ったり、イベントを主催していますか。お手伝いできることがあれば、[ぜひお知らせください](mailto:askcosmosdb@microsoft.com)!*
 

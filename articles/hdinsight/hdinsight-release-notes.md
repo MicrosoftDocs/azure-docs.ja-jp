@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/06/2017
+ms.date: 08/04/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 782cab231e1b152c720abebff1fc76ae0559d12a
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 96b2b4976729da5b7d8b75909dbe099090240c08
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート
@@ -30,6 +29,22 @@ ms.lasthandoff: 05/13/2017
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
+
+
+## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight の 2017 年 8 月 1 日リリース
+
+| タイトル | Description | 影響を受ける領域  | クラスターの種類  | 
+| --- | --- | --- | --- | --- |
+| HDInsight での Microsoft R Server 9.1 の リリース |HDInsight では、HDInsight での Microsoft R Server 9.1 クラスターのプロビジョニングをサポートするようになりました。 Microsoft R Server 9.1 リリースの詳細については、[このブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)をご覧ください。 |サービス |R Server |
+| HDInsight 3.6 に Hadoop スタックの新バージョンを搭載|<ul><li>更新されたバージョンの詳細な一覧については、[HDInsight で使用可能な Hadoop コンポーネント バージョン](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)に関するページをご覧ください。</li><li>Hadoop スタックの最新バージョンで修正されたバグの一覧については、「[Apache Patch Information (Apache パッチ情報)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)」をご覧ください。</li><li>HDP 2.6.1 (HDInsight 3.6 で使用可能になりました) との間の重大な変更の一覧については、[https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html) をご覧ください。</li><li>HDP 2.6.1 の既知の問題の一覧については、「[Known issues (既知の問題)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)」をご覧ください。</li></ul> |サービス |すべて |該当なし |
+| インタラクティブ Hive (プレビュー) クラスターの更新 |<ul><li><b>機能改善。</b> メタデータをキャッシュすることによってバックエンド SQL への負荷を削減し、すべてのメタデータ操作のパフォーマンスを向上させるキャッシュ metastore を実装。  この改善は、すべてのインタラクティブ Hive クラスターに適用されています。 詳細については、[https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520) をご覧ください。</li><li><b>機能改善。</b> パーティションの動的読み込みを最適化。 詳細については、[https://issues.apache.org/jira/browse/HIVE-14204] (https://issues.apache.org/jira/browse/HIVE-14204) をご覧ください。</li><li><b>機能改善。</b> Linux 上の HDInsight の構成を最適化。</li><li><b>バグ修正。</b> `CredentialProviderFactory$getProviders` がスレッドセーフではない。 この問題は解決されました。 詳細については、[https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195) をご覧ください。</li><li><b>バグ修正。</b> WASB ドライバーの `liststatus` API の CPU 使用率が高いため、ATS のパフォーマンスが悪化する。 この問題は解決されました。 詳細については、[https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154) をご覧ください。</li></ul> |サービス |対話型 Hive (プレビュー) |
+| Hadoop クラスターの更新 |Templeton ジョブ操作の信頼性が向上。 詳細については、[https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) をご覧ください。 |サービス |Hadoop |
+| YARN の更新 | HDInsight で (コストを増やすことなく) 250 GB の Ambari データベースが作成されるようになり、カスタマー エクスペリエンスが向上。 この変更により、ATS がいっぱいになる状態が回避されるため、パフォーマンスの改善が見込めます。 |サービス |すべて |
+| Spark の更新 | Spark 2.1.1 のリリース。 詳細については、「[Spark Release 2.1.1 (Spark リリース 2.1.1)](https://spark.apache.org/releases/spark-release-2-1-1.html)」をご覧ください。 | サービス | Spark |
+
+  
+
+
 
 ## <a name="04062017---general-availability-of-hdinsight-36"></a>2017 年 4 月 6 日 - HDInsight 3.6 の一般提供
 
@@ -45,7 +60,7 @@ ms.lasthandoff: 05/13/2017
 
 * **Hive LLAP のパフォーマンス強化**。 詳細については、[Hortonworks のドキュメント](https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/)を参照してください。
 
-* **Hive の新機能**。 詳細については、[Hortonworks のドキュメント](https://hortonworks.com/apache/hive/#section_4)を参照してください。
+* **Hive の新機能**。 [Hortonworks のドキュメント](https://hortonworks.com/apache/hive/#section_4)をご覧ください。
 
 * **Hive CLI の廃止**: Hive CLI は廃止される予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hdinsight-hadoop-use-hive-beeline.md)を参照してください。
 
@@ -76,9 +91,9 @@ ms.lasthandoff: 05/13/2017
 Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) で公開されています。
 
 ## <a name="11162016---release-of-r-server-90-on-hdinsight-35-spark-20"></a>2016 年 11 月 16 日 - HDinsight 3.5 (Spark 2.0) での R Server 9.0 の リリース
-*    R Server クラスターのバージョン オプションに、HDI 3.5 (Spark 2.0) の R Server 9.0 と HDI 3.4 (Spark 1.6) の R Server 8.0 の 2 つが追加されました。
-*    HDI 3.5 (Spark 2.0) の R Server 9.0 は R 3.3.2 上に構築され、Hive および Parquet から直接 Spark DataFrames にデータを読み込み ScaleR で分析するための、RxHiveData と RxParquetData という新しい ScaleR データ ソース関数が追加されています。 詳細については、R の **?RxHiveData** コマンドおよび **?RxParquetData** コマンドで表示されるこれらの関数のインライン ヘルプを参照してください。
-*    RStudio コミュニティ エディションが、プロビジョニング フローの一環として、[クラスターの構成] ブレードにおいて既定で (オプトアウト オプションで) インストールされるようになりました。
+*   R Server クラスターのバージョン オプションに、HDI 3.5 (Spark 2.0) の R Server 9.0 と HDI 3.4 (Spark 1.6) の R Server 8.0 の 2 つが追加されました。
+*   HDI 3.5 (Spark 2.0) の R Server 9.0 は R 3.3.2 上に構築され、Hive および Parquet から直接 Spark DataFrames にデータを読み込み ScaleR で分析するための、RxHiveData と RxParquetData という新しい ScaleR データ ソース関数が追加されています。 詳細については、R の **?RxHiveData** コマンドおよび **?RxParquetData** コマンドを使用して表示されるこれらの関数のインライン ヘルプを参照してください。
+*   RStudio コミュニティ エディションが、プロビジョニング フローの一環として、[クラスターの構成] ブレードにおいて既定で (オプトアウト オプションで) インストールされるようになりました。
 
 ## <a name="11092016---release-of-spark-20-on-hdinsight"></a>2016 年 11 月 9 日 - HDInsight での Spark 2.0 の リリース
 * HDInsight 3.5 の Spark 2.0 クラスターで、Livy サービスおよびJupyter サービスがサポートされるようになりました。
@@ -89,24 +104,6 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 * HDInsight の R Server が、標準の HDInsight "R Server" クラスター タイプとして使用可能になりました。今後は別の HDInsight アプリケーションとしてインストールする必要はありません。 エッジ ノードと R Server バイナリは、R Server クラスター デプロイメントの一部としてプロビジョニングされるようになりました。 これにより、プロビジョニングの速度と信頼性が向上します。 これに伴い、R Server の価格モデルも更新されます。
 * R Server クラスター タイプの価格は、Standard Tier の価格に R Server の追加料金を加えたものになります。 Premium Tier は、複数のクラスター タイプで使用可能な Premium 機能用になり、R Server クラスター タイプでは使用されなくなります。 この変更は、実際の R Server の価格には影響しません。請求書の記載方法が変わるだけです。 既存のすべての R Server クラスターは引き続き実行でき、Resource Manager テンプレートは非推奨に関する通知が行われるまで使用できます。 **ただし、スクリプト化したデプロイメントが新しい Resource Manager テンプレートを使用するように更新することをお勧めします。**
 
-## <a name="08302016---release-of-r-server-on-hdinsight"></a>2016 年 8 月 30 日 - HDInsight での R Server のリリース
-今回のリリースがデプロイされている Linux ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。
-
-| HDI | HDI クラスター バージョン | HDP | HDP ビルド | Ambari ビルド |
-| --- | --- | --- | --- | --- |
-| 3.2 |3.2.1000.0.8268980 |2.2 |2.2.9.1-19 |2.2.1.12-4 |
-| 3.3 |3.3.1000.0.8268980 |2.3 |2.3.3.1-25 |2.2.1.12-4 |
-| 3.4 |3.4.1000.0.8269383 |2.4 |2.4.2.4-5 |2.2.1.12-4 |
-
-今回のリリースがデプロイされている Windows ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。
-
-| HDI | HDI クラスター バージョン | HDP | HDP ビルド |
-| --- | --- | --- | --- |
-| 2.1 |2.1.10.1033.2559206 |1.3 |1.3.12.0-01795 |
-| 3.0 |3.0.6.1033.2559206 |2.0 |2.0.13.0-2117 |
-| 3.1 |3.1.4.1033.2559206 |2.1 |2.1.16.0-2374 |
-| 3.2 |3.2.7.1033.2559206 |2.2 |2.2.9.1-11 |
-| 3.3 |3.3.0.1033.2559206 |2.3 |2.3.3.1-25 |
 
 
 

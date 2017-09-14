@@ -33,12 +33,13 @@
 # ガイド
 ## [アプリケーションの登録](active-directory-integrating-applications.md)
 ## [マルチテナント アプリ](active-directory-devhowto-multi-tenant-overview.md)
+## [条件付きアクセス](active-directory-conditional-access-developer.md)
 ## OAuth と OpenID Connect
 ### [OpenID Connect プロトコル](active-directory-protocols-openid-connect-code.md)
 ### [OAuth 2.0 認証コード付与](active-directory-protocols-oauth-code.md)
 ### [OAuth 2.0 の暗黙的な付与](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [要求のカスタマイズ](active-directory-saml-claims-customization.md)
+### [要求をカスタマイズする](active-directory-saml-claims-customization.md)
 ### [SAML ベースの SSO をデバッグする](active-directory-saml-debugging.md)
 ### [シングル サインオンの SAML プロトコル](active-directory-single-sign-on-protocol-reference.md)
 ### [シングル サインアウトの SAML プロトコル](active-directory-single-sign-out-protocol-reference.md)
@@ -61,8 +62,9 @@
 ### [Web API プロジェクトの変更点](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)
-## [コード サンプル](active-directory-code-samples.md)
+## [コード サンプルの記事](active-directory-code-samples.md)
 ## [用語集](active-directory-dev-glossary.md)
 ## [認証プロトコル](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -85,11 +87,11 @@
 ### [v1 と v2 の比較](active-directory-v2-compare.md)
 ## 作業の開始
 ### モバイル アプリとデスクトップ アプリ
-#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+#### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
 #### [Windows デスクトップ .NET](guidedsetups/active-directory-windesktop.md)
 ### Web Apps
-#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
 #### [ASP.NET Web サーバー](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS Web アプリ](active-directory-v2-devquickstarts-node-web.md)
 ## ガイド
@@ -105,3 +107,6 @@
 #### [トークンのリファレンス](active-directory-v2-tokens.md)
 #### [証明書の資格情報](active-directory-certificate-credentials.md)
 ### [スコープ](active-directory-v2-scopes.md)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/14/2016
+ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 6457b7d30b12a7bb138f9912e21418742814be09
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 949f34158f4fc8ee6d86cf3dd408c3c903234109
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -30,19 +29,11 @@ ms.lasthandoff: 05/05/2017
 
 Analysis Services では、3 つのクライアント ライブラリが利用されています。 ADOMD.NET と Analysis Services 管理オブジェクト (AMO) は、マネージ クライアント ライブラリです。 Analysis Services OLE DB プロバイダー (MSOLAP DLL) は、ネイティブ クライアント ライブラリです。 通常は、3 つすべてが同時にインストールされます。 Azure Analysis Services では、これらの最新バージョンが必要となります。 
 
-Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされます。 ただし、Excel のバージョンや、Excel および Power BI Desktop の新バージョンが毎月更新されるかどうかなどによっては、インストールされたクライアント ライブラリが、Azure Analysis Service で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、ライブラリを手動でインストールする必要があります。 手動でインストールするためのクライアント ライブラリは、再頒布可能パッケージとして SQL Server Feature Pack に含まれています。ただし、これらは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
+Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされます。 ただし、更新のバージョンや頻度によっては、クライアント ライブラリが、Azure Analysis Services で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、ライブラリを手動でインストールする必要があります。 手動インストール用のクライアント ライブラリは、配布可能なパッケージとして SQL Server Feature Pack に含まれています。 ただし、これらのクライアント ライブラリは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
 
 クライアント接続用のクライアント ライブラリは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データソース接続について詳しくは、「[Datasource connections](analysis-services-datasource.md)」(データソース接続) をご覧ください。
 
-## <a name="download-the-latest-preview-client-libraries"></a>最新**プレビュー** クライアント ライブラリのダウンロード  
-次のクライアント ライブラリを使用して、最新のバグ修正と更新プログラムを取得します。 Azure Analysis Services または SQL Server 2017 Analysis Services に接続するときには、これらをお勧めします。
-
-[MSOLAP (amd64) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/amd64/SQL_AS_OLEDB.msi)</br>
-[MSOLAP (x86) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/x86/SQL_AS_OLEDB.msi)</br>
-[AMO プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/SQL_AS_AMO.msi)</br>
-[ADOMD プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/SQL_AS_ADOMD.msi)</br>
-
-## <a name="download-the-latest-rtm-client-libraries"></a>最新 **RTM** クライアント ライブラリのダウンロード  
+## <a name="download-the-latest-client-libraries"></a>最新のクライアント ライブラリをダウンロード  
 運用環境で、完全にリリースおよびサポートされるバージョンが必要な場合は、次のクライアント ライブラリを使用します。
 
 [MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)</br>
@@ -51,5 +42,6 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 [ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)</br>
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Analysis Services サーバーに接続する](analysis-services-connect.md)。
+[Excel を使用した接続](analysis-services-connect-excel.md)    
+[Power BI を使用した接続](analysis-services-connect-pbi.md)
 

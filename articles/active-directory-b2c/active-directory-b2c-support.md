@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 24a1e13b7865d25d56cb5a6f44ba3c9c097174a7
-ms.lasthandoff: 12/29/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: ad02321c99c57d0f83f7eacb354e47d8c6d4d14f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: ファイル サポート要求
 Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を提出するには、次の手順に従います。
 
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
-2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。 通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。 詳細については、「[Azure サブスクリプションが Azure AD に関連付けられる方法](../active-directory/active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)」を参照してください。
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
+2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。 通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。 詳細については、「[Azure サブスクリプションが Azure AD に関連付けられる方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
    
     ![Support - Switch tenants](./media/active-directory-b2c-support/support-switch-dir.png)
 3. テナントを切り替えた後、 **[ヘルプとサポート]**をクリックします。

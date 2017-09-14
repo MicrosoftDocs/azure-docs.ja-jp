@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0def8177e124b5d3ba39f1ae65ab3b41d5827e4a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/11/2017
 Azure アカウントが必要です。 [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure  Portal](http://portal.azure.com) にサインインします。
 2. ポータルで、**[+]** をクリックして新しいオブジェクトを作成します。
 
    ![新しいオブジェクト](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -57,7 +56,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 6. **[リソース グループ]** ブレードの **[リソース グループ名]** に、リソース グループの名前を入力します。 たとえば、「**sql-ha-rg**」と入力します。
 7. Azure サブスクリプションが複数ある場合は、可用性グループの作成先にする Azure サブスクリプションを選択します。
 8. 場所を選択します。 場所とは、可用性グループを作成する Azure リージョンのことです。 このチュートリアルでは、すべてのリソースを Azure 上の 1 つの場所に構築します。
-9. **[ダッシュボードにピン留めする]** がオンになっていることを確認します。 これは、Azure ポータルのダッシュボードにリソース グループのショートカットを作成するためのオプションです。この設定は省略してもかまいません。
+9. **[ダッシュボードにピン留めする]** がオンになっていることを確認します。 これは、Azure  Portal のダッシュボードにリソース グループのショートカットを作成するためのオプションです。この設定は省略してもかまいません。
 
    ![リソース グループ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
@@ -95,7 +94,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
    実際のアドレス空間とサブネット アドレス範囲は、この表とは異なる場合があります。 サブスクリプションによっては、使用できるアドレス空間とそれに対応するサブネット アドレス範囲がポータルで提示されます。 アドレス空間が足りない場合は、異なるサブスクリプションを使用してください。
 
-   この例では、**Admin** というサブネット名を使用します。 このサブネットは、ドメイン コントローラー用です。
+   この例では、**Admin** というサブネット名を使用します。このサブネットは、ドメイン コントローラー用です。
 
 5. **[作成]**をクリックします。
 
@@ -104,7 +103,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 新しいネットワークが作成されると、画面がポータル ダッシュボードに切り替わって通知が表示されます。
 
 ### <a name="create-a-second-subnet"></a>2 つ目のサブネットの作成
-新しい仮想ネットワークには、**Admin** という名前のサブネットが 1 つあります。 このサブネットはドメイン コントローラーが使用します。 SQL Server VM には、**SQL** というもう 1 つのサブネットを使用します。 このサブネットを構成するには、次のようにします。
+新しい仮想ネットワークには、**Admin** という名前のサブネットが 1 つあります。このサブネットはドメイン コントローラーが使用します。 SQL Server VM には、**SQL** というもう 1 つのサブネットを使用します。 このサブネットを構成するには、次のようにします。
 
 1. ダッシュボードで、先ほど作成したリソース グループ ( **SQL-HA-RG**) をクリックします。 このリソース グループ内のネットワークを **[リソース]**から探します。
 
@@ -152,7 +151,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 | **障害ドメイン** |3 |3 |
 | **更新ドメイン** |5 |3 |
 
-可用性セットを作成したら、Azure ポータルでリソース グループに戻ります。
+可用性セットを作成したら、Azure  Portal でリソース グループに戻ります。
 
 ## <a name="create-domain-controllers"></a>ドメイン コントローラーを作成する
 ネットワーク、サブネット、可用性セット、インターネット接続用のロード バランサーを作成したら、ドメイン コントローラー用の仮想マシンを作成する準備は完了です。
@@ -230,7 +229,7 @@ Azure で仮想マシンが作成されます。
 
     ![DMS サーバー VM 上の AD DS を示すダイアログ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
 12. **[すべてのサーバー タスクの詳細]** ダイアログ ボックスの **[操作]** 列で、**[このサーバーをドメイン コントローラーに昇格する]** をクリックします。
-13. **Active Directory ドメイン サービスの構成ウィザード**で、次の値を使用します。
+13. **Active Directory Domain Services の構成ウィザード**で、次の値を使用します。
 
     | **ページ** | Setting |
     | --- | --- |
@@ -357,7 +356,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 * **ストレージ: Azure Managed Disks**
 
-   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../../../storage/storage-managed-disks-overview.md)」を参照してください。 可用性セットの管理ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)」を参照してください。
+   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../managed-disks-overview.md)」を参照してください。 可用性セットの管理ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)」を参照してください。
 
 * **ネットワーク: 運用中のプライベート IP アドレス**
 
@@ -386,7 +385,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 ### <a name="joinDomain"></a>ドメインへのサーバーの参加
 
-これで、VM を **corp.contoso.com** に参加させることができるようになりました。 両方の SQL Server VM とファイル共有監視サーバーに対して、次の手順を実行します。
+これで、VM を **corp.contoso.com** に参加させることができるようになりました。両方の SQL Server VM とファイル共有監視サーバーに対して、次の手順を実行します。
 
 1. **BUILTIN\DomainAdmin** で、仮想マシンにリモートで接続します。
 2. **[サーバー マネージャー]** で **[ローカル サーバー]** をクリックします。

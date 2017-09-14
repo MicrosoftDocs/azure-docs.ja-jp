@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/05/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 454957b439e327b08dcd6e7f4acee37963970458
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: c8ac99f63bd6700349bb352b2c880a2ffedf7457
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/06/2017
 
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
@@ -106,7 +106,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 
 ### <a name="using-ssh-public-key-authentication"></a>SSH 公開キー認証を使用する
 
-基本認証を使用するには、`authenticationType` を `SshPublicKey` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
+SSH 公開キー認証を使用するには、`authenticationType` を `SshPublicKey` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
@@ -114,6 +114,9 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 | privateKeyPath | ゲートウェイがアクセスできる秘密キー ファイルへの絶対パスを指定します。 | `privateKeyPath` または `privateKeyContent` を指定します。 <br><br> オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 | privateKeyContent | 秘密キーのコンテンツのシリアル化された文字列。 コピー ウィザードでは、秘密キー ファイルを読み取り、秘密キーのコンテンツを自動的に抽出できます。 その他のツール/SDK を使用している場合は、代わりに privateKeyPath プロパティを使用します。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
 | passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
+
+> [!NOTE]
+> SFTP コネクタでサポートしているのは OpenSSH キーのみです。 キー ファイルが適切な形式であることを確認してください。 Putty ツールを使用して、.ppk を OpenSSH 形式に変換することができます。
 
 #### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>例: 秘密キー ファイルのファイルパスを使用した SshPublicKey 認証
 
@@ -164,7 +167,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
 | BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
@@ -215,7 +218,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 ## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
 詳細については、[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)に関する記事を参照してください。
 
-### <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON の使用例: SFTP サーバーから Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON の使用例: SFTP サーバーから Azure BLOB へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、SFTP ソースからAzure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
 > [!IMPORTANT]

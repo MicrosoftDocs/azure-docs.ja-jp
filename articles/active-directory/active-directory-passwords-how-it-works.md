@@ -6,20 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+ms.reviewer: sahenry
 ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 08/28/2017
 ms.author: joflore
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 02826ffad9838c3e22721cc3c189e8cc13020059
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 0fa05ee6a2df13845024e770a82f50ab7f75bafd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
@@ -77,7 +78,7 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にしていて必要としている認証方法にデータがある場合のみです。
 
-ユーザーが自分の携帯電話番号を、ディレクトリには表示したくないがパスワードのリセットには使用したい場合は、管理者がディレクトリに設定するのではなく、ユーザーが[パスワード リセット登録ポータル](http://aka.ms/ssprsetup)で **[認証用電話]**  属性を設定してください。 管理者はこの情報を引き続きユーザーのプロファイルで確認できますが、他の場所では公開されません。 Azure 管理者アカウントで認証用電話番号を登録すると、携帯電話フィールドに入力されて表示されます。
+ユーザーが自分の携帯電話番号を、ディレクトリには表示したくないがパスワードのリセットには使用したい場合は、管理者がディレクトリに設定するのではなく、ユーザーが[パスワード リセット登録ポータル](http://aka.ms/ssprsetup)で **[認証用電話]**  属性を設定してください。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。 Azure 管理者アカウントで認証用電話番号を登録すると、携帯電話フィールドに入力されて表示されます。
 
 ### <a name="number-of-authentication-methods-required"></a>必要な認証方法の数
 
@@ -224,7 +225,7 @@ Azure AD Connect ツールでは、接続が現在も有効であることを確
 
 Azure AD Connect ユーティリティで指定されたアカウントには、そのフォレスト内の**各ドメイン**のルート オブジェクト**または** SSPR の対象に含めたいユーザー OU のいずれかに対して、lockoutTime の [パスワードのリセット]、[パスワードの変更]、[書き込みアクセス許可] や pwdLastSet の [書き込みアクセス許可] などの拡張権限が必要です。
 
-上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、[ソリューションの確認] オプションをクリックします。 アクセス許可を追加する必要があるアカウントが、[同期されたディレクトリ] の下に表示されます。
+上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、[現在の構成を表示する] オプションをクリックします。 アクセス許可を追加する必要があるアカウントが、[同期されたディレクトリ] の下に表示されます。
 
 これらの権限を設定すると、パスワード管理が、フォレストに含まれるユーザー アカウントからではなく、各フォレストのMA サービス アカウントから可能になります。 **これらの権限を割り当てないと、ライトバックが正常に構成されているように思われる場合でも、クラウドからオンプレミスのパスワードを管理しようとするとエラーが発生します。**
 
@@ -242,7 +243,12 @@ Azure AD Connect ユーティリティで指定されたアカウントには、
 4. [アクセス許可] タブで [追加] をクリックします。
 5. (Azure AD Connect のセットアップから) アクセス許可を適用するアカウントを選択します。
 6. [適用先] ドロップダウンで、[下位ユーザー オブジェクト] を選択します。
-7. [アクセス許可] で、lockoutTime の [パスワードのリセット]、[パスワードの変更]、[書き込みアクセス許可]、pwdLastSet の [書き込みアクセス許可] のチェック ボックスをオンにします。
+7. [アクセス許可] で次のチェック ボックスをオンにします。
+    * Unexpire-Password\(無期限パスワード\)
+    * パスワードのリセット
+    * パスワードの変更
+    * Write lockoutTime\(LockoutTime を書き込む\)
+    * Write pwdLastSet\(pwdLastSet を書き込む\)
 8. [適用] または [OK] をクリックして適用し、開いているすべてのダイアログ ボックスを終了します。
 
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>B2B ユーザーに対するパスワード リセットの動作
@@ -258,7 +264,7 @@ Azure AD Connect ユーティリティで指定されたアカウントには、
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフ サービスによるパスワードのリセットの管理を始めることができます。 
+* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
 * [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
 * [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
 * [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
@@ -266,7 +272,7 @@ Azure AD Connect ユーティリティで指定されたアカウントには、
 * [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
 * [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - 方法は? なぜですか? 何ですか? どこですか? 誰ですか? いつですか? - ずっと確認したかった質問に対する回答
+* [**よく寄せられる質問**](active-directory-passwords-faq.md) - 方法は? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
 
 

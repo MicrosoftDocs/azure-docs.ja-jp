@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 10/05/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bbf5de2d38cc351d48384ff24e87bbf2881f2e1e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c2e2efd356382df9404f5c4ed54f24758b2cd22b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -49,14 +49,15 @@ Salesforce コネクタは、Salesforce オブジェクトを操作するため�
 > 
 
 ## <a name="use-a-salesforce-connector-action"></a>Salesforce コネクタ アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 > [!INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
 > 
 > 
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/salesforce/)を参照してください。 
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
+
+[コネクタの詳細](/connectors/salesforce/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)

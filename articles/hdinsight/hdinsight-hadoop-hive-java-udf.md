@@ -1,6 +1,6 @@
 ---
-title: "HDInsight で Hive と Java のユーザー定義関数 (UDF) を使用する | Microsoft Docs"
-description: "HDInsight で Hive から Java ユーザー定義関数 (UDF) を作成して使用する方法について説明します。"
+title: "HDInsight での Java ユーザー定義関数 (UDF) と Hive - Azure | Microsoft Docs"
+description: "Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この UDF の例では、テキスト文字列のテーブルを小文字に変換します。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -8,33 +8,32 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 229bebe16b619f61f2dd4acb73602b97e64cb294
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
 
-Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。
+Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この例の Java UDF では、テキスト文字列のテーブルをすべて小文字の文字に変換します。
 
 ## <a name="requirements"></a>必要条件
 
-* HDInsight クラスター (Windows ベースまたは Linux ベース)
+* HDInsight クラスター 
 
     > [!IMPORTANT]
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-    このドキュメントのほとんどの手順は、両方の種類のクラスターで動作します。 ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
+    このドキュメントのほとんどの手順は、Windows ベースと Linux ベースの両方のクラスターで実行できます。 ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
 
@@ -43,9 +42,9 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 * テキスト エディターまたは Java IDE
 
     > [!IMPORTANT]
-    > Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
+    > Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、CR 文字を削除する手順をご覧ください。
 
-## <a name="create-an-example-udf"></a>UDF のサンプルを作成する
+## <a name="create-an-example-java-udf"></a>Java UDF のサンプルを作成する 
 
 1. コマンド ラインで、次の手順を使用して新しい Maven プロジェクトを作成します。
 
@@ -60,7 +59,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 
 2. プロジェクトが作成されたら、プロジェクトの一部として作成された **exampleudf/src/test** ディレクトリを削除します。
 
-3. **exampleudf/pom.xml** を開き、既存の `<dependencies>` エントリを次のエントリと置き換えます。
+3. **exampleudf/pom.xml** を開き、既存の `<dependencies>` エントリを次の XML と置き換えます。
 
     ```xml
     <dependencies>
@@ -81,7 +80,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 
     これらのエントリは、HDInsight 3.5 に含まれる Hadoop と Hive のバージョンを指定します。 HDInsight に含まれる Hadoop と Hive のバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
-    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。 このセクションには、次の行が含まれる必要があります。
+    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。 このセクションには、次の XML が含まれる必要があります。
 
     ```xml
     <build>
@@ -178,7 +177,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
     mvn compile package
     ```
 
-    これで、UDF がビルドされ、**exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar** にパッケージ化されます。
+    このコマンドで、UDF をビルドして `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` ファイルにパッケージ化します。
 
 2. `scp` コマンドを使用して、ファイルを HDInsight クラスターにコピーします。
 
@@ -186,7 +185,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    **myuser** をクラスターの SSH ユーザー アカウントに置き換えます。 **mycluster** をクラスター名に置き換えます。 SSH アカウントをセキュリティ保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
+    `myuser` をクラスターの SSH ユーザー アカウントに置き換えます。 `mycluster` をクラスター名に置き換えます。 SSH アカウントをセキュリティ保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
 
 3. SSH を使用してクラスターに接続します。
 
@@ -204,7 +203,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 
 ## <a name="use-the-udf-from-hive"></a>Hive から UDF を使用する
 
-1. SSH セッションから、次のコマンドを使用して Beelineクライアントを開始します。
+1. SSH セッションから、次のコマンドを使用して BeeLineクライアントを開始します。
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
@@ -215,12 +214,12 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 2. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のように入力して、UDF を Hive に追加し、関数として公開します。
 
     ```hiveql
-    ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
+    ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
 
     > [!NOTE]
-    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Store を使用する場合は、`wasbs:///` の値を `adl:///` に変更します。
+    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Store を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
 
@@ -228,7 +227,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    このクエリは、テーブルからデバイスのプラットフォーム (Android、Windows、iOS など) を選択して、その文字列を小文字に変換して表示します。 出力は次の例のようになります。
+    このクエリは、テーブルからデバイスのプラットフォーム (Android、Windows、iOS など) を選択して、その文字列を小文字に変換して表示します。 次のテキストのような出力が表示されます。
 
         +----------+--+
         |   _c0    |

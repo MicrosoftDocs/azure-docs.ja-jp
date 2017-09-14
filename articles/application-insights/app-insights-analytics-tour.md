@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: baa8880e47c827e09f6027637d73f2522fec60b9
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: edcf294856582569c00f7cf49beb3a481e28d7d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
-[Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
 
 * **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
@@ -35,7 +34,7 @@ ms.lasthandoff: 04/07/2017
 
 ![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takeapp-insights-analytics-referencemdtake-operator-show-me-n-rows"></a>[take](app-insights-analytics-reference.md#take-operator): n 個の行を表示する
+## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[take](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): n 個の行を表示する
 ユーザーの操作 (通常、Web アプリが受信する HTTP 要求) を記録するデータ ポイントは、 `requests`という名前のテーブルに格納されます。 各行は、アプリの Application Insights SDK から受信したテレメトリ データ ポイントです。
 
 テーブルのいくつかのサンプル行を調べることから始めましょう。
@@ -60,7 +59,7 @@ ms.lasthandoff: 04/07/2017
 >
 >
 
-## <a name="topapp-insights-analytics-referencemdtop-operator-and-sortapp-insights-analytics-referencemdsort-operator"></a>[top](app-insights-analytics-reference.md#top-operator) と [sort](app-insights-analytics-reference.md#sort-operator)
+## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) と [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
 `take` は結果の簡単なサンプルを取得するのに便利ですが、テーブルの行は任意の順序で表示されます。 指定した順序で表示するには、(サンプルに対して) `top` を使用するか、(テーブル全体に対して) `sort` を使用します。
 
 特定の列で並べ替えた最初の n 個の行を表示する場合は、以下のように指定します。
@@ -86,7 +85,7 @@ ms.lasthandoff: 04/07/2017
 
 テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。 ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合、並べ替えるのは取得したレコードのみとなります。
 
-## <a name="whereapp-insights-analytics-referencemdwhere-operator-filtering-on-a-condition"></a>[where](app-insights-analytics-reference.md#where-operator): 条件に基づいてフィルター処理する
+## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): 条件に基づいてフィルター処理する
 
 特定の結果コードを返した要求だけを見てみましょう。
 
@@ -105,7 +104,7 @@ ms.lasthandoff: 04/07/2017
 * `==`、`<>`、`!=`: 等しい、等しくない
 * `=~`、`!~`: 等しい、等しくない (大文字と小文字が区別されない文字列の場合)。 文字列比較演算子にはさらに多くの種類があります。
 
-詳細については、 [スカラー式](app-insights-analytics-reference.md#scalars)に関する記述をご覧ください。
+<!---Read all about [scalar expressions]().--->
 
 ### <a name="getting-the-right-type"></a>適切な種類を取得する
 失敗した要求を検索する場合は、次のように指定します。
@@ -115,10 +114,11 @@ ms.lasthandoff: 04/07/2017
     requests
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
+<!---
+`resultCode` has type string, so we must cast it app-insights-analytics-reference.md#casts for a numeric comparison.
+--->
 
-`resultCode` は文字列型であるため、数値比較では [キャスト](app-insights-analytics-reference.md#casts) する必要があります。
-
-## <a name="time-range"></a>時間範囲
+## <a name="time"></a>Time
 
 既定では、クエリは過去 24 時間に制限されます。 ただし、この範囲は変更できます。
 
@@ -160,11 +160,11 @@ ms.lasthandoff: 04/07/2017
 
 ```
 
-[日付と時刻のリファレンス](app-insights-analytics-reference.md#date-and-time)。
+[日付と時刻のリファレンス](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html)。
 
 
-## <a name="projectapp-insights-analytics-referencemdproject-operator-select-rename-and-compute-columns"></a>[project](app-insights-analytics-reference.md#project-operator): 列の選択、名前変更、計算を行う
-必要な列だけを選択する場合は、次のように [`project`](app-insights-analytics-reference.md#project-operator) を使用します。
+## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): 列の選択、名前変更、計算を行う
+必要な列だけを選択する場合は、次のように [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) を使用します。
 
 ```AIQL
 
@@ -189,15 +189,15 @@ ms.lasthandoff: 04/07/2017
 
 ![result](./media/app-insights-analytics-tour/270.png)
 
-* `['...']` や `["..."]` のように角かっこで囲まれている場合は、[列名](app-insights-analytics-reference.md#names)にスペースまたは記号を含めることができます。
+* `['...']`、`["..."]` のように角かっこで囲まれている場合は、列名にスペースまたは記号を含めることができます
 * `%` は一般的なモジュロ演算子です。
 * `1d` (数字の 1 の後に "d" が付加されている) は 1 日を意味する期間リテラルです。 期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
 * `floor` (エイリアスは `bin`) は、指定した基準値の最も近い倍数に値を切り捨てます。 したがって、 `floor(aTime, 1s)` の場合、最も近い秒数に時間を切り捨てます。
 
-[式](app-insights-analytics-reference.md#scalars)には、一般的な演算子 (`+` や `-` など) をすべて含めることができ、各種の便利な関数があります。
+式には、一般的な演算子 (`+`、`-` など) をすべて含めることができ、各種の便利な関数があります。
 
-## <a name="extendapp-insights-analytics-referencemdextend-operator-compute-columns"></a>[extend](app-insights-analytics-reference.md#extend-operator): 列を計算する
-単に列を既存の列に追加する場合は、以下のように [`extend`](app-insights-analytics-reference.md#extend-operator)を使用します。
+## <a name="extend"></a>Extend
+単に列を既存の列に追加する場合は、以下のように [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html)を使用します。
 
 ```AIQL
 
@@ -206,7 +206,7 @@ ms.lasthandoff: 04/07/2017
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-既存の列をすべて保持する場合に、[`extend`](app-insights-analytics-reference.md#extend-operator) を使用すると [`project`](app-insights-analytics-reference.md#project-operator) よりも詳細度が低くなります。
+既存の列をすべて保持する場合に、[`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) を使用すると [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) よりも詳細度が低くなります。
 
 ### <a name="convert-to-local-time"></a>現地時刻への変換
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 04/07/2017
 ```
 
 
-## <a name="summarizeapp-insights-analytics-referencemdsummarize-operator-aggregate-groups-of-rows"></a>[summarize](app-insights-analytics-reference.md#summarize-operator): 行のグループをまとめる
+## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): 行のグループをまとめる
 `Summarize` を使用すると、行のグループに対して指定の *集計関数* が適用されます。
 
 たとえば、Web アプリが要求に対して応答するのにかかった時間が `duration`フィールドでレポートされます。 すべての要求に対する平均応答時間を見てみましょう。
@@ -258,7 +258,7 @@ ms.lasthandoff: 04/07/2017
 
 また、あるグループ内の行数を実際にカウントする必要がある場合のために、 `count()` 集計 (およびカウント操作) もあります。
 
-さまざまな [集計関数](app-insights-analytics-reference.md#aggregations)が用意されています。
+さまざまな [集計関数](https://docs.loganalytics.io/learn/tutorials/aggregations.html)が用意されています。
 
 ## <a name="charting-the-results"></a>結果のグラフ表示
 ```AIQL
@@ -399,7 +399,7 @@ ms.lasthandoff: 04/07/2017
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentilesapp-insights-analytics-referencemdpercentiles"></a>[パーセンタイル](app-insights-analytics-reference.md#percentiles)
+## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[パーセンタイル](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
 ここでは、セッションのパーセンタイルごとの期間範囲を見てみます。
 
 上記のクエリを使用しますが、最後の行は次のように置き換えます。
@@ -460,7 +460,7 @@ ms.lasthandoff: 04/07/2017
 結合を実行する前に必要な列のみを選択する場合は、 `project` を使用することをお勧めします。
 その場合、同じ句で、タイムスタンプ列の名前を変更します。
 
-## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[let](app-insights-analytics-reference.md#let-clause): 結果を変数に代入する
+## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): 結果を変数に代入する
 
 上記の式の部分を分割する場合は、`let` を使用します。 結果は変わりません。
 
@@ -520,7 +520,7 @@ requests
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-[キャスト](app-insights-analytics-reference.md#casts) を使用して適切な型に変換する必要があります。
+結果を適切な型にキャストする必要があります。
 
 
 ## <a name="custom-properties-and-measurements"></a>カスタム プロパティと測定値

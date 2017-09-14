@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4b496eb3d82249e8dc29833fa7bf94ffbfd87ea0
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f4746e0dd249e417b8077a9bc733d2886daafdf2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 
@@ -227,7 +226,7 @@ JSON ファイルからデータをコピーするときは、次の 2 つのサ
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳細については、「[四角形のデータセットの構造定義を指定する](#specifying-structure-definition-for-rectangular-datasets)」セクションを参照してください。
+- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
 - `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 配列からデータをコピーするには、**array[x].property** を使用して x 番目のオブジェクトから特定のプロパティの値を抽出するか、**array[*].property** を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
 
 ```json
@@ -300,7 +299,7 @@ JSON ファイルからデータをコピーするときは、次の 2 つのサ
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳細については、「[四角形のデータセットの構造定義を指定する](#specifying-structure-definition-for-rectangular-datasets)」セクションを参照してください。
+- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
 - `jsonNodeReference` は、orderlines という**配列**の直下にある同じパターンのオブジェクトからのデータの反復処理と抽出を行うことを示します。
 - `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 この例での "ordernumber"、"orderdate"、"city" は、"$." から始まる JSON のパスが含まれるルート オブジェクトの直下にあります。"order_pd" と "order_price" は、"$." のない配列要素から派生したパスで定義されています。
 

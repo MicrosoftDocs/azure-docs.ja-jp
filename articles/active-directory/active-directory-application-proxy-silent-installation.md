@@ -5,23 +5,24 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 08/10/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f4d72d4d11ee64e3431879f6ad1b5d8d091a0c87
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
+
 # <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタのサイレント インストール
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、Azure AD アプリケーション プロキシ コネクタの無人インストールおよび登録を有効にする Windows PowerShell スクリプトの作成方法について説明します。
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/15/2017
 * コネクタのインストールと登録を別の手順の一部として統合する。
 * コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。
 
-アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 ただし、Windows PowerShell を使用し、資格情報オブジェクトを作成して登録情報を入力することも、独自のトークンを作成し、登録情報を入力するために使用することもできます。
+アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 ただし、Windows PowerShell を使用して、登録情報を入力する資格情報オブジェクトを作成できます。 または、独自のトークンを作成し、それを使用して登録情報を入力できます。
 
 ## <a name="install-the-connector"></a>コネクタをインストールする
 次のように、コネクタを登録せずにコネクタ MSI をインストールします。
@@ -72,7 +73,7 @@ ms.lasthandoff: 05/15/2017
         /// <summary>
         /// The AAD authentication endpoint uri
         /// </summary>
-        static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.windows.net/common/oauth2/token?api-version=1.0");
+        static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.microsoftonline.com/common/oauth2/token?api-version=1.0");
 
         /// <summary>
         /// The application ID of the connector in AAD

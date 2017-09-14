@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 594dee64f49e83949403fc85903ec66f9cf0d996
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8dafdf8183e2a30773274c2433fbcb4346727996
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
@@ -54,6 +54,11 @@ ms.lasthandoff: 04/27/2017
 ## <a name="configuration-designs"></a>構成の設計
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する
 ExpressRoute のバックアップとしてサイト間 VPN 接続を構成することができます。 これは、Azure のプライベート ピアリング パスにリンクされている仮想ネットワークにのみ適用されます。 Azure パブリックおよび Microsoft ピアリングを通じてアクセス可能なサービスの VPN ベースのフェールオーバー ソリューションはありません。 ExpressRoute 回線は常にプライマリ リンクです。 データは、ExpressRoute 回線で障害が発生した場合にのみ、サイト間 VPN パスを通過します。 
+
+> [!NOTE]
+> 両方のルートが同じである場合は、ExpressRoute 回線がサイト間 VPN よりも優先されますが、Azure では最長プレフィックスの一致を使用してパケットの宛先へのルートを選択します。
+> 
+> 
 
 ![共存](media/expressroute-howto-coexist-classic/scenario1.jpg)
 

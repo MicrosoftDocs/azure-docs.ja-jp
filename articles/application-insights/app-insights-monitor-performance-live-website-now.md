@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 769377af7bf62d35c45c6e2e7b0ae3311b784894
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 457ba9c9f74bc9d88800607a2f78a3c3c96cea07
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
@@ -42,10 +41,10 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 | [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
 | [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
 | [システム パフォーマンス カウンター](app-insights-performance-counters.md) |はい |はい |
-| [カスタム テレメトリの API][api] |はい | |
-| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |はい | |
-| [ページ ビューとユーザー データ](app-insights-javascript.md) |はい | |
-| コードのリビルドは不要 |いいえ | |
+| [カスタム テレメトリの API][api] |あり |いいえ |
+| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |あり |いいえ |
+| [ページ ビューとユーザー データ](app-insights-javascript.md) |あり |いいえ |
+| コードのリビルドが必要 |あり | いいえ |
 
 
 ## <a name="monitor-a-live-azure-web-app"></a>ライブ Azure Web アプリの監視

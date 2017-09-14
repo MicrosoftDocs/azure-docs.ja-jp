@@ -1,5 +1,5 @@
 ---
-title: "クラウドでの Linux HPC Pack クラスター オプション | Microsoft Docs"
+title: "Azure での Linux HPC Pack クラスター オプション | Microsoft Docs"
 description: "Microsoft HPC Pack を使用して Azure クラウドで Linux ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプションについて学習します。"
 services: virtual-machines-linux,cloud-services
 documentationcenter: 
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
-ms.date: 02/06/2017
+ms.date: 08/25/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 616006d29149f7f47b03bd127cf3c83ad63a5c39
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 99aee6b73242d21842b02ded8c9e4e25bc5cedb4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
-# <a name="options-with-hpc-pack-to-create-and-manage-an-hpc-cluster-in-azure-for-linux-workloads"></a>Azure で Linux ワークロード用の HPC クラスターを作成して管理するために使用する HPC Pack のオプション
+# <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-linux-hpc-workloads-in-azure"></a>Azure で Linux HPC ワークロード用のクラスターを作成して管理するための HPC Pack のオプション
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
 この記事では、HPC Pack を使用して Linux ワークロードを実行するオプションについて説明します。 [HPC Pack を使用して Windows HPC ワークロードを実行する](../windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)オプションもあります。
 
-## <a name="run-an-hpc-pack-cluster-in-azure-vms"></a>Azure VM での HPC Pack クラスターの実行
+## <a name="hpc-pack-cluster-in-azure-vms"></a>Azure VM の HPC Pack クラスター
 ### <a name="azure-templates"></a>Azure テンプレート
 * (GitHub) [HPC Pack 2016 クラスター テンプレート](https://github.com/MsHpcPack/HPCPack2016)
 * (Marketplace) [HPC Pack cluster for Linux workloads (Linux ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
 * (クイックスタート) [Create an HPC cluster with Linux compute nodes (Linux コンピューティング ノードがある HPC クラスターを作成する)](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-linux-cn)
 
-### <a name="powershell-deployment-script"></a>PowerShell デプロイメント スクリプト
+### <a name="powershell-deployment-script-for-hpc-pack-2012-r2"></a>HPC Pack 2012 R2 の PowerShell デプロイメント スクリプト
 * [Create an HPC cluster with the Linux HPC Pack IaaS deployment script (HPC Pack IaaS デプロイメント スクリプトを使用した Linux HPC クラスターの作成)](../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ### <a name="tutorials"></a>Tutorials (チュートリアル)
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/03/2017
 * [オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [HPC Pack でのジョブ管理](https://technet.microsoft.com/library/jj899585.aspx)
 
-## <a name="create-rdma-clusters-for-mpi-workloads"></a>MPI ワークロードのための RDMA のクラスターの作成
+## <a name="rdma-clusters-for-mpi-workloads"></a>MPI ワークロードのための RDMA のクラスター
 * [チュートリアル: Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](classic/hpcpack-cluster-openfoam.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 

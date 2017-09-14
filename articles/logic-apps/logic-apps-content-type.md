@@ -15,16 +15,16 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 291fb1bb3a8925ccc39d846d23328f028cb826b8
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="handle-content-types-in-logic-apps"></a>ロジック アプリにおける各種コンテンツの扱い
 
-ロジック アプリには、JSON、XML、フラット ファイル、バイナリ データなど、さまざまな種類のコンテンツを渡すことができます。 Logic Apps エンジンはあらゆる種類のコンテンツに対応しています。一部のコンテンツは Logic Apps エンジンでネイティブに認識されます。 適宜キャストや変換が必要なコンテンツもあります。 この記事では、Logic Apps エンジンで各種コンテンツがどのように扱われるか、また、必要に応じて各種コンテンツを正しく処理するにはどうすればよいかについて説明します。
+ロジック アプリには、JSON、XML、フラット ファイル、バイナリ データなど、さまざまな種類のコンテンツを渡すことができます。 Logic Apps エンジンはあらゆる種類のコンテンツに対応していますが、Logic Apps エンジンでネイティブに認識されるコンテンツもあれば。 適宜キャストや変換が必要なコンテンツもあります。 この記事では、Logic Apps エンジンで各種コンテンツがどのように扱われるか、また、必要に応じて各種コンテンツを正しく処理するにはどうすればよいかについて説明します。
 
 ## <a name="content-type-header"></a>Content-Type ヘッダー
 

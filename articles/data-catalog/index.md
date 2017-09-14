@@ -2,7 +2,7 @@
 title: "Azure Data Catalog のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "組織がデータ ソースを検索、把握、活用できるデータ カタログのセットアップ方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 services: data-catalog
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

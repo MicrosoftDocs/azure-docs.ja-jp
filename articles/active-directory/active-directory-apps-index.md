@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 3f6ae31f577eb1bc70a06e183518aadbc6279159
+ms.reviewer: asteen
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ea2dc2762b556da837fa1d6674e01aba32face92
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
@@ -203,7 +203,7 @@ Azure Active Directory には、組織のアプリケーションへのアクセ
 | 特定のアプリケーションにアクセスできるユーザーに対して行われた変更の追跡 |[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md) |
 | Reporting API を使用してこれらのレポートのデータを任意のツールにエクスポート |[Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md) |
 
-Azure Active Directory の各エディションに付属のレポートを確認するには、 [ここをクリック](active-directory-view-access-usage-reports.md#report-editions)してください。
+Azure Active Directory の各エディションに付属のレポートを確認するには、 [ここをクリック](active-directory-view-access-usage-reports.md)してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure Active Directory とは](active-directory-whatis.md)

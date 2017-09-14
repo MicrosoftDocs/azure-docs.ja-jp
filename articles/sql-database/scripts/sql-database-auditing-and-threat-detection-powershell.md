@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - データベースの監査と脅威検出の構成 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用して、SQL Database の監査と脅威検出を構成します。"
+title: "PowerShell サンプル - 監査 - 脅威の検出 - Azure SQL Database | Microsoft Docs"
+description: "Azure SQL Database で監査と脅威の検出を構成するための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,17 +14,17 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 09/08/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 5bb1f0b4b6e548cf4164dae55d13cbebb660232f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 228772ff6710596c916165a132db31f449d0a327
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-sql-database-auditing-and-threat-detection-using-powershell"></a>PowerShell を使用して SQL Database の監査と脅威検出を構成する
+# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>PowerShell を使用して SQL Database の監査と脅威検出を構成する
 
 この PowerShell のサンプル スクリプトは、SQL Database の監査と脅威検出を構成します。 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

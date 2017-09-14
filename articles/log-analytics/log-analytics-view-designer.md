@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/17/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d65f730a0f84b89d0228a22b42d0421ad4f2678f
-ms.lasthandoff: 03/09/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
@@ -26,8 +26,11 @@ ms.lasthandoff: 03/09/2017
 
 ビュー デザイナーについてはこの他に次の記事があります。
 
-* [タイル リファレンス](log-analytics-view-designer-tiles.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。 
-* [視覚化パーツ リファレンス](log-analytics-view-designer-parts.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。 
+* [タイル リファレンス](log-analytics-view-designer-tiles.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。
+* [視覚化パーツ リファレンス](log-analytics-view-designer-parts.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、すべてのビューのクエリを[新しいクエリ言語](https://go.microsoft.com/fwlink/?linkid=856078)で記述する必要があります。  ワークスペースのアップグレード前に作成されたすべてのビューは、自動的に変換されます。
 
 ## <a name="concepts"></a>概念
 ビュー デザイナーで作成されるビューには、次の表に示す要素が含まれます。
@@ -82,7 +85,7 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ![ビュー デザイナー](media/log-analytics-view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-view-tile"></a>ビューのタイルを構成する
-カスタム ビューは、タイルを&1; つだけ持つことができます。  **タイル** ウィンドウの **タイル** タブを選択して現在のタイルを表示するか、別のタイルを選択します。  **プロパティ** ウィンドウには、現在のタイルのプロパティが表示されます。  「[タイル リファレンス](log-analytics-view-designer-tiles.md)」の詳細情報に従ってタイルのプロパティを構成し、**[適用]** をクリックして変更を保存します。
+カスタム ビューは、タイルを 1 つだけ持つことができます。  **タイル** ウィンドウの **タイル** タブを選択して現在のタイルを表示するか、別のタイルを選択します。  **プロパティ** ウィンドウには、現在のタイルのプロパティが表示されます。  「[タイル リファレンス](log-analytics-view-designer-tiles.md)」の詳細情報に従ってタイルのプロパティを構成し、**[適用]** をクリックして変更を保存します。
 
 ### <a name="configure-visualization-parts"></a>視覚化パーツを構成する
 ビューには、任意の数の視覚化パーツを含めることができます。  **[ビュー]** タブを選択し、ビューに追加する視覚化パーツを選択します。  **プロパティ** ウィンドウに、選択したパーツのプロパティが表示されます。  「[視覚化パーツ リファレンス](log-analytics-view-designer-parts.md)」の詳細情報に従ってビューのプロパティを構成し、**[適用]** をクリックして変更を保存します。
@@ -96,5 +99,4 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ## <a name="next-steps"></a>次のステップ
 * [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。
 * [視覚化パーツ](log-analytics-view-designer-parts.md)をカスタム ビューに追加します。
-
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c46ea77c591b9c5914f83b9d5c1498b4f397a617
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス

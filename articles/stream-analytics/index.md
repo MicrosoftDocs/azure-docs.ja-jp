@@ -2,7 +2,7 @@
 title: "Azure Stream Analytics のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "完全に管理されたイベント処理によってクラウド内で IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。"
 services: stream-analytics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

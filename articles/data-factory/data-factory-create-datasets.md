@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: shlo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 870436655c84c0bc53ca41eaa67f6fd32ef93ceb
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 6fd58edd830df8ea3f77a68e8dfcaf6de055b17c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
@@ -202,7 +201,7 @@ structure の各列には次のプロパティが含まれます。
     構造化データ ソースでは型情報が既に提供されているため、"structure" セクションを含める場合は、型情報を含めないでください。
 * **読み取りデータ ソースのスキーマの場合 (具体的には Blob Storage)**、データと共にスキーマや型情報を格納せずに、データを格納することができます。 このようなデータ ソースでは、ソース列をシンク列にマップする必要がある場合に "structure" 列を含めます。 また、データセットがコピー アクティビティの入力データセットである場合にも、"structure" 列を含めます。ソース データセットのデータ型はシンクのネイティブ型に変換する必要があります。 
     
-    Data Factory は、"structure" で型情報を指定するための値として、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan をサポートしています。 これらの値は、共通言語仕様 (CLS) 準拠の .NET ベースの型値です。
+    Data Factory は、"structure" に型情報を指定するための値として、**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 これらの値は、共通言語仕様 (CLS) 準拠の .NET ベースの型値です。
 
 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。 
   
@@ -239,7 +238,7 @@ structure の各列には次のプロパティが含まれます。
 | anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/>注: 指定された頻度より細かい日付部分がこのプロパティに含まれている場合、その部分は無視されます。 たとえば、**間隔**が**時間単位** (frequency が Hour で interval が 1) で、**anchorDateTime** に**分と秒**が含まれる場合、**anchorDateTime** の分と秒の部分は無視されます。 |いいえ |01/01/0001 |
 | offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/>注: **anchorDateTime** と **offset** の両方が指定されている場合、結果的にシフトが結合されます。 |なし |該当なし |
 
-### <a name="offset-example"></a>offset 例
+### <a name="offset-example"></a>offset の例
 既定では、毎日 (`"frequency": "Day", "interval": 1`) のスライスは協定世界時 (UTC) 12 AM (午前 0 時) に開始します。 開始時刻を 6 AM UTC にするには、次のスニペットに示すようにオフセットを設定します。 
 
 ```json
@@ -269,7 +268,7 @@ structure の各列には次のプロパティが含まれます。
 "availability": {
     "frequency": "Month",
     "interval": 1,
-    "offset": "3.08:00:00",    
+    "offset": "3.08:00:00", 
     "style": "StartOfInterval"
 }
 ```

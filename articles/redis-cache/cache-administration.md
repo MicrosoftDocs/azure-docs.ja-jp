@@ -12,22 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 07/05/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0355c8a943947f5d53d7cd6892db3567c3bf0cce
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Azure Redis Cache を管理する方法
 このトピックでは、Azure Redis Cache インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
-
-> [!IMPORTANT]
-> この記事で説明する設定と機能は、Premium レベルのキャッシュにのみ使用できます。
-> 
-> 
 
 ## <a name="reboot"></a>Reboot
 **[再起動]** ブレードでは、キャッシュの 1 つ以上のノードを再起動できます。 この再起動機能により、アプリケーションにキャッシュ ノードの障害が発生した場合の復元性をテストすることができます。
@@ -52,7 +48,7 @@ ms.lasthandoff: 04/27/2017
 * **クラスタリングが有効になっている Premium キャッシュのノード** - クラスタリングが有効になっている Premium キャッシュのノードを 1 つ以上再起動したとき、選んだノードの動作は、非クラスター化キャッシュの対応するノードを再起動する場合と同じです。
 
 > [!IMPORTANT]
-> 再起動は、Premium レベルのキャッシュにのみ使用できます。
+> 再起動はすべての価格レベルで使用可能になりました。
 > 
 > 
 
@@ -83,10 +79,10 @@ ms.lasthandoff: 04/27/2017
 PowerShell での手順については、「 [To reboot a Redis cache (Redis Cache を再起動するには)](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)」をご覧ください。
 
 ### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>どの価格レベルで再起動機能を使用できますか。
-再起動は Premium 価格レベルでのみ使用できます。
+再起動はすべての価格レベルで使用可能です。
 
 ## <a name="schedule-updates"></a>更新のスケジュール
-**[更新のスケジュール]** ブレードでは、キャッシュのメンテナンス時間を指定できます。 メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。 
+**[更新のスケジュール]** ブレードでは、Premium レベルのキャッシュのメンテナンス時間を指定できます。 メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。 
 
 > [!NOTE] 
 > このメンテナンス時間は、Redis サーバーの更新にのみ適用されます。Azure の更新や、キャッシュをホストする VM のオペレーティング システムへの更新には適用されません。

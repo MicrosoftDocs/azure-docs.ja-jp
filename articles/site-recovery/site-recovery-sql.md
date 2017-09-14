@@ -12,19 +12,18 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/11/2017
 ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 49bac93758cb35dc1aa39c0aaf58f239d9667e77
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a1e5461ef2188a42a3edd6cc35827874ddd6e3f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server 障害復旧および Azure Site Recovery を使用した SQL Server の保護
+# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護
 
-この記事では、SQL Server のビジネス継続性と障害復旧 (BCDR) テクノロジおよび [Azure Site Recovery](site-recovery-overview.md) の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。
+この記事では、SQL Server のビジネス継続性とディザスター リカバリー (BCDR) テクノロジおよび[Azure Site Recovery](site-recovery-overview.md) の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。
 
 開始する前に、フェールオーバー クラスタリング、Always On 可用性グループ、データベース ミラーリング、ログ配布など、SQL Server 障害復旧機能についてよく理解してください。
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 05/08/2017
 * **SQL Server フェールオーバー クラスタリング インスタンス (Always On FCI)**: Windows フェールオーバー クラスターに、共有ディスクが使用された SQL Server インスタンスを実行する複数のノードを構成します。 ノードが停止した場合、クラスターは SQL Server を別のインスタンスにフェールオーバーできます。 通常、この設定はプライマリ サイトに高可用性を実装するために使用されます。 このデプロイメントでは、共有ストレージ層の障害や停止は保護されません。 共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。
 * **SQL Always ON 可用性グループ**: 複数のノードをシェアード ナッシング クラスターに設定します。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成します。
 
- この記事では、次に示すネイティブの SQL 障害復旧テクノロジを活用して、データベースを リモート サイトに復旧します。
+ この記事では、次に示すネイティブの SQL ディザスター リカバリー テクノロジを活用して、データベースを リモート サイトに復旧します。
 
 * SQL Always On 可用性グループ: SQL Server 2012 または 2014 Enterprise の各エディションの障害復旧を提供します。
 * 高い安全性モードでの SQL Database ミラーリング: SQL Server Standard エディション (全バージョン) または SQL Server 2008 R2 用です。
@@ -56,17 +55,18 @@ Site Recovery は、次の表のように SQL Server を保護できます。
 ### <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 これらの SQL Server バージョンは、サポートされるシナリオに対応しています。
 
+* SQL Server 2016 Enterprise および Standard
 * SQL Server 2014 Enterprise および Standard
 * SQL Server 2012 Enterprise および Standard
 * SQL Server 2008 R2 Enterprise および Standard
 
 ### <a name="supported-sql-server-integration"></a>サポートされる SQL Server の統合
 
-Site Recovery は、次の表に要約したネイティブの SQL Server の BCDR テクノロジと統合して、障害復旧ソリューションを提供できます。
+Site Recovery は、次の表に要約したネイティブの SQL Server の BCDR テクノロジと統合して、ディザスター リカバリー ソリューションを提供できます。
 
 **機能** | **詳細** | **SQL Server** |
 --- | --- | ---
-**Always On 可用性グループ** | SQL Server の複数のスタンドアロン インスタンスであり、複数のノードを持つフェールオーバー クラスターでそれぞれが実行されます。<br/><br/>データベースは、SQL Server インスタンス上でコピー (ミラー化) が可能なフェールオーバー グループにグループ化できるため、共有記憶域は必要ありません<br/><br/>プライマリ サイトと 1 つまたは複数のセカンダリ サイトの間で障害復旧を実現します。 2 つのノードをシェアード ナッシング クラスターに設定できます。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成しておきます。 | SQL Server 2014 および 2012 Enterprise エディション
+**Always On 可用性グループ** | SQL Server の複数のスタンドアロン インスタンスであり、複数のノードを持つフェールオーバー クラスターでそれぞれが実行されます。<br/><br/>データベースは、SQL Server インスタンス上でコピー (ミラー化) が可能なフェールオーバー グループにグループ化できるため、共有記憶域は必要ありません<br/><br/>プライマリ サイトと 1 つまたは複数のセカンダリ サイトの間でディザスター リカバリーを実現します。 2 つのノードをシェアード ナッシング クラスターに設定できます。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成しておきます。 | SQL Server 2014 および 2012 Enterprise エディション
 **フェールオーバー クラスタリング (Always On FCI)** | SQL Server は、Windows フェールオーバー クラスタリングを利用して、オンプレミスの SQL Server ワークロードの高可用性を実現しています。<br/><br/>共有ディスクを備えた、SQL Server のインスタンスを実行しているノードは、フェールオーバー クラスター内に構成されます。 インスタンスがダウンした場合、クラスターは別のクラスターにフェールオーバーします。<br/><br/>クラスターは、共有ストレージのエラーまたは障害からは保護しません。 共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。 | SQL Server Enterprise エディション<br/><br/>SQL Server Standard エディション (2 つのノードのみに制限)
 **データベース ミラーリング (高い安全性モード)** | 1 つのセカンダリ コピーで 1 つのデータベースを保護します。 高い安全性 (同期) と高パフォーマンス (非同期) の両方のレプリケーション モードで使用できます。 フェールオーバー クラスターは必要はありません。 | SQL Server 2008 R2<br/><br/>SQL Server Enterprise のすべてのエディション
 **スタンドアロンの SQL Server** | SQL Server とデータベースは、単一のサーバー (物理または仮想) でホストされます。 サーバーが仮想である場合、ホスト クラスタリングが高可用性のために使用されます。 ゲストレベルの高可用性はありません。 | Enterprise または Standard エディション

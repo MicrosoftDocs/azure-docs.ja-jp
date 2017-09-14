@@ -10,19 +10,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: quick start manage, mvc
+ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/24/2017
+ms.topic: quickstart
+ms.date: 06/20/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 82c8a34fcccb6d19dc82110a6d95a80d748835f0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う
@@ -61,7 +60,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 特別な構成は必要ありません。
 
-## <a name="get-connection-information"></a>接続情報の取得
+## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
@@ -69,7 +68,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。
 
-   ![接続情報](./media/sql-database-connect-query-ssms/connection-information.png) 
+   ![接続情報](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。 
 
@@ -84,7 +83,7 @@ Visual Studio Code で言語モードを **[SQL]** に設定し、mssql コマ�
 
    ![SQL 言語モード](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>SQL Database 論理サーバーのデータベースに接続する
+## <a name="connect-to-your-database"></a>データベースに接続する
 
 Visual Studio Code を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
@@ -100,7 +99,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 4. プロンプトに従って、新しい接続プロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。 
 
-   | 設定       | 推奨値 | Description |
+   | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名] | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
    | **[データベース名]** | mySampleDatabase | 接続先のデータベースの名前です。 |
@@ -191,10 +190,5 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 ## <a name="next-steps"></a>次のステップ
 
 - SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
+- Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](https://msdn.microsoft.com/magazine/mt809115)を参照してください。
 

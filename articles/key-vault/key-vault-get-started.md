@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/24/2016
+ms.date: 07/19/2017
 ms.author: cabailey
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: c45695129c1795b44b933a6d60e2f21a98542f7d
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 73b4ae4b7baca434c6aed99a2e59a9102b0d96ed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure Key Vault の概要
@@ -172,7 +171,7 @@ Azure Active Directory にアプリケーションを登録するには:
 10. このページからクライアント ID 値をコピーします。この値は、資格情報コンテナーに権限を設定するために次の手順で使用します
 
 ## <a id="authorize"></a>キーまたはシークレットを使用してアプリケーションを承認する
-コンテナーのキーまたはシークレットへのアクセスをアプリケーションに承認するには、 [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) コマンドレットを使用します。
+コンテナーのキーまたはシークレットへのアクセスをアプリケーションに承認するには、[Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) コマンドレットを使用します。
 
 たとえば、資格情報コンテナー名が **ContosoKeyVault** で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
 

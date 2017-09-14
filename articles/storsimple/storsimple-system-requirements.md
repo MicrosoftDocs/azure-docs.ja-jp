@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/05/2017
+ms.date: 06/06/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: c3af0df0f2e5a0367bef8e12edaca4937db7e39f
-ms.openlocfilehash: 50bc63845bab1322090097dd0d5736e11642a95b
-ms.lasthandoff: 01/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 55e1cd90df0e4413ce027361c636257d823a50d6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="storsimple-software-high-availability-and-networking-requirements"></a>StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -36,7 +36,7 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 
 | サポートされているオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1、2012、2012R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
+| Windows Server |2008R2 SP1、2012、2012R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>サポートされるのは、オペレーティング システムにネイティブで存在するソフトウェア iSCSI イニシエーターだけです。 ハードウェア iSCSI イニシエーターはサポートされません。<br></br>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
 | VMWare ESX |5.5 および 6.0 |iSCSI クライアントとして VMWare vSphere でサポートされます。 VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 |
 | Linux RHEL/CentOS |5、6 および 7 |Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
 | Linux |SUSE Linux 11 | |
@@ -64,9 +64,9 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple Manager サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |In |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |In |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |In |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |イン |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |イン |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -92,7 +92,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 #### <a name="url-patterns-for-azure-portal"></a>Azure ポータルの URL パターン
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` |StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus |クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス |クラウド対応のネットワーク インターフェイス |
 | `https://*.backup.windowsazure.com` |デバイス登録 |DATA 0 のみ |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure ストレージ アカウントと監視 |クラウド対応のネットワーク インターフェイス |
@@ -103,7 +103,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 #### <a name="url-patterns-for-azure-government-portal"></a>Azure Government ポータルの URL パターン
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` |StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus |クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` <br>`https://login-us.microsoftonline.com` |StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス |クラウド対応のネットワーク インターフェイス |
 | `https://*.backup.windowsazure.us` |デバイス登録 |DATA 0 のみ |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure ストレージ アカウントと監視 |クラウド対応のネットワーク インターフェイス |
@@ -202,24 +202,24 @@ StorSimple デバイスには、冗長なホットスワップ型のコントロ
 * コントローラー モジュールで障害が発生した場合は、すぐに交換を要求します。
 * 故障したコントローラーは必ず、交換部品の取り付け準備ができてから取り外します。 長時間モジュールを取り外すと通気に影響し、その結果、システムの冷却に影響します。
 * 両方のコントローラー モジュールへのネットワーク接続が同じであり、接続したネットワーク インターフェイスのネットワーク構成が同じになっていることを確認します。
-* コントローラー モジュールの障害または交換が必要な場合は、障害状態にあるコントローラー モジュールを交換する前に、もう&1; つのコントローラー モジュールがアクティブ状態であることを確認します。 コントローラーがアクティブであることを確認するには、「 [デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
+* コントローラー モジュールの障害または交換が必要な場合は、障害状態にあるコントローラー モジュールを交換する前に、もう 1 つのコントローラー モジュールがアクティブ状態であることを確認します。 コントローラーがアクティブであることを確認するには、「 [デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
 * 両方のコントローラー モジュールを同時に取り外さないでください。 コントローラー フェールオーバーが進行中の場合、スタンバイ コントローラー モジュールをシャットダウンしたり、シャーシから取り外したりしないでください。
-* コントローラー フェールオーバー後、いずれかのコントローラー モジュールを取り外す前に少なくとも&5; 分待機します。
+* コントローラー フェールオーバー後、いずれかのコントローラー モジュールを取り外す前に少なくとも 5 分待機します。
 
 #### <a name="network-interfaces"></a>ネットワーク インターフェイス
 StorSimple デバイス コントローラー モジュールはそれぞれ、1 ギガ ビットのイーサネット ネットワーク インターフェイスを 4 つと、10 ギガビットのイーサネット ネットワーク インターフェイスを 2 つ備えています。
 
 * 両方のコントローラー モジュールへのネットワーク接続が同じであり、コントローラー モジュール インターフェイスが接続されているネットワーク インターフェイスのネットワーク構成が同じになっていることを確認します。
 * ネットワーク デバイスで障害が発生した場合にサービスの可用性を確保できるようにするには、ネットワーク接続をそれぞれ異なる複数のスイッチでデプロイします。
-* 唯一のまたは最後に残った iSCSI 対応インターフェイス (IP アドレスが割り当てられた) のプラグを抜く場合は、そのインターフェイスをまず無効にしてから、ケーブルを外します。 先にインターフェイスのプラグを抜くと、アクティブ コントローラーはパッシブ コントローラーにフェール オーバーします。 パッシブ コントローラーの対応するインターフェイスもプラグが抜かれている場合は、両方のコントローラーが複数回再起動してから&1; つのコントローラーに落ち着きます。
-* 少なくとも&2; つのデータ インターフェイスを各コントローラー モジュールからネットワークに接続します。
+* 唯一のまたは最後に残った iSCSI 対応インターフェイス (IP アドレスが割り当てられた) のプラグを抜く場合は、そのインターフェイスをまず無効にしてから、ケーブルを外します。 先にインターフェイスのプラグを抜くと、アクティブ コントローラーはパッシブ コントローラーにフェール オーバーします。 パッシブ コントローラーの対応するインターフェイスもプラグが抜かれている場合は、両方のコントローラーが複数回再起動してから 1 つのコントローラーに落ち着きます。
+* 少なくとも 2 つのデータ インターフェイスを各コントローラー モジュールからネットワークに接続します。
 * 2 つの 10 GbE インターフェイスを有効にした場合は、これらをそれぞれ異なる複数のスイッチでデプロイします。
 * 可能であれば、サーバー上で MPIO を使用して、サーバーがリンク、ネットワーク、またはインターフェイスの障害に耐え得るようにします。
 
 高可用性および高パフォーマンスを実現するためのデバイスのネットワーク接続方法の詳細については、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)」を参照してください。
 
 #### <a name="ssds-and-hdds"></a>SSD と HDD
-StorSimple デバイスには、ミラー化されたスペースを使用して保護されているソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) が含まれています。 ミラー化されたスペースを使用すると、デバイスは&1; 台または複数台の SSD または HDD で障害が発生してもそれを許容できます。
+StorSimple デバイスには、ミラー化されたスペースを使用して保護されているソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) が含まれています。 ミラー化されたスペースを使用すると、デバイスは 1 台または複数台の SSD または HDD で障害が発生してもそれを許容できます。
 
 * すべての SSD と HDD モジュールが取り付けられていることを確認します。
 * SSD または HDD で障害が発生した場合は、すぐに交換を要求します。
@@ -230,11 +230,11 @@ StorSimple デバイスには、ミラー化されたスペースを使用して
 * システム エラーに備えて、保護する必要があるすべてのボリュームのクラウド スナップショットを構成することもお勧めします。
 
 #### <a name="ebod-enclosure"></a>EBOD エンクロージャ
-StorSimple デバイス モデル 8600 には、主エンクロージャに加えて、Extended Bunch of Disks (EBOD) エンクロージャが含まれています。 EBOD には、EBOD コントローラーと、ミラー化されたスペースを使用して保護されるハード ディスク ドライブ (HDD) が含まれます。 ミラー化されたスペースを使用すると、デバイスは&1; 台または複数台の HDD で障害が発生してもそれを許容できます。 EBOD エンクロージャは、冗長な SAS ケーブルを使用して、主エンクロージャに接続されます。
+StorSimple デバイス モデル 8600 には、主エンクロージャに加えて、Extended Bunch of Disks (EBOD) エンクロージャが含まれています。 EBOD には、EBOD コントローラーと、ミラー化されたスペースを使用して保護されるハード ディスク ドライブ (HDD) が含まれます。 ミラー化されたスペースを使用すると、デバイスは 1 台または複数台の HDD で障害が発生してもそれを許容できます。 EBOD エンクロージャは、冗長な SAS ケーブルを使用して、主エンクロージャに接続されます。
 
 * 両方の EBOD エンクロージャ コントローラー モジュール、両方の SAS ケーブル、およびすべてのハード ディスク ドライブは必ず常時取り付けておきます。
 * EBOD エンクロージャ コントローラー モジュールで障害が発生した場合は、すぐに交換を要求します。
-* EBOD エンクロージャ コントローラー モジュールで故障が発生した場合は、該当するモジュールを交換する前に、もう&1; つのコントローラー モジュールがアクティブ状態であることを確認します。 コントローラーがアクティブであることを確認するには、「 [デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
+* EBOD エンクロージャ コントローラー モジュールで故障が発生した場合は、該当するモジュールを交換する前に、もう 1 つのコントローラー モジュールがアクティブ状態であることを確認します。 コントローラーがアクティブであることを確認するには、「 [デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
 * EBOD コントローラー モジュールの交換中に、**[メンテナンス]** > **[ハードウェアの状態]** にアクセスして、StorSimple Manager サービスのコンポーネントの状態を継続して監視します。
 * SAS ケーブルの障害または交換が必要な場合 (Microsoft サポートはこのような判断にかかわる必要があります)、交換が必要な SAS ケーブルのみを取り外すようにします。
 * どの時点でも両方の SAS ケーブルをシステムから同時に取り外さないでください。

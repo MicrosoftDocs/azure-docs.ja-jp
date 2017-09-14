@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 759631bca9b29134098dba55ef07513d0ee42549
+ms.reviewer: japere
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8b7327508633e33917d1fa9c1f35ed1bde5a26e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 05/26/2017
 
 -   Internet Explorer 8、9、10、11 - Windows 7 以降
 
+-   Edge - Windows 10 Anniversary Edition 以降 
+
 -   Chrome - Windows 7 以降、MacOS X 以降
 
 -   Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
-
-**注:** パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Edge でサポートされるようになると、Edge で使用できるようになります。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能をインストールする方法
 
@@ -60,11 +60,11 @@ ms.lasthandoff: 05/26/2017
 
 7.  アクセス パネルにサインインし、パスワード SSO アプリケーションを**起動**できるかどうかを確認します。
 
-以下のダイレクト リンクから、Chrome および Firefox 対応の拡張機能をダウンロードすることもできます。
+以下のダイレクト リンクから、Chrome および Edge 対応の拡張機能をダウンロードすることもできます。
 
 -   [Chrome アクセス パネル拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Firefox アクセス パネル拡張機能](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Edge アクセス パネル拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Internet Explorer のグループ ポリシーの設定
 

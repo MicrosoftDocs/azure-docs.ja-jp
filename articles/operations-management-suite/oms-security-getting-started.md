@@ -13,14 +13,13 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 07/18/2017
 ms.author: yurid
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 5753511d26c06f385fd4ff717d8592c321338172
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/17/2017
-
 
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションの概要
@@ -73,6 +72,8 @@ OMS のセキュリティと監査ダッシュボードは、次の 4 つの主�
 ![Security records over time](./media/oms-security-getting-started/oms-getting-started-fig2.JPG)
 
 このタイルをクリックすると、**[検索]** ブレードが開き、次のように過去 7 日間のデータを含む**セキュリティ イベント** (Type=SecurityEvents) のクエリ結果が表示されます。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Security records over time](./media/oms-security-getting-started/oms-getting-started-fig3.JPG)
 

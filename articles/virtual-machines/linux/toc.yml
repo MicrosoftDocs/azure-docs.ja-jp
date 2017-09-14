@@ -2,437 +2,429 @@
   href: index.yml
 - name: 概要
   items:
-  - name: 仮想マシンについて
-    href: overview.md
+    - name: 仮想マシンについて
+      href: overview.md
 - name: クイック スタート
   expanded: true
   items:
-  - name: VM の作成 - Azure CLI
-    href: quick-create-cli.md
-  - name: VM の作成 - ポータル
-    href: quick-create-portal.md
-  - name: VM の作成 - PowerShell
-    href: quick-create-powershell.md
+    - name: VM の作成 - Azure CLI
+      href: quick-create-cli.md
+    - name: VM の作成 - ポータル
+      href: quick-create-portal.md
+    - name: VM の作成 - PowerShell
+      href: quick-create-powershell.md
 - name: チュートリアル
   items:
-  - name: 1 - VM の作成/管理
-    href: tutorial-manage-vm.md
-  - name: 2 - ディスクの作成/管理
-    href: tutorial-manage-disks.md
-  - name: 3 - 構成の自動化
-    href: tutorial-automate-vm-deployment.md
-  - name: 4 - VM イメージの作成
-    href: tutorial-custom-images.md
-  - name: 5 - 高可用性 VM
-    href: tutorial-availability-sets.md
-  - name: 6 - VM スケール セットの作成
-    href: tutorial-create-vmss.md
-  - name: 7 - VM の負荷分散
-    href: tutorial-load-balancer.md
-  - name: 8 - ネットワークの管理
-    href: tutorial-virtual-network.md
-  - name: 9 - 仮想マシンのバックアップ
-    href: tutorial-backup-vms.md
-  - name: 10 - 仮想マシンの監視
-    href: tutorial-monitoring.md
-  - name: 11 - VM のセキュリティの管理
-    href: tutorial-azure-security.md
-  - name: 12 - Jenkins での CI/CD
-    href: tutorial-jenkins-github-docker-cicd.md
+    - name: 1 - VM の作成/管理
+      href: tutorial-manage-vm.md
+    - name: 2 - ディスクの作成/管理
+      href: tutorial-manage-disks.md
+    - name: 3 - 構成の自動化
+      href: tutorial-automate-vm-deployment.md
+    - name: 4 - VM イメージの作成
+      href: tutorial-custom-images.md
+    - name: 5 - 高可用性 VM
+      href: tutorial-availability-sets.md
+    - name: 6 - VM スケール セットの作成
+      href: tutorial-create-vmss.md
+    - name: 7 - VM の負荷分散
+      href: tutorial-load-balancer.md
+    - name: 8 - ネットワークの管理
+      href: tutorial-virtual-network.md
+    - name: 9 - 仮想マシンのバックアップ
+      href: tutorial-backup-vms.md
+    - name: 10 - 仮想マシンの監視
+      href: tutorial-monitoring.md
+    - name: 11 - VM のセキュリティの管理
+      href: tutorial-azure-security.md
+    - name: 12 - Jenkins のデプロイ
+      href: tutorial-jenkins-github-docker-cicd.md
+    - name: 13 - Team Services による CI/CD
+      href: tutorial-build-deploy-jenkins.md
+    - name: 14a - LAMP スタックの作成
+      href: tutorial-lamp-stack.md
+    - name: 14b - LEMP スタックの作成
+      href: tutorial-lemp-stack.md
+    - name: 14c - MEAN スタックの作成
+      href: tutorial-mean-stack.md
+    - name: 15 - SSL による Web サーバーのセキュリティ保護
+      href: tutorial-secure-web-server.md
 - name: サンプル
   items:
-  - name: Azure CLI
-    href: cli-samples.md
-  - name: PowerShell
-    href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
-  - name: Azure での動作保証済みディストリビューション
-    href: endorsed-distros.md
-  - name: リージョンと可用性
-    href: regions-and-availability.md
-  - name: ストレージ
-    href: azure-vm-storage-overview.md
-  - name: ネットワーク
-    href: azure-vm-network-overview.md
-  - name: VM スケール セット
-    href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-  - name: インスタンス メタデータ サービス
- 
-    href: ../virtual-machines-instancemetadataservice-overview.md
-  - name: コンテナー
-    href: containers.md
-  - name: リソース マネージャー
-    href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    items:
-    - name: デプロイ モデル
-      href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: VM 用のテンプレート
-      href: ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-  - name: Azure Linux エージェント
-    href: agent-user-guide.md
-  - name: '[Azure Security Center] (Azure Security Center)'
-    href: ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-  - name: ディザスター リカバリー
-    href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-  - name: Azure の計画メンテナンス
-    href: planned-maintenance.md
-    items:
-    - name: 保持メンテナンス
-      href: maintenance-in-place.md
-    - name: 再起動メンテナンス
-      href: impactful-maintenance.md
-  - name: VM サイズ
-    items:
-    - name: VM サイズの概要
-      href: sizes.md
-      items:
-      - name: 汎用
-        href: sizes-general.md
-      - name: コンピューティング最適化
-        href: sizes-compute.md
-      - name: メモリ最適化
-        href: sizes-memory.md
-      - name: ストレージ最適化
-        href: sizes-storage.md
-      - name: GPU
-        href: sizes-gpu.md
-      - name: ハイ パフォーマンス コンピューティング
-        href: sizes-hpc.md
-        items:
-        - name: コンピューティング集中型サイズ
-          href: a8-a9-a10-a11-specs.md
-    - name: Azure コンピューティング ユニット (ACU)
-      href: acu.md
-    - name: コンピューティング ベンチマーク スコア
-      href: compute-benchmark-scores.md
-  - name: デプロイに関する考慮事項
-    items:
-    - name: インフラストラクチャのガイドライン
-      href: infrastructure-virtual-machine-guidelines.md
-    - name: サブスクリプションとアカウント
-      href: infrastructure-subscription-accounts-guidelines.md
-    - name: 名前を付ける
-      href: infrastructure-naming-guidelines.md
-    - name: リソース グループ
-      href: infrastructure-resource-groups-guidelines.md
+    - name: Azure での動作保証済みディストリビューション
+      href: endorsed-distros.md
+    - name: リージョンと可用性
+      href: regions-and-availability.md
     - name: ストレージ
-      href: infrastructure-storage-solutions-guidelines.md
+      href: azure-vm-storage-overview.md
     - name: ネットワーク
-      href: infrastructure-networking-guidelines.md
-    - name: 可用性セット
-      href: infrastructure-availability-sets-guidelines.md
-    - name: インフラストラクチャの例
-      href: infrastructure-example.md
+      href: azure-vm-network-overview.md
+    - name: VM スケール セット
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
+    - name: コンテナー
+      href: containers.md
+    - name: リソース マネージャー
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+        - name: デプロイ モデル
+          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: VM 用のテンプレート
+          href: ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Azure Linux エージェント
+      href: agent-user-guide.md
+    - name: '[Azure Security Center] (Azure Security Center)'
+      href: ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: ディザスター リカバリー
+      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Azure の計画メンテナンス
+      href: planned-maintenance.md
+    - name: VM サイズ
+      items:
+        - name: VM サイズの概要
+          href: sizes.md
+          items:
+            - name: 汎用
+              href: sizes-general.md
+            - name: コンピューティング最適化
+              href: sizes-compute.md
+            - name: メモリ最適化
+              href: sizes-memory.md
+            - name: ストレージ最適化
+              href: sizes-storage.md
+            - name: GPU
+              href: sizes-gpu.md
+              items:
+                - name: GPU ドライバー
+                  href: n-series-driver-setup.md
+            - name: ハイ パフォーマンス コンピューティング
+              href: sizes-hpc.md
+        - name: Azure コンピューティング ユニット (ACU)
+          href: acu.md
+        - name: コンピューティング ベンチマーク スコア
+          href: compute-benchmark-scores.md
+    - name: デプロイに関する考慮事項
+      items:
+        - name: 基本的なデプロイの例
+          href: infrastructure-example.md
 - name: ハウツー ガイド
   items:
-  - name: VM の作成
-    items:
-    - name: VM の作成の概要
-      href: creation-choices.md
-    - name: CLI を使用した VM の作成
-      href: quick-create-cli-nodejs.md
-    - name: テンプレートを使用した VM の作成
-      href: create-ssh-secured-vm-from-template.md
-    - name: VM をコピーする
-      href: copy-vm.md
-    - name: サブスクリプション間で VM を移動する
-      href: move-vm.md
-    - name: 高可用性 VM の作成
-      href: create-cli-complete.md
-    - name: Terraform
+    - name: VM の作成
       items:
-      - name: インストールと構成
-        href: ../terraform-install-configure.md
-      - name: 基本的なインフラストラクチャの作成
-        href: ../terraform-create-complete-vm.md
-    - name: Ansible
+        - name: CLI の使用
+          href: create-cli-complete.md
+        - name: テンプレートの使用
+          href: create-ssh-secured-vm-from-template.md
+        - name: VM のコピーまたは複製
+          href: copy-vm.md
+    - name: VM のセキュリティ保護
       items:
-      - name: インストールと構成
-        href: ansible-install-configure.md
-      - name: 基本的な VM の作成
-        href: ansible-create-vm.md
-      - name: 完全な VM の作成
-        href: ansible-create-complete-vm.md
-    - name: VM テンプレートを使用したアプリのデプロイ
+        - name: 暗号化
+          href: encrypt-disks.md
+        - name: アクセス制御の使用
+          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: ポリシーの使用
+          href: policy.md
+        - name: Key Vault の作成
+          href: key-vault-setup.md
+        - name: SSH キーの作成と使用
+          items:
+            - name: Linux または macOS の場合
+              href: mac-create-ssh-keys.md
+            - name: Windows の場合
+              href: ssh-from-windows.md
+            - name: 詳細な手順
+              href: create-ssh-keys-detailed.md
+    - name: VM の管理
       items:
-      - name: チュートリアルの概要
-        href: dotnet-core-1-landing.md
-      - name: アプリのアーキテクチャ
-        href: dotnet-core-2-architecture.md
-      - name: アクセスとセキュリティ
-        href: dotnet-core-3-access-security.md
-      - name: 可用性とスケール
-        href: dotnet-core-4-availability-scale.md
-      - name: アプリのデプロイ
-        href: dotnet-core-5-app-deployment.md
-  - name: VM の構成
-    items:
-    - name: cloud-init を使用する
-      href: using-cloud-init.md
-    - name: ユーザーを VM に追加する
-      href: add-user.md
-    - name: VM のサイズを変更する
-      href: change-vm-size.md
-    - name: タグを使用する
-      href: ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 一般的な CLI タスク
+          href: cli-manage.md
+        - name: VM の移動
+          href: move-vm.md
+        - name: VM サイズの変更
+          href: change-vm-size.md
+        - name: VM にタグを付ける
+          href: tag.md
+        - name: cloud-init を使用する
+          href: using-cloud-init.md
+        - name: VM でのスクリプトの実行
+          href: extensions-customscript.md
+        - name: リモート デスクトップを使用する
+          href: use-remote-desktop.md
+        - name: VM を Azure Active Directory に参加させる
+          href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+        - name: 更新プログラムとパッチ
+          items:
+            - name: Red Hat Update Infrastructure
+              href: update-infrastructure-redhat.md
+        - name: Azure VM エージェント
+          items:
+            - name: 概要
+              href: agent-user-guide.md
+            - name: エージェントの更新
+              href: update-agent.md
+        - name: スケジュールされたイベント
+          href: scheduled-events.md
+        - name: メタデータの監視
+          href: instance-metadata-service.md
+    - name: イメージの使用
       items:
-      - name: VM にタグを付ける
-        href: tag.md
-    - name: Linux VM を最適化する
-      href: optimization.md
-    - name: Azure Linux エージェントを更新する
-      href: update-agent.md
-    - name: Recovery Services を使用してバックアップする
-      href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Red Hat VM を Azure Active Directory Domain Services に参加させる
-      href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
-  - name: SSH を使用した接続
-    items:
-    - name: Linux および Mac で SSH キーを作成する
-      href: mac-create-ssh-keys.md
+        - name: イメージを検索および使用する
+          href: cli-ps-findimage.md
+        - name: カスタム イメージを作成する
+          items:
+            - name: 一般的な手順
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: VM をイメージにキャプチャする
+          href: capture-image.md
+        - name: Packer でイメージを作成する
+          href: build-image-with-packer.md
+        - name: 既存のディスクをダウンロードする
+          href: download-vhd.md
+    - name: 可用性とスケール
       items:
-      - name: 詳細な手順
-        href: create-ssh-keys-detailed.md
-    - name: Windows での SSH キーを使用した Linux VM への接続
-      href: ssh-from-windows.md
-    - name: リモート デスクトップを使用した Linux VM への接続
-      href: use-remote-desktop.md
-  - name: VM イメージの管理
-    items:
-    - name: Marketplace VM イメージを検索する
-      href: cli-ps-findimage.md
-    - name: カスタム VM イメージを作成する
-      href: create-upload-generic.md
-    - name: カスタム VM イメージをアップロードする
-      href: upload-vhd.md
-    - name: 既存の VM をイメージにキャプチャする
-      href: capture-image.md
-    - name: Packer でイメージを作成する
-      href: build-image-with-packer.md
-    - name: Azure のイメージを作成する
+        - name: 自動スケール
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 高可用性
+          href: manage-availability.md
+        - name: 垂直方向にスケーリングする
+          href: vertical-scaling-automation.md
+    - name: 自動化ツールの使用
       items:
-      - name: Ubuntu
-        href: create-upload-ubuntu.md
-      - name: Debian
-        href: debian-create-upload-vhd.md
-      - name: Red Hat
-        href: redhat-create-upload-vhd.md
-      - name: CentOS
-        href: create-upload-centos.md
-      - name: Oracle Linux
-        href: oracle-create-upload-vhd.md
-      - name: OpenBSD
-        href: create-upload-openbsd.md
-  - name: VM ストレージの管理
-    items:
-    - name: Azure Managed Disks
-      href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Ansible
+          items:
+            - name: インストールと構成
+              href: ansible-install-configure.md
+            - name: 基本的な VM の作成
+              href: ansible-create-vm.md
+            - name: 完全な VM の作成
+              href: ansible-create-complete-vm.md
+        - name: Terraform
+          items:
+            - name: インストールと構成
+              href: terraform-install-configure.md
+            - name: 完全な VM の作成
+              href: terraform-create-complete-vm.md
+    - name: コンテナーの実行
       items:
-      - name: FAQ
-        href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: ファイルを Linux VM にコピーする
-      href: copy-files-to-linux-vm-using-scp.md
-    - name: VM を管理ディスクに変換する
-      href: convert-unmanaged-to-managed-disks.md
-    - name: 管理ディスクのスナップショットを作成する
-      href: snapshot-copy-managed-disk.md
-    - name: ディスクを追加する
+        - name: Docker ホストの作成
+          href: dockerextension.md
+        - name: Docker マシンの使用
+          href: docker-machine.md
+        - name: Docker Compose の使用
+          href: docker-compose-quickstart.md
+    - name: アプリケーションの実行
       items:
-      - name: Azure CLI
-        href: add-disk.md
-      - name: Azure ポータル
-        href: attach-disk-portal.md
-    - name: ディスクを取り外す
-      href: detach-disk.md
-    - name: OS ディスクを拡張する
-      href: expand-disks.md
-    - name: ソフトウェア RAID を構成する
-      href: configure-raid.md
-    - name: LVM を構成する
-      href: configure-lvm.md
-    - name: SMB を使用して Azure File Storage をマウントする
-      href: mount-azure-file-storage-on-linux-using-smb.md
-  - name: VM ネットワーク
-    items:
-    - name: 仮想ネットワークを作成する
-      href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: 既存の仮想ネットワークに VM をデプロイする
+        - name: Cloud Foundry
+          items:
+            - name: 概要
+              href: cloudfoundry-get-started.md
+            - name: 初めてのアプリのデプロイ
+              href: cloudfoundry-deploy-your-first-app.md
+        - name: OpenShift
+          href: openshift-get-started.md
+        - name: SAP on Azure
+          href: ../workloads/sap/get-started.md
+        - name: Oracle
+          href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: FreeBSD のパケット フィルター
+          href: freebsd-pf-nat.md
+        - name: データベース
+          items:
+            - name: MySQL
+              href: mysql-install.md
+            - name: MongoDB
+              href: install-mongodb.md
+            - name: PostgreSQL
+              href: postgresql-install.md
+            - name: Linux 上の MS SQL
+              href: /sql/linux/sql-server-linux-azure-virtual-machine
+        - name: ハイ パフォーマンス コンピューティング (HPC)
+          href: hpcpack-cluster-options.md
+          items:
+            - name: NAMD の実行
+              href: classic/hpcpack-cluster-namd.md
+            - name: NVIDIA GPU ドライバーのインストール
+              href: n-series-driver-setup.md
+    - name: ストレージの管理
       items:
-      - name: Azure CLI
-        href: deploy-linux-vm-into-existing-vnet-using-cli.md
-      - name: Azure ポータル
-        href: deploy-linux-vm-into-existing-vnet-using-portal.md
-    - name: 複数 NIC を持つ VM の作成
-      href: multiple-nics.md
-    - name: 静的パブリック IP を作成する
-      href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: ポート、エンドポイント、セキュリティを構成する
-      href: endpoints-in-resource-manager.md
-    - name: VM へのアクセスを許可する
-      href: nsg-quickstart.md
-    - name: FreeBSD のパケット フィルターを使用する
-      href: freebsd-pf-nat.md
-    - name: DNS 名前解決のオプション
-      href: azure-dns.md
-    - name: VM の名前解決に内部 DNS を使用する
-      href: static-dns-name-resolution-for-linux-on-azure.md
-    - name: FQDN を作成する
-      href: portal-create-fqdn.md
-    - name: ユーザー定義ルートを作成する
-      href: ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-  - name: スケールと可用性
-    items:
-    - name: VM の可用性
-      href: manage-availability.md
-    - name: ロード バランサーの作成
-      href: ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: スケール セットを使用した複数の VM の作成
-      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Azure Automation で VM を垂直方向にスケール調整する
-      href: vertical-scaling-automation.md
-    - name: VM の監視
-      href: vm-monitoring.md
-  - name: VM のセキュリティの管理
-    items:
-    - name: SSHD の構成による SSH パスワードの無効化
-      href: mac-disable-ssh-password-usage.md
-    - name: SSH アクセスのリセット、ユーザーの管理、ディスクのチェックを実行する
-      href: using-vmaccess-extension.md
-    - name: root 権限の使用
-      href: use-root-privileges.md
-    - name: VM ディスクの暗号化
-      href: encrypt-disks.md
-    - name: VM へのポリシーの適用
-      href: policy.md
-    - name: Key Vault の設定
-      href: key-vault-setup.md
-  - name: VM 拡張機能の使用
-    items:
-    - name: VM 拡張機能の概要
-      href: extensions-features.md
-    - name: カスタム スクリプト拡張機能
-      href: extensions-customscript.md
-    - name: OMS エージェント拡張機能
-      href: extensions-oms.md
-    - name: Linux Diagnostic Extension
-      href: diagnostic-extension.md
-  - name: アプリケーションの実行
-    items:
-    - name: Cloud Foundry
+        - name: Managed Disks について
+          href: managed-disks-overview.md
+        - name: ディスクに関する FAQ
+          href: faq-for-disks.md
+        - name: ディスクを追加する
+          items:
+            - name: Azure CLI
+              href: add-disk.md
+            - name: Azure Portal
+              href: attach-disk-portal.md
+        - name: ディスクを取り外す
+          href: detach-disk.md
+        - name: ディスクのサイズの変更
+          href: expand-disks.md
+        - name: ディスクのスナップショットの作成
+          href: snapshot-copy-managed-disk.md
+        - name: 非管理対象ディスクのバックアップ
+          href: incremental-snapshots.md
+        - name: 管理ディスクに変換する
+          href: convert-unmanaged-to-managed-disks.md
+        - name: Standard と Premium 間でディスクを変換する
+          href: convert-disk-storage.md
+        - name: ファイルを VM にコピーする
+          href: copy-files-to-linux-vm-using-scp.md
+        - name: File Storage を使用する
+          href: mount-azure-file-storage-on-linux-using-smb.md
+        - name: テンプレートによるディスクのデプロイ
+          href: using-managed-disks-template-deployments.md
+        - name: パフォーマンスを最適化する
+          href: optimization.md
+          items:
+            - name: ソフトウェア RAID を構成する
+              href: configure-raid.md
+            - name: LVM を構成する
+              href: configure-lvm.md
+    - name: ネットワークの管理
       items:
-      - name: 概要
-        href: cloudfoundry-get-started.md
-      - name: 初めてのアプリのデプロイ
-        href: cloudfoundry-deploy-your-first-app.md
-    - name: Data Science VM の概要
-      href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: MongoDB
-      href: install-mongodb.md
-    - name: MySQL
-      href: mysql-install.md
-    - name: PostgreSQL
-      href: postgresql-install.md
-    - name: LAMP スタックのデプロイ
-      href: create-lamp-stack.md
-    - name: 3 ノード Deis クラスターのデプロイ
-      href: deis-cluster.md
-    - name: Node.js アプリケーションのデプロイ
-      href: ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Django Web アプリ
-      href: python-django-web-app.md
-    - name: Jupyter Notebook
-      href: jupyter-notebook.md
-    - name: テンプレートからアプリケーション フレームワークをデプロイする
-      href: app-frameworks.md
-    - name: ハイ パフォーマンス コンピューティング (HPC)
-      href: hpcpack-cluster-options.md
+        - name: Create virtual network
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: VM へのポートを開く
+          href: nsg-quickstart.md
+        - name: パブリック IP アドレスの割り当て
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 複数の NIC の使用
+          href: multiple-nics.md
+        - name: パブリック DNS 名の割り当て
+          href: portal-create-fqdn.md
+        - name: DNS の解決
+          href: azure-dns.md
+          items:
+            - name: 内部 DNS の使用
+              href: static-dns-name-resolution-for-linux-on-azure.md
+    - name: VM 拡張機能の使用
       items:
-      - name: Microsoft HPC Pack を使用した NAMD の実行
-        href: classic/hpcpack-cluster-namd.md
-    - name: SAP on Azure
-      href: ../workloads/sap/get-started.md
-  - name: VM 上の Docker
-    items:
-    - name: Azure Docker VM 拡張機能で Docker ホストを作成する
-      href: dockerextension.md
-    - name: Azure で Docker マシンを使用する
-      href: docker-machine.md
-    - name: Azure で Docker Compose を使用する
-      href: docker-compose-quickstart.md
-  - name: VM の移行
-    items:
-    - name: 移行の概要
-      href: migration-classic-resource-manager-overview.md
-    - name: 移行の詳細
-      href: migration-classic-resource-manager-deep-dive.md
-    - name: 移行の計画
-      href: migration-classic-resource-manager-plan.md
-    - name: CLI を使用して移行する
-      href: migration-classic-resource-manager-cli.md
-    - name: 移行の一般的なエラー
-      href: migration-classic-resource-manager-errors.md
-    - name: 移行用のコミュニティ ツール
-      href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: FAQ
-      href: migration-classic-resource-manager-faq.md
-  - name: トラブルシューティング
-    items:
-    - name: システムの再起動を理解する
-      href: understand-vm-reboot.md
-    - name: SSH 接続
-      href: troubleshoot-ssh-connection.md
+        - name: VM 拡張機能の概要
+          href: extensions-features.md
+        - name: カスタム スクリプト拡張機能
+          href: extensions-customscript.md
+        - name: OMS エージェント拡張機能
+          href: extensions-oms.md
+        - name: Linux Diagnostic Extension
+          href: diagnostic-extension.md
+        - name: Network Watcher Agent
+          href: extensions-nwa.md
+        - name: VMAccess 拡張機能
+          href: using-vmaccess-extension.md
+    - name: VM の移行
       items:
-      - name: 詳細なトラブルシューティングの手順
-        href: detailed-troubleshoot-ssh-connection.md
-    - name: ブート診断
- 
-      href: boot-diagnostics.md
-    - name: アプリケーションへのアクセス
-      href: troubleshoot-app-connection.md
-    - name: 割り当ての失敗
-      href: allocation-failure.md
-    - name: デプロイの問題
-      href: troubleshoot-deployment-new-vm.md
-    - name: 新しい Azure ノードへの VM の再デプロイ
-      href: redeploy-to-new-node.md
-    - name: 一般的なエラー メッセージ
-      href: error-messages.md
-    - name: トラブルシューティングのための仮想ハード ディスクの接続
+        - name: AWS とオンプレミスの VM を移行する
+          href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          items:
+            - name: アマゾン ウェブ サービス (AWS) から Azure に移行する
+              href: ../windows/aws-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: オンプレミスの VM をアップロードする
+              href: upload-vhd.md
+            - name: Azure Site Recovery を使用する
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: クラシックから Azure Resource Manager に移行する
+          href: migration-classic-resource-manager-overview.md
+          items:
+            - name: 移行の詳細
+              href: migration-classic-resource-manager-deep-dive.md
+            - name: 移行の計画
+              href: migration-classic-resource-manager-plan.md
+            - name: CLI を使用して移行する
+              href: migration-classic-resource-manager-cli.md
+            - name: 移行の一般的なエラー
+              href: migration-classic-resource-manager-errors.md
+            - name: 移行用のコミュニティ ツール
+              href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: FAQ
+              href: migration-classic-resource-manager-faq.md
+    - name: トラブルシューティング
       items:
-      - name: Azure CLI
-        href: troubleshoot-recovery-disks.md
-      - name: Azure ポータル
-        href: troubleshoot-recovery-disks-portal.md
+        - name: SSH 接続
+          href: troubleshoot-ssh-connection.md
+          items:
+            - name: 詳細なトラブルシューティングの手順
+              href: detailed-troubleshoot-ssh-connection.md
+        - name: Linux VM のパスワードをリセットする
+          href: reset-password.md
+        - name: システムの再起動について
+          href: understand-vm-reboot.md
+        - name: ブート診断
+          href: boot-diagnostics.md
+        - name: アプリケーションへのアクセス
+          href: troubleshoot-app-connection.md
+        - name: 割り当ての失敗
+          href: allocation-failure.md
+        - name: デプロイの問題
+          href: troubleshoot-deploy-vm.md
+        - name: VM の作成
+          href: troubleshoot-deployment-new-vm.md
+        - name: デバイス名が変更されている
+          href: troubleshoot-device-names-problems.md
+        - name: 新しい Azure ノードへの VM の再デプロイ
+          href: redeploy-to-new-node.md
+        - name: 一般的なエラー メッセージ
+          href: error-messages.md
+        - name: VM の復旧方法
+          items:
+            - name: Azure CLI
+              href: troubleshoot-recovery-disks.md
+            - name: Azure Portal
+              href: troubleshoot-recovery-disks-portal.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/vm
-  - name: PowerShell
-    href: /powershell/azureps-cmdlets-docs
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.compute
-  - name: Java
-    href: /java/api
-  - name: Node.js
-    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
-  - name: Python
-    href: https://azure.microsoft.com/develop/python/
-  - name: REST ()
-    href: /rest/api/compute
+    - name: Azure CLI
+      href: /cli/azure/vm
+    - name: PowerShell
+      href: /powershell/azureps-cmdlets-docs
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.compute
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST ()
+      href: /rest/api/compute
 - name: リソース
   items:
-  - name: テンプレートの作成
-    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-  - name: コミュニティ テンプレート
-    href: https://azure.microsoft.com/documentation/templates
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/#Linux
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
-  - name: FAQ
-    href: faq.md
+    - name: テンプレートの作成
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
+    - name: FAQ
+      href: faq.md

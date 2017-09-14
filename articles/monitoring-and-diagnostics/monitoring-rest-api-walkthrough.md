@@ -2,7 +2,7 @@
 title: "Azure 監視 REST API のチュートリアル | Microsoft Docs"
 description: "要求を認証し、Azure 監視 REST API を使用する方法。"
 author: mcollier
-manager: carolz
+manager: 
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fcf9cc661da0d8e65b385bfddeded0a3e5d0d3e2
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 454a85c4752ec9c7522ef147d5ce594ef5992c32
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
@@ -70,7 +69,7 @@ $subscription = Get-AzureRmSubscription -SubscriptionId $subscriptionId
 
 $clientId = $azureAdApplication.ApplicationId.Guid
 $tenantId = $subscription.TenantId
-$authUrl = "https://login.windows.net/${tenantId}"
+$authUrl = "https://login.microsoftonline.com/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)

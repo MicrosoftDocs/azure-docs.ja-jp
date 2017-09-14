@@ -4,7 +4,7 @@ description: "このトピックでは、Elemental Live エンコーダーを構
 services: media-services
 documentationcenter: 
 author: cenkdin
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 9c6bf6a9-6273-4fdd-9477-f0e565280b5b
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>Elemental Live エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -43,7 +43,7 @@ ms.lasthandoff: 01/11/2017
 
 ## <a name="tips"></a>ヒント
 * 可能な限り、有線のインターネット接続を使用します。
-* 帯域幅要件の目安は、ストリーミングのビットレートの&2; 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
+* 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="elemental-live-with-rtp-ingest"></a>RTP インジェストを使用する Elemental Live
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/11/2017
 >
 >
 
-### <a name="a-idconfigureelementalrtpaconfigure-the-elemental-live-encoder"></a><a id=configure_elemental_rtp></a>Elemental Live エンコーダーを構成する
+### <a id=configure_elemental_rtp></a>Elemental Live エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:

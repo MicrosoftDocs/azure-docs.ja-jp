@@ -2,7 +2,7 @@
 title: "Azure アクティビティ ログの概要 | Microsoft Docs"
 description: "Azure アクティビティ ログの概要と、Azure アクティビティ ログを使用して Azure サブスクリプション内で発生するイベントを理解する方法について説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,24 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 08/02/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: c123b76b0e4c95cfebcc79063fb1c3a27efc8646
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 8ff9f73fc0732cd2227b7e0cc1091e04d69014eb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
-# <a name="overview-of-the-azure-activity-log"></a>Azure アクティビティ ログの概要
-**Azure アクティビティ ログ** では、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
+# <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
+**Azure アクティビティ ログ**は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 管理者のカテゴリではサブスクリプションのコントロール プレーン イベントが報告されるため、アクティビティ ログは以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
 
 ![アクティビティ ログとその他の種類のログ ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
 
 図 1: アクティビティ ログとその他の種類のログ
 
-アクティビティ ログは[診断ログ](monitoring-overview-of-diagnostic-logs.md)とは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します。
+アクティビティ ログは[診断ログ](monitoring-overview-of-diagnostic-logs.md)とは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("コントロール プレーン")。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("データ プレーン")。
 
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
@@ -44,37 +43,72 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 > 
 >
 
+## <a name="categories-in-the-activity-log"></a>アクティビティ ログのカテゴリ
+アクティビティ ログには、複数のカテゴリのデータが含まれています。 各カテゴリのスキーマの詳細については、[こちらの記事を参照してください](monitoring-activity-log-schema.md)。 チェックの内容は次のとおりです
+* **管理** - このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、およびアクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
+* **サービス正常性** - このカテゴリには、Azure で発生した任意のサービス正常性インシデントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"SQL Azure in East US is experiencing downtime" (米国東部の SQL Azure でダウンタイムが発生しています) などがあります。 サービス正常性イベントには、要対応、支援復旧、インシデント、メンテナンス、情報、またはセキュリティという 6 種類があります。イベントの影響を受けるリソースがサブスクリプションにある場合、1 つのイベントのみが表示されます。
+* **アラート** - このカテゴリには、Azure アラートの全アクティビティのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
+* **自動スケール** - このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
+* **推奨** - このカテゴリには、Web サイト、SQL サーバーなど、特定のリソースの種類で発生した推奨イベントが含まれます。 推奨イベントは、リソースをより有効に利用する方法について推奨情報を提供します。 推奨情報を発行するリソースがある場合にのみ、この種類のイベントを受け取ります。
+* **ポリシー、セキュリティ、およびリソース正常性** - これらのカテゴリにはイベントが含まれていません。将来的に使用するために予約されています。
+
+## <a name="event-schema-per-category"></a>カテゴリごとのイベント スキーマ
+[カテゴリごとのアクティビティ ログ イベント スキーマの詳細については、この記事を参照してください。](monitoring-activity-log-schema.md)
+
 ## <a name="what-you-can-do-with-the-activity-log"></a>アクティビティ ログで実行できること
 アクティビティ ログでは次のことを実行できます。
 
 ![Azure アクティビティ ログ](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
 
-* [アクティビティ ログ イベントをトリガーするアラートを作成する。](monitoring-activity-log-alerts.md)
+* **Azure Portal** でアクティビティ ログを照会して表示する。
+* [アクティビティ ログ イベントに対するアラートを設定する](monitoring-activity-log-alerts.md)
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、アクティビティ ログを [**Event Hubs** にストリーミング](monitoring-stream-activity-logs-event-hubs.md)する。
 * [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
 * [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する。](monitoring-archive-activity-log.md) **ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
-* **Azure ポータル**でアクティビティ ログを照会して表示する。
 * PowerShell コマンドレット、CLI、または REST API を使用してアクティビティ ログを照会する。
 
+## <a name="query-the-activity-log-in-the-azure-portal"></a>Azure Portal でアクティビティ ログに対してクエリを実行する
+Azure Portal のさまざまな場所でアクティビティ ログを表示できます。
+* **[アクティビティ ログ] ブレード**。左側のナビゲーション ウィンドウの [その他のサービス] で [アクティビティ ログ] を検索してアクセスすることができます。
+* **[監視] ブレード**。左側のナビゲーション ウィンドウに既定で表示されます。 アクティビティ ログはこの Azure Monitor ブレードのセクションの 1 つです。
+* 任意のリソースの**リソース ブレード**。たとえば、仮想マシンの構成ブレードです。 このようなリソース ブレードのほとんどで、セクションの 1 つとしてアクティビティ ログが表示されます。アクティビティ ログをクリックすると、そのリソースに関連するアクティビティ ログのイベントが自動的に絞り込まれます。
 
-ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
+Azure Portal では、次のフィールドでアクティビティ ログを絞り込むことができます。
+* [期間] - イベントの開始時刻と終了時刻。
+* [カテゴリ] - 前述のイベント カテゴリ。
+* [サブスクリプション] - 1 つまたは複数の Azure サブスクリプション名。
+* [リソース グループ] - サブスクリプション内の 1 つまたは複数のリソース グループ。
+* [リソース (名前)] - 特定のリソース名。
+* [リソースの種類] - リソースの種類 (Microsoft.Compute/virtualmachines など)。
+* [操作名] - Azure Resource Manager 操作の名前 (Microsoft.SQL/servers/Write など)。
+* [重大度] - イベントの重大度レベル (情報、警告、エラー、重大)。
+* [イベント開始者] - "呼び出し元"。つまり、操作を実行したユーザー。
+* [Open search]\(検索を開く\) - すべてのイベントのフィールド全体で、指定した文字列を検索するテキスト検索ボックスが開きます。
 
-## <a name="export-the-activity-log-with-log-profiles"></a>ログ プロファイルを使用したアクティビティ ログのエクスポート
+フィルターのセットを定義して、他のセッションでも使用できるクエリとして保存することができます。今後、同じクエリを実行する必要がある場合に、保存したフィルターを適用することができます。 また、Azure ダッシュボードにクエリをピン留めして、特定のイベントを常に監視することもできます。
+
+[適用] をクリックすると、クエリが実行され、一致するイベントがすべて表示されます。 一覧のイベントをクリックすると、そのイベントの概要と、そのイベントのすべての JSON が未加工で表示されます。
+
+さらに強力な機能もあります。**[ログ検索]** アイコンをクリックすると、[Log Analytics Activity Log Analytics ソリューション](../log-analytics/log-analytics-activity.md)でアクティビティ ログ データを表示することができます。 [アクティビティ ログ] ブレードには基本的なログのフィルター/閲覧機能がありますが、Log Analytics を使用すると、より強力な方法でデータをピボット、クエリ、視覚化することができます。
+
+## <a name="export-the-activity-log-with-a-log-profile"></a>ログ プロファイルを使用してアクティビティ ログをエクスポートする
 **ログ プロファイル** は、アクティビティ ログをエクスポートする方法を制御します。 ログ プロファイルを使用して、以下を構成できます。
 
 * アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
 * 送信するイベント カテゴリ (Write、Delete、Action)。 "*ログ プロファイルでの "カテゴリ" の意味は、アクティビティ ログ イベントでの意味とは異なります。ログ プロファイルでの "カテゴリ" は、操作の種類 (Write、Delete、Action) を指します。アクティビティ ログ イベントでの "category" プロパティは、イベントのソースまたは種類 (Administration、ServiceHealth、Alert など) を指します。*"
-* エクスポートするリージョン (場所)
+* エクスポートするリージョン (場所)。 アクティビティ ログのイベントの多くはグローバル イベントなので、"global" を含めてください。
 * アクティビティ ログをストレージ アカウントに保持する期間。
     - リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
     - リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
     - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
+ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
+
 ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
 
-### <a name="configure-log-profiles-using-the-azure-portal"></a>Azure ポータルを使用したログ プロファイルの構成
-Azure ポータルの [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
+### <a name="configure-log-profiles-using-the-azure-portal"></a>Azure Portal を使用したログ プロファイルの構成
+Azure Portal の [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
 
 1. ポータルの左側のメニューを使用して、 **[アクティビティ ログ]** ブレードに移動します。
 
@@ -131,7 +165,7 @@ azure insights logprofile get --name my_log_profile
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
 ```
 
-| プロパティ | 必須 | Description |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | name |はい |ログ プロファイルの名前。 |
 | storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
@@ -144,114 +178,6 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 ```
 azure insights logprofile delete --name my_log_profile
 ```
-
-## <a name="event-schema"></a>イベント スキーマ
-アクティビティ ログ内の各イベントには、以下の例によく似た JSON BLOB があります。
-
-```
-{
-  "value": [ {
-    "authorization": {
-      "action": "microsoft.support/supporttickets/write",
-      "role": "Subscription Admin",
-      "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841"
-    },
-    "caller": "admin@contoso.com",
-    "channels": "Operation",
-    "claims": {
-      "aud": "https://management.core.windows.net/",
-      "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-      "iat": "1421876371",
-      "nbf": "1421876371",
-      "exp": "1421880271",
-      "ver": "1.0",
-      "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-      "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-      "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-      "puid": "20030000801A118C",
-      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-      "name": "John Smith",
-      "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-      "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-      "appidacr": "2",
-      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-      "http://schemas.microsoft.com/claims/authnclassreference": "1"
-    },
-    "correlationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-    "description": "",
-    "eventDataId": "44ade6b4-3813-45e6-ae27-7420a95fa2f8",
-    "eventName": {
-      "value": "EndRequest",
-      "localizedValue": "End request"
-    },
-    "eventSource": {
-      "value": "Microsoft.Resources",
-      "localizedValue": "Microsoft Resources"
-    },
-    "httpRequest": {
-      "clientRequestId": "27003b25-91d3-418f-8eb1-29e537dcb249",
-      "clientIpAddress": "192.168.35.115",
-      "method": "PUT"
-    },
-    "id": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841/events/44ade6b4-3813-45e6-ae27-7420a95fa2f8/ticks/635574752669792776",
-    "level": "Informational",
-    "resourceGroupName": "MSSupportGroup",
-    "resourceProviderName": {
-      "value": "microsoft.support",
-      "localizedValue": "microsoft.support"
-    },
-    "resourceUri": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-    "operationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-    "operationName": {
-      "value": "microsoft.support/supporttickets/write",
-      "localizedValue": "microsoft.support/supporttickets/write"
-    },
-    "properties": {
-      "statusCode": "Created"
-    },
-    "status": {
-      "value": "Succeeded",
-      "localizedValue": "Succeeded"
-    },
-    "subStatus": {
-      "value": "Created",
-      "localizedValue": "Created (HTTP Status Code: 201)"
-    },
-    "eventTimestamp": "2015-01-21T22:14:26.9792776Z",
-    "submissionTimestamp": "2015-01-21T22:14:39.9936304Z",
-    "subscriptionId": "s1"
-  } ],
-"nextLink": "https://management.azure.com/########-####-####-####-############$skiptoken=######"
-}
-```
-
-| 要素名 | Description |
-| --- | --- |
-| authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
-| caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
-| channels |値として、"Admin" または "Operation" を指定します。 |
-| correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
-| Description |イベントを説明する静的テキスト。 |
-| eventDataId |イベントの一意の識別子。 |
-| eventSource |このイベントを生成した Azure サービスまたはインフラストラクチャの名前。 |
-| httpRequest |Http 要求を記述する BLOB。 通常、"clientRequestId"、"clientIpAddress"、"method" (HTTP メソッド、 たとえば PUT) が含まれます。 |
-| 最小限のレベル |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
-| resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
-| resourceProviderName |影響を受けるリソースのリソース プロバイダーの名前。 |
-| resourceUri |影響を受けるリソースのリソース ID。 |
-| operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
-| operationName |操作の名前。 |
-| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
-| status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
-| subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、副状態を示す他の文字列が含まれる場合もあります。たとえば、OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code: 503)、Gateway Timeout (HTTP Status Code: 504) などの一般的な値が含まれる場合があります。 |
-| eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
-| subscriptionId |Azure サブスクリプション ID。 |
-| nextLink |結果セットが複数の応答に分けられているときに、次の結果セットを取得するための継続トークン。 通常、レコードの件数が 200 件を超える場合に必要です。 |
 
 ## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../azure-resource-manager/resource-group-audit.md)

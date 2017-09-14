@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 722ab9e8a13ee28342bb30f6810fa503b1aa29f2
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
@@ -28,9 +27,12 @@ ms.lasthandoff: 06/08/2017
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
+> [!IMPORTANT]
+> 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
+
 http://contoso.com に対する要求は ContosoServerPool にルーティングされ、http://fabrikam.com に対する要求は FabrikamServerPool にルーティングされます。
 
-同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、http://blog.contoso.com とhttp://app.contoso.com が 1 つのアプリケーション ゲートウェイ デプロイでホストされるという局面が考えられます。
+同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、http://blog.contoso.com と http://app.contoso.com が 1 つのアプリケーション ゲートウェイ デプロイでホストされるという局面が考えられます。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>ホスト ヘッダーと Server Name Indication (SNI)
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure AD でのグループ管理用の Azure Active Directory PowerShell コマンドレット | Microsoft Docs"
+title: "Azure Active Directory でグループを管理するための PowerShell の例 | Microsoft Docs"
 description: "このページでは、Azure Active Directory でグループを管理するための PowerShell の例を示します。"
 keywords: "Azure AD、Azure Active Directory、PowerShell、グループ、グループ管理"
 services: active-directory
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: curtand;rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: d7be54b508a845d6746fd65887e3339ff371a287
+ms.date: 08/09/2017
+ms.author: curtand
+ms.reviewer: rodejo
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f1ce76178baa44428afca5631c749c2739ad779e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/05/2017
 >
 >
 
-次のドキュメントでは、PowerShell を使用して、Azure Active Directory (Azure AD) でグループを管理する方法の例について説明します。  また、Azure AD PowerShell のモジュールを使用して設定する方法についても説明します。 最初に、 [Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)する必要があります。
+この記事では、PowerShell を使用して、Azure Active Directory (Azure AD) でグループを管理する方法の例を掲載しています。  また、Azure AD PowerShell のモジュールを使用して設定する方法についても説明します。 最初に、 [Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)する必要があります。
 
 ## <a name="installing-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールのインストール
 Azure AD PowerShell モジュールをインストールするには、次のコマンドを使用します。
@@ -46,10 +46,10 @@ Azure AD PowerShell モジュールをインストールするには、次のコ
     ---------- ---------    ----                                ----------------
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 
-これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[オンライン リファレンス ドキュメント](/powershell/azure/install-adv2?view=azureadps-2.0)をご覧ください。
+これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
 
 ## <a name="connecting-to-the-directory"></a>ディレクトリへの接続
-Azure AD PowerShell コマンドレットを使用してグループの管理を開始するには、管理するディレクトリに PowerShell セッションを接続する必要があります。 これを行うには、次のコマンドを使用します。
+Azure AD PowerShell コマンドレットを使用してグループの管理を開始するには、管理するディレクトリに PowerShell セッションを接続する必要があります。 次のコマンドを使用します。
 
     PS C:\Windows\system32> Connect-AzureAD
 
@@ -109,7 +109,8 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-Azure AD PowerShell コマンドレットは OData クエリの標準を実装していることに注意してください。詳細については、[こちら](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)を参照してください。
+> [!NOTE] 
+> AzureAD PowerShell コマンドレットは、OData クエリの標準を実装します。 詳しくは、「[OData エンドポイントを使用する OData システム クエリ オプション](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)」の「**$filter**」を参照してください。
 
 ## <a name="creating-groups"></a>グループの作成
 新しいグループをディレクトリに作成するには、New-AzureADGroup コマンドレットを使用します。 このコマンドレットでは、"Marketing" という新しいセキュリティ グループを作成します。
@@ -212,7 +213,7 @@ Azure AD PowerShell コマンドレットは OData クエリの標準を実装�
 
 -ObjectId パラメーターは所有者を追加するグループの ObjectID であり、-RefObjectId はグループに所有者として追加するユーザーの ObjectID です。
 
-グループの所有者を取得するには、Get-AzureADGroupOwner を使用します。
+グループの所有者を取得するには、Get-AzureADGroupOwner コマンドレットを使用します。
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
@@ -222,9 +223,24 @@ Azure AD PowerShell コマンドレットは OData クエリの標準を実装�
     ----------------- --------                             ----------
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 
-グループから所有者を削除する場合は、Remove-AzureADGroupOwner を使用します。
+グループから所有者を削除する場合は、Remove-AzureADGroupOwner コマンドレットを使用します。
 
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
+
+## <a name="reserved-aliases"></a>予約済みのエイリアス 
+グループを作成すると、特定のエンドポイントで、グループの電子メール アドレスの一部として使用する mailNickname またはエイリアスをエンド ユーザーが指定できるようになります。 次のような高い権限を持つ電子メール エイリアスを使用するグループを作成できるのは、Azure AD グローバル管理者だけです。 
+  
+* abuse 
+* admin 
+* 管理者 
+* hostmaster 
+* majordomo 
+* postmaster 
+* root 
+* secure 
+* security 
+* ssl-admin 
+* webmaster 
 
 ## <a name="next-steps"></a>次のステップ
 Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。

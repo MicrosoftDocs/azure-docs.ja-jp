@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c46837af57978b047242b2869243f83d372ee43e
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 5e83171846517496e221f0a84565cdf7b77514df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 この手順では、アプリケーション ID をプロジェクトに追加する必要があります。
 
-1.    `App.xaml.cs` を開き、`ClientId` を含む行を以下に置き換えます。
+1.  `App.xaml.cs` を開き、`ClientId` を含む行を以下に置き換えます。
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

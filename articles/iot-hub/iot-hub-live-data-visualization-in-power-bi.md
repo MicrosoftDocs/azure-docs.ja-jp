@@ -4,7 +4,7 @@ description: "Power BI を使用して、センサーから収集されて Azure
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "リアルタイム データの視覚化, ライブ データの視覚化, センサー データの視覚化"
 ms.assetid: e67c9c09-6219-4f0f-ad42-58edaaa74f61
@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/24/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: ba25cdee46ce4ceb5acd5ff9da683a057f2bd733
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
@@ -120,11 +120,7 @@ Stream Analytics ジョブで、**[開始]** > **[現在]** > **[開始]** の�
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>データを視覚化する Power BI レポートの作成と公開
 
-1. サンプル アプリケーションが実行されていることを確認します。 アプリケーションが実行されていない場合、次のコマンドを使って Pi でアプリケーションを実行します。
-
-   ```bash
-   gulp run
-   ```
+1. デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合、チュートリアルの「[デバイスのセットアップ](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)」を参照してください。
 1. [Power BI](https://powerbi.microsoft.com/en-us/) アカウントにサインインします。
 1. Stream Analytics ジョブの出力を作成したときに設定したグループ ワークスペースに移動します。
 1. **[ストリーミング データセット]** をクリックします。
@@ -140,7 +136,7 @@ Stream Analytics ジョブで、**[開始]** > **[現在]** > **[開始]** の�
    1. **EventEnqueuedUtcTime** を、**[視覚化]** ウィンドウの **[軸]** にドラッグします。
    1. **temperature** を **[値]** にドラッグします。
 
-      これで、折れ線グラフが作成されました。 グラフの x 軸は日付と時刻 (UTC タイム ゾーン) を示し、 y 軸はセンサーから取得した温度を示します。
+      これで、折れ線グラフが作成されました。 x 軸は日付と時刻 (UTC タイム ゾーン) を示し、 y 軸はセンサーから取得した温度を示します。
 
       ![Microsoft Power BI レポートに温度の折れ線グラフを追加する](media/iot-hub-live-data-visualization-in-power-bi/8_add-line-chart-for-temperature-to-power-bi-report-microsoft.png)
 
@@ -164,3 +160,4 @@ Power BI を使用して、Azure IoT ハブからのリアルタイム センサ
 このほかにも、Azure IoT Hub からのデータを視覚化する方法があります。 [Azure Web Apps を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

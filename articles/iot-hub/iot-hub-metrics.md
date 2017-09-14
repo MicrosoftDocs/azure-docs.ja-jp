@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
 ms.openlocfilehash: 82cec2c9545cd5ae33ec6d5d0e4c7ebf1a500e5b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解

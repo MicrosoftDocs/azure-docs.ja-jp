@@ -1,6 +1,7 @@
 ---
-title: ".NET と Azure HDInsight を使用して Sqoop ジョブを実行する | Microsoft Docs"
+title: ".NET と HDInsight を使用して Sqoop ジョブを実行する - Azure | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、Hadoop クラスターと Azure SQL Database 間で Sqoop のインポートおよびエクスポートを実行する方法について説明します。"
+keywords: "sqoop ジョブ"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -9,17 +10,18 @@ tags: azure-portal
 author: mumian
 ms.assetid: 87bacd13-7775-4b71-91da-161cb6224a96
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 9cadb72e065f82de8e007b38e909d2bc07d18126
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -34,14 +36,14 @@ HDInsight .NET SDK を使用して、HDInsight クラスターと Azure SQL Data
 > 
 
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
-* **HDInsight の Hadoop クラスター**。 「 [クラスターと SQL Database を作成します](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」をご覧ください。
+* **HDInsight の Hadoop クラスター**。 「 [クラスターと SQL Database を作成する](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」を参照してください。
 
-## <a name="run-sqoop-using-net-sdk"></a>.NET SDK を使用した Sqoop の実行
+## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a>.NET SDK を使って HDInsight クラスターで Sqoop を使用する
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 このセクションでは、C# コンソール アプリケーションを作成し、このチュートリアルで作成した SQL Database テーブルに hivesampletable をエクスポートします。
 
-**Sqoop ジョブを送信するには**
+## <a name="submit-a-sqoop-job"></a>Sqoop ジョブの送信
 
 1. Visual Studio で、C# コンソール アプリケーションを作成します。
 2. Visual Studio パッケージ マネージャー、コンソールから、次の Nuget コマンドを実行し、パッケージをインポートします。
@@ -114,7 +116,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 ## <a name="limitations"></a>制限事項
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
-* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。

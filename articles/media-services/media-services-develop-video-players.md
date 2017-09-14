@@ -2,7 +2,7 @@
 title: "ビデオ プレーヤー アプリケーションの開発"
 description: "このトピックでは、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できるプレーヤー フレームワークとプラグインへのリンクを提供します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/17/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: b13861ce404b8c4215248a2498c5969fc19ad536
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="develop-video-player-applications"></a>ビデオ プレーヤー アプリケーションの開発

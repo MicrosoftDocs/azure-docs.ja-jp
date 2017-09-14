@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 589b95fdd05478305fa8ef629fc6758bdd716da6
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk サービス: バックアップと復元に関するページ
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk サービスには、バックアップ機能と復元機能が備わっています。 このトピックでは、Azure クラシック ポータルを使用して BizTalk Services をバックアップおよび復元する方法について説明しています。
 
 BizTalk サービスのバックアップは、 [BizTalk サービスの REST API](http://go.microsoft.com/fwlink/p/?LinkID=325584)を使用して行うこともできます。 
 
 > [!NOTE]
 > ハイブリッド接続は、エディションにかかわらずバックアップされません。 ハイブリッド接続を再作成する必要があります。
-> 
-> 
+
 
 ## <a name="before-you-begin"></a>開始する前に
 * バックアップと復元は、どのエディションでもできるとは限りません。 「 [BizTalk サービス: エディションのチャート](biztalk-editions-feature-chart.md)」を参照してください。
@@ -69,7 +72,7 @@ BizTalk サービスのバックアップは、 [BizTalk サービスの REST AP
     **メモ**     
    
    * [ **保持日数**] に入力する期間の長さは、バックアップ頻度よりも大きくする必要があります。
-   * **[常に&1; つ以上のバックアップを保存してください]** を選択します。リテンション期間が過ぎてもバックアップが&1; つは存在するようにするためです。
+   * **[常に 1 つ以上のバックアップを保存してください]** を選択します。リテンション期間が過ぎてもバックアップが 1 つは存在するようにするためです。
 4. [ **保存**] を選択します。
 
 スケジュールされたバックアップ ジョブを実行すると、入力したストレージ アカウント内に、(バックアップ データを格納するための) コンテナーが作成されます。 コンテナーの名前は、 *BizTalk サービス名-日付-時刻*となります。 
@@ -153,7 +156,7 @@ Azure クラシック ポータルで BizTalk サービスを開始するには�
 
 <tr>
 <td colspan="2">
- <strong>Azure BizTalk サービス</strong></td>
+ <strong>Azure BizTalk Services</strong></td>
 </tr> 
 <tr>
 <td>SSL 証明書</td> 

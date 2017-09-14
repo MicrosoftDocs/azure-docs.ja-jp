@@ -13,58 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 07/07/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 717f4969a91209576a504c94c31993b938770432
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: aa2d4f671bab46929ccc4444f8fe9de98a3e0eb2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server を実行している N シリーズ VM の GPU ドライバーをセットアップする
-Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM に NVIDIA グラフィック ドライバーをインストールする必要があります。 ドライバーのセットアップ情報は、[Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも利用可能です。
+Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、サポートされている NVIDIA グラフィック ドライバーをインストールします。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも利用可能です。
 
-基本的な仕様、ストレージの容量、ディスクの詳細については、[仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 「[N シリーズ VM の一般的な考慮事項](#general-considerations-for-n-series-vms)」も参照してください。
+基本仕様、ストレージの容量、およびディスクの詳細については、「[GPU Windows VM のサイズ](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
 
 
-
-## <a name="supported-gpu-drivers"></a>サポートされる GPU ドライバー
-
-リモート デスクトップで N シリーズの各 VM に接続します。 ご使用の Windows オペレーティング システムに、サポートされるドライバーをダウンロード、抽出、インストールします。 
-
-### <a name="nvidia-tesla-drivers-for-nc-vms-tesla-k80"></a>NC VM 用の NVIDIA Tesla ドライバー (Tesla K80)
+[!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
 
 
-| OS | ドライバーのバージョン |
-| -------- |------------- |
-| Windows Server 2016 | [376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe) |
-| Windows Server 2012 R2 | [376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe) |
+## <a name="driver-installation"></a>ドライバーのインストール
 
-> [!NOTE]
-> ここで示されている Tesla ドライバーのダウンロード リンクは、公開時現在のものです。 最新のドライバーについては、[NVIDIA](http://www.nvidia.com/) Web サイトを参照してください。
->
+1. リモート デスクトップで N シリーズの各 VM に接続します。
 
-### <a name="nvidia-grid-drivers-for-nv-vms-tesla-m60"></a>NV VM 用の NVIDIA GRID ドライバー (Tesla M60)
-
-| OS | ドライバーのバージョン |
-| -------- |------------- |
-| Windows Server 2016 | [369.95](https://go.microsoft.com/fwlink/?linkid=836843) (.zip) |
-| Windows Server 2012 R2 | [369.95](https://go.microsoft.com/fwlink/?linkid=836844) (.zip)  |
-
-
-
-## <a name="verify-gpu-driver-installation"></a>GPU ドライバーのインストールの確認
+2. ご使用の Windows オペレーティング システムに、サポートされるドライバーをダウンロード、抽出、インストールします。
 
 Azure NV VM では、ドライバーのインストール後に再起動が必要です。 NC VM では、再起動は必要ありません。
+
+## <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 
 ドライバーのインストールはデバイス マネージャーで確認できます。 次は、Azure NC VM で正しく構成された Tesla K80 カードの例です。
 
 ![GPU ドライバーのプロパティ](./media/n-series-driver-setup/GPU_driver_properties.png)
 
-GPU デバイスの状態を照会するには、ドライバーとともにインストールされる [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface)コマンド ライン ユーティリティを実行します。 
+GPU デバイスの状態を照会するには、ドライバーとともにインストールされる [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface)コマンド ライン ユーティリティを実行します。
+
+1. コマンド プロンプトを開き、**C:\Program Files\NVIDIA Corporation\NVSMI** ディレクトリに変更します。
+
+2. **nvidia-smi**を実行します。 ドライバーがインストールされると、次のような出力が表示されます。 **GPU-Util** は、その時点で VM で GPU ワークロードを実行していない限り、**0%** と表示されます。
 
 ![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi.png)  
 
@@ -84,7 +71,6 @@ RDMA ネットワーク接続は、同じ可用性セットにデプロイされ
 
 RDMA ネットワークは、[Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) または Intel MPI 5.x で実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 
 
-[!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

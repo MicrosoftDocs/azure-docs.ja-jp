@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/24/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 2364ab79ec4091d41e4d340e13033181df05b507
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/15/2017
-
 
 ---
 # <a name="get-started-with-the-preconfigured-solutions"></a>事前に構成されたソリューションを使ってみる

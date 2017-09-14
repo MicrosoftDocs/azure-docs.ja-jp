@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
-ms.openlocfilehash: 1acc98f9688ced2e1cf177a881b28ce98c0bff9e
-ms.lasthandoff: 12/07/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a41ccdd5739a5b10cef201910abd639ae3126c02
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>AzCopy を使用して Azure Blob Storage 間でデータを移動する
 AzCopy は、Microsoft Azure の BLOB、ファイル、テーブル ストレージとの間でデータをアップロード、ダウンロード、コピーすることを目的としたコマンド ライン ユーティリティです。
 
-AzCopy のインストール手順と、Azure プラットフォームでの使い方に関する情報については、「 [AzCopy コマンド ライン ユーティリティの概要](../storage/storage-use-azcopy.md)」を参照してください。
+AzCopy のインストール手順と、Azure プラットフォームでの使い方に関する情報については、「 [AzCopy コマンド ライン ユーティリティの概要](../storage/common/storage-use-azcopy.md)」を参照してください。
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -32,7 +32,7 @@ AzCopy のインストール手順と、Azure プラットフォームでの使�
 > [Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、AzCopy は既に VM にインストールされています。
 > 
 > [!NOTE]
-> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。
+> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。
 > 
 > 
 
@@ -40,7 +40,7 @@ AzCopy のインストール手順と、Azure プラットフォームでの使�
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。 データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
+* ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
 
 ## <a name="run-azcopy-commands"></a>AzCopy コマンドを実行する
 AzCopy コマンドを実行するには、コマンド ウィンドウを開き、AzCopy.exe 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。 

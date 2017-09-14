@@ -2,7 +2,7 @@
 title: "Azure Cloud Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "チュートリアルや API リファレンスなどのドキュメントでは、Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法を紹介します。"
 services: cloud-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c8e0cec964b7c72e45564ff776c55be1b06bfbc1
 ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services のドキュメント
@@ -127,10 +129,5 @@ Cloud Services を使用して、可用性と拡張性に優れたクラウド �
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

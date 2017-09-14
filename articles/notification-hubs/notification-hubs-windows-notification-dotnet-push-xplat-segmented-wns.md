@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0e945b5626a08fcb428131f2abb465c2c141011a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
@@ -27,6 +28,9 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
 このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.1 (Silverlight 以外) アプリにブロードキャストする方法について説明します。 Windows Phone 8.1 Silverlight を対象としている場合は、 [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) バージョンを参照してください。 完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。 このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。 
 
 ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の "*タグ*" を追加することで有効にします。 通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。 タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。 タグの詳細については、「 [Notification Hubs のルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。
+
+> [!NOTE]
+> Visual Studio 2017 では、Windows ストアおよび Windows Phone のバージョン 8.1 以前のプロジェクトはサポートされていません。  詳細については、「[Visual Studio 2017 の対象プラットフォームと互換性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 このトピックは、「[Notification Hubs の使用][get-started]」で作成したアプリケーションが基になります。 このチュートリアルを開始する前に、「[Notification Hubs の使用][get-started]」を完了している必要があります。
@@ -215,10 +219,10 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
     ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。
 
 <!-- Anchors. -->
-[アプリケーションにカテゴリ選択を追加する]: #adding-categories
-[通知を登録する]: #register
-[バックエンドから通知を送信する]: #send
-[アプリケーションを実行して通知を生成する]: #test-app
+[Add category selection to the app]: #adding-categories
+[Register for notifications]: #register
+[Send notifications from your back-end]: #send
+[Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -230,20 +234,15 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
 [19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
-[get-started]: /manage/services/notification-hubs/getting-started-windows-dotnet/
+[get-started]: /azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification
 [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users
-[モバイル サービス]: /develop/mobile/tutorials/get-started/
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/jj927172.aspx
-[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
+[Mobile Service]: /develop/mobile/tutorials/get-started/
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 

@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 5161b555db96886f556a4fe96eab4415d8ccf047
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 8f693bc51fc9635fae4376137e7e573bf74da7cb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus の料金と課金
-Service Bus は、Basic、Standard、[Premium](service-bus-premium-messaging.md) の各階層で提供されます。 作成する Service Bus サービスの名前空間ごとにサービス階層を選択でき、その名前空間内で作成されるすべてのエンティティにこの階層選択が適用されます。
+Service Bus は、Standard と [Premium](service-bus-premium-messaging.md) の各階層で提供されます。 作成する Service Bus サービスの名前空間ごとにサービス階層を選択でき、その名前空間内で作成されるすべてのエンティティにこの階層選択が適用されます。
 
 > [!NOTE]
 > Service Bus の現在の価格については、「[Azure Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」および「[Service Bus に関する FAQ](service-bus-faq.md#pricing)」を参照してください。
@@ -41,7 +40,7 @@ Service Bus では、キューとトピック/サブスクリプションに次�
 
 Standard 階層の基本料金は、Azure サブスクリプションごとに毎月 1 回だけ課金されることに注意してください。 これはつまり、単一の Standard 階層の Service Bus 名前空間を作成した後、追加の基本料金なしで、同じ Azure サブスクリプション下で Standard 名前空間を何個でも作成できます。
 
-[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)の表は、Basic 階層、Standard 階層、Premium 階層の機能の違いをまとめたものです。
+[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)表は、Standard 階層と Premium 階層の機能の違いをまとめたものです。
 
 ## <a name="messaging-operations"></a>メッセージング操作
 新しい料金モデルの一部として、キューおよびトピック/サブスクリプションに対する課金が変更されます。 これらのエンティティは、メッセージごとの課金から操作ごとの課金に変更されます。 「操作」とは、キューまたはトピック/サブスクリプションのサービス エンドポイントに対して行われたすべての API 呼び出しのことです。 これには、管理、送信/受信、およびセッション状態の操作が含まれます。
@@ -57,7 +56,7 @@ Standard 階層の基本料金は、Azure サブスクリプションごとに�
 ## <a name="brokered-connections"></a>仲介型接続
 *仲介型接続*は、キュー、トピックまたはサブスクリプションに対して "永続的に接続された" 多数の送信者/受信者を含む顧客使用パターンに対応します。 永続的に接続された送信者/受信者とは、0 以外の受信タイムアウトで AMQP または HTTP を使用して接続しているユーザーです (たとえば、HTTP ロング ポーリング)。 即時タイムアウトする HTTP の送信者および受信者は、仲介型接続になりません。
 
-接続クォータおよびその他のサービスの制限については、「[Service Bus のクォータ](service-bus-quotas.md)」を参照してください。
+接続クォータおよびその他のサービスの制限については、「[Service Bus のクォータ](service-bus-quotas.md)」を参照してください。 仲介型接続の詳細については、このトピックの後の [「FAQ」](#faq)セクションをご覧ください。
 
 Standard 階層では名前空間単位での仲介型接続の制限がなくなり、Azure サブスクリプション全体で仲介型接続の使用量が集計されます。 詳細については、「[仲介型接続](https://azure.microsoft.com/pricing/details/service-bus/)」の表を参照してください。
 
@@ -73,11 +72,9 @@ Standard 階層では名前空間単位での仲介型接続の制限がなく�
 >
 >
 
-| Premium 階層 |
-| --- |
-| Premium 階層では、仲介型接続は料金がかかりません。 |
+### <a name="premium-tier"></a>Premium 階層
 
-仲介型接続の詳細については、このトピックの後の「 [FAQ](#faq) 」セクションをご覧ください。
+Premium 階層では、仲介型接続は料金がかかりません。
 
 ## <a name="faq"></a>FAQ
 
@@ -95,7 +92,7 @@ Standard 階層では名前空間単位での仲介型接続の制限がなく�
 2. 10,000 台のデバイスが、タイムアウトが 0 ではない HTTP 経由で Service Bus キューからメッセージを受信します。 すべてのデバイスが毎日 12 時間接続する場合、接続料金は次のようになります (他のすべての Service Bus 料金に加えて): 10,000 HTTP 受信接続 * 12 時間/日 * 31 日 / 744 時間 = 5,000 仲介型接続
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>仲介型接続の料金はキューおよびトピック/サブスクリプションには適用されますか
-はい。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 0 より大きいタイムアウトを使用する HTTP の受信イベント ("ロング ポーリング" とも呼ばれます) では、仲介型接続料金が発生します。 AMQP 接続では、接続が送信または受信のどちらに使用されるかに関係なく、仲介型接続料金が発生します。 Basic 名前空間では、100 個の仲介型接続は無料で許可されることに注意してください。 また、これは Azure サブスクリプションに対して許可される仲介型接続の最大数です。 Azure サブスクリプションのすべての Standard 名前空間全体で最初の 1,000 個の仲介型接続は、(基本料金を超える) 追加料金なしで含まれます。 これは多くのサービス間メッセージング シナリオに対して十分であり、通常では、仲介型接続料金は多数のクライアントで AMQP または HTTP のロング ポーリングを使用する場合にのみ発生します。たとえば、より効率的なイベントストリーミングを行う場合、あるいは多数のデバイスまたはアプリケーション インスタンスとの双方向通信を有効にする場合などです。
+はい。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 0 より大きいタイムアウトを使用する HTTP の受信イベント ("ロング ポーリング" とも呼ばれます) では、仲介型接続料金が発生します。 AMQP 接続では、接続が送信または受信のどちらに使用されるかに関係なく、仲介型接続料金が発生します。 Azure サブスクリプションのすべての Standard 名前空間全体で最初の 1,000 個の仲介型接続は、(基本料金を超える) 追加料金なしで含まれます。 これは多くのサービス間メッセージング シナリオに対して十分であり、通常では、仲介型接続料金は多数のクライアントで AMQP または HTTP のロング ポーリングを使用する場合にのみ発生します。たとえば、より効率的なイベントストリーミングを行う場合、あるいは多数のデバイスまたはアプリケーション インスタンスとの双方向通信を有効にする場合などです。
 
 ## <a name="next-steps"></a>次のステップ
 * Service Bus の価格の詳細については、[Service Bus の価格に関するページ](https://azure.microsoft.com/pricing/details/service-bus/)を参照してください。

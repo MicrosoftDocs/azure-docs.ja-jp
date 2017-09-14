@@ -3,7 +3,7 @@ title: "Stream Analytics のリリース ノート | Microsoft Docs"
 description: "Stream Analytics のリリース ノート"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5e59f893-cd2c-43fb-9eca-c146ce637203
@@ -13,21 +13,40 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/03/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 3251cd47bb917912d63330345dbf392e724448ea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="stream-analytics-release-notes"></a>Stream Analytics のリリース ノート
+
+## <a name="notes-for-06142017-update-of-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Stream Analytics ツールの 2017 年 6 月 14 日付けの更新に関するノート
+この更新は、Visual Studio Tools を対象としています。 このリリースには、次の新機能が含まれています。
+
+| タイトル | Description |
+| --- | --- |
+| Java スクリプト エディターのサポート |Java スクリプト関数の作成後に、ネイティブの Java スクリプト エディターのエクスペリエンスを利用できます。|
+| ジョブの実行時のエラー メッセージの表示 | ジョブの実行中にランタイム エラーが発生した場合、表示時間枠を調整することによってそれらのエラーを [エラー] タブに表示できます。 既定では、過去 30 分間のエラー メッセージが表示されます。 |
+| ローカル テストの入力での CSV と Avro のサポート | JSON に加え、CSV および Avro ファイル形式をローカル テストの入力に使用できるようになりました。|
 
 ## <a name="notes-for-05032017-update-of-stream-analytics"></a>Stream Analytics の 2017 年 5 月 3 日付けの更新に関するノート
 この更新は、トラブルシューティング ドキュメントのリリースについてお知らせするものです。
 
 [トラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)とその他のドキュメントがリリースされています。 ぜひご覧になって、フィードバックをお寄せください。
+
+## <a name="notes-for-04242017-update-of-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Stream Analytics ツールの 2017 年 4 月 24 日付けの更新に関するノート
+この更新は、Visual Studio Tools を対象としています。 このリリースには、次の新機能が含まれています。
+
+| タイトル | Description |
+| --- | --- |
+| Visual Studio でのローカル テストの結果の表示 | ローカル テストの出力結果を表示するには、出力コンソール ウィンドウで Enter キーを押すか、ウィンドウを閉じます。 結果は、Visual Studio のウィンドウに表形式で表示されます。 |
+| JSON 形式のローカル出力結果 | ローカル テストを実行すると、JSON と CSV の両方のファイル形式で出力結果が生成されます。 |
+| BLOB またはテーブル ストレージの入力/出力データのプレビュー | ジョブ ビューで、BLOB Storage または Table Storage の入力/出力をダブルクリックすることで、Visual Studio 内のデータを簡単にプレビューできます。 |
+| 入力/出力のエラー メッセージの表示 | ジョブの入力または出力に関連するランタイム エラーが発生した場合、ジョブ ダイアグラムに表示されます。ジョブ ダイアグラムでエラーをポイントすると、詳細なエラー メッセージを確認できます。|
+
 
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>Stream Analytics の 2017 年 2 月 1 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
@@ -44,7 +63,7 @@ ms.lasthandoff: 05/10/2017
 
 | タイトル | Description |
 | --- | --- |
-| Power BI 出力の一般提供 |[Power BI 出力](stream-analytics-power-bi-dashboard.md) の一般提供が開始しました。 Power BI の 90 日間の承認有効期限は削除されました。 承認の更新が必要となるシナリオの詳細については、Power BI ダッシュボードの作成に関するページの「 [承認の更新](stream-analytics-power-bi-dashboard.md#renew-authorization) 」セクションを参照してください。 |
+| Power BI 出力の一般提供 |[Power BI 出力](stream-analytics-power-bi-dashboard.md) の一般提供が開始しました。 Power BI の 90 日間の承認有効期限は削除されました。 承認の更新が必要となるシナリオの詳細については、Power BI ダッシュボードの作成に関するページの「[承認の更新](stream-analytics-power-bi-dashboard.md#renew-authorization)」セクションを参照してください。 |
 
 ## <a name="notes-for-03032016-release-of-stream-analytics"></a>Stream Analytics の 2016 年 3 月 3 日付リリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
@@ -66,7 +85,7 @@ ms.lasthandoff: 05/10/2017
 
 | タイトル | Description |
 | --- | --- |
-| SELECT の新しい動作 |Stream Analytics の SELECT が拡張され、入れ子になったレコードのプロパティ アクセサーとして、"*" を使用できるようになりました。 詳細については、 [http://msdnがあります。microsoftがあります。com/library/mt622759があります。aspx](http://msdn.microsoft.com/library/mt622759.aspx "複合データ型")があります。 |
+| SELECT の新しい動作 |Stream Analytics の SELECT が拡張され、入れ子になったレコードのプロパティ アクセサーとして、"*" を使用できるようになりました。 詳細については、[http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "複合データ型") をご覧ください。 |
 
 ## <a name="notes-for-10222015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 10 月 22 日のリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
@@ -84,7 +103,7 @@ ms.lasthandoff: 05/10/2017
 | タイトル | Description |
 | --- | --- |
 | Azure IoT Suite のパブリック プレビュー |Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。 |
-| Azure ポータルの統合 |Microsoft Azure 管理ポータルで引き続き提供されている Stream Analytics が、 [Azure ポータル](https://azure.microsoft.com/overview/preview-portal/)にも統合されました。 現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。 |
+| Azure ポータルの統合 |Azure Portal で引き続き提供されている Stream Analytics が、[Azure Portal](https://azure.microsoft.com/overview/preview-portal/) にも統合されました。 現在、プレビュー ポータルの Stream Analytics 機能は Azure Portal で提供されている機能のサブセットであり、ブラウザー内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。 |
 | Cosmos DB の出力のサポート |Stream Analytics のジョブを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) に出力できるようになりました。 |
 | IoT Hub 入力に対するサポート |Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。 |
 | 多様なイベントに対する TIMESTAMP BY |単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。 |
@@ -139,15 +158,15 @@ ms.lasthandoff: 05/10/2017
 | SELECT ステートメントの前に WITH ステートメントを配置する必要がある |クエリでは、SELECT ステートメントに続けて、WITH ステートメントで定義したサブクエリを指定する必要があります。 |
 | メモリ不足の問題 |順序が適切でないイベントや複雑なクエリに対する Streaming Analytics ジョブの許容範囲が広く、保持している状態が大量になると、ジョブのメモリ不足が発生し、ジョブが再起動されることがあります。 開始と停止の操作は、ジョブの操作ログに記録されます。 この動作を回避するには、クエリを複数のパーティションにスケール アウトしてください。 今後のリリースでは、影響を受けるジョブを再起動する代わりにパフォーマンスを低下させることで、この制限事項が解消される予定です。 |
 | ペイロード タイムスタンプのない大きな BLOB 入力によってメモリ不足の問題が発生する |TIMESTAMP BY でタイムスタンプ フィールドが指定されていない場合、BLOB ストレージから大きなファイルを使用すると、Stream Analytics ジョブがクラッシュすることがあります。 この問題を回避するには、各 BLOB のサイズを 10 MB 以下にしてください。 |
-| SQL Database イベントのボリューム制限 |出力ターゲットとして SQL Database を使用すると、大量の出力データによって Stream Analytics ジョブがタイムアウトになる場合があります。 この問題を解決するには、集計またはフィルター演算子を使用して出力の量を削減するか、出力ターゲットとして Azure BLOB ストレージまたは Event Hubs を選択してください。 |
+| SQL Database イベントのボリューム制限 |出力ターゲットとして SQL Database を使用すると、大量の出力データによって Stream Analytics ジョブがタイムアウトになる場合があります。この問題を解決するには、集計またはフィルター演算子を使用して出力の量を削減するか、出力ターゲットとして Azure BLOB ストレージまたは Event Hubs を選択してください。 |
 | PowerBI データセットにはテーブルを 1 つしか含めることができない |PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。 |
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

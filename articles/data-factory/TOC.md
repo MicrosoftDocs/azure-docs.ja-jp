@@ -8,7 +8,7 @@
 # 作業の開始
 ## [チュートリアル: パイプラインを作成してデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-### [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+### [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 ### [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -29,6 +29,7 @@
 ### [Data Factory コピー ウィザード](data-factory-azure-copy-wizard.md)
 #### [1 TB を 15 分以内に読み込む](data-factory-load-sql-data-warehouse.md)
 ### [パフォーマンスとチューニングのガイド](data-factory-copy-activity-performance.md)
+### [フォールト トレランス](data-factory-copy-activity-fault-tolerance.md)
 ### [セキュリティに関する考慮事項](data-factory-data-movement-security-considerations.md)
 ### コネクタ
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
@@ -60,7 +61,10 @@
 #### [Sybase](data-factory-onprem-sybase-connector.md)
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Web テーブル](data-factory-web-table-connector.md)
-### [Data Management Gateway](data-factory-data-management-gateway.md)
+### Data Management Gateway
+#### [概要](data-factory-data-management-gateway.md)
+#### [高可用性とスケーラビリティ (プレビュー)](data-factory-data-management-gateway-high-availability-scalability.md)
+#### [チュートリアル: オンプレミスの SQL Server から Azure Blob Storage にデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [データを変換する](data-factory-data-transformation-activities.md)
@@ -92,21 +96,24 @@
 ### [Data Management Gateway の使用に関する問題のトラブルシューティング](data-factory-troubleshoot-gateway-issues.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)
 ## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST ()](/rest/api/datafactory/)
 ## [JSON](data-factory-json-scripting-reference.md)
 
 # リソース
-## [Data Management Gateway のリリース ノート](data-factory-gateway-release-notes.md)
-## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ケース スタディ](data-factory-customer-case-studies.md)
-### [製品の推奨](data-factory-product-reco-usecase.md)
-### [顧客プロファイリング](data-factory-customer-profiling-usecase.md)
-### [Data Factory と Batch を使用して大規模なデータセットを処理する](data-factory-data-processing-using-batch.md)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-factory)
-## [料金](https://azure.microsoft.com/pricing/details/data-factory/)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory)
+## [料金](https://azure.microsoft.com/pricing/details/data-factory/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [Data Management Gateway のリリース ノート](data-factory-gateway-release-notes.md)
+## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-factory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
-## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
+### [顧客プロファイリング](data-factory-customer-profiling-usecase.md)
+### [Data Factory と Batch を使用して大規模なデータセットを処理する](data-factory-data-processing-using-batch.md)
+### [製品の推奨](data-factory-product-reco-usecase.md)

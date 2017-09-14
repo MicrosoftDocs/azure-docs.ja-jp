@@ -1,10 +1,12 @@
 > [!div class="op_single_selector"]
 > * [Node.JS](../articles/iot-hub/iot-hub-node-node-twin-how-to-configure.md)
-> * [C#](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-how-to-configure.md)
 > 
 > 
 
 ## <a name="introduction"></a>はじめに
+
 [IoT Hub ツインの概要][lnk-twin-tutorial]に関するページでは、"*タグ*" を使用してソリューション バックエンドからデバイス メタデータを設定する方法、"*報告されるプロパティ*" を使用してデバイス アプリからデバイスの状態を報告する方法、SQL に似た言語を使用してこの情報を照会する方法について学習しました。
 
 このチュートリアルでは、デバイス ツインの "*必要なプロパティ*" と "*報告されるプロパティ*" を併せて使用し、デバイス アプリをリモートで構成する方法について説明します。 具体的には、デバイス ツインの報告されるプロパティと必要なプロパティを使用して、デバイス アプリケーションの複数手順の構成を有効にする方法のほか、ソリューション バックエンドですべてのデバイスにおけるこの操作の状態を表示できるようにする方法について説明します。 デバイス構成の役割の詳細については、[IoT Hub を使用したデバイス管理の概要][lnk-dm-overview]に関するページを参照してください。

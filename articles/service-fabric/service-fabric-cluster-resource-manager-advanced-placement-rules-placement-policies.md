@@ -12,34 +12,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: 7fa35de8b99132ad1c10229a9bb2231f11fdbaa0
-ms.lasthandoff: 01/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric サービスの配置ポリシー
-一部のまれなシナリオでは、異なる追加ルールを多く構成する必要があります。 このようなシナリオのいくつかの例は、次のとおりです。
-* Service Fabric のクラスターが複数のオンプレミス データセンターや Azure のリージョンなど、地理的に離れた場所に広がっている場合。
-* 環境が地政学的な管理の異なる領域に広がっている場合 (もしくは法的、政策的な境界について考慮しなければならない場合)。
-* 長距離を移動するクラスター内の通信や、転送速度が遅く信頼性の低いネットワークを経由する通信のため、実際のパフォーマンス/待機時間に関して考慮すべき事項がある。
+配置ポリシーは、特定のあまり一般的ではないシナリオでサーバーの配置の制御に使用できる追加の規則です。 このようなシナリオのいくつかの例は、次のとおりです。
 
-このような状況では、特定の地域では特定のサービスを常に実行するか、または決して実行しないことが重要な場合があります。 同様に、特定の地域にはプライマリを配置して、エンドユーザーの待機時間を最小限に抑えることも重要です。
+- Service Fabric クラスターが複数のオンプレミス データセンターや Azure のリージョンなど、地理的に離れた場所に広がっている場合。
+- 環境が地政学的または法的な管理の異なる領域に広がっている場合、またはポリシーの境界を設定する必要があるその他の場合
+- 長距離、低速または信頼性の低いネットワーク リンクを使用するため、通信パフォーマンスまたは待機時間に関する考慮事項があります。
+- 他のワークロードまたはユーザーとの近接性を考慮したベスト エフォートとして、一部のワークロードを併置しておく必要があります。
 
-高度な配置ポリシーは次のとおりです。
+このような要件の多くは、クラスターの障害ドメインとして表されるクラスターの物理レイアウトと一致しています。 
+
+このようなシナリオに対応できる高度な配置ポリシーを次に示します。
 
 1. 無効なドメイン
 2. 必要なドメイン
 3. 優先ドメイン
 4. レプリカのパッキングを許可しない
 
-次の制御の多くはノード プロパティおよび配置の制約によって構成できますが、なかにはより複雑なものもあります。 簡素化するために、Service Fabric のクラスター リソース マネージャーでは追加の配置ポリシーが用意されています。 他の配置の制約と同様に、配置ポリシーを名前付きサービス インスタンスごとに構成して動的に更新できます。
+次の制御の多くはノード プロパティおよび配置の制約によって構成できますが、なかにはより複雑なものもあります。 簡素化するために、Service Fabric のクラスター リソース マネージャーでは追加の配置ポリシーが用意されています。 配置ポリシーは、指定されたサービス インスタンスごとに構成されます。 また、動的に更新することもできます。
 
 ## <a name="specifying-invalid-domains"></a>無効なドメインを指定する
-invalidDomain 配置ポリシーでは、特定の障害ドメインがこのワークロードに対して無効になるように指定できます。 地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにできます。 無効なドメインは、別々のポリシーで複数指定できます。
+**invalidDomain** 配置ポリシーでは、特定の障害ドメインが特定のサービスに対して無効になるように指定できます。 地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにできます。 無効なドメインは、別々のポリシーで複数指定できます。
 
 <center>
 ![無効なドメインの例][Image1]
@@ -56,10 +58,10 @@ serviceDescription.PlacementPolicies.Add(invalidDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
 ## <a name="specifying-required-domains"></a>必要なドメインを指定する
-required domain 配置ポリシーでは、指定したドメインにサービスのすべてのステートフル レプリカまたはステートレス サービス インスタンスが存在している必要があります。 必要なドメインは、別々のポリシーで複数指定できます。
+必要なドメインの配置ポリシーでは、サービスが指定したドメインにのみ存在する必要があります。 必要なドメインは、別々のポリシーで複数指定できます。
 
 <center>
 ![必要なドメインの例][Image2]
@@ -76,11 +78,11 @@ serviceDescription.PlacementPolicies.Add(requiredDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas"></a>プライマリ レプリカの優先ドメインを指定する
-優先プライマリ ドメインは変わったコントロールであり、プライマリが存在する必要がある障害ドメインの選択が許可されます (選択が可能な場合)。 すべてが正常な場合、プライマリは最終的にこのドメインに配置されます。 何らかの理由によりドメインまたはプライマリ レプリカで障害が発生した場合、またはシャットダウンした場合、プライマリは別の場所に移行します。 この新しい場所が優先ドメインではない場合、クラスター リソース マネージャーによって可能な限り速やかに優先ドメインに戻されます。 元来、この設定は、ステートフル サービスでのみ有効です。 このポリシーは、Azure のリージョンまたは複数のデータセンターに分散しているものの、特定の場所にプライマリ レプリカを配置することを希望するクラスターに最適です。 プライマリをユーザーの近くに保つことで、特に読み取りにおいて待機時間の短縮に役立ちます。
+## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>ステートフル サービスのプライマリ レプリカの優先ドメインを指定する
+優先プライマリ ドメインでは、プライマリを配置する障害ドメインを指定します。 すべてが正常な場合、プライマリは最終的にこのドメインに配置されます。 ドメインまたはプライマリ レプリカでエラーがが発生した場合またはシャットダウンした場合、プライマリはその他の場所 (理想的には同じドメイン内) に移行されます。 この新しい場所が優先ドメインではない場合、クラスター リソース マネージャーによって可能な限り速やかに優先ドメインに戻されます。 元来、この設定は、ステートフル サービスでのみ有効です。 このポリシーは、Azure のリージョンまたは複数のデータセンターに分散しているものの、特定の場所に配置したいサービスがあるクラスターに最適です。 ユーザーまたは他のサービスに近い場所にプライマリを維持することで、待機時間が短くなります。既定でプライマリが処理する読み取りの場合は特に短くなります。
 
 <center>
 ![優先プライマリ ドメインとフェールオーバー][Image3]
@@ -95,17 +97,21 @@ serviceDescription.PlacementPolicies.Add(invalidDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replicas-to-be-distributed-among-all-domains-and-disallowing-packing"></a>すべてのドメイン間で配信することとパッキングを許可しないことをレプリカに要求する
-レプリカは_通常_クラスターが正常なドメイン間で配信されますが、特定のパーティションのレプリカが、1 つのドメインに一時的にパッキングされるという結果になる場合があります。 たとえば、3 つの障害ドメイン (0、1、および&2;) でクラスターに&9; 個のノードが、サービスに&3; つのレプリカがあり、 障害ドメイン&1; および&2; のこれらのレプリカに使用したノードが停止したと仮定します。 通常、クラスター リソース マネージャーによって、これらの同じ障害ドメインの他のノードが優先されます。 この場合、容量の問題でこれらのドメイン内の他のいずれのノードも有効ではなかったと仮定します。 クラスター リソース マネージャーがこれらのレプリカの交換を構築した場合、障害ドメイン&0; のノードを選択する必要がありますが、 _これ_によって、障害ドメインの制約が違反される状況が発生します。 また、レプリカ セット全体が失われる可能性も高まります (障害ドメイン 0 が完全に失われた場合)。 制約と制約の優先順位の概要については、[このトピック](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)をご覧ください。
+## <a name="requiring-replica-distribution-and-disallowing-packing"></a>レプリカの分散を必須にしてパッキングを許可しない
+クラスターが正常に動作している場合、_通常_、レプリカは障害ドメインとアップグレード ドメイン全体に分散されています。 ただし、指定されたパーティションの複数のレプリカが、1 つのドメインに一時的にパッキングされる結果になる場合があります。 たとえば、fd:/0、fd:/1、fd:/2 という 3 つの障害ドメイン内に 9 つのノードがあるクラスターがあるとします。 また、サービスには 3 つのレプリカがあります。 この環境で fd:/1 と fd:/2 のレプリカに使用されていたノードが停止したとします。 通常、クラスター リソース マネージャーによって、これらの同じ障害ドメインの他のノードが優先されます。 この場合、容量の問題でこれらのドメイン内の他のいずれのノードも有効ではなかったと仮定します。 Cluster Resource Manager でそれらのレプリカの置き換えを構築する場合、fd:/0 のノードを選択する必要があります。 ただし、_その選択_を実行すると、障害ドメインの制約違反になる状況が生じます。 複数のレプリカをパッキングすると、レプリカ セット全体が停止したり、失われたりする可能性が高まります。 
 
-`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain` のような正常性の警告を受け取ったことがある場合は、この状況、または似た状況が既に発生していることになります。 これはまれなことで、発生しても、ノードが戻ってくるため、通常このような状況は一過性のものです。 ノードが長時間停止し、クラスター リソース マネージャーが交換を構築する必要があっても、ほとんどの場合は、最適な障害ドメインで他のノードが利用できます。
+> [!NOTE]
+> 制約と制約の優先順位の概要については、[このトピック](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)をご覧ください。
+>
 
-少数のドメインにパッキングされる場合も、常に目標とする数のレプリカを持つ必要があるワークロードもあります。 このようなワークロードでは全体で同時発生する永続的なドメイン障害がないと見込まれ、ほとんどの場合はローカル状態を回復できます。 他のワークロードでは、正確性やデータ損失のリスクを冒すよりも、先にダウンタイムが発生することを選びます。 ほとんどの実稼働ワークロードは&4; つ以上のレプリカ、4 つ以上の障害ドメイン、および障害ドメインごとに多数の有効なノードを使って実行されるため、既定ではドメイン配信が不要です。 これで、結果としてドメインに複数のレプリカが一時的にパッキングされることになっても、通常の負荷分散とフェールオーバーによってこれらのケースが対処されます。
+"`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`" などの正常性メッセージを受け取ったことがある場合は、この状況、または似た状況が既に発生していることになります。 通常、一時的にパッキングされるのは 1 つまたは 2 つのレプリカのみです。 特定のドメイン内のレプリカのクォーラムよりも少ない限りは問題ありません。 パッキングはまれなことで、発生しても、ノードが戻ってくるため、通常このような状況は一過性のものです。 ノードが長時間停止し、クラスター リソース マネージャーが交換を構築する必要があっても、ほとんどの場合は、最適な障害ドメインで他のノードが利用できます。
 
-特定のワークロードに対してこのようなパッキングを無効にする場合は、サービスで "RequireDomainDistribution" ポリシーを指定します。 このポリシーが設定されると、クラスター リソース マネージャーにより、同じパーティションのレプリカが複数同じ障害またはアップグレード ドメインに存在することが許可されないよう保証されます。
+少数のドメインにパッキングされる場合でも、常に目標とする数のレプリカを持つことを優先するワークロードもあります。 このようなワークロードでは全体で同時発生する永続的なドメイン障害がないと見込まれ、ほとんどの場合はローカル状態を回復できます。 他のワークロードでは、正確性やデータ損失のリスクを冒すよりも、先にダウンタイムが発生することを選びます。 ほとんどの実稼働ワークロードは、4 つ以上のレプリカ、4 つ以上の障害ドメイン、および障害ドメインごとに多数の有効なノードを使って実行されます。 そのため、既定の動作ではドメインのパッキングが許可されています。 この既定の動作により、一時的なドメインのパッキングが生じるような極端な場合でも、通常の分散とフェールオーバーで処理できます。
+
+特定のワークロードに対してこのようなパッキングを無効にする場合は、サービスで `RequireDomainDistribution` ポリシーを指定します。 このポリシーが設定されると、Cluster Resource Manager により、同じパーティションの 2 つのレプリカが同じ障害またはアップグレード ドメイン内で実行されないよう保証されます。
 
 コード:
 
@@ -117,13 +123,13 @@ serviceDescription.PlacementPolicies.Add(distributeDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-では、これらの構成を地理的に分散していないクラスターのサービスに使用することはできるでしょうか。 もちろん、できます。 しかし、あまり利点はありません。 必要な、無効な、および優先ドメインの構成は、実際に地理的に離れた場所に分散しているクラスターを実行していない場合は、避ける必要があります。 特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは意味がありません。 異なるハードウェアの構成を複数のドメインや、通常の配置の制約とノードのプロパティを通じて処理されるドメインに分散する必要があります。
+では、これらの構成を地理的に分散していないクラスターのサービスに使用することはできるでしょうか。 使用できますが、あまり利点はありません。 シナリオで必要な場合を除き、必須のドメイン、無効なドメイン、および優先されるドメインの構成は避けることをお勧めします。 特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは意味がありません。 異なるハードウェアの構成を複数のドメインや、通常の配置の制約とノードのプロパティを通じて処理される障害ドメインに分散する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-* サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
+- サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

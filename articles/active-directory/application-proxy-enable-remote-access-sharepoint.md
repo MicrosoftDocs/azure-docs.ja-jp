@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 07/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 93b36891c960582563a4ff9c622cd5ac3198dfeb
-ms.lasthandoff: 04/18/2017
-
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 97eeec3b3936bcbef6ac3966b890332901bcb153
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -29,11 +31,9 @@ Azure AD アプリケーション プロキシによる SharePoint へのリモ�
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、SharePoint 2013 以降が既にセットアップされ、環境内で実行されていることを前提にしています。 さらに、次の前提条件を検討してください。
+この記事では、SharePoint 2013 以降が環境に用意されていることを前提にしています。 さらに、次の前提条件を検討してください。
 
-* アプリケーション プロキシ機能は、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-
-* SharePoint では、ネイティブの Kerberos がサポートされています。 そのため、Azure AD アプリケーション プロキシを経由して内部サイトにリモートでアクセスするユーザーは、シームレスなシングル サインオン (SSO) エクスペリエンスを想定できます。
+* SharePoint では、ネイティブの Kerberos がサポートされています。 そのため、Azure AD アプリケーション プロキシを経由して内部サイトにリモートでアクセスするユーザーは、シングル サインオン (SSO) エクスペリエンスを想定できます。
 
 * SharePoint サーバーに、いくつかの構成変更を加える必要があります。 ステージング環境を使用することをお勧めします。 これにより、ステージング サーバーを最初に更新し、実稼働に移行する前のテスト サイクルを容易にすることができます。
 
@@ -49,9 +49,9 @@ SharePoint サーバーの KCD を設定するには、以下のセクション�
 
 ### <a name="ensure-that-sharepoint-is-running-under-a-service-account"></a>SharePoint がサービス アカウントで実行されていることを確認する
 
-まず、SharePoint がローカル システム、ローカル サービス、ネットワーク サービスのいずれでもなく、定義済みのサービス アカウントで実行されていることを確認します。 これを行って、有効なアカウントにサービス プリンシパル名 (SPN) をアタッチできるようにする必要があります。 SPN は、Kerberos プロトコルがさまざまなサービスを特定する方法です。 そして、KCD を構成するために後でアカウントが必要になります。
+まず、SharePoint がローカル システム、ローカル サービス、ネットワーク サービスのいずれでもなく、定義済みのサービス アカウントで実行されていることを確認します。 これを行って、有効なアカウントにサービス プリンシパル名 (SPN) をアタッチできるようにします。 SPN は、Kerberos プロトコルがさまざまなサービスを特定する方法です。 そして、KCD を構成するために後でアカウントが必要になります。
 
-サイトが定義済みのサービス アカウントで実行されていることを確認するには、以下の手順に従います。
+サイトが定義済みのサービス アカウントで実行されていることを確認するには、次の手順に従います。
 
 1. **SharePoint 2013 の全体管理**サイトを開きます。
 2. **[セキュリティ]** に移動し、**[サービス アカウントの構成]** を選択します。
@@ -99,7 +99,7 @@ SPN 形式で:
 
 * _service class_ は、サービスの一意の名前です。 SharePoint では、**HTTP** を使用します。
 
-* _host_ は、サービスが実行されているホストの完全修飾ドメイン名または NetBIOS 名です。 SharePoint サイトの場合、使用している IIS のバージョンによっては、サイトの URL であることが必要となる可能性があります。
+* _host_ は、サービスが実行されているホストの完全修飾ドメイン名または NetBIOS 名です。 SharePoint サイトでは、使用している IIS のバージョンによっては、このテキストはサイトの URL でなければならないことがあります。
 
 * _port_ は省略可能です。
 
@@ -189,7 +189,7 @@ Kerberos 用の SharePoint を有効にし、KCD を構成したことから、�
 8. **[内部アプリケーション SPN]** を先ほど設定した値に設定します。 たとえば、**http/sharepoint.demo.o365identity.us** を使用します。
 9. アプリケーションを対象ユーザーに割り当てます。
 
-アプリケーションの表示は次のようになります。
+アプリケーションの表示は次の例のようになります。
 
   ![完成したアプリケーション](./media/application-proxy-remote-sharepoint/remote-sharepoint-internal-application-spn.png)
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 0f4ccf2cda1e580121533c092b5abe28eb737116
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 63d0d80999fd57d014c74d5c6aef3733ec2afe85
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
@@ -31,7 +30,7 @@ Azure Docker VM 拡張機能では、Linux 仮想マシン (VM) に Docker デ�
 Docker マシンや Azure Container Service などの他のデプロイ方法について詳しくは、以下の記事をご覧ください。
 
 * アプリのプロトタイプを短時間で作成するには、[Docker マシン](docker-machine.md)を使って単一の Docker ホストを作成できます。
-* 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、[Azure Container Service に Docker Swarm クラスター](../../container-service/container-service-deployment.md)をデプロイできます。
+* 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、[Azure Container Service に Docker Swarm クラスター](../../container-service/dcos-swarm/container-service-deployment.md)をデプロイできます。
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Azure Docker VM 拡張機能を使ってテンプレートをデプロイする
 Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、「[Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)」(Docker を使用した Ubuntu VM の簡単なデプロイ) で確認できます。 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
@@ -145,6 +144,6 @@ Azure での Docker のデプロイの他のオプションについて詳しく
 
 * [Docker マシンと Azure ドライバーを使用する](docker-machine.md)  
 * [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](docker-compose-quickstart.md)
-* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/container-service-deployment.md)
+* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)
 
 

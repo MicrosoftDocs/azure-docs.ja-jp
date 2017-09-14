@@ -6,9 +6,9 @@ author: sanagama
 ms.author: sanagama
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.devlang: azure-cli
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/13/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea

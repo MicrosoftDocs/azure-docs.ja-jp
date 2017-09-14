@@ -4,7 +4,7 @@ description: "App Services アプリケーションに Microsoft アカウント
 author: mattchenderson
 services: app-service
 documentationcenter: 
-manager: adrianha
+manager: syntaxc4
 editor: 
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.service: app-service
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: 429e6f32a3bebe0e0759c675f61b9ee588e550d0
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
@@ -37,11 +37,11 @@ ms.lasthandoff: 03/09/2017
    > [!NOTE]
    > リダイレクト URI は、アプリケーションの URL にパス */.auth/login/microsoftaccount/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。   
    > HTTPS スキームを使用していることを確認します。
-   > 
-   > 
+   
 7. [アプリケーション シークレット] で **[新しいパスワードを生成]**をクリックします。 表示される値をメモします。 ページから移動すると、このパスワードが再度表示されることはありません。
 
-    > [AZURE.IMPORTANT] パスワードは重要なセキュリティ資格情報です。 このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > [!IMPORTANT]
+    > パスワードは重要なセキュリティ資格情報です。 このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報を App Service アプリケーションに追加する
 1. [Azure Portal] に戻り、アプリケーションに移動して、**[設定]** > **[認証/承認]** の順にクリックします。

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/17/2017
+ms.date: 08/30/2017
 ms.author: juanpere
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c2192328a152e955d182c4a07b391c98a5960964
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 16603cc7f2d8743037da22466312f228f4319716
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>デバイス管理を使用してデバイス ファームウェアの更新を開始する (.NET/Node)

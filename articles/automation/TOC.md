@@ -25,16 +25,19 @@
 ### [子 Runbook](automation-child-runbooks.md)
 ### [Runbook の出力](automation-runbook-output-and-messages.md)
 ### [ソース管理の統合](automation-source-control-integration.md)
-## Runbook の自動化
+## 自動化
 ### [Runbook を開始する](automation-starting-a-runbook.md)
 ### [webhook から Runbook を開始する](automation-webhooks.md)
-### [データセンターでの Runbook の実行](automation-hybrid-runbook-worker.md)
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
 ### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
 ### [Runbook の設定を変更する](automation-runbook-settings.md)
 ### [Azure Automation データの管理](automation-managing-data.md)
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
+### [Azure Automation Runbook に JSON オブジェクトを渡す](automation-pass-json-string.md)
+## Hybrid Runbook Worker
+### [Hybrid Runbook Worker のデプロイ](automation-hybrid-runbook-worker.md)
+### [worker での Runbook の実行](automation-hrw-run-runbooks.md)
 ## 構成管理のデプロイ (DSC)
 ### [Desired State Configuration (DSC) の概要](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)
@@ -42,7 +45,7 @@
 ### [DSC 構成のコンパイル](automation-dsc-compile.md)
 ### [Chocolatey を使用した継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 ### [OMS Log Analytics への Azure Automation DSC レポート データの転送](automation-dsc-diagnostics.md)
-## Automation 資産の管理
+## アセットの管理
 ### [証明書](automation-certificates.md)
 ### [接続](automation-connections.md)
 ### [資格情報](automation-credentials.md)
@@ -50,7 +53,7 @@
 ### [スケジュール](automation-schedules.md)
 ### [変数](automation-variables.md)
 ### [Azure PowerShell モジュールの更新](automation-update-azure-modules.md)
-## シナリオの自動化
+## シナリオ
 ### [Runbook ギャラリー](automation-runbook-gallery.md)
 ### [Amazon Web Service VM を作成する](automation-scenario-aws-deployment.md)
 ### [Azure VM アラートを修復する](automation-azure-vm-alert-integration.md)
@@ -58,6 +61,8 @@
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
 ### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
 ### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
+### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
+### [Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする](automation-deploy-template-runbook.md)
 ## 解決方法
 ### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
@@ -78,12 +83,14 @@
 ## [REST ()](/rest/api/automation)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)
 # リソース
-## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
-## [料金](https://azure.microsoft.com/pricing/details/automation/)  
+## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
+## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
+## [料金](https://azure.microsoft.com/pricing/details/automation/)  
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation)
-## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
-## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
-## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)

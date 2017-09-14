@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 08/02/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 2b278b5c512d3ea0ff045869487d4551118c0e5c
-ms.lasthandoff: 03/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: ffef289e154986e4b08a072d3a95f77818fb9c35
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Azure Backup Server を使用してワークロードをバックアップするための準備
@@ -58,11 +58,13 @@ Azure Backup Server をドメインに参加させる予定がある場合は、
 ## <a name="2-backup-vault"></a>2.バックアップ資格情報コンテナー
 ![step2](./media/backup-azure-microsoft-azure-backup/step2.png)
 
-バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、Azure Backup Server をコンテナーに登録する必要があります。
+バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、Azure Backup Server をコンテナーに登録する必要があります。 Azure Backup を初めて使用する場合で、Azure Backup Server を使用する場合は、「[Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)」の Azure Portal バージョンの記事をご覧ください。
 
 > [!IMPORTANT]
-> 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。 既にあるバックアップ コンテナーは引き続きサポートされ、[Azure PowerShell を使用してバックアップ コンテナーを作成](./backup-client-automation-classic.md#create-a-backup-vault)することが可能です。 ただし将来的な機能強化は Recovery Services コンテナーに限定されるため、Microsoft では、すべてのデプロイに関して Recovery Services コンテナーを作成することを推奨しています。
->
+> 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 10 月 15 日以降は、PowerShell を使って Backup コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
+>- 残っているすべての Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >
 
 

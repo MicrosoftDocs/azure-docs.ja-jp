@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/15/2017
+ms.date: 07/22/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 023c343122f872943fb3ab3eed7b4caedfae9ac4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -34,19 +34,20 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 * XML
 * ZIP
 * EML
-* プレーン テキスト ファイル (.txt)  
-* JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)のプレビュー機能を参照)
+* RTF
+* プレーンテキスト ファイル (「[プレーン テキストのインデックス作成](#IndexingPlainText)」も参照)
+* JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
 * CSV ([CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照)
 
 > [!IMPORTANT]
-> CSV および JSON 配列の機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2015-02-28-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
+> CSV および JSON 配列の機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2016-09-01-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 >
 >
 
 ## <a name="setting-up-blob-indexing"></a>BLOB インデックスの設定
 Azure Blob Storage インデクサーを設定するには、以下を使用します。
 
-* [Azure ポータル](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
@@ -88,10 +89,10 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 次のいずれかの方法で BLOB コンテナーに対して資格情報を指定できます。
 
 - **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
-- **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS にはコンテナー上およびオブジェクト (この場合は BLOB) にリストおよび読み取りアクセス許可が必要です。
--  **コンテナーの Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS にはコンテナー上にリストおよび読み取りアクセス許可が必要です。
+- **ストレージ アカウントの共有アクセス署名** (SAS) 接続文字列: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS には、コンテナーとオブジェクト (ここでは BLOB) の一覧と読み取りアクセス許可が必要です。
+-  **コンテナの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS にはコンテナーの一覧および読み取りアクセス許可が必要です。
 
-Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
 > [!NOTE]
 > SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れると、インデクサーは「`Credentials provided in the connection string are invalid or have expired.`」のようなエラー メッセージで失敗します。  
@@ -141,7 +142,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 > [!NOTE]
 > 既定では、JSON や CSV などの構造化コンテンツを持つ BLOB には、1 つのテキスト チャンクとしてインデックスが作成されます。 構造化された方法で JSON および CSV の BLOB のインデックスを作成する場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)と [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照してください。
-> 
+>
 > 複合ドキュメントや埋め込みドキュメント (ファイルが添付された Outlook 電子メールを埋め込んだ Word 文書、ZIP アーカイブなど) も、1 つのドキュメントとしてインデックスが作成されます。
 
 * ドキュメントのテキスト コンテンツが、`content` という名前の文字列フィールドに抽出されます。
@@ -267,7 +268,7 @@ Azure Search のドキュメント抽出ロジックは完璧ではないため�
 
 BLOB のどの部分にインデックスを作成するかは、`dataToExtract` 構成パラメーターを使用して制御できます。 次の値を使用できます。
 
-* `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/storage-properties-metadata.md)のみにインデックスを作成するように指定します。
+* `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/blobs/storage-properties-metadata.md)のみにインデックスを作成するように指定します。
 * `allMetadata` - ストレージ メタデータと、BLOB コンテンツから抽出された[コンテンツの種類固有のメタデータ](#ContentSpecificMetadata)にインデックスを作成するように指定します。
 * `contentAndMetadata` - すべてのメタデータと、BLOB から抽出されたテキスト コンテンツにインデックスを作成するように指定します。 これが既定値です。
 
@@ -339,13 +340,35 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 - データ ソースごとに対応するインデクサーを作成します。 すべてのインデクサーから、同じターゲット検索インデックスをポイントできます。  
 
+- サービス内の 1 つの検索単位は、特定の時点で 1 つのインデクサーを実行できます。 上記のように、複数のインデクサーの作成は、これらを実際に並行して実行する場合のみ有用です。 複数のインデクサーを並行して実行するには、適切な数のパーティションとレプリカを作成して、検索サービスをスケールアウトします。 たとえば、検索サービスに 6 つの検索単位がある場合 (たとえば、2 つのパーティション x 3 つのレプリカ)、6 つのインデクサーを同時に実行でき、インデックス作成のスループットが 6 倍になります。 スケーリングと容量計画について詳しくは、「[Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする](search-capacity-planning.md)」をご覧ください。
+
 ## <a name="indexing-documents-along-with-related-data"></a>ドキュメントと関連データを併せたインデックスを作成する
 
-ドキュメントには、次のいずれかの場所に構造化データとして格納されているメタデータ (ドキュメントを作成した部門など) が関連付けられている場合があります。
--   SQL Database や Azure Cosmos DB などの別のデータ ストア。
--   Azure Blob Storage 内の各ドキュメントにカスタム メタデータとして直接接続されている  (詳細については、「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定と取得)](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」を参照してください)。
+インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
 
-各ドキュメントとそのメタデータに同じ一意のキー値を割り当て、各インデクサーに `mergeOrUpload` アクションを指定することで、ドキュメントとメタデータを併せたインデックスを作成することができます。 このソリューションの詳細については、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」を参照してください。
+これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このソリューションのチュートリアルについて詳しくは、外部資料「[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」(ドキュメントを Azure Search の他のデータと組み合わせる) をご覧ください。
+
+<a name="IndexingPlainText"></a>
+## <a name="indexing-plain-text"></a>プレーンテキストのインデックス作成 
+
+すべての BLOB に同じエンコードのプレーンテキストが含まれている場合、**テキスト解析モード**を使用してインデックス作成のパフォーマンスを大幅に改善できます。 テキスト解析モードを使用するには、`parsingMode` 構成プロパティを `text` に設定します。
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text" } }
+    }
+
+既定では、`UTF-8` エンコードが想定されます。 別のエンコードを指定するには、`encoding` 構成プロパティを使用します。 
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
+    }
+
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>コンテンツの種類ごとのメタデータのプロパティ
@@ -366,7 +389,9 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |XML マークアップを削除し、テキストを抽出します。 |
 | JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |テキストを抽出します<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合、詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事をご覧ください |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |テキストを抽出します。添付ファイルも対象となります。 |
-| プレーン テキスト (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | |
+| RTF (アプリケーション/rtf) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | テキストを抽出します|
+| プレーン テキスト (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | テキストを抽出します|
+
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)までお寄せください。

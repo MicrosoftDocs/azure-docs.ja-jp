@@ -3,7 +3,7 @@ title: "Node.js を使用する Azure AD へのサインインおよびサイン
 description: "サインインのために Azure AD と連携する Node.js Express MVC Web アプリを構築する方法を説明します。"
 services: active-directory
 documentationcenter: nodejs
-author: xerners
+author: navyasric
 manager: mbaldwin
 editor: 
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: xerners
+ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 8d91d551cbb508485ca27d77b23eb319293e4237
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 13317b016f9ff3955f376b858645c42668b0de42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/21/2017
 
 
 ---
@@ -144,8 +144,8 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
     ```
 Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。 戦略を調べると、それは、パラメーターとして token と done を持つ関数が渡されることがわかります。 戦略は、その処理を終えると戻ってきます。 戦略が戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
 
-    > [!IMPORTANT]
-    > The previous code takes any user that happens to authenticate to our server. This is known as auto-registration. We recommend that you don't let anyone authenticate to a production server without first having them register via a process that you decide on. This is usually the pattern you see in consumer apps, which allow you to register with Facebook but then ask you to provide additional information. If this weren't a sample application, we could have extracted the user's email address from the token object that is returned and then asked the user to fill out additional information. Because this is a test server, we add them to the in-memory database.
+> [!IMPORTANT]
+前のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。 これは、自動登録と呼ばれます。 最初に、指定したプロセスを経て登録しない限り、どのユーザーにも運用サーバーに対する認証をさせないようにすることをお勧めします。 これは、コンシューマー アプリで通常見られるパターンです。たとえば、Facebook への登録は許可しても、その後で追加情報の提供を求めます。 これがサンプル アプリケーションでなければ、返されるトークン オブジェクトからユーザーの電子メールを抽出した後、そのユーザーに追加情報の入力を要求できます。 これはテスト サーバーなので、メモリ内データベースにユーザーを追加します。
 
 
 4. 次に、Passport で必要な、サインインしているユーザーの追跡を可能にするメソッドを追加します。 これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
@@ -210,9 +210,9 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 
 6. 最後に、実際のサインイン要求を `passport-azure-ad` エンジンに渡すルートを追加します。
 
-       
+
        ```JavaScript
- 
+
         // Our Auth routes (section 3)
 
         // GET /auth/openid

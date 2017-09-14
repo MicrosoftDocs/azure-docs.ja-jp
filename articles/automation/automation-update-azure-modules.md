@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2017
+ms.date: 06/13/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 6765ea93dd4e4e2594fb147dd19120aec058a2f5
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: ed8c97b642d406a05817ec6c67f31a1b4bce93b0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -25,6 +26,8 @@ ms.lasthandoff: 04/21/2017
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
 各 Automation アカウントでは、最も一般的な Azure PowerShell モジュールが既定で提供されます。  Azure モジュールは Azure チームにより定期的に更新されるため、Automation アカウントでは、新しいバージョンがポータルから利用可能になったときにアカウント内の各モジュールを更新できるようになりました。  
+
+モジュールは製品グループによって定期的に更新されるため、含まれているコマンドレットと共に変更が発生する可能性があります。変更の種類 (パラメーター名を変更する、コマンドレット全体を非推奨にするなど) によっては、Runbook に悪影響が及ぶことがあります。 Runbook およびそれらが自動化するプロセスに影響が及ばないようにするには、処理を続行する前にテストと検証を行うことを強くお勧めします。  その目的のための専用の Automation アカウントがない場合は、アカウントの作成を検討してください。アカウントを作成すると、PowerShell モジュールの更新などの反復的な変更に加えて、Runbook の開発中の多数のさまざまなシナリオや変更についてテストを行うことができます。  結果を検証して必要な変更をすべて適用したら、修正が必要であった Runbook の移行の調整を進め、後述のとおり、運用環境で更新を実行してください。     
 
 ## <a name="updating-azure-modules"></a>Azure モジュールの更新
 
@@ -35,20 +38,23 @@ ms.lasthandoff: 04/21/2017
 3. **[はい]** をクリックすると、モジュールの更新プロセスが開始されます。  更新プロセスの所要時間は約 15 分から 20 分であり、以下のモジュールが更新されます。
 
   * Azure
-  *    Azure.Storage
-  *    AzureRm.Automation
-  *    AzureRm.Compute
-  *    AzureRm.Profile
-  *    AzureRm.Resources
-  *    AzureRm.Sql
+  * Azure.Storage
+  * AzureRm.Automation
+  * AzureRm.Compute
+  * AzureRm.Profile
+  * AzureRm.Resources
+  * AzureRm.Sql
   * AzureRm.Storage
 
     モジュールが既に最新の状態である場合、プロセスは数秒で完了します。  更新プロセスが完了すると通知が表示されます。<br><br> ![Azure モジュールの更新の更新状態](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
-スケジュールを作成するたびに、そのスケジュールで実行される後続のジョブは、スケジュール作成時の Automation アカウントのモジュールを使用します。  スケジュールされた Runbook で更新されたモジュールの使用を開始するには、その Runbook でスケジュールのリンクを解除し、もう一度リンクする必要があります。   
+> [!NOTE]
+> Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。    
 
 runbook で Azure PowerShell モジュールのコマンドレットを使用して Azure リソースを管理する場合、モジュールを最新に保つために 1 か月に 1 回程度この更新プロセスを実行する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-統合モジュールの詳細、およびカスタム モジュールを作成して Automation をさらに別のシステム、サービス、またはソリューションと統合する方法については、[統合モジュール](automation-integration-modules.md)に関するページを参照してください。
+* 統合モジュールの詳細、およびカスタム モジュールを作成して Automation をさらに別のシステム、サービス、またはソリューションと統合する方法については、[統合モジュール](automation-integration-modules.md)に関するページを参照してください。
+
+* ソース管理の統合を検討してください。そのためには、[GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) または [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) を使用して、Automation Runbook と構成ポートフォリオのリリースを一元的に管理および制御します。  

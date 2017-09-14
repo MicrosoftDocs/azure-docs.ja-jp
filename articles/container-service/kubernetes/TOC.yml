@@ -1,0 +1,93 @@
+- name: Kubernetes を伴う ACS
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: Container Service について
+      href: container-service-intro-kubernetes.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Kubernetes Linux
+      href: container-service-kubernetes-walkthrough.md
+- name: チュートリアル
+  items:
+    - name: 1 - コンテナー イメージを作成する
+      href: container-service-tutorial-kubernetes-prepare-app.md
+    - name: 2 - コンテナー レジストリを作成する
+      href: container-service-tutorial-kubernetes-prepare-acr.md
+    - name: 3 - Kubernetes クラスターを作成する
+      href: container-service-tutorial-kubernetes-deploy-cluster.md
+    - name: 4 - アプリケーションを実行する
+      href: container-service-tutorial-kubernetes-deploy-application.md
+    - name: 5 - アプリケーションのスケールを変更する
+      href: container-service-tutorial-kubernetes-scale.md
+    - name: 6 - アプリケーションを更新する
+      href: container-service-tutorial-kubernetes-app-update.md
+    - name: 7 - OMS で監視する
+      href: container-service-tutorial-kubernetes-monitor.md
+- name: サンプル
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  items:
+    - name: コンテナーをセキュリティ保護する
+      href: container-service-security.md
+    - name: サービス プリンシパル - Kubernetes
+      href: container-service-kubernetes-service-principal.md
+- name: ハウツー ガイド
+  items:
+    - name: Windows と連携する Kubernetes
+      href: container-service-kubernetes-windows-walkthrough.md
+    - name: Kubernetes Web インターフェイス
+      href: container-service-kubernetes-ui.md
+    - name: Helm グラフのデプロイ
+      href: container-service-kubernetes-helm.md
+    - name: Jenkins と ACS Kubernetes
+      href: container-service-kubernetes-jenkins.md
+    - name: ACR と ACS で Draft を使用する
+      href: container-service-draft-up.md
+    - name: ACS クラスターに接続する
+      href: container-service-connect.md
+    - name: ACS クラスターをスケールする
+      href: container-service-scale.md
+    - name: Kubernetes ACS クラスターの負荷を分散する
+      href: container-service-kubernetes-load-balancing.md
+    - name: 監視
+      items:
+        - name: OMS で監視する
+          href: container-service-kubernetes-oms.md
+        - name: Datadog で監視する
+          href: container-service-kubernetes-datadog.md
+        - name: Sysdig で監視する
+          href: container-service-kubernetes-sysdig.md
+        - name: CoScale で監視する
+          href: container-service-kubernetes-coscale.md
+    - name: Spring Boot アプリのデプロイ
+      items:
+        - name: Azure Container Service で Spring Boot アプリケーションを Linux にデプロイする
+          href: container-service-deploy-spring-boot-app-on-linux.md
+        - name: Azure Container Service で Spring Boot アプリケーションを Kubernetes クラスターにデプロイする
+          href: container-service-deploy-spring-boot-app-on-kubernetes.md
+- name: リファレンス
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/acs
+    - name: REST ()
+      href: /rest/api/container-services
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: FAQ
+      href: container-service-faq.md
+    - name: テンプレート - ACS Engine
+      href: 'https://github.com/Azure/acs-engine'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 387b274a993454814f7238f4cd89a52351a6fc1f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 303cdffa15fdfe9b83d0612edecafc6943d218f3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,10 +43,5 @@ ms.openlocfilehash: 387b274a993454814f7238f4cd89a52351a6fc1f
 | 8 |デバイスのフェールオーバー |同じソース デバイスのボリューム コンテナーについて、複数のフェールオーバーを異なるターゲット デバイスに対して実行することはサポートされません。 1 つの障害発生デバイスから複数のデバイスにフェールオーバーすると、フェールオーバーされた最初のデバイス上のボリューム コンテナーがデータの所有権を失います。 このようなフェールオーバーが発生した後、これらのボリューム コンテナーを Azure クラシック ポータルで表示するとその表示や動作が変わります。 | |はい |なし |
 | 9 |インストール |SharePoint 用 StorSimple アダプターのインストール中にインストールを正常に完了するためには、デバイスの IP を指定する必要があります。 | |あり |なし |
 | 10 |ネットワーク インターフェイス |以前は、ネットワーク インターフェイスの DATA 2 と DATA 3 はソフトウェアでスワップされました。 |これらのインターフェイスを構成する必要がある場合は、Microsoft サポートにお問い合わせください。 |あり |いいえ |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

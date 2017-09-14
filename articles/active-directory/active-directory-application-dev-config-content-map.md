@@ -1,6 +1,6 @@
 ---
-title: "アプリケーションの構成または登録に関する問題&quot;"
-description: "アプリケーションの構成または登録に関する問題&quot;"
+title: "アプリケーションの構成または登録に関する問題\""
+description: "アプリケーションの構成または登録に関する問題\""
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 13155da09127c4ebe43ac77fdd196777ab884a1d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/18/2017
-
 
 ---
 

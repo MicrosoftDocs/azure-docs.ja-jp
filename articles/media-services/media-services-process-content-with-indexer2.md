@@ -4,7 +4,7 @@ description: "Azure Media Indexer を使用すると、メディア ファイル
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 85d25525-a498-44eb-ae3a-2ca5ceb8e53d
 ms.service: media-services
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 15/05/2017
+ms.date: 07/31/2017
 ms.author: adsolank;juliako;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 717a8ace8c469b0529ac3c98f22b8ee5a53b3d3b
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: dfcf3d972ef34a550e111bd30ede3b986daf2505
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
@@ -85,17 +84,20 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 * ポルトガル語 [PtBr]
 * アラビア語 (エジプト語) [ArEg]
 * 日本語 [JaJp]
+* ロシア語 [RuRu]
+* 英語 (英国) [EnGb]
+* スペイン語 (メキシコ) [EsMx] 
 
 ## <a name="supported-file-types"></a>サポートされるファイルの種類
 
 サポートされているファイルの種類については、[サポート対象コーデック/形式](media-services-media-encoder-standard-formats.md#input-containerfile-formats)に関するセクションを参照してください。
 
-## <a name="sample-code"></a>サンプル コード
+## <a name="net-sample-code"></a>.NET サンプル コード
 
 このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
-2. 次の JSON プリセットを含む構成ファイルに基づくインデックス作成タスクを持つジョブを作成します。
+2. 次の json プリセットを含む構成ファイルに基づいて、インデックス作成タスクを持つジョブを作成します。
    
         {
           "version":"1.0",
@@ -112,167 +114,169 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
         }
 3. 出力ファイルをダウンロードします。 
    
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
-        using System.Threading.Tasks;
-   
-        namespace IndexContent
+#### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
+
+「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
+
+#### <a name="example"></a>例
+
+    using System;
+    using System.Configuration;
+    using System.IO;
+    using System.Linq;
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    namespace IndexContent
+    {
+        class Program
         {
-            class Program
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+            // Field for service context.
+            private static CloudMediaContext _context = null;
+
+            static void Main(string[] args)
             {
-                // Read values from the App.config file.
-                private static readonly string _mediaServicesAccountName =
-                    ConfigurationManager.AppSettings["MediaServicesAccountName"];
-                private static readonly string _mediaServicesAccountKey =
-                    ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-   
-                // Field for service context.
-                private static CloudMediaContext _context = null;
-                private static MediaServicesCredentials _cachedCredentials = null;
-   
-                static void Main(string[] args)
+                var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+                // Run indexing job.
+                var asset = RunIndexingJob(@"C:\supportFiles\Indexer\BigBuckBunny.mp4",
+                                            @"C:\supportFiles\Indexer\config.json");
+
+                // Download the job output asset.
+                DownloadAsset(asset, @"C:\supportFiles\Indexer\Output");
+            }
+
+            static IAsset RunIndexingJob(string inputMediaFilePath, string configurationFile)
+            {
+                // Create an asset and upload the input media file to storage.
+                IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
+                    "My Indexing Input Asset",
+                    AssetCreationOptions.None);
+
+                // Declare a new job.
+                IJob job = _context.Jobs.Create("My Indexing Job");
+
+                // Get a reference to Azure Media Indexer 2 Preview.
+                string MediaProcessorName = "Azure Media Indexer 2 Preview";
+
+                var processor = GetLatestMediaProcessorByName(MediaProcessorName);
+
+                // Read configuration from the specified file.
+                string configuration = File.ReadAllText(configurationFile);
+
+                // Create a task with the encoding details, using a string preset.
+                ITask task = job.Tasks.AddNew("My Indexing Task",
+                    processor,
+                    configuration,
+                    TaskOptions.None);
+
+                // Specify the input asset to be indexed.
+                task.InputAssets.Add(asset);
+
+                // Add an output asset to contain the results of the job.
+                task.OutputAssets.AddNew("My Indexing Output Asset", AssetCreationOptions.None);
+
+                // Use the following event handler to check job progress.  
+                job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
+
+                // Launch the job.
+                job.Submit();
+
+                // Check job execution and wait for job to finish.
+                Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
+
+                progressJobTask.Wait();
+
+                // If job state is Error, the event handling
+                // method for job progress should log errors.  Here we check
+                // for error state and exit if needed.
+                if (job.State == JobState.Error)
                 {
-   
-                    // Create and cache the Media Services credentials in a static class variable.
-                    _cachedCredentials = new MediaServicesCredentials(
-                                    _mediaServicesAccountName,
-                                    _mediaServicesAccountKey);
-                    // Used the cached credentials to create CloudMediaContext.
-                    _context = new CloudMediaContext(_cachedCredentials);
-   
-                    // Run indexing job.
-                    var asset = RunIndexingJob(@"C:\supportFiles\Indexer\BigBuckBunny.mp4",
-                                                @"C:\supportFiles\Indexer\config.json");
-   
-                    // Download the job output asset.
-                    DownloadAsset(asset, @"C:\supportFiles\Indexer\Output");
+                    ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+                    Console.WriteLine(string.Format("Error: {0}. {1}",
+                                                    error.Code,
+                                                    error.Message));
+                    return null;
                 }
-   
-                static IAsset RunIndexingJob(string inputMediaFilePath, string configurationFile)
+
+                return job.OutputMediaAssets[0];
+            }
+
+            static IAsset CreateAssetAndUploadSingleFile(string filePath, string assetName, AssetCreationOptions options)
+            {
+                IAsset asset = _context.Assets.Create(assetName, options);
+
+                var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
+                assetFile.Upload(filePath);
+
+                return asset;
+            }
+
+            static void DownloadAsset(IAsset asset, string outputDirectory)
+            {
+                foreach (IAssetFile file in asset.AssetFiles)
                 {
-                    // Create an asset and upload the input media file to storage.
-                    IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
-                        "My Indexing Input Asset",
-                        AssetCreationOptions.None);
-   
-                    // Declare a new job.
-                    IJob job = _context.Jobs.Create("My Indexing Job");
-   
-                    // Get a reference to Azure Media Indexer 2 Preview.
-                    string MediaProcessorName = "Azure Media Indexer 2 Preview";
-   
-                    var processor = GetLatestMediaProcessorByName(MediaProcessorName);
-   
-                    // Read configuration from the specified file.
-                    string configuration = File.ReadAllText(configurationFile);
-   
-                    // Create a task with the encoding details, using a string preset.
-                    ITask task = job.Tasks.AddNew("My Indexing Task",
-                        processor,
-                        configuration,
-                        TaskOptions.None);
-   
-                    // Specify the input asset to be indexed.
-                    task.InputAssets.Add(asset);
-   
-                    // Add an output asset to contain the results of the job.
-                    task.OutputAssets.AddNew("My Indexing Output Asset", AssetCreationOptions.None);
-   
-                    // Use the following event handler to check job progress.  
-                    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
-   
-                    // Launch the job.
-                    job.Submit();
-   
-                    // Check job execution and wait for job to finish.
-                    Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
-   
-                    progressJobTask.Wait();
-   
-                    // If job state is Error, the event handling
-                    // method for job progress should log errors.  Here we check
-                    // for error state and exit if needed.
-                    if (job.State == JobState.Error)
-                    {
-                        ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-                        Console.WriteLine(string.Format("Error: {0}. {1}",
-                                                        error.Code,
-                                                        error.Message));
-                        return null;
-                    }
-   
-                    return job.OutputMediaAssets[0];
+                    file.Download(Path.Combine(outputDirectory, file.Name));
                 }
-   
-                static IAsset CreateAssetAndUploadSingleFile(string filePath, string assetName, AssetCreationOptions options)
+            }
+
+            static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+            {
+                var processor = _context.MediaProcessors
+                    .Where(p => p.Name == mediaProcessorName)
+                    .ToList()
+                    .OrderBy(p => new Version(p.Version))
+                    .LastOrDefault();
+
+                if (processor == null)
+                    throw new ArgumentException(string.Format("Unknown media processor",
+                                                               mediaProcessorName));
+
+                return processor;
+            }
+
+            static private void StateChanged(object sender, JobStateChangedEventArgs e)
+            {
+                Console.WriteLine("Job state changed event:");
+                Console.WriteLine("  Previous state: " + e.PreviousState);
+                Console.WriteLine("  Current state: " + e.CurrentState);
+
+                switch (e.CurrentState)
                 {
-                    IAsset asset = _context.Assets.Create(assetName, options);
-   
-                    var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
-                    assetFile.Upload(filePath);
-   
-                    return asset;
-                }
-   
-                static void DownloadAsset(IAsset asset, string outputDirectory)
-                {
-                    foreach (IAssetFile file in asset.AssetFiles)
-                    {
-                        file.Download(Path.Combine(outputDirectory, file.Name));
-                    }
-                }
-   
-                static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-                {
-                    var processor = _context.MediaProcessors
-                        .Where(p => p.Name == mediaProcessorName)
-                        .ToList()
-                        .OrderBy(p => new Version(p.Version))
-                        .LastOrDefault();
-   
-                    if (processor == null)
-                        throw new ArgumentException(string.Format("Unknown media processor",
-                                                                   mediaProcessorName));
-   
-                    return processor;
-                }
-   
-                static private void StateChanged(object sender, JobStateChangedEventArgs e)
-                {
-                    Console.WriteLine("Job state changed event:");
-                    Console.WriteLine("  Previous state: " + e.PreviousState);
-                    Console.WriteLine("  Current state: " + e.CurrentState);
-   
-                    switch (e.CurrentState)
-                    {
-                        case JobState.Finished:
-                            Console.WriteLine();
-                            Console.WriteLine("Job is finished.");
-                            Console.WriteLine();
-                            break;
-                        case JobState.Canceling:
-                        case JobState.Queued:
-                        case JobState.Scheduled:
-                        case JobState.Processing:
-                            Console.WriteLine("Please wait...\n");
-                            break;
-                        case JobState.Canceled:
-                        case JobState.Error:
-                            // Cast sender as a job.
-                            IJob job = (IJob)sender;
-                            // Display or log error details as needed.
-                            // LogJobStop(job.Id);
-                            break;
-                        default:
-                            break;
-                    }
+                    case JobState.Finished:
+                        Console.WriteLine();
+                        Console.WriteLine("Job is finished.");
+                        Console.WriteLine();
+                        break;
+                    case JobState.Canceling:
+                    case JobState.Queued:
+                    case JobState.Scheduled:
+                    case JobState.Processing:
+                        Console.WriteLine("Please wait...\n");
+                        break;
+                    case JobState.Canceled:
+                    case JobState.Error:
+                        // Cast sender as a job.
+                        IJob job = (IJob)sender;
+                        // Display or log error details as needed.
+                        // LogJobStop(job.Id);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
+    }
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,9 +1,9 @@
 ---
-title: "Azure Network Watcher でパケット キャプチャを管理する - Azure CLI | Microsoft Docs"
-description: "このページでは、Azure CLI を使用して Network Watcher のパケット キャプチャ機能を管理する方法を説明する"
+title: "Azure Network Watcher でパケット キャプチャを管理する - Azure CLI 2.0 | Microsoft Docs"
+description: "このページでは、Azure CLI 2.0 を使って Network Watcher のパケット キャプチャ機能を管理する方法を説明します"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
@@ -13,27 +13,31 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 89e58686dcefb784a865f7842e78ef4d00f5783c
-ms.lasthandoff: 03/31/2017
+ms.author: jdial
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c94eb46f31f2f19b843ccd7bf77b8a39943a07d4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/26/2017
 
 ---
 
-# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli"></a>Azure CLI を使用して Azure Network Watcher でパケット キャプチャを管理する
+# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [CLI](network-watcher-packet-capture-manage-cli.md)
+> - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーすることができることで、この機能によってパケット キャプチャを手動で、目的のマシン上で実行する負荷が軽減されて、貴重な時間の節約になります。
 
-この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
+この記事では、Azure CLI 2.0 を使います。Azure CLI 2.0 は、Resource Manager デプロイメント モデルを対象とする Microsoft の次世代 CLI であり、Windows、Mac、Linux で利用できます。
 
-この記事では、パケット キャプチャで現在利用できるさまざまな管理作業を見ていきます。
+この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストール](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)する必要があります。
+
+この記事では、パケット キャプチャで現在利用できるさまざまな管理作業について説明します。
 
 - [**パケット キャプチャを開始する**](#start-a-packet-capture)
 - [**パケット キャプチャを停止する**](#stop-a-packet-capture)
@@ -54,18 +58,18 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 ### <a name="step-1"></a>手順 1
 
-ゲスト仮想マシンにパケット キャプチャ エージェントをインストールするには、`azure vm extension set` コマンドレットを実行します。
+ゲスト仮想マシンにパケット キャプチャ エージェントをインストールするには、`az vm extension set` コマンドレットを実行します。
 
 Windows 仮想マシンの場合:
 
 ```azurecli
-azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r AzureNetworkWatcherExtension -n NetworkWatcherAgentWindows -o 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentWindows --version 1.4
 ```
 
 Linux 仮想マシンの場合:
 
 ```azurecli
-azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r AzureNetworkWatcherExtension -n NetworkWatcherAgentLinux -o 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
 ````
 
 ### <a name="step-2"></a>手順 2.
@@ -73,18 +77,29 @@ azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.A
 エージェントがインストールされていることを確認するために、リソース グループと仮想マシン名を渡して `vm extension get` コマンドレットを実行します。 結果のリストを調べて、エージェントがインストールされていることを確認します。
 
 ```azurecli
-azure vm extension get -g resourceGroupName -m virtualMachineName
+az vm extension show -resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
-以下のサンプルは、`azure vm extension get` の実行に対する応答の例です。
+以下のサンプルは、`az vm extension show` の実行に対する応答の例です。
 
-```
-info:    Executing command vm extension get
-+ Looking up the VM "virtualMachineName"
-data:    Publisher                       Name                     Version  State
-data:    ------------------------------  -----------------------  -------  ---------
-data:    Microsoft.Azure.NetworkWatcher  NetworkWatcherAgentTest  1.4      Succeeded
-info:    vm extension get command OK
+```json
+{
+  "autoUpgradeMinorVersion": true,
+  "forceUpdateTag": null,
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/NetworkWatcherAgentWindows",
+  "instanceView": null,
+  "location": "westcentralus",
+  "name": "NetworkWatcherAgentWindows",
+  "protectedSettings": null,
+  "provisioningState": "Succeeded",
+  "publisher": "Microsoft.Azure.NetworkWatcher",
+  "resourceGroup": "{resourceGroupName}",
+  "settings": null,
+  "tags": null,
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "typeHandlerVersion": "1.4",
+  "virtualMachineExtensionType": "NetworkWatcherAgentWindows"
+}
 ```
 
 ## <a name="start-a-packet-capture"></a>パケット キャプチャを開始する
@@ -93,10 +108,10 @@ info:    vm extension get command OK
 
 ### <a name="step-1"></a>手順 1
 
-次の手順では、Network Watcher インスタンスを取得します。 この変数は、手順 4 で `network watcher show` コマンドレットに渡されます。
+次の手順では、Network Watcher インスタンスを取得します。 Network Watcher の名前は、手順 4 で `az network watcher show` コマンドレットに渡されます。
 
 ```azurecli
-azure network watcher show -g resourceGroup -n networkWatcherName
+az network watcher show -resource-group resourceGroup -name networkWatcherName
 ```
 
 ### <a name="step-2"></a>手順 2.
@@ -112,86 +127,128 @@ azure storage account list
 フィルターを使用して、パケット キャプチャによって格納されるデータを制限できます。 次の例では、いくつかのフィルターを使用してパケット キャプチャを設定します。  最初の 3 つのフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への発信 TCP トラフィックのみを収集します。  最後のフィルターは、UDP トラフィックのみを収集します。
 
 ```azurecli
-azure network watcher packet-capture create -g resourceGroupName -w networkWatcherName -n packetCaptureName -t targetResourceId -o storageAccountResourceId -f "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
+az network watcher packet-capture create --resource-group {resoureceurceGroupName} --vm {vmName} --name packetCaptureName --storage-account gwteststorage123abc --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-単一のパケット キャプチャに対して複数のフィルターを定義できます。 複雑なフィルター構造を使用している場合は、構文エラーを回避するために json ファイルとしてフィルターを使用することをお勧めします。 たとえば、フラグ "-f" の代わりに "-r" を使用して、次のフィルターを含む json ファイルの場所を渡します。
+次の例は、`az network watcher packet-capture create` コマンドレットを実行したときに予想される出力です。
 
 ```json
-[
+{
+  "bytesToCapturePerPacket": 0,
+  "etag": "W/\"b8cf3528-2e14-45cb-a7f3-5712ffb687ac\"",
+  "filters": [
     {
-        "protocol":"TCP",
-        "remoteIPAddress":"1.1.1.1-255.255.255",
-        "localIPAddress":"10.0.0.3",
-        "remotePort":"20"
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "20"
     },
     {
-        "protocol":"TCP",
-        "remoteIPAddress":"1.1.1.1-255.255.255",
-        "localIPAddress":"10.0.0.3",
-        "remotePort":"80"
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "80"
     },
     {
-        "protocol":"TCP",
-        "remoteIPAddress":"1.1.1.1-255.255.255",
-        "localIPAddress":"10.0.0.3",
-        "remotePort":"443"
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "443"
     },
     {
-        "protocol":"UDP"
+      "localIpAddress": "",
+      "localPort": "",
+      "protocol": "UDP",
+      "remoteIpAddress": "",
+      "remotePort": ""
     }
-]
-```
-
-
-次の例は、`network watcher packet-capture create` コマンドレットを実行したときに予想される出力です。
-
-```
-data:    Name                            : packetCaptureName
-data:    Etag                            : W/"d59bb2d2-dc95-43da-b740-e0ef8fcacecb"
-data:    Target                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/testVM
-data:    Bytes To Capture Per Packet     : 0
-data:    Total Bytes Per Session         : 1073741824
-data:    Time Limit In Seconds           : 18000
-data:    Storage Location:
-data:      Storage Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/testStorage
-data:      Storage Path                  : https://testStorage.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/testRG/providers/microsoft.compute/virtualmachines/testVM/2017/02/17/packetcapture_01_21_18_145.cap
-data:    Filters                         : []
-data:    Provisioning State              : Succeeded
-info:    network watcher packet-capture create command OK
+  ],
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+cketCaptures/packetCaptureName",
+  "name": "packetCaptureName",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "NetworkWatcherRG",
+  "storageLocation": {
+    "filePath": null,
+    "storageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/gwteststorage123abc",
+    "storagePath": "https://gwteststorage123abc.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/{resourceGroupName}/p
+roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_22_34_630.cap"
+  },
+  "target": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  "timeLimitInSeconds": 18000,
+  "totalBytesPerSession": 1073741824
+}
 ```
 
 ## <a name="get-a-packet-capture"></a>パケット キャプチャを取得する
 
-`network watcher packet-capture show` コマンドレットを実行して、現在実行中または完了したパケット キャプチャの状態を取得します。
+`az network watcher packet-capture show` コマンドレットを実行して、現在実行中または完了したパケット キャプチャの状態を取得します。
 
 ```azurecli
-azure network watcher packet-capture show -g resourceGroupName -w networkWatcherName -n packetCaptureName
+az network watcher packet-capture show --name packetCaptureName --location westcentralus
 ```
 
-次の例は、`network watcher packet-capture show` コマンドレットからの出力です。 次の例はキャプチャ完了後です。 PacketCaptureStatus 値は Stopped で、StopReason は TimeExceeded です。 この値は、パケット キャプチャが成功し、所定の時間実行されたことを示します。
+次の例は、`az network watcher packet-capture show` コマンドレットからの出力です。 次の例はキャプチャ完了後です。 PacketCaptureStatus 値は Stopped で、StopReason は TimeExceeded です。 この値は、パケット キャプチャが成功し、所定の時間実行されたことを示します。
 
 ```
-data:    Name                            : packetCaptureName
-data:    Etag                            : W/"d59bb2d2-dc95-43da-b740-e0ef8fcacecb"
-data:    Target                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/testVM
-data:    Bytes To Capture Per Packet     : 0
-data:    Total Bytes Per Session         : 1073741824
-data:    Time Limit In Seconds           : 18000
-data:    Storage Location:
-data:      Storage Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/testStorage
-data:      Storage Path                  : https://testStorage.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/testRG/providers/microsoft.compute/virtualmachines/testVM/2017/02/17/packetcapture_01_21_18_145.cap
-data:    Filters                         : []
-data:    Provisioning State              : Succeeded
-info:    network watcher packet-capture show command OK
+{
+  "bytesToCapturePerPacket": 0,
+  "etag": "W/\"b8cf3528-2e14-45cb-a7f3-5712ffb687ac\"",
+  "filters": [
+    {
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "20"
+    },
+    {
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "80"
+    },
+    {
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "443"
+    },
+    {
+      "localIpAddress": "",
+      "localPort": "",
+      "protocol": "UDP",
+      "remoteIpAddress": "",
+      "remotePort": ""
+    }
+  ],
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/packetCaptures/packetCaptureName",
+  "name": "packetCaptureName",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "NetworkWatcherRG",
+  "storageLocation": {
+    "filePath": null,
+    "storageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/gwteststorage123abc",
+    "storagePath": "https://gwteststorage123abc.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/{resourceGroupName}/providers/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapt
+ure_16_22_34_630.cap"
+  },
+  "target": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  "timeLimitInSeconds": 18000,
+  "totalBytesPerSession": 1073741824
+}
 ```
 
 ## <a name="stop-a-packet-capture"></a>パケット キャプチャを停止する
 
-`network watcher packet-capture stop` コマンドレットを実行することで、キャプチャ セッションが進行中の場合は停止します。
+`az network watcher packet-capture stop` コマンドレットを実行することで、キャプチャ セッションが進行中の場合は停止します。
 
 ```azurecli
-azure network watcher packet-capture stop -g resourceGroupName -w networkWatcherName -n packetCaptureName
+az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
@@ -200,7 +257,7 @@ azure network watcher packet-capture stop -g resourceGroupName -w networkWatcher
 ## <a name="delete-a-packet-capture"></a>パケット キャプチャを削除する
 
 ```azurecli
-azure network watcher packet-capture delete -g resourceGroupName -w networkWatcherName -n packetCaptureName
+az network watcher packet-capture delete --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]

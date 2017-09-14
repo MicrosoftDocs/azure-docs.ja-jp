@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d82f352d714c0272296eb36782cbbcbac99a1bab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -74,7 +76,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 合計の使用可能な容量* |～ 15 TB |～ 38 TB |
 | ソリューションの最大容量 (クラウドを含む) |200 TB |500 TB |
 
-<sup>* </sup>- *使用可能な容量の合計には、データ、メタデータ、バッファーに使用できる容量が含まれています。*
+<sup>*  </sup>- *使用可能な容量の合計には、データ、メタデータ、バッファーに使用できる容量が含まれています。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>エンクロージャの寸法と重量
 次の表に、エンクロージャの寸法と重量の各種仕様を示します。  
@@ -173,10 +175,5 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 ## <a name="next-steps"></a>次のステップ
 StorSimple デバイスをデータセンターにデプロイする準備ができました。 詳細については、「 [オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-deployment-walkthrough-u2.md)」を参照してください。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

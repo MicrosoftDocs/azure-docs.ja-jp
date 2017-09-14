@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 66834674e37d3b46a4a754b2b743cb223a6961d7
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f90bada3572c0ed40b07d76ec02c1b499bbd1428
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。 他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
+Azure CLI を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。 他のツールを使用する管理のトピックを表示する場合は、上のタブ セレクターをクリックします。
+
 
 **前提条件**
 
@@ -84,7 +85,7 @@ Data Lake Analytics アカウントを一覧表示します。
 Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/storage-introduction.md)
+* [Azure Storage](../storage/common/storage-introduction.md)
 
 Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Storage アカウントを指定する必要があります。 既定の ADL ストレージ アカウントは、ジョブ メタデータとジョブ監査ログを保存するために使用されます。 Analytics アカウントを作成したら、さらに Data Lake Storage アカウントや Azure Storage アカウントを追加することができます。 
 
@@ -166,19 +167,10 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 
 タイプには、データベース、スキーマ、アセンブリ、外部データ ソース、テーブル、テーブル値関数、またはテーブルの統計情報が含まれます。
 
-### <a name="create-catalog-secret"></a>カタログ シークレットの作成
-    azure datalake analytics catalog secret create -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
-
-### <a name="modify-catalog-secret"></a>カタログ シークレットの変更
-      azure datalake analytics catalog secret set -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
-
-### <a name="delete-catalog-secret"></a>カタログ シークレットの削除
-    azure datalake analytics catalog secrete delete -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
-
 <!-- ################################ -->
 <!-- ################################ -->
 ## <a name="use-arm-groups"></a>ARM グループの使用
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを&1; つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
 
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
@@ -187,7 +179,7 @@ Data Lake Analtyics サービスには、次のコンポーネントを含める
 * 追加の Azure Data Lake Storage アカウント
 * 追加の Azure Storage アカウント
 
-管理しやすくするために&1; つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
+管理しやすくするために 1 つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
 
 ![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 

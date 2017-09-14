@@ -14,31 +14,40 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/04/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3ca1184bfbd6af3a63e62bce9dfe1baf1729b4ac
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: b43dd20be9f481270b782de3c889abac762bd9cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの HDInsight でワークフローを定義して実行する
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトなど、システムに固有のジョブのスケジュールを設定する際にも使用できます。
+HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Oozie は Hadoop スタックと統合されており、次のジョブをサポートしています。
+
+* Apache MapReduce
+* Apache Pig
+* Apache Hive
+* Apache Sqoop
+
+Oozie は、Java プログラムやシェル スクリプトなどの、システムに固有のジョブをスケジュールする際にも使用できます。
 
 > [!NOTE]
 > HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory です。 Azure Data Factory の詳細については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
+
+> [!IMPORTANT]
+> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **HDInsight クラスター**: [Linux での HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="example-workflow"></a>ワークフローの例
 
@@ -63,7 +72,7 @@ HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。
 
 ## <a name="create-the-working-directory"></a>作業ディレクトリの作成
 
-Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。 この例では **wasbs:///tutorials/useoozie** を使用します。 次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
+Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。 この例では **wasb:///tutorials/useoozie** を使用します。 次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
 
 ```
 hdfs dfs -mkdir -p /tutorials/useoozie/data
@@ -128,13 +137,13 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
 4. エディターを終了するには、Ctrl + X キーを押します。 メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
 
-5. 次のコマンドを使用して、**useooziewf.hql** を **wasbs:///tutorials/useoozie/useooziewf.hql** にコピーします。
+5. 次のコマンドを使用して、**useooziewf.hql** を **wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
 
     ```
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    これらのコマンドにより、このクラスターに関連付けられている Azure ストレージ アカウントに **useooziewf.hql** ファイルが保存されるため、クラスターが削除されてもファイルは保持されます。
+    これらのコマンドには、クラスターの HDFS 互換ストレージ上の **useooziewf.hql** ファイルが含まれています。
 
 ## <a name="define-the-workflow"></a>ワークフローの定義
 
@@ -292,11 +301,11 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
 
     ```xml
     <name>fs.defaultFS</name>
-    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
+    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
     ```
 
     > [!NOTE]
-    > HDInsight クラスターで既定のストレージとして Azure Storage を使用する場合、`<value>` 要素の内容は `wasbs://`で始まります。 Azure Data Lake Store を使用する場合は、`adl://` で始まります。
+    > HDInsight クラスターで既定のストレージとして Azure Storage を使用する場合、`<value>` 要素の内容は `wasb://`で始まります。 Azure Data Lake Store を使用する場合は、`adl://` で始まります。
 
     以下のステップで使用するため、`<value>` 要素の内容を保存します。
 
@@ -326,7 +335,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
 
         <property>
         <name>nameNode</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
         </property>
 
         <property>
@@ -346,7 +355,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
 
         <property>
         <name>hiveScript</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
         </property>
 
         <property>
@@ -356,7 +365,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
 
         <property>
         <name>hiveDataFolder</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
         </property>
 
         <property>
@@ -376,12 +385,12 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
 
         <property>
         <name>oozie.wf.application.path</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
         </property>
     </configuration>
     ```
 
-   * **wasbs://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、既定のストレージで返された値に置き換えます。
+   * **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、既定のストレージで返された値に置き換えます。
 
      > [!WARNING]
      > パスが `wasb` パスの場合は、完全パスを使用する必要があります。 `wasb:///` だけに短縮しないでください。
@@ -452,7 +461,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
     Job ID : 0000005-150622124850154-oozie-oozi-W
     ------------------------------------------------------------------------------------------------------------------------------------
     Workflow Name : useooziewf
-    App Path      : wasbs:///tutorials/useoozie
+    App Path      : wasb:///tutorials/useoozie
     Status        : PREP
     Run           : 0
     User          : USERNAME
@@ -465,7 +474,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
     ------------------------------------------------------------------------------------------------------------------------------------
     ```
 
-    このジョブの状態は `PREP` です。 これは、ジョブは送信済みですが、まだ開始されていないことを示しています。
+    このジョブの状態は `PREP` です。 この状態は、ジョブが作成されたが開始されていないことを示します。
 
 5. ジョブを開始するには次のコマンドを使用します。
 
@@ -502,7 +511,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
         Windows Phone   1791
         (6 rows affected)
 
-Oozie コマンドの詳細については、 [Oozie コマンド ライン ツール](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html)に関するページをご覧ください。
+Oozie コマンドの詳細については、[Oozie コマンドライン ツール](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html)に関するページをご覧ください。
 
 ## <a name="oozie-rest-api"></a>Oozie REST API
 
@@ -566,9 +575,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 ## <a name="scheduling-jobs"></a>ジョブのスケジュール設定
 
-コーディネーターを使用すると、ジョブの開始時刻、終了時刻、発生頻度を指定して、ジョブを特定の時間にスケジュールできます。
-
-ワークフローのスケジュールを定義するには、次の手順に従います。
+コーディネーターを使用すると、ジョブの開始時刻、終了時刻、発生頻度を指定できます。 ワークフローのスケジュールを定義するには、次の手順に従います。
 
 1. 次のコマンドを使用して、**coordinator.xml** という名前のファイルを作成します。
 
@@ -613,20 +620,20 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
     次の変更を行います。
 
-   * `<name>oozie.wf.application.path</name>` を `<name>oozie.coord.application.path</name>` に変更します。 この値は、ワークフロー ファイルではなく、コーディネーター ファイルを実行するよう Oozie に指示します。
+   * ワークフロー ファイルではなく、コーディネーター ファイルを実行するように Oozie に指示するには、`<name>oozie.wf.application.path</name>` を `<name>oozie.coord.application.path</name>` に変更します。
 
-   * 次の XML を追加します。 これは、coordinator.xml で使用される変数を、workflow.xml の場所を参照するように設定します。
+   * コーディネーターが使用する `workflowPath` 変数を設定するには、次の XML を追加します。
 
         ```xml
         <property>
             <name>workflowPath</name>
-            <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+            <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
         </property>
         ```
 
-       `wasbs://mycontainer@mystorageaccount.blob.core.windows` テキストを、job.xml ファイルの他のエントリで使用されている値に置き換えます。
+       `wasb://mycontainer@mystorageaccount.blob.core.windows` テキストを、job.xml ファイルの他のエントリで使用されている値に置き換えます。
 
-   * 次の XML を追加します。 これは、coordinator.xml ファイルで使用する開始時刻、終了時刻、頻度を定義します。
+   * コーディネーターが使用する開始時刻、終了時刻、頻度を定義するには、次の XML を追加します。
 
         ```xml
         <property>
@@ -650,7 +657,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
         </property>
         ```
 
-       これらの値は、開始時刻を 2017 年 5 月 10 日 12:00 PM に、終了時刻を 2017 年 5 月 12 日 12:00 PM に設定します。 このジョブの実行間隔は毎日です。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
+       これらの値によって、開始時刻が 2017 年 5 月 10 日 12:00 PM に、終了時刻が 2017 年 5 月 12 日 12:00 PM に設定されます。 このジョブの実行間隔は毎日です。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
 
 5. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
@@ -673,7 +680,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
     ![コーディネーター ジョブ情報](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > これは、スケジュールされたワークフロー内の個々のアクションではなく、ジョブの正常な実行のみを示しています。 個々のアクションを表示するには、 **[Action]** エントリのいずれかを選択します。
+    > この画像には、正常に実行されたジョブのみが表示されており、スケジュールされたワークフロー内の個々のアクションについては表示されません。 個々のアクションを表示するには、 **[Action]** エントリのいずれかを選択します。
 
     ![アクション情報](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
@@ -695,7 +702,7 @@ Oozie UI を使用すると、Oozie のログを表示することができま�
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**原因**: **job.xml** ファイルで使用される WASB アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 WASB アドレスの形式は、 `wasbs://containername@storageaccountname.blob.core.windows.net`である必要があります。
+**原因**: **job.xml** ファイルで使用される WASB アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 WASB アドレスの形式は、 `wasb://containername@storageaccountname.blob.core.windows.net`である必要があります。
 
 **解決方法**: ジョブで使用する WASB アドレスを変更します。
 
@@ -768,7 +775,7 @@ Oozie UI を使用すると、Oozie のログを表示することができま�
 [sqldatabase-create-configue]: sql-database-create-configure.md
 [sqldatabase-get-started]: sql-database-get-started.md
 
-[azure-create-storageaccount]: storage-create-storage-account.md
+[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/

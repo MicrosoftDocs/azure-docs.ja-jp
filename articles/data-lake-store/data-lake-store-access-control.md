@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
 ms.openlocfilehash: 7533fe3758860111ae6c26630effedd673734b63
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/04/2017
 
 

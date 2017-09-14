@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 07/27/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: eeddc0da23192a0082f2fcddbb0cc5f3e4a72074
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache の FAQ
@@ -105,7 +104,7 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 
 Cache のオプションを選択するときの考慮事項を次に示します。
 
-* **メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium レベルは最大 530 GB であり、 [要求すれば](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)さらに多く使用できます。 詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
+* **メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium レベルでは 530 GB まで提供されます。 詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 * **ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Standard または Basic より Premium レベルの方が多くの帯域幅を提供します。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、[後の表](#cache-performance)を参照してください。
 * **スループット**: Premium レベルでは、使用可能な最大のスループットが提供されます。 キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生する場合があります。 詳細については、後の表を参照してください。
 * **高可用性/SLA**: Azure Redis Cache は、Standard/Premium キャッシュについて 99.9% の可用性を保証します。 SLA の詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)」を参照してください。 SLA は、Cache エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
@@ -130,25 +129,25 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 この表からは次のような結論が得られます。
 
-* キャッシュのサイズが同じ場合のスループットは、Standard レベルより Premium レベルの方が高くなります。 たとえば、6 GB のキャッシュの場合、P1 のスループットが 140 K RPS であるのに対し、C3 では 49 K になります。
-* Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 250 万 (250 K * 10) RPS となります。
+* キャッシュのサイズが同じ場合のスループットは、Standard レベルより Premium レベルの方が高くなります。 たとえば、6 GB のキャッシュの場合、P1 のスループットが 180,000 RPS であるのに対し、C3 では 49,000 になります。
+* Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 400 万 (400,000 * 10) RPS となります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
 | [価格レベル] | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS)** |
 | C0 |250 MB |共有 |5 / 0.625 |600 |
-| C1 |1 GB |1 |100 / 12.5 |12200 |
-| C2 |2.5 GB |2 |200 / 25 |24000 |
-| C3 |6 GB |4 |400 / 50 |49000 |
-| C4 |13 GB |2 |500 / 62.5 |61000 |
-| C5 |26 GB |4 |1000 / 125 |115000 |
-| C6 |53 GB |8 |2000 / 250 |150000 |
-| **Premium のキャッシュ サイズ** | |**シャードあたりの CPU コア数** | |**1 秒あたりの要求数 (RPS)、シャードあたり** |
-| P1 |6 GB |2 |1000 / 125 |140000 |
-| P2 |13 GB |4 |2000 / 250 |220000 |
-| P3 |26 GB |4 |2000 / 250 |220000 |
-| P4 |53 GB |8 |4000 / 500 |250000 |
+| C1 |1 GB |1 |100 / 12.5 |12,200 |
+| C2 |2.5 GB |2 |200 / 25 |24,000 |
+| C3 |6 GB |4 |400 / 50 |49,000 |
+| C4 |13 GB |2 |500 / 62.5 |61,000 |
+| C5 |26 GB |4 |1,000 / 125 |115,000 |
+| C6 |53 GB |8 |2,000 / 250 |150,000 |
+| **Premium のキャッシュ サイズ** | |**シャードあたりの CPU コア数** | **メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS)、シャードあたり** |
+| P1 |6 GB |2 |1,500 / 187.5 |180,000 |
+| P2 |13 GB |4 |3,000 / 375 |360,000 |
+| P3 |26 GB |4 |3,000 / 375 |360,000 |
+| P4 |53 GB |8 |6,000 / 750 |400,000 |
 
 `redis-benchmark.exe`などの Redis ツールのダウンロードの詳細については、「 [Redis コマンドの実行方法](#cache-commands) 」セクションを参照してください。
 
@@ -467,10 +466,14 @@ Redis が正常に動作するために重要な点は、Redis を中心とし�
 Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメント](index.md)に関するページを参照してください。
 
 ### <a name="managed-cache-service"></a>Managed Cache Service
-[Managed Cache Service は 2016 年 11 月 30 日に終了となりました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386094.aspx)を参照してください。
 
 ### <a name="in-role-cache"></a>In-Role Cache
-[In-Role Cache は 2016 年 11 月 30 日に終了となりました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[In-Role Cache は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386103.aspx)を参照してください。
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 

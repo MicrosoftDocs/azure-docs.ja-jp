@@ -12,11 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/25/2016
+ms.date: 06/30/2017
 ms.author: harikm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 012bfc7d8431e2edb2b1056fb465421fad58193a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4b19cc76ca11f606ca8af6b0f3277b5aa46ac5a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -27,7 +29,7 @@ MyDriving は、車からデータを収集するモノのインターネット 
 
 まだアプリを試していない場合は、「 [ファースト ステップ ガイド](iot-solution-get-started.md)」を参照してください。
 
-「 [MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」にアーキテクチャの詳細なアカウントがあります。 要約すると、当社がセットアップする構成と、同様のプロジェクトを作成するためにお客様がセットアップする構成があります。
+「 [MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」にアーキテクチャの詳細なアカウントがあります。 要約すると、同様のプロジェクトを作成するために、Microsoft がセットアップするいくつかの構成があります。
 
 * **クライアント アプリ** は、Android、iOS および Windows 10 のスマートフォンで実行します。 Xamarin プラットフォームを使用して、 `src/MobileApp`の GitHub に格納されている多くのコードを共有しています。 アプリでは、実際に次の 2 つの異なる機能を実行します。
   * オンボード診断 (OBD) デバイスおよびその独自のロケーション サービスからシステムのクラウド バックエンドにテレメトリをリレーします。
@@ -41,7 +43,12 @@ MyDriving は、車からデータを収集するモノのインターネット 
 * **HockeyApp** は、デバイス コードのリリースを配布するために使用されます。 また、クラッシュおよび使用量レポート、ユーザーからのフィードバックを収集します。
 * **Visual Studio Application Insights** は、モバイル Web サービスを監視します。
 
-それでは、すべての設定方法を見てみましょう。 手順の多くは省略可能であることに注意してください。
+それでは、すべての設定方法を見てみましょう。 
+
+> [!NOTE] 
+> 以下の手順の多くは省略可能です。
+>
+>
 
 ## <a name="sign-up-for-accounts"></a>アカウントにサインアップ
 * [Visual Studio Dev Essentials](https://www.visualstudio.com/products/visual-studio-dev-essentials-vs.aspx)。 この無料プログラムでは、Visual Studio、Visual Studio Team Services、および Azure を含む、多くの開発者ツールやサービスに簡単にアクセスできます。 これでは、月額 25 ドルの Azure クレジットを 12 か月間利用できます。 これには、Pluralsight トレーニングと Xamarin University のサブスクリプションも含まれます。 [Azure](https://azure.com) と [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs.aspx) の Free レベルに別々にサインアップすることもできますが、これには Azure クレジットはありません。
@@ -69,12 +76,12 @@ Xamarin、Git、エミュレーターおよびその他の役立つコンポー�
 
 インストール:
 
-* [Visual Studio 2015 with Xamarin](https://www.visualstudio.com/products/visual-studio-community-vs) (任意のエディション – Community は無料)。
+* [Visual Studio with Xamarin](https://www.visualstudio.com/products/visual-studio-community-vs) (任意のエディション – Community は無料)。
 * [ユニバーサル Windows プラットフォーム用 SQLite](https://visualstudiogallery.msdn.microsoft.com/4913e7d5-96c9-4dde-a1a1-69820d615936)。 Windows 10 Mobile コードのビルドに必要です。
-* [Azure SDK for Visual Studio 2015](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)。 Azure でアプリを実行するための SDK と、Azure を管理するためにコマンド ライン ツールを提供します。
+* [Azure SDK for Visual Studio](https://www.visualstudio.com/vs/azure-tools/)。 Azure でアプリを実行するための SDK と、Azure を管理するためにコマンド ライン ツールを提供します。
 * [Azure Service Fabric SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric)。 [マイクロ サービス](../service-fabric/service-fabric-get-started.md) の拡張機能のビルドに必要です。
 
-また、正しい Visual Studio の拡張機能があることを確認します。 **[ツール]** の下に、**[Android]、[iOS]、[Xamarin]** などがあることを確認します。 表示されない場合は、[コントロール パネル]、**[プログラムと機能]** > **[Microsoft]** > **[Visual Studio 2015]** > **[変更]** の順に開きます。 **[クロスプラットフォーム開発]** で、**[C#/.Net (Xamarin)]\# を選択します**。 そこで、 **Git for Windows** がインストールされていることを確認します。
+正しい Visual Studio の拡張機能があることを確認します。 **[ツール]** の下に、**[Android]、[iOS]、[Xamarin]** などがあることを確認します。 存在しない場合は、Visual Studio を開いて、Xamarin を検索し、指示に従ってインストールします。 また、**Git for Windows** がインストールされていることも確認します。 存在しない場合は、Visual Studio で検索し、指示に従ってインストールします。 
 
 ### <a name="mac-development-machine"></a>Mac の開発用コンピューター
 iOS の開発を行う場合は、Mac (Yosemite 以降) が必要です。 Windows ではすべてのコードの開発と管理を行うために、Visual Studio with Xamarin を使用していますが、Xamarin では iOS コードをビルドおよび署名するために、Mac にインストールされているエージェントを使用します。
@@ -126,7 +133,7 @@ Visual Studio で次のソリューションを開きます。
 
 ビルドで問題がある場合は、次の解決策を試してください。
 
-* *VINLookupApplication プロジェクトが読み込まれない*: [Azure SDK for Visual Studio 2015](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)をインストールしていることを確認します。
+* *VINLookupApplication プロジェクトが読み込まれない*: [Azure SDK for Visual Studio](https://www.visualstudio.com/vs/azure-tools/) をインストールしていることを確認します。
 * *Service Fabric プロジェクトをビルドできない*: 最初にインターフェイス プロジェクトをビルドし、Service Fabric SDK をインストールしていることを確認します。
 * *Android アプリをビルドできない*:
   
@@ -295,7 +302,7 @@ scenario\_complete.json:
 この構成の完全な詳細情報を表示する場合は、「 [MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」のセクション 4.7、「ビルドとリリースの構成」を参照してください。 これらは、次の同じ一般的なパターンに従います。 スクリプト:
 
 1. NuGet パッケージを復元します。 リポジトリにコンパイルされたコードを保持しないため、各ビルドの最初の手順で必要な NuGet パッケージを復元します。
-2. ライセンスをアクティブ化します。 ビルドはクラウドで実行されるため、ライセンスが必要な場合は (特に、Xamarin ビルド サービス)、現在のビルド コンピューターでライセンスをアクティブ化する必要があります。 その後、別のコンピューターで使用できるように、当社がすぐにライセンスを非アクティブ化します。
+2. ライセンスをアクティブ化します。 ビルドはクラウドで実行されるため、ライセンスが必要な場合は (特に、Xamarin ビルド サービス)、現在のビルド コンピューターでライセンスをアクティブ化する必要があります。 その後、別のコンピューターで使用できるように、Microsoft がすぐにライセンスを非アクティブ化します。
 3. 適切なサービスを使用してビルドする。 モバイル アプリには Xamarin ビルドを、バックエンド Web サービスには Visual Studio ビルドを使用します。
 4. テストを作成します。
 5. テストを実行します。 Xamarin Test Cloud でモバイル アプリ テストを実行します。
@@ -361,26 +368,26 @@ MyDriving の開発構成を設定するコストの大まかな見積もりを�
 | --- | --- | --- |
 | [Visual Studio 2015 Community](https://www.visualstudio.com/products/visual-studio-community-vs) with [Xamarin](https://visualstudiogallery.msdn.microsoft.com/dcd5b7bd-48f0-4245-80b6-002d22ea6eee) <br/>クロスプラットフォームの開発環境 |Visual Studio Community。 (単一のコード ベースからクロスプラットフォームを設計するには、[Xamarin.Forms](https://xamarin.com/forms) に [Visual Studio Professional](https://www.visualstudio.com/vs-2015-product-editions) が必要です)。 |0 ドル |
 | [Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/) <br/>デバイスへの双方向データ接続 |8,000 メッセージ + 0.5 KB/メッセージが無料。 |0 ドル |
-| [Stream Analytics](https://azure.microsoft.com/pricing/details/stream-analytics/)  <br/>    大量のストリーム データ処理 |有効な場合に、1 時間あたりのストリーミング ユニットごとに 0.031 ドルを課金します。 必要なストリーミング ユニット数を選択します。さらに必要な場合はスケールアップします。 |23 ドル |
-| [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)<br/>  適応型の応答 |10 ドル/シート/月。 <br/>                                                                                                                                                                                 + 3 時間の実験 \* 1 ドル / 実験時間 <br/>                                                                                                                                                           + 3.5 時間 API CPU \* 2 ドル/運用 CPU 時間。 <br/>                                                                                                                                                          API CPU 時間は 5 分/日の再トレーニングを想定していますが、入力データが増えると上昇します。                   <br/>                                                                                                                                                                     + 400 回の乗車/日の処理に 2 分/日のスコアリング。 |20 ドル |
-| [App Service](https://azure.microsoft.com/pricing/details/app-service/)  <br/>  モバイル バックエンド用のホスト |レベル B1 – 運用 Web アプリ。 |56 ドル |
-| [Visual Studio Team Services ](https://azure.microsoft.com/pricing/details/visual-studio-team-services/)  <br/>  ビルド、単体テストおよびリリースの管理、タスク管理 |プライベート Agents、ユーザー 5 人。 |0 ドル |
+| [Stream Analytics](https://azure.microsoft.com/pricing/details/stream-analytics/)  <br/>   大量のストリーム データ処理 |有効な場合に、1 時間あたりのストリーミング ユニットごとに 0.031 ドルを課金します。 必要なストリーミング ユニット数を選択します。さらに必要な場合はスケールアップします。 |23 ドル |
+| [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)<br/> 適応型の応答 |10 ドル/シート/月。 <br/>                                                                                                                                                                                 + 3 時間の実験 \* 1 ドル / 実験時間 <br/>                                                                                                                                                           + 3.5 時間 API CPU \* 2 ドル/運用 CPU 時間。 <br/>                                                                                                                                                          API CPU 時間は 5 分/日の再トレーニングを想定していますが、入力データが増えると上昇します。                   <br/>                                                                                                                                                                     + 400 回の乗車/日の処理に 2 分/日のスコアリング。 |20 ドル |
+| [App Service](https://azure.microsoft.com/pricing/details/app-service/)  <br/> モバイル バックエンド用のホスト |レベル B1 – 運用 Web アプリ。 |56 ドル |
+| [Visual Studio Team Services ](https://azure.microsoft.com/pricing/details/visual-studio-team-services/)  <br/> ビルド、単体テストおよびリリースの管理、タスク管理 |プライベート Agents、ユーザー 5 人。 |0 ドル |
 | [アプリケーション インサイト](https://azure.microsoft.com/pricing/details/application-insights/) <br/>Web サービスとサイトのパフォーマンスと使用状況の監視 |Free レベル。 |0 ドル |
-| [HockeyApp](http://hockeyapp.net/pricing/) <br/>  ベータ アプリの配布、フィードバック、使用量とクラッシュ データの収集 |新規ユーザー用に 2 つの無料アプリ。<br/> その後は 30 ドル/月。 |0 ドル |
-| [Xamarin](https://store.xamarin.com/)<br/>  複数のデバイスの統合されたプラットフォーム上のコード |無料試用版。 <br/>その後は 25 ドル/月。 |0 ドル |
+| [HockeyApp](http://hockeyapp.net/pricing/) <br/> ベータ アプリの配布、フィードバック、使用量とクラッシュ データの収集 |新規ユーザー用に 2 つの無料アプリ。<br/> その後は 30 ドル/月。 |0 ドル |
+| [Xamarin](https://store.xamarin.com/)<br/> 複数のデバイスの統合されたプラットフォーム上のコード |無料試用版。 <br/>その後は 25 ドル/月。 |0 ドル |
 | [SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  |Basic レベル、Single Database モデル。 |5 ドル |
 | [Service Fabric](https://azure.microsoft.com/pricing/details/service-fabric/) (省略可能) |ローカル クラスターを実行する。 |0 ドル |
-| [Power BI](https://powerbi.microsoft.com/pricing/)<br/>  多用途のディスプレイおよびストリーミングされたデータと静的データの調査 |Free レベル: 1GB、10,000 行/時間、毎日更新。 <br/> [上限引き上げ](https://powerbi.microsoft.com/documentation/powerbi-power-bi-pro-content-what-is-it/)の場合は 10 ドル/ユーザー/月、接続オプションの追加、コラボレーション。 |0 ドル |
+| [Power BI](https://powerbi.microsoft.com/pricing/)<br/> 多用途のディスプレイおよびストリーミングされたデータと静的データの調査 |Free レベル: 1GB、10,000 行/時間、毎日更新。 <br/> [上限引き上げ](https://powerbi.microsoft.com/documentation/powerbi-power-bi-pro-content-what-is-it/)の場合は 10 ドル/ユーザー/月、接続オプションの追加、コラボレーション。 |0 ドル |
 | [Storage](https://azure.microsoft.com/pricing/details/storage/) |L (ローカル冗長) &lt; 100 G 0.024 ドル/GB. |3 ドル |
 | [Data Factory](https://azure.microsoft.com/pricing/details/data-factory/) |0.60 ドル/アクティビティ \* (8 - 5 FOC)。 |2 ドル |
-| [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) <br/>   毎日の再トレーニングに使用するオンデマンド クラスター |毎日 1 時間 X 31 日の場合、0.32 ドル/時間で A3 ノード 3 個。 |30 ドル |
+| [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) <br/>  毎日の再トレーニングに使用するオンデマンド クラスター |毎日 1 時間 X 31 日の場合、0.32 ドル/時間で A3 ノード 3 個。 |30 ドル |
 | [Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) |11 ドル/月のスループット ユニットの基本 + 0.028 ドルのイングレス。 |11 ドル |
 | OBD ドングル | |12 ドル |
 | **合計** | |**157 ドル** |
 
 詳細については、次を参照してください。
 
-*  [Azure サービスのクォータと制限](../azure-subscription-service-limits.md#iot-hub-limits)
+* [Azure サービスのクォータと制限](../azure-subscription-service-limits.md#iot-hub-limits)
 * [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
 ## <a name="send-us-your-feedback"></a>フィードバックを送信します
@@ -397,10 +404,5 @@ MyDriving は、独自の IoT システムの開発を支援するために作�
 
 ## <a name="next-steps"></a>次のステップ
 システムとそのコンポーネントの設計の包括的な説明である「 [MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」をお勧めします。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

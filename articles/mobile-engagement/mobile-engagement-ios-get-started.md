@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: hero-article
-ms.date: 10/05/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Objective C で IOS アプリ の Azure Mobile Engagement を開始する
@@ -29,19 +30,19 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 このチュートリアルには、次のものが必要です。
 
 * XCode 8 (Mac アプリ ストアからインストールすることができます)
-* [モバイル エンゲージメント iOS SDK]
+* [Mobile Engagement iOS SDK]
 
 このチュートリアルを完了することは、iOS アプリケーションの他のすべての Mobile Engagement チュートリアルの前提条件です。
 
 > [!NOTE]
 > このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started)」をご覧ください。
-> 
-> 
+>
+>
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
+## <a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 統合に関する完全なドキュメントは、「 [Mobile Engagement iOS SDK 統合](mobile-engagement-ios-sdk-overview.md)
 
 統合のデモンストレーションを行うために、XCode で基本的なアプリを作成します。
@@ -53,44 +54,44 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 1. [Mobile Engagement iOS SDK]をダウンロードします。
 2. .tar.gz ファイルをコンピューター上のフォルダーに展開します。
 3. プロジェクトを右クリックし、 **[Add files to ...]**を選択します。
-   
+
     ![][1]
-4. SDK を抽出したフォルダーに移動し、 `EngagementSDK` フォルダーを選択して、 **[OK]**を押します。
-   
+4. SDK を抽出したフォルダーに移動し、`EngagementSDK` フォルダーを選択して、左下隅の **[Options]\(オプション\)** をクリックします。**[Copy items if needed]\(必要に応じてアイテムをコピー\)** チェック ボックスとターゲットのチェック ボックスがオンになっていることを確認したら、**[OK]** を押します。
+
     ![][2]
 5. **[フェーズの作成]** タブを開き、**[バイナリとライブラリをリンク]** メニューで、次のようにフレームワークを追加します。
-   
+
     ![][3]
 6. アプリの **[接続情報]** ページで Azure ポータルに戻り、接続文字列をコピーします。
-   
+
     ![][4]
 7. 次のコード行を **AppDelegate.m** ファイルに追加します。
-   
+
         #import "EngagementAgent.h"
 8. ここで、接続文字列を `didFinishLaunchingWithOptions` デリゲートに貼り付けます。
-   
+
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
               [...]   
               [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
               [...]
         }
-9. `setTestLogEnabled` は、問題を識別するための SDK ログを有効にするステートメントです (省略可能)。 
+9. `setTestLogEnabled` は、問題を識別するための SDK ログを有効にするステートメントです (省略可能)。
 
-## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を有効にする
+## <a id="monitor"></a>リアルタイム監視を有効にする
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
 1. **ViewController.h** ファイルを開き、**EngagementViewController.h** をインポートします。
-   
-    `# import "EngagementViewController.h"`
+
+    `#import "EngagementViewController.h"`
 2. **ViewController** インターフェイスのスーパー クラスを `EngagementViewController` に置き換えます。
-   
+
     `@interface ViewController : EngagementViewController`
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement により、ユーザーと通信を行い、キャンペーンに関するプッシュ通知とアプリ内メッセージングを届けることができます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -106,11 +107,11 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 ### <a name="modify-your-application-delegate"></a>アプリケーション デリゲートを変更する
 1. **AppDeletegate.m** ファイルに戻り、Engagement Reach モジュールをインポートします。
-   
+
         #import "AEReachModule.h"
         #import <UserNotifications/UserNotifications.h>
 2. `application:didFinishLaunchingWithOptions` 内に Reach モジュールを作成し、それをEngagement を初期化する既存の行に渡します。
-   
+
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
             [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
@@ -120,7 +121,7 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 ### <a name="enable-your-app-to-receive-apns-push-notifications"></a>アプリで APNS プッシュ通知を受信できるようにする
 1. 次の行を `application:didFinishLaunchingWithOptions` メソッドに追加します。
-   
+
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
@@ -137,21 +138,20 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 2. 次のように、`application:didRegisterForRemoteNotificationsWithDeviceToken` メソッドを追加します。
-   
+
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
              [[EngagementAgent shared] registerDeviceToken:deviceToken];
             NSLog(@"Registered Token: %@", deviceToken);
         }
 3. 次のように、`didFailToRegisterForRemoteNotificationsWithError` メソッドを追加します。
-   
+
         - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
         {
-   
            NSLog(@"Failed to get token, error: %@", error);
         }
 4. 次のように、 `didReceiveRemoteNotification:fetchCompletionHandler` メソッドを追加します。
-   
+
         - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
         {
             [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
@@ -160,17 +160,11 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 
 <!-- URLs. -->
-[モバイル エンゲージメント iOS SDK]: http://aka.ms/qk2rnj
+[Mobile Engagement iOS SDK]: http://aka.ms/qk2rnj
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-ios-get-started/xcode-add-files.png
 [2]: ./media/mobile-engagement-ios-get-started/xcode-select-engagement-sdk.png
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
 ms.openlocfilehash: 59bff7e1f7bdfc1786c4ee47ab2a652e2df85289
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/07/2017
-
 
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store のセキュリティ

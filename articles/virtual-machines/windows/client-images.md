@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 07/05/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 61054d9e118a3c90dec3330004625a25102a08cc
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 207a6562965b4913416bd4dbf3eb132b42938dc9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
@@ -28,10 +27,10 @@ ms.lasthandoff: 05/27/2017
 ## <a name="subscription-eligibility"></a>サブスクリプションの資格
 アクティブな Visual Studio サブスクライバー (Visual Studio サブスクリプション ライセンスを取得したユーザー) は、Windows クライアントを開発とテストに使用できます。 Windows クライアントは、独自のハードウェアと、任意の種類の Azure サブスクリプションを実行している Azure Virtual Machines で使用できます。 Windows クライアントは、通常の運用環境での使用のために Azure 上でデプロイまたは使用したり、アクティブな Visual Studio サブスクライバーではないユーザーが使用したりすることはできません。
 
-参考までに、 [対象となる開発/テスト プラン](#eligible-offers)内にある Azure ギャラリーから特定の Windows 10 イメージを使用できます。 また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)し、[Azure にアップロード](upload-generalized-managed.md)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
+参考までに、 [対象となる開発/テスト プラン](#eligible-offers)内にある Azure ギャラリーから特定の Windows 10 イメージを使用できます。 また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](prepare-for-upload-vhd-image.md)し、[Azure にアップロード](upload-generalized-managed.md)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
 
 ## <a name="eligible-offers"></a>対象となるプラン
-次の表に、Azure ギャラリーから Windows 10 をデプロイするための対象となるプラン ID の詳細を示します。 Windows 10 イメージは、次のプランにのみ表示されます。 別のプランの種類で Windows クライアントを実行する必要がある Visual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)し、[Azure にアップロード](upload-generalized-managed.md)する必要があります。
+次の表に、Azure ギャラリーから Windows 10 をデプロイするための対象となるプラン ID の詳細を示します。 Windows 10 イメージは、次のプランにのみ表示されます。 別のプランの種類で Windows クライアントを実行する必要がある Visual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](prepare-for-upload-vhd-image.md)し、[Azure にアップロード](upload-generalized-managed.md)する必要があります。
 
 | プラン名 | プラン番号 | 使用可能なクライアント イメージ |
 |:--- |:---:|:---:|
@@ -58,6 +57,6 @@ ms.lasthandoff: 05/27/2017
 ![Azure アカウント ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>次のステップ
-これで、[PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager テンプレート](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、または [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
+これで、[PowerShell](quick-create-powershell.md)、[Resource Manager テンプレート](ps-template.md)、または [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
 
 

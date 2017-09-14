@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 2/14/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
-translationtype: Human Translation
-ms.sourcegitcommit: cabbce12a07720c37375092962ee1f89c32269ef
-ms.openlocfilehash: 03bb87bdbf3dce07a282323f484d0aefae8bad62
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 02/22/2017
 
 ## <a name="downloading-the-scale-out-process-server-software"></a>スケール アウト プロセス サーバー ソフトウェアのダウンロード
 1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
-2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** ([For VMware & Physical Machines] (VMware および物理マシン) の下) に移動します。
+2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** \([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
 3. 構成サーバーを選択して、構成サーバーの詳細ページに移動します。
 4. **[+ プロセス サーバー]** ボタンをクリックします。
 5. **[プロセス サーバーの追加]** ページの **[プロセス サーバーのデプロイ先を選択してください]** ボックスで、**[スケールアウト プロセス サーバーをオンプレミスにデプロイします]** オプションを選択します。
@@ -95,7 +96,7 @@ ProxySettingsFilePath パラメーターは、入力としてファイルを受�
   ```
   cmd
   cdpcli.exe --registermt
-  
+
   net stop obengine
 
   net start obengine

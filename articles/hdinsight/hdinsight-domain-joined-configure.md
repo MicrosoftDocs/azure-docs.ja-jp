@@ -1,5 +1,5 @@
 ---
-title: "ドメイン参加済み HDInsight クラスターの構成 | Microsoft Docs"
+title: "ドメイン参加済み HDInsight クラスターの構成 - Azure | Microsoft Docs"
 description: "ドメイン参加済み HDInsight クラスターのセットアップと構成の方法について説明します"
 services: hdinsight
 documentationcenter: 
@@ -15,15 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 1fb13d60eebbaf45ca9cb394c073c834bbe59bb9
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターの構成 (プレビュー)
+
 Azure HDInsight クラスターと Azure Active Directory (Azure AD) および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップし、強力な認証機能と豊富なロールベースのアクセス制御 (RBAC) ポリシーを活用する方法について説明します。  ドメイン参加済み HDInsight は、Linux ベースのクラスターのみで構成できます。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](hdinsight-domain-joined-introduction.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 この記事は、以下のシリーズの最初のチュートリアルです。
 
@@ -71,12 +76,12 @@ Azure サービス名は、グローバルに一意である必要がありま�
 
 手順 3. ～ 手順 7. を自動化する PowerShell スクリプトがあります。  詳しくは、「[Configure Domain-joined HDInsight clusters use Azure PowerShell (Azure PowerShell を使ったドメイン参加済み HDInsight クラスターの構成)](hdinsight-domain-joined-configure-use-powershell.md)」をご覧ください。
 
-## <a name="create-an-azure-classic-vnet"></a>Azure クラシック VNet の作成
-このセクションでは、Azure Portal を使用してクラシック VNet を作成します。 次のセクションでは、クラシック VNet の Azure AD 用に Azure AD DS を有効にします。 次の手順とその他の VNet 作成方法の詳細については、「[Azure Portal を使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)」を参照してください。
+## <a name="create-an-azure-virtual-network-classic"></a>Azure 仮想ネットワーク (クラシック) の作成
+このセクションでは、Azure Portal を使用して仮想ネットワーク (クラシック) を作成します。 次のセクションでは、仮想ネットワークの Azure AD 用に Azure AD DS を有効にします。 次の手順とその他の仮想ネットワーク作成方法の詳細については、「[Azure Portal を使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
 
 **クラシック VNet を作成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。 
+1. [Azure Portal](https://portal.azure.com) にサインオンします。 
 2. **[新規]** > **[ネットワーキング]** > **[仮想ネットワーク]** の順にクリックします。
 3. **[デプロイ モデルの選択]** で **[クラシック]** を選択し、**[作成]** をクリックします。
 4. 次の値を入力または選択します。
@@ -116,7 +121,7 @@ Azure サービス名は、グローバルに一意である必要がありま�
    * **名前**: contosoaaddirectory
    * **ドメイン名**: contoso。  この名前はグローバルに一意である必要があります。
    * **国またはリージョン**: 国またはリージョンを選択します。
-3. ページの下部にある **[完了]**」を参照してください。
+3. **[完了]** をクリックします。
 
 **Azure AD ユーザーの作成**
 
@@ -139,7 +144,7 @@ Azure サービス名は、グローバルに一意である必要がありま�
    
    * **名前**: AAD DC Administrators。  グループ名は変更しないでください。
    * **グループの種類**: セキュリティ。
-5. ページの下部にある **[完了]**」を参照してください。
+5. **[完了]** をクリックします。
 6. **[AAD DC Administrators]** をクリックして、グループを開きます。
 7. **[メンバーの追加]** をクリックします。
 8. 前の手順で作成した最初のユーザーを選択し、**[完了]** をクリックします。
@@ -189,7 +194,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 
 **Resource Manager VNet を作成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[新規]**、**[ネットワーキング]**、**[仮想ネットワーク]** の順にクリックします。 
 3. **[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
 4. 次の値を入力または選択します。
@@ -219,7 +224,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 ## <a name="peer-the-azure-ad-vnet-and-the-hdinsight-vnet"></a>Azure AD VNet と HDInsight VNet のピアリング
 **2 つの VNet をピアリングするには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. 左側のメニューで、**[その他のサービス]** をクリックします。
 3. **[仮想ネットワーク]** をクリックします。 **[仮想ネットワーク (クラシック)]** をクリックしないようにしてください。
 4. **[contosohdivnet]** をクリックします。  これは、HDInsight VNet です。
@@ -240,7 +245,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 
 **Azure Portal を使用して、ドメイン参加済み HDInsight クラスターを作成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。
 3. **[新しい HDInsight クラスター]** ブレードで、次の値を入力または選択します。
    
@@ -250,7 +255,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
      
      * **クラスターの種類**: Hadoop。 ドメイン参加済み HDInsight は現在、Hadoop クラスターのみでサポートされています。
      * **オペレーティング システム**: Linux。  ドメイン参加済み HDInsight は、Linux ベースの HDInsight クラスターのみでサポートされています。
-     * **バージョン**: Hadoop 2.7.3 (HDI 3.5)。 ドメイン参加済み HDInsight は、HDInsight クラスター バージョン 3.5 のみでサポートされています。
+     * **バージョン**: HDI 3.6。 ドメイン参加済み HDInsight は、HDInsight クラスター バージョン 3.6 のみでサポートされています。
      * **クラスターの種類**: PREMIUM
        
        **[選択]** をクリックして変更を保存します。

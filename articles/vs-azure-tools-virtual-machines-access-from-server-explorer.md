@@ -3,8 +3,8 @@ title: "サーバー エクスプローラーから Azure Virtual Machines へ�
 description: "Visual Studio のサーバー エクスプローラーで Azure Virtual Machines (VM) を作成したり管理したりする方法について簡単に説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: eb3afde6-ba90-4308-9ac1-3cc29da4ede0
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 009b325054737b63d5bdaefbe005d6a613126f52
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>サーバー エクスプローラーから Azure Virtual Machines へのアクセス
@@ -51,10 +52,5 @@ Azure でホストされている仮想マシンには、サーバー エクス�
 
 ## <a name="next-steps"></a>次のステップ
 Visual Studio での Azure ロールの使用方法の詳細については、「 [Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

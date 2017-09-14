@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 452a50ef4a01ac328c4c2de8767181107eb57cd6
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 5ed888cbb422766cf2094f5980dfd1c599bd431c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="agile-software-development-with-azure-app-service"></a>Azure App Service を使用したアジャイル ソフトウェア開発
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/27/2017
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="what-you-will-do"></a>学習内容
-新しい変更をアプリケーションに発行するための手順について、開発-テスト-ステージング-実稼働という一般的なワークフローに沿って説明を進めていきます。ここで使用するサンプル アプリケーションは [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) という名前であり、2 つの [Web アプリ](/services/app-service/web/) (フロントエンド (FE) と Web API バックエンド (BE)) と [SQL Database](/services/sql-database/) で構成されます。 次に示すデプロイ アーキテクチャで作業します。
+新しい変更をアプリケーションに発行するための手順について、開発-テスト-ステージング-実稼働という一般的なワークフローに沿って説明を進めていきます。ここで使用するサンプル アプリケーションは [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) という名前であり、2 つの [Web アプリ](/services/app-service/web/) (フロントエンド (FE) と Web API バックエンド (BE)) と [SQL Database](/services/sql-database/) で構成されます。 次のデプロイ アーキテクチャで作業します。
 
 ![](./media/app-service-agile-software-development/what-1-architecture.png)
 
@@ -58,12 +58,12 @@ ms.lasthandoff: 04/27/2017
 
 ![](./media/app-service-agile-software-development/what-2-branches.png) 
 
-## <a name="what-you-will-need"></a>前提条件
+## <a name="what-you-need"></a>必要なもの
 * Azure アカウント
 * [GitHub](https://github.com/) アカウント
-* Git Shell ( [GitHub for Windows](https://windows.github.com/)とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。 
-* 最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/0.9.4-June2015/azure-powershell.0.9.4.msi) ビット
-* 以下の事柄の基礎知識:
+* Git Shell ( [GitHub for Windows](https://windows.github.com/)とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます 
+* 最新の [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) ビット
+* 以下のツールの基礎知識:
   * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」も参照してください)
   * [Git](http://git-scm.com/documentation)
   * [PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
@@ -90,19 +90,19 @@ ms.lasthandoff: 04/27/2017
 
 1. [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) リポジトリの自分専用のフォークを作成します。 フォークの作成の詳細については、「 [リポジトリをフォークする](https://help.github.com/articles/fork-a-repo/)」を参照してください。 フォークが作成されたら、ブラウザーでそれを確認できます。
    
-   ![](./media/app-service-agile-software-development/production-1-private-repo.png)
+    ![](./media/app-service-agile-software-development/production-1-private-repo.png)
 2. Git Shell セッションを開きます。 Git Shell をまだ持っていない場合は、この時点で [GitHub for Windows](https://windows.github.com/) をインストールします。
 3. 次のコマンドを実行して、フォークのローカル クローンを作成します。
-   
-     git clone https://github.com/<フォーク>/ToDoApp.git 
+
+        git clone https://github.com/<your_fork>/ToDoApp.git 
 4. ローカル クローンを作成したら、*&lt;repository_root>*\ARMTemplates に移動し、次のように deploy.ps1 スクリプトを実行します。
    
-     .\deploy.ps1 –RepoUrl https://github.com/<フォーク>/todoapp.git
+        .\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git
 5. メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。
    
-   Azure のさまざまなリソースのプロビジョニングの進行状況が表示されます。 デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内に起動し、わかりやすいビープ音が鳴ります。
+   Azure のさまざまなリソースのプロビジョニングの進行状況が表示されます。 デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内で起動し、わかりやすいビープ音が鳴ります。
    
-   ![](./media/app-service-agile-software-development/production-2-app-in-browser.png)
+    ![](./media/app-service-agile-software-development/production-2-app-in-browser.png)
    
    > [!TIP]
    > *&lt;repository_root>*\ARMTemplates\Deploy.ps1 を見て、どのような方法でリソースが一意の ID で生成されるかを確認してください。 同じ方法で、同じデプロイのクローンを、リソース名の競合を心配せずに作成できます。
@@ -110,15 +110,15 @@ ms.lasthandoff: 04/27/2017
    > 
 6. Git Shell セッションに戻り、次を実行します。
    
-     .\swap –Name ToDoApp<一意の文字列>master
+        .\swap –Name ToDoApp<unique_string>master
    
-   ![](./media/app-service-agile-software-development/production-4-swap.png)
+    ![](./media/app-service-agile-software-development/production-4-swap.png)
 7. スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;unique_string>*master.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
-8. [Azure ポータル](https://portal.azure.com/) にログインして、何が作成されたかを調べます。
+8. [Azure Portal](https://portal.azure.com/) にログインして、何が作成されたかを調べます。
    
    同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api` サフィックスが付いていることを確認できます。 リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。 さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
    
-   ![](./media/app-service-agile-software-development/production-3-resource-group-view.png)
+    ![](./media/app-service-agile-software-development/production-3-resource-group-view.png)
 
 これで、運用環境がセットアップされました。 次に、アプリケーションの新しい更新を開始します。
 
@@ -127,19 +127,23 @@ Azure の運用環境で実行されている複雑なアプリケーション�
 
 1. 最初に、テスト環境を作成します。 Git Shell セッションで次のコマンドを実行して、 **NewUpdate**という名前の新しいブランチ用の環境を作成します。 
    
-     git checkout -b NewUpdate   git push origin NewUpdate   .\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<フォーク>/ToDoApp.git -Branch NewUpdate
+        git checkout -b NewUpdate
+        git push origin NewUpdate 
+        .\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<your_fork>/ToDoApp.git -Branch NewUpdate
 2. メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。 
    
-   デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内に起動し、わかりやすいビープ音が鳴ります。 これで、新しいブランチと、専用のテスト環境が用意されました。 このテスト環境について、いくつかの事柄を再確認しておきます。
+   デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内で起動し、わかりやすいビープ音が鳴ります。 新しいブランチと、専用のテスト環境が用意されました。 このテスト環境について、いくつかの事柄を再確認しておきます。
    
    * 任意の Azure サブスクリプションで作成できます。 これは、運用環境をテスト環境から切り離して管理できることを意味します。
    * テスト環境は Azure でライブ実行されます。
-   * テスト環境は運用環境と同じですが、ステージング スロットとスケーリング設定は異なります。 ProdandStage.json と Dev.json の違いはこれだけであるため、どちらの環境であるかをこれによって判断できます。
+   * テスト環境は運用環境と同じですが、ステージング スロットとスケーリング設定は異なります。 ProdandStage.json と Dev.json の違いはこれだけであるため、どちらの環境であるかをこれによって判断します。
    * テスト環境は、価格レベルが異なる独自の App Service プラン ( **無料**など) で管理できます。
    * このテスト環境の削除は、リソース グループの削除と同じように容易に実行できます。 これを行う方法については、 [後で](#delete)説明します。
 3. 次のコマンドを実行して、開発ブランチの作成に進みます。
    
-     git checkout -b Dev   git push origin Dev   .\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<フォーク>/ToDoApp.git -Branch Dev
+        git checkout -b Dev
+        git push origin Dev
+        .\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<your_fork>/ToDoApp.git -Branch Dev
 4. メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。 
    
    この開発環境について、いくつかの事柄を再確認しておきます。 
@@ -150,7 +154,7 @@ Azure の運用環境で実行されている複雑なアプリケーション�
    * 開発環境の削除は、リソース グループの削除と同じように容易に実行できます。 これを行う方法については、 [後で](#delete)説明します。
 
 > [!NOTE]
-> 複数の開発者が新しい更新のために作業する場合、各開発者は、次の手順を実行することで、ブランチと専用の開発環境を簡単に作成できます。
+> 複数の開発者が新しい更新のために作業する場合、各開発者は、次の手順でブランチと専用の開発環境を簡単に作成できます。
 > 
 > 1. GitHub でリポジトリの自分専用のフォークを作成します (「 [リポジトリをフォークする](https://help.github.com/articles/fork-a-repo/)」を参照してください)。
 > 2. ローカル コンピューターにフォークのクローンを作成します。
@@ -176,34 +180,36 @@ ProdAndStage.json テンプレート ファイルと Dev.json テンプレート
 
 1. ローカル リポジトリの開発ブランチにいることを確認します。 これを行うには、Git Shell で次のコマンドを実行します。
    
-     git checkout Dev
-2. [ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに簡単な変更を加えます。 *&lt;repository_root>*\src\MultiChannelToDo.Web\index.cshtml を開き、次の図で強調表示されているように変更します。
+        git checkout Dev
+2. [ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに変更を加えます。 *&lt;repository_root>*\src\MultiChannelToDo.Web\index.cshtml を開き、次の図で強調表示されているように変更します。
    
-   ![](./media/app-service-agile-software-development/commit-1-changes.png)
+    ![](./media/app-service-agile-software-development/commit-1-changes.png)
    
-   > [!NOTE]
-   > 上の図が読み取れない場合: 
-   > 
-   > * 行 18 で、`check-list` を `list-group` に変更します。
-   > * 行 19 で、`class="check-list-item"` を `class="list-group-item"` に変更します。
-   > 
-   > 
+    > [!NOTE]
+    > 上の図が読み取れない場合: 
+    > 
+    > * 行 18 で、`check-list` を `list-group` に変更します。
+    > * 行 19 で、`class="check-list-item"` を `class="list-group-item"` に変更します。
+    > 
+    > 
 3. 変更を保存します。 Git Shell に戻り、次のコマンドを実行します。
    
-     cd <リポジトリ ルート> git add .
-     git commit -m "Bootstrap スタイルに変更" git push origin Dev
+        cd <repository_root>
+        git add .
+        git commit -m "changed to bootstrap style"
+        git push origin Dev
    
    これらの Git コマンドは、TFS などの別のソース管理システムでの "コードのチェックイン" に似ています。 `git push`を実行すると、新しいコミットによって Azure への自動コード プッシュがトリガーされ、開発環境で変更を反映するようにアプリケーションがリビルドされます。
-4. 開発環境に対するこのコード プッシュが発生したことを確認するには、開発環境の Wb アプリ ブレードに移動し、 **[デプロイ]** 部分を調べます。 最新のコミット メッセージを確認できます。
+4. 開発環境に対するこのコード プッシュが発生したことを確認するには、開発環境の Web アプリ ページに移動し、**[デプロイ]** 部分を調べます。 最新のコミット メッセージを確認できます。
    
-   ![](./media/app-service-agile-software-development/commit-2-deployed.png)
+    ![](./media/app-service-agile-software-development/commit-2-deployed.png)
 5. そこから、 **[参照]** をクリックして、Azure で実行されているライブ アプリケーションの新しい変更を確認します。
    
-   ![](./media/app-service-agile-software-development/commit-3-webapp-in-browser.png)
+    ![](./media/app-service-agile-software-development/commit-3-webapp-in-browser.png)
    
-   これは、アプリケーションに対する非常に小さな変更です。 ただし、複雑な Web アプリケーションに対する新しい変更によって、意図的でない、望ましくない副作用が発生することがあります。 ライブ ビルドでのすべてのコミットを簡単にテストできることで、問題を顧客が目にする前に捕まえることができます。
+   これは、アプリケーションに対する小さな変更です。 ただし、複雑な Web アプリケーションに対する新しい変更によって、意図的でない、望ましくない副作用が発生することがあります。 ライブ ビルドでのすべてのコミットを簡単にテストできることで、問題を顧客が目にする前に捕まえることができます。
 
-ここまでの説明で、 **NewUpdate** プロジェクトの開発者として、自分用の開発環境の作成、すべてのコミットのビルド、およびすべてのコミットのテストを容易に実行できることを十分に理解できたはずです。
+ここまでの説明で、**NewUpdate** プロジェクトの開発者として、自分用の開発環境の作成、すべてのコミットのビルド、およびすべてのコミットのテストを実行できることを十分に理解できたはずです。
 
 ## <a name="merge-code-into-test-environment"></a>テスト環境にコードをマージする
 コードを開発ブランチから NewUpdate ブランチにプッシュする準備ができたら、次の標準的な Git プロセスを実行します。
@@ -222,7 +228,7 @@ ProdAndStage.json テンプレート ファイルと Dev.json テンプレート
 
 これで終了です。 
 
-テスト環境の Web アプリ ブレードに移動し、(NewUpdate ブランチにマージされた) 新しいコミットがテスト環境にプッシュされたことを確認します。 次に、 **[参照]** をクリックし、スタイルの変更が Azure でライブ実行されていることを確認します。
+テスト環境の Web アプリ ページに移動し、(NewUpdate ブランチにマージされた) 新しいコミットがテスト環境にプッシュされたことを確認します。 次に、 **[参照]** をクリックし、スタイルの変更が Azure でライブ実行されていることを確認します。
 
 ## <a name="deploy-update-to-production"></a>運用環境に更新をデプロイする
 ステージング/運用環境にコードをプッシュする操作は、テスト環境にコードをプッシュするときに実行した操作と違いはありません。 それは非常に単純です。 
@@ -234,9 +240,9 @@ Git Shell で、次のコマンドを実行します。
     git merge NewUpdate
     git push origin master
 
-新しいコードは、ProdandStage.json 内のステージング/運用環境のセットアップ方法に基づいて、 **ステージング** スロットにプッシュされ、そこで実行されます。 したがって、ステージング スロットの URL に移動すると、新しいコードがそこで実行されていることがわかります。 これを行うには、Git Shell で `Show-AzureWebsite` コマンドレットを実行します。
+新しいコードは、ProdandStage.json 内のステージング/運用環境のセットアップ方法に基づいて、 **ステージング** スロットにプッシュされ、そこで実行されます。 したがって、ステージング スロットの URL に移動すると、新しいコードがそこで実行されていることがわかります。 これを行うには、Git Shell で次のコマンドレットを実行します。
 
-    Show-AzureWebsite -Name ToDoApp<unique_string>master -Slot Staging
+    Start-Process -FilePath "http://ToDoApp<unique_string>master-Staging.azurewebsites.net"
 
 ステージング スロットで更新を確認した後、残っている唯一の操作は、それを運用環境にスワップすることです。 Git Shellで、次のコマンドを実行します。
 
@@ -247,8 +253,8 @@ Git Shell で、次のコマンドを実行します。
 
 <a name="delete"></a>
 
-## <a name="delete-dev-and-test-enviroments"></a>開発環境とテスト環境を削除する
-開発環境とテスト環境は意図的に自己完結型リソース グループとして構築したため、それらは非常に簡単に削除できます。 このチュートリアルで作成した、GitHub のブランチと Azure アーチファクトの両方を削除するには、Git Shell で次のコマンドを実行するだけですみます。
+## <a name="delete-dev-and-test-environments"></a>開発環境とテスト環境を削除する
+開発環境とテスト環境は意図的に自己完結型リソース グループとして構築したため、それらは簡単に削除できます。 このチュートリアルで作成した、GitHub のブランチと Azure アーチファクトの両方を削除するには、Git Shell で次のコマンドを実行するだけですみます。
 
     git branch -d Dev
     git push origin :Dev

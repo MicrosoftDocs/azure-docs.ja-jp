@@ -1,10 +1,10 @@
 ---
-title: "Azure PowerShell スクリプト - geo レプリケーションの設定 - プールされた SQL データベース | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - PowerShell を使用して、プールされた Azure SQL Database のアクティブ geo レプリケーションを設定する"
+title: "PowerShell の例 - アクティブ geo レプリケーション - プールされた Azure SQL データベース | Microsoft Docs"
+description: "プールされた Azure SQL データベースのアクティブ geo レプリケーションをセットアップする Azure PowerShell のスクリプトの例"
 services: sql-database
 documentationcenter: sql-database
-author: janeng
-manager: jstrauss
+author: CarlRabeler
+manager: jhubbard
 editor: carlrab
 tags: azure-service-management
 ms.assetid: 
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
-ms.author: janeng
+ms.date: 07/25/2017
+ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3f62371eb84df1ba0f29ef2c6fe0da82674ed069
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 34a4970e9b0e99cbbbbc52788b00edab4a197755
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-active-geo-replication-for-a-pooled-azure-sql-database-using-powershell"></a>PowerShell を使用してプールされた Azure SQL Database のアクティブ geo レプリケーションを構成する
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>プールされた Azure SQL データベースのアクティブ geo レプリケーションを PowerShell を使用して構成する
 
-この PowerShell のサンプル スクリプトは、エラスティック プール内のデータベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。
+この PowerShell スクリプトの例は、エラスティック プール内の Azure SQL データベース用にアクティブ geo レプリケーションを構成し、そのデータベースを Azure SQL データベースのセカンダリ レプリカにフェールオーバーします。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -39,8 +39,8 @@ ms.lasthandoff: 05/27/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myPrimaryResourceGroup"
-Remove-AzureRmResourceGroup -ResourceGroupName "mySecondaryResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $primaryresourcegroupname
+Remove-AzureRmResourceGroup -ResourceGroupName $secondaryresourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

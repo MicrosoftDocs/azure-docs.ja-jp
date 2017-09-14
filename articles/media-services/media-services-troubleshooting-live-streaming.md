@@ -4,7 +4,7 @@ description: "このトピックでは、ライブ ストリーミングに関�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 3a7f6c1d-ce57-4fa4-a7a6-edb526b3ffbf
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c77ee0f612c1cbef551a129a22cf3f125e6f29d
 ms.openlocfilehash: 69fa0a7802ca39f86ada0af47b7a99e56436f973
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>ライブ ストリーミングのトラブルシューティング ガイド

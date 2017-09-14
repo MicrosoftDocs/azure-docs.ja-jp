@@ -1,227 +1,218 @@
 ---
-title: "チュートリアル: Azure Active Directory と Novatus の統合 | Microsoft Docs"
+title: "チュートリアル: Azure Active Directory と SECURE DELIVER の統合 | Microsoft Docs"
 description: "Azure Active Directory と SECURE DELIVER の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: fccd5668-fe6f-4e6d-a9ce-ba4f321c33d1
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 07/11/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 72aaf3835604b1e26f1a3d79822c844be12f0627
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f6e5b1e34893f6b8fe14e238e24086bb47d009a5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>チュートリアル: Azure Active Directory と SECURE DELIVER の統合
-このチュートリアルの目的は、SECURE DELIVER と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
+
+このチュートリアルでは、SECURE DELIVER と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 SECURE DELIVER と Azure AD の統合には、次の利点があります。
 
-* SECURE DELIVER にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に SECURE DELIVER にサインオン (シングル サインオン) できるようにします。
-* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+- SECURE DELIVER にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に SECURE DELIVER にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
+
 Azure AD と SECURE DELIVER の統合を構成するには、次のものが必要です。
 
-* Azure サブスクリプション
-* SECURE DELIVER のシングル サインオンが有効なサブスクリプション
+- Azure AD サブスクリプション
+- SECURE DELIVER でのシングル サインオンが有効なサブスクリプション
 
->[!NOTE]
->このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
-> 
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-* 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。  
-
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SECURE DELIVER の追加
-2. Azure AD SSO の構成とテスト
+2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="add-secure-deliver-from-the-gallery"></a>ギャラリーからの SECURE DELIVER の追加
+## <a name="adding-secure-deliver-from-the-gallery"></a>ギャラリーからの SECURE DELIVER の追加
 Azure AD への SECURE DELIVER の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SECURE DELIVER を追加する必要があります。
 
 **ギャラリーから SECURE DELIVER を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
-   
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+
     ![Active Directory][1]
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-    ![[アプリケーション]][2]
-4. ページの下部にある **[追加]** をクリックします。
-   
+
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+
+    ![アプリケーション][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
     ![アプリケーション][3]
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-    ![アプリケーション][4]
-6. 検索ボックスに、「 **SECURE DELIVER**」と入力します。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_01.png)
 
-7. 結果ウィンドウで **[SECURE DELIVER]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-    ![アプリのロゴとギャラリー内の名前](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_06.png)
+4. 検索ボックスに、「 **SECURE DELIVER**」と入力します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、SECURE DELIVER で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_search.png)
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する SECURE DELIVER ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと SECURE DELIVER の関連ユーザーの間で、リンク関係が確立されている必要があります。  
+5. 結果パネルで **[SECURE DELIVER]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を SECURE DELIVER の **[Username]** の値として割り当てます。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SECURE DELIVER で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する SECURE DELIVER ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと SECURE DELIVER の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+SECURE DELIVER で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
 
 SECURE DELIVERで Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[SECURE DELIVER テスト ユーザーの作成](#creating-a-secure-deliver-test-user)** - SECURE DELIVER で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、SECURE DELIVER アプリケーションでシングル サインオンを構成することです。
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、SECURE DELIVER アプリケーションでシングル サインオンを構成します。
 
 **SECURE DELIVER で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **SECURE DELIVER** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-    ![[シングル サインオンの構成]][6] 
-2. **[ユーザーの SECURE DELIVER へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_03.png) 
+1. Azure Portal の **SECURE DELIVER** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
-   
-    ![Configure Single Sign-On](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_04.png) 
-   1. **[サインオン URL]** ボックスに、"**https://i-securedeliver.jp/sd/\<company name\>/jsf/login/sso**" のパターンを使用して、ユーザーが SECURE DELIVER アプリケーションへのサインオンに使用する URL を入力します。
-   2. テナントの URL がわからない場合は、[iw-sd-support@fujifilm.com](mailto:iw-sd-support@fujifilm.com) から SECURE DELIVER サポート チームに問い合わせて値を入手してください。
-   3. **[識別子]** ボックスに、テナントの URL を入力します。 
-   4. **[次へ]**をクリックします。
+    ![[シングル サインオンの構成]][4]
 
-4. **[SECURE DELIVER でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
-   
-    ![Configure Single Sign-On](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_05.png) 
-   1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   2. **[次へ]**をクリックします。
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_samlbase.png)
 
-5. アプリケーション用に構成された SSO を入手するには、SECURE DELIVER サポート チーム ( [iw-sd-support@fujifilm.com](mailto:iw-sd-support@fujifilm.com) ) に連絡し、次の情報を提供してください。
-   
-   * ダウンロードした証明書ファイル
-   * **エンティティ ID**
-   * **シングル サインオン サービス URL**
-   * **シングル サインアウト サービス URL**
+3. **[SECURE DELIVER のドメインと URL]** セクションで、次の手順を実行します。
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
-   
-    ![Azure AD のシングル サインオン][10]
-7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
-   
-    ![Azure AD のシングル サインオン][11]
+    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_url.png)
 
-###<a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso` のパターンを使用して URL を入力します。
 
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+    b. **[識別子]** ボックスに、`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse` の形式で URL を入力します。
 
-![Azure AD ユーザーの作成][20]
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[SECURE DELIVER クライアント サポート チーム](mailto:iw-sd-support@fujifilm.com)に連絡してください。 
+ 
+4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-**Azure AD で Secure Deliver テスト ユーザーを作成するには、次の手順に従います。**
+    ![Configure Single Sign-On](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_certificate.png) 
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_09.png) 
+5. **[保存]** ボタンをクリックします。
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_general_400.png)
 
-3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
-   
+6. **[SECURE DELIVER Configuration (SECURE DELIVER 構成)]** セクションで、**[Configure SECURE DELIVER (SECURE DELIVER を構成する)]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_configure.png) 
+
+7. **SECURE DELIVER** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [SECURE DELIVER サポート チーム](mailto:iw-sd-support@fujifilm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][100]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_01.png) 
+
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_02.png) 
+
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+ 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_03.png) 
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
-   
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
+ 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_05.png) 
-  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-  3. **[次へ]**をクリックします。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_06.png)  
-  1. **[名]** ボックスに「**Britta**」と入力します。  
-  2. **[姓]** ボックスに「**Simon**」と入力します。
-  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。  
-  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-  5. **[次へ]**をクリックします。
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_07.png) 
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
-   
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_08.png) 
-  1. **[新しいパスワード]** の値を書き留めます。
-  2. ページの下部にある **[完了]**」を参照してください。   
+    d. ページの下部にある **[Create]**」を参照してください。
+ 
+### <a name="creating-a-secure-deliver-test-user"></a>SECURE DELIVER テスト ユーザーの作成
 
-### <a name="create-a-secure-deliver-test-user"></a>SECURE DELIVER のテスト ユーザーの作成
-このセクションの目的は、SECURE DELIVER で Britta Simon というユーザーを作成することです。 SECURE DELIVER アカウントにユーザーを追加するには、SECURE DELIVER サポート チームと協力してください。
+このセクションの目的は、SECURE DELIVER で Britta Simon というユーザーを作成することです。 SECURE DELIVER アカウントにユーザーを追加する方法については、[SECURE DELIVER サポート チーム](mailto:iw-sd-support@fujifilm.com)にお問い合わせください。
 
->[!NOTE]
->ユーザーを手動で作成する必要がある場合は、SECURE DELIVER のサポート チームにお問い合わせください。
-> 
-> 
+### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に SECURE DELIVER へのアクセスを許可することによって、このユーザーが Azure の SSO を使用できるようにすることです。
+このセクションでは、Britta Simon に SECURE DELIVER へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザーの割り当て][200] 
 
 **SECURE DELIVER に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-    ![ユーザーの割り当て][201] 
-2. アプリケーションの一覧で **[SECURE DELIVER]**を選択します。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_50.png) 
-3. 上部のメニューで **[ユーザー]**をクリックします。
-   
-    ![ユーザーの割り当て][203] 
-4. ユーザーの一覧で **[Britta Simon]**を選択します。
-5. 下部にあるツール バーで **[割り当て]**をクリックします。
-   
-    ![ユーザーの割り当て][205]
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[SECURE DELIVER]**を選択します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_app.png) 
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![ユーザーの割り当て][202] 
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![ユーザーの割り当て][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+
 このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。  
 
 アクセス パネルで [SECURE DELIVER] タイルをクリックすると、自動的に SECURE DELIVER アプリケーションにサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース
+
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 
@@ -230,14 +221,11 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 [3]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_205.png
+
 

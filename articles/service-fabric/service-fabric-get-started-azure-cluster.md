@@ -12,14 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/05/2017
+ms.date: 08/24/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ad473a2c9006e2593a84364f03e3954a569adcab
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: ec59450052b377412a28f7eaf55d1f1512b55195
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -41,9 +40,11 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![クラスターのセットアップに関する出力][cluster-setup-basics]
 
-4. **[クラスター構成]** フォームに入力します。  **[ノード タイプ数]** では「1」と入力し、[[持続性層]](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) では「Bronze」と入力します。
+4. **[クラスター構成]** フォームに入力します。  **[ノード タイプ数]** に「1」と入力します。
 
-5. **[各ノード タイプの構成]** を選択し、**[ノード タイプの構成]** フォームに入力します。 ノード タイプは、VM のサイズ、VM の数、カスタム エンドポイント、そのタイプの VM のその他の設定を定義します。 定義した各ノード タイプは、個別の仮想マシン スケール セットとしてセットアップされ、仮想マシンをセットとしてデプロイおよび管理するために使用されます。 各ノード タイプは、個別にスケールアップまたはスケールダウンしたり、異なるポートのセットを開いたり、別の容量メトリックを持ったりすることができます。  第 1 (プライマリ) ノード タイプは、Service Fabric システム サービスをホストし、5 個以上の VM を持つ必要があります。
+5. **[ノード タイプ 1 (プライマリ)]** を選択し、**[ノード タイプの構成]** フォームに必要事項を入力します。  ノード タイプの名前を入力し、[[持続性層]](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) を "ブロンズ" に設定します。  VM サイズを選択してください。
+
+    ノード タイプは、VM のサイズ、VM の数、カスタム エンドポイント、そのタイプの VM のその他の設定を定義します。 定義した各ノード タイプは、個別の仮想マシン スケール セットとしてセットアップされ、仮想マシンをセットとしてデプロイおよび管理するために使用されます。 各ノード タイプは、個別にスケールアップまたはスケールダウンしたり、異なるポートのセットを開いたり、別の容量メトリックを持ったりすることができます。  第 1 (プライマリ) ノード タイプは、Service Fabric システム サービスをホストし、5 個以上の VM を持つ必要があります。
 
     運用環境デプロイメントでは、[容量計画](service-fabric-cluster-capacity.md)が重要なステップです。  しかし、このクイック スタートではアプリケーションを実行していないので、*DS1_v2 Standard* VM サイズを選択します。  [[信頼性層]](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) には "Silver" を選択し、初期の仮想マシン スケール セット容量を 5 にします。  
 
@@ -85,20 +86,20 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 PowerShell を使用して接続することで、クラスターが実行されていることを確認します。  ServiceFabric PowerShell モジュールは、[Service Fabric SDK](service-fabric-get-started.md) と共にインストールされます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。   
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint quickstartcluster.westus2.cloudapp.azure.com:19000
 ```
 その他の方法でクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。 クラスターに接続した後、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを使って、クラスターに含まれている一連のノードとノードごとの状態情報を表示します。 すべてのノードで **HealthState** が *OK* になっている必要があります。
 
 ```powershell
-PS C:\> Get-ServiceFabricNode |Format-Table
+PS C:\Users\sfuser> Get-ServiceFabricNode |Format-Table
 
-NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
--------------------- --------     --------------- --------  ----------- ------------- ---------- ---------- ------------ -----------
-                     _nodetype1_2 10.0.0.6        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_1 10.0.0.5        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_0 10.0.0.4        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_4 10.0.0.8        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_3 10.0.0.7        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
+NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion  ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
+-------------------- --------     --------------- --------  -----------  ------------- ---------- ---------- ------------ -----------
+                     _nodetype1_2 10.0.0.6        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_1 10.0.0.5        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_0 10.0.0.4        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_4 10.0.0.8        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_3 10.0.0.7        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
 ```
 
 ### <a name="remove-the-cluster"></a>クラスターの削除
@@ -107,65 +108,58 @@ Service Fabric クラスターは、クラスター リソース自体に加え�
 Azure Portal でリソース グループを削除するには:
 1. 削除する Service Fabric クラスターに移動します。
 2. クラスターの [要点] ページで**リソース グループ**の名前をクリックします。
-3. リソース グループの **[要点]** ページで **[削除]** をクリックし、そのページの指示に従ってリソース グループの削除を完了します。
+3. リソース グループの **[要点]** ページで **[リソース グループの削除]** をクリックし、そのページの指示に従ってリソース グループの削除を完了します。
     ![リソース グループの削除][cluster-delete]
 
 
 ## <a name="use-azure-powershell-to-deploy-a-secure-cluster"></a>Azure PowerShell を使用して、セキュリティで保護されたクラスターをデプロイする
+1. [Azure PowerShell モジュール Version 4.0 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)をコンピューターにダウンロードします。
 
-
-1) [Azure PowerShell モジュール Version 4.0 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)をコンピューターにダウンロードします。
-
-2) Windows PowerShell ウィンドウを開き、次のコマンドを実行します。 
+2. Windows PowerShell ウィンドウを開き、次のコマンドを実行します。 
     
-```powershell
+    ```powershell
 
-Get-Command -Module AzureRM.ServiceFabric 
-```
+    Get-Command -Module AzureRM.ServiceFabric 
+    ```
 
-次のような出力が表示されます。
+    次のような出力が表示されます。
 
-![ps-list][ps-list]
+    ![ps-list][ps-list]
 
-3) Azure にログインして、クラスターを作成するサブスクリプションを選択します。
+3. Azure にログインして、クラスターを作成するサブスクリプションを選択します。
 
-```powershell
+    ```powershell
 
-Login-AzureRmAccount
+    Login-AzureRmAccount
 
-Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+    Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+    ```
 
-```
+4. 次のコマンドを実行して、セキュリティで保護されたクラスターを作成します。 パラメーターをカスタマイズすることを忘れないでください。 
 
-4) 次のコマンドを実行して、セキュリティで保護されたクラスターを作成します。 パラメーターをカスタマイズすることを忘れないでください。 
+    ```powershell
+    $certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+    $RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
+    $RDPuser="vmadmin"
+    $RGname="mycluster" # this is also the name of your cluster
+    $clusterloc="SouthCentralUS"
+    $subname="$RGname.$clusterloc.cloudapp.azure.com"
+    $certfolder="c:\mycertificates\"
+    $clustersize=1 # can take values 1, 3-99
 
+    New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+    ```
 
-````powershell
+    このコマンドは、完了するのに 10 ～ 30 分かかる場合があります。終了時には、次のような出力が表示されます。 出力には、証明書、そのアップロード先の Key Vault、証明書のコピー先のローカル フォルダーに関する情報が含まれています。 
 
-$certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-$RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
-$RDPuser="vmadmin"
-$RGname="mycluster" # this is also the name of your cluster
-$clusterloc="SouthCentralUS"
-$subname="$RGname.$clusterloc.cloudapp.azure.com"
-$certfolder="c:\mycertificates\"
-$clustersize=1 # can take values 1, 3-99
+    ![ps-out][ps-out]
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+5. 後で参照する必要があるため、出力の全体をコピーしてテキスト ファイルに保存します。 出力の次の情報をメモしておきます。 
 
-````
-
-このコマンドは、完了するのに 10 ～ 30 分かかる場合があります。終了時には、次のような出力が表示されます。 出力には、証明書、そのアップロード先の Key Vault、証明書のコピー先のローカル フォルダーに関する情報が含まれています。 
-
-![ps-out][ps-out]
-
-5) 後で参照する必要があるため、出力の全体をコピーしてテキスト ファイルに保存します。 出力の次の情報をメモしておきます。
- 
-
-- **CertificateSavedLocalPath**: c:\mycertificates\mycluster20170504141137.pfx
-- **CertificateThumbprint**: C4C1E541AD512B8065280292A8BA6079C3F26F10
-- **ManagementEndpoint**: https://mycluster.southcentralus.cloudapp.azure.com:19080
-- **ClientConnectionEndpointPort**: 19000
+    - **CertificateSavedLocalPath**: c:\mycertificates\mycluster20170504141137.pfx
+    - **CertificateThumbprint**: C4C1E541AD512B8065280292A8BA6079C3F26F10
+    - **ManagementEndpoint**: https://mycluster.southcentralus.cloudapp.azure.com:19080
+    - **ClientConnectionEndpointPort**: 19000
 
 ### <a name="install-the-certificate-on-your-local-machine"></a>証明書をローカル コンピューターにインストールする
   

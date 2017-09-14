@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 8/9/2017
 ms.author: subramar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 7fc832ff23f5ad652df3cb9c689180c92952ba8e
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/26/2017
-
 
 ---
 # <a name="troubleshoot-application-upgrades"></a>アプリケーションのアップグレードのトラブルシューティング

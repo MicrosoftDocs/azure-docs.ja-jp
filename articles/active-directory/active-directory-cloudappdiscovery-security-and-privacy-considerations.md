@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: nigu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
 ms.openlocfilehash: 5c4ab6e08c8f1af89ea80ac7f4d58d82ee931ec9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/12/2017
-
 
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery のセキュリティとプライバシーの考慮事項

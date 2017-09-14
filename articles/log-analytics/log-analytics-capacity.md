@@ -12,26 +12,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 07/13/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a26b1f6c13b11d0fb6b47599fee43f955cbf7b7a
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 5ca005127721092b8efcf0ac83cc967ab15fe72d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
-![容量とパフォーマンス ソリューション](./media/log-analytics-capacity/capacity-solution.png) Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
+![キャパシティとパフォーマンスのシンボル](./media/log-analytics-capacity/capacity-solution.png)
+
+Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
 
 このソリューションでは次のことが可能です。
 
--    CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
--    CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
--    IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
--    VM を実行しているホストを表示する
--    クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
+-   CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
+-   CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
+-   IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
+-   VM を実行しているホストを表示する
+-   クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
 - グループに基づくカスタマイズとフィルタリング
 
 > [!NOTE]
@@ -129,7 +131,18 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 | 全 CSV の合計スループットの内訳 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 | 全 CSV の合計待機時間の内訳 | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
 
+> | クエリ | Description |
+|:--- |:--- |
+| ホストのメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
+| VM のメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
+| 全 VM の合計ディスク IOPS の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "VHD Reads/s" or CounterName == "VHD Writes/s") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 全 VM の合計ディスク スループットの内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "VHD Read MB/s" or CounterName == "VHD Write MB/s") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 全 CSV の合計 IOPS の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Reads/s" or CounterName == "CSV Writes/s") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 全 CSV の合計スループットの内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Reads/s" or CounterName == "CSV Writes/s") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 全 CSV の合計待機時間の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Read Latency" or CounterName == "CSV Write Latency") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 
 
 ## <a name="next-steps"></a>次のステップ

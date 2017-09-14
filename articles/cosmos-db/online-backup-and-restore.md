@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/28/2017
 ms.author: raprasa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 11e60ab8dfada4b8b0e1cd73ca60dc428364dc68
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 89dc30c5475786d89554f5ec9e10e555267e6d78
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Azure Cosmos DB での自動オンライン バックアップと復元
@@ -50,12 +49,16 @@ Cosmos DB の中に保存されるデータとは異なり、自動バックア�
 
 ![GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ](./media/online-backup-and-restore/automatic-backup.png)
 
-## <a name="retention-period-for-a-given-snapshot"></a>特定のスナップショットの保有期間
-前述のように、データのスナップショットは定期的に取得され、最新のスナップショットは、法令遵守規定に基づいて 90 日間保持された後、最終的に消去されます。 コンテナーまたはアカウントが削除された場合、Cosmos DB は、最後のバックアップを 90 日間保存します。
+## <a name="backup-retention-period"></a>バックアップのリテンション期間
+前述のように、Azure Cosmos DB では 4 時間ごとにデータのスナップショットが取得され、すべてのパーティションについて最新の 2 つのスナップショットが30 日間保持されます。 法令遵守規定に基づいて、スナップショットは 90 日後に消去されます。
 
+独自のスナップショットを保持する場合は、Azure Cosmos DB の JSON へのエクスポート オプション ([データ移行ツール](import-data.md#export-to-json-file)) を使用して、追加のバックアップをスケジュールすることができます。 
 
-## <a name="restore-database-from-the-online-backup"></a>オンライン バックアップからデータベースを復元する
-データを誤って削除した場合は、[サポート チケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)か、[Azure サポートに問い合わせる](https://azure.microsoft.com/support/options/)ことで、最後の自動バックアップからデータを復元できます。 バックアップの特定のスナップショットを復元するには、少なくとも復元するスナップショットのバックアップ サイクル期間中のデータが Cosmos DB から入手可能である必要があります。
+## <a name="restoring-a-database-from-an-online-backup"></a>オンライン バックアップからのデータベースの復元
+データベースまたはコレクションを誤って削除した場合は、[サポート チケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)か、[Azure サポートに問い合わせる](https://azure.microsoft.com/support/options/)ことで、最新の自動バックアップからデータを復元できます。 データ破損の問題が原因でデータベースを復元する必要がある場合は、「[データ破損の処理](#handling-data-corruption)」を参照し、破損したデータがバックアップに達するのを防ぐために追加の手順を実行する必要があります。 バックアップの特定のスナップショットを復元するには、復元するスナップショットのバックアップ サイクル期間中のデータが Cosmos DB から入手可能である必要があります。
+
+## <a name="handling-data-corruption"></a>データ破損の処理
+Azure Cosmos DB では、システム内のすべてのパーティションの、最新の 2 つのバックアップが保持されます。 このモデルは、コンテナー (ドキュメントのコレクション、グラフ、テーブル)、またはデータベースが誤って削除された場合に最新のいずれかのバージョンを復元できるため非常に優れています。 ただし、ユーザーがデータの破損の問題を招いた場合、Azure Cosmos DB がデータの破損を認識しないことがあるため、破損がバックアップに達している可能性があります。 破損が検出されたらすぐに破損したコンテナー (コレクション/グラフ/テーブル) を削除し、破損したデータでバックアップが上書きされないように保護してください。 最新のバックアップが 4 時間前のものである可能性があるため、[Change Feed](change-feed.md) を適用して、コンテナーを削除する前に過去 4 時間分のデータをキャプチャして保存することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,17 +4,17 @@ description: "Azure CLI のサンプル - Azure Functions"
 services: functions
 documentationcenter: functions
 author: syntaxc4
-manager: erikre
+manager: cfowler
 editor: ggailey777
 tags: azure-service-management
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.service: functions
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: functions
 ms.date: 04/11/2017
-ms.author: cfowler, glenga
+ms.author: glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4

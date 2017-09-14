@@ -2,7 +2,7 @@
 title: "Azure SQL Server Stretch Database のドキュメント - チュートリアル | Microsoft Azure"
 description: "クエリやアプリケーションを変更することなく、SQL Server Stretch Database を使用してコールド データを安全に Azure に移行する方法について説明します。 チュートリアルなどのドキュメントを提供します。"
 services: sql-server-stretch-database
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 91c1cb9713d087982dc68f2511b72ef86a050616
 ms.openlocfilehash: bb5e0fa9981133a77c235a42be369b3bbacb4ac0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database のドキュメント
@@ -99,10 +101,5 @@ SQL Server Stretch Database を使用して、透過的かつ安全にコール�
 
 ---
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

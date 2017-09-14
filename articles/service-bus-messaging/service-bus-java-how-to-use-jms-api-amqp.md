@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: cfd4822820270dbaf44a25f3e0fe749492765df8
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 0848facd764c4fb0d7f95c1ae89ecb02a32257e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
@@ -30,7 +29,7 @@ Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージ�
 この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-amqp-dotnet.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## <a name="get-started-with-service-bus"></a>Service Bus の概要
-このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](https://portal.azure.com)を使用して[名前空間とキュー](service-bus-create-namespace-portal.md)を作成できます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure Portal](https://portal.azure.com) を使用して[名前空間とキュー](service-bus-create-namespace-portal.md)を作成できます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 > [!NOTE]
 > パーティション分割されたキューおよびトピックも AMQP をサポートします。 詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](service-bus-partitioned-queues-and-topics-amqp-overview.md)」を参照してください。
@@ -313,7 +312,7 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 * **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は 1 つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
 * 揮発性トピック サブスクリプションは現在サポートされていません。
 * **MessageSelectors** は現在サポートされていません。
-* 一時的な送信先である **TemporaryQueue** と **TemporaryTopic**、およびそれらを使用する **QueueRequestor** API と **TopicRequestor** API は現在サポートされていません。
+* **TemporaryQueue** と **TemporaryTopic** などの一時的な送信先と、それらを使用する **QueueRequestor** API と **TopicRequestor** API は現在サポートされていません。
 * トランザクション セッションと分散トランザクションはサポートされません。
 
 ## <a name="summary"></a>概要

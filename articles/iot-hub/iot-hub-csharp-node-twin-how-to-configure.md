@@ -20,7 +20,6 @@ ms.openlocfilehash: ca5ee2733df51faa5025c4d8eb687c81df4a3b4f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/09/2017
 
-
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>必要なプロパティを使用してデバイスを構成する
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -47,6 +46,7 @@ ms.lasthandoff: 05/09/2017
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
+<a id="#create-the-simulated-device-app"></a>
 ## <a name="create-the-simulated-device-app"></a>シミュレートされたデバイスのアプリを作成する
 このセクションでは、ハブに **myDeviceId** として接続し、必要な構成の更新を待機して、シミュレートされた構成の更新プロセスの情報を報告する、Node.js コンソール アプリを作成します。
 
@@ -275,5 +275,5 @@ ms.lasthandoff: 05/09/2017
 
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
-[lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
+[lnk-how-to-configure-createapp]: iot-hub-csharp-node-twin-how-to-configure.md#create-the-simulated-device-app
 

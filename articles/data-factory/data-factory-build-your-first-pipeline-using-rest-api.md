@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 168704acc3ef1fadad2ab17abbc3cc0ddd2f389c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b0c237667f1f55298df20ab0f525202aa1b42e0b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
@@ -83,7 +82,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
 >
 >
 
@@ -107,8 +106,10 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
+            "version": "3.5",
             "clusterSize": 1,
-            "timeToLive": "00:30:00",
+            "timeToLive": "00:05:00",
+            "osType": "Linux",
             "linkedServiceName": "AzureStorageLinkedService"
         }
     }
@@ -125,7 +126,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 以下の点に注意してください。
 
-* Data Factory は、上記の JSON で **Windows ベース** の HDInsight クラスターを自動的に作成します。 **Linux ベース** の HDInsight クラスターを作成させることもできます。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
+* Data Factory は、上記の JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
 * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
@@ -236,8 +237,8 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
             "name": "RunSampleHiveActivity",
             "linkedServiceName": "HDInsightOnDemandLinkedService"
         }],
-        "start": "2016-07-10T00:00:00Z",
-        "end": "2016-07-11T00:00:00Z",
+        "start": "2017-07-10T00:00:00Z",
+        "end": "2017-07-11T00:00:00Z",
         "isPaused": false
     }
 }

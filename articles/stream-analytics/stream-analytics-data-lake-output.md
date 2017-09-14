@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブで Azure Data Lake Store の認証と�
 keywords: 
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ea5baafa-0054-4c70-973a-6a3a8c6eaffc
@@ -14,23 +14,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
-ms.lasthandoff: 01/25/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics の Data Lake Store 出力
 Stream Analytics ジョブは、 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)など、いくつかの出力方法をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。
 
 ## <a name="authorize-a-data-lake-store-account"></a>Data Lake Store アカウントを承認する
-1. Microsoft Azure 管理ポータルで出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、Azure クラシック ポータルで Data Lake Store へのアクセス権を要求するように求められます。
+1. Azure Portal で出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、クラシック ポータルで Data Lake Store へのアクセス権を要求するように求められます。
    
    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
    
-2. Data Lake Store へのアクセス権を既に持っている場合、[今すぐ承認] をクリックすると、"承認にリダイレクトしています..." というページが短時間表示されます。 このページは自動的に閉じられ、Data Lake Store 出力を構成できるページが表示されます。
+2. Data Lake Store へのアクセス権を既に持っている場合、[今すぐ承認] をクリックすると、"承認にリダイレクトしています" というページが短時間表示されます。 このページは自動的に閉じられ、Data Lake Store 出力を構成できるページが表示されます。
 
 Data Lake Store にサインアップしていない場合は、[今すぐサインアップ] リンクをクリックして要求を開始するか、[開始手順](../data-lake-store/data-lake-store-get-started-portal.md)に関するページの説明に従ってください。
 
@@ -49,7 +49,7 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 </tr>
 <tr>
 <td>Data Lake Store アカウント</td>
-<td>出力を送信するストレージ アカウントの名前。 ポータルにログインしたユーザーがアクセス権を持っている Data Lake Store アカウントのドロップダウン リストが表示されます。</td>
+<td>出力を送信するストレージ アカウントの名前。 ログイン ユーザーがアクセス権を持つ Data Lake Store アカウントの一覧が表示されます。</td>
 </tr>
 <tr>
 <td>パス プレフィックスのパターン [<I>省略可能</I>]</td>

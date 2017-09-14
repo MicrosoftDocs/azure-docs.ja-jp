@@ -10,6 +10,6 @@
     | **[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 | 
     | **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** |   従量課金プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の **[従量課金プラン]** では、リソースは関数の必要に応じて動的に追加されます。 ユーザーは、関数が実行された時間に対してだけ支払います。   |
     | **場所** | 西ヨーロッパ | ユーザーに近い場所、または関数がアクセスする他のサービスの近くの場所を選択します。 |
-    | **[ストレージ アカウント](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** |  グローバルに一意の名前 |  Function App によって使用される新しいストレージ アカウントの名前。 既存のアカウントを使用することもできます。 |
+    | **[ストレージ アカウント](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** |  グローバルに一意の名前 |  Function App によって使用される新しいストレージ アカウントの名前。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできます。 |
 
 1. **[作成]** をクリックして、新しい Function App をプロビジョニングし、デプロイします。

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: ec8fadda778ac34d1a11006d4c6ab91e998f6d18
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 8c73344b07e07cc89a18a10648b1a9c82c4b361a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する

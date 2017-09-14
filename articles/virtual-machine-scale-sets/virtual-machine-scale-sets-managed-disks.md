@@ -15,23 +15,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: f9cc157f25e70a8154614b659fb7e59b7fd06ed1
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
 
-Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)で、管理ディスクを使用する仮想マシンがサポートされるようになりました。 スケール セットで管理ディスクを使用すると、次のような利点があります。
+Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)では、管理ディスクを使用する仮想マシンがサポートされています。 スケール セットで管理ディスクを使用すると、次のような利点があります。
 
 * スケール セットの VM の OS ディスクを格納するストレージ アカウントを事前に作成し、管理する必要がなくなります。
 
 * スケール セットに管理データ ディスクを接続できます。
 
-* 管理ディスクを使用すると、プラットフォーム イメージに基づく場合は 1,000 台の VM、カスタム イメージに基づく場合は 100 台の VM 分の容量をスケール セットで使用できます。
+* 管理ディスクを使用すると、プラットフォーム イメージに基づく場合は 1,000 台の VM、カスタム イメージに基づく場合は 300 台の VM 分の容量をスケール セットで使用できます。
 
 ## <a name="get-started"></a>作業開始
 
@@ -44,13 +43,9 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 また、[Azure Quickstart Templates GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で `vmss` が含まれたフォルダーを探し、スケール セットをデプロイする作成済みのテンプレートの例を参照することもできます。 管理ディスクを既に使用しているテンプレートを確認するには、[こちらの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)をご覧ください。
 
-## <a name="api-versions"></a>API のバージョン
-
-管理対象ディスクとスケール セットには、`2016-04-30-preview` 以降のバージョンの Microsoft.Compute API が必要です。 非管理対象ディスクを使用するスケール セットは、管理ディスクをサポートする新しい API バージョンでも、引き続き現在と同様に機能します。 ただし、非管理対象ディスクを使用するスケール セットでは、これらの新しい API バージョンでも管理ディスクの利点は得られません。
-
 ## <a name="next-steps"></a>次のステップ
 
-管理ディスクの詳細については、[こちらの記事](../storage/storage-managed-disks-overview.md)をご覧ください。
+管理ディスクの詳細については、[こちらの記事](../virtual-machines/windows/managed-disks-overview.md)をご覧ください。
 
 Resource Manager テンプレートを変換して、管理ディスクを使用するスケール セットをプロビジョニングする方法については、[こちらの記事](./virtual-machine-scale-sets-convert-template-to-md.md)をご覧ください。 Resource Manager テンプレートの変更は、Azure REST API にも同様に適用されます。
 

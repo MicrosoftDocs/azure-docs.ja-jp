@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: Human Translation
 ms.sourcegitcommit: acce9907fca6e411d8028e87eff7b50ffa04d575
 ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/15/2017
-
 
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブの送信

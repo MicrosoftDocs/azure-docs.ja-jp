@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: 6e2bb0e228aa28c79969cba07352061abbb47951
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する
@@ -136,14 +136,14 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     ```powershell
     Add-AzureProvisioningConfig -VM $vmConfig -Windows `
         -AdminUsername $cred.UserName `
-        -Password $cred.Password
+        -Password $cred.GetNetworkCredential().Password
     ```
 
 4. 既定の NIC 設定し、静的 IP アドレスを割り当てます。
 
     ```powershell
-    Set-AzureSubnet            -SubnetNames $backendSubnetName -VM $vmConfig
-    Set-AzureStaticVNetIP     -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
+    Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
+    Set-AzureStaticVNetIP   -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
     ```
 
 5. 各 VM の 2 つめの NIC を追加します。

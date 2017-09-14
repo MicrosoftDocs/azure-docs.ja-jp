@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 07/12/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ce90e15108ace97d86e7180d79e38652e1be9872
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
@@ -46,7 +45,10 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 
 収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。
 
-1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。
+1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。  
+
+    名前付きインスタンスから SQL Server パフォーマンス カウンターを収集するとき、すべての名前付きインスタンス カウンターの名前が *MSSQL$* から始まり、その後ろにインスタンスの名前が付きます。  たとえば、名前付き SQL インスタンス INST2 のデータベース パフォーマンス オブジェクトからログ キャッシュ ヒット率カウンターを収集するには、`MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` と指定します。
+
 2. **+** をクリックするか、または **Enter** キーを押して、一覧にカウンターを追加します。
 3. カウンターを追加すると、その **[サンプルの間隔]** には既定値の 10 秒が使用されます。  収集されたパフォーマンス データのストレージ要件を削減する場合は、この値を最大 1800 秒 (30 分) まで高く変更できます。
 4. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
@@ -64,7 +66,7 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 5. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>構成ファイルで Linux のパフォーマンス カウンターを構成する
-OMS ポータルを使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、**/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。 
+OMS ポータルを使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、**/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。
 
 収集するパフォーマンス メトリックの各オブジェクト (カテゴリ) は、構成ファイルの中で単一の `<source>` 要素として定義する必要があります。 次の構文形式に従って記述してください。
 
@@ -87,7 +89,7 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
 | interval | オブジェクトのカウンターを収集する頻度。 |
 
 
-次の表は、構成ファイルで指定できるオブジェクトとカウンターを一覧表示しています。  「[Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する](log-analytics-data-sources-linux-applications.md)」に記載されているとおり、特定のアプリケーションで使用できる追加のカウンターがあります。 
+次の表は、構成ファイルで指定できるオブジェクトとカウンターを一覧表示しています。  「[Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する](log-analytics-data-sources-linux-applications.md)」に記載されているとおり、特定のアプリケーションで使用できる追加のカウンターがあります。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
@@ -155,7 +157,7 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
       counter_name_regex ".*"
       interval 5m
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Logical Disk"
@@ -163,7 +165,7 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
       counter_name_regex ".*"
       interval 5m
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Processor"
@@ -171,7 +173,7 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
       counter_name_regex ".*"
       interval 30s
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Memory"
@@ -217,6 +219,24 @@ Log Analytics は、カウンターがインストールされているすべて
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |全コンピューターの CPU 使用率の平均値 (1 時間ごと) |
 | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |特定のコンピューターの各パーセント (%) カウンターの 70 パーセンタイル (1 時間ごと) |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |特定のコンピューターの CPU 使用率の平均、最小、最大、75 パーセンタイル (1 時間ごと) |
+| Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | 名前付き SQL インスタンス INST2 のマスター データベースのデータベース パフォーマンス オブジェクトのすべてのパフォーマンス データ。  
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+
+> | クエリ | Description |
+|:--- |:--- |
+| Perf |すべてのパフォーマンス データ |
+| Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |
+| Perf &#124; where CounterName == "Current Disk Queue Length" |特定のカウンターに関するすべてのパフォーマンス データ |
+| Perf &#124; where ObjectName == "Processor" and CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(Average) by Computer |コンピューター全体の平均 CPU 使用率 |
+| Perf &#124; where CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(Max) by Computer |コンピューター全体の最大 CPU 使用率 |
+| Perf &#124; where ObjectName == "LogicalDisk" and CounterName == "Current Disk Queue Length" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) by InstanceName |特定のコンピューターのインスタンス全体における現在のディスク キューの長さの平均 |
+| Perf &#124; where CounterName == "DiskTransfers/sec" &#124; summarize AggregatedValue = percentile(Average, 95) by Computer |コンピューター全体のディスク転送数/秒の 95 パーセンタイル |
+| Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |全コンピューターの CPU 使用率の平均値 (1 時間ごと) |
+| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 特定のコンピューターの各パーセント (%) カウンターの 70 パーセンタイル (1 時間ごと) |
+| Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |特定のコンピューターの CPU 使用率の平均、最小、最大、75 パーセンタイル (1 時間ごと) |
+| Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | 名前付き SQL インスタンス INST2 のマスター データベースのデータベース パフォーマンス オブジェクトのすべてのパフォーマンス データ。  
 
 ## <a name="viewing-performance-data"></a>パフォーマンス データの表示
 パフォーマンス データのログ検索を実行すると、既定で **[リスト]** ビューが表示されます。  グラフィカルな形式でデータを表示するには、 **[メトリック]**をクリックします。  詳細なグラフィック表示については、カウンターの横にある **+** をクリックします。  
@@ -230,3 +250,4 @@ Log Analytics は、カウンターがインストールされているすべて
 * MySQL および Apache HTTP Server を含む [Linux アプリケーションからパフォーマンス カウンターを収集します](log-analytics-data-sources-linux-applications.md)。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](log-analytics-powerbi.md) にエクスポートします。
+

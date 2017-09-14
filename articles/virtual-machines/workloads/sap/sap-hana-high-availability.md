@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 258ccee349e07448ebebaebe64cd6fb6888d7ed4
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/20/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
@@ -27,10 +26,19 @@ ms.lasthandoff: 05/20/2017
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
-[hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+
+[hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
+[hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
+
 [suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
@@ -44,10 +52,25 @@ ms.lasthandoff: 05/20/2017
 
 はじめに、次の SAP Note およびガイドを確認してください
 
-* SAP Note [2205917] SUSE Linux Enterprise Server for SAP Applications 向けの推奨の OS 設定
-* SAP Note [1944799] SUSE Linux Enterprise Server for SAP Applications の SAP HANA ガイドライン
-* [SAP HANA SR Performance Optimized Scenario][suse-hana-ha-guide] (SAP HANA SR パフォーマンス最適化シナリオ)  
-  このガイドには、SAP HANA システム レプリケーションをオンプレミスでセットアップするときに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
+* SAP Note [1928533]: 次の情報が含まれています。
+  * SAP ソフトウェアのデプロイでサポートされる Azure VM サイズの一覧
+  * Azure VM サイズの容量に関する重要な情報
+  * サポートされる SAP ソフトウェア、およびオペレーティング システム (OS) とデータベースの組み合わせ
+  * Microsoft Azure 上の Windows と Linux に必要な SAP カーネル バージョン
+* SAP Note [2015553]: SAP でサポートされる Azure 上の SAP ソフトウェア デプロイの前提条件が記載されています。
+* SAP Note [2205917]: SUSE Linux Enterprise Server for SAP Applications 向けの推奨の OS 設定が記載されています。
+* SAP Note [1944799]: SUSE Linux Enterprise Server for SAP Applications の SAP HANA ガイドラインが記載されています。
+* SAP Note [2178632]: Azure 上の SAP について報告されるすべての監視メトリックに関する詳細情報が記載されています。
+* SAP Note [2191498]: Azure 上の Linux に必要な SAP Host Agent のバージョンが記載されています。
+* SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
+* SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
+* SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
+* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
+* [SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ)][suse-hana-ha-guide] このガイドには、SAP HANA システム レプリケーションをオンプレミスでセットアップするときに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
+
 ## <a name="deploying-linux"></a>Linux のデプロイ
 
 SAP HANA のリソース エージェントは、SUSE Linux Enterprise Server for SAP Applications に含まれています。
@@ -305,10 +328,10 @@ Github にあるいずれかのクイック スタート テンプレートを�
     } 
     <b>nodelist {
       node {
-        ring0_addr:     < ip address of note 1 >
+        ring0_addr:     < ip address of node 1 >
       }
       node {
-        ring0_addr:     < ip address of note 2 > 
+        ring0_addr:     < ip address of node 2 > 
       } 
     }</b>
     logging {
@@ -337,7 +360,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     * Select additional components for installation (追加でインストールするコンポーネントの選択) -> 1
     * Enter Installation Path [/hana/shared] \(インストールのパス (/hana/shared) の入力): -> ENTER
     * Enter Local Host Name [..] \(ローカルのホスト名 (..) の入力): -> ENTER
-    * Do you want to add additional hosts to the system? (y/n) [n] \(システムに別のホストを追加しますか? (y/n) (n)): -> ENTER
+    * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]: -> ENTER
     * Enter SAP HANA System ID (SAP HANA のシステム ID を入力): <SID of HANA e.g. HDB>
     * Enter Instance Number [00] \(インスタンス番号 (00) の入力):   
   HANA のインスタンス番号です。 Azure テンプレートを使用した場合、または上記サンプルに従った場合は、「03」を使用します
@@ -346,8 +369,8 @@ Github にあるいずれかのクイック スタート テンプレートを�
   システムの使用率を選択します
     * Enter Location of Data Volumes [/hana/data/HDB] \(データ ボリュームの場所 (/hana/data/HDB) の入力): -> ENTER
     * Enter Location of Log Volumes [/hana/log/HDB] \(ログ ボリュームの場所 (/hana/log/HDB) の入力): -> ENTER
-    * Restrict maximum memory allocation? [n] \(メモリの最大割り当てを制限しますか? (n)): -> ENTER
-    * Enter Certificate Host Name For Host '...' [...] \(ホスト '...' の証明書のホスト名 (...) を入力): -&gt; ENTER
+    * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?)  [n]: -> ENTER
+    * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名を入力)  [...]: -> ENTER
     * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):
     * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):
     * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを入力):
@@ -358,8 +381,8 @@ Github にあるいずれかのクイック スタート テンプレートを�
     * Enter ID of User Group (sapsys) [79] \(ユーザー グループ (sapsys) の ID (79) を入力): -> ENTER
     * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):
     * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):
-    * Restart system after machine reboot? [n] \(コンピューターの再起動後にシステムを再起動しますか?(n)): -> ENTER
-    * Do you want to continue? (y/n) (続行しますか? (y/n)):  
+    * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?)  [n]: -> ENTER
+    * Do you want to continue? (続行してもよろしいですか?)  (y/n):  
   内容を確認し、「y」を入力して続行します
 1. [A] SAP Host Agent をアップグレードします  
   [SAP ソフトウェアセンター][sap-swcenter]から最新の SAP Host Agent アーカイブをダウンロードし、次のコマンドを実行してエージェントをアップグレードします。 アーカイブのパスを置き換えて、ダウンロードしたファイルを示すようにします。
@@ -404,7 +427,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
 
 <pre>
 sudo vi crm-defaults.txt
-# enter the following to crm-saphana.txt
+# enter the following to crm-defaults.txt
 <code>
 property $id="cib-bootstrap-options" \
   no-quorum-policy="ignore" \

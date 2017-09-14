@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想マシン スケール セットの規模を設計する | Microsoft Docs"
-description: "Azure 仮想マシン スケール セットの規模を設計する方法について説明します"
+title: "Azure 仮想マシン スケール セットの設計上の考慮事項 | Microsoft Docs"
+description: "Azure 仮想マシン スケール セットの設計上の考慮事項について説明します"
 keywords: "Linux 仮想マシン,仮想マシン スケール セット"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -16,37 +16,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e869b06935736fae72bd3b5407ebab7c3830098d
-ms.openlocfilehash: de3687a1bf36bf49db400a5660ac631f20b629d0
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 615361975e2ee15ce80f6efb39f57cae381209e5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="designing-vm-scale-sets-for-scale"></a>VM スケール セットの規模を設計する
+# <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 このトピックでは、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
+
+## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>仮想マシンではなくスケール セットを使用するケース
+一般に、類似した構成のマシン セットで高可用性インフラストラクチャをデプロイする場合は、スケール セットが便利です。 ただし、スケール セットだけで使用できる機能と、仮想マシンだけで使用できる機能があります。 それぞれのテクノロジの使用場面を適切に判断できるよう、まずはスケール セットだけで使用できる機能のうち、よく使用されるものについて見ていきましょう。
+
+### <a name="scale-set-specific-features"></a>スケール セットだけで使用できる機能
+
+- スケール セットの構成を指定したら、"capacity" プロパティを更新するだけで、並列する複数の VM をデプロイすることができます。 これは、スクリプトを記述したり、並列する多数の VM を調整しながら個別にデプロイしたりするよりもはるかに簡単です。
+- [Azure の自動スケール機能を使用してスケール セットの規模を自動で設定](./virtual-machine-scale-sets-autoscale-overview.md)することができますが、個々の VM に対してはできません。
+- [スケール セットの VM を再イメージ化](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm)することはできますが、[個々の VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) を再イメージ化することはできません。
+- スケール セットの VM を[オーバープロビジョニング](./virtual-machine-scale-sets-design-overview.md)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM で同じことをするには、カスタム コードを記述する必要があります。
+- [アップグレード ポリシー](./virtual-machine-scale-sets-upgrade-scale-set.md)を指定して、スケール セット内の VM 全体にアップグレードを簡単にロールアウトすることができます。 個々の VM でこれを行うには、アップデートを自分で調整する必要があります。
+
+### <a name="vm-specific-features"></a>VM だけで使用できる機能
+
+一方、(少なくとも現時点では) 仮想マシンだけで使用できる機能もあります。
+
+- 特定の VM に個別にデータ ディスクをアタッチすることができますが、アタッチされたデータ ディスクはスケール セット内のすべての VM に対して構成されます。
+- 空でないデータ ディスクは個々の VM にアタッチできますが、スケール セット内の VM にはアタッチできません。
+- 個々の VM のスナップショットを作成できますが、スケール セット内の VM のスナップショットは作成できません。
+- 個々の VM からイメージをキャプチャすることはできますが、スケール セット内の VM からはできません。
+- 個々の VM はネイティブ ディスクからマネージ ディスクに移行できますが、スケール セット内の VM で同じことはできません。
+- 個々の VM の NIC に IPv6 パブリック IP アドレスを割り当てることはできますが、スケール セット内の VM に割り当てることはできません。 なお、個々の VM でもスケール セット内の VM でも、前面のロード バランサーには IPv6 パブリック IP アドレスを割り当てることができます。
 
 ## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Azure Managed Disksでのスケール セット
-スケール セットを今すぐ [Azure Managed Disks](../storage/storage-managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。
+スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../storage/storage-managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。
 - スケール セットの VM の一連の Azure ストレージ アカウントの事前作成が必要ありません。
 - スケール セット内の VM に対して[接続されたデータ ディスク](virtual-machine-scale-sets-attached-disks.md)を定義できます。
 - [セット内で最大 1,000 個の VM をサポート](virtual-machine-scale-sets-placement-groups.md)するようにスケール セットを構成できます。 
 
-スケール セットは、Azure コンピューティング API のバージョン "2016-04-30-preview" 以降の Managed Disks で作成できます。 スケール セット テンプレートを Managed Disks に変換する方法については、「[Convert a scale set template to a managed disk scale set template](virtual-machine-scale-sets-convert-template-to-md.md)」(スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換する) をご覧ください。
+既存のテンプレートがある場合は、[Managed Disks を使用するようテンプレートを更新](virtual-machine-scale-sets-convert-template-to-md.md)することもできます。
 
 ### <a name="user-managed-storage"></a>ユーザー管理ストレージ
 Azure Managed Disks で定義されていないスケール セットは、ユーザーが作成したストレージ アカウントに依存して、セット内の VM の OS ディスクを格納します。 IO の最大化を実現するためにストレージ アカウントあたり 20 VM 以下の比率とし、"_オーバープロビジョニング_" (以下を参照) も利用することをお勧めします。 また、ストレージ アカウント名の始めの文字にアルファベットを使用することをお勧めします。 これは、異なる内部システムの負荷を分散するのに役立ちます。 
 
->[!NOTE]
->VM Scale Sets API バージョン `2016-04-30-preview` では、オペレーティング システム ディスクと追加データ ディスクでの Azure Managed Disks の使用がサポートされます。 詳しくは、[Managed Disks の概要](../storage/storage-managed-disks-overview.md)と[接続されたデータ ディスクの使用](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。 
 
 ## <a name="overprovisioning"></a>オーバープロビジョニング
-"2016-03-30" API バージョンより、VM Scale Sets は VM を "オーバープロビジョニング" するように初期設定されています。 オーバープロビジョニングがオンに設定されていると、スケール セットは実際に要求された数よりも多くの VM を起動し、要求された数の VM が正常にプロビジョニングされた後で余分な VM を削除します。 オーバープロビジョニングによって、プロビジョニングの成功率がアップし、デプロイ時間が短縮されます。 必要以上の VM については請求されません。割り当て制限でもカウントされません。
+現在、スケール セットは VM を "オーバープロビジョニング" するよう初期設定されています。 オーバープロビジョニングがオンに設定されていると、スケール セットは実際に要求された数よりも多くの VM を起動し、要求された数の VM が正常にプロビジョニングされた後で余分な VM を削除します。 オーバープロビジョニングによって、プロビジョニングの成功率がアップし、デプロイ時間が短縮されます。 必要以上の VM については請求されません。割り当て制限でもカウントされません。
 
-オーバープロビジョニングはプロビジョニングの成功率を上げますが、出現してその後消える余分な VM を処理するように設計されていないアプリケーションにとって、混乱を招く動作を引き起こすことがあります。 オーバープロビジョニングをオフにするには、テンプレートに "overprovision": "false" という文字列を与えます。 詳細については、 [VM スケール セット REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt589035.aspx)をご覧ください。
+オーバープロビジョニングはプロビジョニングの成功率を上げますが、出現してその後消える余分な VM を処理するように設計されていないアプリケーションにとって、混乱を招く動作を引き起こすことがあります。 オーバープロビジョニングをオフにするには、テンプレートに `"overprovision": "false"` という文字列を与えます。 詳細については、[スケール セット REST API ドキュメント](/rest/api/virtualmachinescalesets/create-or-update-a-set)をご覧ください。
 
 スケール セットがユーザー管理のストレージを使用する場合、オーバープロビジョニングを無効にするとストレージ アカウントあたり 20 を超える VM を持つことができますが、IO パフォーマンス上の理由から、40 以下にすることをお勧めします。 
 

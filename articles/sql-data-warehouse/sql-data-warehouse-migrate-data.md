@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 10/31/2016
+ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 7835797bc353a64c934b362c31fdcd9b448aca34
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: dbdf1696cd169aa7e5e23f116027a1170347f4ea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/17/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="migrate-your-data"></a>データの移行
@@ -187,7 +186,7 @@ PolyBase を使用したデータ ロードについて詳しくは、「[PolyBa
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy]: ../storage/storage-use-azcopy.md
+[AZCopy]:../storage/common/storage-use-azcopy.md
 [ADF Copy]: ../data-factory/data-factory-data-movement-activities.md 
 [ADF samples]: ../data-factory/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md

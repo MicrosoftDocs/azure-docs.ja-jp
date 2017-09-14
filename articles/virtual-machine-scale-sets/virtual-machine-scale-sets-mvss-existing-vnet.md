@@ -1,5 +1,5 @@
 ---
-title: "Azure スケール セット テンプレートでの仮想ネットワークの参照 | Microsoft Docs"
+title: "Azure スケール セット テンプレートでの既存の仮想ネットワークの参照 | Microsoft Docs"
 description: "仮想ネットワークを既存の Azure 仮想マシン スケール セット テンプレートに追加する方法について説明します。"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/06/2017
+ms.date: 06/27/2017
 ms.author: negat
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8e9caf7eebc17682b3204004e3a74331efbd04fb
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 28117d467b491704aed8d45e5eba42530579dfa2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="add-reference-to-a-virtual-network-to-an-azure-scale-set-template"></a>仮想ネットワークへのリファレンスを Azure スケール セット テンプレートに追加する
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>既成の仮想ネットワークへの参照を Azure スケール セット テンプレートに追加する
 
 この記事では、[実行可能な最小のスケール セット テンプレート](./virtual-machine-scale-sets-mvss-start.md)を変更して、新しい仮想ネットワークを作成するのではなく、既存の仮想ネットワークにデプロイする方法について説明します。
 

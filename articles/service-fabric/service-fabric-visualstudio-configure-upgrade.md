@@ -3,8 +3,8 @@ title: "Service Fabric アプリケーションのアップグレードの構成
 description: "Microsoft Visual Studio を使用して、Service Fabric アプリケーションをアップグレードするための設定を構成する方法について説明します。"
 services: service-fabric
 documentationcenter: na
-author: cawaMS
-manager: paulyuk
+author: mikkelhegn
+manager: mfussell
 editor: tglee
 ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
 ms.service: service-fabric
@@ -12,21 +12,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
-ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 121f1d485e34ba30d3e6c2e5d91da633771e80ab
+ms.date: 06/29/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio での Service Fabric アプリケーションのアップグレードの構成
-Visual Studio Service Fabric ツールは、ローカルまたはリモート クラスターへの発行のアップグレード サポートを提供します。 テストやデバッグ中にアプリケーションを置き換えるのではなく、アプリケーションを新しいバージョンにアップグレードすることには、2 つの利点があります。
+Visual Studio Service Fabric ツールは、ローカルまたはリモート クラスターへの発行のアップグレード サポートを提供します。 テストやデバッグ中にアプリケーションを置き換えるのではなく、アプリケーションを新しいバージョンにアップグレードしたくなるシナリオが 3 つあります。
 
 * 1 つは、アップグレード中にアプリケーション データが失われないことです。
 * もう 1 つは、複数のアップグレード ドメインにわたって十分な数のサービス インスタンスが存在すれば、アップグレード中にサービスの中断が発生しないので、高可用性が実現されることです。
-
-アプリケーションのアップグレード中に、アプリケーションに対してテストを実行できます。
+* アプリケーションのアップグレード中に、アプリケーションに対してテストを実行できます。
 
 ## <a name="parameters-needed-to-upgrade"></a>アップグレードに必要なパラメーター
 標準とアップグレードの 2 種類のデプロイメントから選択できます。 標準デプロイメントではクラスター上の以前のデプロイメント情報とデータが消去され、アップグレード デプロイメントではこれらが保持されます。 Visual Studio で Service Fabric アプリケーションをアップグレードするときには、アプリケーション アップグレード パラメーターと正常性チェック ポリシーを提供する必要があります。 アプリケーション アップグレード パラメーターによってアップグレードが制御され、正常性チェック ポリシーによってアップグレードが成功したかどうかが判断されます。 詳細については、「 [アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md) 」を参照してください。
@@ -88,9 +89,3 @@ Service Fabric アプリケーションの各サービスでは、既定値を�
 ```
 ## <a name="next-steps"></a>次のステップ
 アプリケーションのデプロイの詳細については、「 [Azure Service Fabric への既存のアプリケーションのデプロイ](service-fabric-deploy-existing-app.md)」をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 07/05/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: be5bd67ed977a62b1574d8a48de0cfcfe8876bb4
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7b1b50f71158e62da6b8ceb741a5b8cf9795e3a4
+ms.openlocfilehash: cbe7da8670693a6bbc895ce06f000b6a7d6f0ae1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
@@ -99,9 +100,9 @@ EXIT /B 0
 **executionContext** -スタートアップ タスクの特権レベルを指定します。 指定できる特権レベルは limited または elevated です。
 
 * **limited**  
-   スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
+  スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
 * **elevated**  
-   スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
+  スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
 
 > [!NOTE]
 > スタートアップ タスクの特権レベルは、ロール自体と同じでなくてもかまいません。
@@ -120,9 +121,9 @@ EXIT /B 0
   
     バッチ ファイルを 0 の **errorlevel** で確実に終了させるには、バッチ ファイル プロセスの最後で `EXIT /B 0` コマンドを実行します。
 * **background**  
-   タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
+  タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
 * **フォアグラウンド**  
-   タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
+  タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
 
 ## <a name="environment-variables"></a>環境変数
 環境変数は、スタートアップ タスクに情報を渡すための手段です。 たとえば、インストールするプログラムを含む BLOB へのパス、ロールで使用するポート番号、スタートアップ タスクの機能を制御する設定などを設定できます。
@@ -167,9 +168,4 @@ Cloud Service で [一般的なスタートアップ タスク](cloud-services-s
 [value]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

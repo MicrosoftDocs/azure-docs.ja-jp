@@ -4,7 +4,7 @@ description: "Azure Functions の外部ファイル バインディングを使�
 services: functions
 documentationcenter: 
 author: alexkarcher-msft
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions
@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 4400ebce2fbed709dcadf41cd2b834fd36416c15
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2082e4e9b23271be93f3e3ab43997c3243238da8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Azure Functions 外部ファイル バインディング (プレビュー)
@@ -35,12 +34,10 @@ ms.lasthandoff: 05/02/2017
 |:-----|:---:|:---:|:---:|
 |[Box](https://www.box.com)|○|○|○
 |[Dropbox](https://www.dropbox.com)|○|○|○
-|[ファイル システム](https://docs.microsoft.com/azure/logic-apps/logic-apps-using-file-connector)|○|○|○
 |[FTP](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp)|○|○|○
 |[OneDrive](https://onedrive.live.com)|○|○|○
 |[OneDrive for Business](https://onedrive.live.com/about/business/)|○|○|○
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|○|○|○
-|[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)||○|○|
 |[Google ドライブ](https://www.google.com/drive/)||○|○|
 
 > [!NOTE]
@@ -72,13 +69,14 @@ See one of the following subheadings for more information:
 <a name="pattern"></a>
 
 ### <a name="name-patterns"></a>名前のパターン
-ファイル名のパターンは、`path` プロパティで指定できます。 For example:
+ファイル名のパターンは、`path` プロパティで指定できます。 参照されるフォルダーが SaaS プロバイダーに存在している必要があります。
+次に例を示します。
 
 ```json
 "path": "input/original-{name}",
 ```
 
-このパスは、*input* フォルダーの *original-File1.txt* という名前のファイルを探し、関数コード内の `name` 変数の値は `File1` になります。
+このパスは、*input* フォルダーの *original-File1.txt* という名前のファイルを探し、関数コード内の `name` 変数の値は `File1.txt` になります。
 
 別の例:
 
@@ -149,17 +147,11 @@ C# 関数の場合、入力ファイル データにバインドするには、�
 
 また、C# 関数では、次の型のどれにでもバインドすることができ、Functions ランタイムはその型を使用してファイル データを逆シリアル化しようとします。
 
-* `TextReader`
+* `string`
+* `byte[]`
 * `Stream`
-* `ICloudBlob`
-* `CloudBlockBlob`
-* `CloudPageBlob`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `IEnumerable<CloudBlockBlob>`
-* `IEnumerable<CloudPageBlob>`
-* [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb)
-
+* `StreamReader`
+* `TextReader`
 
 ## <a name="trigger-sample"></a>トリガー サンプル
 外部ファイル トリガーを定義する、次の function.json があるとします。
@@ -182,11 +174,11 @@ C# 関数の場合、入力ファイル データにバインドするには、�
 監視対象のフォルダーに追加される各ファイルの内容を記録する、言語固有のサンプルを参照してください。
 
 * [C#](#triggercsharp)
-* [Node.JS](#triggernodejs)
+* [Node.js](#triggernodejs)
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-usage-in-c"></a>C でのトリガーの使用方法# #
+### <a name="trigger-usage-in-c"></a>C# でのトリガーの使用方法 #
 
 ```cs
 public static void Run(string myFile, TraceWriter log)
@@ -249,11 +241,11 @@ C# 関数の場合、入力ファイル データにバインドするには、�
 
 また、C# 関数では、次の型のどれにでもバインドすることができ、Functions ランタイムはその型を使用してファイル データを逆シリアル化しようとします。
 
-* `TextReader`
+* `string`
+* `byte[]`
 * `Stream`
-* `ICloudBlob`
-* `CloudBlockBlob`
-* `CloudPageBlob`
+* `StreamReader`
+* `TextReader`
 
 
 <a name="output"></a>
@@ -340,7 +332,7 @@ C# 関数の場合は、次の型のいずれかに出力することもでき�
 
 <a name="incsharp"></a>
 
-### <a name="usage-in-c"></a>C での使用方法# #
+### <a name="usage-in-c"></a>C# での使用方法 #
 
 ```cs
 public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)

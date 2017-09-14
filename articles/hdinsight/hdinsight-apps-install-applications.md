@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/25/2017
+ms.date: 08/16/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: cb9753500dc9ed13ef10a757b247b703bc7f1644
-ms.lasthandoff: 04/26/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 3b3ff8d33959978ddd648e59a6a301f00c247964
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール
@@ -34,8 +34,11 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 * **DATAIKU DDS on HDInsight**: Dataiku DSS (Data Science Studio) は、データの専門家 (データ サイエンティスト、ビジネス アナリスト、開発者など) が、生データをインパクトのある景気予測に変換する特異性の高いサービスのプロトタイプ作成、構築、デプロイを実行できるようにするソフトウェアです。
 * **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) を利用すると、アナリストはビッグ データ上の結果を対話形式で検索、分析、視覚化できるようになります。 追加のデータ ソースを簡単に取り込んで新たな関係性を発見し、必要な答えをすぐに得られます。
 * **Streamsets Data Collector for HDnsight**: フル機能を備えた統合開発環境 (IDE) を備えており、これを使用すると、ストリーム データとバッチ データを調和させる任意の環境間の取り込みパイプラインを設計、テスト、デプロイ、管理したり、ストリーム内のさまざまな変換を含めたりできます。どの処理でも、カスタム コードを記述する必要はありません。 
-* **Cask CDAP 3.5/4.0/4.1 for HDInsight**: ビッグ データ用に初めて一元管理された統合プラットフォームを提供します。ビッグ データにより、データ アプリケーションや Data Lake の作成にかかる時間が 80% 短縮されます。 このアプリケーションは、標準の HBase 3.4 クラスターのみをサポートします。
-* **H2O Artificial Intelligence for HDInsight (ベータ)**: H2O Sparkling Water は、GLM、Naïve Bayes、Distributed Random Forest、Gradient Boosting Machine、Deep Neural Networks 、Deep learning、K-means、PCA、Generalized Low Rank Models、Anomaly Detection、Autoencoders などの分散アルゴリズムをサポートしています。
+* **Cask CDAP for HDInsight**: ビッグ データ用に初めて一元管理された統合プラットフォームを提供します。ビッグ データにより、データ アプリケーションや Data Lake の作成にかかる時間が 80% 短縮されます。 このアプリケーションは、標準の HBase 3.4 クラスターのみをサポートします。
+* **H2O Artificial Intelligence for HDInsight (ベータ)**: H2O Sparkling Water は、GLM、Naïve Bayes、Distributed Random Forest、Gradient Boosting Machine、Deep Neural Networks、Deep learning、K-means、PCA、Generalized Low Rank Models、Anomaly Detection、Autoencoders などの分散アルゴリズムをサポートしています。
+* **Kyligence Analytics Platform**: Kyligence Analytics Platform (KAP) は、Apache Kylin と Apache Hadoop を利用したエンタープライズ対応のデータ ウェアハウスです。大規模なデータセットに対するクエリの待ち時間が 1 秒未満に抑えられ、ビジネス ユーザーやアナリストはデータ分析を簡単に実行できます。 
+* **SnapLogic Hadooplex**: HDInsight 上で実行される SnapLogic Hadooplex では、ほぼすべてのソースから Microsoft Azure クラウド プラットフォームにセルフサービスでデータの取り込みと準備を実行できるため、短時間でビジネスの洞察が得られます。
+* **Spark Job Server for KNIME Spark Executor**: Spark Job Server for KNIME Spark Executor は、KNIME Analytics Platform を HDInsight クラスターに接続するために使用されます。
 
 この記事で説明する手順では、Azure Portal を使用します。 また、ポータルから Azure Resource Manager テンプレートをエクスポートしたり、ベンダーから Resource Manager テンプレートのコピーを入手したりして、Azure PowerShell と Azure CLI を使ってテンプレートをデプロイできます。  [Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)に関するページを参照してください。
 
@@ -47,10 +50,10 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 
 **HDInsight アプリケーションをインストールするには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[その他のサービス]** をクリックし、**[HDInsight クラスター]** をクリックします。
 3. HDInsight クラスターをクリックします。  HDInsight クラスターがない場合は、最初に作成する必要があります。  「 [クラスターの作成](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
-4. **[構成]** カテゴリにある **[アプリケーション]** をクリックします。 インストールされているアプリケーションがある場合は、その一覧が表示されます。 アプリケーションが見つからない場合は、このバージョンの HDInsight クラスターに対応するアプリケーションがないことを意味します。
+4. **[構成]** カテゴリにある **[アプリケーション]** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 アプリケーションが見つからない場合は、このバージョンの HDInsight クラスターに対応するアプリケーションがないことを意味します。
    
     ![HDInsight アプリケーションのポータル メニュー](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. ブレードのメニューで **[追加]** をクリックします。 
@@ -80,7 +83,7 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
    * **[バージョン]**: どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。
    * **[クラスター レベル]**: Azure HDInsight では、Standard レベルと Premium レベルの 2 つのカテゴリでビッグ データのクラウド サービスを提供します。 詳細については、 [クラスター レベル](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers)に関するページをご覧ください。
 6. **[アプリケーション]** をクリックし、発行済みアプリケーションのいずれかをクリックした後、**[選択]** をクリックします。
-7. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。 さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。 公開キーを使用することをお勧めします。 下部にある **[選択]** をクリックして資格情報の構成を保存します。
+7. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。 さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** か **[公開キー]** のどちらかを入力する必要があります。 公開キーを使用することをお勧めします。 下部にある **[選択]** をクリックして資格情報の構成を保存します。
 8. **[データ ソース]**をクリックし、既存のストレージ アカウントのいずれかを選択するか、クラスターの既定のストレージ アカウントとして使用する新しいストレージ アカウントを作成します。
 9. **[リソース グループ]** をクリックして既存のリソース グループを選択するか、**[新規]** をクリックして新しいリソース グループを作成します。
 10. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。 
@@ -90,7 +93,7 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 
 **HDInsight アプリケーションを一覧表示し、プロパティを表示するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
 3. HDInsight クラスターをクリックします。
 4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 [インストール済みアプリ] ブレードには、インストール済みのアプリケーションがすべて一覧表示されます。 
@@ -100,7 +103,7 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
    
    * [アプリケーション名]: アプリケーションの名前。
    * [状態]: アプリケーションの状態。 
-   * [Web ページ]: エッジ ノードにデプロイした Web アプリケーションの URL (存在する場合)。 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。
+   * [Web ページ]: エッジ ノードにデプロイした Web アプリケーションの URL。 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。
    * [HTTP エンドポイント]: 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。 
    * [SSH エンドポイント]: SSH を使用してエッジ ノードに接続できます。 SSH 資格情報は、クラスター向けに構成した SSH ユーザーの資格情報と同じです。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 6. アプリケーションを削除するには、アプリケーションを右クリックし、コンテキスト メニューの **[削除]** をクリックします。

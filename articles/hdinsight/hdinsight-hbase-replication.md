@@ -1,5 +1,5 @@
-﻿---
-title: "HBase レプリケーションの構成 | Microsoft Docs"
+---
+title: "仮想ネットワーク内で HBase クラスターのレプリケーションを構成する - Azure | Microsoft Docs"
 description: "負荷分散、高可用性、ダウンタイムなしの移行/HDInsight バージョンの更新、および障害復旧を実現するために HBase レプリケーションを構成する方法について説明します。"
 services: hdinsight,virtual-network
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
-ms.openlocfilehash: 83aabe0e5161cd3f94caa996dec29bc020e5308b
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 7a6a473b6db745563b3667da1013a8e78db8593c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="configure-hbase-replication"></a>HBase レプリケーションの構成
+# <a name="configure-hbase-cluster-replication-within-virtual-networks"></a>仮想ネットワーク内で HBase クラスターのレプリケーションを構成する
 
 1 つの仮想ネットワーク (VNet) 内または 2 つの仮想ネットワーク間で HBase レプリケーションを構成する方法について説明します。
 

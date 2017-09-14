@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-linux
 ms.devlang: ruby
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 06/27/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
-ms.lasthandoff: 01/05/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 4735a1789c33b7cc51896e26ec8e079f9b0de7d9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure VM での Ruby on Rails Web アプリケーション
@@ -29,20 +29,25 @@ ms.lasthandoff: 01/05/2017
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../../../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-vm"></a>Azure VM の作成
 最初に、Linux イメージを使用して Azure VM を作成します。
 
-VM を作成するには、Azure クラシック ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
+VM を作成するには、Azure Portal または Azure コマンド ライン インターフェイス (CLI) を使用できます。
 
-### <a name="azure-management-portal"></a>Microsoft Azure 管理ポータル
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)
-2. **[新規]** > **[Compute]** > **[仮想マシン]** > **[簡易作成]** の順にクリックします。 Linux イメージを選択します。
-3. パスワードを入力します。
+### <a name="azure-portal"></a>Azure ポータル
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[新規]** をクリックし、検索ボックスに「Ubuntu Server 14.04」と入力します。 検索によって返されたエントリをクリックします。 デプロイ モデルは **[クラシック]** を選択し、[作成] をクリックします。
+3. [基本] ブレードで、必須フィールドに値を指定します。指定するのは、名前 (VM 名)、ユーザー名、認証の種類と対応する資格情報、Azure サブスクリプション、リソース グループ、および場所です。
 
-VM がプロビジョニングされたら、VM 名をクリックし、 **[ダッシュボード]**をクリックします。 **[SSH の詳細]**で、SSH エンドポイントを見つけます。
+   ![新しい Ubuntu イメージの作成
+](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
+
+4. VM がプロビジョニングされたら、VM 名をクリックし、**[設定]** カテゴリの **[エンドポイント]** をクリックします。 **[スタンドアロン]** の一覧で、SSH エンドポイントを見つけます。
+
+   ![既定のエンドポイント](./media/virtual-machines-linux-classic-ruby-rails-web-app/endpointsnewportal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 「[Linux を実行する仮想マシンの作成][vm-instructions]」の手順に従います。
@@ -54,20 +59,25 @@ VM がプロビジョニングされたら、次のコマンドを実行して S
 ## <a name="install-ruby-on-rails"></a>Ruby on Rails のインストール
 1. SSH を使用して VM に接続します。
 2. SSH セッションから、次のコマンドを使用して VM に Ruby をインストールします。
-   
+
         sudo apt-get update -y
         sudo apt-get upgrade -y
-        sudo apt-get install ruby ruby-dev build-essential libsqlite3-dev zlib1g-dev nodejs -y
-   
+
+        sudo apt-add-repository ppa:brightbox/ruby-ng
+        sudo apt-get update
+        sudo apt-get install ruby2.4
+
+        > [!TIP]
+        > The brightbox repository contains the current Ruby distribution.
+
     インストールには数分かかる場合があります。 インストールが完了したら、次のコマンドを使用して、Ruby がインストールされたことを確認します。
-   
+
         ruby -v
-   
-    インストールされている Ruby のバージョンが返されます。
+
 3. 次のコマンドを使用して Rails をインストールします。
-   
+
         sudo gem install rails --no-rdoc --no-ri -V
-   
+
     ここでは、--no-rdoc フラグと --no-ri フラグを使用してドキュメントのインストールをスキップしています。これにより、インストールに要する時間が短縮されます。
     このコマンドは実行に時間がかかる可能性があります。-V を追加すると、インストールの進行状況に関する情報が表示されます。
 
@@ -91,28 +101,32 @@ SSH を使用してログインしている状態で、次のコマンドを実�
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>エンドポイントの追加
-1. [Azure クラシック ポータル][management-portal]に移動し、目的の VM を選択します。
-   
-    ![仮想マシンの一覧][vmlist]
-2. ページの上部で **[エンドポイント]** を選択し、ページ下部で **[+ エンドポイントの追加]** をクリックします。
-   
-    ![エンドポイント ページ][endpoints]
-3. **[エンドポイントの追加]** ダイアログで、[スタンドアロン エンドポイントの追加] を選択し、**[次へ]** 矢印をクリックします。
-   
-    ![新しいエンドポイントのダイアログ][new-endpoint1]
-4. 次のダイアログ ページで、次の情報を入力します。
-   
+1. [Azure Portal][https://portal.azure.com] に移動して、VM を選択します。
+
+2. ページの左側の **[設定]** で **[エンドポイント]** を選択します。
+
+3. ページの上部にある **[追加]** をクリックします。
+
+4. **[エンドポイントの追加]** ダイアログ ページで、次の情報を入力します。
+
    * **名前**: HTTP
    * **プロトコル**: TCP
    * **パブリック ポート**: 80
    * **プライベート ポート**: 3000
-     
-     これにより、プライベート ポート 3000 にトラフィックをルーティングするパブリック ポート 80 が作成されます。ルーティング先のプライベート ポートは、Rails がリッスンしています。
-     
-     ![新しいエンドポイントのダイアログ][new-endpoint]
-5. チェック マークをクリックして、エンドポイントを保存します。
-6. **"更新が進行中です"**というメッセージが表示されます。 このメッセージが消えると、エンドポイントがアクティブになります。 この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。 Web サイトは次のようになります。
-   
+   * **Floating IP アドレス**: 無効
+   * **アクセス制御リスト - 順序**: 1001、またはこのアクセス規則の優先順位を設定する別の値。
+   * **アクセス制御リスト - 名前**: allowHTTP
+   * **アクセス制御リスト - アクション**: 許可
+   * **アクセス制御リスト - リモート サブネット**: 1.0.0.0/16
+
+     このエンドポイントには、トラフィックをプライベート ポート 3000 にルーティングするパブリック ポート 80 があります。ルーティング先のプライベート ポートは、Rails サーバーがリッスンしています。 アクセス制御リスト ルールは、ポート 80 上でのパブリック トラフィックを許可しています。
+
+     ![new-endpoint](./media/virtual-machines-linux-classic-ruby-rails-web-app/createendpoint.png)
+
+5. [OK] をクリックしてエンドポイントを保存します。
+
+6. "**仮想マシンのエンドポイントを保存しています**" というメッセージが表示されます。 このメッセージが消えると、エンドポイントがアクティブになります。 この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。 Web サイトは次のようになります。
+
     ![既定の rails ページ][default-rails-cloud]
 
 ## <a name="next-steps"></a>次のステップ
@@ -127,10 +141,9 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 * [Content Delivery Network を使用して高帯域幅コンテンツを配信する][cdn-howto]
 
 <!-- WA.com links -->
-[blobs]:../../../storage/storage-ruby-how-to-use-blob-storage.md
+[blobs]:../../../storage/blobs/storage-ruby-how-to-use-blob-storage.md
 [cdn-howto]:https://azure.microsoft.com/develop/ruby/app-services/
-[management-portal]:https://manage.windowsazure.com/
-[tables]:../../../storage/storage-ruby-how-to-use-table-storage.md
+[tables]:../../../cosmos-db/table-storage-how-to-use-ruby.md
 [vm-instructions]:createportal.md
 
 <!-- External Links -->

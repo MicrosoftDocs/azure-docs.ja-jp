@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: df0e99dd79c970dfc4d66565c1286c0c9a5ec532
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: fea70b389b1f1d6af963e3f14fdc48e8d857dd53
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -27,12 +27,12 @@ ms.lasthandoff: 05/18/2017
 > [!div class="op_single_selector"]
 > * [内部リスナー](../classic/ps-sql-int-listener.md)
 > * [外部リスナー](../classic/ps-sql-ext-listener.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概要
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。
 
 Resource Manager モデルで AlwaysOn 可用性グループのリスナーを構成する方法については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)」をご覧ください。
@@ -69,37 +69,37 @@ Azure レプリカをホストする VM ごとに負荷分散されたエンド�
 6. `Get-AzurePublishSettingsFile` を実行します。 このコマンドレットにより、ブラウザーで発行設定ファイルをローカル ディレクトリにダウンロードするよう指示されます。 Azure サブスクリプションのサインイン資格情報の入力を求められる場合があります。
 
 7. 次の `Import-AzurePublishSettingsFile` コマンドを、ダウンロードした発行設定ファイルのパスを指定して実行します。
-   
+
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
     発行設定ファイルがインポートされたら、PowerShell セッションで、Azure サブスクリプションを管理できます。
-    
+
 8. *ILB* の場合は、静的 IP アドレスを割り当てます。 次のコマンドを実行して、現在の仮想ネットワーク構成を確認します。
-   
+
         (Get-AzureVNetConfig).XMLConfiguration
 9. レプリカをホストする VM が含まれるサブネットの *サブネット* 名をメモします。 この名前は、スクリプトの $SubnetName パラメーターで使用します。
 
 10. レプリカをホストする VM が含まれるサブネットの *VirtualNetworkSite* 名と開始する *AddressPrefix* をメモします。 両方の値を `Test-AzureStaticVNetIP` コマンドに渡し、*AvailableAddresses* を確認することによって、使用可能な IP アドレスを探します。 たとえば、仮想ネットワークの名前が *MyVNet* であり、サブネット アドレスの範囲が *172.16.0.128* から始まる場合、次のコマンドを実行すると、使用可能なアドレスのリストが表示されます。
-   
+
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. 使用可能なアドレスのいずれかを選択し、次の手順に含まれるスクリプトの $ILBStaticIP パラメーターで使用します。
 
 12. 次の PowerShell スクリプトをテキスト エディターにコピーし、環境に合わせて変数の値を設定します。 いくつかのパラメーターには、既定値が指定されています。  
 
-    アフィニティ グループを使用している既存のデプロイでは、ILB を追加できません。 ILB の要件の詳細については、「[内部ロード バランサーの概要](../../../load-balancer/load-balancer-internal-overview.md)」を参照してください。 
-    
+    アフィニティ グループを使用している既存のデプロイでは、ILB を追加できません。 ILB の要件の詳細については、「[内部ロード バランサーの概要](../../../load-balancer/load-balancer-internal-overview.md)」を参照してください。
+
     また、可用性グループが複数の Azure リージョンにまたがっている場合、各データセンターにおいて、そのデータセンターに存在するクラウド サービスおよびノードごとにスクリプトを 1 回ずつ実行する必要があります。
-   
+
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
         $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
         $SubnetName = "<MySubnetName>" # subnet name that the replicas use in the virtual network
         $ILBStaticIP = "<MyILBStaticIPAddress>" # static IP address for the ILB in the subnet
         $ILBName = "AGListenerLB" # customize the ILB name or use this default value
-   
+
         # Create the ILB
         Add-AzureInternalLoadBalancer -InternalLoadBalancerName $ILBName -SubnetName $SubnetName -ServiceName $ServiceName -StaticVNetIPAddress $ILBStaticIP
-   
+
         # Configure a load-balanced endpoint for each node in $AGNodes by using ILB
         ForEach ($node in $AGNodes)
         {
@@ -107,11 +107,6 @@ Azure レプリカをホストする VM ごとに負荷分散されたエンド�
         }
 
 13. 変数を設定したら、スクリプトを、テキスト エディターからそれを実行する PowerShell セッションにコピーします。 プロンプトにまだ **>>** が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーをもう一度押します。
-
-> [!NOTE]
-> Azure クラシック ポータルでは、ILB は現在サポートされていないため、ILB もエンドポイントも表示されません。 ただし、ロード バランサーがクラシック ポータルで実行されている場合、`Get-AzureEndpoint` によって内部 IP アドレスが返されます。 それ以外の場合、Null が返されます。
-> 
-> 
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>KB2854082 がインストールされていることを確認する (必要に応じて)
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -128,33 +123,33 @@ Azure レプリカをホストする VM ごとに負荷分散されたエンド�
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>PowerShell でクラスター リソースを構成する
 1. ILB の場合、先ほど作成した ILB の IP アドレスを使用する必要があります。 PowerShell でこの IP アドレスを取得するには、次のスクリプトを使用します。
-   
+
         # Define variables
         $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
         (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
 2. VM のいずれかで、ご利用のオペレーティング システム用の PowerShell スクリプトをテキスト エディターにコピーし、変数を先ほどメモした値に設定します。
-   
+
     Windows Server 2012 以降の場合、次のスクリプトを使用します。
-   
+
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
         $ILBIP = “<X.X.X.X>” # the IP address of the ILB
-   
+
         Import-Module FailoverClusters
-   
+
         Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-   
+
     Windows Server 2008 R2 の場合、次のスクリプトを使用します。
-   
+
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
         $ILBIP = “<X.X.X.X>” # the IP address of the ILB
-   
+
         Import-Module FailoverClusters
-   
+
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
 3. 変数を設定したら、管理者特権で Windows PowerShell ウィンドウを開き、スクリプトをテキスト エディターからそれを実行する Azure PowerShell セッションに貼り付けます。 プロンプトにまだ **>>** が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーをもう一度押します。
@@ -173,5 +168,4 @@ Azure レプリカをホストする VM ごとに負荷分散されたエンド�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-
 

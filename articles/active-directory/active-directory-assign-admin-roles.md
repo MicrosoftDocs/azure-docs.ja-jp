@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory の管理者ロールの割り当て | Microsoft Docs"
-description: "Azure Active Directory で管理者ロールが使用できる機能と、管理者ロールを割り当てる方法について説明します。"
+description: "管理者ロールを使って、ユーザーの作成または編集、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持ちます。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,30 +12,38 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: b29633d93484950d6657fc1d618fa0f1a2d5c01a
+ms.reviewer: Vince.Smith
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 042e2f4117a35e80694a1643dd95fa54d508f1f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 > [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-assign-admin-roles-azure-portal.md)
+> * [Azure ポータル]()
 > * [Azure クラシック ポータル](active-directory-assign-admin-roles.md)
 >
 >
 
-Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 これらの管理者は、Azure ポータルまたは Azure クラシック ポータルでさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
+各機能ごとに別々の管理者を指定するには、Azure Active Directory (Azure AD) を使います。 これらの管理者は、Azure Portal または Azure クラシック ポータルで選択した機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Microsoft PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターで管理者ロールを割り当てる方法については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
+
 
 次の管理者ロールを使用できます。
 
 * **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 
-* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可を持ちます。 詳しくは、「[Office 365 の管理者ロールについて](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)」をご覧ください。
+* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可を持ちます。 詳しくは、「[Office 365 の管理者ロールについて](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+
+* **条件付きアクセス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory の条件付きアクセスの設定を管理できます。
 
 * **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
@@ -77,7 +85,7 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 * **特権ロール管理者**: このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 また、このロールは Privileged Identity Management の全側面を管理できます。
 
-* **セキュリティ管理者**: このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Privileged Identity Management、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
+* **セキュリティ管理者**: このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Azure Information Protection、Privileged Identity Management、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
 * **セキュリティ閲覧者**: このロールが割り当てられたユーザーは、Azure Active Directory、Identity Protection、Privileged Identity Management 内のすべての情報を含め、グローバルな読み取り専用アクセス権を持ち、Azure Active Directory のサインイン レポートと監査ログを閲覧できます。 また、このロールには、Office 365 セキュリティ/コンプライアンス センターでの読み取り専用アクセス許可が付与されます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
@@ -102,11 +110,15 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 | --- | --- |
 |<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金および購入操作の実行</p> |<p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p>|
 
+### <a name="conditional-access-administrator"></a>条件付きアクセス管理者
+| できること | できないこと |
+| --- | --- |
+|<p>会社情報とユーザー情報の表示</p><p>条件付きアクセスの設定の管理</p> |<p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p>|
+
 ### <a name="global-administrator"></a>グローバル管理者
 | できること | できないこと |
 | --- | --- |
-| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金および購入操作の実行</p><p>ユーザー パスワードのリセット</p>
-<p>他の管理者のパスワードのリセット</p> <p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>監査ログの表示</p> |該当なし |
+|<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金および購入操作の実行</p><p>ユーザー パスワードのリセット</p><p>他の管理者のパスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>監査ログの表示</p> |<p>該当なし</p>|
 
 ### <a name="password-administrator"></a>パスワード管理者
 | できること | できないこと |
@@ -156,6 +168,17 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
 Azure Active Directory でユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。
+
+## <a name="deprecated-roles"></a>非推奨のロール
+
+次のロールは使用しないでください。 これらは廃止されており、将来的に Azure AD から削除されます。
+
+* アドホック ライセンス管理者
+* メールで確認済みのユーザー作成者
+* デバイスの参加
+* デバイス マネージャー
+* デバイス ユーザー
+* デバイスの社内参加
 
 ## <a name="next-steps"></a>次のステップ
 * Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)

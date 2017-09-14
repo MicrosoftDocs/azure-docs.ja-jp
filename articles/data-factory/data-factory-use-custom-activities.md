@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 44e0d7c920bc32bf3293ca5ab197b6d2332a43f8
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f3d265f31cb653d32076747e586383d67bbccc41
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -54,7 +53,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 ## <a name="walkthrough-create-a-custom-activity"></a>チュートリアル: カスタム アクティビティの作成
 ### <a name="prerequisites"></a>前提条件
 * Visual Studio 2012/2013/2015
-* [Azure .NET SDK][azure-developer-center] のダウンロードとインストール
+* [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch の前提条件
 このチュートリアルでは、コンピューティング リソースとして Azure Batch を使用して、カスタム .NET アクティビティを実行します。 **Azure Batch** は、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行するためのプラットフォーム サービスです。 多くのコンピューティング処理を要する作業を管理された**仮想マシンの集合**で実行するようにスケジュール設定し、ジョブのニーズに合わせてコンピューティング リソースを自動的に拡大/縮小できます。 Azure Batch サービスの詳細については、[Azure Batch の基礎][batch-technical-overview]に関するページをご覧ください。
@@ -138,26 +137,26 @@ public IDictionary<string, string> Execute(
 
     ```csharp
 
-// Comment these lines if using VS 2017
-using System.IO;
-using System.Globalization;
-using System.Diagnostics;
-using System.Linq;
-// --------------------
+    // Comment these lines if using VS 2017
+    using System.IO;
+    using System.Globalization;
+    using System.Diagnostics;
+    using System.Linq;
+    // --------------------
 
-// Comment these lines if using <= VS 2015
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-// ---------------------
+    // Comment these lines if using <= VS 2015
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    // ---------------------
 
-using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.Azure.Management.DataFactories.Runtime;
+    using Microsoft.Azure.Management.DataFactories.Models;
+    using Microsoft.Azure.Management.DataFactories.Runtime;
 
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     ```
 6. **名前空間**の名前を **MyDotNetActivityNS** に変更します。
 
@@ -267,7 +266,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path    
+        // log the output folder path   
         logger.Write("Writing blob to the folder: {0}", folderPath);
     
         // create a storage object for the output blob.
@@ -303,7 +302,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
             return null;
         }
 
-        // get type properties of the dataset    
+        // get type properties of the dataset   
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -389,8 +388,8 @@ using Microsoft.WindowsAzure.Storage.Blob;
     > カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない **最上位レベル** に置く必要があります。
 
     ![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
-14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。    
-15. AzureStorageLinkedService によって参照される**汎用** Azure Blob Storage (ホット/クール BLOB ストレージでない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。  
+14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。 
+15. AzureStorageLinkedService によって参照される**汎用** Azure Blob ストレージ (ホット/クール BLOB ストレージではない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。  
 
 > [!IMPORTANT]
 > この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 詳しくは、[Visual Studio での Data Factory プロジェクト](#data-factory-project-in-visual-studio)に関するセクションをご覧ください。
@@ -451,7 +450,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure Storage]** を選択します。 Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
     
     ![[新しいデータ ストア] - [Azure Storage]](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. `<accountname>` は Azure Storage アカウントの名前に、`<accountkey>` は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+3. `<accountname>` は Azure Storage アカウントの名前に、`<accountkey>` は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
     ![Azure Storage のリンクされたサービス](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
@@ -1174,7 +1173,6 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 [azure-batch-blog]: http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
 
 [nuget-package]: http://go.microsoft.com/fwlink/?LinkId=517478
-[azure-developer-center]: http://azure.microsoft.com/develop/net/
 [adf-developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [azure-preview-portal]: https://portal.azure.com/
 

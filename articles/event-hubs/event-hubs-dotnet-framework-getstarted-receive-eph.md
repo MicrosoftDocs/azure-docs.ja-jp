@@ -20,7 +20,6 @@ ms.openlocfilehash: c97cd41e503b5f2792f55e27038a2e07e254826e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/14/2017
 
-
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs からイベントを受信する
 
@@ -184,7 +183,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Event Hubs Programming Guide]: event-hubs-programming-guide.md
-[Azure Storage account]: ../storage/storage-create-storage-account.md
+[Azure Storage account]:../storage/common/storage-create-storage-account.md
 [Event Processor Host]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
 [Azure portal]: https://portal.azure.com
 

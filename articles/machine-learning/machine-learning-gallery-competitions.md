@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 6c76311b8ba36ea5dba1c2cd63ee05e1048ca9de
-ms.openlocfilehash: 6ceb50b05075ea9d056a873cf70b13ff85dc6094
-ms.lasthandoff: 02/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 25ec625c1f32fd1477685196ea21ad6f582bc7ce
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでコンペティションを発見する
@@ -34,8 +34,7 @@ ms.lasthandoff: 02/21/2017
 
 ![ギャラリー ホーム ページからコンペティションを選択する](media/machine-learning-gallery-competitions/select-competitions-in-gallery.png)
 
- **[コンペティション](https://gallery.cortanaintelligence.com/competitions)**
- ページには、最も人気のあるコンペティションの一覧が表示されます。
+ **[[コンペティション]](https://gallery.cortanaintelligence.com/competitions)** ページには、人気のある上位のコンペティションの一覧が表示されます。
 **[すべて表示]** をクリックし、すべてのコンペティションを表示します。
 このページで、ギャラリー内のすべてのコンペティションを見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
 
@@ -46,13 +45,11 @@ ms.lasthandoff: 02/21/2017
 ![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="enter-a-competition"></a>コンペティションに参加する
-コンペティションが開かれている場合は、詳細ページのステータスが **[アクティブ]** になります。 コンペティションに参加するには、**[コンペティションに参加する]** をクリックすると、必要なリソースおよび手順についての指示が表示されます。
+コンペティションが開いている場合、詳細ページの状態は **[アクティブ]** です。 コンペティションに参加するには、**[コンペティションに参加する]** をクリックすると、必要なリソースおよび手順についての指示が表示されます。
 
-![コンペティションが完了した](media/machine-learning-gallery-competitions/open-competition.png)
+![コンペティションがアクティブ](media/machine-learning-gallery-competitions/open-competition.png)
 
-コンペティションがもはや開かれていない場合は、詳細ページのステータスが **[完了]** になり、**[コンペティションに参加する]** のリンクは **[完了]** という語に置き換えられます。
-
-![コンペティションが完了した](media/machine-learning-gallery-competitions/completed-competition.png)
+コンペティションが完了した場合、受賞者の一覧が表示されます。
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 

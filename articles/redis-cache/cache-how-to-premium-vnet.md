@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 05/15/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -40,7 +39,7 @@ Premium キャッシュのその他の機能の詳細については、「 [Azur
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Premium 価格レベルを選択すると、キャッシュと同じサブスクリプションと場所にある VNet を選択することで、Redis VNet 統合を構成できます。 新しい VNet を使用するには、まず「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」または「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)」の手順に従って VNet を作成した後、**[新規 Redis Cache]** ブレードに戻り、Premium キャッシュを作成して構成します。
+Premium 価格レベルを選択すると、キャッシュと同じサブスクリプションと場所にある VNet を選択することで、Redis VNet 統合を構成できます。 新しい VNet を使用するには、まず「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」または「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って VNet を作成した後、**[新規 Redis Cache]** ブレードに戻り、Premium キャッシュを作成して構成します。
 
 新しいキャッシュ用に VNet を構成するには、**[新規 Redis Cache]** ブレードの **[仮想ネットワーク]** をクリックし、ドロップダウン リストから目的の VNet を選択します。
 
@@ -85,6 +84,7 @@ VNet の使用時に Azure Redis Cache インスタンスに接続するには�
 次の一覧は、Azure Redis Cache のスケーリングに関するよく寄せられる質問への回答です。
 
 * [Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* [VNET で自分のキャッシュの動作を確認するにはどうすればよいですか](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [Standard キャッシュまたは Basic キャッシュで VNet を使用できますか](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Redis Cache の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
@@ -109,31 +109,31 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 - 3 つのポートは、Azure Storage と Azure DNS を提供する Azure エンドポイントにトラフィックをルーティングします。
 - その他のポート範囲は、内部の Redis サブネット通信用です。 内部 Redis サブネット通信用にサブネット NSG 規則は必要ありません。
 
-| ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
-| --- | --- | --- | --- | --- |
-| 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 |* |
-| 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 |* |
-| 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |
-| 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |
-| 20226 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
-| 13000-13999 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
-| 15000-15999 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| ポート | 方向 | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
+| --- | --- | --- | --- | --- | --- |
+| 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 | (Redis サブネット) |* |
+| 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 | (Redis サブネット) |* |
+| 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
+| 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
+| 20226 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 13000-13999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 15000-15999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 
 ### <a name="inbound-port-requirements"></a>受信ポートの要件
 
 受信ポートの範囲には、8 個の要件があります。 これらの範囲の受信要件は、同じ VNET でホストされている他のサービスからの受信、または Redis サブネット通信への内部の要件です。
 
-| ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
-| --- | --- | --- | --- | --- |
-| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
-| 8443 |受信 |TCP |Redis の内部通信 |(Redis サブネット) |
-| 8500 |受信 |TCP/UDP |Azure 負荷分散 |Azure Load Balancer |
-| 10221-10231 |受信 |TCP |Redis の内部通信 |(Redis サブネット)、Azure Load Balancer |
-| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
-| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
-| 16001 |受信 |TCP/UDP |Azure 負荷分散 |Azure Load Balancer |
-| 20226 |受信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| ポート | 方向 | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
+| --- | --- | --- | --- | --- | --- |
+| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 8443 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
+| 10221-10231 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer |
+| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
+| 20226 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 ### <a name="additional-vnet-network-connectivity-requirements"></a>その他の VNET ネットワーク接続の要件
 
@@ -143,6 +143,26 @@ Azure Redis Cache のネットワーク接続要件には、仮想ネットワ�
 * *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。 この接続は、SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
 * 次の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
+
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>VNET で自分のキャッシュの動作を確認するにはどうすればよいですか
+
+>[!IMPORTANT]
+>VNET にホストされている Azure Redis Cache インスタンスに接続している場合、キャッシュ クライアントはテスト アプリケーションや診断 ping ツールを含む同じ VNET にある必要があります。
+>
+>
+
+前のセクションで説明したようにポート要件を構成した後、次の手順を実行して、キャッシュが動作していることを確認できます。
+
+- すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 必要なすべてのキャッシュ依存関係 ([「受信ポートの要件」](cache-how-to-premium-vnet.md#inbound-port-requirements)と[「送信ポートの要件」](cache-how-to-premium-vnet.md#outbound-port-requirements)で説明) に到達できない場合、キャッシュは正常に再起動できません。
+- キャッシュ ノードが再起動したら (Azure Portal のキャッシュの状態で報告されます)、次のテストを実行できます。
+  - [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ VNET 内にあるコンピューターからキャッシュ エンドポイントを ping します (ポート 6380 を使用)。 For example:
+    
+    `tcping.exe contosocache.redis.cache.windows.net 6380`
+    
+    `tcping` ツールでポートが開いていることがレポートされる場合、キャッシュは VNET 内のクライアントからの接続に使用できます。
+
+  - キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアント (StackExchange.Redis を使ったシンプルなコンソール アプリケーションにできます) を作成することでテストする方法もあります。 このサンプル クライアント アプリケーションをキャッシュと同じ VNET 内の VM にインストールし、実行してキャッシュへの接続性を確認します。
+
 
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Standard キャッシュまたは Basic キャッシュで VNet を使用できますか
 VNet は Premium キャッシュでのみ使用できます。
@@ -165,9 +185,9 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Azure Redis Cache と ExpressRoute の使用
 顧客は、 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 
 
-既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。 この構成を使用すると、クライアント アプリケーションは Azure Redis Cache を含む他の Azure エンドポイントに接続できます。
+既定では、新たに作成した ExpressRoute 回線では VNET での強制トンネリングは実行されません (既定のルートのアドバタイズ、0.0.0.0/0)。 その結果、発信インターネット接続は VNET から直接行うことができ、クライアント アプリケーションは、Azure Redis Cache を含む他の Azure エンドポイントに接続できます。
 
-ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義しています。 このトラフィック フローは、送信トラフィックの場合には、Azure Redis Cache との接続を切断し、Azure Redis Cache インスタンスがその依存関係と通信できないように、オンプレミスでブロックされます。
+ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる強制トンネリング (既定のルートのアドバタイズ) が使用されます。 このトラフィック フローは、送信トラフィックの場合には、Azure Redis Cache との接続を切断し、Azure Redis Cache インスタンスがその依存関係と通信できないように、オンプレミスでブロックされます。
 
 解決策は、Azure Redis Cache を含むサブネット上で 1 つ (以上) のユーザー定義ルート (UDR) を定義することです。 UDR は、既定のルートに優先するサブネット固有のルートを定義します。
 

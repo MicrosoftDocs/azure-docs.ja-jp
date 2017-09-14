@@ -1,21 +1,25 @@
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-* `listener.js` という新しい JavaScript ファイルを作成します。
+
+`listener.js` という新しい JavaScript ファイルを作成します。
 
 ### <a name="add-the-relay-npm-package"></a>Relay NPM パッケージを追加する
-* プロジェクト フォルダーの Node のコマンド プロンプトから `npm install hyco-ws` を実行します。
+
+プロジェクト フォルダーの Node のコマンド プロンプトから `npm install hyco-ws` を実行します。
 
 ### <a name="write-some-code-to-receive-messages"></a>メッセージを受信するコードを記述する
-1. `listener.js` ファイルの先頭に次の `constant` を追加します。
+
+1. `listener.js` ファイルの先頭に次の定数を追加します。
    
     ```js
     const WebSocket = require('hyco-ws');
     ```
-2. ハイブリッド接続の接続の詳細に関する次の Relay `constants` を `listener.js` に追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。
+2. ハイブリッド接続の詳細に関する次の定数を `listener.js` ファイルに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した値に置き換えます。
    
-   1. `const ns` - Relay 名前空間。FQDN を使用します (例: `{namespace}.servicebus.windows.net`)。
-   2. `const path` - ハイブリッド接続の名前
-   3. `const keyrule` - SAS キーの名前
-   4. `const key` - SAS キーの値
+   1. `const ns` - Relay 名前空間。 必ず完全修飾名前空間名を使用してください (たとえば、`{namespace}.servicebus.windows.net`)。
+   2. `const path` - ハイブリッド接続の名前。
+   3. `const keyrule` - SAS キーの名前。
+   4. `const key` - SAS キーの値。
+
 3. 次のコードを `listener.js` ファイルに追加します。
    
     ```js
@@ -40,7 +44,7 @@
         console.log('error' + err);
     });
     ```
-    listener.js は次のようになります。
+    listener.js ファイルは次のようになります。
    
     ```js
     const WebSocket = require('hyco-ws');

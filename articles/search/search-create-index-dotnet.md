@@ -1,5 +1,5 @@
 ---
-title: ".NET SDK を使用した Azure Search インデックスの作成 | Microsoft Docs"
+title: "インデックスの作成 (.NET API - Azure Search) | Microsoft Docs"
 description: "Azure Search .NET SDK を使用して、コードでインデックスを作成します。"
 services: search
 documentationcenter: 
@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 0531b5c3b63a3fa54bb331f3d8d09c8119e789ea
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2f2160f9b4383f9220c81a7233612a767e296109
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの作成
@@ -38,8 +37,7 @@ ms.lasthandoff: 05/22/2017
 
 > [!NOTE]
 > この記事のサンプル コードはすべて C# で記述されています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
->
->
+
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Azure Search サービスの管理者 API キーの識別
 Azure Search サービスのプロビジョニングが完了すると、あと少しで、.NET SDK を使用して、サービス エンドポイントに対して要求を発行できます。 まず、プロビジョニングした検索サービス用に生成された管理者 API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。

@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory ポータルの監査アクティビティ レポート | Microsoft Docs"
 description: "Azure Active Directory ポータルの監査アクティビティ レポートの概要"
 services: active-directory
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/19/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: d8c49272789e7d33c6f0684875765a1ecea5a2ff
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
@@ -131,7 +130,7 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 
 **[アクティビティ]** フィルターは、カテゴリとアクティビティ リソースの種類の選択に基づいたものです。 参照する特定のアクティビティを選択することも、すべてを選択することもできます。 
 
-Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta を使用して全監査アクティビティのリストを取得できます ($tenantdomain は実際のドメイン名)。[監査レポートのイベント](active-directory-reporting-audit-events.md#list-of-audit-report-events)に関する記事を参照してください。
+Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta を使用して全監査アクティビティのリストを取得できます ($tenantdomain は実際のドメイン名)。[監査レポートのイベント](active-directory-reporting-audit-events.md)に関する記事を参照してください。
 
 
 ## <a name="audit-logs-shortcuts"></a>監査ログのショートカット
@@ -185,6 +184,7 @@ Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?
 
 
 ## <a name="next-steps"></a>次のステップ
-「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
+
+レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
 
 

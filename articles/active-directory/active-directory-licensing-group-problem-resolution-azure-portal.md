@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/28/2017
+ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 68155ebaa6af36500bfe856c9bcd49f5efb6cbc2
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,7 +34,26 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 グループベースのライセンスを使用している場合も同じエラーが発生する可能性がありますが、この場合のエラーは Azure AD サービスがライセンスを割り当てるときにバック グラウンドで発生します。 このため、エラーを即座に伝達することはできません。 その代わりに、エラーはユーザー オブジェクトに記録され、管理ポータル経由で報告されます。 ユーザーへのライセンス付与という元の操作が無効になることはありませんが、後で調査して解決できるようにエラー状態にあることが記録されます。
 
-各グループのエラー状態にあるユーザーを見つけるには、各グループのブレードを開きます。 エラー状態にあるユーザーが存在する場合は、**[ライセンス]** の下に通知が表示されます。 その通知を選択すると、影響を受けているすべてのユーザーの一覧が開きます。 個別にユーザーを表示して、根本的な問題を理解することができます。 この記事では、潜在的な問題とその解決方法を説明します。
+## <a name="how-to-find-license-assignment-errors"></a>ライセンスの割り当てエラーを見つける方法
+
+1. 特定のグループ内でエラー状態にあるユーザーを見つけるには、そのグループのブレードを開きます。 エラー状態にあるユーザーが存在する場合は、**[ライセンス]** の下に通知が表示されます。
+
+![グループ、エラー通知](media/active-directory-licensing-group-problem-resolution-azure-portal/group-error-notification.png)
+
+2. その通知をクリックし、影響を受けているすべてのユーザーの一覧を開きます。 個別に各ユーザーをクリックすると、詳細を表示できます。
+
+![グループ、エラー状態のユーザーの一覧](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-users-with-errors.png)
+
+3. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、**Azure Active Directory** ブレードで、**[ライセンス]**、**[概要]** の順に選択します。 注意が必要なグループが場合は、情報ボックスが表示されます。
+
+![概要、エラー状態にあるグループに関する情報](media/active-directory-licensing-group-problem-resolution-azure-portal/group-errors-widget.png)
+
+4. エラーのあるすべてのグループの一覧を表示するには、ボックスをクリックします。 各グループをクリックすると詳細を表示できます。
+
+![概要、エラーのあるグループの一覧](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-groups-with-errors.png)
+
+
+以下では、考えられる問題とその解決方法を個別に説明します。
 
 ## <a name="not-enough-licenses"></a>ライセンス数の不足
 
@@ -88,6 +108,20 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 グループに指定したすべてのライセンスは、Azure AD によって各ユーザーに割り当てられます。 Azure AD が、ビジネス ロジックの問題 (ライセンス数の不足、ユーザーに対して有効な他のサービスとの競合など) が原因でいずれかの製品を割り当てることができない場合、グループの他のライセンスも割り当てられません。
 
 割り当てが失敗したユーザーとその失敗の影響を受けている製品を確認できます。
+
+## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Exchange Online でプロキシ アドレスの重複があるために、ユーザーのライセンス割り当てがエラーを記録することなく失敗する
+
+Exchange Online を使用している場合は、テナント内の一部のユーザーが、同じプロキシ アドレスの値で間違って構成されている可能性があります。 グループ ベースのライセンスがこのようなユーザーにライセンス割り当てを試みると、失敗し、エラーは記録されません (上で説明した他のエラーの場合と異なります)。これは、この機能のプレビュー バージョンの制限によるもので、*一般提供*が開始されるまでには対応する予定です。
+
+> [!TIP]
+> 一部のユーザーがライセンスを得られず、そのユーザーに関してエラーが記録されていない場合は、まず、ユーザーに重複するプロキシ アドレスがないかどうか確認してください。
+> これは、次の PowerShell コマンドレットを Exchange Online に対して実行することで確認できます。
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> [リモート PowerShel を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)など、この問題の詳細については、[こちらの記事](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)をご覧ください。
+
+割り当てに失敗したユーザーのプロキシ アドレスの問題が解決した後には、グループのライセンス処理を強制して、ライセンスを再度適用できるようになったことを確認してください。
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>グループでライセンスの処理を強制してエラーを解決する方法
 

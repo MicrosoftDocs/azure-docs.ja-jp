@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/24/2017
+ms.date: 8/9/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f47fbe0e9c6cb4d09e6233f6d26211969a5c1f00
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 48e4ad774164b87d0cacb42f709e54af1d6f07b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
@@ -57,7 +56,8 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 **SetupEntryPoint** の構成方法について詳しくは、[エントリ ポイント セットアップ サービスのポリシーの構成](service-fabric-application-runas-security.md)に関するページをご覧ください
 
-## <a name="configure"></a>構成 
+<a id="Package-App"></a>
+## <a name="configure"></a>構成
 ### <a name="build-a-package-by-using-visual-studio"></a>Visual Studio を使用したパッケージ構築
 Visual Studio 2015 を使用して、アプリケーションを作成する場合、パッケージのコマンドを使用して、前述のレイアウトと一致するパッケージを自動的に作成できます。
 
@@ -116,18 +116,19 @@ PS D:\temp>
 
 アプリケーションがデプロイされるクラスターが明らかな場合は、`ImageStoreConnectionString` パラメーターを渡すことをお勧めします。 この場合、パッケージは、既にクラスターで実行されている以前のバージョンのアプリケーションに対しても検証されます。 たとえば、この検証によって、バージョンは同じでコンテンツが異なるパッケージが既にデプロイされているかどうかを検出できます。  
 
-アプリケーションが正しくパッケージ化されて、検証に合格すると、圧縮が必要な場合は、サイズとファイルの数に基づいて評価が行われます。 
+アプリケーションが正しくパッケージ化されて、検証に合格すると、圧縮が必要な場合は、サイズとファイルの数に基づいて評価が行われます。
 
 ## <a name="compress-a-package"></a>パッケージを圧縮する
 パッケージが大きい場合や多数のファイルを含む場合は、短時間でデプロイできるようにこのパッケージを圧縮できます。 圧縮により、ファイル数を減らし、ファイルのサイズを小さくすることができます。
 圧縮されたアプリケーション パッケージの場合は、圧縮されていないパッケージと比較して、[パッケージのアップロード](service-fabric-deploy-remove-applications.md#upload-the-application-package)に時間がかかる場合があります (圧縮時間を含めた場合は特に) が、[アプリケーションの種類の登録](service-fabric-deploy-remove-applications.md#register-the-application-package)と[登録解除](service-fabric-deploy-remove-applications.md#unregister-an-application-type)は、圧縮されているパッケージの方が速くなります。
 
 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮が解除されます。
-圧縮によって、有効な Service Fabric パッケージが、圧縮されたバージョンで置き換えられます。 フォルダーへの書き込みのアクセス許可を与える必要があります。 既に圧縮済みのパッケージの圧縮を実行しても、変化はありません。 
+圧縮によって、有効な Service Fabric パッケージが、圧縮されたバージョンで置き換えられます。 フォルダーへの書き込みのアクセス許可を与える必要があります。 既に圧縮済みのパッケージの圧縮を実行しても、変化はありません。
 
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) Powershell コマンドを `CompressPackage` スイッチで実行して、パッケージを圧縮することができます。 `UncompressPackage` スイッチを使用して同じコマンドを実行すると、パッケージの圧縮を解除することができます。
 
-次のコマンドでは、パッケージをイメージ ストアにコピーせずに圧縮しています。 必要に応じて、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) を `SkipCopy` フラグを指定せずに実行して、圧縮されたパッケージを 1 つまたは複数の Service Fabric クラスターにコピーすることができます。 このパッケージには、`code`、`config`、`data` の各パッケージの zip 圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作 (パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出など) に必要なため、圧縮されません。
+次のコマンドでは、パッケージをイメージ ストアにコピーせずに圧縮しています。 必要に応じて、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) を `SkipCopy` フラグを指定せずに実行して、圧縮されたパッケージを 1 つまたは複数の Service Fabric クラスターにコピーすることができます。
+このパッケージには、`code`、`config`、`data` の各パッケージの zip 圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作 (パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出など) に必要なため、圧縮されません。
 マニフェストを zip 圧縮すると、これらの操作が非効率的になります。
 
 ```
@@ -175,6 +176,17 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、チェックサムの不一致を避けるために、バージョンを更新する必要があります。
 
 これでパッケージは正しくパッケージ化、検証、および (必要に応じて) 圧縮されたため、1 つまたは複数の Service Fabric クラスターに[デプロイ](service-fabric-deploy-remove-applications.md)する準備ができました。
+
+### <a name="compress-packages-when-deploying-using-visual-studio"></a>Visual Studio を使ってデプロイするときにパッケージを圧縮する
+`CopyPackageParameters` 要素を発行プロファイルに追加し、`CompressPackage` 属性を `true` に設定することで、デプロイ時にパッケージを圧縮するよう Visual Studio に指示できます。
+
+``` xml
+    <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
+        <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com" />
+        <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+        <CopyPackageParameters CompressPackage="true"/>
+    </PublishProfile>
+```
 
 ## <a name="next-steps"></a>次のステップ
 「[アプリケーションのデプロイと削除][10]」では、PowerShell を使用してアプリケーション インスタンスを管理する方法について説明しています

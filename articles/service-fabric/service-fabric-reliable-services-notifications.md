@@ -12,16 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2017
+ms.date: 6/29/2017
 ms.author: mcoskun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 18c71608f7429f7c52720282ca66f44c88de2d84
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
 
 ---
-# <a name="reliable-services-notifications"></a>Reliable Services の通知
+# Reliable Services の通知
+<a id="reliable-services-notifications" class="xliff"></a>
 通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知をサポートするオブジェクトには、*Reliable State Manager* と *Reliable Dictionary* の 2 種類があります。
 
 通知を使用する一般的な理由は次のとおりです。
@@ -31,7 +33,8 @@ ms.lasthandoff: 11/17/2016
 
 通知は操作の適用の一環として発生します。 そのため、通知はできるだけ速やかに処理する必要があり、同期イベントには負荷の高い操作を含めないようにする必要があります。
 
-## <a name="reliable-state-manager-notifications"></a>Reliable State Manager の通知
+## Reliable State Manager の通知
+<a id="reliable-state-manager-notifications" class="xliff"></a>
 Reliable State Manager は、次のイベントの通知を提供します。
 
 * トランザクション
@@ -106,7 +109,8 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## <a name="reliable-dictionary-notifications"></a>Reliable Dictionary の通知
+## Reliable Dictionary の通知
+<a id="reliable-dictionary-notifications" class="xliff"></a>
 Reliable Dictionary は、次のイベントの通知を提供します。
 
 * Rebuild: **ReliableDictionary** が回復またはコピーされたローカルの状態またはバックアップから状態を回復したときに呼び出されます。
@@ -203,7 +207,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-## <a name="recommendations"></a>推奨事項
+## 推奨事項
+<a id="recommendations" class="xliff"></a>
 * *します* 。
 * *しないでください* 。
 * *します* 。 今後、新しい Action の種類が追加される可能性があります。
@@ -216,7 +221,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * トランザクションに複数の操作が含まれている場合、操作はプライマリ レプリカでユーザーから受信した順序で適用されます。
 * 誤った進行の処理の一環として、一部の操作が元に戻されることがあります。 レプリカの状態を安定したポイントにロールバックするこのような元に戻す操作では、通知が発生します。 元に戻す通知の重要な違いの 1 つは、重複するキーを持つイベントが集約されることです。 たとえば、トランザクション T1 を元に戻すと、ユーザーには Delete(X) の通知だけが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 * [Reliable Collection](service-fabric-work-with-reliable-collections.md)
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)

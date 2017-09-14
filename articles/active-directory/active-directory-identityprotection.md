@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/15/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 483e77f598beaeb924197e3eb301a26da33a3f1f
+ms.reviewer: nigu
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
@@ -122,7 +122,8 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ## <a name="risky-sign-ins"></a>リスクの高いサインイン
 
-Aure Active Directory で検出される[リスク イベントの種類](active-directory-reporting-risk-events.md#risk-event-types)の中には、リアルタイムで検出されるものがあります。 ユーザーのサインイン時に検出されたリアルタイムのリスク イベントはすべて、"*リスクの高いサインイン*" と呼ばれる論理概念に関係します。 リスクの高いサインインは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われていない可能性があることを示します。 リスクの高いサインインは、ユーザーがサインアウトすると終了します。
+Azure Active Directory で検出される[リスク イベントの種類](active-directory-reporting-risk-events.md#risk-event-types)の中には、リアルタイムとオフラインがあります。 ユーザーのサインイン時に検出されたの各リスク イベントは、リスクの高いサインインと呼ばれる論理概念に関係します。 リスクの高いサインインは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われていない可能性があることを示します。
+
 
 ### <a name="sign-in-risk-level"></a>サインインのリスク レベル
 
@@ -212,7 +213,7 @@ Identity Protection コンソールの **[リスク イベント]** ページに
 
 ## <a name="users-flagged-for-risk"></a>リスクのフラグ付きユーザー
 
-Azure Active Directory によってユーザーに対して検出された[リスク イベント](active-directory-identity-protection-risk-events.md)はすべて、"*リスクのフラグ付きユーザー*" と呼ばれる論理概念に関係します。 *リスクのフラグ付きユーザー* または "*リスクの高いユーザー*" は、侵害された可能性があるユーザー アカウントの指標です。   
+Azure Active Directory によってユーザーに対して検出されたアクティブな[リスク イベント](active-directory-identity-protection-risk-events.md)はすべて、ユーザー リスクと呼ばれる論理概念に関係します。 リスクのフラグ付きユーザーは、侵害された可能性があるユーザー アカウントの指標です。
 
 ![リスクのフラグ付きユーザー](./media/active-directory-identityprotection/1200.png)
 

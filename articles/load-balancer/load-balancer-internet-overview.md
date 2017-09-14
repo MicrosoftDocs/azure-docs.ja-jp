@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 1a0f69e6530f1ab3734e1a44e5be056aacb0fff0
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: c420b38fbe8054bc4b701f89ebc417677ca47a27
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
@@ -32,7 +32,7 @@ Azure Load Balancer は、着信トラフィックのパブリック IP アド�
 
 次の図は、Web トラフィック用の負荷分散されたエンドポイントを示しています。このエンドポイントは、パブリックとプライベートの TCP ポートが 80 である 3 台の仮想マシン間で共有されています。 この 3 台の仮想マシンは、1 つの負荷分散セット内にあります。
 
-![パブリックのロード バランサーの例](./media/load-balancer-internet-overview/IC727496.png))
+![パブリックのロード バランサーの例](./media/load-balancer-internet-overview/IC727496.png)
 
 図 1 - Web トラフィック用の負荷分散されたエンドポイント
 

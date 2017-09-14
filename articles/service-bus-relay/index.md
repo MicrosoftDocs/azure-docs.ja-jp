@@ -1,11 +1,24 @@
 ---
-layout: LandingPage
 title: "Service Bus Relay のドキュメント"
 description: "クラウドとオンプレミスのハイブリッド環境における Azure Relay サービスの動作を学習します。ハウツー、チュートリアル、ビデオ、API リファレンスなどが用意されています。"
-translationtype: Human Translation
-ms.sourcegitcommit: ef8188d6790dac8b420348887c480cd4fdab07c4
-ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
+services: service-bus
+author: czeumault
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 03/14/2017
+ms.author: carolz
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 43d2c5ca34e4903a41160496fdb4d975cb665de7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
+---
 ---
 # <a name="service-bus-relay-documentation"></a>Service Bus Relay のドキュメント
 企業のエンタープライズ ネットワークとパブリック クラウド内にあるオンプレミスとクラウド環境の間でハイブリッド アプリケーションに Azure Relay サービスを使用する方法を学習します。その際、ファイアウォール接続を開くことも、企業ネットワークのインフラストラクチャへの大幅な変更を要求することも必要ありません。
@@ -30,7 +43,7 @@ ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus-relay">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -112,8 +125,8 @@ ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>サンプル</h3>
-                        <p><a href="/azure/service-bus-relay/service-bus-relay-samples">Service Bus Relay のサンプル</a></p>
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/module/azurerm.servicebus">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -124,9 +137,8 @@ ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p><a href="/dotnet/api/microsoft.servicebus.messaging">Microsoft.ServiceBus.Messaging</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.relay">Microsoft.Azure.Relay</a></p>
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/overview/azure/service-bus-relay">.NET</a></p>
                     </div>
                 </div>
             </div>
@@ -137,17 +149,12 @@ ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>その他</h3>
-                        <p><a href="service-bus-relay-port-settings.md">ポートの設定</a></p>
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/servicebus/">REST API リファレンスに関するページ</a></p>
                    </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

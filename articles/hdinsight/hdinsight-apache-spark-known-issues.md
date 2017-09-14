@@ -1,6 +1,6 @@
 ---
-title: "Azure HDInsight における Apache Spark クラスターの既知の問題 | Microsoft Docs"
-description: "Azure HDInsight における Apache Spark クラスターの既知の問題"
+title: "Azure HDInsight における Apache Spark クラスターの問題のトラブルシューティング | Microsoft Docs"
+description: "Azure HDInsight における Apache Spark のクラスターに関連する問題と、それらを解決する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 2ba5f280b38622b6a0c966d76617cd5698420b92
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 3a493a2c35a6cdd31bb1e4ff66113a8f8d97d4f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/25/2017
-
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
@@ -128,7 +127,7 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

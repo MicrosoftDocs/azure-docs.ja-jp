@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 09ccdaa18d383569747612c33b63595c06a0131e
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -49,8 +49,8 @@ ms.lasthandoff: 03/28/2017
 |$schema|いいえ|定義言語のバージョンが記述されている JSON スキーマ ファイルの場所を指定します。 この場所は、外部の定義を参照する場合に必要です。 このドキュメントの場所は次のとおりです。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#`|  
 |contentVersion|いいえ|定義のバージョンを指定します。 定義を使ってワークフローをデプロイするとき、この値を使って、正しい定義が確実に使われるようにすることができます。|  
 |parameters|なし|定義へのデータの入力に使うパラメーターを指定します。 最大 50 個のパラメーターを定義することができます。|  
-|トリガー|いいえ|ワークフローを開始するトリガーの情報を指定します。 最大 250 個のトリガーを定義できます。|  
-|アクション|いいえ|フローの実行時に行うアクションを指定します。 最大 250 個のアクションを定義できます。|  
+|トリガー|いいえ|ワークフローを開始するトリガーの情報を指定します。 最大 10 個のトリガーを定義できます。|  
+|actions|いいえ|フローの実行時に行うアクションを指定します。 最大 250 個のアクションを定義できます。|  
 |outputs|いいえ|デプロイされるリソースに関する情報を指定します。 最大 10 個の出力を定義できます。|  
   
 ## <a name="parameters"></a>parameters
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/28/2017
 
 |要素名|必須|説明|  
 |------------------|--------------|-----------------|  
-|type|はい|**型**: string <p> **宣言**: `"parameters": {"parameter1": {"type": "string"}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: securestring <p> **宣言**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: int <p> **宣言**: `"parameters": {"parameter1": {"type": "int"}}` <p> **指定**: `"parameters": {"parameter1": {"value" : 5}}` <p> **型**: bool <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": true }}` <p> **型**: array <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **型**: object <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **型**: secureobject <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注:** `securestring` 型と `secureobject` 型は、`GET` 操作では返されません。 すべてのパスワード、キー、シークレットで、この型を使う必要があります。|  
+|type|はい|**型**: string <p> **宣言**: `"parameters": {"parameter1": {"type": "string"}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: securestring <p> **宣言**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: int <p> **宣言**: `"parameters": {"parameter1": {"type": "int"}}` <p> **指定**: `"parameters": {"parameter1": {"value" : 5}}` <p> **型**: bool <p> **宣言**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **指定**: `"parameters": {"parameter1": { "value": true }}` <p> **型**: array <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **型**: object <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **型**: secureobject <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注:** `securestring` 型と `secureobject` 型は、`GET` 操作では返されません。 すべてのパスワード、キー、シークレットで、この型を使う必要があります。|  
 |defaultValue|いいえ|リソース作成時に値が指定されないときの、パラメーターの既定値を指定します。|  
 |allowedValues|いいえ|パラメーターに許可される値の配列を指定します。|  
 |metadata|いいえ|読み取り可能な説明や、Visual Studio または他のツールによって使われる設計時データなど、パラメーターに関する追加情報を指定します。|  
@@ -110,7 +110,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |------------------|--------------|-----------------|  
 |key1|はい|出力のキー ID を指定します。 **key1** は、出力の識別に使う名前に置き換えます。|  
 |値|はい|出力の値を指定します。|  
-|type|はい|指定した値の型を指定します。 指定できる値の型は次のとおりです。 <p>- `string`<br />- `securestring`<br />- `int`<br />- `bool`<br />- `array`<br />- `object`|
+|type|はい|指定した値の型を指定します。 指定できる値の型は次のとおりです。 <ul><li>`string`</li><li>`securestring`</li><li>`int`</li><li>`bool`</li><li>`array`</li><li>`object`</li></ul>|
   
 ## <a name="expressions"></a>式  
 
@@ -183,13 +183,13 @@ outputs では、ワークフローの実行から返すことができる情報
 |-------------------|-----------------|  
 |parameters|定義で定義されているパラメーター値を返します。 <p>`parameters('password')` <p> **パラメーター番号**: 1 <p> **名前**: Parameter <p> **説明**: 必須。 値が必要なパラメーターの値の名前です。|  
 |action|式で、他の JSON の名前と値のペアから、または現在の実行時アクションの出力から、値を導出することができます。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、アクション オブジェクト全体を参照します。 この関数は、アクションの do-until 条件の中でのみ使うことができます。 <p>`action().outputs.body.propertyPath`|  
-|actions|式で、他の JSON の名前と値のペアから、または実行時アクションの出力から、値を導出することができます。 これらの式では、1 つのアクションが別のアクションに依存することを明示的に宣言します。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、アクション オブジェクト全体を参照します。 この要素または conditions 要素のいずれかを使って依存関係を指定できますが、同じ依存リソースに両方の要素を使う必要はありません。 <p>`actions('myAction').outputs.body.propertyPath` <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。|  
-|trigger|式で、他の JSON の名前と値のペアから、または実行時トリガーの出力から、値を導出することができます。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、トリガー オブジェクト全体を参照します。 <p>`trigger().outputs.body.propertyPath` <p>トリガーの入力の中で使うと、関数は前の実行の出力を返します。 一方、トリガーの条件の中で使うと、`trigger` 関数は現在の実行の出力を返します。|  
+|actions|式で、他の JSON の名前と値のペアから、または実行時アクションの出力から、値を導出することができます。 これらの式では、1 つのアクションが別のアクションに依存することを明示的に宣言します。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、アクション オブジェクト全体を参照します。 この要素または conditions 要素のいずれかを使って依存関係を指定できますが、同じ依存リソースに両方の要素を使う必要はありません。 <p>`actions('myAction').outputs.body.propertyPath` <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。 <p> アクション オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=850646)をご覧ください。|
+|trigger|式で、他の JSON の名前と値のペアから、または実行時トリガーの出力から、値を導出することができます。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、トリガー オブジェクト全体を参照します。 <p>`trigger().outputs.body.propertyPath` <p>トリガーの入力の中で使うと、関数は前の実行の出力を返します。 一方、トリガーの条件の中で使うと、`trigger` 関数は現在の実行の出力を返します。 <p> トリガー オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`scheduledTime`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=850644)をご覧ください。|
 |actionOutputs|この関数は、`actions('actionName').outputs` の短縮形です。 <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。|  
 |actionBody、body|これらの関数は、`actions('actionName').outputs.body` の短縮形です。 <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。|  
 |triggerOutputs|この関数は、`trigger().outputs` の短縮形です。|  
 |triggerBody|この関数は、`trigger().outputs.body` の短縮形です。|  
-|item|繰り返しアクションの中で使うと、この関数は、アクションのその繰り返しに対する配列の項目を返します。 たとえば、メッセージの配列の各項目に対して実行するアクションがある場合は、次の構文を使うことができます。 <p>`"input1" : "@item().subject"`|  
+|item|繰り返しアクションの中で使うと、この関数は、アクションのその繰り返しに対する配列の項目を返します。 たとえば、メッセージの配列の各項目に対して実行するアクションがある場合は、次の構文を使うことができます。 <p>`"input1" : "@item().subject"`| 
   
 ### <a name="collection-functions"></a>コレクション関数  
 
@@ -264,7 +264,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |-------------------|-----------------|  
 |int|パラメーターを整数に変換します。 たとえば、この関数は 100 を文字列ではなく数値として返します。 <p>`int('100')` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 整数に変換する値です。|  
 |string|パラメーターを文字列に変換します。 たとえば、次の関数は `'10'` を返します。 <p>`string(10)` <p>オブジェクトを文字列に変換することもできます。 たとえば、`myPar` パラメーターが 1 つつのプロパティ `abc : xyz` を含むオブジェクトの場合、この関数は `{"abc" : "xyz"}` を返します。 <p>`string(parameters('myPar'))` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 文字列に変換する値です。|  
-|json|パラメーターを JSON 型の値に変換します。`string()` の逆です。 たとえば、この関数は `[1,2,3]` を文字列ではなく配列として返します。 <p>`parse('[1,2,3]')` <p>同様に、文字列をオブジェクトに変換することもできます。 たとえば、次の関数は `{ "abc" : "xyz" }` を返します。 <p>`json('{"abc" : "xyz"}')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 ネイティブな型の値に変換する文字列です。 <p>`json()` 関数は、XML の入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。 <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>これは、次の JSON に変換されます。 <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|json|パラメーターを JSON 型の値に変換します。`string()` の逆です。 たとえば、この関数は `[1,2,3]` を文字列ではなく配列として返します。 <p>`json('[1,2,3]')` <p>同様に、文字列をオブジェクトに変換することもできます。 たとえば、次の関数は `{ "abc" : "xyz" }` を返します。 <p>`json('{"abc" : "xyz"}')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 ネイティブな型の値に変換する文字列です。 <p>`json()` 関数は、XML の入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。 <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>これは、次の JSON に変換されます。 <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|パラメーター引数を浮動小数点数に変換します。 たとえば、次の関数は `10.333` を返します。 <p>`float('10.333')` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 浮動小数点数に変換する値です。|  
 |bool|パラメーターをブール値に変換します。 たとえば、次の関数は `false` を返します。 <p>`bool(0)` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 ブール値に変換する値です。|  
 |coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 **注**: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、この関数は `fallback` を返します。  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **パラメーター番号**: 1 ... *n* <p> **名前**: Object*n* <p> **説明**: 必須。 null かどうか調べるオブジェクトです。|  
@@ -307,7 +307,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |Min|この関数を呼び出すには 2 つの異なるパターンがあります。 <p>次の `min` は配列を受け取り、関数は `0` を返します。 <p>`min([0,1,2])` <p>または、次の関数はコンマ区切りリストを受け取り、やはり `0` を返します。 <p>`min(0,1,2)` <p> **注**: すべての値は数値でなければならないので、パラメーターが配列の場合、配列は数値だけを含む必要があります。 <p> **パラメーター番号**: 1 <p> **名前**: Collection または Value <p> **説明**: 必須。 最小値を検索する値の配列、またはセットの最初の値です。 <p> **パラメーター番号**: 2 ... *n* <p> **名前**: Value *n* <p> **説明**: 省略可能。 パラメーター 1 が Value の場合、追加の値を渡すことができ、渡したすべての値の最小値が返されます。|  
 |max|この関数を呼び出すには 2 つの異なるパターンがあります。 <p>次の `max` は配列を受け取り、関数は `2` を返します。 <p>`max([0,1,2])` <p>または、次の関数はコンマ区切りリストを受け取り、やはり `2` を返します。 <p>`max(0,1,2)` <p> **注**: すべての値は数値でなければならないので、パラメーターが配列の場合、配列は数値だけを含む必要があります。 <p> **パラメーター番号**: 1 <p> **名前**: Collection または Value <p> **説明**: 必須。 最大値を検索する値の配列、またはセットの最初の値です。 <p> **パラメーター番号**: 2 ... *n* <p> **名前**: Value *n* <p> **説明**: 省略可能。 パラメーター 1 が Value の場合、追加の値を渡すことができ、渡したすべての値の最大値が返されます。|  
 |range|特定の値から始まる整数の配列を生成します。 返される配列の長さを定義します。 <p>たとえば、次の関数は `[3,4,5,6]` を返します。 <p>`range(3,4)` <p> **パラメーター番号**: 1 <p> **名前**: Start index <p> **説明**: 必須。 配列の最初の整数です。 <p> **パラメーター番号**: 2 <p> **名前**: Count <p> **説明**: 必須。 この値は、配列内にある整数の個数です。|  
-|rand|指定された範囲 (両端の値を含む) 内で整数の乱数を生成します。 たとえば、次の関数は `42` を返す可能性があります。 <p>`rand(-1000,1000)` <p> **パラメーター番号**: 1 <p> **名前**: Minimum <p> **説明**: 必須。 返される可能性のある最小の整数です。 <p> **パラメーター番号**: 2 <p> **名前**: Maximum <p> **説明**: 必須。 この値は、返される可能性のある最大の整数です。|  
+|rand|指定された範囲 (開始値のみを含む) 内で整数の乱数を生成します。 たとえば、この関数は `0` または '1' を返す可能性があります。 <p>`rand(0,2)` <p> **パラメーター番号**: 1 <p> **名前**: Minimum <p> **説明**: 必須。 返される可能性のある最小の整数です。 <p> **パラメーター番号**: 2 <p> **名前**: Maximum <p> **説明**: 必須。 この値は、返される可能性のある最大の整数の次の整数です。|  
   
 ### <a name="date-functions"></a>データ関数  
   
@@ -334,7 +334,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |関数名|Description|  
 |-------------------|-----------------|  
 |listCallbackUrl|トリガーまたはアクションを開始するために呼び出す文字列を返します。 <p> **注**: この関数は **httpWebhook** および **apiConnectionWebhook** においてのみ使うことができ、**manual**、**recurrence**、**http**、**apiConnection** では使えません。 <p>たとえば、`listCallbackUrl()` 関数は次の値を返します。 <p>`https://prod-01.westus.logic.azure.com:443/workflows/1235...ABCD/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xxx...xxx` |  
-|workflow|この関数は、実行時のワークフロー自体の詳細をすべて返します。 名前、場所、リソース ID など、管理 API で入手できるすべての情報を取得できます。 これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=525617)をご覧ください。 たとえば、次の関数は `westus` のような場所を返します。 <p>`workflow().location` <p> **注**: `@workflow` は現在トリガー内でサポートされています。|
+|workflow|この関数は、実行時のワークフロー自体の詳細をすべて返します。 <p> ワークフロー オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`type`</li><li>`id`</li><li>`location`</li><li>`run`</li></ul> <p> `run` プロパティの値は、次のプロパティを持つオブジェクトです。 <ul><li>`name`</li><li>`type`</li><li>`id`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=525617)をご覧ください。<p> たとえば、現在の実行の名前を取得するには、`"@workflow().run.name"` 式を使用します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

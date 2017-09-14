@@ -12,15 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 07/19/2017
 ms.author: priyamo
-ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: dceaab3f89675ae8e046419aaa5173c2733b0660
+ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
+ms.openlocfilehash: 53e9fd58e72d83db32fa1fab937b4618cd4cd159
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Azure Active Directory での SAML プロトコルの使用方法
@@ -28,9 +26,7 @@ Azure Active Directory (Azure AD) は SAML 2.0 プロトコルを使用して、
 
 SAML プロトコルで、ID プロバイダー (Azure AD) とサービス プロバイダー (アプリケーション) に関する情報を交換する必要があります。
 
-アプリケーションが Azure AD に登録されると、アプリ開発者は Azure AD にフェデレーションに関する情報を登録します。 これには、アプリケーションの**リダイレクト URI** と**メタデータ URI** が含まれます。
-
-Azure AD ではクラウド サービスの **メタデータ URI** を使用して、クラウド サービスの署名キーとログアウト URI を取得します。 アプリケーションでメタデータ URI がサポートされていない場合、開発者は Microsoft サポートに連絡してログアウト URI と署名キーを提供する必要があります。
+アプリケーションが Azure AD に登録されると、アプリ開発者は Azure AD にフェデレーションに関する情報を登録します。 これには、アプリケーションの**リダイレクト URI** が含まれます。
 
 Azure Active Directory は、テナント固有および共通 (テナント独立) のシングル サインオンとシングル サインアウト エンドポイントを公開します。 これらの URL は、単なる ID ではなくアドレス指定可能な場所を表します。したがって、ユーザーはエンドポイントに移動してメタデータを読み取ることができます。
 

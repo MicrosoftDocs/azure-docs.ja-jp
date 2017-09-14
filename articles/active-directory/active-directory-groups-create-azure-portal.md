@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 9636d26ec62bb83b30fdc4ae8b1701da8ab532e8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
-
 
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
@@ -52,6 +51,7 @@ ms.lasthandoff: 05/08/2017
 8. グループへのメンバーの追加が完了したら、**[グループ]** ブレードの **[作成]** をクリックします。    
 
    ![グループの作成の確認](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
+
 
 ## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。

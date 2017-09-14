@@ -1,1 +1,0 @@
-**適用対象:**![はい](media/analysis-services-appliesto/yes.png)Azure Analysis Services![はい](media/analysis-services-appliesto/yes.png)SQL Server Analysis Services

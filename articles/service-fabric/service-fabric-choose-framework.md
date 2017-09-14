@@ -1,6 +1,6 @@
 ---
 title: "Service Fabric プログラミング モデルの概要 | Microsoft Docs"
-description: "Service Fabric では、アクター フレームワークとサービス フレームワークという、サービスを構築するための&2; つのフレームワークが提供されています。 それぞれ、シンプル性とコントロールという、両極端の特性を持っています。"
+description: "Service Fabric では、アクター フレームワークとサービス フレームワークという、サービスを構築するための 2 つのフレームワークが提供されています。 それぞれ、シンプル性とコントロールという、両極端の特性を持っています。"
 services: service-fabric
 documentationcenter: .net
 author: seanmck
@@ -12,27 +12,33 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/28/2017
-ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: d7aa8568dd6fdd806d8ad70e408f108c722ec1ce
-ms.openlocfilehash: b56d75d49e0b95025dd1a0bae532f677958eac8d
-ms.lasthandoff: 01/10/2017
+ms.date: 07/02/2017
+ms.author: vturecek
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ca36f42897cd44d6da1a3cb6db53f656cf6256ee
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric プログラミング モデルの概要
-Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。 サービスは、Service Fabric API を使用して、プラットフォームの機能とアプリケーション フレームワークをフルに活用することができます。また、サービスは、任意の言語で記述され、Service Fabric クラスターでホストされているだけのコンパイル済み実行可能プログラムにすることもできます。
+Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。 サービスでは、Service Fabric API を使用するように選択して、プラットフォームの機能とアプリケーション フレームワークを最大限に活用できます。 サービスはまた、Service Fabric クラスターでホストされているだけのコンテナーで実行される任意の言語またはコードで記述されたコンパイル済み実行可能プログラムにすることもできます。
 
-## <a name="guest-executable"></a>ゲスト実行可能ファイル
-ゲスト実行可能ファイルは、任意の言語で記述された任意の実行可能ファイルです。そのため、既存のアプリケーションを利用し、Service Fabric クラスターでホストすることができます。 ゲスト実行可能ファイルはアプリケーション内にパッケージ化し、他のサービスと共にホストすることができます。 Service Fabric は、実行可能ファイルのオーケストレーションと簡易な実行管理を処理し、サービスの説明に従って稼働および実行する必要があります。 一方、ゲスト実行ファイルは Service Fabric API と直接統合されていないため、プラットフォームに用意されているフルセットの機能 (カスタムの正常性、負荷のレポート、サービス エンドポイントの登録、ステートフル コンピューティングなど) を利用できません。
+## <a name="guest-executables"></a>ゲスト実行可能ファイル
+[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)は、アプリケーション内でサービスとして実行できる既存の任意の実行可能ファイル (任意の言語で記述されたもの) です。 ゲスト実行可能ファイルでは、Service Fabric SDK の API を直接呼び出さないでください。 それでも、Service Fabric によって公開される REST API を呼び出すことにより、サービスの検出可能性や、正常性と負荷のカスタム レポートなど、このプラットフォームが提供する機能からメリットを得られます。 また、完全なアプリケーションのライフサイクルのサポートも備えています。
 
 ゲスト実行可能ファイルから始める場合は、最初の [ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)をデプロイしてください。
 
-## <a name="reliable-services"></a>Reliable Service
-Reliable Services は、Service Fabric プラットフォームと統合されたサービスを作成できる軽量のフレームワークです。プラットフォームの全機能を活用できます。 Reliable Services には、Service Fabric ランタイムがサービスのライフサイクルを管理し、サービスがランタイムとやり取りすることができる最小限の API のセットが用意されています。 アプリケーション フレームワークは最小限で、設計と実装の選択を細かく制御できるので、ASP.NET MVC、Web API など、他のアプリケーション フレームワークのホストに使用できます。
+## <a name="containers"></a>コンテナー
+既定では、Service Fabric はサービスをプロセスとしてデプロイし、アクティブ化します。 また、Service Fabric では[コンテナー](service-fabric-containers-overview.md)内のサービスもデプロイできます。 Service Fabric では、Linux コンテナーのデプロイと、Windows Server 2016 での Windows コンテナーのデプロイをサポートしています。 コンテナー イメージは、任意のコンテナー リポジトリからプルし、マシンにデプロイすることができます。 既存のアプリケーションを、ゲスト実行可能ファイル、Service Fabric のステートレス Reliable Services またはステートフル Reliable Services、Reliable Actors としてコンテナー内にデプロイすることができ、プロセス内のサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。
 
-Web サーバー、Azure Cloud Services の worker ロールなど、ほとんどのサービス プラットフォームと同様に、Reliable Services はステートレスな場合があります。サービスの各インスタンスは同様に作成され、状態は Azure DB や Azure Table Storage など、外部のソリューションに維持されます。
+[Windows または Linux でサービスをコンテナー化することに関する詳細情報](service-fabric-deploy-container.md)
+
+## <a name="reliable-services"></a>Reliable Service
+Reliable Services は、Service Fabric プラットフォームと統合されたサービスを作成できる軽量のフレームワークです。プラットフォームの全機能を活用できます。 Reliable Services には、Service Fabric ランタイムがサービスのライフサイクルを管理し、サービスがランタイムとやり取りすることができる最小限の API のセットが用意されています。 アプリケーション フレームワークは最小限で、設計と実装の選択を細かく制御できるので、ASP.NET Core など、他のアプリケーション フレームワークのホストに使用できます。
+
+Reliable Services は、Web サーバーなどのほとんどのサービス プラットフォームと同様にステートレス (サービスの各インスタンスは同様に作成され、状態は Azure DB や Azure Table Storage など、外部のソリューションに維持される) にすることができます。
 
 Reliable Services は Service Fabric と排他的でステートフルの場合もあります。Service Fabric は Reliable Collection を使用してサービスに直接維持されます。 状態はレプリケーションによって高可用になり、パーティションによって分散されます。いずれも Service Fabric で自動的に管理されます。
 
@@ -43,8 +49,23 @@ Reliable Actors フレームワークは Reliable Services 上に構築され、
 
 Reliable Actors 自体が Reliable Services 上に構築されたアプリケーション フレームワークなので、Service Fabric プラットフォームと完全に統合され、プラットフォームに用意されているすべての機能を利用できます。
 
-## <a name="next-steps"></a>次のステップ
 [Reliable Actors の詳細](service-fabric-reliable-actors-introduction.md)と[最初の Reliable Actors サービスを作成する](service-fabric-reliable-actors-get-started.md)場合の概要を参照してください。
-[Service Fabric Reliable Actors の概要](service-fabric-deploy-container.md)
+
+## <a name="aspnet-core"></a>ASP.NET Core
+Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) と統合して Web サービスや API サービスを構築し、それらのサービスをアプリケーションの一部に組み込むことができます。 
+
+[ASP.NET Core を使用してフロント エンド サービスを構築する](service-fabric-add-a-web-frontend.md)
+
+## <a name="next-steps"></a>次のステップ
+[Service Fabric とコンテナーの概要](service-fabric-containers-overview.md)
+
+[Reliable Services の概要](service-fabric-reliable-services-introduction.md)
+
+[Reliable Services の概要](service-fabric-reliable-actors-introduction.md)
+
+[Service Fabric および ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+
+
+
 
 

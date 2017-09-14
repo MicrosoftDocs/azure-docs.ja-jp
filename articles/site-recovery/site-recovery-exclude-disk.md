@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 6e52a647e817b64e331937c0b0f1d44f9f6c11a0
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
@@ -51,7 +50,7 @@ ms.lasthandoff: 04/06/2017
 ## <a name="how-to-exclude-disks-from-replication"></a>レプリケーションからディスクを除外する方法
 
 ### <a name="vmware-to-azure"></a>VMware から Azure
-Azure Site Recovery ポータルで[レプリケーションを有効にする](site-recovery-vmware-to-azure.md#enable-replication)ためのワークフローに従って、仮想マシンを保護します。 ワークフローの 4 番目の手順で、**[DISK TO REPLICATE (レプリケートするディスク)]** 列を使用して、レプリケーションから除外するディスクを指定します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。 レプリケーションから除外するディスクのチェック ボックスをオフにし、手順に従ってレプリケーションを有効にします。
+Azure Site Recovery ポータルで[レプリケーションを有効にする](site-recovery-vmware-to-azure.md)ためのワークフローに従って、仮想マシンを保護します。 ワークフローの 4 番目の手順で、**[DISK TO REPLICATE (レプリケートするディスク)]** 列を使用して、レプリケーションから除外するディスクを指定します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。 レプリケーションから除外するディスクのチェック ボックスをオフにし、手順に従ってレプリケーションを有効にします。
 
 ![レプリケーションから除外するディスクを指定し、VMware から Azure へのフェールバックのためのレプリケーションを有効にする](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
 
@@ -67,7 +66,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 >
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V から Azure
-Azure Site Recovery ポータルで[レプリケーションを有効にする](site-recovery-hyper-v-site-to-azure.md#enable-replication)ためのワークフローに従って、仮想マシンを保護します。 ワークフローの 4 番目の手順で、**[DISK TO REPLICATE (レプリケートするディスク)]** 列を使用して、レプリケーションから除外するディスクを指定します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。 レプリケーションから除外するディスクのチェック ボックスをオフにし、手順に従ってレプリケーションを有効にします。
+Azure Site Recovery ポータルで[レプリケーションを有効にする](site-recovery-hyper-v-site-to-azure.md)ためのワークフローに従って、仮想マシンを保護します。 ワークフローの 4 番目の手順で、**[DISK TO REPLICATE (レプリケートするディスク)]** 列を使用して、レプリケーションから除外するディスクを指定します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。 レプリケーションから除外するディスクのチェック ボックスをオフにし、手順に従ってレプリケーションを有効にします。
 
 ![レプリケーションから除外するディスクを指定し、Hyper-V から Azure へのフェールバックのためのレプリケーションを有効にする](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 

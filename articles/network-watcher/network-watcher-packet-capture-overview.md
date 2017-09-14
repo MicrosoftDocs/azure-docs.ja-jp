@@ -3,7 +3,7 @@ title: "Azure Network Watcher のパケット キャプチャの概要 | Microso
 description: "このページでは、Network Watcher のパケット キャプチャ機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: dde3d1b1b0708d49ac713e18242c3376d301c675
-ms.lasthandoff: 04/10/2017
-
+ms.author: jdial
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4fdd007c2cfad7b42f26ab2cacfba06d95c8dad3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 ---
 
@@ -37,7 +37,7 @@ Network Watcher の可変パケット キャプチャを使用すると、仮想
 
 |プロパティ|説明|
 |---|---|
-|**[1 パケットあたりの最大バイト数] \(バイト単位)** | 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。 IPv4 ヘッダーだけが必要な場合、ここでは 60 を指定してください。 |
+|**[1 パケットあたりの最大バイト数] \(バイト単位)** | 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。 IPv4 ヘッダーだけが必要な場合、ここでは 34 を指定してください |
 |**[1 セッションあたりの最大バイト数] \(バイト単位)** | キャプチャされるバイト数の合計値です。この値に達すると、セッションが終了します。|
 |**[制限時間 (秒)]** | パケット キャプチャ セッションに時間制限を設定します。 既定値は 18,000 秒 (5 時間) です。|
 

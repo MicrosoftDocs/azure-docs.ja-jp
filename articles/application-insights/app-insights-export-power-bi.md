@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 24ccafb4df95e0010416485199e19f81e1ae31aa
-ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 02c51e6a576b5a91044eae784c72d7529497b814
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 06/15/2017
 
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
@@ -84,8 +83,38 @@ Application Insights のクエリをインポートするには、Power BI の�
     ![視覚エフェクトを選択する](./media/app-insights-export-power-bi/publish-power-bi.png)
 4. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="401-or-403-unauthorized"></a>401 または 403 権限がありません 
+これは、更新トークンが更新されていない場合に発生することがあります。 次の手順をお試しになり、引き続きアクセス権があることを確認してください。 アクセス権があり、資格情報の更新がうまくいかない場合は、サポート チケットを開いてください。
+
+1. Azure Portal にログインし、リソースにアクセスできることを確認する
+2. ダッシュボードの資格情報を更新する
+
+### <a name="502-bad-gateway"></a>502 無効なゲートウェイ
+これは通常、分析クエリで大量のデータが返される場合に発生します。 より小さな時間の範囲を使用するか、[ago](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#ago) または [startofweek/startofmonth](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#startofweek) の関数を使用して、必要な [project](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#project-operator) フィールドのみを使用します。
+
+分析クエリからのデータセットを少なくしても要件を満たせない場合は、より大きなデータセットをプルするように [API](https://dev.applicationinsights.io/documentation/overview) を使用することを検討する必要があります。 M クエリのエクスポートを変換して API を使用する方法を次に示します。
+
+1. [API キー](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)を作成する
+2. ARM の URL を AI API に置き換えて、分析からエクスポートした Power BI の M スクリプトを更新する (下の例を参照)
+   * **https://management.azure.com/subscriptions/...** を
+   * **https://api.applicationinsights.io/beta/apps/...**に置き換える
+3. 最後に、資格情報を基本に更新して、API キーを使用する
+  
+
+**元のスクリプト**
+ ```
+ Source = Json.Document(Web.Contents("https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups//providers/microsoft.insights/components//api/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
+ ```
+**更新されたスクリプト**
+ ```
+ Source = Json.Document(Web.Contents("https://api.applicationinsights.io/beta/apps/<APPLICATION_ID>/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
+ ```
+
 ## <a name="about-sampling"></a>サンプリングについて
 アプリケーションで大量のデータを送信すると、アダプティブ サンプリング機能が動作して、テレメトリのごく一部だけが送信される可能性があります。 これは、SDK または取り込みでサンプリングを手動で設定した場合にも当てはまります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+
 
 ## <a name="next-steps"></a>次のステップ
 * [Power BI - 詳細](http://www.powerbi.com/learning/)

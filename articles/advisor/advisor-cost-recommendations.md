@@ -3,7 +3,7 @@ title: "Azure Advisor のコストに関する推奨事項 | Microsoft Docs"
 description: "Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。"
 services: advisor
 documentationcenter: NA
-author: kumudd
+author: KumudD
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 5eef2116f238b477fa8de46ce7b25728c393739c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
 
 ---

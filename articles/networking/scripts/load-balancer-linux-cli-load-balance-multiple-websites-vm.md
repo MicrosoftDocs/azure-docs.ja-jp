@@ -13,13 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: infrastructure
-ms.date: 04/19/2017
+ms.date: 07/07/2017
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b4bfc65a4a32e33e6eaecf16e928484862100cd1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5a584b33025122033b930822ae0a0864a7ec1cb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/10/2017
 ## <a name="sample-script"></a>サンプル スクリプト
 
 
-[!code-azurecli[メイン](../../../cli_scripts/load-balancer/load-balance-multiple-web-sites-vm/load-balance-multiple-web-sites-vm.sh  "複数の Web サイトの負荷分散")]
+[!code-azurecli-interactive[メイン](../../../cli_scripts/load-balancer/load-balance-multiple-web-sites-vm/load-balance-multiple-web-sites-vm.sh  "複数の Web サイトの負荷分散")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -53,14 +53,14 @@ az group delete --name myResourceGroup --yes
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) | Azure 仮想ネットワークとサブネットを作成します。 |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) | 静的 IP アドレスおよび関連付けられる DNS 名を指定してパブリック IP アドレスを作成します。 |
-| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Azure ネットワーク ロード バランサー (NLB) を作成します。 |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | NLB プローブを作成します。 NLB プローブは、NLB セット内の各 VM の監視に使用します。 アクセス不能になった VM には、トラフィックがルーティングされなくなります。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | NLB 規則を作成します。 このサンプルでは、ポート 80 に対する規則を作成します。 HTTP トラフィックが NLB で受信されると、NLB セット内のいずれかの VM のポート 80 にルーティングされます。 |
+| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Azure ロード バランサーを作成します。 |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | ロード バランサー プローブを作成します。 ロード バランサー プローブは、ロード バランサー セット内の各 VM を監視するために使用されます。 アクセス不能になった VM には、トラフィックがルーティングされなくなります。 |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | ロード バランサー規則を作成します。 このサンプルでは、ポート 80 に対する規則を作成します。 HTTP トラフィックは、ロード バランサーに到着すると、ロード バランサー セット内のいずれかの VM のポート 80 にルーティングされます。 |
 | [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#create) | ロード バランサーのフロントエンド IP アドレスを作成します。 |
 | [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool#create) | バックエンド アドレス プールを作成します。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) | 仮想ネットワーク カードを作成し、作成したカードを仮想ネットワークとサブネットに接続します。 |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | 可用性セットを作成します。 可用性セットでは、障害が発生した場合でもセット全体に影響が及ばないように物理リソース全体に仮想マシンを分散させることで、アプリケーションの稼働時間を確保します。 |
-| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config#create) | IP 構成を作成します。 Microsoft.Network/AllowMultipleIpConfigurationsPerNic 機能がサブスクリプションに対して有効になっている必要があります。 --make-primary フラグを使用して、NIC ごとに 1 つの構成のみをプライマリ IP 構成として指定できます。 |
+| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config#create) | IP 構成を作成します。 Microsoft.Network/AllowMultipleIpConfigurationsPerNic 機能がサブスクリプションに対して有効になっている必要があります。 --make-primary フラグを使用して、NIC ごとにプライマリ IP 構成として指定できるのは 1 つの構成のみです。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 

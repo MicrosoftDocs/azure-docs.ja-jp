@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: dbc544ad4dbb651aeb24faf2f89074c7aa59cf2a
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 6ab73e5c79742ab548733f5712dee1e28461db9f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Azure Active Directory B2C: Google+ アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -53,7 +52,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+
     ![Google+ - クライアント シークレット](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
 
 ## <a name="configure-google-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Google+ を構成する
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
+1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
 2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「G+」などと入力します。

@@ -3,7 +3,7 @@ title: "Azure API Management のポリシー | Microsoft Docs"
 description: "Azure API Management で使用できるポリシーについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 1cc460cb-8e67-41aa-bc76-bbafc1892798
@@ -14,19 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。  
   
- ポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の&1; つです。 ポリシーは、API の要求または応答に対して順に実行される一連のステートメントのコレクションです。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられます。 他にも多数のポリシーが標準で提供されています。  
+ ポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 ポリシーは、API の要求または応答に対して順に実行される一連のステートメントのコレクションです。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられます。 他にも多数のポリシーが標準で提供されています。  
   
  ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーや[変数の設定](api-management-advanced-policies.md#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](api-management-advanced-policies.md#AdvancedPolicies)」と「[ポリシーの式](api-management-policy-expressions.md)」をご覧ください。  
   
-##  <a name="a-nameproxypoliciesa-policies"></a><a name="ProxyPolicies"></a> ポリシー  
+##  <a name="ProxyPolicies"></a> ポリシー  
   
 -   [アクセス制限ポリシー](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
   
@@ -120,9 +122,4 @@ ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
   
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

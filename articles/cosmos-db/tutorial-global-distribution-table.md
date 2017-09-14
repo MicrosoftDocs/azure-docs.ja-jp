@@ -12,7 +12,7 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 63c9e530a4982e2e6e478fea56e015fc77851e1d
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Table API を使用して Azure Cosmos DB グローバル分散をセットアップする方法

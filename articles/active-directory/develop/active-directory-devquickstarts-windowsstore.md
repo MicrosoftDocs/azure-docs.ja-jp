@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3a78fe76119d1c748b5b75c00148a3e2a6f4a2b8
-ms.openlocfilehash: adfc28c7e41f49ce65309a316703fba57463040f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6b5189dc06d7f8b0ed4426944948b904feba847e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="integrate-azure-ad-with-windows-store-apps"></a>Azure AD と Windows ストア アプリの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+
+> [!NOTE]
+> Windows Store 8.1 以前のバージョンのプロジェクトは、Visual Studio 2017 でサポートされていません。  詳細については、「[Visual Studio 2017 の対象プラットフォームと互換性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)」を参照してください。
 
 Windows ストア用アプリを開発する場合、Azure Active Directory (Azure AD) を使用すると、Active Directory アカウントを使用してユーザーの認証処理を容易に行うことができます。 Azure AD との統合により、Azure AD で保護される任意の Web API (Office 365 API や Azure API など) をアプリで安全に使用できるようになります。
 
@@ -154,9 +156,9 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
 3. アプリを閉じて、再び実行します。 ユーザーのセッションがそのままに維持されていることに注意します。
 4. 右クリックして下部のバーを表示することによりサインアウトし、別のユーザーとしてもう一度サインインします。
 
-ADAL を使用することにより、一般的な ID 機能すべてを容易にアプリに組み込むことができます。 キャッシュ管理、OAuth プロトコル サポート、ユーザーに対するログイン UI の表示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。 知っておく必要があるものは、API 呼び出し `authContext.AcquireToken*(…)` だけです。
+ADAL を使用することにより、一般的な ID 機能すべてを容易にアプリに組み込むことができます。 キャッシュ管理、OAuth プロトコル サポート、ユーザーに対するログイン UI の表示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。 知っておく必要があるのは、`authContext.AcquireToken*(…)` の API 呼び出しだけです。
 
-リファレンスについては、[完全なサンプル](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip) (環境に応じた構成値を除く) をダウンロードしてください。
+参考として、[完全なサンプル](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip) (環境に応じた構成値を除く) をダウンロードできます。
 
 ここからは、さらに ID シナリオに進むことができます。 たとえば、[Azure AD を使用して .NET Web API を保護](active-directory-devquickstarts-webapi-dotnet.md)してみましょう。
 

@@ -23,6 +23,12 @@
 ### [MFA の要求](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [監査ログの使用](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
+# リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+
 # 関連項目
 ## [Azure Active Directory](/azure/active-directory/)
 ## [ロールベースのアクセス制御](../role-based-access-control-what-is.md)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

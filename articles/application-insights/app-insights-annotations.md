@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2d568a38f66605da63054d1797ce23653e6204d4
 ms.openlocfilehash: ff5d64bc00bc5fb3617160db852c7d08f8b3677b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈

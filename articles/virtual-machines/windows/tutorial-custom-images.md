@@ -65,13 +65,13 @@ ms.lasthandoff: 05/09/2017
 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) を使用して VM の割り当てを解除します。
 
 ```powershell
-Stop-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Force
+Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Force
 ```
 
 [Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm) を使用して、仮想マシンの状態を `-Generalized` に設定します。 
    
 ```powershell
-Set-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Generalized
+Set-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Generalized
 ```
 
 
@@ -82,7 +82,7 @@ Set-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Generalized
 仮想マシンを取得します。 
 
 ```powershell
-$vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroupImages
+$vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 ```
 
 イメージの構成を作成します。
@@ -94,8 +94,8 @@ $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID
 イメージを作成します。
 
 ```powershell
-New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroupImages
-```    
+New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroup
+``` 
 
  
 ## <a name="create-vms-from-the-image"></a>イメージからの VM の作成
@@ -164,7 +164,7 @@ $vmConfig = New-AzureRmVMConfig `
 # Here is where we create a variable to store information about the image 
 $image = Get-AzureRmImage `
     -ImageName myImage `
-    -ResourceGroupName myResourceGroupImages
+    -ResourceGroupName myResourceGroup
 
 # Here is where we specify that we want to create the VM from and image and provide the image ID
 $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -Id $image.Id

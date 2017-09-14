@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2f0b7a04f4b732277abc65dd5fe0844d6e906496
-ms.lasthandoff: 03/30/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 617da1cf41db08d319d6fe9fa7bc96b794a0001e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -119,12 +120,18 @@ Resource Manager デプロイメント モデルでは、クラウド サービ�
 
 [!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
+## <a name="limitations"></a>制限事項
+
+Load Balancer のバックエンド プールには、Basic レベルを除く任意の VM SKU を含めることができます。
+
 ## <a name="next-steps"></a>次のステップ
 
-[インターネットに接続するロード バランサーの概要](load-balancer-internet-overview.md)
+- [インターネットに接続するロード バランサー](load-balancer-internet-overview.md)の詳細を確認する
 
-[内部ロード バランサーの概要](load-balancer-internal-overview.md)
+- [内部ロード バランサーの概要](load-balancer-internal-overview.md)の詳細を確認する
 
-[インターネットに接続するロード バランサーの作成の開始](load-balancer-get-started-internet-arm-ps.md)
+- [インターネットに接続するロード バランサー](load-balancer-get-started-internet-portal.md)を作成する
+
+- Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)にについて確認する。
 
 

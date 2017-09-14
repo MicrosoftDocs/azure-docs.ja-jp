@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 71a839d9c076d33c404a56bf0544666dc86eaa4d
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
-ここでは、Data Lake Analytics アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
-
-組織が Azure Data Lake Analytics アカウントの診断ログを有効にすると、データ アクセスの監査証跡を収集できます。 診断ログからは、以下のような情報が得られます。
+診断ログの記録では、データ アクセスの監査証跡を収集することができます。 診断ログからは、以下のような情報が得られます。
 
 * データにアクセスしたユーザーの一覧。
 * データがアクセスされる頻度。
@@ -34,9 +31,9 @@ ms.lasthandoff: 05/27/2017
 
 ## <a name="enable-logging"></a>ログの有効化
 
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure ポータル](https://portal.azure.com)にサインオンします。
 
-2. Data Lake Analytics アカウントを開き、__[監視] セクション__から **[診断ログ]** を選択してください。 次に、__[診断を有効にする]__ を選択します。
+2. Data Lake Analytics アカウントを開き、__[監視]__ セクションから **[診断ログ]** を選択します。 次に、__[診断を有効にする]__ を選択します。
 
     ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
@@ -46,34 +43,29 @@ ms.lasthandoff: 05/27/2017
 
    * **[状態]** を **[オン]** に設定して診断ログを有効にします。
 
-   * 2 種類の方法でデータを格納および処理することができます。
+   * 3 種類の方法でデータを格納および処理することができます。
 
      * __[Archive to a storage account]__ (ストレージ アカウントへのアーカイブ) を選択して、Azure ストレージ アカウントにログを保存します。 データをアーカイブする場合には、このオプションを使用します。 このオプションを選択する場合は、ログの保存先の Azure ストレージ アカウントを指定する必要があります。
 
      * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure イベント ハブにログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-     * __[Send to Log Analytics]__ (Log Analytics に送信) を選択して、Log Analytics サービスにデータを送信します。 Log Analytics を使って分析ログを収集する場合は、この機能を使用します。
-   * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
+     * __[Send to Log Analytics]__ (Log Analytics に送信) を選択して、Log Analytics サービスにデータを送信します。 Log Analytics を使ってログを収集し分析する場合は、このオプションを使用します。
+   * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。  要求ログは、すべての API 要求をキャプチャします。 監査ログは、その API 要求によってトリガーされるすべての操作を記録します。
 
-   * データを保持する日数を指定します。
+   * __[ストレージ アカウントへのアーカイブ]__ で、データを保持する日数を指定します。
 
-   * **[保存]**をクリックします。
+   * __[保存]__をクリックします。
 
         > [!NOTE]
-        > __[保存]__ ボタンを使用する前に、__[Archive to a storage account]__(ストレージ アカウントへのアーカイブ)、__[Stream to an Event Hub]__(イベント ハブへのストリーム)、または __[Send to Log Analytics]__(Log Analytics に送信) のいずれかを選択する必要があります。
+        > __[保存]__ ボタンをクリックする前に、__[Archive to a storage account]__(ストレージ アカウントへのアーカイブ)、__[Stream to an Event Hub]__(イベント ハブへのストリーム)、または __[Send to Log Analytics]__(Log Analytics に送信) のいずれかを選択する必要があります。
 
 診断設定を有効にしたら、__[診断ログ]__ ブレードに戻ってログを表示できます。
 
 ## <a name="view-logs"></a>ログを表示する。
 
-Data Lake Analytics アカウントのログ データを確認する方法は 2 つあります。
+### <a name="use-the-data-lake-analytics-view"></a>Data Lake Analytics ビューを使用する
 
-* Data Lake Analytics アカウントの設定から
-* データが格納されている Azure Storage アカウントから
-
-### <a name="using-the-data-lake-analytics-settings-view"></a>Data Lake Analytics の [設定] ビューの使用
-
-1. Data Lake Analytics アカウントのブレードで **[診断ログ]** を選択し、ログを表示するエントリを選択します。
+1. Data Lake Analytics アカウントのブレードで **[監視]** の下の **[診断ログ]** を選択し、ログを表示するエントリを選択します。
 
     ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "診断ログの表示")
 
@@ -82,13 +74,13 @@ Data Lake Analytics アカウントのログ データを確認する方法は 2
     ![ログ エントリ](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
 
    * 要求ログは、Data Lake Analytics アカウントで行われるすべての API 要求をキャプチャします。
-   * 監査ログは要求ログとよく似ていますが、Data Lake Analytics アカウントで実行される操作についてより詳しい内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
+   * 監査ログは、要求ログと同様ですが、操作についてより詳しい内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
 
 3. 各ログ エントリの **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure ストレージ アカウントを使用する
 
-1. ログ記録用の Data Lake Analytics が関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
+1. ログ記録用の Data Lake Analytics が関連付けられている [Azure ストレージ アカウント] ブレードを開き、__[BLOB]__ をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
 
     ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
 
@@ -125,7 +117,7 @@ Data Lake Analytics アカウントのログ データを確認する方法は 2
 
 ## <a name="log-structure"></a>ログの構造
 
-監査ログと要求ログは JSON 形式で作成されます。 このセクションでは、要求ログと監査ログの JSON 構造を確認します。
+監査ログと要求ログは構造化された JSON 形式で作成されます。
 
 ### <a name="request-logs"></a>要求ログ
 
@@ -164,12 +156,12 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | Name | 型 | Description |
 | --- | --- | --- |
 | time |文字列 |ログのタイムスタンプ (UTC) |
-| resourceId |文字列 |操作が行われたリソースの ID |
+| resourceId |String |操作が行われたリソースの ID |
 | カテゴリ |文字列 |ログのカテゴリ。 **Requests**など。 |
 | operationName |文字列 |ログに記録される操作の名前。 GetAggregatedJobHistory など。 |
 | resultType |文字列 |操作の状態。200 など。 |
 | callerIpAddress |文字列 |要求を行うクライアントの IP アドレス |
-| correlationId |文字列 |ログの ID。 この値は、関係のあるログ エントリをグループ化する際に使用します |
+| correlationId |String |ロールの ID この値は、関係のあるログ エントリをグループ化する際に使用します |
 | ID |オブジェクト |ログを生成した ID |
 | プロパティ |JSON |詳しくは、次のセクション (「要求ログのプロパティのスキーマ」) をご覧ください |
 
@@ -180,7 +172,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | HttpMethod |文字列 |操作に使用される HTTP メソッド。 GET など。 |
 | パス |文字列 |操作が実行されたパス |
 | RequestContentLength |int |HTTP 要求のコンテンツの長さ |
-| ClientRequestId |文字列 |この要求を一意に識別する ID |
+| ClientRequestId |String |この要求を一意に識別する ID |
 | StartTime |文字列 |サーバーが要求を受信した時刻 |
 | EndTime |文字列 |サーバーが応答を送信した時間 |
 
@@ -216,7 +208,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | Name | 型 | Description |
 | --- | --- | --- |
 | time |文字列 |ログのタイムスタンプ (UTC) |
-| resourceId |文字列 |操作が行われたリソースの ID |
+| resourceId |String |操作が行われたリソースの ID |
 | カテゴリ |文字列 |ログのカテゴリ。 **Audit**など。 |
 | operationName |文字列 |ログに記録される操作の名前。 JobSubmitted など。 |
 | resultType |文字列 |ジョブの状態 (operationName) の副状態。 |
@@ -225,7 +217,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | プロパティ |JSON |詳しくは、次のセクション (「監査ログのプロパティのスキーマ」) をご覧ください |
 
 > [!NOTE]
-> **resultType** と **resultSignature** は、操作の結果に関する情報を示すものであり、操作が完了した場合にのみ値が入ります。 この 2 つには、たとえば **operationName** の値が **JobStarted** または **JobEnded** の場合に値が入ります。
+> **resultType** と **resultSignature** は、操作の結果に関する情報を示すものであり、操作が完了した場合にのみ値が入ります。 この 2 つには、たとえば **operationName** の値が **JobStarted** または **JobEnded** の場合にのみ値が入ります。
 >
 >
 
@@ -237,12 +229,12 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | JobName |文字列 |ジョブに与えられている名前 |
 | JobRunTime |文字列 |ジョブの処理に使用するランタイム |
 | SubmitTime |文字列 |ジョブが送信された時間 (UTC) |
-| StartTime |文字列 |ジョブが送信された後に実行を開始した時刻 (UTC)。 |
-| EndTime |文字列 |ジョブが終了した時刻。 |
-| 並列処理 |文字列 |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数。 |
+| StartTime |String |ジョブが送信された後に実行を開始した時刻 (UTC) |
+| EndTime |String |ジョブが終了した時刻 |
+| 並列処理 |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
 
 > [!NOTE]
-> **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** の 4 つは、操作に関する情報を提供するものであり、操作が開始または完了した場合にのみ値が入ります。 たとえば、**SubmitTime** であれば、**operationName** が **JobSubmitted** になった後に値が入ります。
+> **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** は操作に関する情報を提供します。 これらのエントリには、その操作が開始または完了した場合にのみ値が含まれます。 たとえば、**SubmitTime** であれば、**operationName** の値が **JobSubmitted** になった後にのみ値が入ります。
 
 ## <a name="process-the-log-data"></a>ログ データの処理
 

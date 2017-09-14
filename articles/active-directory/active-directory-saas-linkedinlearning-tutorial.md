@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 06/15/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: a61cf0ffce8bede930744d445df88dde22061a59
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 6ad28cb3adaa63ddc3d3769a650d26ca6a7e2695
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -29,7 +29,7 @@ LinkedIn Learning と Azure AD の統合には、次の利点があります。
 
 - LinkedIn Learning にアクセスする Azure AD ユーザーを制御できます
 - ユーザーが自分の Azure AD アカウントで LinkedIn Learning に自動的にサインオン (シングル サインオン) する機能を有効にすることができます
-- 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -46,7 +46,7 @@ LinkedIn Learning と Azure AD の統合を構成するには、次のものが�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -59,7 +59,7 @@ Azure AD への LinkedIn Learning の統合を構成するには、ギャラリ�
 
 **ギャラリーから LinkedIn Learning を追加するには、次の手順に従います。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
@@ -92,17 +92,17 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Microsoft Azure 管理ポータルで Azure AD のシングル サインオンを有効にして、LinkedIn Learning アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、LinkedIn Learning アプリケーションでシングル サインオンを構成します。
 
 **LinkedIn Learning で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Microsoft Azure 管理ポータルの **LinkedIn Learning** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **LinkedIn Learning** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![[シングル サインオンの構成]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedin_01.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
 3. 別の Web ブラウザーのウィンドウで、管理者として LinkedIn Learning テナントにサインオンします。
 
@@ -110,66 +110,85 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[エンティティ ID]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします
+5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[Entity Id (エンティティ ID)]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-6. Azure Portal の **[LinkedIn Learning Domain and URLs (LinkedIn Learning のドメインと URL)]** で、SSO を **[IdP Initiated (IdP 開始)]** モードで構成する場合は、次の手順を実行します
+6. Azure Portal の **[LinkedIn Learning のドメインと URL]** で、SSO を **IdP 開始**モードで構成する場合は、次の手順を実行します
 
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
     a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
     b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Access (ACS) URL** を入力します
 
-7. SSO を **[SP Initiated (SP 開始)]** で構成する場合は、構成セクションの [詳細な URL 設定の表示] オプションをクリックし、次のパターンでサインオン URL を構成します。
+7. SSO を **SP 開始**で構成する場合は、構成セクションの [詳細な URL 設定の表示] オプションをクリックし、次のパターンでサインオン URL を構成します。
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
     
 8. LinkedIn Learning アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[ユーザー識別子]** の既定値は **user.userprincipalname** ですが、LinkedIn Learning はこれがユーザーの電子メール アドレスにマップされることを想定します。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。 
 
     ![Configure Single Sign-On](./media/active-directory-saas-linkedinlearning-tutorial/updateusermail.png)
     
-9. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。 **department** という別の要求に追加する必要があり、値を **user.department** にマップする必要があります。
+9. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。 ユーザーは **email**、**department**、**firstname**、**lastname** という名前の 4 つの要求を追加する必要があり、値はそれぞれ **user.mail**、**user.department**、**user.givenname**、**user.surname** にマップします。
 
     | 属性名 | 属性値 |
-    | --- | --- |    
+    | --- | --- |
+    | 電子メール| User.mail |    
     | department| user.department |
+    | firstname| User.givenname |
+    | lastname| User.surname |
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinlearning-tutorial/userattribute.png)
+    
+    a. **[属性の追加]** をクリックして [属性の追加] ダイアログを開きます。
 
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinlearning-tutorial/userattribute.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinLearning-tutorial/tutorial_attribute_04.png)
 
-   a. [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinLearning-tutorial/tutorial_attribute_05.png)
+    
+    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    
+    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    
+    d. **[OK]** をクリックします。
 
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinLearning-tutorial/adduserattribute.png)
-   
-   b. **[OK]** をクリックして属性を保存します。
+10. **name** 属性で以下の手順を実行します。
 
-10. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
+    a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinLearning-tutorial/url_update.png)
+
+    b. **namespace** から URL の値を削除します。
+    
+    c. **[OK]** をクリックして設定を保存します。
+
+11. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png) 
 
-11. **[Save]**をクリックします。
+12. **[Save]**をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_general_400.png)
 
-12. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 [Upload XML file (XML ファイルのアップロード)] オプションをクリックして、Azure Portal からダウンロードした XML ファイルをアップロードします。
+13. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 [Upload XML file]\(XML ファイルのアップロード\) オプションをクリックして、Azure Portal からダウンロードした XML ファイルをアップロードします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-13. **[On (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[未接続]** から **[接続済み]** に変更されます
+14. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[Not Connected (未接続)]** から **[Connected (接続済み)]** に変更されます
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_01.png) 
 
@@ -177,7 +196,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
     
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_02.png) 
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_03.png) 
 
@@ -195,7 +214,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
 ### <a name="creating-a-linkedin-learning-test-user"></a>LinkedIn Learning テスト ユーザーの作成
 
-LinkedIn Learning アプリケーションでは、ジャストインタイムのユーザー プロビジョニングがサポートされ、認証後にユーザーがアプリケーションに自動的に作成されます。 LinkedIn Learning ポータルの管理者設定ページで、スイッチ **[Automatically Assign licenses (ライセンスを自動的に割り当てる)]** をアクティブに切り替えて、ジャストインタイム プロビジョニングを有効にします。これにより、ユーザーにライセンスも割り当てられます。
+Linked Learning アプリケーションは ジャストインタイムのユーザー プロビジョニングをサポートし、認証後にユーザーがアプリケーションに自動的に作成されます。 LinkedIn Learning ポータルの管理者設定ページで、スイッチ **[Automatically Assign licenses (ライセンスを自動的に割り当てる)]** をアクティブに切り替えて、ジャストインタイム プロビジョニングを有効にします。これにより、ユーザーにライセンスも割り当てられます。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinLearning-tutorial/LinkedinUserprovswitch.png)
 
@@ -207,7 +226,7 @@ LinkedIn Learning アプリケーションでは、ジャストインタイム�
 
 **Britta Simon を LinkedIn Learning に割り当てるには、次の手順に従います。**
 
-1. Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -240,7 +259,6 @@ LinkedIn Learning アプリケーションでは、ジャストインタイム�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-linkedinlearning-tutorial/tutorial_general_01.png
@@ -254,4 +272,3 @@ LinkedIn Learning アプリケーションでは、ジャストインタイム�
 [201]: ./media/active-directory-saas-linkedinlearning-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-linkedinlearning-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-linkedinlearning-tutorial/tutorial_general_203.png
-

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7fc69510ee07f8a0c50fa7ab59c7e1fac38fc5bb
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 4317cf84760289ca29d8d5a78e2adef99c4cedf2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>サブスクリプション移行後のキー コンテナー テナント ID の変更
@@ -31,7 +32,12 @@ ms.openlocfilehash: 7fc69510ee07f8a0c50fa7ab59c7e1fac38fc5bb
 たとえば、テナント A からテナント B に移行したサブスクリプションに "myvault" というキー コンテナーがあるとすると、このキー コンテナーのテナント ID を変更して古いアクセス ポリシーを削除する方法は、次のようになります。
 
 <pre>
-$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties $vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId $vault.Properties.AccessPolicies = @() Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
+$Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
+$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
+$vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
+$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
+$vault.Properties.AccessPolicies = @()
+Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
 このコンテナーは移行前にテナント A にあったため、**$vault.Properties.TenantId** の元の値はテナント A です。一方、**(Get-AzureRmContext).Tenant.TenantId** の値はテナント B になります。
@@ -40,10 +46,5 @@ $vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId $vault = 
 
 ## <a name="next-steps"></a>次のステップ
 Azure Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

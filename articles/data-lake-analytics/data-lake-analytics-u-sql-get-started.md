@@ -3,8 +3,8 @@ title: "U-SQL 言語を使ってみる | Microsoft Docs"
 description: "U-SQL 言語の基本について説明します。"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
-ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 4884d96e8126337f62af23316935978cfe219ec8
+ms.date: 06/23/2017
+ms.author: saveenr
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="get-started-with-u-sql"></a>U-SQL を使ってみる
@@ -27,9 +26,9 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 
 ## <a name="learning-resources"></a>学習用のリソース
 
-**U-SQL 言語構文**の詳細については、「[U-SQL Language Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)」(U-SQL 言語のリファレンス) を参照してください。
-
-**U-SQL のデザインの考え方**について理解するには、Visual Studio ブログの投稿「[Introducing U-SQL – A Language that makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)」(U-SQL 紹介 – ビッグ データ処理を容易にする言語)を参照してください。
+* 「[U-SQL チュートリアル](http://aka.ms/usqltutorial)」では、ほとんどの U-SQL 言語のガイド付きチュートリアルを提供しています。 U-SQL について学習するすべての開発者には、このドキュメントをご覧になることをお勧めします。
+* **U-SQL 言語構文**の詳細については、「[U-SQL Language Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)」(U-SQL 言語のリファレンス) を参照してください。
+* **U-SQL のデザインの考え方**について理解するには、Visual Studio ブログの投稿「[Introducing U-SQL – A Language that makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)」(U-SQL 紹介 – ビッグ データ処理を容易にする言語)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +36,7 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 
 ## <a name="your-first-u-sql-script"></a>最初の U-SQL スクリプト
 
-以下の U-SQL スクリプトは非常に単純で、U-SQL 言語のさまざまな側面を確認することができます。
+以下の U-SQL スクリプトは単純で、U-SQL 言語のさまざまな側面を確認することができます。
 
 ```
 @searchlog =
@@ -73,16 +72,9 @@ EXTRACT と OUTPUT のステートメントでは、ファイル パスを使用
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-次の絶対ファイル パスは、`myblobaccount` という名前の Azure BLOG ストレージのファイルと、`mycontainer` という名前コンテナーのファイルを指しています。
+次のファイル パスは、`"/"` で始まっています。 既定の Data Lake Store アカウントのファイルを指しています。
 
-    wasb://mycontainer@myblobaccount.blob.core.windows.net/Samples/Data/SearchLog.tsv
-
- >[!NOTE]
- >パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB ストレージ コンテナーは、現在サポートされていません。
-
-次の相対ファイル パスは、`"/"` で始まっています。 Data Lake Analytics アカウントに関連付けられている既定の Data Lake Store アカウントのファイルを指しています。
-
-    TO "/output/SearchLog-first-u-sql.csv"
+    /output/SearchLog-first-u-sql.csv
 
 ## <a name="use-scalar-variables"></a>スカラー変数の使用
 
@@ -192,15 +184,16 @@ U-SQL では、使い慣れた ORDER BY、GROUP BY および集計が提供さ�
     GROUP BY Region;
 
     @res =
-    SELECT *
-    FROM @rs1
-    ORDER BY TotalDuration DESC
-    FETCH 5 ROWS;
+        SELECT *
+        FROM @rs1
+        ORDER BY TotalDuration DESC
+        FETCH 5 ROWS;
 
     OUTPUT @rs1
         TO @out1
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
+
     OUTPUT @res
         TO @out2
         ORDER BY TotalDuration DESC
@@ -226,21 +219,17 @@ U-SQL の ORDER BY 句では、SELECT 式で FETCH 句と組み合わせる必�
             Region,
             SUM(Duration) AS TotalDuration
         FROM @searchlog
-    GROUP BY Region
-    HAVING SUM(Duration) > 200;
+        GROUP BY Region
+        HAVING SUM(Duration) > 200;
 
     OUTPUT @res
         TO "/output/Searchlog-having.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-## <a name="see-also"></a>関連項目
+高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx)をご確認ください。
+
+## <a name="next-steps"></a>次のステップ
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
-* [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
-
-## <a name="let-us-know-what-you-think"></a>意見の投稿
-* [機能要求の送信](http://aka.ms/adlafeedback)
-* [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
-* [U-SQL に関するフィードバックの提供](http://aka.ms/usqldiscuss)
 

@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/2/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: b7e99f8a4d7bc1cd30c71ce08ad38c13203f8b69
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/12/2017
-
 
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Generic SQL コネクタに関するテクニカル リファレンス

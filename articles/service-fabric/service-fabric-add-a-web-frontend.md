@@ -12,30 +12,39 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/28/2017
+ms.date: 06/01/2017
 ms.author: vturecek
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 182c3d02883ceae83c9ba12c0f27085d133ac47a
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>ASP.NET Core を使用したアプリケーション用の Web サービス フロントエンドの構築
 既定では、Azure Service Fabric サービスには、Web に対するパブリック インターフェイスがありません。 HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
 
-このチュートリアルでは、 [Visual Studio での初めてのアプリケーションの作成](service-fabric-create-your-first-application-in-visual-studio.md) に関するチュートリアルで取り上げなかった部分について説明し、ステートフルなカウンター サービスの前に Web サービスを追加します。 Visual Studio での初めてのアプリケーションの作成に関するチュートリアルをまだ終了していない場合は、先にそちらのチュートリアルを進めてください。
+このチュートリアルでは、「[最初の Azure Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)」のチュートリアルで取り上げなかった部分について説明し、ステートフルなカウンター サービスの前に ASP.NET Core Web サービスを追加します。 Visual Studio での初めてのアプリケーションの作成に関するチュートリアルをまだ終了していない場合は、先にそちらのチュートリアルを進めてください。
+
+## <a name="set-up-your-environment-for-aspnet-core"></a>ASP.NET Core の環境をセットアップする
+
+このチュートリアルを実行するには、Visual Studio 2017 が必要です。 エディションは任意です。 
+
+ - [Visual Studio 2017 をインストールする](https://www.visualstudio.com/)
+
+ASP.NET Core Service Fabric アプリケーションを開発するには、次のワークロードをインストールする必要があります。
+ - **Azure 開発** (*[Web & Cloud]\(Web とクラウド\)* 以下)
+ - **ASP.NET および Web 開発** (*[Web & Cloud]\(Web とクラウド\)* 以下)
+ - **.NET Core クロスプラットフォーム** (*[他のツールセット]* 以下)
+
+>[!Note] 
+>Visual Studio 2015 用 .NET Core ツールは更新されなくなりましたが、まだ Visual Studio 2015 を使用している場合は、[.NET Core VS 2015 Tooling Preview 2](https://www.microsoft.com/net/download/core) をインストールする必要があります。
 
 ## <a name="add-an-aspnet-core-service-to-your-application"></a>アプリケーションへの ASP.NET Core サービスの追加
-ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 Service Fabric と ASP.NET Core を統合する方法を完全に理解するには、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」の記事全体を読むことを強くお勧めします。ただし、差し当たり、このガイドに従えば、すぐに開始することができます。
+ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 
 
 ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
-
-
-> [!NOTE]
-> このチュートリアルは、[Visual Studio 2017 用の ASP.NET Core ツール](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/start-mvc)に基づいています。 Visual Studio 2015 用の .NET Core ツールは、更新されなくなりました。
-
 
 1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックし、**[追加]、[Service Fabric サービスの新規作成]** の順に選択します。
    
@@ -44,52 +53,54 @@ ASP.NET Web API プロジェクトを既存のアプリケーションに追加�
    
     ![Choosing ASP.NET web service in the new service dialog][vs-new-service-dialog]
 
-3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 これらは、Service Fabric アプリケーションの外部で ASP.NET Core プロジェクトを作成した場合に表示されるテンプレートと同じですが、サービスを Service Fabric ランタイムに登録するための少量の追加コードが含まれています。 このチュートリアルでは、 **[Web API]**を選択します。 ただし、完全な Web アプリケーションの作成にも同じ概念を適用できます。
+3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 これらは、Service Fabric アプリケーションの外部で ASP.NET Core プロジェクトを作成した場合に表示されるテンプレートと同じですが、サービスを Service Fabric ランタイムに登録するための少量の追加コードが含まれています。 このチュートリアルでは、**[Web API]** を選択します。 ただし、完全な Web アプリケーションの作成にも同じ概念を適用できます。
    
     ![ASP.NET プロジェクトの種類の選択][vs-new-aspnet-project-dialog]
    
     作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。 アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加することができます。 それぞれを個別にバージョン管理およびアップグレードできます。
 
-> [!TIP]
-> ASP.NET Core の詳細については、[ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/)を参照してください。
-> 
-
 ## <a name="run-the-application"></a>アプリケーションの実行
 手順を把握できるように、新しいアプリケーションをデプロイし、ASP.NET Core Web API テンプレートによって提供される既定の動作を見てみます。
 
 1. Visual Studio で F5 キーを押してアプリをデバッグします。
-2. デプロイが完了すると、Visual Studio はブラウザーを起動して、ASP.NET Web API サービスのルート (既定では、ポート 8966 でリッスン) を開きます。 ASP.NET Core Web API テンプレートではルートの既定の動作が指定されないため、ブラウザーでエラーが発生します。
-3. ブラウザーの場所に `/api/values` を追加します。 これにより、Web API テンプレート内の ValuesController に対して `Get` メソッドが呼び出されます。 テンプレートで指定される既定の応答として、2 つの文字列を格納する JSON 配列が返されます。
+2. デプロイが完了すると、Visual Studio からブラウザーが起動し、ASP.NET Web API サービスのルートにアクセスされます。 ASP.NET Core Web API テンプレートではルートの既定の動作が指定されないため、ブラウザーで 404 エラーが発生します。
+3. ブラウザーの場所に `/api/values` を追加します。 すると、Web API テンプレートの ValuesController で `Get` メソッドが呼び出されます。 このメソッドは、テンプレートで指定される既定の応答として、2 つの文字列を格納する JSON 配列を返します。
    
     ![Default values returned from ASP.NET Core Web API template][browser-aspnet-template-values]
    
-    チュートリアルの最後では、これらの既定値をステートフル サービスからの最新のカウンター値で置き換えます。
+    このチュートリアルを完了すると、このページには既定の文字列ではなくステートフル サービスの最近のカウンター値が表示されます。
 
 ## <a name="connect-the-services"></a>サービスへの接続
-Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。 1 つのアプリケーション内には、TCP 経由でアクセスできるサービスもあれば、HTTP REST API 経由でアクセスできるサービスもあります。また、Web ソケットを使用してアクセスできるサービスもまだあります。 使用可能なオプションとトレードオフについては、[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照してください。 このチュートリアルでは、より簡単な方法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceRemotingListener` クラスを使用します。
+Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。 1 つのアプリケーション内には、TCP 経由でアクセスできるサービスもあれば、HTTP REST API 経由でアクセスできるサービスもあります。また、Web ソケットを使用してアクセスできるサービスもまだあります。 使用可能なオプションとトレードオフについては、[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照してください。 このチュートリアルでは、SDK に含まれている [Service Fabric Service Remoting](service-fabric-reliable-services-communication-remoting.md) を使用します。
 
-(リモート プロシージャ コール (RPC) でモデル化された) `ServiceProxy` アプローチで、サービスのパブリック コントラクトとして機能するインターフェイスを定義します。 次に、そのインターフェイスを使用して、サービスと対話するためのプロキシ クラスを生成します。
+(リモート プロシージャ コール (RPC) でモデル化された) Service Remoting アプローチで、サービスのパブリック コントラクトとして機能するインターフェイスを定義します。 次に、そのインターフェイスを使用して、サービスと対話するためのプロキシ クラスを生成します。
 
-### <a name="create-the-interface"></a>インターフェイスの作成
-最初に、ステートフル サービスとそのクライアント (ASP.NET Core プロジェクトなど) の間のコントラクトとして機能するインターフェイスを作成します。
+### <a name="create-the-remoting-interface"></a>リモート処理インターフェイスを作成する
+最初に、ステートフル サービスと他のサービス (ここでは ASP.NET Core Web プロジェクト) の間のコントラクトとして機能するインターフェイスを作成します。 RPC の呼び出しに使用するすべてのサービスでこのインターフェイスを共有する必要があるため、クラス ライブラリ プロジェクト内で作成します。
 
 1. ソリューション エクスプローラーでソリューションを右クリックし、 **ブラウザーの場所に** > **[新しいプロジェクト]**する必要があります。
+
 2. 左側のナビゲーション ウィンドウで **[Visual C#]** エントリを選択し、**[クラス ライブラリ]** テンプレートを選択します。 .NET Framework のバージョンが **4.5.2**に設定されていることを確認します。
    
     ![ステートフル サービス用のインターフェイス プロジェクトの作成][vs-add-class-library-project]
 
-3. インターフェイスを `ServiceProxy`で使用可能にするには、そのインターフェイスが IService インターフェイスから派生している必要があります。 このインターフェイスは、Service Fabric NuGet パッケージの 1 つに含まれます。 パッケージを追加するには、新しいクラス ライブラリ プロジェクトを右クリックして、 **[NuGet パッケージの管理]**を選択します。
-4. **Microsoft.ServiceFabric.Services.Remoting** パッケージを検索してインストールします。
+3. **Microsoft.ServiceFabric.Services.Remoting** NuGet パッケージをインストールします。 NuGet パッケージ マネージャーで **Microsoft.ServiceFabric.Services.Remoting** を検索し、以下のように Service Remoting を使用するソリューションのすべてのプロジェクトについてインストールします。
+   - サービス インターフェイスを含むクラス ライブラリ プロジェクト
+   - ステートフル サービス プロジェクト
+   - ASP.NET Core Web サービス プロジェクト
    
     ![Services NuGet パッケージの追加][vs-services-nuget-package]
 
-5. クラス ライブラリで、1 つのメソッド `GetCountAsync`を含むインターフェイスを作成し、IService からインターフェイスを拡張します。
+4. クラス ライブラリで、1 つのメソッド `GetCountAsync`を含むインターフェイスを作成し、`Microsoft.ServiceFabric.Services.Remoting.IService` からインターフェイスを拡張します。 リモート処理インターフェイスは、Service Remoting インターフェイスであることを示すために、このインターフェイスから派生している必要があります。
    
     ```c#
+    using Microsoft.ServiceFabric.Services.Remoting;
+    using System.Threading.Tasks;
+        
+    ...
+
     namespace MyStatefulService.Interface
     {
-        using Microsoft.ServiceFabric.Services.Remoting;
-   
         public interface ICounter: IService
         {
             Task<long> GetCountAsync();
@@ -112,7 +123,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
    
     public class MyStatefulService : StatefulService, ICounter
     {        
-          // ...
+         ...
     }
     ```
 3. 次に、`ICounter` インターフェイスで定義されている単一のメソッド (`GetCountAsync`) を実装します。
@@ -120,8 +131,8 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     ```c#
     public async Task<long> GetCountAsync()
     {
-      var myDictionary =
-        await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
+        var myDictionary = 
+            await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
    
         using (var tx = this.StateManager.CreateTransaction())
         {          
@@ -132,14 +143,14 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     ```
 
 ### <a name="expose-the-stateful-service-using-a-service-remoting-listener"></a>サービス リモート処理リスナーを使用したステートフル サービスの公開
-`ICounter` インターフェイスを実装した後、ステートフル サービスを他のサービスから呼び出すことができるようにする最後の手順は、通信チャネルを開くことです。 ステートフル サービスのために、Service Fabric には、 `CreateServiceReplicaListeners`というオーバーライド可能なメソッドが用意されています。 このメソッドを使用すると、サービスに対して有効にする通信の種類に基づき、1 つ以上の通信リスナーを指定できます。
+`ICounter` インターフェイスを実装したら、Service Remoting 通信チャネルを開くことが最後の手順です。 ステートフル サービスのために、Service Fabric には、 `CreateServiceReplicaListeners`というオーバーライド可能なメソッドが用意されています。 このメソッドを使用すると、サービスに対して有効にする通信の種類に基づき、1 つ以上の通信リスナーを指定できます。
 
 > [!NOTE]
 > ステートレス サービスへの通信チャネルを開く同等のメソッドは、`CreateServiceInstanceListeners` という名前です。
-> 
-> 
 
 ここでは、既存の `CreateServiceReplicaListeners` メソッドを置き換え、`ServiceRemotingListener` のインスタンスを指定します。これにより、`ServiceProxy` を介してクライアントから呼び出すことができる RPC エンドポイントが作成されます。  
+
+`IService` インターフェイス上で `CreateServiceRemotingListener` 拡張メソッドを使用すると、すべて既定の設定の `ServiceRemotingListener` を簡単に作成できます。 この拡張メソッドを使用するには、`Microsoft.ServiceFabric.Services.Remoting.Runtime` 名前空間をインポートしておきます。 
 
 ```c#
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
@@ -159,11 +170,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 
 ### <a name="use-the-serviceproxy-class-to-interact-with-the-service"></a>ServiceProxy クラスを使用したサービスとの対話
-ステートフル サービスでは、他のサービスからトラフィックを受信する準備ができました。 残りの手順は、サービスと通信するためのコードを ASP.NET Web サービスから追加するだけです。
+ステートフル サービスでは、RPC を介して他のサービスからトラフィックを受信する準備ができました。 残りの手順は、サービスと通信するためのコードを ASP.NET Web サービスから追加するだけです。
 
 1. ASP.NET プロジェクトで、 `ICounter` インターフェイスを含むクラス ライブラリへの参照を追加します。
 
-2. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services.Remoting パッケージを追加します。 これにより、 `ServiceProxy` クラスが提供されます。
+2. 前述の手順で **Microsoft.ServiceFabric.Services.Remoting** NuGet パッケージを ASP.NET プロジェクトに追加しました。 このパッケージには、ステートフル サービスに対する RPC の呼び出しに使用する `ServiceProxy` クラスがあります。 この NuGet パッケージが ASP.NET Core Web サービス プロジェクトにインストールされていることを確認します。
 
 4. **Controllers** フォルダーで `ValuesController` クラスを開きます。 現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。 この実装を次のコードに置き換えます。
    
@@ -173,7 +184,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     using Microsoft.ServiceFabric.Services.Remoting.Client;
    
     ...
-   
+
+    [HttpGet]
     public async Task<IEnumerable<string>> Get()
     {
         ICounter counter =
@@ -207,10 +219,8 @@ Kestrel という既定の ASP.NET Core Web サーバーは、[現在、イン�
 
 Service Fabric サービスの Kestrel および WebListener の詳細については、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」を参照してください。
 
-## <a name="connecting-to-a-reliable-actors-service"></a>Reliable Actors サービスへの接続
-このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。 ただし、非常によく似たモデルに従ってアクターと対話することもできます。 実際にはもう少し簡単です。
-
-アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。 そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。 通信チャネルは自動的に指定されます。 そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要がありません。
+## <a name="connecting-to-a-reliable-actor-service"></a>Reliable Actor サービスへの接続
+このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。 ただし、非常によく似たモデルに従ってアクターと対話することもできます。 Reliable Actor プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。 そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。 通信チャネルは自動的に指定されます。 そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要がありません。
 
 ## <a name="how-web-services-work-on-your-local-cluster"></a>ローカル クラスター上の Web サービスのしくみ
 一般に、ローカル クラスターにデプロイした複数コンピューター クラスターにまったく同じ Service Fabric アプリケーションをデプロイすると、高い確率で意図したとおりに動作させることができます。 これは、ローカル クラスターが 5 ノードの構成を 1 つのコンピューターにまとめただけであるためです。
@@ -222,7 +232,7 @@ Service Fabric サービスの Kestrel および WebListener の詳細につい�
 異なる環境で異なる値を構成する方法については、「 [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-ASP.NET Core を使用したアプリケーションの Web フロントエンドの設定が完了したので、ASP.NET Core と Service Fabric を統合する方法の詳細について、[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)に関するこの記事を参照してください。
+ASP.NET Core を使用したアプリケーションの Web フロントエンドのセットアップが完了したので、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」で ASP.NET Core と Service Fabric の連携方法についてさらに理解を深めます。
 
 次に、一般的な[サービスとの通信の詳細](service-fabric-connect-and-communicate-with-services.md)を学習して、Service Fabric でのサービス通信のしくみの全体像を把握してください。
 

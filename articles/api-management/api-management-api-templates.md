@@ -3,7 +3,7 @@ title: "Azure API Management の API テンプレート | Microsoft Docs"
 description: "Azure API Management で開発者ポータルの API ページの内容をカスタマイズする方法について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 9055c7fc0b562fa02aa2f2ec8425a4a41b69e600
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
@@ -39,7 +41,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
   
-##  <a name="a-nameapilista-api-list"></a><a name="APIList"></a> API リスト  
+##  <a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
   
  ![Developer Portal API List](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal Templates API List")  
@@ -107,7 +109,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-nameproducta-operation"></a><a name="Product"></a> 操作  
+##  <a name="Product"></a> 操作  
  **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
  ![Developer Portal Operation page](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer Portal templates Operation page")  
@@ -637,7 +639,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="a-namecodesamplesa-code-samples"></a><a name="CodeSamples"></a> コード サンプル  
+##  <a name="CodeSamples"></a> コード サンプル  
  次のテンプレートを使用して、操作ページの個々のコード サンプルの本文をカスタマイズできます。  
   
  ![Developer Portal Templates Code samples](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal Templates Code samples")  
@@ -658,7 +660,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [Ruby](#Ruby)  
   
-###  <a name="a-namecurla-curl"></a><a name="Curl"></a> Curl  
+###  <a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -711,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="a-namecsharpa-c"></a><a name="CSharp"></a> C#  
+###  <a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -890,7 +892,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="a-namestuba-java"></a><a name="Stub"></a> Java  
+###  <a name="Stub"></a> Java  
  **DocumentationSamplesJava** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -986,7 +988,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="a-namejavascripta-javascript"></a><a name="JavaScript"></a> JavaScript  
+###  <a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1075,7 +1077,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="a-nameobjectiveca-objective-c"></a><a name="ObjectiveC"></a> Objective C  
+###  <a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1187,7 +1189,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="a-namephpa-php"></a><a name="PHP"></a> PHP  
+###  <a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1277,7 +1279,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="a-namepythona-python"></a><a name="Python"></a> Python  
+###  <a name="Python"></a> Python  
  **DocumentationSamplesPython** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1395,7 +1397,7 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="a-namerubya-ruby"></a><a name="Ruby"></a> Ruby  
+###  <a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1467,9 +1469,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>次のステップ
-テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-
+テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

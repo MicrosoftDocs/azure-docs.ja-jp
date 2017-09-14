@@ -27,6 +27,7 @@
 ### [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
 ## [PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
@@ -41,10 +42,12 @@
 ## [Azure DNS](/azure/dns/)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/traffic-manager/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
-## [サービスの制限](../azure-subscription-service-limits.md#traffic-manager-limits)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [料金](https://azure.microsoft.com/pricing/details/traffic-manager/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの制限](../azure-subscription-service-limits.md#traffic-manager-limits)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)
+## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=traffic-manager)

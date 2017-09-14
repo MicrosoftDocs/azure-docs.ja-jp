@@ -1,6 +1,6 @@
 ---
 title: "Azure Marketplace 販売者ガイド | Microsoft Docs"
-description: "このガイドは、IT プロフェッショナルと開発者を対象とした Azure 認定仮想マシン イメージの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。"
+description: "このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。"
 documentationcenter: 
 author: rupeshazure
 manager: hamidm
@@ -12,18 +12,16 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 59a0f0ec1b7b576339a45be26be8543ac0650a8a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace 販売者ガイド
 
-Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがとうございます。 このガイドは、IT プロフェッショナルと開発者を対象とした Azure 認定仮想マシン イメージの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。 Azure のお客様は世界中に存在します。[Marketplace](https://azuremarketplace.microsoft.com/) を利用すれば、自社製品をきわめて多くのお客様にリーチさせることができます。
+Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがとうございます。 このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。 Azure のお客様は世界中に存在します。[Marketplace](https://azuremarketplace.microsoft.com/) を利用すれば、自社製品をきわめて多くのお客様にリーチさせることができます。
 
 
 > [!NOTE]
@@ -46,7 +44,7 @@ Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがと�
 
 ## <a name="whats-the-azure-marketplace"></a>Azure Marketplace とは何ですか?
 
-Azure Marketplace は、アプリケーションとサービスのオンライン マーケットプレースです。ここで、新興企業から大企業に至るまで、さまざまな ISV が自社のソリューションを世界中の Azure のお客様に提供します。 Marketplace を利用すると、Azure 公開元が自社の仮想マシン イメージを、クラウド ベースのアプリケーションやモバイル ソリューションを Azure で短期間で開発しようとしている他のプロフェッショナルに、配布および販売することができます。 Marketplace では、データ処理、データ ストレージ、分析レイヤーを備えたエンド ツー エンドの分析アプリケーションから、階層型の電子商取引アプリ (データ、サービス、インターネット) まで、幅広いサービスをサポートしています。
+Azure Marketplace は、アプリケーションとサービスのオンライン マーケットプレースです。ここで、スタートアップから大企業に至るまで、さまざまな ISV が自社のソリューションを世界中の Azure のお客様に提供します。 Marketplace を利用すると、Azure 公開元が自社の仮想マシン イメージを、クラウド ベースのアプリケーションやモバイル ソリューションを Azure で短期間で開発しようとしている他のプロフェッショナルに、配布および販売することができます。 Marketplace では、データ処理、データ ストレージ、分析レイヤーを備えたエンド ツー エンドの分析アプリケーションから、階層型の eコマース アプリ (データ、サービス、インターネット) まで、幅広いサービスをサポートしています。
 
 クラウドのお客様は、独自のニーズを満たすソリューションを検索する際に、いくつかの課題に直面します。 Marketplace では、お客様がこれらの課題を解決し、革新的な ISV のソリューションを見つけ出せるよういな手段を提供しています。詳細は次の表のとおりです。
 
@@ -60,7 +58,7 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
 Marketplace は、高品質な Azure パートナー エコシステムの幅広い選択肢と強みを世界中のお客様に提供します。 主な利点:
 
 - Microsoft とパートナーから提供される Azure ベースのサービスの場所が統合済み。
-- 5,000 以上のプラン。
+- 5,000 以上の販売提案。
 - 統合されたプラットフォーム エクスペリエンス。
 - 合理的な構成、デプロイ、管理。
 
@@ -68,10 +66,10 @@ Marketplace は、高品質な Azure パートナー エコシステムの幅広
 
 ここまでで、Azure Marketplace が自社のビジネスに適しているかどうか、気になり始めた方もいるかもしれません。 では、適しているとすれば、何が得られるのでしょうか。 Marketplace は、新たな販売の機会を提供します。
 
-- **Azure のソリューションの幅広いポートフォリオを新たな顧客市場に売り込む**。 これは、マイクロソフト オンライン サブスクリプション プログラム (MOSP) と Microsoft Enterprise Agreement のお客様を対象とする Azure サービスを使用した Marketplace のサービスのアップセルやクロスセルのチャンスとなります。 Marketplace のサービスを、顧客のソリューションと Azure のシナリオ面に簡単に組み込むことができます。
+- **Azure のソリューションの幅広いポートフォリオを新たな顧客市場に売り込む**。 これは、マイクロソフト オンライン サブスクリプション プログラム (MOSP) と Microsoft Enterprise Agreement のお客様が利用している Azure サービスに付随した Marketplace のアップセルやクロスセルの販売提案です。 Marketplace のサービスを、顧客のソリューションと Azure のシナリオ面に簡単に組み込むことができます。
 - **ビジネス価値を高め、既存および新規の顧客アカウントの取引規模を拡大する**。 Marketplace は、取引規模の拡大、ワークロードをクラウドに移行する際の顧客の問題点への対処、および取引の収益性の向上に役立ちます。 包括的なソリューションを販売することでビジネス価値を高め、Azure クラウド プラットフォームのギャップに対応して顧客要件を満たします。
 - **Marketplace のアプリケーションとサービスを販売することで、さらに幅広い潜在顧客にアピールする**。 Marketplace を利用すると、新規顧客の開拓と維持が容易になります。 今日の多くの企業は、変化の激しいインフラストラクチャ環境に適応するために、ワークロードをクラウドに切り替える必要に迫られています。 このギャップを解消するための、適切なアプリケーションとサービスを提供できます。
-- **Marketplace でのプランを Azure サービスとバンドルすることで、Azure の機能を補完し、拡張する**。 Marketplace を使用して、顧客とのシナリオ ベースの会話を組み立てることができます。 エンド ツー エンドのソリューションを紹介すれば、特定のプラットフォームに関するギャップや顧客ニーズにも対処できます。 さらに、ソリューションのバンドルを販売すれば、Azure プラットフォームのエコシステムを利用し、さまざまな顧客の問題に対処して、売上を伸ばすこともできます。
+- **Marketplace での販売提案を Azure サービスとバンドルすることで、Azure の機能を補完し、拡張する**。 Marketplace を使用して、顧客とのシナリオ ベースの会話を組み立てることができます。 エンド ツー エンドのソリューションを紹介すれば、特定のプラットフォームに関するギャップや顧客ニーズにも対処できます。 さらに、ソリューションのバンドルを販売すれば、Azure プラットフォームのエコシステムを利用し、さまざまな顧客の問題に対処して、売上を伸ばすこともできます。
 
 ## <a name="what39s-the-customer-base-for-the-marketplace"></a>Marketplace の顧客ベースはどのようなものですか?
 
@@ -79,33 +77,33 @@ Marketplace のお客様は多岐にわたります。 さらに、Azure は、�
 
 ## <a name="how-does-the-marketplace-work"></a>Marketplace のしくみはどのようなものですか?
 
-非常に簡単です。 承認後、Azure 認定仮想マシン イメージを作成し、Marketplace に公開すれば、 Azure のお客様がその製品を数分で検索、購入、およびデプロイできるようになります。 これに加えて、お客様は安心してソリューションをデプロイできます。 Azure での使用条件を満たす環境が構成済みで、インフラストラクチャを数分以内に使用可能であることがわかっているためです。
+非常に簡単です。 承認後、Azure Certified 取得済み仮想マシン イメージを作成し、Marketplace に公開すれば、 Azure のお客様がその製品を数分で検索、購入、およびデプロイできるようになります。 これに加えて、お客様は安心してソリューションをデプロイできます。 Azure での使用条件を満たす環境が構成済みで、インフラストラクチャを数分以内に使用可能であることがわかっているためです。
 
-クラウド パートナー ポータルは、Marketplace でプランを作成するためのハブです。 仮想マシン イメージには、完全にインストールされたオペレーティング システムと 1 つ以上のアプリケーションが事前に構成されています。 公開の準備を整えるためにイメージの認定を受けるには、特定の前提条件を満たす必要があります。 これについては、次のセクションで説明します。
+クラウド パートナー ポータルは、Marketplace での販売提案を作成するためのハブです。 仮想マシン イメージには、完全にインストールされたオペレーティング システムと 1 つ以上のアプリケーションが事前に構成されています。 公開の準備を整えるためにイメージの認定を受けるには、特定の前提条件を満たす必要があります。 これについては、次のセクションで説明します。
 
 
 ## <a name="whats-next"></a>次の手順
 
 Azure Marketplace はまさに自社の製品にぴったりだ、と考えていることでしょう。 では、どのように始めればよいのでしょうか。 このセクションでは、次の手順による Marketplace の開始と利用について説明します (図 1)。 
-* Azure 認定を取得する。
+* Azure Certified を取得する。
 * 製品を販売するための承認を得る。
-* クラウド パートナー ポータルでプランを作成する。 
+* クラウド パートナー ポータルで販売提案を作成する。 
 
 ![Azure Marketplace での販売のためのプロセス](./media/cloud-partner-portal-seller-guide/processforselling.png)
 
 図 1: Azure Marketplace での販売のためのプロセス
 
-最初に技術面および技術面以外の一連の前提条件を満たし、仮想マシン イメージを準備します。 次に、製品をノミネートし、販売者として登録します。 最後に、マーケティングのコンテンツを追加して、公開用に送信します。 プランは、Marketplace で提供開始する前に、プレビューまたはステージング環境で確認することができます。
+最初に技術面および技術面以外の一連の前提条件を満たし、仮想マシン イメージを準備します。 次に、製品をノミネートし、販売者として登録します。 最後に、マーケティングのコンテンツを追加して、公開用に送信します。 販売提案は、Marketplace で提供開始する前に、プレビューまたはステージング環境で確認することができます。
 
-初めて Azure Marketplace のプランを作成する際は、基本的なオンボードのために 4 週間程度の時間を取る必要があります。 可能であれば、プランをリリースする前の 6 週間で構築を行います。これにより、メディアや公開タスクの時間を確保できます。
+初めて Azure Marketplace の販売提案を作成する際は、基本的な配布準備のために 4 週間程度の時間を取る必要があります。 可能であれば、販売提案をリリースする前の 6 週間で構築を行います。これにより、メディアや公開タスクの時間を確保できます。
 
-## <a name="how-do-i-become-azure-certified"></a>Azure 認定を取得するにはどうすればよいですか?
+## <a name="how-do-i-become-azure-certified"></a>Azure Certified を取得するにはどうすればよいですか?
 
-Azure Marketplace 用のプランを作成するための最初の手順は、Azure 認定を取得することです。 つまり、会社情報をまとめ、参加ポリシーに同意し、必要なツールをダウンロードして、技術コンポーネントを構築することを指します (図 2) 。
+Azure Marketplace の販売提案を作成するための最初の手順は、Azure Certified を取得することです。 つまり、会社情報をまとめ、参加ポリシーに同意し、必要なツールをダウンロードして、技術コンポーネントを構築することを指します (図 2) 。
 
-![Azure 認定を取得するための要件](./media/cloud-partner-portal-seller-guide/azurecertified.png)
+![Azure Certified を取得するための要件](./media/cloud-partner-portal-seller-guide/azurecertified.png)
 
-図 2: Azure 認定を取得するための要件
+図 2: Azure Certified を取得するための要件
 
 ### <a name="technical-prerequisites"></a>技術的な前提条件
 
@@ -131,16 +129,16 @@ Marketplace に参加するには、技術面以外の前提条件をいくつ�
 - Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。
 - 無償、有償、コミュニティ サポートの活用を問わず、商業的に合理的な方法で、顧客に技術サポートを提供していただきます。
 - 貴社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアにライセンス供与する必要があります。
-- [azure.microsoft.com](../../C:/Users/Lisa.Rosenberger/Desktop/azure.microsoft.com) および Azure Portal にプランを一覧表示するための所定の条件を、コンテンツが満たしている必要があります。
+- [azure.microsoft.com](../../C:/Users/Lisa.Rosenberger/Desktop/azure.microsoft.com) および Azure ポータルにプランを一覧表示するための所定の条件を、コンテンツが満たしている必要があります。
 
-最後に、[使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](http://www.microsoft.com/privacystatement/default.aspx)、および [Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)に同意する必要があります。 
+最後に、[使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](http://www.microsoft.com/privacystatement/default.aspx)、および [Microsoft Azure Certified プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)に同意する必要があります。 
 
 よく寄せられる質問の一覧については、[Azure Marketplace の FAQ](https://azure.microsoft.com/marketplace/faq/) を参照してください。
 
 
 ### <a name="azure-certification"></a>Azure 認定
 
-"_Azure 認定_" 状態は、オンボード プロセスが正常に完了したことを表します。 この状態になることで、顧客には、信頼できるパートナーから提供された Azure テクノロジを使用して実行または構築された、高品質なソリューションが自社の IT プロフェッショナルと開発者の元に提供されるという確信を持つことができます。 Azure 認定ソリューションには次のことが必要です。
+"_Azure Certified_" ステータスの獲得は、オンボード プロセスが正常に完了したことを表します。 この状態になることで、顧客には、信頼できるパートナーから提供された Azure テクノロジを使用して実行または構築された、高品質なソリューションが自社の IT プロフェッショナルと開発者の元に提供されるという確信を持つことができます。 Azure Certified のソリューションに含まれるものは次のとおりです。
 
 - グローバル審査。
 - Azure プラットフォームとの互換性の判定。
@@ -161,17 +159,17 @@ Marketplace に参加するには、技術面以外の前提条件をいくつ�
 承認されると、次のものが届きます。
 
 - デベロッパー センターでのアプリケーション料金を 99 ドル免除するプロモーション コードと、クラウド パートナー ポータルでのプロファイルが記載された電子メール。
-- Azure 認定状態になるための技術的な事前承認と、プランを作成し VHD の認定を受けるためのオプション  (プランを作成する前に、デベロッパー センターでのアプリケーションが承認されている必要があります)。
+- Azure Certified ステータスへの技術面における事前承認と、プランを作成し VHD の認定を受けるためのオプション (プランを作成する前に、デベロッパー センターでのアプリケーションが承認されている必要があります)。
 - クラウド パートナー ポータルにアクセスする手順と、公開プロセスの概要。
 - プロセスの説明を受け、質問するための、Microsoft オンボード チームへの電話問い合わせの資格。
 - 2 つ目のプランを発行する資格。 2 回目となるプランでは、承認を得る必要がありません。 クラウド パートナー ポータルに直接アクセスできます。ただし、仮想マシンについては、引き続き公開プロセスを通じて認定を受ける必要があります。
 - 公開に関する支援を依頼するためのガイダンス  (質問は Marketplace の公開元の[サポート リンク](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=16230&ccsid=636282352448485256)で行ってください)。
 
-最後に、Microsoft 販売者として[アカウントを登録](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-accounts-creation-registration)します。 承認と審査には "_最大 2 週間_" かかりますので、この間にクラウド パートナー ポータルで Azure Marketplace のプランを作成してください。
+最後に、Microsoft 販売者として[アカウントを登録](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-accounts-creation-registration)します。 承認と審査には "_最大 2 週間_" かかりますので、この間にクラウド パートナー ポータルで Azure Marketplace の販売提案を作成してください。
 
-## <a name="how-do-i-publish-my-offer-on-the-azure-marketplace"></a>Azure Marketplace でプランを発行するにはどうすればよいですか?
+## <a name="how-do-i-publish-my-offer-on-the-azure-marketplace"></a>Azure Marketplace で販売提案を発行するにはどうすればよいですか?
 
-仮想マシン イメージの認定を受け、プランを発行する準備はできています。 プランを発行するには、クラウド パートナー ポータルを使用します。 クラウド パートナー ポータルは、ソリューションを公開および管理するためのハブと考えることができます。 基本的には、VHD をアップロードし、マーケティングのコンテンツと SKU 詳細を追加して、認定および確認のためのプランを送信するだけです。 Marketplace で運用を開始する前に、プランをプレビューし、その外観を確認します。
+仮想マシン イメージの認定を取得して販売提案を発行する準備は整いました。 プランを発行するには、クラウド パートナー ポータルを使用します。 クラウド パートナー ポータルは、ソリューションを公開および管理するためのハブと考えることができます。 基本的には、VHD をアップロードし、マーケティングのコンテンツと SKU 詳細を追加して、認定および確認のための販売提案を送信するだけです。 Marketplace で運用を開始する前に、販売提案をプレビューし、その表示を確認します。
 
 ## <a name="what-about-best-practices"></a>ベスト プラクティスについて
 
@@ -191,10 +189,10 @@ Azure の体験版の詳細については、[こちら](https://azuremarketplac
 
 組織のグローバル リーチの拡大を支援する [Go-to-Market プログラム](https://partner.microsoft.com/go-to-market/)の詳細を確認してください。 [パートナー マーケティング センター](http://smartpartnermarketing.microsoft.com/isv)でリソースを活用することもできます。
 
-リリースの前に、Marketplace のプランがより早く顧客の目に留まるようにするために、いくつかの手順を実施することをお勧めします。 次のチェックリストを使用して、準備ができているかどうかを確認してください。
+リリースの前に、Marketplace の販売提案がより早く顧客の目に留まるよう、いくつかの手順を実施することをお勧めします。 次のチェックリストを使用して、準備ができているかどうかを確認してください。
 
-- ブログの投稿、電子メールの送信、プレス リリースの発行を通じて、**プランが Marketplace で入手できることを発表済みである**。
-- **自分の Web サイトでプランをプロモーション**し、Marketplace 上の自社プランに顧客を誘導している。
+- **Marketplace で販売提案が入手できることを発表済み**であり、ブログの投稿、電子メールの送信、プレス リリースの発行をその手段として利用。
+- **自分の Web サイトで販売提案をプロモーション**し、Marketplace 上にある自社の販売提案に顧客を誘導している。
 - **体験版を公開し**、顧客が休憩時間中にプランを Azure 上で実際に使用できるようにしている。
 - **オンデマンドでの潜在顧客の生成を有効にしており**、顧客がアプリケーションをデプロイするためにクリックするたびに、顧客の名前と連絡先情報を受信できる。
 - 販売機会を広げるために、Microsoft の**パートナー マネージャーと協力**できている (パートナー マネージャーがいる場合)。
@@ -220,7 +218,7 @@ Marketplace では、注文、使用状況、顧客に関するレポートが�
 - Reseller
 - FirstName
 - LastName
-- 電子メール
+- Email
 - CompanyName
 - TransactionDate
 - SubscriptionName
@@ -234,7 +232,7 @@ Marketplace では、注文、使用状況、顧客に関するレポートが�
 
 ヘルプ ドキュメント、用語集、録画したデモなどのトレーニング資料もご用意しています。 レポートに関するヘルプまたはサポートが必要な場合は、[サポート チケット](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=636233723471685249)を開くことができます。
 
-ISV 販売者コミュニティへの皆様の参加お待ちしております。
+ISV 販売者コミュニティへの皆様のご参加をお待ちしております。
 
 ---
 

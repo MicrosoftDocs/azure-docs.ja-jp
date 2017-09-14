@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;fashah;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f0ac2799e2d8f18b2dd5b633555bfca08a44ba27
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/17/2016
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 * データが SQL Server に格納されている。 格納されていない場合、データの移動手順については、「 [Azure Machine Learning 用にデータを Azure SQL Database に移動する](machine-learning-data-science-move-sql-azure.md) 」をご覧ください。
 
 ## <a name="sql-featuregen"></a>SQL を使用した特徴の生成
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/17/2016
 
 > [!TIP]
 > お好みのプログラム言語でレコードを挿入できます。 書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。
->  [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
+> [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
 > 
 > 
 

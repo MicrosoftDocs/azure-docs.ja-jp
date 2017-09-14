@@ -41,7 +41,7 @@ Azure Machine Learning は、クラウドで予測分析ソリューションを
 
 Machine Learning Studio は、Web ブラウザーを使用してアクセスするワークベンチ環境です。 Machine Learning Studio は、視覚的な構成インターフェイスにモジュールのパレットを備えており、実験の形式でエンド ツー エンドのデータサイエンス ワークフローを容易に構築できます。
 
-Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)
+Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」をご覧ください。
 
 **Machine Learning API サービスとは**
 
@@ -218,10 +218,10 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)に関するページをご覧ください。
 
-### <a name="use"></a>最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
+### <a name="use"></a>使用
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
 
-要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、Azure Blob Storage、Azure Table Storage、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなど、さまざまなソースからレコードのブロックを読み取る点です。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
+要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるサービスです。 BES への入力は、RRS で使用されるデータ入力と似ています。 主な違いは、BES が、Azure Blob Storage、Azure Table Storage、Azure SQL Database、HDInsight (Hive クエリ)、HTTP ソースなど、さまざまなソースからレコードのブロックを読み取る点です。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
 
 **Web サービスにデプロイされたモデルはどのように更新できますか。**
 
@@ -360,9 +360,9 @@ API コンピューティング時間は、Machine Learning コンピューテ�
 
 実稼働 API 呼び出しにかかる時間は状況により大幅に異なりますが、一般的には数百ミリ秒から数秒までの範囲です。 データ処理と機械学習モデルの複雑さによっては、API 呼び出しに数分かかることもあります。 実稼働 API 呼び出しにかかる時間を推定するための最適な方法は、Machine Learning サービスでモデルのベンチマークを実行することです。
 
-**スタジオ コンピューティング時間とは何ですか?**
+**Studio コンピューティング時間とは何ですか?**
 
-スタジオ コンピューティング時間は、スタジオでコンピューティング リソースを実験に使用した時間の総計を表す課金単位です。
+Studio コンピューティング時間は、Studio でコンピューティング リソースを実験に使用した時間の総計を表す課金単位です。
 
 **新しい (Azure Resource Manager ベースの) Web サービスでの開発/テスト レベルとは何のためのものですか?**
 
@@ -370,7 +370,7 @@ Resource Manager ベースの Web サービスでは、課金プランのプロ�
 
 **ストレージには別に課金されますか?**
 
-Machine Learning の Free レベルでは、別個のストレージは必要ありませんし、使用することもできません。 Machine Learning の Standard レベルでは、ユーザーが Azure ストレージ アカウントを持っていることが必要です。 Azure Storage の料金は[別途請求されます](https://azure.microsoft.com/pricing/details/storage/)。
+Machine Learning の Free レベルでは、別個のストレージは必要ありませんし、使用することもできません。 Machine Learning の Standard レベルでは、ユーザーが Azure Storage アカウントを持っていることが必要です。 Azure Storage の料金は[別途請求されます](https://azure.microsoft.com/pricing/details/storage/)。
 
 **Machine Learning では高可用性がサポートされますか?**
 

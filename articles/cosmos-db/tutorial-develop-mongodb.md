@@ -12,7 +12,7 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
@@ -131,7 +131,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
             private IMongoCollection<MyTask> GetTasksCollection()
             {
                 MongoClientSettings settings = new MongoClientSettings();
-                settings.Server = new MongoServerAddress(host, 10250);
+                settings.Server = new MongoServerAddress(host, 10255);
                 settings.UseSsl = true;
                 settings.SslSettings = new SslSettings();
                 settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
@@ -153,7 +153,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
             private IMongoCollection<MyTask> GetTasksCollectionForEdit()
             {
                 MongoClientSettings settings = new MongoClientSettings();
-                settings.Server = new MongoServerAddress(host, 10250);
+                settings.Server = new MongoServerAddress(host, 10255);
                 settings.UseSsl = true;
                 settings.SslSettings = new SslSettings();
                 settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;

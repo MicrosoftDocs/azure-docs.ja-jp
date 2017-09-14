@@ -1,5 +1,5 @@
 ---
-title: "Mahout と HDInsight を使用した PowerShell からのリコメンデーションの生成 | Microsoft Docs"
+title: "Mahout と HDInsight を使用した PowerShell からのリコメンデーションの生成 - Azure | Microsoft Docs"
 description: "クライアント上で実行される PowerShell スクリプトから Apache Mahout 機械学習ライブラリを使用して HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/14/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 102cd55a0b55e18ec5240bf6ddf94a1909c08ebb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59ae075944ce7e19542f19d285440c3822922fbe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する (PowerShell)
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/22/2017
 * Linux ベースの HDInsight クラスター。 作成の詳細については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する][getstarted]」を参照してください。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * [Azure PowerShell](/powershell/azure/overview)
 

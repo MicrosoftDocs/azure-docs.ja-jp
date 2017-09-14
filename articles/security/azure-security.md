@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 65d24488ce4910c59f7afce5d540ace81ffc50ac
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f5d33b6a36b84589a24108a84636c42043f21c69
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -104,7 +103,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](https://docs.microsoft.com/azure/advisor/) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)機会を探すと同時に、[パフォーマンス](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)、[セキュリティ](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)、リソースの[高可用性](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で実施されるセキュリティ分析に基づいています。
 
-### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 さらに、Azure Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Azure Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
@@ -136,20 +135,20 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 #### <a name="web-server-diagnostics"></a>Web サーバー診断
 次の種類のログを有効または無効にできます。
 
--    詳細なエラー ログ - 障害 (状態コード 400 以上) を示す HTTP 状態コードの詳細なエラー情報。 このログには、サーバーがエラー コードを返した理由を特定するために役立つ情報が記録されている場合があります。
+-   詳細なエラー ログ - 障害 (状態コード 400 以上) を示す HTTP 状態コードの詳細なエラー情報。 このログには、サーバーがエラー コードを返した理由を特定するために役立つ情報が記録されている場合があります。
 
--    失敗した要求トレース - 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報。 このログが便利なのは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーが返される理由を特定したりする場合です。
+-   失敗した要求トレース - 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報。 このログが便利なのは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーが返される理由を特定したりする場合です。
 
--    Web サーバーのログ記録 - W3C 拡張ログ ファイル形式を使用した、HTTP トランザクションに関する情報。 このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
+-   Web サーバーのログ記録 - W3C 拡張ログ ファイル形式を使用した、HTTP トランザクションに関する情報。 このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 #### <a name="application-diagnostics"></a>アプリケーション診断
 [アプリケーション診断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
 
 アプリケーション診断では、次の方法でグループ化されたイベントを表示できます。
 
--    すべて (すべてのイベントを表示)
--    アプリケーション エラー (例外イベントを表示)
--    パフォーマンス (パフォーマンス イベントを表示)
+-   すべて (すべてのイベントを表示)
+-   アプリケーション エラー (例外イベントを表示)
+-   パフォーマンス (パフォーマンス イベントを表示)
 
 ## <a name="storage"></a>Storage
 このセクションでは、Azure ストレージのセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
@@ -162,30 +161,30 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
--    [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
+-   [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
--    [ワイヤ暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares) ([Azure ファイル共有](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)の [SMB 3.0 暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide)など)。
+-   [ワイヤ暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares) ([Azure ファイル共有](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)の [SMB 3.0 暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide)など)。
 
--    クライアント側の暗号化 (ストレージにデータを転送する前にデータを暗号化し、ストレージからデータを転送した後にデータを復号化します)。
+-   クライアント側の暗号化 (ストレージにデータを転送する前にデータを暗号化し、ストレージからデータを転送した後にデータを復号化します)。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保する上で保存時のデータの暗号化は欠かせません。 Azure Storage には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
--    [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
+-   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 
--    [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) には、保存時の暗号化機能もあります。
+-   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) には、保存時の暗号化機能もあります。
 
--    [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
+-   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
 ### <a name="storage-analytics"></a>Storage Analytics
 [Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 次のタイプの認証済み要求が記録されます。
--    成功した要求
+-   成功した要求
 
--    失敗した要求 (タイムアウト、帯域幅調整、ネットワーク、承認などに関する各種エラー)
+-   失敗した要求 (タイムアウト、帯域幅調整、ネットワーク、承認などに関する各種エラー)
 
--    Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む)
+-   Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む)
 
--    データの分析要求
+-   データの分析要求
 
 ### <a name="enabling-browser-based-clients-using-cors"></a>CORS を使用したブラウザーベースのクライアントの有効化
 [クロス オリジン リソース共有 (CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、ドメインどうしが互いのリソースへのアクセスを許可するメカニズムです。 ユーザー エージェントは、特定のドメインから読み込まれた JavaScript コードが別のドメインにあるリソースへのアクセスに使用できることを確認する追加のヘッダーを送信します。 次に、後者のドメインが元のドメイン リソースへのアクセスを許可または拒否する追加のヘッダーを使用して応答します。
@@ -220,13 +219,13 @@ Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自
 
 Azure のネットワークは、セキュリティで保護されたリモート アクセスのさまざまなシナリオをサポートしています。 たとえば、次のようなシナリオがあります。
 
--    [個々のワークステーションから Azure Virtual Network への接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+-   [個々のワークステーションから Azure Virtual Network への接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
--    [オンプレミス ネットワークから Azure Virtual Network への VPN による接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
+-   [オンプレミス ネットワークから Azure Virtual Network への VPN による接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
 
--    [オンプレミス ネットワークから Azure Virtual Network への専用 WAN リンクによる接続](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
+-   [オンプレミス ネットワークから Azure Virtual Network への専用 WAN リンクによる接続](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
 
--    [Azure Virtual Network どうしの接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
+-   [Azure Virtual Network どうしの接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 Azure Virtual Network とオンプレミスのサイトとの間でネットワーク トラフィックを送信する場合は、Azure Virtual Network 用の VPN ゲートウェイを作成する必要があります。 [VPN ゲートウェイ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)は、パブリック接続で暗号化されたトラフィックを送信する仮想ネットワーク ゲートウェイの一種です。 VPN ゲートウェイを使用すると、Azure ネットワーク ファブリックを経由して Azure Virtual Network 間でトラフィックを送信することもできます。
@@ -257,17 +256,17 @@ Web アプリケーション ファイアウォール (WAF) は [Azure Applicati
 
 ![Web アプリケーション ファイアウォール](./media/azure-security/azure-security-fig1.png)
 
--    SQL インジェクションからの保護
+-   SQL インジェクションからの保護
 
--    一般的な Web 攻撃からの保護 (コマンド インジェクション、HTTP 要求スマグリング、HTTP レスポンス スプリッティング、リモート ファイル インクルード攻撃など)
+-   一般的な Web 攻撃からの保護 (コマンド インジェクション、HTTP 要求スマグリング、HTTP レスポンス スプリッティング、リモート ファイル インクルード攻撃など)
 
--    HTTP プロトコル違反に対する保護
+-   HTTP プロトコル違反に対する保護
 
--    HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
+-   HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
 
--    ボット、クローラー、スキャナーの防止
+-   ボット、クローラー、スキャナーの防止
 
--    一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
+-   一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
 
 
 Web 攻撃に対する保護を提供する Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、侵入の脅威からアプリケーションがより確実に保護されます。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールを備えたアプリケーション ゲートウェイに簡単に変換できます。
@@ -278,9 +277,9 @@ Traffic Manager には、さまざまなアプリケーション ニーズ、エ
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) は、高可用性と優れたネットワーク パフォーマンスをアプリケーションに提供します。 Azure Load Balancer は、負荷分散セットで定義されているサービスの正常なインスタンス間で着信トラフィックを分散する、レイヤー 4 (TCP、UDP) ロード バランサーです。 Azure Load Balancer は次のように構成できます。
 
--    仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)と呼ばれます。
+-   仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)と呼ばれます。
 
--    仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)と呼ばれます。 
+-   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)と呼ばれます。 
 
 - 外部トラフィックを特定の仮想マシンに転送します。
 
@@ -291,22 +290,22 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 [ドメイン ネーム システム (DNS)](https://technet.microsoft.com/library/bb629410.aspx) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 DNS では、セキュリティの 3 つの柱、"CIA" (機密性、整合性、可用性) の中の可用性がサポートされています。
 ### <a name="log-analytics-nsgs"></a>Log Analytics NSG
 NSG に対して、以下の診断ログ カテゴリを有効にできます。
--    イベント: MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+-   イベント: MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
--    ルール カウンター: トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
+-   ルール カウンター: トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
-### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。 ネットワークに関する推奨事項は、ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。
 
 ネットワークに関する利用可能な推奨事項は次のとおりです。
 
--    [次世代のファイアウォールの追加](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall)セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。
+-   [次世代のファイアウォールの追加](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall)セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。
 
--    [NGFW 経由のみでトラフィックをルーティングする](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only)。 VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。
+-   [NGFW 経由のみでトラフィックをルーティングする](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only)。 VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。
 
--    [サブネットまたは仮想マシンでのネットワーク セキュリティ グループの有効化](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups)サブネットまたは VM で NSG を有効にすることをお勧めします。
+-   [サブネットまたは仮想マシンでのネットワーク セキュリティ グループの有効化](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups)サブネットまたは VM で NSG を有効にすることをお勧めします。
 
--    [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
+-   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
 ## <a name="compute"></a>計算
@@ -344,7 +343,7 @@ SQL Server をオンプレミス コンピューターで実行している場�
 ### <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ## <a name="identify-and-access-management"></a>ID 管理とアクセス管理
@@ -353,24 +352,24 @@ SQL Server をオンプレミス コンピューターで実行している場�
 
 ### <a name="secure-identity"></a>セキュリティ保護された ID
 Microsoft では、複数のセキュリティ上の方法およびテクノロジを製品やサービスに使用して、ID とアクセスを管理します。
--    [多要素認証](https://azure.microsoft.com/services/multi-factor-authentication/)では、複数のメソッドを使用してクラウドのオンプレミス環境にアクセスする必要があります。 幅広い簡単な検証オプションによって強力な認証を提供する一方で、簡単なサインイン プロセスでユーザーの要求に応えます。
+-   [多要素認証](https://azure.microsoft.com/services/multi-factor-authentication/)では、複数のメソッドを使用してクラウドのオンプレミス環境にアクセスする必要があります。 幅広い簡単な検証オプションによって強力な認証を提供する一方で、簡単なサインイン プロセスでユーザーの要求に応えます。
 
--    [Microsoft Authenticator](https://aka.ms/authenticator) は Microsoft Azure Active Directory と Microsoft アカウントの両方で機能するわかりやすい多要素認証機能で、ウェアラブルな承認や指紋ベースの承認がサポートされています。
+-   [Microsoft Authenticator](https://aka.ms/authenticator) は Microsoft Azure Active Directory と Microsoft アカウントの両方で機能するわかりやすい多要素認証機能で、ウェアラブルな承認や指紋ベースの承認がサポートされています。
 
--    [パスワード ポリシーの適用](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/)によって、長さと複雑さの要件や定期的な変更を強制したり、認証試行の失敗後にアカウントをロックしたりすることで、従来のパスワードのセキュリティが強化されています。
+-   [パスワード ポリシーの適用](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/)によって、長さと複雑さの要件や定期的な変更を強制したり、認証試行の失敗後にアカウントをロックしたりすることで、従来のパスワードのセキュリティが強化されています。
 
--    [トークン ベースの認証](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)により、Active Directory フェデレーション サービス (AD FS) を使用した認証、またはサードパーティ製の安全なトークン システムを介した認証が有効になります。
+-   [トークン ベースの認証](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)により、Active Directory フェデレーション サービス (AD FS) を使用した認証、またはサードパーティ製の安全なトークン システムを介した認証が有効になります。
 
--    [ロールベースのアクセス制御 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) によって、ユーザーに割り当てられたロールに基づいたアクセス権の付与が可能になります。これにより、ユーザーの職務実行に必要なアクセス権のみを簡単に付与できるようになります。 RBAC は、組織のビジネス モデルやリスク許容度に応じてカスタマイズできます。
+-   [ロールベースのアクセス制御 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) によって、ユーザーに割り当てられたロールに基づいたアクセス権の付与が可能になります。これにより、ユーザーの職務実行に必要なアクセス権のみを簡単に付与できるようになります。 RBAC は、組織のビジネス モデルやリスク許容度に応じてカスタマイズできます。
 
--    [ID 管理 (ハイブリッド ID) の統合](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)により、すべてのリソースに対する認証および承認用に単一のユーザー ID を作成して、内部のデータ センターとクラウド プラットフォームでのユーザーのアクセス権制御を維持することができます。
+-   [ID 管理 (ハイブリッド ID) の統合](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)により、すべてのリソースに対する認証および承認用に単一のユーザー ID を作成して、内部のデータ センターとクラウド プラットフォームでのユーザーのアクセス権制御を維持することができます。
 
 ### <a name="secure-apps-and-data"></a>アプリおよびデータのセキュリティ保護
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) は、ID およびアクセス権を管理する包括的なクラウド ソリューションです。これにより、サイト上やクラウド内のアプリケーション データへのアクセスを保護し、ユーザーおよびグループの管理を簡素化します。 Azure Active Directory はコア ディレクトリ サービス、高度な ID ガバナンス、セキュリティ、アプリケーションへのアクセス管理を組み合わせたもので、開発者はポリシーベースの ID 管理をアプリケーションに簡単に組み込むことができます。 Azure Active Directory を強化するには、Azure Active Directory Basic、Premium P1、Premium P2 の各エディションを使用して有料の機能を追加します。
 
 | 無料/共通機能     | Basic の機能    |Premium P1 の機能 |Premium P2 の機能 | Azure Active Directory Join – Windows 10 のみの関連機能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|     [ディレクトリ オブジェクト](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects)、[ユーザーとグループの管理 (追加/更新/削除)、ユーザーベースのプロビジョニング、デバイスの登録](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)、[シングル サインオン (SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso)、[クラウド ユーザーに対するセルフ サービスのパスワードの変更](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users)、[Connect (Azure Active Directory にオンプレミスのディレクトリを拡張する同期エンジン)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)、[セキュリティと使用状況に関するレポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [グループベースのアクセス管理/プロビジョニング](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning)、[クラウド ユーザーに対するセルフ サービスのパスワード リセット](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users)、[会社のブランド設定 (ログオン ページやアクセス パネルのカスタマイズ)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization)、[アプリケーション プロキシ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy)、[SLA 99.9%](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [セルフ サービスのグループおよびアプリケーション管理/セルフ サービスのアプリケーション追加/動的グループ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group)、[セルフ サービスのパスワード リセット/変更/ロック解除とオンプレミスの書き戻し](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back)、[多要素認証 (クラウドおよびオンプレミス (MFA サーバー))](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server)、[MIM CAL + MIM サーバー](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server)、[Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery)、[Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health)、[グループ アカウントのパスワードの自動ロール オーバー](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [ID の保護](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection)、[Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [Azure AD へのデバイスの結合、デスクトップ SSO、 Azure AD 用の Microsoft Passport、管理者による Bitlocker の復旧](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)、[MDM 自動登録、セルフサービスの Bitlocker の復旧、Azure AD Join を介した Windows 10 デバイスへのローカル管理者の追加](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
+|   [ディレクトリ オブジェクト](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects)、[ユーザーとグループの管理 (追加/更新/削除)、ユーザーベースのプロビジョニング、デバイスの登録](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)、[シングル サインオン (SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso)、[クラウド ユーザーに対するセルフ サービスのパスワードの変更](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users)、[Connect (Azure Active Directory にオンプレミスのディレクトリを拡張する同期エンジン)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)、[セキュリティと使用状況に関するレポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [グループベースのアクセス管理/プロビジョニング](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning)、[クラウド ユーザーに対するセルフ サービスのパスワード リセット](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users)、[会社のブランド設定 (ログオン ページやアクセス パネルのカスタマイズ)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization)、[アプリケーション プロキシ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy)、[SLA 99.9%](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [セルフ サービスのグループおよびアプリケーション管理/セルフ サービスのアプリケーション追加/動的グループ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group)、[セルフ サービスのパスワード リセット/変更/ロック解除とオンプレミスの書き戻し](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back)、[Multi-Factor Authentication (クラウドおよびオンプレミス (MFA サーバー))](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server)、[MIM CAL + MIM サーバー](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server)、[Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery)、[Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health)、[グループ アカウントのパスワードの自動ロール オーバー](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [ID の保護](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection)、[Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [Azure AD へのデバイスの結合、デスクトップ SSO、 Azure AD 用の Microsoft Passport、管理者による Bitlocker の復旧](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)、[MDM 自動登録、セルフサービスの Bitlocker の復旧、Azure AD Join を介した Windows 10 デバイスへのローカル管理者の追加](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
 
 
 - [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) は、Azure Active Directory のプレミアム機能で、組織の従業員が使用しているクラウド アプリケーションを特定することができます。

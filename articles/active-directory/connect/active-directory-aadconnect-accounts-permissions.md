@@ -6,27 +6,27 @@ documentationcenter:
 author: billmath
 manager: femila
 editor: 
+ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/27/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 366c2c43ec50b0b6c47a25ea9b0e9d7109827429
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: fdd90721b6823c20c1ff27383769bfff24e80eae
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
 
-* 簡単設定: ウィザードにより多くの権限が必要になりますが、個別にユーザーを作成したりアクセス許可を構成しなくても構成を簡単にセットアップできます。
-* カスタム設定: ウィザードで使用できる選択肢とオプションは増えますが、状況によってはあなた自身が適切なアクセス許可を持っていることを確認する必要があります。
+* 簡単設定のウィザードには、より多くの特権が必要です。  これは、ユーザーを作成したりアクセス許可を構成したりする必要なく、構成を簡単に設定できるようにするためです。
+* カスタム設定のウィザードでは、より多くの選択肢とオプションが提供されます。 ただし、状況によっては設定を行うユーザー自身が適切なアクセス許可を持っていることが必要になります。
 
 ## <a name="related-documentation"></a>関連ドキュメント
 「[オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をまだお読みでない方のために、次の表に関連トピックへのリンクを示します。
@@ -40,7 +40,7 @@ Azure AD Connect インストール ウィザードには次の 2 つの別の�
 |インストール後に | [インストールの確認とライセンスの割り当て ](active-directory-aadconnect-whats-next.md)|
 
 ## <a name="express-settings-installation"></a>簡単設定を使用したインストール
-簡単設定では、オンプレミスの Active Directory を Azure AD Connect に必要なアクセス許可で構成できるように、インストール ウィザードで AD DS エンタープライズ管理者の資格情報が求められます。 DirSync からアップグレードする場合は、AD DS エンタープライズ管理者の資格情報を使用して、DirSync で使用されるアカウントのパスワードをリセットします。 Azure AD グローバル管理者の資格情報も必要になります。
+簡易設定のインストール ウィザードでは、AD DS エンタープライズ管理者の資格情報の入力が求められます。  これは、オンプレミスの Active Directory を Azure AD Connect に必要なアクセス許可で構成できるようにするためです。 DirSync からアップグレードする場合は、AD DS エンタープライズ管理者の資格情報を使用して、DirSync で使用されるアカウントのパスワードをリセットします。 Azure AD グローバル管理者の資格情報も必要になります。
 
 | ウィザード ページ | 収集される資格情報 | 必要なアクセス許可 | 用途 |
 | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ AD DS の読み取りと書き込み用に作成された [アカウント](#act
 | パスワードのリセット |パスワード ライトバックを有効にするための準備 |
 
 ## <a name="custom-settings-installation"></a>カスタム設定を使用したインストール
-以前のバージョンでは、カスタム設定を使用する場合、インストール前に Active Directory への接続に使用するアカウントを作成しておく必要があります。 このアカウントに付与する必要があるアクセス許可については、「 [AD DS アカウントの作成](#create-the-ad-ds-account)」を参照してください。 Azure AD Connect バージョン 1.1.524.0 以降では、Azure AD Connect ウィザードで自動的にアカウントを作成することを選択できるようになっています。
+Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使うアカウントを作成できるオプションがあります。  以前のバージョンでは、インストールする前にアカウントを作成する必要があります。 このアカウントに付与する必要があるアクセス許可については、「 [AD DS アカウントの作成](#create-the-ad-ds-account)」を参照してください。 
 
 | ウィザード ページ | 収集される資格情報 | 必要なアクセス許可 | 用途 |
 | --- | --- | --- | --- |
@@ -81,7 +81,7 @@ AD DS の読み取りと書き込み用に作成された [アカウント](#act
 | AD FS サービス アカウントのページ、[ドメイン ユーザー アカウントの使用オプション] |AD ユーザー アカウントの資格情報 |ドメイン ユーザー |資格情報を指定した AD ユーザー アカウントは、AD FS サービスのログオン アカウントとして使用します。 |
 
 ### <a name="create-the-ad-ds-account"></a>AD DS アカウントの作成
-Azure AD Connect をインストールした場合、**[ディレクトリの接続]** ページで指定したアカウントが Active Directory にあり、必要なアクセス許可が付与されている必要があります。 インストール ウィザードではアクセス許可は検証されません。問題があれば、同期中に検出されます。
+**[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  また、必要なアクセス許可を付与されている必要があります。 インストール ウィザードではアクセス許可は検証されません。問題があれば、同期中に検出されます。
 
 必要なアクセス許可は、有効にしたオプションの機能によって異なります。 複数のドメインがある場合は、フォレスト内のすべてのドメインにアクセス許可を付与する必要があります。 これらのいずれの機能も有効にしなかった場合、既定の **ドメイン ユーザー** アクセス許可で十分対応できます。
 
@@ -91,9 +91,9 @@ Azure AD Connect をインストールした場合、**[ディレクトリの接
 | パスワードの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
 | Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への書き込みアクセス許可。 |
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
-| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords.md)」に記載された属性への書き込みアクセス許可。 |
+| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords-writeback.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
-| グループの書き戻し |配布グループが配置されている OU 内のグループ オブジェクトの読み取り、作成、更新、および削除。 |
+| グループの書き戻し |同期された **Office 365 グループ**のグループ オブジェクトの読み取り、作成、更新、削除。  詳しくは、「[グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)」をご覧ください。|
 
 ## <a name="upgrade"></a>アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。
@@ -117,7 +117,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 
 | アカウントの種類 | インストール オプション | 説明 |
 | --- | --- | --- |
-| [仮想サービス アカウント](#virtual-service-account) | 高速およびカスタム、2017 年 4 月以降 | これは、ドメイン コントローラーでのインストールを除くすべての高速インストールに使用されるオプションです。 カスタムでは、別のオプションを使用しない限り、これが既定のオプションです。 |
+| [仮想サービス アカウント](#virtual-service-account) | 高速およびカスタム、2017 年 4 月以降 | これは、ドメイン コントローラーでのインストールを除くすべての高速インストールに使用されるオプションです。 カスタムでは、別のオプションが使われていない限り、これが既定のオプションです。 |
 | [グループの管理されたサービス アカウント](#group-managed-service-account) | カスタム、2017 年 4 月以降 | リモートの SQL サーバーを使用した場合、グループの管理されたサービス アカウントを使用することをお勧めします。 |
 | [ユーザー アカウント](#user-account) | 高速およびカスタム、2017 年 4 月以降 | AAD_ というプレフィックスが付いたユーザー アカウントが、Windows Server 2008 およびドメイン コントローラーにインストールした場合のインストール時にのみ作成されます。 |
 | [ユーザー アカウント](#user-account) | 高速およびカスタム、2017 年 3 月以前 | AAD_ というプレフィックスが付いたローカル アカウントがインストール時に作成されます。 カスタム インストールを使用した場合は、別のアカウントを指定できます。 |
@@ -156,16 +156,18 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 この機能では、Windows Server 2008 R2 以降が必要です。 Windows Server 2008 に Azure AD Connect をインストールする場合、インストールは代わりに[ユーザー アカウント](#user-account)を使用してフォールバックします。
 
 #### <a name="group-managed-service-account"></a>グループの管理されたサービス アカウント
-リモートの SQL サーバーを使用した場合、**グループの管理されたサービス アカウント**を使用することをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](https://technet.microsoft.com/library/hh831782.aspx)」をご覧ください。
+リモートの SQL サーバーを使う場合は、**グループの管理されたサービス アカウント**を使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](https://technet.microsoft.com/library/hh831782.aspx)」をご覧ください。
 
 このオプションを使用するには、[[必須コンポーネントのインストール]](active-directory-aadconnect-get-started-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、**[管理されたサービス アカウント]** を選択します。  
 ![VSA](./media/active-directory-aadconnect-accounts-permissions/serviceaccount.png)  
-[スタンドアロンの管理されたサービス アカウント](https://technet.microsoft.com/library/dd548356.aspx)を使用することもできます。 ただし、これらは、ローカル コンピューターでのみ使用できるため、既定の仮想サービス アカウントでこれらを使用した場合の現実的なメリットはありません。
+[スタンドアロンの管理されたサービス アカウント](https://technet.microsoft.com/library/dd548356.aspx)を使用することもできます。 ただし、これらはローカル コンピューターでのみ使うことができ、既定の仮想サービス アカウントでこれらを使うことにメリットはありません。
 
 この機能では、Windows Server 2012 以降が必要です。 以前のオペレーティング システムを使用し、リモート SQL を使用する必要がある場合は、[ユーザー アカウント](#user-account)を使用する必要があります。
 
 #### <a name="user-account"></a>ユーザー アカウント
-ローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。 アカウントは、先頭に **AAD_** が付き、実際の同期サービスがそのアカウントで実行されます。 Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。 SQL Server を実行しているリモート サーバーを使用するか、認証を必要とするプロキシを使用する場合は、**AAD_** サービス アカウントをドメイン内に配置する必要があります。
+ローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。 アカウントは、先頭に **AAD_** が付き、実際の同期サービスがそのアカウントで実行されます。 Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。 次の場合、**AAD_** サービス アカウントがドメインに存在する必要があります。
+   - SQL Server を実行しているリモート サーバーを使っている
+   - 認証が必要なプロキシを使っている
 
 ![同期サービス アカウント](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
@@ -184,7 +186,7 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 
 アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は FABRIKAMCON です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。
 
-サービス アカウントの作成時には、有効期限のない長く複雑なパスワードが設定されます。 このアカウントには、ディレクトリ同期タスクの実行権限のみを持つ特別なロール **ディレクトリ同期アカウント** が付与されます。 この特別な組み込みのロールは Azure AD Connect ウィザード以外では付与できず、Azure Portal では、このアカウントは **[ユーザー]**ロールを持つものとして表示されます。
+サービス アカウントの作成時には、有効期限のない長く複雑なパスワードが設定されます。 このアカウントには、ディレクトリ同期タスクの実行権限のみを持つ特別なロール **ディレクトリ同期アカウント** が付与されます。 この特別な組み込みロールを Azure AD Connect ウィザードの外部で付与することはできません。 Azure Portal ではこのアカウントには**ユーザー** ロールが表示されます。
 
 Azure AD での同期サービスのアカウント数の上限は 20 です。 Azure AD で既存の Azure AD サービス アカウントの一覧を取得するには、次の Azure AD PowerShell コマンドレットを実行します。`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 

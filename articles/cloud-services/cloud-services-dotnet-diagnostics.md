@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/25/2016
+ms.date: 05/22/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 226e86703843b026d20123543cf5311a5355aad4
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -32,10 +33,10 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 
 ### <a name="step-1-create-a-worker-role"></a>手順 1. worker ロールを作成する
 1. **Visual Studio** を起動します。
-2. .NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、新しい **Azure クラウド サービス** プロジェクトを作成します。  プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
+2. .NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、**Azure クラウド サービス** プロジェクトを作成します。  プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
 3. **[worker ロール]** を選択して [OK] をクリックします。 プロジェクトが作成されます。
-4. **[ソリューション エクスプローラー]** で、**[WorkerRole1]** プロパティ ファイルをダブルクリックします。
-5. **[構成]** タブで **[診断を有効にする]** をオフにして、診断 1.0 (Azure SDK 2.4 以前) を無効にします。
+4. **ソリューション エクスプローラー**で、**WorkerRole1** プロパティ ファイルをダブルクリックします。
+5. **[構成]** タブで、**[診断を有効にする]** をオフにして診断 1.0 (Azure SDK 2.4 以前) を無効にします。
 6. ソリューションを構築してエラーが発生しないことを確認します。
 
 ### <a name="step-2-instrument-your-code"></a>手順 2. コードをインストルメント化する
@@ -132,7 +133,7 @@ namespace WorkerRole1
 4. **[クラウド サービスとストレージ アカウントの作成]** ダイアログで **[名前]** を入力し ("WadExample" など)、リージョンまたはアフィニティ グループを選択します。
 5. **[環境]** を **[ステージング]** に設定します。
 6. 必要に応じて、他の **[設定]** を変更し、**[発行]** をクリックします。
-7. デプロイが完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure クラシック ポータルで確認します。
+7. デプロイが完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure Portal で確認します。
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>手順 4. 診断構成ファイルを作成して拡張機能をインストールする
 1. 次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。
@@ -186,7 +187,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>手順 6. テレメトリ データを確認する
-Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。 クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。 いずれかのテーブルをダブルクリックして、収集した利用統計情報を表示します。
+Visual Studio の**サーバー エクスプローラー**で、wadexample ストレージ アカウントに移動します。 クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。 いずれかのテーブルをダブルクリックして、収集した利用統計情報を表示します。
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
@@ -197,7 +198,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-diagnostics-troubleshooting.md) 」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-[仮想マシンに関連する Azure 診断に関する記事の一覧](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) をご覧ください。
+収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics)をご覧ください。
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

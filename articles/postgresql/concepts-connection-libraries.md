@@ -1,29 +1,27 @@
 ---
 title: "Azure Database for PostgreSQL の接続ライブラリ | Microsoft Docs"
-description: "クライアント プログラムが Azure Database for PostgreSQL に接続するときに使用できる各ライブラリまたはドライバーを示します。"
-keywords: azure cloud postgresql postgres
+description: "この記事では、アプリケーションをコーディングして PostgreSQL for Azure Database に接続およびクエリを実行するときに、開発者が使用できるさまざまなライブラリやドライバーについて説明します。"
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql - database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.service: postgresql
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/15/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6bb3f393a8e9533b86919e9a1ebe3490ab838714
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7099e26fd749820ab6869c0262e1f97d993ab7b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続ライブラリ
-このトピックでは、クライアント プログラムが Azure Database for PostgreSQL に接続するときに使用できる各ライブラリまたはドライバーを示します。
+このトピックには、アプリケーションをプログラミングして PostgreSQL for Azure Database に接続およびクエリを実行するときに開発者が使用できるライブラリやドライバーの一覧を示します。
 
 ## <a name="client-interfaces"></a>クライアント インターフェイス
-PostgreSQL サーバーに接続するほとんどの言語クライアント ライブラリが外部プロジェクトです。このクライアント ライブラリは個別に配布され、 Windows、Linux、および Mac プラットフォームでサポートされます。 一般的なクライアント ドライバーをいくつか次に示します。
+PostgreSQL サーバーに接続するほとんどの言語クライアント ライブラリが外部プロジェクトです。このクライアント ライブラリは個別に配布され、 Windows、Linux、および Mac プラットフォームでサポートされます。 一般的なクライアント ドライバーの一部が一覧表示されます。
+
 | **言語** | **クライアント インターフェイス** | **追加情報** | **ダウンロード** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2.0 対応 | [ダウンロード](http://initd.org/psycopg/download/) |
@@ -38,7 +36,7 @@ PostgreSQL サーバーに接続するほとんどの言語クライアント �
 | C++ | [libpqxx](http://pqxx.org/) | 新しいスタイルの C++ インターフェイス | [ダウンロード](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>次のステップ
-- サービスの概要については、[Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください。
-- サーバーの詳細については、[Azure Database for PostgreSQL サーバー](concepts-servers.md)に関するページをご覧ください。
-- 最初の PostgreSQL サーバーを作成するには、「[Create an Azure Database for PostgreSQL in the Azure portal (Azure Portal での Azure Database for PostgreSQL の作成)](quickstart-create-server-database-portal.md)」を参照してください。
+これらのクイックスタートを読み、次の言語を使用して Azure Database for PostgreSQL に接続およびクエリを実行する方法について確認します。
+
+[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)
 

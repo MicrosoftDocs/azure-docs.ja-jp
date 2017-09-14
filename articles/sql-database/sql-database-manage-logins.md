@@ -18,10 +18,10 @@ ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: f29b2c1da0d9b761634370f5f08ea942b66d9f1f
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 51edd390c065dd7312ecc54694b5a95ecc11eab8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/15/2017
 >
 
 > [!TIP]
-> SQL Server 認証を使用する手引きについては、[SQL Server 認証に関するチュートリアル](sql-database-control-access-sql-authentication-get-started.md)を参照してください。 Azure Active Directory 認証を使用する手引きについては、[AAD 認証に関するチュートリアル](sql-database-control-access-aad-authentication-get-started.md)を参照してください。
+> チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
 >
 
 
@@ -191,9 +191,7 @@ SQL Database のログインとユーザーの管理では、以下の点を考�
 
 - ファイアウォール規則の詳細については、[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)に関するページを参照してください。
 - SQL Database のすべてのセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
-- チュートリアルについては、[SQL セキュリティの使用](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
+- チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
 - ビューとストアド プロシージャについては、「[ビューとストアド プロシージャの作成](https://msdn.microsoft.com/library/ms365311.aspx)」を参照してください。
 - データベース オブジェクトへのアクセス権の付与については、「[データベース オブジェクトへのアクセス権の付与](https://msdn.microsoft.com/library/ms365327.aspx)」を参照してください。
-- SQL Server 認証を使用する手引きについては、[SQL Server 認証に関するチュートリアル](sql-database-control-access-sql-authentication-get-started.md)を参照してください。
-- Azure Active Directory 認証を使用する手引きについては、[AAD 認証に関するチュートリアル](sql-database-control-access-aad-authentication-get-started.md)を参照してください。
 

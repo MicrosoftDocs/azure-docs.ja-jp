@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB チュートリアル: Apache TinkerPops Gremlin コンソールでの作成、クエリ、走査 | Microsoft Docs"
 description: "Azure Cosmos DB Graph API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。"
 services: cosmos-db
-author: AndrewHoh
+author: dennyglee
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
@@ -10,14 +10,14 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
-ms.topic: hero-article
-ms.date: 06/10/2017
-ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 44972270a13f5ab5b3aa22557b36e80ae406a4a6
+ms.topic: quickstart
+ms.date: 07/27/2017
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: fd5cc93ce1ed2a8c7da090666ef539b338ac61c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
@@ -28,7 +28,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ![Apache Gremlin コンソールからの Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
-Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、および Windows 上で実行します。 これは [Apache TinkerPop サイト](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.4/apache-tinkerpop-gremlin-console-3.2.4-bin.zip)からダウンロードできます。
+Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、および Windows 上で実行します。 これは [Apache TinkerPop サイト](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.5/apache-tinkerpop-gremlin-console-3.2.5-bin.zip)からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,9 +36,9 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Gremlin コンソール](http://tinkerpop.apache.org/)もインストールする必要があります。 バージョン 3.2.4 以降を使用してください。
+[Gremlin コンソール](http://tinkerpop.apache.org/)もインストールする必要があります。 バージョン 3.2.5 以降を使用してください。
 
-## <a name="create-a-database-account"></a>データベース アカウントの作成
+## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
@@ -47,20 +47,28 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>App Service への接続
-1. Gremlin コンソールを開始する前に、*apache-tinkerpop-gremlin-console-3.2.4/conf* ディレクトリで *remote-secure.yaml* 構成ファイルを作成または変更します。
+1. Gremlin コンソールを開始する前に、apache-tinkerpop-gremlin-console-3.2.5/conf ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
 2. *host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
-    設定|推奨値|説明
+    設定|推奨値|Description
     ---|---|---
-    ホスト|***.graphs.azure.com|Graph サービス URI。Azure Portal から取得できます
-    ポート|443|443 に設定します
-    ユーザー名|*自分のユーザー名*|フォーム `/dbs/<db>/colls/<coll>` のリソース。
-    パスワード|*プライマリ マスター キー*|Azure Cosmos DB のプライマリ マスター キー
-    接続プール|{enableSsl: true}|SSL 用の接続プールの設定
-    シリアライザー|{ className:org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|この値に設定します
+    hosts|[***.graphs.azure.com]|以下のスクリーンショットをご覧ください。 これは、Azure Portal の [概要] ページに表示される [Gremlin URI] の値から末尾の ":443/" を削除して角かっこで囲んだものです。<br><br>この値は、[キー] タブから取得することもできます。その場合は、[URI] の値から "https://" を削除し、documents を graphs に変更して、末尾の ":443/" を削除してください。
+    ポート|443|443 に設定します。
+    username|*自分のユーザー名*|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は実際のデータベースの名前、`<coll>` は実際のコレクションの名前になります。
+    パスワード|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
+    connectionPool|{enableSsl: true}|SSL 用の接続プールの設定です。
+    serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|この値に設定します。改行 (`\n`) を削除して値を貼り付けてください。
 
-3. ターミナルで、*bin/gremlin.bat* または *bin/gremlin.sh* を実行して、[Gremlin コンソール](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/)を起動します。
-4. ターミナルで、*:remote connect tinkerpop.server conf/remote-secure.yaml* を実行して、App Service に接続します。
+    hosts の値については、**[概要]** ページにある **[Gremlin URI]** から値をコピーしてください。![Azure Portal の [概要] ページで [Gremlin URI] の値を表示してコピー](./media/create-graph-gremlin-console/gremlin-uri.png)
+
+    password の値については、**[キー]** ページにある **[プライマリ キー]** から値をコピーしてください。![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-gremlin-console/keys.png)
+
+
+3. ご使用のターミナルで、`bin/gremlin.bat` または `bin/gremlin.sh` を実行して [Gremlin コンソール](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)を起動します。
+4. ご使用のターミナルで、`:remote connect tinkerpop.server conf/remote-secure.yaml` を実行して目的の App Service に接続します。
+
+    > [!TIP]
+    > エラー `No appenders could be found for logger` が発生した場合、手順 2. で説明されているとおり、remote-secure.yaml ファイルの serializer 値を更新したことを確認してください。 
 
 これでセットアップは終了です。 いくつかのコンソール コマンドの実行を開始しましょう。
 
@@ -70,12 +78,12 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 ```
 
 > [!TIP]
-> g.V().count() というテキストの前にある ***:>*** に注意してください。 
+> `g.V().count()` というテキストの前にある `:>` に注意してください。 
 >
 > これは入力するコマンドの一部です。 Azure Cosmos DB で Gremlin コンソールを使用するときに重要です。  
 >
-> この :> プレフィックスを省略すると、コンソールによってコマンドがローカルで、多くの場合、メモリ内のグラフに対して実行されます。
-> この ***:>*** を使用して、リモート コマンドを実行するようにコンソールに指示します。このケースでは、Cosmos DB (localhost エミュレーターまたは > Azure インスタンス) に対して実行されます。
+> この `:>` プレフィックスを省略すると、コンソールによってコマンドがローカルで、多くの場合、メモリ内のグラフに対して実行されます。
+> この `:>` を使用して、リモート コマンドを実行するようにコンソールに指示します。このケースでは、Cosmos DB (localhost エミュレーターまたは > Azure インスタンス) に対して実行されます。
 
 
 ## <a name="create-vertices-and-edges"></a>頂点と辺の作成

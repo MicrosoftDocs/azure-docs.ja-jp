@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 07/20/2017
 ms.author: priyamo
-translationtype: Human Translation
+ms.reviewer: elisol
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: d2dd84007832c56f5893f0ea9f5effcf5ec5816b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 ---

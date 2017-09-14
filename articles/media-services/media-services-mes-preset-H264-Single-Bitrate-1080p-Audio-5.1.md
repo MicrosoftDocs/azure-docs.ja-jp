@@ -2,7 +2,7 @@
 title: H264 Single Bitrate 1080p Audio 5.1 | Microsoft Docs
 description: "このトピックでは、**H264 Single Bitrate 1080p Audio 5.1** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 07/21/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
 ms.openlocfilehash: 6cc00362c68dbb2adfcbaed56c6e619e33477c80
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/29/2016
 
 ---
 
@@ -116,8 +117,4 @@ ms.openlocfilehash: 6cc00362c68dbb2adfcbaed56c6e619e33477c80
   ]  
 }  
 ```
-
-
-<!--HONumber=Nov16_HO5-->
-
 

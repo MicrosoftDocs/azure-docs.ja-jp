@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: f824f80aaba2cd2de7590ecf4560bb5559a66e82
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: bfb41f254d74bef843461a058ee5b2ced7fc45ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
@@ -84,22 +83,31 @@ Azure AD Connect (バージョン 1.1.524.0 以降) では、msDS-ConsistencyGui
 >[!NOTE]
 > オンプレミス AD オブジェクトが Azure AD Connect にインポートされた (つまり、AD のコネクタ スペースにインポートされてメタバースに反映された) 後は、その sourceAnchor の値は変更できなくなります。 特定のオンプレミス AD オブジェクトに対して sourceAnchor の値を指定するには、そのオブジェクトが Azure AD Connect にインポートされる前に、その msDS-ConsistencyGuid 属性を構成してください。
 
+### <a name="permission-required"></a>必要なアクセス許可
+この機能を利用するためには、オンプレミス Active Directory との同期に使用する AD DS アカウントに、オンプレミス Active Directory 内の msDS-ConsistencyGuid 属性への書き込みアクセス許可を付与する必要があります。
+
+### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>ConsistencyGuid 機能を有効にする方法 - 新規インストール
+新規インストール時に ConsistencyGuid の使用を sourceAnchor として有効にすることができます。 このセクションでは、高速インストールとカスタム インストールの両方を詳細に説明します。
+
+  >[!NOTE]
+  > 新規インストール時に ConsistencyGuid を sourceAnchor として使用することは、新しいバージョンの Azure AD Connect (1.1.524.0 以降) でのみサポートされています。
+
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>ConsistencyGuid 機能を有効にする方法
 現在この機能を有効にできるのは、Azure AD Connect の新規インストール時に限られます。
 
 #### <a name="express-installation"></a>高速インストール
 Azure AD Connect を高速モードでインストールする場合、sourceAnchor 属性として最適な AD 属性が Azure AD Connect ウィザードによって自動的に決定されます。その際、以下のロジックが使用されます。
 
-* まず、以前の Azure AD Connect インストール (存在する場合) で sourceAnchor 属性として使用されていた AD 属性を、Azure AD Connect ウィザードが Azure AD テナントに照会して取得します。 この情報が判明した場合は、同じ AD 属性が使用されます。 この情報が判明しなかった場合は、以下の処理が実行されます。
+* まず、以前の Azure AD Connect インストール (存在する場合) で sourceAnchor 属性として使用されていた AD 属性を、Azure AD Connect ウィザードが Azure AD テナントに照会して取得します。 この情報が判明した場合は、同じ AD 属性が使用されます。
 
-* オンプレミス Active Directory の msDS-ConsistencyGuid 属性の状態がウィザードによってチェックされます。 この属性がディレクトリ内のどのオブジェクトに対しても構成されていない場合、msDS-ConsistencyGuid が sourceAnchor 属性として使用されます。 ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されており、sourceAnchor 属性としては適さないと判断されます。
+  >[!NOTE]
+  > インストール時に使用される sourceAnchor 属性についての情報を Azure AD テナントに格納するのは、新しいバージョンの Azure AD Connect (1.1.524.0 以降) のみです。 それより前のバージョンの Azure AD Connect には該当しません。
+
+* 使用されている sourceAnchor 属性の情報がない場合、ウィザードがオンプレミスの Active Directory で msDS-ConsistencyGuid 属性の状態を確認します。 この属性がディレクトリ内のどのオブジェクトに対しても構成されていない場合、msDS-ConsistencyGuid が sourceAnchor 属性として使用されます。 ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されており、sourceAnchor 属性としては適さないと判断されます。
 
 * その場合は、代わりに objectGUID が sourceAnchor 属性として使用されます。
 
 * sourceAnchor 属性が決まると、その情報が Azure AD テナントに格納されます。 この情報は、その後 Azure AD Connect のインストールに使用されます。
-
-  >[!NOTE]
-  > 使用されている sourceAnchor 属性についての情報を Azure AD テナントに格納するのは、比較的新しいバージョンの Azure AD Connect (1.1.524.0 以降) だけです。 それより前のバージョンの Azure AD Connect には該当しません。
 
 高速インストールが完了すると、ソース アンカー属性として選択された属性が、ウィザードから通知されます。
 
@@ -115,8 +123,37 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
 
-### <a name="permission-required"></a>必要なアクセス許可
-この機能を利用するためには、オンプレミス Active Directory との同期に使用する AD DS アカウントに、オンプレミス Active Directory 内の msDS-ConsistencyGuid 属性への書き込みアクセス許可を付与する必要があります。
+### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>ConsistencyGuid 機能を有効にする方法 - 既存のデプロイ
+ソース アンカー属性として objectGUID を使用する Azure AD Connect のデプロイが既にある場合は、代わりに ConsistencyGuid を使用するよう切り替えることができます。
+
+>[!NOTE]
+> ソース アンカー属性として ObjectGuid から ConsistencyGuid への切り替えをサポートするのは、新しいバージョンの Azure AD Connect (1.1.552.0 以降) のみです。
+
+ソース アンカー属性を ObjectGuid から ConsistencyGuid に切り替えるには:
+
+1. Azure AD Connect ウィザードを起動し、[**構成**] をクリックしてタスク画面に移動します。
+
+2. [**Configure Source Anchor\(ソース アンカーを構成\)**] タスク オプションを選択して、[**次へ**] をクリックします。
+
+   ![既存のデプロイで ConsistencyGuid を有効にする - 手順 2](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment01.png)
+
+3. Azure AD の管理者資格情報を入力し、[**次へ**] をクリックします。
+
+4. オンプレミスの Active Directory で msDS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 [**次へ**] をクリックして続行します。
+
+   ![既存のデプロイで ConsistencyGuid を有効にする - 手順 4](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment02.png)
+
+5. [**構成の準備完了**] 画面で、[**構成**] をクリックし構成を変更します。
+
+   ![既存のデプロイで ConsistencyGuid を有効にする - 手順 5](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment03.png)
+
+6. 構成が完了すると、ウィザードに、msDS ConsistencyGuid がソース アンカー属性として使用されていることが示されます。
+
+   ![既存のデプロイで ConsistencyGuid を有効にする - 手順 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
+
+解析中 (手順 4) で、ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されているとウィザードにより判断され、以下の図のようなエラーが返されます。 この属性が、既存のアプリケーションで使用されていないことが確実である場合は、サポートに連絡してエラーの抑制方法を入手する必要があります。
+
+![既存のデプロイで ConsistencyGuid を有効にする - エラー](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS の構成またはサードパーティのフェデレーションの構成に対する影響
 Azure AD Connect を使用してオンプレミス AD FS デプロイを管理している場合、同じ AD 属性を sourceAnchor として使用するように、要求規則が自動的に更新されます。 これによって、ADFS によって生成される ImmutableID 要求と Azure AD にエクスポートされる sourceAnchor 値との整合性が確実に保たれます。
@@ -155,5 +192,4 @@ John は、contoso.com に属するユーザーです。 Azure AD ディレク�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
 

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 7ea9988b02bc09626a11efb5e95c2349b378256a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 77042219cbe698a33ab9447aa952586772897241
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
@@ -91,7 +90,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 1. ソリューション エクスプローラーの **[リンクされたサービス]** を右クリックして **[追加]** をポイントし、**[新しい項目]** をクリックします。      
 2. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service (Azure Storage のリンクされたサービス)]** を選択し、**[追加]** をクリックします。
     ![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
-3. `<accountname>` と `<accountkey>` を Azure ストレージ アカウントの名前とキーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+3. `<accountname>` と `<accountkey>` を Azure ストレージ アカウントの名前とキーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
     ![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
 
@@ -106,8 +105,10 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
         "properties": {
         "type": "HDInsightOnDemand",
             "typeProperties": {
+                "version": "3.5",
                 "clusterSize": 1,
-                "timeToLive": "00:30:00",
+                "timeToLive": "00:05:00",
+                "osType": "Linux",
                 "linkedServiceName": "AzureStorageLinkedService1"
             }
         }
@@ -406,7 +407,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 - リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスと、そのコンピューティング サービス上で実行できる[変換アクティビティ](data-factory-data-transformation-activities.md)の一覧については、[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 - Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure Blob との間でのデータの移動](data-factory-azure-blob-connector.md#azure-storage-linked-service)に関する記事を参照してください。
 - オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [Compute Linked Services](data-factory-compute-linked-services.md) に関するセクションを参照してください。
--  Data Factory は、上記の JSON で **Windows ベース** の HDInsight クラスターを自動的に作成します。 **Linux ベース** の HDInsight クラスターを作成させることもできます。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
+-  Data Factory は、上記の JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 - HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     
     処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。

@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 838be613a35ac4af988e089efb57e45365cc7636
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 39bb294c96ce0c12d91cf8b3488ac3e1a7b2f7b2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
@@ -42,11 +43,10 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 2. **[監視]**で、監視レベルの設定 ([詳細] または [最小])、および詳細監視に必要な診断接続文字列の構成を行います。
 3. サービス ロールについては (ロールによりグループ分け)、次の設定を更新できます。
    
-    * **[設定]** 
-       - サービス構成ファイル (.cscfg) の *ConfigurationSettings* 要素で指定された各種構成設定値を変更します。
+    * **[設定]** サービス構成ファイル (.cscfg) の *ConfigurationSettings* 要素で指定された各種構成設定値を変更します。
 
     * **証明書**  
-         - ロールの SSL 暗号化で使用されている証明書の拇印を変更します。 証明書を変更するには、まず、 **[証明書]** ページで新しい証明書をアップロードする必要があります。 次に、ロール設定に表示される証明書文字列のサムプリントを更新します。
+        - ロールの SSL 暗号化で使用されている証明書の拇印を変更します。 証明書を変更するには、まず、 **[証明書]** ページで新しい証明書をアップロードする必要があります。 次に、ロール設定に表示される証明書文字列のサムプリントを更新します。
 4. **[オペレーティング システム]** で、ロール インスタンスのオペレーティング システム ファミリまたはバージョンを変更することも、**[自動]** を選択して、現在のオペレーティング システム バージョンの自動更新を有効にすることもできます。 オペレーティング システムの設定は、Web ロールと Worker ロールには適用されますが、Virtual Machines は影響を受けません。
    
     デプロイ中に、すべてのロール インスタンスに最新のオペレーティング システムがインストールされ、オペレーティング システムは既定で自動更新されます。 
@@ -77,10 +77,5 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

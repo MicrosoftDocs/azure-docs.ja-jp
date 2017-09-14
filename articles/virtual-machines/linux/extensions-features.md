@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 2b25b4f4925962b1e4de681d268e78909a93eccd
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 8a5b39351f665c51ae7d83f755329e54ff3cf786
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
+
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
 Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使用して、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、および Azure Portal を使用して実行できます。 拡張機能は、新しい仮想マシン デプロイにバンドルすることも、既存の任意のシステムに対して実行することもできます。
@@ -33,13 +34,12 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Linux 用の DSC 拡張機能を使用して、仮想マシンに PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Microsoft Monitoring Agent の VM 拡張機能を使用して仮想マシンの監視を構成します。 詳細については、「[Azure VM の監視を有効または無効にする](vm-monitoring.md)」を参照してください。
+- Microsoft Monitoring Agent の VM 拡張機能を使用して仮想マシンの監視を構成します。 詳細については、[Linux VM の監視方法](tutorial-monitoring.md)に関する記事を参照してください。
 - Datadog 拡張機能を使用して Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 - Docker VM 拡張機能を使用して Azure 仮想マシンで Docker ホストを構成します。 詳細については、[Docker VM 拡張機能](dockerextension.md)に関するページを参照してください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](extensions-customscript.md)に関するページを参照してください。
 
-VM 拡張機能がエンド ツー エンドのアプリケーションのデプロイで使用される例については、「[Azure Virtual Machines へのアプリケーションのデプロイを自動化する](../windows/dotnet-core-1-landing.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -130,7 +130,7 @@ VM 拡張機能を Azure Resource Manager テンプレートに追加し、テ�
 }
 ```
 
-詳細については、「[Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](../windows/extensions-authoring-templates.md)」を参照してください。
+詳細については、「[Azure Resource Manager のテンプレートの作成](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions)」をご覧ください。
 
 ## <a name="secure-vm-extension-data"></a>VM 拡張機能のデータの保護
 

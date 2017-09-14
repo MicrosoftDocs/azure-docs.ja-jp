@@ -4,7 +4,7 @@ description: "Azure App Service Mobile Apps と Azure Notification Hubs を使�
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: ysxu
-manager: adrianha
+manager: syntaxc4
 editor: 
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 5e71ecc6539179efdcfa6bfc4567bddaa96a59d9
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する

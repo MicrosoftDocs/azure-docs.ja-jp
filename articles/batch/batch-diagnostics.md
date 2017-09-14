@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 16a13909079306256ded06f2100815c46ff562a3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Batch ソリューションの診断の評価と監視のログ イベント
@@ -34,7 +33,7 @@ ms.lasthandoff: 02/28/2017
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure Batch アカウント](batch-account-create-portal.md)
-* [Azure Storage アカウント](../storage/storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)
   
   Batch 診断ログを保持するには、Azure がログを格納するための Azure Storage アカウントを作成する必要があります。 このストレージ アカウントを指定してから、Batch アカウントの[診断ログを有効化](#enable-diagnostic-logging)します。 ログ収集を有効化するときに指定するストレージ アカウントは、[アプリケーション パッケージ](batch-application-packages.md)と[タスク出力の保持](batch-task-output.md)の記事で参照されているリンクされたストレージ アカウントとは異なります。
   
@@ -46,7 +45,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="enable-diagnostic-logging"></a>診断ログの有効化
 診断ログは Batch アカウントに関して既定では無効です。 監視する Batch アカウントごとに診断ログを明示的に有効化する必要があります。
 
-[診断ログの収集を有効にする方法](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
+[診断ログの収集を有効にする方法](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
 
 「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をすべて読み、ログを有効化する方法だけではなく、さまざまな Azure サービスでサポートされるログ カテゴリについて理解することをお勧めします。 たとえば、Azure Batch で現在サポートされている 1 つのログ カテゴリは**サービス ログ**です。
 

@@ -25,11 +25,13 @@
 ## [REST ()](/rest/api/scheduler)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/scheduler/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [料金](https://azure.microsoft.com/pricing/details/scheduler/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=scheduler)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=scheduler)
 
 
 

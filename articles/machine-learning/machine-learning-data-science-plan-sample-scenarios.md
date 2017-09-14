@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
-ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
-ms.lasthandoff: 01/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: fe4f74f2e0602d13eedb6ca186480291a9a5724f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/31/2017
 > **以下のすべてのシナリオで、次の操作を行う必要があります。**
 > <br/>
 > 
-> * [ストレージ アカウントの作成](../storage/storage-create-storage-account.md)
+> * [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)
 >   <br/>
 > * [Azure Machine Learning ワークスペースの作成](machine-learning-create-workspace.md)
 > 

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/22/2017
+ms.date: 06/22/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: b80ee30379e9aac207cfe420cae17da57ea123a5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8d876a0f2168ee9375a3905d5d5a562ab1194cf3
 ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
-ms.lasthandoff: 03/02/2017
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する
@@ -142,7 +142,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployme
 Service Fabric では証明書を使用して、クラスターとそのアプリケーションのさまざまな側面をセキュリティで保護するための認証および暗号化を指定します。 Service Fabric での証明書の使用方法の詳細については、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をご覧ください。
 
 ### <a name="cluster-and-server-certificate-required"></a>クラスターとサーバーの証明書 (必須)
-この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。 クラスターのセキュリティは次の&2; つの方法で確保されます。
+この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。 クラスターのセキュリティは次の 2 つの方法で確保されます。
 
 * クラスター認証: クラスター フェデレーション用のノード間通信を認証します。 この証明書で自分の ID を証明できたノードだけがクラスターに参加できます。
 * サーバー認証: 管理クライアントに対するクラスター管理エンドポイントを認証します。これで、管理クライアントにより、実際のクラスターと通信していることが認識されるようになります。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対して SSL も提供します。
@@ -220,7 +220,7 @@ Value : https://mywestusvault.vault.azure.net:443/secrets/mycert/4d087088df974e8
 ```
 
 >[!NOTE]
->セキュリティで保護された Service Fabric クラスターを設定し、アプリケーションのセキュリティ確保のために使用しているアプリケーション証明書を取得するには、先頭に CertificateThumbprint、SourceVault、および CertificateURL の&3; つの文字列が必要です。 文字列を保存しない場合、後で Key Vault を照会してそれらを取得するのが困難になることがあります。
+>セキュリティで保護された Service Fabric クラスターを設定し、アプリケーションのセキュリティ確保のために使用しているアプリケーション証明書を取得するには、先頭に CertificateThumbprint、SourceVault、および CertificateURL の 3 つの文字列が必要です。 文字列を保存しない場合、後で Key Vault を照会してそれらを取得するのが困難になることがあります。
 
 <a id="add-self-signed-certificate-to-key-vault"></a>
 
@@ -230,7 +230,7 @@ Key Vault に既に証明書をアップロードしている場合は、この�
 
 ```powershell
 
-$ResouceGroup = "chackowestuskv"
+$ResourceGroup = "chackowestuskv"
 $VName = "chackokv2"
 $SubID = "6c653126-e4ba-42cd-a1dd-f7bf96ae7a47"
 $locationRegion = "westus"
@@ -238,7 +238,7 @@ $newCertName = "chackotestcertificate1"
 $dnsName = "www.mycluster.westus.mydomain.com" #The certificate's subject name must match the domain used to access the Service Fabric cluster.
 $localCertPath = "C:\MyCertificates" # location where you want the .PFX to be stored
 
- Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResouceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
+ Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResourceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
 
 ```
 
@@ -279,7 +279,7 @@ Value : https://westuskv1.vault.azure.net:443/secrets/chackonewcertificate1/ee24
 ```
 
 >[!NOTE]
->セキュリティで保護された Service Fabric クラスターを設定し、アプリケーションのセキュリティ確保のために使用しているアプリケーション証明書を取得するには、先頭に CertificateThumbprint、SourceVault、および CertificateURL の&3; つの文字列が必要です。 文字列を保存しない場合、後で Key Vault を照会してそれらを取得するのが困難になることがあります。
+>セキュリティで保護された Service Fabric クラスターを設定し、アプリケーションのセキュリティ確保のために使用しているアプリケーション証明書を取得するには、先頭に CertificateThumbprint、SourceVault、および CertificateURL の 3 つの文字列が必要です。 文字列を保存しない場合、後で Key Vault を照会してそれらを取得するのが困難になることがあります。
 
  この時点で、次の要素が配置されます。
 
@@ -319,7 +319,7 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 
     https://&lt;cluster_domain&gt;:19080/Explorer
 
-    Azure AD テナント用の管理特権を持っているアカウントにサインインすることを求められます。 サインインすると、スクリプトは、Service Fabric クラスターを表す Web アプリケーションとネイティブ アプリケーションを作成します。 [Azure クラシック ポータル][azure-classic-portal]でテナントのアプリケーションを調べると、次の&2; つの新しいエントリがあることがわかります。
+    Azure AD テナント用の管理特権を持っているアカウントにサインインすることを求められます。 サインインすると、スクリプトは、Service Fabric クラスターを表す Web アプリケーションとネイティブ アプリケーションを作成します。 [Azure クラシック ポータル][azure-classic-portal]でテナントのアプリケーションを調べると、次の 2 つの新しいエントリがあることがわかります。
 
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
@@ -340,7 +340,7 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 サンプルの Resource Manager テンプレートは、[GitHub の Azure クイック スタート テンプレート ギャラリー][azure-quickstart-templates]で入手できます。 これらのテンプレートは、クラスター テンプレートの作成を始める際に使用できます。
 
 ### <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
-このガイドでは、[セキュリティで保護された&5; ノード クラスター][service-fabric-secure-cluster-5-node-1-nodetype]の例にあるテンプレートとテンプレート パラメーターを使用します。 `azuredeploy.json` と `azuredeploy.parameters.json` をコンピューターにダウンロードして、任意のテキスト エディターで両方のファイルを開きます。
+このガイドでは、[セキュリティで保護された 5 ノード クラスター][service-fabric-secure-cluster-5-node-1-nodetype]の例にあるテンプレートとテンプレート パラメーターを使用します。 `azuredeploy.json` と `azuredeploy.parameters.json` をコンピューターにダウンロードして、任意のテキスト エディターで両方のファイルを開きます。
 
 ### <a name="add-certificates"></a>証明書の追加
 証明書は、証明書キーを含む Key Vault を参照することによって、Cluster Resource Manager テンプレートに追加されます。 Key Vault の値は Resource Manager テンプレート パラメーターのファイルに配置することをお勧めします。 これにより Resource Manager テンプレートのファイルを再利用可能にし、デプロイに合わせて値を変更できます。
@@ -460,7 +460,8 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 }
 ```
 
-### <a name="a-configure-arm-aconfigure-resource-manager-template-parameters"></a><a "configure-arm" ></a>Resource Manager テンプレート パラメーターの構成
+### <a "configure-arm" ></a>Resource Manager テンプレート パラメーターの構成
+<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
 最後に、Key Vault と Azure AD PowerShell コマンドからの出力値を使用してパラメーター ファイルを作成します。
 
 ```json
@@ -555,7 +556,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 >
 >
 
- <a name="secure-linux-cluster"></a>
+ <a name="secure-linux-clusters"></a>
+ <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
 ## <a name="create-secure-clusters-on-linux"></a>セキュリティで保護されたクラスターを Linux 上に作成する
 プロセス簡略化のために、[ヘルパー スクリプト](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)を用意しました。 このヘルパー スクリプトを使用する前に、Azure コマンド ライン インターフェイス (CLI) が既にインストールされており、パス内にあることを確認します。 ダウンロード後、必ず `chmod +x cert_helper.py` を実行して、スクリプトに実行権限を割り当ててください。 まず、CLI から `azure login` コマンドを実行して Azure アカウントにサインインします。 Azure アカウントへのサインイン後、次のコマンドに示すように、証明機関の署名入りの証明書と一緒にヘルパー スクリプトを指定します。
@@ -568,7 +570,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 パラメーター -h はヘルプ テキストを出力します。
 
 
-コマンドの出力として次の&3; つの文字列が返されます。
+コマンドの出力として次の 3 つの文字列が返されます。
 
 * SourceVaultID: 新しく作成された KeyVault ResourceGroup の ID
 * CertificateUrl: 証明書にアクセスするために使用
@@ -579,7 +581,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 ```sh
 ./cert_helper.py pfx -sub "fffffff-ffff-ffff-ffff-ffffffffffff"  -rgname "mykvrg" -kv "mykevname" -ifile "/home/test/cert.pfx" -sname "mycert" -l "East US" -p "pfxtest"
 ```
-先頭のコマンドを実行すると、次の&3; つの文字列が返されます。
+先頭のコマンドを実行すると、次の 3 つの文字列が返されます。
 
 ```sh
 SourceVault: /subscriptions/fffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/mykvrg/providers/Microsoft.KeyVault/vaults/mykvname
@@ -680,4 +682,5 @@ FabricClient と FabricGateway では、相互認証が実行されます。 Azu
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
+
 

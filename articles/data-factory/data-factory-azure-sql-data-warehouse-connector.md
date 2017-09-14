@@ -1,6 +1,6 @@
 ---
-title: "SQL Data Warehouse との間でのデータの移動 | Microsoft Docs"
-description: "Azure Data Factory を使用して Azure SQL Data Warehouse に、または Azure SQL Data Warehouse からデータを移動する方法を説明します。"
+title: "Azure SQL Data Warehouse との間でのデータのコピー | Microsoft Docs"
+description: "Azure Data Factory を使用して Azure SQL Data Warehouse との間でデータをコピーする方法を説明します"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -12,22 +12,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/04/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: c491e8c8ac994ff5c303499a100f0a5307760f8e
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8cba89e0947646b498af07aa484511bf07bf7b0e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
-# <a name="move-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動
+# <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 この記事では、Azure Data Factory のコピー アクティビティを使って Azure SQL Data Warehouse との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。  
-
-サポートされる任意のソース データ ストアのデータを Azure SQL Data Warehouse にコピーしたり、Azure SQL Warehouse のデータをサポートされる任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
 
 > [!TIP]
 > 最高のパフォーマンスを実現するには、PolyBase を使用して、Azure SQL Data Warehouse にデータを読み込みます。 「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」セクションに詳細が記載されています。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+
+## <a name="supported-scenarios"></a>サポートされるシナリオ
+**Azure SQL Data Warehouse から**以下のデータ ストアにデータをコピーできます。
+
+[!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
+
+以下のデータ ストアから **Azure SQL Data Warehouse に**データをコピーできます。
+
+[!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
+
+> [!TIP]
+> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory では、ソース データ ストアのテーブルのスキーマを使用して、SQL Data Warehouse にテーブルを自動的に作成することができます。 詳細については、「[テーブルの自動作成](#auto-table-creation)」を参照してください。
 
 ## <a name="supported-authentication-type"></a>サポートされている認証の種類
 Azure SQL Data Warehouse コネクタは基本認証をサポートしています。
@@ -37,18 +47,16 @@ Azure SQL Data Warehouse コネクタは基本認証をサポートしていま�
 
 Azure SQL Data Warehouse との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、[Data Factory を使用した SQL Data Warehouse へのデータの読み込み](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)に関するページをご覧ください。
 
-> [!TIP]
-> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory では、ソース データ ストアのテーブルのスキーマを使用して、SQL Data Warehouse にテーブルを自動的に作成することができます。 詳細については、「[テーブルの自動作成](#auto-table-creation)」を参照してください。
-
 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure SQL Data Warehouse にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure SQL Data Warehouse をデータ ファクトリにリンクします。 Azure SQL Data Warehouse に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。 
+3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure SQL Data Warehouse のテーブルを指定します。 Azure SQL Data Warehouse に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlDWSink を使います。 同様に、Azure SQL Data Warehouse から Azure Blob Storage にコピーする場合は、SqlDWSource と BlobSink をコピー アクティビティで使います。 Azure SQL Data Warehouse に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure SQL Data Warehouse との間でのデータ コピーに使用する Data Factory エンティティの JSON 定義サンプルは、この記事の「[JSON の例](#json-examples)」セクションをご覧ください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure SQL Data Warehouse との間でのデータ コピーに使用する Data Factory エンティティの JSON 定義サンプルは、この記事の「[JSON の例](#json-examples-for-copying-data-to-and-from-sql-data-warehouse)」セクションをご覧ください。
 
 以下のセクションでは、Azure SQL Data Warehouse に固有の Data Factory エンティティの定義に使用される JSON プロパティの詳細を説明します。
 
@@ -183,7 +191,7 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 1. **ソースのリンクされたサービス**の型が **AzureStorage** または **サービス プリンシパルの認証を使用する AzureDataLakeStore** であること。  
 2. **入力データセット**の型が **AzureBlob** または **AzureDataLakeStore** で、`type` プロパティの形式が次の構成で **OrcFormat** または **TextFormat** であること。
 
-   1. `rowDelimiter` が **\n** である。
+   1. `rowDelimiter` は **\n** である必要があります。
    2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。
    3. `encodingName` が **utf-8** に設定されている。これは**既定値**です。
    4. `escapeChar`、`quoteChar`、`firstRowAsHeader`、および `skipLineCount` が指定されていない。
@@ -244,7 +252,7 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
-以下に、一般的な [Azure SQL Data Warehouse のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)を補う情報を示します。
+次のセクションでは、「[Azure SQL Data Warehouse のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
 
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
@@ -255,7 +263,7 @@ Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限�
 ソース データの行のサイズが 1 MB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse リソース クラス
-可能な限りスループットを最大化するには、PolyBase を通じて SQL Data Warehouse にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。 「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」で、実行方法を確認してください。
+可能な限りスループットを最大化するには、PolyBase を通じて SQL Data Warehouse にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。 「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)」で、実行方法を確認してください。
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の tableName
 次の表では、スキーマとテーブル名のさまざまな組み合わせについて、データセットの JSON で **tableName** プロパティを指定する方法の例を示します。
@@ -319,13 +327,13 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
-### <a name="type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の型のマッピング
+## <a name="type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。
+Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。
 
 マッピングは [ADO.NET の SQL Server データ型マッピング](https://msdn.microsoft.com/library/cc716729.aspx)と同じです。
 
@@ -366,10 +374,10 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 コピー アクティビティ定義で、ソース データセットの列をシンク データセットの列にマップすることもできます。 詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 
-## <a name="json-examples"></a>JSON の使用例
+## <a name="json-examples-for-copying-data-to-and-from-sql-data-warehouse"></a>SQL Data Warehouse との間でのデータのコピーに関する JSON の例
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、SQL Data Warehouse と Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
-## <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>例: Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
+### <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>例: Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
 このサンプルでは、次の Data Factory のエンティティを定義します。
 
 1. [AzureSqlDW](#linked-service-properties)型のリンクされたサービス。
@@ -555,7 +563,7 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 >
 >
 
-## <a name="example-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>例: Azure BLOB から Azure SQL Data Warehouse にデータをコピーする
+### <a name="example-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>例: Azure BLOB から Azure SQL Data Warehouse にデータをコピーする
 このサンプルでは、次の Data Factory のエンティティを定義します。
 
 1. [AzureSqlDW](#linked-service-properties)型のリンクされたサービス。

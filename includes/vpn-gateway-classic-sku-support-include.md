@@ -1,0 +1,2 @@
+> [!NOTE]
+> 新しい VPN ゲートウェイ SKU (VpnGw1、VpnGw2、VpnGw3) のサポートは、Resource Manager デプロイメント モデル限定です。 クラシック仮想ネットワークには、引き続き以前の SKU をご利用ください。 以前のゲートウェイ SKU の詳細については、[従来の仮想ネットワーク ゲートウェイ SKU の利用](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)に関するページを参照してください。

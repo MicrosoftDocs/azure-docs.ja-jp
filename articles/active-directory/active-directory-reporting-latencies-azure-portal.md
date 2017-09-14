@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2017
+ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1c6b79c5f67cee5d62c9879bdeec926091253af6
-ms.lasthandoff: 04/12/2017
-
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="azure-active-directory-reporting-latencies---preview"></a>Azure Active Directory レポートの待機時間 - プレビュー
+# <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
-Azure Active Directory [プレビュー](active-directory-preview-explainer.md)のレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。 Azure Portal にレポート データが表示されるのにかかる時間は、待機時間とも呼ばれます。 
+Azure Active Directory の[レポート](active-directory-preview-explainer.md)では、環境の動作状況を判断するために必要な情報をすべて取得できます。 Azure Portal にレポート データが表示されるのにかかる時間は、待機時間とも呼ばれます。 
 
 このトピックでは、Azure Portal 内のすべてのレポート用のカテゴリの待機時間情報を一覧します。 
 
@@ -71,7 +72,7 @@ Azure Active Directory では、アダプティブ機械学習アルゴリズム
 | 匿名の IP アドレスからのサインイン |5 分 |約 15 分 |2 時間 |
 | 未知の場所からのサインイン |5 分 |約 15 分 |2 時間 |
 | 資格情報が漏洩したユーザー |2 時間 |4 時間 |8 時間 |
-| 特殊な場所へのあり得ない移動 |2 時間 |4 時間 |8 時間  |
+| 特殊な場所へのあり得ない移動 |5 分 |1 時間 |8 時間  |
 | 感染しているデバイスからのサインイン |2 時間 |4 時間 |8 時間  |
 | 不審なアクティビティのある IP アドレスからのサインイン |2 時間 |4 時間 |8 時間  |
 
@@ -90,3 +91,4 @@ Azure Portal のセキュリティ レポートに関する詳細については
 - [Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)
 
 リスク イベントの詳細について理解するには、「[Azure Active Directory のリスク イベント](active-directory-reporting-risk-events.md)」を参照してください。
+

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 4226075affd1ae03c7bd258b244718f7bb72f127
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 62ec48ab067cf02bc8409aca6da704a5418ec270
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
@@ -34,7 +35,7 @@ Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](..
 * アプリケーションへの通常のアクセスには Multi-Factor Authentication は必要ないが、アプリケーション内の機密性が高い部分へのアクセスには必要である場合。 たとえば、コンシューマーはソーシャルまたはローカル アカウントを使用して銀行取引アプリケーションにサインインし、口座の残高を確認できますが、ネット送金を行うには事前に電話番号の確認が必要になるような場合です。
 
 ## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>サインアップ ポリシーを変更して Multi-factor Authentication を有効にする
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. **[サインアップ ポリシー]**をクリックします。
 3. クリックしてサインアップ ポリシーを開きます (例: "B2C_1_SiUp")。
 4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。 **[OK]**をクリックします。
@@ -45,7 +46,7 @@ Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](..
 Multi-Factor Authentication の手順が実行される前に、コンシューマー アカウントがディレクトリに作成されます。 この手順の過程で、コンシューマーは自分の電話番号を示し、確認することを求められます。 検証が成功した場合、後で使用できるように電話番号がコンシューマー アカウントに関連付けられます。 コンシューマーがキャンセルまたは中止した場合であっても、次にサインインするときに電話番号の確認を再度求められる場合があります (Multi-Factor Authentication が有効になっている場合)。
 
 ## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>サインイン ポリシーを変更して Multi-factor Authentication を有効にする
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. **[サインイン ポリシー]**をクリックします。
 3. クリックしてサインイン ポリシーを開きます (例: "B2C_1_SiIn")。 ブレードの上部にある **[編集]** をクリックします。
 4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。 **[OK]**をクリックします。
@@ -57,10 +58,5 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 ## <a name="multi-factor-authentication-on-other-policies"></a>他のポリシーでの Multi-Factor Authentication
 前のサインアップ/サインイン ポリシーで説明したように、サインアップまたはサインイン ポリシーおよびパスワード リセット ポリシーで Multi-Factor Authentication を有効にすることもできます。 プロファイル編集ポリシーでもまもなく利用できるようになります。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

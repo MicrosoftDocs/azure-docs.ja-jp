@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: saurinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: d365446b7eafd373b3d1bde2ed0a407f1e917b86
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 7e34f47f09466a40993b4cc797ff1cad2bdaeafe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -28,17 +28,17 @@ ms.lasthandoff: 05/31/2017
 
 従来の Hadoop は単一ユーザーのクラスターです。 これは、大規模なデータ ワークロードを構築する小規模なアプリケーション チームを抱えているほとんどの企業に適しています。 Hadoop が人気を得るにつれて、多くの企業では、IT チームが管理するクラスターを複数のアプリケーション チームが共有するモデルに移行しつつあります。 このため、マルチユーザーのクラスターに関わる機能は、Azure HDInsight で最も需要が高い機能となっています。
 
-HDInsight では、独自のマルチユーザー認証と承認が構築される代わりに、最も人気のある ID プロバイダーである Azure Active Directory (Azure AD) が利用されます。 Azure AD の強力なセキュリティ機能を使用して、HDInsight でマルチユーザー承認を管理できます。 HDInsight と Azure AD を統合することで、Azure AD の資格情報を使ってクラスターと通信できます。 HDInsight は Azure AD ユーザーをローカルの Hadoop ユーザーにマップするため、HDInsight で実行されているすべてのサービス (Ambari、Hive サーバー、Ranger、Spark Thrift サーバーなど) は認証済みユーザーに対してシームレスに動作します。
+HDInsight は、独自のマルチユーザー認証と承認を構築する代わりに、最も人気のある ID プロバイダー、Active Directory (AD) を利用します。 AD の強力なセキュリティ機能を使用して、HDInsight でマルチユーザー承認を管理できます。 HDInsight と AD を統合することで、AD の資格情報を使ってクラスターと通信できます。 HDInsight は AD ユーザーをローカルの Hadoop ユーザーにマップするため、HDInsight で実行されているすべてのサービス (Ambari、Hive サーバー、Ranger、Spark Thrift サーバーなど) は認証済みユーザーに対してシームレスに動作します。
 
-## <a name="integrate-hdinsight-with-azure-ad"></a>HDInsight と Azure AD の統合
+## <a name="integrate-hdinsight-with-ad-and-ad-on-iaas-vm"></a>AD と IaaS VM 上の AD との HDInsight の統合
 
-HDInsight を Azure AD と統合すると、HDInsight クラスター ノードは Azure AD ドメインに参加することになります。 HDInsight は、クラスターで実行されている Hadoop サービスのサービス プリンシパルを作成し、Azure AD で指定された組織単位 (OU) 内に配置します。 また、ドメインに参加しているノードの IP アドレスについて、Azure AD ドメインに逆引き DNS マッピングも作成します。
+HDInsight を Azure AD、または IaaS VM 上の AD と統合すると、HDInsight クラスター ノードはドメインに参加することになります。 HDInsight は、クラスターで実行されている Hadoop サービスのサービス プリンシパルを作成し、Azure AD または IaaS VM 上の AD で指定された組織単位 (OU) 内に配置します。 また、HDInsight はドメインに参加しているノードの IP アドレスについて、ドメインに逆引き DNS マッピングも作成します。
 
 この設定は、複数のアーキテクチャを使用して実現できます。 以下のアーキテクチャから好きなものを選んでください。
 
-**Azure IaaS で実行されている Azure AD と統合された HDInsight**
+**Azure IaaS で実行されている AD と統合された HDInsight**
 
-これは、HDInsight を Azure AD と統合する最も簡単なアーキテクチャです。 Azure AD ドメイン コントローラーは、Azure 内の 1 つ (または複数) の仮想マシン (VM) で動作します。 これらの VM は通常、仮想ネットワーク内に存在します。 HDInsight クラスター用に仮想ネットワークをもう 1 つ設定します。 HDInsight に Azure AD を認識させるには、[VNet 間のピアリング](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md)を使用してこれらの仮想ネットワークをピアリングする必要があります。
+これは、HDInsight を Active Directory と統合するための最も簡単なアーキテクチャです。 AD ドメイン コントローラーは、Azure 内の 1 つ (または複数) の仮想マシン (VM) で動作します。 これらの VM は通常、仮想ネットワーク内に存在します。 HDInsight クラスター用に仮想ネットワークをもう 1 つ設定します。 HDInsight に Active Directory を認識させるには、[VNet 間のピアリング](../virtual-network/virtual-network-create-peering.md)を使用してこれらの仮想ネットワークをピアリングする必要があります。 Active Directory を ARM で作成する場合は、Active Directory と HDInsight を同じ VNet に作成でき、ピアリングを行う必要はありません。 
 
 ![ドメイン参加の HDInsight クラスター トポロジ](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_1.png)
 
@@ -46,10 +46,10 @@ HDInsight を Azure AD と統合すると、HDInsight クラスター ノード�
 > このアーキテクチャでは、HDInsight クラスターで Azure Data Lake Store を使用できません。
 
 
-Azure AD の前提条件:
+Active Directory の前提条件は次のとおりです。
 
 * [組織単位](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)を作成する必要があります。その中には、HDInsight クラスターの VM と、クラスターによって使用されるサービス プリンシパルを配置します。
-* Azure AD と通信するために、[ライトウェイト ディレクトリ アクセス プロトコル](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md) (LDAP) を設定する必要があります。 LDAPS を設定するために使用する証明書は、(自己署名証明書ではなく) 実際の証明書にする必要があります。
+* AD と通信するために、[ライトウェイト ディレクトリ アクセス プロトコル](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md) (LDAP) を設定する必要があります。 LDAPS を設定するために使用する証明書は、(自己署名証明書ではなく) 実際の証明書にする必要があります。
 * HDInsight サブネットの IP アドレス範囲 (たとえば、上の図では 10.2.0.0/24) について、ドメインに逆引き DNS ゾーンを作成する必要があります。
 * サービス アカウントかユーザー アカウントが必要です。 このアカウントを使用して HDInsight クラスターを作成します。 このアカウントには、次のアクセス許可が必要です。
 

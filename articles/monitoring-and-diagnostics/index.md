@@ -2,7 +2,7 @@
 title: "Azure Monitor のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "監視と診断のサービスを使用して、パフォーマンスの追跡、セキュリティの維持、傾向の把握を行う方法について説明します。 API リファレンスやベスト プラクティスなどを提供します。"
 services: monitoring-and-diagnostics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

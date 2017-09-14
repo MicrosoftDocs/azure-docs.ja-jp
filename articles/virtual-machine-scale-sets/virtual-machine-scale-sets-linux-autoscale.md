@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7d67ae1bd0c53f99d9c298f5ae8f161e6a484359
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: eff4add1cb16fe25022787668dc1d2277845dd95
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでの Linux マシンの自動スケール
@@ -46,7 +46,7 @@ Resource Manager のリソースの詳細については、「[Azure Resource Ma
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>手順 1: リソース グループとストレージ アカウントの作成
 
 1. **Microsoft Azure へのサインイン**  
-コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) で、Resource Manager モードに切り替え、[職場または学校用の ID を使用してログイン](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。 Azure アカウントに対話型の操作でログインするためのプロンプトに従います。
+コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) で、Resource Manager モードに切り替え、[職場または学校用の ID を使用してログイン](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。Azure アカウントに対話型の操作でログインするためのプロンプトに従います。
 
     ```cli   
     azure config mode arm
@@ -55,7 +55,7 @@ Resource Manager のリソースの詳細については、「[Azure Resource Ma
     ```
    
     > [!NOTE]
-    > 職場または学校の ID を所有していて、2 要素認証が有効になっていない場合は、ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。 職場または学校の ID がない場合は、 [個人の Microsoft アカウントから職場または学校の ID を作成](../virtual-machines/linux/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
+    > 職場または学校の ID を所有していて、2 要素認証が有効になっていない場合は、ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。 職場または学校の ID がない場合は、 [個人の Microsoft アカウントから職場または学校の ID を作成](../active-directory/active-directory-users-create-azure-portal.md)できます。
     
 2. **リソース グループの作成**  
 リソースはすべてリソース グループにデプロイする必要があります。 このチュートリアルでは、リソース グループに **vmsstest1** という名前を付けます。
@@ -591,6 +591,6 @@ azure group delete vmsstestrg1
 * Azure Monitor の監視機能の例については、「[Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)」をご覧ください。
 * 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
 * [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法についてご確認ください。
-* 仮想マシン スケール セットの自動スケール機能を使うための LAMP スタックをセットアップする [Ubuntu/Apache/PHP アプリを実行する VM スケール セットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートを確認します。
+* 仮想マシン スケール セットの自動スケール機能を演習するための Python/bottle アプリをセットアップする [ Ubuntu 16.04 上の自動スケール デモ アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) テンプレートを参照してください。
 
 

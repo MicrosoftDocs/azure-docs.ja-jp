@@ -13,15 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
-ms.sourcegitcommit: 0ab2e30165fe3dca0e00109e9b4e22a9a1433de5
-ms.openlocfilehash: 43cf4dad58ee0e12a233125049ab4e62411459fe
-ms.lasthandoff: 01/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 86a2cd8ae9f97c606a378452e44eec8941700531
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/23/2017
 
 
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](app-service-deploy-local-git.md)と [FTP/S デプロイ](app-service-deploy-ftp.md)デプロイ用の&2; 種類の資格情報をサポートしています。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](app-service-deploy-local-git.md)と [FTP/S デプロイ](app-service-deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらは Azure Active Directory の資格情報とは異なります。
 
 * **ユーザー レベルの資格情報**: Azure アカウント全体の資格情報セットです。 これを使用して、Azure アカウントがアクセス許可を持っているすべてのアプリをサブスクリプションに関係なく App Service にデプロイできます。 これは、**[App Services]**  >  **&lt;app_name >**  >  **[デプロイ資格情報]** をクリックして構成する既定の資格情報セットです。 ポータルの GUI (アプリの[リソース ブレード](../azure-resource-manager/resource-group-portal.md#manage-resources)の **[概要]** や **[プロパティ]** など) に表示される既定のセットでもあります。
 
@@ -32,7 +33,12 @@ ms.lasthandoff: 01/06/2017
 
 * **アプリ レベルの資格情報**: アプリごとの資格情報セットです。 そのアプリのみにデプロイするために使用できます。 各アプリの資格情報は、アプリの作成時に自動的に生成され、アプリの発行プロファイルで確認できます。 この資格情報は手動で構成することはできませんが、いつでもリセットできます。
 
-## <a name="a-nameuserscopeaset-and-reset-user-level-credentials"></a><a name="userscope"></a>ユーザー レベルの資格情報の設定とリセット
+    > [!NOTE]
+    > ロール ベースのアクセス制御 (RBAC) を使用して他のユーザーにこの資格情報へのアクセスを許可するには、そのユーザーを Web アプリの共同作成者以上にする必要があります。 閲覧者は発行を許可されていないため、この資格情報にアクセスできません。
+    >
+    >
+
+## <a name="userscope"></a>ユーザー レベルの資格情報の設定とリセット
 
 ユーザー レベルの資格情報は、任意のアプリの[リソース ブレード](../azure-resource-manager/resource-group-portal.md#manage-resources)で構成できます。 どのアプリで構成した場合でも、これらの資格情報は、Azure アカウント内のすべてのアプリのすべてのサブスクリプションに適用されます。 
 
@@ -41,7 +47,7 @@ ms.lasthandoff: 01/06/2017
 1. [Azure Portal](https://portal.azure.com) で、[App Service] > **&lt;任意のアプリ>**  >  **[デプロイ資格情報]** をクリックします。
 
     > [!NOTE]
-    > ポータルで、[デプロイ資格情報] ブレードにアクセスするには、少なくとも&1; つのアプリが必要です。 ただし、[Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md) を使用する場合、ユーザー レベルの資格情報は既存のアプリなしで構成できます。
+    > ポータルで、[デプロイ資格情報] ブレードにアクセスするには、少なくとも 1 つのアプリが必要です。 ただし、[Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md) を使用する場合、ユーザー レベルの資格情報は既存のアプリなしで構成できます。
 
 2. ユーザー名とパスワードを入力し、**[保存]** をクリックします。
 
@@ -60,7 +66,7 @@ ms.lasthandoff: 01/06/2017
 >
 >  
 
-## <a name="a-nameappscopeaget-and-reset-app-level-credentials"></a><a name="appscope"></a>アプリ レベルの資格情報の設定とリセット
+## <a name="appscope"></a>アプリ レベルの資格情報の設定とリセット
 App Service 内のアプリごとに、アプリ レベルの資格情報が XML 発行プロファイルに保存されます。
 
 アプリ レベルの資格情報を取得するには:
@@ -89,3 +95,4 @@ App Service 内のアプリごとに、アプリ レベルの資格情報が XML
 ## <a name="next-steps"></a>次のステップ
 
 これらの資格情報を使用して、[ローカル Git](app-service-deploy-local-git.md) から、または [FTP/S](app-service-deploy-ftp.md) を使用してアプリをデプロイする方法を確認します。
+

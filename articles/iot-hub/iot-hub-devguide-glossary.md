@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 2fad3e3fb88d447b377ccfce052035640c1360c3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5631484bd2106ab5abff79dd3cbbf539c62bb164
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/16/2017
 複数の言語で使用可能な_デバイス SDK_ があり、IoT Hub と対話する[デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
-IoT Edge では、ゲートウェイに接続されたデバイスと [IoT Hub](#iot-hub) の通信を有効にするアプリケーションを作成できます。 IoT Edge のチュートリアルでは、このサービスの使用方法を示します。 Azure IoT Edge のソース コードと詳細については、この GitHub [レポジトリ](https://github.com/Azure/iot-edge)を参照してください。
+IoT Edge では、ゲートウェイに接続されたデバイスと [IoT Hub](#iot-hub) との通信を有効にするアプリケーションを作成できます。 IoT Edge のチュートリアルでは、このサービスの使用方法を示します。 Azure IoT Edge のソース コードと詳細については、この GitHub [レポジトリ](https://github.com/Azure/iot-edge)を参照してください。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT サービス SDK
 複数の言語で使用可能な_サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
@@ -57,7 +56,7 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 [Service Bus](../service-bus/index.md) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
 
 ## <a name="azure-storage"></a>Azure Storage (Azure Storage)
-[Azure Storage](../storage/storage-introduction.md) は、クラウド ストレージ ソリューションです。 非構造化オブジェクト データの格納に使用できる Blob Storage サービスが含まれています。 一部の IoT Hub チュートリアルでは、Blob Storage を使用します。
+[Azure Storage](../storage/common/storage-introduction.md) は、クラウド ストレージ ソリューションです。 非構造化オブジェクト データの格納に使用できる Blob Storage サービスが含まれています。 一部の IoT Hub チュートリアルでは、Blob Storage を使用します。
 
 ## <a name="back-end-app"></a>バックエンド アプリ
 [IoT Hub](#iot-hub) においては、バックエンド アプリは、IoT Hub 上のサービス向けエンドポイントのいずれかに接続するアプリです。 たとえば、バックエンド アプリは[デバイスからクラウド](#device-to-cloud)へのメッセージの取得や、[ID レジストリ](#identity-registry)の管理を行います。 通常、バック エンド アプリはクラウドで実行されますが、チュートリアルの多くでは、バックエンド アプリはローカル開発用コンピューターで実行されるコンソール アプリです。
@@ -80,7 +79,7 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 [ルーティング ルール](#routing-rules)によって送信されたメッセージを配信するカスタム [エンドポイント](iot-hub-devguide-endpoints.md)を IoT hub に作成できます。 カスタム エンドポイントは、Event hub、Service Bus キュー、または Service Bus トピックに直接接続します。
 
 ## <a name="custom-gateway"></a>カスタム ゲートウェイ
-ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [Azure IoT Edge](#azure-iot-gateway-sdk) を使用して、メッセージを処理するカスタム ロジック、カスタム プロトコルの変換、およびその他の処理を Edge 上で実装するカスタム ゲートウェイを構築できます。
+ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [Azure IoT Edge](#azure-iot-edge) を使用して、メッセージを処理するカスタム ロジック、カスタム プロトコルの変換、およびその他の処理を Edge 上で実装するカスタム ゲートウェイを構築できます。
 
 ## <a name="data-point-message"></a>データ ポイント メッセージ
 データ ポイント メッセージは、風速や温度などの[テレメトリ](#telemetry) データを含む[デバイスからクラウドへの](#device-to-cloud)メッセージです。
@@ -107,7 +106,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 デバイス データとは、IoT Hub の [ID レジストリ](#identity-registry)に格納されている個々のデバイスのデータを指します。 このデータのインポートおよびエクスポートを行うことができます。
 
 ## <a name="device-explorer"></a>デバイス エクスプローラー
-[デバイス エクスプ ローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)は、Windows で実行されるツールで、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスへのメッセージを送受信できます。
+[Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) は Windows で実行されるツールで、[ID レジストリ](#identity-registry)でデバイスを管理できます。また、デバイスへのメッセージを送受信することもできます。
 
 ## <a name="device-identities-rest-api"></a>デバイス ID REST API
 [デバイス ID REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) では、REST API を使用して、[ID レジストリ](#identity-registry)に登録されているデバイスを管理できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
@@ -116,7 +115,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 デバイス ID は、[ID レジストリ](#identity-registry)に登録されているすべてのデバイスに割り当てられた、一意の識別子です。
 
 ## <a name="device-management"></a>デバイス管理
-デバイス管理には、計画、プロビジョニング、構成、監視、およびインベントリからの削除を含む、IoT ソリューション内のデバイスの管理に関連するライフ サイクル全体が含まれます。
+デバイス管理には、計画、プロビジョニング、構成、監視、インベントリからの削除などを含む IoT ソリューション内のデバイスの管理に関連するライフ サイクル全体が含まれます。
 
 ## <a name="device-management-patterns"></a>デバイス管理パターン
 [IoT Hub](#iot-hub) では、デバイスでの再起動、工場出荷時リセットの実行、ファームウェア更新プログラムの実行など、一般的なデバイス管理のパターンを使用できます。
@@ -175,8 +174,8 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
 [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[ジョブ](#job)とデバイス ツインにクエリを実行できます。
 
-## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub リソース プロバイダー REST API
-[IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
+## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub リソースプロバイダー REST API
+[IoT Hub リソースプロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
 
 ## <a name="iot-suite"></a>IoT Suite
 Azure IoT Suite では、複数の Azure サービスと構成済みソリューションがパッケージ化されています。 一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳細については、「[Azure IoT Suite とは](../iot-suite/iot-suite-overview.md)」を参照してください。
@@ -191,7 +190,7 @@ Azure IoT Suite では、複数の Azure サービスと構成済みソリュー
 [ジョブ REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) を使用して、IoT Hub で実行されている[ジョブ](#job)を管理できます。
 
 ## <a name="module"></a>モジュール
-[Azure IoT Edge](iot-hub-linux-gateway-sdk-get-started.md) では、[モジュール](iot-hub-linux-gateway-sdk-get-started.md)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Edge には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。
+[Azure IoT Edge](iot-hub-linux-iot-edge-get-started.md) では、[モジュール](iot-hub-linux-iot-edge-get-started.md)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Edge には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) は、デバイスと通信するために [IoT Hub](#iot-hub) がサポートするメッセージング プロトコルの 1 つです。 IoT Hub がサポートするメッセージング プロトコルの詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
@@ -224,7 +223,7 @@ IoT Hub 上のデバイス向け、またはサービス向けエンドポイン
 クラウド サービスに接続する場合、再試行ポリシーを使用して、[一時的なエラー](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx)を処理します。
 
 ## <a name="routing-rules"></a>ルーティング ルール
-デバイスからクラウドへのメッセージを、ソリューションのバックエンドで処理するために[組み込みエンドポイント](#built-in-endpoints)または[カスタム エンドポイント](#custom-endpoints)にルーティングする[ルーティング ルール](iot-hub-devguide-messaging.md#routing-rules)を IoT hub に構成します。
+デバイスからクラウドへのメッセージを、ソリューションのバックエンドで処理するために[組み込みエンドポイント](#built-in-endpoints)または[カスタム エンドポイント](#custom-endpoints)にルーティングする[ルーティング ルール](iot-hub-devguide-messages-read-custom.md)を IoT hub に構成します。
 
 ## <a name="sasl-plain"></a>SASL PLAIN
 SASL PLAIN は、[AMQP](#advanced-message-queue-protocol) プロトコルがセキュリティ トークンを転送するために使用するプロトコルです。

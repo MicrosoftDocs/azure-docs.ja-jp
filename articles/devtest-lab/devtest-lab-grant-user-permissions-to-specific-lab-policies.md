@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>特定のラボ ポリシーに対するアクセス許可をユーザーに付与する
@@ -29,7 +30,7 @@ ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
 
 DevTest ラボでは、ポリシーはリソースの種類の 1 つで、RBAC の操作 **Microsoft.DevTestLab/labs/policySets/policies/**を可能にするものです。 各ラボ ポリシーはこの種類のポリシー リソースのリソースであり、RBAC のロールにスコープとして割り当てることができます。
 
-たとえば、**許可される VM サイズ** ポリシーに対する読み取り/書き込みアクセス許可をユーザーに付与するには、**Microsoft.DevTestLab/labs/policySets/policies/*** アクションを扱うカスタム ロールを作成し、**Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てます。
+たとえば、**許可される VM サイズ** ポリシーに対する読み取り/書き込みアクセス許可をユーザーに付与するには、**Microsoft.DevTestLab/labs/policySets/policies/** *アクションを扱うカスタム ロールを作成し、**Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てます。
 
 RBAC のカスタム ロールの詳細については、[カスタム ロールのアクセス制御](../active-directory/role-based-access-control-custom-roles.md)に関するページを参照してください。
 
@@ -73,7 +74,7 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 
 ユーザーの **ObjectId** とカスタム ロール名を取得したら、**New-AzureRmRoleAssignment** コマンドレットを使用してユーザーにそのロールを割り当てることができます。
 
-    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
+    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
 前の例では、 **AllowedVmSizesInLab** ポリシーを使用しました。 次のようなポリシーを使用することもできます。
 
@@ -92,10 +93,5 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 * [ラボ テンプレートを作成します](devtest-lab-create-template.md)。
 * [VM のカスタム アーティファクトを作成します](devtest-lab-artifact-author.md)。
 * [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

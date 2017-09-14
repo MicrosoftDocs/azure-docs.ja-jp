@@ -22,7 +22,6 @@ ms.openlocfilehash: 7d269a5805da405e4e5f7a3caf5a58fa454b9abb
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/28/2017
 
-
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Hive クエリの最適化
 
@@ -100,7 +99,7 @@ Hive パーティション分割は、生データを新しいディレクトリ
         WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
   
         ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-        LOCATION ‘wasbs://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+        LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
 * **動的パーティション分割** では、Hive に自動的にパーティションを作成させます。 ステージング テーブルからパーティショニング テーブルを作成したので、あとはパーティション テーブルにデータを挿入するだけです。
   
         SET hive.exec.dynamic.partition = true;

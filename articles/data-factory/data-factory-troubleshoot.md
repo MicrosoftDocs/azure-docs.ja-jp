@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/14/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f78081d173bfe255a3ed8016d10a2deec87ac758
 ms.openlocfilehash: 684515213fc2533e56600cacf3bc0a3a33f337c2
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/07/2017
-
 
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング

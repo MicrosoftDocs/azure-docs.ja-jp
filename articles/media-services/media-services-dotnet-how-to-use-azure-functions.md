@@ -4,7 +4,7 @@ description: "このトピックでは、Media Services を使用する Azure �
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 51bdcb01-1846-4e1f-bd90-70020ab471b0
 ms.service: media-services
@@ -12,22 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 08/27/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ca7c89dc5f56f1bf4c300874111e65048e88abcf
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 95379ed04c47a1e62822ae44b9a1f13b234c6282
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
-#<a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
-
-このトピックでは、Media Services を使用する Azure 関数を Azure Portal で開発する方法について説明します。 
-
-**[Azure に配置する]** ボタンを押して既存の [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をデプロイすることもできます。 このリポジトリには、Azure Media Services を使った Azure 関数のサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 
+# <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
 このトピックでは、Media Services を使用した Azure 関数の作成方法について説明しています。 このトピックで定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。
+
+Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、**[Azure に配置する]** を押します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,15 +57,15 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 この記事で定義されている関数では、アプリケーション設定に次の環境変数があることを前提としています。
 
-**AMSAccount** : *AMS アカウント名* (例: testams)
+**AMSAADTenantDomain**: Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
 
-**AMSKey** : *AMS アカウント キー* (例: IHOySnH+XX3LGPfraE5fKPl0EnzvEPKkOPKCr59aiMM=)
+**AMSRESTAPIEndpoint**:  REST API エンドポイントを表す URI。 
 
-**MediaServicesStorageAccountName** : *ストレージ アカウント名* (例: testamsstorage)
+**AMSClientId**: Azure AD アプリケーション クライアント ID。
 
-**MediaServicesStorageAccountKey** : *ストレージ アカウント キー* (例: xx7RN7mvpcipkuXvn5g7jwxnKh5MwYQ/awZAzkSIxQA8tmCtn93rqobjgjt41Wb0zwTZWeWQHY5kSZF0XXXXXX==)
+**AMSClientSecret**: Azure AD アプリケーション クライアント シークレット。
 
-**StorageConnection** : *ストレージ接続* (例: DefaultEndpointsProtocol=https;AccountName=testamsstorage;AccountKey=xx7RN7mvpcipkuXvn5g7jwxnKh5MwYQ/awZAzkSIxQA8tmCtn93rqobjgjt41Wb0zwTZWeWQHY5kSZF0XXXXX==)
+**StorageConnection**: Media Services アカウントに関連付けられているアカウントのストレージ接続。 この値は、**function.json** ファイルと **run.csx** ファイルで使用されます (下記参照)。
 
 ## <a name="create-a-function"></a>関数を作成する
 
@@ -99,36 +97,42 @@ function.json ファイルは、関数バインドとその他の構成設定を
 >[!NOTE]
 >関数が実行されることを防ぐために、**disabled** プロパティを **true** に設定します。 
 
-
 以下に **function.json** ファイルの例を示します。
 
+```
+{
+  "bindings": [
     {
-    "bindings": [
-      {
-        "name": "myBlob",
-        "type": "blobTrigger",
-        "direction": "in",
-        "path": "input/{fileName}.mp4",
-        "connection": "StorageConnection"
-      }
-    ],
-    "disabled": false
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "input/{filename}.mp4",
+      "connection": "ConnectionString"
     }
+  ],
+  "disabled": false
+}
+```
 
 ### <a name="projectjson"></a>project.json
 
 project.json ファイルには、依存関係が含まれています。 以下に Nuget からの必要な .NET Azure Media Services を含む **project.json** ファイルの例を示します。 バージョン番号は、パッケージに最新の更新プログラムがあると変更されることに注意してください。そのため、最新バージョンを確認する必要があります。 
 
-    {
-      "frameworks": {
-        "net46":{
-          "dependencies": {
-        "windowsazure.mediaservices": "3.8.0.5",
-        "windowsazure.mediaservices.extensions": "3.8.0.3"
-          }
-        }
-       }
+```
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "windowsazure.mediaservices": "4.0.0.4",
+        "windowsazure.mediaservices.extensions": "4.0.0.4",
+        "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.1",
+        "Microsoft.IdentityModel.Protocol.Extensions": "1.0.2.206221351"
+      }
     }
+   }
+}
+
+```
     
 ### <a name="runcsx"></a>run.csx
 
@@ -143,64 +147,64 @@ project.json ファイルには、依存関係が含まれています。 以下
 
 必要な関数を定義したら、**[保存および実行]** をクリックします。
 
-    #r "Microsoft.WindowsAzure.Storage"
-    #r "Newtonsoft.Json"
-    #r "System.Web"
+```
+#r "Microsoft.WindowsAzure.Storage"
+#r "Newtonsoft.Json"
+#r "System.Web"
 
-    using System;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Net;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.IO;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.Auth;
+using System;
+using System.Net;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.IO;
+using System.Web;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.WebJobs;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+  
+// Read values from the App.config file.
 
-    private static readonly string _mediaServicesAccountName = Environment.GetEnvironmentVariable("AMSAccount");
-    private static readonly string _mediaServicesAccountKey = Environment.GetEnvironmentVariable("AMSKey");
+static readonly string _AADTenantDomain = Environment.GetEnvironmentVariable("AMSAADTenantDomain");
+static readonly string _RESTAPIEndpoint = Environment.GetEnvironmentVariable("AMSRESTAPIEndpoint");
+ 
+static readonly string _mediaservicesClientId = Environment.GetEnvironmentVariable("AMSClientId");
+static readonly string _mediaservicesClientSecret = Environment.GetEnvironmentVariable("AMSClientSecret");
 
-    static string _storageAccountName = Environment.GetEnvironmentVariable("MediaServicesStorageAccountName");
-    static string _storageAccountKey = Environment.GetEnvironmentVariable("MediaServicesStorageAccountKey");
+static readonly string _connectionString = Environment.GetEnvironmentVariable("ConnectionString");  
 
-    private static CloudStorageAccount _destinationStorageAccount = null;
+private static CloudMediaContext _context = null;
+private static CloudStorageAccount _destinationStorageAccount = null;
 
-    // Field for service context.
-    private static CloudMediaContext _context = null;
-    private static MediaServicesCredentials _cachedCredentials = null;
+public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
+{
+    // NOTE that the variables {fileName} here come from the path setting in function.json
+    // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
+    // was dropped into the input container for the function. 
 
-    public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
+    // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
+    // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
+
+    log.Info($"C# Blob trigger function processed: {fileName}.mp4");
+    log.Info($"Media Services REST endpoint : {_RESTAPIEndpoint}");
+
+    try
     {
-        // NOTE that the variables {fileName} here come from the path setting in function.json
-        // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
-        // was dropped into the input container for the function. 
-
-        // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
-        // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
-
-        log.Info($"C# Blob trigger function processed: {fileName}.mp4");
-        log.Info($"Using Azure Media Services account : {_mediaServicesAccountName}");
-
-
-        try
-        {
-        // Create and cache the Media Services credentials in a static class variable.
-        _cachedCredentials = new MediaServicesCredentials(
-                _mediaServicesAccountName,
-                _mediaServicesAccountKey);
-
-        // Used the chached credentials to create CloudMediaContext.
-        _context = new CloudMediaContext(_cachedCredentials);
-
-        // Step 1:  Copy the Blob into a new Input Asset for the Job
-        // ***NOTE: Ideally we would have a method to ingest a Blob directly here somehow. 
-        // using code from this sample - https://azure.microsoft.com/en-us/documentation/articles/media-services-copying-existing-blob/
-
-        StorageCredentials mediaServicesStorageCredentials =
-            new StorageCredentials(_storageAccountName, _storageAccountKey);
+        AzureAdTokenCredentials tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain,
+                            new AzureAdClientSymmetricKey(_mediaservicesClientId, _mediaservicesClientSecret),
+                            AzureEnvironments.AzureCloudEnvironment);
+ 
+        AzureAdTokenProvider tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+ 
+        _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
         IAsset newAsset = CreateAssetFromBlob(myBlob, fileName, log).GetAwaiter().GetResult();
 
@@ -230,116 +234,115 @@ project.json ファイルには、依存関係が含まれています。 以下
         job.Submit();
         log.Info("Job Submitted");
 
-        }
-        catch (Exception ex)
-        {
+    }
+    catch (Exception ex)
+    {
         log.Error("ERROR: failed.");
         log.Info($"StackTrace : {ex.StackTrace}");
         throw ex;
-        }
+    }
+}
+
+private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+
+    if (processor == null)
+    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+    return processor;
+}
+
+public static async Task<IAsset> CreateAssetFromBlob(CloudBlockBlob blob, string assetName, TraceWriter log){
+    IAsset newAsset = null;
+
+    try{
+        Task<IAsset> copyAssetTask = CreateAssetFromBlobAsync(blob, assetName, log);
+        newAsset = await copyAssetTask;
+        log.Info($"Asset Copied : {newAsset.Id}");
+    }
+    catch(Exception ex){
+        log.Info("Copy Failed");
+        log.Info($"ERROR : {ex.Message}");
+        throw ex;
     }
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+    return newAsset;
+}
+
+/// <summary>
+/// Creates a new asset and copies blobs from the specifed storage account.
+/// </summary>
+/// <param name="blob">The specified blob.</param>
+/// <returns>The new asset.</returns>
+public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
+{
+     //Get a reference to the storage account that is associated with the Media Services account. 
+    _destinationStorageAccount = CloudStorageAccount.Parse(_connectionString);
+
+    // Create a new asset. 
+    var asset = _context.Assets.Create(blob.Name, AssetCreationOptions.None);
+    log.Info($"Created new asset {asset.Name}");
+
+    IAccessPolicy writePolicy = _context.AccessPolicies.Create("writePolicy",
+    TimeSpan.FromHours(4), AccessPermissions.Write);
+    ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
+    CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
+
+    // Get the destination asset container reference
+    string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
+    CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
+
+    try{
+    assetContainer.CreateIfNotExists();
+    }
+    catch (Exception ex)
     {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-        if (processor == null)
-        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-        return processor;
+    log.Error ("ERROR:" + ex.Message);
     }
 
+    log.Info("Created asset.");
 
-    public static async Task<IAsset> CreateAssetFromBlob(CloudBlockBlob blob, string assetName, TraceWriter log){
-        IAsset newAsset = null;
+    // Get hold of the destination blob
+    CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
 
-        try{
-            Task<IAsset> copyAssetTask = CreateAssetFromBlobAsync(blob, assetName, log);
-            newAsset = await copyAssetTask;
-            log.Info($"Asset Copied : {newAsset.Id}");
-        }
-        catch(Exception ex){
-            log.Info("Copy Failed");
-            log.Info($"ERROR : {ex.Message}");
-            throw ex;
-        }
-
-        return newAsset;
-    }
-
-    /// <summary>
-    /// Creates a new asset and copies blobs from the specifed storage account.
-    /// </summary>
-    /// <param name="blob">The specified blob.</param>
-    /// <returns>The new asset.</returns>
-    public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
+    // Copy Blob
+    try
     {
-         //Get a reference to the storage account that is associated with the Media Services account. 
-        StorageCredentials mediaServicesStorageCredentials =
-        new StorageCredentials(_storageAccountName, _storageAccountKey);
-        _destinationStorageAccount = new CloudStorageAccount(mediaServicesStorageCredentials, false);
-
-        // Create a new asset. 
-        var asset = _context.Assets.Create(blob.Name, AssetCreationOptions.None);
-        log.Info($"Created new asset {asset.Name}");
-
-        IAccessPolicy writePolicy = _context.AccessPolicies.Create("writePolicy",
-        TimeSpan.FromHours(4), AccessPermissions.Write);
-        ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
-        CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
-
-        // Get the destination asset container reference
-        string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
-        CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
-
-        try{
-        assetContainer.CreateIfNotExists();
-        }
-        catch (Exception ex)
-        {
-        log.Error ("ERROR:" + ex.Message);
-        }
-
-        log.Info("Created asset.");
-
-        // Get hold of the destination blob
-        CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
-
-        // Copy Blob
-        try
-        {
-        using (var stream = await blob.OpenReadAsync()) 
-        {            
-            await destinationBlob.UploadFromStreamAsync(stream);          
-        }
-
-        log.Info("Copy Complete.");
-
-        var assetFile = asset.AssetFiles.Create(blob.Name);
-        assetFile.ContentFileSize = blob.Properties.Length;
-        assetFile.IsPrimary = true;
-        assetFile.Update();
-        asset.Update();
-        }
-        catch (Exception ex)
-        {
-        log.Error(ex.Message);
-        log.Info (ex.StackTrace);
-        log.Info ("Copy Failed.");
-        throw;
-        }
-
-        destinationLocator.Delete();
-        writePolicy.Delete();
-
-        return asset;
+    using (var stream = await blob.OpenReadAsync()) 
+    {            
+        await destinationBlob.UploadFromStreamAsync(stream);          
     }
+
+    log.Info("Copy Complete.");
+
+    var assetFile = asset.AssetFiles.Create(blob.Name);
+    assetFile.ContentFileSize = blob.Properties.Length;
+    assetFile.IsPrimary = true;
+    assetFile.Update();
+    asset.Update();
+    }
+    catch (Exception ex)
+    {
+    log.Error(ex.Message);
+    log.Info (ex.StackTrace);
+    log.Info ("Copy Failed.");
+    throw;
+    }
+
+    destinationLocator.Delete();
+    writePolicy.Delete();
+
+    return asset;
+}
+```
+
 ##<a name="test-your-function"></a>関数をテストする
 
-関数をテストするには、接続文字列で指定したストレージ アカウントの **input** コンテナーに MP4 ファイルをアップロードする必要があります。  
+関数をテストするには、接続文字列で指定したストレージ アカウントの **input**  コンテナーに MP4 ファイルをアップロードする必要があります。  
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 これで、Media Services アプリケーションの開発準備が整いました。 
  

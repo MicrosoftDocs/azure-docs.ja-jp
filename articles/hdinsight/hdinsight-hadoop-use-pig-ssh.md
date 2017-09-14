@@ -1,5 +1,5 @@
 ---
-title: "HDInsight クラスターでの Hadoop Pig と SSH の使用 | Microsoft Docs"
+title: "HDInsight クラスターでの Hadoop Pig と SSH の使用 - Azure | Microsoft Docs"
 description: "SSH で Linux ベースの Hadoop クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的に実行するか、バッチ ジョブとして実行する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 36ede2b1c2964f85c454ffd1a653c90296bb307a
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: e4c893ef4bfa573dd9fbc9c9b0ae296720769842
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/18/2017
 HDInsight クラスターへの SSH 接続を使用して、Pig ジョブを対話的に実行する方法について説明します。 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a id="ssh"></a>SSH を使用した接続
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: f9fd533dfbd54517232f9dae5000ed4779baebd4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="authentication-and-authorization-for-api-apps-in-azure-app-service"></a>Azure App Service での API Apps の認証と承認
@@ -35,7 +35,7 @@ Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実�
 * 受信した API 要求の前処理を行います。つまり、App Service でサポートされる言語またはフレームワークが処理されます。
 * 認証処理をどこまで独自のコードで行うかに関して、いくつかの選択肢が提供されています。
 * エンド ユーザーとサービス アカウントの両方の認証に対応します。 
-* ID プロバイダーとして、Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントの&5; つがサポートされます。
+* ID プロバイダーとして、Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントの 5 つがサポートされます。
 * API Apps、Web Apps、Mobile Apps のいずれについても同じ処理が行われます。
 
 ![](./media/app-service-api-authentication/api-apps-overview.png)

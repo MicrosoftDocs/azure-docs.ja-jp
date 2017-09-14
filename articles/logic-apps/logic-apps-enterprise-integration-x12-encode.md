@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1bafa072519cff1599a0cae1d361207ad0fa35d5
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 29d19364b9a98e351c95f13e68a2e63b9f6439f8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -42,7 +42,7 @@ Encode X12 Message コネクタでは、EDI およびパートナー固有のプ
 
 2. Encode X12 Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
 
-3.    検索ボックスに、フィルターとして「x12」と入力します。 **[X12 - 契約名で X12 メッセージにエンコードする]** または **[X12 - ID で X12 メッセージにエンコードする]** を選択します。
+3.  検索ボックスに、フィルターとして「x12」と入力します。 **[X12 - 契約名で X12 メッセージにエンコードする]** または **[X12 - ID で X12 メッセージにエンコードする]** を選択します。
    
     !["x12" の検索](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
@@ -57,7 +57,7 @@ Encode X12 Message コネクタでは、EDI およびパートナー固有のプ
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-5.    完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
+5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
 
     ![integration account connection created](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 

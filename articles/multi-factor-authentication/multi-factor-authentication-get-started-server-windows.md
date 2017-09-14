@@ -36,7 +36,7 @@ Azure Multi-Factor Authentication Server の [Windows 認証] セクションを
 1. Azure Multi-Factor Authentication Server で、[Windows 認証] アイコンをクリックします。
    ![Windows 認証](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
 2. **[Windows 認証を有効にする]** チェック ボックスをオンにします。 既定では、このボックスはオフになっています。
-3. [アプリケーション] タブでは、管理者が Windows 認証を使用する&1; つ以上のアプリケーションを構成できます。
+3. [アプリケーション] タブでは、管理者が Windows 認証を使用する 1 つ以上のアプリケーションを構成できます。
 4. サーバーまたはアプリケーションを選択し、サーバーまたはアプリケーションが有効になっているかどうかを指定します。 **[OK]**をクリックします。
 5. **[追加]** をクリックします。
 6. [信頼される IP] タブでは、特定の IP から送信された Windows セッションの Azure Multi-Factor Authentication をスキップすることができます。 たとえば、従業員がオフィスと自宅の両方でアプリケーションを使用する場合、オフィスにいる間は Azure Multi-Factor Authentication の電話を鳴らさないように設定できます。 それには、社内のサブネットを信頼される IP エントリとして指定します。

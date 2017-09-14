@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 36dd149812a0e8c8ca8ef2bac09c1920ec15d3ba
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cb4a7db5666242576bf83abbf10682cc6f53ba69
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
@@ -55,7 +54,7 @@ Security Center の現在のポリシーの推奨事項は、システムの更�
 
 ![シナリオのロール][2]
 
-Contoso では、最近、オンプレミスのリソースの一部を Azure に移行しました。 Contoso は、クラウド内のリソースのセキュリティ攻撃に対する脆弱性を軽減する保護を実装して維持したいと考えています。
+Contoso では、最近、オンプレミス リソースの一部を Azure に移行しました。 Contoso は、クラウド内のリソースのセキュリティ攻撃に対する脆弱性を軽減する保護を実装して維持したいと考えています。
 
 ## <a name="recommended-solution"></a>推奨される解決策
 1 つの解決策は、セキュリティの脆弱性の防止と検出に Security Center を使用することです。 Contoso では、Azure のサブスクリプションを使用して Security Center にアクセスできます。 すべての Azure サブスクリプションで [Free レベル](security-center-pricing.md)の Security Center が自動的に有効、サブスクリプションのすべての VM 上でデータ収集が有効になっています。

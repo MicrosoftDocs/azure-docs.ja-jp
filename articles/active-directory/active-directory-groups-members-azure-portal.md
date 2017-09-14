@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory でグループのメンバーを管理する | Microsoft Docs"
 description: "Azure Active Directory でグループのユーザーとデバイスを追加または削除する方法"
 services: active-directory
@@ -13,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017;it-pro
+ms.reviewer: piotrci
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 044e88f95712e1cc5b5532f5492c78d711a8d858
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
-
 
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する

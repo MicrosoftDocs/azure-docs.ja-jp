@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a5da389d4e8120b604cb7a435ab30373bec2376
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 70a4762383d64dc8d568c628cf260ebd8f2d179d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -106,10 +108,5 @@ Azure ユーザーは、Azure Portal ([https://portal.azure.com](https://portal.
 
 ## <a name="learn-more"></a>詳細情報
 [Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

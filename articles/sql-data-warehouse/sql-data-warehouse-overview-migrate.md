@@ -13,41 +13,69 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 10/31/2016
+ms.date: 06/27/2017
 ms.author: joeyong;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e5937f8472492cd1dd77c82ed518a665718623a1
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 771b9456e66b8a1e41f72340b695b19e2adaf793
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="migrate-your-solution-to-sql-data-warehouse"></a>SQL Data Warehouse へのソリューションの移行
-SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散データベース システムです。 パフォーマンスと拡張性の両方を維持するために、SQL Server 内のすべての機能が SQL Data Warehouse に実装されるわけではありません。 次の移行に関するトピックでは、SQL Data Warehouse にソリューションを移行する際のいくつかの重要な要素について説明します。 拡張性を考えてデータ ウェアハウスを設計すると、さまざまな設計パターンが導入されるため、従来の手法が常に最適であるとは限りません。 そのため、既存のソリューションを採用すると、SQL Data Warehouse によって提供される分散プラットフォームを最大限に活用できる場合もあります。
+# <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse にソリューションを移行する
+既存のデータベース ソリューションを Azure SQL Data Warehouse に移行するときに行うことについて説明します。 
 
-また、SQL Data Warehouse は Microsoft Azure に基づいたプラットフォームであることに留意することも重要です。 このため、移行の一環としてクラウドへのデータ転送が含まれる場合もよくあります。 データ転送はそれ自体が問題になるものであり、特に容量が増加する場合には慎重に検討する必要があります。 データ転送とデータの読み込みは別々のトピックです。
+## <a name="profile-your-workload"></a>ワークロードをプロファイリングする
+移行の前に、SQL Data Warehouse がワークロードの適切なソリューションであることを確認する必要があります。 SQL Data Warehouse は、大規模なデータの分析を目的として設計された分散システムです。  SQL Data Warehouse に移行するには、理解するのはそれほど難しくありませんが、実装するには時間がかかる場合がある設計変更が必要です。 ビジネスでエンタープライズ クラスのデータ ウェアハウスが必要な場合は、労力に見合うだけの利点があります。 一方、SQL Data Warehouse ほどの能力を必要としない場合は、SQL Server または Azure SQL Database を使う方が高い費用対効果を得られます。
 
-## <a name="migration-guidance"></a>移行ガイダンス
-移行を開始する前に、次の記事を読んで製品の相違点と基本的な概念を必ず理解しておいてください。
+次のような場合は、SQL Data Warehouse の使用を検討してください。
+- テラバイトに達するデータが 1 つでもある
+- 大量のデータに対する分析の実行を計画している
+- コンピューティングと記憶域をスケーリングできる必要がある 
+- 必要のないときはコンピューティング リソースを一時停止してコストを節約したい
 
-* [スキーマの移行][Migrate your schema]
-* [データの移行][Migrate your data]
-* [コードの移行][Migrate your code]
+次のような特徴の運用 (OLTP) ワークロードには SQL Data Warehouse を使わないでください。
+- 読み取りと書き込みの頻度が高い
+- 単一選択の数が多い
+- 単一行挿入の量が多い
+- 行単位の処理が必要である
+- 形式に互換性がない (JSON、XML)
+
+
+## <a name="plan-the-migration"></a>移行を計画する
+
+既存のソリューションを SQL Data Warehouse に移行することを決めたら、作業を始める前に移行の計画を立てることが重要です。 
+
+計画の目的の 1 つは、データ、テーブル スキーマ、コードに SQL Data Warehouse と互換性があることを確認することです。 現在のシステムと SQL Data Warehouse の間には、回避する必要のある互換性の相違がいくつかあります。 さらに、Azure に大量のデータを移行するには時間がかかります。 慎重に計画すれば、Azure へのデータ移行時間を短縮できます。 
+
+計画のもう 1 つの目的は、SQL Data Warehouse の設計目標である高いクエリ パフォーマンスをソリューションが確実に利用するように、設計を調整することです。 拡張性を考えてデータ ウェアハウスを設計すると、さまざまな設計パターンが導入されるため、従来の手法が常に最適であるとは限りません。 移行の後で一部の設計を調整することはできますが、プロセスですぐに変更を行うと、後で時間を節約できます。
+
+移行を成功させるには、テーブルのスキーマ、コード、およびデータを移行する必要があります。 これらの移行トピックに関するガイダンスについては、以下をご覧ください。
+
+-  [スキーマの移行](sql-data-warehouse-migrate-schema.md)
+-  [コードの移行](sql-data-warehouse-migrate-code.md)
+-  [データの移行](sql-data-warehouse-migrate-data.md) 
+
+<!--
+## Perform the migration
+
+
+## Deploy the solution
+
+
+## Validate the migration
+
+-->
 
 ## <a name="next-steps"></a>次のステップ
-また、CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data Warehouse の優れたガイダンスもあります。  移行に関するその他のガイダンスについては、「[Migrating data to Azure SQL Data Warehouse in practice][Migrating data to Azure SQL Data Warehouse in practice]」(Azure SQL Data Warehouse へのデータの実践移行) の記事を参照してください。
+CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data Warehouse の優れたガイダンスもあります。  移行に関するその他のガイダンスについては、「[Migrating data to Azure SQL Data Warehouse in practice][Migrating data to Azure SQL Data Warehouse in practice]」(Azure SQL Data Warehouse へのデータの実践移行) の記事を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Migrate your schema]: sql-data-warehouse-migrate-schema.md
-[Migrate your data]: sql-data-warehouse-migrate-data.md
-[Migrate your code]: sql-data-warehouse-migrate-code.md
-
 
 <!--MSDN references-->
-
 
 <!--Other Web references-->
 [Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/

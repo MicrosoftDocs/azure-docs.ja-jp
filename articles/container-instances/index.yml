@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Container Instances のドキュメント
+metadata:
+  title: Azure Container Instances のドキュメント - チュートリアル | Microsoft Docs
+  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
+  services: container-instances
+  author: czeumault
+  manager: carolz
+  ms.service: container-instances
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/26/2017
+  ms.author: carolz
+abstract:
+  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/container-service/kubernetes/">Azure Container Service の Kubernetes ドキュメント</a>を参照してください。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure Container Instances でコンテナー イメージをデプロイする方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/container-instances/media/container-instances.svg
+            text: コンテナー インスタンスの作成
+            href: /azure/container-instances/container-instances-quickstart
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: コードをコンテナー イメージにパッケージ化し、Azure Container Instances で実行する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナー イメージにアプリケーションをパッケージ化する</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure Container Registry を作成し、コンテナー イメージをアップロードする</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Azure Container Instances にコンテナー イメージをデプロイする</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure CLI
+            html: <p><a href="/cli/azure/container">Azure CLI 2.0</a></p>

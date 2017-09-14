@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c35d1548262f25e65c391c927919b8acf1411e10
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 45af1cd3a05b483429d2307659f1882ef28921f6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできる 10 のこと
@@ -138,7 +137,7 @@ Python のモデルを Azure Machine Learning にデプロイするには、モ�
 ### <a name="build-and-operationalize-r-models"></a>R のモデルを構築して運用可能な状態にする
 データ サイエンス仮想マシンやその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 手順は次のとおりです。
 
-* 以下に示すように、ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。
+* 以下のコード サンプルに示すように、ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。
 * モデルの予測関数のラッパーを作成します。
 * Azure Machine Learning ライブラリで ```publishWebService``` を呼び出し、関数ラッパーを渡します。  
 
@@ -251,7 +250,7 @@ Visual Studio から同じクローン操作を行うこともできます。 �
 
 ![Git in Visual Studio](./media/machine-learning-data-science-vm-do-ten-things/VSGit.PNG)
 
-Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。 [チート シート](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
+Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。[チート シート](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
 
 ## <a name="7-access-various-azure-data-and-analytics-services"></a>7.Azure のさまざまなデータ サービスと分析サービスにアクセスする
 ### <a name="azure-blob"></a>Azure BLOB
@@ -263,7 +262,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 ![Create_Azure_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリを PATH 環境変数に追加すると、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、 [AzCopy のドキュメント](../storage/storage-use-azcopy.md)
+* プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリを PATH 環境変数に追加すると、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、 [AzCopy のドキュメント](../storage/common/storage-use-azcopy.md)
 * Azure ストレージ エクスプローラー ツールを起動します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。 
 
 ![AzureStorageExplorer_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -377,7 +376,7 @@ Azure Data Lake Storage は、ビッグ データ分析ワークロード用の�
 
 **Azure BLOB から Data Lake にデータを読み取る (U-SQL)**
 
-データが Azure Blob Storage に存在する場合、U-SQL クエリで Azure Storage BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントが Azure Data Lake にリンクされていることを確認します。 **Azure Portal** に移動して [Azure Data Lake Analytics] ダッシュボードを探し、**[データ ソースの追加]** をクリックします。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーを追加します。 これで、ストレージ アカウントに保存されているデータを参照できるようになります。
+データが Azure Blob Storage に存在する場合、U-SQL クエリで Azure Storage BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントが Azure Data Lake にリンクされていることを確認します。 **Azure Portal** に移動して [Azure Data Lake Analytics] ダッシュボードを探し、**[データ ソースの追加]** をクリックします。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーを追加します。 これで、ストレージ アカウントに保存されているデータを参照できます。
 
 ![ストレージ アカウントとキーの入力](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
@@ -458,7 +457,7 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 ![作成したストレージ アカウントを HDInsight クラスターにリンクする](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
-* 作成したら、クラスターのヘッド ノードへの**リモート アクセス**を有効にする必要があります。 ここで指定するリモート アクセス資格情報を覚えておいてください (作成時にクラスターに指定したものとは異なります)。以下で必要になります。
+* 作成したら、クラスターのヘッド ノードへの**リモート アクセス**を有効にする必要があります。 ここで指定するリモート アクセス資格情報を覚えておいてください (作成時にクラスターに指定したものとは異なります)。その後の手順を実行するために必要です。
 
 ![リモート アクセスの有効化](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
@@ -687,7 +686,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
         """
         cursor.execute(queryString)
 
-        --- now insert contents of the join into the above internal table
+        --- now insert contents of the join into the preceding internal table
 
         queryString = """
         insert overwrite table nyctaxi_downsampled_dataset_testNEW
@@ -805,16 +804,16 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件を満たす必要があります。
 
 1. DocumentDB Python SDK をインストールします (コマンド プロンプトから ```pip install pydocumentdb``` を実行)。
-2. [Azure Portal](https://portal.azure.com) から Azure Cosmos DB アカウントと Document DB データベースを作成します
+2. [Azure Portal](https://portal.azure.com) で Azure Cosmos DB アカウントとデータベースを作成します。
 3. [こちら](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) から "Azure Cosmos DB 移行ツール" をダウンロードし、任意のディレクトリに展開します
-4. 移行ツール (Cosmos DB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定して、 [パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を Cosmos DB にインポートします。 インポート元とインポート先の場所を示すパラメーター (以下) を入力します。
+4. 移行ツール (Cosmos DB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定して、 [パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を Cosmos DB にインポートします。 これらのパラメーターでインポート元とインポート先の場所を入力します。
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
-データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、DocumentDB にアクセスして基本的なクエリを実行する Python コードが含まれています。 DocumentDB の詳細については、サービスの[ドキュメント ページ](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
+データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、DocumentDB にアクセスして基本的なクエリを実行する Python コードが含まれています。 Cosmos DB の詳細については、サービスの[ドキュメント ページ](https://docs.microsoft.com/azure/cosmos-db/)をご覧ください。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.Power BI Desktop を使ってレポートとダッシュボードを作成する
-先ほどの例の Cosmos DB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../documentdb/documentdb-powerbi-visualize.md)を参照してください。 おおよその手順は以下のとおりです。
+先ほどの例の Cosmos DB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
 
 1. Power BI Desktop を開いて "データを取得" します。 URL として https://cahandson.blob.core.windows.net/samples/volcano.json と指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
@@ -824,7 +823,7 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 6. 新しい列を追加し、 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```という式を使って、リストの coordinate 列を、coordinate リスト フィールドの 2 つの要素を連結したコンマ区切りの LatLong 列に変換します。
 7. 最後に、```Elevation``` 列を Decimal に変換し、**[閉じる]** と **[適用]** を選択します。
 
-以下のコードは、データ変換をクエリ言語で記述できる Power BI の詳細エディターで上記の手順をスクリプト化したものです。上記の手順を実行する代わりに、このコードをコピーして貼り付けてもかまいません。
+以下のコードは、データ変換をクエリ言語で記述できる Power BI の詳細エディターで使用した手順をスクリプト化したものです。前の手順を実行する代わりに、このコードをコピーして貼り付けてもかまいません。
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
@@ -838,11 +837,11 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 
 
 
-これで Power BI データ モデルのデータができました。 Power BI Desktop は次のように表示されます。
+これで Power BI データ モデルのデータができました。 Power BI Desktop は、次のようになります。
 
 ![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
-このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../documentdb/documentdb-powerbi-visualize.md#build-the-reports) にある手順に従います。 最終的に次のようなレポートが得られます。
+このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../cosmos-db/powerbi-visualize.md#build-the-reports) にある手順に従います。 最終的に次のようなレポートが得られます。
 
 ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/machine-learning-data-science-vm-do-ten-things/power_bi_connector_pbireportview2.png)
 

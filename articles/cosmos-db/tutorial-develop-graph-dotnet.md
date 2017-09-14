@@ -3,7 +3,7 @@ title: "Azure Cosmos DB: .NET での Graph API を使用した開発 | Microsoft
 description: ".NET を使用した Azure Cosmos DB の DocumentDB API による開発方法について"
 services: cosmos-db
 documentationcenter: 
-author: mimig1
+author: dennyglee
 manager: jhubbard
 editor: 
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
@@ -11,9 +11,9 @@ ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: arramac
+ms.author: denlee
 ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 305f02bb120a1096c46de94d103a5700dabdc8ba
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 438f32ee3605e2dd0c46de7993a359cc269262fe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="replicate-between-on-premises-hyper-v-virtual-machines-and-azure-without-vmm-with-azure-site-recovery"></a>Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する
@@ -51,7 +51,7 @@ Azure には、リソースの作成と操作に関して、[Azure Resource Mana
 
 ## <a name="azure-prerequisites"></a>Azure の前提条件
 * [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
-* レプリケートしたデータを格納するには Azure ストレージ アカウントが必要です。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md) [新しい Azure Portal](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントのリソース グループ間での移動はサポートされていません。
+* レプリケートしたデータを格納するには Azure ストレージ アカウントが必要です。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [Azure ストレージについてはこちらを参照してください。](../storage/common/storage-introduction.md) [新しい Azure Portal](../storage/common/storage-create-storage-account.md) を使用して作成したストレージ アカウントのリソース グループ間での移動はサポートされていません。
 * プライマリ サイトからフェールオーバーするとき、Azure 仮想マシンがネットワークに接続されるように、Azure 仮想ネットワークが必要になります。
 
 ## <a name="hyper-v-prerequisites"></a>Hyper-V の前提条件
@@ -167,7 +167,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
     ![[ストレージ アカウントの作成]](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
 > [!NOTE]
-> 1. [新しい Azure ポータル](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+> 1. [新しい Azure ポータル](../storage/common/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
 > 2. Site Recovery のデプロイ用のストレージ アカウントについては、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../azure-resource-manager/resource-group-move-resources.md)はサポートされていません。
 >
 
@@ -198,7 +198,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 
     ![[仮想マシンの保護の有効化]](./media/site-recovery-hyper-v-site-to-azure-classic/add-vm.png)
 
-    保護の有効化ジョブが開始されます。 ジョブの進捗状況は **[ジョブ]** タブで追跡できます。 保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。
+    保護の有効化ジョブが開始されます。 ジョブの進捗状況は **[ジョブ]** タブで追跡できます。保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。
 3. 保護の設定後、次のことを行えます。
 
    * **[保護された項目]**  >  **[保護グループ]**  >  *保護グループ名*  >  **[Virtual Machines]** の順に移動し、仮想マシンを表示します。**[プロパティ]** タブでマシンの詳細をドリルダウンできます。

@@ -1,10 +1,9 @@
 ---
-
 title: "Azure Portal でアクティビティ レポートを見つける | Microsoft Docs"
 description: "Azure Portal で Azure Active Directory のアクティビティ レポートを見つける方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/19/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7f6d82d211e9b3d25b0efe62ab8dd32f827b08ef
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
@@ -31,9 +30,9 @@ Azure クラシック ポータルから Azure Portal に移行すると、Azure
 
 Azure クラシック ポータルでは、レポートは次のカテゴリに分けられています。
 
-1.    セキュリティ レポート
-2.    アクティビティ レポート
-3.    統合アプリケーション レポート
+1.  セキュリティ レポート
+2.  アクティビティ レポート
+3.  統合アプリケーション レポート
 
 ### <a name="activity-and-integrated-app-reports"></a>アクティビティ レポートと統合アプリケーション レポート
 
@@ -45,14 +44,14 @@ Azure Portal のコンテキストに基づくレポートでは、既存のレ�
 
 このビューには、次のレポートが統合されています。
 
--    監査レポート
--     パスワード リセット アクティビティ
--     パスワード リセット登録アクティビティ
--     セルフ サービス グループ アクティビティ
--     Office 365 グループ名の変更
--     アカウント プロビジョニングのアクティビティ
--     パスワード ロールオーバーの状態
--     アカウント プロビジョニング エラー
+-   監査レポート
+-   パスワード リセット アクティビティ
+-   パスワード リセット登録アクティビティ
+-   セルフ サービス グループ アクティビティ
+-   Office 365 グループ名の変更
+-   アカウント プロビジョニングのアクティビティ
+-   パスワード ロールオーバーの状態
+-   アカウント プロビジョニング エラー
 
 
 アプリケーションの使用状況レポートは強化され、**[サインイン]** ビューに表示されるようになりました。 このビューを表示するには、**[Azure Active Directory]**ブレードで、**[アクティビティ]** の下の **[サインイン]** を選択します。
@@ -153,4 +152,8 @@ Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュ�
 
 
 ![[エンタープライズ アプリケーション]、[サインイン]、レポート](./media/active-directory-reporting-migration/199.png "[エンタープライズ アプリケーション]、[サインイン]、レポート")
+
+## <a name="next-steps"></a>次のステップ
+
+レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
 

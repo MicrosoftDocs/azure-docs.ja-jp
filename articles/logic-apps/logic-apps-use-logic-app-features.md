@@ -1,5 +1,5 @@
 ---
-title: "条件付きロジックを追加してワークフローを開始する - Azure Logic Apps | Microsoft Docs"
+title: "条件を追加してワークフローを開始する - Azure Logic Apps | Microsoft Docs"
 description: "条件付きロジック、トリガー、アクション、およびパラメーターを追加することで Azure Logic Apps でのワークフローの実行を制御します。"
 author: stepsic-microsoft-com
 manager: anneta
@@ -15,55 +15,75 @@ ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9f7d623ec213de6d46f59547aff9d4417ac95ede
-ms.openlocfilehash: 41aafe94d24f0e22fe2256ab213c7668b670764c
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/15/2017
+ms.lasthandoff: 06/24/2017
 
 
 ---
 # <a name="use-logic-apps-features"></a>Logic Apps の機能を使用する
-[前のトピック](../logic-apps/logic-apps-create-a-logic-app.md)では、初めてのロジック アプリを作成しました。 ここでは、Azure Logic Apps の詳細なプロセスを作成します。 このトピックでは、次の新しい Azure Logic Apps の概念について説明します。
 
-* 条件付きロジック。特定の条件が満たされる場合にのみアクションを実行します。
-* 既存のロジック アプリを編集するためのコード ビュー。
-* ワークフローを開始するためのオプション。
+[前のトピック](../logic-apps/logic-apps-create-a-logic-app.md)では、初めてのロジック アプリを作成しました。 ロジック アプリのワークフローを制御するために、実行するロジック アプリのさまざまなパスと、配列、コレクション、バッチ内のデータを処理する方法を指定できます。 ロジック アプリ ワークフローにこれらの要素を含める必要があります。
 
-このトピックを完了する前に、「 [新しいロジック アプリを作成する](../logic-apps/logic-apps-create-a-logic-app.md)」の手順を完了する必要があります。 [Azure Portal] でロジック アプリを参照し、概要の **[トリガーとアクション]** をクリックしてロジック アプリの定義を編集します。
+* 条件と [switch ステートメント](../logic-apps/logic-apps-switch-case.md)を使用すると、特定の条件を満たしているかどうかに基づいて、ロジック アプリで異なるアクションを実行できます。
 
-## <a name="reference-material"></a>参考資料
-次の資料が役立つ場合があります。
+* [ループ](../logic-apps/logic-apps-loops-and-scopes.md)を使用すると、ロジック アプリでステップを繰り返し実行できます。 たとえば、**For_each** ループを使用して、1 つの配列に対してアクションを繰り返すことができます。 また、**Until** ループを使用すると、条件を満たすまでアクションを繰り返すことができます。
 
-* [Management and runtime REST APIs (管理 REST API およびランタイム REST API)](https://msdn.microsoft.com/library/azure/mt643787.aspx) - Logic Apps を直接起動する方法が記載されています。
-* [Language reference (言語リファレンス)](https://msdn.microsoft.com/library/azure/mt643789.aspx) - サポートされるすべての関数/式の包括的な一覧
-* [Trigger and action types (トリガーおよびアクションのタイプ)](https://msdn.microsoft.com/library/azure/mt643939.aspx) - 各種アクションとそれらで使用される入力値
-* [Overview of App Service (App Service の概要)](../app-service/app-service-value-prop-what-is.md) - ソリューションを作成するときに選択するコンポーネントの説明
+* [スコープ](../logic-apps/logic-apps-loops-and-scopes.md)を使用すると、一連のアクションをグループ化し、たとえば例外処理を実装することができます。
 
-## <a name="add-conditional-logic-to-your-logic-app"></a>条件付きロジックをロジック アプリに追加する
+* [分割処理](../logic-apps/logic-apps-loops-and-scopes.md)で **SplitOn** コマンドを使用すると、ロジック アプリで配列内の項目に別のワークフローを開始することができます。
 
-ロジック アプリの元のフローが機能していても、改良できる領域もあります。
+このトピックでは、ロジック アプリを構築するためのその他の概念を紹介します。
 
-### <a name="conditional"></a>条件付き
+* 既存のロジック アプリを編集するためのコード ビュー
+* ワークフローを開始するためのオプション
 
-初めてのロジック アプリの場合、メールの受信数が多くなりすぎる可能性があります。 次の手順では、条件付きロジックを追加して、ツイートが特定の数のフォロワーを持つユーザーから届いた場合にのみ電子メールを受信するようにします。
+## <a name="conditions-run-steps-only-after-meeting-a-condition"></a>条件: 条件を満たした後にのみステップを実行する
 
-0. Logic Apps デザイナーで、**[新しいステップ]** (+) > **[アクションの追加]** を選択します。
-0.    Twitter の**[ユーザーの取得]** アクションを検索して追加します。
-0. Twitter ユーザーに関する情報を取得するには、トリガーから **[Tweeted by]** フィールドを見つけて追加します。
+ロジック アプリで、データが特定の条件を満たした場合にのみステップを実行するには、ワークフロー内のデータを特定のフィールドまたは値と比較する条件を追加します。
 
-    ![ユーザーの取得](media/logic-apps-use-logic-app-features/getuser.png)
+たとえば、Web サイトの RSS フィードへの投稿を通知する電子メールが多すぎるロジック アプリがあるとします。 新しい投稿が特定のカテゴリに属する場合にのみロジック アプリから電子メールを送信するように、条件を追加することができます。
 
-0. **[新しいステップ]** (+) > **[条件の追加]** を選択します。
-0. ユーザーのフォロワー数をフィルター処理するには、**[オブジェクト名]** で **[動的なコンテンツの追加]** を追加します。 
-0.    検索ボックスで、**[Followers count]** (フォロワー数) フィールドを見つけて追加します。
-0. **[リレーションシップ]** で、**[より大きい]** を選択します。
-0. **[値]** ボックスで、ユーザーの目的のフォロワー数を入力します。
+1. [Azure ポータル](https://portal.azure.com)のロジック アプリ デザイナーでロジック アプリを選択して開きます。
 
-    ![条件付き](media/logic-apps-use-logic-app-features/conditional.png)
+2. 必要なワークフローの場所に条件を追加します。 
 
-0. 最後に、**[電子メールの送信]** ボックスを **[If Yes]** (はいの場合) ボックスにドラッグします。 
+   ロジック アプリ ワークフローの既存のステップ間に条件を追加するには、条件を追加する矢印にポインターを移動します。 
+   **プラス記号** (**+**) を選択し、**[条件の追加]** を選択します。 For example:
 
-これで、フォロワー数が条件を満たしている場合にのみ、電子メールを受け取るようになります。
+   ![ロジック アプリに条件を追加する](./media/logic-apps-use-logic-app-features/add-condition.png)
+
+   > [!NOTE]
+   > 現在のワークフローの末尾に条件を追加する場合は、ロジック アプリの下部にある **[+ 新しいステップ]** を選択します。
+
+3. 次に条件を定義します。 評価するソース フィールド、実行する操作、およびターゲットの値またはフィールドを指定します。 既存のフィールドを条件に追加するには、**[Add dynamic content list]\(動的コンテンツ リストの追加\)** から選択します。
+
+   For example:
+
+   ![基本モードで条件を編集する](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode.png)
+
+   完成した条件を次に示します。
+
+   ![完成した条件](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode-2.png)
+
+   > [!TIP]
+   > コードで条件を定義するには、**[詳細設定モードで編集]** を選択します。 For example:
+   > 
+   > ![コードで条件を編集する](./media/logic-apps-use-logic-app-features/edit-condition-advanced-mode.png)
+
+4. **IF YES** と **IF NO** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。
+
+   For example:
+
+   ![YES および NO のパスの条件](./media/logic-apps-use-logic-app-features/condition-yes-no-path.png)
+
+   > [!TIP]
+   > 既存のアクションを **IF YES** と **IF NO** のパスにドラッグできます。
+
+5. 完了したら、ロジック アプリを保存します。
+
+投稿が条件を満たしている場合にのみ、電子メールが送信されるようになります。
 
 ## <a name="repeat-actions-over-a-list-with-foreach"></a>forEach を使用してリストに対してアクションを繰り返す
 
@@ -84,31 +104,32 @@ Logic App デザイナーがある場合でも、ロジック アプリを定義
 
 2. 編集内容を保存するには、**[保存]** を選択します。
 
-### <a name="parameters"></a>parameters
+## <a name="parameters"></a>parameters
 
 パラメーターなどの一部の Logic App 機能は、コード ビューでのみ使用できます。 パラメーターを使用すると、ロジック アプリ全体にわたって簡単に値を再利用できます。 たとえば、いくつかの操作で使用する電子メール アドレスがある場合、その電子メール アドレスをパラメーターとして定義する必要があります。
 
-パラメーターは、よく変更する可能性がある値を抜き出すのに適しています。 さまざまな環境でパラメーターを上書きする必要がある場合に特に便利です。 環境に基づいてパラメーターを上書きする方法については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/logic)を参照してください。
+パラメーターは、よく変更する可能性がある値を抜き出すのに適しています。 さまざまな環境でパラメーターを上書きする必要がある場合に特に便利です。 環境に基づいてパラメーターを上書きする方法については、「[ロジック アプリの定義を作成する](../logic-apps/logic-apps-author-definitions.md)」と [REST API のドキュメント](https://docs.microsoft.com/rest/api/logic)を参照してください。
 
 この例では、クエリ用語でパラメーターを使用できるように、既存のロジック アプリを更新する方法を示します。
 
-1. コード ビューで、`parameters : {}` オブジェクトを見つけて、トピック オブジェクトを追加します。
+1. コード ビューで、`parameters : {}` オブジェクトを見つけて、`currentFeedUrl` オブジェクトを追加します。
 
-        "topic" : {
+        "currentFeedUrl" : {
             "type" : "string",
-            "defaultValue" : "MicrosoftAzure"
+            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
         }
 
-2. `twitterconnector` アクションに移動して、クエリの値を検索し、その値を `#@{parameters('topic')}` で置き換えます。 
+2. `When_a_feed-item_is_published` アクションに移動して、`queries` セクションを見つけて、クエリ値を `"feedUrl": "#@{parameters('currentFeedUrl')}"` で置き換えます。 
 
     2 つ以上の文字列を結合する場合、`concat` 関数を使用することもできます。 
-    たとえば、`@concat('#',parameters('topic'))` は上記と同じように動作します。
+    たとえば、`"@concat('#',parameters('currentFeedUrl'))"` 
+    は上記と同じように動作します。
 
-3.    完了したら、**[保存]** を選択します。 
+3.  完了したら、**[保存]** を選択します。 
 
-    これで、1 時間ごとに、6 回以上リツイートされた新しいツイートが Dropbox の **tweets** というフォルダーに配信されます。
+    これで、`currentFeedURL` オブジェクトから別の URL を渡すことで、Web サイトの RSS フィードを変更できるようになりました。
 
-Logic App 定義の詳細については、 [「Author Logic App definitions (Logic App 定義のオーサリング](../logic-apps/logic-apps-author-definitions.md)」を参照してください。
+「[JSON を使用してロジック アプリのワークフロー定義を作成する](../logic-apps/logic-apps-author-definitions.md)」を参照してください。
 
 ## <a name="start-logic-app-workflows"></a>ロジック アプリ ワークフローを開始する
 
@@ -125,3 +146,8 @@ Logic App 定義の詳細については、 [「Author Logic App definitions (Lo
 <!-- Shared links -->
 [Azure Portal]: https://portal.azure.com
 
+## <a name="next-steps"></a>次のステップ
+
+* [Switch ステートメント](../logic-apps/logic-apps-switch-case.md) 
+* [ループ、スコープ、分割処理](../logic-apps/logic-apps-loops-and-scopes.md)
+* [ロジック アプリの定義を作成する](../logic-apps/logic-apps-author-definitions.md)

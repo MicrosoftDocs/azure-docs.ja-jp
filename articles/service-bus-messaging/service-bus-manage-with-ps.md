@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 08/28/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 02e4e58418e289eaf4b619a6cfc411fe1f50f48f
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 1520cea72069be5d7bb078a3770d61fade26b853
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
@@ -29,7 +29,7 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、次の条件が必要です。
+開始する前に、次の前提条件を満たす必要があります。
 
 * Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー プラン][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
 * Azure PowerShell を搭載するコンピューター 手順については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/get-started-azureps)」をご覧ください。
@@ -46,7 +46,7 @@ Service Bus 名前空間を使用する場合は、次のコマンドレット�
 この例では、スクリプトでローカル変数 `$Namespace` と `$Location` を作成します。
 
 * `$Namespace` は操作する Service Bus 名前空間の名前です。
-* `$Location` は名前空間をプロビジョニングするデータセンターを識別します。
+* `$Location` は名前空間をプロビジョニングするデータ センターを識別します。
 * `$CurrentNamespace` では取得 (または作成) する参照名前空間を保存します。
 
 実際のスクリプトでは `$Namespace` と `$Location` はパラメーターとして渡すことができます。

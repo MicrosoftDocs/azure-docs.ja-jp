@@ -12,18 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: curtand;jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: b1ea25a3ec4c10d1821ea876055b15e38d269432
+ms.date: 07/26/2017
+ms.author: curtand
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
-ドメイン名は、多くのディレクトリ リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。 Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。 Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
+ドメイン名は、以下の一部として、多くのディレクトリ リソースを表す重要な識別子にすることができます。
+
+* ユーザーのユーザー名または電子メール アドレス
+* グループのアドレス
+* アプリケーションのアプリケーション ID URI
+
+Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。 Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターでドメイン名を管理する方法については、「[Azure Active Directory のカスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)」を参照してください。
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Azure AD ディレクトリのプライマリ ドメイン名の設定
 ディレクトリを作成すると、contoso.onmicrosoft.com などの初期のドメイン名が、ディレクトリのプライマリ ドメイン名に設定されます。 プライマリ ドメインは、 [Azure クラシック ポータル](https://manage.windowsazure.com/)や Office 365 管理ポータルなどの他のポータルでユーザーを新規作成する際に、新しいユーザーの既定のドメイン名になります。 この措置によって、管理者がポータルでユーザーを新規作成するプロセスが効率化されています。

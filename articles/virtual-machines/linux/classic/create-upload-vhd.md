@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8bb0357a1ac2effd1144afd2af1741205592d253
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 23c30c954875598ce3e01db137b0ef8cda9779f4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
@@ -74,7 +74,7 @@ azure login
 <a id="upload"> </a>
 
 ## <a name="step-3-upload-the-image-to-azure"></a>手順 3. Azure にイメージをアップロードする
-VHD ファイルをアップロードするストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、 [新しいストレージ アカウントを作成する](../../../storage/storage-create-storage-account.md)こともできます。
+VHD ファイルをアップロードするストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、 [新しいストレージ アカウントを作成する](../../../storage/common/storage-create-storage-account.md)こともできます。
 
 Azure CLI でイメージをアップロードするには、次のコマンドを使用します。
 

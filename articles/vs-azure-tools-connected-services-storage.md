@@ -3,8 +3,8 @@ title: "Visual Studio の接続済みサービスを使用して Azure Storage �
 description: "Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Storage を追加する"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 521ec044-ad4b-4828-8864-01decde2e758
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 614f212bb9afb71bb432bec3df7201807083b7f5
-ms.lasthandoff: 03/27/2017
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2fc396c93c3156054277d592eb2772fd29eed832
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用した Azure ストレージの追加
@@ -69,7 +69,7 @@ Visual Studio では、**[接続済みサービスの追加]** ダイアログ�
 - ASP.NET プロジェクト - [変更内容 – ASP.NET プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513126)
 - ASP.NET Core プロジェクト - [変更内容 – ASP.NET 5 プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513124) 
 - クラウド サービス プロジェクト (Web ロールおよび worker ロール) - [変更内容 – クラウド サービス プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=516965)
-- WebJob プロジェクト - [変更内容 - WebJob プロジェクト](storage/vs-storage-webjobs-what-happened.md)
+- WebJob プロジェクト - [変更内容 - WebJob プロジェクト](visual-studio/vs-storage-webjobs-what-happened.md)
 
 ## <a name="next-steps"></a>次のステップ
 - [MSDN フォーラム: Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)

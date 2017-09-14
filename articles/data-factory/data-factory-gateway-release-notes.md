@@ -2,7 +2,7 @@
 title: "Data Management Gateway のリリース ノート | Microsoft Docs"
 description: "Data Management Gateway のリリース ノート"
 services: data-factory
-author: spelluru
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
-ms.author: spelluru
+ms.date: 06/19/2017
+ms.author: abnarain
 published: true
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f29bb67ea50c531278e546c9fde88fd53230bc3c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c052d7e9f757164429ce867201b96305e405dce9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
-最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合がシームレスになります。
+最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合が実現されます。
 
 Data Management Gateway とその使用方法の詳細については、次の記事をご覧ください。
 
@@ -30,18 +30,25 @@ Data Management Gateway とその使用方法の詳細については、次の�
 *  [Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="current-version-2963132"></a>最新バージョン (2.9.6313.2)
+## <a name="current-version-21063477"></a>最新バージョン (2.10.6347.7)
 
 ### <a name="enhancements-"></a>強化された機能
--    ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
--    1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです  (以前は 195 GB に制限されていました)。
--    修正済み: コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
--    修正済み: べき等性を利用して Document DB からオンプレミス SQL にコピーするときの範囲外のインデックスの問題。
--    修正済み: コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL で機能しない問題。
--    修正済み: 末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
+- ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
+- HDFS コネクタでは、SSL 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
+- 修正済み: (クロック スキューによる) 更新中のゲートウェイ オフラインの問題。
+
 
 
 ## <a name="earlier-versions"></a>以前のバージョン
+
+## <a name="2963132"></a>2.9.6313.2
+### <a name="enhancements-"></a>強化された機能
+-   ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
+-   1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
+-   修正済み: コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
+-   修正済み: べき等性を利用して Document DB からオンプレミス SQL Server にコピーするときの範囲外のインデックスの問題。
+-   修正済み: コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL Server で機能しない問題。
+-   修正済み: 末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>強化された機能
@@ -97,10 +104,10 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 ## <a name="216040"></a>2.1.6040。
 
-*  DB2 ドライバーは現在、ゲートウェイ インストール パッケージに含まれています。 別途インストールする必要はありません。 
-*  DB2 ドライバーは、既にサポートされているプラットフォーム (Linux、Unix、Windows) に加え、現在では z/OS と DB2 for i (AS/400) をサポートしています。 
+*  DB2 ドライバーは現在、ゲートウェイ インストール パッケージに含まれています。 別途インストールする必要はありません。
+*  DB2 ドライバーは、既にサポートされているプラットフォーム (Linux、Unix、Windows) に加え、現在では z/OS と DB2 for i (AS/400) をサポートしています。
 *  オンプレミス データ ストアの送信元または送信先として Azure Cosmos DB を使用できるようになりました。
-*  既にサポートされている汎用ストレージ アカウントに加え、コールド/ホット Blob Storage との間でデータをコピーできるようになりました。 
+*  既にサポートされている汎用ストレージ アカウントに加え、コールド/ホット Blob Storage との間でデータをコピーできるようになりました。
 *  ゲートウェイを介し、リモート ログイン特権でオンプレミスの SQL Server に接続することができます。  
 
 ## <a name="2060131"></a>2.0.6013.1

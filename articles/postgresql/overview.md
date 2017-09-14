@@ -5,17 +5,16 @@ services: postgresql
 author: kamathsun
 ms.author: sukamat
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql-database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.custom: mvc
+ms.service: postgresql
 ms.topic: overview
-ms.date: 05/10/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8aae9994f8fc6bb8e4e5368a1495dd257be0417f
+ms.date: 08/01/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 322560aece243e150606e722d467b843bc9580b7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
@@ -42,16 +41,17 @@ Azure CLI と PowerShell の各種サンプルについては、以下のペー�
 Azure Database for PostgreSQL サービスには現在、Basic と Standard の 2 つのサービス レベルがあります。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、サービス レベルごとに[異なるレベルのパフォーマンス、IOPS 保証、機能](concepts-service-tiers.md)を提供しています。 最初は月数ドルの小規模サーバーでアプリを構築し、後でソリューションのニーズに合わせていつでも、手動またはプログラムでサービス レベルの[パフォーマンス レベルを変更](scripts/sample-scale-server-up-or-down.md)することができます。 その際に、アプリケーションにも顧客にもダウンタイムは発生しません。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
-
 スケールを調整するときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 組み込みのパフォーマンス監視機能およびアラート機能と、コンピューティング ユニットに基づくパフォーマンス評価とを組み合わせて使用してください。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、コンピューティング ユニットのスケールアップまたはスケールダウンの影響をすばやく評価することができます。 詳細については、「[Azure Database for PostgreSQL options and performance: Understand what's available in each service tier (Azure Database for PostgreSQL のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する)](./concepts-service-tiers.md)」を参照してください。
 
 ## <a name="keep-your-app-and-business-running"></a>アプリケーションとビジネスの継続的な稼働
-
 Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% (プレビューでは利用できません) のサービス レベル アグリーメント (SLA) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての Azure Database for PostgreSQL サーバーで、組み込みのセキュリティ、フォールト トレランス、データ保護を利用できます。これらは、本来なら自身で購入または設計し、構築、管理する必要があります。 Azure Database for PostgreSQL では、サービス レベルごとに、包括的な一連のビジネス継続性に関する機能とオプションが用意されており、これらを使用すると、稼働させてその状態を維持することができます。 [ポイントインタイム リストア](howto-restore-server-portal.md)を使用すると、データベースを 35 日間分さかのぼって以前の状態に戻すことができます。 さらに、データベースをホストしているデータセンターで障害が発生した場合は、最新のバックアップの geo 冗長コピーからデータベースを復元することができます。
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
-
 Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for PostgreSQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)をご覧ください。
+
+Azure Database for PostgreSQL サービスでは、保存されるデータにストレージ暗号化が使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中にエンジンによって作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
+
+Azure Database for PostgreSQL サービスは、既定で、ネットワーク上で転送されるデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。  クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
 
 ## <a name="next-steps"></a>次のステップ
 - コストの比較と計算については、[価格のページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。

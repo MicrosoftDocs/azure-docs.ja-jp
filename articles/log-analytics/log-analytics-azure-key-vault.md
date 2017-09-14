@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 6cf48883d397a4b04e707111306d4596cd7af683
-ms.lasthandoff: 03/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
+
+![Key Vault のシンボル](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
 
 Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault の AuditEvent ログを調査することができます。
 
@@ -35,8 +37,8 @@ Log Analytics の Azure Key Vault ソリューションを使用して、Azure K
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Key Vault ソリューションのインストールと構成は、次の手順で行います。
 
-1. Azure Key Vault ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。 
-2. [ポータル](#enable-key-vault-diagnostics-in-the-portal)か [PowerShell](#enable-key-vault-diagnostics-using-powershell) を使用して、監視する Key Vault リソースの診断ログを有効にします。 
+1. Azure Key Vault ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。
+2. [ポータル](#enable-key-vault-diagnostics-in-the-portal)か [PowerShell](#enable-key-vault-diagnostics-using-powershell) を使用して、監視する Key Vault リソースの診断ログを有効にします。
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>ポータルで Key Vault 診断を有効にする
 
@@ -62,8 +64,8 @@ $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
- 
- 
+
+
 
 ## <a name="review-azure-key-vault-data-collection-details"></a>Azure Key Vault データ収集の詳細の確認
 Key Vault の診断ログは、Azure Key Vault ソリューションによって直接収集されます。
@@ -73,7 +75,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 
 | Platform | 直接エージェント | Systems Center Operations Manager エージェント | Azure | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |![いいえ](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![あり](./media/log-analytics-azure-keyvault/oms-bullet-green.png) |![なし](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![なし](./media/log-analytics-azure-keyvault/oms-bullet-red.png) | 着信時 |
+| Azure |  |  |&#8226; |  |  | 着信時 |
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault の使用
 [ソリューションをインストール](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)すると、Log Analytics の **[概要]** ページの **[Azure Key Vault]** タイルをクリックすることで、Key Vault データが表示されます。
@@ -94,7 +96,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 ### <a name="to-view-details-for-any-operation"></a>いずれかの操作の詳細を表示するには
 1. **[概要]** ページの **[Azure Key Vault]** タイルをクリックします。
 2. **[Azure Key Vault]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
-   
+
     どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
@@ -142,7 +144,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
   - 名前に \_o のサフィックスがあるフィールドについては、入れ子になったフィールド名に基づき、データは個別のフィールドに分割されます。 例: 呼び出し元の UPN を `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` のフィールドに格納する
    - フィールド CallerIpAddress は CallerIPAddress に変更されます。
    - フィールド RemoteIPCountry は存在しません。
-4. *Key Vault Analytics (非推奨)* ソリューションを削除します。 PowerShell を使用している場合は、次のコードを使用します。`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false` 
+4. *Key Vault Analytics (非推奨)* ソリューションを削除します。 PowerShell を使用している場合は、次のコードを使用します。`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 変更前に収集されたデータは、新しいソリューションには表示されません。 元の型とフィールド名を使用して、このデータのクエリを続行できます。
 
@@ -151,5 +153,4 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure Key Vault データを確認してください。
-
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
-ms.author: juliako;mikhegn
-translationtype: Human Translation
+ms.author: juliako
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: dea4a174aaf3727d66e9d69d32d433ff24e0d06d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK for .NET 3.0 リリース ノート

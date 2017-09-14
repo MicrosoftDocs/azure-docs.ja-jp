@@ -15,12 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 94b92f05af30734de727a12fd99271aa9769723a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL Data Warehouse のバックアップ
@@ -36,15 +35,15 @@ SQL Data Warehouse では、ローカル冗長 (LRS) の Azure Premium Storage �
 
 関連情報:
 
-* Azure Premium Storage については、[Azure Premium Storage の概要](../storage/storage-premium-storage.md)に関するページをご覧ください。
-* ローカルの冗長ストレージの詳細については、[Azure Storage のレプリケーション](../storage/storage-redundancy.md#locally-redundant-storage)に関するページをご覧ください。
+* Azure Premium Storage については、[Azure Premium Storage の概要](../storage/common/storage-premium-storage.md)に関するページをご覧ください。
+* ローカルの冗長ストレージの詳細については、[Azure Storage のレプリケーション](../storage/common/storage-redundancy.md#locally-redundant-storage)に関するページをご覧ください。
 
 ## <a name="azure-storage-blob-snapshots"></a>Azure Storage BLOB のスナップショット
 Azure Premium Storage を使用する利点として、SQL Data Warehouse は Azure Storage BLOB のスナップショットを使用して、ローカルでデータ ウェアハウスをバックアップします。 データ ウェアハウスをスナップショットの復元ポイントに復元できます。 スナップショットは最小 8 時間ごとに開始され、7 日間使用できます。  
 
 関連情報:
 
-* Azure BLOB のスナップショットについては、「[BLOB のスナップショットの作成](../storage/storage-blob-snapshots.md)」をご覧ください。
+* Azure BLOB のスナップショットについては、「[BLOB のスナップショットの作成](../storage/blobs/storage-blob-snapshots.md)」をご覧ください。
 
 ## <a name="geo-redundant-backups"></a>地理冗長のバックアップ
 24 時間ごとに、SQL Data Warehouse は、Standard ストレージに完全なデータ ウェアハウスを保存します。 完全なデータ ウェアハウスは、最新のスナップショットの時間に一致するように作成されます。 標準ストレージは、読み取りアクセス (RA GRS) を持つ地理冗長ストレージ アカウントに属しています。 Azure Storage RA-GRS 機能は、バックアップ ファイルを [ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートします。 この geo レプリケーションにより、プライマリ リージョンのスナップショットにアクセスできない場合でも、データ ウェアハウスを復元できます。 
@@ -56,10 +55,15 @@ Azure Premium Storage を使用する利点として、SQL Data Warehouse は Az
 > 
 > 
 
+> [!NOTE]
+> DWU 9000 と DWU 18000 では、geo 冗長バックアップの使用を中止することはできません。 
+>
+> 
+
 関連情報:
 
-* geo 冗長ストレージの詳細については、「 [Azure Storage のレプリケーション](../storage/storage-redundancy.md)」を参照してください。
-* RA-GRS ストレージの詳細については、「 [読み取りアクセス geo 冗長ストレージ](../storage/storage-redundancy.md#read-access-geo-redundant-storage)」を参照してください。
+* geo 冗長ストレージの詳細については、「 [Azure Storage のレプリケーション](../storage/common/storage-redundancy.md)」を参照してください。
+* RA-GRS ストレージの詳細については、「 [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage)」を参照してください。
 
 ## <a name="data-warehouse-backup-schedule-and-retention-period"></a>データ ウェアハウスのバックアップのスケジュールとリテンション期間
 SQL Data Warehouse では、4 ～ 8 時間ごとにオンラインのデータ ウェアハウスにスナップショットを作成し、各スナップショットを 7 日間保持します。 過去 7 日間の復元ポイントのいずれかに、オンラインのデータベースを復元できます。 

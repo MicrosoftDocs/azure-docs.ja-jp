@@ -4,7 +4,7 @@ description: "StorSimple Snapshot Manager ソリューションの管理タス�
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carolz
+manager: timlt
 editor: 
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/18/2016
+ms.date: 06/05/2016
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5e3528d490cd11fab3fb10126713f81694d7e2d0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理
+
 ## <a name="overview"></a>概要
 StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデータ保護とバックアップ管理を簡素化する、Microsoft 管理コンソール (MMC) スナップインです。 StorSimple Snapshot Manager では、データ センター内やクラウド内の Microsoft Azure StorSimple データを 1 つの統合ストレージ ソリューションとして管理できるため、バックアップ プロセスが簡素化され、コストが削減されます。
 
@@ -39,8 +42,7 @@ StorSimple Snapshot Manager の中央管理コンソールを使用すると、�
 
 > [!NOTE]
 > StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
-> 
-> 
+
 
 ## <a name="storsimple-snapshot-manager-tasks-and-workflows"></a>StorSimple Snapshot Manager のタスクとワークフロー
 StorSimple Snapshot Manager を使用すると、現在のバックアップ ジョブ、スケジュールされているバックアップ ジョブ、および完了したバックアップ ジョブを監視し、管理できます。 さらに、StorSimple Snapshot Manager では、最大 64 個の完了したバックアップのカタログが提供されます。 このカタログを使用して、ボリュームまたは個々のファイルを検索し、復元できます。 
@@ -60,10 +62,5 @@ StorSimple Snapshot Manager を使用すると、現在のバックアップ ジ
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

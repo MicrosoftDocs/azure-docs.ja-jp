@@ -1,4 +1,3 @@
-
 Azure で新たに 2 つのデバッグ機能が利用できるようになりました。Azure Virtual Machines Resource Manager デプロイメント モデルでコンソール出力とスクリーンショットがサポートされます。 
 
 独自のイメージを Azure に導入した場合に限らず、いずれかのプラットフォーム イメージをブートするときでも、仮想マシンは、さまざまな理由で起動できない状態に陥ることがあります。 これらの機能を利用することで仮想マシンを簡単に診断し、起動エラーから復旧することができます。
@@ -12,6 +11,22 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
 ![エラー](./media/virtual-machines-common-boot-diagnostics/screenshot2.png)
 
 この 2 つの機能は、すべてのリージョンの Azure Virtual Machines でサポートされます。 スクリーンショットと出力結果がストレージ アカウントに表示されるまでに最大 10 分かかる場合があります。
+
+## <a name="common-boot-errors"></a>一般的な起動エラー
+
+- [0xC000000E](https://support.microsoft.com/help/4010129)
+- [0xC000000F](https://support.microsoft.com/help/4010130)
+- [0xC0000011](https://support.microsoft.com/help/4010134)
+- [0xC0000034](https://support.microsoft.com/help/4010140)
+- [0xC0000098](https://support.microsoft.com/help/4010137)
+- [0xC00000BA](https://support.microsoft.com/help/4010136)
+- [0xC000014C](https://support.microsoft.com/help/4010141)
+- [0xC0000221](https://support.microsoft.com/help/4010132)
+- [0xC0000225](https://support.microsoft.com/help/4010138)
+- [0xC0000359](https://support.microsoft.com/help/4010135)
+- [0xC0000605](https://support.microsoft.com/help/4010131)
+- [An operating system wasn't found (オペレーティング システムが見つかりませんでした)](https://support.microsoft.com/help/4010142)
+- [Boot failure or INACCESSIBLE_BOOT_DEVICE (起動エラーまたは INACCESSIBLE_BOOT_DEVICE)](https://support.microsoft.com/help/4010143)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>新しい仮想マシンで診断を有効にする
 1. プレビュー ポータルから新しい仮想マシンを作成するとき、デプロイメント モデルのドロップダウンから **[Azure Resource Manager]** を選択します。

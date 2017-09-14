@@ -14,16 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: cephalin;dariac
-translationtype: Human Translation
-ms.sourcegitcommit: 816113f7635a003e22a5172113e5039dbcc1ceac
-ms.openlocfilehash: 5dc546849bd02ccf4d02f3e6363a3e2fc3898259
-
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 9078abbc4ed7eff6975201443992f7bbb84bf57c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/17/2017
 
 ---
+
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
+
 この記事では、FTP または FTPS を使用して、Web アプリ、モバイル アプリ バックエンド、または API アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。
 
-アプリの FTP/S エンドポイントは既にアクティブです。 FTP/S デプロイを有効にするための構成は必要ありません。 
+アプリの FTP/S エンドポイントは既にアクティブです。 FTP/S デプロイを有効にするための構成は必要ありません。
+
+> [!IMPORTANT]
+> マイクロソフトでは、Microsoft Azure プラットフォームのセキュリティを向上させるための努力を続けています。 この継続的な努力の一環として、ドイツ中部リージョンとドイツ北東リージョンで Web Applications のアップグレードが予定されています。 このアップグレード中、Web Apps でのデプロイ用のプレーンテキスト FTP プロトコルの使用は無効になる予定です。 マイクロソフトでは、FTPS を使用したデプロイに切り替えることをお勧めしています。 9 月 5 日に実施が予定されているこのアップグレード中にサービスの中断が発生することは想定していません。 この作業に対するサポートに感謝します。
 
 <a name="step1"></a>
 ## <a name="step-1-set-deployment-credentials"></a>手順 1: デプロイ資格情報を設定する
@@ -72,9 +78,4 @@ ms.openlocfilehash: 5dc546849bd02ccf4d02f3e6363a3e2fc3898259
 
 * [PHP-MySQL Web アプリの作成と FTP でのデプロイ](web-sites-php-mysql-deploy-use-ftp.md)。
 * [Azure App Service のデプロイ資格情報](app-service-deploy-ftp.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

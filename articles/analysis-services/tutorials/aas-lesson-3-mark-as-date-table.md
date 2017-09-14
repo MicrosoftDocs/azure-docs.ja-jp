@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 3: 日付�
 description: "Azure Analysis Services チュートリアル プロジェクトで日付テーブルをマークする方法を説明します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

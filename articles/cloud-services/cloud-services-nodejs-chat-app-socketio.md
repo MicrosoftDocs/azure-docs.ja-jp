@@ -3,8 +3,8 @@ title: "Socket.io を使用する Node.js アプリケーション | Microsoft D
 description: "Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。"
 services: cloud-services
 documentationcenter: nodejs
-author: rmcmurray
-manager: erikre
+author: TomArcher
+manager: routlaw
 editor: 
 ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
 ms.service: cloud-services
@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
+ms.date: 08/17/2017
+ms.author: tarcher
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: e9607d2426192eca990261e5ef3b4e06b25b1dec
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: efa459f6b382ff22c94802e1250836d5f622b4ed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/07/2017
-
+ms.lasthandoff: 06/29/2017
 
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
@@ -81,6 +80,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
          , nib = require('nib')
        //, sio = require('..//..//lib//socket.io'); //Original
          , sio = require('socket.io');                //Updated
+         var port = process.env.PORT || 3000;         //Updated
 3. アプリケーションが適切なポートでリッスンするように、メモ帳などのエディターで server.js を開き、次の行の **3000** を **process.env.port** に変更します。
    
        //app.listen(3000, function () {            //Original
@@ -106,9 +106,18 @@ Azure エミュレーターでアプリケーションをテストする前に�
 1. 次のコマンドを発行してエミュレーターを起動します。
    
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
+   
+   > [!NOTE]
+   > エミュレーターの起動時に問題が発生した場合 (例: Start-AzureEmulator : 予期しないエラーが発生しました。  詳細: 予期しないエラーが発生しました)、通信オブジェクト System.ServiceModel.Channels.ServiceChannel はフォールト状態にあるため、これを通信に使用することはできません。
+   
+      AzureAuthoringTools v 2.7.1 と AzureComputeEmulator v 2.7 を再インストールし、そのバージョンが一致することを確認します。
+   >
+   >
+
+
 2. ブラウザーを開き、**http://127.0.0.1** に移動します。
 3. ブラウザー ウィンドウが開いたら、ニックネームを入力して Enter キーを押します。
-   これにより、特定のニックネームでメッセージが投稿されます。 マルチユーザー機能をテストするには、同じ URL を使用して新しいブラウザー ウィンドウを開き、別のニックネームを入力します。
+   これにより、特定のニックネームでメッセージを投稿できます。 マルチユーザー機能をテストするには、同じ URL を使用して新しいブラウザー ウィンドウを開き、別のニックネームを入力します。
    
    ![User1 と User2 からのチャット メッセージを表示している 2 つのブラウザー ウィンドウ](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
 4. アプリケーションのテストが終了したら、次のコマンドを発行してエミュレーターを停止します。

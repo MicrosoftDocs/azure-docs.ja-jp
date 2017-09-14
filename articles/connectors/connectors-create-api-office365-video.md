@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 8f979875dc2dd53f290fe827d8c7a6ba024b16b3
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: f0e3613d4a3fd5478787c0365eb7a0bcde886c81
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -41,9 +41,9 @@ Office 365 ビデオに関する情報の取得、ビデオの一覧の取得な
 接続を作成したら、テナント名またはチャネル ID など、Office 365 ビデオ プロパティを入力します。 
 
 
-## <a name="view-the-swagger"></a>Swagger の表示
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[Swagger の詳細](/connectors/office365videoconnector/)を参照してください。
+[コネクタの詳細](/connectors/office365videoconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
 
 ## <a name="more-connectors"></a>その他のコネクタ
 [API リスト](apis-list.md)に戻ります。

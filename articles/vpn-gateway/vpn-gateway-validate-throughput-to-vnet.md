@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2017
 ms.author: radwiv;chadmat;genli
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 7dfc5160a0ede19b4317a39187f0f864b037141b
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e0347854b5d30c955a50a01d6f7ba08e24f94b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
@@ -48,11 +48,11 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>予想される最大イングレス/エグレスの計算
 
-1.    アプリケーションのベースライン スループット要件を特定します。
-2.    Azure VPN Gateway のスループットの制限を特定します。 ヘルプについては、「[VPN ゲートウェイの計画と設計](vpn-gateway-plan-design.md)」の「SKU と VPN の種類別の集計スループット」を参照してください。
-3.    お使いの VM サイズの [Azure VM スループットのガイダンス](../virtual-machines/virtual-machines-windows-sizes.md)を特定します。
-4.    インターネット サービス プロバイダー (ISP) の帯域幅を特定します。
-5.    (VM、ゲートウェイ、ISP) * 0.8 の最小の帯域幅の予想されるスループットを計算します。
+1.  アプリケーションのベースライン スループット要件を特定します。
+2.  Azure VPN Gateway のスループットの制限を特定します。 ヘルプについては、「[VPN ゲートウェイの計画と設計](vpn-gateway-plan-design.md)」の「SKU と VPN の種類別の集計スループット」を参照してください。
+3.  お使いの VM サイズの [Azure VM スループットのガイダンス](../virtual-machines/virtual-machines-windows-sizes.md)を特定します。
+4.  インターネット サービス プロバイダー (ISP) の帯域幅を特定します。
+5.  (VM、ゲートウェイ、ISP) * 0.8 の最小の帯域幅の予想されるスループットを計算します。
 
 計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/virtual-machines-windows-resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合、ISP に問い合わせる必要がある場合があります。
 
@@ -89,7 +89,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
     </br>
-    **Azure Linux:** Azure Linux イメージには制限のないファイアウォールがあります。 ポートでリッスンするアプリケーションがある場合、トラフィックは通過を許可されます。 セキュリティ保護されているカスタム イメージには、明示的に開かれたポートが必要な可能性があります。 一般的な Linux OS レイヤー ファイアウォールには、`iptables`、`ufw`、または`firewalld` が含まれます。
+    **Azure Linux:** Azure Linux イメージには制限の緩やかなファイアウォールがあります。 ポートでリッスンするアプリケーションがある場合、トラフィックは通過を許可されます。 セキュリティ保護されているカスタム イメージには、明示的に開かれたポートが必要な可能性があります。 一般的な Linux OS レイヤー ファイアウォールには、`iptables`、`ufw`、または`firewalld` が含まれます。
 
 3. サーバー ノードで、iperf3.exe の抽出元のディレクトリに移動します。 iPerf をサーバー モードで実行し、次のコマンドとして、ポート 5001 でリッスンするように設定します。
 
@@ -124,7 +124,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 
 - エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、**[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。<br><br>
 ![低速ファイル コピーの問題](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
-- 不十分な VM ディスク読み取り/書き込み速度。 詳細については、[Azure Storage のトラブルシューティング](../storage/storage-e2e-troubleshooting.md)に関するページを参照してください。
+- 不十分な VM ディスク読み取り/書き込み速度。 詳細については、[Azure Storage のトラブルシューティング](../storage/common/storage-e2e-troubleshooting.md)に関するページを参照してください。
 
 ## <a name="on-premises-device-external-facing-interface"></a>オンプレミスのデバイスの外部に接続するインターフェイス
 オンプレミスの VPN デバイスのインターネットに接続する IP アドレスが、Azure の[ローカル ネットワーク](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)定義に含まれている場合、VPN が表示されない、突発的な切断、またはパフォーマンスの問題が発生することがあります。

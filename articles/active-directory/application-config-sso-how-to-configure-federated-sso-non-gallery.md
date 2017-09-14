@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 022a514de4cb36fdce9fc630e4b692f4d2fa42d4
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 54e092e4bb8d83a59d05d8aca2760f9098ecd548
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -108,7 +108,7 @@ Azure AD ギャラリーに含まれていないアプリケーションのシ�
  >
  >
 
-9.  ユーザー属性を追加するには、**[その他のすべてのユーザー属性を表示および編集する]** をクリックして、ユーザーがサインインするときに、SAML トークンでアプリケーションに送信される属性を編集します。
+9.  ユーザー属性を追加するには、**[その他のすべてのユーザー属性を表示および編集する]** をクリックして、ユーザーがサインインするときに SAML トークンでアプリケーションに送信される属性を編集します。
 
    属性を追加するには、次の手順に従います。
 
@@ -160,7 +160,7 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
-8.  **[ユーザーとグループ]** リストの上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ブレードを開きます。
+8.  **[ユーザーとグループ]** の一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ブレードを開きます。
 
 9.  **[割り当ての追加]** ブレードの **[ユーザーとグループ]** セレクターをクリックします。
 
@@ -177,6 +177,10 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 15. **[割り当て]** ボタンをクリックして、選択したユーザーにアプリケーションを割り当てます。
 
 少し待つと、選択したユーザーは、ソリューションの説明セクションで説明されている方法を使用してこれらのアプリケーションを起動できるようになります。
+
+## <a name="customizing-the-saml-claims-sent-to-an-application"></a>アプリケーションに送信される SAML 要求をカスタマイズする
+
+アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)

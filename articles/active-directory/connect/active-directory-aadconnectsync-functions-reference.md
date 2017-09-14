@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0f62c1f4f67bec12d1f71b1b02fd121402b0e25c
-ms.openlocfilehash: 70fe899087effca47b2b537facf1c3ed227657de
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: dbd3727d3a31132c2dc1ae1bf5fade7ed969e2c9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: 関数リファレンス
@@ -50,6 +51,13 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 ## <a name="functions-reference"></a>関数参照
 | 関数の一覧 |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
+| **証明書** | | | | |
+| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
+| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
+| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
+| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
+| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
+[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Conversion** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
@@ -69,7 +77,8 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | [指定値を含む](#contains) |[カウント](#count) |[項目](#item) |[ItemOrNull](#itemornull) | |
 | [Join](#join) |[RemoveDuplicates](#removeduplicates) |[分割](#split) | | |
 | **プログラム フロー** | | | | |
-| [エラー](#error) |[IIF](#iif) |[Switch](#switch) | | |
+| [エラー](#error) |[IIF](#iif) |[選択肢](#select) |[Switch](#switch) | |
+| [Where](#where) |[With](#with) | | | |
 | **テキスト** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
@@ -121,7 +130,7 @@ CBool 関数は、式の評価結果に基づいてブール値を返します�
 `bool CBool(exp Expression)`
 
 **解説:**  
-式の評価結果が&amp;0; 以外の値の場合、CBool は True を返し、それ以外の場合は False を返します。
+式の評価結果が 0 以外の値の場合、CBool は True を返し、それ以外の場合は False を返します。
 
 **例:**  
 `CBool([attrib1] = [attrib2])`  
@@ -148,6 +157,204 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 `CDate("2013-01-10 4:00 PM -8")`  
 "2013-01-11 12:00 AM" を表す DateTime を返します。
 
+
+
+
+
+
+
+
+- - -
+### <a name="certextensionoids"></a>CertExtensionOids
+**説明:**  
+証明書オブジェクトのすべての重要な拡張機能の Oid 値を返します。
+
+**構文:**  
+`mvstr CertExtensionOids(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certformat"></a>CertFormat
+**説明:**  
+この X.509v3 証明書の形式の名前を返します。
+
+**構文:**  
+`str CertFormat(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certfriendlyname"></a>CertFriendlyName
+**説明:**  
+証明書に関連付けられている別名を返します。
+
+**構文:**  
+`str CertFriendlyName(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certhashstring"></a>CertHashString
+**説明:**  
+X.509v3 証明書の SHA1 ハッシュ値を 16 進数文字列で返します。
+
+**構文:**  
+`str CertHashString(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certissuer"></a>CertIssuer
+**説明:**  
+X.509v3 証明書を発行した証明機関の名前を返します。
+
+**構文:**  
+`str CertIssuer(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certissuerdn"></a>CertIssuerDN
+**説明:**  
+証明書の発行者の識別名を返します。
+
+**構文:**  
+`str CertIssuerDN(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certissueroid"></a>CertIssuerOid
+**説明:**  
+証明書の発行者の識別証明書の発行者の Oid を返します。
+
+**構文:**  
+`str CertIssuerOid(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
+**説明:**  
+この X.509v3 証明書のキー アルゴリズム情報を文字列で返します。
+
+**構文:**  
+`str CertKeyAlgorithm(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
+**説明:**  
+X.509v3 証明書のキー アルゴリズム パラメーターを 16 進数文字列で返します。
+
+**構文:**  
+`str CertKeyAlgorithm(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certnameinfo"></a>CertNameInfo
+**説明:**  
+証明書のサブジェクトと発行者名を返します。
+
+**構文:**  
+`str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+*   X509NameType: サブジェクトの X509NameType 値。
+*   includesIssuerName: 発行者名を含める場合は true、それ以外の場合は false。
+
+- - -
+### <a name="certnotafter"></a>CertNotAfter
+**説明:**  
+その後は証明書が有効ではなくなる日付を現地時刻で返します。
+
+**構文:**  
+`dt CertNotAfter(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certnotbefore"></a>CertNotBefore
+**説明:**  
+証明書が有効になる日付を現地時刻で返します。
+
+**構文:**  
+`dt CertNotBefore(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certpublickeyoid"></a>CertPublicKeyOid
+**説明:**  
+X.509v3 証明書の公開キーの Oid を返します。
+
+**構文:**  
+`str CertKeyAlgorithm(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
+**説明:**  
+X.509v3 証明書の公開キーのパラメーターの Oid を返します。
+
+**構文:**  
+`str CertPublicKeyParametersOid(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certserialnumber"></a>CertSerialNumber
+**説明:**  
+X.509v3 証明書のシリアル番号を返します。
+
+**構文:**  
+`str CertSerialNumber(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
+**説明:**  
+証明書の署名の作成に使用されるアルゴリズムの Oid を返します。
+
+**構文:**  
+`str CertSignatureAlgorithmOid(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certsubject"></a>CertSubject
+**説明:**  
+証明書のサブジェクト識別名を取得します。
+
+**構文:**  
+`str CertSubject(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certsubjectnamedn"></a>CertSubjectNameDN
+**説明:**  
+証明書のサブジェクト識別名を返します。
+
+**構文:**  
+`str CertSubjectNameDN(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certsubjectnameoid"></a>CertSubjectNameOid
+**説明:**  
+証明書のサブジェクト名の Oid を返します。
+
+**構文:**  
+`str CertSubjectNameOid(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certthumbprint"></a>CertThumbprint
+**説明:**  
+証明書の拇印を返します。
+
+**構文:**  
+`str CertThumbprint(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
+- - -
+### <a name="certversion"></a>CertVersion
+**説明:**  
+証明書の X.509 形式のバージョンを返します。
+
+**構文:**  
+`str CertThumbprint(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
+
 - - -
 ### <a name="cguid"></a>CGuid
 **説明:**  
@@ -172,7 +379,7 @@ Contains 関数は、複数値の属性内で文字列を検索します。
 * search: 属性で検索する文字列。
 * Casetype: CaseInsensitive または CaseSensitive。
 
-文字列が見つかった複数値の属性にインデックスを返します。 文字列が見つからない場合は&0; を返します。
+文字列が見つかった複数値の属性にインデックスを返します。 文字列が見つからない場合は 0 を返します。
 
 **解説:**  
 複数値の文字列属性の場合、検索では、値の部分文字列が検出されます。  
@@ -203,7 +410,7 @@ ConvertFromBase64 関数は、指定した base64 でエンコードされた値
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **説明:**  
-ConvertFromUTF8Hex 関数は、指定した UTF8 の&amp;16; 進数でエンコードされた値を文字列に変換します。
+ConvertFromUTF8Hex 関数は、指定した UTF8 の 16 進数でエンコードされた値を文字列に変換します。
 
 **構文:**  
 `str ConvertFromUTF8Hex(str source)`
@@ -222,7 +429,7 @@ ConvertFromUTF8Hex 関数は、指定した UTF8 の&amp;16; 進数でエンコ�
 ### <a name="converttobase64"></a>ConvertToBase64
 **説明:**  
 ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。  
-整数の配列の値を、base&64; 桁でエンコードされているそれと同等の文字列表現に変換します。
+整数の配列の値を、base 64 桁でエンコードされているそれと同等の文字列表現に変換します。
 
 **構文:**  
 `str ConvertToBase64(str source)`
@@ -234,7 +441,7 @@ ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換�
 - - -
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **説明:**  
-ConvertToUTF8Hex 関数は、文字列を UTF8 の&amp;16; 進数でエンコードされた値に変換します。
+ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
 
 **構文:**  
 `str ConvertToUTF8Hex(str source)`
@@ -377,7 +584,7 @@ Error 関数は、カスタム エラーを返すために使用します。
 - - -
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **説明:**  
-EscapeDNComponent 関数は、DN のコンポーネントを&amp;1; つ受け取り、LDAP で表示できるようにそれをエスケープします。
+EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り、LDAP で表示できるようにそれをエスケープします。
 
 **構文:**  
 `str EscapeDNComponent(str value)`
@@ -492,7 +699,7 @@ IsBitSet 関数は、ビットが設定されているかどうかをテスト�
 
 **例:**  
 `IsBitSet(&HF,4)`  
-ビット "4" が&amp;16; 進数値 "F" で設定されているため True が返されます。
+ビット "4" が 16 進数値 "F" で設定されているため True が返されます。
 
 - - -
 ### <a name="isdate"></a>IsDate
@@ -505,6 +712,14 @@ IsBitSet 関数は、ビットが設定されているかどうかをテスト�
 **解説:**  
 CDate() が成功するかどうかを判断するために使用します。
 
+- - -
+### <a name="iscert"></a>IsCert
+**説明:**  
+生データを .NET X509Certificate2 証明書オブジェクトにシリアル化できる場合は true を返します。
+
+**構文:**  
+`bool CertThumbprint(binary certificateRawData)`  
+*   certificateRawData: X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 - - -
 ### <a name="isempty"></a>IsEmpty
 **説明:**  
@@ -600,7 +815,7 @@ CStr() が式の解析に成功するかどうかを判断するために使用�
 - - -
 ### <a name="item"></a>項目
 **説明:**  
-Item 関数は複数値の文字列/属性から&amp;1; つの項目を返します。
+Item 関数は複数値の文字列/属性から 1 つの項目を返します。
 
 **構文:**  
 `var Item(mvstr attribute, num index)`
@@ -620,7 +835,7 @@ Contains 関数は複数値の属性内の項目に対するインデックス�
 - - -
 ### <a name="itemornull"></a>ItemOrNull
 **説明:**  
-ItemOrNull 関数は複数値の文字列/属性から&amp;1; つの項目を返します。
+ItemOrNull 関数は複数値の文字列/属性から 1 つの項目を返します。
 
 **構文:**  
 `var ItemOrNull(mvstr attribute, num index)`
@@ -643,10 +858,10 @@ Join 関数は、複数値の文字列を受け取り、指定した区切り記
 `str Join(mvstr attribute, str Delimiter)`
 
 * attribute: 結合対象の文字列が含まれる複数値の属性。
-* delimiter: 返される文字列内で部分文字列を区切るために使用する任意の文字列。 省略した場合は、空白文字 (" ") が使用されます。 delimiter が長さ&0; の文字列 ("") または Nothing の場合、リスト内のすべての項目は、区切り記号なしで連結されます。
+* delimiter: 返される文字列内で部分文字列を区切るために使用する任意の文字列。 省略した場合は、空白文字 (" ") が使用されます。 delimiter が長さ 0 の文字列 ("") または Nothing の場合、リスト内のすべての項目は、区切り記号なしで連結されます。
 
 **解説:**  
-Join 関数と Split 関数の間には類似点があります。 Join 関数は、文字列の配列を受け取り、区切り文字列を使用してそれらを結合し、単一の文字列を返します。 Split 関数は、文字列を受け取って区切り記号で分割し、文字列の配列を返します。 ただし、Join 関数が任意の区切り文字列を使った文字列を連結できるのに対し、Split 関数で文字列を分割する際には&1; 文字の区切り記号しか使用できないという大きな違いがあります。
+Join 関数と Split 関数の間には類似点があります。 Join 関数は、文字列の配列を受け取り、区切り文字列を使用してそれらを結合し、単一の文字列を返します。 Split 関数は、文字列を受け取って区切り記号で分割し、文字列の配列を返します。 ただし、Join 関数が任意の区切り文字列を使った文字列を連結できるのに対し、Split 関数で文字列を分割する際には 1 文字の区切り記号しか使用できないという大きな違いがあります。
 
 **例:**  
 `Join([proxyAddresses],",")`  
@@ -773,7 +988,7 @@ PadLeft 関数は、指定した埋め込み文字を使用して、指定した
 
 * string: 埋め込む文字列。
 * length: 文字列の必要な長さを表す整数。
-* padCharacter: 埋め込み文字として使用する&1; 文字で構成された文字列。
+* padCharacter: 埋め込み文字として使用する 1 文字で構成された文字列。
 
 **解説:**
 
@@ -798,7 +1013,7 @@ PadRight 関数は、指定した埋め込み文字を使用して、指定し�
 
 * string: 埋め込む文字列。
 * length: 文字列の必要な長さを表す整数。
-* padCharacter: 埋め込み文字として使用する&1; 文字で構成された文字列。
+* padCharacter: 埋め込み文字として使用する 1 文字で構成された文字列。
 
 **解説:**
 
@@ -898,8 +1113,8 @@ ReplaceChars 関数は、ReplacePattern 文字列に見つかったすべての�
 **解説:**
 
 * この関数は定義した source の見つかった位置を受け取り、target と置き換えます。
-* source は、厳密に&1; 文字 (unicode) である必要があります。
-* source は、空にすることも&2; 文字以上にすることもできません (解析エラー)。
+* source は、厳密に 1 文字 (unicode) である必要があります。
+* source は、空にすることも 2 文字以上にすることもできません (解析エラー)。
 * target には、ö:oe、β:ss などの複数の文字を指定できます。
 * target を空にして、文字を削除する必要があることを指定できます。
 * source は、大文字と小文字を区別し、完全に一致する必要があります。
@@ -954,6 +1169,24 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 " Test" を返します。
 
 - - -
+### <a name="select"></a>Select
+**説明:**  
+指定された関数に基づいて、複数値の属性 (または式の出力) 内のすべての値を処理します。
+
+**構文:**  
+`mvattr Select(variable item, mvattr attribute, func function)`  
+`mvattr Select(variable item, exp expression, func function)`
+
+* item: 複数値の属性内の要素を表します
+* attribute: 複数値の属性
+* expression: 値のコレクションを返す式
+* condition: 属性内の項目を処理できる任意の関数
+
+**例:**  
+`Select($item,[otherPhone],Replace($item,"-",""))`  
+ハイフン (-) の削除後に、複数値の属性 otherPhone 内のすべての値を返します。
+
+- - -
 ### <a name="split"></a>分割
 **説明:**  
 Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
@@ -963,7 +1196,7 @@ Split 関数は区切り記号で区切られた文字列を受け取り、複�
 `mvstr Split(str value, str delimiter, num limit)`
 
 * value: 分離する区切り文字が含まれる文字列。
-* delimiter: 区切り記号として使用される&1; 文字。
+* delimiter: 区切り記号として使用される 1 文字。
 * limit: 返すことができる値の最大数。
 
 **例:**  
@@ -989,7 +1222,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 - - -
 ### <a name="switch"></a>Switch
 **説明:**  
-Switch 関数は、条件の評価結果に基づいて&amp;1; つの値を返すために使用します。
+Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
 
 **構文:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
@@ -1007,7 +1240,7 @@ Switch 関数の引数リストは、式と値のペアで構成されます。 
 * すべての式が True でない場合。
 * 最初の True 式に、Null である対応する値がある場合。
 
-Switch は、返される式が&1; つであってもすべての式を評価します。 このため、望ましくない影響が発生しないよう注意する必要があります。 たとえば、式の評価結果が&0; 除算のエラーの場合、エラーが発生します。
+Switch は、返される式が 1 つであってもすべての式を評価します。 このため、望ましくない影響が発生しないよう注意する必要があります。 たとえば、式の評価結果が 0 除算のエラーの場合、エラーが発生します。
 
 値には、カスタム文字列を返す Error 関数を指定することもできます。
 
@@ -1043,6 +1276,42 @@ UCase 関数は文字列内のすべての文字を大文字に変換します�
 "test" を返します。
 
 - - -
+### <a name="where"></a>Where
+
+**説明:**  
+特定の条件に基づいて、複数値の属性 (または式の出力) の値のサブセットを返します。
+
+**構文:**  
+`mvattr Where(variable item, mvattr attribute, exp condition)`  
+`mvattr Where(variable item, exp expression, exp condition)`  
+* item: 複数値の属性内の要素を表します
+* attribute: 複数値の属性
+* condition: 評価結果が true または false になる任意の式
+* expression: 値のコレクションを返す式
+
+**例:**  
+`Where($item,[userCertificate],CertNotAfter($item)>Now())`  
+有効期限が切れていない、複数値の属性 userCertificate 内の証明書の値を返します。
+
+- - -
+### <a name="with"></a>With
+**説明:**  
+With 関数は、複雑な式の中に 1 回以上現れる部分式を表す変数を使用することで、複雑な式を簡略化する方法となります。
+
+**構文:**
+`With(var variable, exp subExpression, exp complexExpression)`  
+* variable: 部分式を表します。
+* subExpression: 変数によって表される部分式。
+* complexExpression: 複雑な式。
+
+**例:**  
+`With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
+上の記述は下の記述と機能的に同等です。  
+`IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
+userCertificate 属性内の、期限が切れていない証明書の値のみが返されます。
+
+
+- - -
 ### <a name="word"></a>Word
 **説明:**  
 Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。
@@ -1073,9 +1342,4 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 * [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

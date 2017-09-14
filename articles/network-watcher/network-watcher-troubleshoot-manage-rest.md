@@ -3,7 +3,7 @@ title: "Azure Network Watcher を使用した仮想ネットワーク ゲート�
 description: "このページでは、Azure Network Watcher で REST を使用して仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う方法について説明します"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
-ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 2da82e8f0a30647c5cd7afa5041d3c5b114de814
+ms.date: 06/19/2017
+ms.author: jdial
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc61be74d85a309c158716460b918baaf4fa94dc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Azure Network Watcher を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
+> - [ポータル](network-watcher-troubleshoot-manage-portal.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。  リソースのトラブルシューティングは、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
+Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。 リソースのトラブルシューティングは、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
 
 この記事では、リソースのトラブルシューティングで現在利用できるさまざまな管理タスクを見ていきます。
 
@@ -42,7 +42,9 @@ Network Watcher は、Azure 内のネットワーク リソースの把握に関
 
 PowerShell を使用している REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。
+
+サポートされるゲートウェイの種類の一覧については、「[Supported Gateway types (サポートされるゲートウェイの種類)](network-watcher-troubleshoot-overview.md#supported-gateway-types)」を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -325,7 +327,7 @@ is a transient state while the Azure platform is being updated.",
 
 アクション テキストは、問題を解決する方法の一般的なガイダンスを提供します。 問題に対してアクションを実施できる場合は、追加のガイダンスのリンクが提供されます。 追加のガイダンスがない場合は、サポート ケースを開くための URL が応答で提供されます。  応答のプロパティと内容の詳細については、[Network Watcher のトラブルシューティングの概要](network-watcher-troubleshoot-overview.md)に関するページを参照してください。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)に関するページを参照してください。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

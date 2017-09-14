@@ -39,6 +39,7 @@
 ### [アクティビティ ログの Event Hubs へのストリーム](monitoring-stream-activity-logs-event-hubs.md)
 ### [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Resource Manager でアクティビティ ログ アラートを作成する](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+### [アクティビティ ログ アラートに移行する](monitoring-migrate-management-alerts.md)
 ## サービスの通知の使用
 ### [サービスの通知を表示する](monitoring-service-notifications.md)
 ### [サービスの通知でアラートを構成する](monitoring-activity-log-alerts-on-service-notifications.md)
@@ -59,8 +60,11 @@
 ### [トラブルシューティング](azure-diagnostics-troubleshooting.md)
 
 # リファレンス
-## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=monitor)
 ## [監視データのソース](monitoring-data-sources.md)
+## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
+## [アクティビティ ログのイベント スキーマ](monitoring-activity-log-schema.md)
+## [診断ログでサポートされているサービス、カテゴリ、スキーマ](monitoring-diagnostic-logs-schema.md)
 ## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST ()](/rest/api/monitor/)
@@ -70,6 +74,9 @@
 ### [1.3 以降](azure-diagnostics-schema-1dot3-and-later.md)
 
 # リソース
-## [PowerShell のサンプル](insights-powershell-samples.md)
 ## [Azure CLI 1.0 のサンプル](insights-cli-samples.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [PowerShell のサンプル](insights-powershell-samples.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=monitor)
+## [クイック スタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)

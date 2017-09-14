@@ -16,16 +16,15 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4ffbe7e28d8b4c7d421bec477455a94609cd127a
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: e428b755f6696bd6d4047ad77579a8e9665dfbd8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
-# <a name="capture-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージをキャプチャする
+# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
-ストレージ アカウントに管理対象ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 その後、イメージを使って、記憶域として管理対象ディスクを使う複数の VM を作成することができます。 
+ストレージ アカウントに管理対象ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 
 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
@@ -83,7 +82,8 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 詳しくは、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
 
-1. 変数をいくつか作成します。 
+1. 変数をいくつか作成します。
+
     ```powershell
     $vmName = "myVM"
     $rgName = "myResourceGroup"
@@ -117,7 +117,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
     ```powershell
     New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
-    ```    
+    ``` 
 
 
 
@@ -144,7 +144,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 3. VM を一般化としてマークします。
 
     ```powershell
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized    
+    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
     ```
 4.  一般化した OS VHD を使ってイメージを作成します。
 
@@ -185,10 +185,10 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
     ```powershell
     New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
-    ```    
+    ``` 
     
 
 ## <a name="next-steps"></a>次のステップ
-- これで、[一般化された管理対象イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができるようになりました。    
+- これで、[一般化された管理対象イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができるようになりました。  
 
 

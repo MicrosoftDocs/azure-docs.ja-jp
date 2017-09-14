@@ -15,17 +15,17 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: ad18896548449d85e2af8a91ddd90c8192db1ab2
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Visual Studio で Azure Logic Apps を作成してデプロイする
 
-[Azure Portal](https://portal.azure.com/) には Azure Logic Apps を作成および管理するための優れた機能がありますが、Logic Apps の設計、作成、およびデプロイには、Visual Studio を使う方がよい場合があります。 Visual Studio にはロジック アプリ デザイナーなどの高度なツールが用意されており、ユーザーはそれらを使ってロジック アプリを作成し、デプロイ テンプレートと自動化テンプレートを構成して、任意の環境にデプロイすることができます。 
+[Azure ポータル](https://portal.azure.com/)には Azure Logic Apps を作成および管理するための優れた機能がありますが、Logic Apps の設計、作成、およびデプロイには、Visual Studio を使用できます。 Visual Studio にはロジック アプリ デザイナーなどの高度なツールが用意されており、ユーザーはそれらを使ってロジック アプリを作成し、デプロイ テンプレートと自動化テンプレートを構成して、任意の環境にデプロイすることができます。 
 
 Azure Logic Apps の概要については、[Azure Portal で最初にロジック アプリを作成する方法](logic-apps-create-a-logic-app.md)に関するトピックをご覧ください。
 
@@ -106,7 +106,7 @@ Visual Studio によって、ロジック アプリが機能するために必�
 
 ### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>依存リソースの参照を Visual Studio のデプロイ テンプレートに追加する
 
-ロジック アプリで依存リソースを参照する場合は、[Azure Resource Manager テンプレート関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)を、ロジック アプリのデプロイ テンプレートでパラメーターのように使うことができます。 たとえば、ロジック アプリと共にデプロイする Azure 関数または統合アカウントをロジック アプリで参照するような場合です。 ロジック アプリ デザイナーが正しく記述するように、デプロイ テンプレートでのパラメーターの使い方についての次のガイドラインに従ってください。 
+ロジック アプリで依存リソースを参照する場合は、[Azure Resource Manager テンプレート関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)を、ロジック アプリのデプロイ テンプレートで使うことができます。 たとえば、ロジック アプリと共にデプロイする Azure 関数または統合アカウントをロジック アプリで参照するような場合です。 ロジック アプリ デザイナーが正しく記述するように、デプロイ テンプレートでのパラメーターの使い方についての次のガイドラインに従ってください。 
 
 ロジック アプリ パラメーターは、次の種類のトリガーとアクションで使うことができます。
 
@@ -114,33 +114,61 @@ Visual Studio によって、ロジック アプリが機能するために必�
 *   関数アプリ
 *   APIM 呼び出し
 *   API 接続ランタイム URL
+*   API 接続パス
 
-また、以下に示す parameters、variables、resourceId、concat などのテンプレート関数を使うことができます。 たとえば、Azure 関数のリソース ID を置換する方法を次に示します。
+さらに、parameters、variables、resourceId、concat などのテンプレート関数を使用できます。たとえば、Azure 関数のリソース ID を置換する方法を次に示します。
 
 ```
 "parameters":{
     "functionName": {
-    "type":"string",
-    "minLength":1,
-    "defaultValue":"<FunctionName>"
+        "type":"string",
+        "minLength":1,
+        "defaultValue":"<FunctionName>"
     }
 },
 ```
 
-パラメーターは次のように使います。
+parameters は次のように使用します。
 
 ```
 "MyFunction": {
-        "type": "Function",
-        "inputs": {
+    "type": "Function",
+    "inputs": {
         "body":{},
         "function":{
-        "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
+            "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
         }
     },
     "runAfter":{}
 }
 ```
+別の例として、Service Bus のメッセージ送信操作をパラメーター化できます。
+
+```
+"Send_message": {
+    "type": "ApiConnection",
+        "inputs": {
+            "host": {
+                "connection": {
+                    "name": "@parameters('$connections')['servicebus']['connectionId']"
+                }
+            },
+            "method": "post",
+            "path": "[concat('/@{encodeURIComponent(''', parameters('queueuname'), ''')}/messages')]",
+            "body": {
+                "ContentData": "@{base64(triggerBody())}"
+            },
+            "queries": {
+                "systemProperties": "None"
+            }
+        },
+        "runAfter": {}
+    }
+```
+> [!NOTE] 
+> host.runtimeUrl は省略可能であり、テンプレートに存在する場合は削除できます。
+> 
+
 
 > [!NOTE] 
 > ロジック アプリ デザイナーでパラメーターを使うには、既定値を指定する必要があります。次はその例です。

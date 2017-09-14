@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d8ae05316b424af7d87c3c5ebdac575bcc04998d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc6f293db0d537990d7fb1238fe4a19c704f57a1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンのプロビジョニング
 Linux データ サイエンス仮想マシンは、一連のツールがプレインストールされた CentOS ベースの Azure 仮想マシンです。 これらのツールは、データ分析と機械学習に一般的に使用されます。 含まれている主なソフトウェア コンポーネントは次のとおりです。
 
+* オペレーティング システム: Linux CentOS ディストリビューション。
 * Microsoft R Server Developer エディション
 * 一般的なデータ分析ライブラリを含む Anaconda Python ディストリビューション (バージョン 2.7 および 3.5)
 * JuliaPro - 一般的な科学的およびデータ分析ライブラリを含む Julia 言語の管理されたディストリビューション
@@ -62,7 +62,7 @@ Linux データ サイエンス仮想マシンはそうした問題の大部分�
 Linux データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。
 
 * **Azure サブスクリプション**: これを取得する場合は、 [Azure 無試用版の取得](https://azure.microsoft.com/free/)に関するページを参照してください。
-* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
+* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
@@ -177,7 +177,7 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 サンプルの Notebook がパッケージ化されています (Python と R にそれぞれ 1 つずつ)。ローカルの Linux ユーザー名とパスワードを使用して Jupyter Notebook の認証を受けると、Notebook のホーム ページにサンプルへのリンクを表示できます。 **[新規]** を選択し、適切な言語カーネルを選択して、新しい Notebook を作成できます。 **[新規]** ボタンが表示されない場合は、左上にある **Jupyter** アイコンをクリックして、Notebook サーバーのホーム ページに移動します。
 
 ### <a name="apache-spark-standalone"></a>Apache Spark スタンドアロン 
-Apache Spark のスタンドアロン インスタンスが Linux DSVM にプレインストールされているため、Spark アプリケーションをテストして大規模なクラスターにデプロイする前に、まずローカルで開発することができます。 Jupyter カーネルを使用して PySpark プログラムを実行できます。 Jupyter を開いて [新規] ボタンをクリックすると、利用可能なカーネルの一覧が表示されます。 "Spark-Python"は、Python 言語を使用して Spark アプリケーションを構築するのに便利な PySpark カーネルです。 また PyCharm や Spyder などの Python IDE を使用して Spark プログラムを作成することもできます。 スタンドアロン インスタンスであるため、Spark スタックは呼び出し元のクライアント プログラム内で実行します。 これにより、Spark クラスターでの開発に比べて、問題のトラブルシューティングが高速かつ容易になります。 
+Apache Spark のスタンドアロン インスタンスが Linux DSVM にプレインストールされているため、Spark アプリケーションをテストして大規模なクラスターにデプロイする前に、まずローカルで開発することができます。 Jupyter カーネルを使用して PySpark プログラムを実行できます。 Jupyter を開いて [New]\(新規\) ボタンをクリックすると、利用可能なカーネルの一覧が表示されます。 "Spark-Python" は、Python 言語を使用して Spark アプリケーションを構築するのに便利な PySpark カーネルです。 また PyCharm や Spyder などの Python IDE を使用して Spark プログラムを作成することもできます。 スタンドアロン インスタンスであるため、Spark スタックは呼び出し元のクライアント プログラム内で実行します。 これにより、Spark クラスターでの開発に比べて、問題のトラブルシューティングが高速かつ容易になります。 
 
 サンプルの PySpark Notebook は、Jupyter のホーム ディレクトリ下の "SparkML" ディレクトリ ($HOME/notebooks/SparkML/pySpark) で提供されます。 
 

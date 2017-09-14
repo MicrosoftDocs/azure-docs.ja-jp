@@ -3,7 +3,7 @@ title: "HTTP 要求を生成するための API Management サービスの使用
 description: "API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。"
 services: api-management
 documentationcenter: 
-author: darrelmiller
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5bb92f427a07949d6057553ac8dde309e1a0aa11
-
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 6b7f1268ea4893307713931e7288f5d38c5ee080
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
@@ -289,10 +290,5 @@ Azure API Management サービスには、HTTP トラフィックに選択的に
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Send-Request-and-Return-Response-Policies/player]
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

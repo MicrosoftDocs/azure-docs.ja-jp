@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 53425eaf388e5164d2664c163f56a33d48cf8a36
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: df5c836abbf09889f4859170359c0ee6c1b03378
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -120,9 +120,9 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 * アプリケーションごとに個別のバックエンド プール VM を構成する。 
 * 各アプリケーションが独自のネットワーク インターフェイスと IP アドレスを使用していたように、デュアル NIC VM でアプリケーションを構成する。 
 
-### <a name="cause-4-accessing-the-internet-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4: 参加している Load Balancer バックエンド プール VM からインターネット Load Balancer VIP にアクセスしている
+### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4: 参加している Load Balancer バックエンド プール VM から内部 Load Balancer VIP にアクセスしている
 
-ILB VIP が VNet 内で構成されている場合、参加しているバックエンド VM のいずれかがインターネット Load Balancer VIP にアクセスしようと、エラーが発生します。 これはサポートされていないシナリオです。
+ILB VIP が VNet 内で構成されている場合、参加しているバックエンド VM のいずれかが内部 Load Balancer VIP にアクセスしようと、エラーが発生します。 これはサポートされていないシナリオです。
 **解決策**: Application Gateway または他のプロキシ (nginx、haproxy など) を評価し、このようなシナリオをサポートします。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
 
 ## <a name="additional-network-captures"></a>その他のネットワーク キャプチャ

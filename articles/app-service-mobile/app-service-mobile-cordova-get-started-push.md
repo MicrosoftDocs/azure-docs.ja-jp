@@ -3,9 +3,9 @@ title: "Azure Mobile Apps を使用した Apache Cordova アプリへのプッ�
 description: "Azure Mobile Apps を使用して Apache Cordova アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: javascript
-manager: adrianha
+manager: syntaxc4
 editor: 
-author: ysxu
+author: ggailey777
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 47063276d7bb6bb3b3aac0cca4290dfbea5488f7
-ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
-ms.lasthandoff: 02/16/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: dc3cab0a6a8b4a56ab0fba1a02e5bba9d0ed1b1f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Apache Cordova アプリへのプッシュ通知の追加
@@ -156,7 +156,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
         pushRegistration.on('error', handleError);
         }
-3. (Android) 前述のコードで、`Your_Project_ID` を、 [Google デベロッパー コンソール][18]から入手したアプリのプロジェクト ID (数値) に置き換えます。
+3. (Android) 前述のコードで、`Your_Project_ID` を、[Google デベロッパー コンソール][18]から入手したアプリのプロジェクト ID (数値) に置き換えます。
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>(省略可能) Android でアプリを構成して実行する
 このセクションを完了すると、Android 用のプッシュ通知を有効にすることができます。
@@ -266,8 +266,7 @@ Apple の開発者アカウントで作成したアプリ ID が既に config.xm
 5. プロジェクトをリビルドします。
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>iOS アプリでプッシュ通知をテストする
-1. Visual Studio で、**iOS** がデプロイ ターゲットとして選択されていることを確認してから、**[デバイス]**
-    を選択して、接続した iOS デバイス上で実行します。
+1. Visual Studio で、**iOS** がデプロイ ターゲットとして選択されていることを確認してから、**[デバイス]** を選択して、接続した iOS デバイス上で実行します。
 
     iTunes を使用中の PC に接続した iOS デバイス上で実行することができます。 iOS シミュレーターでは、プッシュ通知はサポートされていません。
 

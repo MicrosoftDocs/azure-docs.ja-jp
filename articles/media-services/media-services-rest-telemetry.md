@@ -4,7 +4,7 @@ description: "この記事では、REST API を使用して Azure Media Services
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 534fa3718d22eb17a99b654b5f5cb404de53eceb
 ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/19/2017
 
 ---
 
@@ -38,7 +39,7 @@ ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
   
 - 監視構成を取得する
 
-    監視するサービスの監視構成設定を作成します。 許可される監視構成設定は&1; つだけです。 
+    監視するサービスの監視構成設定を作成します。 許可される監視構成設定は 1 つだけです。 
 
 - 監視構成を追加する
 
@@ -244,9 +245,4 @@ ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

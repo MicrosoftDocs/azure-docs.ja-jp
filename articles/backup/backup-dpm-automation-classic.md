@@ -12,12 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/23/2017
+ms.date: 08/02/2017
 ms.author: nkolli;trinadhk;anuragm;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 127484103706be5acd0f988aee3d13217d4d87f2
-ms.openlocfilehash: f73bdcf056dc745f9f40e96d3dc51e5e4b88f77d
-
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 943a12dcba49a114d206b9dab968da332ea99926
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
@@ -27,7 +28,13 @@ ms.openlocfilehash: f73bdcf056dc745f9f40e96d3dc51e5e4b88f77d
 >
 >
 
-この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
+この記事では、PowerShell を使用して DPM データのバックアップおよびバックアップ コンテナーからの復元を行う方法について説明します。 すべての新しいデプロイで Recovery Services コンテナーを使用することをお勧めします。 Azure Backup を使ったことがない場合は、[PowerShell を使用した Data Protection Manager データの Azure へのデプロイおよび管理](backup-dpm-automation.md)に関する記事を参考に、データを Recovery Services コンテナーに保存します。
+
+> [!IMPORTANT]
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。 2017 年 10 月 15 日以降に、PowerShell を使用して Backup コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
+>- 残っているすべての Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
+>
 
 ## <a name="setting-up-the-powershell-environment"></a>PowerShell 環境のセットアップ
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
@@ -238,7 +245,7 @@ DPM エージェントがインストールされており、DPM サーバーに
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”
 ```
 
-[Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\* をフィルター処理します。次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。*変更可能な*保護グループ オブジェクト```$MPG```を使用して、忘れずに追加します。
+[Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\* をフィルター処理します。 次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。 "*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }
@@ -288,7 +295,7 @@ PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -Tim
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-上記の例で ```$onlineSch``` は、GFS スキームの保護グループ用の既存のオンライン保護スケジュールを含む&4; つの要素を持つ配列です。
+上記の例で ```$onlineSch``` は、GFS スキームの保護グループ用の既存のオンライン保護スケジュールを含む 4 つの要素を持つ配列です。
 
 1. ```$onlineSch[0]``` は日次スケジュールを含みます
 2. ```$onlineSch[1]``` は週次スケジュールを含みます
@@ -348,9 +355,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 ## <a name="next-steps"></a>次のステップ
 * Azure DPM Backup の詳細については、「 [DPM Backup の概要](backup-azure-dpm-introduction.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

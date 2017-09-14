@@ -1,9 +1,9 @@
 ---
-title: "Actions と NotActions - Azure RBAC のロール | Microsoft Docs"
-description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。"
+title: "Actions と NotActions - Azure ロールベースのアクセス制御 (RBAC) | Microsoft Docs"
+description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。 ロールは継続的に追加されるので、ドキュメントが最新かどうか確認してください。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
 editor: 
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/21/2017
-ms.author: kgremban
+ms.date: 06/28/2017
+ms.author: andredm
+ms.reviewer: 
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a0a3b7ad7757439b5f73c38e759761f671ca2e17
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 7f1aa292e6c15e2702f939b9751fe13a27bc5b7f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のための組み込みロール
+# <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
 
 ## <a name="roles-in-azure"></a>Azure におけるロール
@@ -30,12 +31,12 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 
 アクションは、指定したリソースの種類で実行できる操作の種類を定義します。 次に例を示します。
 - **Write** を使用すると、PUT、POST、PATCH、および DELETE 操作を実行できます。
-- **Read** を使用すると、GET 操作を実行できます。 
+- **Read** を使用すると、GET 操作を実行できます。
 
-この記事では、現在存在するさまざまなロールについてのみ説明します。 ユーザーにロールを割り当てるとき、許可されているアクションをさらを制限するには、スコープを定義します。 これは、1 つのリソース グループについてのみ、あるユーザーを Web サイトの共同作業者として指定する場合に便利です。 
+この記事では、現在存在するさまざまなロールについてのみ説明します。 ユーザーにロールを割り当てるとき、許可されているアクションをさらを制限するには、スコープを定義します。 これは、1 つのリソース グループについてのみ、あるユーザーを Web サイトの共同作業者として指定する場合に便利です。
 
 > [!NOTE]
-> Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 現在のロールの一覧を表示するには、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドレットを使用します。 特定のロールの詳細を確認するには、適宜 `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) を使用すると、特定の Azure リソース プロバイダーの操作が一覧表示されます。 
+> Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 現在のロールの一覧を表示するには、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドレットを使用します。 特定のロールの詳細を確認するには、適宜 `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) を使用すると、特定の Azure リソース プロバイダーの操作が一覧表示されます。
 
 
 | ロール名 | Description |
@@ -57,6 +58,8 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [DNS ゾーン共同作成者](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
 | [Azure Cosmos DB アカウントの共同作業者](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
+| ロジック アプリの共同作成者 | ロジック アプリのあらゆる側面を管理できますが、新規作成はできません。 |
+| ロジック アプリのオペレーター |ロジック アプリ内で定義されたワークフローを開始および停止できます。 |
 | [監視リーダー](#monitoring-reader) |すべての監視データを読み取ることができます |
 | [監視共同作業者](#monitoring-contributor) |監視データを読み取り、監視設定を編集できます |
 | [ネットワークの共同作業者](#network-contributor) |すべてのネットワーク リソースを管理できます |
@@ -67,11 +70,15 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Scheduler Job Collection の共同作業者](#scheduler-job-collections-contributor) |Scheduler Job Collection を管理できます |
 | [Search サービスの共同作業者](#search-service-contributor) |Search サービスを管理できます |
 | [セキュリティ管理者](#security-manager) |セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます |
+| [Site Recovery 共同作成者](#site-recovery-contributor) | Recovery Services コンテナーの Site Recovery を管理できます |
+| [Site Recovery オペレーター](#site-recovery-operator) | Recovery Services コンテナーでの Site Recovery のフェールオーバーとフェールバック操作を管理できます |
+| [Site Recovery 閲覧者](#site-recovery-reader) | すべての Site Recovery 管理操作を表示できます  |
 | [SQL DB の共同作業者](#sql-db-contributor) |SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
 | [SQL セキュリティ管理者](#sql-security-manager) |SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます |
 | [SQL Server の共同作業者](#sql-server-contributor) |SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
 | [従来のストレージ アカウントの共同作業者](#classic-storage-account-contributor) |従来のストレージ アカウントを管理できます |
 | [ストレージ アカウントの共同作業者](#storage-account-contributor) |ストレージ アカウントを管理できます |
+| [Support request の共同作成者](#support-request-contributor) | Support request を作成し管理できます |
 | [ユーザーアクセスの管理者](#user-access-administrator) |Azure リソースに対するユーザー アクセスを管理できます |
 | [従来の仮想マシンの共同作業者](#classic-virtual-machine-contributor) |クラシック仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
 | [仮想マシンの共同作業者](#virtual-machine-contributor) |仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
@@ -184,7 +191,7 @@ Recovery Services コンテナーの作成と他のユーザーへのアクセ�
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | バックアップ アイテムの作成および管理 |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | バックアップ アイテムを保持するコンテナーの作成および管理 |
 | Microsoft.RecoveryServices/Vaults/certificates/* | Recovery Services コンテナー内のバックアップに関連する証明書の作成および管理 |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | コンテナーに関連する拡張情報の作成および管理 | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | コンテナーに関連する拡張情報の作成および管理 |
 | Microsoft.RecoveryServices/Vaults/read | Recovery Services コンテナーの読み取り |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | 新しく作成されたコンテナーを取得するための検出操作の管理 |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 登録済み ID の管理 |
@@ -219,8 +226,8 @@ Recovery Services コンテナーの作成と他のユーザーへのアクセ�
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | バックアップできるアイテムの作成および管理 |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | バックアップされたアイテムの読み取り |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | バックアップ アイテムを保持するバックアップされたコンテナーの読み取り |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | コンテナーに関連する拡張情報の読み取り | 
-| Microsoft.RecoveryServices/Vaults/extendedInformation/write | コンテナーに関連する拡張情報の書き込み | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | コンテナーに関連する拡張情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | コンテナーに関連する拡張情報の書き込み |
 | Microsoft.RecoveryServices/Vaults/read | Recovery Services コンテナーの読み取り |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | 新しく作成されたコンテナーを取得するための検出操作の管理 |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | コンテナーの登録済みアイテムに対して実行された操作の結果の読み取り |
@@ -259,7 +266,7 @@ Recovery Services コンテナーでのバックアップ管理を監視でき�
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | コンテナーの登録済みアイテムの読み取り |
 | Microsoft.RecoveryServices/Vaults/usages/read  |  Recovery Services コンテナーの使用状況の読み取り |
 
-## <a name="billing-reader"></a>課金リーダー
+### <a name="billing-reader"></a>課金リーダー
 すべての課金情報を見ることができます
 
 | **アクション** |  |
@@ -516,6 +523,131 @@ Search サービスを管理できます
 | Microsoft.Security/* |セキュリティ コンポーネントおよびポリシーの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
+### <a name="site-recovery-contributor"></a>Site Recovery 共同作成者
+Recovery Services コンテナーの作成と他のユーザーへのアクセス権の付与を除き、すべての Site Recovery 管理アクションを管理できます
+
+| **アクション** | |
+| --- | --- |
+| Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+| Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
+| Microsoft.Network/virtualNetworks/read | 仮想ネットワークの読み取り |
+| Microsoft.RecoveryServices/Vaults/certificates/write | コンテナー資格情報証明書の更新 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | コンテナーに関連する拡張情報の作成および管理 |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Recovery Services コンテナーのアラートの読み取り |
+| Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | Recovery Services コンテナーの通知構成の読み取り |
+| Microsoft.RecoveryServices/Vaults/read | Recovery Services コンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read | 新しく作成されたコンテナーを取得するための検出操作の管理 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 登録済み ID の管理 |
+| Microsoft.RecoveryServices/vaults/replicationAlertSettings/* | レプリケーションの警告設定の作成または更新 |
+| Microsoft.RecoveryServices/vaults/replicationEvents/read | レプリケーション イベントの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/* | レプリケーション ファブリックの作成と管理 |
+| Microsoft.RecoveryServices/vaults/replicationJobs/* | レプリケーション ジョブの作成と管理 |
+| Microsoft.RecoveryServices/vaults/replicationPolicies/* | レプリケーション ポリシーの作成と管理 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/* | 復旧計画の作成と管理 |
+| Microsoft.RecoveryServices/Vaults/storageConfig/* | Recovery Services コンテナーのストレージ構成の作成と管理 |
+| Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細の読み取り |
+| Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
+| Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="site-recovery-operator"></a>Site Recovery オペレーター
+フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作の実行や、他のユーザーへのアクセス権の割り当てはできません
+
+| **アクション** | |
+| --- | --- |
+| Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+| Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
+| Microsoft.Network/virtualNetworks/read | 仮想ネットワークの読み取り |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | コンテナーに関連する拡張情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | Recovery Services コンテナーのアラートの読み取り |
+| Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | Recovery Services コンテナーの通知構成の読み取り |
+| Microsoft.RecoveryServices/Vaults/read | Recovery Services コンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read | 新しく作成されたコンテナーを取得するための検出操作の管理 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | 操作の状態と送信された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | リソースに対する登録済みコンテナーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | レプリケーションの警告の設定の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationEvents/read | レプリケーション イベントの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | ファブリックの一貫性の確認 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/read | レプリケーション ファブリックの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway/action | レプリケーション ゲートウェイの再関連付け |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | レプリケーション ファブリックの証明書の書き換え |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | レプリケーション ファブリック ネットワークの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/read | レプリケーション ファブリック ネットワーク マッピングの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/read | 保護コンテナーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/read | すべての保護可能な項目の一覧の取得 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ applyRecoveryPoint/action | 特定の復旧ポイントの適用 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ failoverCommit/action | フェールオーバーした項目に対するフェールオーバーのコミット |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ plannedFailover/action | 保護された項目に対する計画されたフェールオーバーの開始 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read | すべての保護された項目の一覧の取得 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 使用可能な回復ポイントの一覧の取得 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ repairReplication/action | 保護された項目のレプリケーションの修復 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/reProtect/action | 保護された項目の再保護の開始|
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/action | 保護された項目のテスト フェールオーバーの開始 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ testFailoverCleanup/action | テスト フェールオーバーのクリーンアップの開始 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ unplannedFailover/action | 保護された項目の計画されていないフェールオーバーの開始 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ updateMobilityService/action | モビリティ サービスの削除 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read | 保護コンテナー マッピングの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read | Recovery Services プロバイダーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/action | Recovery Services プロバイダーの更新 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read | レプリケーション ファブリック用のストレージの分類の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read | ストレージの分類マッピングの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | 登録済みの vCenter 情報の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationJobs/* | レプリケーション ジョブの作成と管理 |
+| Microsoft.RecoveryServices/vaults/replicationPolicies/read | レプリケーション ポリシーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ failoverCommit/action | 復旧計画のフェールオーバー用のフェールオーバーのコミット |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ plannedFailover/action | 復旧計画のフェールオーバーの開始 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | 復旧計画の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | 復旧計画の再保護の開始 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | 復旧計画のテスト フェールオーバーの開始 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ testFailoverCleanup/action | 復旧計画のテスト フェールオーバーのクリーンアップの開始 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ unplannedFailover/action | 復旧計画の計画されていないフェールオーバーの開始 |
+| Microsoft.RecoveryServices/Vaults/storageConfig/read | Recovery Services コンテナーのストレージ構成の読み取り |
+| Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細の読み取り |
+| Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
+| Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
+| Microsoft.Support/* | サポート チケットの作成と管理 |
+
+### <a name="site-recovery-reader"></a>Site Recovery 閲覧者
+Recovery Services コンテナーで Site Recovery の状態を監視し、サポート チケットを発生させることができます
+
+| **アクション** | |
+| --- | --- |
+| Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | コンテナーに関連する拡張情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | Recovery Services コンテナーのアラートの読み取り |
+| Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | Recovery Services コンテナーの通知構成の読み取り |
+| Microsoft.RecoveryServices/Vaults/read  | Recovery Services コンテナーの読み取り |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read  | 新しく作成されたコンテナーを取得するための検出操作の管理 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | 操作の状態と送信された操作の結果の読み取り |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | リソースに対する登録済みコンテナーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | レプリケーションの警告の設定の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationEvents/read  | レプリケーション イベントの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/read  | レプリケーション ファブリックの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read  | レプリケーション ファブリック ネットワークの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/read  | レプリケーション ファブリック ネットワーク マッピングの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/read  |  保護コンテナーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/read  | すべての保護可能な項目の一覧の取得 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read  | すべての保護された項目の一覧の取得 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read  | 使用可能な回復ポイントの一覧の取得 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read  | 保護コンテナー マッピングの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read  | Recovery Services プロバイダーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read  | レプリケーション ファブリック用のストレージの分類の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read  |  ストレージの分類マッピングの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read  |  登録済みの vCenter 情報の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationJobs/read  |  レプリケーション ジョブの状態の読み取り |
+| Microsoft.RecoveryServices/vaults/replicationPolicies/read  |  レプリケーション ポリシーの読み取り |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read  |  復旧計画の読み取り |
+| Microsoft.RecoveryServices/Vaults/storageConfig/read  |  Recovery Services コンテナーのストレージ構成の読み取り |
+| Microsoft.RecoveryServices/Vaults/tokenInfo/read  |  Recovery Services コンテナーのトークン情報の読み取り |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  Recovery Services コンテナーの使用状況の詳細の読み取り |
+| Microsoft.Support/*  |  サポート チケットの作成と管理 |
+
 ### <a name="sql-db-contributor"></a>SQL DB の共同作業者
 SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません
 
@@ -619,6 +751,15 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Storage/storageAccounts/* |ストレージ アカウントの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="support-request-contributor"></a>Support request の共同作成者
+サブスクリプションのスコープでのサポート チケットの作成と管理
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read | 承認の読み取り |
+| Microsoft.Support/* | サポート チケットの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | ロールとロール割り当ての読み取り |
 
 ### <a name="user-access-administrator"></a>ユーザーアクセスの管理者
 Azure リソースに対するユーザー アクセスを管理できます
@@ -728,7 +869,7 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Web/sites/* |Web サイトの作成と管理 (サイト作成では、関連付けられた App Service プランに対する書き込みアクセス許可も必要です) |
 
 ## <a name="see-also"></a>関連項目
-* [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
+* [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure Portal での RBAC の基本について説明します。
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 * [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 * [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。

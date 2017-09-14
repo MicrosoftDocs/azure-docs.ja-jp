@@ -4,7 +4,7 @@ description: "REST API、Azure SDK、または PowerShell を介して作成さ�
 keywords: ".net モニター、ジョブ モニター、監視アプリ"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2ec02cc9-4ca5-4a25-ae60-c44be9ad4835
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 9cc2b35fa54c1fccb0e50840d0d6484c42edc5af
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 7e9d2f6f03fd539c59b105108fb46697bcd60f1c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
@@ -53,7 +52,7 @@ ms.lasthandoff: 05/01/2017
      <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
      <add key="JobName" value="YOUR JOB NAME" />
      <add key="StorageAccountName" value="YOUR STORAGE ACCOUNT"/>
-     <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+     <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
      <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
      <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
      <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
@@ -177,12 +176,12 @@ ms.lasthandoff: 05/01/2017
 
 ## <a name="get-support"></a>サポートを受ける
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c731099cb91512f3bf0ecc2ffa5258788c90cd1b
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -160,7 +160,7 @@ Web サーバー VM を作成するには、次の手順を実行します。
 
     ![リソース グループの内容](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-VM、ディスク、ストレージ アカウントについて詳しくは、[仮想マシン](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ディスク](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ストレージ アカウント](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の概要に関する記事をご覧ください。 ポータルによって自動的に作成される既定の NSG が 2 つ確認できます。 さらに、ネットワーク インターフェイス (NIC) リソースが 2 つ作成されていることがわかります。 VM は NIC から VNet を通じて他のリソースに接続することができます。 詳しくは、[NIC](virtual-network-network-interface.md) に関する記事をご覧ください。 ポータルによって自動的に作成されるリソースとしては、他にも "パブリック IP アドレス" があります。 パブリック IP アドレスは、特定のパブリック IP アドレス リソースに使用される 1 つの設定です。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。
+VM、ディスク、ストレージ アカウントについて詳しくは、[仮想マシン](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ディスク](../virtual-machines/windows/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ストレージ アカウント](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の概要に関する記事をご覧ください。 ポータルによって自動的に作成される既定の NSG が 2 つ確認できます。 さらに、ネットワーク インターフェイス (NIC) リソースが 2 つ作成されていることがわかります。 VM は NIC から VNet を通じて他のリソースに接続することができます。 詳しくは、[NIC](virtual-network-network-interface.md) に関する記事をご覧ください。 ポータルによって自動的に作成されるリソースとしては、他にも "パブリック IP アドレス" があります。 パブリック IP アドレスは、特定のパブリック IP アドレス リソースに使用される 1 つの設定です。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。
 
 ## <a name="connect-to-from-vms"></a>VM に接続する
 
@@ -194,7 +194,7 @@ Web サーバー VM からインターネットに送信接続するには、次
 
 1. MyWebServer VM へのリモート接続をまだ開いていない場合は、この記事の「[インターネットから Web サーバー VM に接続する](#connect-from-internet)」セクションの手順に従い、VM へのリモート接続を確立してください。
 2. Windows デスクトップから Internet Explorer を開きます。 **Internet Explorer 11 のセットアップ** ダイアログ ボックスで **[推奨設定を使用しない]** をクリックし、**[OK]** をクリックします。 実稼働サーバーでは推奨設定の使用をお勧めします。
-3. Internet Explorer のアドレス バーに「[bing.com](http:www.bing.com)」と入力します。 Internet Explorer のダイアログ ボックスが表示された場合は、**[追加]** をクリックし、**[信頼済みサイト]** ダイアログ ボックスの **[追加]** をクリックして **[閉じる]** をクリックします。 さらに別の Internet Explorer ダイアログ ボックスが表示された場合は、同じ操作を繰り返します。
+3. Internet Explorer のアドレス バーに「[bing.com](http:www.bing.com)」と入力します。Internet Explorer のダイアログ ボックスが表示された場合は、**[追加]** をクリックし、**[信頼済みサイト]** ダイアログ ボックスの **[追加]** をクリックして **[閉じる]** をクリックします。 さらに別の Internet Explorer ダイアログ ボックスが表示された場合は、同じ操作を繰り返します。
 4. Bing の検索ページで「*whatsmyipaddress*」と入力し、虫眼鏡ボタンをクリックします。 パブリック IP アドレス リソース (VM の作成時にポータルによって作成されたもの) に割り当てられたパブリック IP アドレスが Bing から返されます。 **MyWebServer-ip** リソースの設定を見ると、パブリック IP アドレス リソースに割り当てられたものと同じ IP アドレスが確認できます (下図)。 ただし VM に割り当てられる IP アドレスは異なります。
 
     ![Web サーバー VM に接続する](./media/virtual-network-get-started-vnet-subnet/webserver-pip.png)
@@ -222,7 +222,7 @@ Web サーバー VM からデータベース サーバー VM には、次の理�
 - 接続の開始元である Web サーバー VM が、データベース サーバー VM と同じ VNet に接続されている。 パブリック IP アドレスが割り当てられていない VM に接続するには、同じ VNet に接続されている別の VM から接続する必要があります。その VM が異なるサブネットに接続されている場合であっても同様です。
 - 2 つの VM はそれぞれ異なるサブネットに接続されているが、サブネット間の接続を可能にする既定のルートが Azure によって作成されている。 ただし既定のルートは、独自のルートを作成することで上書きできます。 Azure におけるルーティングについて詳しくは、[ユーザー定義のルート](virtual-networks-udr-overview.md)に関する記事をご覧ください。
 
-この記事の「[インターネットから Web サーバー VM に接続する](#connect-from-internet)」セクションで行ったようにインターネットからデータベース サーバー VM へのリモート接続を開始しようとした場合は、**[接続]** オプションが淡色表示されます。 [接続] が淡色表示されるのは、その VM にパブリック IP アドレスが割り当てられておらず、インターネットからの受信接続ができないからです。
+この記事の「[インターネットから Web サーバー VM に接続する](#connect-from-internet)」セクションで行ったようにインターネットからデータベース サーバー VM へのリモート接続を開始しようとした場合は、**[接続]** オプションが淡色表示されます。[接続] が淡色表示されるのは、その VM にパブリック IP アドレスが割り当てられておらず、インターネットからの受信接続ができないからです。
 
 ### <a name="connect-to-the-internet-from-the-database-server-vm"></a>データベース サーバー VM からインターネットに接続する
 

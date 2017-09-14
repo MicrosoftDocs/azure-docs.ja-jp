@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: dac2b51cb48f76a88fc592c0fac50414da641777
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9c958aecb841fa02349c6b9e5e1984f6ba4fb611
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -97,7 +96,7 @@ ms.lasthandoff: 06/14/2017
 3. Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
 
    ![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+4. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
 5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
     ![デプロイ ボタン](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
@@ -116,15 +115,17 @@ ms.lasthandoff: 06/14/2017
 
     ```JSON
     {
-      "name": "HDInsightOnDemandLinkedService",
-      "properties": {
-        "type": "HDInsightOnDemand",
-        "typeProperties": {
-          "clusterSize": 1,
-          "timeToLive": "00:30:00",
-          "linkedServiceName": "AzureStorageLinkedService"
+        "name": "HDInsightOnDemandLinkedService",
+        "properties": {
+            "type": "HDInsightOnDemand",
+            "typeProperties": {
+                "version": "3.5",
+                "clusterSize": 1,
+                "timeToLive": "00:05:00",
+                "osType": "Linux",
+                "linkedServiceName": "AzureStorageLinkedService"
+            }
         }
-      }
     }
     ```
 
@@ -133,12 +134,12 @@ ms.lasthandoff: 06/14/2017
    | プロパティ | Description |
    |:--- |:--- |
    | ClusterSize |HDInsight クラスターのサイズを指定します。 |
-   | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
-   | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
+   | TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
+   | linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
 
     以下の点に注意してください。
 
-   * Data Factory は、JSON で **Windows ベース** の HDInsight クラスターを自動的に作成します。 **Linux ベース** の HDInsight クラスターを作成させることもできます。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
+   * Data Factory は、JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
    * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
    * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
 
@@ -283,8 +284,8 @@ ms.lasthandoff: 06/14/2017
                     "linkedServiceName": "HDInsightOnDemandLinkedService"
                 }
             ],
-            "start": "2016-04-01T00:00:00Z",
-            "end": "2016-04-02T00:00:00Z",
+            "start": "2017-07-01T00:00:00Z",
+            "end": "2017-07-02T00:00:00Z",
             "isPaused": false
         }
     }
@@ -371,7 +372,7 @@ ms.lasthandoff: 06/14/2017
 1. データ ファクトリのホーム ページの **[監視と管理]** タイルをクリックします。
 
     ![Monitor & Manage tile](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
-2. **監視と管理アプリケーション**が表示されます。 パイプラインの開始時刻 (2016 年 4 月 1 日午前 12:00) と終了時刻 (2016 年 4 月 2 日午前 12:00) と一致するように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。
+2. **監視と管理アプリケーション**が表示されます。 パイプラインの開始時刻と終了時刻に一致するように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。
 
     ![Monitor & Manage App](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 3. **[アクティビティ ウィンドウ]** 一覧でアクティビティ ウィンドウを選択し、詳細を確認します。

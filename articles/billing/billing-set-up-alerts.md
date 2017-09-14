@@ -5,7 +5,7 @@ keywords: "クレジット アラート,課金アラート"
 services: 
 documentationcenter: 
 author: vikdesai
-manager: vikdesai
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
@@ -17,9 +17,10 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: vikdesai
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 32a2508997d7f50b0b2989d76d0574951d81a73f
 ms.openlocfilehash: a2eb813bc96cd58762ce077d2c0710ed4bc7bde6
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/02/2017
 
 ---
@@ -35,7 +36,7 @@ Azure サブスクリプションのアカウント管理者である場合は�
 
     ![アラートが強調表示されている、Azure アカウント センターのサブスクリプション ビューのスクリーン ショット][Image1]
 
-2. 次に、**[アラートの追加]** をクリックして最初のアラートを作成します。 サブスクリプションあたり、合計&5; つの課金アラートを設定できます。それぞれのアラートに対して、別のしきい値と最大&2; 名までの電子メール受信者を設定できます。
+2. 次に、**[アラートの追加]** をクリックして最初のアラートを作成します。 サブスクリプションあたり、合計 5 つの課金アラートを設定できます。それぞれのアラートに対して、別のしきい値と最大 2 名までの電子メール受信者を設定できます。
 
     ![通知を追加するアラート ビューのスクリーン ショット][Image2]
 

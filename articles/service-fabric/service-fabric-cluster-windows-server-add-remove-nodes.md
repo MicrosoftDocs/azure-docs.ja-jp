@@ -3,7 +3,7 @@ title: "スタンドアロン Service Fabric クラスターでノードを追�
 description: "Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
@@ -13,59 +13,117 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/02/2017
-ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: fa59bae2b824e6b75e120ab2b61027746ee1ea78
-ms.lasthandoff: 04/27/2017
-
+ms.author: dekapur
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 42b7ea3ec1efa6eb7f3ac31ecefa615c29f7d495
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server を実行するスタンドアロン Service Fabric クラスターでノードを追加または削除する
-[Windows Server コンピューターでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへの複数のノードの追加または削除が必要になるかもしれません。 この記事では、これを実行する詳細の手順について説明します。
+[Windows Server コンピューターでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへのノードの追加または削除が必要になるかもしれません。 この記事では、これを実行する詳細の手順について説明します。 ノード機能の追加/削除は、ローカル デプロイ クラスターではサポートされていない点に注意してください。
 
 ## <a name="add-nodes-to-your-cluster"></a>クラスターへのノードの追加
-1. [クラスターのデプロイのためにマシンの前提条件を満たす準備をする](service-fabric-cluster-creation-for-windows-server.md) セクションの手順に従って、クラスターに追加する VM/マシンを準備します。
-2. この VM/マシンをどの障害ドメインとアップグレード ドメインに追加するかを計画します。
-3. クラスターに追加する VM/マシンにリモート デスクトップ (RDP) 接続します。
-4. この VM/マシンに [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690) またはコピーし、パッケージを解凍します。
-5. 管理者として Powershell を実行し、解凍したパッケージのある場所に移動します。
-6. 追加する新しいノードを記述したパラメーターを指定して、 *AddNode.ps1* Powershell を実行します。 次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と fd:/dc1/r0 に追加します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。 このエンドポイントでは、クラスター内の " *任意* " のノードの IP アドレスを選択できます。
+1. [クラスターのデプロイのためにコンピューターの前提条件を満たす準備をする方法](service-fabric-cluster-creation-for-windows-server.md)に関するセクションの手順に従って、クラスターに追加する VM/コンピューターを準備します。
+2. この VM/コンピューターを追加する障害ドメインとアップグレード ドメインを特定します。
+3. クラスターに追加する VM/コンピューターにリモート デスクトップ (RDP) 接続します。
+4. この VM/コンピューターに [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)するかコピーし、パッケージを展開します。
+5. 昇格した特権で Powershell を実行し、展開したパッケージのある場所に移動します。
+6. 追加する新しいノードを記述したパラメーターを指定して、*AddNode.ps1* スクリプトを実行します。 次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と fd:/dc1/r0 に追加します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。クラスター内にある *"任意"* のノードの IP アドレスを使用できます。
 
-```
-.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
+    ```
+    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
+    ```
+    スクリプトの実行が完了したら、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを実行して新しいノードが追加されたことを確認できます。
 
-```
-新しいノードが追加されたかどうかは、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを実行して確認できます。
+7. クラスター内にある複数のノード間で一貫性を保つには、構成のアップグレードを開始する必要があります。 [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) を実行して最新の構成ファイルを取得し、新しく追加したノードを "Nodes" セクションに追加します。 また、同じ構成のクラスターを再デプロイする必要が出てきた場合に備えて、使用できる最新のクラスター構成を常に取得しておくことをお勧めします。
 
+    ```
+        {
+            "nodeName": "vm5",
+            "iPAddress": "182.17.34.52",
+            "nodeTypeRef": "NodeType0",
+            "faultDomain": "fd:/dc1/r0",
+            "upgradeDomain": "UD1"
+        }
+    ```
+8. [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を実行してアップグレードを開始します。
+
+    ```
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+
+    ```
+    アップグレードの進行状況は Service Fabric Explorer で監視できます。 また、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行する方法もあります。
+
+### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Windows セキュリティで gMSA を使用して構成したクラスターにノードを追加する
+グループ管理サービス アカウント (gMSA) を使用して構成したクラスターの場合 (https://technet.microsoft.com/library/hh831782.aspx)、構成のアップグレードを使用して新しいノードを追加できます。
+1. 既存のノードのいずれかで [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) を実行して最新の構成ファイルを取得し、"Nodes" セクションに追加する新しいノードについて詳細を追加します。 新しいノードが同じグループ管理アカウントに属していることを確認します。 このアカウントは、すべてのコンピューターで Administrator である必要があります。
+
+    ```
+        {
+            "nodeName": "vm5",
+            "iPAddress": "182.17.34.52",
+            "nodeTypeRef": "NodeType0",
+            "faultDomain": "fd:/dc1/r0",
+            "upgradeDomain": "UD1"
+        }
+    ```
+2. [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を実行してアップグレードを開始します。
+
+    ```
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    ```
+    アップグレードの進行状況は Service Fabric Explorer で監視できます。 また、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行する方法もあります。
+
+### <a name="add-node-types-to-your-cluster"></a>クラスターにノードの種類を追加する
+新しいノードの種類を追加するには、"Properties" 以下の "NodeTypes" セクションに新しいノードの種類を追加し、[Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を使用して構成のアップグレードを開始します。 アップグレードが完了したら、このノードの種類を使用して新しいノードをクラスターに追加できるようになります。
 
 ## <a name="remove-nodes-from-your-cluster"></a>クラスターからのノードの削除
-クラスターに対して選択した信頼性レベルによっては、プライマリ ノード タイプの最初の n (3/5/7/9) ノードを削除することができません。 また、開発用クラスターでの RemoveNode コマンドの実行はサポートされていません。
+ノードをクラスターから削除するには、次の方法で構成のアップグレードを使用します。
 
-1. クラスターから削除する VM/マシンにリモート デスクトップ (RDP) 接続します。
-2. [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690) またはコピーし、この VM/マシンにパッケージを解凍します。
-3. 管理者として Powershell を実行し、解凍したパッケージのある場所に移動します。
-4. Powershell で *RemoveNode.ps1* を実行します。 次の例では、現在のノードをクラスターから削除します。 *ExistingClientConnectionEndpoint* は、クラスター内に残るすべてのノードに対するクライアント接続エンドポイントです。 クラスター内にある*任意の* **他のノード** の IP アドレスとエンドポイント ポートを選択します。 この**他のノード**はさらに、削除されたノードのクラスターの構成を更新します。 
+1. [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) を実行して最新の構成ファイルを取得し、"Nodes" セクションからノードを *"削除"* します。
+"FabricSettings" セクション内の "Setup" セクションに "NodesToBeRemoved" パラメーターを追加します。 "value" は、削除する必要があるノードのノード名のコンマ区切りの一覧です。
 
-```
+    ```
+         "fabricSettings": [
+            {
+            "name": "Setup",
+            "parameters": [
+                {
+                "name": "FabricDataRoot",
+                "value": "C:\\ProgramData\\SF"
+                },
+                {
+                "name": "FabricLogRoot",
+                "value": "C:\\ProgramData\\SF\\Log"
+                },
+                {
+                "name": "NodesToBeRemoved",
+                "value": "vm0, vm1"
+                }
+            ]
+            }
+        ]
+    ```
+2. [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を実行してアップグレードを開始します。
 
-.\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
+    ```
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
-```
+    ```
+    アップグレードの進行状況は Service Fabric Explorer で監視できます。 また、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行する方法もあります。
 
 > [!NOTE]
-> システム サービスの依存性に起因し、一部のノードが削除されないことがあります。 そのようなノードはプライマリ ノードであり、`Get-ServiceFabricClusterManifest` を利用してクラスター マニフェストに問い合わせると識別できます。`IsSeedNode=”true”` のマークが付いたノード エントリを探してください。 
+> ノードを削除すると、複数のアップグレードが開始されることがあります。 一部のノードには `IsSeedNode=”true”` タグが付けられており、`Get-ServiceFabricClusterManifest` を使用してクラスター マニフェストをクエリすることで識別できます。 このようなシナリオでノードを削除する場合、シード ノードを削除する必要があるため、通常よりも長く時間がかかる可能性があります。 クラスターはプライマリ ノードの種類のノードを 3 つ以上維持する必要があります。
 > 
 > 
 
-ノードを削除した後でも、クリエまたは SFX に「ダウン中」として表示される場合、それは既知の不具合であるとして理解してください。 今後のリリースで修正される予定です。 
+### <a name="remove-node-types-from-your-cluster"></a>クラスターからのノードの種類の削除
+ノードの種類を削除する前に、そのノードの種類を参照しているノードがないことを再確認してください。 このようなノードを削除してから、対応するノードの種類を削除します。 すべての対応するノードを削除したら、クラスター構成から NodeType を削除し、[Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) を使用して構成のアップグレードを開始できます。
 
 
-## <a name="remove-node-types-from-your-cluster"></a>クラスターからのノードの種類の削除
-ノードの種類を削除するには、特別な注意が必要です。 ノードの種類を削除する前に、そのノードの種類を参照しているノードがないことを再確認してください。
-
-
-## <a name="replace-primary-nodes-of-your-cluster"></a>クラスターのプライマリ ノードの置き換え
+### <a name="replace-primary-nodes-of-your-cluster"></a>クラスターのプライマリ ノードの置き換え
 プライマリ ノードの置き換えは、まとめて削除して後で追加するのではなく、1 ノードづつ実行する必要があります。
 
 

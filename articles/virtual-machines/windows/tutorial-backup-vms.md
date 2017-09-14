@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/05/2017
+ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: c97ac8f6df1e0fd669b3789d402e1e60f2154205
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Windows 仮想マシンをバックアップする
@@ -81,7 +81,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 5. ローカル コンピューターで新しいタブを開き､ [Azure ポータル](https://portal.azure.com)に移動します。
 6. 左側のメニューで**仮想マシン**を選択し､一覧から目的の VM を選択します。
 8. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップ]** ブレードが開きます。 
-9. ブレード上部のメニューから **[ファイルの回復 (プレビュー)]** を選択します。 **[ファイルの回復 (プレビュー)]** ブレードが表示されます。
+9. ブレード上部のメニューで **[ファイルの回復]** を選択します。 **[ファイルの回復]** ブレードが開きます。
 10. **[ステップ 1: 回復ポイントを選択する]** で、ドロップダウンから復旧ポイントを選択します。
 11. **[ステップ 2: ファイルを参照および回復するためのスクリプトをダウンロードする]** の **[実行可能ファイルのダウンロード]** ボタンをクリックします。 **[ダウンロード]** フォルダーにファイルを保存します｡
 12. ローカル コンピュータで **ファイル エクスプローラー**を開き､**ダウンロード** フォルダに移動して､ダウンロードした .exe ファイルをコピーします｡ ファイル名には､プリフィックスとして VM 名が付けられます｡ 

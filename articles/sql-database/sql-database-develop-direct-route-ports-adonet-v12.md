@@ -8,22 +8,27 @@ manager: jhubbard
 editor: 
 ms.assetid: 3f17106a-92fd-4aa4-b6a9-1daa29421f64
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: e47d8f71fbfe95027e1fbfebb0b7e91ffe653c62
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: d47ee8c794d1e231507dae6bb4aa88bf19ce6418
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
-このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。
+このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。 
+
+> [!IMPORTANT]
+> 接続アーキテクチャについては、「[Azure SQL Database connectivity architecture](sql-database-connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) を参照してください。
+>
 
 ## <a name="outside-vs-inside"></a>外部と内部
 Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の 2 つの一般的なシナリオについて説明します。

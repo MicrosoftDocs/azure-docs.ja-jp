@@ -1,6 +1,6 @@
 ---
-title: "CLI を使用して Azure DNS にドメイン ゾーン ファイルをインポートまたはエクスポートする | Microsoft Docs"
-description: "Azure CLI を使用して Azure DNS との間で DNS ゾーン ファイルをインポートおよびエクスポートする方法を説明します。"
+title: "Azure CLI 1.0 を使用して Azure DNS にドメイン ゾーン ファイルをインポートまたはエクスポートする | Microsoft Docs"
+description: "Azure CLI 1.0 を使用して Azure DNS との間で DNS ゾーン ファイルをインポートおよびエクスポートする方法を説明します"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 765a30f360cf8d3f8bde08aa94b20eba0d4537c9
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: d6d3fa7aa0e8b2462b3a6b4b66d3d87ab5535314
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 ---
 
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した DNS ゾーン ファイルのインポートとエクスポート 
 
-この記事では、Azure CLI を使用し、Azure DNS の DNS ゾーン ファイルをインポートまたはエクスポートする方法について段階的に説明します。
+この記事では、Azure CLI 1.0 を使用し、Azure DNS の DNS ゾーン ファイルをインポートまたはエクスポートする方法について段階的に説明します。
 
 ## <a name="introduction-to-dns-zone-migration"></a>DNS ゾーンの移行に関する概要
 
@@ -30,7 +31,7 @@ DNS ゾーン ファイルは、ゾーン内のすべてのドメイン ネー�
 
 Azure DNS では、Azure コマンドライン インターフェイス (CLI) を使用したゾーン ファイルのインポートおよびエクスポートをサポートしています。 Azure PowerShell または Azure Portal を使用したゾーン ファイルのインポートは、現時点では**サポートされていません**。
 
-Azure CLI は、Azure サービスを管理するためのクロスプラットフォーム コマンド ライン ツールです。 Azure CLI は Windows、Mac、Linux のプラットフォームに対応しており、[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)から入手できます。 このクロスプラットフォームのサポートは、ゾーン ファイルのインポートおよびエクスポートで特に重要となります。それは最も一般的なネーム サーバー ソフトウェアである [BIND](https://www.isc.org/downloads/bind/) が、通常、Linux 上で実行されるからです。
+Azure CLI 1.0 は、Azure サービスを管理するためのクロスプラットフォーム コマンド ライン ツールです。 Azure CLI は Windows、Mac、Linux のプラットフォームに対応しており、[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)から入手できます。 このクロスプラットフォームのサポートは、ゾーン ファイルのインポートおよびエクスポートで重要となります。それは最も一般的なネーム サーバー ソフトウェアである [BIND](https://www.isc.org/downloads/bind/) が、通常、Linux 上で実行されるからです。
 
 > [!NOTE]
 > 現在、Azure CLI には 2 つのバージョンがあります。 CLI1.0 は、Node.js に基づいており、"azure" で始まるコマンドがあります。
@@ -41,7 +42,7 @@ Azure CLI は、Azure サービスを管理するためのクロスプラット�
 Azure DNS に DNS ゾーン ファイルをインポートするには、事前にゾーン ファイルのコピーを取得しておく必要があります。 このファイルのソースは、DNS ゾーンが現在ホストされている場所によって異なります。
 
 * DNS ゾーンがパートナーのサービス (ドメイン レジストラー、専用の DNS ホスティング プロバイダー、代替クラウド プロバイダーなど) でホストされている場合、そのサービスには、DNS ゾーン ファイルをダウンロードする機能があるはずです。
-* DNS ゾーンが Windows DNS にホストされている場合、ゾーン ファイルは既定のフォルダー **%systemroot%\system32\dns** にあります。 各ゾーン ファイルへの完全パスは、DNS サービスの管理コンソールの **[全般]** タブにも表示されます。
+* DNS ゾーンが Windows DNS にホストされている場合、ゾーン ファイルは既定のフォルダー **%systemroot%\system32\dns** にあります。 各ゾーン ファイルへの完全なパスは、DNS コンソールの **[全般]** タブにも表示されます。
 * DNS ゾーンが BIND を使用してホストされている場合、各ゾーンのゾーン ファイルの場所は、 **named.conf**という名前の BIND 構成ファイルに指定されています。
 
 > [!NOTE]
@@ -99,7 +100,7 @@ azure network dns zone import [options] <resource group> <zone name> <zone file 
 
 ゾーン **contoso.com**のゾーン ファイルをインポートするには。
 
-1. Azure CLI を使用して Azure サブスクリプションにサインインします。
+1. Azure CLI 1.0 を使用して Azure サブスクリプションにサインインします。
 
     ```azurecli
     azure login
@@ -129,7 +130,7 @@ azure network dns zone import [options] <resource group> <zone name> <zone file 
     azure group create myresourcegroup westeurope
     ```
 
-6. ファイル **contoso.com.txt** のゾーン **contoso.com** を、リソース グループ **myresourcegroup** 内の新しい DNS ゾーンにインポートするには、コマンド `azure network dns zone import` を実行します。<BR>このコマンドは、ゾーン ファイルを読み込み、解析します。 このコマンドは、Azure DNS サービスに対して一連のコマンドを実行することで、ゾーンとゾーン内のすべてのレコード セットを作成します。 このコマンドでは、コンソール ウィンドウに進捗状況もレポートします。発生している場合、エラーまたは警告もレポートします。 レコード セットは順番に作成されるので、大規模なゾーン ファイルをインポートするのに数分かかる場合があります。
+6. ファイル **contoso.com.txt** のゾーン **contoso.com** を、リソース グループ **myresourcegroup** 内の新しい DNS ゾーンにインポートするには、コマンド `azure network dns zone import` を実行します。<BR>このコマンドは、ゾーン ファイルを読み込み、解析します。 このコマンドは、Azure DNS サービスに対して一連のコマンドを実行することで、ゾーンとゾーン内のすべてのレコード セットを作成します。 このコマンドでは、コンソール ウィンドウに進捗状況をレポートします。発生している場合、エラーまたは警告もレポートします。 レコード セットは順番に作成されるので、大規模なゾーン ファイルをインポートするのに数分かかる場合があります。
 
     ```azurecli
     azure network dns zone import myresourcegroup contoso.com contoso.com.txt
@@ -181,9 +182,9 @@ azure network dns zone import [options] <resource group> <zone name> <zone file 
 
 DNS ゾーンをインポートする Azure CLI コマンドの形式は次のとおりです。
 
-    ```azurecli
-    azure network dns zone export [options] <resource group> <zone name> <zone file name>
-    ```
+```azurecli
+azure network dns zone export [options] <resource group> <zone name> <zone file name>
+```
 
 値:
 

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 66984bef9e82df80818eea31bd37de524b567b33
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: ae0261134b8d4a934048f58d6c679a48a904950b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
@@ -51,7 +50,11 @@ ms.lasthandoff: 05/11/2017
 |operand1 |あり |int |加算する最初の整数。 |
 |operand2 |あり |int |加算する 2 つ目の整数。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+パラメーターの合計を格納する整数。
+
+### <a name="example"></a>例
 
 次の例では、2 つのパラメーターを加算します。
 
@@ -62,12 +65,14 @@ ms.lasthandoff: 05/11/2017
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 5,
             "metadata": {
                 "description": "First integer to add"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Second integer to add"
             }
@@ -84,9 +89,11 @@ ms.lasthandoff: 05/11/2017
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-パラメーターの合計を格納する整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| addResult | int | 8 |
 
 <a id="copyindex" />
 
@@ -110,7 +117,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
  
 **copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
-### <a name="examples"></a>例
+### <a name="example"></a>例
 
 次の例では、コピー ループと、名前に含まれるインデックス値を示します。 
 
@@ -146,7 +153,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | operand1 |あり |int |除算される整数。 |
 | operand2 |あり |int |除算に使用される整数。 0 にすることはできません。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+除算を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、一方のパラメーターをもう一方のパラメーターで除算します。
 
@@ -157,12 +168,14 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 8,
             "metadata": {
                 "description": "Integer being divided"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer used to divide"
             }
@@ -179,9 +192,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-除算を表す整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| divResult | int | 2 |
 
 <a id="float" />
 
@@ -196,7 +211,10 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+浮動小数点数。
+
+### <a name="example"></a>例
 
 次の例では、ロジック アプリにパラメーターを渡すために浮動小数点数を使用する方法を示します。
 
@@ -214,9 +232,6 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
         },
 ```
 
-### <a name="return-value"></a>戻り値
-浮動小数点数。
-
 <a id="int" />
 
 ## <a name="int"></a>int
@@ -230,7 +245,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+変換された値の整数。
+
+### <a name="example"></a>例
 
 次の例では、ユーザー指定のパラメーター値を整数に変換します。
 
@@ -239,25 +258,28 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appId": { "type": "string" }
-    },
-    "variables": { 
-        "intValue": "[int(parameters('appId'))]"
+        "stringToConvert": { 
+            "type": "string",
+            "defaultValue": "4"
+        }
     },
     "resources": [
     ],
     "outputs": {
-        "divResult": {
+        "intResult": {
             "type": "int",
-            "value": "[variables('intValue')]"
+            "value": "[int(parameters('stringToConvert'))]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| intResult | int | 4 |
+
 
 <a id="min" />
 
@@ -272,7 +294,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 |:--- |:--- |:--- |:--- |
 | arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+コレクションの最小値を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、min を配列および整数のリストと共に使用する方法を示します。
 
@@ -300,9 +326,12 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-コレクションの最小値を表す整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -317,7 +346,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 |:--- |:--- |:--- |:--- |
 | arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+コレクションの最大値を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、max を配列および整数のリストと共に使用する方法を示します。
 
@@ -345,9 +378,12 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-コレクションの最大値を表す整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 <a id="mod" />
 
@@ -363,7 +399,10 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | operand1 |あり |int |除算される整数。 |
 | operand2 |あり |int |除算に使用される整数。0 にすることはできません。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+剰余を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
 
@@ -374,12 +413,14 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 7,
             "metadata": {
                 "description": "Integer being divided"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer used to divide"
             }
@@ -396,8 +437,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 }
 ```
 
-### <a name="return-value"></a>戻り値
-剰余を表す整数。
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| modResult | int | 1 |
 
 <a id="mul" />
 
@@ -413,7 +457,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | operand1 |あり |int |乗算する最初の整数。 |
 | operand2 |あり |int |乗算する 2 つ目の整数。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+
+乗算を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、一方のパラメーターをもう一方のパラメーターで乗算します。
 
@@ -424,12 +472,14 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 5,
             "metadata": {
                 "description": "First integer to multiply"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Second integer to multiply"
             }
@@ -446,9 +496,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 }
 ```
 
-### <a name="return-value"></a>戻り値
+既定値を使用した場合の前の例の出力は次のようになります。
 
-乗算を表す整数。
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| mulResult | int | 15 |
 
 <a id="sub" />
 
@@ -464,7 +516,10 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | operand1 |あり |int |減算される整数。 |
 | operand2 |あり |int |減算する整数。 |
 
-### <a name="examples"></a>例
+### <a name="return-value"></a>戻り値
+減算を表す整数。
+
+### <a name="example"></a>例
 
 次の例では、一方のパラメーターからもう一方のパラメーターを減算します。
 
@@ -475,12 +530,14 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 7,
             "metadata": {
                 "description": "Integer subtracted from"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer to subtract"
             }
@@ -497,8 +554,11 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 }
 ```
 
-### <a name="return-value"></a>戻り値
-減算を表す整数。
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| subResult | int | 4 |
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

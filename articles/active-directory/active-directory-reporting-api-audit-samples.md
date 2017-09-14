@@ -3,7 +3,7 @@ title: "Azure Active Directory レポートの監査 API の例 | Microsoft Docs
 description: "Azure Active Directory Reporting API の概要について説明します。"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 08/02/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
-ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: aab705688079601bbce93455f7dda80cdd733110
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory レポートの監査 API の例
@@ -29,7 +29,7 @@ Azure AD レポートは、コードまたは関連ツールを使用して監�
 
 参照:
 
-* [監査ログ](active-directory-reporting-azure-portal.md#audit-logs) に関する記事
+* [監査ログ](active-directory-reporting-azure-portal.md#activity-reports) に関する記事
 * [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
@@ -100,7 +100,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 
     CLIENT_ID="your-application-client-id-here"         # Should be a ~35 character string insert your info here
     CLIENT_SECRET="your-application-client-secret-here" # Should be a ~44 character string insert your info here
-    LOGIN_URL="https://login.windows.net"
+    LOGIN_URL="https://login.microsoftonline.com"
     TENANT_DOMAIN="your-directory-name-here.onmicrosoft.com"    # For example, contoso.onmicrosoft.com
 
     TOKEN_INFO=$(curl -s --data-urlencode "grant_type=client_credentials" --data-urlencode "client_id=$CLIENT_ID" --data-urlencode "client_secret=$CLIENT_SECRET" "$LOGIN_URL/$TENANT_DOMAIN/oauth2/token?api-version=1.0")
@@ -130,7 +130,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 
     client_id = 'your-application-client-id-here'
     client_secret = 'your-application-client-secret-here'
-    login_url = 'https://login.windows.net/'
+    login_url = 'https://login.microsoftonline.com/'
     tenant_domain = 'your-directory-name-here.onmicrosoft.com'
 
     # Get an OAuth access token

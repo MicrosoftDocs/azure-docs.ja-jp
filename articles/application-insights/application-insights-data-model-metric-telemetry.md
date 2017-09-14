@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
 ms.openlocfilehash: 069457d7ef7855749f64e299e0db579e6bb2b590
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/19/2017
-
 
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル

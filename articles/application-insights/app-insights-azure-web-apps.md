@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: b25f3dd41c8dc381258bb42d8802ba4b56e05903
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure Web アプリのパフォーマンスの監視
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/10/2017
 * **ビルド時** - 開発時にアプリにパッケージをインストールすることができます。 これは、汎用性が高い方法です。 同じ標準パッケージに加えて、コードを記述してテレメトリをカスタマイズしたり、独自のテレメトリを送信したりすることができます。 アプリのドメインのセマンティクスに従って、特定のアクティビティをログに記録したり、イベントを記録したりすることができます。 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Application Insights での実行時のインストルメント化
-Azure で Web アプリを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Analytics クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
+Azure で Web アプリを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Log Analytics クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
 
 1. Web アプリの Azure コントロール パネルで **[Application Insights] を選択**します。
    
@@ -102,7 +101,7 @@ Application Insights では、アプリへの SDK のインストールによっ
    
     [検索をカスタマイズ](app-insights-diagnostic-search.md)できます。
 
-テレメトリに対するより強力な検索については、 [Analytics クエリ言語](app-insights-analytics-tour.md)を使用してください。
+テレメトリに対してより強力な検索を行うには、[Log Analytics クエリ言語](app-insights-analytics-tour.md)を使用してください。
 
 ## <a name="more-telemetry"></a>テレメトリの追加
 

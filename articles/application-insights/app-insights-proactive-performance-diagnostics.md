@@ -11,21 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 5/04/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 080b732d78731e6281e82ddc28a3e84ae8755ffa
+ms.date: 05/04/2017
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: dab2e54dedf55f0d9a0b0b4e66d101ed7df94bfa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
 [Application Insights](app-insights-overview.md) は、Web アプリケーションのパフォーマンスを自動的に分析し、潜在的な問題について警告できます。 この記事は、スマート検出による通知を受信されたユーザーを主に想定しています。
 
-この機能を使用する場合、([ASP.NET](app-insights-asp-net.md)、Java (app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、および [Web ページ コード](app-insights-javascript.md)における) Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
+この機能を使用する場合、([ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、および [Web ページ コード](app-insights-javascript.md)における) Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>スマート検出による通知はいつ送信されますか
 
@@ -63,7 +62,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
   
   ![スマート検出の設定](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
   
-  * スマート検出の電子メールの**サブスクライブ解除**のリンク 
+  * スマート検出電子メール内の **[サブスクライブ解除]** リンクを使用して電子メール通知の受け取りを停止できます。
 
 スマート検出のパフォーマンスの異常に関する電子メールは、Application Insights リソースごとに 1 日 1 通に制限されます。 この電子メールは、その日に検出された新しい問題が 1 つ以上ある場合にのみ送信されます。 どのメッセージも繰り返し送信されることはありません。 
 
@@ -192,3 +191,4 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [手動で構成するメトリックのアラート](app-insights-alerts.md)
 * [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
+

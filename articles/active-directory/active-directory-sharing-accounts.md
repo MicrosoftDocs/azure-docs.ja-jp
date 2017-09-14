@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/28/2017
 ms.author: curtand
-translationtype: Human Translation
+ms.reviewer: jeffsta
+ms.custom: it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b689a0033103231d560c9ba4b349e675f304e35c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有

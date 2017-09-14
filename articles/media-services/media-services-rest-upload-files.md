@@ -4,7 +4,7 @@ description: "資産を作成し、アップロードすることによって、
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 41df7cbe-b8e2-48c1-a86c-361ec4e5251f
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 256f8323d199db98a1267a5139a1ab3f14a3441c
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 14945cf23ead64b90a9e9ad6503a96f1b0669675
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
@@ -47,16 +47,20 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 
 AMS では、資産を一括でアップロードすることもできます。 詳細については、 [こちらの](media-services-rest-upload-files.md#upload_in_bulk) セクションを参照してください。
 
-## <a name="upload-assets"></a>資産をアップロードする
-### <a name="create-an-asset"></a>資産を作成する
 > [!NOTE]
-> Media Services REST API を使用する場合は、次のことに考慮します。
-> 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> ( https://media.windows.net ) に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
-> 
-> 
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
+
+## <a name="upload-assets"></a>資産をアップロードする
+
+### <a name="create-an-asset"></a>資産を作成する
 
 資産は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
@@ -90,7 +94,6 @@ AMS では、資産を一括でアップロードすることもできます。 
     Host: media.windows.net
 
     {"Name":"BigBuckBunny.mp4"}
-
 
 **HTTP 応答**
 
@@ -150,7 +153,6 @@ AMS では、資産を一括でアップロードすることもできます。 
        "ParentAssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1"
     }
 
-
 **HTTP 応答**
 
     HTTP/1.1 201 Created
@@ -184,7 +186,6 @@ AMS では、資産を一括でアップロードすることもできます。 
        "MimeType":"video/mp4",
        "ContentChecksum":null
     }
-
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>書き込みのアクセス許可を持つ AccessPolicy を作成する
 
@@ -269,7 +270,6 @@ SAS URL には次の形式があります。
        "Type":1
     }
 
-
 **HTTP 応答**
 
 成功した場合、次の応答が返されます。
@@ -349,7 +349,6 @@ Azure ストレージ BLOB の使用の詳細については、 [BLOB サービ�
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
     x-ms-version: 2.11
     Host: media.windows.net
-
 
 **HTTP 応答**
 

@@ -4,7 +4,7 @@ description: "Microsoft® Smooth Streaming Client Porting Kit のライセンス
 services: media-services
 documentationcenter: 
 author: xpouyat
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 08/09/2017
 ms.author: xpouyat
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2a6122645f96e7a1a1286ef2d13c155b5b106056
-ms.lasthandoff: 03/30/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 12c6bdf6986d57f20df9ce84a8b12a5e4c93b6ed
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit
@@ -84,6 +84,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Albis Technologies Ltd.
 * Alticast Corporation
 * Amazon Digital Services, Inc.
+* Arion Technology, Inc.
 * AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar Purchasing Corporation
@@ -104,6 +105,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Sony Corporation
 * Tatung Technology Inc.
 * TCL Technoly Electronics (Huizhou) Co., Ltd.
+* Top Victory Investments, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
 * ZTE Corporation
@@ -115,6 +117,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
+* Arion Technology, Inc.
 * ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
 * British Sky Broadcasting Limited
 * CastPal Technology Inc., Shenzhen
@@ -127,6 +130,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Gibson Innovations Limited
 * Haier Information Applicantion S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
+* Hisense International Co., Ltd. 
 * Homecast Co.,Ltd
 * Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
@@ -148,11 +152,13 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * TCL Overseas Marketing (Macao Commercial Offshore) Limited
 * Technicolor Delivery Technologies, SAS
 * Tongfang Global Ltd.
+* Top Victory Investments, Ltd.
 * Toshiba Lifestyle Products & Services Corporation
 * Universal Media Corporation /Slovakia/ s.r.o.
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation
+
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

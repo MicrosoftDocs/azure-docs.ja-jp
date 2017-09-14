@@ -4,7 +4,7 @@ description: "Media Services リリース ノート"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 532afb45c73d68d6dc259fa504d9520eecdb23b7
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 3ecd6ff8edf189b9389cd239b20236a2a228ed94
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
@@ -44,6 +44,13 @@ ms.lasthandoff: 04/25/2017
 
 ## <a id="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、「 [Azure Media Services REST API リファレンス]」を参照してください。
+
+## <a name="june-2017-release"></a>2017 年 6 月のリリース
+
+Media Services では、新たに [Azure Active Directory (Azure AD) ベースの認証](media-services-use-aad-auth-to-access-ams-api.md)がサポートされています。
+
+> [!IMPORTANT]
+> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
 ## <a name="march-2017-release"></a>2017 年 3 月のリリース
 

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: aaa8758281f239ad0984d8d1de65f5ea8951d366
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
@@ -318,7 +317,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
    
     ```PowerShell
-    Login-AzureRmAccount       
+    Login-AzureRmAccount    
     ```  
    * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
    

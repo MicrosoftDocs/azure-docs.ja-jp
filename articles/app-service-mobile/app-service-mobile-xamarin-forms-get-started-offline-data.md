@@ -2,7 +2,7 @@
 title: "Azure モバイル アプリ (Xamarin.Forms) に対するオフライン同期の有効化 | Microsoft Docs"
 description: "App Service Mobile Apps を使用して、Xamarin.Forms アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: xamarin
-author: adrianhall
+author: ggailey777
 manager: yochayk
 editor: 
 services: app-service\mobile
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/04/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f2bed0a7124517319cc82405c4ab6b4d79aacfe1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Xamarin.Forms モバイル アプリのオフライン同期の有効化
@@ -28,23 +29,23 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
 
 このチュートリアルは、チュートリアル「Xamarin.iOS アプリを作成する」を完了した際に作成される Mobile Apps 用の Xamarin.Forms クイック スタート ソリューションに基づいています。 この Xamarin.Forms のクイック スタート ソリューションには、オフライン同期をサポートするためのコードが含まれています。これを有効にする必要があります。 このチュートリアルでは、クイック スタート ソリューションを更新して、Azure Mobile Apps のオフライン機能をオンにします。 また、アプリのオフライン固有のコードについても取り上げます。 ダウンロードしたクイック スタート ソリューションを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][1]」を参照してください。
 
-オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期][2]」をご覧ください。
+オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期][2]」を参照してください。
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>クイック スタート ソリューションでのオフライン同期機能の有効化
 オフライン同期コードは、C# プリプロセッサ ディレクティブを使用してプロジェクトにインクルードされます。 **OFFLINE\_SYNC\_ENABLED** シンボルを定義すると、これらのコード パスがビルドにインクルードされます。 Windows アプリの場合、SQLite プラットフォームもインストールする必要があります。
 
 1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. ソリューション エクスプローラーで、ポータブル クラス ライブラリ プロジェクトである **Portable** というプロジェクトから TodoItemManager.cs ファイルを開き、次のプリプロセッサ ディレクティブをコメント解除します。
-   
+
         #define OFFLINE_SYNC_ENABLED
 3. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
-   
-   * **Windows 8.1 Runtime: **[SQLite for Windows 8.1][3] をインストールします。
-   * **Windows Phone 8.1: **[SQLite for Windows Phone 8.1][4] をインストールします。
-   * **ユニバーサル Windows プラットフォーム: **[ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
-     
+
+   * **Windows 8.1 Runtime:** [SQLite for Windows 8.1][3] をインストールします。
+   * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
+   * **ユニバーサル Windows プラットフォーム:** [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
+
      クイック スタートには、ユニバーサル Windows プロジェクトは含まれていませんが、ユニバーサル Windows プラットフォームは Xamarin フォームでサポートされます。
-4. (省略可能) 各 Windows アプリ プロジェクトで、**[参照]**を右クリックして **[参照の追加...]** を選択し、**Windows** フォルダーを展開して **[拡張機能]** を表示します。
+4. (省略可能) それぞれの Windows アプリ プロジェクトで、**[参照]** > **[参照の追加]** の順に右クリックして、**Windows** フォルダー、**[拡張機能]** の順に展開します。
     適切な **SQLite for Windows** SDK と **Visual C++ 2013 Runtime for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
 
@@ -52,30 +53,30 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
 ここでは、 `#if OFFLINE_SYNC_ENABLED` ディレクティブ内のチュートリアル コードに既に含まれているものの概要を説明します。 オフライン同期機能は、ポータブル クラス ライブラリ プロジェクト内の TodoItemManager.cs プロジェクト ファイル内にあります。 機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期][2]」を参照してください。
 
 * テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。 ローカル ストア データベースは、次のコードを使用して **TodoItemManager** クラス コンストラクターで初期化されます。
-  
+
         var store = new MobileServiceSQLiteStore(OfflineDbPath);
         store.DefineTable<TodoItem>();
-  
+
         //Initializes the SyncContext using the default IMobileServiceSyncHandler.
         this.client.SyncContext.InitializeAsync(store);
-  
+
         this.todoTable = client.GetSyncTable<TodoItem>();
-  
+
     これにより、 **MobileServiceSQLiteStore** クラスを使用して新しいローカルの SQLite データベースが作成されます。
-  
+
     **DefineTable** メソッドを実行すると、提供された型のフィールドに一致するテーブルがローカル ストアに作成されます。  この型に、リモート データベース内のすべての列を含める必要はありません。 列のサブセットを格納できます。
 * **TodoItemManager** の **todoTable** フィールドは、**IMobileServiceTable** 型ではなく **IMobileServiceSyncTable** 型です。 このクラスでは、作成、読み取り、更新、削除 (CRUD) のすべてのテーブル操作にローカル データベースを使用します。 これらの変更がいつモバイル アプリ バックエンドにプッシュされるかを決定するには、**IMobileServiceSyncContext** で **PushAsync** を呼び出します。 この同期コンテキストは、**PushAsync** が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
-  
+
     次の **SyncAsync** メソッドは、モバイル アプリ バックエンドと同期するために呼び出されます。
-  
+
         public async Task SyncAsync()
         {
             ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;
-  
+
             try
             {
                 await this.client.SyncContext.PushAsync();
-  
+
                 await this.todoTable.PullAsync(
                     "allTodoItems",
                     this.todoTable.CreateQuery());
@@ -87,7 +88,7 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
                     syncErrors = exc.PushResult.Errors;
                 }
             }
-  
+
             // Simple error/conflict handling.
             if (syncErrors != null)
             {
@@ -103,13 +104,13 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
                         // Discard local change.
                         await error.CancelAndDiscardItemAsync();
                     }
-  
+
                     Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.",
                         error.TableName, error.Item["id"]);
                 }
             }
         }
-  
+
     このサンプルでは、既定の同期ハンドラーを使った単純なエラー処理を使用しています。 実際のアプリケーションでは、ネットワーク状態やサーバーの競合などの各種エラーが、カスタム **IMobileServiceSyncHandler** の実装を使用して処理されます。
 
 ## <a name="offline-sync-considerations"></a>オフライン同期に関する考慮事項
@@ -126,10 +127,10 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
 このセクションでは、バックエンドに無効なアプリケーション URL を使用することで、クライアント プロジェクトを変更して、オフラインのシナリオをシミュレートします。 デバイスを "機内モード" にすることで、ネットワーク接続をオフにする方法もあります。  データ項目を追加または変更すると、これらの変更はローカル ストアに保持されますが、接続が再確立されるまでは、バックエンドのデータ ストアには同期されません。
 
 1. ソリューション エクスプローラーで、**Portable** プロジェクトから Constants.cs プロジェクト ファイルを開き、`ApplicationURL` の値を次のような無効な URL を指すように変更します。
-   
+
         public static string ApplicationURL = @"https://your-service.azurewebsites.net/";
 2. **Portable** プロジェクトから TodoItemManager.cs ファイルを開き、ベース **Exception** クラスの **catch** を、**SyncAsync** 内の **try...catch** ブロックに追加します。 この **catch** ブロックによってコンソールに例外メッセージが書き込まれます。これは次のようになります。
-   
+
             catch (Exception ex)
             {
                 Console.Error.WriteLine(@"Exception: {0}", ex.Message);
@@ -137,7 +138,7 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
 3. クライアント アプリの構築と実行  新しい項目をいくつか追加します。 バックエンドとの同期を試みるたびに、コンソールに例外がログ記録されることに注意してください。 これらの新しい項目は、モバイル バックエンドにプッシュされるまでは、ローカル ストア内にのみ存在します。 クライアント アプリケーションは、バックエンドに接続されているかのように動作し、作成、読み取り、更新、削除 (CRUD) 操作のすべてをサポートします。
 4. アプリケーションを終了し、再起動して、作成した新しい項目がローカル ストアに保存されていることを確認します。
 5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
-   
+
     Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]**を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
 
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>クライアント アプリを更新し、モバイルのバックエンドを再接続します。
@@ -145,8 +146,8 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
 
 1. Constants.cs をもう一度開きます。 `applicationURL` を修正して、正しい URL に設定します。
 2. クライアント アプリの再構築と実行 起動後、アプリはモバイル アプリ バックエンドとの同期を試みます。 デバッグ コンソールに例外がログ記録されていないことを確認してください。
-3. (省略可能) SQL Server Object Explorer、または Fiddler や [Postman][6] などの REST ツールを使用して、更新データを表示します。 バックエンド データベースとローカル ストアの間でデータが同期されていることを確認します。
-   
+3. (省略可能) SQL Server オブジェクト エクスプローラー、または Fiddler や [Postman][6] などの REST ツールを使用して、更新データを表示します。 バックエンド データベースとローカル ストアの間でデータが同期されていることを確認します。
+
     データがデータベースとローカル ストアの間で同期されており、アプリが接続されていない状況で追加した項目が含まれていることを確認してください。
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -162,9 +163,4 @@ ms.openlocfilehash: 62610da9598077ffd17b97e9427149310c639a1a
 [6]: https://www.getpostman.com/
 [7]: http://www.telerik.com/fiddler
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 878badf2753b4ceb471abc789e388fd784c4c42a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/13/2017
-
 
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights

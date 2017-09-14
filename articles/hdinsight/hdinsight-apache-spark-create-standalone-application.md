@@ -1,6 +1,6 @@
 ---
-title: "Scala アプリケーションを作成して Azure HDInsight Spark クラスターで実行する | Microsoft Docs"
-description: "Maven を利用してスタンドアロン Scala アプリケーションを作成し、HDInsight Spark クラスターで実行する方法を説明します。"
+title: "Scala アプリケーションを作成して Spark クラスターで実行する - Azure HDInsight | Microsoft Docs"
+description: "Scala で記述され、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA によって提供される Scala 用の既存の Maven アーキタイプを使用する Spark アプリケーションを作成します。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/25/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 3cc921bdd6c9b374bda7bbfc3781f7a1327ae438
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 95dba08744357f8800b05e3d4b892e3a363d5985
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Scala Maven アプリケーションを作成し、HDInsight の Apache Spark クラスターで実行する
@@ -96,12 +95,12 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
             val conf = new SparkConf().setAppName("WASBIOTest")
             val sc = new SparkContext(conf)
    
-            val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+            val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
    
             //find the rows which have only one digit in the 7th column in the CSV
             val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
    
-            rdd1.saveAsTextFile("wasbs:///HVACout")
+            rdd1.saveAsTextFile("wasb:///HVACout")
           }
         }
 9. pom.xml ファイルを更新します。
@@ -145,32 +144,14 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 ## <a name="run-the-application-on-the-spark-cluster"></a>Spark クラスターでアプリケーションを実行する
 クラスターでアプリケーションを実行するには、次の手順を実行します。
 
-* **Azure Storage BLOB にアプリケーション jar をコピーします** 。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+* **Azure Storage BLOB にアプリケーション jar をコピーします** 。 コピーには、[**AzCopy**](../storage/common/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 * **アプリケーション ジョブをLivy を使用してリモートで送信** します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、「[Submit Spark jobs remotely using Livy with Spark clusters on HDInsight (HDInsight の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する)](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
-## <a name="seealso"></a>関連項目
-* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
+## <a name="next-step"></a>次のステップ
 
-### <a name="scenarios"></a>シナリオ
-* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+この記事では、Spark Scala アプリケーションの作成方法について説明しました。 Livy を使用して HDInsight Spark クラスター上でこのアプリケーションを実行する方法を確認するには、次の記事に進みます。
 
-### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>リソースの管理
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
+> [!div class="nextstepaction"]
+>[Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 424889a00a20c8daf770098a43576783b813340c
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
 
 Azure Resource Manager テンプレートを使用して、Azure リソースのデプロイと構成を簡単に自動化できます。  このチュートリアルでは、Web アプリケーションをデプロイし、Azure Cosmos DB アカウントの接続情報を自動的に構成する方法を説明します。
 
@@ -85,7 +85,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
    
    ![Todo アプリケーションのサンプル](./media/create-website/image2.png)
 9. ここで、Web アプリでいくつかのタスクを作成してから、Azure ポータルのリソース グループ ブレードに戻ります。 リソースの一覧で Azure Cosmos DB アカウント リソースをクリックし、**クエリ エクスプローラー**をクリックします。
-    ![myotherdocumentdbwebapp Web アプリを強調表示した [概要] レンズのスクリーン ショット](./media/create-website/TemplateDeployment8.png)  
+    ![Web アプリを強調表示した [概要] レンズのスクリーン ショット](./media/create-website/TemplateDeployment8.png)  
 10. 既定のクエリである "SELECT * FROM c" を実行し、その結果を調べます。  このクエリでは、前の手順 7. で作成した Todo 項目の JSON 表現を取得しました。  クエリを自由に試してください。たとえば、SELECT * FROM c WHERE c.isComplete = true を実行してみると、完了としてマークされているすべての Todo 項目が返されます。
     
     ![クエリ結果を示す [クエリ エクスプローラー] ブレードと [結果] ブレードのスクリーン ショット](./media/create-website/image5.png)

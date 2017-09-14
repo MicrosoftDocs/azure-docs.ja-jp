@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 86c293e735f766dbacc7d0b83574f254573d0de8
-ms.openlocfilehash: 3f119409e031ca2b88694a011916f52aa9ef5d36
-ms.lasthandoff: 02/15/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
+ms.openlocfilehash: ac52924d928b293f4b1b58f0c25375f890c51837
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -264,7 +265,7 @@ HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用�
 
 #### <a name="on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイ
 
-ロジック アプリの管理対象コネクタの多くは、オンプレミス システム (File System、SQL、SharePoint、DB2 など) にセキュリティで保護された接続を備えています。  ゲートウェイは Azure Service Bus 経由の暗号化されたチャネルを利用してオンプレミスにデータを中継するため、すべてのトラフィックの送信元は、ゲートウェイ エージェントのセキュリティ保護された送信トラフィックになります。  ゲートウェイのしくみの詳細については、[こちらの記事](logic-apps-gateway-install.md#how-the-gateway-works)を参照してください。
+ロジック アプリの多くの管理対象コネクタは、オンプレミス システム (File System、SQL、SharePoint、DB2 など) にセキュリティで保護された接続を備えています。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ、エージェントからの安全な送信トラフィックとして生成されます。 詳細については、「[ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
 
 #### <a name="azure-api-management"></a>Azure API Management
 

@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/23/2017
+ms.date: 8/15/2017
 ms.author: markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
-ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
-ms.lasthandoff: 02/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b21edb70eca3ec9552dc157ee3bb658d243b8fcd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>最初に: Resource Manager デプロイメントでのファイルとフォルダーのバックアップ
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 ファイルとフォルダーをバックアップするには、データを保存するリージョンに Recovery Services コンテナーを作成する必要があります。 また、ストレージのレプリケート方法を決定する必要もあります。
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成するには
-1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com/) にサインインします。
+1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ハブ メニューの **[その他のサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、**[Recovery Services コンテナー]** をクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
 4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
-5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが&1; つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが 1 つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
 6. **[リソース グループ]** セクションで、次のことを行います。
 
@@ -88,7 +88,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/storage-redundancy.md)を参照してください。
+    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージと[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)を参照してください。
 
 これでコンテナーが作成されたので、ファイルとフォルダーのバックアップのために構成します。
 
@@ -164,8 +164,17 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 エージェントがインストールされ、コンピューターがコンテナーに登録されました。 バックアップを構成してスケジュールする準備ができました。
 
+## <a name="network-and-connectivity-requirements"></a>ネットワークと接続の要件
+
+マシン/プロキシのインターネットへのアクセスが制限されている場合は、マシン/プロキシのファイアウォール設定が次の URL を許可するように構成されていることを確認します。 <br>
+    1. www.msftncsi.com
+    2. *.Microsoft.com
+    3. *.WindowsAzure.com
+    4. *.microsoftonline.com
+    5. *.windows.ne
+
 ## <a name="back-up-your-files-and-folders"></a>ファイルとフォルダーをバックアップする
-初回バックアップには、次の&2; つの主要なタスクが含まれています。
+初回バックアップには、次の 2 つの主要なタスクが含まれています。
 
 * バックアップのスケジュール
 * 初回のファイルとフォルダーのバックアップ
@@ -182,10 +191,10 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
 4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
 5. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
-6. ページの下部にある **[次へ]**」を参照してください。
+6. **[次へ]** をクリックします。
 7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
 
-    毎日 (1 日に最大&3; 回) または毎週のバックアップをスケジュールすることができます。
+    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
 
     ![Windows Server のバックアップ項目](./media/backup-try-azure-backup-in-10-mins/specify-backup-schedule-close.png)
 

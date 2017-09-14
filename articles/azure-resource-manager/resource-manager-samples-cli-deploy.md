@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 784995792753772a9e00d61a63498880969d8536
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 974230f349aec46fde58e69658e05a13bff4296f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -120,16 +121,11 @@ then
 fi
 
 #set the default subscription id
-az account set --name $subscriptionId
-
-set +e
+az account set --subscription $subscriptionId
 
 #Check for existing RG
-az group show $resourceGroupName 1> /dev/null
-
-if [ $? != 0 ]; then
+if [ $(az group exists --name $resourceGroupName) == 'false' ]; then
     echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
-    set -e
     (
         set -x
         az group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
@@ -146,7 +142,7 @@ echo "Starting deployment..."
 )
 
 if [ $?  == 0 ];
- then
+then
     echo "Template has been successfully deployed"
 fi
 ```
@@ -165,7 +161,7 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group show](/cli/azure/group#show) | リソース グループを取得します。 |
+| [az group exists](/cli/azure/group#exists) | リソース グループが存在するかどうかを確認します。 |
 | [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az group deployment create](/cli/azure/group/deployment#create) | デプロイを開始します。  |
 | [az group delete](/cli/azure/group#delete) | リソース グループとそのリソースをすべて削除します。 |

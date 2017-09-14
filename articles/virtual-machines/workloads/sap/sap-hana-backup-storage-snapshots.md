@@ -13,11 +13,11 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5d395da0779d84e414341d6d73151fd7e77e3e8e
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: f332b8ac091b75a23489ac27f15ad1fd10d24ec6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -101,7 +101,7 @@ Azure Backup サービスによるスナップショットの作成フェーズ�
 
 ![Azure Backup サービスは hana-backup-vault という名前で作成されています](media/sap-hana-backup-storage-snapshots/image016.png)
 
-Azure Backup サービスは &quot;hana-backup-vault&quot; という名前で作成されています。 PS コマンド **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** で対応するオブジェクトを取得します。 次に、このオブジェクトを使用して、次の図のようにバックアップ コンテキストを設定します。
+Azure Backup サービスは &quot;hana-backup-vault&quot; という名前で作成されています。PS コマンド **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** で対応するオブジェクトを取得します。 次に、このオブジェクトを使用して、次の図のようにバックアップ コンテキストを設定します。
 
 ![現在進行中のバックアップ ジョブを確認できます](media/sap-hana-backup-storage-snapshots/image017.png)
 
@@ -168,6 +168,6 @@ Azure Backup サービスを使用するのではなく、PowerShell を使用�
 
 ## <a name="next-steps"></a>次のステップ
 * 「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」には、概要と基本的な情報が記載されています。
-* [ファイル レベルに基づいた SAP HANA バックアップ](sap-hana-backup-file-level.md)に関するページには、ストレージ スナップショットベースのバックアップ方法についての説明があります。
+* 「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」では、ファイルベースのバックアップ オプションについて説明しています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
 

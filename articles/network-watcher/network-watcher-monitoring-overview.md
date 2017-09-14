@@ -3,7 +3,7 @@ title: "Azure Network Watcher の概要 | Microsoft Docs"
 description: "このページでは、Azure のネットワークに接続されたリソースを監視および視覚化する Network Watcher サービスの概要を示します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: aabc0cf743487752312f5e1b078837545169e964
-ms.lasthandoff: 03/31/2017
+ms.date: 07/11/2017
+ms.author: jdial
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 18aa9837742082535a115efd47bdc4b8dfda8a6b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -47,15 +48,16 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 * **[仮想ネットワーク ゲートウェイと接続のトラブルシューティング](network-watcher-troubleshoot-manage-rest.md)** - 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
 * **[ネットワーク サブスクリプションの制限](#network-subscription-limits)** - ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
 * **[診断ログの構成](#diagnostic-logs)** – 1 つのペインで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
+* **[接続 (プレビュー)](network-watcher-connectivity-overview.md)** - 仮想マシンから指定されたエンドポイントへの直接の TCP 接続を確立する可能性を確認します。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Network Watcher におけるロールベースのアクセス制御 (RBAC)
 
 Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC) モデル](../active-directory/role-based-access-control-what-is.md)を使用しています。 Network Watcher には次のアクセス許可が必要です。 Network Watcher API を開始またはポータルから Network Watcher を使用するために用いるロールには、必ず必要なアクセスを設定してください。
 
 |リソース| アクセス許可|
-|---|---|
+|---|---| 
 |Microsoft.Storage/ |読み取り|
-|Microsoft.Authorization/| 読み取り|
+|Microsoft.Authorization/| 読み取り| 
 |Microsoft.Resources/subscriptions/resourceGroups/| 読み取り|
 |Microsoft.Storage/storageAccounts/listServiceSas/ | アクション|
 |Microsoft.Storage/storageAccounts/listAccountSas/ |アクション|
@@ -64,13 +66,13 @@ Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC
 |Microsoft.Compute/virtualMachines/ |書き込み|
 |Microsoft.Compute/virtualMachineScaleSets/ |読み取り|
 |Microsoft.Compute/virtualMachineScaleSets/ |書き込み|
-|Microsoft.Network/networkWatchers/packetCaptures/| 読み取り|
+|Microsoft.Network/networkWatchers/packetCaptures/ |読み取り|
 |Microsoft.Network/networkWatchers/packetCaptures/| 書き込み|
 |Microsoft.Network/networkWatchers/packetCaptures/| 削除|
-|Microsoft.Network/networkWatchers/ |書き込み|
-|Microsoft.Network/networkWatchers/| 読み取り|
+|Microsoft.Network/networkWatchers/ |書き込み |
+|Microsoft.Network/networkWatchers/| 読み取り |
 |Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/| *|
+|Microsoft.Support/ | *|
 
 ### <a name="network-subscription-limits"></a>ネットワーク サブスクリプションの制限
 
@@ -123,6 +125,8 @@ Network Watcher について学習したので、次のことが可能になり�
 [パケット キャプチャによりトリガーされるアラート](network-watcher-alert-triggered-packet-capture.md)を使用して、事前対応型の監視と診断を実行する。
 
 オープン ソース ツールを使用して、[Wireshark によるパケット キャプチャの分析](network-watcher-deep-packet-inspection.md)でセキュリティの脆弱性を検出する。
+
+Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
 
 <!--Image references-->
 [TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png

@@ -5,17 +5,15 @@ services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql-database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.service: postgresql
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/14/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 275519089d682b6ef3c7858446ab2c4baface77f
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e05e61ea05afc2866a618c663cb437540ab54c9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
@@ -30,7 +28,7 @@ ms.lasthandoff: 05/10/2017
 次の手順に従って PostgreSQL データベースのエクスポートとインポートを行います。
 
 ## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>pg_dump を使用して読み込むデータが含まれたスクリプト ファイルを作成する
-オンプレミスまたは VM 内にある既存の PostgreSQL データベースを SQL スクリプト ファイルにエクスポートするには、次のコマンドを実行します。
+オンプレミスまたは VM 内にある既存の PostgreSQL データベースを SQL スクリプト ファイルにエクスポートするには、既存の環境で次のコマンドを実行します。
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
@@ -44,7 +42,7 @@ psql コマンド ラインと -d、--dbname パラメーターを使用して�
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```
-この例では、psql と 前の手順で作成した **testdb.sql** という名前のスクリプト ファイルを使用して、対象サーバー **mypgserver-20170401.postgres.database.azure.com** のデータベース **mypgsqldb** にデータをインポートします。
+この例は、psql ユーティリティと前の手順で作成した **testdb.sql** という名前のスクリプト ファイルを使って、対象サーバー **mypgserver-20170401.postgres.database.azure.com** のデータベース **mypgsqldb** にデータをインポートします。
 ```bash
 psql --file=testdb.sql --host=mypgserver-20170401.database.windows.net --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb
 ```

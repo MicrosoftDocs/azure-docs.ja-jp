@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
+ms.contentlocale: ja-jp
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET Web API を構築する

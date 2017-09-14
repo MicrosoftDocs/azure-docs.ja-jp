@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 08/11/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: fa70dffc2a4bade44e1dec583bdfcf7b5dae6801
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 0e0a0ce5c0795cec0e47cd5f729099f4762381a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
 >[!NOTE] 
->2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
+>2017 年 6 月上旬より、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
 >
 
 ## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
@@ -105,6 +104,7 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 一部の問題は、この記事に示したガイドラインを基に特定できます。その他の問題については、Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)でドキュメントを確認できます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。 
 
 ![Microsoft Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+
 
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。

@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB .NET Core API、SDK、およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、DocumentDB .NET Core SDK の各バージョン間の変更など、.NET Core API と SDK に関するあらゆる詳細を提供します。"
+title: "Azure Cosmos DB .NET Core API、SDK、およびリソース | Microsoft Docs"
+description: "リリース日、提供終了日、Azure Cosmos DB .NET Core SDK の各バージョン間の変更など、.NET Core API と SDK に関するあらゆる詳細を提供します。"
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/11/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c851e01fb8884b2f601986207d730efb338422a8
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a7ce4d771e9c655687f72f4b46c7405cf64aeb74
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
-# <a name="documentdb-net-core-sdk-release-notes-and-resources"></a>DocumentDB .NET Core SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET Change Feed](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.JS](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -40,32 +40,52 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
 <tr><td>**サンプル**</td><td>[.NET コード サンプル](documentdb-dotnet-samples.md)</td></tr>
 
-<tr><td>**作業開始**</td><td>[DocumentDB .NET Core SDK の使用](documentdb-dotnetcore-get-started.md)</td></tr>
+<tr><td>**概要**</td><td>[Azure Cosmos DB .NET Core SDK を開始する](documentdb-dotnetcore-get-started.md)</td></tr>
 
-<tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB による Web アプリケーション開発](documentdb-dotnet-application.md)</td></tr>
+<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](documentdb-dotnet-application.md)</td></tr>
 
-<tr><td>**現在サポートされているフレームワーク**</td><td>[.NET Standard 1.6](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
+<tr><td>**現在サポートされているフレームワーク**</td><td>[.NET Standard 1.6 および .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
 
-DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) と同等の機能が備わっています。
+Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .NET SDK](documentdb-sdk-dotnet.md) と同等の機能が備わっています。
 
 > [!NOTE] 
-> DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。
+> Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
+
+* クエリの結果をパーティション キーの特定の範囲の値にスコープするための FeedOption として PartitionKeyRangeIdresults のサポートが追加されました。 
+* 指定時刻以後の変更の検索を開始するための ChangeFeedOption として StartTime のサポートが追加されました。 
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+*   スタック オーバーフローの例外を引き起こす可能性のある JsonSerializable クラスの問題を修正しました。
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+*   [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) のインスタンス化時にカスタム JsonSerializerSettings を指定するためのサポートが追加されました。
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+
+*   ターゲット フレームワークの 1 つとして .NET Standard 1.5 をサポートします。
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+
+*   SSE4 命令をサポートせず、Azure Cosmos DB クエリの実行時に SEHException をスローする x64 マシンに影響を与える問題を修正しました。
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-*    1 分あたりの要求ユニット (RU/分) 機能のサポートが追加されました。
-*    ConsistentPrefix と呼ばれる新しい一貫性レベルに対応するようになりました。
-*    個別のパーティションに対するメトリックのクエリに対応するようになりました。
-*    クエリの継続トークンのサイズ制限に対応するようになりました。
-*    失敗した要求の詳細なトレースに対応するようになりました。
-*    SDK でのパフォーマンスが向上しています。
+*   ConsistentPrefix と呼ばれている新しい一貫性レベルに対応するようになりました。
+*   個別のパーティションに対するメトリックのクエリに対応するようになりました。
+*   クエリの継続トークンのサイズ制限に対応するようになりました。
+*   失敗した要求の詳細なトレースに対応するようになりました。
+*   SDK でのパフォーマンスが向上しています。
 
 ### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
 
@@ -99,13 +119,13 @@ DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](do
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-DocumentDB .NET Core SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。 DocumentDB .NET Core SDK の最新リリースは、[Xamarin](https://www.xamarin.com) との完全な互換性を持ち、iOS、Android、Mono (Linux) を対象とするアプリケーションの構築に使用されます。  
+Azure Cosmos DB .NET Core SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。 Azure Cosmos DB .NET Core SDK の最新リリースは、[Xamarin](https://www.xamarin.com) との完全な互換性を持ち、iOS、Android、Mono (Linux) を対象とするアプリケーションの構築に使用されます。  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 
-DocumentDB .NET Core Preview SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。
+Azure Cosmos DB .NET Core Preview SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。
 
-DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) と同等の機能が備わっており、次の機能がサポートされます。
+Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosmos DB .NET SDK](documentdb-sdk-dotnet.md) と同等の機能が備わっており、次の機能がサポートされます。
 * すべての[接続モード](performance-tips.md#networking): ゲートウェイ モード、ダイレクト TCP、ダイレクト HTTP。 
 * すべての[一貫性レベル](consistency-levels.md): 強固、セッション、有界整合性制約、最終的。
 * [パーティション分割コレクション](partition-data.md)。 
@@ -117,6 +137,11 @@ DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.5.0](#1.5.0) |2017 年 8 月 10 日 |--- | 
+| [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
+| [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |
+| [1.3.2](#1.3.2) |2017 年 6 月 12 日 |--- |
+| [1.3.1](#1.3.1) |2017 年 5 月 23 日 |--- |
 | [1.3.0](#1.3.0) |2017 年 5 月 10 日 |--- |
 | [1.2.2](#1.2.2) |2017 年 4 月 19 日 |--- |
 | [1.2.1](#1.2.1) |2017 年 3 月 29 日 |--- |

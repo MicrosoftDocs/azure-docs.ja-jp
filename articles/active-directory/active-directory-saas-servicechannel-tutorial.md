@@ -108,7 +108,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_01.png)
 
-3. **[ServiceChannel Domain and URLs] (ServiceChannel のドメインと URL)** セクションで、次の手順を実行します。
+3. **[ServiceChannel Domain and URLs] \(ServiceChannel のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
@@ -154,7 +154,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-servicechannel-tutorial/tutorial_general_400.png)
 
-8. **[ServiceChannel Configuration] (ServiceChannel 構成)** セクションで、**[Configure ServiceChannel] (ServiceChannel の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションの **SAML エンティティ ID** をメモしてください。
+8. **[ServiceChannel Configuration] \(ServiceChannel 構成)** セクションで、**[Configure ServiceChannel] \(ServiceChannel の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションの **SAML エンティティ ID** をメモしてください。
 
 9. **ServiceChannel** 側でシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)** と **SAML エンティティ ID** を [ServiceChannel サポート チーム](https://servicechannel.zendesk.com/hc/en-us)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
 

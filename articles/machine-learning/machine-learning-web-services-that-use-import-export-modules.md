@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 20e2c9edc4729015f65fbe72649e32effe7f8a3a
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 123c8c2b1c5bae268b2a61c185743f2c3920175e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>データのインポート モジュールとエクスポート モジュールを使用する Azure ML Web サービスのデプロイ
 
 予測実験を作成するときには通常、Web サービスの入力と出力を追加します。 実験を展開するときに、コンシューマーはこれらの入力と出力を介して Web サービスとのデータの送受信を行うことができます。 一部のアプリケーションでは、コンシューマーのデータはデータ フィードから利用できるか、または Azure BLOB ストレージなどの外部データ ソースに既に存在しています。 このような場合、Web サービスの入力と出力を使用してデータを読み書きする必要はありません。 代わりに、バッチ実行サービス (BES) を使用して、データのインポート モジュールを使用してデータ ソースからデータを読み取り、データのエクスポート モジュールを使用して、スコア付けの結果を他のデータの場所に書き込むことができます。
 
-データのインポート モジュールとエクスポート モジュールは、HTTP を使用する Web URL、Hive クエリ、Azure SQL データベース、Azure テーブル ストレージ、Azure BLOB ストレージ、提供されているデータ フィード、またはオンプレミスの SQL データベースなどのさまざまなデータの場所に対してデータの読み取りと書き込みを行うことができます。
+データのインポート モジュールとエクスポート モジュールは、HTTP を使用する Web URL、Hive クエリ、Azure SQL データベース、Azure Table Storage、Azure Blob Storage、提供されているデータ フィード、またはオンプレミスの SQL データベースなどのさまざまなデータの場所に対してデータの読み取りと書き込みを行うことができます。
 
 このトピックでは "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを使用しており、このデータセットは censusdata という名前の Azure SQL テーブルに既に読み込まれていることを前提としています。
 
@@ -102,14 +102,14 @@ Web サービスとして予測実験をデプロイできるようになりま�
 2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** を選択します。
 3. Web サービス ダッシュボードで、API キーを見つけます。 この API キーをコピーして、後で使用できるように保存します。
 4. **[既定のエンドポイント]** テーブルで、**[バッチ実行]** リンクをクリックして API ヘルプ ページを開きます。
-5. Visual Studio で、C# コンソール アプリケーションを作成します。
+5. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
 6. API ヘルプ ページで、ページ下部にある **[サンプル コード]** セクションを見つけます。
 7. C# サンプル コードをコピーして Program.cs ファイルに貼り付け、BLOB ストレージへの参照をすべて削除します。
 8. *apiKey* 変数の値を、以前に保存した API キーで更新します。
 9. 要求の宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合は、元のクエリを使用しますが、新しいテーブル名を定義します。
    
         var request = new BatchExecutionRequest() 
-        {            
+        {           
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
@@ -131,13 +131,13 @@ Web サービスとして予測実験をデプロイできるようになりま�
 3. [実験のデプロイ] ページで、Web サービスの名前を入力し、料金プランを選択して **[デプロイ]** をクリックします。
 4. **[クイック スタート]** ページで **[使用]** をクリックします。
 5. **[サンプル コード]** セクションで、**[Batch]** をクリックします。
-6. Visual Studio で、C# コンソール アプリケーションを作成します。
+6. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
 7. C# サンプル コードをコピーして Program.cs ファイルに貼り付けます。
 8. *apiKey* 変数の値を、**[Basic consumption info (基本的な実行情報)]** セクションにある**プライマリ キー**を使用して更新します。
 9. *scoreRequest* 宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合は、元のクエリを使用しますが、新しいテーブル名を定義します。
    
         var scoreRequest = new
-        {        
+        {       
             Inputs = new Dictionary<string, StringTable>()
             {
             },

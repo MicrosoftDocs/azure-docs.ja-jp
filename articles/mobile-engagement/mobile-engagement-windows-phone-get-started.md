@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: 3f1f8d74eb2f562991b351cae87c372897644cf8
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: d2334a59d83c90bdd02c4fa29261d36aad292892
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>Windows Phone Silverlight アプリの Azure Mobile Engagement の概要
@@ -26,6 +26,12 @@ ms.lasthandoff: 03/01/2017
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、Windows Phone Silverlight アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
 このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 チュートリアル内で空白の Windows Phone Silverlight アプリを作成し、このアプリで基本的なデータを収集して、Microsoft Push Notification Service (MPNS) を使用してプッシュ通知を受信します。
+
+> [!NOTE]
+> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
+
+> [!NOTE]
+> Windows Phone 8.1 以前のバージョンのプロジェクトは、Visual Studio 2017 でサポートされていません。  詳細については、「[Visual Studio 2017 の対象プラットフォームと互換性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)」を参照してください。
 
 > [!NOTE]
 > Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、 [Windows Universal チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を参照してください。
@@ -42,10 +48,10 @@ ms.lasthandoff: 03/01/2017
 > 
 > 
 
-## <a name="a-idsetup-azmeasetup-mobile-engagement-for-your-windows-phone-app"></a><a id="setup-azme"></a>Windows Phone アプリ用に Mobile Engagement を設定する
+## <a id="setup-azme"></a>Windows Phone アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 完全な統合のドキュメントについては、「 [Mobile Engagement Windows Phone SDK 統合](mobile-engagement-windows-phone-sdk-overview.md)
 
 統合のデモンストレーションを行うために、Visual Studio で基本的なアプリを作成します。
@@ -92,8 +98,8 @@ ms.lasthandoff: 03/01/2017
                EngagementAgent.Instance.OnActivated(e);
             }
 
-## <a name="a-idmonitoraenable-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を有効にする
-データを送信してユーザーがアクティブであることを確認するには、少なくとも&1; つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
+## <a id="monitor"></a>リアルタイム監視を有効にする
+データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
 1. MainPage.xaml.cs に、`using` ステートメントを追加します。
    
@@ -109,10 +115,10 @@ ms.lasthandoff: 03/01/2017
    
     b. XML タグ名の `phone:PhoneApplicationPage` を `engagement:EngagementPage` に置き換えます。
 
-## <a name="a-idmonitoraconnect-app-with-real-time-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegrate-pushaenable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## <a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 Mobile Engagement を導入すると、キャンペーンとの関連でプッシュ通知とアプリ内メッセージングを利用し、ユーザーに情報を提供できます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するようにアプリをセットアップします。
 
@@ -142,7 +148,7 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 設定が完了しました。 それでは、この基本的な統合が正しく設定されているかどうかを検証してみましょう。
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>アプリへ通知を送信する
+## <a id="send"></a>アプリへ通知を送信する
 [!INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
 アプリが開いている場合、通知はアプリ内通知としてデバイスに表示されます。アプリが開いていない場合は、次のようにトースト通知として表示されます。 

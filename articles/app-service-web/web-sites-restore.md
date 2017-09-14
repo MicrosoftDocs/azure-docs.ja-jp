@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 49aa35a42e4f6dab2f8d556f7b1b10bfdef7b7db
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 61396e8a3521c25eaf49c66a4948e520377d342a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/09/2017
 
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
@@ -35,26 +34,26 @@ ms.lasthandoff: 05/10/2017
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>既存のバックアップからのアプリの復元
-1. Azure Portal にあるアプリの **[設定]** ブレードで、**[バックアップ]** をクリックして **[バックアップ]** ブレードを表示します。 コマンド バーで、 **[今すぐ復元]** をクリックします。
+1. Azure Portal にあるアプリの **[設定]** ブレードで、**[バックアップ]** をクリックして **[バックアップ]** ブレードを表示します。 続けて **[復元]** をクリックしてください。
    
     ![今すぐ復元の選択][ChooseRestoreNow]
 2. **[復元]** ブレードで、最初にバックアップ ソースを選択します。
    
-    ![](./media/web-sites-restore/021ChooseSource.png)
+    ![](./media/web-sites-restore/021ChooseSource1.png)
    
     **[アプリのバックアップ]** オプションには、現在のアプリの既存のバックアップがすべて表示されるので、バックアップを簡単に選択することができます。
     **[ストレージ]** オプションを使用すると、サブスクリプションに含まれる既存の Azure Storage アカウントとコンテナーから、任意のバックアップ ZIP ファイルを選択できます。
     別のアプリのバックアップを復元する場合は、 **[ストレージ]** オプションを使用します。
 3. 次に、 **[復元先]**でアプリの復元先を指定します。
    
-    ![](./media/web-sites-restore/022ChooseDestination.png)
+    ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > **[上書き]**を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]**をクリックする前に、実行する操作内容が正しいことを確認します。
    > 
    > 
    
-    **[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。 このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。
+    **[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。 このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、データベース構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。 コンテンツの復元先として**新しい**アプリを作成することもできます。
 
 4. **[OK]**をクリックします。
 
@@ -86,7 +85,7 @@ REST API を使用して、App Service アプリのバックアップと復元�
 
 
 <!-- IMAGES -->
-[ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png
+[ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow1.png
 [ViewContainers]: ./media/web-sites-restore/03ViewContainers.png
 [StorageAccountFile]: ./media/web-sites-restore/02StorageAccountFile.png
 [BrowseCloudStorage]: ./media/web-sites-restore/03BrowseCloudStorage.png

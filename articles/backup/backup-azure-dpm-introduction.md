@@ -3,8 +3,8 @@ title: "DPM を使用してワークロードを Azure Portal にバックアッ
 description: "Azure Backup サービスを使用した DPM サーバーのバックアップの概要"
 services: backup
 documentationcenter: 
-author: Nkolli1
-manager: shreeshd
+author: adigan
+manager: nkolli
 editor: 
 keywords: "System Center Data Protection Manager, Data Protection Manager, DPM バックアップ"
 ms.assetid: c8c322cf-f5eb-422c-a34c-04a4801bfec7
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2016
+ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3422c8d57bdd786ce5d1a41fbb4c12cc4efffddd
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>DPM を使用して Azure へのワークロードをバックアップするための準備
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/27/2017
 * サポートされるシナリオ
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
 >
 >
 
@@ -86,7 +86,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    コンテナーが作成されると、ポータルで開かれます。
 
 ### <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -113,7 +113,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![ダウンロード](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
-ポータルは、資格情報コンテナーの名前と現在の日付の組み合わせを使用して、資格情報コンテナーの資格情報を生成します。 **[保存]** をクリックして、資格情報コンテナーの資格情報をローカル アカウントのダウンロード フォルダーにダウンロードするか、[保存] メニューから [名前を付けて保存] を選択して、保存場所を指定します。 ファイルの生成には最大で&1; 分かかります。
+ポータルは、資格情報コンテナーの名前と現在の日付の組み合わせを使用して、資格情報コンテナーの資格情報を生成します。 **[保存]** をクリックして、資格情報コンテナーの資格情報をローカル アカウントのダウンロード フォルダーにダウンロードするか、[保存] メニューから [名前を付けて保存] を選択して、保存場所を指定します。 ファイルの生成には最大で 1 分かかります。
 
 ### <a name="note"></a>注
 * 資格情報コンテナーの資格情報ファイルは、使用するコンピューターからアクセスできる場所に保存してください。 ファイル共有 / SMB に格納されている場合は、アクセス許可を確認します。

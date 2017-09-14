@@ -14,13 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 05/01/2017
+ms.date: 05/24/2017
 ms.author: sasubram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: fd02c79d967c5076353f1f9219c22f068b56fb1d
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: aea802af038786c58d9640333458ad88fe8f90bd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -32,9 +32,10 @@ ms.lasthandoff: 05/02/2017
 既存の Azure AD アカウントまたは Microsoft アカウントのユーザーの場合、利用エクスペリエンスはサインインと同じくらい簡単です。
 
 ## <a name="social-id-user-first-time-redemption"></a>ソーシャル ID ユーザーの初めての利用
-Azure AD B2B コラボレーションでは、利用のために、どの電子メール アドレスも簡単に使用できます。 B2B コラボレーションに Microsoft 以外の電子メール アドレスが使用される場合の利用エクスペリエンスをご覧ください。 これは、利用時にアカウントを作成する必要がある場合があるため、より複雑な利用フローです。 次のビデオを参照してください。
+Azure AD B2B コラボレーションでは、利用のために、どの電子メール アドレスも簡単に使用できます。 B2B コラボレーションに Microsoft 以外の電子メール アドレスが使用される場合の利用エクスペリエンスをご覧ください。 これは、利用時にアカウントを作成しなければならに場合があるため、より複雑な利用フローです。 次のビデオを参照してください。
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-collaboration-redemption/Player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-collaboration-redemption/Player]
+> 
 
 ## <a name="next-steps"></a>次のステップ
 

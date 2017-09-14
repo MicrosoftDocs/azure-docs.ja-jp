@@ -13,133 +13,148 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 08/16/2017
 ms.author: monicar
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1cf6be168c3e87bfd567c216679f608593673340
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1607ca31a81c0941895611f626d54f6fbb294a20
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
-Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウド用語をまとめた簡単な辞書です。
 
-## <a name="find-service-definitions-and-other-cloud-terms"></a>サービス定義やその他のクラウド用語を調べる
-* 各種 Azure サービスと、対応する AWS サービスの定義については、「 [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)」をご覧ください。
-* 業界における一般的なクラウド用語については、「 [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/)」をご覧ください。
+Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウド用語をまとめた簡単な辞書です。 関連項目:
 
-この Azure 用語集と上記 2 種類のリファレンスで、Azure とクラウド業界で使われる一連の用語が分類されています。  
+* [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - 各種 Azure サービスと、対応する AWS サービスの定義<!-- I propose to link to https://azure.microsoft.com/en-us/services/ instead of this -->
+* [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
 
-## <a name="azure-glossary-list"></a>Azure 用語集のリスト
-### <a name="account"></a>アカウント
-Azure サブスクリプションの利用や管理に使われる、職場または学校アカウント、あるいは個人の Microsoft アカウント。  
-「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/active-directory-how-subscriptions-associated-directory.md)
+## <a name="account"></a>アカウント
+Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
+「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](billing/billing-use-existing-office-365-account-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
-### <a name="availability-set"></a>可用性セット
+## <a name="api-app"></a>API アプリ
+[App Service アプリ](#app-service-app)の別名。
+
+## <a name="app-service-app"></a>App Service アプリ
+[Web サイトまたは Web アプリケーション](app-service-web/app-service-web-overview.md)、[Web API](app-service-api/app-service-api-apps-why-best-platform.md)、または[モバイル アプリのバックエンド](app-service-mobile/app-service-mobile-value-prop.md)をホストするために [Azure App Service](app-service/app-service-value-prop-what-is.md) が提供するコンピューティング リソースです。 App Service アプリは、*App Services*、*Web アプリ*、*API アプリ*、*モバイル アプリ*とも呼ばれます。
+
+## <a name="availability-set"></a>可用性セット
 アプリケーションの冗長性と信頼性を提供するために、ひとまとまりで管理される仮想マシンのコレクション。 可用性セットを利用していれば、計画済みまたは計画外メンテナンスの間にも、少なくとも 1 つの仮想マシンを使用できます。  
-「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」もご覧ください。
+「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
-### <a name="classic-model"></a>Azure クラシック デプロイメント モデル
-Azure でリソースをデプロイするときに使われる 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (新しいモデルは Azure Resource Manager です)。 Azure リソースには、一方のモデルでしかデプロイできないものと、両方のモデルでデプロイできるものがあります。 リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。
+## <a name="classic-model"></a>Azure クラシック デプロイメント モデル
+Azure でリソースをデプロイするときに使われる 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (新しいモデルは Azure Resource Manager です)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
 
-### <a name="cli"></a>Azure コマンド ライン インターフェイス (CLI)
-Windows、OS X、Linux PC から Azure サービスを管理するための [コマンド ライン インターフェイス](cli-install-nodejs.md) 。
+## <a name="cli"></a>Azure コマンド ライン インターフェイス (CLI)
+Windows、macOS、Linux から Azure サービスを管理するためのコマンド ライン インターフェイス。  サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 「[Azure CLI 2.0](/cli/azure/overview)」をご覧ください。
 
-### <a name="powershell"></a>Azure PowerShell
-Windows PC からコマンド ラインを使って Azure サービスを管理するための [コマンド ライン インターフェイス](/powershell/azure/overview) 。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。   
-「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+## <a name="powershell"></a>Azure PowerShell
+Windows PC からコマンド ラインを使って Azure サービスを管理するためのコマンド ライン インターフェイス。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。
+「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
 
-### <a name="arm-model"></a>Azure Resource Manager デプロイメント モデル
-Microsoft Azure でリソースをデプロイするために使用される 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (もう一方はクラシック デプロイ モデル)。 Azure リソースには、一方のモデルでしかデプロイできないものと、両方のモデルでデプロイできるものがあります。 リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。
+## <a name="arm-model"></a>Azure Resource Manager デプロイメント モデル
+Microsoft Azure でリソースをデプロイするために使用される 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (もう一方はクラシック デプロイ モデル)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
 
-### <a name="fault-domain"></a>障害ドメイン
+## <a name="fault-domain"></a>障害ドメイン
 同時にエラーになる可能性のある可用性セット内の仮想マシンのコレクション。 その一例が、共通の電源とネットワーク スイッチを使用する、ラック内のマシンのグループです。 Azure では、可用性セット内の仮想マシンは自動的に複数の障害ドメインに分散されます。  
-「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」もご覧ください。  
+「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」または「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。  
 
-### <a name="geo"></a>geo
+## <a name="geo"></a>geo
 データが存在する定義済みの境界。通常は複数のリージョンが含まれます。 この境界は国境を越えることもあり、税法の影響を受けます。 どの geo にも少なくとも 1 つのリージョンがあります。 geo の例として、アジア太平洋や日本が挙げられます。 *地理的な場所*とも呼ばれます。  
-[Azure のリージョン](best-practices-availability-paired-regions.md)に関する記事もご覧ください。
+「[Azure リージョン](best-practices-availability-paired-regions.md)」をご覧ください。
 
-### <a name="geo-replication"></a>geo レプリケーション
+## <a name="geo-replication"></a>geo レプリケーション
 リージョン ペア内に存在する BLOB、テーブル、キューなどのコンテンツを自動的にレプリケートするプロセス。  
-「 [Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)
+「[Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」をご覧ください。
+<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-### <a name="image"></a>イメージ
+## <a name="image"></a>イメージ
 任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure では、VM イメージと OS イメージの 2 種類があります。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
-「 [Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
-### <a name="limits"></a>制限
+## <a name="limits"></a>制限
 作成できるリソースの数または達成できるパフォーマンス ベンチマーク。 制限は通常、サブスクリプション、サービス、プランによって変わります。  
-「 [Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)
+「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。
 
-### <a name="load-balancer"></a>ロード バランサー
+## <a name="load-balancer"></a>ロード バランサー
 ネットワーク内のコンピューター間で着信トラフィックを分散させるリソースです。 Azure では、ロード バランサーは、ロード バランサー セットで定義されている仮想マシンにトラフィックを分散させます。 [ロード バランサー](load-balancer/load-balancer-overview.md) はインターネットに接続されることも、内部だけで使用されることもあります。  
 
-### <a name="offer"></a>プラン
+## <a name="mobile-app"></a>モバイル アプリ
+[App Service アプリ](#app-service-app)の別名。
+
+## <a name="offer"></a>offer
 Azure サブスクリプションに適用される価格、クレジット、関連する条件。  
 [Azure のプランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)
 
-### <a name="portal"></a>ポータル
-Azure サービスのデプロイと管理に使用される、セキュリティで保護された Web ポータル。  [Azure ポータル](http://portal.azure.com/)と[クラシック ポータル](http://manage.windowsazure.com/)の 2 つのポータルがあります。 両方のポータルで使用できるサービスもあれば、どちらか一方のポータルでしか使用できないサービスもあります。 「 [Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/) 」に、どのポータルでどのサービスを利用可能かがまとめてあります。  
+## <a name="portal"></a>ポータル
+Azure サービスのデプロイと管理に使用される、セキュリティで保護された Web ポータル。  [Azure Portal](http://portal.azure.com/) と[クラシック ポータル](http://manage.windowsazure.com/)の 2 つのポータルがあります。 両方のポータルで使用できるサービスもあれば、どちらか一方のポータルでしか使用できないサービスもあります。 「 [Azure Portalの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」に、どのポータルでどのサービスを利用可能かがまとめてあります。
 
-### <a name="region"></a>リージョン
-国境とは一致せず、1 つ以上のデータセンターが含まれる geo 内の領域。 リージョン レベルでは、価格、リージョンごとのサービス、プランの種類が公開されます。 リージョンは通常、別のリージョンとペアになっています。その距離は数百マイル離れていることもあります。 リージョン ペアは、障害復旧と高可用性が求められる場面に対応するためのメカニズムとして利用できます。 一般には*場所*とも呼ばれます。  
-[Azure のリージョン](best-practices-availability-paired-regions.md)に関する記事もご覧ください。
+## <a name="region"></a>region
+国境とは一致せず、1 つ以上のデータセンターが含まれる geo 内の領域。 リージョン レベルでは、価格、リージョンごとのサービス、プランの種類が公開されます。 リージョンは通常、別のリージョンとペアになっています。その距離は数百マイル離れていることもあります。 リージョン ペアは、障害復旧と高可用性が求められる場面に対応するためのメカニズムとして利用できます。 リージョンは "*場所*" とも呼ばれます。  
+「[Azure リージョン](best-practices-availability-paired-regions.md)」をご覧ください。
 
-### <a name="resource"></a>リソース
+## <a name="resource"></a>resource
 Azure ソリューションの一部であるアイテム。 各 Azure サービスを通じて、データベースや仮想マシンなど、さまざまなリソースをデプロイできます。   
-「[Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」もご覧ください。
+「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
-### <a name="resource-group"></a>リソース グループ
+## <a name="resource-group"></a>resource group
 1 つのアプリケーションの関連リソースが保持される Resource Manager 内のコンテナーです。 リソース グループには、アプリケーションのすべてのリソースか、論理的にグループ化されたリソースのみを含めることができます。 組織のニーズに合わせてリソースをリソース グループに割り当てる方法を指定できます。  
-「[Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」もご覧ください。
+「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
-### <a name="arm-template"></a>Resource Manager テンプレート
+## <a name="arm-template"></a>Resource Manager テンプレート
 1 つ以上の Azure リソースを宣言により定義すると共に、デプロイされるリソース間の依存関係を定義する JSON ファイル。 このテンプレートを使えば、リソースを一貫性のある形で繰り返しデプロイできます。  
-「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)
+「[Resource Manager テンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
 
-### <a name="resource-provider"></a>リソース プロバイダー
-Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure ポータル、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
-「[Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」もご覧ください。
+## <a name="resource-provider"></a>リソース プロバイダー
+Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
+「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
-### <a name="role"></a>ロール
+## <a name="role"></a>role
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  
-「 [RBAC: 組み込みのロール](active-directory/role-based-access-built-in-roles.md)
+「[RBAC: 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」をご覧ください。
 
-### <a name="sla"></a>サービス レベル アグリーメント (SLA)
+## <a name="sla"></a>サービス レベル アグリーメント (SLA)
 稼働時間と接続に関する Microsoft の確約内容を示す契約です。 Azure サービスごとに固有の SLA があります。  
-「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)
+「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」をご覧ください。
 
-### <a name="storage-account"></a>ストレージ アカウント
-Azure Storage の Azure BLOB、Queue、Table、ファイルの各サービスにアクセスできるストレージ アカウント。 ストレージ アカウントは、Azure Storage のデータ オブジェクトに対して一意の名前空間を提供します。  
-「 [Azure ストレージ アカウントについて](storage/storage-create-storage-account.md)
+## <a name="sas"></a>Shared Access Signature (SAS)
+アカウント キーを公開することなく、リソースへの制限付きアクセスを付与することができる署名。 たとえば、[Azure Storage は SAS を使用](storage/common/storage-dotnet-shared-access-signature-part-1.md)して、クライアントに LOB などのオブジェクトへのアクセス権を付与します。 [IoT Hub は SAS を使用](iot-hub/iot-hub-devguide-security.md#security-tokens)して、デバイスに利用統計情報を送信する許可を与えます。
 
-### <a name="subscription"></a>サブスクリプション
-Azure サービスを入手する権利を与える、お客様と Microsoft の契約。 サブスクリプションの価格と関連条件は、サブスクリプションで選択されたプランに応じて決まります。 「 [マイクロソフト オンライン サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)」をご覧ください。  
-「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/active-directory-how-subscriptions-associated-directory.md)
+## <a name="storage-account"></a>ストレージ アカウント
+Azure Storage の Azure BLOB、Queue、Table、ファイルの各サービスにアクセスできるアカウント。 ストレージ アカウント名は、Azure Storage データ オブジェクトの一意の名前空間を定義します。  
+「[Azure ストレージ アカウントについて](storage/common/storage-create-storage-account.md)」をご覧ください。
 
-### <a name="tag"></a>タグ
-管理や課金の要件に合わせてリソースを分類できる、インデックスの用語。 リソース グループとリソースが複雑に絡み合っており、これらの資産をわかりやすく視覚化する必要がある場合は、タグを使用することをお勧めします。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。  
-「 [タグを使用した Azure リソースの整理](resource-group-using-tags.md)
+## <a name="subscription"></a>サブスクリプション
+Azure サービスを入手する権利を与える、お客様と Microsoft の契約。 サブスクリプションの価格と関連条件は、サブスクリプションで選択されたプランに応じて決まります。
+「[マイクロソフト オンライン サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
-### <a name="update-domain"></a>更新ドメイン
+## <a name="tag"></a>tag
+管理や課金の要件に合わせてリソースを分類できる、インデックスの用語。 リソースが複雑に絡み合っている場合は、タグを使用してこれらの資産をわかりやすく視覚化することができます。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。  
+「[タグを使用した Azure リソースの整理](resource-group-using-tags.md)」をご覧ください。
+
+## <a name="update-domain"></a>ドメインの更新
 同時に更新される可用性セット内の仮想マシンのコレクション。 同じ更新ドメイン内の仮想マシンは、計画的なメンテナンス中に同時に再起動されます。 Azure では、複数の更新ドメインを同時に再起動することはありません。 このドメインは、アップグレード ドメインとも呼ばれています。  
-「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」もご覧ください。  
+「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
-### <a name="vm"></a>仮想マシン
+## <a name="vm"></a>仮想マシン
 オペレーティング システムを実行する物理コンピューターのソフトウェア実装。 同じハードウェアで複数の仮想マシンを同時に実行できます。 Azure では、さまざまなサイズの仮想マシンを利用できます。  
-「 [Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)
+[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)をご覧ください。
 
-### <a name="vm-extension"></a>仮想マシン拡張機能
-他のプログラムの動作を補助したり、実行中のコンピューターの操作を可能にしたりする機能や動作を実装するリソース。 たとえば、VM Access 拡張機能を使うと、Azure 仮想マシンでリモート アクセスの値をリセットまたは変更できます。  
-「[仮想マシンの拡張機能とその機能について](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) と「[仮想マシンの拡張機能とその機能について](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) もご覧ください。
+## <a name="vm-extension"></a>仮想マシン拡張機能
+他のプログラムの動作を補助したり、実行中のコンピューターの操作を可能にしたりする機能や動作を実装するリソース。 たとえば、VM Access 拡張機能を使うと、Azure 仮想マシンでリモート アクセスの値をリセットまたは変更できます。
+<!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
+「[仮想マシンの拡張機能とその機能について](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) と「[仮想マシンの拡張機能とその機能について](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) をご覧ください。
 
-### <a name="vnet"></a>仮想ネットワーク
-他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 他の Azure 仮想ネットワークには [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を介して接続できます。また、オンプレミスのネットワークには[さまざまな方法](vpn-gateway/vpn-gateway-plan-design.md)で接続できます。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
-「[Virtual Network の概要](virtual-network/virtual-networks-overview.md)」もご覧ください。  
+## <a name="vnet"></a>仮想ネットワーク
+他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、仮想ネットワーク間の接続や[仮想ネットワークとオンプレミス ネットワーク間](vpn-gateway/vpn-gateway-plan-design.md)の接続を確立できます。 仮想ネットワーク内では、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
+「[Virtual Network の概要](virtual-network/virtual-networks-overview.md)」をご覧ください。  
 
-### <a name="see-also"></a>**関連項目**
+## <a name="web-app"></a>Web アプリ
+[App Service アプリ](#app-service-app)の別名。
+
+## <a name="see-also"></a>関連項目
+
 * [Azure を使ってみる](https://azure.microsoft.com/get-started/)
 * [クラウド リソース センター](https://azure.microsoft.com/resources/)  
 * [ビジネス アプリケーションを Azure で](https://azure.microsoft.com/overview/business-apps-on-azure/)

@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub (.NET) を使用したクラウドからデバイスへのメッセージ | Microsoft Docs"
-description: "Azure IoT SDK for .NET を使用して、クラウドからデバイスへのメッセージを Azure IoT Hub からデバイスへ送信する方法。 クラウドからデバイスへのメッセージを受信するためにシミュレートされたデバイス アプリを変更し、クラウドからデバイスへのメッセージを送信するためにバックエンド アプリを変更します。"
+description: "Azure IoT SDK for .NET を使用して、クラウドからデバイスへのメッセージを Azure IoT Hub からデバイスへ送信する方法。 クラウドからデバイスへのメッセージを受信するためにデバイス アプリを変更し、クラウドからデバイスへのメッセージを送信するためにバックエンド アプリを変更します。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -12,20 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2017
+ms.date: 08/24/2017
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 150e7a1b2f86594d91b044b1b697f035ed1d270b
-ms.lasthandoff: 03/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 3f5f83671054c30afde3d7f18ff0edcdb8f78a01
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/25/2017
 
 ---
-# <a name="send-messages-from-the-cloud-to-your-simulated-device-with-iot-hub-net"></a>シミュレートされたデバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
+# <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [Azure IoT Hub for .NET の使用]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [Azure IoT Hub for .NET の使用]チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するデバイス アプリをコード化する方法が示されています。
 
 このチュートリアルは、[Azure IoT Hub for .NET の使用]に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
 
@@ -38,7 +38,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 このチュートリアルの最後に、次の 2 つの .NET コンソール アプリを実行します。
 
 * **SimulatedDevice**。「[Azure IoT Hub for .NET の使用]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
-* **SendCloudToDevice**: クラウドからデバイスへのメッセージを IoT Hub を介してシミュレート対象デバイス アプリに送信し、その配信確認を受け取ります。
+* **SendCloudToDevice**。クラウドからデバイスへのメッセージを IoT Hub を介してデバイス アプリに送信し、その配信確認を受け取ります。
 
 > [!NOTE]
 > IoT Hub には、[Azure IoT device SDK] を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[IoT Hub 開発者ガイド]を参照してください。
@@ -50,8 +50,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * Visual Studio 2015 または Visual Studio 2017
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレート対象デバイス アプリでメッセージを受信する
-このセクションでは、[Azure IoT Hub for .NET の使用]に関するページで作成したシミュレート対象デバイス アプリを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
+## <a name="receive-messages-in-the-device-app"></a>デバイス アプリでメッセージを受信する
+このセクションでは、[Azure IoT Hub for .NET の使用]に関するページで作成したデバイス アプリを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
 
 1. Visual Studio の **SimulatedDevice** プロジェクトで、次のメソッドを **Program** クラスに追加します。
    
@@ -89,7 +89,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 > 
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
-このセクションでは、デバイスからクラウドへのメッセージを、シミュレート対象デバイス アプリに送信する .NET コンソール アプリを作成します。
+このセクションでは、デバイスからクラウドへのメッセージを、デバイス アプリに送信する .NET コンソール アプリを作成します。
 
 1. 現在の Visual Studio ソリューションで、**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# デスクトップ アプリ プロジェクトを作成します。 プロジェクトに **SendCloudToDevice**という名前を付けます。
    
@@ -126,8 +126,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
         Console.ReadLine();
         SendCloudToDeviceMessageAsync().Wait();
         Console.ReadLine();
-8. Visual Studio 内でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**を選択します。 **[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。
-9. **F5**キーを押します。 3 つのすべてのアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 シミュレート対象デバイス アプリによってメッセージが受信されていることがわかります。
+8. Visual Studio 内でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**を選択します。**[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。
+9. **F5**キーを押します。 3 つのすべてのアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
    
    ![アプリによるメッセージの受信][21]
 
@@ -163,7 +163,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 3. クラウドからデバイスへのメッセージの配信に対するフィードバックを要求するには、**SendCloudToDeviceMessageAsync** メソッドでプロパティを指定する必要があります。 `var commandMessage = new Message(...);` 行の直後に次の行を追加します。
    
         commandMessage.Ack = DeliveryAcknowledgement.Full;
-4. **F5**キーを押してアプリを実行します。 3 つすべてのアプリケーションが開始されていることが確認できます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 シミュレート対象デバイス アプリがメッセージを受信し、その数秒後に、**SendCloudToDevice** アプリケーションがフィードバック メッセージを受信します。
+4. **F5**キーを押してアプリを実行します。 3 つすべてのアプリケーションが開始されていることが確認できます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリがメッセージを受信し、その数秒後に、**SendCloudToDevice** アプリケーションがフィードバック メッセージを受信します。
    
    ![アプリによるメッセージの受信][22]
 

@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 07/27/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2593e6846c897644017083b49ad4ba8219696c6c
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f4e3f74ce3f342eecf633cd748e2b7b21b2ccdd2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Azure Security Center でのセキュリティ ポリシーの設定
 このドキュメントでは、Security Center でセキュリティ ポリシーを構成するうえで必要な手順について詳しく説明します。
 
 >[!NOTE] 
->2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
+>2017 年 6 月上旬より、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
 >
 
 ## <a name="what-are-security-policies"></a>セキュリティ ポリシーとは
@@ -43,14 +42,14 @@ ms.lasthandoff: 06/17/2017
     ![Defining policy](./media/security-center-policies/security-center-policies-fig1-ga.png)
 3. 選択したサブスクリプションの **[セキュリティ ポリシー]** ブレードが開き、オプションのセットが表示されます。 このブレードで使用できるオプションは次のとおりです。
 
-   * **防止ポリシー**: このオプションは、サブスクリプションまたはリソース グループごとにポリシーを構成するために使用します。  
+   * **防止ポリシー**: このオプションは、サブスクリプションごとにポリシーを構成するために使用します。  
    * **電子メールの通知**: このオプションは、最初に警告が発生したとき、および重大度が高い警告に対して送信される電子メール通知を構成するために使用します。 また、電子メールの設定は、サブスクリプション ポリシーに対してのみ構成できます。 電子メールの通知を構成する方法の詳細については、「 [Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md) 」を参照してください。
    * **価格レベル**: このオプションは、価格レベルの選択をアップグレードするために使用します。 価格オプションの詳細については、[Security Center の価格](security-center-pricing.md)に関する記事を参照してください。
 4. **[仮想マシンからデータを収集する]** オプションが **[オン]** になっていることを確認します。 このオプションは、Microsoft Monitoring Agent を使用した既存のリソースと新規のリソースの自動的なログの収集を有効にします。このエージェントは、Operations Management Suite と Log Analytics サービスで使用される同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics ワークスペースまたは新規のワークスペースのいずれかに格納されます。
 
 5. **[セキュリティ ポリシー]** ブレードで、**[防止ポリシー]** をクリックして、使用可能なオプションを表示します。 このサブスクリプションに関連するセキュリティの推奨事項を有効にするには、**[オン]** をクリックします。
 
-    ![Selecting the security policies](./media/security-center-policies/security-center-policies-fig4-newUI.png)
+    ![Selecting the security policies](./media/security-center-policies/security-center-policies-fig7.png)
 
 次の表を参照して、各オプションについて確認してください。
 
@@ -66,7 +65,8 @@ ms.lasthandoff: 06/17/2017
 | SQL 監査と脅威検出 |コンプライアンスのために、また高度な脅威検出の調査のために、Azure データベースへのアクセスの監査を有効にすることを推奨します。 |
 | SQL の暗号化 |Azure SQL データベース、関連付けられたバックアップ、トランザクション ログ ファイルに対し、REST での暗号化を有効にすることを推奨します。 セキュリティ侵害を受けた場合でも、データが読み取られることはありません。 |
 | 脆弱性評価 |VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
-| ストレージ暗号化 |現在この機能は、Azure BLOB と Azure Files で利用できます。 "Storage サービスの暗号化" を有効にした後、暗号化されるのは新しいデータであり、このストレージ アカウントにある既存のファイルは暗号化されないことに注意してください。 |
+| ストレージ暗号化 |現在この機能は、Azure BLOB と Azure Files で利用できます。 [Storage サービスの暗号化] を有効にした後、暗号化されるのは新しいデータのみであり、このストレージ アカウントにある既存のファイルは暗号化されません。 |
+| JIT ネットワーク アクセス |ジャスト イン タイムが有効になっている場合、Security Center では NSG ルールの作成により Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックをロックダウンする必要があるポートを選択します。 詳細については、「[Manage virtual machine access using just in time (ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する)](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)」を参照してください。 |
 
 すべてのオプションの構成が完了したら、推奨事項が表示されている **[セキュリティ ポリシー]** ブレードで **[OK]** をクリックし、初期設定が表示されている **[セキュリティ ポリシー]** ブレードで **[保存]** をクリックします。
 

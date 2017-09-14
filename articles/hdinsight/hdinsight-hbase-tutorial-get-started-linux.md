@@ -1,6 +1,6 @@
 ---
 title: "HDInsight での HBase の例の概要 - Azure | Microsoft Docs"
-description: "この Apache HBase の例に従って、HDInsight を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
+description: "この Apache HBase の例に従って、HDInsight で Hadoop を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
 keywords: "hbasecommand,hbase の例"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/09/2017
+ms.date: 07/17/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 5bac1fcc39d052dd1bd9bf710a45a3494b70cae9
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bbd8a838062795ee03ae02dc5e3fd45d841a6e17
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight で Apache HBase の例を使用する
@@ -42,7 +41,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは、パブリック BLOB コンテナー内にあります。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. **[カスタム デプロイ]** ブレードで以下の値を入力します。
    
    * **サブスクリプション**: クラスターの作成に使用する Azure サブスクリプションを選択します。
@@ -69,7 +68,7 @@ SSH を使用して HBase クラスターに接続し、HBase シェルを使用
 
 ![HDInsight HBase の表形式データ][img-hbase-sample-data-tabular]
 
-BigTable の実装である HBase では、同じデータが次のように表示されます。
+HBase (BigTable の実装) では、同じデータが次のように表示されます。
 
 ![HDInsight HBase の Bigtable データ][img-hbase-sample-data-bigtable]
 
@@ -78,36 +77,47 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 1. SSH から次の HBase コマンドを実行します。
    
-        hbase shell
+    ```bash
+    hbase shell
+    ```
+
 2. 2 つの列ファミリを持つ HBase を作成します。
-   
-        create 'Contacts', 'Personal', 'Office'
-        list
+
+    ```hbaseshell   
+    create 'Contacts', 'Personal', 'Office'
+    list
+    ```
 3. いくつかのデータを挿入します。
-   
-        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-        scan 'Contacts'
+    
+    ```hbaseshell   
+    put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+    put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+    put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+    put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+    scan 'Contacts'
+    ```
    
     ![HDInsight Hadoop HBase シェル][img-hbase-shell]
 4. 1 つの行を取得します。
    
-        get 'Contacts', '1000'
+    ```hbaseshell
+    get 'Contacts', '1000'
+    ```
    
     行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
    
     HBase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。 HBase コマンドの詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」を参照してください。
 5. シェルを終了します。
    
-        exit
+    ```hbaseshell
+    exit
+    ```
 
 **Contacts HBase テーブルにデータを一括で読み込むには**
 
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。  詳細については、 [一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
-サンプル データ ファイルがパブリック BLOB コンテナー (*wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*) にアップロードされています。  このデータ ファイルの内容は次のとおりです。
+サンプル データ ファイルは、パブリック BLOB コンテナー (*wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*) にあります。  このデータ ファイルの内容は次のとおりです。
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -125,14 +135,19 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 > [!NOTE]
 > この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
 > 
-> 
 
 1. SSH から次のコマンドを実行して、データ ファイルを StoreFile に変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。  HBase シェル内にいる場合は、exit コマンドを使用して終了します。
-   
-        hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+
+    ```bash   
+    hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+    ```
+
 2. 次のコマンドを実行して、/example/data/storeDataFileOutput から HBase テーブルにデータをアップロードします。
    
-        hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
+    ```bash
+    hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
+    ```
+
 3. HBase シェルを開き、スキャン コマンドを使用して、テーブルの内容の一覧を表示することができます。
 
 ## <a name="use-hive-to-query-hbase"></a>Hive を使用して HBase を照会する
@@ -142,47 +157,62 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
 1. **PuTTY**を開き、クラスターに接続します。  前の手順の指示を参照してください。
 2. SSH セッションから、次のコマンドを使用して Beeline を開始します。
 
-        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    ```bash
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    ```
+
     Beeline の詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
        
 3. 次の HiveQL スクリプトを実行して、HBase テーブルにマップする Hive テーブルを作成します。 ここで、HBase シェルを使用して、先ほど参照したサンプル テーブルが HBase に作成されたことを確認してから、このステートメントを実行してください。
-   
-        CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
-        STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
-        WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,Personal:Name,Personal:Phone,Office:Phone,Office:Address')
-        TBLPROPERTIES ('hbase.table.name' = 'Contacts');
+
+    ```hiveql   
+    CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
+    STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+    WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,Personal:Name,Personal:Phone,Office:Phone,Office:Address')
+    TBLPROPERTIES ('hbase.table.name' = 'Contacts');
+    ```
+
 4. 次の HiveQL スクリプトを実行して、HBase テーブルのデータを照会します。
-   
-         SELECT count(rowkey) FROM hbasecontacts;
+
+    ```hiveql   
+    SELECT count(rowkey) FROM hbasecontacts;
+    ```
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>Curl を使用して HBase REST API を使用する
 
 REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 2. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
-   
-        curl -u <UserName>:<Password> \
-        -G https://<ClusterName>.azurehdinsight.net/hbaserest/
+
+    ```bash
+    curl -u <UserName>:<Password> \
+    -G https://<ClusterName>.azurehdinsight.net/hbaserest/
+    ```
+
 3. 次のコマンドを使用して、2 つの列ファミリを含む新しい HBase テーブルを作成します。
-   
-        curl -u <UserName>:<Password> \
-        -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
-        -H "Accept: application/json" \
-        -H "Content-Type: application/json" \
-        -d "{\"@name\":\"Contact1\",\"ColumnSchema\":[{\"name\":\"Personal\"},{\"name\":\"Office\"}]}" \
-        -v
-   
+
+    ```bash   
+    curl -u <UserName>:<Password> \
+    -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d "{\"@name\":\"Contact1\",\"ColumnSchema\":[{\"name\":\"Personal\"},{\"name\":\"Office\"}]}" \
+    -v
+    ```
+
     スキーマは、JSon 形式で提供されます。
 4. 次のコマンドを使用して、一部のデータを挿入します。
+
+    ```bash   
+    curl -u <UserName>:<Password> \
+    -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
+    -v
+    ```
    
-        curl -u <UserName>:<Password> \
-        -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
-        -H "Accept: application/json" \
-        -H "Content-Type: application/json" \
-        -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
-        -v
-   
-    -d スイッチで指定された値に base64 エンコードを使用する必要があります。  この例では次のとおりです。
+    -d スイッチで指定された値に base64 エンコードを使用する必要があります。 この例では次のとおりです。
    
    * MTAwMA==: 1000
    * UGVyc29uYWw6TmFtZQ==: Personal:Name
@@ -191,10 +221,12 @@ REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) を使用すると、複数の (バッチ処理された) 値を挿入できます。
 5. 次のコマンドを使用して、1 行を取得します。
    
-        curl -u <UserName>:<Password> \
-        -X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" \
-        -H "Accept: application/json" \
-        -v
+    ```bash 
+    curl -u <UserName>:<Password> \
+    -X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" \
+    -H "Accept: application/json" \
+    -v
+    ```
 
 HBase Rest の詳細については、「 [Apache HBase reference guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html#_rest)」をご覧ください。
 
@@ -218,7 +250,7 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
 **HBase Master UI にアクセスするには**
 
-1. https://&lt;クラスター名>.azurehdinsight.net で Ambari Web UI を開きます。
+1. https://&lt;クラスター名>.azurehdinsight.net で Ambari Web UI にサインインします。
 2. 左側のメニューで **[HBase]** をクリックします。
 3. ページの上部にある **[Quick links (クイック リンク)]** をクリックし、アクティブな Zookeeper ノード リンクをポイントして、**[HBase Master UI]** をクリックします。  UI は別のブラウザー タブで開かれます。
 
@@ -242,7 +274,7 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+この記事では、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
 

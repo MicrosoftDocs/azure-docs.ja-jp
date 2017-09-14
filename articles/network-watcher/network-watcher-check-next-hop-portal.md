@@ -4,7 +4,7 @@ description: "この記事では、Azure Portal で Next Hop を使用して、�
 services: network-watcher
 documentationcenter: na
 author: georgewallace
-manager: timlt
+manager: jimdial
 editor: 
 ms.assetid: 7b459dcf-4077-424e-a774-f7bfa34c5975
 ms.service: network-watcher
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 5434b7972346821985c459fc4620805adb88676b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/26/2017
-
 
 ---
 

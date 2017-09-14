@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/24/2017
+ms.date: 09/08/2017
 ms.author: ramical
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: c1345dcda6e52267a8037ffd7207e6bc3b0d3b31
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Azure AD Reporting API と証明書を使ってデータを取得する
@@ -26,10 +26,10 @@ ms.lasthandoff: 03/28/2017
 
 ## <a name="use-the-azure-ad-reporting-api"></a>Azure AD Reporting API の使用 
 Azure AD Reporting API を使用するには、次の手順を実行する必要があります。
- *    必須コンポーネントをインストールする
- *    目的のアプリで証明書を設定する
- *    アクセス トークンを取得する
- *    アクセス トークンを使用して Graph API を呼び出す
+ *  必須コンポーネントをインストールする
+ *  目的のアプリで証明書を設定する
+ *  アクセス トークンを取得する
+ *  アクセス トークンを使用して Graph API を呼び出す
 
 ソース コードについては、[Report API モジュールの活用](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils)に関するページを参照してください。 
 

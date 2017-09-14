@@ -3,8 +3,8 @@ title: "テーブル デザイナーのフィルター文字列の作成 | Micro
 description: "テーブル デザイナー用のフィルター文字列の作成"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.service: storage
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 98b06b14ca7897cce884f6d80f998661cacb7ea4
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>テーブル デザイナー用のフィルター文字列の作成
@@ -94,9 +95,4 @@ DateTime 値を条件としてフィルター処理を行うには、**datetime*
 次の例は、CustomerSince プロパティが 2008 年 7 月 10 日と等しいエンティティを返します。
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

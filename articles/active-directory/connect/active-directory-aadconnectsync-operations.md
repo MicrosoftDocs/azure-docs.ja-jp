@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 0288d70bb5c0094b5c738b2d0c597e4c6d38a5aa
-ms.lasthandoff: 04/19/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: b7583a1556bb1113f349a78890768451e39c6878
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: 操作タスクおよび考慮事項
@@ -109,7 +109,9 @@ ms.lasthandoff: 04/19/2017
 一般的なサポートされている方法は、仮想マシンで同期エンジンを実行する方法です。 ホストに問題が発生した場合、同期エンジン サーバーを含むイメージを別のサーバーに移行できます。
 
 ### <a name="sql-high-availability"></a>SQL 高可用性
-Azure AD Connect に付属している SQL Server Express を使用しない場合は、SQL Server の高可用性も考慮する必要があります。 サポートされている高可用性ソリューションは SQL クラスタリングのみです。 サポートされていないソリューションには、ミラーリングと Always On があります。
+Azure AD Connect に付属している SQL Server Express を使用しない場合は、SQL Server の高可用性も考慮する必要があります。 サポートされている高可用性ソリューションには、SQL クラスタリングおよび AOA (Always On 可用性グループ) が含まれます。 サポートされていないソリューションには、ミラーリングがあります。
+
+SQL AOA のサポートが、Azure AD Connect のバージョン 1.1.524.0 に追加されました。 Azure AD Connect をインストールする前に SQL AOA を有効にする必要があります。 インストール中、指定された SQL インスタンスで SQL AOA が有効であるかどうかが Azure AD Connect によって検出されます。 SQL AOA が有効である場合、Azure AD Connect はさらに、SQL AOA が、同期レプリケーションまたは非同期レプリケーションを使用するように構成されているかどうかを調べます。 可用性グループ リスナーを設定するときは、RegisterAllProvidersIP プロパティを 0 に設定することをお勧めします。 Azure AD Connect は現在、SQL Native Client を使用して SQL に接続していますが、SQL Native Client は、MultiSubNetFailover プロパティの使用をサポートしていないためです。
 
 ## <a name="appendix-csanalyzer"></a>付録 CSAnalyzer
 このスクリプトの使い方については、「[確認](#verify)」をご覧ください。

@@ -10,21 +10,21 @@ ms.topic: sample
 ms.service: functions
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f87cf7d300b4c2b89ad692aadcda958e9747c7f9
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: d67e85f91c80efe464fceb1105243bedfba83a0f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Function App の作成と GitHub からの関数コードのデプロイ
 
 このサンプル スクリプトでは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して関連リソースと共に Function App を作成し、GitHub レポジトリから関数コードをデプロイします。(継続的なデプロイは行いません)。 GitHub から関数コードを継続的に配信する場合は、[Function App の作成と関数と GitHub から継続的なデプロイ](functions-cli-create-function-app-github-continuous.md)に関するページをご覧ください
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

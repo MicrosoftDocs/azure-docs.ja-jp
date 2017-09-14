@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での対話型 Hive の使用 | Microsoft Docs"
+title: "HDInsight での対話型 Hive の使用 - Azure | Microsoft Docs"
 description: "HDInsight での対話型 Hive (LLAP 上の Hive) の使用方法について説明します。"
 keywords: 
 services: hdinsight
@@ -18,15 +18,15 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 72206e299c245187731e4397610bbcfb01f5311c
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: e7874b55fc72f14d8e2c801872359e823cb2ba34
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
 # <a name="use-interactive-hive-in-hdinsight-preview"></a>HDInsight での対話型 Hive の使用 (プレビュー)
-対話型 Hive (別名:  [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は新しい HDInsight [クラスター タイプ](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。  対話型 Hive ではインメモリ キャッシュが可能になるため、Hive クエリの対話性が向上し、高速化します。 この新しい機能のおかげで、HDInsight は、高いパフォーマンスと柔軟性を合わせ持つ、クラウド上での世界有数のオープン ビッグ データ ソリューションになりました。インメモリ キャッシュ (Hive および Spark を使用) とR Services との密接な統合による高度な分析機能も備わっています。 
+対話型 Hive (別名:  [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は新しい HDInsight [クラスター タイプ](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。  対話型 Hive ではインメモリ キャッシュが可能になるため、Hive クエリの対話性が向上し、高速化します。 この新しい機能のおかげで、HDInsight は、高いパフォーマンスと柔軟性を合わせ持つ、クラウド上での世界有数のオープン ビッグ データ ソリューションになりました。インメモリ キャッシュ (Hive および Spark を使用) と R Services との密接な統合による高度な分析機能も備わっています。 
 
 対話型 Hive クラスターは、Hadoop クラスターとは異なります。 Hive サービスのみが含まれます。 
 

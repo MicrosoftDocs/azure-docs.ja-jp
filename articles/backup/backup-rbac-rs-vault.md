@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/10/2017
+ms.date: 8/22/2017
 ms.author: trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 4bf4814c25f09c4c8637f13753316cd9f200fc42
-ms.openlocfilehash: f7e090916dbe6c6db84c1a110a6627feeb7e20ab
-ms.lasthandoff: 02/23/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: d0b6eb8eea8971eb8f80c6623f9a41a3692241b3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -46,7 +46,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | Recovery Services コンテナーの作成 | コンテナーのリソース グループの共同作成者 |
 | Azure VM のバックアップの有効化 | コンテナーのバックアップ オペレーター、VM の仮想マシン共同作成者 |
 | VM のオンデマンド バックアップ | バックアップ オペレーター |
-| VM の復元 | バックアップ オペレーター、リソース グループの共同作成者|(VM と Vnet がデプロイされる) |
+| VM の復元 | VM および Vnet をデプロイするバックアップ オペレーター、リソース グループの共同作成者 |
 | VM バックアップからのディスクや個々のファイルの復元 | バックアップ オペレーター |
 | Azure VM バックアップのバックアップ ポリシーの作成 | バックアップの共同作成者 |
 | Azure VM バックアップのバックアップ ポリシーの変更 | バックアップの共同作成者 |
@@ -56,7 +56,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | バックアップの共同作成者 |
 
 ## <a name="next-steps"></a>次のステップ
-* [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
+* [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md): Azure Portal での RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)

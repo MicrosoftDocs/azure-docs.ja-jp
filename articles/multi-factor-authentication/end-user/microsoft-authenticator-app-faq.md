@@ -3,22 +3,23 @@ title: "Microsoft Authenticator アプリのヘルプとサポート | Microsoft
 description: "Microsoft 認証アプリと Multi-factor Authentication に関してよく寄せられる質問の一覧を提供します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
-editor: librown
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
-ms.author: kgremban
+ms.date: 06/17/2017
+ms.author: barlan
+ms.reviewer: librown
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 731275c72422a622e1d49f7d362447ef3361338b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 62242f356afd55a7f9e432faa6cdf3be74b7c18c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/22/2017
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
@@ -37,7 +38,7 @@ Microsoft Authenticator アプリを開くと、追加したアカウントが�
 
 コードが 30 秒ごとに変更されるのは、同じコードを 2 回使用できないようにするためです。 パスワードとは異なり、コードを覚えておく必要はありません。 つまり、その携帯電話にアクセスできるユーザーにしか確認コードはわからないということです。
 
-コードにはインターネットもデータも不要であるため、電話サービスへのサインインや、アプリがデータ プランを使い果たすことを心配する必要はありません。 アプリを閉じると、アプリがバックグラウンドで動作し続けることはないので、バッテリが消費されることはありません。 アプリを閉じたら、次回サインインするときまでアプリを無視できます。  
+コードにはインターネットもデータも不要であるため、電話サービスのサインインについて心配する必要はありません。 アプリを閉じると、アプリがバックグラウンドで動作し続けることはないので、バッテリが消費されることはありません。 アプリを閉じたら、次回サインインするときまでアプリを無視できます。  
 
 ### <a name="i-only-get-notifications-when-i-have-the-app-open-if-the-app-isnt-open-i-dont-get-any-notifications"></a>アプリを開いているときにのみ通知を受け取ります。 アプリを開いていないと、まったく通知を受け取りません。
 
@@ -46,10 +47,10 @@ Microsoft Authenticator アプリを開くと、追加したアカウントが�
 通知をまったく受け取らない場合は、次の項目を確認します。
 
 - 電話が応答しないモード、または静音モードになっていませんか。 そのモードでは、アプリは通知を送信しません。
-- 他のアプリから通知を受け取ることができますか。 受け取らない場合は、電話のネットワーク接続、または Android や Apple からの通知チャネルに問題がある可能性があります。 前者の場合は、電話の設定で対応できますが、後者の場合は、サービス プロバイダーに連絡して、サポートを依頼する必要があります。
-- アプリケーションの一部のアカウントでは通知を受け取るが、他では受け取れない状態ですか。 その場合は、アプリから問題のあるアカウントを削除し、そのアカウントを再び追加して、プッシュ通知を再有効化します。 
+- 他のアプリから通知を受け取ることができますか。 受け取らない場合は、電話のネットワーク接続、または Android や Apple からの通知チャネルに問題がある可能性があります。 前者の場合は、電話の設定で対応できますが、後者の場合は、サービス プロバイダーに問い合わせて、サポートを依頼する必要があります。
+- アプリケーションの一部のアカウントでは通知を受け取るが、他では受け取れない状態ですか。 その場合は、アプリから問題のあるアカウントを削除し、そのアカウントを再び追加して、プッシュ通知を再有効化します。
 
-以上のトラブルシューティング提案事項を試しても、まだ問題が発生する場合は、診断用ログを送信 ([アプリ設定] に移動し、**[ヘルプとフィードバック]**、**[ログを送信]**の順に選択) してください。次に、[Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に移動し、発生している問題とこれまでに試した手順をお知らせください。 
+これらのトラブルシューティング案を試しても問題が解決しない場合は、診断のためにログを送信してください。 アプリ設定に移動し、**[ヘルプとフィードバック]**、**[ログの送信]** の順に選択します。 次に [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に移動し、発生している問題の内容とこれまでに試した手順をお知らせください。
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>検証コードで Microsoft Authenticator アプリケーションを既に使用しています。 ワンクリック プッシュ通知に切り替えるにはどうすればよいですか。
 プッシュ通知によるサインインの承認は、個人の Microsoft アカウントと職場または学校の Microsoft アカウントでのみ可能であり、Google や Facebook などのサード パーティのアカウントでは使用できません。 職場または学校の Microsoft アカウントを使用している場合、所属している組織がこのオプションを無効にすることを選択している可能性があります。
@@ -94,7 +95,7 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>Microsoft Authenticator アプリで、デバイスのロックを解除せずに要求を承認できるのはなぜですか。
 
-これは設計によるものです。 2 段階認証では、2 つのもの、つまりユーザーが知っているものとユーザーが持っているものを証明する必要があります。 知っているものは、パスワードです。 持っているものは、(Microsoft Authenticator アプリで設定され、MFA の確認手段として登録された) 電話です。したがって、電話を持っていて要求を承認することは、認証の 2 番目の要素に関する条件を満たします。 
+本人を確認するために必要なことは、電話を所持していることだけなので、検証要求を承認するためにデバイスのロックを解除する必要はありません。 2 段階認証では、2 つのもの、つまりユーザーが知っているものとユーザーが持っているものを証明する必要があります。 知っているものは、パスワードです。 持っているものは、(Microsoft Authenticator アプリで設定され、MFA の確認手段として登録された) 電話です。したがって、電話を持っていて要求を承認することは、認証の 2 番目の要素に関する条件を満たします。
 
 ### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>アカウント一覧のロック アイコンは何を意味していますか。
 
@@ -110,5 +111,4 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 * Microsoft アカウントの [2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
 * 職場または学校のアカウントの [2 段階認証で問題が発生した場合](multi-factor-authentication-end-user-troubleshoot.md)
 * [Microsoft Authenticator を使って携帯電話からサインインする](microsoft-authenticator-app-phone-signin-faq.md)
-
 

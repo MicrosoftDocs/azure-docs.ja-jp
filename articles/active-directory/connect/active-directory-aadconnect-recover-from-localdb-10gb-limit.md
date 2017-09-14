@@ -3,7 +3,7 @@ title: "Azure AD Connect: LocalDB の 10 GB の制限の問題から回復する
 description: "このトピックでは、LocalDB の 10 GB 制限の問題が発生したときに Azure AD Connect Synchronization Service を回復する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: billmath
+author: cychua
 manager: femila
 editor: 
 ms.assetid: 41d081af-ed89-4e17-be34-14f7e80ae358
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
-ms.author: cychua
-translationtype: Human Translation
+ms.date: 07/17/2017
+ms.author: billmath
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
 ms.openlocfilehash: 533d3db2a9b49f3077b7cdb699cac797c7a931b3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/24/2017
-
 
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB の 10 GB の制限から回復する方法
@@ -79,13 +79,13 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 ### <a name="delete-run-history-data"></a>実行履歴データを削除する
 既定では、Azure AD Connect は最大 7 日間分の実行履歴データを保持します。 この手順では、Azure AD Connect Synchronization Service が再度同期を開始できるように、実行履歴データを削除して DB 空き領域を増やします。
 
-1.    [スタート]、[Synchronization Service] の順に移動して、**Synchronization Service Manager** を起動します。
+1.  [スタート]、[Synchronization Service] の順に移動して、**Synchronization Service Manager** を起動します。
 
-2.    **[操作]** タブに移動します。
+2.  **[操作]** タブに移動します。
 
-3.    **[アクション]** で **[Clear Runs (実行のクリア)]** コマンドを選択します。
+3.  **[アクション]** で **[Clear Runs (実行のクリア)]** コマンドを選択します。
 
-4.    **[Clear all runs (すべての実行をクリア)]** または **[Clear runs before… (以下より前の実行をクリア)]<date>** オプションを選択できます。 まずは 2 日を経過した実行履歴データをクリアすることをお勧めします。 DB サイズの問題が引き続き発生する場合は、**[Clear all runs (すべての実行をクリア)]** オプションを選択してください。
+4.  **[Clear all runs (すべての実行をクリア)]** または **[Clear runs before… (以下より前の実行をクリア)]<date>** オプションを選択できます。 まずは 2 日を経過した実行履歴データをクリアすることをお勧めします。 DB サイズの問題が引き続き発生する場合は、**[Clear all runs (すべての実行をクリア)]** オプションを選択してください。
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>実行履歴データの保有期間を短縮する
 この手順は、複数の同期サイクル後に 10 GB 制限の問題が発生する可能性を低減するためのものです。

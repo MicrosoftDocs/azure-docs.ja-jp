@@ -1,9 +1,9 @@
 ---
 title: "OMS Log Analytics の Syslog メッセージの収集と分析 | Microsoft Docs"
-description: "Syslog は、Linux に共通のイベント ログ プロトコルです。   この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+description: "Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
-author: bwren
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
@@ -12,23 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
+ms.date: 07/12/2017
+ms.author: magoedte;bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7513f405d5c7c05a8e6e2b7b0e6313f23a319c84
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  OMS Agent for Linux がインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Log Analytics にメッセージを送信し、そこで対応するレコードが OMS リポジトリに作成されます。  
 
 > [!NOTE]
-> Log Analytics では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
-> 
-> 
+> Log Analytics では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
+>
+>
 
 ![Syslog collection](media/log-analytics-data-sources-syslog/overview.png)
 
@@ -49,8 +48,8 @@ OMS Agent for Linux は、構成で指定されているファシリティと重
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
-> 
-> 
+>
+>
 
 #### <a name="rsyslog"></a>rsyslog
 rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあります。  既定の内容を以下に示します。  これは、ローカル エージェントから送信された、すべてのファシリティの警告レベル以上の syslog メッセージを収集します。
@@ -137,20 +136,50 @@ syslog-ng の構成ファイルは、**/etc/syslog-ng/syslog-ng.conf** にあり
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
 
-### <a name="changing-the-syslog-port"></a>Syslog ポートの変更
-OMS エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージをリッスンします。  このポートを変更するには、 **/etc/opt/microsoft/omsagent/conf/omsagent.conf**にある OMS エージェント構成ファイルに次のセクションを追加します。  **port** エントリの 25224 を、目的のポート番号に置き換えます。  Syslog デーモンの構成ファイルも、このポートにメッセージを送信するように変更する必要があることに注意してください。
+### <a name="collecting-data-from-additional-syslog-ports"></a>追加の Syslog ポートからデータを収集する
+OMS エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージを待ち受けます。  エージェントをインストールすると、既定の syslog 構成が適用され、次の場所で見つかります。
 
-    <source>
-      type syslog
-      port 25224
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
-    </source>
+* Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
+* Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
 
+2 つの構成ファイルを作成することでポート番号を変更できます: FluentD 構成ファイルと rsyslog または syslog-ng ファイル (インストールしている Syslog デーモンにより決まります)。  
 
-## <a name="data-collection"></a>データ収集
-OMS エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージをリッスンします。 Syslog デーモンの構成ファイルは、アプリケーションから送信された Syslog メッセージをこのポートに転送します (このポートは、Log Analytics がそれらのメッセージを収集する場所です)。
+* FluentD 構成ファイルは `/etc/opt/microsoft/omsagent/conf/omsagent.d` にある新しいファイルです。**port** エントリの値をカスタム ポート番号に変更します。
+
+        <source>
+          type syslog
+          port %SYSLOG_PORT%
+          bind 127.0.0.1
+          protocol_type udp
+          tag oms.syslog
+        </source>
+        <filter oms.syslog.**>
+          type filter_syslog
+        </filter>
+
+* rsyslog の場合、`/etc/rsyslog.d/` に新しい構成ファイルを作成し、値 %SYSLOG_PORT% をカスタム ポート番号に変更する必要があります。  
+
+    > [!NOTE]
+    > 構成ファイル `95-omsagent.conf` でこの値を変更すると、エージェントが既定の構成を適用したときに上書きされます。
+    >
+
+        # OMS Syslog collection for workspace %WORKSPACE_ID%
+        kern.warning              @127.0.0.1:%SYSLOG_PORT%
+        user.warning              @127.0.0.1:%SYSLOG_PORT%
+        daemon.warning            @127.0.0.1:%SYSLOG_PORT%
+        auth.warning              @127.0.0.1:%SYSLOG_PORT%
+
+* syslog-ng 構成は下のサンプル構成をコピーして変更し、`/etc/syslog-ng/` にある syslog-ng.conf 構成ファイルの終わりに変更したカスタム設定を追加する必要があります。  既定のラベルである **%WORKSPACE_ID%_oms** または **%WORKSPACE_ID_OMS** は**使用しない**でください。変更を区別するために、カスタム ラベルを定義してください。  
+
+    > [!NOTE]
+    > 構成ファイルの既定値を変更すると、エージェントが既定の構成を適用したときに上書きされます。
+    >
+
+        filter f_custom_filter { level(warning) and facility(auth; };
+        destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
+        log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
+
+変更の完了後、構成変更を適用するために Syslog と OMS エージェント サービスを再起動する必要があります。   
 
 ## <a name="syslog-record-properties"></a>Syslog レコードのプロパティ
 Syslog レコードの型は **Syslog** になり、次の表に示すプロパティがあります。
@@ -176,9 +205,18 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 | Type=Syslog &#124; measure count() by Computer |コンピューターごとの Syslog レコードの数です。 |
 | Type=Syslog &#124; measure count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
-## <a name="next-steps"></a>次のステップ
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
-* [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
-* [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。 
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
 
+> | クエリ | Description |
+|:--- |:--- |
+| syslog |すべての Syslog です。 |
+| Syslog &#124; where SeverityLevel == "error" |重大度がエラーであるすべての Syslog レコードです。 |
+| Syslog &#124; summarize AggregatedValue = count() by Computer |コンピューターごとの Syslog レコードの数です。 |
+| Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
+
+## <a name="next-steps"></a>次のステップ
+* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
+* [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。
 

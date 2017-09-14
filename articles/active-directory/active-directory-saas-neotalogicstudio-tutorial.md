@@ -87,7 +87,7 @@ Azure AD への Neota Logic Studio の統合を構成するには、ギャラリ
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Neota Logic Studio ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Neota Logic Studio の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Neota Logic Studio の **[Username] (ユーザー名)** の値として割り当てます。
+このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Neota Logic Studio の **[Username] \(ユーザー名)** の値として割り当てます。
 
 Neota Logic Studio で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 

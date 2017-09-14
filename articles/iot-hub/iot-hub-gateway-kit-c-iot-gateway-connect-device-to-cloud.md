@@ -4,7 +4,7 @@ description: "IoT のゲートウェイとして Intel NUC を使用して、TI 
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "IoT ゲートウェイはデバイスをクラウドに接続します"
 ms.assetid: cb851648-018c-4a7e-860f-b62ed3b493a5
@@ -13,14 +13,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 06/25/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2b772afc946f1637cb8d61c198bc9cf18f42e1ba
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 61cb8eb0ad23a7d4b333bf54342b872a3a8ae1da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/28/2017
 
 ---
 # <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>IoT ゲートウェイを使用してモノをクラウドに接続する - SensorTag から Azure IoT Hub へ
@@ -42,6 +41,7 @@ IoT ゲートウェイを使用して、Texas Instruments SensorTag (CC2650STK) 
 ## <a name="what-you-need"></a>必要なもの
 
 - Intel NUC を IoT ゲートウェイとしてセットアップする [IoT ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) が完了していること。
+- * 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 - ホスト コンピューターで実行される SSH クライアント。 Windows では PuTTY をお勧めします。 Linux と macOS には既に SSH クライアントが付属しています。
 - IP アドレスと、SSH クライアントからゲートウェイにアクセスするためのユーザー名とパスワード。
 - インターネット接続。
@@ -133,7 +133,7 @@ Bluetooth Low Energy (BLE) サンプル アプリケーションは、Azure IoT 
 1. 次のコマンドを実行して、サンプル アプリケーションのフォルダーに移動します。
 
    ```bash
-   cd /user/share/azureiotgatewaysdk/samples
+   cd /usr/share/azureiotgatewaysdk/samples/ble_gateway
    ```
 
 1. 次のコマンドを実行して、構成ファイルを開きます。

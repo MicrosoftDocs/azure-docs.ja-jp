@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 185e09366a8d68746415f4cbbac217d4ad558de7
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1599ee241c3d9fb3623ebd89ae30f2795cae1930
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-vm-in-the-azure-portal"></a>Azure ポータルで Linux VM にデータ ディスクを接続する方法
-この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 Azure Managed Disks または非管理対象ディスクのどちらを使用するかを選択できます。 Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 非管理対象ディスクではストレージ アカウントが必要であり、いくつかの[クォータと制限が適用されます](../../azure-subscription-service-limits.md#storage-limits)。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 Azure Managed Disks または非管理対象ディスクのどちらを使用するかを選択できます。 Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 非管理対象ディスクではストレージ アカウントが必要であり、いくつかの[クォータと制限が適用されます](../../azure-subscription-service-limits.md#storage-limits)。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../windows/managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。
 
 VM にディスクを接続する前に、次のヒントを確認してください。
 
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のどちらのディスクも使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* 仮想マシンに接続されているディスクは、実際には Azure に保存されている .vhd ファイルです。 詳細については、 [仮想マシン用のディスクと VHD](../../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のどちらのディスクも使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+* 仮想マシンに接続されているディスクは、実際には Azure に保存されている .vhd ファイルです。 詳細については、 [仮想マシン用のディスクと VHD](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索

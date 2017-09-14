@@ -1,6 +1,6 @@
 ---
-title: "Azure のデータ サイエンス用仮想マシン | Microsoft Docs"
-description: "データ サイエンス用仮想マシンのセットアップ"
+title: "Azure データ サイエンス仮想マシンを IPython Notebook サーバーとしてプロビジョニングする | Microsoft Docs"
+description: "サポート ツールを使い、データ サイエンス仮想マシンを IPython Notebook サーバーとしてセットアップします。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
-ms.author: xibingao;bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 4de0683f2f58cc598a5c37e74a30b7e17aa7fd0d
-ms.lasthandoff: 12/20/2016
-
+ms.date: 07/21/2017
+ms.author: bradsev
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: db1ffb2a226a087ecea2ea6f560c6b803e33d8c7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/22/2017
 
 ---
-# <a name="data-science-virtual-machines-in-azure"></a>Azure のデータ サイエンス用仮想マシン
+# <a name="provision-azure-data-science-virtual-machines-as-ipython-notebook-servers"></a>Azure データ サイエンス仮想マシンを IPython Notebook サーバーとしてプロビジョニングする
 ここでは、Azure VM と、SQL サービスを使用する Azure VM を IPython Notebook サーバーとして設定する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。 Azure ストレージ エクスプローラーと AzCopy は、たとえば、ローカル コンピューターから Azure Storage にデータをアップロードしたり、Azure Storage からローカル コンピューターにデータをダウンロードしたりする便利な手段を提供します。 
 
 このメニューは、 [Team Data Science Process (TDSP)](data-science-process-overview.md)で使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。

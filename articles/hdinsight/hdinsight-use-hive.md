@@ -1,5 +1,5 @@
 ---
-title: "Apache Hive および HiveQL とは - Azure HDInsight | Microsoft Docs"
+title: "Apache Hive と HiveQL とは - Azure HDInsight | Microsoft Docs"
 description: "Apache Hive は、Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。"
 keywords: "HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive について, Hive の概要"
 services: hdinsight
@@ -10,22 +10,21 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 2c10f989-7636-41bf-b7f7-c4b67ec0814f
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 08/03/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: f974c2714fc600d850baff64fdf65aae178e5068
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 6b3ee17141f773bec07cf40e0b6d63363e9b5164
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
-# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Apache Hive と Azure HDInsight での HiveQL
+# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
 [Apache Hive](http://hive.apache.org/) は、Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
 
@@ -54,7 +53,7 @@ HDInsight には、特定のワークロード用に調整されたいくつか�
 | [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
 
 > [!IMPORTANT]
-> \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > Windows ベースの HDInsight クラスターを使用している場合は、ブラウザーから[クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md)を使用するか、[リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md)を使用して、Hive クエリを実行できます。
 

@@ -10,22 +10,23 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 4453876c126289f922d6d08d321707e1d10004e3
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 9eb32e545bdefb8cc0a8ae05bd58d750afeb469e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Azure CLI を使用した Azure ディスクの管理
 
-Azure Virtual Machines では、VM のオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズ構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
+Azure Virtual Machines では、VM のオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
 
 > [!div class="checklist"]
 > * OS ディスクと一時ディスク
@@ -36,7 +37,10 @@ Azure Virtual Machines では、VM のオペレーティング システム、�
 > * ディスクのサイズ変更
 > * ディスクのスナップショット
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="default-azure-disks"></a>既定の Azure ディスク
 
@@ -102,13 +106,13 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 
 [az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
 
-```azurecli
+```azurecli-interactive 
 az group create --name myResourceGroupDisk --location eastus
 ```
 
 [az vm create]( /cli/azure/vm#create) コマンドを使用して VM を作成します。 `--datadisk-sizes-gb` 引数は、追加のディスクを作成してこの仮想マシンに接続するように指定するために使用します。 複数のディスクを作成して接続するには、ディスク サイズ値をスペースで区切ったリストを使用します。 次の例では、どちらも 128 GB のデータ ディスクを 2 つ備えた VM が作成されます。 ディスク サイズが 128 GB であるため、両方のディスクが P10 として構成され、ディスクあたり最大 500 IOPS を実現します。
 
-```azurecli
+```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroupDisk \
   --name myVM \
@@ -122,7 +126,7 @@ az vm create \
 
 新しいディスクを作成して既存の仮想マシンに接続するには、[az vm disk attach](/cli/azure/vm/disk#attach) コマンドを使用します。 次の例では、サイズが 128 ギガバイトの Premium ディスクが作成され、最後の手順で作成した VM に接続されます。
 
-```azurecli
+```azurecli-interactive 
 az vm disk attach --vm-name myVM --resource-group myResourceGroupDisk --disk myDataDisk --size-gb 128 --sku Premium_LRS --new 
 ```
 
@@ -134,7 +138,7 @@ az vm disk attach --vm-name myVM --resource-group myResourceGroupDisk --disk myD
 
 仮想マシンとの SSH 接続を作成します。 この例の IP アドレスは、仮想マシンのパブリック IP で置き換えてください。
 
-```azurecli
+```azurecli-interactive 
 ssh 52.174.34.95
 ```
 
@@ -199,27 +203,27 @@ exit
 
 VM をデプロイしたら、オペレーティング システム ディスクまたは接続されたデータ ディスクのサイズを増やすことができます。 記憶域の容量を増やしたりパフォーマンスのレベル (P10、P20、P30) を高める必要がある場合、ディスク サイズを大きくすることは有益です。 ディスク サイズは縮小できないことに注意してください。
 
-ディスク サイズを増やす前に、ディスクの ID または名前が必要です。 [az disk list](/cli/azure/vm/disk#list) コマンドを使用して、リソース グループ内のすべてのディスクを取得します。 サイズ変更するディスク名を書き留めます。
+ディスク サイズを増やす前に、ディスクの ID または名前が必要です。 [az disk list](/cli/azure/disk#az_disk_list) コマンドを使用して、リソース グループ内のすべてのディスクを取得します。 サイズ変更するディスク名を書き留めます。
 
-```azurecli
+```azurecli-interactive 
 az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
 VM の割り当ても解除する必要があります。 [az vm deallocate]( /cli/azure/vm#deallocate) コマンドを使用して、VM を停止し割り当てを解除します。
 
-```azurecli
+```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
 [az disk update](/cli/azure/vm/disk#update) コマンドを使用して、ディスクのサイズを変更します。 この例では、*myDataDisk* という名前のディスクのサイズを 1 TB に変更します。
 
-```azurecli
+```azurecli-interactive 
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
 ```
 
 サイズ変更操作が完了したら、VM を起動します。
 
-```azurecli
+```azurecli-interactive 
 az vm start --resource-group myResourceGroupDisk --name myVM
 ```
 
@@ -231,9 +235,9 @@ az vm start --resource-group myResourceGroupDisk --name myVM
 
 ### <a name="create-snapshot"></a>スナップショットの作成
 
-仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#show) コマンドを使用します。 この例では、後の手順で使用するために、ディスク ID を変数に格納します。
+仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#show) コマンドを使用します。この例では、後の手順で使用するために、ディスク ID を変数に格納します。
 
-```azurecli
+```azurecli-interactive 
 osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 ```
 
@@ -247,7 +251,7 @@ az snapshot create -g myResourceGroupDisk --source "$osdiskid" --name osDisk-bac
 
 このスナップショットをディスクに変換すれば、それを使って仮想マシンを作成し直すことができます。
 
-```azurecli
+```azurecli-interactive 
 az disk create --resource-group myResourceGroupDisk --name mySnapshotDisk --source osDisk-backup
 ```
 
@@ -255,13 +259,13 @@ az disk create --resource-group myResourceGroupDisk --name mySnapshotDisk --sour
 
 実際に仮想マシンを復元してみましょう。既存の仮想マシンは削除します。 
 
-```azurecli
+```azurecli-interactive 
 az vm delete --resource-group myResourceGroupDisk --name myVM
 ```
 
 スナップショット ディスクから新しい仮想マシンを作成します。
 
-```azurecli
+```azurecli-interactive 
 az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk mySnapshotDisk --os-type linux
 ```
 
@@ -271,13 +275,13 @@ az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk m
 
 まず、[az disk list](https://docs.microsoft.com/cli/azure/disk#list) コマンドを使用して、データ ディスクの名前を見つけます。 この例では、このディスク名を *datadisk* という変数に格納しています。次の手順でこの変数を使用します。
 
-```azurecli
+```azurecli-interactive 
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
 ```
 
 ディスクを接続するには、[az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach) コマンドを使用します。
 
-```azurecli
+```azurecli-interactive 
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 ```
 

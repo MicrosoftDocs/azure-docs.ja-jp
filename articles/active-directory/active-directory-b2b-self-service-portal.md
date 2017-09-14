@@ -13,24 +13,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/11/2017
+ms.date: 05/24/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: f629eeb6f12c8785cab2585190f70e98b02fa5b4
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 307373c75bbb87cec683f7a3097f8f159c9d5e61
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
 
 
-# <a name="self-service-sign-up-portal-for-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションのためのセルフ サービス サインアップ ポータル
+# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル
 
-顧客は、[Azure Portal](https://portal.azure.com) や、当社の非管理者向け[アプリケーション アクセス パネル](https://myapps.microsoft.com)の当社の IT エクスペリエンスによって公開されている、組み込み製品の多様な機能を使用できます。 しかし、当社では、企業が B2B ユーザーのために配布準備ワークフローをカスタマイズして、ユーザーの組織のニーズを満たす必要があることについても認識しています。 これは[当社の API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用することで実現します。
+お客様は、当社の IT 管理 [Azure ポータル](https://portal.azure.com)とエンド ユーザー向けの[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通して公開される組み込み機能を使用して、さまざまな操作を実行できます。 しかし、当社では、企業が B2B ユーザーのために配布準備ワークフローをカスタマイズして、ユーザーの組織のニーズを満たす必要があることについても認識しています。 これは[当社の API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用することで実現します。
 
-このことについて当社の多くのお客様と検討するうえで、共通する 1 つのニーズが他の全員に広がることを実感しました。 これは、企業のリソースへのアクセスを必要としているのが、どの社外の個人共同作業者なのか、招待側の組織が事前に知らない可能性がある (あるいは知りたい) というケースでした。 この組織は、招待側の組織による制御が可能なポリシー セットを使用して、パートナー企業のユーザーがセルフサインアップできるようにする方法が必要でした。 これは、当社の API を通じて実現可能です。このため、当社では[サンプル Github プロジェクト](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)を Github に発行しました。
+お客様との話し合いの中で、当社は、他のすべてに抜きんでて求められている共通する 1 つのニーズがあることを認識しました。 招待側組織は、誰が社外のコラボレーターであり、誰が企業のリソースへのアクセスを必要としているのが事前にわからないことがあります。 招待側組織は、パートナー企業のユーザーが、招待側組織によって制御されるポリシーに従ってセルフサインアップする方法を求めていました。 このシナリオは当社の API を通じて実現できるため、当社では、それを行うための[サンプル Github プロジェクト](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)を Github に発行しました。
 
-当社の Github プロジェクトでは、組織による当社の API の使用方法を説明しています。さらに、アクセス権を持つアプリがルールで規定されている、ポリシー ベースのセルフサービス サインアップ機能を信頼されたパートナーに提供しています。 これにより、パートナーのユーザーは、必要なときに適切なリソースを安全に利用することができます。招待側の組織が手動でパートナーに配布準備する必要はありません。 ボタンをクリックするだけで、Azure サブスクリプションに、プロジェクトを簡単にデプロイすることができます。 試しにやってみましょう。
+当社の Github プロジェクトでは、組織による当社の API の使用方法を説明しています。さらに、信頼できるパートナー向けのポリシー ベースのセルフサービス サインアップ機能と、パートナーがアクセスできるアプリを決定するルールを提示しています。 パートナーのユーザーは必要なときにリソースに安全にアクセスすることができ、招待側組織はパートナーを手動で招待する必要はありません。 プロジェクトは、選択した Azure サブスクリプションに簡単にデプロイできます。
 
 ## <a name="as-is-code"></a>現況コード
 

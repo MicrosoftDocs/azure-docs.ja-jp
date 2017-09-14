@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: markvi;andkjell
-translationtype: Human Translation
+ms.date: 07/18/2017
+ms.author: billmath
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
 ms.openlocfilehash: 58908d65fdebd651e5cfab2b668574bdf7ab6085
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/27/2017
 
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
@@ -97,10 +98,5 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 **参照トピック**
 
 * [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

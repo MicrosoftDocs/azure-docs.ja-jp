@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 06/12/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2bf6bd76b653e30f38595631eff576d8eeb8efda
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: c58de22e29b6403e88bf22bdfe704a25757cdfca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -33,11 +33,6 @@ Service Fabric Explorer の使用方法については、次の Microsoft Virtua
 
 ## <a name="connect-to-service-fabric-explorer"></a>Service Fabric Explorer への接続
 [開発環境を準備する](service-fabric-get-started.md)手順に従った場合は、http://localhost:19080/Explorer に移動することで、ローカル クラスター上で Service Fabric Explorer を起動できます。
-
-> [!NOTE]
-> Internet Explorer と Service Fabric Explorer を併用してリモート クラスターを管理する場合は、Internet Explorer の一部の設定を構成する必要があります。 すべての情報が正しく読み込まれるように、**[ツール]** > **[互換表示設定]** に移動し、**[イントラネット サイトを互換表示で表示する]** チェック ボックスをオフにします。
->
->
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Service Fabric Explorer のレイアウトについて
 左側のツリーを使用して、Service Fabric Explorer 内を移動できます。 ツリーのルートでは、クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。

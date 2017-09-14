@@ -3,22 +3,22 @@ title: "Azure CLI を使用したロールベースの Access Control (RBAC) の
 description: "Azure コマンド ライン インターフェイスを使用して、ロールとロールのアクションの表示、サブスクリプションとアプリケーションのスコープへのロールの割り当てなどを行って、ロールベースの Access Control (RBAC) を管理する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
-editor: 
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/22/2017
-ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 3c8ee4a51d69b7511445d441e28a1014200bdc4a
-ms.lasthandoff: 03/21/2017
-
+ms.date: 07/12/2017
+ms.author: andredm
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 73e3211416a1d110f1714872290a4156f3d194f7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理
@@ -196,7 +196,7 @@ azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .pro
 
 ![RBAC Azure コマンド ライン - カスタム ロールの azure ロール一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
 
-## <a name="rbac-topics"></a>RBAC のトピック
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 

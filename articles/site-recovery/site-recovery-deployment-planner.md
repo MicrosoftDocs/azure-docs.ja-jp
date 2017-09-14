@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 06/05/2017
+ms.date: 08/28/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 3c72026a7a6c6b348a77560c7f35d76d93c75e17
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
@@ -68,7 +67,7 @@ Site Recovery Deployment Planner パブリック プレビューはコマンド 
 
 | サーバーの要件 | Description|
 |---|---|
-|プロファイリングとスループット測定| <ul><li>オペレーティング システム: Microsoft Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 2 以上に設定する必要があります</li></ul>|
+|プロファイリングとスループット測定| <ul><li>オペレーティング システム: Microsoft Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 2 以上に設定する必要があります</li><li>443 ポートを許可: ASR Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
 | レポートの生成 | Microsoft Excel 2013 以降がインストールされた Windows PC または Windows Server |
 | ユーザーのアクセス許可 | 読み取り専用アクセス許可 (プロファイリング中、VMware vCenter サーバー/VMware vSphere ESXi ホストにアクセスするユーザー アカウントに適用) |
 
@@ -119,14 +118,18 @@ Site Recovery Deployment Planner パブリック プレビューはコマンド 
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. vCenter サーバー/vSphere ESXi ホスト上にあるすべての VM の名前を取得して、リストを .txt ファイルに格納するには、次の 2 つのコマンドを実行します。
+4. Connect-VIServer がコマンドレットの名前として認識されない場合は、別途次のコマンドを実行する必要があります。
+ 
+            Add-PSSnapin VMware.VimAutomation.Core 
+
+5. vCenter サーバー/vSphere ESXi ホスト上にあるすべての VM の名前を取得して、リストを .txt ファイルに格納するには、次の 2 つのコマンドを実行します。
 &lsaquo;server name&rsaquo;、&lsaquo;user name&rsaquo;、&lsaquo;password&rsaquo;、&lsaquo;outputfile.txt&rsaquo; は、実際の値に置き換えてください。
 
             Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-5. 出力ファイルをメモ帳で開き、プロファイリングするすべての VM の名前を別のファイル (ProfileVMList.txt など) にコピーします。VM の名前は 1 行につき 1 つです。 このファイルをコマンド ライン ツールの *-VMListFile* パラメーターの入力として使用します。
+6. 出力ファイルをメモ帳で開き、プロファイリングするすべての VM の名前を別のファイル (ProfileVMList.txt など) にコピーします。VM の名前は 1 行につき 1 つです。 このファイルをコマンド ライン ツールの *-VMListFile* パラメーターの入力として使用します。
 
     ![Deployment Planner に入力として渡す VM 名リスト](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
@@ -456,7 +459,9 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 **[VM Compatibility (VM 適合性)]**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Azure Premium Storage](https://aka.ms/premium-storage-workload) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 For example:
 * 128 GB 未満の場合は P10
 * 128 ～ 512 GB の場合は P20
-* 512 ～ 1023 GB の場合は P30
+* 512 ～ 1,024 GB の場合は P30
+* 1,025 ～ 2,048 GB の場合は P40
+* 2,049 ～ 4,095 GB の場合は P50
 
 したがって、ディスクのワークロード特性上は P20 または P30 に分類されるものの、サイズ上はそれよりも低い Premium Storage ディスク タイプに対応している VM は、Deployment Planner ツールによって **Yes**\* として表示されます。 そのうえで、推奨される適切な Premium Storage ディスク タイプに合わせてレプリケーション元のディスク サイズを変更するか、またはレプリケーション先のディスク タイプをフェールオーバー後に変更するように促されます。
 
@@ -494,7 +499,8 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[VM Compatibility (VM 適合性)]**: 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
 
-* ディスク サイズが 1,023 GB を超えている。 Azure Storage では現在、1 TB を超えるディスク サイズがサポートされません。
+* ディスク サイズが 4,095 GB を超えている。 Azure Storage では現在、4,095 GB を超えるデータ ディスク サイズがサポートされません。
+* OS ディスクが 2,048 GB を超えている。 Azure Storage では現在、2,048 GB を超える OS ディスク サイズがサポートされません。
 * ブートの種類が EFI である。 現在 Azure Site Recovery でサポートされる仮想マシンのブートの種類は BIOS だけです。
 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされているストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 また、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されることに注意してください。 この場合、レプリケーションの進行と同時にテスト フェールオーバーが正常完了するためには、対象となるディスク サイズの 2 倍の容量をセットアップする必要があります。
@@ -560,6 +566,15 @@ Deployment Planner を更新するには、次の手順に従います。
 
 
 ## <a name="version-history"></a>バージョン履歴
+
+### <a name="131"></a>1.3.1
+更新日: 2017 年 7 月 19 日
+
+次の新機能を追加しました。
+
+* レポートの生成における 1 TB を超える大容量ディスクのサポートを追加しました。 今後は Deployment Planner を使用して、ディスク サイズが 1 TB を超える仮想マシン (最大 4,095 GB) のレプリケーションを計画することができます。
+詳細については、[Azure Site Recovery における大容量ディスクのサポート](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/)に関するページを参照してください。
+
 
 ### <a name="13"></a>1.3
 更新日: 2017 年 5 月 9 日

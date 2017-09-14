@@ -12,21 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/10/2017
 ms.author: curtand;jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: b483dcce0bec933e5dab6c990f4912cb596ebda0
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 402c1be07b8ee885ee5341128fb3f419611b924d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 ドメイン名は、多くのディレクトリ リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。 Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。 Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Azure AD ディレクトリのプライマリ ドメイン名の設定
-ディレクトリを作成すると、"contoso.onmicrosoft.com" などの初期ドメイン名がプライマリ ドメイン名に設定されます。 プライマリ ドメインは、新しいユーザーを作成したときにそのユーザーの既定のドメイン名になります。 この措置によって、管理者がポータルでユーザーを新規作成するプロセスが効率化されています。 プライマリ ドメイン名を変更するには、次の手順に従います。
+ディレクトリを作成すると、"contoso.onmicrosoft.com" などの初期ドメイン名がプライマリ ドメイン名に設定されます。 プライマリ ドメインは、新しいユーザーを作成したときにそのユーザーの既定のドメイン名になります。 プライマリ ドメイン名の設定によって、管理者がポータルでユーザーを新規作成するプロセスが効率化されます。 プライマリ ドメイン名を変更するには、次の手順に従います。
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
@@ -34,14 +33,14 @@ ms.lasthandoff: 05/08/2017
    ![ユーザー管理を開く](./media/active-directory-domains-add-azure-portal/user-management.png)
 3. ***[<ディレクトリ名>]*** ブレードで、**[ドメイン名]** を選択します。
 4. **[*ディレクトリ名* - ドメイン名]** ブレードで、プライマリ ドメイン名にするドメイン名を選択します。
-5. ***[domainname]*** ブレード (タイトルが新しいドメイン名である、開いているブレード) で、**[プライマリにする]** をクリックします。 メッセージが表示されたら、選択を確定します。
+5. ***[<ドメイン名>]*** ブレード (タイトルに新しいドメイン名が表示されているブレード) で、**[プライマリにする]** をクリックします。 メッセージが表示されたら、選択を確定します。
    
    ![ドメイン名をプライマリにする](./media/active-directory-domains-manage-azure-portal/make-primary.png)
 
 ディレクトリのプライマリ ドメイン名を変更して、フェデレーションされていない検証済みカスタム ドメインを指定することができます。 ディレクトリのプライマリ ドメインを変更しても、既存のユーザーのユーザー名は変更されません。
 
 ## <a name="add-custom-domain-names-to-your-azure-ad"></a>Azure AD へのカスタム ドメイン名の追加
-1 つの Azure AD ディレクトリに最大 900 個のカスタム ドメイン名を追加できます。 [カスタム ドメイン名を追加](active-directory-domains-add-azure-portal.md) するプロセスは、最初のカスタム ドメイン名を設定する手順と同じです。
+1 つの Azure AD ディレクトリに最大 900 個のカスタム ドメイン名を追加できます。 [カスタム ドメイン名を追加](add-custom-domain.md) するプロセスは、最初のカスタム ドメイン名を設定する手順と同じです。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>カスタム ドメインのサブドメインの追加
 ディレクトリに europe.contoso.com などの第 3 レベル ドメイン名を追加する場合は、最初に、contoso.com などの第 2 レベル ドメインを追加して、確認する必要があります。 サブドメインは、Azure AD によって自動的に確認されます。 追加したサブドメインが確認済みであることを確かめるには、ブラウザーでドメインが一覧表示されるページの表示を更新します。
@@ -67,6 +66,6 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 * [Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>次のステップ
-* [カスタム ドメイン名を追加する](active-directory-domains-add-azure-portal.md)
+* [カスタム ドメイン名を追加する](add-custom-domain.md)
 
 

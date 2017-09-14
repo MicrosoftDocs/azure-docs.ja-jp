@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2017
+ms.date: 06/15/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3a3730821b88062fdccf18732630be0bcb6ae7a7
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>VHD から新しい ARM Managed Disk VM にクラシック VM を手動で移行する 
 
 
-このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](../../storage/storage-managed-disks-overview.md) する方法を説明します。
+このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](managed-disks-overview.md) する方法を説明します。
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
@@ -47,23 +47,24 @@ Premium Storage で動作する仮想マシンのパフォーマンス特性を�
 
 **Premium Managed Disks**
 
-VM で使える Premium 管理ディスクには 3 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM の Premium ディスクの種類を選ぶ場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
+VM で使える Premium 管理ディスクには 7 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM の Premium ディスクの種類を選ぶ場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
 
-| Premium ディスクの種類  | P10               | P20               | P30               |
-|---------------------|-------------------|-------------------|-------------------|
-| ディスク サイズ           | 128 GB            | 512 GB            | 1024 GB (1 TB)    |
-| ディスクあたりの IOPS       | 500               | 2300              | 5000              |
-| ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 |
+| Premium ディスクの種類  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|
+| ディスク サイズ           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 
 
 **Standard Managed Disks**
 
-VM で使用できる Standard Managed Disks は 5 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard Managed Disks の種類を選択してください。
+VM で使用できる Standard Managed Disks は 7 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard Managed Disks の種類を選択してください。
 
-| Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              |
-|---------------------|------------------|------------------|------------------|------------------|------------------|
-| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   |
-| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              | 500              |
-| ディスクあたりのスループット | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 |
+| Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
+| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| ディスクあたりのスループット | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 
+
 
 ### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー 
 

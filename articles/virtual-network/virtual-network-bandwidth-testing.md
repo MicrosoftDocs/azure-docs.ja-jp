@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2017
+ms.date: 07/21/2017
 ms.author: steveesp
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: d05bed3b92836bf496804c9d40b5a62a96ffbc3d
-ms.lasthandoff: 03/06/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/06/2017
 
 ネットワーク スループットのパフォーマンスを Azure でテストするための最善の方法は、テストするネットワークをターゲットとするツールを使用して、パフォーマンスに影響する可能性があるその他のリソースの使用を最小限に抑えることです。 NTTTCP を使用することをお勧めします。
 
-このツールを、同じサイズの&2; つの Azure VM にコピーします。 片方の VM は送信側として、他方は受信側として機能します。
+このツールを、同じサイズの 2 つの Azure VM にコピーします。 片方の VM は送信側として、他方は受信側として機能します。
 
 #### <a name="deploying-vms-for-testing"></a>テスト用の VM のデプロイ
 このテストの目的を達成するには、2 つの VM が同じクラウド サービス内にあるか同じ可用性セット内に含まれている必要があります。これは、内部 IP アドレスの使用と、ロード バランサーのテストからの除外を行えるようにするためです。 VIP を使用してテストすることは可能ですが、この種類のテストはこのドキュメントの範囲外です。
@@ -128,6 +128,38 @@ ntttcp -s10.0.0.4 -t 300
 ```
  
 時間パラメーターが指定されない場合、テストの長さは既定値の 60 秒になります。
+
+## <a name="testing-between-vms-running-windows-and-linux"></a>Windows と Linux を実行している VM 間でのテスト
+
+このシナリオでは、テストを実行するために同期なしモードを有効にする必要があります。 有効にするには、Linux では **-N フラグ**を、Windows では **-ns フラグ**を使用します。
+
+#### <a name="from-linux-to-windows"></a>Linux から Windows へ:
+
+受信者<Windows>:
+
+``` bash
+ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
+```
+
+送信者<Linux>:
+
+``` bash
+ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
+```
+
+#### <a name="from-windows-to-linux"></a>Windows から Linux へ:
+
+受信者<Linux>:
+
+``` bash
+ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
+```
+
+送信者<Windows>:
+
+``` bash
+ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
+```
 
 ## <a name="next-steps"></a>次のステップ
 * 結果によっては、シナリオに適合するように[マシンのネットワーク スループットの最適化](virtual-network-optimize-network-bandwidth.md)を実行できる余地がある場合があります。

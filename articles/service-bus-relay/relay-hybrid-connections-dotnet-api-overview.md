@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 07/05/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d1756dee37771941caae781682b342986c7ecbc9
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: f3f4a2e721b1a75a5b92a5c17a9939c7013340d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay ハイブリッド接続 .NET Standard API の概要
+
 この記事は主要な Azure Relay ハイブリッド接続 .NET Standard [クライアント API](/dotnet/api/microsoft.azure.relay) についてまとめてあります。
   
 ## <a name="relay-connection-string-builder"></a>Relay 接続文字列ビルダー
+
 [RelayConnectionStringBuilder][RelayConnectionStringBuilder] クラスは、Relay ハイブリッド接続固有の接続文字列の書式を設定します。 このクラスを使用して、接続文字列の形式を確認することや、最初から接続文字列を作成することができます。 例については、次のコードを参照してください。
 
 ```csharp
@@ -44,7 +46,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 };
 ```
 
-`RelayConnectionStringBuilder` メソッドに接続文字列を直接渡すこともできます。 これによって、接続文字列が有効な形式であることを確認でき、いずれかのパラメーターが無効な場合はコンストラクターから `ArgumentException` がスローされます。
+`RelayConnectionStringBuilder` メソッドに接続文字列を直接渡すこともできます。 この操作では、接続文字列が有効な形式であることを確認できます。 いずれかのパラメーターが無効の場合、コンストラクターが `ArgumentException` を生成します。
 
 ```csharp
 var myConnectionString = "{RelayConnectionString}";
@@ -67,7 +69,7 @@ catch (ArgumentException ae)
 ### <a name="getting-a-hybrid-connection-stream"></a>ハイブリッド接続ストリームの取得
 
 #### <a name="listener"></a>リスナー
-[HybridConnectionListener][HCListener] を使用して、次のように `HybridConnectionStream` を取得することができます。
+[HybridConnectionListener][HCListener] を使用して、次のように `HybridConnectionStream` オブジェクトを取得できます。
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -79,7 +81,7 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
 #### <a name="client"></a>クライアント
-[HybridConnectionClient][HCClient] を使用して、次のように `HybridConnectionStream` を取得することができます。
+[HybridConnectionClient][HCClient] を使用して、次のように `HybridConnectionStream` オブジェクトを取得できます。
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -89,7 +91,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
 ### <a name="receiving-data"></a>データの受信
-[HybridConnectionStream][HCStream] クラスでは、双方向の通信が可能です。 ほとんどの場合、継続的にストリームから受信する必要があります。 ストリームからテキストを読み取る場合は、[StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) も使用することができます。これを使用すると、データを容易に解析できます。 たとえば、`byte[]` としてではなく、テキストとしてデータを読み取ることができます。
+[HybridConnectionStream][HCStream] クラスでは、双方向の通信が可能です。 ほとんどの場合、継続的にストリームから受信します。 ストリームからテキストを読み取る場合は、[StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) オブジェクトも使用できます。これを使用すると、データを容易に解析できます。 たとえば、`byte[]` としてではなく、テキストとしてデータを読み取ることができます。
 
 次のコードは、取り消しが要求されるまで、ストリームから個々のテキスト行を読み取ります。
 
@@ -135,7 +137,7 @@ Azure Relay の詳細については、次のリンク先を参照してくだ�
 
 * [Microsoft.Azure.Relay リファレンス](/dotnet/api/microsoft.azure.relay)
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
-* [使用可能なリレー API](relay-api-overview.md)
+* [使用可能な Relay API](relay-api-overview.md)
 
 [RelayConnectionStringBuilder]: /dotnet/api/microsoft.azure.relay.relayconnectionstringbuilder
 [HCStream]: /dotnet/api/microsoft.azure.relay.hybridconnectionstream

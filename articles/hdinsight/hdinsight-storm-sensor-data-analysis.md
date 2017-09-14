@@ -13,48 +13,43 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 08/09/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 25e0a25a4468acf001f1ce4e6d62ceef1b420955
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 0d1cc959c87bd64ed728f8b56c9b9156fa492a8b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
 
 HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサー データを処理する方法を説明します。 その後、データを HDInsight で Apache HBase に格納し、D3.js を使用して表示します。
 
-このドキュメントで使用されている Azure Resource Manager テンプレートでは、リソース グループに複数の Azure リソースを作成する方法を示します。 このテンプレートは、Azure Virtual Network、2 つの HDInsight クラスター (Storm と HBase)、Azure Web アプリを作成します。 リアルタイム Web ダッシュボードの node.js 実装は、自動的に Web アプリにデプロイされます。
+このドキュメントで使用されている Azure Resource Manager テンプレートでは、リソース グループに複数の Azure リソースを作成する方法を示します。 このテンプレートでは、Azure Virtual Network、2 つの HDInsight クラスター (Storm と HBase)、Azure Web アプリを作成します。 リアルタイム Web ダッシュボードの node.js 実装は、自動的に Web アプリにデプロイされます。
 
 > [!NOTE]
-> このドキュメントの情報とこのドキュメントで示されている例には、HDInsight バージョン 3.5 が必要です。
+> このドキュメントの情報とこのドキュメントで示されている例には、HDInsight バージョン 3.6 が必要です。
 >
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-  
-  > [!IMPORTANT]
-  > 既存の HDInsight クラスターは必要ありません。 このドキュメントの手順では、以下のリソースを作成します。
-  > 
-  > * Azure Virtual Network
-  > * HDInsight クラスターの Storm (Linux ベース、2 ワーカー ノード)
-  > * HDInsight クラスターの HBase (Linux ベース、2 ワーカー ノード)
-  > * Web ダッシュボードをホストする Azure Web アプリ
-
+* Azure サブスクリプション。
 * [Node.js](http://nodejs.org/): 開発環境のローカルで Web ダッシュボードをプレビューするために使用されます。
 * [Java と JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html): Storm トポロジの開発に使用されます。
 * [Maven](http://maven.apache.org/what-is-maven.html): プロジェクトのビルドとコンパイルに使用されます。
 * [Git](http://git-scm.com/): GitHub からプロジェクトをダウンロードするために使用されます。
 * **SSH** クライアント: Linux ベースの HDInsight クラスターに接続するために使用されます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-    
-    > [!NOTE]
-    > `scp` コマンドへのアクセス権も必要です。このコマンドは、ローカルの開発環境と、SSH を使用する HDInsight クラスターの間でファイルをコピーする場合に使用されます。
 
+
+> [!IMPORTANT]
+> 既存の HDInsight クラスターは必要ありません。 このドキュメントの手順では、以下のリソースを作成します。
+> 
+> * Azure 仮想ネットワーク
+> * HDInsight クラスターの Storm (Linux ベース、2 ワーカー ノード)
+> * HDInsight クラスターの HBase (Linux ベース、2 ワーカー ノード)
+> * Web ダッシュボードをホストする Azure Web アプリ
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -72,7 +67,7 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 
 * **ダッシュボードの Web サイト**: データをリアルタイムでグラフにするサンプルのダッシュボード。
   
-  * Websites は Node.js で実装されるため、すべてのクライアント オペレーティング システムでテスト用に実行できます。また Azure Websites にデプロイすることもできます。
+  * Web サイトは Node.js で実装されます。
   * [Socket.io](http://socket.io/) は Storm トポロジと Web サイト間のリアルタイムの通信に使用します。
     
     > [!NOTE]
@@ -83,28 +78,30 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 > [!IMPORTANT]
 > Storm と HBase の両方に対して 1 つの HDInsight クラスターを作成するメソッドはサポートされていないため、2 つのクラスターが必要です。
 
-トポロジは、[org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) クラスを使ってイベント ハブからデータを読み取り、[org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/javadoc/apidocs/org/apache/storm/hbase/bolt/class-use/HBaseBolt.html) クラスを使って HBase にデータを書き込みます。 Web サイトとの通信は、 [socket.io client.java](https://github.com/nkzawa/socket.io-client.java)を使用して行います。
+トポロジは、[org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) クラスを使ってイベント ハブからデータを読み取り、[org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/releases/1.0.1/javadocs/org/apache/storm/hbase/bolt/HBaseBolt.html) クラスを使って HBase にデータを書き込みます。 Web サイトとの通信は、 [socket.io client.java](https://github.com/nkzawa/socket.io-client.java)を使用して行います。
 
 次の図は、トポロジのレイアウトを説明しています。
 
 ![トポロジ ダイアグラム](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
 
 > [!NOTE]
-> これは、トポロジの簡略化されたビューです。 実行時に、各コンポーネントのインスタンスは、読み取られている Event Hub のパーティションごとに作成されます。 これらのインスタンスはクラスター内のノード間に配布され、次のようにデータはルーティングされます。
+> この図は、トポロジの簡略化されたビューです。 イベント ハブの各パーティションに、各コンポーネントのインスタンスが作成されます。 これらのインスタンスはクラスター内のノード間に配布され、次のようにデータはルーティングされます。
 > 
 > * スパウトからパーサーへのデータは負荷分散されます。
 > * パーサーからダッシュボードおよび HBase へのデータはデバイス ID によってグループ化されるため、同じデバイスからのメッセージは常に同じコンポーネントにフローされます。
 
 ### <a name="topology-components"></a>トポロジ コンポーネント
 
-* **EventHub スパウト**: スパウトは、Apache Storm バージョン 0.10.0 以降の一部として提供されます。
+* **イベント ハブ スパウト**: このスパウトは、Apache Storm バージョン 0.10.0 以降の一部として提供されます。
   
   > [!NOTE]
-  > この例で使用される Event Hub スパウトには、HDInsight クラスター バージョン 3.3 または 3.4 の Storm が必要です。 HDInsight で以前のバージョンの Storm と共に Event Hubs を使用する方法については、「[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
+  > この例で使用されるイベント ハブ スパウトには、HDInsight クラスター バージョン 3.5 または 3.6 の Storm が必要です。
 
-* **ParserBolt.java**: スパウトによって出力されるデータは未加工の JSON で、一度に複数のイベントが生成されることがあります。 このボルトでは、スパウトによって送出されたデータを読み込み方法とそれを複数のフィールドを含むタプルとして新しいストリームに出力する方法を示します。
+* **ParserBolt.java**: スパウトによって出力されるデータは未加工の JSON で、一度に複数のイベントが生成されることがあります。 このボルトは、スパウトから出力されたデータを読み込み、JSON メッセージを解析します。 次に、複数のフィールドを含むタプルとしてデータを出力します。
 * **DashboardBolt.java**: このコンポーネントは、Java の Socket.io クライアント ライブラリを使用して Web ダッシュボードにリアルタイムでデータを送信する方法を示します。
-* **Temperature.java**: これは、トポロジを定義し、**Config.properties** ファイルから構成データを読み込みます。
+* **no-hbase.yaml**: ローカル モードで実行しているときに使用されるトポロジ定義。 HBase コンポーネントは使用されません。
+* **with-hbase.yaml**: クラスター上でトポロジを実行しているときに使用されるトポロジ定義。 HBase コンポーネントが使用されます。
+* **dev.properties**: イベント ハブ スパウト、HBase ボルト、およびダッシュボード コンポーネントの構成情報。
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -115,7 +112,7 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 Event Hub は、この例のデータ ソースです。 Event Hub を作成するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]** -> **[モノのインターネット]** -> **[Event Hubs]** の順に選びます。
-2. **[名前空間の作成]** ブレードで、次のタスクを実行します。
+2. **[名前空間の作成]** セクションで、次のタスクを実行します。
    
    1. 名前空間の **名前** を入力します。
    2. 価格レベルを選択します。 **[[Basic]]** で十分です。
@@ -124,9 +121,9 @@ Event Hub は、この例のデータ ソースです。 Event Hub を作成す�
    5. Event Hub の **場所** を選択します。
    6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。
 
-3. 作成プロセスが完了すると、名前空間のイベント ハブのブレードが表示されます。 ここで、 **[+ イベント ハブの追加]**を選択します。 **[イベント ハブの作成]** ブレードで「**sensordata**」という名前を入力し、**[作成]** を選択します。 他のフィールドは既定値のままにします。
-4. 名前空間のイベント ハブのブレードで、 **[Event Hubs]**を選択します。 [ **sensordata** ] エントリを選択します。
-5. sensordata イベント ハブのブレードで、 **[共有アクセス ポリシー]**を選択します。 **[+ 追加]** リンクを使用して、次のポリシーを追加します。
+3. 作成プロセスが完了すると、名前空間のイベント ハブの情報が表示されます。 ここで、 **[+ イベント ハブの追加]**を選択します。 **[イベント ハブの作成]** セクションで「**sensordata**」という名前を入力し、**[作成]** を選択します。 他のフィールドは既定値のままにします。
+4. 名前空間の [Event Hubs] ビューで、**[Event Hubs]**を選択します。 [ **sensordata** ] エントリを選択します。
+5. sensordata イベント ハブで、**[共有アクセス ポリシー]**を選択します。 **[+ 追加]** リンクを使用して、次のポリシーを追加します。
 
     | ポリシー名 | Claims |
     | ----- | ----- |
@@ -147,77 +144,95 @@ Event Hub は、この例のデータ ソースです。 Event Hub を作成す�
         TemperatureMonitor/ - this contains the topology
             resources/
                 log4j2.xml - set logging to minimal.
-                hbase-site.xml - connection information for the HBase cluster.
-                Config.properties - configuration information for the topology. How to read from Event Hub and the URI to the dashboard.
-            src/ - the Java bolts and topology definition.
+                no-hbase.yaml - topology definition without hbase components.
+                with-hbase.yaml - topology definition with hbase components.
+            src/main/java/com/microsoft/examples/bolts/
+                ParserBolt.java - parses JSON data into tuples
+                DashboardBolt.java - sends data over Socket.IO to the web dashboard.
         dashboard/nodejs/ - this is the node.js web dashboard.
         SendEvents/ - utilities to send fake sensor data.
 
 > [!NOTE]
-> このドキュメントでは、このサンプルに含まれるコードの詳細については説明しません。 しかし、コードは完全にコメント化されています。
+> このドキュメントでは、この例に含まれるコードの詳細については説明しません。 しかし、コードは完全にコメント化されています。
 
-**hdinsight-eventhub-example/TemperatureMonitor/resources/Config.properties** ファイルを開き、イベント ハブの情報を次の行に追加します。
+イベント ハブから読み取るプロジェクトを構成するには、`hdinsight-eventhub-example/TemperatureMonitor/dev.properties` ファイルを開き、次の行にイベント ハブ情報を追加します。
 
-    eventhubspout.username = <shared access policy name that can read from Event Hub>
-    eventhubspout.password = <shared access policy key>
-    eventhubspout.namespace = <namespace of your Event Hub
-    eventhubspout.entitypath = <name of your event hub>
-    eventhubspout.partitions.count = 2
-
-この情報を追加したら、ファイルを保存します。
+```bash
+eventhub.read.policy.name: your_read_policy_name
+eventhub.read.policy.key: your_key_here
+eventhub.namespace: your_namespace_here
+eventhub.name: your_event_hub_name
+eventhub.partitions: 2
+```
 
 ## <a name="compile-and-test-locally"></a>コンパイルしてローカルでテストする
+
+> [!IMPORTANT]
+> トポロジをローカルで使用するには、動作している Storm 開発環境が必要です。 詳細については、Apache.org の「[Setting up a Storm development environment](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html)」(Storm 開発環境のセットアップ) を参照してください。
+
+> [!WARNING]
+> Windows 開発環境を使用している場合は、ローカルでトポロジを実行するときに `java.io.IOException` を受け取る可能性があります。 その場合は、HDInsight 上でのトポロジ実行に進んでください。
 
 テストする前に、ダッシュボードを開始し、トポロジの出力を表示し、Event Hub に格納するデータを生成する必要があります。
 
 > [!IMPORTANT]
-> このトポロジの HBase コンポーネントは、ローカルでテストするときにはアクティブではありません。 HBase クラスターの Java API には、クラスターが含まれる Azure Virtual Network の外部からアクセスできないためです。
+> このトポロジの HBase コンポーネントは、ローカルでテストするときにはアクティブではありません。 HBase クラスターの Java API には、クラスターが含まれる Azure Virtual Network の外部からアクセスできません。
 
 ### <a name="start-the-web-application"></a>Web アプリケーションの開始
 
-1. 新しいコマンド プロンプトまたはターミナルを開き、ディレクトリを **hdinsight-eventhub-example/dashboard** に変更します。 次のコマンドを使用して、Web アプリケーションで必要な依存関係をインストールします。
+1. コマンド プロンプトを開き、ディレクトリを `hdinsight-eventhub-example/dashboard` に変更します。 次のコマンドを使用して、Web アプリケーションで必要な依存関係をインストールします。
    
-        npm install
+    ```bash
+    npm install
+    ```
 
 2. 次のコマンドを使用して、Web アプリケーションを開始します。
    
-        node server.js
+    ```bash
+    node server.js
+    ```
    
     次のテキストのようなメッセージが表示されます。
    
         Server listening at port 3000
 
-3. Web ブラウザーを開き、アドレスとして「**http://localhost:3000/**」と入力します。 次の図ようなページが表示されます。
+3. Web ブラウザーを開き､アドレスに `http://localhost:3000/` を入力します｡ 次の図ようなページが表示されます。
    
     ![web dashboard](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
    
-    このコマンド プロンプトまたはターミナルは開いたままにします。 テストした後で、Ctrl + C を使用して、Web サーバーを停止します。
+    このコマンド プロンプトは開いたままにしておきます。 テストした後で、Ctrl + C を使用して、Web サーバーを停止します。
 
-### <a name="start-generating-data"></a>データの生成を開始する
+### <a name="generate-data"></a>データを生成する
 
 > [!NOTE]
-> このセクションの手順では、任意のプラットフォームで使用できるように、Node.js を使用します。 その他の言語の例については、 **Sendevent** ディレクトリをご覧ください。
+> このセクションの手順では、任意のプラットフォームで使用できるように、Node.js を使用します。 その他の言語の例については、`SendEvents` ディレクトリを参照してください。
 
-1. 新しいプロンプト、シェル、またはターミナルを開き、ディレクトリを **hdinsight-eventhub-example/SendEvents/nodejs** に変更します。 アプリケーションで必要な依存関係をインストールするには、次のコマンドを使用します。
-   
-        npm install
+1. 新しいプロンプト、シェル、またはターミナルを開き、ディレクトリを `hdinsight-eventhub-example/SendEvents/nodejs` に変更します。 アプリケーションで必要な依存関係をインストールするには、次のコマンドを使用します。
 
-2. テキスト エディターで、 **app.js** ファイルを開き、先に取得した Event Hub の情報を追加します。
+    ```bash
+    npm install
+    ```
+
+2. テキスト エディターで、`app.js` ファイルを開き、先に取得したイベント ハブの情報を追加します。
    
-        // ServiceBus Namespace
-        var namespace = 'YourNamespace';
-        // Event Hub Name
-        var hubname ='sensordata';
-        // Shared access Policy name and key (from Event Hub configuration)
-        var my_key_name = 'devices';
-        var my_key = 'YourKey';
+    ```javascript
+    // ServiceBus Namespace
+    var namespace = 'YourNamespace';
+    // Event Hub Name
+    var hubname ='sensordata';
+    // Shared access Policy name and key (from Event Hub configuration)
+    var my_key_name = 'devices';
+    var my_key = 'YourKey';
+    ```
    
    > [!NOTE]
-   > この例では、**sensordata** を Event Hub の名前として使うことと、**Send** 要求を持つポリシーの名前として **devices** を使うことを前提としています。
+   > この例では、イベント ハブ名に `sensordata`、 `Send` 要求を含むポリシーの名前に `devices` を使用していることを前提としています。
 
 3. 次のコマンドを使用して、Event Hub に新しいエントリを挿入します。
    
-        node app.js
+    ```bash
+    node app.js
+    ```
    
     Event Hub に送信されるデータを含む出力の複数の行が表示されます。
    
@@ -232,13 +247,25 @@ Event Hub は、この例のデータ ソースです。 Event Hub を作成す�
         {"TimeStamp":"2015-02-10T14:43.05.00320Z","DeviceId":"8","Temperature":43}
         {"TimeStamp":"2015-02-10T14:43.05.00320Z","DeviceId":"9","Temperature":84}
 
-### <a name="start-the-topology"></a>トポロジの開始
+### <a name="build-and-start-the-topology"></a>トポロジのビルドと開始
 
-1. 新しいコマンド プロンプト、シェル、またはターミナルを開き、ディレクトリを **hdinsight-eventhub-example/TemperatureMonitor**に変更し、次のコマンドを使用してトポロジを開始します。
-   
-        mvn compile exec:java
-   
-    このコマンドは、ローカル モードでトポロジを開始します。 **Config.properties** ファイルに含まれる値によって、イベント ハブとローカル ダッシュボード Web サイトの接続情報が提供されます。 開始されると、トポロジがイベント ハブのエントリを読み取り、ローカル コンピューターで実行されているダッシュボードに送信します。 Web ダッシュボードに、次の図のような線が表示されます。
+1. 新しいコマンド プロンプトを開き、ディレクトリを `hdinsight-eventhub-example/TemperatureMonitor` に変更します。 トポロジを構築およびパッケージ化するには、次のコマンドを使用します。 
+
+    ```bash
+    mvn clean package
+    ```
+
+2. ローカル モードでトポロジを開始するには、次のコマンドを使用します。
+
+    ```bash
+    storm jar target/TemperatureMonitor-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local --filter dev.properties resources/no-hbase.yaml
+    ```
+
+    * `--local` を使用すると、ローカル モードでトポロジが開始されます。
+    * `--filter` は、`dev.properties` ファイルを使用して、トポロジ定義にパラメーターを設定します。
+    * `resources/no-hbase.yaml` は `no-hbase.yaml` トポロジ定義を使用します。
+ 
+   開始されると、トポロジがイベント ハブのエントリを読み取り、ローカル コンピューターで実行されているダッシュボードに送信します。 Web ダッシュボードに、次の図のような線が表示されます。
    
     ![dashboard with data](./media/hdinsight-storm-sensor-data-analysis/datadashboard.png)
 
@@ -251,18 +278,18 @@ Event Hub は、この例のデータ ソースです。 Event Hub を作成す�
 
 ## <a name="create-a-storm-and-hbase-cluster"></a>Storm クラスターと HBase クラスターの作成
 
-このセクションの手順では、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md) を使用して Azure Virtual Network を作成し、その仮想ネットワーク上に Storm クラスターと HBase クラスターを作成します。 また、このテンプレートは Azure Web アプリを作成し、それにダッシュボードのコピーをデプロイします。
+このセクションの手順では、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md)を使用して Azure Virtual Network を作成し、その仮想ネットワーク上に Storm クラスターと HBase クラスターを作成します。 また、このテンプレートは Azure Web アプリを作成し、それにダッシュボードのコピーをデプロイします。
 
 > [!NOTE]
 > 仮想ネットワークは、Storm クラスターで実行されているトポロジが HBase Java API を使用して HBase クラスターと直接通信できるように使用されます。
 
-このドキュメントで使う Resource Manager テンプレートは、パブリック BLOB コンテナー (**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hbase-storm-cluster-in-vnet.json**) 内にあります。
+このドキュメントで使う Resource Manager テンプレートは、パブリック BLOB コンテナー (**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hbase-storm-cluster-in-vnet-3.6.json**) 内にあります。
 
 1. 次のボタンをクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet-3.5.json" target="_blank"><img src="./media/hdinsight-storm-sensor-data-analysis/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet-3.6.json" target="_blank"><img src="./media/hdinsight-storm-sensor-data-analysis/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-2. **[カスタム デプロイ]** ブレードで以下の値を入力します。
+2. **[カスタム デプロイ]** セクションで以下の値を入力します。
    
     ![HDInsight parameters](./media/hdinsight-storm-sensor-data-analysis/parameters.png)
    
@@ -280,18 +307,20 @@ Event Hub は、この例のデータ ソースです。 Event Hub を作成す�
 5. 使用条件を読み、**[上記の使用条件に同意する]** をオンにします。
 6. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
-リソースが作成されると、クラスターと Web ダッシュボードが含まれているリソース グループのブレードにリダイレクトされます。
+リソースが作成されると、リソース グループに関する情報が表示されます。
 
-![Resource group blade for the vnet and clusters](./media/hdinsight-storm-sensor-data-analysis/groupblade.png)
+![VNET とクラスターのリソース グループ](./media/hdinsight-storm-sensor-data-analysis/groupblade.png)
 
 > [!IMPORTANT]
 > HDInsight クラスターの名前が **storm-BASENAME** と **hbase-BASENAME** であることに注目してください。この場合、BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。 また、ダッシュボード サイトの名前が **basename-dashboard** であることにも注目してください。 この値は、このドキュメントで後ほど使用されます。
 
 ## <a name="configure-the-dashboard-bolt"></a>ダッシュボード ボルトの構成
 
-Web アプリとしてデプロイされたダッシュボードにデータを送信するには、**Config.properties** ファイル内の次の行を変更する必要があります。
+Web アプリとしてデプロイされたダッシュボードにデータを送信するには、`dev.properties` ファイル内の次の行を変更する必要があります。
 
-    dashboard.uri: http://localhost:3000
+```yaml
+dashboard.uri: http://localhost:3000
+```
 
 `http://localhost:3000` を `http://BASENAME-dashboard.azurewebsites.net` に変更し、ファイルを保存します。 **BASENAME** は、前の手順で指定したベース名に置き換えます。 また、前の手順で作成したリソース グループを使用して、ダッシュボードを選択し、URL を表示することもできます。
 
@@ -301,23 +330,31 @@ HBase にデータを格納するには、まず、テーブルを作成する�
 
 1. SSH を使用して HBase クラスターに接続します。その際、クラスターの作成時にテンプレートに指定した SSH ユーザーとパスワードを使います。 たとえば、`ssh` コマンドを使用して接続する場合は、次の構文を使用します。
    
-        ssh USERNAME@hbase-BASENAME-ssh.azurehdinsight.net
+    ```bash
+    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ```
    
-    このコマンドでは、**USERNAME** はクラスターの作成時に指定した SSH ユーザー名に置き換え、**BASENAME** は指定したベース名に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
+    `sshuser` を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 `clustername` を HBase クラスター名に置き換えます。
 
 2. SSH セッションから HBase シェルを開始します。
    
-        hbase shell
+    ```bash
+    hbase shell
+    ```
    
     シェルが読み込まれると、`hbase(main):001:0>` プロンプトが表示されます。
 
 3. HBase シェルから、次のコマンドを入力して、センサー データを格納するテーブルを作成します。
    
-        create 'SensorData', 'cf'
+    ```hbase
+    create 'SensorData', 'cf'
+    ```
 
 4. 次のコマンドを使用して、テーブルが作成されたことを確認します。
    
-        scan 'SensorData'
+    ```hbase
+    scan 'SensorData'
+    ```
    
     これにより、次の例のように、テーブル内の行数が 0 であることを示す情報が返されます。
    
@@ -327,49 +364,83 @@ HBase にデータを格納するには、まず、テーブルを作成する�
 
 ## <a name="configure-the-hbase-bolt"></a>HBase ボルトの構成
 
-Storm クラスターから HBase に書き込むには、HBase クラスターの構成の詳細と共に HBase ボルトを指定する必要があります。 この例では、HBase クラスターから **hbase-site.xml** ファイルを使用します。
+Storm クラスターから HBase に書き込むには、HBase クラスターの構成の詳細と共に HBase ボルトを指定する必要があります。
 
-### <a name="download-the-hbase-sitexml"></a>hbase-site.xml のダウンロード
+1. 次のいずれかの例を使用すると、HBase クラスターの Zookeeper クォーラムを取得できます。
 
-コマンド プロンプトで SCP を使用して、クラスターから **hbase-site.xml** ファイルをダウンロードします。 次の例では、**USERNAME** はクラスターの作成時に指定した SSH ユーザーに置き換え、**BASENAME** は前に指定したベース名に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。 `/path/to/TemperatureMonitor/resources/hbase-site.xml` は、TemperatureMonitor プロジェクト内のこのファイルへのパスに置き換えます。
+    ```bash
+    CLUSTERNAME='your_HDInsight_cluster_name'
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HBASE/components/HBASE_MASTER" | jq '.metrics.hbase.master.ZookeeperQuorum'
+    ```
 
-    scp USERNAME@hbase-BASENAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml /path/to/TemperatureMonitor/resources/hbase-site.xml
+    > [!NOTE]
+    > `your_HDInsight_cluster_name` を、使用する HDInsight クラスターの名前に置き換えます。 `jq` ユーティリティのインストール方法の詳細については、[https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) を参照してください。
+    >
+    > メッセージが表示されたら、HDInsight 管理者ログインのパスワードを入力します。
 
-このコマンドにより、指定したパスに **hbase-site.xml** がダウンロードされます。
+    ```powershell
+    $clusterName = 'your_HDInsight_cluster_name`
+    $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HBASE/components/HBASE_MASTER" -Credential $creds
+    $respObj = ConvertFrom-Json $resp.Content
+    $respObj.metrics.hbase.master.ZookeeperQuorum
+    ```
 
-### <a name="enable-the-hbase-bolt"></a>HBase ボルトを有効にします。
+    > [!NOTE]
+    > 'your_HDInsight_cluster_name' を、使用する HDInsight クラスターの名前で置き換えます。 メッセージが表示されたら、HDInsight 管理者ログインのパスワードを入力します。
+    >
+    > この例では、Azure PowerShell が必要です。 Azure PowerShell の使用方法の詳細については、「[Get started with Azure PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)」(Azure PowerShell の使用) を参照してください。
 
-HBase ボルト コンポーネントを有効にするには、**TemperatureMonitor/src/main/java/com/microsoft/examples/Temperature.java** を開き、次の行をコメント解除します。
+    以下の例では、次のテキストのような情報が返されます。
 
-    // topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
-    //  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
+    `zk2-hbase.mf0yeg255m4ubit1auvj1tutvh.ex.internal.cloudapp.net:2181,zk0-hbase.mf0yeg255m4ubit1auvj1tutvh.ex.internal.cloudapp.net:2181,zk3-hbase.mf0yeg255m4ubit1auvj1tutvh.ex.internal.cloudapp.net:2181`
 
-これらの行をコメント解除したら、ファイルを保存します。
+    この情報は、Storm が HBase クラスターと通信するために使用されます。
+
+2. `dev.properties` ファイルを変更し、Zookeeper クォーラム情報を次の行に追加します。
+
+    ```yaml
+    hbase.zookeeper.quorum: your_hbase_quorum
+    ```
 
 ## <a name="build-package-and-deploy-the-solution-to-hdinsight"></a>ソリューションのビルド、パッケージ化、HDInsight へのデプロイ
 
 開発環境で、以下の手順に従って Storm トポロジを storm クラスターにデプロイします。
 
-1. **TemperatureMonitor** ディレクトリから次のコマンドを使用して、新しいビルドを実行し、プロジェクトから JAR パッケージを作成します。
+1. `TemperatureMonitor` ディレクトリから次のコマンドを使用して、新しいビルドを実行し、プロジェクトから JAR パッケージを作成します。
    
-        mvn clean compile package
+        mvn clean package
    
-    このコマンドにより、プロジェクトの **target** ディレクトリに **TemperatureMonitor-1.0-SNAPSHOT.jar** という名前のファイルが作成されます。
+    このコマンドで、プロジェクトの 'target' ディレクトリに `TemperatureMonitor-1.0-SNAPSHOT.jar in the ` というファイルが作成されます。
 
-2. scp を使用して、 **TemperatureMonitor-1.0-SNAPSHOT.jar** ファイルを Storm クラスターにアップロードします。 次の例では、**USERNAME** はクラスターの作成時に指定した SSH ユーザーに置き換え、**BASENAME** は前に指定したベース名に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
+2. scp を使用して `TemperatureMonitor-1.0-SNAPSHOT.jar` ファイルと `dev.properties` ファイルを Storm クラスターにアップロードします。 次の例では、`sshuser` をクラスターの作成時に指定した SSH ユーザーで置き換えます。また、`clustername` を Storm クラスターの名前で置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
    
-        scp target/TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:TemperatureMonitor-1.0-SNAPSHOT.jar
+    ```bash
+    scp target/TemperatureMonitor-1.0-SNAPSHOT.jar dev.properties sshuser@clustername-ssh.azurehdinsight.net:
+    ```
 
    > [!NOTE]
    > ファイルのアップロードには数分かかる場合があります。
 
-3. ファイルのアップロードが完了したら、SSH を使用してクラスターに接続します。
+    `scp` および `ssh` コマンドの使用方法の詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](./hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+
+3. ファイルのアップロードが完了したら、SSH を使用して Storm クラスターに接続します。
    
-        ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
+    ```bash
+    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ```
+
+    `sshuser` を SSH ユーザー名で置き換えます。 `clustername` を Storm クラスター名で置き換えます。
 
 4. トポロジを開始するには、SSH セッションから次のコマンドを使用します。
    
-        storm jar TemperatureMonitor-1.0-SNAPSHOT.jar com.microsoft.examples.Temperature temperature
+    ```bash
+    storm jar TemperatureMonitor-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote --filter dev.properties -R /with-hbase.yaml
+    ```
+
+    * `--remote` からトポロジが Nimbus サービスに送信され、Nimbus サービスからクラスター内のスーパーバイザー ノードに配信されます。
+    * `--filter` は、`dev.properties` ファイルを使用して、トポロジ定義にパラメーターを設定します。
+    * `-R /with-hbase.yaml` は、パッケージに含まれている `with-hbase.yaml` トポロジを使用します。
 
 5. トポロジが開始されたら、Azure に発行した Web サイトにブラウザーを開いて、 `node app.js` コマンドを使用して Event Hub にデータを送信します。 情報を表示する Web ダッシュボードの更新が表示されます。
    
@@ -381,17 +452,25 @@ HBase ボルト コンポーネントを有効にするには、**TemperatureMon
 
 1. SSH を使用して HBase クラスターに接続します。
    
-        ssh USERNAME@hbase-BASENAME-ssh.azurehdinsight.net
+    ```bash
+    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ```
+
+    `sshuser` を SSH ユーザー名で置き換えます。 `clustername` を HBase クラスター名に置き換えます。
 
 2. SSH セッションから HBase シェルを開始します。
    
-        hbase shell
+    ```bash
+    hbase shell
+    ```
    
     シェルが読み込まれると、`hbase(main):001:0>` プロンプトが表示されます。
 
 3. テーブルの行を表示します。
    
-        scan 'SensorData'
+    ```hbase
+    scan 'SensorData'
+    ```
    
     このコマンドにより、次のテキストのように、テーブルにデータが含まれることを示す情報が返されます。
    
@@ -423,6 +502,7 @@ HBase ボルト コンポーネントを有効にするには、**TemperatureMon
    > このスキャン操作では、テーブルから最大 10 行が返されます。
 
 ## <a name="delete-your-clusters"></a>クラスターを削除する
+
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 クラスター、ストレージ、Web アプリを一度に削除するには、それらを含むリソース グループを削除します。

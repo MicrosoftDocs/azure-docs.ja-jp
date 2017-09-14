@@ -6,17 +6,17 @@ keywords:
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
-ms.date: 05/02/2017
+ms.date: 08/22/2017
 ms.topic: hero-article
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
-manager: erikre
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 2292b35819c5a98b690041e10f6e6d1a93fa7837
+manager: cfowler
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -44,11 +44,14 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 [az group create](/cli/azure/group#create) でリソース グループを作成します。 Azure リソース グループとは、Function App、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-次の例では、`myResourceGroup` という名前のリソース グループを作成します。
+次の例では、`myResourceGroup` という名前のリソース グループを作成します。  
+Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
+
+
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
 Functions は、関数に関する状態その他の情報を維持するために Azure Storage アカウントを使用します。 [az storage account create](/cli/azure/storage/account#create) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。
@@ -81,12 +84,13 @@ az storage account create --name <storage_name> --location westeurope --resource
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#create) コマンドを使用します。 
+関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#create) コマンドを使用します。 
 
 次のコマンドで、`<app_name>` プレースホルダーを独自の一意の Function App 名に、`<storage_name>` をストレージ アカウント名に置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 
 
 ```azurecli-interactive
-az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup --consumption-plan-location westeurope
+az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
+--consumption-plan-location westeurope
 ```
 既定では、Function App は従量課金ホスティング プランで作成されます。つまり、リソースは関数の要求に応じて動的に追加され、関数が実行されている場合にのみ課金されます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 
 
@@ -117,7 +121,9 @@ Function App が作成されると、Azure CLI によって次の例のような
 新しい Function App で関数コードを作成する方法はいくつかあります。 このトピックでは、GitHub のサンプル レポジトリについて説明します。 前回と同様、次のコードで `<app_name>` プレースホルダーを作成済みの Function App の名前に置き換えます。 
 
 ```azurecli-interactive
-az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --repo-url https://github.com/Azure-Samples/functions-quickstart --branch master --manual-integration
+az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --branch master \
+--repo-url https://github.com/Azure-Samples/functions-quickstart \
+--manual-integration 
 ```
 デプロイ ソースの設定後に、次の例のような情報が Azure CLI に表示されます (読みやすくするために null 値は削除してあります)。
 
@@ -146,7 +152,7 @@ curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
 
 ![ブラウザーに表示された関数の応答。](./media/functions-create-first-azure-function-azure-cli/functions-azure-cli-function-test-curl.png)  
 
-コマンド ラインで使用可能な cURL がない場合は、Web ブラウザーのアドレスに同じ URL を入力します。 再度、`<app_name>` プレースホルダーを Function App の名前に置き換え、URL にクエリ文字列 `&name=<yourname>` を追加して、要求を実行します。 
+コマンド ラインで使用可能な cURL がない場合は、Web ブラウザーのアドレスに同じ URL を入力します。 再度、`<app_name>` プレースホルダーを関数アプリの名前に置き換え、URL にクエリ文字列 `&name=<yourname>` を追加して、要求を実行します。 
 
     http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
    

@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 6/14/2017
+ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 629b3c54a35f939845349e6f2ed7743885e41f3b
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 699ec578832e894b5bfc0cfad35528eac377c4ff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
@@ -36,7 +35,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 **無制限のスケーリング** - Azure Backup では、Azure クラウドの基盤となる機能と無制限のスケールを使用して、高可用性を実現します。その際、保守と監視のオーベーヘッドは発生しません。 アラートを設定して、イベントに関する情報を提供することはできますが、クラウドではデータの高可用性について心配する必要はありません。
 
-**複数のストレージ オプション** - 高可用性によってストレージ レプリケーションが実現します。 Azure Backup には、[ローカル冗長ストレージ](../storage/storage-redundancy.md#locally-redundant-storage)と [geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)の 2 種類のレプリケーションが用意されています。 必要に応じて、いずれかのバックアップ ストレージ オプションを選択します。
+**複数のストレージ オプション** - 高可用性によってストレージ レプリケーションが実現します。 Azure Backup には、[ローカル冗長ストレージ](../storage/common/storage-redundancy.md#locally-redundant-storage)と [geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)の 2 種類のレプリケーションが用意されています。 必要に応じて、いずれかのバックアップ ストレージ オプションを選択します。
 
 * ローカル冗長ストレージ (LRS) では、同じリージョンのペアリングされているデータセンターにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
 
@@ -79,6 +78,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | ファイルとフォルダー |Windows コンピューター |<p>[Azure Backup エージェント](backup-configure-vault.md)、</p> <p>[System Center DPM](backup-azure-dpm-introduction.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Hyper-V 仮想マシン (Windows) |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Hyper-V 仮想マシン (Linux) |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
+| VMware 仮想マシン |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | の接続文字列 |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft SharePoint |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft Exchange |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
@@ -96,10 +96,10 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | Azure IaaS VM のバックアップ |[事前スクリプトおよび事後スクリプト フレームワーク](backup-azure-linux-app-consistent.md)を使用するアプリケーション整合性バックアップ<br/> [詳細なファイルの回復](backup-azure-restore-files-from-vm.md)<br/> [すべての VM ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM の復元](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
-Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/storage-premium-storage.md) に関する記事を参照してください。
+Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/common/storage-premium-storage.md) に関する記事を参照してください。
 
 ### <a name="back-up-premium-storage-vms"></a>Premium Storage VM のバックアップ
-Premium Storage VM をバックアップすると、Backup サービスによって、Premium Storage アカウントに "AzureBackup-" という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。 Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#scalability-and-performance-targets)に関する記事をご覧ください。 バックアップ ジョブが完了したら、ステージングの場所は削除されます。 ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
+Premium Storage VM をバックアップすると、Backup サービスによって、Premium Storage アカウントに "AzureBackup-" という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。 Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 詳細については、[Premium Storage の制限](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)に関する記事をご覧ください。 バックアップ ジョブが完了したら、ステージングの場所は削除されます。 ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/common/storage-premium-storage.md#pricing-and-billing)に準じます。
 
 > [!NOTE]
 > ステージングの場所は変更または編集できません。
@@ -200,7 +200,7 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 
 ## <a name="backup-and-retention"></a>バックアップと保持
 
-Azure Backup には、*保護されているインスタンス*につき復旧ポイント (バックアップ コピーまたはスナップショットとも呼ばれます) が 9,999 個という制限があります。 保護されているインスタンスとは、データを Azure にバックアップするように構成されているコンピューター、サーバー (物理または仮想)、またはワークロードです。 詳細については、「[保護されているインスタンスとは](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)」セクションを参照してください。 インスタンスは、データのバックアップ コピーが保存されると保護されます。 データのバックアップ コピーは、保護することです。 ソース データが失われた場合や破損した場合は、バックアップ コピーによってソース データを復元できることがあります。 次の表は、コンポーネントごとの最大バックアップ頻度を示します。 バックアップ ポリシーの構成では、復旧ポイントを使用する頻度を決定します。 たとえば、日ごとに復旧ポイントを作成すると、期限切れになるまで 27 年間復旧ポイントを保持できます。 月ごとの復旧ポイントを取得すると、期限切れになるまで 833 年間復旧ポイントを保持できます。 Backup サービスによって、復旧ポイントに有効期限が設定されることはありません。
+Azure Backup には、*保護されているインスタンス*につき復旧ポイント (バックアップ コピーまたはスナップショットとも呼ばれます) が 9,999 個という制限があります。 保護されているインスタンスとは、データを Azure にバックアップするように構成されているコンピューター、サーバー (物理または仮想)、またはワークロードです。 詳細については、「[保護されているインスタンスとは](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)」セクションを参照してください。 インスタンスは、データのバックアップ コピーが保存されると保護されます。 データのバックアップ コピーは、保護することです。 ソース データが失われた場合や破損した場合は、バックアップ コピーによってソース データを復元できることがあります。 次の表は、コンポーネントごとの最大バックアップ頻度を示します。 バックアップ ポリシーの構成では、復旧ポイントを使用する頻度を決定します。 たとえば、日ごとに復旧ポイントを作成すると、期限切れになるまで 27 年間復旧ポイントを保持できます。月ごとの復旧ポイントを取得すると、期限切れになるまで 833 年間復旧ポイントを保持できます。Backup サービスによって、復旧ポイントに有効期限が設定されることはありません。
 
 |  | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
@@ -224,10 +224,10 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 ## <a name="what-is-a-recovery-services-vault"></a>Recovery Services コンテナーとは
 Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 サブスクリプション内に任意の数の Recovery Services コンテナーを作成できます。
 
-Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 Azure Portal では Backup コンテナーを作成できなくなりましたが、Backup コンテナーは引き続きサポートされています。
+Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 バックアップ コンテナーをポータルで作成することはできなくなりましたが、バックアップ コンテナーは引き続きサポートされます。
 
 > [!IMPORTANT]
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 1 日以降**:
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降は、PowerShell を使ってバックアップ コンテナーを作成することはできません。 <br/> **2017 年 11 月 1 日まで**:
 >- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
 >- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >

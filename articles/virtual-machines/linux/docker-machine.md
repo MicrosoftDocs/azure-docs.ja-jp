@@ -1,9 +1,9 @@
 ---
 title: "Docker マシンを使用して Azure で Linux ホストを作成する | Microsoft Docs"
-description: "Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
+description: "Docker マシンを使用して、Azure で Docker ホストを作成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: squillace
+author: iainfoulds
 manager: timlt
 editor: tysonn
 ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
@@ -12,52 +12,57 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/22/2016
-ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b303510970aca957a4da5f2ed51a9125302d419a
-ms.lasthandoff: 04/03/2017
+ms.date: 06/19/2017
+ms.author: iainfou
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: a69951ed60edab8ae20374ab3869b468979c4907
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="use-docker-machine-with-the-azure-driver"></a>Docker マシンと Azure ドライバーを使用する
-[Docker](https://www.docker.com/) では、VM ではなく Linux コンテナーを使用する仮想化が提供され、共有リソース上でアプリケーション データとコンピューティングを分離します。 このトピックでは、[Docker マシン](https://docs.docker.com/machine/)をいつどのように使用するかを説明します。 `docker-machine` コマンドでは、新しい Linux VM が Azure に作成され、Linux コンテナーの docker ホストとして有効化されます。
+# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker マシンを使用して、Azure で Docker ホストを作成する方法
+この記事では、[Docker マシン](https://docs.docker.com/machine/)を使用して、Azure で Docker ホストを作成する方法を詳しく説明します。 `docker-machine` コマンドを実行すると、Azure で Linux 仮想マシン (VM) が作成され、次に Docker がインストールされます。 これにより、同じローカル ツールとワークフローを使用して、Azure で Docker ホストを管理できます。
 
 ## <a name="create-vms-with-docker-machine"></a>Docker マシンで VM を作成する
-ドライバー オプション (`-d`) の `azure` ドライバー引数とその他の引数を利用し、`docker-machine create` コマンドで Azure に Docker ホスト VM を作成します。 
+まず、次のように、[az account show](/cli/azure/account#show) を使用して Azure サブスクリプション ID を取得します。
 
-次の例では既定値が利用されていますが、VM のポート 80 を開いてインターネットに接続し、nginx コンテナーをテストし、`ops` を SSH のログオン ユーザーに設定し、新しい VM `machine` を呼び出します。 
+```azurecli
+sub=$(az account show --query "id" -o tsv)
+```
 
-`docker-machine create --driver azure` と入力すると、オプションとその既定値が表示されます。[Docker Azure ドライバーのドキュメント](https://docs.docker.com/machine/drivers/azure/)も参照してください  (2 要素認証を有効にした場合、2 つ目の要素を使用した認証が求められます)。
+`docker-machine create` で *azure* をドライバーとして指定することによって、Azure に Docker ホスト VM を作成します。 詳細については、[Docker の Azure ドライバー ドキュメント](https://docs.docker.com/machine/drivers/azure/)を参照してください。
+
+次の例では、*myVM* という名前の VM と *azureuser* という名前のユーザー アカウントを作成し、ホスト VM でポート *80* を開きます。 画面の指示に従って Azure アカウントにログインし、リソースを作成および管理するアクセス許可を Docker マシンに付与します。
 
 ```bash
 docker-machine create -d azure \
-  --azure-ssh-user ops \
-  --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> \
-  --azure-open-port 80 \
-  machine
+    --azure-subscription-id $sub \
+    --azure-ssh-user azureuser \
+    --azure-open-port 80 \
+    myvm
 ```
 
-アカウントに 2 要素認証を設定しているかどうかにもよりますが、出力は次のようになります。
+出力は次の例のようになります。
 
 ```bash
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
 Creating client certificate: /Users/user/.docker/machine/certs/cert.pem
 Running pre-create checks...
-(machine) Microsoft Azure: To sign in, use a web browser to open the page https://aka.ms/devicelogin. Enter the code <code> to authenticate.
-(machine) Completed machine pre-create checks.
+(myvmdocker) Completed machine pre-create checks.
 Creating machine...
-(machine) Querying existing resource group.  name="machine"
-(machine) Creating resource group.  name="machine" location="eastus"
-(machine) Configuring availability set.  name="docker-machine"
-(machine) Configuring network security group.  name="machine-firewall" location="eastus"
-(machine) Querying if virtual network already exists.  name="docker-machine-vnet" location="eastus"
-(machine) Configuring subnet.  name="docker-machine" vnet="docker-machine-vnet" cidr="192.168.0.0/16"
-(machine) Creating public IP address.  name="machine-ip" static=false
-(machine) Creating network interface.  name="machine-nic"
-(machine) Creating storage account.  name="vhdsolksdjalkjlmgyg6" location="eastus"
-(machine) Creating virtual machine.  name="machine" location="eastus" size="Standard_A2" username="ops" osImage="canonical:UbuntuServer:15.10:latest"
+(myvmdocker) Querying existing resource group.  name="docker-machine"
+(myvmdocker) Creating resource group.  name="docker-machine" location="westus"
+(myvmdocker) Configuring availability set.  name="docker-machine"
+(myvmdocker) Configuring network security group.  name="myvmdocker-firewall" location="westus"
+(myvmdocker) Querying if virtual network already exists.  rg="docker-machine" location="westus" name="docker-machine-vnet"
+(myvmdocker) Creating virtual network.  name="docker-machine-vnet" rg="docker-machine" location="westus"
+(myvmdocker) Configuring subnet.  name="docker-machine" vnet="docker-machine-vnet" cidr="192.168.0.0/16"
+(myvmdocker) Creating public IP address.  name="myvmdocker-ip" static=false
+(myvmdocker) Creating network interface.  name="myvmdocker-nic"
+(myvmdocker) Creating storage account.  sku=Standard_LRS name="vhdski0hvfazyd8mn991cg50" location="westus"
+(myvmdocker) Creating virtual machine.  location="westus" size="Standard_A2" username="azureuser" osImage="canonical:UbuntuServer:16.04.0-LTS:latest" name="myvmdocker"
 Waiting for machine to be running, this may take a few minutes...
 Detecting operating system of created instance...
 Waiting for SSH to be available...
@@ -69,65 +74,68 @@ Copying certs to the remote machine...
 Setting Docker configuration on the remote daemon...
 Checking connection to Docker...
 Docker is up and running!
-To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env machine
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvmdocker
 ```
 
 ## <a name="configure-your-docker-shell"></a>Docker シェルを構成する
-次に、 `docker-machine env <VM name>` と入力すると、シェルの構成に必要なものが表示されます。 
+Azure で Docker ホストに接続するには、適切な接続設定を定義します。 出力の最後に示されている、次のような、Docker ホストの接続情報を表示します。 
 
 ```bash
-docker-machine env machine
+docker-machine env myvmdocker
 ```
 
-次のような環境情報が出力されます。 IP アドレスが割り当てられています。これは VM のテストで必要になります。
+出力は次の例のようになります。
 
 ```bash
 export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://191.237.46.90:2376"
-export DOCKER_CERT_PATH="/Users/rasquill/.docker/machine/machines/machine"
+export DOCKER_HOST="tcp://40.68.254.142:2376"
+export DOCKER_CERT_PATH="/Users/user/.docker/machine/machines/machine"
 export DOCKER_MACHINE_NAME="machine"
 # Run this command to configure your shell:
-# eval $(docker-machine env machine)
+# eval $(docker-machine env myvmdocker)
 ```
 
-提案された構成コマンドを実行するか、環境変数を自分で設定できます。 
+接続設定を定義するには、提案された構成コマンド (`eval $(docker-machine env myvmdocker)`) を実行することも、手動で環境変数を設定することもできます。 
 
 ## <a name="run-a-container"></a>コンテナーを実行する
-これで単純な Web サーバーを実行し、すべてが正常に動作しているかどうかをテストできます。 ここでは標準の nginx イメージを使用し、ポート 80 で待機することと、VM の再起動時にコンテナーも再起動することを指定します (`--restart=always`)。 
+実行中のコンテナーを確認するには、基本的な NGINX Web サーバーを実行します。 `docker run` を使用してコンテナーを作成し、次のように Web トラフィック用にポート 80 を公開します。
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
 ```
 
-出力は次のようになります。
+出力は次の例のようになります。
 
 ```bash
 Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
-efd26ecc9548: Pull complete
-a3ed95caeb02: Pull complete
-83f52fbfa5f8: Pull complete
-fa664caa1402: Pull complete
-Digest: sha256:12127e07a75bda1022fbd4ea231f5527a1899aad4679e3940482db3b57383b1d
+ff3d52d8f55f: Pull complete
+226f4ec56ba3: Pull complete
+53d7dd52b97d: Pull complete
+Digest: sha256:41ad9967ea448d7c2b203c699b429abe1ed5af331cd92533900c6d77490e0268
 Status: Downloaded newer image for nginx:latest
-25942c35d86fe43c688d0c03ad478f14cc9c16913b0e1c2971cb32eb4d0ab721
+675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
+```
+
+`docker ps` を使用して、実行中のコンテナーを表示します。 次のサンプル出力は、ポート 80 を公開して実行中の NGINX コンテナーを示しています。
+
+```bash
+CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES
+d5b78f27b335    nginx    "nginx -g 'daemon off"    5 minutes ago    Up 5 minutes    0.0.0.0:80->80/tcp, 443/tcp    festive_mirzakhani
 ```
 
 ## <a name="test-the-container"></a>コンテナーをテストする
-`docker ps`を利用し、実行中のコンテナーを調べます。
+次のようにして、Docker ホストのパブリック IP アドレスを取得します。
+
 
 ```bash
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                         NAMES
-d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago       Up 5 minutes        0.0.0.0:80->80/tcp, 443/tcp   goofy_mahavira
+docker-machine ip myvmdocker
 ```
 
-実行中のコンテナーを確認します。`docker-machine ip <VM name>` と入力すると、IP アドレスが見つかります (`env` コマンドで見つけたアドレスを忘れた場合)。
+実行中のコンテナーを確認するには、Web ブラウザーを開き、前のコマンドの出力に示されているパブリック IP アドレスを入力します。
 
-![実行中の ngnix コンテナー](./media/docker-machine/nginxsuccess.png)
+![実行中の ngnix コンテナー](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>次のステップ
-興味があれば、[Docker VM Extension](dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) で同じ操作を試してください。Azure CLI または Azure Resource Manager のテンプレートを使用します。 
-
-Docker を使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Working with Docker (Docker を使用した作業)](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)」を参照してください。 HealthClinic.biz のデモに関連する他のクイック スタートについては、「 [Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
-
+[Docker VM 拡張機能](dockerextension.md)を使用してホストを作成することもできます。 Docker Compose の使用例については、[Azure での Docker と Compose の使用](docker-compose-quickstart.md)に関するページをご覧ください。
 

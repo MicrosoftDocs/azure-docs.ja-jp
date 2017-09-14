@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure ポータルを使用し
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: bb4e3ee3-1ab9-46d0-9ae7-848d945bc0b8
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3540a1d74de52e5e8cff5648dd02a92e0cfb4eb5
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
@@ -52,10 +53,5 @@ ms.openlocfilehash: 3540a1d74de52e5e8cff5648dd02a92e0cfb4eb5
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

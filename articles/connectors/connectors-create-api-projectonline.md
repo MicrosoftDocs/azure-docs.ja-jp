@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 3cf443e378ee1310ea8dfdccf647c92cdee7d552
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: b075e2eb36f54afb7544e0aeb698701cd224ff93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -38,9 +38,9 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 > [!INCLUDE [Steps to create a connection to ProjectOnline](../../includes/connectors-create-api-projectonline.md)]
 > 
 
-## <a name="view-the-swagger"></a>Swagger の表示
+## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[Swagger の詳細](/connectors/projectonline/)を参照してください。
+[コネクタの詳細](/connectors/projectonline/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
 
 ## <a name="more-connectors"></a>その他のコネクタ
 [API リスト](apis-list.md)に戻ります。

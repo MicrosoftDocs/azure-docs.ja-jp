@@ -1,7 +1,7 @@
 ---
 title: "Azure メトリック アラートでの webhook の構成 | Microsoft Docs"
 description: "他の Azure 以外のシステムに Azure アラートを再ルーティングします。"
-author: kamathashwin
+author: johnkemnetz
 manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
-ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
-ms.lasthandoff: 04/03/2017
-
+ms.author: johnkem
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 1a885166e5c71f13da222bfc22b0fc579096c52f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Azure メトリック アラートでの webhook の構成
@@ -31,7 +31,7 @@ Azure は、JSON 形式 (以下で定義されているスキーマ) でアラ�
 
 ![アラート ルールの追加](./media/insights-webhooks-alerts/Alertwebhook.png)
 
-また、webhook URI にポストするアラートの構成には、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-alert-rules)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用できます。
+また、webhook URI にポストするアラートの構成には、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用できます。
 
 ## <a name="authenticating-the-webhook"></a>webhook の認証
 webhook はトークン ベースの承認を使用して認証できます。 webhook URI は次のようなトークン ID を使用して保存されます。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

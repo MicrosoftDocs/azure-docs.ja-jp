@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 07/17/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 61b4038c5878e4e4b92c4bbabc1d535031c78815
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c8857076faa37f5b0d7c70f40b494465b3b99af2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-hadoop"></a>HDInsight の HBase とは: Hadoop で BigTable のような機能を提供する NoSQL データベース
@@ -31,14 +30,13 @@ Apache HBase は、オープン ソースの NoSQL データベースで、Hadoo
 データはテーブルの行内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase は、列や列内に格納されるデータの型を使用前に定義する必要がないという意味で、スキーマレス データベースです。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 また、Hadoop エコシステムの分散アプリケーションの利点であるデータの冗長性、バッチ処理などの機能を利用できます。
 
 ## <a name="how-is-hbase-implemented-in-azure-hdinsight"></a>Azure HDInsight での HBase の実装方法
-HDInsight HBase は、管理されるクラスターとして、Azure 環境に統合されて提供されます。 クラスターは、Azure Storage にデータを直接格納するよう構成されるため、待ち時間が短くなり、パフォーマンスとコストを考慮した選択肢に大きな弾力性が生まれます。 そのため、顧客は大規模なデータセットを処理する対話的な Web サイトを構築できます。これにより、何百万ものエンドポイントからセンサーのデータおよびテレメトリ データを格納するサービスを構築したり、Hadoop ジョブによりこれらのデータを分析したりすることができます。 HBase と Hadoop によって、Azure のビッグ データ プロジェクトは大きな一歩を踏み出しました。特に注目したいのは、リアルタイム アプリケーションが大規模なデータセットを処理できるようになったことです。
+HDInsight HBase は、管理されるクラスターとして、Azure 環境に統合されて提供されます。 クラスターは、[Azure Storage](./hdinsight-hadoop-use-blob-storage.md) または [Azure Data Lake Store](./hdinsight-hadoop-use-data-lake-store.md) にデータを直接格納するよう構成されるため、待ち時間が短くなり、パフォーマンスとコストを考慮した選択肢に大きな弾力性が生まれます。 そのため、顧客は大規模なデータセットを処理する対話的な Web サイトを構築できます。これにより、何百万ものエンドポイントからセンサーのデータおよびテレメトリ データを格納するサービスを構築したり、Hadoop ジョブによりこれらのデータを分析したりすることができます。 HBase と Hadoop によって、Azure のビッグ データ プロジェクトは大きな一歩を踏み出しました。特に注目したいのは、リアルタイム アプリケーションが大規模なデータセットを処理できるようになったことです。
 
 HDInsight の実装と HBase のスケールアウト アーキテクチャにより、テーブルの自動シャーディング、読み取りと書き込みの強力な一貫性、自動フェールオーバーなどが実現します。 また、メモリ内キャッシュを利用した読み取りと高スループットのストリーミングによる書き込みによって、パフォーマンスも拡張されています。 仮想ネットワーク内に HBase クラスターを作成することができます。 詳細については、[Azure Virtual Network での HDInsight クラスターの作成][hbase-provision-vnet]に関する記事を参照してください。
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>HDInsight HBase 内のデータの管理方法
 HBase 内のデータは、HBase シェルから `create`、`get`、`put`、`scan` というコマンドを使用して管理できます。 データの書き込みは `put`、読み取りは `get` を使用します。 `scan` コマンドは、テーブルの複数の行からデータを取得するために使用します。 HBase の C# API を使用してデータを管理することもできます。これにより、HBase REST API 最上層のクライアント ライブラリを利用できます。 HBase データベースは、Hive を使用して照会することもできます。 これらのプログラミング モデルの概要については、[HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]に関する記事を参照してください。 コプロセッサも利用でき、データベースをホストするノードでデータが処理できます。
 
->
 > [!NOTE]
 > Thrift は、HDInsight での HBase ではサポートされていません。
 >
@@ -86,7 +84,7 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://portal.azure.com/
-[azure-create-storageaccount]: ../storage-create-storage-account.md
+[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
 

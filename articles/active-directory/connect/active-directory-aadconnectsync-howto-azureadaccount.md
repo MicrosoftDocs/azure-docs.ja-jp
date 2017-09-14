@@ -13,12 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 0854cc7f23a427fc3fdb16e14af2f9e89bd1627f
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 4e6ef568f510d9db4df115e25d66f53feffc829e
+ms.openlocfilehash: c607830466d7f942f1d0a43ebeccea07ed0877a9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/06/2017
 
 ---
 # <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Azure AD Connect 同期: Azure AD サービス アカウントを管理する方法
@@ -52,10 +53,5 @@ AADSTS70002: Error validating credentials. (資格情報の検証中にエラー
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

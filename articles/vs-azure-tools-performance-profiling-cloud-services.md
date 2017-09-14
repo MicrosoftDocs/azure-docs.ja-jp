@@ -3,8 +3,8 @@ title: "クラウド サービスのパフォーマンスのテスト | Microsof
 description: "Visual Studio プロファイラーを使用した、クラウド サービスのパフォーマンスのテスト"
 services: visual-studio-online
 documentationcenter: n/a
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 7a5501aa-f92c-457c-af9b-92ea50914e24
 ms.service: visual-studio-online
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 7bd8de649ba2975c47f7e84feb0438c51756a697
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>クラウド サービスのパフォーマンスのテスト
@@ -113,10 +114,5 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 [クラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
 [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

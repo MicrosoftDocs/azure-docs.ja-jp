@@ -13,11 +13,11 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 587a8e225b18ae2a07d766f1a0d75623e44aec9f
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -36,7 +36,7 @@ SAP HANA には、サードパーティ製のバックアップ ツールを SAP
 
 SAP HANA はタイプ GS5 の単一インスタンス Azure VM で正式にサポートされていますが、OLAP ワークロードに関する追加の制限事項があります (SAP Web サイトの「[Find Certified IaaS Platforms (認定 IaaS プラットフォームの検索)](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)」を参照)。 この記事は、SAP HANA on Azure の新しいサービスが公開されたら更新される予定です。
 
-Azure で使用できる SAP HANA ハイブリッド ソリューションもあります。この場合、仮想化は行われず、SAP HANA は物理サーバー上で実行されます。 ただし、この SAP HANA Azure バックアップ ガイドでは、Azure VM 内で SAP HANA が実行される純粋な Azure 環境について取り上げます。&quot;L インスタンス&quot; で実行されている SAP HANA については説明しません。 &quot;L インスタンス&quot; を対象とする、ストレージ スナップショットに基づいたこのバックアップ ソリューションの詳細については、「[SAP HANA (large instances) overview and architecture on Azure (SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ)](hana-overview-architecture.md)」を参照してください。
+Azure で使用できる SAP HANA ハイブリッド ソリューションもあります。この場合、仮想化は行われず、SAP HANA は物理サーバー上で実行されます。 ただし、この SAP HANA Azure バックアップ ガイドでは、Azure VM 内で SAP HANA が実行される純粋な Azure 環境について取り上げます。&quot;L インスタンス&quot; で実行されている SAP HANA については説明しません。&quot;L インスタンス&quot; を対象とする、ストレージ スナップショットに基づいたこのバックアップ ソリューションの詳細については、「[SAP HANA (large instances) overview and architecture on Azure (SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ)](hana-overview-architecture.md)」を参照してください。
 
 Azure でサポートされている SAP 製品の一般的な情報については、[SAP ノート 1928533](https://launchpad.support.sap.com/#/notes/1928533) を参照してください。
 
@@ -72,7 +72,7 @@ _いいえ。現在データとログのバックアップを作成できるの�
 
 ### <a name="why-sap-hana-backup"></a>SAP HANA バックアップが必要な理由
 
-Azure Storage には、高可用性と信頼性が最初から備わっています (Azure Storage の詳細については「[Microsoft Azure Storage の概要](../../../storage/storage-introduction.md)」を参照)。
+Azure Storage には、高可用性と信頼性が最初から備わっています (Azure Storage の詳細については「[Microsoft Azure Storage の概要](../../../storage/common/storage-introduction.md)」を参照)。
 
 最小限の &quot;バックアップ&quot; は、Azure の SLA を利用して、SAP HANA サーバー VM に接続された Azure VHD 上にある SAP HANA のデータ ファイルとログ ファイルを保持する処理です。 この手法では、VM の障害には対応できるものの、SAP HANA のデータ ファイルとログファイルが破損するリスクや、データまたはファイルの意図しない削除などの論理エラーに対応できません。 さらに、コンプライアンス上または法律上の理由からもバックアップが求められます。 このため、SAP HANA バックアップは常に必要になります。
 
@@ -122,7 +122,7 @@ Azure Backup サービスでは、ファイル システムの整合性の確保
 SAP HANA の記事「[Planning Your Backup and Recovery Strategy (バックアップと回復の戦略の計画)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)」には、バックアップを実行する基本的な計画が記載されています。
 
 - ストレージ スナップショット (毎日)
-- ファイルまたは backint を使用した完全なデータ バックアップ (毎週)
+- ファイルまたは backint 形式を使用した完全なデータ バックアップ (毎週)
 - 自動ログ バックアップ
 
 必要に応じて、ストレージ スナップショットなしで済ませることができます。この場合、増分バックアップまたは差分バックアップのように、HANA 差分バックアップを代わりに使用できます ([差分バックアップ](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)に関する記事を参照)。
@@ -170,7 +170,7 @@ Microsoft Azure では、IaaS VM 暗号化機能を使用して暗号化でき�
 
 Azure Backup サービスでは、暗号化された VM/ディスクを処理することができます (「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する方法](../../../backup/backup-azure-vms-encryption.md)」を参照)。
 
-このほか、暗号化を行わずに SAP HANA VM とそのディスクを保持し、暗号化が有効になっているストレージ アカウントに SAP HANA バックアップ ファイルを格納する方法があります (「[Azure Storage Service Encryption for Data at Rest (保存データ向け Azure Storage Service Encryption)](../../../storage/storage-service-encryption.md)」を参照)。
+このほか、暗号化を行わずに SAP HANA VM とそのディスクを保持し、暗号化が有効になっているストレージ アカウントに SAP HANA バックアップ ファイルを格納する方法があります (「[Azure Storage Service Encryption for Data at Rest (保存データ向け Azure Storage Service Encryption)](../../../storage/common/storage-service-encryption.md)」を参照)。
 
 ## <a name="test-setup"></a>テストの設定
 

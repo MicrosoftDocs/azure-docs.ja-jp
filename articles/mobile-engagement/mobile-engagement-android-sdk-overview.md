@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 1438b9479b3bbb8b7599d7d05b48e4cd6d981e0c
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Azure Mobile Engagement の Android SDK の統合
@@ -53,8 +53,16 @@ ms.lasthandoff: 03/31/2017
 [Engagement API を Android で使用する方法](mobile-engagement-android-use-engagement-api.md)
 
 ## <a name="release-notes"></a>リリース ノート
-### <a name="424-03302017"></a>4.2.4 (03/30/2017)
-* Android 7 のアプリ内通知テキストの色が以前の Android バージョンの色と同じになるように修正しました。
+
+### <a name="431-07172017"></a>4.3.1 (07/17/2017)
+* `EngagementAgentUtils.isInDedicatedEngagementProcess` を呼び出すときに稀に発生するクラッシュを修正します。これは、`EngagementApplication` クラスでも使用されます。
+
+### <a name="430-06272017"></a>4.3.0 (06/27/2017)
+* Android 8 のサポート (以前のバージョンの SDK は Android 8 では動作しません)。
+* サポート ライブラリの依存関係がなくなりました。
+* `EngagementFragmentActivity` クラスが削除されました。
+* Android 8 における[バックグラウンドでの実行の制限](https://developer.android.com/preview/features/background.html)のため、ユーザーがデバイスを操作するまで、バック グラウンドのログが遅延する可能性があります。このため、デバイスがスリープ状態の場合は、プッシュ キャンペーンの**配信**や**システム通知**の表示に関する統計情報の遅延に影響が生じます (通知に伴う画面表示や着信音、バイブレーションなどの処理は、リアルタイムで問題なく行われます)。
+* [バックグラウンドでの位置情報の制限](https://developer.android.com/preview/features/background-location-limits.html)のため、バックグラウンドでのリアルタイムの位置情報は、Android 8 では頻繁には更新されません。
 
 すべてのバージョンについては、 [完全なリリース ノート](mobile-engagement-android-release-notes.md)をご覧ください。
 

@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 35d30e90a8a390e21b08b0796f441f0e9154c499
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Azure CLI 2.0 で Azure Data Lake Analytics の使用を開始する
@@ -109,7 +108,7 @@ az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Sour
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。  Azure BLOB ストレージへのデータのアップロードについては、「 [Azure ストレージでの Azure CLI の使用](../storage/storage-azure-cli.md)」を参照してください。
+Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。  Azure BLOB ストレージへのデータのアップロードについては、「 [Azure ストレージでの Azure CLI の使用](../storage/common/storage-azure-cli.md)」を参照してください。
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics ジョブを送信する
 Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、「[U-SQL 言語を使ってみる](data-lake-analytics-u-sql-get-started.md)と「[U-SQL Language Reference ](http://go.microsoft.com/fwlink/?LinkId=691348)」(U-SQL 言語リファレンス) をご覧ください。
@@ -180,7 +179,7 @@ az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-##<a name="retrieve-job-results"></a>ジョブの結果を取得する
+## <a name="retrieve-job-results"></a>ジョブの結果を取得する
 
 ジョブが完了したら、以下のコマンドを使用し、出力ファイルを一覧表示して、ファイルをダウンロードできます。
 
@@ -195,6 +194,26 @@ For example:
 
 ```
 az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "C:\DLA\myfile.csv"
+```
+
+## <a name="pipelines-and-recurrences"></a>パイプラインと繰り返し
+
+**パイプラインと繰り返しについての情報を取得する**
+
+`az dla job pipeline` コマンドを使って前に送信したジョブのパイプライン情報を確認します。
+
+```
+az dla job pipeline list --account "<Data Lake Analytics Account Name>"
+
+az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
+```
+
+`az dla job recurrence` コマンドを使って前に送信したジョブの繰り返し情報を確認します。
+
+```
+az dla job recurrence list --account "<Data Lake Analytics Account Name>"
+
+az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
 ## <a name="next-steps"></a>次のステップ

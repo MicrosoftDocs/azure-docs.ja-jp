@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 08/18/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 27a40e452c0248c653dc3073ab471043ddb65420
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 50bd4eb02be8f03baf186255429bec51c036aa43
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/31/2017
  
 ## <a name="whats-new-in-azure-cosmos-db-security"></a>Azure Cosmos DB のセキュリティの新機能
 
-保存時の暗号化が、政府関係リージョン、中国での Azure、およびドイツでの Azure を除く、すべての Azure リージョンの Azure Cosmos DB に保存されたドキュメントに利用できるようになりました。 その他のリージョンは、バックアップの保存時の暗号化と共に、来週から有効になります。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。
+保存時の暗号化が、すべての Azure リージョンの Azure Cosmos DB に保存されたドキュメントとバックアップに利用できるようになりました。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。
 
 ## <a name="how-do-i-secure-my-database"></a>データベースをセキュリティ保護する方法 
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 05/31/2017
 
 ![顧客とデータベース プロバイダーの責任](./media/database-security/nosql-database-security-responsibilities.png)
 
-上記の図は高度なクラウドのセキュリティ コンポーネントを示していますが、具体的には、どのような項目をデータベース ソリューションのために考慮する必要があるでしょうか。 また、ソリューションを相互に比較するにはどうすればよいでしょうか。 
+上の図は高度なクラウドのセキュリティ コンポーネントを示していますが、具体的には、どのような項目をデータベース ソリューションのために考慮する必要があるでしょうか。 また、ソリューションを相互に比較するにはどうすればよいでしょうか。 
 
 次の要件のチェックリストを使用して、データベース システムを比較することをお勧めします。
 
@@ -71,14 +70,14 @@ ms.lasthandoff: 05/31/2017
 |ネットワークのセキュリティ|IP ファイアウォールの使用は、データベースをセキュリティ保護するための第 1 の保護層です。 Azure Cosmos DB は、受信ファイアウォールでのポリシーに基づく IP ベースのアクセス制御をサポートしています。 IP ベースのアクセス制御は、従来のデータベース システムで使用されているファイアウォール ルールに似ていますが、Azure Cosmos DB データベース アカウントは、承認されたコンピューターまたはクラウド サービスからのみアクセスできるように拡張されています。 <br><br>Azure Cosmos DB では、特定の IP アドレス (168.61.48.0)、IP 範囲 (168.61.48.0/8)、および IP アドレスと範囲の組み合わせを有効にすることができます。 <br><br>この許可リストに含まれていないコンピューターから送信されたすべての要求は、Azure Cosmos DB によってブロックされます。 承認されたコンピューターとクラウド サービスから送信された要求がリソースへのアクセス権を取得するには、認証プロセスを完了する必要があります。<br><br>[Azure Cosmos DB のファイアウォール サポート](firewall-support.md)について説明します。|
 |承認|Azure Cosmos DB は、承認のためにハッシュ ベースのメッセージ認証コード (HMAC) を使用します。 <br><br>各要求は、シークレット アカウント キーを使用してハッシュされ、その結果生じた base 64 エンコード ハッシュが呼び出しと一緒に Azure Cosmos DB に送信されます。 Azure Cosmos DB サービスは、要求を検証するために、適切なシークレット キーとプロパティを使用してハッシュを生成し、その値と要求に含まれる値を比較します。 2 つの値が一致した場合、承認操作は成功し、要求が処理されます。一致しない場合、承認は失敗し、要求は拒否されます。<br><br>[マスター キー](secure-access-to-data.md#master-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)のいずれかを使用して、ドキュメントなどのリソースに対するきめ細かいアクセス制御を実行できます。<br><br>詳細については、[Azure Cosmos DB のリソースへのアクセスのセキュリティ保護](secure-access-to-data.md)に関するページを参照してください。|
 |ユーザーとアクセス許可|アカウントの[マスター キー](#master-key)を使用して、ユーザー リソースとアクセス許可リソースをデータベースごとに作成することができます。 [リソース トークン](#resource-token)は、データベース内のアクセス許可に関連付けられ、ユーザーがデータベース内のアプリケーション リソースにどのようにアクセスできるか (読み取り/書き込み、読み取り専用、またはアクセスなし) を判断します。 アプリケーション リソースには、コレクション、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF が含まれます。 リソース トークンは認証中に使用され、リソースへのアクセスが提供されるか拒否されます。<br><br>詳細については、[Azure Cosmos DB のリソースへのアクセスのセキュリティ保護](secure-access-to-data.md)に関するページを参照してください。|
-|Active Directory の統合 (RBAC)| データベース アカウントへのアクセスは、Azure Portal でアクセス制御 (IAM) を使用して提供することもできます。 IAM は ロールベースのアクセス制御を提供し、Active Directory と統合されています。 次の図に示すように、個人やグループの組み込みのロールまたはカスタム ロールを使用できます。<br><br>![Azure Portal でのアクセス制御 (IAM) - データベースのセキュリティ](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)|
+|Active Directory の統合 (RBAC)| この表の後のスクリーンショットに示すように、データベース アカウントへのアクセスは、Azure Portal でアクセス制御 (IAM) を使用して提供することもできます。 IAM は ロールベースのアクセス制御を提供し、Active Directory と統合されています。 次の図に示すように、個人やグループの組み込みのロールまたはカスタム ロールを使用できます。|
 |グローバル レプリケーション|Azure Cosmos DB は設定不要のグローバル分散を実行し、ボタンをクリックするだけで Azure の世界中のデータセンターにデータをレプリケートすることができます。 グローバル レプリケーションでは、グローバルなスケールを行い、全世界のデータに低待機時間でアクセスすることができます。<br><br>セキュリティの点では、グローバル レプリケーションは、局地的な障害からデータが保護されることを保証します。<br><br>詳細については、[データのグローバル分散](distribute-data-globally.md)に関するページを参照してください。|
 |リージョン間フェールオーバー|複数のデータセンターにデータをレプリケートしているときに、リージョンのデータセンターがオフラインになった場合、Azure Cosmos DB は、操作を自動的にロールオーバーします。 データをレプリケートするリージョンを使用して、フェールオーバーするリージョンの優先度リストを作成することができます。 <br><br>詳細については、[Azure Cosmos DB のリージョン内フェールオーバー](regional-failover.md)に関するページを参照してください。|
 |ローカル レプリケーション|Azure Cosmos DB は、1 つのデータセンター内でも、高可用性を維持するためにデータを自動的にレプリケートします。[一貫性レベル](consistency-levels.md)は顧客自身が選択できます。 これにより、 [アップタイム 99.99% の可用性 (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db) が保証され、金銭的な保証も受けられます。これは他のデータベース サービスが提供できないものです。|
 |オンライン バックアップの自動化|Azure Cosmos DB データベースは定期的にバックアップされ、ジオリダンダント ストアに格納されます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |機密データの保護と分離|「[新機能](#whats-new)」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>PII と他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
-|攻撃の監視|監査ログとアクティビティ ログを使用することで、アカウントの通常のアクティビティと異常なアクティビティを監視できます。 リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。<br><br>![Azure Cosmos DB のアクティビティ ログ](./media/database-security/nosql-database-security-application-logging.png)|
+|攻撃の監視|監査ログとアクティビティ ログを使用することで、アカウントの通常のアクティビティと異常なアクティビティを監視できます。 この表の後のスクリーンショットに示すように、リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。|
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://aka.ms/securityresponsepaper)」を参照してください。|
 |ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスとコンプライアンスを保証します。|
 |施設の保護|Azure Cosmos DB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
@@ -87,6 +86,10 @@ ms.lasthandoff: 05/31/2017
 |サーバーへの修正プログラムの適用|管理されたデータベースとして、Azure Cosmos DB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって Azure Cosmos DB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> SSL と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
 |セキュリティとデータ保護の認証|Azure Cosmos DB は、[ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001)[European Model Clauses (EUMC)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses)、および [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) の認証を取得しています。 その他の認証の取得も進行中です|
+
+次のスクリーン ショットは、Azure Portal のアクセス制御 (IAM) を使用した Active Directory の統合 (RBAC) を示しています。![Azure Portal のアクセス制御 (IAM) - データベース セキュリティを示す](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
+
+次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。![Azure Cosmos DB のアクティビティ ログ](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>次のステップ
 

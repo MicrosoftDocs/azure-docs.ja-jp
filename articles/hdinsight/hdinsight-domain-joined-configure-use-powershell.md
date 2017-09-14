@@ -1,5 +1,5 @@
 ---
-title: "Azure PowerShell を使ったドメイン参加済み HDInsight クラスターの構成 | Microsoft Docs"
+title: "Azure PowerShell を使用したドメイン参加済み HDInsight クラスターの構成 | Microsoft Docs"
 description: "Azure PowerShell を使ったドメイン参加済み HDInsight クラスターのセットアップと構成の方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,15 +16,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6f4189cb30d528a106dd8889c06acd621aebb699
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: d31ad53525ef75bdb61c42409dc07bba4138fc25
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>Azure PowerShell を使用したドメイン参加済み HDInsight クラスターの構成 (プレビュー)
 Azure PowerShell を使って、Azure HDInsight クラスター、Azure Active Directory (Azure AD)、および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップする方法について説明します。 迅速な構成とエラーの抑制のために、Azure PowerShell スクリプトが提供されます。 ドメイン参加済み HDInsight は、Linux ベースのクラスターのみで構成できます。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](hdinsight-domain-joined-introduction.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 ドメイン参加済み HDInsight クラスターの一般的な構成には、次の手順が含まれます。
 
@@ -59,7 +63,7 @@ Azure PowerShell を使って、Azure HDInsight クラスター、Azure Active D
 * Azure PowerShell。  「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="create-an-azure-classic-vnet-for-your-azure-ad"></a>Azure AD 用に Azure クラシック VNet を作成します。
-手順については、[こちら](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet)を参照してください。
+手順については、[こちら](hdinsight-domain-joined-configure.md#create-an-azure-virtual-network-classic)を参照してください。
 
 ## <a name="create-and-configure-azure-ad-and-azure-ad-ds"></a>Azure AD と Azure AD DS を作成および構成します。
 手順については、[こちら](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)を参照してください。
@@ -73,7 +77,7 @@ PowerShell スクリプトは [GitHub](https://github.com/hdinsight/DomainJoined
 2. 次の変数の値を入力します。
    
    * **$SubscriptionName** – HDInsight クラスターを作成する Azure サブスクリプションの名前。 このサブスクリプションにはクラシック Virtual Network が既に作成されていますが、今回は HDInsight クラスター用の Azure Resource Manager の仮想ネットワークを作成します。
-   * **$ClassicVNetName** - Azure AD DS を含む従来の仮想ネットワーク。 この仮想ネットワークは、上で指定したサブスクリプションと同じサブスクリプション内に存在する必要があります。 この仮想ネットワークは、クラシック ポータルではなく Azure Portal を使用して作成する必要があります。 「[ドメイン参加済み HDInsight クラスターの構成 (プレビュー)](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet)」の手順に従う場合、既定の名前は contosoaadvnet です。
+   * **$ClassicVNetName** - Azure AD DS を含む従来の仮想ネットワーク。 この仮想ネットワークは、上で指定したサブスクリプションと同じサブスクリプション内に存在する必要があります。 この仮想ネットワークは、クラシック ポータルではなく Azure Portal を使用して作成する必要があります。 「[ドメイン参加済み HDInsight クラスターの構成 (プレビュー)](hdinsight-domain-joined-configure.md#create-an-azure-virtual-network-classic)」の手順に従う場合、既定の名前は contosoaadvnet です。
    * **$ClassicResourceGroupName** – 上記で説明した、従来の仮想ネットワークの Resource Manager グループ名。 例： contosoaadrg 
    * **$ArmResourceGroupName** – HDInsight クラスターを作成するリソース グループ名。 $ArmResourceGroupName と同じリソース グループを使用することができます。  リソース グループが存在しない場合は、スクリプトによってリソース グループが作成されます。
    * **$ArmVNetName** - HDInsight クラスターを作成する Resource Manager の仮想ネットワーク名。 この仮想ネットワークは $ArmResourceGroupName に配置されます。  VNet が存在しない場合は、PowerShell スクリプトによって VNet が作成されます。 存在する場合は、上で指定したリソース グループの一部である必要があります。
@@ -88,7 +92,7 @@ PowerShell スクリプトは [GitHub](https://github.com/hdinsight/DomainJoined
 **スクリプトを実行するには**
 
 1. **Windows PowerShell** を管理者として実行します。
-2. run.ps1 のフォルダを参照します。 
+2. run.ps1 のフォルダーを参照します。 
 3. ファイル名を入力してスクリプトを実行し、**Enter** キーを押します。  3 つのサインイン ダイアログ ボックスが表示されます。
    
    1. **Azure クラシック ポータルへのサインイン** – Azure クラシック ポータルへのサインインに使用する資格情報を入力します。 これらの資格情報を使用して、Azure AD と Azure AD DS を事前に作成しておく必要があります。
@@ -111,7 +115,7 @@ DNS 逆引きゾーンの作成時に、スクリプトにより、ネットワ�
 
 **Azure Portal を使用して、ドメイン参加済み HDInsight クラスターを作成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。
 3. **[新しい HDInsight クラスター]** ブレードで、次の値を入力または選択します。
    

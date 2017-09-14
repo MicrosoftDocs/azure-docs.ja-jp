@@ -8,17 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 563862ca-c65a-46f6-975d-10df7ff6aa9c
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: develop apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: b62097f945bc5c595c0893d16bb2c1d9bbfd7a07
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 22cff47444306e599325ba3035d83a0266d69c72
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -41,7 +42,7 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 ## <a name="batching-strategies"></a>バッチ処理の戦略
 ### <a name="note-about-timing-results-in-this-topic"></a>このトピックに記載されている時間測定の結果について
 > [!NOTE]
-> 結果はベンチマークではなく、**相対的なパフォーマンス**を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストが計測されてからは時間が経っているため、現在のスループットに対応していない可能性があります。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
+> 結果はベンチマークではなく、**相対的なパフォーマンス**を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストは、V12 未満で計測しました。V12 データベースで新しい[サービス レベル](sql-database-service-tiers.md)を使って計測した場合のスループットとは必ずしも対応しません。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
 > 
 > 
 
@@ -120,7 +121,7 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 
 先ほどの例からわかるように、ローカル トランザクションは、2 つの行で任意の ADO.NET コードに追加することができます。 挿入、更新、削除の操作を連続して行うコードは、トランザクションを導入することで手軽にパフォーマンスを高めることができます。 しかし処理速度を最大限に高めるために、クライアント側のバッチ処理 (テーブル値パラメーターなど) を活かしたコードの改善を検討してください。
 
-ADO.NET におけるトランザクションの詳細については、 [ADO.NET のローカル トランザクション](https://msdn.microsoft.com/library/vstudio/2k2hy99x.aspx)に関するページを参照してください。
+ADO.NET におけるトランザクションの詳細については、 [ADO.NET のローカル トランザクション](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)に関するページを参照してください。
 
 ### <a name="table-valued-parameters"></a>テーブル値パラメーター
 テーブル値パラメーターは、Transact-SQL のステートメント、ストアド プロシージャ、関数の中で、ユーザー定義テーブル型をパラメーターとして使用する際に使用します。 これはクライアント側のバッチ処理手法で、テーブル値パラメーターに複数行のデータを含めて送信することができます。 テーブル値パラメーターを使用するにはまず、テーブル型を定義します。 次の Transact-SQL ステートメントは、 **MyTableType**という名前のテーブル型を作成しています。
@@ -619,6 +620,6 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 * その他さまざまなシナリオでバッチ処理を実装するための手段として、バッファー サイズや経過時間によって作動するバッファリングを検討する。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。 しかしこれは、全体的な戦略の中の一要素にすぎません。 パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool.md)」をご覧ください。
+この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。 しかしこれは、全体的な戦略の中の一要素にすぎません。 パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
 
 

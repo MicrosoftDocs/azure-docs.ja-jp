@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 05/04/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 70d22ae8d7f67f1e12a233e004f1eb749927e7d8
-ms.lasthandoff: 03/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
@@ -32,7 +32,7 @@ Azure によって、セキュリティが強化され、コンプライアン�
 * 機密データ情報の暗号化
 * ネットワーク トラフィックのセキュリティ保護
 * 脅威の特定と検出
-* コンプラアイアンス要件の充足
+* コンプライアンス要件の充足
 
 この記事の目的は、仮想マシンで使用できる Azure のコア セキュリティ機能の概要を説明することです。 それぞれの詳細について説明する記事へのリンクも用意されているため、さらに詳しく学習できます。  
 
@@ -48,7 +48,7 @@ Azure によって、セキュリティが強化され、コンプライアン�
 * コンプライアンス
 
 ## <a name="antimalware"></a>マルウェア対策
-Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 パートナー ソリューションに関する記事については、後述の「詳細情報:」を参照してください。
+Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 パートナー ソリューションに関する記事については、後述の「詳細情報:」を参照してください。
 
 Azure Cloud Services および 仮想マシン に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。  Microsoft マルウェア対策は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。
 
@@ -73,11 +73,10 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/windows/classic/install-trend.md)
 * [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/windows/classic/install-symantec.md)
-* [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Azure Virtual Machines を保護するための新しいマルウェア対策オプション – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 * [Azure Marketplace のセキュリティ ソリューション](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
-暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。 大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
+暗号化と認証保護はキーのセキュリティを改善することで強化できます。 大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
 
 詳細情報:
 

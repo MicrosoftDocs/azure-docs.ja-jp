@@ -3,7 +3,7 @@ title: "Azure API Management ポリシー式 | Microsoft Docs"
 description: "Azure API Management 内のポリシー式について説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
-ms.lasthandoff: 04/07/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
@@ -172,7 +173,7 @@ ms.lasthandoff: 04/07/2017
   
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> デプロイ<br /><br /> LastError<br /><br /> 操作<br /><br /> 製品<br /><br /> 要求<br /><br /> RequestId: 文字列<br /><br /> 応答<br /><br /> [サブスクリプション]<br /><br /> トレース: bool<br /><br /> ユーザー<br /><br /> 変数: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
+|context|Api: IApi<br /><br /> Deployment<br /><br /> LastError<br /><br /> Operation<br /><br /> Product<br /><br /> Request<br /><br /> RequestId: Guid<br /><br /> Response<br /><br /> Subscription<br /><br /> Tracing: ブール値<br /><br /> User<br /><br /> Variables:IReadOnlyDictionary<文字列, オブジェクト><br /><br /> void Trace(message: 文字列)|  
 |context.Api|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> ServiceUrl: IUrl|  
 |context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列|  
 |context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|  

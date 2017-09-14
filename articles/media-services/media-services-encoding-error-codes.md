@@ -4,7 +4,7 @@ description: "このトピックでは、エンコード タスクの実行中�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: ce4e939f-5aee-41f9-859d-e4429815e9f2
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b341416f837d03e0532b4f8c0a3f3f85641a8995
 ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/27/2017
 
 ---
 
@@ -28,7 +29,7 @@ ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
 | ErrorDetail.Code | 考えられる原因 |
 | --- | --- |
 | Unknown |タスクの実行中に発生する不明なエラー |
-| ErrorDownloadingInputAssetMalformedContent |無効なファイル名、サイズ&0; のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ |
+| ErrorDownloadingInputAssetMalformedContent |無効なファイル名、サイズ 0 のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ |
 | ErrorDownloadingInputAssetServiceFailure |ダウンロード中のネットワーク エラーやストレージ エラーなど、サービス側での問題に関するエラーのカテゴリ |
 | ErrorParsingConfiguration |構成が有効なシステム プリセットではない、構成に無効な XML が含まれているなど、タスク <see cref="MediaTask.PrivateData"/> (構成) が有効でない場合に発生するエラーのカテゴリ。 |
 | ErrorExecutingTaskMalformedContent |入力メディア ファイル内の問題が障害の原因となり、タスクの実行中に発生するエラーのカテゴリ |
@@ -52,9 +53,4 @@ ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

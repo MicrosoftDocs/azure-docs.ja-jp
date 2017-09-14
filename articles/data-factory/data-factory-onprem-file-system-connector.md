@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Factory を使用したファイル システムとの間でのデータ移動 | Microsoft Docs"
-description: "Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータを移動する方法について説明します。"
+title: "Azure Data Factory を使用したファイル システムとの間でのデータのコピー | Microsoft Docs"
+description: "Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータをコピーする方法について説明します。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -12,17 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 08/14/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: bd38aa5e4dd50b11f52afdc9dfc0f22c8c072f67
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: d25f1346ae35f7733ac3ca95c59a12616a60cc93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 06/10/2017
 
 ---
-# <a name="move-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータをコピーする
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスのファイル システムとの間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -76,7 +75,7 @@ Linux ファイル共有を使用するには、Linux サーバーの場合は [
 ### <a name="sample-linked-service-and-dataset-definitions"></a>サンプルのリンクされたサービスとデータセットの定義
 | シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath  |
 | --- | --- | --- |
-| Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |.\\\\ またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
+| Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
 | リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
 
 

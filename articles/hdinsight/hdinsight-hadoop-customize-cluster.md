@@ -1,5 +1,5 @@
 ---
-title: "スクリプト アクションを使った HDInsight クラスターのカスタマイズ | Microsoft Docs"
+title: "スクリプト アクションを使って HDInsight クラスターをカスタマイズする - Azure | Microsoft Docs"
 description: "スクリプト アクションを使って HDInsight クラスターをカスタマイズする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e6af6f915a4356ae137ba3b92dd0331f7b5411c0
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 この記事の情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターについては、「 [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。 これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、または Azure Portal から実行できます。 詳細については、[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事をご覧ください。
 
@@ -239,11 +238,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
                 ClusterType = NewClusterType,
                 OSType = NewClusterOSType,
                 Version = NewClusterVersion,
-
-                DefaultStorageAccountName = ExistingStorageName,
-                DefaultStorageAccountKey = ExistingStorageKey,
-                DefaultStorageContainer = ExistingContainer,
-
+                DefaultStorageInfo = new AzureStorageInfo(ExistingStorageName, ExistingStorageKey, ExistingContainer),
                 UserName = NewClusterUsername,
                 Password = NewClusterPassword,
             };

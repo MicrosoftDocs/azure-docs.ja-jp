@@ -13,12 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
+ms.date: 07/31/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 095497656a1c6ed1fe5322b6015de750d8fd6f15
-ms.openlocfilehash: 3706ed729a525526a415d3a3367e6b8245ead812
-
+ms.reviewer: jesakowi
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -27,6 +30,8 @@ Azure Active Directory では、アプリケーションをディレクトリに
 
 ![](media/active-directory-apps-permissions-consent/apps1.png)
 
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
 ## <a name="types-of-apps"></a>アプリの種類
 
@@ -215,10 +220,5 @@ FabrikamMail の場合、次のようになります。
 (**ClientId** は、(作成されたばかりの) FabrikamMail のサービス プリンシパル オブジェクト ID です。**PrincipalId** は、(同意を行ったユーザーの) ユーザー オブジェクト ID です。**ResourceId** は、Exchange のサービス プリンシパル オブジェクト ID です。Scope は、Exchange の同意されたアクセス許可です)。
 
 ユーザーの同意が許可されていない場合、その許可が必要なことを示す画面が表示されます。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/21/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 736918ea310f276d961fa396f719b2b7809f0c0f
-ms.lasthandoff: 04/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 32af01aa545c541688128a7ae6bbb82a0e046f2d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -49,11 +50,11 @@ Login-AzureRmAccount
 まず、仮想マシン スケール セットを関連付けるリソース グループを作成する必要があります。
 
 ```azurecli
-az group create --location westus2 --name vmss-test-1
+az group create --location westus2 --name MyResourceGroup1
 ```
 
 ```powershell
-New-AzureRmResourceGroup -Location westus2 -Name vmss-test-1
+New-AzureRmResourceGroup -Location westus2 -Name MyResourceGroup1
 ```
 
 ## <a name="create-from-azure-cli"></a>Azure CLI を使用して作成する
@@ -94,13 +95,13 @@ HTTP URI のパス:
 次の例では、基本的な仮想マシン スケール セットを作成します (この手順には数分かかる場合があります)。
 
 ```azurecli
-az vmss create --resource-group vmss-test-1 --name MyScaleSet --image UbuntuLTS --authentication-type password --admin-username azureuser --admin-password P@ssw0rd!
+az vmss create --resource-group MyResourceGroup1 --name MyScaleSet --image UbuntuLTS --authentication-type password --admin-username azureuser --admin-password P@ssw0rd!
 ```
 
 コマンドが完了すると、仮想マシン スケール セットが作成されます。 仮想マシンに接続するには、IP アドレスを取得する必要がある場合があります。 次のコマンドを実行すると、仮想マシンに関する各種情報 (IP アドレスを含む) を取得できます。 
 
 ```azurecli
-az vmss list-instance-connection-info --resource-group vmss-test-1 --name MyScaleSet
+az vmss list-instance-connection-info --resource-group MyResourceGroup1 --name MyScaleSet
 ```
 
 ## <a name="create-from-powershell"></a>PowerShell を使用して作成する
@@ -141,8 +142,12 @@ MicrosoftBizTalkServer     BizTalk-Server           2016-Enterprise
 この例では、Windows Server 2016 がインストールされたコンピューターの基本的な 2 インスタンス スケール セットを作成します。
 
 ```powershell
+# Resource group name from above
+$rg = "MyResourceGroup1"
+$location = "WestUS2"
+
 # Create a config object
-$vmssConfig = New-AzureRmVmssConfig -Location WestUS2 -SkuCapacity 2 -SkuName Standard_A0  -UpgradePolicyMode Automatic
+$vmssConfig = New-AzureRmVmssConfig -Location $location -SkuCapacity 2 -SkuName Standard_A0  -UpgradePolicyMode Automatic
 
 # Reference a virtual machine image from the gallery
 Set-AzureRmVmssStorageProfile $vmssConfig -ImageReferencePublisher MicrosoftWindowsServer -ImageReferenceOffer WindowsServer -ImageReferenceSku 2016-Datacenter -ImageReferenceVersion latest
@@ -151,15 +156,35 @@ Set-AzureRmVmssStorageProfile $vmssConfig -ImageReferencePublisher MicrosoftWind
 Set-AzureRmVmssOsProfile $vmssConfig -AdminUsername azureuser -AdminPassword P@ssw0rd! -ComputerNamePrefix myvmssvm
 
 # Create the virtual network resources
-$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "my-subnet" -AddressPrefix 10.0.0.0/24
-$vnet = New-AzureRmVirtualNetwork -Name "my-network" -ResourceGroupName "vmss-test-1" -Location "westus2" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-$ipConfig = New-AzureRmVmssIpConfig -Name "my-ip-address" -LoadBalancerBackendAddressPoolsId $null -SubnetId $vnet.Subnets[0].Id
 
-# Attach the virtual network to the config object
+## Basics
+$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "my-subnet" -AddressPrefix 10.0.0.0/24
+$vnet = New-AzureRmVirtualNetwork -Name "my-network" -ResourceGroupName $rg -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+## Load balancer
+$publicIP = New-AzureRmPublicIpAddress -Name "PublicIP" -ResourceGroupName $rg -Location $location -AllocationMethod Static -DomainNameLabel "myuniquedomain"
+$frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name "LB-Frontend" -PublicIpAddress $publicIP
+$backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "LB-backend"
+$probe = New-AzureRmLoadBalancerProbeConfig -Name "HealthProbe" -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+$inboundNATRule1= New-AzureRmLoadBalancerRuleConfig -Name "webserver" -FrontendIpConfiguration $frontendIP -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -Probe $probe -BackendAddressPool $backendPool
+$inboundNATPool1 = New-AzureRmLoadBalancerInboundNatPoolConfig -Name "RDP" -FrontendIpConfigurationId $frontendIP.Id -Protocol TCP -FrontendPortRangeStart 53380 -FrontendPortRangeEnd 53390 -BackendPort 3389
+
+New-AzureRmLoadBalancer -ResourceGroupName $rg -Name "LB1" -Location $location -FrontendIpConfiguration $frontendIP -LoadBalancingRule $inboundNATRule1 -InboundNatPool $inboundNATPool1 -BackendAddressPool $backendPool -Probe $probe
+
+## IP address config
+$ipConfig = New-AzureRmVmssIpConfig -Name "my-ipaddress" -LoadBalancerBackendAddressPoolsId $backendPool.Id -SubnetId $vnet.Subnets[0].Id -LoadBalancerInboundNatPoolsId $inboundNATPool1.Id
+
+# Attach the virtual network to the IP object
 Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name "network-config" -Primary $true -IPConfiguration $ipConfig
 
 # Create the scale set with the config object (this step might take a few minutes)
-New-AzureRmVmss -ResourceGroupName vmss-test-1 -Name my-scale-set -VirtualMachineScaleSet $vmssConfig
+New-AzureRmVmss -ResourceGroupName $rg -Name "MyScaleSet1" -VirtualMachineScaleSet $vmssConfig
+```
+
+### <a name="using-a-custom-virtual-machine-image"></a>カスタム仮想マシン イメージの使用
+ギャラリーにある仮想マシン イメージを参照するのではなく、独自のカスタム イメージからスケール セットを作成する場合の _Set-AzureRmVmssStorageProfile_ コマンドは、次のようになります。
+```PowerShell
+Set-AzureRmVmssStorageProfile -OsDiskCreateOption FromImage -ManagedDisk PremiumLRS -OsDiskCaching "None" -OsDiskOsType Linux -ImageReferenceId (Get-AzureRmImage -ImageName $VMImage -ResourceGroupName $rg).id
 ```
 
 ## <a name="create-from-a-template"></a>テンプレートを使用して作成する

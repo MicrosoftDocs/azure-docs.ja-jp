@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2017
+ms.date: 06/21/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
-ms.openlocfilehash: c413f415cb056f079ed30cf444af4edbe20364ea
-ms.lasthandoff: 01/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 7dda9520ce3d93bf0e86bd2481ad06c268d087c7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/25/2017
 
 セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。 セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。 セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。 セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません**。新しいクラスターを作成する必要があります。
 
-セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[「セキュリティで保護されたクラスターを Linux 上に作成する」](service-fabric-cluster-creation-via-arm.md#secure-linux-cluster)をご覧ください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
+セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[「セキュリティで保護されたクラスターを Linux 上に作成する」](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters)をご覧ください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 このガイドでは [Azure PowerShell][azure-powershell] を使用します。 新しい PowerShell セッションを開始した場合、Azure アカウントにログインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
@@ -142,7 +142,7 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 * 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。 これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得します。 CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
 ### <a name="client-authentication-certificates"></a>クライアント認証証明書
-その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。 Service Fabric には、**admin** および **read-only user** という&2; つのアクセス レベルがあります。 管理アクセスについて、少なくとも&1; つの証明書を使用する必要があります。 追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。 アクセス ロールの詳細については、「[ロールベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」を参照してください。
+その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。 Service Fabric には、**admin** および **read-only user** という 2 つのアクセス レベルがあります。 管理アクセスについて、少なくとも 1 つの証明書を使用する必要があります。 追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。 アクセス ロールの詳細については、「[ロールベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」を参照してください。
 
 Service Fabric を操作するために、クライアント認証証明書を Key Vault にアップロードする必要はありません。 この証明書は、クラスター管理を許可されているユーザーにのみ指定する必要があります。 
 
@@ -211,7 +211,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 2. **[新規]** をクリックして、新しいリソース テンプレートを追加します。 **[Marketplace]** の **[すべて]** で、Service Fabric クラスター テンプレートを検索します。
 3. 一覧から **[Service Fabric クラスター]** を選択します。
 4. **[Service Fabric クラスター]** ブレードに移動し、**[作成]** をクリックします。
-5. **[Service Fabric クラスターの作成]** ブレードには次の&4; つの手順があります。
+5. **[Service Fabric クラスターの作成]** ブレードには次の 4 つの手順があります。
 
 #### <a name="1-basics"></a>1.基本
 ![新しいリソース グループを作成するスクリーン ショット。][CreateRG]
@@ -232,7 +232,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 #### <a name="2-cluster-configuration"></a>2.クラスター構成
 ![ノード タイプの作成][CreateNodeType]
 
-クラスター ノードを構成します。 ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。 クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも&5; つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。 "NodeTypeName" の既定の配置プロパティは自動的に追加されるため、**[配置プロパティ]** を構成しないでください。
+クラスター ノードを構成します。 ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。 クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも 5 つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。 "NodeTypeName" の既定の配置プロパティは自動的に追加されるため、**[配置プロパティ]** を構成しないでください。
 
 > [!NOTE]
 > 複数のノードのタイプの一般的なシナリオは、フロントエンド サービスとバックエンド サービスを含むアプリケーションです。 フロントエンド サービスを小規模の VM (D2 のような VM サイズ) に配置します。この小規模 VM では、インターネットにポートを開いています。ただし、バックエンド サービスはインターネットに接続されたポートが開いていない大規模な VM (D4、D6、D15 などの VM サイズ) に配置します。
@@ -253,7 +253,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 > 
 > 
 
-#### <a name="3-security"></a>手順&3;.セキュリティ
+#### <a name="3-security"></a>手順 3.セキュリティ
 ![Azure ポータルのセキュリティ構成のスクリーン ショット。][SecurityConfigs]
 
 最後の手順では、前の手順で作成した Key Vault と証明書情報を使用してクラスターをセキュリティで保護するための証明書情報を指定します。
@@ -297,7 +297,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 > 
 
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
-クラスターで指定する NodeType ごとに、VM スケール セットがセットアップされます。 詳細については、[VM スケール セットのインスタンスへのリモート接続][remote-connect-to-a-vm-scale-set]に関する記事を参照してください。
+クラスターで指定する NodeType ごとに、仮想マシン スケール セットがセットアップされます。 詳細については、「[仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する][remote-connect-to-a-vm-scale-set]」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 この時点で、管理の認証に証明書を使用したセキュリティで保護されたクラスターがあります。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。  また、[Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
@@ -314,7 +314,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node
 [service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
 
 <!--Image references-->

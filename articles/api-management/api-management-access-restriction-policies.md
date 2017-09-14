@@ -3,7 +3,7 @@ title: "Azure API Management のアクセス制限ポリシー | Microsoft Docs"
 description: "Azure API Management で使用できるアクセス制限ポリシーについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 4c9991baf3fbcf3b8ea01f8dd573e2336db88b68
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 70cccd5ac7fbea36f02150e3da319a043c22c677
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
@@ -515,7 +515,7 @@ ms.lasthandoff: 05/02/2017
 |match|`claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> -                          `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> -                          `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。|なし|すべて|  
 |query-paremeter-name|トークンを保持するクエリ パラメーターの名前。|`header-name` と `query-paremeter-name` はどちらかを指定する必要がありますが、両方を指定する必要はありません。|該当なし|  
 |require-expiration-time|ブール値。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。|いいえ|true|
-|require-scheme|トークン スキームの名前 (例: "Bearer")。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。|いいえ|該当なし|
+|require-scheme|トークンの名前。例: "Bearer"。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。|いいえ|該当なし|
 |require-signed-tokens|ブール値。 トークンに署名が必要かどうかを指定します。|いいえ|true|  
 |url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|はい|該当なし|  
   

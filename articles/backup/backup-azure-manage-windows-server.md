@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/9/2017
+ms.date: 08/15/2017
 ms.author: markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 767e3b2e8330b4c52576c90e8ef090e1abc69b42
-ms.openlocfilehash: 20e486be706c6fc02ced8343c050379ceff99d82
-ms.lasthandoff: 01/23/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 5922e308f5c205a07bd329c28322ae82cea0e1fa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows コンピューター用 Azure Recovery Services コンテナーとサーバーの監視と管理
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/23/2017
 >
 >
 
-この記事では、Azure Portal と Microsoft Azure Backup エージェントで使用できるバックアップ監視および管理タスクの概要を説明します。 この記事は、既に Azure サブスクリプションがあり、少なくとも&1; つの Recovery Services コンテナーが作成済みであることを前提としています。
+この記事では、Azure Portal と Microsoft Azure Backup エージェントで使用できるバックアップ監視および管理タスクの概要を説明します。 この記事は、既に Azure サブスクリプションがあり、少なくとも 1 つの Recovery Services コンテナーが作成済みであることを前提としています。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/23/2017
 
 Recovery Services コンテナーのダッシュボードには、Recovery Services コンテナーの詳細または属性が示されています。
 
-1. Azure サブスクリプションを使用して、 [Azure ポータル](https://portal.azure.com/) にサインインします。
+1. Azure サブスクリプションを使用して、 [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ハブ メニューの **[その他のサービス]** をクリックします。
 
     ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
@@ -81,7 +81,7 @@ Recovery Services コンテナーのダッシュボードには、Recovery Servi
 | アラート レベル | 送信されるアラート |
 | --- | --- |
 | 重大 |バックアップの失敗、回復エラー |
-| 警告 |警告を伴ってバックアップが完了した (破損が原因でバックアップされなかったファイルが&100; 個未満で、正常にバックアップされたファイルの数が&100; 万を超えるとき) |
+| 警告 |警告を伴ってバックアップが完了した (破損が原因でバックアップされなかったファイルが 100 個未満で、正常にバックアップされたファイルの数が 100 万を超えるとき) |
 | 情報 |なし |
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
@@ -110,7 +110,7 @@ Recovery Services コンテナーのダッシュボードには、Recovery Servi
 
 **[通知]** 頻度に **[アラートごと]** が選択されている場合、グループ化や電子メールの削減は行われません。 アラートごとに通知されます。 これは既定の設定で、解決策が示された電子メールが直ちに送信されます。
 
-**[通知]** 頻度に **[1 時間ごとのダイジェスト]** が選択されている場合、過去&1; 時間に新しいアラートが生成され、未解決であることが、電子メールでユーザーに通知されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
+**[通知]** 頻度に **[1 時間ごとのダイジェスト]** が選択されている場合、過去 1 時間に新しいアラートが生成され、未解決であることが、電子メールでユーザーに通知されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
 
 次の重大度レベルに対してアラートを送信できます。
 
@@ -214,7 +214,7 @@ Backup エージェント コンソールの右側にある **[アクション]*
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
 3. 項目を追加または変更する場合は、**[バックアップする項目の選択]** 画面で **[項目の追加]** をクリックします。
 
-    ウィザードのこのページで、 **[除外の設定]** を設定することもできます。 ファイルまたはファイルの種類を除外する場合は、 [除外の設定](#exclusion-settings)を追加する手順をご覧ください。
+    ウィザードのこのページで、 **[除外の設定]** を設定することもできます。 ファイルまたはファイルの種類を除外する場合は、 [除外の設定](#manage-exclusion-settings)を追加する手順をご覧ください。
 4. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/add-items-modify.png)
@@ -290,7 +290,7 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 **Q1.Azure Backup エージェントではバックアップ ジョブの状態が完了済みになっているのに、その状態がポータルにすぐに反映されないのはなぜですか。**
 
-A1. Azure Backup エージェントのバックアップ ジョブの状態が Azure ポータルに反映されるには、最大で 15 分かかります。
+A1. Azure Backup エージェントのバックアップ ジョブの状態が Azure Portal に反映されるには、最大で 15 分かかります。
 
 **Q2. バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。**
 
@@ -300,9 +300,9 @@ A2. アラートは、Azure のバックアップが失敗してから 20 分以
 
 A3. アラートのノイズを軽減する目的で、次の場合は通知が送信されません。
 
-* 通知頻度が&1; 時間ごとに設定されており、アラートが発生してから&1; 時間以内に解決した。
+* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した。
 * ジョブが取り消された。
-* 元のバックアップ ジョブが進行中のために&2; 番目のバックアップ ジョブが失敗した。
+* 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。
 
 ## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
 **問題:** Azure Backup エージェントからのジョブやアラートがポータルに表示されない。
@@ -313,8 +313,7 @@ A3. アラートのノイズを軽減する目的で、次の場合は通知が�
 2. プロセスが実行中でなかった場合には、**コントロール パネル**を開いてサービスの一覧を参照し、 **Microsoft Azure Recovery Services 管理エージェント**を開始または再起動します。
 
     詳細については、以下の場所にあるログを参照してください。<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`
-   例:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` 次に例を示します。<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>次のステップ

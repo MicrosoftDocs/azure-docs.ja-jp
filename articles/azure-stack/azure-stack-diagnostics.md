@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/11/2017
+ms.date: 7/10/2017
 ms.author: adshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5d75a28949d593f9de5e16382ab030f26f0b382e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 70004cfd83360ac4c66fd4c90632d341709d2e6f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostics tools
@@ -81,28 +80,22 @@ The PowerShell command `Get-AzureStackLog` can be used to collect logs from all 
  
 We currently collect the following log types:
 *   **Azure Stack deployment logs**
-*    **Windows event logs**
-*    **Panther logs**
+*   **Windows event logs**
+*   **Panther logs**
 
      To troubleshoot VM creation issues.
-*    **Cluster logs**
-*    **Storage diagnostic logs**
-*    **ETW logs**
+*   **Cluster logs**
+*   **Storage diagnostic logs**
+*   **ETW logs**
 
     These are collected by the Trace Collector and stored in a share from where `Get-AzureStackLog` retrieves them.
  
 To identify all the logs that get collected from all the components, refer to the `<Logs>` tags in the customer configuration file located at `C:\EceStore\<Guid>\<GuidWithMaxFileSize>`.
  
 ### <a name="to-run-get-azurestacklog"></a>To run Get-AzureStackLog
-1.    Log in as AzureStack\AzureStackAdmin on the host.
-2.    Open a PowerShell window as an administrator.
-3.    Run the following commands to import the PowerShell modules:
-
-    -    `cd C:\CloudDeployment\AzureStackDiagnostics\Microsoft.AzureStack.Diagnostics.DataCollection`
-
-    -    `Import-Module .\Microsoft.AzureStack.Diagnostics.DataCollection.psd1`
-
-4.    Run `Get-AzureStackLog`.  
+1.  Log in as AzureStack\AzureStackAdmin on the host.
+2.  Open a PowerShell window as an administrator.
+3.  Run `Get-AzureStackLog`.  
 
     **Examples**
 
@@ -149,10 +142,10 @@ A few things to note:
 * A file called `Get-AzureStackLog_Output.log` is created in the folder containing the zip files and includes the command output, which can be used for troubleshooting any failures in log collection.
 * Each role has its logs inside an individual zip file. 
 * To investigate a specific failure, logs may be needed from more than one component.
-    -    System and Event logs for all infrastructure VMs are collected in the *VirtualMachines* role.
-    -    System and Event logs for all hosts are collected in the *BareMetal* role.
-    -    Failover Cluster and Hyper-V event logs are collected in the *Storage* role.
-    -    ACS logs are collected in the *Storage* and *ACS* roles.
+    -   System and Event logs for all infrastructure VMs are collected in the *VirtualMachines* role.
+    -   System and Event logs for all hosts are collected in the *BareMetal* role.
+    -   Failover Cluster and Hyper-V event logs are collected in the *Storage* role.
+    -   ACS logs are collected in the *Storage* and *ACS* roles.
 * For more details, you can refer to the customer configuration file. Investigate the `<Logs>` tags for the different roles.
 
 > [!NOTE]

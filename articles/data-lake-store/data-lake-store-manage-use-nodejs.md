@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 06/06/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
-ms.openlocfilehash: 091ab246826c96b9d816c87b27014c1e54039429
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 8c7a2e6ca061bbfa077592efb73d592906c3d070
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/01/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -29,14 +29,14 @@ ms.lasthandoff: 02/01/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 > 
 
 > [!NOTE]
-> 大量のデータ (サイズの大きいファイル、多数のファイル、またはその両方) をアップロードおよびダウンロードする場合は、[Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md)、または [Azure PowerShell](data-lake-store-get-started-powershell.md) を使用することをお勧めします。 これらのオプションではスレッドを複数使用してデータ移動が並列化されるため、パフォーマンスが改善されます。
+> 大量のデータ (サイズの大きいファイル、多数のファイル、またはその両方) をアップロードおよびダウンロードする場合は、[Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md)、[Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)、または [Azure PowerShell](data-lake-store-get-started-powershell.md) を使用することをお勧めします。 これらのオプションではスレッドを複数使用してデータ移動が並列化されるため、パフォーマンスが改善されます。
 > 
 > 
 
@@ -50,7 +50,7 @@ Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントを
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Active Directory アプリケーションを作成する**。 Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。 Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**があります。 認証方法の手順と詳しい情報については、「 [Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
+* **Azure Active Directory アプリケーションを作成する**。 Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。 Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**があります。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
 ## <a name="how-to-install"></a>インストール方法
 ```bash

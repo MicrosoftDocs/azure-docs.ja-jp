@@ -1,12 +1,12 @@
 ---
 
 title: "インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法 | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションを使用すると、インフォメーション ワーカーは組織のユーザーを Azure AD に追加して、会社のアプリケーションにアクセスできるようにすることができます"
+description: "B2B コラボレーションを使用すると、インフォメーション ワーカーは組織のユーザーがアクセスできるように Azure AD に追加することができます"
 services: active-directory
 documentationcenter: 
 author: sasubram
 manager: femila
-editor: 
+editor: curtand
 tags: 
 ms.assetid: 
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 05/23/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 02a1b163c77f3f7f6853762f442bffa617bd9f52
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c6ca561d1a02e283c7932f08f53b8dd590208835
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 ---
 

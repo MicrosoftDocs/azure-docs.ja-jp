@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: 4c9f2bb57e3669327d8704b93fa56e2ace1e8b35
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 482726c1dae5385964e08b720e529817d5907537
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -26,14 +27,14 @@ Azure Machine Learning Web サービスは、変更可能なパラメーター�
 
 一般的な例として、発行された Web サービスのユーザーが、Web サービスにアクセスしたときに別のデータ ソースを指定できるように[データのインポート][reader] モジュールを設定する場合があります。 または、別の宛先を指定できるように[データのインポート][writer] モジュールを構成します。 その他の例としては、[特徴ハッシュ][feature-hashing] モジュールのビット数の変更や、[フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールにおける目的の特徴の数の変更があります。 
 
-Web サービスのパラメーターを設定し、実験の&1; つまたは複数のモジュール パラメーターに関連付けて、必須か任意かを指定することができます。 Web サービスのユーザーは、Web サービスの呼び出し時にこれらのパラメーターの値を指定できます。 
+Web サービスのパラメーターを設定し、実験の 1 つまたは複数のモジュール パラメーターに関連付けて、必須か任意かを指定することができます。 Web サービスのユーザーは、Web サービスの呼び出し時にこれらのパラメーターの値を指定できます。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="how-to-set-and-use-web-service-parameters"></a>Web サービスのパラメーターを設定して使用する方法
 Web サービスのパラメーターを定義するには、モジュールのパラメーターの横にあるアイコンをクリックして、[Set as web service parameter] を選択します。 すると、新しい Web サービスのパラメーターが作成されて、モジュール パラメーターにつながります。 これで、Web サービスにアクセスしたときにユーザーが Web サービスのパラメーターの値を指定できるようになり、それがモジュール パラメーターに適用されます。
 
-Web サービスのパラメーターを&1; 回定義すれば、その実験の他のモジュール パラメーターでも使用できます。 1 つのモジュールのパラメーターに関連付けられている Web サービスのパラメーターを定義する場合、Web サービスのパラメーターに同じ種類の値が想定されるのであれば、その同じパラメーターを他のモジュールでも使用できます。 たとえば、Web サービスのパラメーターが数値の場合、数値が想定されるモジュール パラメーターでのみ使用できます。 Web サービスのパラメーターの値を設定すると、すべての関連付けられたモジュール パラメーターに適用されます。
+Web サービスのパラメーターを 1 回定義すれば、その実験の他のモジュール パラメーターでも使用できます。 1 つのモジュールのパラメーターに関連付けられている Web サービスのパラメーターを定義する場合、Web サービスのパラメーターに同じ種類の値が想定されるのであれば、その同じパラメーターを他のモジュールでも使用できます。 たとえば、Web サービスのパラメーターが数値の場合、数値が想定されるモジュール パラメーターでのみ使用できます。 Web サービスのパラメーターの値を設定すると、すべての関連付けられたモジュール パラメーターに適用されます。
 
 Web サービスのパラメーターの既定値を指定するかどうかを設定できます。 指定した場合、Web サービスのユーザー向けのパラメーターはオプションとなります。 既定値を指定しない場合、ユーザーは Web サービスにアクセスしたときに値の入力を求められます。
 
@@ -54,7 +55,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
    * **[Please specify authentication type]**の下の [アカウント] を選択します。
    * Azure BLOB ストレージのアカウント情報を入力します。 
      <p />
-3. **[Path to blob beginning with container parameter]**の右にあるアイコンをクリックします。 次のように表示されています。
+3. [Path to blob beginning with container parameter] \(コンテナー パラメーターから始まる BLOB のパス\) **の右にあるアイコンをクリックします**。 次のように表示されています。
    
    ![Web サービスのパラメーター アイコン][icon]
    
@@ -76,7 +77,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 ## <a name="more-information"></a>詳細情報
 詳細については、[Machine Learning Blog (Machine Learning ブログ)](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) の「[Web サービスのパラメーター (ブログの投稿)](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)」をご覧ください。
 
-Machine Learning Web サービスへのアクセスの詳細については、 [「発行済みの Machine Learning Web サービスを使用する方法」](machine-learning-consume-web-services.md)をご覧ください。
+Machine Learning Web サービスへのアクセスの詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 <!-- Images -->
 [icon]: ./media/machine-learning-web-service-parameters/icon.png

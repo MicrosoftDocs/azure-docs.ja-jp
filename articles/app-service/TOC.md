@@ -32,10 +32,9 @@
 
 ## 計画と設計
 ### [Azure App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [Azure App Service と既存の Azure サービス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [App Service プランの詳細](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 ### [高密度ホスティング](app-service-high-density-hosting.md)
-### [Linux での App Service](app-service-linux-readme.md)
+### [Linux での App Service](containers/app-service-linux-intro.md)
 ### [Azure App Service での Web ジョブの使用](app-service-webjobs-readme.md)
 ### [App Service 環境](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [App Service 環境のドキュメント](app-service-app-service-environments-readme.md)
@@ -75,11 +74,9 @@
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [独自のカスタム ドメインをマップする](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [GoDaddy ドメインを構成する](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [Traffic Manager でのカスタム ドメイン](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ### [既存のアプリを複製する](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [ハイブリッド接続](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [ハイブリッド接続 v2](app-service-hybrid-connections.md)
 ### [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [詳細な構成](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -95,7 +92,6 @@
 #### [ExpressRoute でのネットワーク構成の詳細](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## [セキュリティ保護](app-service-security-readme.md)
-### [Azure App Service でのアプリのセキュリティ保護](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [認証と権限承認](app-service-authentication-overview.md)
 ### ID プロバイダーで認証する
 #### [Azure Active Directory 認証](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -118,7 +114,6 @@
 ## バックアップ
 ### [Azure でのアプリのバックアップ](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Azure でのアプリの復元](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [REST を使用して App Service アプリのバックアップと復元を実行する](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## [監視](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -127,33 +122,31 @@
 ## 自動化
 ### [アジャイル開発](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Azure Resource Manager デプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [Web + GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [Web + SQL](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [カスタム ホスト名と SSL 証明書を使用した MSDeploy](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### Powershell
 #### [バックアップと復元を自動化する](app-service-powershell-backup.md)
 #### [アプリの複製](../app-service-web/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [SSL 証明書バインディング](../app-service-web/app-service-web-app-powershell-ssl-binding.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [PowerShell で Azure Resource Manager を使用する](../app-service-web/app-service-web-app-azure-resource-manager-powershell.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [Azure Automation を使用してアプリを管理する](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## 統合
-### [ハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [SendGrid を使用した Azure での電子メールの送信](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [PowerApps および Microsoft Flow にエクスポートする](app-service-export-api-to-powerapps-and-flow.md)
 
 ## トラブルシューティング
 ### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [ストリーミング ログとコンソール](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
+# リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=app-service)
+
 # リソース
-## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
-## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
+## [料金](https://azure.microsoft.com/pricing/details/app-service/)  
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [REST ()](https://docs.microsoft.com/rest/api/appservice/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=app-service) 
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
 ## [WebJobs のリソース](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
-## [REST ()](https://docs.microsoft.com/rest/api/appservice/)
-## [料金](https://azure.microsoft.com/pricing/details/app-service/)  
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=app-service) 

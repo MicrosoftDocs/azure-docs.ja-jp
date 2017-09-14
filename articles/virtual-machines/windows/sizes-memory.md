@@ -3,7 +3,7 @@ title: "Windows Azure VM のサイズ - メモリ | Microsoft Docs"
 description: "Azure の Windows 仮想マシンで使用できるさまざまなメモリ最適化済みのサイズを一覧表示します。"
 services: virtual-machines-windows
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/06/2017
-ms.author: cynthn
+ms.date: 08/30/2017
+ms.author: jonbeck
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 68e4afcedffbb6c70eae83eae18b242b408a15a4
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/31/2017
-
 
 ---
 

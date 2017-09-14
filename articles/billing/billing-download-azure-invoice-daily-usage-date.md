@@ -5,7 +5,7 @@ keywords: "請求書,請求書のダウンロード,Azure の請求書,Azure の
 services: 
 documentationcenter: 
 author: genlin
-manager: ruchic
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661

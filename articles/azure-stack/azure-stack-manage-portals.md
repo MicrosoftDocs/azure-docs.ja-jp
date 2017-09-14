@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 07/10/2017
 ms.author: twooley
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 51d6197542f77c26270477bde280778c3282f725
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 066de8278d1ef4406cde837da4c7c65304854383
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="using-the-administrator-and-user-portals-in-azure-stack"></a>Using the administrator and user portals in Azure Stack
 
-Starting with the Technical Preview 3 (TP3) release of Azure Stack, there are two portals; the administrator portal and the user portal (also referred to as the *tenant* portal). The portals are backed by separate instances of Azure Resource Manager.
+There are two portals in Azure Stack; the administrator portal and the user portal (also referred to as the *tenant* portal). The portals are backed by separate instances of Azure Resource Manager.
 
-The following table shows how to connect to the portals and to Resource Manager endpoints in an Azure Stack Proof of Concept (POC) environment.
+The following table shows how to connect to the portals and to Resource Manager endpoints in an Azure Stack Development Kit environment.
 
 |  Portal | Portal URL | Resource Manager endpoint URL |   
 | -------- | ------------- | ------- |  
@@ -33,26 +33,22 @@ The following table shows how to connect to the portals and to Resource Manager 
 | User | https://portal.local.azurestack.external | https://management.local.azurestack.external  |
 | | |
 
->[!NOTE]
- These URLs were updated in the latest release of TP3. Previously, they were https://portal.local.azurestack.external and https://api.local.azurestack.external for administrator, and https://publicportal.local.azurestack.external and https://publicapi.local.azurestack.external for user.
-
-
 ## <a name="the-administrator-portal"></a>The administrator portal
 
-The administrator portal enables a cloud administrator to perform administrative tasks. An administrator can do things such as:
+The administrator portal enables a cloud operator to perform administrative and operational tasks. A cloud operator can do things such as:
 * monitor health and alerts
 * manage capacity
 * populate the marketplace
 * create plans and offers
-* create subscriptions for tenant users
+* create subscriptions for tenants
 
-An administrator can also create resources such as virtual machines, virtual networks, and storage accounts.
+A cloud operator can also create resources such as virtual machines, virtual networks, and storage accounts.
 
  ![The administrator portal](media/azure-stack-manage-portals/image1.png)
 
  ## <a name="the-user-portal"></a>The user portal
 
- The user portal does not provide access to any of the administrative capabilities of the administrator portal. In the user portal, a user can subscribe to public offers, and use the services that are made available through those offers.
+ The user portal does not provide access to any of the administrative or operational capabilities of the administrator portal. In the user portal, a user can subscribe to public offers, and use the services that are made available through those offers.
 
   ![The user portal](media/azure-stack-manage-portals/image2.png)
  
@@ -62,16 +58,16 @@ An administrator can also create resources such as virtual machines, virtual net
 
  Administrator portal:
 * There is only one subscription that is available in the administrator portal. This subscription is the *Default Provider Subscription*. You can't add any other subscriptions for use in the administrator portal.
-* As a cloud administrator, you can add subscriptions for your users (including yourself) from the administrator portal. Users (including yourself) can access and use these subscriptions from the user portal.
+* As a cloud operator, you can add subscriptions for your users (including yourself) from the administrator portal. Users (including yourself) can access and use these subscriptions from the user portal.
 
   >[!NOTE]
-  Because of the Azure Resource Manager separation, subscriptions do not cross portals. For example, if you as a cloud administrator signs in to the user portal, you can't access the Default Provider Subscription. Therefore, you don't have access to any administrative functions. You can create subscriptions for yourself from public offers, but you are considered a tenant user.
+  Because of the Azure Resource Manager separation, subscriptions do not cross portals. For example, if you as a cloud operator signs in to the user portal, you can't access the Default Provider Subscription. Therefore, you don't have access to any administrative functions. You can create subscriptions for yourself from public offers, but you are considered a tenant user.
 
 User portal:
 * In the user portal, an account can have multiple subscriptions.
 
   >[!NOTE]
-  In the POC environment, if a tenant user belongs to the same directory as the cloud administrator, they are not blocked from signing in to the administrator portal. However, they can't access any of the administrative functions. Also, they can't add subscriptions or access offers that are made available to them in the user portal.
+  In the development kit environment, if a tenant user belongs to the same directory as the cloud operator, they are not blocked from signing in to the administrator portal. However, they can't access any of the administrative functions. Also, they can't add subscriptions or access offers that are made available to them in the user portal.
 
 ## <a name="next-steps"></a>Next steps
 

@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2016
+ms.date: 07/05/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a8f1bf660c44f7716767d3244a7d6e7f7acf8a83
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c4ec436df17926114e3e27eabc8ed12761c9614e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="how-to-manage-cloud-services"></a>Cloud Services の管理方法
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 >
 >
 
-クラウド サービスは、Azure ポータルの **[Cloud Services (クラシック)]** 領域で管理されます。 この記事では、クラウド サービスの管理の際に行う一般的なアクションについて説明します。 これには、ステージングされたデプロイの更新、削除、スケール、運用環境への昇格などがあります。
+Azure Portal の **[Cloud Services (クラシック)]** 領域では、サービス ロールまたはデプロイメントの更新、ステージングされたデプロイメントの運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたはデプロイメントの削除ができます。
 
 クラウド サービスのスケールの方法については、 [こちら](cloud-services-how-to-scale-portal.md)をご覧ください。
 
@@ -80,13 +80,13 @@ ms.lasthandoff: 04/27/2017
 
 - 運用スロット用の静的 IP アドレスを使用する場合は、ステージング スロット用の静的 IP アドレスも予約する必要があります。 これを行わなかった場合、スワップは失敗します。
 
-- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の [概要] ブレードで、または [Windows PowerShell の Get-AzureRole コマンド](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0)を使用して確認できます。
+- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の [概要] ブレードで、 または Windows PowerShell の [Get-AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) を使用して確認できます。
 
 ゲスト OS の更新とサービス復旧操作も、デプロイのスワップを失敗させる可能性があります。 詳細については、「[クラウド サービスのデプロイメントに関する問題のトラブルシューティング](cloud-services-troubleshoot-deployment-problems.md)」を参照してください。
 
 **スワップで、アプリケーションのダウンタイムは発生しますか。どのように対応する必要がありますか。**
 
-直前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は非常に高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](../best-practices-retry-general.md)の実装を検討してください。
+直前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](../best-practices-retry-general.md)の実装を検討してください。
 
 ## <a name="how-to-link-a-resource-to-a-cloud-service"></a>方法: クラウド サービスに対するリソースのリンク
 Azure ポータルでは、現在の Azure クラシック ポータルとは異なり、リソースが一緒にリンクされません。 代わりに、追加のリソースを、クラウド サービスで使用されている同じリソース グループにデプロイしてください。
@@ -112,8 +112,14 @@ Azure ポータルでは、現在の Azure クラシック ポータルとは異
 
 > [!NOTE]
 > 詳細監視が構成されている場合は、クラウド サービスが削除された後に、データをストレージ アカウントから手動で削除する必要があります。 メトリック テーブルのある場所については、 [この](cloud-services-how-to-monitor.md) 記事を参照してください。
->
->
+
+
+## <a name="how-to-find-more-information-about-failed-deployments"></a>方法: 失敗したデプロイの詳細情報を確認する
+**[概要]** ブレードの上部にステータス バーがあります。 バーをクリックすると新しいブレードが開き、エラー情報が表示されます。 デプロイにエラーがない場合、この情報ブレードには何も表示されません。
+
+![Cloud Services のスワップ](./media/cloud-services-how-to-manage-portal/status-info.png)
+
+
 
 [Azure portal]: https://portal.azure.com
 

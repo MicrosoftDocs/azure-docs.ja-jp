@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a967a522ebbdce57fa5b4f938369ddd88253701c
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4f3ec837588c6e959e82108ca25ab4289e40d3f5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>証明書を Java CA 証明書ストアに追加する方法
@@ -55,6 +55,6 @@ Baltimore CyberTrust Root を追加する必要がある場合、そのシリア
 ## <a name="next-steps"></a>次のステップ
 Azure で使用するルート証明書の詳細については、 [Azure ルート証明書の移行](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)に関するページを参照してください。
 
-Java の詳細については、 [Java デベロッパー センター](/develop/java/)を参照してください。
+Java の詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」をご覧ください。
 
 

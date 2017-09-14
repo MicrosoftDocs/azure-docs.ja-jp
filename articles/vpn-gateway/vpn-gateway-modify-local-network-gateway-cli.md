@@ -1,6 +1,6 @@
 ---
 title: "ローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスと VPN ゲートウェイの IP アドレスの変更 | Azure| CLI | Microsoft Docs"
-description: "この記事では、Azure CLI を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する手順について説明します"
+description: "この記事では、Azure CLI を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する手順について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,31 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/24/2017
+ms.date: 06/19/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 81c1a6e2357c8d336449224fac841be8dcc2a3cd
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 7db1ad970ebb93d46d5a861f9a9b27bf121531a3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Azure CLI を使用したローカル ネットワーク ゲートウェイの設定の変更
 
-ローカル ネットワーク ゲートウェイの AddressPrefix または GatewayIPAddress の設定が変わることがあります。 この記事では、ローカル ネットワーク ゲートウェイの設定を変更する方法を説明します。 これらの設定は、Azure Portal または PowerShell で変更することもできます。
+ローカル ネットワーク ゲートウェイのアドレス プレフィックスまたはゲートウェイ IP アドレスの設定が変わることがあります。 この記事では、ローカル ネットワーク ゲートウェイの設定を変更する方法を説明します。 これらの設定は別の方法で変更することもできます。その場合は、次のボックスから別のオプションを選択してください。
 
-## <a name="before-you-begin"></a>開始する前に
+> [!div class="op_single_selector"]
+> * [Azure ポータル](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
+> * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+>
+>
+
+## <a name="before"></a>開始する前に
 
 最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="modify-ip-address-prefixes"></a>IP アドレスのプレフィックスを変更する
+## <a name="ipaddprefix"></a>IP アドレスのプレフィックスを変更する
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
-## <a name="modify-the-gateway-ip-address"></a>ゲートウェイの IP アドレスを変更する
+## <a name="gwip"></a>ゲートウェイの IP アドレスを変更する
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 

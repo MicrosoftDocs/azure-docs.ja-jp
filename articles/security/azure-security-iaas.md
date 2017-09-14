@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/29/2017
 ms.author: barclayn
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 3123c8d780406c92f04592767e47c217c0a0ba73
-ms.lasthandoff: 03/28/2017
-
-
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: f93211d289553b7a8afbe8c17fa4847f3d4585a8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/30/2017
 
 ---
-
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
 Azure のサービスとしてのインフラストラクチャ (IaaS) へのワークロードの移行を検討し始めたとき、考慮事項の中によくご存知の項目があったのではないでしょうか。 仮想環境の保護については既に経験されているかもしれません。 Azure IaaS に移行する際は、仮想環境の保護に関する既存の専門知識を活用しながら、資産の保護に役立つ新しい各種オプションを利用できます。
@@ -42,11 +39,11 @@ Azure のサービスとしてのインフラストラクチャ (IaaS) へのワ
 
 組織がサイバー攻撃を受けるケースの大半では、管理者が処理を実行する際に管理者権限を持つアカウントを使用している点が狙われています。 通常は、これらの処理は悪意を持って行われるわけではなく、既存の構成とプロセスで許可されている操作です。 管理者ユーザーのほとんどは、リスクを概念として理解しつつも、リスクの高い操作を行ってしまっています。
 
-電子メールのチェックやインターネットの閲覧といった、リスクがないように思える操作でも、 巧妙に作られた電子メールによって企業へのアクセス権が取得されるなど、管理者権限を持つアカウントが公開されて、閲覧操作を利用できる悪意のあるユーザーによってセキュリティが侵害される危険性があります。 偶発的なセキュリティ侵害のリスクを低減する方法として、Azure の管理タスクを実行する際はセキュリティ保護された管理ワークステーションを常に使用することを強くお勧めします。
+電子メールのチェックやインターネットの閲覧といった、リスクがないように思える操作でも、 管理者権限を持つアカウントが公開されて、悪意のあるユーザーによってセキュリティが侵害される危険性があります。 閲覧操作、特別に細工された電子メールなどの手法を使用して、企業へのアクセス権が獲得される可能性があります。 Azure の管理タスクを実行する際はセキュリティ保護された管理ワークステーション (SAW) を常に使用することを強くお勧めします。 SAW は、偶発的なセキュリティ侵害のリスクを軽減する方法の 1 つです。
 
-Privileged Access Workstation (PAW) には、機密性の高いタスク向けのオペレーティング システムが搭載されており、インターネット上の攻撃や脅威要因から保護されます。 このような機密性の高いタスクとアカウントを、日常的に使用するワークステーションやデバイスから切り離すことで、フィッシング攻撃、アプリケーションと OS の脆弱性、さまざまな偽装攻撃、資格情報の盗難 (キーロガー、Pass the Hash、Pass the Ticket など) から強力に保護されます。
+Privileged Access Workstation (PAW) には、機密性の高いタスク向けのオペレーティング システムが搭載されており、インターネット上の攻撃や脅威要因から保護されます。 日常的に使用するワークステーションとデバイスからこのような機密性の高いタスクとアカウントを分離することで、保護が強化されます。 分離すると、フィッシング攻撃、アプリケーションと OS の脆弱性、多様な偽装攻撃、資格情報の盗難攻撃 (キーボード操作のログ記録、pass-the-hash、pass-the-ticket) の影響が抑えられます。
 
-PAW アプローチは、管理者に割り当てられた管理アカウントを標準のユーザー アカウントと分離して使用するために確立された推奨手法を拡張したものです。 PAW は機密性の高いアカウント向けの信頼できるワークステーションです。
+PAW アプローチは、管理者に個別に割り当てられた管理者アカウントを使用するために確立された推奨手法を拡張したものです。 管理者アカウントは、標準ユーザー アカウントとは分離されています。 PAW は機密性の高いアカウント向けの信頼できるワークステーションです。
 
 詳細情報と実装のガイダンスについては、「[Privileged Access Workstation](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations)」を参照してください。
 
@@ -68,7 +65,7 @@ Azure サブスクリプションを管理するアカウントや Virtual Machi
 
 ## <a name="limit-and-constrain-administrative-access"></a>管理アクセスを制限および制約する
 
-Azure サブスクリプションを管理できるアカウントの保護はきわめて重要です。 このようなアカウントのセキュリティが侵害されると、データの機密性と整合性を確保するための他のすべての手順は価値がなくなります。 [エドワード スノーデン](https://en.wikipedia.org/wiki/Edward_Snowden)による機密情報の漏えい事件からわかるように、内部からの攻撃は組織のセキュリティ全体に甚大な脅威を与えます。
+Azure サブスクリプションを管理できるアカウントの保護はきわめて重要です。 このようなアカウントのセキュリティが侵害されると、データの機密性と整合性を確保するための他のすべての手順は価値がなくなります。 [エドワード スノーデン](https://en.wikipedia.org/wiki/Edward_Snowden)の事件からわかるように、内部からの攻撃は組織のセキュリティ全体に甚大な脅威を与えます。
 
 次に示すような条件に従って、管理者権限についてユーザーを評価してください。
 
@@ -146,7 +143,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 詳細については、「[Windows および Linux IaaS VM の Azure ディスク暗号化](azure-security-disk-encryption.md)」をご覧ください。
 
-[Azure Storage Service Encryption](../storage/storage-service-encryption.md) は保存データを保護します。 この機能は、ストレージ アカウント レベルで有効にします。 データセンターに書き込まれる際にデータが暗号化され、データにアクセスすると自動的に暗号化が解除されます。 列マッピングは、次のシナリオをサポートしています。
+[Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) は保存データを保護します。 この機能は、ストレージ アカウント レベルで有効にします。 データセンターに書き込まれる際にデータが暗号化され、データにアクセスすると自動的に暗号化が解除されます。 列マッピングは、次のシナリオをサポートしています。
 
 - ブロック BLOB、追加 BLOB、ページ BLOB の暗号化
 - オンプレミスから Azure に移動したアーカイブ済み VHD とテンプレートの暗号化
@@ -228,10 +225,7 @@ Operations Management Suite のセキュリティとコンプライアンスの�
 
 ![Operations Management Suite のセキュリティ ベースライン](./media/azure-security-iaas/oms-security-baseline.png)
 
-
-
 ## <a name="next-steps"></a>次のステップ
-
 
 * [Azure セキュリティ チームのブログ](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)

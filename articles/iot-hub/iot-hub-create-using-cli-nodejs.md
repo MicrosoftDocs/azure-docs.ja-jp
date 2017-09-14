@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: boltean
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
 ms.openlocfilehash: 8ac82da36b2edb71fcd0599dac12a3ed18e33b6f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/24/2017
-
 
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
@@ -93,6 +93,8 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **location**。 IoT Hub をプロビジョニングする場所 (Azure リージョン/データ センター)。
 * **sku-name**。 SKU の名前。次のいずれかから選択: [F1, S1, S2, S3]。 最新の完全な一覧については、IoT Hub の料金に関するページを参照してください。
 * **units**。 プロビジョニングしたユニットの数。 範囲は: F1 [1-1] : S1, S2 [1-200] : S3 [1-10]。 IoT Hub 単位は、メッセージの合計数と接続するデバイスの数に基づきます。
+
+[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 作成に使用できるすべてのパラメーターを表示するには、コマンド プロンプトで help コマンドを使用します。
 

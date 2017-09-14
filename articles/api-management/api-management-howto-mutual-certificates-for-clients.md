@@ -3,7 +3,7 @@ title: "API Management でのクライアント証明書認証を使用した AP
 description: "クライアント証明書を使用して API へのアクセスを保護する方法の詳細"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.service: api-management

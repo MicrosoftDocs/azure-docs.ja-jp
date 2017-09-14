@@ -1,5 +1,5 @@
 ---
-title: "自動スケールと App Service Environment | Microsoft Docs"
+title: "自動スケールと App Service Environment v1"
 description: "自動スケールと App Service Environment"
 services: app-service
 documentationcenter: 
@@ -12,16 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-ms.author: byvinyal
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 41ad9eb4d248b1f3e6c888c3037b121511799193
-ms.lasthandoff: 02/16/2017
-
+ms.date: 07/11/2017
+ms.author: ccompy
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: f32affd285f3918feb0e893543f2a28f678b7b10
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="autoscaling-and-app-service-environment"></a>自動スケールと App Service Environment
+# <a name="autoscaling-and-app-service-environment-v1"></a>自動スケールと App Service Environment v1
+
+> [!NOTE]
+> この記事は、App Service Environment v1 に関するものです。  より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](../app-service/app-service-environment/intro.md)」を参照してください。
+> 
+
 Azure App Service 環境は " *自動スケール*" をサポートしています。 メトリックまたはスケジュールに基づいて個々のワーカー プールの規模を自動調整することができます。
 
 ![Autoscale options for a worker pool.][intro]
