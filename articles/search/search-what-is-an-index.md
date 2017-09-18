@@ -23,7 +23,7 @@ ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
 > * [概要](search-what-is-an-index.md)
 > * [ポータル](search-create-index-portal.md)
 > * [.NET](search-create-index-dotnet.md)
-> * [REST ()](search-create-index-rest-api.md)
+> * [REST](search-create-index-rest-api.md)
 > 
 > 
 

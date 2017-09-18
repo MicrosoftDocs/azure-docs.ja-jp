@@ -149,7 +149,7 @@ Azure Backup を使用して、データをクラウド上で保護し、長期�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/recoveryservices">Recovery Services REST API リファレンス</a></p>
                     </div>
                 </div>

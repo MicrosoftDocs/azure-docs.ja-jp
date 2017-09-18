@@ -28,7 +28,7 @@ ms.lasthandoff: 07/21/2017
 >
 > * [概要](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
-> * [REST ()](search-import-data-rest-api.md)
+> * [REST](search-import-data-rest-api.md)
 >
 >
 

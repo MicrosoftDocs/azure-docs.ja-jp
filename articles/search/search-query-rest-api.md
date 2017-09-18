@@ -27,7 +27,7 @@ ms.lasthandoff: 07/21/2017
 > * [概要](search-query-overview.md)
 > * [ポータル](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
+> * [REST](search-query-rest-api.md)
 >
 >
 
